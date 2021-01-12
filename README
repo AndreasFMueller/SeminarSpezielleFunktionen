@@ -1,0 +1,60 @@
+Mathematisches Seminar 2022
+
+Thema: Spezielle Funktionen
+
+Spezielle Funktionen sind so etwas wie die "Programmierbibliotheken" 
+der Mathematik. Um die quadratische Gleichung ax^2+bx+c=0 zu lösen,
+braucht man die "Bibliotheksfunktion" sqrt(x). Spezielle Funktionen
+entstehen also als besonders nützliche Bausteine für die verschiedensten
+Problemlösungen.
+
+- Werkzeuge
+
+  * Potenzreihen
+  * Produktdarstellungen
+  * Komplexe Funktionen und Cauchy-Integral
+
+- Lösungen von speziellen algebraischen Gleichungen
+
+  * Wurzeln
+  * Exponentialfunktion und Logarithmus
+  * Lambert W Funktion
+
+- Lösungen von Rekursionsformeln
+
+  * lineare Differenzengleichungen
+  * Iterierte Wurzeln
+  * Kettenbrüche
+
+- Lösungen kombinatorischer Probleme
+
+  * Fakultät, Doppelfakultät
+  * Binomialkoeffizienten
+  * Pochhammer-Symbol
+  * Bernoulli-Zahlen und Catalan-Zahlen
+  * Erzeugende Funktionen
+
+- Lösungen von Funktionalgleichungen
+
+  * Gamma Funktion und Pi Funktion
+  * Eulersche Beta-Funktion
+
+- Lösungen von gewöhnlichen Differentialgleichujngen
+
+  * trigonometrische Funktionen
+  * Bessel-Funktionen
+  * Legendre-Polynome
+  * Fehlerfunktion (Stammfunktion von e^(-t^2/2)
+  * hypergeometrische Funktion
+  * Digamma-Funktion und Polygamma-Funktionen
+  * Verzögerte Differentialgleichungen
+
+- Lösungen von partiellen Differentialgleichungen
+
+  * Kugelfunktionen
+  * Zylinderfunktionen
+
+- Komplexe Funktionen
+
+  * Riemann-Zeta-Funktion
+
