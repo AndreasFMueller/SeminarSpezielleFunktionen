@@ -34,6 +34,11 @@ Problemlösungen.
   * Bernoulli-Zahlen und Catalan-Zahlen
   * Erzeugende Funktionen
 
+- Spezielle Integrale
+
+  * Fresnel-Integrale
+  * elliptische Integrale
+
 - Lösungen von Funktionalgleichungen
 
   * Gamma Funktion und Pi Funktion
@@ -43,13 +48,13 @@ Problemlösungen.
 
   * trigonometrische Funktionen
   * Bessel-Funktionen
+  * Airy-Funktionen
   * Legendre-Polynome
   * Fehlerfunktion (Stammfunktion von e^(-t^2/2)
   * hypergeometrische Funktion
   * Digamma-Funktion und Polygamma-Funktionen
   * Verzögerte Differentialgleichungen
   * Struve-Funktionen
-  * Fresnel-Integrale
 
 - Lösungen von partiellen Differentialgleichungen
 
