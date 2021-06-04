@@ -5,4 +5,4 @@
 #
 
 CHAPTERFILES = $(CHAPTERFILES)						\
-	chapters/00-einleitung/chapter.tex
+	chapters/000-einleitung/chapter.tex
