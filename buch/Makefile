@@ -31,7 +31,7 @@ separate:	buch.aux buch.pdf
 speziellefunktionen.pdf:	
 	pdfjam --outfile speziellefunktionen.pdf \
 		../cover/front.pdf 1,{} \
-		buch.pdf 1-504 \
+		buch.pdf 1-20 \
 		../cover/back.pdf {},1
 
 #
