@@ -1,0 +1,47 @@
+%
+% xexpx.tex -- template for standalon tikz images
+%
+% (c) 2021 Prof Dr Andreas Müller, OST Ostschweizer Fachhochschule
+%
+\documentclass[tikz]{standalone}
+\usepackage{amsmath}
+\usepackage{times}
+\usepackage{txfonts}
+\usepackage{pgfplots}
+\usepackage{csvsimple}
+\usetikzlibrary{arrows,intersections,math}
+\begin{document}
+\def\skala{1.5}
+\begin{tikzpicture}[>=latex,thick,scale=\skala]
+
+\draw[->] (-6.1,0) -- (2.0,0) coordinate[label={$x$}];
+\draw[->] (0,-1.1) -- (0,5.2) coordinate[label={right:$y$}];
+
+\foreach \x in {-6,-5,-4,-3,-2,-1}{
+	\draw (\x,{-0.1/\skala}) -- (\x,{0.1/\skala});
+	\node at (\x,0) [above] {$\x$};
+}
+\draw (1,{-0.1/\skala}) -- (1,{0.1/\skala});
+\node at (1,0) [below] {$1$};
+\foreach \y in {1,...,5}{
+	\draw ({-0.1/\skala},\y) -- ({0.1/\skala},\y);
+	\node at (0,\y) [left] {$\y$};
+}
+
+\begin{scope}
+\clip (-6,-0.5) rectangle (2,4.8);
+
+\draw[color=red,line width=1.4pt]
+	plot[domain=-1:2,samples=100] ({\x},{\x*exp(\x)});
+\draw[color=blue,line width=1.4pt]
+	plot[domain=-6:-1,samples=100] ({\x},{\x*exp(\x)});
+
+\end{scope}
+
+\fill[color=violet] (-1,{-exp(-1)}) circle[radius=0.04];
+\node[color=violet] at (-1,{-exp(-1)}) [below]
+	{$\displaystyle f(-1) = -\frac{1}{e}$};
+
+\end{tikzpicture}
+\end{document}
+

@@ -1,0 +1,61 @@
+%
+% tikztemplate.tex -- template for standalon tikz images
+%
+% (c) 2021 Prof Dr Andreas Müller, OST Ostschweizer Fachhochschule
+%
+\documentclass[tikz]{standalone}
+\usepackage{amsmath}
+\usepackage{times}
+\usepackage{txfonts}
+\usepackage{pgfplots}
+\usepackage{csvsimple}
+\usetikzlibrary{arrows,intersections,math}
+\begin{document}
+\def\skala{2}
+\begin{tikzpicture}[>=latex,thick,scale=\skala]
+
+\pgfmathparse{-exp(-1)}
+\xdef\l{\pgfmathresult}
+
+\draw[->] (-0.5,0) -- (3.5,0) coordinate[label={$x$}];
+\draw[->] (0,{-1-0.1/\skala}) -- (0,1.5) coordinate[label={$y$}];
+\node at (0,0) [below right] {$0$};
+
+\begin{scope}
+\clip (-0.4,-1) rectangle (3.4,1.5);
+\draw[color=red,line width=2.0pt] plot[domain=-1:1.1] ({\x*exp(\x)},{\x});
+\end{scope}
+
+\node[color=red] at (1.5,1) {$y=W(x)=W_0(x)$};
+
+\draw[line width=0.3pt] ({\l},0) -- ({\l},-1);
+\draw ({\l},{-0.1/\skala}) -- ({\l},{0.1/\skala});
+\node at ({\l},0) [above left] {$-1/e$};
+
+\draw (1,{-0.1/\skala}) -- (1,{0.1/\skala});
+\node at (1,0) [below] {$1$};
+\draw (2,{-0.1/\skala}) -- (2,{0.1/\skala});
+\node at (2,0) [below] {$2$};
+\draw (3,{-0.1/\skala}) -- (3,{0.1/\skala});
+\node at (3,0) [below] {$3$};
+\draw ({-0.1/\skala},1) -- ({0.1/\skala},1);
+\node at (0,1) [left] {$1$};
+
+\begin{scope}[xshift=-2cm,yshift=1.5cm]
+\draw[->] (-0.8,0) -- (0.5,0) coordinate[label={$x$}];
+\draw[->] (0,-3) -- (0,0.4) coordinate[label={left:$y$}];;
+\node at (0,0) [below right] {$0$};
+\draw[line width=0.3pt] ({\l},0) -- ({\l},-1);
+\draw ({\l},{-0.1/\skala}) -- ({\l},{0.1/\skala});
+\draw[color=blue,line width=2.0pt] plot[domain=-3:-1] ({\x*exp(\x)},{\x});
+\draw ({-0.1/\skala},-1) -- ({0.1/\skala},-1);
+\draw ({-0.1/\skala},-2) -- ({0.1/\skala},-2);
+\node at (0,-1) [right] {$-1$};
+\node at (0,-2) [right] {$-2$};
+\node[color=blue] at (-0.3,-2) [left] {$y=W_{-1}(x)$};
+\node at ({\l},0) [above left] {$-1/e$};
+\end{scope}
+
+\end{tikzpicture}
+\end{document}
+
