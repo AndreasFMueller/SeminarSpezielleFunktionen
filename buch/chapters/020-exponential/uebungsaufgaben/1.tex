@@ -1,0 +1,33 @@
+Finde die Lösungen der Gleichung $x^x=27$ mit Hilfe der Lambert $W$-Funktion.
+
+\begin{loesung}
+Wegen der speziellen Form $27=3^3$ der rechten Seite kann man
+zwar die Lösung $x=3$ der Gleichung sofort erraten, für andere 
+Werte der rechten Seite wird es dagegen schwieriger, so dass man
+keine andere Wahl hat, als die folgende Umformung zu verwenden.
+
+Wir schreiben zunächst die Gleichung mit Hilfe der Exponentialfunktion als
+\[
+e^{x\log x} = 27
+\qquad\Rightarrow\qquad
+x\log x = \log 27
+\]
+und substituieren $t=\log x$, also $x=e^t$. 
+So entsteht die Gleichung
+\[
+te^t = \log 27.
+\]
+Auf der linken Seite steht ein Ausdruck, der mit der Lambert $W$-Funktion
+invertiert werden kann, es ist also
+\[
+t = W(\log 27)
+\qquad\Rightarrow\qquad
+x=e^{W(\log 27)}.
+\]
+Für $W(\log 27)$ findet man
+\[
+W(\log 27) = 1.098612
+\qquad\Rightarrow\qquad
+x=3.
+\]
+\end{loesung}
