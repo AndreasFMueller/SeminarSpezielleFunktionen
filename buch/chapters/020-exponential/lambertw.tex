@@ -319,6 +319,48 @@ W(-cbe^{ac})
 Die Gleichung hat eine Lösung wenn $-cbe^{ac} > -1/e$ ist.
 \end{proof}
 
+\subsection{Numerische Berechnung
+\label{buch:subsection:lambertberechnung}}
+Die $W$-Funktionen sind nur dann nützlich, wenn man sie effizient
+berechnen kann.
+Leider ist sie nicht Teil der C- oder C++-Standardbibliothek,
+man muss sich also mit einer spezialisierten Bibliothek oder einer
+eigenen Implementation behelfen.
+
+\subsubsection{Berechnung mit dem Newton-Algorithmus}
+Für $x>-1$ ist die Funktion $W(x)$ ist die Umkehrfunktion der
+streng monoton wachsenden und konvexen Funktion $f(x)=xe^x$.
+In dieser Situation konvergiert der Newton-Algorithmus zur Bestimmung
+der Nullstelle $x=W_0(y)$ von $f(x)-y$ für alle Werte von $y>-1/e$.
+Für $W_{-1}(y)$ ist die Situation etwas komplizierter, da für
+$x<-1$ die Funktion $f(x)$ nicht konvex ist.
+
+Ausgehend vom Startwert $x_0$ ist die Iterationsfolge definiert
+durch
+\[
+x_{n+1}
+=
+x_n - \frac{f(x_n) - y}{f'(x_n)}
+=
+x_n - \frac{x_ne^{x_n}-y}{(1+x_n)e^{x_n}}.
+\]
+Die Theorie verspricht, dass die Folge quadratisch konvergiert, wenn
+der Startwert $x_0$ genügend genau ist.
+Für $W_0(y)$ scheint $x_0=\log(1+y)$ ein guter Startwert zu sein, für
+$W_{-1}(y)$ funktioniert $x_0=\log(-y)$.
+
+Die Steigung des Graphen der Funktion $f(x)$ ist für grosse positive
+Werte von $x$ sehr gross und für grosse negative Werte von $x$ sehr
+klein, was die Konvergenz stark beeinträchtigen kann.
+An der Stelle $x=-1$ mit dem Wert $f(-1)=-1/e$ ist die Steigung $0$
+und die Konvergenz des Newton-Algorithmus ist nur noch linear.
+Für mittelgrosse Werte von $y$ weg von $-1/e$ kann $W_0(y)$ oder $W_{-1}(y)$ 
+mit einer Genauigkeit $10^{-15}$ innert weniger als 10 Iterationen
+bestimmt werden.
+
+\subsubsection{GNU scientific library}
+Die Lambert $W$-Funktionen $W_0(x)$ und $W_{-1}(x)$ sind auch in der
+GNU scientific library \cite{buch:library:gsl} implementiert.
 
 %
 % Verfolgungskurven
