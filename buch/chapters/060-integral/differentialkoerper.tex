@@ -21,6 +21,117 @@ löst das Problem.
 \label{buch:integrale:section:analogie}}
 % XXX Analogie: Formel für Polynom-Nullstellen 
 % XXX           Stammfunktion als elementare Funktion
+Das Analysis-Problem, eine Stammfunktion zu finden, ist analog zum
+wohlbekannten algebraischen Problem, Nullstellen von Polynomen zu finden.
+Wir entwickeln diese Analogie in etwas mehr Detail, um zu sehen, ob man
+aus dem algebraischen Problem etwas über das Problem der Analysis
+lernen kann.
+
+Für ein Polynom $p(X) = a_nX^n+a_{n-1}X^{n-1}+\dots+a_1X+a_0\in\mathbb{C}[X]$
+mit Koeffizienten $a_k\in\mathbb{C}$ ist es sehr einfach, für jede beliebige
+komplexe Zahl $z\in\mathbb{C}$ den Wert $p(z)$ des Polynoms auszurechnen.
+Ein paar wenige Rechenregeln genügen dazu, man kann leicht einem Kind 
+beibringen, mit einem Taschenrechner so einen Wert auszurechnen.
+
+Ähnlich sieht es mit der Ableitungsoperation aus. 
+Einige wenige Ableitungsregeln, die man in der Analysis~I lernt,
+erlauben, auf mehr oder weniger mechanische Art und Weise, jede
+beliebige Funktion abzuleiten.
+Man kann auch leicht einen Computer dazu programmieren, solche Ableitungen
+symbolisch zu berechnen.
+
+Aus dem Fundamentalsatz der Algebra, der von Gauss vollständig bewiesen
+wurde, ist bekannt, dass jedes Polynom mit Koeffizienten in $\mathbb{C}$
+genau so viele Lösungen in $\mathbb{C}$, wie der Grad des Polynoms angibt.
+Dies ist aber ein Existenzsatz, er sagt nichts darüber aus, wie man diese
+Lösungen finden kann.
+In Spezialfällen, wie zum Beispiel für quadratische Polynome, gibt
+es spezialsierte Lösungsverfahren, mit denen man Lösungen angeben kann.
+Natürlich existieren numerische Methoden wie zum Beispiel das
+Newton-Verfahren, mit dem man Nullstellen von Polynomen beliebig genau
+bestimmen kann.
+
+Der Fundamentalsatz der Integralrechnung besagt, dass jede stetige 
+Funktion eine Stammfunktion hat, die bis auf eine Konstante eindeutig
+bestimmt ist.
+Auch dieser Existenzsatz gibt keinerlei Hinweise darauf, wie man die
+Stammfunktion finden kann.
+In der Analysis-Vorlesung lernt man viele Tricks, die in einer
+beindruckenden Zahl von Spezialfällen ermöglichen, ein passende
+Funktion anzugeben.
+Man lernt auch numerische Verfahren kennen, mit denen sich Werte der
+Stammfunktion, also bestimmte Integrale, mit beliebiger Genauigkeit
+finden kann.
+
+Die numerische Lösung des Nullstellenproblems ist insofern unbefriedigend,
+als sie nur schwer eine Diskussion der Abhängigkeit der Nullstellen von
+den Koeffizienten des Polynoms ermöglichen.
+Eine Formel wie die Lösungsformel für die quadratische Gleichung 
+stellt genau für solche Fälle ein ideales Werkzeug bereit.
+Was man sich also wünscht ist nicht nur einfach eine Lösung, sondern eine
+einfache Formel zur Bestimmung aller Lösungen.
+Im Zusammenhang mit algebraischen Gleichungen erwartet man eine Formel,
+in der nur arithmetische Operationen und Wurzeln vorkommen.
+Für quadratische Gleichungen ist so eine Formel seit dem Altertum bekannt,
+Formeln für die kubische Gleichung und die Gleichung vierten Grades wurden
+im 16.~Jahrhundert von Cardano bzw.~Ferrari gefunden.
+Erst viel später haben Abel und Ruffini gezeigt, dass so eine allgemeine
+Formel für Polynome höheren Grades als 4 nicht existiert.
+Die Galois-Theorie, die auf den Ideen von Évariste Galois beruht, 
+stellt eine vollständige Theorie unter anderem für die Lösbarkeit
+von Gleichungen durch Wurzelausdrücke dar.
+
+Numerische Integralwerte haben ebenfalls den Nachteil, dass damit
+Diskussionen wie die Abhängigkeit von Parametern eines Integranden
+nur schwer möglich sind.
+Was man sich daher wünscht ist eine Formel für die Stammfunktion,
+die Werte als Zusammensetzung gut bekannter Funktionen wie der Exponential-
+und Logarithmus-Funktionen oder der trigonometrischen Funktionen
+sowie Wurzeln, Potenzen und den arithmetischen Operationen.
+Man sagt, man möchte die Stammfunktion in ``geschlossener Form'' 
+dargestellt haben.
+Tatsächlich ist dieses Problem auch zu Beginn des 19.~Jahrhunderts
+von Joseph Liouville genauer untersucht worden.
+Er hat zunächst eine Klasse von ``elementaren Funktionen'' definiert,
+die als Darstellungen einer Stammfunktion in Frage kommen.
+Der Satz von Liouville besagt dann, dass nur Funktionen mit einer
+ganz speziellen Form eine elementare Stammfunktion haben.
+Damit wird es möglich, zu entscheiden, ob ein Integrand wie $e^{-x^2}$ 
+eine elementare Stammfunktion hat.
+Seit dieser Zeit weiss man zum Beispiel, dass die Fehlerfunktion nicht
+mit den bekannten Funktionen dargestellt werden kann.
+
+Mit dem Aufkommen der Computer und vor allem der Computer-Algebra-System (CAS)
+wurde die Frage nach der Bestimmung einer Stammfunktion erneut aktuell.
+Die ebenfalls weiter entwickelte abstrakte Algebra hat ermöglicht, die
+Ideen von Liouville in eine erweiterte, sogenannte differentielle 
+Galois-Theorie zu verpacken, die eine vollständige Lösung des Problems
+darstellt.
+Robert Henry Risch hat in den Sechzigerjahren auf dieser Basis
+einen Algorithmus entwickelt, mit dem es möglich wird, zu entscheiden,
+ob eine Funktion eine elementare Stammfunktion hat und diese
+gegebenenfalls auch zu finden.
+Moderne CAS implementieren diesen Algorithmus
+in Teilen, besonders weit zu gehen scheint das quelloffene System
+Axiom.
+
+Der Risch-Algorithmus hat allerdings eine Achillesferse: er benötigt
+eine Method zu entscheiden, ob zwei Ausdrücke übereinstimmen.
+Dies ist jedoch ein im Allgemeinen nicht entscheidbares Problem.
+Moderne CAS treiben einigen Aufwand, um die
+Gleichheit von Ausdrücken zu entscheiden, sie können das Problem
+aber grundsätzlich nicht vollständig lösen.
+Damit kann der Risch-Algorithmus in praktischen Anwendungen das
+Stammfunktionsproblem ebenfalls nur mit Einschränkungen lösen,
+die durch die Fähigkeiten des Ausdrucksvergleichs in einem CAS
+gesetzt werden.
+
+Im Folgenden sollen elementare Funktionen definiert werden, es sollen
+die Grundideen der differentiellen Galois-Theorie zusammengetragen werden
+und der Satz von Liouvill vorgestellt werden.
+An Hand der Fehler-Funktion soll dann gezeigt werden, wie man jetzt
+einsehen kann, dass die Fehlerfunktion nicht elementar darstellbar ist.
+Im nächsten Abschnitt dann soll der Risch-Algorithmus skizziert werden.
 
 \subsection{Elementare Funktionen
 \label{buch:integrale:section:elementar}}
