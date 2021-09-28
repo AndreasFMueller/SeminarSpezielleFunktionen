@@ -1,0 +1,26 @@
+%
+% common.tex -- gemeinsame definition
+%
+% (c) 2017 Prof Dr Andreas Müller, Hochschule Rapperswil
+%
+\input{../common/packages.tex}
+\mode<beamer>{%
+\usetheme[hideothersubsections,hidetitle]{Hannover}
+}
+\beamertemplatenavigationsymbolsempty
+\title[MathSem]{Mathematisches Seminar Spezielle Funktionen}
+\author[A.~Müller]{Andreas Müller}
+\date[]{}
+\newboolean{presentation}
+
+\input{../common/common.tex}
+
+\def\folie#1{
+%\subsection{#1}
+\begin{frame}
+\begin{center}
+\tt #1
+\end{center}
+\end{frame}
+\input{#1}
+}
