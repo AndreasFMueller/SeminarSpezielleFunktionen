@@ -1,0 +1,40 @@
+%
+% funktionen.tex -- slide template
+%
+% (c) 2021 Prof Dr Andreas Müller, OST Ostschweizer Fachhochschule
+%
+\bgroup
+\begin{frame}[t]
+\setlength{\abovedisplayskip}{5pt}
+\setlength{\belowdisplayskip}{5pt}
+\frametitle{Spezielle Funktionen}
+%\begin{center}
+\renewcommand\arraystretch{1.8}
+\begin{tabular}{ll}
+Aufgabe&Lösung\\
+\hline
+Gleichung $x^n=a$ lösen &
+\uncover<2->{{\color<9->{red}Wurzelfunktion} $x = \sqrt[n]{a}$}
+\\
+Kreis beschreiben &
+\uncover<3->{{\color<9->{red}trignometrische Funktionen} $\sin t$, $\cos t$}
+\\
+Differentialgleichung $y' = ay$ lösen &
+\uncover<4->{{\color<9->{red}Exponentialfunktion} $y(x) = \exp (ax)$}
+\\
+Exponentialgleichung $a^x=b$ lösen &
+\uncover<5->{{\color<9->{red}Logarithmus} $x = \log_a b$}
+\\
+Integral $\displaystyle \int_0^x e^{-t^2}\,dt$ berechnen &
+\uncover<6->{Keine Lösung $\rightarrow \displaystyle
+{\color<9->{red}\operatorname{erf}(x)} = \int_0^xe^{-t^2}\,dt$}
+\\
+Fakultät $x!$ auf $x\in\mathbb{C}$ ausdehnen &
+\uncover<7->{{\color<9->{red}Gamma-Funktion} $\Gamma(x)$}
+\\
+$x^2y'' +xy' + (x^2-a^2)y=0$ &
+\uncover<8->{{\color<9->{red}Bessel-Funktionen} $J_a$, $Y_a$, $I_a$, $K_a$}
+\end{tabular}
+%\end{center}
+\end{frame}
+\egroup
