@@ -8,4 +8,5 @@ chapter0 =								\
 	../slides/0/funktionen.tex					\
 	../slides/0/info.tex						\
 	../slides/0/intro.tex						\
+	../slides/0/wassindss.tex					\
 	../slides/0/was.tex
