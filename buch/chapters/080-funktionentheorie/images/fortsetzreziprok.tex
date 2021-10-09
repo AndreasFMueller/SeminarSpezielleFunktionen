@@ -1,0 +1,65 @@
+%
+% fortsetzreziprok.tex -- analytische Fortsetzung der 1/z-Funktion
+%
+% (c) 2021 Prof Dr Andreas Müller, OST Ostschweizer Fachhochschule
+%
+\documentclass[tikz]{standalone}
+\usepackage{amsmath}
+\usepackage{times}
+\usepackage{txfonts}
+\usepackage{pgfplots}
+\usepackage{csvsimple}
+\usetikzlibrary{arrows,intersections,math}
+\definecolor{darkgreen}{rgb}{0,0.6,0}
+\begin{document}
+\def\skala{1}
+\def\u{3}
+\def\punkt#1#2{
+	\fill[color=white] #1 circle[radius=0.08];
+	\draw[color=#2] #1 circle[radius=0.08];
+}
+\begin{tikzpicture}[>=latex,thick,scale=\skala]
+
+\fill[color=gray!70,opacity=0.5] (\u,0) circle[radius=\u];
+\fill[color=gray!70,opacity=0.5] (0,\u) circle[radius=\u];
+\fill[color=gray!70,opacity=0.5] (-\u,0) circle[radius=\u];
+\fill[color=gray!70,opacity=0.5] (0,-\u) circle[radius=\u];
+
+%\draw[line width=0.5pt] (\u,0) circle[radius=\u];
+%\draw[line width=0.5pt] (0,\u) circle[radius=\u];
+%\draw[line width=0.5pt] (-\u,0) circle[radius=\u];
+%\draw[line width=0.5pt] (0,-\u) circle[radius=\u];
+
+\draw[->] ({-0.5-2*\u},0) -- ({2*\u+0.8},0)
+	coordinate[label={$\operatorname{Re}z$}];
+\draw[->] (0,{-0.5-2*\u}) -- (0,{2*\u+0.8})
+	coordinate[label={$\operatorname{Im}z$}];
+
+\draw[color=darkgreen,line width=1.4pt] (0,0) circle[radius=\u];
+\node[color=darkgreen] at (70:\u) [above] {$\gamma_+$};
+\node[color=darkgreen] at (-70:\u) [below] {$\gamma_-$};
+\node at (\u,0) [above right] {$1$};
+\node at (0,\u) [above left] {$i$};
+\node at (-\u,0) [above left] {$-1$};
+\node at (0,-\u) [below left] {$-i$};
+
+\punkt{(\u,0)}{black}
+\punkt{(-\u,0)}{black}
+\punkt{(0,\u)}{black}
+\punkt{(0,-\u)}{black}
+
+\punkt{({0.5*\u},{0.5*\u})}{red}
+\punkt{({-0.5*\u},{0.5*\u})}{red}
+\punkt{({-0.5*\u},{-0.5*\u})}{red}
+\punkt{({0.5*\u},{-0.5*\u})}{red}
+
+\node[color=red] at ({0.5*\u},{0.5*\u}) [above] {$(1+i)\frac{\sqrt{2}}{2}$};
+\node[color=red] at ({0.5*\u},{-0.5*\u}) [below] {$(1-i)\frac{\sqrt{2}}{2}$};
+\node[color=red] at ({-0.5*\u},{-0.5*\u}) [below] {$(-1-i)\frac{\sqrt{2}}{2}$};
+\node[color=red] at ({-0.5*\u},{0.5*\u}) [above] {$(-1+i)\frac{\sqrt{2}}{2}$};
+
+\fill[color=white] (0,0) circle[radius=0.2];
+
+\end{tikzpicture}
+\end{document}
+

@@ -1,0 +1,65 @@
+%
+% logforts.tex -- analytische Fortsetzung der Logarithmus-Funktion
+%
+% (c) 2021 Prof Dr Andreas Müller, OST Ostschweizer Fachhochschule
+%
+\documentclass[tikz]{standalone}
+\usepackage{amsmath}
+\usepackage{times}
+\usepackage{txfonts}
+\usepackage{pgfplots}
+\usepackage{csvsimple}
+\usetikzlibrary{arrows,intersections,math,calc}
+\begin{document}
+\def\skala{2}
+\begin{tikzpicture}[>=latex,thick,scale=\skala]
+\def\r{1.2}
+\def\a{65}
+
+\fill[color=gray!40] (0,0) -- (0:0.4) arc (0:\a:0.4) -- cycle;
+\node at ({\a/2}:0.3) {$t$};
+
+\draw[->] (-2.5,0) -- (2.5,0) coordinate[label={$\operatorname{Re}z$}];
+\draw[->] (0,-1.6) -- (0,1.6) coordinate[label={right:$\operatorname{Im}z$}];
+
+\draw (1,{-0.1/\skala}) -- (1,{0.1/\skala});
+\draw (2,{-0.1/\skala}) -- (2,{0.1/\skala});
+\draw (-1,{-0.1/\skala}) -- (-1,{0.1/\skala});
+\draw (-2,{-0.1/\skala}) -- (-2,{0.1/\skala});
+\node at (1,0) [below] {$1$};
+\node at (2,0) [below] {$2$};
+\node at (-1,0) [below] {$-1$};
+\node at (-2,0) [below] {$-2$};
+\draw ({-0.1/\skala},1) -- ({0.1/\skala},1);
+\node at (0,1) [left] {$1$};
+\draw ({-0.1/\skala},-1) -- ({0.1/\skala},-1);
+\node at (0,-1) [left] {$-1$};
+
+\draw[->,color=red,line width=1.4pt] (0:\r) arc (0:357:\r);
+
+\fill[color=white] (0:\r) circle[radius=0.03];
+\draw (0:\r) circle[radius=0.03];
+\node at (0:\r) [above right] {$y(r)=\log r$};
+
+\def\punkt#1{
+	\fill[color=white] #1 circle[radius=0.03];
+	\draw[color=red] #1 circle[radius=0.03];
+}
+\draw[->] (0,0) -- (\a:\r);
+\punkt{(\a:\r)}
+\node at ($(\a:\r)+(0,-0.2)$) [above right] {$\displaystyle y(\gamma(t)) = \int_{\gamma_{|[0,t]}}\frac{1}{z}\,dz$};
+
+\punkt{(135:\r)}
+\node at (135:\r) [above left] {$y=\gamma(\frac34\pi))=\log r +\frac34\pi i$};
+
+\punkt{(252:\r)}
+\node at (252:\r) [below left] {$y=\gamma(\frac75\pi))=\log r +\frac75\pi i$};
+
+\draw[color=red,line width=0.4pt] (1.4,-1.1) -- (1.4,-0.2) -- (357:\r);
+\punkt{(357:\r)}
+
+\node at (1.4,-1.1) [below] {$y=\gamma(\frac{119}{60}\pi))=\log r +\frac{119}{60}\pi i$};
+
+\end{tikzpicture}
+\end{document}
+

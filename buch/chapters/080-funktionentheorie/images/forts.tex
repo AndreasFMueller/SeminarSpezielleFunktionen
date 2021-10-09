@@ -1,0 +1,86 @@
+%
+% forts.tex -- analytische Fortsetzung
+%
+% (c) 2021 Prof Dr Andreas Müller, OST Ostschweizer Fachhochschule
+%
+\documentclass[tikz]{standalone}
+\usepackage{amsmath}
+\usepackage{times}
+\usepackage{txfonts}
+\usepackage{pgfplots}
+\usepackage{csvsimple}
+\usetikzlibrary{arrows,intersections,math,calc}
+\begin{document}
+\def\skala{1}
+\begin{tikzpicture}[>=latex,thick,scale=\skala]
+
+\pgfmathparse{-(3+3*sin(180*(1.4))-(1.4))}
+\xdef\X{\pgfmathresult}
+\pgfmathparse{-(2+2*cos(180*(1.4))-(1.4))}
+\xdef\Y{\pgfmathresult}
+
+\def\kurve#1{
+	({3+3*sin(180*(#1))-(#1)+\X},{2+2*cos(180*(#1))-(#1)+\Y})
+}
+
+\def\punkt#1{
+	\fill[color=white]
+		({3+3*sin(180*(#1))-(#1)+\X},{2+2*cos(180*(#1))-(#1)+\Y})
+		circle[radius=0.08];
+	\draw[color=red]
+		({3+3*sin(180*(#1))-(#1)+\X},{2+2*cos(180*(#1))-(#1)+\Y})
+		circle[radius=0.08];
+}
+
+\def\kreis#1#2{
+	\fill[color=gray!50,opacity=0.5] #1 circle[radius=#2];
+}
+\def\rand#1#2{
+	\draw #1 circle[radius=#2];
+}
+
+\kreis{\kurve{-0.2}}{1.2}
+\kreis{\kurve{0.0}}{1.2}
+\kreis{\kurve{0.2}}{1.2}
+\kreis{\kurve{0.4}}{1.2}
+\kreis{\kurve{0.6}}{1.2}
+\kreis{\kurve{0.8}}{1.3}
+\kreis{\kurve{1.0}}{1.5}
+\kreis{\kurve{1.2}}{1.3}
+\kreis{\kurve{1.4}}{1.2}
+\rand{\kurve{-0.2}}{1.2}
+\rand{\kurve{0.0}}{1.2}
+\rand{\kurve{0.2}}{1.2}
+\rand{\kurve{0.4}}{1.2}
+\rand{\kurve{0.6}}{1.2}
+\rand{\kurve{0.8}}{1.3}
+\rand{\kurve{1.0}}{1.5}
+\rand{\kurve{1.2}}{1.3}
+\rand{\kurve{1.4}}{1.2}
+
+\draw[->] (-1.5,0) -- (8.5,0) coordinate[label={$\operatorname{Re}z$}];
+\draw[->] (0,-2.6) -- (0,5.6) coordinate[label={left:$\operatorname{Im}z$}];
+
+\draw[color=red,line width=1.4pt]
+	plot[domain=-0.2:1.4,samples=100] 
+	({3+3*sin(180*\x)-\x+\X},{2+2*cos(180*\x)-\x+\Y});
+
+\foreach \t in {-0.2,0,0.2,0.4,0.6,0.8,1.0,1.2,1.4}{
+	\punkt{\t}
+}
+
+\node[color=red] at \kurve{1.4} [above left] {$z_0$};
+\node[color=red] at \kurve{1.2} [below] {$z_1$};
+\node[color=red] at \kurve{1.0} [below] {$z_2$};
+\node[color=red] at \kurve{0.8} [below right] {$z_3$};
+\node[color=red] at \kurve{0.6} [right] {$z_4$};
+\node[color=red] at \kurve{0.4} [right] {$z_5$};
+\node[color=red] at \kurve{0.2} [above right] {$z_6$};
+\node[color=red] at \kurve{0.0} [above] {$z_7$};
+\node[color=red] at \kurve{-0.2} [above left] {$z_8$};
+
+\node[color=red] at \kurve{0.96} [above] {$\gamma$};
+
+\end{tikzpicture}
+\end{document}
+

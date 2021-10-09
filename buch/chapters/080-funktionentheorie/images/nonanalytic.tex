@@ -1,0 +1,40 @@
+%
+% nonanalytic.tex -- nicht analytische reelle C^\infty-Funktion
+%
+% (c) 2021 Prof Dr Andreas Müller, OST Ostschweizer Fachhochschule
+%
+\documentclass[tikz]{standalone}
+\usepackage{amsmath}
+\usepackage{times}
+\usepackage{txfonts}
+\usepackage{pgfplots}
+\usepackage{csvsimple}
+\usetikzlibrary{arrows,intersections,math}
+\begin{document}
+\def\skala{1}
+\begin{tikzpicture}[>=latex,thick,scale=\skala]
+
+\draw[color=red,line width=1.4pt] plot[domain=0.01:2.5,samples=100]
+	({2*\x},{4*exp(-1/(\x*\x))});
+\draw[color=red,line width=1.4pt] plot[domain=0.01:2.5,samples=100]
+	({-2*\x},{4*exp(-1/(\x*\x))});
+
+\draw (2,-0.1) -- (2,0.1);
+\draw (4,-0.1) -- (4,0.1);
+\draw (-2,-0.1) -- (-2,0.1);
+\draw (-4,-0.1) -- (-4,0.1);
+
+\node at (2,0) [below] {$1$};
+\node at (4,0) [below] {$2$};
+\node at (-2,0) [below] {$-1$};
+\node at (-4,0) [below] {$-2$};
+
+\draw (-0.1,4) -- (0.1,4);
+\node at (-0.1,4) [left] {$1$};
+
+\draw[->] (-5.1,0) -- (5.4,0) coordinate[label={$x$}];
+\draw[->] (0,-0.1) -- (0,4.4) coordinate[label={right:$y$}];
+
+\end{tikzpicture}
+\end{document}
+

@@ -1,0 +1,57 @@
+%
+% laurent.tex -- Laurent-Reihen und Cauchy-Integral
+%
+% (c) 2021 Prof Dr Andreas Müller, OST Ostschweizer Fachhochschule
+%
+\documentclass[tikz]{standalone}
+\usepackage{amsmath}
+\usepackage{times}
+\usepackage{txfonts}
+\usepackage{pgfplots}
+\usepackage{csvsimple}
+\usetikzlibrary{arrows,intersections,math,calc,decorations.markings}
+\begin{document}
+\def\skala{1}
+\begin{tikzpicture}[>=latex,thick,scale=\skala]
+
+\coordinate (Z0) at (1.5,1);
+
+\def\d{0.03}
+
+\draw[->] (-2.1,0) -- (4.8,0) coordinate[label={$\operatorname{Re}z$}];
+\draw[->] (0,-2.1) -- (0,4.3) coordinate[label={$\operatorname{Im}z$}];
+
+\fill[color=red!20,opacity=0.7] (Z0) circle[radius=2.5];
+
+\fill[color=white] (Z0) circle[radius=0.2];
+
+
+\draw[color=red] (Z0) circle[radius=2.5];
+\draw[color=red] (Z0) circle[radius=0.2];
+\fill[color=white] ($(Z0)+(0,-\d)$) rectangle ($(Z0)+(3,\d)$);
+\begin{scope}[decoration={
+    markings,
+    mark=at position 0.5 with {\arrow{>}}}
+    ]
+\draw[color=red,postaction={decorate}]
+	($(Z0)+({asin(-\d/2.5)}:2.5)$)
+	--
+	($(Z0)+({asin(-\d/0.2)}:0.2)$);
+\draw[color=red,postaction={decorate}]
+	($(Z0)+({asin(\d/0.2)}:0.2)$)
+	--
+	($(Z0)+({asin(\d/2.5)}:2.5)$);
+\end{scope}
+
+\draw (Z0) circle[radius=0.05];
+\node at ($(Z0)+(-0.1,-0.1)$) [below left] {$z_0$};
+
+\node[color=red] at (2.75,1) [above] {$l_1$};
+\node[color=red] at (2.75,1) [below] {$l_2$};
+
+\node[color=red] at ($(Z0)+(45:2.5)$) [above right] {$\gamma_1$};
+\node[color=red] at ($(Z0)+(0,0.2)$) [above] {$\gamma_2$};
+
+\end{tikzpicture}
+\end{document}
+

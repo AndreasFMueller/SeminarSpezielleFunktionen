@@ -1,0 +1,46 @@
+%
+% chapter.tex -- Kapitel zur Funktionentheorie
+%
+% (c) 2021 Prof Dr Andreas Müller, Hochschule Rapperswil
+%
+% !TeX spellcheck = de_CH
+\chapter{Funktionentheorie
+\label{buch:chapter:funktionentheorie}}
+\lhead{Funktionentheorie}
+\rhead{}
+Jede stetige reelle Funktion $f\colon I\to\mathbb{R}$ auf einem
+Intervall kann beliebig genau durch Polynome, also durch
+differenzierbare approximiert werden.
+Für komplex differenzierbare Funktionen sieht die Situation
+völlig anders aus.
+Bereits die Funktion $z\mapsto \overline{z}$ kann in einer offenen
+Teilmenge von $\mathbb{C}$ nicht durch Polynome in der Variablen $z$
+approximiert werden.
+Es stellt sich heraus, dass komplex differenzierbare Funktionen
+immer eine konvergente Taylor-Reihe besitzen.
+In Abschnitt~\ref{buch:funktionentheorie:section:analytisch} wird
+ein Beispiel einer beliebig oft stetig differenzierbaren rellen
+Funktion angegeben, die nur in $0$ verschwindet, deren Taylor-Reihe
+in $0$ die Nullfunktion ist.
+
+Wenn man also weiss, dass die Lösung eines Problems nicht nur eine
+relle Funktion ist, sondern eine komplex differenzierbare Funktion,
+dann unterliegt diese sehr viel strengeren Einschränkungen.
+Mit der zugehörigen Potenzreihe können Funktionswerte leicht berechnet
+werden, mit dem Cauchy-Integral können Singularitäten studiert werden
+und mit der analytischen Fortsetzung kann man Lösungen über Singularitäten
+auf der rellen Achse hinaus fortsetzen.
+
+\input{chapters/080-funktionentheorie/holomorph.tex}
+\input{chapters/080-funktionentheorie/analytisch.tex}
+\input{chapters/080-funktionentheorie/cauchy.tex}
+\input{chapters/080-funktionentheorie/fortsetzung.tex}
+
+%\section*{Übungsaufgaben}
+%\rhead{Übungsaufgaben}
+%\aufgabetoplevel{chapters/020-exponential/uebungsaufgaben}
+%\begin{uebungsaufgaben}
+%\uebungsaufgabe{0}
+%\uebungsaufgabe{1}
+%\end{uebungsaufgaben}
+
