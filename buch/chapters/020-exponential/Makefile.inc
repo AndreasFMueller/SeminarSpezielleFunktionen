@@ -8,5 +8,7 @@ CHAPTERFILES = $(CHAPTERFILES)						\
 	chapters/020-exponential/zins.tex				\
 	chapters/020-exponential/log.tex				\
 	chapters/020-exponential/lambertw.tex				\
+	chapters/020-exponential/dilog.tex				\
+	chapters/020-exponential/eili.tex				\
 	chapters/020-exponential/uebungsaufgaben/0.tex			\
 	chapters/020-exponential/chapter.tex

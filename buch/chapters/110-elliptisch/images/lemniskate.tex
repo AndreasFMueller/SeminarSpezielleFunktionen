@@ -1,0 +1,46 @@
+%
+% lemniskate.tex -- Lemniskate
+%
+% (c) 2021 Prof Dr Andreas Müller, OST Ostschweizer Fachhochschule
+%
+\documentclass[tikz]{standalone}
+\usepackage{amsmath}
+\usepackage{times}
+\usepackage{txfonts}
+\usepackage{pgfplots}
+\usepackage{csvsimple}
+\usetikzlibrary{arrows,intersections,math}
+\begin{document}
+\def\skala{4}
+\begin{tikzpicture}[>=latex,thick,scale=\skala]
+
+\draw[color=red,line width=1.0pt]
+	plot[domain=-45:45,samples=100] ({\x}:{sqrt(2*cos(2*\x))});
+\draw[color=red,line width=1.0pt]
+	plot[domain=135:225,samples=100] ({\x}:{sqrt(2*cos(2*\x))});
+
+\def\a{18}
+\def\b{39}
+
+\draw[->,color=blue,line width=1pt] (0,0) -- (\a:{sqrt(2*cos(2*\a))});
+
+\draw[color=red,line width=2.0pt]
+	plot[domain=45:\a,samples=100] ({\x}:{sqrt(2*cos(2*\x))});
+
+\draw[->] (-1.5,0) -- (1.5,0) coordinate[label={$x$}];
+\draw[->] (0,-0.7) -- (0,0.7) coordinate[label={right:$y$}];
+
+\fill[color=white] (1,0) circle[radius=0.02];
+\draw (1,0) circle[radius=0.02];
+\fill[color=white] (-1,0) circle[radius=0.02];
+\draw (-1,0) circle[radius=0.02];
+
+\node[color=blue] at (\a:{0.6*sqrt(2*cos(2*\a))}) [below] {$r$};
+\node[color=red] at ({\b}:{sqrt(2*cos(2*\b))}) [above] {$s$};
+
+\fill[color=white] (\a:{sqrt(2*cos(2*\a))}) circle[radius=0.02];
+\draw[color=red] (\a:{sqrt(2*cos(2*\a))}) circle[radius=0.02];
+
+\end{tikzpicture}
+\end{document}
+

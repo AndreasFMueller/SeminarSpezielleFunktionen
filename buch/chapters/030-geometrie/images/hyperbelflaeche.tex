@@ -1,0 +1,49 @@
+%
+% hyperbelflaeche.tex -- Argument der Hyperbelfunktionen
+%
+% (c) 2021 Prof Dr Andreas Müller, OST Ostschweizer Fachhochschule
+%
+\documentclass[tikz]{standalone}
+\usepackage{amsmath}
+\usepackage{times}
+\usepackage{txfonts}
+\usepackage{pgfplots}
+\usepackage{csvsimple}
+\usetikzlibrary{arrows,intersections,math}
+\begin{document}
+\def\skala{2}
+\begin{tikzpicture}[>=latex,thick,scale=\skala]
+
+\fill[color=blue!20]
+	(0,0)
+	--
+	plot[domain=0:1,samples=100] ({cosh(\x)},{sinh(\x)})
+	-- cycle;
+\draw[color=blue] 
+	(0,0)
+	--
+	plot[domain=0:1,samples=100] ({cosh(\x)},{sinh(\x)})
+	-- cycle;
+
+\begin{scope}
+\clip (-1.8,-2) rectangle (2.5,2);
+\draw[color=red,line width=1.4pt] plot[domain=-2:2,samples=100]
+	({cosh(\x)},{sinh(\x)});
+\draw[color=red,line width=1.4pt] plot[domain=-2:2,samples=100]
+	({-cosh(\x)},{sinh(\x)});
+\end{scope}
+
+\fill[color=white] ({cosh(1)},{sinh(1)}) circle[radius=0.03];
+\draw ({cosh(1)},{sinh(1)}) circle[radius=0.03];
+
+\node at ({cosh(1)},{sinh(1)}) [right] {$\gamma(t)=(\cosh t,\sinh t)$};
+
+\draw[->] (-1.8,0) -- (3.1,0) coordinate[label={$x$}];
+\draw[->] (0,-2) -- (0,2.1) coordinate[label={right:$y$}];
+
+\node[color=blue] at (0.8,0.3) {$t$};
+\node at (0,0) [below left] {$O$};
+
+\end{tikzpicture}
+\end{document}
+

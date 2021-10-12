@@ -1,0 +1,324 @@
+%
+% ellipsenbogen.tex
+%
+% (c) 2021 Prof Dr Andreas Müller, OST Ostschweizer Fachhochschule
+%
+\section{Bogenlänge 
+\label{buch:geometrie:section:ellipsenbogen}}
+\rhead{Bogenlänge}
+Die Möglichkeit, die Länge einer Kurve zu definieren und zu bestimmen,
+ist eine der Leistungen der Infinitesimalrechnung.
+In einigen Fällen lässt sich die Länge auch auf elementare Art und
+Weise bestimmen oder mit Integralen, die leicht auflösbar sind.
+Bereits bei der Bogenlänge entlang einer Ellipse sieht die Lage
+jedoch ganz anders aus.
+
+\subsection{Berechnung der Bogenlänge}
+In diesem Abschnitt sollen ein paar Methoden zusammgengestellt werden,
+mit denen die Länge einer Kurve berechnet werden kann.
+
+\subsubsection{Länge einer parametrisierten Kurve}
+Beispiele wie die Kochsche Schneeflockenkurve, deren Länge schwer
+zu definieren ist, zeigen, dass der Begriff einer Kurve für die Zwecke
+dieses Abschnittes genügend eng gefasst werden muss.
+Die folgende Definition tut dies.
+
+\begin{definition}
+\label{buch:geometrie:def:kurve}
+Sei $I=[a,b]\subset\mathbb{R}$ ein Intervall.
+Eine {\em Kurve} ist eine differenzierbare Abbildung
+$\gamma \colon I \to \mathbb{R}^n$.
+\index{Kurve}
+\end{definition}
+
+\begin{beispiel}
+XXX TODO Bild der Helix im Zylinder und Abrollung
+\\
+Die Abbildung
+\begin{equation}
+\gamma
+\colon
+[0,2\pi] \to \mathbb{R}^3
+:
+t\mapsto\begin{pmatrix}r\cos t\\ r\sin t\\ th/2\pi\end{pmatrix}
+\label{buch:geometrie:eqn:helix}
+\end{equation}
+beschreibt eine Schraubenlinie oder Helix.
+\index{Schraubenlinie}%
+\index{Helix}%
+Die Abbildung ist ganz offensichtlich differenzierbar und hat die
+Ableitung
+\begin{equation}
+\frac{d}{dt}\gamma(t)
+=
+\dot{\gamma}(t)
+=
+\begin{pmatrix} -r\sin t \\ r\cos t \\ h/2\pi\end{pmatrix}.
+\label{buch:geometrie:eqn:helixdot}
+\end{equation}
+Die Länge dieser Schraubenlinie lässt sich direkt berechnen.
+Die Schraubenlinie liegt auf dem Mantel eines Zylinders mit
+Radius $r$ und Höhe $h$.
+Durch Abrollen des Zylinders erkennt man, dass die Schraubenlinie
+die Hypothenuse eines rechtwinkligen Dreiecks mit Katheten 
+$2\pi r$ und $h$ ist.
+Die Länge $l$ der Schraubenlinie ist daher
+\begin{equation}
+l = \sqrt{(2\pi r)^2 +h^2}
+\label{buch:geometrie:eqn:helixlaenge}
+\end{equation}
+nach dem Satz von Pythagoras.
+\end{beispiel}
+
+Unterteilt man das Intervall $I$ in den Teilpunkten $t_i$ mit
+\[
+a = t_0 < t_1 < t_2 < \dots < t_{n-1} < t_n = b,
+\]
+dann ist die Summe
+\[
+L
+=
+\sum_{i=0}^{n-1} |\gamma(t_{i+1}) - \gamma(t_{i})|
+\]
+eine Approximation für die Länge der Kurve.
+Die Differenz auffeinanderfolgender Punkte kann mit Hilfe der
+Ableitung als
+\[
+\gamma(t_{i+1})-\gamma(t_i)
+\approx
+\dot{\gamma}(t_{i}) \cdot (t_{i+1}-t_i)
+\]
+approximiert werden.
+Damit wird die Summe $L$ approximiert durch
+\[
+L\approx \sum_{i=0}^{n-1} |\dot{\gamma}(t_i)| \cdot (t_{i+1}-t_i).
+\]
+Dies ist eine Riemannsche Summe für das Integral
+\[
+\int_a^b |\dot{\gamma}(t)|\,dt,
+\]
+wir definieren die Bogenlänge einer Kurve daher wie folgt.
+
+\begin{definition}
+\label{buch:geometrie:def:kurvenlaenge}
+Sei $\gamma\colon I\to\mathbb{R}$ eine Kurve im Sinne der
+Definition~\ref{buch:geometrie:def:kurve}.
+Dann ist die {\em Bogenlänge} entlang der Kurve zwischen dem Punkt
+$\gamma(a)$ und $\gamma(t)$ definiert durch das
+Integral
+\[
+l(t) = \int_{a}^t |\dot{\gamma}(\tau)|\,d\tau.
+\]
+\end{definition}
+
+\begin{beispiel}
+Die Helix mit der Parametrisierung~\eqref{buch:geometrie:eqn:helix}
+hat die Kurvenlänge
+\begin{align*}
+l(t)
+&=
+\int_0^t |\dot{\gamma}(\tau)|\,d\tau
+=
+\int_0^t \sqrt{r^2\sin^2 \tau + r^2\cos^2\tau + (h/2\pi)^2}\,d\tau
+\\
+&=
+\int_0^t \sqrt{r^2 + (h/2\pi)^2}\,d\tau
+=
+t\sqrt{r^2+(h/2\pi)^2}.
+\end{align*}
+Für eine ganze Umdrehung, also für $t=2\pi$ finden wir
+\(
+l(2\pi) = \sqrt{4\pi^2 r^2 + h^2},
+\)
+was mit dem elementaren Resultat~\eqref{buch:geometrie:eqn:helixlaenge}
+übereinstimmt.
+\end{beispiel}
+
+\subsubsection{Länge eines Graphen}
+Der Graph einer auf dem Intervall $I=[a,b]$ definierte Funktion
+$y=f(x)$ kann als Parametrisierung einer Kurve
+\[
+\gamma
+\colon
+[a,b] \to \mathbb{R}^2
+:
+x \mapsto \begin{pmatrix}x\\f(x)\end{pmatrix}
+\]
+betrachtet werden.
+Nach Definition~\ref{buch:geometrie:def:kurvenlaenge}
+ist Länge dieser Kurven zwischen den Punkten $(a,f(a))$ und $(x,f(x))$
+durch das Integral
+\[
+l(x)
+=
+\int_a^x \biggl| \begin{pmatrix}1\\f'(\xi)\end{pmatrix}\biggr|\,d\xi
+=
+\int_a^x \sqrt{1+f'(\xi)^2}\,d\xi
+\]
+gegeben.
+
+\begin{beispiel}
+Die auf dem Intervall $I=[0,b]$ definierte quadratische Funktion $f(x)=cx^2$
+mit $b>0$ und $c>0$ hat die Bogenlänge
+\begin{align*}
+l(x)
+&=
+\int_0^x \sqrt{1+f'(\xi)^2}\,d\xi
+=
+\int_0^x \sqrt{1+4c^2\xi^2}\,d\xi
+=
+\biggl[
+\frac{ \operatorname{arsinh}2c\xi)}{4c} + \frac{\xi\sqrt{4c^2\xi^2+1}}{2}
+\biggr]_0^x
+\\
+&=
+\frac{ \operatorname{arsinh}(2cx)}{4c}.
+\end{align*}
+Die Stammfunktion wurde mit einem Computeralgebraprogramm gefunden.
+\end{beispiel}
+
+\subsubsection{Kurvenlänge in Polarkoordinaten}
+Eine Kurve kann in Polarkoordinaten in der Ebene durch eine Funktion
+$r=r(\varphi)$ beschrieben werden.
+Dies führt auf eine Parametrisierung
+\[
+\varphi \mapsto \gamma(\varphi)=\begin{pmatrix}
+r(\varphi)\cos\varphi\\
+r(\varphi)\sin\varphi
+\end{pmatrix}
+\]
+durch den Polarwinkel $\varphi$.
+Die Kurvenlänge kann gemäss 
+Definition~\label{buch:geometrie:def:kurvenlaenge} braucht
+die Ableitung der Parametrisierung, also die Funktion
+\[
+\dot{\gamma}(\varphi)
+=
+\begin{pmatrix}
+r'(\varphi)\cos\varphi - r(\varphi)\sin\varphi\\
+r'(\varphi)\sin\varphi + r(\varphi)\cos\varphi
+\end{pmatrix}.
+\]
+Die Länge von $\dot{\gamma}$ ist
+\begin{align*}
+|\dot{\gamma}(\varphi)|^2
+&=
+\bigl(
+r'(\varphi)\cos\varphi - r(\varphi)\sin\varphi
+\bigr)^2
++
+\bigl(
+r'(\varphi)\sin\varphi + r(\varphi)\cos\varphi
+\bigr)^2
+\\
+&=
+r'(\varphi)^2\cos^2\varphi
+-2r(\varphi)r'(\varphi)\cos\varphi\sin\varphi
++r(\varphi)^2\sin^2\varphi
+\\
+&\qquad
++r'(\varphi)^2\sin^2\varphi
++2r(\varphi)r'(\varphi)\sin\varphi\cos\varphi
++r(\varphi)^2\cos^2\varphi
+\\
+&=r'(\varphi)^2(\cos^2\varphi+\sin^2\varphi)
++ r(\varphi)^2(\sin^2\varphi+\cos^2\varphi).
+\\
+&=
+r'(\varphi)^2 + r(\varphi)^2.
+\end{align*}
+Dies führt auf das
+Integral
+\begin{equation}
+l(\alpha)
+=
+\int_a^\alpha \sqrt{r'(\varphi)^2 + r(\varphi)^2}\,d\varphi
+\end{equation}
+für die Länge der Kurve.
+
+\subsection{Kreis}
+Die Länge eines Bogens auf dem Einheitskreis zwischen dem Punkt
+$(1,0)$ und $P=(x,y)$ mit $x^2+y^2=1$ ist nach Definition der
+Winkel $\alpha$ zwischen der $x$-Achse und $P$.
+Es gilt also
+\[
+\tan\alpha = \frac{y}{x}
+\qquad\text{oder}\qquad
+\sin\alpha = y = \sqrt{1-x^2}.
+\]
+Der Kreis kann auch als Graph $y=f(x)=\sqrt{1-x^2}$ parametrisiert werden,
+in der die Länge des Bogens 
+\begin{align*}
+l(x)
+=
+\int_x^1 \sqrt{1+f'(t)^2}\,dt
+=
+\int_x^1 \sqrt{1+\frac{t^2}{1-t^2}}\,dt
+=
+\int_x^1 \sqrt{\frac{1-t^2+t^2}{1-t^2}}\,dt
+=
+\int_x^1 \frac{dt}{\sqrt{1-t^2}}.
+\end{align*}
+Aus dem bekannten Wert der Länge des Bogens erhalten wir jetzt die
+Formel
+\begin{equation}
+\arcsin \sqrt{1-x^2} = \int_x^1 \frac{dt}{\sqrt{1-t^2}}.
+\label{buch:geometrie:eqn:kreislaenge} 
+\end{equation}
+Tatsächlich ist die Ableitung davon
+\[
+\frac{d}{dx}\arcsin\sqrt{1-x^2}
+=
+-\frac{1}{\sqrt{1-x^2}},
+\]
+was mit der Integralformel~\ref{buch:geometrie:eqn:kreislaenge} 
+übereinstimmt.
+
+\subsection{Hyperbeln und Ellipsen
+\label{buch:geometrie:subsection:hyperbeln-und-ellipsen}}
+Die Funktion $f(x)=\sqrt{1+x^2}$ beschreibt eine gleichseitige
+Hyperbel.
+Die Bogenlänge zwischen dem Punkt $(0,1)$ und $(x,y)$ auf der
+Hyperbel ist gegeben durch das Integral:
+\[
+l(x)
+=
+\int_0^x \sqrt{1+f'(t)^2}\,dt
+=
+\int_0^x \sqrt{1+\frac{t^2}{1+t^2}}\,dt
+=
+\int_0^x \sqrt{\frac{1+2t^2}{1+t^2}}\,dt.
+\]
+Dieses Integral ist nicht in geschlossener Form lösbar.
+Natürlich können auch andere Parametrisierungen für die Hyperbel
+verwendet werden, die entstehenden Integrals, dies ändert jedoch
+nichts an der Schwierigkeit, einen Ausdruck für den Wert des
+Integrals anzugeben.
+
+Für eine Ellipse kann man die Parameterdarstellung 
+\[
+t\mapsto \begin{pmatrix}a\cos t\\b\sin t\end{pmatrix}
+\]
+verwenden.
+Die Länge eines Ellipsenbogens zwischen den Winkelargumenten $\alpha$ und
+$\beta$ ist dann
+\[
+l(\alpha,\beta)
+=
+\int_\alpha^\beta
+a^2 \sin^2 t + b^2 \cos^2t
+\,dt
+=
+a^2
+\int_\alpha^\beta
+\sin^2 t + \frac{b^2}{a^2} \cos^2t
+\,dt.
+\]
+Auch dieses Integral ist nicht in geschlossener Form lösbar.
+Die elliptischen Funktionen von Jacobi, die in Kapitel~\ref{XXX}
+beschrieben werden, ermöglichen, Ausdrücke für diese Integrale
+anzugeben.
+
+
+
+
