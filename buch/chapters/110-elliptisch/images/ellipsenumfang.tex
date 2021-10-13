@@ -1,0 +1,44 @@
+%
+% ellipsenumfang.tex -- template for standalon tikz images
+%
+% (c) 2021 Prof Dr Andreas Müller, OST Ostschweizer Fachhochschule
+%
+\documentclass[tikz]{standalone}
+\usepackage{amsmath}
+\usepackage{times}
+\usepackage{txfonts}
+\usepackage{pgfplots}
+\usepackage{csvsimple}
+\usetikzlibrary{arrows,intersections,math}
+\begin{document}
+\input{ekplot.tex}
+\def\skala{1}
+\begin{tikzpicture}[>=latex,thick,scale=\skala]
+
+\def\dx{10}
+\def\dy{4}
+
+\draw[->] (0,-0.1) -- (0,6.8) coordinate[label={right:$E(\varepsilon)$}];
+\draw[->] (-0.1,0) -- (10.5,0) coordinate[label={$\varepsilon$}];
+\draw[line width=0.4pt] (0,\dy) -- (10,\dy);
+\draw[line width=0.4pt] (\dx,0) -- (10,\dy);
+
+\draw[color=red,line width=1.4pt] \ekpath;
+\fill[color=red] (\dx,\dy) circle[radius=0.05];
+
+\foreach \y in {2,4,...,16}{
+	\draw (-0.1,{\dy*\y/10})  -- (0.1,{\dy*\y/10});
+	\pgfmathparse{\y/10}
+	\xdef\v{\pgfmathresult}
+	\node at (0,{\dy*\y/10}) [left] {$\v$};
+}
+\foreach \i in {1,...,9}{
+	\draw (\i,-0.1) -- (\i,0.1);
+	\node at (\i,0) [below] {$0.\i$};
+}
+\draw (10,-0.1) -- (10,0.1);
+\node at (10,0) [below] {$1.0$};
+
+\end{tikzpicture}
+\end{document}
+

@@ -15,7 +15,9 @@ neue spezielle Funktionen zu definieren.
 
 \subsection{Definition
 \label{buch:elliptisch:subsection:definition}}
-Ein elliptisches Integral ist ein Integral der Form
+Ein {\em elliptisches Integral} ist ein Integral der Form
+\index{elliptishes Integral}%
+\index{Integral, elliptisch}%
 \begin{equation}
 \int R\left( x, \sqrt{p(x)}\right)\,dx
 \label{buch:elliptisch:def:allgemein}
@@ -33,7 +35,8 @@ Wir verlangen daher, dass $p(x)$ keine mehrfachen Nullstellen hat.
 
 Man kann zeigen, dass sich elliptische Integrale in Summen von
 elementaren Funktionen und speziellen elliptischen Integralen 
-der folgenden Form überführen lassen.
+der folgenden Form überführen lassen
+\cite[Abschnitt 164, p.~506]{buch:smirnov32}.
 
 \begin{definition}
 \label{buch:elliptisch:def:integrale123}
@@ -133,7 +136,7 @@ K(k)
 E(k)
 &=
 \int_0^{\frac{\pi}2}
-\sqrt{\frac{1-k^2\sin^2\varphi}{1-\sin^2\varphi}}(1-\sin^2\varphi)\,d\varphi
+\sqrt{\frac{1-k^2\sin^2\varphi}{1-\sin^2\varphi}}\sqrt{1-\sin^2\varphi}\,d\varphi
 =
 \int_0^{\frac{\pi}2}
 \sqrt{1-k^2\sin^2\varphi}\,d\varphi
@@ -161,6 +164,69 @@ Definition~\ref{buch:elliptisch:def:vollstintegrale123}
 die {\em Jacobi-Normalform} heisst.
 \index{Jacobi-Normalform}%
 
+\subsubsection{Umfang einer Ellipse}
+\begin{figure}
+\centering
+\includegraphics{chapters/110-elliptisch/images/ellipsenumfang.pdf}
+\caption{Bogenlänge eines Viertels einer Ellipse mit Exzentrizität
+$\varepsilon$.
+\label{buch:elliptisch:fig:ellipsenumfang}}
+\end{figure}
+Wir zeigen, wie sich die Berechnung des Umfangs $U$ einer Ellipse
+mit Halbachsen $a$ und $b$, $a\le b$, auf ein volltändiges elliptisches
+Integral zurückführen lässt.
+Der Fall $a>b$ kann behandelt werden, indem die $x$- und $y$-Koordinaten
+vertauscht werden.
+
+Die Parametrisierung
+\[
+t\mapsto \begin{pmatrix}a\cos t\\ b\sin t\end{pmatrix}
+\]
+einer Ellipse führt auf das Integral
+\begin{align*}
+U
+&=
+\int_0^{2\pi} \sqrt{a^2\sin^2t + b^2\cos^2 t}\,dt
+\notag
+\\
+&=
+4\int_0^{\frac{\pi}2}
+\sqrt{a^2\sin^2t + b^2(1-\sin^2 t)}
+\,dt
+\notag
+\\
+&=
+4b \int_0^{\frac{\pi}2} \sqrt{1-(b^2-a^2)/b^2\cdot \sin^2t}\,dt
+\label{buch:elliptisch:eqn:umfangellipse}
+\end{align*}
+für den Umfang der Ellipse.
+Bei einem Kreis ist $a=b$ und der zweite Term unter der Wurzel fällt weg,
+der Umfang wird $4b\frac{\pi}2=2\pi b$.
+Die Differenz $e^2=b^2-a^2$ ist die {\em lineare Exzentrizität} der Ellipse,
+\index{lineare Exzentrizität}%
+der Quotient $e/b$ wird die {\em numerische Exzentrizität} der Ellipse
+genannt.
+Insbesondere ist $k = \varepsilon$.
+
+Das Integral~\eqref{buch:elliptisch:eqn:umfangellipse} erhält jetzt die
+Form
+\[
+U
+=
+4b\int_0^{\frac{\pi}2} \sqrt{1-k^2\sin^2t}\,dt
+\]
+und ist damit als elliptisches Integral zweiter Art erkannt.
+Für den Umfang der Ellipse finden wir damit die Formel
+\[
+U
+=
+4b E(k)
+=
+4b E(\varepsilon).
+\]
+Das vollständige elliptische Integral zweiter Art $E(\varepsilon)$
+liefert also genau den Umfang der eines Viertels Ellipse mit
+numerischer Exzentrizität $\varepsilon$ und kleiner Halbachse $1$.
 
 \subsubsection{Komplementäre Integrale}
 XXX Komplementäre Integrale \\
