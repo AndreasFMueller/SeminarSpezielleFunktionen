@@ -132,6 +132,7 @@ K(k)
 =
 \int_0^{\frac{\pi}2}
 \frac{d\varphi}{\sqrt{1-k^2\sin^2\varphi}}
+,
 \\
 E(k)
 &=
@@ -140,6 +141,7 @@ E(k)
 =
 \int_0^{\frac{\pi}2}
 \sqrt{1-k^2\sin^2\varphi}\,d\varphi
+,
 \\
 \Pi(n,k)
 &=
@@ -156,6 +158,7 @@ d\varphi
 }{
 (1-n\sin^2\varphi)\sqrt{1-k^2\sin^2\varphi}
 }
+.
 \end{align*}
 Diese Form wird auch die {\em Legendre-Normalform} der vollständigen 
 \index{Legendre-Normalform}%
@@ -170,6 +173,9 @@ die {\em Jacobi-Normalform} heisst.
 \includegraphics{chapters/110-elliptisch/images/ellipsenumfang.pdf}
 \caption{Bogenlänge eines Viertels einer Ellipse mit Exzentrizität
 $\varepsilon$.
+Eine solche Ellipse hat Halbachsen $1$ und $\sqrt{1-\varepsilon^2}$,
+ein entsprechender Ellipsenbogen ist für ausgewählte Werte in blau
+eingezeichnet.
 \label{buch:elliptisch:fig:ellipsenumfang}}
 \end{figure}
 Wir zeigen, wie sich die Berechnung des Umfangs $U$ einer Ellipse
@@ -183,7 +189,7 @@ Die Parametrisierung
 t\mapsto \begin{pmatrix}a\cos t\\ b\sin t\end{pmatrix}
 \]
 einer Ellipse führt auf das Integral
-\begin{align*}
+\begin{align}
 U
 &=
 \int_0^{2\pi} \sqrt{a^2\sin^2t + b^2\cos^2 t}\,dt
@@ -198,7 +204,7 @@ U
 &=
 4b \int_0^{\frac{\pi}2} \sqrt{1-(b^2-a^2)/b^2\cdot \sin^2t}\,dt
 \label{buch:elliptisch:eqn:umfangellipse}
-\end{align*}
+\end{align}
 für den Umfang der Ellipse.
 Bei einem Kreis ist $a=b$ und der zweite Term unter der Wurzel fällt weg,
 der Umfang wird $4b\frac{\pi}2=2\pi b$.
@@ -225,8 +231,11 @@ U
 4b E(\varepsilon).
 \]
 Das vollständige elliptische Integral zweiter Art $E(\varepsilon)$
-liefert also genau den Umfang der eines Viertels Ellipse mit
+liefert also genau den Umfang eines Viertels der Ellipse mit
 numerischer Exzentrizität $\varepsilon$ und kleiner Halbachse $1$.
+Für den extremen Wert $\varepsilon=0$ entsteht der Umfang einer Ellipse,
+also $E(0)=\frac{\pi}2$.
+Für $\varepsilon=1$ ist $a=0$, es entsteht eine Strecke mit Länge $E(1)=1$.
 
 \subsubsection{Komplementäre Integrale}
 XXX Komplementäre Integrale \\
@@ -239,6 +248,7 @@ XXX Stammfunktion \\
 XXX Vollständige und Unvollständige Integrale \\
 XXX Additionstheoreme \\
 XXX Parameterkonventionen \\
+XXX Wertebereich (Rechtecke) \\
 
 \subsection{Potenzreihe}
 XXX Potenzreihen \\

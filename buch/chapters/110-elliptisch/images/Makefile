@@ -8,9 +8,9 @@ all:	lemniskate.pdf ellipsenumfang.pdf
 lemniskate.pdf:	lemniskate.tex
 	pdflatex lemniskate.tex
 
-ellipsenumfang.pdf:	ellipsenumfang.tex ekpath.tex
+ellipsenumfang.pdf:	ellipsenumfang.tex ekplot.tex
 	pdflatex ellipsenumfang.tex
 
-ekpath.tex:	ellipsenumfang.m
+ekplot.tex:	ellipsenumfang.m
 	octave ellipsenumfang.m
 
