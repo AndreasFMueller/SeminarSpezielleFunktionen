@@ -3,7 +3,7 @@
 #
 # (c) 2021 Prof Dr Andreas Müller, OST Ostschweizer Fachhochschule
 #
-all:	lemniskate.pdf ellipsenumfang.pdf unvollstaendig.pdf
+all:	lemniskate.pdf ellipsenumfang.pdf unvollstaendig.pdf rechteck.pdf
 
 lemniskate.pdf:	lemniskate.tex
 	pdflatex lemniskate.tex
@@ -15,13 +15,19 @@ ekplot.tex:	ellipsenumfang.m
 	octave ellipsenumfang.m
 
 rechteck:	rechteck.cpp
-	g++ -O -Wall -g rechteck.cpp -o rechteck
+	g++ `pkg-config --cflags gsl` `pkg-config --libs gsl` -O -Wall -g -std=c++11 rechteck.cpp -o rechteck
 
-test:	rechteck
-	./rechteck
+rechteckpfade.tex:	rechteck
+	./rechteck --outfile rechteckpfade.tex
+
+rechteck.pdf:	rechteck.tex rechteckpfade.tex
+	pdflatex rechteck.tex
 
 unvollstaendig.pdf:	unvollstaendig.tex unvollpath.tex
 	pdflatex unvollstaendig.tex
 
 unvollpath.tex:	unvollstaendig.m
 	octave unvollstaendig.m
+
+
+

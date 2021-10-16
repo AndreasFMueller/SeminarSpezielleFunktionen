@@ -1,0 +1,80 @@
+%
+% rechteck.tex -- rechteck für Wertebereich der ell. Integrale
+%
+% (c) 2021 Prof Dr Andreas Müller, OST Ostschweizer Fachhochschule
+%
+\documentclass[tikz]{standalone}
+\usepackage{amsmath}
+\usepackage{times}
+\usepackage{txfonts}
+\usepackage{pgfplots}
+\usepackage{csvsimple}
+\usetikzlibrary{arrows,intersections,math}
+\begin{document}
+\def\skala{1}
+\begin{tikzpicture}[>=latex,thick,scale=\skala]
+
+\def\dx{3}
+\def\dy{3}
+
+\input{rechteckpfade.tex}
+
+\begin{scope}
+	\clip ({-\xmax*\dx},{-\ymax*\dy}) rectangle ({\xmax*\dx},{\ymax*\dy});
+	\fill[color=red!10] (0,{\ymax*\dy}) circle[radius=0.45];
+	\fill[color=blue!10] (0,{-\ymax*\dy}) circle[radius=0.45];
+	\draw[color=gray!80] (0,{\ymax*\dy}) -- (0,{\ymax*\dy-0.45});
+	\draw[color=gray!80] (0,{-\ymax*\dy}) -- (0,{-\ymax*\dy+0.45});
+\end{scope}
+
+\draw ({-\xmax*\dx},{-\ymax*\dy}) rectangle ({\xmax*\dx},{\ymax*\dy});
+
+\draw[->] ({-\xmax*\dx-0.3},0) -- ({\xmax*\dx+0.9},0)
+	coordinate[label={$\operatorname{Re}F(k,z)$}];
+
+\draw[<->,line width=0.7pt]
+	({-\xmax*\dx},{\ymax*\dy+0.2})
+	--
+	({\xmax*\dx},{\ymax*\dy+0.2});
+\draw[line width=0.2pt]
+	({-\xmax*\dx},{\ymax*\dy})
+	--
+	({-\xmax*\dx},{\ymax*\dy+0.3});
+\draw[line width=0.2pt]
+	({\xmax*\dx},{\ymax*\dy})
+	--
+	({\xmax*\dx},{\ymax*\dy+0.3});
+
+\node at ({-0.5*\xmax*\dx},{\ymax*\dy+0.2}) [above] {$2K(k)$};
+\draw[->] (0,{\ymax*\dy}) -- (0,{\ymax*\dy+0.7})
+	coordinate[label={right:$\operatorname{Im}F(k,z)$}];
+\draw (0,{-\ymax*\dy}) -- (0,{-\ymax*\dy-0.2});
+
+\draw[line width=0.2pt]
+	({-\xmax*\dx-0.3},{-\ymax*\dy})
+	--
+	({-\xmax*\dx},{-\ymax*\dy});
+\draw[line width=0.2pt]
+	({-\xmax*\dx-0.3},{\ymax*\dy})
+	--
+	({-\xmax*\dx},{\ymax*\dy});
+\draw[<->,line width=0.7pt] 
+	({-\xmax*\dx-0.2},{\ymax*\dy})
+	--
+	({-\xmax*\dx-0.2},0);
+
+\node at ({-\xmax*\dx-0.2},{-0.5*\ymax*\dy}) [rotate=90,above] {$K(k')$};
+\node at ({-\xmax*\dx-0.2},{0.5*\ymax*\dy}) [rotate=90,above] {$K(k')$};
+
+\draw[<->,line width=0.7pt] 
+	({-\xmax*\dx-0.2},{-\ymax*\dy})
+	--
+	({-\xmax*\dx-0.2},0);
+
+\node at ({\xmax*\dx},{\ymax*\dy}) [right] {$K(k)+iK(k')$};
+\fill[color=white] ({\xmax*\dx},{\ymax*\dy}) circle[radius=0.05];
+\draw ({\xmax*\dx},{\ymax*\dy}) circle[radius=0.05];
+
+\end{tikzpicture}
+\end{document}
+
