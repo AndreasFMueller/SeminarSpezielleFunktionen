@@ -238,17 +238,96 @@ also $E(0)=\frac{\pi}2$.
 Für $\varepsilon=1$ ist $a=0$, es entsteht eine Strecke mit Länge $E(1)=1$.
 
 \subsubsection{Komplementäre Integrale}
-XXX Komplementäre Integrale \\
 
 \subsubsection{Ableitung}
 XXX Ableitung \\
 XXX Stammfunktion \\
 
 \subsection{Unvollständige elliptische Integrale}
-XXX Vollständige und Unvollständige Integrale \\
+Die Funktionen $K(k)$ und $E(k)$ sind als bestimmte Integrale über ein
+festes Intervall definiert.
+Die {\em unvollständigen elliptischen Integrale} entstehen, indem die
+\index{unvollständiges elliptisches Integral}%
+obere Grenze des Integrals variabel wird:
+\[
+\begin{aligned}
+\text{1.~Art:}&&
+F(x,k)
+&=
+\int_0^x \frac{dt}{\sqrt{(1-t^2)(1-k^2t^2)}}
+&&=
+\int_0^\varphi \frac{d\vartheta}{\sqrt{1-k^2\sin^2\vartheta}}
+\\
+\text{2.~Art:}&&
+E(x,k)
+&=
+\int_0^x \sqrt{\frac{1-k^2t^2}{1-t^2}}\,dt
+&&=
+\int_0^\varphi \sqrt{1-k^2\sin^2\vartheta}\,d\vartheta
+\\
+\text{3.~Art:}&&
+\Pi(n,x,k)
+&=
+\int_0^x \frac{dt}{(1-nt^2)\sqrt{(1-t^2)(1-k^2t^2)}}
+&&=
+\int_0^\varphi
+\frac{d\vartheta}{(1-n\sin^2\vartheta)\sqrt{1-k^2\sin^2\vartheta}},
+\end{aligned}
+\]
+die erste Formel ist jeweils die Jacobi-Form, die zweite die Legrendre-Form
+\index{Jacobi-Form}%
+\index{Legendre-Form}%
+mit dem Parameter $\varphi$, gegeben durch
+$\sin \vartheta=x$.
+Wie bei den vollständigen elliptischen Integralen ist auch hier in manchen
+Referenzen die Parameterkonvention mit dem Parameter $m=k^2$ üblich.
+
+Die vollständigen elliptischen Integrale sind die Werte der 
+unvollständigen elliptischen Integrale mit $x=1$, also
+\begin{align*}
+K(k) &= F(1,k),
+&
+E(k) &= E(1,k),
+&
+\Pi(n,k) &=\Pi(n,x,k).
+\end{align*}
+Man beachte auch, dass $F(x,0) = E(x,0)$ gilt.
+
+\begin{figure}
+\centering
+\includegraphics{chapters/110-elliptisch/images/unvollstaendig.pdf}
+\caption{Unvollständige elliptische Integrale $F(x,k)$ und $E(x,k)$
+für verschiedene Werte des Parameters $k$.
+Für $k=0$ stimmen die Integrale erster und zweiter Art überein,
+$F(x,0)=E(x,0)$.
+\label{buch:elliptisch:fig:unvollstaendigeintegrale}}
+\end{figure}
+Wegen $k<1$ sind alle drei Integranden als reelle Funktionen nicht
+mehr definiert, wenn $|x|>1$ ist.
+Die Abbildung~\ref{buch:elliptisch:fig:unvollstaendigeintegrale}
+zeigt Graphen der unvollständigen elliptischen Integrale für verschiedene
+Werte des Parameters.
+
+\subsubsection{Symmetrieeigenschaften}
+Die Integranden aller drei unvollständigen elliptischen Integrale
+sind gerade Funktionen der reellen Variablen $t$.
+Die Funktionen $F(x,k)$, $E(x,k)$ und $\Pi(n,x,k)$ sind daher
+ungeraden Funktionen von $x$.
+
+\subsubsection{Elliptische Integrale als komplexe Funktionen}
+Die unvollständigen elliptischen Integrale $F(x,k)$, $F(x,k)$ und $\Pi(n,x,k)$
+in Jacobi-Form lassen sich auch für komplexe Argumente interpretieren.
+Dazu muss für die Berechnung des Integrals ein Pfad in der komplexen
+Ebene gewählt werden, der die Singulariätten des Integranden vermeidet.
+
+Die Faktoren, die in den Integranden der unvollständigen elliptischen
+Integrale vorkommen, haben Nullstellen bei $\pm1$, $\pm1/k$ und
+$\pm 1/\sqrt{n}$
+
 XXX Additionstheoreme \\
 XXX Parameterkonventionen \\
 XXX Wertebereich (Rechtecke) \\
+XXX Komplementäre Integrale \\
 
 \subsection{Potenzreihe}
 XXX Potenzreihen \\
