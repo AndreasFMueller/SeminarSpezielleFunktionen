@@ -56,6 +56,9 @@ Integrale
 \]
 mit $0<k<1$.
 Es ist auch üblich, den Parameter $m=k^2$ zu verwenden.
+Die Zahl $k$ heisst {\em Modul} des elliptischen Integrals.
+\index{Modul eines elliptischen Integrals}%
+\index{elliptisches Integral}%
 \end{definition}
 
 Wie gesagt lassen sich für diese unbestimmten Integrale keine 
@@ -327,7 +330,170 @@ $\pm 1/\sqrt{n}$
 XXX Additionstheoreme \\
 XXX Parameterkonventionen \\
 XXX Wertebereich (Rechtecke) \\
-XXX Komplementäre Integrale \\
+\subsubsection{Wertebereich}
+Die unvollständigen elliptischen Integrale betrachtet als reelle Funktionen
+haben nur positive relle Werte.
+Zum Beispiel nimmt das unvollständige elliptische Integral erster Art
+$F(k,x)$ nur Werte zwischen $0$ und $K(k)$ an.
+Wenn komplexe Werte zulässig sind, kann man das Integral auch über die 
+Singularitäten bei $\pm 1$ und $\pm 1/k$ hinweg ausführen, erhält
+dabe aber möglicherweise komplexe Werte, weil die Radikanden in den
+Integralen negativ werden.
+Die Schwierigkeit dabei ist, dass die Quadratwurzel nicht eindeutig ist.
+Welcher Wert der im Zusammenhang richtige ist, hängt davon ab, wie wir
+dorthin kommen.
+
+Die reelle Achse teilt den Definitionsbereich der unvollständigen
+elliptischen Integrale in die obere und die untere Halbebene.
+die Werte für reelle Argument beschreiben daher den Rand der Wertebereichs
+für Argumente in der oberen bzw.~untere Halbebene.
+Indem wir die Werte der elliptischen Integrale für reelle Argumente
+berechnen, können wir daher den Rand des Wertebereichs ermitteln.
+
+Im folgenden diskutieren wir nur das elliptische Integral erster Art,
+die anderen können in der gleichen Art behandelt werden.
+Für Argumentwerte $x$ im Interval $[0,1]$ ist $F(k,x)\in\mathbb{R}$.
+An der Stelle $x=1$ wechselt der Faktor $(1-t^2)$ im Nenner das
+Vorzeichen, der Integrand wird negativ.
+Für Argumente zwischen $1$ und $1/k$ ist bleibt der Integrand negativ,
+es muss also ein Wert der Quadratwurzel gewählt werden.
+Beide Vorzeichen von
+\begin{equation}
+\frac{1}{\sqrt{(1-t^2)(1-k^2t^2)}}
+=
+\frac{\pm i}{\sqrt{(t^2-1)(1-k^2t^2)}}
+\label{buch:elliptisch:eqn:imaginaerintegrand}
+\end{equation}
+sind möglich.
+Doch welche Wahl ist die ``richtige''?
+
+Dazu betrachten wir die Argument $z=x+i\varepsilon$ auf einer Geraden
+parallel zur reellen Achse des Definitionsbereichs und in der oberen
+Halbebene.
+Da eine holomorphe Funktion die Orientierung erhält und weil das
+Interval $[0,1]$ auf die reelle Achse abgebildet wird, müssen wir das
+Vorzeichen der Wurzel so wählen, dass die Werte der Wurzel ebenfalls
+in der oberen Halbebene liegen.
+Die ``richtige'' Wahl der Wurzel von 
+\[
+1-z^2 = 1-x^2-2i\varepsilon x + \varepsilon^2
+\]
+erfüllt zwei Bedingungen.
+\begin{enumerate}
+\item
+Für nicht zu grosse Werte von $x$ muss der Wert in der oberen
+Halbebene liegen.
+Für solche Werte von $x$ ist der Realteil $1-x^2+\varepsilon^2>0$ und
+der Imaginärteil $-2\varepsilon x<0$.
+Für die Wurzel muss man also das Argument von $1-z^2$ als Winkel zwischen
+$3\pi2$ und $2\pi$ wählen und für die Wurzel durch zwei teilen.
+\item
+Der Realteil von $1-z^2$ wechsel das Vorzeichen, wenn
+$x=\sqrt{1+\varepsilon^2}$, der Imaginärteil bleibt dabei negativ.
+Das Argument ändert von einem Winkel nahe bei aber kleiner als $2\pi$
+zu einem Winkel nahe bei aber grösser als $\pi$.
+Als Wurzel muss daher jene verwendet werden, deren Argument in der
+Nähe von $\frac{\pi}2$ liegt.
+\end{enumerate}
+Aus diesem Argument kann man ableiten, dass für die Berandung des
+Bildes der oberen Halbebene zwischen $1$ und $1/k$ das positive
+Zeichen in~\eqref{buch:elliptisch:eqn:imaginaerintegrand}
+gewählt werden muss.
+
+Die anderen Singularitäten auf der reellen Achse können analog
+behandelt werden und es folgt, dass das Bild der oberen Halbebene
+ein Rechteck in der oberen Halbebene ist
+(Abbildung~\ref{buch:elliptisch:fig:rechteck}).
+Die Ecken auf der reellen Achse liegen bei den reellen Koordinaten
+\[
+\pm F(1,k)
+=
+\pm\int_0^1\frac{dt}{\sqrt{(1-t^2)(1-k^2t^2)}}
+=
+\pm K(k).
+\]
+Für die Höhe muss das Integral
+\begin{equation}
+l=\int_1^{\frac1{k}}
+\frac{dt}{\sqrt{(t^2-1)(1-k^2t^2)}}
+\label{buch:elliptisch:eqn:hoeheintegral}
+\end{equation}
+ausgewertet werden.
+
+\subsubsection{Komplementärmodul}
+Im vorangegangen Abschnitt wurde gezeigt, dass der Wertebereicht des
+unvollständigen elliptischen Integrals der ersten Art als komplexe
+Funktion ein Rechteck ist.
+Die obere Halbebene wird auf Rechteck der Breite $2K(k)$ abgebildet,
+für die Höhe des Rechtecks muss das
+Integral~\eqref{buch:elliptisch:eqn:hoeheintegral} ausgewertet werden.
+Das Integral läuft von $t=1$ bis $t=1/k$, wir möchten daraus ein
+elliptisches Integral machen, dessen Integrationsinterval bei $0$
+beginnt.
+Dazu verwenden wir die Variablentransformation
+\[
+t = \frac{1}{\sqrt{1-k'^2y^2}},
+\]
+die für $y=0$ den Wert $1$ ergibt, für $y=1$ aber $1/\sqrt{1-k'^2}$.
+Damit das richtige Integrationsintervall entsteht, muss $k'$ so gewählt
+werden, dass $1-k'^2=k^2$ ist.
+
+\begin{definition}
+Ist $0\le k\le 1$ der Modul eines elliptischen Integrals, dann heisst
+$k' = \sqrt{1-k^2}$ er {\em Komplementärmodul} oder {\em Komplement
+des Moduls}. Es ist $k^2+k'^2=1$.
+\end{definition}
+
+Mit der Ableitung
+\[
+\frac{dt}{dy}
+=
+\frac{k'^2 y}{(1-k'^2y^2)^{\frac32}}
+\]
+der Substitution
+wird das Integral~\eqref{buch:elliptisch:eqn:hoeheintegral} jetzt zu
+\begin{align*}
+l
+&=
+\int_0^1
+\frac{1}{\sqrt{\frac{1}{1-k'^2y^2}-1}}
+\cdot
+\frac{1}{\sqrt{1-\frac{k^2}{1-k'^2y^2}}}
+\cdot
+\frac{k'^2y}{\sqrt{1-k'^2y^2}}
+\cdot
+\frac{1}{1-k'^2y^2}
+\,dy
+\\
+&=
+\int_0^1
+\frac{\sqrt{1-k'^2y^2}}{\sqrt{k'^2y^2}}
+\cdot
+\frac{1}{\sqrt{1-k^2 -k'^2y^2}}
+\cdot
+\frac{k'^2y}{1-k'^2y^2}
+\,dy
+\\
+&=
+\int_0^1
+\sqrt{1-k'^2y^2}
+\cdot
+\frac{1}{k'\sqrt{1-y^2}}
+\cdot
+\frac{k'}{1-k'^2y^2}
+\,dy
+\\
+&=
+\int_0^1 \frac{dy}{\sqrt{(1-y^2)(1-k'^2y^2)}}
+=
+K(k').
+\end{align*}
+Die Höhe des Rechtecks des Wertebereichs der oberen Halbebene ist
+als der Wert des vollständigen elliptischen Integrals erster Art
+für den Komplementärmodul.
+Das Bild der komplexen Ebene unter der Abbildung gegeben durch das
+unvollständige elliptische Integral zweiter Art ist symmetrisch um
+den Nullpunkt und hat Breite $2K(k)$ und Höhe $2K(k')$.
 
 \begin{figure}
 \centering
