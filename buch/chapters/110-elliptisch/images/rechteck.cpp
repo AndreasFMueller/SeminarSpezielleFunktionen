@@ -389,6 +389,7 @@ int	main(int argc, char *argv[]) {
 
 	// arguments larger than 1/k
 	{
+		dir = std::complex<double>(0, 0.01);
 		double	x0 = 1;
 		while (x0 <= 1/k + 0.0001) { x0 += deltax; }
 		for (; x0 < 4; x0 += deltax) {
