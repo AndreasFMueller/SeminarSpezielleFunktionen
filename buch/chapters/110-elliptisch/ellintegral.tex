@@ -414,7 +414,7 @@ Die Ecken auf der reellen Achse liegen bei den reellen Koordinaten
 \]
 Für die Höhe muss das Integral
 \begin{equation}
-l=\int_1^{\frac1{k}}
+l(\frac{1}{k})=\int_1^{\frac1{k}}
 \frac{dt}{\sqrt{(t^2-1)(1-k^2t^2)}}
 \label{buch:elliptisch:eqn:hoeheintegral}
 \end{equation}
@@ -451,11 +451,20 @@ Mit der Ableitung
 \frac{k'^2 y}{(1-k'^2y^2)^{\frac32}}
 \]
 der Substitution
-wird das Integral~\eqref{buch:elliptisch:eqn:hoeheintegral} jetzt zu
+wird das Integral~\eqref{buch:elliptisch:eqn:hoeheintegral} mit der
+oberen Grenze $x$ zu einem Integral mit oberer Grenze
+\[
+x^2 = \frac{1}{1-k'^2y_0^2}
+\quad\Rightarrow\quad
+y_0^2 = \frac{1}{k'^2}\biggl(1-\frac{1}{x^2}\biggr)
+\quad\Rightarrow\quad
+y_0=\frac{1}{k'}\sqrt{1-\frac{1}{x^2}}
+\]
+jetzt zu
 \begin{align*}
-l
+l(x)
 &=
-\int_0^1
+\int_0^{y_0}
 \frac{1}{\sqrt{\frac{1}{1-k'^2y^2}-1}}
 \cdot
 \frac{1}{\sqrt{1-\frac{k^2}{1-k'^2y^2}}}
@@ -466,7 +475,7 @@ l
 \,dy
 \\
 &=
-\int_0^1
+\int_0^{y_0}
 \frac{\sqrt{1-k'^2y^2}}{\sqrt{k'^2y^2}}
 \cdot
 \frac{1}{\sqrt{1-k^2 -k'^2y^2}}
@@ -475,7 +484,7 @@ l
 \,dy
 \\
 &=
-\int_0^1
+\int_0^{y_0}
 \sqrt{1-k'^2y^2}
 \cdot
 \frac{1}{k'\sqrt{1-y^2}}
@@ -484,10 +493,19 @@ l
 \,dy
 \\
 &=
-\int_0^1 \frac{dy}{\sqrt{(1-y^2)(1-k'^2y^2)}}
+\int_0^{y_0} \frac{dy}{\sqrt{(1-y^2)(1-k'^2y^2)}}
 =
-K(k').
+F(y_0,k')
 \end{align*}
+Die gesuchte Höhe des Rechtecks ergibt sich für die obere Grenze $\frac1k$.
+In diesem Fall ist
+\[
+y_0
+=
+\frac{1}{k'}\sqrt{1-k^2} = 1
+\]
+und das unvollständig elliptische Integral wird zum vollständigen
+elliptischen Integral $K(k')$.
 Die Höhe des Rechtecks des Wertebereichs der oberen Halbebene ist
 als der Wert des vollständigen elliptischen Integrals erster Art
 für den Komplementärmodul.

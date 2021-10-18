@@ -243,6 +243,7 @@ void	curvedrawer::operator()(const curvetracer::curve_t& curve) {
 static struct option	longopts[] = {
 { "outfile",	required_argument,	NULL,	'o' },
 { "k",		required_argument,	NULL,	'k' },
+{ "deltax",	required_argument,	NULL,	'd' },
 { NULL,		0,			NULL,	 0  }
 };
 
@@ -250,13 +251,18 @@ static struct option	longopts[] = {
  * \brief Main function
  */
 int	main(int argc, char *argv[]) {
-	double	k = 0.6;
+	double	k = 0.625;
+	double	deltax = 0.2;
 
 	int	c;
 	int	longindex;
 	std::string	outfilename;
-	while (EOF != (c = getopt_long(argc, argv, "o:k:", longopts, &longindex)))
+	while (EOF != (c = getopt_long(argc, argv, "o:k:d:", longopts,
+		&longindex)))
 		switch (c) {
+		case 'd':
+			deltax = std::stod(optarg);
+			break;
 		case 'o':
 			outfilename = std::string(optarg);
 			break;
@@ -296,7 +302,7 @@ int	main(int argc, char *argv[]) {
 
 	// "circles"
 	std::complex<double>	dir(0.01, 0);
-	for (double im = 0.2; im < 3; im += 0.2) {
+	for (double im = deltax; im < 3; im += deltax) {
 		std::complex<double>	startz(0, im);
 		std::complex<double>	startw = ct.startpoint(startz);
 		curvetracer::curve_t	curve = ct.trace(startz, dir,
@@ -345,7 +351,28 @@ int	main(int argc, char *argv[]) {
 		(*cdp)(curvetracer::mirrory(curve));
 	}
 
+	// arguments between 1 and 1/k
+	{
+		for (double x0 = 1 + deltax; x0 < 1/k; x0 += deltax) {
+			double	y0 = sqrt(1-1/(x0*x0))/kprime;
+			//std::cout << "y0 = " << y0 << std::endl;
+			double	y = gsl_sf_ellint_F(asin(y0), kprime,
+				GSL_PREC_DOUBLE);
+			std::complex<double>	startz(x0);
+			std::complex<double>	startw(xmax, y);
+			curvetracer::curve_t	curve = ct.trace(startz, dir,
+				startw, 1000);
+			cdp->color("red");
+			(*cdp)(curve);
+			(*cdp)(curvetracer::mirrorx(curve));
+			cdp->color("blue");
+			(*cdp)(curvetracer::mirror(curve));
+			(*cdp)(curvetracer::mirrory(curve));
+		}
+	}
+
 	// argument 1/k
+#if 0
 	{
 		std::complex<double>	startz(1/k);
 		std::complex<double>	startw(xmax, ymax);
@@ -357,6 +384,26 @@ int	main(int argc, char *argv[]) {
 		cdp->color("blue");
 		(*cdp)(curvetracer::mirror(curve));
 		(*cdp)(curvetracer::mirrory(curve));
+	}
+#endif
+
+	// arguments larger than 1/k
+	{
+		double	x0 = 1;
+		while (x0 <= 1/k + 0.0001) { x0 += deltax; }
+		for (; x0 < 4; x0 += deltax) {
+			std::complex<double>	startz(x0);
+			std::complex<double>	startw(gsl_sf_ellint_F(
+				asin(1/(k*x0)), k, GSL_PREC_DOUBLE), ymax);
+		curvetracer::curve_t	curve = ct.trace(startz, dir,
+			startw, 1000);
+		cdp->color("red");
+		(*cdp)(curve);
+		(*cdp)(curvetracer::mirrorx(curve));
+		cdp->color("blue");
+		(*cdp)(curvetracer::mirror(curve));
+		(*cdp)(curvetracer::mirrory(curve));
+		}
 	}
 
 	// border
