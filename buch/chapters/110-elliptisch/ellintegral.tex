@@ -329,7 +329,7 @@ $\pm 1/\sqrt{n}$
 
 XXX Additionstheoreme \\
 XXX Parameterkonventionen \\
-XXX Wertebereich (Rechtecke) \\
+
 \subsubsection{Wertebereich}
 Die unvollständigen elliptischen Integrale betrachtet als reelle Funktionen
 haben nur positive relle Werte.
@@ -414,7 +414,7 @@ Die Ecken auf der reellen Achse liegen bei den reellen Koordinaten
 \]
 Für die Höhe muss das Integral
 \begin{equation}
-l(\frac{1}{k})=\int_1^{\frac1{k}}
+l({\textstyle\frac{1}{k}})=\int_1^{\frac1{k}}
 \frac{dt}{\sqrt{(t^2-1)(1-k^2t^2)}}
 \label{buch:elliptisch:eqn:hoeheintegral}
 \end{equation}
@@ -522,6 +522,52 @@ Die obere Halbebene wird in das rote Rechteck abgebildet, die unter
 in das blaue.
 \label{buch:elliptisch:fig:rechteck}}
 \end{figure}
+
+\subsubsection{Reelle Argument $> 1/k$}
+Für Argument $x> 1/k$ sind beide Faktoren im Integranden des 
+unvollständigen elliptischen Integrals negativ, das Integral kann
+daher wieder als gewöhnliches reelles Integral berechnet werden,
+es sollte sich daher auch auf das unvollständige elliptische Integral
+erster Art zurückführen lassen.
+
+Da wir bereits wissen, dass 
+\[
+\lim_{x\to\infty} F(x,k) = iK(k'),
+\]
+können wir $F(x,k)$ auch als
+\[
+F(x,k)
+=
+iK(k')
+-
+\int_x^\infty \frac{dt}{\sqrt{(1-t^2)(1-k^2t^2)}}
+\]
+berechnen.
+Dazu werden wir die Variablentransformation
+\[
+y=\frac{1}{kt}\quad\Leftrightarrow\quad t=\frac{1}{ky}
+\qquad\text{mit}\qquad
+\frac{dt}{dy} = -\frac{1}{ky^2}
+\]
+auf das Integral an und erhalten
+\begin{align*}
+\int_x^\infty \frac{dt}{\sqrt{(1-t^2)(1-k^2t^2)}}
+&=
+-\int_{\frac1{kx}}^0 \frac{dy}{ky^2\sqrt{(1-1/(ky)^2)(1-1/y^2)}}
+\\
+&=
+\int_0^{\frac{1}{kx}} \frac{dy}{\sqrt{(k^2y^2-1)(y^2-1)}}
+=
+F\biggl(\frac{1}{kx},k\biggr).
+\end{align*}
+Dies ist das gesuchte unvollständige elliptische Integral erster Art.
+Insbesondere halten wir noch die Formel
+\[
+F(x,k) = iK(k') - F\biggl(\frac1{kx},k\biggr)
+\qquad\text{für $x>\frac1k$}
+\]
+für die Werte des elliptischen Integrals erster Art für grosse Argumentwerte
+fest.
 
 \subsection{Potenzreihe}
 XXX Potenzreihen \\
