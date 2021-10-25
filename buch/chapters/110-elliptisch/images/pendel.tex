@@ -1,0 +1,59 @@
+%
+% pendel.tex -- mathematisches Pendel
+%
+% (c) 2021 Prof Dr Andreas Müller, OST Ostschweizer Fachhochschule
+%
+\documentclass[tikz]{standalone}
+\usepackage{amsmath}
+\usepackage{times}
+\usepackage{txfonts}
+\usepackage{pgfplots}
+\usepackage{csvsimple}
+\usetikzlibrary{arrows,intersections,math,calc}
+\begin{document}
+\def\skala{1}
+\begin{tikzpicture}[>=latex,thick,scale=\skala]
+
+\definecolor{darkgreen}{rgb}{0,0.7,0}
+
+\def\winkel{25}
+
+\fill[color=red!20] (0,0) -- (0,-2) arc (-90:{-\winkel}:2) -- cycle;
+
+\node at ({0.5*(-90-\winkel)}:1) {$\vartheta$};
+\draw[color=red,shorten >= 0.25cm] (0,0) -- ({-\winkel}:3);
+\node[color=red] at ({-\winkel}:1.5) [above right] {$l$};
+
+\draw[->] (0,3.1) -- (0,-3.5) coordinate[label={left:$x$}];
+%\draw[->] (-3.1,0) -- (3.5,0) coordinate[label={$y$}];
+
+\draw[color=blue] (0,0) -- (0,{-3*sin(\winkel)})
+	-- ({3*cos(\winkel)},{-3*sin(\winkel)});
+
+\fill[color=white] (0,0) circle[radius=0.05];
+\draw (0,0) circle[radius=0.05];
+
+\draw[line width=0.2pt] (0,0) circle[radius=3];
+
+\node at ($({-\winkel}:3)+(0.1,0)$) [below right] {$P$};
+
+\draw[->,color=darkgreen]
+	({-\winkel}:3) -- ($({-\winkel}:3)+(0,-3)$);
+\draw[->,color=darkgreen]
+	({-\winkel}:3) -- ($({-\winkel}:3)+({-\winkel-90}:{3*cos(\winkel)})$);
+\draw[line width=0.3pt,color=darkgreen]
+	($({-\winkel}:3)+(0,-3)$)
+	-- ($({-\winkel}:3)+({-\winkel-90}:{3*cos(\winkel)})$);
+
+\node[color=darkgreen] at ($({-\winkel}:3)+(0,-2)$) [right] {$g$};
+
+\definecolor{darkred}{rgb}{0.6,0,0}
+\fill[color=darkred] ({-\winkel}:3) circle[radius=0.25];
+\draw[color=red] ({-\winkel}:3) circle[radius=0.25];
+\node[color=white] at ({-\winkel}:3) {$m$};
+
+\node at (0,0) [left] {$O$};
+
+\end{tikzpicture}
+\end{document}
+

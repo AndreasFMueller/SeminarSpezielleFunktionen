@@ -4,7 +4,7 @@
 # (c) 2021 Prof Dr Andreas Müller, OST Ostschweizer Fachhochschule
 #
 all:	lemniskate.pdf ellipsenumfang.pdf unvollstaendig.pdf rechteck.pdf \
-	ellipse.pdf
+	ellipse.pdf pendel.pdf
 
 lemniskate.pdf:	lemniskate.tex
 	pdflatex lemniskate.tex
@@ -33,4 +33,6 @@ unvollpath.tex:	unvollstaendig.m
 ellipse.pdf:	ellipse.tex
 	pdflatex ellipse.tex
 
+pendel.pdf:	pendel.tex
+	pdflatex pendel.tex
 

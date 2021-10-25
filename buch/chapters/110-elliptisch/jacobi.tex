@@ -716,6 +716,137 @@ wobei die Funktion $\operatorname{zn}(u,k)$ auf Grund der Vorzeichen
 von $A$, $B$ und $C$ gewählt werden müssen.
 
 \subsubsection{Das mathematische Pendel}
+\begin{figure}
+\centering
+\includegraphics{chapters/110-elliptisch/images/pendel.pdf}
+\caption{Mathematisches Pendel
+\label{buch:elliptisch:fig:mathpendel}}
+\end{figure}
+Das in Abbildung~\ref{buch:elliptisch:fig:mathpendel} dargestellte
+Mathematische Pendel besteht aus einem Massepunkt der Masse $m$
+im Punkt $P$,
+der über eine masselose Stange der Länge $l$ mit dem Drehpunkt $O$
+verbunden ist.
+Das Pendel bewegt sich unter dem Einfluss der Schwerebeschleunigung $g$.
+
+Das Trägheitsmoment des Massepunktes um den Drehpunkt $O$ ist
+\(
+I=ml^2
+\).
+Das Drehmoment der Schwerkraft ist
+\(M=gl\sin\vartheta\).
+Die Bewegungsgleichung wird daher
+\[
+\begin{aligned}
+\frac{d}{dt} I\dot{\vartheta}
+&=
+M
+=
+gl\sin\vartheta
+\\
+ml^2\ddot{\vartheta}
+&=
+gl\sin\vartheta
+&&\Rightarrow&
+\ddot{\vartheta}
+&=\frac{g}{l}\sin\vartheta
+\end{aligned}
+\]
+Dies ist eine nichtlineare Differentialgleichung zweiter Ordnung, die
+wir nicht unmittelbar mit den Differentialgleichungen erster Ordnung
+der elliptischen Funktionen vergleichen können.
+
+Die Differentialgleichungen erster Ordnung der elliptischen Funktionen
+enthalten das Quadrat der ersten Ableitung.
+In unserem Fall entspricht das einer Gleichung, die $\dot{\vartheta}^2$
+enthält.
+Der Energieerhaltungssatz kann uns eine solche Gleichung geben.
+Die Summe von kinetischer und potentieller Energie muss konstant sein.
+Dies führt auf
+\[
+E_{\text{kinetisch}}
++
+E_{\text{potentiell}}
+=
+\frac12I\dot{\vartheta}^2
++
+mgl(1-\cos\vartheta)
+=
+\frac12ml^2\dot{\vartheta}^2
++
+mgl(1-\cos\vartheta)
+=
+E
+\]
+Durch Auflösen nach $\dot{\vartheta}$ kann man jetzt die
+Differentialgleichung
+\[
+\dot{\vartheta}^2
+=
+-
+\frac{2g}{l}(1-\cos\vartheta)
++\frac{2E}{ml^2}
+\]
+finden.
+In erster Näherung, d.h. wenn man die rechte Seite bis zu vierten
+Potenzen in eine Taylor-Reihe in $\vartheta$ entwickelt,  ist dies
+tatsächlich eine Differentialgleichung der Art, wie wir sie für
+elliptische Funktionen gefunden haben, wir möchten aber eine exakte
+Lösung konstruieren.
+
+Wir verwenden als neue Variable 
+\[
+y = \sin\frac{\vartheta}2
+\]
+mit der Ableitung
+\[
+\dot{y}=\frac12\cos\frac{\vartheta}{2}\cdot \dot{\vartheta}.
+\]
+Man beachte, dass $y$ nicht eine Koordinate in
+Abbildung~\ref{buch:elliptisch:fig:mathpendel} ist.
+
+Aus den Halbwinkelformeln finden wir
+\[
+\cos\vartheta
+=
+1-2\sin^2 \frac{\vartheta}2
+=
+1-2y^2.
+\]
+Dies können wir zusammen mit der
+Identität $\cos^2\vartheta/2 = 1-\sin^2\vartheta/2 = 1-y^2$
+in die Energiegleichung einsetzen und erhalten
+\[
+\frac12ml^2\dot{\vartheta}^2 + mgly^2 = E.
+\]
+Durch Multiplizieren mit $\cos^2\frac{\vartheta}{2}=1-y^2$
+erhalten wir auf der linken Seite einen Ausdruck, den wir
+als Funktion von $\dot{y}$ ausdrücken können.
+Wir erhalten
+\begin{align*}
+\frac12ml^2
+\cos^2\frac{\vartheta}2
+\dot{\vartheta}^2
+&=
+(1-y^2)
+(E -mgly^2)
+\\
+\frac{1}{4}\cos^2\frac{\vartheta}{2}\dot{\vartheta}^2
+&=
+\frac{1}{2}
+(1-y^2)
+\biggl(\frac{E}{ml^2} -\frac{g}{l}y^2\biggr)
+\\
+\dot{y}^2
+&=
+\frac{E}{2ml^2}
+(1-y^2)\biggl(
+1-\frac{2gml}{E}y^2
+\biggr).
+\end{align*}
+Dies ist genau die Form der Differentialgleichung für die elliptische
+Funktion $\operatorname{sn}(u,k)$
+mit $k^2 = gml/2E$.
 
 XXX Differentialgleichung \\
 XXX Mathematisches Pendel \\
