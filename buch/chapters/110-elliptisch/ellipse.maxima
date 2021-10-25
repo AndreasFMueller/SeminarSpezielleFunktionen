@@ -1,0 +1,14 @@
+/* ellipse.maxima */
+
+y: b * sqrt(1 - x^2/a^2);
+
+e: sqrt(a^2-b^2);
+
+l1: sqrt((x+e)^2 + y^2);
+l2: sqrt((x-e)^2 + y^2);
+
+LHS: l1^2 + l2^2 - 4*a^2;
+RHS: 2 * l1 * l2;
+
+d2: LHS^2 - RHS^2;
+expand(ratsimp(d2));

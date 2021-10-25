@@ -1,0 +1,78 @@
+%
+% ellipse.tex -- Abbildung der Ellipsen zur Herleitung der Jacobi
+%                elliptischen Funktionen
+%
+% (c) 2021 Prof Dr Andreas Müller, OST Ostschweizer Fachhochschule
+%
+\documentclass[tikz]{standalone}
+\usepackage{amsmath}
+\usepackage{times}
+\usepackage{txfonts}
+\usepackage{pgfplots}
+\usepackage{csvsimple}
+\usetikzlibrary{arrows,intersections,math,calc}
+\begin{document}
+\def\skala{0.72}
+\begin{tikzpicture}[>=latex,thick,scale=\skala]
+\definecolor{darkgreen}{rgb}{0,0.6,0}
+
+% add image content here
+\def\winkel{70}
+\def\a{5}
+\def\b{3}
+\pgfmathparse{sqrt(\a*\a-\b*\b)}
+\xdef\e{\pgfmathresult}
+
+\fill[color=gray!20] (0,0) -- plot[domain=0:\winkel,samples=100]
+	({5*cos(\x)},{3*sin(\x)})
+	-- cycle;
+\draw (0,0) -- ({5*cos(\winkel)},{3*sin(\winkel)});
+\draw[color=red,line width=1.4pt] plot[domain=0:\winkel,samples=100]
+	({5*cos(\x)},{3*sin(\x)});
+\node at (5,0) [below right] {$a$};
+\node at (0,3) [above left] {$b$};
+\fill[color=red] ({5*cos(\winkel)},{3*sin(\winkel)}) circle[radius=0.08];
+\draw[color=red,line width=1pt] (0,0) ellipse (5cm and 3cm);
+%\node at ({5*cos(\winkel/2)},{3*sin(\winkel/2)}) [above right] {$u$};
+
+\node at ({5*cos(\winkel)},{3*sin(\winkel)}) [above right] {$P=(x,y)$};
+
+\draw[->] (-5.2,0) -- (5.8,0);% coordinate[label={$x$}];
+\draw[->] (0,-3.2) -- (0,3.8);% coordinate[label={right:$y$}];
+
+\draw[color=darkgreen] (0,0) -- (\e,0);
+\draw[color=darkgreen] (0,0) -- (-\e,0);
+\node[color=darkgreen] at ({0.5*\e},0) [below] {$e$};
+\node[color=darkgreen] at ({-0.5*\e},0) [below] {$-e$};
+
+
+\fill[color=blue] ({-\e},0) circle[radius=0.08];
+\node[color=blue] at (-\e,0) [below] {$F_1$};
+\fill[color=blue] ({\e},0) circle[radius=0.08];
+\node[color=blue] at (\e,0) [below] {$F_2$};
+
+\draw[color=blue] (0,3) -- (\e,0);
+\draw[color=blue] (0,3) -- (-\e,0);
+\node[color=blue] at ($0.5*(0,3)+0.5*(\e,0)$) [below left] {$a$};
+\node[color=blue] at ($0.5*(0,3)+0.5*(-\e,0)$) [below right] {$a$};
+\fill[color=red] (0,3) circle[radius=0.08];
+
+\node at (0,0) [below left] {$O$};
+
+\begin{scope}[xshift=-9.5cm]
+\fill[color=gray!20] (0,0) -- (3,0) arc (0:70:3) -- cycle;
+\node[color=red] at (35:3) [above right] {$\varphi$};
+\draw (0,0) -- (70:3);
+\node at (70:1.7) [left] {$r$};
+\draw[->] (-3.2,0) -- (3.8,0);% coordinate[label={$x$}];
+\draw[->] (0,-3.2) -- (0,3.8);% coordinate[label={right:$y$}];
+\draw[color=red,line width=1pt] (0,0) circle[radius=3];
+\draw[color=red,line width=1.4pt] (3,0) arc (0:70:3);
+\fill[color=red] (70:3) circle[radius=0.08];
+\node at (70:3) [above right] {$P=(x,y)$};
+\node at (0,0) [below left] {$O$};
+\end{scope}
+
+\end{tikzpicture}
+\end{document}
+
