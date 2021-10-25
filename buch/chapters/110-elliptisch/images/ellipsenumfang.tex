@@ -1,0 +1,83 @@
+%
+% ellipsenumfang.tex -- template for standalon tikz images
+%
+% (c) 2021 Prof Dr Andreas Müller, OST Ostschweizer Fachhochschule
+%
+\documentclass[tikz]{standalone}
+\usepackage{amsmath}
+\usepackage{times}
+\usepackage{txfonts}
+\usepackage{pgfplots}
+\usepackage{csvsimple}
+\usetikzlibrary{arrows,intersections,math}
+\begin{document}
+\input{ekplot.tex}
+\def\skala{1.19}
+\begin{tikzpicture}[>=latex,thick,scale=\skala]
+
+\pgfkeys{/pgf/number format/.cd, fixed, fixed zerofill, precision=1}
+
+\def\dx{10}
+\def\dy{4}
+
+%\draw[line width=0.4pt] (0,\dy) -- (10,\dy);
+%\draw[line width=0.4pt] (\dx,0) -- (10,\dy);
+
+\draw[->] (0,{\dy-0.1}) -- (0,7.0) coordinate[label={left:$E(k=\varepsilon)$}];
+\draw[->] (-0.1,\dy) -- (10.5,\dy) coordinate[label={$\varepsilon$}];
+
+\foreach \i in {0,...,10}{
+	\pgfmathparse{\i/10}
+	\xdef\wert{\pgfmathresult}
+	\draw (\i,{\dy-0.1}) -- (\i,{\dy+0.1});
+	\node at (\i,{\dy-0.1}) [below] {$\pgfmathprintnumber{\wert}$};
+}
+
+\draw[color=red,line width=1.4pt] \ekpath;
+\fill[color=red] (\dx,\dy) circle[radius=0.07];
+
+\foreach \y in {1.0,1.2,1.4}{
+	\draw (-0.1,{\dy*\y})  -- (0.1,{\dy*\y});
+	\node at (-0.1,{\dy*\y}) [left] {$\pgfmathprintnumber{\y}$};
+}
+
+\draw (-0.1,{\dy*3.14159/2}) -- (0.1,{\dy*3.14159/2});
+\node at (0,{\dy*3.14159/2}) [left] {$\displaystyle\frac{\pi}2$};
+
+
+\punkte
+
+\foreach \exzentrizitaet in {0.05,0.15,...,0.95}{
+	\pgfmathparse{sqrt(1-\exzentrizitaet*\exzentrizitaet)}
+	\xdef\halbachse{\pgfmathresult}
+
+	\pgfmathparse{\exzentrizitaet*\dx}
+	\xdef\mitte{\pgfmathresult}
+	%\node at (\mitte,1) {$\pgfmathprintnumber{\mitte}$};
+
+	\pgfmathparse{(1-\exzentrizitaet)}
+	\xdef\breite{\halbachse}
+	%\node at (\mitte,0.5) {$\pgfmathprintnumber{\breite}$};
+
+	\begin{scope}
+
+		\clip ({\mitte-(\breite/2)},{1.8*\dy})
+			rectangle ({\mitte+(\breite/2)+0.1},{1.8*\dy+1.1});
+		\fill[color=blue!20] ({\mitte-\breite/2},{1.8*\dy})
+			ellipse({\breite} and 1);
+		\draw[color=blue,line width=1.4pt]
+			({\mitte-\breite/2},{1.8*\dy})
+				ellipse({\breite} and 1);
+		\draw[color=blue,line width=0.2pt]
+			({\mitte-\breite/2},{1.8*\dy+1})
+			--
+			({\mitte-\breite/2},{1.8*\dy})
+			--
+			({\mitte+\breite/2},{1.8*\dy});
+	\end{scope}
+}
+
+
+\end{tikzpicture}
+\end{document}
+

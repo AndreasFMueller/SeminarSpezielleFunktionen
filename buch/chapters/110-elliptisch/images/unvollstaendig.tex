@@ -1,0 +1,100 @@
+%
+% unvollstaendig.tex -- Plots der unvollständigen elliptischen integrale
+%
+% (c) 2021 Prof Dr Andreas Müller, OST Ostschweizer Fachhochschule
+%
+\documentclass[tikz]{standalone}
+\usepackage{amsmath}
+\usepackage{times}
+\usepackage{txfonts}
+\usepackage{pgfplots}
+\usepackage{csvsimple}
+\usetikzlibrary{arrows,intersections,math}
+\input{unvollpath.tex}
+\begin{document}
+\def\skala{1}
+\begin{tikzpicture}[>=latex,thick,scale=\skala]
+
+\pgfkeys{/pgf/number format/.cd, fixed, fixed zerofill, precision=1}
+
+\def\dx{12.8}
+\def\dy{6}
+
+\definecolor{darkgreen}{rgb}{0,0.6,0}
+\definecolor{blau}{rgb}{0.3,0.3,1}
+
+\begin{scope}
+\begin{scope}
+\clip (-0.1,-0.1) rectangle ({\dx+0.0},{10.1});
+
+\fill[color=darkgreen!10] \ellEzero -- (\dx,{1.571*\dy}) -- (\dx,0) -- cycle;
+\fill[color=red!10] \ellEzero -- (\dx,{1.571*\dy}) -- (\dx,10.1) -- (0,10.2) -- cycle;
+
+\node[color=red] at ({0.6*\dx},{1.3*\dy}) [scale=2] {$F(x,k)$};
+\node[color=darkgreen] at ({0.6*\dx},{0.3*\dy}) [scale=2] {$E(x,k)$};
+
+
+\draw[color=red!0!blau,line width=1.0pt] \ellFzero;
+\draw[color=red!10!blau,line width=1.0pt] \ellFone;
+\draw[color=red!20!blau,line width=1.0pt] \ellFtwo;
+\draw[color=red!30!blau,line width=1.0pt] \ellFthree;
+\draw[color=red!40!blau,line width=1.0pt] \ellFfour;
+\draw[color=red!50!blau,line width=1.0pt] \ellFfive;
+\draw[color=red!60!blau,line width=1.0pt] \ellFsix;
+\draw[color=red!70!blau,line width=1.0pt] \ellFseven;
+\draw[color=red!80!blau,line width=1.0pt] \ellFeight;
+\draw[color=red!90!blau,line width=1.0pt] \ellFnine;
+\draw[color=red!100!blau,line width=1.0pt] \ellFten;
+
+\draw[color=darkgreen!100!blau,line width=1.0pt] \ellEten;
+\draw[color=darkgreen!90!blau,line width=1.0pt] \ellEnine;
+\draw[color=darkgreen!80!blau,line width=1.0pt] \ellEeight;
+\draw[color=darkgreen!70!blau,line width=1.0pt] \ellEseven;
+\draw[color=darkgreen!60!blau,line width=1.0pt] \ellEsix;
+\draw[color=darkgreen!50!blau,line width=1.0pt] \ellEfive;
+\draw[color=darkgreen!40!blau,line width=1.0pt] \ellEfour;
+\draw[color=darkgreen!30!blau,line width=1.0pt] \ellEthree;
+\draw[color=darkgreen!20!blau,line width=1.0pt] \ellEtwo;
+\draw[color=darkgreen!10!blau,line width=1.0pt] \ellEone;
+\draw[color=darkgreen!0!blau,line width=1.0pt] \ellEzero;
+
+\end{scope}
+
+\draw[line width=0.2pt] (\dx,0) -- (\dx,10.1);
+
+\begin{scope}
+	\clip ({0.7*\dx},0) rectangle (\dx,10.1);
+	\draw[color=white,line width=0.5pt] \ellEzero -- (\dx,{1.571*\dy});
+\end{scope}
+
+\draw[->] ({-0.1},0) -- ({\dx+0.3},0) coordinate[label={$x$}];
+\foreach \x in {0,0.2,...,1.0}{
+	\draw ({\x*\dx},-0.1) -- ({\x*\dx},0.1);
+	\node at ({\x*\dx},0) [below] {$\pgfmathprintnumber{\x}$};
+}
+\draw[->] (0,{-0.1}) -- (0,{10.3}) coordinate[label={right:$y$}];
+\foreach \y in {0.5,1,1.5}{
+	%\draw[line width=0.2pt] (0,{\y*\dy}) -- (\dx,{\y*\dy});
+	\draw (-0.1,{\y*\dy}) -- (0.1,{\y*\dy});
+	\node at (0,{\y*\dy}) [left] {$\pgfmathprintnumber{\y}$};
+}
+\foreach \c in {0,10,...,100}{
+	\pgfmathparse{\c/100}
+	\xdef\k{\pgfmathresult}
+	\node[color=red!\c!blau] at ({0.02*\dx},{0.95*\dy+0.04*\c})
+		[right] {$k=\pgfmathprintnumber{\k}$};
+}
+\foreach \c in {0,10,...,100}{
+	\pgfmathparse{\c/100}
+	\xdef\k{\pgfmathresult}
+	\node[color=darkgreen!\c!blau] at ({0.98*\dx},{0.75*\dy-0.04*\c})
+		[left] {$k=\pgfmathprintnumber{\k}$};
+}
+
+\draw ({\dx-0.1},{1.571*\dy}) -- ({\dx+0.1},{1.571*\dy});
+\node at (\dx,{1.571*\dy}) [right] {$\frac{\pi}2$};
+\end{scope}
+
+\end{tikzpicture}
+\end{document}
+
