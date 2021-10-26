@@ -1,0 +1,93 @@
+%
+% jacobiplots.tex -- template for standalon tikz images
+%
+% (c) 2021 Prof Dr Andreas Müller, OST Ostschweizer Fachhochschule
+%
+\documentclass[tikz]{standalone}
+\usepackage{amsmath}
+\usepackage{times}
+\usepackage{txfonts}
+\usepackage{pgfplots}
+\usepackage{csvsimple}
+\usetikzlibrary{arrows,intersections,math}
+\begin{document}
+\def\skala{1}
+\def\dx{1}
+\def\dy{2}
+\definecolor{darkgreen}{rgb}{0,0.6,0}
+\input{jacobipaths.tex}
+\def\piticks{
+	\draw (3.1415,-0.1) -- (3.1415,0.1);
+	\node at (3.1415,0) [below] {$\pi$};
+	\draw (6.2831,-0.1) -- (6.2831,0.1);
+	\node at (6.2831,0) [below] {$2\pi$};
+	\draw (9.4248,-0.1) -- (9.4248,0.1);
+	\node at (9.4248,0) [below] {$3\pi$};
+	\draw (12.5664,-0.1) -- (12.5664,0.1);
+	\node at (12.5664,0) [below] {$4\pi$};
+}
+\def\mlabel#1{
+%\fill[color=gray!50] (-0.2,-6) rectangle (7.0,2.3);
+\fill[color=gray!50] (-0.2,1.65) rectangle (7.0,2.3);
+\draw[line width=0.5pt] (-0.2,-6) rectangle (7.0,2.3);
+\begin{scope}[scale=0.5]
+\node at (6.5,{\dy+2}) {$m = #1$};
+\end{scope}
+}
+\def\jacobiplot#1#2#3#4{
+
+
+\begin{scope}[scale=0.5]
+\draw[->] (-0.1,0) -- (13.5,0) coordinate[label={$u$}];
+\piticks
+\draw[->] (0,-2.1) -- (0,2.5) coordinate[label={right:$\operatorname{sn}(u,k)$}];
+\draw[color=red#4] #1;
+\end{scope}
+
+\begin{scope}[yshift=-2.5cm,scale=0.5]
+\draw[->] (-0.1,0) -- (13.5,0) coordinate[label={$u$}];
+\piticks
+\draw[->] (0,-2.1) -- (0,2.5) coordinate[label={right:$\operatorname{cn}(u,k)$}];
+\draw[color=blue#4] #2;
+\end{scope}
+
+\begin{scope}[yshift=-5.5cm,scale=0.5]
+\draw[->] (-0.1,0) -- (13.5,0) coordinate[label={$u$}];
+\piticks
+\draw[->] (0,-0.1) -- (0,3.5) coordinate[label={right:$\operatorname{dn}(u,k)$}];
+\draw[color=darkgreen#4] #3;
+\end{scope}
+
+}
+%\input{blubb.tex}
+\begin{tikzpicture}[>=latex,thick,scale=\skala]
+
+\begin{scope}
+\mlabel{\mone}
+\jacobiplot{\snzero}{\cnzero}{\dnzero}{!50}
+\jacobiplot{\snone}{\cnone}{\dnone}{}
+\end{scope}
+
+\begin{scope}[xshift=7.3cm]
+\mlabel{\mfive}
+\jacobiplot{\snzero}{\cnzero}{\dnzero}{!50}
+\jacobiplot{\snfive}{\cnfive}{\dnfive}{}
+\end{scope}
+
+\begin{scope}[xshift=0cm,yshift=-8.4cm]
+\mlabel{\mseven}
+\jacobiplot{\snzero}{\cnzero}{\dnzero}{!50}
+%\jacobiplot{\sneight}{\cneight}{\dneight}{}
+\jacobiplot{\snseven}{\cnseven}{\dnseven}{}
+\end{scope}
+
+\begin{scope}[xshift=7.3cm,yshift=-8.4cm]
+\mlabel{\mnine}
+\jacobiplot{\snzero}{\cnzero}{\dnzero}{!50}
+\jacobiplot{\snnine}{\cnnine}{\dnnine}{}
+\end{scope}
+
+
+\end{tikzpicture}
+\end{document}
+
