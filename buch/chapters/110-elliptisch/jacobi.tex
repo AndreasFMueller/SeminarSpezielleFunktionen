@@ -21,7 +21,9 @@ trigonometrischen Funktionen auf die Geometrie von Ellipsen erweitern,
 dann muss man die Umkehrfunktionen der elliptischen Integrale dafür ins
 Auge fassen.
 
-
+%
+% ellpitische Funktionen als Trigonometrie
+%
 \subsection{Elliptische Funktionen als Trigonometrie}
 \begin{figure}
 \centering
@@ -33,6 +35,9 @@ auf einer Ellipse.
 \end{figure}
 % based on Willliam Schwalm, Elliptic functions and elliptic integrals
 
+%
+% Geometrie einer Ellipse
+%
 \subsubsection{Geometrie einer Ellipse}
 Eine {\em Ellipse} ist die Menge der Punkte der Ebene, für die die Summe
 \index{Ellipse}%
@@ -59,6 +64,9 @@ Die Strecke $e$ heisst auch {\em (lineare) Exzentrizität} der Ellipse.
 Das Verhältnis $\varepsilon= e/a$  heisst die {\em numerische Exzentrizität}
 der Ellipse.
 
+%
+% Die Ellipsengleichung
+%
 \subsubsection{Ellipsengleichung}
 Der Punkt $P=(x,y)$ auf der Ellipse hat die Entfernungen
 \begin{equation}
@@ -108,6 +116,9 @@ substituieren.
 Diese Rechnung führt man am einfachsten mit Hilfe eines
 Computeralgebraprogramms durch, welches obige Behauptung bestätigt.
 
+%
+% Normierung
+%
 \subsubsection{Normierung}
 Die trigonometrischen Funktionen sind definiert als Verhältnisse 
 von Seiten rechtwinkliger Dreiecke.
@@ -155,6 +166,9 @@ Die Gleichung der ``Einheitsellipse'' zu diesem Modulus ist
 x^2(k^2-1) + y^2 = 1.
 \]
 
+%
+% Definition der elliptischen Funktionen
+%
 \subsubsection{Definition der elliptischen Funktionen}
 Die elliptischen Funktionen für einen Punkt auf der Ellipse mit Modulus $k$
 können jetzt als Verhältnisse der Koordinaten des Punktes definieren.
@@ -263,6 +277,9 @@ k^2\operatorname{cn}(u,k)^2
 1-k^2.
 \end{align*}
 
+%
+% Ableitungen der Jacobi-ellpitischen Funktionen
+% 
 \subsubsection{Ableitung}
 Die trigonometrischen Funktionen sind deshalb so besonders nützlich 
 für die Lösung von Schwingungsdifferentialgleichungen, weil sie die
@@ -394,17 +411,18 @@ Damit haben wir die Ableitungsregeln
 -k^2\operatorname{sn}(u,k)\operatorname{cn}(u,k)
 \end{align*}
 
-XXX als elliptische Integrale \\
 XXX algebraische Beziehungen \\
 XXX Additionstheoreme \\
 XXX Perioden
 % use https://math.stackexchange.com/questions/3013692/how-to-show-that-jacobi-sine-function-is-doubly-periodic
 
-\subsection{Elliptische Funktionen und elliptische Integrale}
 
 XXX Ableitungen \\
 XXX Werte \\
 
+%
+% Lösung von Differentialgleichungen
+%
 \subsection{Lösungen von Differentialgleichungen}
 Die elliptischen Funktionen ermöglichen die Lösung gewisser nichtlinearer
 Differentialgleichungen in geschlossener Form.
@@ -416,6 +434,9 @@ p(x(t))
 \)
 mit einem Polynom dritten Grades als rechter Seite lösen zu können.
 
+%
+% Die Differentialgleichung der elliptischen Funktionen
+%
 \subsubsection{Die Differentialgleichungen der elliptischen Funktionen}
 Um Differentialgleichungen mit elliptischen Funktion lösen zu
 können, muss man als erstes die Differentialgleichungen derselben
@@ -522,7 +543,7 @@ muss.
 \end{table}
 
 Die elliptischen Funktionen genügen also alle einer nichtlinearen
-Differentialgleichung erster derselben Art.
+Differentialgleichung erster Ordnung der selben Art.
 Das Quadrat der Ableitung ist ein Polynom vierten Grades der Funktion.
 Um dies besser einzufangen, schreiben wir $\operatorname{zn}(u,k)$,
 wenn wir eine beliebige der drei Funktionen
@@ -546,6 +567,48 @@ vor allem aber haben Sie verschiedene Vorzeichen.
 Je nach Vorzeichen sind also eine andere elliptische Funktion als
 Lösung zu verwenden.
 
+%
+% Jacobi elliptische Funktionen und elliptische Integrale
+%
+\subsubsection{Jacobi elliptische Funktionen als elliptische Integrale}
+Die in Tabelle~\ref{buch:elliptisch:tabelle:loesungsfunktionen}
+zusammengestellten Differentialgleichungen ermöglichen nun, den
+Zusammenhang zwischen den Funktionen 
+$\operatorname{sn}(u,k)$, $\operatorname{cn}(u,k)$ und $\operatorname{dn}(u,k)$
+und den unvollständigen elliptischen Integralen herzustellen.
+Die Differentialgleichungen sind alle von der Form
+\begin{equation}
+\biggl(
+\frac{d y}{d u}
+\biggr)^2
+=
+p(u),
+\label{buch:elliptisch:eqn:allgdgl}
+\end{equation}
+wobei $p(u)$ ein Polynom vierten Grades in $y$ ist.
+Diese Differentialgleichung lässt sich mit Separation lösen.
+Dazu zieht man aus~\eqref{buch:elliptisch:eqn:allgdgl} die
+Wurzel
+\begin{align}
+\frac{dy}{du}
+=
+\sqrt{p(y)}
+\notag
+\intertext{und trennt die Variablen. Man erhält}
+\int\frac{dy}{\sqrt{p(y)}} = u+C.
+\label{buch:elliptisch:eqn:yintegral}
+\end{align}
+Solange $p(y)>0$ ist, ist der Integrand auf der linken Seite
+von~\eqref{buch:elliptisch:eqn:yintegral} ebenfalls positiv und
+das Integral ist eine monoton wachsende Funktion $F(y)$.
+Insbesondere ist $F(y)$ invertierbar.
+Die Lösung $y(u)$ der Differentialgleichung~\eqref{buch:elliptisch:eqn:allgdgl}
+ist daher 
+\[
+y(u) = F^{-1}(u+C).
+\]
+Die Jacobi elliptischen Funktionen sind daher inverse Funktionen
+der unvollständigen elliptischen Integrale.
 
 \subsubsection{Differentialgleichung zweiter Ordnung}
 Leitet die Differentialgleichung ~\eqref{buch:elliptisch:eqn:1storderdglell}
@@ -566,6 +629,9 @@ Differentialgleichung
 Dies ist die Gleichung eines harmonischen Oszillators mit einer 
 Anharmonizität der Form $2\alpha z^3$.
 
+%
+% Differentialgleichung des anharmonischen Oszillators
+%
 \subsubsection{Differentialgleichung des anharmonischen Oszillators}
 Wir möchten die nichtlineare Differentialgleichung
 \begin{equation}
@@ -715,6 +781,9 @@ x(t) = a\operatorname{zn}(b(t-t_0)),
 wobei die Funktion $\operatorname{zn}(u,k)$ auf Grund der Vorzeichen
 von $A$, $B$ und $C$ gewählt werden müssen.
 
+%
+% Das mathematische Pendel
+%
 \subsection{Das mathematische Pendel
 \label{buch:elliptisch:subsection:mathpendel}}
 \begin{figure}
@@ -805,6 +874,9 @@ Für $E>2mgl$ wird sich das Pendel im Kreis bewegen, für sehr grosse
 Energie ist die kinetische Energie dominant, die Verlangsamung im
 höchsten Punkt wird immer weniger ausgeprägt sein.
 
+%
+% Koordinatentransformation auf elliptische Funktionen
+%
 \subsubsection{Koordinatentransformation auf elliptische Funktionen}
 Wir verwenden als neue Variable 
 \[
@@ -864,6 +936,9 @@ Die Tabelle~\ref{buch:elliptisch:tabelle:loesungsfunktionen}
 zeigt, dass in der zweiten Klammer jeweils einer der Terme
 $1$ sein muss.
 
+%
+% Der Fall E < 2mgl
+%
 \subsubsection{Der Fall $E<2mgl$}
 \begin{figure}
 \centering
@@ -939,6 +1014,9 @@ Dies ist genau die Form der Differentialgleichung für die elliptische
 Funktion $\operatorname{sn}(u,k)$
 mit $k^2 = 2gml/E< 1$.
 
+%
+% Der Fall E > 2mgl
+%
 \subsection{Der Fall $E > 2mgl$}
 In diesem Fall hat das Pendel im höchsten Punkte immer noch genügend
 kinetische Energie, so dass es sich im Kreise dreht.
