@@ -6,10 +6,530 @@
 \section{Trigonometrische Funktionen
 \label{buch:geometrie:section:trigonometrisch}}
 \rhead{Trigonometrische Funktionen}
+Die Navigation zur See wie auch die Landvermessung hängen davon ab,
+dass man Winkel zwischen Himmelskörpern, Landmarken oder dem Horizont
+messen kann.
+Aus solchen Messungen können dann mittels bekannter Beziehungen
+zwischen den Winkeln und Seitenlängen in Dreiecken weitere Seitenlängen
+und Winkel berechnet werden.
+Schon in rechtwinkligen Dreiecken sind die Beziehungen zwischen Winkel
+und Seitenlängen von einer Art, die sich nicht durch algebraische
+Ausdrücke berechnen lässt.
+Es ist daher notwendig, neue spezielle Funktionen zu definieren,
+die trigonometrischen Funktionen.
 
-\subsection{Rechtwinklige Dreiecke}
+\subsection{Definition der trigonometrischen Funktionen}
+% XXX Abbildung Jakobsstab
+Eines der ältesten Messgeräte für Winkel ist der Jakobsstab,
+dargestellt in Abbildung~\ref{}.
+Der Querstab kann entlang des Stabs verschoben werden.
+Die beiden Punkte, deren Zwischenwinkel bestimmt werden soll,
+werden so anvisiert, dass sie sich auf den Enden des Querstabs 
+zu befinden scheinen.
+Abgelesen wird dann die Strecke $l$ zwischen dem Auge des Beobachters
+und dem Querstab.
+Daraus und aus der Länge $l_Q$ des Querstabes lässt sich jetzt der Winkel
+mit der Formel
+\[
+\tan\frac{\alpha}2 = \frac{l_Q}{2l}
+\]
+berechnen.
+Um nun einen numerischen Wert für $\alpha$ zu bekommen, braucht man
+eine Tabelle der Funktionswerte der Funktion auf der linken Seite.
 
-\subsection{Einheitskreis}
+\begin{figure}
+\centering
+\begin{tikzpicture}[>=latex,thick]
+\def\r{3}
+\def\a{53}
+\fill[color=red!20] (0,0) -- (-\a:1) arc (-\a:\a:1) -- cycle;
+\draw (0,0) -- (\a:\r);
+\draw (0,0) -- (-\a:\r);
+\node[color=red] at ({cos(\a/2)},0) [above left] {$\alpha$};
+\draw (0,0) circle[radius=\r];
+\draw[color=red,line width=1.4pt] (\a:\r) -- (-\a:\r);
+\fill[color=red] (\a:\r) circle[radius=0.05];
+\fill[color=red] (-\a:\r) circle[radius=0.05];
+\node[color=red] at ({\r*cos(\a)},0)
+	[above,rotate=-90] {$\operatorname{chord}\alpha$};
+\draw[color=gray,line width=1.0pt] (0,0) -- ({\r*cos(\a)},0);
+\fill[color=white] (0,0) circle[radius=0.08];
+\draw (0,0) circle[radius=0.08];
+\node at (\a:{0.5*\r}) [above,rotate=\a] {$r=1$};
+\node at ({\r*cos(\a)},{0.35*\r*sin(\a)})
+	[above,rotate=90] {$\sin\frac{\alpha}2$};
+\end{tikzpicture}
+\caption{Definition der Chord-Funktion $\operatorname{chord}\alpha$
+am Einheitskreis.
+\label{buch:geometrie:trigo:chorddef}}
+\end{figure}
+
+Die älteste bekannt Tabelle von Funktionswerten trigonometrischer
+Funktionen stammt von Hipparchus aus dem 2.~Jahrhundert BCE und
+enthält Werte der sogenannten Chord-Funktion $\operatorname{chord}\alpha$,
+welche die Länge der Sehne eines Bogens $\alpha$ des Einheitskreises
+berechnet.
+Aus der Abbildung~\ref{buch:geometrie:trigo:chorddef} ergibt sich
+\[
+\operatorname{chord}\alpha = 2\sin\frac{\alpha}2.
+\]
+Die Verwendung der Chord-Funktion war bis ins 19.~Jahrhundert in der
+Landvermessung üblich.
+Neben der Chord-Funktion waren auch noch andere heute weitgehend
+vergessen Funktionen im Einsatz wie zum Beispiel der Sinus versus
+\[
+\operatorname{vers}\alpha=1-\cos\alpha
+=
+2\sin^2\frac{\alpha}2
+\]
+oder der Semiversus
+\[
+\operatorname{sem}\alpha
+=
+\frac{\operatorname{vers}\alpha}{2}
+=
+\sin^2\frac{\alpha}2,
+\]
+der besonders nützlich bei der Berechnung der Entfernung
+zweier in geographischer Länge und Breite gegebener Punkte
+auf der Erdoberfläche ist und daher in der Navigation lange
+üblich war.
+
+Eine neue spezielle Funktion sollte sowohl möglichst
+universell einsetzbar sein als auch gut und effizient
+berechnet werden können.
+Aus dieser Forderung haben sich die Funktion $\sin\alpha$,
+$\cos\alpha$ und $\tan\alpha$ als die nützlichsten herausgestellt.
+Mit ihnen lassen sich a
+
+%
+% Rechtwinklige Dreiecke
+%
+\subsubsection{Rechtwinklige Dreiecke}
+Ähnliche Dreiecke haben gleiche Seitenverhältnisse und Winkel.
+Rechtwinklige Dreiecke sind daher bis auf Ähnlichkeit vollständig
+durch die Angabe eines Winkels beschrieben.
+Die Seitenverhältnisse müssen daher aus den Winkeln berechnet werden
+können.
+Genau dies ist die Aufgabe, die die trigonometrischen Funktionen lösen.
+
+\begin{figure}
+\centering
+\includegraphics{chapters/030-geometrie/images/deftrig.pdf}
+\caption{Rechtwinkliges Dreieck zur Definition der trigonometrischen
+Funktionen.
+\label{buch:geometrie:trigo:fig:definition}}
+\end{figure}
+
+\begin{definition}
+\label{buch:geometrie:def:trigo}
+In einem rechtwinkligen Dreieck mit Winkel $\alpha$, $0<\alpha < \frac{\pi}2$,
+sind die Seitenverhältnisse gegeben durch die trigonometrischen Funktionen,
+die wie folgt definiert sind:
+\begin{align*}
+\sin\alpha &= \frac{\text{Gegenkatete}}{\text{Hypothenuse}} = \frac{b}{c},
+&
+\cos\alpha &= \frac{\text{Ankatete}}{\text{Hypothenuse}} = \frac{a}{c}
+&&\text{und}
+&
+\tan\alpha &= \frac{\text{Gegenkatete}}{\text{Ankatete}} = \frac{a}{b}
+\intertext{mit den Kehrwerten}
+\sec\alpha &= \frac{\text{Hypothenuse}}{\text{Gegenkatete}} = \frac{c}{b},
+&
+\csc\alpha &= \frac{\text{Hypothenuse}}{\text{Ankatete}} = \frac{c}{a}
+&&\text{und}
+&
+\cot\alpha &= \frac{\text{Ankatete}}{\text{Gegenkatete}} = \frac{b}{a}
+\end{align*}
+(siehe auch Abbildung~\ref{buch:geometrie:trigo:fig:definition}).
+\end{definition}
+
+Aus der Definition und dem Satz von Pythagoras kann eine grosse Zahl
+von Beziehungen zwischen den trigonometrischen Funktionen abgeleitet
+werden.
+Zum Beispiel folgt sofort
+\[
+\sin^2\alpha+\cos^2\alpha
+=
+\biggl(\frac{b}{c}\biggr)^2
++
+\biggl(\frac{a}{c}\biggr)^2
+=
+\frac{a^2+b^2}{c^2} 
+=
+1.
+\]
+Insbesondere lässt sich $\sin\alpha$ durch $\cos\alpha$ ausdrücken
+und umgekehrt:
+\[
+\sin\alpha
+=
+\sqrt{1-\cos^2\alpha}
+\qquad\text{und}\qquad
+\cos\alpha
+=
+\sqrt{1-\sin^2\alpha}
+\]
+Da sich alle Funktionen durch $\cos\alpha$ und $\sin\alpha$ ausdrücken
+lassen, können alle auch nur durch eine ausgedrückt werden.
+Durch Umkehrung dieser Beziehung kann man jede der trigonometrischen
+Funktionen durch jede andere ausdrücken, wie dies in
+Tabelle~\ref{buch:geometrie:tab:trigo} zusammengestellt ist.
+
+\begin{figure}
+\centering
+\renewcommand{\arraystretch}{2.5}
+\renewcommand{\tabcolsep}{5pt}
+\begin{tabular}{|>{$}c<{$}|>{$}c<{$}>{$}c<{$}>{$}c<{$}>{$}c<{$}>{$}c<{$}>{$}c<{$}|}
+\hline
+%\downarrow\text{ ausgedrückt durch }\rightarrow
+&\sin\alpha&\cos\alpha&\tan\alpha&\cot\alpha&\sec\alpha&\csc\alpha\\[5pt]
+\hline
+\sin\alpha
+	&\sin\alpha
+	&\sqrt{1-\cos^2}
+		&\displaystyle\frac{\tan\alpha}{\sqrt{1+\tan^2\alpha}}
+		&\displaystyle\frac{1}{\sqrt{1+\cot^2\alpha}}
+			&\displaystyle\frac{1}{\sec\alpha}
+			&\displaystyle\frac{\sqrt{\csc^2\alpha-1}}{\csc\alpha}
+\\
+\cos\alpha
+	&\sqrt{1-\sin^2\alpha}
+	&\cos\alpha
+		&\displaystyle\frac{1}{\sqrt{1+\tan^2\alpha}}
+		&\displaystyle\frac{\cot\alpha}{\sqrt{1+\cot^2\alpha}}
+			&\displaystyle\frac{\sqrt{\sec^2\alpha-1}}{\sec\alpha}
+			&\displaystyle\frac{1}{\csc\alpha}
+\\
+\tan\alpha
+	&\displaystyle\frac{\sin\alpha}{\sqrt{1-\sin^2\alpha}}
+	&\displaystyle\frac{\sqrt{1-\cos^2\alpha}}{\cos\alpha}
+		&\tan\alpha
+		&\displaystyle\frac{1}{\cot\alpha}
+			&\displaystyle\frac{1}{\sqrt{\sec^2\alpha-1}}
+			&\displaystyle\sqrt{\csc^2\alpha-1}
+\\
+\cot\alpha
+	&\displaystyle\frac{\sqrt{1-\sin^2\alpha}}{\sin\alpha}
+	&\displaystyle\frac{\cos\alpha}{\sqrt{1-\cos^2\alpha}}
+		&\displaystyle\frac{1}{\tan\alpha}
+		&\cot\alpha
+			&\displaystyle\sqrt{\sec^2\alpha-1}
+			&\displaystyle\frac{1}{\sqrt{\sec^2\alpha-1}}
+\\
+\sec\alpha
+	&\displaystyle\frac{1}{\sin\alpha}
+	&\displaystyle\frac{1}{\sqrt{1-\cos^2\alpha}}
+		&\displaystyle\frac{\sqrt{1+\tan^2\alpha}}{\tan\alpha}
+		&\displaystyle\sqrt{1+\cot^2\alpha}
+			&\sec\alpha
+			&\displaystyle\frac{\csc\alpha}{\sqrt{\csc^2\alpha-1}}
+\\
+\csc\alpha
+	&\displaystyle\frac{1}{\sqrt{1-\sin^2\alpha}}
+	&\displaystyle\frac{1}{\cos\alpha}
+		&\displaystyle\sqrt{1+\tan^2\alpha}
+		&\displaystyle\frac{\sqrt{1+\cot^2\alpha}}{\cot\alpha}
+			&\displaystyle\frac{\sec\alpha}{\sqrt{\sec^2\alpha-1}}
+			&\csc\alpha
+\\[8pt]
+\hline
+\end{tabular}
+\caption{Darstellung aller trigonometrischen Funktionen durch jede beliebige
+andere Funktion.
+Für Winkel ausserhalb des 1.~Quadranten müssen die Vorzeichen der
+Quadratwurzeln so gewählt werden, dass die Funktion das richtige
+Vorzeichen erhält.
+\label{buch:geometrie:tab:trigo}}
+\end{figure}
+
+Diese Definition~\ref{buch:geometrie:def:trigo}
+ist auf spitze Winkel und damit auf nichtnegative Werte der
+trigonometrischen Funktionen beschränkt.
+
+%
+% Definition am Einheitskreis
+%
+\subsubsection{Einheitskreis}
+Im vorangegangen Abschnitt wurden die rechtwinkligen Dreiecke durch
+einen Winkel charakterisiert und die trigonometrischen
+Funktionen als Verhältnis von Seiten des Dreiecks abgeleitet.
+Dabei wurde die Schwierigkeit übergangen, wie überhaupt der Winkel
+definiert werden soll.
+Ein Winkel war im Wesentlichen durch die Eigenschaft
+definiert, dass ähnliche Dreiecke den gleichen Winkel haben.
+Die Definition~\ref{buch:geometrie:def:trigo} ist in diesem Licht
+nichts anderes als eine Namenskonvention für die Seitenverhältnisse
+einer Klasse von ähnlichen rechtwinkligen Dreiecken.
+
+\begin{figure}
+\centering
+\includegraphics{chapters/030-geometrie/images/einheitskreis.pdf}
+\caption{Definition der trigonometrischen Funktion mit Hilfe des
+Einheitskreises
+\label{buch:geometrie:trigo:fig:einheitskreis}}
+\end{figure}
+
+Eine alternative Charakterisierung rechtwinkliger Dreiecke
+geht von Punkten auf dem Einheitskreis aus.
+Die Lote von einem Punkt $P$ auf dem Einheitskreis definieren
+zwei ähnliche Dreiecke, mit dem Ursprung $O$, dem Punkt $P$
+und dem Fusspunkt des Lotes.
+Die Koordinaten des Punktes $P$ können im Gegensatz zu den Seiten
+des rechtwinkligen Dreiecks in
+Abbildung~\ref{buch:geometrie:trigo:fig:definition}
+auch negativ sein.
+Ein Punkt im zweiten Quadranten hat zum Beispiel eine negative
+$x$-Koordinate.
+Die trigonometrischen Funktionen können nun analog zu
+Definition~\ref{buch:geometrie:def:trigo} aber unter Verwendung
+der Koordinaten $x$ und $y$.
+
+Auch das Argument $\alpha$ der trigonometrischen Funktionen kann
+jetzt auf natürlichere Art und Weise definiert werden.
+Es ist die Länge des Bogens auf dem Einheitskreis zwischen dem
+Punkt $(1,0)$ und $P$.
+Damit lassen sich die trigonometrischen Funktionen jetzt
+für beliebige Winkel $\alpha\in\mathbb{R}$ definieren.
+
+\begin{definition}
+\label{buch:geometrie:def:trigeinheitskreis}
+Die trigonometrischen Funktionen des Winkels $\alpha$ zwischen der 
+$x$-Achse und der Richtung durch den Punkt $P$ sind 
+\begin{align*}
+\sin\alpha &= x, &\cos\alpha &= y&&\text{und}& \tan\alpha=\frac{y}{x}
+\intertext{mit den Kehrwerten}
+\sec\alpha &= \frac{1}{x}, &\csc\alpha &= \frac{1}{y}&&\text{und}& \tan\alpha=\frac{x}{y}.
+\end{align*}
+(siehe auch Abbildung~\ref{buch:geometrie:trigo:fig:einheitskreis}).
+\end{definition}
+
+Die Beziehungen der Tabelle~\ref{buch:geometrie:tab:trigo}
+zwischen den trigonometrischen Funktionen bleibt auch für 
+diese erweiterten Funktionen gültig, wenn das Vorzeichen der
+Quadratwurzel falls vorhanden geeignet gewählt wird.
+
+%
+% Drehungen in der Ebene
+%
+\subsection{Drehungen der Ebene}
+Die Funktionen $\sin\alpha$ und $\cos\alpha$ sind in den Anwendungen
+besonders nützlich, weil sich damit die Kreisbewegung parametrisieren
+lässt.
+Etwas allgemeiner kann man damit Drehungen der Ebene beschreiben.
+Damit entstehen die Funktion als Nebenprodukt einer Parametrisierung
+der Drehgruppe $\operatorname{SO}(2)$.
+Daraus werden sich später Ableitungseigenschaften und
+Potenzreihendarstellungen der trigonometrischen Funktionen ableiten
+lassen.
+
+\subsubsection{Drehmatrizen und Additionstheoreme}
+Eine Drehung der Ebenen $\mathbb{R}^2$ um den Winkel $\alpha$ bildet
+die Standardbasisvektoren auf die Vektoren
+\[
+e_1=\begin{pmatrix}1\\0\end{pmatrix}
+\mapsto
+\begin{pmatrix}
+\cos\alpha\\\sin\alpha
+\end{pmatrix}
+\qquad\text{und}\qquad
+e_2=\begin{pmatrix}0\\1\end{pmatrix}
+\mapsto
+\begin{pmatrix}
+-\sin\alpha
+\\
+\cos\alpha
+\end{pmatrix}
+\]
+ab.
+Die Abildungsmatrix der Drehung ist daher
+\[
+D_\alpha
+=
+\begin{pmatrix*}[r]
+\cos\alpha&-\sin\alpha\\
+\sin\alpha& \cos\alpha
+\end{pmatrix*}.
+\]
+Die Zusammensetzung zweier Drehungen um die Winkel $\alpha$ und $\beta$
+ist wieder eine Drehung um den Winkel $\alpha+\beta$, es gilt
+also
+\[
+D_{\alpha+\beta}
+=
+D_{\alpha}D_{\beta},
+\]
+oder in Matrizenform
+\begin{align*}
+D_{\alpha+\beta}
+&=
+\begin{pmatrix*}[r]
+\cos(\alpha+\beta)&-\sin(\alpha+\beta) \\
+\sin(\alpha+\beta)& \cos(\alpha+\beta)
+\end{pmatrix*}
+\\
+=
+D_{\alpha}D_{\beta}
+&=
+\begin{pmatrix*}[r]
+\cos\alpha&-\sin\alpha\\
+\sin\alpha&\cos\alpha
+\end{pmatrix*}
+\begin{pmatrix*}[r]
+\cos\beta&-\sin\beta\\
+\sin\beta&\cos\beta
+\end{pmatrix*}
+\\
+&=
+\begin{pmatrix}
+\cos\alpha\cos\beta-\sin\alpha\sin\beta
+	& -\cos\alpha\sin\beta -\sin\alpha\cos\beta\\\
+\cos\alpha\sin\beta+\sin\alpha\cos\beta
+	& \cos\alpha\cos\beta-\sin\alpha\sin\beta
+\end{pmatrix}
+\end{align*}
+Aus dem Vergleich der beiden Matrizen liest man die Additionstheoreme.
+
+\begin{satz}
+Für $\alpha,\beta\in\mathbb{R}$ gilt
+\begin{align*}
+\sin(\alpha\pm\beta)
+&=
+\cos\alpha\cos\beta\mp\sin\alpha\sin\beta
+\\
+\cos(\alpha\pm\beta)
+&=
+\cos\alpha\cos\beta\pm\sin\alpha\sin\beta
+\end{align*}
+\end{satz}
+
+Ein besonders einfacher Spezialfalls ist $\alpha=\beta$, es ergben sich die
+Doppelwinkelformeln
+\begin{align*}
+\cos2\alpha &= \cos^2\alpha-\sin^2\alpha
+\\
+\sin2\alpha &= 2\cos\alpha\sin\alpha.
+\end{align*}
+In der Formel für $\cos2\alpha$ kann die rechte Seite durch nur
+eine Winkelfunktion ausdrücken:
+\begin{align*}
+\cos2\alpha &= \cos^2\alpha - (1-\cos^2\alpha) = 2\cos^2\alpha -1
+\\
+\cos2\alpha &= (1-\sin^2\alpha) - \sin^2\alpha = 1-2\sin^2\alpha.
+\end{align*}
+Beide Ausdrücke lassen sich leicht nach den Funktionen auf der rechten
+Seite auflösen, so erhält man die Halbwinkelformeln
+\begin{align*}
+\cos^2\alpha &= \frac{1+\cos2\alpha}2
+&&\Rightarrow&
+\cos^2\frac{\alpha}2 &=\frac{1+\cos\alpha}2
+\\
+\sin^2\alpha &= \frac{1-\sin2\alpha}2
+&&\Rightarrow&
+\sin^2\frac{\alpha}2 &= \frac{1-\sin\alpha}2.
+\end{align*}
+Der letzte Ausdruck ist auch bekannt als der Semiversus.
+
+\subsubsection{Funktionen für mehrfache Winkel}
+Die Additionstheoreme können dazu verwendet werden, Formeln für
+die Werte der trigonometrischen Funktionen mehrfacher Winkel zu
+finden.
+Die Berechnung kann etwas vereinfacht werden, wenn man die Drehmatrix
+mit Hilfe der Matrix
+\[
+J=\begin{pmatrix}0&-1\\1&0\end{pmatrix}
+\]
+als
+\[
+D_{\alpha}
+=
+E
+\cos\alpha
++
+J
+\sin\alpha
+\]
+schreiben.
+Die Potenzen von $J$ sind
+\[
+J^2 = -E,\quad
+J^3 = -J \quad\text{und}\quad
+J^4 = E.
+\]
+Daraus ergibt sich
+\begin{align*}
+D_{n\alpha}
+=
+(D_{\alpha})^n
+&=
+(E\cos\alpha+J\sin\alpha)^n
+\\
+&=
+\sum_{k=0}^n \binom{n}{k}\cos^{n-k}\alpha\sin^{k}\alpha J^k
+\\
+&=
+\sum_{l=0}^{\lfloor\frac{n}2\rfloor}
+(-1)^l
+\binom{n}{2l}\cos^{n-2l}\alpha \sin^{2l}\alpha 
+-
+J
+\sum_{l=0}^{\lfloor\frac{n}2\rfloor}
+(-1)^l
+\binom{n}{2l+1}\cos^{n-2l-1}\alpha \sin^{2l+1}\alpha 
+\intertext{Durch Vergleich mit der Matrix $D_{n\alpha}$ findet man die
+Formeln für die Funktionen des $n$-fachen Winkels:}
+\cos n\alpha
+&=
+\sum_{l=0}^{\lfloor\frac{n}2\rfloor}
+(-1)^l
+\binom{n}{2l}\cos^{n-2l}\alpha \sin^{2l}\alpha 
+\\
+\sin n\alpha
+&=
+-
+\sum_{l=0}^{\lfloor\frac{n}2\rfloor}
+(-1)^l
+\binom{n}{2l+1}\cos^{n-2l-1}\alpha \sin^{2l+1}\alpha 
+\end{align*}
+Für kleine Werte von $n$ sind die Formeln einigermassen übersichtlich,
+zum Beispiel für $n=3$:
+\begin{align*}
+\cos 3\alpha
+&=
+\cos^3\alpha-3\cos\alpha\sin^2\alpha
+=
+\cos^3\alpha-3\cos\alpha(1-\cos^2\alpha)
+\\
+&=
+4\cos^3\alpha-3\cos\alpha
+\\
+\sin 3\alpha
+&=
+-3\cos^2\alpha\sin\alpha
++
+\sin^3\alpha
+=
+-3(1-\sin^2\alpha)\sin\alpha+\sin^3\alpha
+\\
+&=
+4\sin^3\alpha
+-3\sin\alpha
+\end{align*}
+Indem man diese Formeln als kubische Gleichungen für die
+Unbekannte $\cos\alpha$ bzw.~$\sin\alpha$ betrachtet, kann
+man durch Lösung der Gleichung zum Beispiel mit der Formel von
+Cardano 
+% XXX Verweis auf die Formel von Cardano
+zu gegebenen Werten von $\cos 3\alpha$ und $\sin 3 \alpha$
+die Werte von $\cos\alpha$ und $\sin\alpha$ durch rein
+algebraische Operationen bestimmen.
+
+\subsubsection{Eine Tabelle der Werte der trigonometrischen Funktionen
+aufstellen}
+
+\subsection{Differentialgleichungen}
+
+
 
 
 

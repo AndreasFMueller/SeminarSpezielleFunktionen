@@ -1,0 +1,36 @@
+%
+% deftrig.tex -- Definition der trigonometrischen Funktionen
+%
+% (c) 2021 Prof Dr Andreas Müller, OST Ostschweizer Fachhochschule
+%
+\documentclass[tikz]{standalone}
+\usepackage{amsmath}
+\usepackage{times}
+\usepackage{txfonts}
+\usepackage{pgfplots}
+\usepackage{csvsimple}
+\usetikzlibrary{arrows,intersections,math,calc}
+\begin{document}
+\def\skala{1}
+\begin{tikzpicture}[>=latex,thick,scale=\skala]
+
+\coordinate (B) at (0,0);
+\coordinate (C) at (4,0);
+\coordinate (A) at (4,3);
+\fill[color=gray] (B) -- (0:1.5) arc (0:{atan(3/4)}:1.5) -- cycle;
+\node at ({0.5*atan(3/4)}:1) {$\alpha$};
+\draw (A) -- (B) -- (C) -- cycle;
+\fill (A) circle[radius=0.04];
+\fill (B) circle[radius=0.04];
+\fill (C) circle[radius=0.04];
+\node at ($0.5*(A)+0.5*(B)$) [above left] {$c$};
+\node at ($0.5*(B)+0.5*(C)$) [below] {$a$};
+\node at ($0.5*(C)+0.5*(A)$) [right] {$b$};
+\node at (A) [above right] {$A$};
+\node at (B) [below left] {$B$};
+\node at (C) [below right] {$C$};
+
+\end{tikzpicture}
+\end{document}
+
+---

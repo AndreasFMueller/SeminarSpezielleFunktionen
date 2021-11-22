@@ -1,0 +1,86 @@
+%
+% einheitskreis.tex -- trigonometrische Funktionen und Einheitskreis
+%
+% (c) 2021 Prof Dr Andreas Müller, OST Ostschweizer Fachhochschule
+%
+\documentclass[tikz]{standalone}
+\usepackage{amsmath}
+\usepackage{times}
+\usepackage{txfonts}
+\usepackage{pgfplots}
+\usepackage{csvsimple}
+\usetikzlibrary{arrows,intersections,math,calc}
+\begin{document}
+\def\skala{1}
+\definecolor{darkgreen}{rgb}{0,0.6,0}
+\begin{tikzpicture}[>=latex,thick,scale=\skala]
+
+\def\a{33}
+\def\b{142}
+\def\r{3}
+\def\R{2}
+\draw[color=red,line width=1.4pt] (0,0) circle[radius=\r];
+
+\fill[color=darkgreen!10] (0,0) -- ({\r*cos(\b)},0) -- (\b:\r) -- cycle;
+\node[color=darkgreen] at ({\b+0.5*(180-\b)}:{0.6*\r}) {$\Delta$};
+\fill[color=darkgreen!20] (0,0) -- (0:{0.6*\R}) arc (0:\b:{0.6*\R}) -- cycle;
+\node[color=darkgreen] at ({0.5*\b}:{0.4*\R}) {$\beta$};
+
+\fill[color=blue!20,opacity=0.5] (0,0) -- ({\r*cos(\a)},0) -- (\a:\r) -- cycle;
+\fill[color=blue!40,opacity=0.5] (0,0) -- (0:{0.45*\R}) arc (0:\a:{0.45*\R}) -- cycle;
+\node[color=blue] at ({0.5*\a}:{0.3*\R}) {$\alpha$};
+\node[color=blue] at ({0.5*\a}:{0.6*\r}) {$\Delta$};
+
+\node[color=blue] at ($(\a:\r)+(0.1,0)$) [above] {$P$};
+\node[color=darkgreen] at ($(\b:\r)+(-0.05,-0.05)$) [left] {$Q$};
+
+\begin{scope}
+\clip (-5,-4) rectangle (5,4);
+\draw[color=blue,line width=1.0pt] (0,0) -- (\a:\r);
+\draw[color=blue,line width=0.4pt] (\a:\r) -- (\a:10);
+\fill[color=blue] (\a:\r) circle[radius=0.05];
+
+\draw[color=blue,line width=1.4pt] (\r,0) -- (\r,{\r*tan(\a)});
+\node[color=blue] at (\r,{0.5*\r*tan(\a)}) [right] {$\tan\alpha$};
+
+\draw[color=blue,line width=0.4pt] ({\r*cos(\a)},0) -- (\a:\r);
+\node[color=blue] at ({\r*cos(\a)},0) [below] {$\cos\alpha\mathstrut$};
+\draw[color=blue] ({\r*cos(\a)},-0.1) -- ({\r*cos(\a)},0.1);
+
+\draw[color=blue,line width=0.4pt] (0,{\r*sin(\a)}) -- (\a:\r);
+\node[color=blue] at (0.05,{\r*sin(\a)+0.1})
+	[below left] {$\sin\alpha\mathstrut$};
+\draw[color=blue] (-0.1,{\r*sin(\a)}) -- (0.1,{\r*sin(\a)});
+
+\draw[color=blue,line width=1.4pt] (0,\r) -- ({\r/tan(\a)},\r);
+\node[color=blue] at ({0.5*\r/tan(\a)},\r) [above] {$\cot\alpha$};
+
+\draw[color=darkgreen,line width=1pt] (0,0) -- (\b:\r);
+\draw[color=darkgreen,line width=0.4pt] (\b:\r) -- (\b:10);
+\draw[color=darkgreen,line width=0.4pt] (0,0) -- (\b:-10);
+\fill[color=darkgreen] (\b:\r) circle[radius=0.05];
+
+\draw[color=darkgreen,line width=1.4pt] (0,\r) -- ({\r/tan(\b)},\r);
+\node[color=darkgreen] at ({0.5*\r/tan(\b)},\r) [above] {$\cot\beta$};
+
+\draw[color=darkgreen,line width=1.4pt] (\r,0) -- (\r,{\r*tan(\b)});
+\node[color=darkgreen] at (\r,{0.5*\r*tan(\b)}) [right] {$\tan\beta$};
+
+\draw[color=darkgreen,line width=0.4pt] (\b:\r) -- (0,{\r*sin(\b)});
+\node[color=darkgreen] at (-0.05,{\r*sin(\b)-0.1})
+	[above right] {$\sin \beta\mathstrut$};
+\draw[color=darkgreen] (-0.1,{\r*sin(\b)}) -- (0.1,{\r*sin(\b)});
+
+\draw[color=darkgreen,line width=0.4pt] (\b:\r) -- ({\r*cos(\b)},0);
+\node[color=darkgreen] at ({\r*cos(\b)},0) [below] {$\cos\beta\mathstrut$};
+\draw[color=darkgreen] ({\r*cos(\b)},-0.1) -- ({\r*cos(\b)},0.1);
+
+\end{scope}
+
+\draw[->] (-5.1,0) -- (5.4,0) coordinate[label={$x$}];
+\draw[->] (0,-4.1) -- (0,4.4) coordinate[label={right:$y$}];
+\node at (0,0) [below left] {$O$};
+
+\end{tikzpicture}
+\end{document}
+
