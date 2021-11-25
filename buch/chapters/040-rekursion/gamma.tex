@@ -5,6 +5,7 @@
 %
 \section{Die Gamma-Funktion
 \label{buch:rekursion:section:gamma}}
+\rhead{Gamma-Funktion}
 Die Fakultät $x!$ kann rekursiv durch 
 \[
 	x! = x\cdot (x-1)! \qquad\text{und}\qquad 0!=1
@@ -21,6 +22,390 @@ Kann man eine reelle oder komplexe Funktion finden, die die
 Funktionalgleichung~\eqref{buch:rekursion:eqn:gammadef}
 erfüllt und damit die Fakultät auf beliebige Argumente ausdehnt?
 
+\subsection{Produktformel}
+Die Fakultät $n!$ ist ein Produkt von $n$ Faktoren, es ist daher
+natürlich zu versuchen, auch $x!$ als ein Produkt zu schreiben.
+Allerdings kann es nicht möglich sein, dies mit einer endlichen
+Anzahl von Faktoren zu machen, denn wenn $x$ grösser wird, muss auch
+die Zahl der Faktoren grösser werden.
+Mit jedem zusätzlichen Faktor ist ein Sprung der Werte zu erwarten.
+Wir erwarten daher entweder ein unendliches Produkt oder einen
+Ausdreck, bei dem die ``Anzahl'' $x$ der Faktoren im Exponenten
+steht.
+In diesem Abschnitt soll zunächst eine solcher Ausdruck gefunden
+werden.
+Dieser ist jedoch für die numerische Berechnung absolut ungeeignet,
+so dass er später in ein unendliches Produkt umgeformt werden muss.
+
+\subsubsection{Fakultät als Bruch}
+Euler hat das Problem, die Fakultät auf beliebige reelle oder komplexe
+Zahlen auszudehnen, wie folgt angepackt.
+Zunächst hat er bemerkt, dass für ganzzahlige $x$ und natürliche $n$
+\begin{align}
+x! 
+&=
+1\cdot 2\cdot 3\cdot\ldots\cdot x
+\notag
+\\
+&=
+\frac{
+1\cdot 2\cdot 3\cdot\ldots\cdot x\cdot (x+1) (x+2)\cdots(x+n)
+}{
+(x+1)(x+2)\cdots(x+n)
+}
+\notag
+\\
+&=
+\frac{
+1\cdot 2\cdot\ldots\cdot n\cdot(n+1)\cdot(n+2)\cdots(n+x)
+}{
+(x+1)(x+2)\cdots(x+n)
+}
+\notag
+\\
+&=
+\frac{n! \cdot (n+1)(n+1)\cdots(n+x)}{(x+1)(x+2)\cdots(x+n)}
+\label{buch:rekursion:gamma:eqn:fakultaet}
+\end{align}
+gilt.
+Der Plan ist, dies so umzuformen, dass man für $x$ eine beliebige
+komplexe Zahl einsetzen kann.
+
+\subsubsection{Pochhammer-Symbol}
+Die spezielle Form des Nenners und des zweiten Faktors im Zähler
+von \eqref{buch:rekursion:gamma:eqn:fakultaet}
+rechtfertigt die folgende Definition.
+
+\begin{definition}[Pochhammer]
+Für $a\in\mathbb{C}$ und $n\in\mathbb{N}$ heisst das Produkt
+\[
+(a)_n = a\cdot(a+1)\cdot(a+2)\cdots(a+n-1)
+\]
+das Pochhammer-Symbol oder die verschobene Fakultät.
+\index{Pochhammer-Symbol}
+\end{definition}
+
+Die verschobene Fakultät $(a)_n$ hat also genau $n$ Faktoren, deren
+erster $1$ ist.
+Die gewöhnliche Fakultät hat $n$ Faktoren, deren erster $1$ ist, also
+ist $n! = (1)_n$.
+
+Der Ausdruck \eqref{buch:rekursion:gamma:eqn:fakultaet}
+für $x!$ wird unter Verwendung des Pochhammer-Symbols zu
+\begin{equation}
+x! = \frac{n! (n+1)_x}{(x+1)_n}.
+\label{buch:rekursion:gamma:eqn:produkt2}
+\end{equation}
+Leider ist dieser Ausdruck ebenfalls nicht auf beliebige $x$
+verallgemeinerungsfähig, denn $(n)_x$ ist nur natürliche $x$ definiert.
+Der Faktor $(n+1)_x$ enthält $x$ Faktoren beginnend bei $n$.
+Für grosses $n$ sind diese Faktoren nahe beeinander, man sollte also
+$(n+1)_x$ durch $n^x$ approximieren können.
+Wir erweitern daher \eqref{buch:rekursion:gamma:eqn:produkt2} mit $n^x$
+und erhalten
+\begin{equation}
+x!
+=
+\frac{n!n^x}{(x+1)_n}\cdot
+\frac{(n+1)_x}{n^x}.
+\label{buch:rekursion:gamma:eqn:produkt3}
+\end{equation}
+Der erste Faktor in diesem Ausdruck enthält jetzt nur noch Dinge,
+die für beliebige $x\in\mathbb{C}$ definiert sind.
+
+\subsubsection{Grenzwertdefinition}
+Der zweite Bruch in \eqref{buch:rekursion:gamma:eqn:produkt3}
+besteht aus Termen, die zwar nur für natürliches $x$ definiert sind,
+wir vermuten aber, dass er für grosses $n$ gegen $1$ konvergiert.
+Tatsächlich gilt
+\[
+\lim_{n\to\infty}
+\frac{(n+1)_x}{n^x}
+=
+\lim_{n\to\infty}
+\underbrace{\frac{n+1}{n}}_{\displaystyle\to 1}
+\cdot
+\underbrace{\frac{n+2}{n}}_{\displaystyle\to 1}
+\cdot\ldots\cdot
+\underbrace{\frac{n+x}{n}}_{\displaystyle\to 1}
+=
+1,
+\]
+da  $(n+x)/n=1+x/n\to 1$ für grosses $n$.
+Dies würde die folgende Definition rechtfertigen.
+
+\begin{definition}
+\label{buch:rekursion:gamma:def:definition}
+Die Gamma-Funktion $\Gamma(x)$ einer Zahl
+$x\in\mathbb{C}\setminus\{0,-1,-2,-3,\dots\}$ ist der Grenzwert
+\[
+\Gamma(x) = \lim_{n\to\infty} \frac{n!n^{x-1}}{(x)_n}.
+\] 
+\end{definition}
+
+\subsubsection{Rekursionsgleichung für $\Gamma(x)$}
+Es ist aus der Herleitung klar, dass $\Gamma(n)=(n-1)!$ sein muss.
+Wir sollten dies aber auch direkt aus der
+Definition~\ref{buch:rekursion:gamma:def:definition} ableiten
+können.
+Dazu müssen wir nur überprüfen, ob $\Gamma(1)=0!=1$ ist und ob
+die Rekursionsformel $\Gamma(n)=n\Gamma(n-1)$ gilt.
+
+Den Wert $\Gamma(1)$ kann man direkt berechnen:
+\[
+\Gamma(1)
+=
+\lim_{n\to\infty} \frac{n!}{(1)_n}
+=
+\lim_{n\to\infty} \frac{n!}{n!}
+=
+1
+\]
+wegen $(1)_n=n!$.
+
+Für die Rekursionsformel muss man den Grenzwert für $x$ und $x+1$
+miteinander vergleichen.
+Aus dem Term $(x+1)_n$ im Nenner muss man einen Term $(x)_n$ machen,
+dies ist möglich, indem man mit $x$ erweitert:
+\begin{align*}
+\Gamma(x+1)
+&=
+\lim_{n\to\infty}\frac{n!n^x}{(x+1)_n}
+=
+x\lim_{n\to\infty}\frac{n!n^x}{x(x+1)_n}
+=
+x\lim_{n\to\infty}\frac{n!n^x}{(x)_{n+1}}.
+\intertext{Wir müssen jetzt nur noch zeigen, dass der Grenzwert
+auf der rechten Seite gegen $\Gamma(x)$ konvergiert,
+in dessen Definition aber die Potenz $n^{x-1}$ vorkommt.
+Wir müssen also einen Faktor $n$ los werden und gleichzeitig
+aus $n$ überall $n+1$ machen, damit der Nenner wieder passt.
+Dabei wird}
+\Gamma(x+1)
+&=
+x\lim_{n\to\infty}
+\frac{(n+1)!n^{x-1}}{(x)_{n+1}}
+\cdot
+\underbrace{\frac{n}{n+1}}_{\displaystyle\to 1}
+\\
+&=
+x\lim_{n\to\infty}
+\underbrace{\frac{(n+1)!(n+1)^{x-1}}{(x)_{n+1}}}_{\displaystyle\to\Gamma(x)}
+\cdot
+\frac{n^{x-1}}{(n+1)^{x-1}}
+\\
+&=
+\Gamma(x)
+\lim_{n\to\infty} \biggl(\frac{n}{n+1}\biggr)^{x-1}
+=
+\Gamma(x),
+\end{align*}
+Weil $n/(n+1)\to 1$ ist und die Funktion $z\mapsto z^{x-1}$ für alle
+nach der Definition zulässigen Werte von $x$ eine stetige Funktion ist.
+
+\subsubsection{Numerische Unzulänglichkeiten der Grenzwertdefinition}
+Die Grenzwertdefinition~\ref{buch:rekursion:gamma:def:definition}
+ist zwar zweifellos richtig, kann aber nicht für die numerische 
+Berechnung der Gamma-Funktion verwendet werden.
+Die Existenz des Grenzwertes verwendet, dass $x\ll n$ sein muss,
+damit $(n+x)/n$ gegenüber $1$ vernachlässigt werden kann.
+Die Grenzwertdefinition beginnt also erst, vernünftige Approximationen
+von $\Gamma(x)$ zu geben, wenn $n$ viel grösser also $x$ ist.
+Andererseits wächst $n!$ sehr schnell an, schon für $n=171$ ist
+das Resultat grösser als was der \texttt{double}-Datentyp fassen kann.
+Dies ist aber viel zu kleine, um gute Approximationen auch für kleine
+Werte von $x$ zu geben.
+So findet man zum Beispiel für $x=\frac12$ und $n=170$ mit Octave
+\[
+\frac{n!n^{x-1}}{(x)_n}
+=
+\frac{170!}{\sqrt{170}\cdot \frac12\cdot\frac32\cdot\ldots\cdot\frac{339}{2}}
+=
+\frac{7.2574\cdot10^{307}}{13.308\cdot 3.1381\cdot10^{305}}
+=
+1.7738.
+\]
+Andererseits werden wir später sehen, dass 
+\[
+\Gamma({\textstyle\frac12})
+=
+\sqrt{\pi}
+=
+1.772453850905516
+\]
+ist.
+Die Approximation mit Hilfe der Grenzwertdefinition kann also
+grundsätzlich nicht mehr als zwei korrekte Nachkommastellen liefern.
+
+\subsubsection{Produktformel}
+Ein möglicher Ausweg aus den numerischen Schwierigkeiten mit der
+Grenzwertdefinition ist, den schnell wachsenden Faktor $n!$
+in den Zähler zu bringen, so dass er der Konvergenz etwas nachhilft.
+Wir berechnen daher den Kehrwert $1/\Gamma(x)$.
+
+\begin{satz}
+\label{buch:rekursion:gamma:satz:produktformel}
+Der Kehrwert der Gamma-Funktion kann geschrieben werden als
+\begin{equation}
+\frac{1}{\Gamma(x)}
+=
+xe^{\gamma x}
+\prod_{k=1}^\infty
+\biggl(1+\frac{x}k\biggr)\,e^{-\frac{x}{k}},
+\label{buch:rekursion:gamma:eqn:produktformel}
+\end{equation}
+wobei $\gamma$ die Euler-Mascheronische Konstante
+\[
+\gamma
+=
+\lim_{n\to\infty}
+\biggl(\sum_{k=1}^n\frac{1}{k}-\log n\biggr)
+\]
+ist.
+\end{satz}
+
+\begin{proof}[Beweis]
+Es sind zwei Dinge nachzuprüfen.
+Zunächst muss nachgewiesen werden, dass das unendliche Produkt 
+überhaupt konvergiert.
+Wenn das gesichert ist, muss noch gezeigt werden, dass der Grenzwert
+tatsächlich $1/\Gamma(x)$ ist.
+
+Für die Konvergenz beachtet man, dass die Faktoren des Produkts 
+die Form
+\begin{align*}
+\biggl(1+\frac{x}n\biggr)e^{-\frac{x}{n}}
+&=
+\biggl(1+\frac{x}n\biggr)
+\biggl(1-\frac{x}{n}+\frac{x^2}{2n^2}-\frac{x^3}{3!n^3}+\dots\biggr)
+\\
+&=
+1-\frac{x^2}{n^2} + 
+\biggl(1+\frac{x}n\biggr)
+\biggl(\frac{x^2}{2n^2}-\dots\biggr)
+\\
+&=
+1-\frac{x^2}{n^2} + \frac{x^2}{2n^2} + O\bigl((\textstyle\frac{x}{n})^2\bigr)
+\\
+&=
+1-\frac{x^2}{2n^2} + O\bigl((\textstyle\frac{x}{n})^3\bigr)
+\end{align*}
+haben.
+Da die Reihe 
+\[
+\sum_{n=1}^\infty \frac{x^2}{n^2}
+\]
+konvergent ist, konvergiert auch das Produkt.
+% XXX wir brauchen irgendwo das Konvergenzkriterium für ein Produkt
+
+Um die Übereinstimmung der Produktformel mit $1/\Gamma(x)$ zu zeigen,
+berechnen wir
+\begin{align*}
+\frac{1}{\Gamma(x)}
+&=
+\lim_{n\to\infty} 
+\frac{(x)_n}{n!n^{x-1}}
+=
+\lim_{n\to\infty} 
+\frac{x(x+1)(x+2)\cdots(x+n-1)}{1\cdot 2\cdot3\cdots (n-1)\cdot n\cdot n^{x-1}}
+\\
+&=
+x
+\lim_{n\to\infty} 
+\frac{x+1}{1}
+\cdot
+\frac{x+2}{2}
+\cdots
+\frac{x+n-1}{n-1}
+\cdot
+n^{-x}
+\\
+&=
+x
+\lim_{n\to\infty}
+\biggl(1+\frac{x}{1}\biggr)
+\cdot
+\biggl(1+\frac{x}{2}\biggr)
+\cdots
+\biggl(1+\frac{x}{n-1}\biggr)
+\cdot
+e^{-x\log n}
+\\
+&=
+x
+\prod_{k=1}^{n-1}
+\biggl(1+\frac{x}{k}\biggr)
+e^{-\frac{x}{k}}
+e^{\frac{x}{k}}
+e^{-x\log n}
+\\
+&=
+x
+\biggl(
+\lim_{n\to\infty}
+\prod_{k=1}^{n-1}
+\biggl(1+\frac{x}{k}\biggr)
+e^{-\frac{x}{k}}
+\biggr)
+\cdot
+\biggl(
+\lim_{n\to\infty}
+e^{x\bigl(\sum_{k=1}^{n-1}\frac{1}{k} - \log n\bigr)}
+\biggr)
+\end{align*}
+Der Klammerausdruck im Exponent des letzten Faktors auf der rechten Seite
+konvergiert nach Definition der Euler-Mascheronischen Konstanten gegen
+$\gamma$, somit folgt 
+\[
+\frac{1}{\Gamma(x)}
+=
+xe^{\gamma x}\prod_{k=1}^\infty \biggl(1+\frac{x}{k}\biggr)e^{-\frac{x}{k}},
+\]
+wie behauptet.
+Damit ist Satz~\ref{buch:rekursion:gamma:satz:produktformel}
+vollständig bewiesen.
+\end{proof}
+
+\begin{table}
+\centering
+\begin{tabular}{|>{$}c<{$}|>{$}c<{$}|>{$}c<{$}|}
+\hline
+k &  \Gamma(\frac12,n) & \Gamma(\frac12) - \Gamma(\frac12,n) \\
+\hline
+1 & 1.\underline{7}518166478 & -0.0206372031 \\
+2 & 1.\underline{77}02543372 & -0.0021995137 \\
+3 & 1.\underline{772}2324556 & -0.0002213953 \\
+4 & 1.\underline{7724}316968 & -0.0000221541 \\
+5 & 1.\underline{77245}16354 & -0.0000022156 \\
+6 & 1.\underline{772453}6293 & -0.0000002216 \\
+\hline
+\end{tabular}
+\caption{Werte $\Gamma(\frac12,n)$ von $\Gamma(\frac12)$ berechnet mit
+$n=10^k$ Faktoren der
+Produktformel~\eqref{buch:rekursion:gamma:eqn:produktformel}
+und der zugehörige Fehler.
+Die korrekten Nachkommastellen sind unterstrichen.
+\label{buch:rekursion:gamma:gammatabelle}}
+\end{table}
+
+Um zu zeigen, dass die Produktform tatsächlich besser geeignet ist,
+sind in der Tabelle~\ref{buch:rekursion:gamma:gammatabelle}
+die Resultate der numerischen Rechnung  bis $n=1000000$ zusammengestellt.
+Die Produktformel kann gute Werte von $\Gamma(x)$ auch für derart grosse
+Werte von $n$ problemlos berechnen.
+
+Der Fehler der numersichen Approximation ist von der Grössenordnung
+$O(1/n)$ wie das auf Grund des verwendeten Konvergenzkriteriums
+zu erwarten war.
+Die Anzahl zu berücksichtigender Terme wächst daher exponentiall
+mit der Anzahl gewünschter Stellen an, was für praktische Zwecke
+zu langsam ist.
+Für die numersiche Berechnung der Gamma-Funktion ist die Produktformel
+daher im Allgemeinen nicht geeignet.
+
+%
+% Integralformel für die Gamma-Funktion
+%
 \subsection{Integralformel für die Gamma-Funktion}
 Euler hat die folgende Integraldefinition der Gamma-Funktion gegeben.
 
@@ -35,7 +420,7 @@ Die Gamma-Funktion ist die Funktion
 :
 z
 \mapsto
-\Gamma(z) = \int_0^\infty t^{x-1}e^{-t}\,dt
+\Gamma(z) = \int_0^\infty t^{z-1}e^{-t}\,dt
 \]
 \end{definition}
 
@@ -151,7 +536,55 @@ Daher hat auch der Quotient einen Pol erster Ordnung.
 Abbildung~\ref{buch:rekursion:fig:gamma} zeigt die Pole bei den
 nicht negativen ganzen Zahlen.
 
+\subsubsection{Numerische Berechnung}
+\begin{table}
+\centering
+\begin{tabular}{|>{$}c<{$}|>{$}c<{$}>{$}c<{$}|}
+\hline
+k & y(10^k) & y(10^k) - \Gamma(\frac{5}{2}) \\
+\hline
+1 & 0.0000000000 & -0.9027452930 \\
+2 & 0.3319129461 & -0.5708323468 \\
+3 & 0.\underline{902}5209490 & -0.0002243440 \\
+4 & 0.\underline{902745}1207 & -0.0000001723 \\
+5 & 0.\underline{902745}0962 & -0.0000001968 \\
+6 & 0.\underline{902745}0962 & -0.0000001968 \\
+\hline
+\end{tabular}
+\caption{Resultate der Berechnung von $\Gamma(\frac{5}{2})$ mit Hilfe
+der Differentialgleichung \eqref{buch:rekursion:gamma:eqn:gammadgl}.
+Die korrekten Stellen sind unterstrichen.
+Es sind immerhin sechs korrekte Stellen gefunden, wobei nur 337
+Auswertungen des Integranden notwendig waren.
+\label{buch:rekursion:gamma:table:gammaintegral}}
+\end{table}
+Im Prinzip könnte die Integraldefinition der numerischen Berechnung
+entgegenkommen.
+Um diese Hypothese zu prüfen, berechnen wir das Integral für
+$z=\frac52$ mit Hilfe der äquivalenten Differentialgleichungen
+\begin{equation}
+\dot{y}(t) = t^{z-1}e^{-t}
+\qquad\text{mit Anfangsbedingung $y(0)=0$}.
+\label{buch:rekursion:gamma:eqn:gammadgl}
+\end{equation}
+Der gesuchte Wert ist der Grenzwert $\lim_{t\to\infty} y(t)$.
+In der Tabelle~\ref{buch:rekursion:gamma:table:gammaintegral}
+sind die Werte von $y(10^k)$ sowie die Differenzen 
+$y(10^k) - \Gamma(\frac{5}{2})$ zusammengefasst.
+Die Genauigkeit erreicht sechs korrekte Nachkommastellen mit nur
+337 Auswertungen des Integranden.
 
+%
+% Spiegelformel
+%
+\subsection{Die Spiegelungsformel}
 
+%
+% Beta-Integrale
+%
+\subsection{Die Beta-Funktion}
 
+%
+%
+%
 
