@@ -6,12 +6,107 @@
 \section{Beispiele
 \label{buch:differentialgleichungen:section:beispiele}}
 \rhead{Beispiele}
+Viele der bisher betrachteten speziellen Funktionen können 
+durch gewöhnliche Differentialgleichungen charakterisiert werden,
+als deren Lösungen sie auftreten.
 
-\subsection{Exponentialfunktion
+\subsection{Potenzen und Wurzeln
+\label{buch:differentialgleichungen:subsection:potenzen-und-wurzeln}}
+Die Potenzfunktionen und die zugehörigen Wurzeln als die ältesten
+speziellen Funktionen bieten bereits eine erste kleine Schwierigkeit.
+Die Differentialgleichung, die man aus einem naiven Ansatz ableitet,
+ist singulär.
+
+\subsubsection{Differentialgleichung in $(0,\infty)$}
+Die Ableitung einer Potenzfunktion $x\mapsto y(x)=x^\alpha$ ist
+\[
+y'(x) =
+\begin{cases}
+\alpha x^{\alpha-1} &\qquad \alpha\ne -1\\
+\log x&\qquad\text{sonst}
+\end{cases}
+\]
+Im Folgenden wollen wir uns auf den Fall $\alpha\ne -1$ konzentrieren.
+Die Ableitungsoperation läuft in diesem Fall darauf hinaus, dass der
+Grad um $1$ reduziert wird.
+Dies könnte man mit einem Faktor $x$ komponsieren.
+Wir fragen daher nach der allgmeinen Lösung der linearen
+Differentialgleichung der Form
+\begin{equation}
+xy' = \alpha y.
+\label{buch:differentialgleichungen:eqn:wurzeldgl}
+\end{equation}
+Diese Gleichung ist separierbar, die Separation von $x$ und $y$ liefert
+die Integrale
+\[
+\int \frac{dy}{y} = \alpha \int \frac{dx}{x} + C.
+\]
+Die Durchführunge der Integration liefert 
+\[
+\log |y| = \alpha \log|x| + C.
+\]
+Wendet man die Exponentialfunktion an, erhält man wieder
+\[
+y = Dx^\alpha,\quad D=\exp C.
+\]
+
+Die Differentialgleichung~\eqref{buch:differentialgleichungen:eqn:wurzeldgl}
+hat aber eine schwerwiegenden Mangel.
+Ihre explizite Form lautet
+\begin{equation}
+y' = \frac{\alpha}{x}\cdot y.
+\label{buch:differentialgleichungen:eqn:wurzelsing}
+\end{equation}
+Dies ist zwar durchaus eine lineare Differentialgleichung erster Ordnung,
+aber der Koeffiziente $\alpha/x$ wächst für $x\to 0$ über alle Grenzen.
+Man kann daher den Wert der Potenzfunktion im Nullpunkt gar nicht aus der
+Differentialgleichung erhalten, es ist dazu mindestens noch ein Grenzübergang
+$x\to 0+$ nötig.
+
+\subsubsection{Differentialgleichung in der Nähe von $x=1$}
+Um dem Problem des singulären Koeffizienten der
+Differentialgleichung~\eqref{buch:differentialgleichungen:eqn:wurzelsing}
+aus dem Weg zu gehen, verwenden wir die Variable $t$ mit $x=1+t$ und
+versuchen eine Differentialgleichung für die Potenzfunktion
+$(1+t)^\alpha$ zu finden.
+Es gilt natürlich
+\begin{equation}
+\frac{d}{dt} (1+t)^\alpha
+=
+\alpha (1+t)^{\alpha-1}
+\qquad\Rightarrow\qquad
+(1+t) \dot{y} = \alpha y.
+\label{buch:differentialgleichungen:eqn:wurzeldgl1}
+\end{equation}
+Diese Differentialgleichung kann natürlich auch wieder mit Separation
+gelöst werden, es ist
+\begin{equation}
+\int
+\frac{dy}{y} 
+=
+\alpha
+\int
+\frac{dt}{1+t}
++
+C
+\qquad\Rightarrow\qquad
+\log|y| = \alpha \log|1+t| + C
+\label{buch:differentialgleichungen:eqn:wurzeldgl1loesung}
+\end{equation}
+und daraus die Potenzfunktion
+\[
+y=D(1+t)^\alpha
+\]
+wie vorhin.
+Der Vorteil der
+Form~\eqref{buch:differentialgleichungen:eqn:wurzeldgl1}
+wird sich später bei dem Versuch zeigen, die Fuktion $y(t)$
+direkt als Potenzreihenlösung der Differentialgleichung zu finden.
+
+
+\subsection{Exponentialfunktion und ihre Varianten
 \label{buch:differentialgleichungen:subsection:exponentialfunktion}}
 
-\subsection{Trigonometrische Funktionen
-\label{buch:differentialgleichungen:subsection:trigonometrisch}}
+\subsubsection{Lineare Differentialgleichung erster Ordnung mit konstanten Koeffizienten}
 
-\subsection{Hyperbelfunktionen
-\label{buch:differentialgleichungen:subsection:hyperbelfunktionen}}
+\subsubsection{Lineare Differentialgleichungen zweiter Ordnung mit konstanten Koeffizienten}

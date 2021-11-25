@@ -5,4 +5,237 @@
 %
 \section{Potenzreihenmethode
 \label{buch:differentialgleichungen:section:potenzreihenmethode}}
+Die Potenzreihenmethode versucht die Lösung einer gewöhnlichen
+Differentialgleichung als Potenzreihe um die Anfangsbedingung zu
+entwickeln.
+Wir gehen in diesem Abschnitt von einer Differentialgleichung der
+Form
+\begin{equation}
+a_n(x)y^{(n)}(x)
++
+a_{n-1}(x)y^{(n-1)}(x)
++
+\dots
++
+a_1(x)y'(x)
++
+a_0(x)y(x)
+=
+f(x)
+\label{buch:differentialgleichungen:eqn:potenzreihendgl}
+\end{equation}
+mit der Randbedingung $y(0)=y_0$ aus.
+Schon im einfachsten Fall einer homogenen Differentialgleichung erster
+Ordnung ergibt sich die Beziehung
+\[
+a_1(x) y'(x) = a_0(x)y(x),
+\]
+wobei wir uns $y(x)$ und damit auch $y'(x)$ als Potenzreihe vorstellen.
+Insbesondere ist 
+\[
+\frac{a_1(x)}{a_0(x)} = \frac{y(x)}{y'(x)}
+\]
+ein Quotient von Potenzreihen, den man natürlich wieder als 
+Potenzreihe schreiben kann.
+Da es nur auf den Quotienten ankommt, kann man sich auf den Fall
+beschränken, dass die Koeffizienten Potenzreihen sind.
+Tatsächlich gilt der folgende sehr viel allgemeinere Satz von
+Cauchy und Kowalevskaja:
+
+\begin{satz}[Cauchy-Kowalevskaja]
+Eine partielle Differentialgleichung der Ordnung $k$ für eine
+Funktion $u(x_1,\dots,x_n,t)=u(x,t)$ 
+in expliziter Form
+\[
+\frac{\partial^k}{\partial t^k}
+=
+G\biggl(x,t,
+\frac{\partial^j\partial^\alpha}{\partial t^j\,\partial x^k}
+\biggr)
+\quad\text{mit $j<k$ und $|\alpha|+j\le k$}
+\]
+mit einer Funktion $G$, die analytisch ist in allen Variablen
+und der Randbedingung
+\[
+\frac{\partial j}{\partial t^j}u(x,0) = \varphi_j(x)\quad\text{für $k=0,\dots,k-1$}
+\]
+mit analytischen Funktion $\varphi_j$ hat eine in einer Umgebung von 
+$t=0$ eindeutige analytische Lösung.
+\end{satz}
+
+Im folgenden werden wir daher weitere einschränkende Annahmen über
+die Koeffizienten $a_k(x)$ machen.
+
+\subsection{Potenzreihenansatz und Koeffizientenvergleich}
+
+
+
+\subsection{Die Newtonsche Reihe}
+Wir lösen die
+Differentialgleichung~\eqref{buch:differentialgleichungen:eqn:wurzeldgl1}
+mit der Anfangsbedingung $y(t)=1$ mit der Potenzreihenmethode.
+Wir setzen daher für die Lösung die Potenzreihe an
+\[
+y(t)
+=
+a_0 + a_1t + a_2t^2 + a_3t^3 + \dots + a_kt^k + \dots
+\]
+Die Ableitung ist
+\[
+\dot{y}(t)
+=
+a_1 + 2a_2t + 3a_3t^2 + \dots  + ka_kt^{k-1} + \dots
+\]
+Einsetzen in die 
+Differentialgleichung~\eqref{buch:differentialgleichungen:eqn:wurzeldgl1}
+liefert
+\begin{align*}
+(1+t)
+(
+a_1 + 2a_2t + 3a_3t^2 + \dots  + ka_kt^{k-1} + \dots
+)
+&=
+\alpha
+(
+a_0 + a_1t + a_2t^2 + a_3t^3 + \dots + a_kt^k + \dots
+)
+\\
+a_1
++(a_1+2a_2)t
++(2a_2+3a_3)t^2
++(3a_3+4a_4)t^3
++\dots
+&=
+\alpha a_0 + \alpha a_1t + \alpha a_2t^2 + \alpha a_3t^3 + \dots
+\end{align*}
+Der Koeffizientenvergleich ergbiet die Gleichungen
+\begin{align}
+a_1&=\alpha a_0
+\notag
+\\
+a_1+2a_2 &= \alpha a_1 &&\Rightarrow& 2a_2 &= (\alpha-1) a_1
+\notag
+\\
+2a_2+3a_3 &= \alpha a_2&&\Rightarrow& 3a_3 &= (\alpha-2) a_2
+\notag
+\\
+3a_3+4a_4 &= \alpha a_3&&\Rightarrow& 4a_4 &= (\alpha-3) a_3
+\notag
+\\
+4a_4+5a_5 &= \alpha a_4&&\Rightarrow& 5a_5 &= (\alpha-4) a_4
+\notag
+\\
+&\vdots
+\notag
+\\
+&&&& \llap{$(k+1)a_{k+1}$} &= (\alpha-k) a_k
+&&\Rightarrow&
+a_{k+1} = \frac{\alpha-k}{k+1}a_k.
+\label{buch:differentialgleichungen:eqn:newtonreiherekursion}
+\end{align}
+Die
+Rekursionsformel~\eqref{buch:differentialgleichungen:eqn:newtonreiherekursion}
+gilt auch im Fall $k=0$.
+Aus der Anfangsbedingung folgt $a_0=1$.
+Durch wiederholte Anwendung der 
+Rekursionsformel~\eqref{buch:differentialgleichungen:eqn:newtonreiherekursion}
+erhalten wir jetzt die Koeffizienten
+\begin{align*}
+a_0&=1
+\\
+a_1&=\alpha
+\\
+a_2&=\frac{\alpha(\alpha-1)}{1\cdot 2}
+\\
+a_3&=\frac{\alpha(\alpha-1)(\alpha-2)}{1\cdot 2\cdot 3}
+\\
+a_4&=\frac{\alpha(\alpha-1)(\alpha-2)(\alpha-3)}{1\cdot 2\cdot 3\cdot 4}
+\\
+&\;\vdots
+\\
+a_k&=\frac{\alpha(\alpha-1)(\alpha-2)\dots(\alpha-k+1)}{k!}.
+\end{align*}
+Für ganzzahliges $\alpha$ ist $a_k$ der Binomialkoeffizient
+\[
+a_k=\binom{\alpha}{k}
+\]
+und $a_k=0$ für $k>\alpha$.
+Für nicht ganzzahliges $\alpha$ sind alle Koeffizienten $a_k\ne 0$.
+
+Die Lösung der 
+Differentialgleichung~\eqref{buch:differentialgleichungen:eqn:wurzeldgl1}
+ist daher die Reihe
+\begin{equation}
+(1+t)^\alpha
+=
+\sum_{k=0}^\infty
+\frac{\alpha(\alpha-1)\dots(\alpha-k+1)}{k!}\, t^k.
+\label{buch:differentialgleichungen:eqn:newtonreihe}
+\end{equation}
+Für ganzzahliges $\alpha$ wird daraus die binomische Formel
+\[
+(1+t)^\alpha
+=
+\sum_{k=0}^\infty
+\frac{\alpha(\alpha-1)\dots(\alpha-k+1)}{k!}\, t^k
+=
+\sum_{k=0}^\alpha \binom{\alpha}{k} t^k.
+\]
+
+%
+% Lösung als hypergeometrische Riehe
+%
+\subsubsection{Lösung als hypergeometrische Funktion}
+Die Newtonreihe verwendet ein absteigendes Produkt im Zähler.
+Man kann sie aber in eine Form bringen, die besser zu den aufsteigenden
+Produkten bringen, die wir im Zusammenhang mit der Gamma-Funktion
+angetroffen und als Pochhammer-Symbole formalisiert haben.
+
+Eine hypergeometrische Funktion zeichnet sich dadurch aus, dass
+die Quotienten aufeinanderfolgender Koeffizienten der Reihe rationale
+Funktionen von $k$ sind.
+Der Quotient ist
+nach~\eqref{buch:differentialgleichungen:eqn:newtonreiherekursion}
+\[
+\frac{a_{k+1}}{a_k}
+=
+\frac{\alpha-k}{k+1}.
+\]
+Der Nenner wird nie $0$, aber das Zählerpolynom hat genau die Nullstelle
+$-\alpha$.
+Die Newtonsche Reihe muss sich daher als Wert der hypergeometrischen
+Funktion $\mathstrut_1F_0$ schreiben lassen.
+
+Das Produkt im Zähler von $a_k$ hat $k$ Faktoren, indem wir jeden Faktor
+mit $-1$ multiplizieren, erhalten wir
+\begin{align*}
+\alpha(\alpha-1)(\alpha-2)\dots(\alpha-k+1)
+&=
+(-\alpha)(-\alpha+1)(-\alpha+2)\dots(-\alpha+k-1) (-1)^k
+\\
+&=
+(-\alpha)_k (-1)^k.
+\end{align*}
+Indem wir den Faktor $-1$ in der Variablen absorbieren, erhalten
+wir die Darstellung
+\[
+(1+t)^\alpha
+=
+\sum_{k=0}^\infty
+(-\alpha)_k\frac{(-t)^k}{k!}.
+\]
+Damit haben wir den folgenden Satz gezeigt.
+
+\begin{satz}
+Die Newtonsche Reihe für $(1-t)^\alpha$ ist der Wert
+\[
+(1-t)^\alpha
+=
+\sum_{k=0}^\infty (-\alpha)_k \frac{t^k}{k!}
+=
+\mathstrut_1F_0(-\alpha;t)
+\]
+der hypergeometrischen Funktion $\mathstrut_1F_0$.
+\end{satz}
+
 

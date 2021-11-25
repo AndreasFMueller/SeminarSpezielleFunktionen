@@ -5,4 +5,8 @@
 #
 
 CHAPTERFILES = $(CHAPTERFILES)						\
+	chapters/010-potenzen/loesbarkeit.tex				\
+	chapters/010-potenzen/polynome.tex				\
+	chapters/010-potenzen/tschebyscheff.tex				\
+	chapters/010-potenzen/potenzreihen.tex				\
 	chapters/010-potenzen/chapter.tex
