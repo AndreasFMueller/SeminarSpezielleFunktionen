@@ -238,4 +238,347 @@ Die Newtonsche Reihe für $(1-t)^\alpha$ ist der Wert
 der hypergeometrischen Funktion $\mathstrut_1F_0$.
 \end{satz}
 
+%
+% Verallgemeinerte Potenzreihen
+%
+\subsection{Lösung mit verallgemeinerten Potenzreihen
+\label{buch:differentialgleichungen:subsection:verallgemeinrt}}
+In vielen Anwendungsfällen hat die Differentialgleichung die Form
+\begin{equation}
+x^2y'' + p(x)xy' + q(x)y = 0,
+\label{buch:differentialgleichungen:eqn:dglverallg}
+\end{equation}
+gesucht ist eine Lösung $y(x)$ auf dem Intervall $[0,\infty)$.
+Für die folgende Diskussion nehmen wir an, dass sich die Funktionen
+$p(x)$ und $q(x)$ in konvergente Potenzreihen
+\begin{align*}
+p(x)&=\sum_{k=0}^\infty p_kx^k = p_0+p_1x+p_2x^2+p_3x^3+\dots
+\\
+q(x)&=\sum_{k=0}^\infty q_kx^k = q_0+q_1x+q_2x^2+q_3x^3+\dots
+\end{align*}
+entwickeln lassen.
+
+\subsubsection{Die Potenzreihenmethode funktioniert nicht}
+Für die Differentialgleichung
+\eqref{buch:differentialgleichungen:eqn:dglverallg}
+funktioniert die Potenzreihenmethod oft nicht.
+Sind die Funktionen $p(x)$ und $q(x)$ zum Beispiel Konstante 
+$p(x)=p_0$ und $q(x)=q_0$, dann führt der Potenzreihenansatz
+\[
+y(x) = \sum_{k=0}^\infty a_kx^k
+\]
+auf die Gleichung
+\begin{align*}
+x^2\sum_{k=0}^\infty a_kk(k-1)x^{k-2}
++
+p_0x\sum_{k=0}^\infty a_kkx^{k-1}
++
+q_0\sum_{k=0}^\infty a_kx^k
+&=
+0
+\\
+\Rightarrow\qquad
+\sum_{k=0}^\infty\bigl(
+k(k-1)
++
+p_0k
++
+q_0
+\bigr)a_kx^k
+&=
+0.
+\end{align*}
+Durch Koeffizientenvergleich folgt dann, dass für jedes $k$ mindestens
+eine der Gleichungen
+\[
+k(k-1) +p_0k +q_0 = k^2 + (p_0-1)k +q_0 = 0
+\qquad\text{und}\qquad
+a_k=0
+\]
+erfüllt sein muss.
+Die erste Gleichung ist eine quadratische Gleichung in $k$, es gibt also
+höchstens zwei Koeffizienten, für die die erste Gleichung erfüllt sein
+kann, für die also auch die Koeffizienten $a_k\ne 0$ sein können.
+Sind die Lösungen nicht ganzzahlig, dann müssen alle Koeffizienten 
+$a_k=0$ sein, die einzige Potenzreihe ist die triviale Funktion $y(x)=0$.
+
+\subsubsection{Verallgemeinerte Potenzreihe}
+Für Differentialgleichungen der Art
+\eqref{buch:differentialgleichungen:eqn:dglverallg}
+ist also ein anderer Ansatz nötig.
+Die Schwierigkeit bestand darin, dass die Gleichungen für die einzelnen
+Koeffizienten $a_k$ voneinander unabhängig waren.
+Mit einem zusätzlichen Potenzfaktor $x^\varrho$ mit nicht
+notwendigerweise ganzzahligen Wert kann die nötige Flexibilität
+erreicht werden.
+Wir verwenden daher den Ansatz
+\[
+y(x)
+=
+x^\varrho \sum_{k=0}^\infty a_kx^k
+=
+\sum_{k=0}^\infty a_k x^{\varrho+k}
+\]
+und versuchen nicht nur die Koeffizienten $a_k$ sondern auch den
+Exponenten $\varrho$ zu bestimmen.
+Durch Modifikation von $\varrho$ können wir immer erreichen, dass
+$a_0\ne 0$ ist.
+
+Die Ableitungen von $y(x)$ mit der zugehörigen Potenz von x  sind
+\begin{align*}
+xy'(x)
+&=
+\sum_{k=0}^\infty
+(\varrho+k)a_kx^{\varrho+k}
+=
+\sum_{k=1}^\infty
+(\varrho+k-1)a_{k-1}x^{\varrho+k}
+\\
+x^2y''(x)
+&=
+\sum_{k=0}^\infty
+(\varrho+k)(\varrho+k-1)a_kx^{\varrho+k}.
+\end{align*}
+Diese Ableitungen setzen wir jetzt in die Differentialgleichung ein, 
+die dadurch zu
+\begin{equation}
+\sum_{k=0}^\infty  (\varrho+k)(\varrho+k-1) a_k x^{\varrho+k}
++
+\sum_{k=0}^\infty \sum_{l=0}^\infty (\varrho+k) p_l a_kx^{\varrho+k+l}
++
+\sum_{k=0}^\infty \sum_{l=0}^\infty q_l a_k x^{\varrho+k+l}
+=
+0
+\label{buch:differentialgleichungen:eqn:veralgpotenzsumme}
+\end{equation}
+wird.
+
+Ausgeschrieben geben die einzelnen Terme
+\begin{align*}
+0
+&=
+\varrho(\varrho-1)a_0x^\varrho
++
+(\varrho+1)\varrho a_1x^{\varrho+1}
++
+(\varrho+2)(\varrho+1)a_2x^{\varrho+2}
++
+(\varrho+3)(\varrho+2)a_3x^{\varrho+3}
++
+\dots
+\\
+&+
+\varrho p_0 a_0 x^{\varrho}
++
+\bigl((\varrho +1)a_1p_0 + \varrho a_0 p_1\bigr) x^{\varrho+1}
++
+\bigl((\varrho +2)a_2p_0 + (\varrho+1)a_1p_1 + \varrho a_0 p_2\bigr) x^{\varrho+2}
++
+\dots
+\\
+&+
+q_0a_0x^{\varrho}
++
+(q_0a_1+q_1a_0) x^{\varrho+1}
++
+(q_0a_2+q_1a_1+q_2a_0) x^{\varrho+2}
++
+(q_0a_3+q_1a_2+q_2a_1+q_3a_0) x^{\varrho+3}
++
+\dots
+\end{align*}
+Fasst man die Terme mit gleichem Exponenten zusammen, findet man
+\begin{align*}
+0
+&=
+\bigl(
+\varrho(\varrho-1) + \varrho p_0 + q_0
+\bigr)a_0 x^{\varrho}
+\\
+&+
+\bigl(
+((\varrho+1)\varrho 
++
+(\varrho+1) p_0
++
+q_0) a_1
++
+( \varrho p_1 + q_1)a_0
+\bigr)x^{\varrho+1}
+\\
+&+
+\bigl(
+(
+(\varrho+2)(\varrho+1)
++
+(\varrho+2)p_0
++
+q_0)a_2
++
+(\varrho+1)p_1 a_1
++
+\varrho p_2 a_0
++q_1a_1+q_2a_0
+\bigr)x^{\varrho+2}
+\\
+&+\dots
+\end{align*}
+Der Koeffizientenvergleich ergibt dann
+\[
+\renewcommand{\arraycolsep}{0pt}
+\begin{array}{rcrlcrlcrl}
+0&\mathstrut=\mathstrut&(\varrho(\varrho-1)     + \varrho p_0 + q_0)&a_0
+	& &                 &
+		&&
+\\
+0&\mathstrut=\mathstrut&((\varrho+1)\varrho     + \varrho p_0 + q_0)&a_1
+	&\mathstrut+\mathstrut&(\varrho p_1+q_1)&a_0
+		& &
+\\
+0&\mathstrut=\mathstrut&((\varrho+2)(\varrho+1) + \varrho p_0 + q_0)&a_2
+	&\mathstrut+\mathstrut&((\varrho+1)p_1+q_1)&a_1
+		&\mathstrut+\mathstrut&(\varrho p_2+q_0)&a_0
+\end{array}
+\]
+
+Diese Rechnung kann man auch allgemein durchführen.
+Für den Koeffizientenvergleich müssen die Terme in
+\eqref{buch:differentialgleichungen:eqn:veralgpotenzsumme}
+mit gleicher
+Potenz $x^{\varrho+n}$ zusammengefasst werden.
+Dazu schreiben wir zunächst die Summen alle so, dass die Potenz von $x$
+in der Form $x^{\varrho+n}$ auftritt.
+So entsteht die Gleichung
+\begin{align*}
+\sum_{n=0}^\infty
+(\varrho+n)(\varrho+n-1) a_n x^{\varrho+n}
++
+\sum_{n=0}^\infty
+\biggl(
+\sum_{l=0}^n
+(\varrho+n-l) p_{n-l} a_{l}
+\biggr)
+x^{\varrho+n}
++
+\sum_{n=0}^\infty
+\biggl(\sum_{l=0}^n q_{n-l} a_{l}\biggr)
+x^{\varrho+n}
+&=
+0
+\end{align*}
+Jetzt kann der Koeffizientenvergleich durchgeführt werden.
+Der Koeffizient von $x^{\varrho+n}$ ist
+\[
+(\varrho+n)(\varrho+n-1) a_n x^{\varrho+n}
++
+\sum_{l=0}^n
+(\varrho+n-l) p_{n-l} a_{l}
++
+\sum_{l=0}^n q_{n-l} a_{l}.
+\]
+Alle diese Koeffizienten müssen verschwinden.
+Indem wir die Terme in den beiden Summen über $l$ zusammenfassen,
+erhalten wir die Gleichungen
+\begin{equation}
+\bigl(
+(\varrho+n)(\varrho + n-1)
++
+\varrho p_0
++
+q_0
+\bigr)a_n
++
+\sum_{l=0}^{n-1}
+\bigl(
+(\varrho+n-l) p_{n-l}
++
+q_{n-l}
+\bigr) a_{l}
+= 0,
+\label{buch:differentialgleichungen:eqn:verallgkoefgl}
+\end{equation}
+die für jedes $n$ erfüllt sein müssen.
+
+\subsubsection{Indexgleichung}
+Die Gleichungen~\eqref{buch:differentialgleichungen:eqn:verallgkoefgl}
+müssen erfüllt sein, wenn eine Lösung in Form einer verallgemeinerten
+Potenzreihe existieren soll.
+Der Koeffizient $a_n$ mit dem grössten $n$ in jeder Gleichung hat
+den gemeinsamen Faktor $F(\varrho+n)$ für das Polynom
+\[
+F(X) = X(X+1) +Xp_0 + q_0.
+\]
+Da wir in der Definition einer verallgemeinerten Potenzreihe vorausgesetzt
+haben, dass $a_0\ne 0$ sein muss, ist der Ansatz überhaupt nur dann
+erfolgreich, wenn \begin{equation}
+F(\varrho) = \varrho(\varrho-1) + \varrho p_0 + q_0 = 0
+\label{buch:differentialgleichungen:eqn:indexgleichung}
+\end{equation}
+gilt.
+Die Gleichung~\eqref{buch:differentialgleichungen:eqn:indexgleichung}
+heisst die {\em Indexgleichung}.
+Der Exponent $\varrho$ muss also eine Nullstelle der Indexgleichung sein.
+
+Die Indexgleichung ist eine quadratische Gleichung und hat daher
+im allgemeinen zwei Lösungen.
+Wir bezeichnen die beiden Nullstellen mit $\varrho_1$ und $\varrho_2$.
+Wenn $p_0$ und $q_0$ reell sind, sind die Nullstellen entweder reell
+oder konjugiert komplex.
+
+\subsubsection{Rekursive Bestimmung der $a_n$}
+Der Koeffizient $a_{n}$ kann nur dann aus den vorangegangene
+Koeffizienten $a_{n-1},a_{n-2},\dots$ bestimmt werden, wenn
+$F(\varrho+n)\ne 0$ ist.
+In diesem Fall gilt
+\begin{equation}
+a_n
+=
+\frac{1}{F(\varrho+n)}
+\sum_{l=0}^{n-1}\bigl( (\varrho+n-l)p_{n-l} + q_{n-l}\bigr)a_l.
+\label{buch:differentialgleichungen:eqn:anrekursion}
+\end{equation}
+Dies funktioniert aber nur, wenn $F(\varrho+n)\ne 0$ für alle
+natürlichen $n > 0$ gilt.
+Dies ist gleichbedeutend damit, dass die Differenz $\varrho_1-\varrho_2$
+keine ganze Zahl ist.
+
+\begin{itemize}
+\item
+Fall 1: $\varrho_1-\varrho_2$ ist keine ganze Zahl.
+In diesem Fall lassen sich zwei Lösungen
+\begin{align*}
+y_1(x) &= x^{\varrho_1}\sum_{k=0}^\infty a_k x^k
+\\
+y_2(x) &= x^{\varrho_2}\sum_{k=0}^\infty b_k x^k
+\end{align*}
+bestimmen, wobei die Koeffizienten $a_k$ und $b_k$ für $k>0$ durch
+die Rekursionformel~\eqref{buch:differentialgleichungen:eqn:anrekursion}
+aus $a_0$ und $b_0$ bestimmt werden müssen.
+
+\item
+Fall 2: $\varrho$ ist eine doppelte Nullstelle ($\varrho_1-\varrho_2=0$).
+In diesem Fall kann nur eine Lösung als verallgemeinerte Potenzreihe
+gefunden werden.
+Um eine zweite Lösung zu finden, muss die Technik der analytischen
+Fortsetzung verwendet werden, die in
+Kapitel~\ref{buch:chapter:funktionentheorie}
+dargestellt werden.
+
+\item
+Fall 3: $\varrho_1-\varrho-2$ ist eine positive ganze Zahl.
+In diesem Fall ist im Allgemeinen nur eine Lösung in Form einer
+verallgemeinerten Potenzreihe möglich.
+Auch hier müssen Techniken der Funktionentheorie aus
+Kapitel~\ref{buch:chapter:funktionentheorie}
+verwendet werden, um eine zweite Lösung zu finden.
+
+\end{itemize}
+
+Wenn $\varrho_1-\varrho_2$ eine negative ganze Zahl ist, kann man die
+beiden Nullstellen vertauschen.
+Es folgt dann, dass es eine  
+
+
+
+
 

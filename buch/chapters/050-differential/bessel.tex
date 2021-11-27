@@ -5,11 +5,337 @@
 %
 \section{Bessel-Funktionen
 \label{buch:differntialgleichungen:section:bessel}}
+Die Besselsche Differentialgleichung
+erlaubt Wellen mit zylindrischer
+Symmetrie und die Strömung in einem zylindrischen Rohr zu beschreiben.
+Die Auflösung eines optischen Systems wird durch die Beugung limitiert,
+die Helligkeitskverteilung des Bildes einer Punktquelle ist
+zylindersymmetrisch und kann mit Hilfe von Lösungen der Besselschen
+Differentialgleichung beschrieben werden.
+Die Besselsche Differentialgleichung hat im Allgemeinen keine Lösung,
+die sich durch bekannte Funktionen ausdrücken lassen, es ist also
+nötig, eine neue Familie von speziellen Funktionen zu definieren,
+die Bessel-Funktionen.
 
 \subsection{Die Besselsche Differentialgleichung}
 % XXX Wo taucht diese Gleichung auf
+Die Besselsche Differentialgleichung ist die Differentialgleichung
+\[
+x^2\frac{d^2y}{dx^2} + x\frac{dy}{dx} + (x^2-\alpha^2)y = 0
+\]
+zweiter Ordnung
+für eine auf dem Interval $[0,\infty)$ definierte Funktion $y(x)$.
+Der Parameter $\alpha$ ist eine beliebige komplexe Zahl $\alpha\in \mathbb{C}$,
+die Lösungsfunktionen hängen daher von $\alpha$ ab.
+
+Die Besselsche Differentialgleichung ist eine Differentialgleichung
+der Art~\eqref{buch:differentialgleichungen:eqn:dglverallg} mit
+\[
+p(x) = 1
+\qquad\text{und}\qquad
+q(x) = x^2-\alpha^2.
+\]
+Nach den Ausführungen von
+Abschnitt~\ref{buch:differentialgleichungen:subsection:verallgemeinrt},
+muss die Lösung in der Form einer verallgemeinerten Potenzreihe 
+gesucht werden.
+Dazu muss zunächst die Indexgleichung
+\[
+0
+=
+X(X-1) + Xp_0 + q_0
+=
+X(X-1) + X - \alpha^2
+=
+X^2-\alpha^2
+=
+(X-\alpha)(X+\alpha)
+\]
+gelöst werden.
+Die Nullstellen sind offenbar $\varrho_1=\alpha$ und $\varrho_2=-\alpha$.
+
+Die beiden Vorzeichen der Nullstellen der Indexgleichung führen
+auf die gleiche Differentialgleichung.
+Der Lösungsraum der Differentialgleichung ist natürlich trotzdem
+zweidimensional, so dass es immer noch möglich ist, den
+beiden Nullstellen der Indexgleichung verschiedene Lösungen
+zuzuordnen.
+Die Diskussion in
+Abschnitt~\ref{buch:differentialgleichungen:subsection:verallgemeinrt}
+hat Kriterien ergeben, unter denen zwei linear unabhängige Lösungen
+mit Hilfe einer verallgemeinerten Potenzreihe gefunden werden können.
+Falls nur eine solche Lösung gefunden werden kann, wird sie der grösseren
+der beiden Zahlen $\alpha$ und $-\alpha$ zugeordnet
+(oder $0$, falls $\alpha=-\alpha=0$).
+Eine weitere Lösung kann mit Hilfe analytischer Fortsetzung gefunden werden,
+wie später gezeigt wird.
+
+Für nicht reelles $\alpha$ kann $\varrho_1-\varrho_2=2\alpha$ keine 
+Ganzzahl sein, es ist also garantiert, dass zwei linear unabhängig
+Lösungen der Form
+\begin{equation}
+y_1(x) = x^\alpha\sum_{k=0}^\infty a_kx^k
+\qquad\text{und}\qquad
+y_2(x) = x^{-\alpha}\sum_{k=0}^\infty b_kx^k.
+\label{buch:differentialgleichungen:eqn:besselloesungen}
+\end{equation}
+existieren.
+
+Für reelles $\alpha\in\mathbb{R}$ gibt es zwei Lösungen der
+Form~\eqref{buch:differentialgleichungen:eqn:besselloesungen}
+genau dann, wenn $\varrho_1-\varrho_2$ keine Ganzzahl ist.
+Nur eine Lösung kann man finden, wenn 
+\[
+\alpha-(-\alpha)=2\alpha \in \mathbb{Z}
+\qquad\Rightarrow\qquad
+\alpha = \frac{k}{2},\quad k\in\mathbb{Z}
+\]
+ist.
+
+
 
 \subsection{Bessel-Funktionen erster Art}
-% XXX Result der Potenzreihenentwicklung
+Für $\alpha \ge 0$ gibt es immer mindestens eine Lösung der Besselgleichung
+als verallgemeinerte Potenzreihe mit $\varrho=\alpha$.
+Die Funktion $q(x)=x^2-\alpha^2$ ist ein Polynom, die einzigen
+von $0$ verschiedenen Koeffizienten sind $q_0=-\alpha^2$
+und $q_2=1$.
+Für den ersten Koeffizienten $a_0$ gibt es keine Einschränkungen,
+wir wählen $a_0=1$.
 
-\subsection{Analytische Fortsetzung und Bessel-Funktioenn zweiter Art}
+Die Rekursionsformel für $n=1$ ist
+\[
+F(\varrho+1) a_1 = (\varrho p_1+q_1)a_0,
+\]
+aber die Koeffizienten $p_1$ und $q_1$ verschwinden beide und damit
+die ganze rechte Seite.
+Da $F(\varrho+1)\ne 0$ ist, folgt dass $a_1=0$ sein muss.
+
+% Fall n=1 gesondert behandeln
+
+\subsubsection{Der allgemeine Fall}
+Für die höheren Potenzen $n>1$ wird die Rekursionsformel für die
+Koeffizienten $a_n$ der verallgemeinerten Potenzreihe
+\[
+a_{n} =
+-\frac{ q_2 a_{n-2} }{F(\varrho+n)}
+=
+-\frac{a_{n-2}}{(\varrho+n)^2-\alpha^2}
+=
+-\frac{a_{n-2}}{\varrho^2 + 2\varrho n+n^2-\alpha^2}
+=
+-\frac{a_{n-2}}{n(n+2\varrho)}.
+\]
+Im letzten Schritt haben wir verwendet, dass $\varrho=\pm\alpha$
+und damit $\varrho^2=\alpha^2$ ist.
+Daraus folgt wegen $a_1=0$, dass auch $a_{2k+1}=0$ für alle $k$.
+Damit können wir jetzt die Reihe hinschreiben:
+\begin{align*}
+y(x)
+&=
+x^{\varrho}\biggl(
+1
+-
+\frac{1}{2(2+2\varrho)} x^2
++
+\frac{1}{2(2+2\varrho)4(4+2\varrho)} x^4
+-
+\frac{1}{2(2+2\varrho)4(4+2\varrho)6(6+2\varrho)} x^6
++
+\dots
+\biggr)
+\\
+&=
+x^{\varrho}
+\biggl(
+1
++
+\frac{(-x^2/4)}{1\cdot (1+\varrho)}
++
+\frac{(-x^2/4)^2}{1\cdot 2\cdot (1+\varrho)\cdot(2-\varrho)}
++
+\frac{(-x^2/4)^3}{1\cdot 2\cdot 3\cdot (1+\varrho)\cdot(2+\varrho)\cdot(3+\varrho)}
++
+\dots
+\biggr)
+\\
+&=
+x^\varrho\biggl(
+1
++
+\frac{1}{(\varrho+1)}\frac{(-x^2/4)}{1!}
++
+\frac{1}{(\varrho+1)(\varrho+2)}\frac{(-x^2/4)^2}{2!}
++
+\frac{1}{(\varrho+1)(\varrho+2)(\varrho+3)}\frac{(-x^2/4)^3}{3!}
++
+\dots
+\biggr)
+\\
+&=
+x^\varrho \sum_{k=0}^\infty
+\frac{1}{(\varrho+1)_k} \frac{(-x^2/4)}{k!}
+=
+\mathstrut_0F_1\biggl(;\varrho+1;-\frac{x^2}{4}\biggr)
+\end{align*}
+Falls also $\alpha$ kein ganzzahliges Vielfaches von $\frac12$ ist, finden
+wir zwei Lösungsfunktionen
+\begin{align}
+J_\alpha(x)
+&=
+x^{\alpha\phantom{-}}
+\sum_{k=0}^\infty
+\frac{1}{(\alpha+1)_k}
+\frac{(-x^2/4)^k}{k!}
+=
+\mathstrut_0F_1\biggl(;\alpha+1;-\frac{x^2}{4}\biggr),
+\label{buch:differentialgleichunge:bessel:erste}
+\\
+J_{-\alpha}(x)
+&=
+x^{-\alpha} \sum_{k=0}^\infty
+\frac{1}{(-\alpha+1)_k} \frac{(-x^2/4)^k}{k!}
+=
+\mathstrut_0F_1\biggl(;-\alpha+1;-\frac{x^2}{4}\biggr).
+\label{buch:differentialgleichunge:bessel:zweite}
+\end{align}
+Die Funktionen $J_{\pm\alpha}(x)$ heissen {\em Bessel-Funktionen
+der Ordnung $\alpha$}.
+
+\subsubsection{Der Fall $\alpha=0$}
+Im Fall $\alpha=0$ hat das Indexpolynom eine doppelte Nullstelle, wir
+können daher nur eine Lösung erwarten.
+Im Fall $\alpha=0$ wird das Produkt im Nenner zu $n!$, so dass die
+Lösungsfunktion
+\[
+J_0(x)
+=
+\sum_{k=0}^\infty
+\frac{(-1)^k}{(k!)^2}
+\biggl(\frac{x}{2}\biggr)^{2k}
+\]
+geschrieben werden kann.
+
+% XXX Zweite Lösung explizit durchrechnen
+
+\subsubsection{Der Fall $\alpha=p$, $p\in\mathbb{N}, p > 0$}
+In diesem Fall kann nur die erste
+Lösung~\eqref{buch:differentialgleichunge:bessel:erste}
+verwendet werden.
+Die Pochhammer-Symbole im Nenner können ebenfalls als
+Quotient
+\[
+\frac{1}{(p+1)_k}
+=
+\frac{1}{(p+1)\cdot(p+k)}
+=
+\frac{p!}{(p+k)!}
+\]
+von Fakultäten geschrieben werden.
+Damit erhält die Lösungsfunktion die Form
+\[
+J_p(x)
+=
+\sum_{k=0}^\infty
+\frac{(-1)^k}{k!(p+k)!}\biggl(\frac{x}{2}\biggr)^{p+2k}.
+\]
+
+\subsubsection{Der Fall $\alpha=n+\frac12$, $n\in\mathbb{N}$}
+Obwohl $2\alpha$ eine Ganzzahl ist, sind die beiden Lösungen
+\label{buch:differentialgleichunge:bessel:erste}
+und
+\label{buch:differentialgleichunge:bessel:zweite}
+linear unabhängig.
+
+Man kann zeigen, dass sich die Lösungsfunktionen in diesem Fall
+durch bereits bekannte elementare Funktionen ausdrücken lassen.
+Wir rechnen dies für $n=0$ nach.
+Zunächst drücken wir die Pochhammer-Symbole im Nenner anders aus.
+Es ist
+\begin{align*}
+\biggl(\frac12 + 1\biggr)_k
+&=
+\biggl(\frac12 + 1\biggr)
+\biggl(\frac12 + 2\biggr)
+\cdots
+\biggl(\frac12 + k\biggr)
+=
+\frac{1}{2^k}\bigl(3\cdot 5\cdot\ldots\cdot (2k+1)\bigr)
+=
+\frac{(2k+1)!}{2^{2k+1}\cdot k!}
+\\
+\biggl(-\frac12 + 1\biggr)_k
+&=
+\biggl(-\frac12 + 1\biggr)
+\biggl(-\frac12 + 2\biggr)
+\cdots
+\biggl(-\frac12 + k\biggr)
+\\
+&=
+\biggl(\frac12 + 0\biggr)
+\biggl(\frac12 + 1\biggr)
+\cdots
+\biggl(\frac12 + k-1\biggr)
+=
+\frac{1}{2^k}\bigl(1\cdot 3 \cdot\ldots\cdot (2(k-1)+1)\bigr)
+=
+\frac{(2k-1)!}{2^{2k}\cdot (k-1)!}
+\end{align*}
+Damit können jetzt die Reihenentwicklungen der Lösung wie folgt
+umgeformt werden
+\begin{align*}
+y_1(x)
+&=
+\sqrt{x}
+\sum_{k=0}^\infty
+\frac{1}{(\alpha+1)_k}
+\frac{(-x^2/4)^k}{k!}
+=
+\sqrt{x}
+\sum_{k=0}^\infty
+\frac{2^{2k+1}k!}{(2k+1)!}
+\frac{(-x^2/4)^k}{k!}
+=
+\sqrt{x}
+\sum_{k=0}^\infty
+(-1)^k
+\frac{2\cdot x^{2k}}{(2k+1)!}
+\\
+&=
+\frac{1}{2\sqrt{x}}
+\sum_{k=0}^\infty
+(-1)^k
+\frac{x^{2k+1}}{(2k+1)!}
+=
+\frac{1}{2\sqrt{x}} \sin x
+\\
+y_2(x)
+&=
+\frac{1}{\sqrt{x}}
+\sum_{k=0}^\infty
+\frac{2^{2k}\cdot (k-1)!}{(2k-1)!}
+\frac{(-x^2/4)^k}{k!}
+=
+\frac{1}{\sqrt{x}}
+\sum_{k=0}^\infty
+(-1)^k
+\frac{x^{2k}}{(2k-1)!\cdot k}
+\\
+&=
+\frac{2}{\sqrt{x}}
+\sum_{k=0}^\infty
+(-1)^k
+\frac{x^{2k}}{(2k-1)!\cdot 2k}
+=
+\frac{2}{\sqrt{x}} \cos x.
+\end{align*}
+
+% XXX Nachrechnen, dass diese Funktionen
+% XXX Lösungen der Differentialgleichung sind
+
+\subsection{Analytische Fortsetzung und Bessel-Funktionen zweiter Art}
+
+
+
+
+
