@@ -3,7 +3,7 @@
 %
 % (c) 2021 Prof Dr Andreas Müller, OST Ostschweizer Fachhochschule
 %
-\section{Orthogonale Polynome
+\section{Orthogonalität
 \label{buch:integral:section:orthogonale-polynome}}
 Die Fourier-Theorie basiert auf der Idee, Funktionen durch 
 Funktionenreihen mit Summanden zu bilden, die im Sinne eines
@@ -14,12 +14,834 @@ Differentialgleichungen.
 Besonders interessant wird die Situation, wenn die Funktionen 
 Polynome sind.
 
+%
+% Skalarprodukt
+%
 \subsection{Skalarprodukt}
-\subsection{Definition}
+Der reelle Vektorraum $\mathbb{R}^n$ trägt das Skalarprodukt
+\[
+\langle\;,\;\rangle
+\colon
+\mathbb{R}^n \times \mathbb{R}^n \to \mathbb{R}
+:
+(x,y)\mapsto \langle x, y\rangle = \sum_{k=1}^n x_iy_k,
+\]
+welches viele interessante Anwendungen ermöglicht.
+Eine orthonormierte Basis macht es zum Beispiel besonders leicht,
+eine Zerlegung eines Vektors in dieser Basis zu finden.
+In diesem Abschnitt soll zunächst an die Eigenschaften erinnert
+werden, die zu einem nützlichen 
+
+\subsubsection{Eigenschaften eines Skalarproduktes}
+Das Skalarprodukt erlaubt auch, die Länge eines Vektors $v$
+als $|v| = \sqrt{\langle v,v\rangle}$ zu definieren.
+Dies funktioniert natürlich nur, wenn die Wurzel auch immer
+definiert ist, d.~h.~das Skalarprodukt eines Vektors mit sich
+selbst darf nicht negativ sein.
+Dazu dient die folgende Definition.
+
+\begin{definition}
+Sei $V$ ein reeller Vektorraum.
+Eine bilineare Abbildung
+\[
+\langle\;,\;\rangle
+\colon
+V\times V
+\to
+\mathbb{R}
+:
+(u,v) \mapsto \langle u,v\rangle.
+\]
+heisst {\em positiv definit}, wenn für alle Vektoren $v \in V$ mit
+$v\ne 0 \Rightarrow \langle v,v\rangle > 0$ 
+Die {\em Norm} eines Vektors $v$ ist
+$|v|=\sqrt{\langle v,v\rangle}$.
+\end{definition}
+
+Damit man mit dem Skalarprodukt sinnvoll rechnen kann, ist ausserdem
+erforderlich, dass es eine einfache Beziehung zwischen 
+$\langle x,y\rangle$ und $\langle y,x\rangle$ gibt.
+
+\begin{definition}
+Ein {\em Skalarprodukt} auf einem reellen Vektorraum $V$ ist eine
+positiv definite, symmetrische bilineare Abbildung
+\[
+\langle\;,\;\rangle
+\colon
+V\times V
+\to
+\mathbb{R}
+:
+(u,v) \mapsto \langle u,v\rangle.
+\]
+\end{definition}
+
+Das Skalarprodukt $\langle u,v\rangle=u^tv$ auf dem Vektorraum 
+$\mathbb{R}^n$ erfüllt die Definition ganz offensichtlich,
+sie führt auf die Komponentendarstellung
+\[
+\langle u,v\rangle = u^tv = \sum_{k=1}^n u_iv_i.
+\]
+Weitere Skalarprodukte ergeben ergeben sich mit jeder symmetrischen,
+positiv definiten Matrix $G$ und der Definition
+$\langle u,v\rangle_G=u^tGv$.
+Ein einfacher Spezialfall tritt auf, wenn $G$ eine Diagonalmatrix
+$\operatorname{diag}(w_1,\dots,w_n)$
+mit positiven Einträgen $w_i>0$ auf der Diagonalen ist.
+In diesem Fall schreiben wir
+\[
+\langle u,v\rangle_w
+=
+u^t\operatorname{diag}(w_1,\dots,w_n)v
+=
+\sum_{k=1}^n u_iv_i\,w_i
+\]
+und nennen $\langle \;,\;\rangle_w$ das {\em gewichtete Skalarprodukt}
+mit {\em Gewichten $w_i$}.
+
+\subsubsection{Skalarprodukte auf Funktionenräumen}
+Das Integral ermöglicht jetzt, ein Skalarprodukt auf dem reellen
+Vektorraum der stetigen Funktionen auf einem Intervall zu definieren.
+
+\begin{definition}
+Sei $V$ der reelle Vektorraum $C([a,b])$ der reellwertigen, stetigen
+Funktion auf dem Intervall $[a,b]$.
+Dann ist 
+\[
+\langle\;,\;\rangle
+\colon
+C([a,b]) \times C([a,b]) \to \mathbb{R}
+:
+(f,g) \mapsto \langle f,g\rangle = \int_a^b f(x)g(x)\,dx.
+\]
+ein Skalarprodukt.
+\end{definition}
+
+Die Definition ist offensichtlich symmetrisch in $f$ und $g$ und
+aus den Eigenschaften des Integrals ist klar, dass das Produkt
+bilinear ist:
+\begin{align*}
+\langle \lambda_1 f_1+\lambda_2f_2,g\rangle
+&=
+\int_a^b (\lambda_1f_(x) +\lambda_2f_2(x))g(x)\,dx
+=
+\lambda_1\int_a^b f_1(x) g(x)\,dx
++
+\lambda_2\int_a^b f_2(x) g(x)\,dx
+\\
+&=
+\lambda_1\langle f_1,g\rangle
++
+\lambda_2\langle f_2,g\rangle.
+\end{align*}
+Ausserdem ist es positiv definit, denn wenn $f(x_0) \ne 0$ ist,
+dann gibt es wegen der Stetigkeit von $f$ eine Umgebung
+$U=[x_0-\varepsilon,x_0+\varepsilon]$, derart, dass $|f(x)| > \frac12|f(x_0)|$
+ist für alle $x\in U$.
+Somit ist das Integral
+\[
+\langle f,f\rangle
+=
+\int_a^b |f(x)|^2\,dx
+\ge
+\int_{x_0-\varepsilon}^{x_0+\varepsilon} |f(x)|^2\,dx
+\ge
+\int_{x_0-\varepsilon}^{x_0+\varepsilon} \frac14|f(x_0)|^2\,dx
+=
+\frac{1}{4}|f(x_0)|^2\cdot 2\varepsilon
+=
+\frac{|f(x_0)|\varepsilon}{2}
+>0,
+\]
+was beweist, dass $\langle\;,\;\rangle$ positiv definit und damit
+ein Skalarprodukt ist.
+
+Die Definition kann noch etwas verallgemeinert werden, indem 
+die Funktionswerte nicht überall auf dem Definitionsbereich 
+gleich gewichtet werden. 
+
+\begin{definition}
+Sei $w\colon [a,b]\to \mathbb{R}^+$ eine positive, stetige Funktion,
+dann ist
+\[
+\langle\;,\;\rangle_w
+\colon
+C([a,b]) \times C([a,b]) \to \mathbb{R}
+:
+(f,g) \mapsto \langle f,g\rangle_w = \int_a^b f(x)g(x)\,w(x)\,dx.
+\]
+das {\em gewichtete Skalarprodukt} mit {\em Gewichtsfunktion $w(x)$}.
+\end{definition}
+
+\subsubsection{Gram-Schmidt-Orthonormalisierung}
+In einem reellen Vektorraum $V$ mit Skalarprodukt $\langle\;\,,\;\rangle$
+kann aus einer beleibigen Basis $b_1,\dots,b_n$ mit Hilfe des 
+Gram-Schmidtschen Orthogonalisierungsverfahrens immer eine
+orthonormierte Basis $\tilde{b}_1,\dots,\tilde{b}_n$ Basis
+gewonnen werden.
+Es stellt sicher, dass für alle $k\le n$ gilt
+\[
+\langle b_1,\dots,b_k\rangle
+=
+\langle \tilde{b}_1,\dots,\tilde{b}_k\rangle.
+\]
+Zur Vereinfachung der Formeln schreiben wir $v^0=v/|v|$ für einen zu
+$v$ parallelen Einheitsvektor.
+Die Vektoren $\tilde{b}_i$ können mit Hilfe der Formeln
+\begin{align*}
+\tilde{b}_1
+&=
+(b_1)^0
+\\
+\tilde{b}_2
+&=
+\bigl(
+b_2
+-
+\langle \tilde{b}_1,b_2\rangle \tilde{b}_1
+\bigr)^0
+\\
+\tilde{b}_3
+&=
+\bigl(
+b_3
+-
+\langle \tilde{b}_1,b_3\rangle \tilde{b}_1
+-
+\langle \tilde{b}_2,b_3\rangle \tilde{b}_2
+\bigr)^0
+\\
+&\;\vdots
+\\
+\tilde{b}_n
+&=
+\bigl(
+b_n
+-
+\langle \tilde{b}_1,b_n\rangle \tilde{b}_1
+-
+\langle \tilde{b}_2,b_n\rangle \tilde{b}_2
+-\dots
+-
+\langle \tilde{b}_{n-1},b_n\rangle \tilde{b}_{n-1}
+\bigr)^0
+\end{align*}
+iterativ berechnet werden.
+Dieses Verfahren lässt sich auch auf Funktionenräume anwenden.
+
+Die Normierung ist nicht unbedingt nötig und manchmal unangenehm,
+da die Norm unschöne Quadratwurzeln einführt.
+Falls es genügt, eine orthogonale Basis zu finden, kann darauf
+verzichtet werden, bei der Orthogonalisierung muss aber berücksichtigt
+werden, dass die Vektoren $\tilde{b}_i$ jetzt nicht mehr Einheitslänge
+haben.
+Die Formeln
+\begin{align*}
+\tilde{b}_0
+&=
+b_0
+\\
+\tilde{b}_1
+&=
+b_1
+-
+\frac{\langle b_1,\tilde{b}_0\rangle}{\langle \tilde{b}_0,\tilde{b}_0\rangle}\tilde{b}_0
+\\
+\tilde{b}_2
+&=
+b_2
+-
+\frac{\langle b_2,\tilde{b}_0\rangle}{\langle \tilde{b}_0,\tilde{b}_0\rangle}\tilde{b}_0
+-
+\frac{\langle b_2,\tilde{b}_1\rangle}{\langle \tilde{b}_1,\tilde{b}_1\rangle}\tilde{b}_1
+\\
+&\;\vdots
+\\
+\tilde{b}_n
+&=
+b_n
+-
+\frac{\langle b_n,\tilde{b}_0\rangle}{\langle \tilde{b}_0,\tilde{b}_0\rangle}\tilde{b}_0
+-
+\frac{\langle b_n,\tilde{b}_1\rangle}{\langle \tilde{b}_1,\tilde{b}_1\rangle}\tilde{b}_1
+-
+\dots
+-
+\frac{\langle b_n,\tilde{b}_{n-1}\rangle}{\langle \tilde{b}_{n-1},\tilde{b}_{n-1}\rangle}\tilde{b}_{n-1}.
+\end{align*}
+berücksichtigen dies.
+
+
+%
+% Orthogonale Polynome
+%
+\subsection{Orthogonale Polynome
+\label{buch:integral:subsection:orthogonale-polynome}}
+Die Polynome $1,x,x^2,\dots,x^n$ bilden eine Basis des Vektorraums
+der Polynome vom Grad $\le n$.
+Bezüglich des Skalarproduktes
+\[
+\langle p,q\rangle
+=
+\int_{-1}^1 p(x)q(x)\,dx
+\]
+sind sie jedoch nicht orthogonal, denn es ist
+\[
+\langle x^i,x^j\rangle
+=
+\int_{-1}^1 x^{i+j}\,dx
+=
+\biggl[\frac{x^{i+j+1}}{i+j+1}\biggr]_{-1}^1
+=
+\begin{cases}
+\frac{2}{i+j+1}&\qquad\text{$i+j$ gerade}\\
+              0&\qquad\text{$i+j$ ungerade}.
+\end{cases}
+\]
+Wir können daher das Gram-Schmidtsche Orthonormalisierungsverfahren
+anwenden, um eine orthogonale Basis von Polynomen zu finden, was
+wir im Folgenden tun wollen.
+
+% XXX Orthogonalisierungsproblem so formulieren, dass klar wird,
+% XXX dass man ein "Normierungskriterium braucht.
+
+Da wir auf die Normierung verzichten, brauchen wir ein anderes
+Kriterium, welches die Polynome eindeutig festlegen kann.
+Wir bezeichnen das Polynom vom Grad $n$, das bei diesem Prozess
+entsteht, mit $P_n(x)$ und legen willkürlich aber traditionskonform
+fest, dass $P_n(1)=1$ sein soll.
+
+Das Skalarprodukt berechnet ein Integral eines Produktes von zwei
+Polynomen über das symmetrische Interval $[-1,1]$.
+Ist die eine gerade und die andere ungerade, dann ist das
+Produkt eine ungerade Funktion und das Skalarprodukt verschwindet.
+Sind beide Funktionen gerade oder ungerade, dann ist das Produkt
+gerade und das Skalarprodukt ist im Allgmeinen von $0$ verschieden.
+Dies zeigt, dass es tatsächlich etwas zu Orthogonalisieren gibt.
+
+Die ersten beiden Funktionen sind das konstante Polynom $1$ und
+das Polynome $x$.
+Nach obiger Beobachtung ist das Skalarprodukt $\langle 1,x\rangle=0$,
+also ist $P_1(x)=x$.
+
+\begin{lemma}
+Die Polynome $P_{2n}(x)$ sind gerade, die Polynome $P_{2n+1}(x)$ sind
+ungerade Funktionen von $x$.
+\end{lemma}
+
+\begin{proof}[Beweis]
+Wir verwenden vollständige Induktion nach $n$.
+Wir wissen bereits, dass $P_0(x)=1$ und $P_1(x)=x$ die verlangten
+Symmetrieeigenschaften haben.
+Im Sinne der Induktionsannahme nehmen wir daher an, dass die
+Symmetrieeigenschaften für $P_k(x)$, $k<n$, bereits bewiesen sind.
+$P_n(x)$ entsteht jetzt durch Orthogonalisierung nach der Formel
+\[
+P_n(x)
+=
+x^n
+-
+\langle P_{n-1},x^n\rangle P_{n-1}(x)
+-
+\langle P_{n-2},x^n\rangle P_{n-2}(x)
+-\dots-
+\langle P_1,x^n\rangle P_1(x)
+-
+\langle P_0,x^n\rangle P_0(x).
+\]
+Die Skalarprodukte
+$\langle P_{n-1},x^n\rangle$,
+$\langle P_{n-3},x^n\rangle$, $\dots$ verschwinden alle, so dass
+$P_n(x)$ eine Linearkombination der Funktionen $x^n$, $P_{n-2}(x)$,
+$P_{n-4}(x)$ ist, die die gleiche Parität wie $x^n$ haben.
+Also hat auch $P_n(x)$ die gleiche Parität, was das Lemma beweist.
+\end{proof}
+
+Die Ortogonalisierung von $x^2$ liefert daher
+\[
+p(x) = x^2
+-
+\frac{\langle x^2,P_0\rangle}{\langle P_0,P_0\rangle} P_0(x)
+=
+x^2 - \frac{\int_{-1}^1x^2\,dx}{\int_{-1}^11\,dx}
+=
+x^2 - \frac{\frac{2}{3}}{2}=x^2-\frac13
+\]
+Dieses Polynom erfüllt die Standardisierungsbedingung noch 
+nicht den $p(1)=\frac23$.
+Daraus leiten wir ab, dass
+\[
+P_2(x) = \frac12(3x^2-1)
+\]
+ist.
+
+Für $P_3(x)$ brauchen wir nur die Skalaprodukte
+\[
+\left.
+\begin{aligned}
+\langle x^3,P_1\rangle
+&=
+\int_{-1}^1  x^3\cdot x\,dx
+=
+\biggl[\frac15x^5\biggr]_{-1}^1
+=
+\frac25
+\qquad
+\\
+\langle P_1,P_1\rangle
+&=
+\int_{-1}^1 x^2\,dx
+=
+\frac23
+\end{aligned}
+\right\}
+\qquad
+\Rightarrow
+\qquad
+p(x) = x^3 - \frac{\frac25}{\frac23}x=x^3-\frac{3}{5}x
+\]
+Die richtige Standardisierung ergibt sich,
+indem man durch $p(1)=\frac25$ dividiert, also
+\[
+P_2(x) = \frac12(5x^3-3x).
+\]
+
+Die Berechnung weiterer Polynome verlangt, dass Skalarprodukte
+$\langle x^n,P_k\rangle$ berechnet werden müssen, was wegen
+der zunehmend komplizierten Form von $P_k$ etwas mühsam ist.
+Wir berechnen den Fall $P_4$.
+Dazu muss das Polynom $x^4$ um eine Linearkombination von
+$P_2$ und $P_0(x)=1$ korrigiert werden.
+Die Skalarprodukte sind
+\begin{align*}
+\langle x^4, P_0\rangle
+&=
+\int_{-1}^1 x^4\,dx = \frac25
+\\
+\langle P_0,P_0\rangle
+&=
+\int_{-1}^1 \,dx = 2
+\\
+\langle x^4,P_2\rangle
+&=
+\int_{-1}^1 \frac32x^6-\frac12 x^4\,dx
+=
+\biggl[\frac{3}{14}x^7-\frac{1}{10}x^5\biggr]_{-1}^1
+=
+\frac6{14}-\frac15
+=
+\frac8{35}
+\\
+\langle P_2,P_2\rangle
+&=
+\int_{-1}^1 \frac14(3x^2-1)^2\,dx
+=
+\int_{-1}^1 \frac14(9x^4-6x^2+1)\,dx
+=
+\frac14(\frac{18}{5}-4+2)
+=\frac25.
+\end{align*}
+Daraus folgt für $p(x)$
+\begin{align*}
+p(x)
+&=
+x^4
+-
+\frac{\langle x^4,P_2\rangle}{\langle P_2,P_2\rangle}P_2(x)
+-
+\frac{\langle x^4,P_0\rangle}{\langle P_0,P_0\rangle}P_0(x)
+\\
+&=
+x^4
+-\frac47 P_2(x) - \frac15 P_0(x)
+=
+x^4 - \frac{6}{7}x^2 + \frac{3}{35}
+\end{align*}
+mit $p(1)=\frac{8}{35}$, so dass man
+\[
+P_4(x) =
+\frac18(35x^4-30x^2+3)
+\]
+setzen muss.
+
+\begin{table}
+\centering
+\renewcommand{\arraystretch}{1.5}
+\begin{tabular}{|>{$}c<{$}|>{$}l<{$}|}
+\hline
+n&P_n(x)\\
+\hline
+ 0&1
+\\
+ 1&x
+\\
+ 2&\frac12(3x^2-1)
+\\
+ 3&\frac12(5x^3-3x)
+\\
+ 4&\frac18(35x^4-30x^2+3)
+\\
+ 5&\frac18(63x^5-70x^3+15x)
+\\
+ 6&\frac1{16}(231x^6-315x^4+105x^2-5)
+\\
+ 7&\frac1{16}(429x^7-693x^5+315x^3-35x)
+\\
+ 8&\frac1{128}(6435x^8-12012x^6+6930x^4-1260x^2+35)
+\\
+ 9&\frac1{128}(12155x^9-25740x^7+18018x^5-4620x^3+315x)
+\\
+10&\frac1{256}(46189x^{10}-109395x^8+90090x^6-30030x^4+3465x^2-63)
+\\
+\hline
+\end{tabular}
+\caption{Die Legendre-Polynome $P_n(x)$ für $n=0,1,\dots,10$ sind
+orthogonale Polynome vom Grad $n$, die den Wert $P_n(1)=1$ haben.
+\label{buch:integral:table:legendre-polynome}}
+\end{table}
+
+Die so konstruierten Polynome heissen die {\em Legendre-Polynome}.
+Durch weitere Durchführung des Verfahrens liefert die Polynome in
+Tabelle~\ref{buch:integral:table:legendre-polynome}.
+
+
+%
+% Differentialgleichungen
+%
 \subsection{Orthogonale Polynome und Differentialgleichungen}
 \subsubsection{Legendre-Differentialgleichung}
 \subsubsection{Legendre-Polyome}
 \subsubsection{Legendre-Funktionen zweiter Art}
 Siehe Wikipedia-Artikel \url{https://de.wikipedia.org/wiki/Legendre-Polynom}
+
+%
+% Anwendung: Gauss-Quadratur
+%
 \subsection{Anwendung: Gauss-Quadratur}
+Orthogonale Polynome haben eine etwas unerwartet Anwendung in einem
+von Gauss erdachten numerischen Integrationsverfahren.
+Es basiert auf der Beobachtung, dass viele Funktionen sich sehr
+gut durch Polynome approximieren lassen.
+Wenn man also sicherstellt, dass ein Verfahren für Polynome
+sehr gut funktioniert, darf man auch davon ausgehen, dass es für
+andere Funktionen nicht allzu schlecht sein wird.
+
+\subsubsection{Interpolationspolynome}
+Zu einer stetigen Funktion $f(x)$ auf dem Intervall $[-1,1]$ 
+ist ein Polynome vom Grad $n$ gesucht, welches in den Punkten
+$x_0<x_1<\dots<x_n$ die Funktionswerte $f(x_i)$ annimmt.
+Ein solches Polynom $p(x)$ hat $n+1$ Koeffizienten, die aus dem
+linearen Gleichungssystem der $n+1$ Gleichungen $p(x_i)=f(x_i)$ 
+ermittelt werden können.
+
+Das Interpolationspolynom $p(x)$ lässt sich abera uch direkt 
+angeben.
+Dazu konstruiert man zuerst die Polynome
+\[
+l_i(x)
+=
+\frac{
+(x-x_0)(x-x_1)\cdots\widehat{(x-x_i)}\cdots (x-x_n)
+}{
+(x_i-x_0)(x_i-x_1)\cdots\widehat{(x_i-x_i)}\cdots (x_i-x_n)
+}
+\]
+vom Grad $n$, wobei der Hut bedeutet, dass diese Faktoren
+im Produkt wegzulassen sind.
+Die Polynome $l_i(x)$ haben die Eigenschaft
+\[
+l_i(x_j) = \delta_{ij}
+=
+\begin{cases}
+1&\qquad i=j\\
+0&\qquad\text{sonst}.
+\end{cases}
+\]
+Die Linearkombination
+\[
+p(x) = \sum_{i=0}^n f(x_i)l_i(x)
+\]
+ist dann ein Polynom vom Grad $n$, welches am den Stellen $x_j$
+die Werte
+\[
+p(x_j) 
+=
+\sum_{i=0}^n f(x_i)l_i(x_j)
+=
+\sum_{i=0}^n f(x_i)\delta_{ij}
+=
+f(x_j)
+\]
+hat, das Polynome $p(x)$ ist also das gesuchte Interpolationspolynom.
+
+\subsubsection{Fehler des Interpolationspolynoms}
+TODO
+
+\subsubsection{Integrationsverfahren auf der Basis von Interpolation}
+Das Integral einer stetigen Funktion $f(x)$ auf dem Intervall $[-1,1]$
+kann mit Hilfe des Interpolationspolynoms approximiert werden.
+Wenn $|f(x)-p(x)|<\varepsilon$ ist im Intervall $[-1,1]$, dann gilt
+für die Integrale
+\[
+\biggl|\int_{-1}^1 f(x)\,dx -\int_{-1}^1p(x)\,dx\biggr|
+\le
+\int_{-1}^1 |f(x)-p(x)|\,dx
+\le
+2\varepsilon.
+\]
+Ein Interpolationspolynom mit kleinem Fehler liefert also auch
+eine gute Approximation für das Integral.
+
+Da das Interpolationspolynome durch die Funktionswerte $f(x_i)$
+bestimmt ist, muss auch das Integral allein aus diesen Funktionswerten
+berechnet werden können.
+Tatsächlich ist
+\[
+\int_{-1}^1 p(x)\,dx
+=
+\int_{-1}^1 \sum_{i=0}^n f(x_i)l_i(x)\,dx
+=
+\sum_{i=0}^n f(x_i)
+\underbrace{\int_{-1}^1
+l_i(x)\,dx}_{\displaystyle = A_i}
+\]
+Das Integral von $f(x)$ wird also durch eine mit den Zahlen $A_i$
+gewichtete Summe
+\[
+\int_{-1}^1 f(x)\,dx
+\approx
+\sum_{i=1}^n f(x_i)A_i
+\]
+approximiert.
+
+\subsubsection{Integrationsverfahren, die für Polynome exakt sind}
+Ein Polynom vom Grad $2n$ hat $2n+1$ Koeffizienten.
+Um das Polynom durch ein Interpolationspolynom exakt wiederzugeben,
+braucht man $2n+1$ Stützstellen.
+Andererseits gilt
+\[
+\int_{-1}^1 a_{2n}x^{2n} + a_{2n-1}x^{2n-1} + \dots + a_2x^2 + a_1x a_0\,dx
+=
+\int_{-1}^1 a_{2n}x^{2n} + a_{2n-2}x^{2n-2}+\dots +a_2x^2 +a_0\,dx,
+\]
+das Integral ist also bereits durch die $n+1$ Koeffizienten mit geradem
+Index bestimmt.
+Es sollte daher möglich sein, aus $n+1$ Funktionswerten eines beliebigen
+Polynoms vom Grad höchstens $2n$ an geeignet gewählten Stützstellen das
+Integral exakt zu bestimmen.
+
+\begin{beispiel}
+Wir versuchen dies für quadratische Polynome durchzuführen, also 
+für $n=1$.
+Gesucht sind also zwei Werte $x_i$, $i=0,1$ und Gewichte $A_i$, $i=0,1$
+derart, dass für jedes quadratische Polynome $p(x)=a_2x^2+a_1x+a_0$ 
+das Integral durch
+\[
+\int_{-1}^1 p(x)\,dx
+=
+A_0 p(x_0) + A_1 p(x_1)
+\]
+gebeben ist.
+Indem wir für $p(x)$ die Polynome $1$, $x$, $x^2$ und $x^3$ einsetzen,
+erhalten wir vier Gleichungen
+\[
+\begin{aligned}
+p(x)&=\rlap{$1$}\phantom{x^2}\colon& 2       &= A_0\phantom{x_0}+ A_1     \\
+p(x)&=x^{\phantom{2}}\colon& 0       &= A_0x_0   + A_1x_1  \\
+p(x)&=x^2\colon& \frac23 &= A_0x_0^2 + A_1x_1^2\\
+p(x)&=x^3\colon& 0       &= A_0x_0^3 + A_1x_1^3.
+\end{aligned}
+\]
+Dividiert man die zweite und vierte Gleichung in der Form
+\[
+\left.
+\begin{aligned}
+A_0x_0 &= -A_1x_1\\
+A_0x_0^2 &= -A_1x_1^2
+\end{aligned}
+\quad
+\right\}
+\quad
+\Rightarrow
+\quad
+x_0^2=x_1^2
+\quad
+\Rightarrow
+\quad
+x_1=-x_0.
+\]
+Indem wir dies in die zweite Gleichung einsetzen, finden wir 
+\[
+0 = A_0x_0 + A_1x_1 = A_0x_1 -A_1x_0 = (A_0-A_1)x_0
+\quad\Rightarrow\quad
+A_0=A_1.
+\]
+Aus der ersten Gleichung folgt jetzt
+\[
+2= A_0+A_1 = 2A_0 \quad\Rightarrow\quad A_0 = 1.
+\]
+Damit bleiben nur noch die Werte von $x_i$ zu bestimmen, was 
+mit Hilfe der zweiten Gleichung geschehen kann:
+\[
+\frac23 = A_0x_0^2 + A_1x_1^2 = 2x_0^2
+\quad\Rightarrow\quad
+x_0 = \frac{1}{\sqrt{3}}, x_1 = -\frac{1}{\sqrt{3}}
+\]
+Damit ist das Problem gelöst: das Integral eines Polynoms vom Grad 3
+im Interval $[-1,1]$ ist exakt gegeben durch
+\[
+\int_{-1}^1 p(x)\,dx
+=
+p\biggl(-\frac{1}{\sqrt{3}}\biggr)
++
+p\biggl(\frac{1}{\sqrt{3}}\biggr).
+\]
+Das Integral kann also durch nur zwei Auswertungen des Polynoms
+exakt bestimmt werden.
+
+Im Laufe der Lösung des Gleichungssystems wurden die Gewichte $A_i$
+mit bestimmt.
+Es ist aber auch möglich, die Gewichte zu bestimmen, wenn man die
+Stützstellen kennt.
+Nach \eqref{XXX} sind sie gegeben als Integrale der Polynome $l_i(x)$,
+die im vorliegenden Fall linear sind:
+\begin{align*}
+l_0(x)
+&=
+\frac{x-x_1}{x_0-x_1}
+=
+\frac{x-\frac1{\sqrt{3}}}{-\frac{2}{\sqrt{3}}}
+=
+\frac12(1-\sqrt{3}x)
+\\
+l_1(x)
+&=
+\frac{x-x_0}{x_1-x_0}
+=
+\frac{x+\frac1{\sqrt{3}}}{\frac{2}{\sqrt{3}}}
+=
+\frac12(1+\sqrt{3}x)
+\end{align*}
+Diese haben die Integrale
+\[
+\int_{-1}^1\frac12(1\pm\sqrt{3}x)\,dx
+=
+\int_{-1}^1 \frac12\,dx
+=
+1,
+\]
+da das Polynom $x$ verschwindendes Integral hat.
+Dies stimmt mit $A_0=A_1=1$ überein.
+\label{buch:integral:beispiel:gaussquadraturn1}
+\end{beispiel}
+
+Das eben vorgestellt Verfahren kann natürlich auf beliebiges $n$
+verallgemeinert werden.
+Allerdings ist die Rechnung zur Bestimmung der Stützstellen und
+Gewichte sehr mühsam.
+
+\subsubsection{Stützstellen und Orthogonalpolynome}
+Sei $R_n=\{p(X)\in\mathbb{R}[X] \mid \deg p\le n\}$ der Vektorraum
+der Polynome vom Grad $n$.
+
+\begin{satz}
+\label{buch:integral:satz:gaussquadratur}
+Sei $p$ ein Polynom vom Grad $n$, welches auf allen Polynomen in $R_{n-1}$
+orthogonal sind.
+Seien ausserdem $x_0<x_1<\dots<x_n$ Stützstellen im Intervall $[-1,1]$ 
+und $A_i\in\mathbb{R}$ Gewichte derart dass
+\[
+\int_{-1}^1 f(x)\,dx =
+\sum_{i=0}^n A_if(x_i)
+\]
+für jedes Polynom $f$ vom Grad höchstens $2n-1$, dann sind die Zahlen
+$x_i$ die Nullstellen des Polynoms $p$.
+\end{satz}
+
+\begin{proof}[Beweis]
+Sei $f(x)$ ein beliebiges Polynom vom Grad $2n-1$.
+Nach dem Polynomdivisionsalgorithmus gibt es
+Polynome $q,r\in R_{n-1}$ derart, dass $f=qp+r$.
+Dann ist das Integral von $f$ gegeben durch
+\[
+\int_{-1}^1 f(x)\,dx
+=
+\int_{-1}^1q(x) p(x)\,dx + \int_{-1}^1 r(x)\,dx
+=
+\langle q,p\rangle + \int_{-1}^1 r(x)\,dx.
+\]
+Da $p\perp R_{n-1}$ folgt insbesondere, dass $\langle q,p\rangle=0$.
+
+Da die Integrale auch aus den Werten in den Stützstellen berechnet
+werden können, muss auch
+\[
+0
+=
+\int_{-1}^1 q(x)p(x)\,dx
+=
+\sum_{i=0}^n q(x_i)p(x_i)
+\]
+für jedes beliebige Polynom $q\in R_{n-1}$ gelten.
+Da man für $q$ die Interpolationspolynome $l_j(x)$ verwenden
+kann, den Grad $n-1$ haben, folgt
+\[
+0
+=
+\sum_{i=0}^n
+l_j(x_i)p(x_i)
+=
+\sum_{i=0}^n \delta_{ij}p(x_i),
+\]
+die Stützstellen $x_i$ müssen also die Nullstellen des Polynoms
+$p(x)$ sein.
+\end{proof}
+
+Der Satz~\ref{buch:integral:satz:gaussquadratur} begründet das
+{\em Gausssche Quadraturverfahren}.
+Die in Abschnitt~\ref{buch:integral:subsection:orthogonale-polynome}
+bestimmten Legendre-Polynome $P_n$ haben die im Satz
+verlangte Eigenschaft,
+dass sie auf allen Polynomen geringeren Grades orthogonal sind.
+Wählt man die $n$ Nullstellen von $P_n$ als Stützstellen, erhält man 
+automatisch ein Integrationsverfahren, welches für Polynome vom Grad
+$2n-1$ exakt ist.
+
+\begin{beispiel}
+Das Legendre-Polynom $P_2(x) = \frac12(3x^2-1)$ hat die
+Nullstellen $x=\pm1/\sqrt{3}$, dies sind genau die im Beispiel
+auf Seite~\pageref{buch:integral:beispiel:gaussquadraturn1} befundenen
+Sützstellen.
+\end{beispiel}
+
+\subsubsection{Fehler der Gauss-Quadratur}
+Das Gausssche Quadraturverfahren mit $n$ Stützstellen berechnet
+Integrale von Polynomen bis zum Grad $2n-1$ exakt.
+Für eine beliebige Funktion kann man die folgende Fehlerabschätzung
+angeben \cite[theorem 7.3.4, p.~497]{numal}.
+
+\begin{satz}
+Seien $x_i$ die Stützstellen und $A_i$ die Gewichte einer
+Gaussschen Quadraturformel mit $n+1$ Stützstellen und sei $f$
+eine auf dem Interval $[-1,1]$ $2n+2$-mal stetig differenzierbare
+Funktion, dann ist der $E$ Fehler des Integrals
+\[
+\int_{-1}^1 f(x)\,dx = \sum_{i=0}^n A_i f(x_i) + E
+\]
+gegeben durch
+\begin{equation}
+E = \frac{f^{(2n+2)}}{(2n+2)!}\int_{-1}^1 l(x)^2\,dx,
+\label{buch:integral:gaussquadratur:eqn:fehlerformel}
+\end{equation}
+wobei $l(x)=(x-x_0)(x-x_1)\dots(x-x_n)$ ist.
+\end{satz}
+
+Dank dem Faktor $(2n+2)!$ im Nenner von
+\eqref{buch:integral:gaussquadratur:eqn:fehlerformel}
+geht der Fehler für grosses $n$ sehr schnell gegen $0$.
+Man kann auch zeigen, dass die mit Gauss-Quadratur mit $n+1$
+Stützstellen berechneten Näherungswerte eines Integrals einer
+stetigen Funktion $f(x)$ für $n\to\infty$ immer gegen den wahren
+Wert des Integrals konvergieren.
+
+\subsubsection{Skalarprodukte mit Gewichtsfunktion}
 

@@ -576,6 +576,58 @@ Diese Reihenentwicklung ist sehr effizient für kleine Werte von $x$.
 Für grosse Werte von $x$ entstehen aber sehr grosse Zwischenterme in der
 Reihe, was zu Auslöschung und damit zu Genauigkeitsverlust führt.
 
+\subsubsection{Hypergeometrische Funktion}
+Die Taylor-Reihe~\eqref{buch:integrale:eqn:erfreihe} der Fehlerfunktion
+kann auch mit Hilfe hypergeometrischer Funktionen geschrieben werden.
+Da nur ungerade Potenzen vorkommen, klammern wir zunächst einen gemeinsamen
+Faktor $x$ aus:
+\[
+\operatorname{erf}(x)
+=
+\frac{2x}{\sqrt{\pi}}
+\sum_{k=0}^\infty
+\frac{1}{2k+1}
+\frac{(-x^2)^k}{k!}.
+\]
+Der Bruch $1/(2k+1)$  muss jetzt noch mit Hilfe von Pochhammer-Symbolen
+geschrieben werden.
+Dazu beachten wir, dass
+\begin{align*}
+\frac{1}{2k+1} 
+&=
+\frac12
+\frac{1}{\frac32+k-1}
+\\
+&=
+\frac12
+\frac{
+\frac32(\frac32+1)(\frac32+2)\dots(\frac32+k-2)\phantom{(\frac32+k-1)}
+}{
+\frac32(\frac32+1)(\frac32+2)\dots(\frac32+k-2)(\frac32+k-1)
+}
+\\
+&=
+\frac{
+\frac12(\frac12+1)(\frac12+2)(\frac12+3)\dots(\frac12+k-1)
+}{
+\frac32(\frac32+1)(\frac32+2)\dots(\frac32+k-2)(\frac32+k-1)
+}
+\\
+&=
+\frac{(\frac12)_k}{(\frac32)_k}.
+\end{align*}
+Somit ist die Fehlerfunktion als hypergeometrische Funktion
+\[
+\operatorname{erf}(x)
+=
+\frac{2x}{\sqrt{\pi}}\sum_{k=0}^\infty
+\frac{(\frac12)_k}{(\frac32)_k}\frac{(-x^2)^k}{k!}
+=
+\frac{2x}{\sqrt{\pi}}\,
+\mathstrut_1F_1({\textstyle\frac12};{\textstyle\frac32};-x^2).
+\]
+gegeben.
+
 \subsubsection{Kettenbruchentwicklung}
 Besonders für grosse $x$ interessiert man sich mehr für
 $\operatorname{erfc}(x)$ als für $\operatorname{erf}(x)$.
