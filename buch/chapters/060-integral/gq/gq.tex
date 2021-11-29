@@ -1,0 +1,57 @@
+%
+% gq.tex -- Fehler 
+%
+% (c) 2021 Prof Dr Andreas Müller, OST Ostschweizer Fachhochschule
+%
+\documentclass[tikz]{standalone}
+\usepackage{amsmath}
+\usepackage{times}
+\usepackage{txfonts}
+\usepackage{pgfplots}
+\usepackage{csvsimple}
+\usetikzlibrary{arrows,intersections,math}
+\begin{document}
+\def\skala{1}
+\def\dx{12}
+\def\dy{8}
+\input{gqpaths.tex}
+\begin{tikzpicture}[>=latex,thick,scale=\skala]
+
+\begin{scope}
+\clip (0,0) rectangle ({\dx*1},{\dy*1});
+\draw[color=red,line width=1.4pt] \two;
+\draw[color=red,line width=1.4pt] \four;
+\draw[color=red,line width=1.4pt] \six;
+\draw[color=red,line width=1.4pt] \eight;
+\draw[color=red,line width=1.4pt] \ten;
+\draw[color=red,line width=1.4pt] \twelve;
+\draw[color=red,line width=1.4pt] \fourteen;
+\draw[color=red,line width=1.4pt] \sixteen;
+\end{scope}
+
+% add image content here
+\draw[->] (0,-0.1) -- (0,{\dy+0.5}) coordinate[label={right:$e$}];
+\draw[->] (-0.1,0) -- ({\dx+0.5},0) coordinate[label={$a$}];
+
+\draw ({\dx},-0.1) -- ({\dx},0.1);
+\draw[line width=0.3pt] ({\dx},0) -- ({\dx},{\dy});
+\node at ({\dx},0) [below] {$1$};
+\node at (0,0) [below] {$0$};
+
+\draw (-0.1,\dy) -- (0.1,\dy);
+\node at (0,\dy) [left] {$10^{-6}$};
+
+\node at ({0.227*\dx},{0.7*\dy}) [rotate=83.5] {$n=2$};
+\node at ({0.678*\dx},{0.7*\dy}) [rotate=83] {$n=4$};
+\node at ({0.850*\dx},{0.7*\dy}) [rotate=84] {$n=6$};
+\node at ({0.915*\dx},{0.7*\dy}) [rotate=85] {$n=8$};
+\node at ({1.015*\dx},{0.7*\dy}) [rotate=90] {$n=16$};
+
+\foreach \x in {0.1,0.2,0.3,0.4,0.5,0.6,0.7,0.8,0.9}{
+	\draw ({\x*\dx},-0.1) -- ({\x*\dx},0.1);
+	\node at ({\x*\dx},0) [below] {$\x$};
+}
+
+\end{tikzpicture}
+\end{document}
+
