@@ -1,0 +1,391 @@
+%
+% separation.tex
+%
+% (c) 2021 Prof Dr Andreas Müller, OST Ostschweizer Fachhochschule
+%
+\section{Separationsmethode
+\label{buch:pde:section:separation}}
+Die Existenz der Lösung einer gewöhnlichen Differentialgleichung
+ist unter einigermassen milden Bedingungen in der Nähe der
+Anfangsbedingung garantiert.
+Ausserdem steht eine ganze Reihe von Lösungsverfahren zur
+Verfügung, nicht zuletzt das Potenzreihenverfahren, welches in
+Kapitel~\ref{buch:chapter:differential} beschrieben wurde.
+Das Ziel dieses Abschnitts ist eine Methode vorzustellen, mit
+der partielle Differentialgleichungen auf gewöhnliche
+Differentialgleichungen zurückgeführt werden können.
+
+%
+% Ansatz
+%
+\subsection{Separationsansatz}
+Die Separationsmethode ist motiviert durch die Beobachtung, dass in
+vielen partiellen Differentialgleichungen die Ableitungen nach
+verschiedenen Variablen sich in verschiedenen Termen befinden und
+sich daher algebraisch trennen lassen.
+Für eine beliebige Funktion bringt das nicht viel, aber für
+Funktionen mit einer speziellen Form kann man daraus eine Vereinfachung
+ableiten.
+
+%
+% Prinzip der Separation
+%
+\subsubsection{Prinzip}
+Die Grundlage der Separationsmethode ist die Idee, die Differentialgleichung
+in zwei Teile aufzuteilen, die keine gemeinsamen Variablen enthalten.
+Eine partielle Differentialgleichungen in einem zweidimensionalen
+Gebiet mit den Koordinaten $x$ und $y$ soll so umgeformt
+werden, dass auf der linken Seite des Gleichheitszeichens nur
+die Variable $x$ vorkommt und auf der rechten nur die Variable $y$.
+Es entsteht also eine Gleichung der Form
+\begin{equation}
+F(x) = G(y).
+\label{buch:pde:ansatz:eqn:F=G}
+\end{equation}
+Wie so etwas gehen gehen kann wird weiter unten untersucht.
+
+Betrachtet hält man in der Gleichung~\eqref{buch:pde:ansatz:eqn:F=G}
+die Variable $x$ fest, steht links eine fest Zahl, schreiben wir 
+sie $\lambda$.
+Die Gleichung wird also zu
+\[
+\lambda = G(y),
+\]
+sie muss für alle $y$ gelten.
+Es folgt dann, dass die rechte Seite gar nicht von $y$ abhängen kann.
+Für jeden Wert von $y$ muss $G$ den gleichen Wert $\lambda$ geben.
+
+Wenn aber $G$ konstant ist und immer den Wert $\lambda$ ergibt, dann
+ist die Gleichung~\eqref{buch:pde:ansatz:eqn:F=G} auch gleichbedeutend
+mit der Gleichung
+\[
+F(x) = \lambda,
+\]
+$F$ muss also auch konstant sein.
+
+Die algebraische Trennung der beiden Variablen $x$ und $y$ hat also 
+zur Folge, dass die beiden Seiten der Gleichung gar nicht varieren
+können, beide Seiten müssen konstant sein.
+Die Konstante ist allerdings nicht bekannt und muss im Laufe der
+weiteren Lösungsschritte der Gleichung bestimmt werden.
+
+Die Überlegungen funktionieren auch für eine grössere Zahl von
+Variablen.
+Entscheidend ist nur, dass die einen Variablen, zum Beispiel
+$x_1,\dots,x_k$, nur auf der linken Seite vorkommen und die anderen,
+wir nennen sie $x_{k+1},\dots,x_n$ nur auf der rechten.
+Die Gleichung hat dann die Form
+\begin{equation}
+F(x_1,\dots,x_k)
+=
+G(x_{k+1},\dots,x_n).
+\label{buch:pde:ansatz:eqn:FF=GG}
+\end{equation}
+Setzt man feste Werte von $x_1,\dots,x_k$ ein, ist die linke Seite
+eine Zahl, die wir wieder $\lambda$ nennen können.
+Es muss also für alle $x_{k+1},\dots,x_n$ gelten, dass
+$G(x_{k+1},\dots,x_n)=\lambda$ ist.
+Daher ist $G$ eine Konstante, sie ist gar nicht von den Variablen
+abhängig.
+Wenn aber die rechte Seite konstant ist, dann muss auch für alle
+$x_1,\dots,x_k$ gelten, dass $F(x_1,\dots,x_k)=\lambda$ ist,
+die linke Seite kann also auch nicht varieren.
+
+\begin{prinzip}
+In einer Gleichung
+\[
+F(x_1,\dots,x_k) = G(x_{k+1},\dots,x_n),
+\]
+in der die linke Seite nur von $x_1,\dots,x_k$ abhängt und die
+rechte nur von $x_{k+1},\dots,x_n$ müssen beide Seiten konstant sein.
+\end{prinzip}
+
+%
+% Beispiel zur Erklärung des Separationsvorgehens
+%
+\subsubsection{Ein Beispiel}
+In der Differentialgleichung
+\[
+x\frac{\partial u}{\partial x}
+-
+y^2\frac{\partial^2 u}{\partial y^2}
+=
+y^4
+\]
+kommen die Ableitungen nach $x$ und $y$ in verschiedenen Termen vor.
+Wir versuchen daher, auch die Lösungsfunktion als Summe
+\[
+u(x,y) = X(x) + Y(y)
+\]
+von Termen zu schreiben, die nur von jeweils einer Variablen abhängen.
+Setzt man dies in die Differentialgleichung ein, erhält man
+\[
+x\frac{\partial}{\partial x}(X(x)+Y(y))
+-y^2\frac{\partial}{\partial y}(X(x)+Y(y))
+=
+xX'(x) -y^2Y'(y)
+=
+y^4.
+\]
+Indem man den Term mit $y$ auf die rechte Seite schafft, findet man
+die Gleichung
+\[
+xX'(x) = y^2Y'(y) + y^4,
+\]
+in der die Variablen $x$ und $y$ separiert sind.
+Es folgt, dass beide Seiten konstant sein müssen, es gibt also eine
+Konstante $\lambda$ derart, dass
+\[
+xX'(x) = \lambda
+\qquad\text{und}\qquad
+y^2Y''(y) +y^4 = \lambda.
+\]
+Diese beiden Gleichungen lassen sich als Differentialgleichungen in
+der üblicheren Form als
+\begin{align*}
+X'(x) &= \frac{\lambda}{x}
+&&\Rightarrow&
+X(x) &= \int \frac{\lambda}{x}\,dx = \lambda \log x + C
+\\
+Y''(y) &= \frac{\lambda - y^4}{y^2}
+&&\Rightarrow&
+Y'(y)
+&=
+\int \frac{\lambda-y^4}{y^2}\,dy
+=
+-\frac{\lambda}{y}-\frac{y^3}3 + D
+\\
+&
+&&\Rightarrow&
+Y(y)
+&=
+\int Y'(y)\,dy
+=
+-\lambda \log y - \frac{y^4}{12} +Dy +E
+\end{align*}
+schreiben und im Falle von $X(x)$ mit einem Integral lösen.
+$Y(y)$ benötigt zwei Integrationen, ist aber ansonsten nicht
+schwieriger zu bestimmen.
+
+Das Beispiel zeigt, dass ein Separationsansatz ermöglicht, eine
+partielle Differntialgleichung in mehrere gewöhnliche Differentialgleichungen
+zu zerlegen, eine für jede Variable, und zu lösen.
+
+%
+% Anpassung des Ansatzes an die Randbedingungen
+%
+\subsubsection{Separationsansatz und Randbedingungen}
+Die im Beispiel gewählte Aufteilung der Lösungsfunktion in eine
+Summe macht es sehr schwierig, Randbedingungen der partiellen
+Differentialgleichungen in Randbedingungen der gewöhnlichen
+Differentialgleichungen zu übersetzen.
+
+Als Beispiel dieser Schwierigkeit betrachten wir die Differentialgleichung
+\[
+\Delta u
+=
+\frac{\partial^2 u}{\partial x^2}
++
+\frac{\partial^2 u}{\partial y^2}
+=
+a u
+\]
+auf dem Gebiet
+$\Omega = [0,a]\times [0,b] = \{(x,y)\in\mathbb{R}^2\mid 0<x<a\wedge 0<y<b\}$
+mit den Randwerten $u(x,y)=0$ für Punkte auf dem Rand von $\Omega$.
+Genauer:
+\[
+\begin{aligned}
+u(0,y) &= 0,& u(a,y) &= 0&&\text{für $0<y<b$} \\
+u(x,0) &= 0,& u(x,b) &= 0&&\text{für $0<x<a$}.
+\end{aligned}
+\]
+Ein Ansatz der Form $u(x,y)=X(x) + Y(y)$ bedeutet für die
+Randwerte $u(x,y)=0$, dass auf dem Rand $X(x)=-Y(y)$ gelten muss.
+Das bedeutet aber, dass $X(0) = -Y(y)$, $Y$ müsste also konstant
+sein.
+
+Ein Produktansatz löst das Problem.
+Wir verwenden stattdessen einen Produktansatz
+$u(x,y) = X(x)\cdot Y(y)$, wobei die Funktionen $X(x)$ und $Y(y)$
+nicht konstant sein sollen.
+Die Randbedingungen sind
+\[
+\begin{aligned}
+u(0,y) &= X(0) Y(y) = 0&&\Rightarrow& X(0)&=0\\
+u(a,y) &= X(a) Y(y) = 0&&\Rightarrow& X(a)&=0\\
+u(x,0) &= X(x) Y(0) = 0&&\Rightarrow& Y(0)&=0\\
+u(x,b) &= X(x) Y(b) = 0&&\Rightarrow& Y(b)&=0.
+\end{aligned}
+\]
+Der Produktansatz ermöglicht also, die Randbedingungen für die Funktion
+$u(x,y)$ in Randbedingungen für die Funktionen $X(x)$ oder $Y(y)$
+umzuwandeln.
+
+%
+% Eigenwertprobleme
+%
+\subsection{Eigenwertproblem}
+Viele partielle Differentialgleichungen der mathematischen Physik
+sind zeitabhängig, aber das räumliche Gebiet, in dem sie 
+definiert sind, ist nicht von der Zeit abhängig.
+Dies 
+
+\subsubsection{Wellengleichung}
+Die Schwingung einer ebenen Membran, die in ein emGebiet
+$G\subset\mathbb{R}^n$ eingespannt ist, wird durch die
+Wellengleichung
+\begin{equation}
+\frac{1}{c^2} \frac{\partial^2 u}{\partial t^2} = \Delta u,
+\label{buch:pde:separation:wellengleichung}
+\end{equation}
+beschrieben.
+Darin ist $u(t,x)$ die Auslenkung der Membran zur Zeit $t>0$ in einem
+Punkt $x\in G$ des Gebietes $G$ ist.
+Die Randbedingungen zerfallen in zwei Teile:
+\begin{itemize}
+\item
+Bedingungen, die wiedergeben, dass die Membran in einen 
+Rahmen eingespannt und damit unbeweglich ist.
+Dies bedeutet, dass $u(t,x)=0$ für alle Zeiten $t>0$ und für 
+Randpunkte $x\in\partial G$ von $G$ ist.
+\item
+Bedingungen, die Auslenkung und Geschwindigkeit der Membran zur
+Zeit $t=0$ beschreiben, typischerweise ind er Form
+\begin{align*}
+u(0,x) = f(x),
+\frac{\partial u}{\partial t}(0,x) = g(x)
+\end{align*}
+wobei $f(x)$ und $g(x)$ Funktionen auf dem Gebiet $G$ sind.
+\end{itemize}
+
+In der Zeitableitung auf der linken Seite
+von~\eqref{buch:pde:separation:wellengleichung}
+kommen die Ortskoordinaten nicht vor und im Laplace-Operator
+auf der rechten Seite tritt die Zeit nicht auf.
+Es ist daher naheliegend zu versuchen, die Lösung der Differntialgleichung
+als Produkt
+\[
+u(t,x) = T(t) \cdot U(x)
+\]
+zu schreiben.
+Wendet man die Differentialgleichung darauf an, wird daraus die Gleichung
+\[
+\frac{1}{c^2}
+T''(t)\cdot U(x)
+=
+T(t) \cdot \Delta U(x).
+\]
+Indem man druch $T(t)$ und $U(x)$ teilt, entsteht die separierte Gleichung
+\[
+\frac{1}{c^2} \frac{T''(t)}{T(t)}
+=
+\frac{\Delta U(x)}{U(x)}.
+\]
+Die linke Seite ist nur von der Zeit abhängig, die rechte nur von den
+Ortskoordinaten.
+Damit ist die Differentialgleichung separiert und das Problem darauf
+reduziert, die gewöhnliche Differentialgleichung 
+\[
+T''(t) = \lambda T(t)
+\]
+und die partielle Differentialgleichung
+\[
+\Delta U(x) = \lambda U(x)
+\]
+niedrigerer Dimension zu lösen.
+
+\subsubsection{Allgemeine Situation}
+Das Definitionsgebiet der partiellen Differentialgleichung ist 
+also von der Form $\mathbb{R}^+\times G$, wobei $G\subset\mathbb{R}^n$
+ein räumliches Gebiet ist und $\mathbb{R}^+$ die Zeitachse.
+Auch die Randbedingungen zerfallen in zwei Arten:
+\begin{itemize}
+\item
+Bedingungen über die Lösungsfunktion zur Zeit $t=0$ im inneren des
+räumliche Gebietes $G$, zum Beispiel
+die Anfangsauslenkung und/oder Anfangsgeschwindigkeit einer schwingenden
+Saite oder Membran.
+\item
+Bedingungen über die Lösungsfunktion auf dem Rand $\partial G$ von
+$G$ für alle Zeiten $t>0$, zum Beispiel die Bedingung, dass die
+Membran fest eingespannt ist.
+\end{itemize}
+Oft zerfällt auch der Differentialoperator in Zeitableitungen
+und einen zeitunabhängigen Teil der nur Ableitungen nach den
+Ortsvariablen enthält.
+Die Wellengleichung
+\[
+\frac{1}{c^2}
+\frac{\partial^2}{\partial t^2} u
+=
+\Delta u
+\qquad\Leftrightarrow\qquad
+\biggl(
+\frac{1}{c^2}\frac{\partial^2}{\partial t^2} - \Delta
+\biggr) u = 0
+\]
+enthält Ableitungen nach der Zeit, die nicht von Ortskoordinaten
+abhängig sind.
+Der Laplace-Operator $\Delta$ ist nicht von der Zeitabhängig und das
+Gebiet $G$ hängt ebenfalls nicht von der Zeit ab.
+
+\subsubsection{Separation der Zeit}
+Unter den gegeben Voraussetzungen ist es naheliegend, die Lösungsfunktion
+$u(t,x)$ als Produkt
+\[
+u(t,x) = T(t) \cdot U(x),\qquad t\in\mathbb{R}^+, x\in G
+\]
+anzusetezen.
+Die Wellengleichung wird dann
+\[
+\frac{1}{c^2}
+T''(t)\cdot U(x)
+=
+T(t)\cdot\Delta U(x)
+\]
+und nach Separation
+\[
+\frac{1}{c^2} \frac{T''(t)}{T(t)}
+=
+\frac{\Delta U(x)}{U(x)}.
+\]
+Es gibt also eine gemeinsame Konstante.
+Da wir Schwingungslösungen erwarten, für die $T''(t) = -\omega^2 T(t)$
+ist, schreiben wir die gemeinsame Konstante als $-\lambda^2$, was
+später die Formeln vereinfachen wird.
+Die separierten Differentialgleichungen werden jetzt
+\begin{align*}
+\frac{1}{c^2}
+\frac{T''(t)}{T(t)}
+&=
+-\lambda^2
+&&\Rightarrow&
+T''(t)-c^2\lambda T(t)&=0
+&&\Rightarrow&
+T''(t) &= A \cos(c\sqrt\lambda t) + B \sin(c \lambda t)
+\\
+&&&&&&&&
+       &= C \cos(c \lambda t+\delta)
+\\
+\frac{\Delta U(x)}{U(x)}&=-\lambda^2
+&&\Rightarrow&
+\Delta U &= -\lambda^2 U
+\end{align*}
+Die letzte Gleichung für die Funktion $U(x)$ hat die Form
+eines Eigenwertproblems mit dem Eigenwert $-\lambda^2$.
+
+\begin{definition}
+Eine Eigenfunktion eines Operators $L$ zum Eigenwert $\lambda$
+ist eine Funktion $U$ derart, dass $LU=\lambda U$.
+\end{definition}
+
+Die Separation ermöglich also, das ursprüngliche Problem aufzuspalten
+in ein Eigenwertproblem für eine nur ortsabhängige Funktion $U(x)$
+und eine Schwingungsgleichung für $T(t)$.
+Die Schwingungsfrequenz $c \lambda $ hängt direkt mit dem
+Eigenwert zusammen.
+Die Funktion $U(x)$ beschreibt die Form der Membran, die Amplitude
+in jedem Punkt, der Faktor $T(t)$ beschreibt die Schwingung.
+
+

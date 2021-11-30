@@ -1,0 +1,369 @@
+%
+% legendredgl.tex
+%
+% (c) 2021 Prof Dr Andreas Müller, OST Ostschweizer Fachhochschule
+%
+\subsection{Orthogonale Polynome und Differentialgleichungen}
+Legendre hat einen ganz anderen Zugang zu den nach ihm benannten
+Polynomen gefunden.
+Er hat sie gefunden als die Lösungen einer speziellen Differentialgleichungen.
+In diesem Abschnitt sollen diese Funktionen mit der Potenzreihen-Methode
+wiedergefunden werden.
+Dabei stellt sich heraus, dass diese Polynome auch Eigenfunktionen eines
+selbstadjungierten Differentialgoperator sind.
+Die Orthogonalität wird dann aus einer Verallgemeinerung der bekannten
+Eingeschaft folgen, dass Eigenvektoren einer symmetrischen Matrix zu 
+verschiedenen Eigenwerten orthogonal sind.
+
+\subsubsection{Legendre-Differentialgleichung}
+Die {\em Legendre-Differentialgleichung} ist die Differentialgleichung
+\begin{equation}
+(1-x^2) y'' - 2x y' + n(n+1) y = 0
+\label{buch:integral:eqn:legendre-differentialgleichung}
+\end{equation}
+für eine Funktion $y(x)$ auf dem Intervall $[-1,1]$.
+
+Sei $y(x)$ eine Lösung der Differentialgleichung
+\eqref{buch:integral:eqn:legendre-differentialgleichung}.
+Setzt man $y_s(x)=y(-x)$ in die Differentialgleichung ein, erhält
+man
+\[
+(1-x^2)y_s''(x) - 2x y'_s(x) + n(n+1)y_s(x)
+=
+(1-x^2)y''(-x) +2x y(-x) +n(n+1)y(-x).
+\]
+Ersetzt man $t=-x$, dann wird daraus
+\[
+(1-x^2)y''(t) -2t y(t) + n(n+1) y(t) = 0
+\]
+aus der Differentialgleichung
+\eqref{buch:integral:eqn:legendre-differentialgleichung}.
+Insbesondere ist die gespiegelte Funktion $y_s(x)$ ebenfalls
+eine Lösung der Differentialgleichung.
+
+Ist $y(x)$ eine Lösung der Differentialgleichung ist, dann lässt
+sie sich in die Summe einer geraden und einer ungeraden Funktion
+\[
+\left.
+\begin{aligned}
+y_g(x) &= \frac{y(x)+y(-x)}{2}\\
+y_u(x) &= \frac{y(x)-y(-x)}{2}
+\end{aligned}
+\quad
+\right\}
+\quad
+\Rightarrow
+\quad
+y(x) = y_g(x) + y_u(x)
+\]
+zerlegen, die als Linearkombinationen der beiden Lösungen
+$y(x)$ und $y_s(x)$ ebenfalls Lösungen der Differentialgleichung
+sind.
+
+\subsubsection{Potenzreihenlösung}
+Wir suchen eine Lösung in Form einer Potenzreihe um $x=0$ und 
+verwenden dazu den Ansatz
+\[
+y(x) = a_0+a_1x+a_2x^2+ \dots = \sum_{k=0}^\infty a_kx^k.
+\]
+\begin{align*}
+(1-x^2) \sum_{k=2}^\infty k(k-1)a_kx^{k-2}
+-2x\sum_{k=0}^\infty ka_kx^{k-1}
++
+n(n+1)\sum_{k=0}^\infty  a_kx^k
+&=
+0
+\\
+\sum_{k=0}^\infty (k+2)(k+1)a_{k+2}x^k
+-
+\sum_{k=2}^\infty k(k-1)a_kx^k
+-
+2\sum_{k=1}^\infty ka_kx^k
++
+n(n+1)\sum_{k=0}^\infty  a_kx^k
+&=
+0
+\end{align*}
+Die Koeffizienten zur Potenz $k$ sind daher
+\begin{align}
+k&=0:
+&
+0&=
+2a_2+n(n+1)a_0
+\notag
+\\
+&&
+a_2&=-\frac{n(n+1)}{2}a_0
+\notag
+\\
+k&=1:
+&
+0&=
+6a_3-2a_1+n(n+1)a_1
+\notag
+\\
+&&
+a_3&= \frac{2-n(n+1)}{6}a_1
+\notag
+\\
+k&>1:
+&
+0&=
+(k+2)(k+1)a_{k+2} -k(k-1)a_k -2ka_k +n(n+1) a_k
+\notag
+\\
+&&
+a_{k+2}
+&=
+\frac{ k(k+1)-n(n+1) }{(k+2)(k+1)}
+a_k
+\label{buch:integral:legendre-dgl:eqn:akrek}
+\end{align}
+Wenn $a_1=0$ und $a_0\ne 1$ ist, dann ist die Funktion $y(x)$ gerade,
+alle ungeraden Koeffizienten verschwinden.
+Ebenso verschwinden alle geraden Koeffizienten, wenn $a_0=0$ und $a_1\ne 0$.
+Für jede Lösung $y(x)$ der Differentialgleichung ist
+$y_g(x)$ ein Lösung mit $a_1=0$ und $y_u(x)$ eine Lösung mit $a_0=0$.
+Wir können die Diskussion der Lösungen daher auf gerade oder ungerade
+Lösungen einschränken.
+
+Gesucht ist jetzt eine Lösung in Form eines Polynoms.
+In diesem Fall müssen die Koeffizienten $a_k$ ab einem
+gewissen Index verschwinden.
+Dies tritt nach \eqref{buch:integral:legendre-dgl:eqn:akrek} genau
+dann auf, wenn der Zähler für ein $k$ verschwindet.
+Folglich gibt es genau dann Polynomlösungen der Differentialgleichungen,
+wenn $n$ eine natürlich Zahl ist.
+Ausserdem ist die Lösung ein Polynom $\bar{P}_n(x)$ vom Grad $n$.
+Das Polynom soll wieder so normiert sein, dass $\bar{P}_n(1)=1$ ist.
+
+Die Lösungen der Differentialgleichungen können jetzt explizit
+berechnet werden.
+Zunächst ist $\bar{P}_0(x)=1$ und $\bar{P}_1(x)=x$.
+Für $n=2$ setzen wir zunächst $a_0=1$ und $a_1=0$ und erhalten
+\[
+y(x)
+=
+1 + \frac{0(0+1) - 2(2+1)}{(0+2)(0+1)}a_0 x^2
+=
+1
+-3x^2
+\qquad\text{oder}\qquad
+\bar{P}_3(x) = \frac12(3x^2-1).
+\]
+Für $n=3$ starten wir von $a_1=1$ und $a_0=0$, was zunächst $a_2=0$
+impliziert.
+Für $a_3$ finden wir
+\[
+a_3=\frac{1(1+1)-3(3+1)}{(1+2)(1+1)} = -\frac53
+\qquad\Rightarrow\qquad
+y(x) = x-\frac53x^3
+\qquad\Rightarrow\qquad
+\bar{P}_3(x) = \frac12(5x^3-3x).
+\]
+Dies stimmt überein mit den früher gefundenen Ausdrücken für
+die Legendre-Polynome.
+
+Die Potenzreihenlösung zeigt zwar, dass es für jedes $n\in\mathbb{N}$
+eine Polynomlösung $\bar{P}_n(x)$ vom Grad $n$ gibt.
+Dies kann aber nicht erklären, warum die so gefundenen Polynome
+orthogonal sind.
+
+\subsubsection{Eigenfunktionen}
+Die Differentialgleichung
+\eqref{buch:integral:eqn:legendre-differentialgleichung}
+Kann mit dem Differentialoperator
+\[
+D = \frac{d}{dx}(1-x^2)\frac{d}{dx}
+\]
+als
+\[
+Dy + n(n+1)y = 0
+\]
+geschrieben werden.
+Tatsächlich ist
+\[
+Dy
+=
+\frac{d}{dx} (1-x^2) \frac{d}{dy}
+=
+\frac{d}{dx} (1-x^2)y'
+=
+(1-x^2)y'' -2x y'.
+\]
+Dies bedeutet, dass die Lösungen $\bar{P}_n(x)$ Eigenfunktionen
+des Operators $D$ zum Eigenwert $n(n+1)$ sind:
+\[
+D\bar{P}_n = -n(n+1) \bar{P}_n.
+\]
+
+\subsubsection{Orthogonalität von $\bar{P}_n$ als Eigenfunktionen}
+Ein Operator $A$ auf Funktionen heisst {\em selbstadjungiert}, wenn
+für zwei beliebige Funktionen $f$ und $g$ gilt
+\[
+\langle Af,g\rangle = \langle f,Ag\rangle
+\]
+gilt.
+Im vorliegenden Zusammenhang möchten wir die Eigenschaft nutzen,
+dass Eigenfunktionen eines selbstadjungierten Operatores zu verschiedenen
+Eigenwerten orthogonal sind.
+Dazu seien $Df = \lambda f$ und $Dg=\mu g$ und wir rechnen
+\begin{equation*}
+\begin{array}{rcccl}
+\langle Df,g\rangle &=& \langle \lambda f,g\rangle &=& \lambda\langle f,g\rangle
+\\
+=\langle f,Dg\rangle &=& \langle f,\mu g\rangle &=& \mu\langle f,g\rangle
+\\
+                     & &                    0   &=& (\lambda-\mu)\langle f,g\rangle
+\end{array}
+\end{equation*}
+Da $\lambda-\mu\ne 0$ ist, muss $\langle f,g\rangle=0$ sein.
+
+Der Operator $D$ ist selbstadjungiert, d.~h.
+für zwei beliebige zweimal stetig differenzierbare Funktion $f$ und $g$
+auf dem Intervall $[-1,1]$ gilt
+\begin{align*}
+\langle Df,g\rangle
+&=
+\int_{-1}^1 (Df)(x) g(x) \,dx
+\\
+&=
+\int_{-1}^1
+\biggl(\frac{d}{dx} (1-x^2)\frac{d}{dx}f(x)\biggr) g(x)
+\,dx
+\\
+&=
+\underbrace{
+\biggl[
+\biggl((1-x^2)\frac{d}{dx}f(x)\biggr) g(x)
+\biggr]_{-1}^1
+}_{\displaystyle = 0}
+-
+\int_{-1}^1
+\biggl((1-x^2)\frac{d}{dx}f(x)\biggr) \frac{d}{dx}g(x)
+\,dx
+\\
+&=
+-
+\int_{-1}^1
+\biggl(\frac{d}{dx}f(x)\biggr) \biggl((1-x^2)\frac{d}{dx}g(x)\biggr)
+\,dx
+\\
+&=
+-
+\underbrace{
+\biggl[
+f(x) \biggl((1-x^2)\frac{d}{dx}g(x)\biggr)
+\biggr]_{-1}^1}_{\displaystyle = 0}
++
+\int_{-1}^1
+f(x) \biggl(\frac{d}{dx}(1-x^2)\frac{d}{dx}g(x)\biggr)
+\,dx
+\\
+&=
+\langle f,Dg\rangle.
+\end{align*}
+Dies beweist, dass $D$ selbstadjungiert ist.
+Da $\bar{P}_n$ Eigenwerte des selbstadjungierten Operators $D$ zu
+den verschiedenen Eigenwerten $-n(n+1)$ sind, folgt auch, dass
+die $\bar{P}_n$ orthogonale Polynome vom Grad $n$ sind, die die 
+gleiche Standardierdisierungsbedingung wie die Legendre-Polyonome
+erfüllen, also ist $\bar{P}_n(x)=P_n(x)$.
+
+\subsubsection{Legendre-Funktionen zweiter Art}
+Siehe Wikipedia-Artikel \url{https://de.wikipedia.org/wiki/Legendre-Polynom}
+
+Die Potenzreihenmethode liefert natürlich auch Lösungen der
+Legendreschen Differentialgleichung, die sich nicht als Polynome
+darstellen lassen.
+Ist $n$ gerade, dann liefern die Anfangswerte $a_0=0$ und $a_1=1$ 
+eine ungerade Funktion, die Folge der Koeffizienten bricht
+aber nicht ab, vielmehr ist
+\begin{align*}
+a_{k+2}
+&=
+\frac{k(k+1)}{(k+1)(k+2)}a_k
+=
+\frac{k}{k+2}a_k.
+\end{align*}
+Durch wiederholte Anwendung dieser Rekursionsformel findet man
+\[
+a_{k}
+=
+\frac{k-2}{k}a_{k-2}
+=
+\frac{k-2}{k}\frac{k-4}{k-2}a_{k-4}
+=
+\frac{k-2}{k}\frac{k-4}{k-2}\frac{k-6}{k-4}a_{k-6}
+=
+\dots
+=
+\frac{1}{k}a_1.
+\]
+Die Lösung hat daher die Reihenentwicklung
+\[
+Q_0(x) = x+\frac13x^3 + \frac15x^5 + \frac17x^7+\dots
+=
+\frac12\log \frac{1+x}{1-x}
+=
+\operatorname{artanh}x.
+\]
+Die Funktion $Q_0(x)$ heisst {\em Legendre-Funktion zweiter Art}.
+
+Für $n=1$ wird die Reihenentwicklung $a_0=1$ und $a_1=0$ etwas
+interessanter.
+Die Rekursionsformel für die Koeffizienten ist
+\[
+a_{k+2}
+=
+\frac{k(k+1)-2}{(k+1)(k+2)} a_k.
+\qquad\text{oder}\qquad
+a_k
+=
+\frac{(k-1)(k-2)-2}{k(k-1)}
+a_{k-2}
+\]
+Man erhält der Reihe nach
+\begin{align*}
+a_2 &= \frac{-2}{2\cdot 1} a_0 = -1
+\\
+a_3 &= 0
+\\
+a_4 &= \frac{3\cdot 2-2}{4\cdot 3} a_2 = \frac{4}{4\cdot 3}a_2 = \frac13a_2 = -\frac13
+\\
+a_5 &= 0
+\\
+a_6 &= \frac{5\cdot 4-2}{6\cdot 5}a_4 = \frac{18}{6\cdot 5}a_4 = -\frac15
+\\
+a_7 &= 0
+\\
+a_8 &= \frac{7\cdot 6-2}{8\cdot 7}a_6 = \frac{40}{8\cdot 7} = -\frac17
+\\
+a_9 &= 0
+a_{10} &= \frac{9\cdot 8-2}{10\cdot 9}a_8 = \frac{70}{10\cdot 9} = -\frac19,
+\end{align*}
+woraus sich die Reihenentwicklung
+\begin{align*}
+y(x)
+&=
+-x^2 -\frac13x^4 -\frac15x^6 - \frac17x^8 -\frac19x^{10}-\dots
+\\
+&=
+-x\biggl(x+\frac13x^3 + \frac15x^5 + \frac17x^7 + \frac19x^9+\dots\biggr)
+=
+-x\operatorname{artanh}x.
+\end{align*}
+Die {\em Legendre-Funktionen zweiter Art} $Q_n(x)$  werden allerdings
+so definiert, dass gewisse Rekursionsformeln für die Legendre-Polynome,
+die wir hier nicht hergeleitet haben, auch für die $Q_n(x)$ gelten.
+In dieser Normierung muss statt des eben berechneten $y(x)$ die Funktion
+\[
+Q_1(x) = x \operatorname{artanh}x-1
+\]
+verwendet werden.
+
+
+
+
+
+
