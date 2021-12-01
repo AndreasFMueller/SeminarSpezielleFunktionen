@@ -6,6 +6,107 @@
 \section{Gleichungen und Randbedingungen
 \label{buch:pde:section:gleichungen-und-randbedingungen}}
 
-\subsection{Laplace-Operator}
+\subsection{Gebiete, Differentialoperatoren, Randbedingungen}
+
+
+\subsubsection{Gebiete}
+Gewöhnliche Differentialgleichungen haben nur eine unabhängige
+Variable, die gesuchte Lösungsfunktion ist auf eine 
+Intervall in $\mathbb{R}$ definiert.
+Die Lösungsfunktion einer partiellen Differentialgleichung
+ist auf einer Teilmenge von $\mathbb{R}^n$ definiert, des 
+ermöglicht wesentlich vielfältigere und kompliziertere
+Situationen.
+
+\begin{definition}
+Ein Gebiet $G\subset\mathbb{R}^n$ ist eine offene Teilmenge
+von $\mathbb{R}^n$, d.~h.~für jeden Punkt $x\in G$ gibt es
+eine kleine Umgebung
+\(
+U_{\varepsilon}(x)
+=
+\{y\in\mathbb{R}^n\mid |x-y|<\varepsilon\}
+\), die ebenfalls in $G$ in enthalten ist,
+also $U_{\varepsilon}(x)\subset G$.
+\end{definition}
+
+\subsubsection{Differentialoperatoren}
+Eine gewöhnliche Differentialgleichung für eine Funktion
+ist eine Beziehung zwischen den Werten der Funktion und ihrer
+Ableitung in jedem Punkt des Definitionsintervalls.
+Eine partielle Differentialgleichung ist entsprechend eine
+Beziehung zwischen den Werten einer Funktion und ihren partiellen
+Ableitungen.
+Eine Funktion von mehreren Variablen hat sehr viel mehr partielle
+Ableitungen, bereits partielle Differentialgleichungen erster
+Ordnung sind daher sehr viel vielfältiger.
+Bei höheren partiellen Ableitungen kommen noch die zusätzliche Bedingungen
+\[
+\frac{\partial^2 u}{\partial x_i\,\partial x_j}
+=
+\frac{\partial^2 u}{\partial x_j\,\partial x_i}
+\]
+hinzu, die für jedes Paar von Indizes $i,j$ ebenfalls erfüllt sein
+müssen.
+
+In diesem Kapitel betrachten wir ausschliesslich lineare
+Differentialgleichungen.
+Die Funktionswerte und partiellen Ableitungen lassen sich daher
+in der Form eines Operators
+\[
+L 
+=
+a
++ \sum_{i=1}^n b_i \frac{\partial}{\partial x_i}
++ \sum_{i,j=1}^n c_{ij} \frac{\partial^2}{\partial x_i\,\partial x_j}
++ \dots
+\]
+schreiben.
+Die Koeffizienten $a$, $b_i$, $c_{ij}$ können dabei durchaus auch
+Funktionen der unabhängigen Variablen sein.
+
+\subsubsection{Laplace-Operator}
+Der Laplace-Operator hat in einem karteischen Koordinatensystem die
+Form
+\[
+\Delta
+=
+\frac{\partial^2}{\partial x_1^2}
++
+\frac{\partial^2}{\partial x_2^2}
++
+\dots
++
+\frac{\partial^2}{\partial x_n^2}.
+\]
+Er zeichnet sich durch die Eigenschaft aus, dass eine beliebige 
+Translation oder Drehung des Koordinatensystems den Wert von $\Delta u$
+nicht ändert.
+Man könnte sagen, der Laplace-Operator ist symmetrisch bezüglich
+aller Bewegungen des Raumes.
+
+\subsubsection{Wellengleichung}
+
+\subsubsection{Eigenfunktionen}
+Eine besonders einfache 
+
+\subsubsection{Trigonometrische Funktionen}
+Die trigonometrischen Funktionen 
 
 \subsection{Orthogonalität}
+In der linearen Algebra lernt man, dass die Eigenvektoren einer
+symmetrischen Matrix zu verschiedenen Eigenwerten orthgonal sind.
+Dies hat zur Folge, dass die Transformation in eine Eigenbasis
+mit einer orthogonalen Matrix möglich ist, was wiederum die Basis
+von Diagonalisierungsverfahren wie dem Jacobi-Verfahren ist.
+
+Das Separationsverfahren wird zeigen, wie sich das Finden einer
+Lösung der Wellengleichung auf Lösungen des Eigenwertproblems
+$\Delta u = \lambda u$ zurückführen lässt.
+Damit stellt sich die Frage, welche Eigenschaften 
+
+
+\subsubsection{Gewöhnliche Differentialglichung}
+
+
+\subsubsection{$n$-dimensionaler Fall}
