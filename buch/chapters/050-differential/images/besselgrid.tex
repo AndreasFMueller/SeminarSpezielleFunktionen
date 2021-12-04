@@ -1,0 +1,90 @@
+%
+% besselgrid.tex -- Indexmenge für die Herleitung der erzeugenden Funktion
+%
+% (c) 2021 Prof Dr Andreas Müller, OST Ostschweizer Fachhochschule
+%
+\documentclass[tikz]{standalone}
+\usepackage{amsmath}
+\usepackage{times}
+\usepackage{txfonts}
+\usepackage{pgfplots}
+\usepackage{csvsimple}
+\usetikzlibrary{arrows,intersections,math}
+\begin{document}
+\def\skala{1}
+\def\r{0.2}
+\def\hintergrund{
+	\fill[color=gray!40,opacity=0.5]
+		(-6.3,5.8)
+		-- (-0.1,-0.4) 
+		-- (6.5,-0.4) -- (6.5,-0.8) -- (-6.3,-0.8) -- cycle;
+}
+\def\nachse#1{
+	\draw[->,color=#1] (-6.3,0) -- (6.6,0) coordinate[label={$n$}];
+}
+\def\kachse{
+	\draw[->] (0,-0.3) -- (0,6.6) coordinate[label={right:$k$}];
+}
+\def\machse{
+	\draw[->] (-0.3,-0.3) -- (6.3,6.3) coordinate[label={above right:$m$}];
+}
+\def\achsen{
+	\draw[->] (0,-0.3) -- (0,6.6) coordinate[label={right:$k$}];
+	\draw[->] (-6.3,0) -- (6.6,0) coordinate[label={$n$}];
+	\draw[->] (0.3,-0.3) -- (-6.3,6.3) coordinate[label={above right:$m$}];
+}
+\def\nsumme{
+	\foreach \n in {-6,...,6}{
+		\fill[color=red!40,opacity=0.5] ({\n-\r},6.3)
+			-- ({\n-\r},0) arc (-180:0:\r)
+			-- ({\n+\r},6.3)
+			-- cycle;
+	}
+}
+\def\msumme{
+	\foreach \k in {0,...,6}{
+		\fill[color=blue!20] (6.3,{\k+\r})
+			-- ({-\k},{\k+\r}) arc (90:270:\r)
+			-- (6.3,{\k-\r})
+			-- cycle;
+	}
+}
+\def\punkte{
+	\begin{scope}
+	\clip (-6.2,-0.2) rectangle (6.2,6.2);
+
+	\foreach \x in {1,...,6}{
+		\foreach \y in {0,...,5}{
+			\fill[color=gray] ({-\x-\y},\y) circle[radius=0.1];
+		}
+	}
+	\foreach \x in {0,...,12}{
+		\foreach \y in {0,...,6}{
+			\fill[color=red] ({\x-\y},\y) circle[radius=0.1];
+		}
+	}
+	\end{scope}
+
+	\node at (-4.5,1.5) {$\Gamma(n+k+1)=\infty$};
+}
+\begin{tikzpicture}[>=latex,thick,scale=\skala]
+
+\begin{scope}
+	\hintergrund
+	\nsumme
+	\punkte
+	\nachse{black}
+	\kachse
+\end{scope}
+
+\begin{scope}[yshift=-7.8cm]
+	\hintergrund
+	\msumme
+	\punkte
+	\draw[->] (0.3,-0.3) -- (-6.4,6.4) coordinate[label={above right:$k$}];
+	\draw[->] (-3.3,3) -- (6.6,3) coordinate[label={right:$m$}];
+\end{scope}
+
+\end{tikzpicture}
+\end{document}
+

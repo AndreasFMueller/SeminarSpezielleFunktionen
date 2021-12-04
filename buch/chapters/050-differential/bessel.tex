@@ -181,7 +181,8 @@ x^\varrho \sum_{k=0}^\infty
 Falls also $\alpha$ kein ganzzahliges Vielfaches von $\frac12$ ist, finden
 wir zwei Lösungsfunktionen
 \begin{align}
-J_\alpha(x)
+y_1(x)
+%J_\alpha(x)
 &=
 x^{\alpha\phantom{-}}
 \sum_{k=0}^\infty
@@ -191,7 +192,8 @@ x^{\alpha\phantom{-}}
 \mathstrut_0F_1\biggl(;\alpha+1;-\frac{x^2}{4}\biggr),
 \label{buch:differentialgleichunge:bessel:erste}
 \\
-J_{-\alpha}(x)
+y_2(x)
+%J_{-\alpha}(x)
 &=
 x^{-\alpha} \sum_{k=0}^\infty
 \frac{1}{(-\alpha+1)_k} \frac{(-x^2/4)^k}{k!}
@@ -199,8 +201,218 @@ x^{-\alpha} \sum_{k=0}^\infty
 \mathstrut_0F_1\biggl(;-\alpha+1;-\frac{x^2}{4}\biggr).
 \label{buch:differentialgleichunge:bessel:zweite}
 \end{align}
-Die Funktionen $J_{\pm\alpha}(x)$ heissen {\em Bessel-Funktionen
-der Ordnung $\alpha$}.
+
+\subsubsection{Bessel-Funktionen}
+Da die Besselsche Differentialgleichung linear ist, ist auch
+jede Vielfache der Funktionen
+\eqref{buch:differentialgleichunge:bessel:erste}
+und
+\eqref{buch:differentialgleichunge:bessel:zweite}
+eine Lösung.
+Man kann zum Beispiel das Pochhammer-Symbol im Nenner loswerden,
+wenn man im Nenner mit $\Gamma(\alpha+1)$
+multipliziert:
+\[
+\frac{(1/2)^\alpha}{\Gamma(\alpha+1)}
+y_1(x)
+=
+\biggl(\frac{x}{2}\biggr)^\alpha
+\sum_{k=0}^\infty
+\frac{(-1)^k}{\Gamma(\alpha+k+1)}
+\biggl(\frac{x}{2}\biggr)^{2k}.
+\]
+Dabei haben wir es durch
+Multiplikation mit $(\frac12)^\alpha$ auch geschafft, die Funktion
+einheitlich als Funktion von $x/2$ auszudrücken.
+
+\begin{definition}
+\label{buch:differentialgleichungen:bessel:definition}
+Die Funktion
+\[
+J_{\alpha}(x)
+=
+\biggl(\frac{x}{2}\biggr)^\alpha
+\sum_{k=0}^\infty
+\frac{(-1)^k}{\Gamma(\alpha+k+1)}
+\biggl(\frac{x}{2}\biggr)^{2k}
+\]
+heisst {\em Bessel-Funktionen der Ordnung $\alpha$}.
+\end{definition}
+
+Man beachte, dass diese Definition für beliebige ganzzahlige 
+$\alpha$ funktioniert.
+Ist $\alpha=-n<0$, $n\in\mathbb{N}$, dann hat der Nenner Pole 
+an den Stellen $k=0,1,\dots,n-$.
+Die Summe beginnt also erst bei $k=n$ oder
+\begin{align*}
+J_{-n}(x)
+&=
+\sum_{k=n}^\infty \frac{(-1)^k}{m!k!}\biggl(\frac{x}{2}\biggr)^{2k-n}
+=
+\sum_{l=0}^\infty
+\frac{(-1)^{l+n}}{m!(l+n)!}\biggl(\frac{x}{2}\biggr)^{2(l+n)-n}
+=
+(-1)^n
+\sum_{l=0}^\infty
+\frac{(-1)^l}{m!\Gamma(l+n+1)}\biggl(\frac{x}{2}\biggr)^{2l+n}
+\\
+&=
+(-1)^n
+J_{n}(x).
+\end{align*}
+
+\subsubsection{Erzeugende Funktion}
+\begin{figure}
+\centering
+\includegraphics{chapters/050-differential/images/besselgrid.pdf}
+\caption{Indexmenge für Herleitung der erzeugenden Funktion der
+Besselfunktionen.
+Die rote Summe in \eqref{buch:differentialgleichungen:bessel:eqn:rotesumme}
+entspricht den vertikalen roten Streifen oben,
+die blaue Summe in
+\eqref{buch:differentialgleichungen:bessel:eqn:blauesumme}
+den horizontalen Streifen in der Abbildung unten.
+Alle Terme enthalten $\Gamma(n+k+1)$ im nenner,
+im grau hinterlegten Gebiet verschwinden sie.
+\label{buch:differentialgleichungen:bessel:fig:indexmenge}}
+\end{figure}
+Die erzeugende Funktion der Bessel-Funktionen ist die Summe
+\begin{align}
+\sum_{n\in\mathbb{Z}} J_n(x)z^n
+&=
+\sum_{n\in\mathbb{Z}}
+{\color{darkred}
+\sum_{k=0}^\infty
+\frac{(-1)^k}{k!\Gamma(k+n+1)}
+\biggl(\frac{x}{2}\biggr)^{2k+n}
+}
+z^n.
+\label{buch:differentialgleichungen:bessel:eqn:rotesumme}
+\intertext{Die rote Summe entspricht den vertikalen roten Streifen in
+Abbildung~\ref{buch:differentialgleichungen:bessel:fig:indexmenge} oben.
+Die grau hinterlegten Punkte in der Abbildung gehören zu verschwindenden
+Termen.
+Wir schreiben $m=k+n$ und drücken alle Terme durch $k$ und $m$ aus:}
+&=
+\sum_{n\in \mathbb{Z}}
+\sum_{k=0}^\infty
+\frac{(-1)^k}{k!\Gamma(n+k+1)}
+\biggl(\frac{x}{2}\biggr)^k
+\biggl(\frac{x}{2}\biggr)^{n+k}
+z^{n+k}
+z^{-k}
+\notag
+\\
+&=
+\sum_{m\in \mathbb{Z}}
+\sum_{k=0}^\infty \frac{(-1)^k}{k!}
+\biggl(\frac{x}{2}\biggr)^k
+z^{-k}
+\frac{1}{\Gamma(m+1)}
+\biggl(\frac{x}{2}\biggr)^{m}
+z^{n+k}
+\notag
+\intertext{Auch in dieser Summe fallen wieder die Terme mit $m<0$
+wegen $\Gamma(m+1)=\infty$ weg.
+Die Grenzen der Summation über $k$ hängen nicht von $m$ ab, daher
+können wir die Summationsreihenfolge vertauschen.
+Die Summation über $m$ entspricht den horizontalen blauen Streifen
+in 
+Abbildung~\ref{buch:differentialgleichungen:bessel:fig:indexmenge}
+unten.
+Es ergibt sich die Summe}
+&=
+\sum_{k=0}^\infty
+\sum_{m=0}^\infty
+\frac{(-1)^k}{k!}
+\biggl(\frac{x}{2}\biggr)^k
+z^{-k}
+\frac{1}{\Gamma(m+1)}
+\biggl(\frac{x}{2}\biggr)^{m}
+z^{m}
+\notag
+\\
+&=
+\sum_{k=0}^\infty \frac{(-1)^k}{k!}
+\biggl(\frac{x}{2}\biggr)^k
+z^{-k}
+\cdot
+{\color{blue}
+\sum_{m=0}^\infty
+\frac{1}{\Gamma(m+1)}
+\biggl(\frac{x}{2}\biggr)^{m}
+z^{m}
+}.
+\label{buch:differentialgleichungen:bessel:eqn:blauesumme}
+\intertext{Beide Reihen sind Exponentialreihen, was man besser sehen kann,
+wenn man die Gamma-Funktion in der zweiten Summe wieder als die
+Fakultät $\Gamma(m+1)=m!$ schreibt.
+Die beiden Exponentialreihen sind
+}
+&=
+\sum_{k=0}^\infty \frac{\bigl(-\frac{x}2\cdot\frac1z\bigr)}{k!}
+\cdot
+\sum_{m=0}^\infty
+\frac{\bigl(z\frac{x}2\bigr)^m}{m!}
+=
+\exp\biggl(\frac{x}2\cdot\biggl(-\frac1z\biggr)\biggr)
+\cdot
+\exp\biggl(\frac{x}2\cdot z\biggr)
+=
+\exp\biggl(\frac{x}2\cdot\biggl(z-\frac1z\biggr)\biggr).
+\notag
+\end{align}
+
+\subsubsection{Additionstheorem}
+Die erzeugende Funktion kann dazu verwendet werden, das Additionstheorem
+für die Besselfunktionen zu beweisen.
+
+\begin{satz}
+Für $l\in\mathbb{Z}$ und $x,y\in\mathbb{R}$ gilt
+\[
+J_l(x+y) = \sum_{m=-\infty}^\infty J_m(x)J_{l-m}(y).
+\]
+\end{satz}
+
+\begin{proof}[Beweis]
+Die Koeffizienten der erzeugenden Funktion der Bessel-Funktionen für
+das Argument $x+y$ ist
+\begin{align*}
+\exp\biggl(\frac{x+y}2\biggl(z+\frac1z\biggr)\biggr)
+&=
+\sum_{n=-\infty}^\infty J_n(x+y)z^n.
+\intertext{%
+Wir verwenden die Exponentialgesetze auf der linken Seite und 
+erhalten}
+&=
+\exp\biggl(\frac{x}2\biggl(z+\frac1z\biggr)\biggr)
+\cdot
+\exp\biggl(\frac{y}2\biggl(z+\frac1z\biggr)\biggr).
+\intertext{Beide Faktoren sind erzeugende Funktionen von Bessel-Funktionen,
+wir können sie also als}
+&=
+\sum_{m=-\infty}^\infty J_m(x)z^m
+\cdot
+\sum_{k=-\infty}^\infty J_k(y)z^k
+\intertext{schreiben.
+Durch Ausmultiplizieren und Zusammenfassen von Termen mit gleichem
+Exponenten finden wir
+}
+&=
+\sum_{m,k} J_m(x)J_k(y) z^{k+m}
+=
+\sum_{l=-\infty}^\infty
+\biggl(
+\sum_{m=-\infty}^\infty J_m(x)J_{l-m}(y)
+\biggr)
+z^l.
+\intertext{Daraus folgt schliesslich mit Koeffizientenvergleich das
+Additionstheorem}
+J_l(x+y) &= \sum_{m=-\infty}^\infty J_m(x)J_{l-m}(y)
+\end{align*}
+für alle $l$.
+\end{proof}
+
 
 \subsubsection{Der Fall $\alpha=0$}
 Im Fall $\alpha=0$ hat das Indexpolynom eine doppelte Nullstelle, wir
@@ -222,16 +434,6 @@ geschrieben werden kann.
 In diesem Fall kann nur die erste
 Lösung~\eqref{buch:differentialgleichunge:bessel:erste}
 verwendet werden.
-Die Pochhammer-Symbole im Nenner können ebenfalls als
-Quotient
-\[
-\frac{1}{(p+1)_k}
-=
-\frac{1}{(p+1)\cdot(p+k)}
-=
-\frac{p!}{(p+k)!}
-\]
-von Fakultäten geschrieben werden.
 Damit erhält die Lösungsfunktion die Form
 \[
 J_p(x)
@@ -239,6 +441,8 @@ J_p(x)
 \sum_{k=0}^\infty
 \frac{(-1)^k}{k!(p+k)!}\biggl(\frac{x}{2}\biggr)^{p+2k}.
 \]
+
+TODO: Lösung für $\alpha=-n$
 
 \subsubsection{Der Fall $\alpha=n+\frac12$, $n\in\mathbb{N}$}
 Obwohl $2\alpha$ eine Ganzzahl ist, sind die beiden Lösungen
