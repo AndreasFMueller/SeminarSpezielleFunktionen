@@ -1,0 +1,158 @@
+Schreiben Sie die Funktion
+\[
+\arcsin x
+=
+x
++
+\frac{1}{2} \frac{x^3}{5}
++
+\frac{1\cdot 3}{2\cdot 4}\frac{x^5}{5}
++
+\frac{1\cdot 3\cdot 5}{2\cdot 4\cdot 6}\frac{x^7}{7}
++
+\dots
++
+\frac{1\cdot 3\cdot 5\cdot (2k-1)}{2\cdot4\cdot 6\cdot (2k)}
+\frac{x^{2k+1}}{2k+1}
++
+\dots
+\]
+mit Hilfe der hypergeometrischen Funktion $\mathstrut_2F_1$.
+
+\begin{loesung}
+Zunächst betrachten wir die Produkte
+\[
+p_k
+=
+\frac{1\cdot 3\cdot \ldots \cdot (2k-1)}{2\cdot 4\cdot\ldots\cdot (2k)}.
+\]
+Durch Kürzen mit $2^k$ erhalten wir Produkte im Zähler und im Nenner, deren
+Faktoren in Einerschritten ansteigen:
+\[
+p_k
+=
+\frac{
+\frac12\cdot
+\bigl(
+\frac12+1\bigr)\cdot\ldots\cdot\bigl(\frac12+k-1\bigr)
+}{
+1\cdot 2\cdot \ldots \cdot k
+}
+=
+\frac{(\frac12)_k}{(1)_k}
+=
+\frac{(\frac12)_k}{k!}
+\]
+Damit haben wir den ersten Faktor mit Pochhammer-Symbolen geschrieben.
+Den Nenner können wir für den obligatorischen Nenner $k!$ verwenden,
+der in einer hypergeometrischen Reihe vorkommt.
+
+Den verbleibenden Teil muss jetzt in der Form $qz^k$ geschrieben werden,
+wobei $q$ ein Quotient von Pochhammer-Symbolen sein muss.
+Da die Potenzen von $x$ in Zweierschritten ansteigen, müssen wir als
+Argument $z=x^2$ verwenden und einen gemeinsamen Faktor $x$ aus der
+Funktion ausklammern.
+
+Im Faktor $1/(2k+1)$ nimmt der Nenner in Zweierschritten zu, wir schreiben
+ihn daher zunächst als
+\[
+\frac{1}{2k+1}
+=
+\frac{1}{2}\cdot \frac{1}{\frac12+k}
+=
+\frac{1}{2}\cdot\frac{1}{\frac32+k-1}.
+\]
+Den zweiten Bruch können wir jetzt als Quotiente von Pochhammer-Symbolen
+schreiben, nämlich
+\begin{align*}
+\frac{1}{\frac32+k-1}
+&=
+\frac{
+\frac32
+\cdot
+\bigl(\frac32+1)
+\cdot
+\bigl(\frac32+2)
+\cdots
+\bigl(\frac32+k-2)
+\phantom{
+\mathstrut
+\cdot
+\bigl(\frac32+k-1)
+}
+}{
+\frac32
+\cdot
+\bigl(\frac32+1)
+\cdot
+\bigl(\frac32+2)
+\cdots
+\bigl(\frac32+k-2)
+\cdot
+\bigl(\frac32+k-1)
+}
+\\
+&=
+2
+\frac{
+\frac12
+\cdot
+\frac32
+\cdot
+\bigl(\frac32+1)
+\cdot
+\bigl(\frac32+2)
+\cdots
+\bigl(\frac32+k-2)
+\phantom{
+\mathstrut
+\cdot
+\bigl(\frac32+k-1)
+}
+}{
+\phantom{
+\frac12
+\cdot
+\mathstrut
+}
+\frac32
+\cdot
+\bigl(\frac32+1)
+\cdot
+\bigl(\frac32+2)
+\cdots
+\bigl(\frac32+k-2)
+\cdot
+\bigl(\frac32+k-1)
+}
+\\
+&=
+2\frac{(\frac12)_k}{(\frac32)_k}.
+\end{align*}
+Damit wird die Reihe
+\[
+\arcsin x
+=
+x
+\sum_{k=0}^\infty
+\frac{(\frac12)_k}{(1)_k}
+\cdot
+\frac{(\frac12)_k}{(\frac32)_k}
+\cdot
+(x^2)^k
+=
+x
+\sum_{k=0}^\infty
+\frac{(\frac12)_k(\frac12)_k}{(\frac32)_k}
+\cdot
+\frac{(x^2)^k}{k!}
+=
+\mathstrut_2F_1\biggl(
+\begin{matrix}
+\frac12,\frac12\\ \frac32
+\end{matrix}
+;x^2
+\biggr).
+\qedhere
+\]
+\end{loesung}

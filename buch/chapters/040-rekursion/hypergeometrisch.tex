@@ -565,11 +565,14 @@ z^k
 \mathstrut_1F_2(1;1,\frac{3}{2};z).
 \]
 Damit lässt sich die Sinus-Funktion als
-\[
+\begin{equation}
 \sin x
 =
 x\,\mathstrut_1F_2\biggl(\begin{matrix}1\\1,\frac32\end{matrix};-x^2\biggr)
-\]
+=
+x\,\mathstrut_1F_2\biggl(\begin{matrix}\text{---}\\\frac32\end{matrix};-x^2\biggr)
+\label{buch:rekursion:hypergeometrisch:eqn:sinhyper}
+\end{equation}
 durch eine hypergeometrische Funktion ausdrücken.
 
 \subsubsection{Hyperbolische Funktionen}
@@ -593,11 +596,232 @@ xf(-x^2)
 x\,\mathstrut_1F_2\biggl(
 \begin{matrix}1\\1,\frac{3}{2}\end{matrix}
 ;x^2
+\biggr)
+=
+x\,\mathstrut_0F_1\biggl(
+\begin{matrix}\text{---}\\,\frac{3}{2}\end{matrix}
+;x^2
 \biggr).
 \end{align*}
 Bis auf das Vorzeichen des Arguments der hypergeometrischen Funktion
 ist diese Darstellung identisch mit der von $\sin x$.
 Dies illustriert die Rolle der hypergeometrischen Funktionen als
 ``grosse Vereinheitlichung'' der bekannten speziellen Funktionen.
+
+%
+% Ableitung und Stammfunktion
+%
+\subsection{Ableitung und Stammfunktion hypergeometrischer Funktionen}
+Sowohl Ableitung wie auch Stammfunktion einer hypergeometrischen
+Funktion lässt sich immer durch hypergeometrische Reihen ausdrücken.
+
+\subsubsection{Ableitung}
+Wir gehen aus von der Funktion
+\begin{equation}
+f(x)
+=
+\mathstrut_nF_m\biggl(
+\begin{matrix}a_1,\dots,a_n\\b_1,\dots,b_m\end{matrix};
+x\biggr)
+=
+\sum_{k=0}^\infty
+\frac{
+(a_1)_k\cdot\ldots\cdot(a_n)_k
+}{
+(b_1)_k\cdot\ldots\cdot(b_m)_k
+}
+\frac{x^k}{k!}.
+\label{buch:rekursion:hypergeometrisch:eqn:f}
+\end{equation}
+Die Ableitung von $f(x)$ ist
+\[
+f'(x)
+=
+\sum_{k=0}^\infty
+\frac{
+(a_1)_k\cdot\ldots\cdot(a_n)_k
+}{
+(b_1)_k\cdot\ldots\cdot(b_m)_k
+}
+\frac{x^{k-1}}{(k-1)!}
+=
+\sum_{k=1}^\infty
+\frac{
+(a_1)_{k+1}\cdot\ldots\cdot(a_n)_{k+1}
+}{
+(b_1)_{k+1}\cdot\ldots\cdot(b_m)_{k+1}
+}
+\frac{x^k}{k!}.
+\]
+Der Koeffizient besteht zwar aus lauter Pochhammer-Symbolen, aber sie
+haben jeweils zu einen Faktor zuviel.
+Indem man den jeweils ersten Faktor ausklammert, kann man die
+Terme wieder in die Form einer hypergeometrischen Reihe bringen.
+\begin{align*}
+f'(x)
+&=
+\sum_{k=1}^\infty
+\frac{
+a_1(a_1)_{k}\cdot\ldots\cdot a_n(a_n)_{k}
+}{
+b_1(b_1)_{k}\cdot\ldots\cdot b_m(b_m)_{k}
+}
+\frac{x^k}{k!}
+\\
+&=
+\sum_{k=1}^\infty
+\frac{
+a_1\cdot\ldots\cdot a_n
+}{
+b_1\cdot\ldots\cdot b_m
+}
+\frac{
+(a_1+1)_{k}\cdot\ldots\cdot(a_n+1)_{k}
+}{
+(b_1+1)_{k}\cdot\ldots\cdot(b_m+1)_{k}
+}
+\frac{x^k}{k!}
+\\
+&=
+\frac{
+a_1\cdot\ldots\cdot a_n
+}{
+b_1\cdot\ldots\cdot b_m
+}
+\,
+\mathstrut_nF_m\biggl(
+\begin{matrix}a_1+1,\dots,a_n+1\\b_1+1,\dots,b_m+1\end{matrix};
+x\biggr).
+\end{align*}
+
+\begin{beispiel}
+Die Kosinus-Funktion
+\[
+\cos x
+=
+1 - \frac{x^2}{2!} + \frac{x^4}{4!} - \frac{x^6}{6!} + \dots
+=
+\sum_{k=0}^\infty
+\frac{(-1)^k}{(2k)!}x^{2k}
+\]
+kann wie folgt als hypergeometrische Funktion geschrieben werden.
+Der Nenner hat $2k$ Faktoren, er muss also aus zwei Pochhammer-Symbolen
+zusammengesetzt werden.
+Dazu muss er erst um den Faktor $2^{2k}$ gekürzt werden, was
+\[
+\frac{(2k)!}{2^{2k}}
+=
+\frac12\cdot\frac32\cdot\frac52\cdot\ldots\cdot\frac{2k-1}2
+\cdot
+\frac22\cdot\frac42\cdot\frac62\cdot\ldots\cdot\frac{2k}2
+=
+({\textstyle\frac12})_k\cdot k!.
+\]
+Damit kann jetzt die Kosinus-Funktion als
+\begin{align*}
+\cos x
+&=
+\sum_{k=0}^\infty
+\frac{2^k}{(2k)!}\biggl(\frac{-x^2}{4}\biggr)^k
+=
+\sum_{k=0}^\infty
+\frac{1}{(\frac12)_k}
+\frac{1}{k!}\biggl(\frac{-x^2}{4}\biggr)^k
+=
+\mathstrut_0F_1\biggl(;\frac12;-\frac{x^2}4\biggr)
+\end{align*}
+geschrieben werden kann.
+
+Die Ableitung der Kosinus-Funktion ist daher
+\begin{align*}
+\frac{d}{dx} \cos x
+&=
+\frac{d}{dx}
+\mathstrut_0F_1\biggl(;\frac12;-\frac{x^2}4\biggr)
+=
+\frac{1}{\frac12}
+\,
+\mathstrut_0F_1\biggl(;\frac32;-\frac{x^2}4\biggr)
+\cdot\biggl(-\frac{x}2\biggr)
+=
+-x
+\,
+\mathstrut_0F_1\biggl(;\frac32;-\frac{x^2}4\biggr)
+\intertext{Dies stimmt mit der in
+\eqref{buch:rekursion:hypergeometrisch:eqn:sinhyper}
+gefundenen Darstellung der Sinusfunktion mit Hilfe der hypergeometrischen
+Funktion $\mathstrut_0F_1$ überein, es ist also wie erwartet}
+&=-\sin x.
+\qedhere
+\end{align*}
+\end{beispiel}
+
+\subsubsection{Stammfunktion}
+Eine Stammfunktion kann man auf die gleiche Art und Weise wie
+die Ableitung finden.
+Termweises Integrieren der Funktion
+\eqref{buch:rekursion:hypergeometrisch:eqn:f}
+ergibt
+\begin{align}
+\int f(x)\,dx
+&=
+\sum_{k=0}^\infty
+\frac{
+(a_1)_k\cdot\ldots\cdot(a_n)_k
+}{
+(b_1)_k\cdot\ldots\cdot(b_m)_k
+}
+\frac{x^{k+1}}{(k+1)!}.
+\notag
+\intertext{Wieder muss man die Pochhammer-Symbole durch solche mit
+einem zusätzlichen Faktor schreiben.
+Dies ist möglich, wenn keiner der Parameter $a_i=1$ und $b_j=1$
+ist.
+Die Stammfunktion wird daher
+}
+&=
+\sum_{k=1}^\infty
+\frac{
+(a_1-1)(a_1)_k
+\cdot\ldots\cdot
+(a_n-1)(a_n)_k
+}{
+(b_1-1)(b_1)_k
+\cdot\ldots\cdot
+(b_m-1)(b_m)_k
+}
+\frac{x^k}{k!}
+\notag
+\\
+&=
+\sum_{k=1}^\infty
+\frac{
+(a_1-1)_{k+1}
+\cdot\ldots\cdot
+(a_n-1)_{k+1}
+}{
+(b_1-1)_{k+1}
+\cdot\ldots\cdot
+(b_m-1)_{k+1}
+}
+\frac{x^k}{k!}
+\label{buch:rekursion:hypergeometrisch:eqn:stammfunktion:summe}
+\\
+&=
+\mathstrut_nF_m\biggl(
+\begin{matrix}
+a_1-1,\dots,a_n-1\\
+b_1-1,\dots,b_m-1
+\end{matrix}
+;x
+\biggr)
+-
+\frac{(a_1-1)\dots(a_n-1)}{(b_1-1)\dots(b_m-1)}.
+\notag
+\end{align}
+Der Term auf der rechten Seite kompensiert den konstanten
+Term, der in der hypergeometrischen Funktion $\mathstrut_nF_m$
+vorkommt, aber nicht in der
+Summe~\eqref{buch:rekursion:hypergeometrisch:eqn:stammfunktion:summe}.
 
 
