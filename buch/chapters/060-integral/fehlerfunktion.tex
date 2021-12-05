@@ -175,7 +175,7 @@ Die Fehlerfunktion $\operatorname{erf}(x)$ ist die Funktion
 \[
 \operatorname{erf}
 \colon
-\mathbb{R}\to [0,1]
+\mathbb{R}\to [-1,1]
 :
 x
 \mapsto
@@ -189,7 +189,7 @@ x
 \begin{figure}
 \centering
 \includegraphics{chapters/060-integral/images/erf.pdf}
-\caption{Graph der Fehlerunktion $\operatorname{erf}(x)$
+\caption{Graph der Fehlerfunktion $\operatorname{erf}(x)$
 \label{buch:integrale:fig:erf}}
 \end{figure}
 Die Funktion $\operatorname{erf}$ nimmt Werte zwischen $-1$ und $1$ an,
@@ -255,6 +255,120 @@ Die Fehlerfunktion ist also eine ``gute'' spezielle Funktion, die
 die Berechnung von Wahrscheinlichkeitswerten von normalverteilten
 Zufallsvariablen vereinfacht.
 
+\subsubsection{Fehlerfunktion als hypergeometrische Funktion}
+Die Fehlerfunktion ist eine Stammfunktion von
+\[
+\frac{2}{\sqrt{\pi}}
+e^{-x^2}
+=
+\frac{2}{\sqrt{\pi}}
+\biggl(
+1 - \frac{x^2}{1!} + \frac{x^4}{2!} - \frac{x^6}{3!} + \frac{x^8}{4!}-\dots
+\biggr).
+\]
+Durch gliedweises Integrieren erhaält man
+\begin{align*}
+\operatorname{erf}(x)
+&=
+\frac{2}{\sqrt{\pi}}
+\biggl(
+x - \frac{x^3}{1!\cdot 3} + \frac{x^5}{2!\cdot 5} - \frac{x^7}{3!\cdot 7} + \frac{x^9}{4!\cdot 9}-\dots
+\biggr)
+\intertext{Ein gemeinsamer Faktor $x$ kann ausgeklammert werden.
+Die alternierenden Vorzeichen und die in Zweierschritten ansteigenden
+Potenzen bedeuten, dass der Klammerausdruck als Reihe}
+&=
+\frac{2x}{\sqrt{\pi}}
+\biggl(
+1 +
+\frac13\cdot\frac{(-x^2)^1}{1!}
++
+\frac15\cdot\frac{(-x^2)^2}{2!}
++
+\frac17\cdot\frac{(-x^2)^3}{3!}
++
+\frac19\cdot\frac{(-x^2)^4}{4!}
++
+\dots
++
+\frac{1}{2k+1}\frac{(-x^2)^k}{k!}
++
+\dots
+\biggr)
+\intertext{in $-x^2$ geschrieben werden kann.
+Der Koeffzient $1/(2k+1)$ muss jetzt noch mit Pochhammer-Symbolen 
+geschrieben werden.
+Dazu wird er zunächst als $\frac12\cdot 1/(k+\frac12)$ geschrieben,
+weil der Nenner dann in Einerschritten anwächst, wie dies für
+Pochhammer-Symbole benötigt wird.
+Das Pochhammer-Symbol $(\frac32)_k$ hat den korrekten letzten Faktor
+$k+\frac12$, aber es hat viele zusätzliche Faktoren, nämlich
+alle Faktoren in $(\frac12)_k$ ausser dem ersten.
+Mit einem geeigneten Zähler können diese wieder zum Verschwinden
+gebracht werden.
+So erhält man die Darstellung
+}
+&=
+\frac{2x}{\sqrt{\pi}}
+\sum_{k=0}^\infty
+\frac{1}{2\cdot (k+\frac12)}
+\frac{(-x^2)^k}{k!}
+=
+\frac{2x}{\sqrt{\pi}}
+\sum_{k=0}^\infty
+\frac{1}{2} \cdot\frac{1}{k+\frac12}
+\frac{(-x^2)^k}{k!}
+\\
+&=
+\frac{2x}{\sqrt{\pi}}
+\sum_{k=0}^\infty
+\frac12
+\cdot
+\frac{
+\frac32
+\cdot \frac52
+\cdot\ldots\cdot(k-\frac12)
+\phantom{\mathstrut\cdot(k+\frac12)}
+}{
+\frac32
+\cdot \frac52
+\cdot\ldots\cdot(k-\frac12)\cdot(k+\frac12)
+}
+\frac{(-x^2)^k}{k!}
+\\
+&=
+\frac{2x}{\sqrt{\pi}}
+\sum_{k=0}^\infty
+\frac{
+\frac12
+\cdot
+\frac32
+\cdot \frac52
+\cdot\ldots\cdot(k-\frac12)
+\phantom{\mathstrut\cdot(k+\frac12)}
+}{
+\phantom{\frac12\cdot\mathstrut}
+\frac32
+\cdot \frac52
+\cdot\ldots\cdot(k-\frac12)\cdot(k+\frac12)
+}
+\frac{(-x^2)^k}{k!}
+\\
+&=
+\frac{2x}{\sqrt{\pi}}
+\sum_{k=0}^\infty \frac{(\frac12)_k}{(\frac32)_k}\frac{(-x^2)^k}{k!}
+=
+\frac{2x}{\sqrt{\pi}}
+\,
+\mathstrut_1F_1\biggl(
+\begin{matrix}\frac12\\\frac32\end{matrix}; -x^2
+\biggr)
+\end{align*}
+der Fehlerfunktion als hypergeometrische Funktion.
+
+%
+% Laplace-Transformation der Fehlerfunktion
+%
 \subsection{Laplace-Transformation}
 Wir berechnen die Laplace-Transformierte der Funktion
 \[
