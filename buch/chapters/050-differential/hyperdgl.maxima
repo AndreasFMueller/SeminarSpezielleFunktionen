@@ -1,0 +1,23 @@
+/*
+ * hyperdgl.maxima
+ *
+ * (c) 2021 Prof Dr Andreas Müller, OST Ostschweizer Fachhochschule
+ */
+
+x0:
+c*(a*b)/c - a*b
+;
+ratsimp(x0);
+
+x1:
+(a*(a+1)*b*(b+1)/(c*(c+1)))*(1 + c - (a+b+1) - a*b*(c+1)/((a+1)*(b+1)))
+;
+ratsimp(x1);
+
+xk: (a+k)*(b+k)/((c+k)*(k-1))
+-1
++c*(a+k)*(b+k)/((c+k)*(k-1)*k)
+-(a+b+1)/(k-1)
+-a*b/((k-1)*k);
+
+ratsimp(xk);

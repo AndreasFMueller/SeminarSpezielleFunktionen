@@ -1,0 +1,170 @@
+%
+% hypergeometrisch.tex
+%
+% (c) 2021 Prof Dr Andreas Müller, OST Ostschweizer Fachhochschule
+%
+\section{Hypergeometrische Differentialgleichung
+\label{buch:differentialgleichungen:section:hypergeometrisch}}
+Die hypergeometrische Funktion $\mathstrut_2F1(a,b;c;x)$ wurde in
+Abschnitt~\ref{buch:rekursion:section:hypergeometrische-funktion}
+als Potenzreihe mit sehr speziellen Koeffizienten, die sich aus
+Pochhammer-Symbolen.
+Es stellt sich aber heraus, dass man sie auch als Lösung einer
+gewöhnlichen Differentialgleichung bekommen kann, die bereits
+Euler studiert hat.
+
+\subsection{Die Eulersche hypergeometrische Differentialgleichung
+\label{buch:differentialgleichung:subsection:euler-hypergeometrisch}}
+Die hypergeometrische Funktion $\mathstrut_2F_1(a,b;c;x)$ ist eine
+Lösung der {\em Eulerschen hypergeometrischen Differentialgleichung}
+(zu unterscheiden von der Eulerschen Differentialgleichung, die sich
+immer auf eine lineare Differentialgleichung mit konstanten Koeffizienten
+reduzieren lässt)
+\begin{equation}
+x(1-x) \frac{d^2y}{dx^2} + (c-(a+b+1)x)\frac{dy}{dx} - ab y = 0
+\label{buch:differentialgleichungen:hypergeo:eulerdgl}
+\end{equation}
+Wir prüfen dies nach, indem wir die Definition der hypergeometrischen
+Funktion 
+\begin{align*}
+y(x)
+&=
+\mathstrut_2F_1(a,b;c;x)
+=
+\sum_{k=0}^\infty
+\frac{(a)_k(b)_k}{(c)_k} \frac{x^k}{k!}
+\intertext{mit den Ableitungen}
+y'(x)
+&=
+\sum_{k=1}^\infty 
+\frac{(a)_k(b)_k}{(c)_k} \frac{x^{k-1}}{(k-1)!}
+\\
+y''(x)
+&=
+\sum_{k=2}^\infty 
+\frac{(a)_k(b)_k}{(c)_k} \frac{x^{k-2}}{(k-2)!}
+\end{align*}
+einsetzen.
+Die Gleichung, die sich ergibt, ist
+\begin{align*}
+0
+&=
+x(1-x)
+\sum_{k=2}^\infty
+\frac{(a)_k(b)_k}{(c)_k}\frac{x^{k-2}}{(k-2)!}
++
+(c-(a+b+1)x)
+\sum_{k=1}^\infty
+\frac{(a)_k(b)_k}{(c)_k}\frac{x^{k-1}}{(k-1)!}
+-ab
+\sum_{k=0}^\infty
+\frac{(a)_k(b)_k}{(c)_k} \frac{x^k}{k!}
+\\
+&=
+\sum_{k=2}^\infty
+\frac{(a)_k(b)_k}{(c)_k}\frac{x^{k-1}}{(k-2)!}
+-
+\sum_{k=2}^\infty
+\frac{(a)_k(b)_k}{(c)_k}\frac{x^k}{(k-2)!}
++
+c\sum_{k=1}^\infty
+\frac{(a)_k(b)_k}{(c)_k}\frac{x^{k-1}}{(k-1)!}
+\\
+&\qquad
+-(a+b+1)
+\sum_{k=1}^\infty
+\frac{(a)_k(b)_k}{(c)_k}\frac{x^k}{(k-1)!}
+-ab
+\sum_{k=0}^\infty
+\frac{(a)_k(b)_k}{(c)_k} \frac{x^k}{k!}
+\\
+&=
+\sum_{k=1}^\infty
+\frac{(a)_{k+1}(b)_{k+1}}{(c)_{k+1}}\frac{x^k}{(k-1)!}
+-
+\sum_{k=2}^\infty
+\frac{(a)_k(b)_k}{(c)_k}\frac{x^k}{(k-2)!}
++
+c\sum_{k=0}^\infty
+\frac{(a)_{k+1}(b)_{k+1}}{(c)_{k+1}}\frac{x^k}{k!}
+\\
+&\qquad
+-(a+b+1)
+\sum_{k=1}^\infty
+\frac{(a)_k(b)_k}{(c)_k}\frac{x^k}{(k-1)!}
+-ab
+\sum_{k=0}^\infty
+\frac{(a)_k(b)_k}{(c)_k} \frac{x^k}{k!}.
+\end{align*}
+Zum konstanten Koeffizienten für $k=0$ tragen nur die dritte und letzte
+Summe bei, dies sind die Terme
+\[
+c\frac{(a)_1(b)_1}{(c)_1}-ab\frac{(a)_0(b)_0}{(c)_0}
+=
+c\frac{ab}{c}-ab\frac{1\cdot 1}{1}
+=
+0.
+\]
+Für den linearen Term $k=1$ kommen je ein Term aus der ersten aund vierten
+Summe hinzu, dies ergibt
+\begin{align*}
+&\phantom{\mathstrut=\mathstrut}
+\frac{(a)_2(b)_2}{(c)_2}
++c\frac{(a)_2(b)_2}{(c)_2}
+-(a+b+1)\frac{(a)_1(b)_1}{(c)_1}
+-ab\frac{(a)_1(b)_1}{(c)_1}
+\\
+&=
+\frac{a(a+1)b(b+1)}{c(c+1)}
+(1+c)
+-(ab+a+b+1)
+\frac{ab}{c}
+\\
+&=
+\frac{a(a+1)b(b+1)}{c}
+-
+(a+1)(b+1)\frac{ab}{c}
+=0.
+\end{align*}
+Durch Koeffizientenvergleich erhalten wir für $k\ge 2$ 
+\begin{align*}
+0
+&=
+\frac{(a)_{k+1}(b)_{k+1}}{(c)_{k+1}} \frac1{(k-1)!} 
+-
+\frac{(a)_k(b)_k}{(c)_k} \frac1{(k-2)!} 
++
+c\frac{(a)_{k+1}(b)_{k+1}}{(c)_{k+1}} \frac{1}{k!}
+\\
+&\qquad
+-(a+b+1)\frac{(a)_k(b)_k}{(c)_k}\frac{1}{(k-1)!}
+-ab \frac{(a)_k(b)_k}{(c)_k}\frac{1}{k!}
+\\
+&=
+\frac{(a)_k(b)_k}{(c)_k}
+\frac{1}{(k-2)!}
+\biggl(
+\frac{(a+k)(b+k)}{c+k}\frac1{k-1}
+-1
++
+c\frac{(a+k)(b+k)}{c+k}\frac1{(k-1)k}
+\\
+&\qquad
+-(a+b+1)\frac1{k-1} 
+-ab \frac1{(k-1)k}
+\biggr)
+\\
+&=
+\frac{(a)_k(b)_k}{(c)_{k+1}}
+\frac{1}{k!}
+\biggl(
+(a+k)(b+k)k - (c+k)(k-1)k + (a+k)(b+k) - (a+b+1)(c+k)k-ab(c+k)
+\biggr)
+\end{align*}
+
+
+
+
+
+
+
