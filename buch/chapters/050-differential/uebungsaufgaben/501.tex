@@ -1,0 +1,63 @@
+Finden Sie eine Lösung der Airy Differentialgleichung
+\[
+y''-xy=0
+\]
+mit Anfangsbedingungen $y(0)=a$ und $y'(0)=b$.
+
+\begin{loesung}
+An der Stelle $x=0$ folgt aus der Differentialgleichung, dass $y''(0)=0$
+gelten muss.
+In einem Potenzreihenansatz der Form
+\begin{align*}
+y(x)
+&=
+\sum_{k=0}^\infty a_kx^k
+&&\Rightarrow&
+y'(x)
+&=
+\sum_{k=1}^\infty a_kx^{k-1}
+\\
+&&&&
+y''(x)
+&=
+\sum_{k=2}^\infty k(k-1)a_kx^{k-2}
+\end{align*}
+kann man daher $a_2=0$ setzen und damit die Summation in der
+Reihenentwicklung für $y''(x)$ erst bei $k=3$ beginnen.
+
+Setzt man den Ansatz in die Differentialgleichung ein, erhält man
+\begin{align*}
+0
+&=
+y''(x)-xy(x)
+\\
+&=
+\sum_{k=3}^\infty k(k-1)a_kx^{k-2}
+-
+\sum_{k=0}^\infty a_kx^{k+1}
+\\
+&=
+\sum_{k=0}^\infty (k+3)(k+2)a_{k+3}x^{k+1}
+-
+\sum_{k=0}^\infty a_{k}x^{k+1}
+\\
+&=
+\sum_{k=0}^\infty \bigl((k+3)(k+2)a_{k+3}-a_{k}\bigr)x^{k+1}.
+\end{align*}
+Koeffizientenvergleich liefert jetzt die Rekursionsbeziehungen
+\[
+a_{k+3} = \frac1{(k+3)(k+2)} {a_k}.
+\]
+Da $a_2=0$ ist folgt daraus auch, dass $a_5=a_8=a_{11}=\dots=0$ ist.
+
+Aus den Anfangsbedingungen liest man ab dass $a_0=a$ und $a_1=b$, daraus
+kann man jetzt die Lösung konstruieren, es ist
+\[
+y(x)
+=
+a\biggl(1+\frac{1}{2\cdot 3}x^3 + \frac{1}{2\cdot3\cdot5\cdot 6}x^6 + \dots\biggr)
++
+b\biggl(x+\frac{1}{3\cdot 4}x^4 + \frac{1}{3\cdot 4\cdot 6\cdot 7}x^7+\dots\biggr).
+\qedhere
+\]
+\end{loesung}

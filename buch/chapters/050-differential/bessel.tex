@@ -218,7 +218,7 @@ y_1(x)
 =
 \biggl(\frac{x}{2}\biggr)^\alpha
 \sum_{k=0}^\infty
-\frac{(-1)^k}{\Gamma(\alpha+k+1)}
+\frac{(-1)^k}{k!\,\Gamma(\alpha+k+1)}
 \biggl(\frac{x}{2}\biggr)^{2k}.
 \]
 Dabei haben wir es durch
@@ -233,7 +233,7 @@ J_{\alpha}(x)
 =
 \biggl(\frac{x}{2}\biggr)^\alpha
 \sum_{k=0}^\infty
-\frac{(-1)^k}{\Gamma(\alpha+k+1)}
+\frac{(-1)^k}{k!\,\Gamma(\alpha+k+1)}
 \biggl(\frac{x}{2}\biggr)^{2k}
 \]
 heisst {\em Bessel-Funktionen der Ordnung $\alpha$}.
@@ -247,14 +247,14 @@ Die Summe beginnt also erst bei $k=n$ oder
 \begin{align*}
 J_{-n}(x)
 &=
-\sum_{k=n}^\infty \frac{(-1)^k}{m!k!}\biggl(\frac{x}{2}\biggr)^{2k-n}
+\sum_{k=n}^\infty \frac{(-1)^k}{m!\,k!}\biggl(\frac{x}{2}\biggr)^{2k-n}
 =
 \sum_{l=0}^\infty
-\frac{(-1)^{l+n}}{m!(l+n)!}\biggl(\frac{x}{2}\biggr)^{2(l+n)-n}
+\frac{(-1)^{l+n}}{m!\,(l+n)!}\biggl(\frac{x}{2}\biggr)^{2(l+n)-n}
 =
 (-1)^n
 \sum_{l=0}^\infty
-\frac{(-1)^l}{m!\Gamma(l+n+1)}\biggl(\frac{x}{2}\biggr)^{2l+n}
+\frac{(-1)^l}{m!\,\Gamma(l+n+1)}\biggl(\frac{x}{2}\biggr)^{2l+n}
 \\
 &=
 (-1)^n
@@ -283,7 +283,7 @@ Die erzeugende Funktion der Bessel-Funktionen ist die Summe
 \sum_{n\in\mathbb{Z}}
 {\color{darkred}
 \sum_{k=0}^\infty
-\frac{(-1)^k}{k!\Gamma(k+n+1)}
+\frac{(-1)^k}{k!\,\Gamma(k+n+1)}
 \biggl(\frac{x}{2}\biggr)^{2k+n}
 }
 z^n.
@@ -296,7 +296,7 @@ Wir schreiben $m=k+n$ und drücken alle Terme durch $k$ und $m$ aus:}
 &=
 \sum_{n\in \mathbb{Z}}
 \sum_{k=0}^\infty
-\frac{(-1)^k}{k!\Gamma(n+k+1)}
+\frac{(-1)^k}{k!\,\Gamma(n+k+1)}
 \biggl(\frac{x}{2}\biggr)^k
 \biggl(\frac{x}{2}\biggr)^{n+k}
 z^{n+k}

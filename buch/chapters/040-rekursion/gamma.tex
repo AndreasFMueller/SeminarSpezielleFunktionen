@@ -106,7 +106,7 @@ und erhalten
 \begin{equation}
 x!
 =
-\frac{n!n^x}{(x+1)_n}\cdot
+\frac{n!\,n^x}{(x+1)_n}\cdot
 \frac{(n+1)_x}{n^x}.
 \label{buch:rekursion:gamma:eqn:produkt3}
 \end{equation}
@@ -139,7 +139,7 @@ Dies würde die folgende Definition rechtfertigen.
 Die Gamma-Funktion $\Gamma(x)$ einer Zahl
 $x\in\mathbb{C}\setminus\{0,-1,-2,-3,\dots\}$ ist der Grenzwert
 \[
-\Gamma(x) = \lim_{n\to\infty} \frac{n!n^{x-1}}{(x)_n}.
+\Gamma(x) = \lim_{n\to\infty} \frac{n!\,n^{x-1}}{(x)_n}.
 \] 
 \end{definition}
 
@@ -170,11 +170,11 @@ dies ist möglich, indem man mit $x$ erweitert:
 \begin{align*}
 \Gamma(x+1)
 &=
-\lim_{n\to\infty}\frac{n!n^x}{(x+1)_n}
+\lim_{n\to\infty}\frac{n!\,n^x}{(x+1)_n}
 =
-x\lim_{n\to\infty}\frac{n!n^x}{x(x+1)_n}
+x\lim_{n\to\infty}\frac{n!\,n^x}{x(x+1)_n}
 =
-x\lim_{n\to\infty}\frac{n!n^x}{(x)_{n+1}}.
+x\lim_{n\to\infty}\frac{n!\,n^x}{(x)_{n+1}}.
 \intertext{Wir müssen jetzt nur noch zeigen, dass der Grenzwert
 auf der rechten Seite gegen $\Gamma(x)$ konvergiert,
 in dessen Definition aber die Potenz $n^{x-1}$ vorkommt.
@@ -217,7 +217,7 @@ Dies ist aber viel zu kleine, um gute Approximationen auch für kleine
 Werte von $x$ zu geben.
 So findet man zum Beispiel für $x=\frac12$ und $n=170$ mit Octave
 \[
-\frac{n!n^{x-1}}{(x)_n}
+\frac{n!\,n^{x-1}}{(x)_n}
 =
 \frac{170!}{\sqrt{170}\cdot \frac12\cdot\frac32\cdot\ldots\cdot\frac{339}{2}}
 =
@@ -304,7 +304,7 @@ berechnen wir
 \frac{1}{\Gamma(x)}
 &=
 \lim_{n\to\infty} 
-\frac{(x)_n}{n!n^{x-1}}
+\frac{(x)_n}{n!\,n^{x-1}}
 =
 \lim_{n\to\infty} 
 \frac{x(x+1)(x+2)\cdots(x+n-1)}{1\cdot 2\cdot3\cdots (n-1)\cdot n\cdot n^{x-1}}
@@ -583,6 +583,243 @@ Die Genauigkeit erreicht sechs korrekte Nachkommastellen mit nur
 % Beta-Integrale
 %
 \subsection{Die Beta-Funktion}
+
+\begin{definition}
+Das Beta-Integral ist das Integral
+\[
+B(x,y)
+=
+\int_0^1 t^{x-1} (1-t)^{y-1}\,dt
+\]
+für $\operatorname{Re}x>0$, $\operatorname{Re}y>0$.
+\end{definition}
+
+Aus der Definition kann man sofort ablesen, dass $B(x,y)=B(y,x)$.
+Für $y=1$ folgt ausserdem
+\[
+B(x,1) = \int_0^1 t^{x-1}\,dt = \biggl[ \frac{t^x}{x}\biggr]_0^1 = \frac{1}{x}.
+\]
+Speziell gilt $B(1,1)=1$.
+
+\subsubsection{Rekursionsformeln für das Beta-Integral}
+Aus der Definition folgt direkt
+\begin{align*}
+B(x,y+1)
+&=
+\int_0^1 t^{x-1} (1-t)^{y+1-1}\,dt
+=
+\int_0^1 (1-t) t^{x-1} (1-t)^{y-1}\,dt
+\\
+&=
+\int_0^1 t^{x-1} (1-t)^{y-1}\,dt
+-
+\int_0^1 t^{x} (1-t)^{y-1}\,dt
+\\
+&=
+B(x,y) - B(x+1,y)
+\end{align*}
+oder
+\begin{equation}
+B(x+1,y) = B(x,y) - B(x,y+1).
+\label{buch:rekursion:gamma:betarek1}
+\end{equation}
+%
+%XXX Vergleich mit der Rekursionsformel für Binomialkoeffizienten
+%
+Durch partielle Integration kann man eine weitere Rekursionsformel finden.
+Dazu berechnet man
+\begin{align}
+B(x,y+1)
+&=
+\int_0^1 t^{x-1}(1-t)^{y}\,dt
+\notag
+\\
+&=
+\biggl[\frac{t^x}x(1-t)^y\biggr]_0^1
++
+\frac{y}x \int_0^1 t^x(1-t)^{y-1}\,dt
+\notag
+\\
+&=
+ \frac{y}x B(x+1,y).
+\label{buch:rekursion:gamma:betarek2}
+\end{align}
+Durch Gleichsetzen
+\eqref{buch:rekursion:gamma:betarek1}
+und
+\eqref{buch:rekursion:gamma:betarek2}
+entsteht die Rekursionsformel
+\[
+B(x,y)-B(x,y+1)
+=
+B(x+1,y)
+=
+\frac{x}{y}B(x,y+1)
+\]
+oder
+\begin{equation}
+B(x,y)
+=
+\frac{x+y}{y}B(x,y+1).
+\label{buch:rekursion:gamma:betarek3}
+\end{equation}
+
+\subsubsection{Beta-Funktion und Gamma-Funktion}
+Die Rekursionsbeziehung~\eqref{buch:rekursion:gamma:betarek3}
+kann jetzt dazu verwendet werden, eine Darstellung der Beta-Funktion
+durch die Gamma-Funktion zu finden.
+Durch $n$-fache Anwendung von \eqref{buch:rekursion:gamma:betarek3}
+ergibt sich zunächst
+\begin{align*}
+B(x,y)
+&=
+\frac{x+y}{y}
+B(x,y+1)
+=
+\frac{x+y}{y}
+\frac{x+y+1}{y+1}
+B(x,y+2)
+\\
+&=
+\frac{x+y}{y}
+\frac{x+y+1}{y+1}
+\cdot
+\ldots
+\cdot
+\frac{x+y+n-1}{y+n-1}
+B(x,y+n)
+=
+\frac{(x+y)_n}{(y)_n}
+B(x,y+n)
+\intertext{Die Beta-Funktion auf der rechten Seite kann als Integral
+geschrieben werden:}
+&=
+\frac{(x+y)_n}{(y)_n}
+\int_0^1 t^{x-1}(1-t)^{y+n-1}\,dt.
+\intertext{Wir streben an, mit dem Grenzübergang $n\to\infty$ aus den
+Pochhammer-Symbolen Gamma-Funktionen zu machen, dazu müssen gemäss
+Definition~\ref{buch:rekursion:gamma:def:definition} weitere Faktoren
+$1/(n!\,n^{x-1})$ vorhanden sein.
+Wir erweitern geeignet und nehmen die übrig bleibenden Faktoren in
+das Integral.
+So ergibt sich}
+&=
+\frac{(x+y)_n}{n!\, n^{x+y-1}}
+\frac{n!\,n^{y-1}}{(y)_n}
+\int_0^1 n^{x} t^{x-1}(1-t)^{y+n-1}\,dt.
+\intertext{Mit der Substition $s/n=t$ wird das Integral zu einem Integral
+über das Interval $[0,n]$}
+&=
+\frac{(x+y)_n}{n!\, n^{x+y-1}}
+\frac{n!\,n^{y-1}}{(y)_n}
+\int_0^n
+n^{x}
+\biggl(\frac{s}{n}\biggr)^{x-1}
+\biggl(1-\frac{s}{n}\biggr)^{y+n-1}
+\,\frac{ds}{n}.
+\\
+&=
+\frac{(x+y)_n}{n!\, n^{x+y-1}}
+\frac{n!\,n^{y-1}}{(y)_n}
+\int_0^n
+n^{x-1}
+\biggl(\frac{s}{n}\biggr)^{x-1}
+\biggl(1-\frac{s}{n}\biggr)^{y+n-1}
+\,ds.
+\intertext{Beim Grenzübergang $n\to\infty$ wird daraus}
+&=
+\underbrace{\frac{(x+y)_n}{n!\, n^{x+y-1}}}_{\displaystyle \to 1/\Gamma(x+y)}
+\underbrace{\frac{n!\,n^{y-1}}{(y)_n}}_{\displaystyle\to \Gamma(y)}
+\int_0^n
+s^{x-1}
+\underbrace{\biggl(1-\frac{s}{n}\biggr)^{n}}_{\displaystyle\to e^{-s}}
+\underbrace{\biggl(1-\frac{s}{n}\biggr)^{y-1}}_{\displaystyle\to 1}
+\,ds.
+\\
+&\to \frac{\Gamma(y)}{\Gamma(x+y)} \int_0^\infty s^{x-1}e^{-s}\,ds
+=
+\frac{\Gamma(y)\Gamma(x)}{\Gamma(x+y)}.
+\end{align*}
+
+\begin{satz}
+Die Beta-Funktion kann aus der Gamma-Funktion nach
+\begin{equation}
+B(x,y) = \frac{\Gamma(x)\Gamma(y)}{\Gamma(x+y)}
+\end{equation}
+berechnet werden.
+\end{satz}
+
+\subsubsection{Beta-Funktion und Binomialkoeffizienten}
+Die Binomialkoeffizienten können mit Hilfe der Fakultät als
+\begin{equation}
+\binom{n}{k}
+=
+\frac{n!}{(n-k)!\,k!}
+=
+\frac{\Gamma(n-1)}{\Gamma(n-k-1)\Gamma(k-1)}
+=
+\frac{(n-2)\Gamma(n-2)}{\Gamma(n-k-1)\Gamma(k-1)}
+=
+\frac{n-2}{B(n-k-1,k-1)}
+\label{buch:rekursion:gamma:binombeta}
+\end{equation}
+geschrieben werden.
+Die Rekursionsbeziehung
+\[
+\binom{n+1}{k} = \binom{n}{k-1} + \binom{n}{k}
+\]
+der Binomialkoeffizienten erzeugt das vertraute Pascal-Dreieck,
+die Formel \eqref{buch:rekursion:gamma:binombeta} für die
+Binomialkoeffizienten macht daraus
+\[
+\frac{n-1}{B(n-k,k-1)}
+=
+\frac{n-2}{B(n-k,k-2)}
++
+\frac{n-2}{B(n-k-1,k-1)},
+\]
+die für ganzzahlige Argumente gilt.
+Wir wollen nachrechnen, dass dies für beliebige Argumente gilt.
+\begin{align*}
+\frac{(n-1)\Gamma(n-1)}{\Gamma(n-k)\Gamma(k-1)}
+&=
+\frac{(n-2)\Gamma(n-2)}{\Gamma(n-k)\Gamma(k-2)}
++
+\frac{(n-2)\Gamma(n-2)}{\Gamma(n-k-1)\Gamma(k-1)}
+\\
+\frac{\Gamma(n)}{\Gamma(n-k)\Gamma(k-1)}
+&=
+\frac{\Gamma(n-1)}{\Gamma(n-k)\Gamma(k-2)}
++
+\frac{\Gamma(n-1)}{\Gamma(n-k-1)\Gamma(k-1)}
+\intertext{Durch Zusammenfassen der Faktoren im Zähler mit Hilfe
+der Rekursionsformel für die Gamma-Funktion und Multiplizieren
+mit dem gemeinsamen Nenner
+$\Gamma(n-k)\Gamma(k-1)=(n-k-1)\Gamma(n-k-1)(k-2)\Gamma(k-2)$ wird daraus}
+\Gamma(n)
+&=
+(k-2)
+\Gamma(n-1)
++
+(n-k-1)
+\Gamma(n-1)
+\intertext{Indem wir die Rekursionsformel für die Gamma-Funktion auf
+die rechte Seite anwenden können wir erreichen, dass in allen Termen
+ein Faktor
+$\Gamma(n-1)$ auftritt:}
+(n-1)\Gamma(n-1)
+&=
+(k-2)\Gamma(n-1)
++
+(n+k-1)\Gamma(n-1)
+\\
+n-1
+&=
+k-2
++
+n-k-1
+\end{align*}
+
 
 %
 %

@@ -1,0 +1,12 @@
+x:
+-(rho+k)*(rho+k-1)
++(rho+k+1)*(rho+k)*q
++c*(rho+k+1)*q
+-(a+b+1)*(rho+k)-a*b;
+
+y: subst(1-c,rho,x);
+
+factor(coeff(y, q, 0));
+factor(coeff(y, q, 1));
+
+

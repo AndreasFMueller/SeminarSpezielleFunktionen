@@ -1,0 +1,59 @@
+%
+% tikztemplate.tex -- template for standalon tikz images
+%
+% (c) 2021 Prof Dr Andreas Müller, OST Ostschweizer Fachhochschule
+%
+\documentclass[tikz]{standalone}
+\usepackage{amsmath}
+\usepackage{times}
+\usepackage{txfonts}
+\usepackage{pgfplots}
+\usepackage{csvsimple}
+\usetikzlibrary{arrows,intersections,math}
+\begin{document}
+\def\skala{1}
+\input{airypaths.tex}
+\definecolor{darkgreen}{rgb}{0,0.6,0}
+\begin{tikzpicture}[>=latex,thick,scale=\skala]
+
+% add image content here
+\def\dx{1}
+\def\dy{1}
+
+\begin{scope}
+\clip ({-8*\dx},{-1.3*\dy}) rectangle ({2.5*\dx},{4*\dy});
+\draw[color=red,line width=1.4pt] \yonepath;
+%\draw[color=darkgreen,line width=1.4pt] \ytwopath;
+\draw[color=blue,line width=1.4pt] \ythreepath;
+\end{scope}
+
+\draw[->] (-8.1,0) -- (2.9,0) coordinate[label={$x$}];
+\draw[->] (0,-1.4) -- (0,4.4) coordinate[label={$y$}];
+
+\foreach \x in {-8,...,-1}{
+	\draw ({\x*\dx},-0.1) -- ({\x*\dx},0.1);
+}
+\foreach \y in {-1,1,2,3,4}{
+	\draw (-0.1,{\y*\dy}) -- (0.1,{\y*\dy});
+}
+\draw ({\dx},-0.1) -- ({\dx},0.1);
+\draw ({2*\dx},-0.1) -- ({2*\dx},0.1);
+
+\node at (\dx,0) [below] {$1$};
+\node at ({2*\dx},0) [below] {$2$};
+
+\foreach \x in {-7,...,-1}{
+	\node at ({\x*\dx},0) [below] {$\x$};
+}
+\foreach \y in {2,3,4}{
+	\node at (-0.1,{\y*\dy}) [left] {$\y$};
+}
+\node at (-0.1,\dy) [above left] {$-1$};
+\node at (0.1,-\dy) [right] {$-1$};
+
+\node[color=red] at ({-1.2*\dx},{0.6*\dy}) [above left] {$y_1(x)$};
+\node[color=blue] at ({-1.4*\dx},{-1.1*\dy}) [below] {$y_2(x)$};
+
+\end{tikzpicture}
+\end{document}
+
