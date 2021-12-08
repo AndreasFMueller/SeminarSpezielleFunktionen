@@ -34,8 +34,6 @@ double	h0f1(double c, double x) {
 		k++;
 		term *= x / ((c+k-1) * k);
 		s += term;
-	//	if (debug)
-	//		fprintf(stderr, "term = %.14f\n", term);
 		counter++;
 	}
 	if (debug)
@@ -43,11 +41,9 @@ double	h0f1(double c, double x) {
 	return s;
 }
 
-double	f0(double x) {
-	//return gsl_sf_hyperg_0F1(2/3, x*x*x/9.);
-	return h0f1(2./3., x*x*x/9.);
-}
 double	f1(double x) {
+	// unfortunately, gsl_sf_hyperg_0F1 does not work if c<1, because
+	// it uses a relation to the bessel functions
 	//return gsl_sf_hyperg_0F1(2/3, x*x*x/9.);
 	return h0f1(2./3., x*x*x/9.);
 }
