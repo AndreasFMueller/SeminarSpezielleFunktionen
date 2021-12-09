@@ -1,0 +1,80 @@
+%
+% rechteck.tex -- template for standalon tikz images
+%
+% (c) 2021 Prof Dr Andreas Müller, OST Ostschweizer Fachhochschule
+%
+\documentclass[tikz]{standalone}
+\usepackage{amsmath}
+\usepackage{times}
+\usepackage{txfonts}
+\usepackage{pgfplots}
+\usepackage{csvsimple}
+\usetikzlibrary{arrows,intersections,math}
+\begin{document}
+\def\skala{1}
+\begin{tikzpicture}[>=latex,thick,scale=\skala]
+
+\def\a{12}
+\def\b{8}
+
+\def\k{9}
+\pgfmathparse{\k-1}
+\xdef\kmax{\pgfmathresult}
+\def\l{4}
+\pgfmathparse{\l-1}
+\xdef\lmax{\pgfmathresult}
+
+\pgfmathparse{\a/\k}
+\xdef\dx{\pgfmathresult}
+\pgfmathparse{\b/\l}
+\xdef\dy{\pgfmathresult}
+
+\begin{scope}
+\clip (0,0) rectangle (\a,\b);
+\fill[color=red!20] (0,0) rectangle (\a,\b);
+
+\foreach \kl in {0,2,...,\lmax}{
+	\foreach \ki in {0,2,...,\kmax}{
+		\fill[color=blue!20]
+			({\ki*\dx},{\kl*\dy}) rectangle
+			({(\ki+1)*\dx},{(\kl+1)*\dy});
+	}
+}
+
+\foreach \kl in {1,3,...,\lmax}{
+	\foreach \ki in {1,3,...,\kmax}{
+		\fill[color=blue!20]
+			({\ki*\dx},{\kl*\dy}) rectangle
+			({(\ki+1)*\dx},{(\kl+1)*\dy});
+	}
+}
+
+\end{scope}
+
+\draw (0,0) rectangle (\a,\b);
+
+\foreach \ki in {1,...,\kmax}{
+	\draw[line width=0.2pt] ({\ki*\dx},0) -- ({\ki*\dx},\b);
+}
+\foreach \li in {1,...,\lmax}{
+	\draw[line width=0.2pt] (0,{\li*\dy}) -- (\a,{\li*\dy});
+}
+
+\draw (\a,-0.1) -- (\a,0.1);
+\draw ({\a/\k},-0.1) -- ({\a/\k},0.1);
+\node at (\a,0) [below] {$\mathstrut a$};
+\node at ({\a/\k},0) [below] {$\mathstrut a/k$};
+\draw (-0.1,\b) -- (0.1,\b);
+\draw (-0.1,{\b/\l}) -- (0.1,{\b/\l});
+\node at (0,\b) [left] {$\mathstrut b$};
+\node at (0,{\b/\l}) [left] {$\mathstrut b/l$};
+	
+\draw[->] (-0.1,0) -- ({\a+0.7},0) coordinate[label={$x$}];
+\draw[->] (0,-0.1) -- (0,{\b+0.7}) coordinate[label={right:$y$}];
+
+\node at ({\a/2},\b) [above] {$k=\k$};
+\node at (\a,{\b/2}) [above,rotate=-90] {$l=\l$};
+
+\end{tikzpicture}
+\end{document}
+

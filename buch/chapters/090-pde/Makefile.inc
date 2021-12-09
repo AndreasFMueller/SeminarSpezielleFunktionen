@@ -9,4 +9,5 @@ CHAPTERFILES = $(CHAPTERFILES)						\
 	chapters/090-pde/separation.tex					\
 	chapters/090-pde/rechteck.tex					\
 	chapters/090-pde/kreis.tex					\
+	chapters/090-pde/kugel.tex					\
 	chapters/090-pde/chapter.tex
