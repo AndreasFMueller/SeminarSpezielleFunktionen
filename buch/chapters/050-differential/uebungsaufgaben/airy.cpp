@@ -77,7 +77,7 @@ int	main(int argc, char *argv[]) {
 	int	longindex;
 	double	a = -8;
 	double	b = 2.5;
-	int	steps = 200;
+	int	steps = 500;
 	while (EOF != (c = getopt_long(argc, argv, "a:b:do:s:",
 		options, &longindex)))
 		switch (c) {
@@ -99,14 +99,14 @@ int	main(int argc, char *argv[]) {
 		}
 
 	if (debug)
-		fprintf(stderr, "%s:%d: outfile: '%s'\n",
-			__FILE__, __LINE__, outfilename.c_str());
+		fprintf(stderr, "%s:%d: outfile: '%s', a = %.4f, b = %.4f, steps = %d\n",
+			__FILE__, __LINE__, outfilename.c_str(), a, b, steps);
 
 	FILE	*outfile = fopen(outfilename.c_str(), "w");
 
-	plot(outfile, "yonepath", f1, a, b, 100);
-	plot(outfile, "ytwopath", f2, a, b, 100);
-	plot(outfile, "ythreepath", f3, a, b, 100);
+	plot(outfile, "yonepath", f1, a, b, steps);
+	plot(outfile, "ytwopath", f2, a, b, steps);
+	plot(outfile, "ythreepath", f3, a, b, steps);
 	
 	fclose(outfile);
 
