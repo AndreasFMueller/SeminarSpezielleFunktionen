@@ -48,3 +48,9 @@ test2.pdf:	common/test-common.tex common/test1.tex aufgaben2.tex
 test3.pdf:	common/test-common.tex common/test1.tex aufgaben3.tex
 	pdflatex common/test3.tex
 
+#
+# Errata
+#
+errata.pdf:	errata.tex
+	pdflatex errata.tex
+
