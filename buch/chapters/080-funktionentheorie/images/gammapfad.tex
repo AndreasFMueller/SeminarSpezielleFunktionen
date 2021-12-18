@@ -1,0 +1,54 @@
+%
+% gammapfad.tex -- Pfad zum Beweis der Reflektionsformel der Gamma-Funktion
+%
+% (c) 2021 Prof Dr Andreas Müller, OST Ostschweizer Fachhochschule
+%
+\documentclass[tikz]{standalone}
+\usepackage{amsmath}
+\usepackage{times}
+\usepackage{txfonts}
+\usepackage{pgfplots}
+\usepackage{csvsimple}
+\usetikzlibrary{arrows,intersections,math}
+\begin{document}
+\def\skala{2}
+\definecolor{darkred}{rgb}{0.8,0,0}
+\begin{tikzpicture}[>=latex,thick,scale=\skala]
+
+\draw[->] (-2.55,0) -- (2.7,0) coordinate[label={$\operatorname{Re}z$}];
+\draw[->] (0,-2.55) -- (0,2.7,0) coordinate[label={right:$\operatorname{Im}z$}];
+
+\def\repsilon{0.3}
+\def\R{2.5}
+\def\d{0.04}
+
+\pgfmathparse{asin(\d/sqrt(\R*\R-\d*\d))}
+\xdef\A{\pgfmathresult}
+\pgfmathparse{asin(\d/sqrt(\repsilon*\repsilon-\d*\d))}
+\xdef\a{\pgfmathresult}
+
+\draw[->] (0,0) -- (70:\R);
+\node at (70:{0.7*\R}) [right] {$R$};
+\draw[->] (0,0) -- (-40:\repsilon);
+\node at (-40:\repsilon) [below right] {$\varepsilon$};
+
+\draw[color=darkred,line width=1.4pt] 
+	({\A-180}:\R) arc ({\A-180}:{180-\A}:\R)
+	--
+	({-sqrt(\R*\R-\d*\d)},\d)
+	--
+	%({-sqrt(\repsilon*\repsilon-\d*\d)},\d)
+	({180-\a}:\repsilon) arc ({180-\a}:{\a-180}:\repsilon)
+	--
+	({-sqrt(\R*\R-\d*\d)},-\d)
+	--
+	cycle;
+
+\fill[color=blue] (1,0) circle[radius=0.04];
+\node[color=blue] at (1,0) [above] {$1$};
+
+\node[color=darkred] at (120:\R) [above left] {$\gamma$};
+
+\end{tikzpicture}
+\end{document}
+

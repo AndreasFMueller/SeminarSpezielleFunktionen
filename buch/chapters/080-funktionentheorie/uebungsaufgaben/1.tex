@@ -1,0 +1,55 @@
+Verwenden Sie die Eulersche Spiegelungsformel um 
+\[
+S_n
+=
+\sum_{k=1}^n
+\Gamma\biggl(\frac{1+2k}2\biggr)\Gamma\biggl(\frac{1-2k}2\biggr)
+\]
+zu berechnen.
+
+\begin{loesung}
+Zunächst beachten wir, dass
+\[
+1 - \frac{1+2k}2
+=
+\frac{1-2k}2.
+\]
+Dies bedeutet, dass
+\[
+\Gamma\biggl(\frac{1+2k}2\biggr)
+\Gamma\biggl(\frac{1-2k}2\biggr)
+=
+\Gamma\biggl(\frac{1+2k}2\biggr)
+\Gamma\biggl(1-\frac{1+2k}2\biggr)
+=
+\frac{\pi}{
+\sin\pi\frac{1+2k}2
+}
+=
+\frac{\pi}{\sin(2k+1)\frac{\pi}2}
+\]
+nach der Eulerschen Spiegelungsformel.
+Das Argument der Sinus-Funktion ist ein ungerades Vielfaches 
+von $\frac{\pi}2$, die Sinus-Funktion hat dort die Werte $\pm 1$,
+genauer
+\[
+\sin(2k+1)\frac{\pi}2
+=
+(-1)^k.
+\]
+Damit wird die gesuchte Summe:
+\[
+S_n
+=
+\sum_{k=1}^n
+\frac{\pi}{(-1)^k}
+=
+-\pi+\pi-\pi+\dots+(-1)^n\pi
+=
+\begin{cases}
+0&\qquad\text{$n$ gerade}\\
+-\pi&\qquad\text{$n$ ungerade}.
+\end{cases}
+\qedhere
+\]
+\end{loesung}

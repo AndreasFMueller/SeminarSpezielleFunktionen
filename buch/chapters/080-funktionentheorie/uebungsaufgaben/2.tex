@@ -1,0 +1,31 @@
+Verwenden Sie die Legendresche Verdoppelungsformel und
+die Eulersche Spiegelungsformel für die Gamma-Funktion,
+um $\Gamma(\frac14)\Gamma(\frac34)$ zu berechnen und
+verifizieren Sie, dass beide Wege das gleiche Resultat geben.
+
+\begin{loesung}
+Aus der Spiegelungsformel für $x=\frac14$ folgt
+\[
+\Gamma({\textstyle\frac14})\Gamma({\textstyle\frac34})
+=
+\frac{\pi}{\sin\frac{\pi}4}
+=
+\frac{\pi}{1/\sqrt{2}}
+=
+\pi\sqrt{2}.
+\]
+Andererseits ist $\frac34=\frac14+\frac12$, so dass aus der Legendreschen
+Verdoppelungsformel folgt
+\[
+\Gamma({\textstyle\frac14})\Gamma({\textstyle\frac34})
+=
+2^{1-2\cdot \frac14}\sqrt{\pi}\Gamma(2\cdot {\textstyle\frac14})
+=
+\sqrt{2}
+\sqrt{\pi}\Gamma({\textstyle\frac12})
+=
+\sqrt{2}
+\pi.
+\]
+Offensichtlich stimmen die beiden Resultate überein.
+\end{loesung}

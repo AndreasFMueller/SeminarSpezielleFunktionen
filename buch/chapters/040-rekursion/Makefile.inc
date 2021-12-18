@@ -8,4 +8,6 @@ CHAPTERFILES = $(CHAPTERFILES)						\
 	chapters/040-rekursion/gamma.tex				\
 	chapters/040-rekursion/linear.tex				\
 	chapters/040-rekursion/hypergeometrisch.tex			\
+	chapters/040-rekursion/uebungsaufgaben/1.tex			\
+	chapters/040-rekursion/uebungsaufgaben/2.tex			\
 	chapters/040-rekursion/chapter.tex
