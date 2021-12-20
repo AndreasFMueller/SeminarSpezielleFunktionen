@@ -6,6 +6,7 @@
 
 CHAPTERFILES = $(CHAPTERFILES)						\
 	chapters/060-integral/fehlerfunktion.tex			\
+	chapters/060-integral/eulertransformation.tex			\
 	chapters/060-integral/differentialkoerper.tex			\
 	chapters/060-integral/risch.tex					\
 	chapters/060-integral/orthogonal.tex				\

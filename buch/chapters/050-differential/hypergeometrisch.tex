@@ -398,8 +398,484 @@ eine zweite, linear unabhängige Lösung.
 %
 \subsection{Verallgemeinerte hypergeometrische Differentialgleichung}
 % https://de.wikipedia.org/wiki/Verallgemeinerte_hypergeometrische_Funktion
+Die Ableitungsformel für die hypergeometrischen Funktionen
+\[
+w(z)
+=
+\mathstrut_nF_m
+\biggl(\begin{matrix}a_1,\dots,a_m\\b_1,\dots,b_n\end{matrix};z\biggr)
+\]
+drückt die Ableitung $f'(z)$ durch einen Wert einer hypergeometrischen
+Funktion mit ganz anderen Parametern aus, nämlich
+\[
+w'(z)
+=
+\frac{a_1\cdot\ldots\cdot a_n}{b_1\cdot\ldots\cdot b_m}
+\mathstrut_mF_n\biggl(
+\begin{matrix}a_1+1,\dots,a_n+1\\b_1+1,\dots,b_m+1\end{matrix};z
+\biggr).
+\]
+Dies erlaubt aber noch nicht, eine Differentialgleichung für $w(z)$
+aufzustellen, da auf der rechten Seite alle Parameter inkrementiert
+worden sind.
+Um eine Differentialgleichung zu erhalten, muss man den gleichen
+Effekt auf einem anderen Weg erreichen.
 
+\subsubsection{Operatoren, die genau ein $a_i$ inkrementieren}
+Wir suchen einen Operator, der in der hypergeometrischen Funktion
+$\mathstrut_nF_m$ nur genau den Parameter $a_i$ inkrementiert.
+Der folgende Operator schafft dies:
+\begin{align*}
+\biggl(z\frac{d}{dz}+a_i\biggr)
+\mathstrut_nF_m\biggl(\begin{matrix}a_1,\dots,a_n\\b_1,\dots,b_m\end{matrix};
+z\biggr)
+&=
+\biggl(z\frac{d}{dz}+a_i\biggr)
+\sum_{k=0}^\infty
+\frac{(a_1)_k\cdot\ldots\cdot(a_n)_k}{(b_1)_k\cdot\ldots\cdot(b_m)_k}
+\frac{z^k}{k!}
+\\
+&=
+\sum_{k=0}^\infty
+\frac{(a_1)_k\cdot\ldots\cdot(a_n)_k}{(b_1)_k\cdot\ldots\cdot(b_m)_k}
+\frac{z^k}{(k-1)!}
++
+\sum_{k=0}^\infty
+a_i
+\frac{(a_1)_k\cdot\ldots\cdot(a_n)_k}{(b_1)_k\cdot\ldots\cdot(b_m)_k}
+\frac{z^k}{k!}
+\\
+&=
+\sum_{k=0}^\infty
+\frac{
+(a_1)_k\cdots\widehat{(a_i)_k}\cdots(a_n)_k
+}{
+(b_1)_k\cdots(b_m)_k
+}
+(
+k(a_i)_k
++
+a_i(a_i)_k
+)
+\frac{z^k}{k!}
+\\
+&=
+\sum_{k=0}^\infty
+\frac{
+(a_1)_k\cdots\widehat{(a_i)_k}\cdots(a_n)_k
+}{
+(b_1)_k\cdots(b_m)_k
+}
+\underbrace{(a_i)_k(a_i+k)}_{a_i(a_i+1)_k}
+\frac{z^k}{k!}
+\\
+&=
+a_i
+\sum_{k=0}^\infty
+\frac{
+(a_1)_k\cdots (a_i+1)_k\cdots(a_n)_k
+}{
+(b_1)_k\cdots(b_m)_k
+}
+\underbrace{(a_i)_k(a_i+k)}_{a_i(a_i+1)_k}
+\frac{z^k}{k!}
+\\
+&=
+a_i\cdot\mathstrut_nF_m\biggl(
+\begin{matrix}
+a_1,\dots,a_i+1,\dots,a_n\\
+b_1,\dots,b_m
+\end{matrix}
+;z
+\biggr).
+\end{align*}
+Durch Anwendung aller Operatoren
+\[
+D_{a_i} = z\frac{d}{dz}+a_i
+\]
+kann man jetzt die Inkrementierung der $a_i$, die in der Ableitung
+von $w(z)$ zu beobachten war, in Einzelschritten erreichen:
+\[
+D_{a_1}D_{a_2}\cdots D_{a_n} w(z)
+=
+a_1a_2\cdots a_n \,
+\mathstrut_nF_m\biggl(
+\begin{matrix}a_1+1,\dots,a_n+1\\b_1,\dots,b_m\end{matrix}; z
+\biggr).
+\]
 
+\subsubsection{Operatoren, die genau ein $b_j$ dekrementieren}
+Die Rechnung für die Operatoren $D_{a_i}$ ist nicht direkt auf die
+$b_i$ übertragbar, wir versuchen daher erneut:
+\begin{align*}
+D_{b_i-1}
+\,\mathstrut_nF_m
+\biggl(
+\begin{matrix}a_1,\dots,a_n\\b_1,\dots,a_m\end{matrix};z
+\biggr)
+&=
+\biggl(z\frac{d}{dz}+b_j-1\biggr)
+\sum_{k=0}^\infty
+\frac{(a_1)_k\cdots (a_n)_k}{(b_1)_k\cdots (b_m)_k}
+\frac{z^k}{k!}
+\\
+&=
+\sum_{k=0}^\infty
+\frac{(a_1)_k\cdots (a_n)_k}{(b_1)_k\cdots (b_m)_k}
+\frac{z^k}{(k-1)!}
++
+(b_j-1)
+\sum_{k=0}^\infty
+\frac{(a_1)_k\cdots (a_n)_k}{(b_1)_k\cdots (b_m)_k}
+\frac{z^k}{k!}
+\\
+&=
+\sum_{k=0}^\infty
+\frac{(a_1)_k\cdots (a_n)_k}{(b_1)_k\cdots\widehat{(b_j)_k}\cdots (b_m)_k}
+\biggl(\frac{k}{(b_j)_k}+\frac{b_j-1}{(b_j)_k}\biggr)
+\frac{z^k}{k!}
+\\
+&=
+\sum_{k=0}^\infty
+\frac{(a_1)_k\cdots (a_n)_k}{(b_1)_k\cdots \widehat{(b_j)_k}\cdots (b_m)_k}
+\frac{b_j+k-1}{(b_j)_k}
+\frac{z^k}{k!}
+\\
+&=
+\sum_{k=0}^\infty
+\frac{(a_1)_k\cdots (a_n)_k}{(b_1)_k\cdots \widehat{(b_j)_k}\cdots (b_m)_k}
+\frac{b_j-1}{(b_j-1)_k}
+\frac{z^k}{k!}
+\\
+&=
+(b_j-1)
+\sum_{k=0}^\infty
+\frac{(a_1)_k\cdots (a_n)_k}{(b_1)_k\cdots(b_j-1)_k\cdots (b_m)_k}
+\frac{z^k}{k!}
+\\
+&=(b_j-1)
+\,
+\mathstrut_nF_m\biggl(
+\begin{matrix}a_1,\dots,a_n\\
+b_1,\dots,b_j-1,\dots,b_m
+\end{matrix}
+;z
+\biggr).
+\end{align*}
+Durch Anwendung aller Operatoren $D_{b_j-1}$ kann also jeder $b$-Parameter
+dekrementiert werden, es gilt also
+\[
+D_{b_1-1}D_{b_2-1}\cdots D_{b_m-1}w
+=
+(b_1-1)(b_2-1)\cdots(b_m-1) \,
+\mathstrut_nF_m\biggl(
+\begin{matrix}
+a_1,\dots,a_n\\
+b_1-1,\dots,b_m-1
+\end{matrix}
+;z
+\biggr).
+\]
+
+\subsubsection{Die Differentialgleichung}
+Aus den Operatoren $D_{a_i}$ und $D_{b_j-1}$ kann jetzt eine
+Differentialgleichung für die Funktion $w(z)$ konstruieren.
+Durch Anwendung von aller Operatoren $D_{b_i-1}$ werden die
+$b$-Parameter dekrementiert und die Faktoren $(b_i-1)$ kommen hinzu.
+Leitet man dies ab, werden alle Parameter inkrementiert:
+\begin{align*}
+\frac{d}{dz}
+\mathstrut_nF_m\biggl(
+\begin{matrix}a_1,\dots,a_n\\
+b_1,\dots,b_m\end{matrix};z
+\biggr)
+&=
+\frac{a_1\cdots a_n}{(b_1-1)\cdots(b_m-1)}
+(b_1-1)\cdots(b_m-1)
+\,\mathstrut_nF_m\biggl(
+\begin{matrix}a_1+1,\dots,a_n+1\\
+b_1,\dots,b_m\end{matrix};z
+\biggr)
+\\
+&=
+a_1\dots a_n
+\,\mathstrut_nF_m\biggl(
+\begin{matrix}a_1+1,\dots,a_n+1\\
+b_1,\dots,b_m\end{matrix};z
+\biggr)
+\end{align*}
+Dies ist aber die gleiche Operation, wie alle Operatoren $D_{a_i}$ 
+anzuwenden.
+Es folgt daher die Differentialgleichung 
+\[
+D_{a_1}\cdots D_{a_n} w = \frac{d}{dz} D_{b_1-1}\cdots D_{b_m-1} w
+\]
+für die Funktion $w(z)$.
+
+\begin{beispiel}
+Im Spezialfall $\mathstrut_0F_0$ gibt es keine Operatoren $D_{a_i}$
+oder $D_{b_j-1}$ anzuwenden, so dass nur die Differentialgleichung
+\[
+w=\frac{d}{dz}w
+\]
+stehen bleibt.
+Dies ist natürlich die Differentialgleichung der Exponentialfunktion.
+\end{beispiel}
+
+%
+% Differentialgleichung für 1F0
+%
+\subsubsection{Die Differentialgleichungen für $\mathstrut_1F_0$}
+In diesen Fälle gibt es nur jeweils einen einzigen Operator
+anzuwenden.
+Wir betrachten zunächst den Fall $w(z) = \mathstrut_1F_0(\alpha; z)$
+und finden direkt die Differentialgleichung
+\begin{align*}
+\biggl(z\frac{d}{dz}+\alpha\biggr)w
+&=
+\frac{d}{dz}w
+\\
+zw'+\alpha w
+&=
+w'
+\\
+(1-z)w'
+&=
+\alpha w.
+\end{align*}
+
+\begin{beispiel}
+Wir bestimmen die Differentialgleichung für die als hypergeometrische
+Reihe darstellbare Funktion
+\[
+f(x)
+=
+\sqrt{1+x} = \mathstrut_1F_0(-{\textstyle\frac12};-x).
+\]
+Zunächst erfüllt die hypergeometrische Funktion
+$w(z)=\mathstrut_1F_0(-\frac12;z)$ die Differentialgleichung
+\[
+(1-z)w'(z) = -\frac12 w(z).
+\]
+Jetzt setzen wir $z=-x$ in die Funktion ein.
+Wegen $f(x)=w(-x)$ folgt $f'(x)=-w'(-x)$
+\[
+-f'(x)(1+x) = -\frac12 f(x)
+\qquad\Rightarrow\qquad
+f'(x) = \frac{f(x)}{2(1+x)}.
+\]
+Tatsächlich ist die Ableitung der Wurzelfunktion $f(x)$
+\[
+\frac{d}{dx}f(x)
+=
+\frac{d}{dx}\sqrt{1+x}
+=
+\frac{1}{2\sqrt{1+x}}
+=
+\frac{\sqrt{1+x}}{2(1+x)}
+=
+\frac{f(x)}{2(1+x)},
+\]
+sie erfüllt also die genannte Differentialgleichung.
+\end{beispiel}
+
+%
+% Differentialgleichung für 0F1
+%
+\subsubsection{Die Differentialgleichungen für $\mathstrut_0F_1$}
+Für die Funktion $\mathstrut_0F_1$ setzen wir
+$w(z)=\mathstrut_0F_1(;\beta;z)$.
+In diesem Fall gibt es keine Operatoren $D_{a_i}$ anzuwenden, die
+linke Seite der Differentialgleichung ist also einfach die Funktion $w$.
+Für die rechte Seite ist der Operator $D_{\beta-1}$ anzuwenden, was auf
+die Differentialgleichung
+\begin{align*}
+w
+&=
+\frac{d}{dz}
+\biggl(z\frac{d}{dz}+\beta -1\biggr)w
+\\
+w
+&=
+\frac{d}{dz}(zw'+\beta w - w)
+\\
+w
+&=
+zw''+w'+\beta w' -w'
+\\
+0
+&=
+zw''+\beta w' - w
+\end{align*}
+führt.
+
+\begin{beispiel}
+Die Kosinus-Funktion kann durch die hypergeometrische Funktion
+$\mathstrut_0F_1$ ausgedrückt werden.
+Wir schreiben 
+\[
+w(z)
+=
+\mathstrut_0F_1\biggl(
+\begin{matrix}\text{---}\\\frac12\end{matrix}
+;z\biggr),
+\]
+$w(z)$ erfüllt die Differentialgleichung
+\[
+zw''(z) +w'(z) -\frac{3}{2} w(z) = 0.
+\]
+Die Kosinus-Funktion als Funktion von $w(z)$ ist
+\[
+f(x)
+=
+\cos x = \mathstrut_0F_1\biggl(;\frac12;-\frac{x^2}4\biggr)
+=
+w\biggl(-\frac{x^2}4\biggr),
+\]
+es muss also $z=-x^2/4$ gesetzt werden.
+Wir müssen die Ableitungen von $w$ durch die Ableitungen von $f$
+ausdrücken.
+Die Ableitungen sind
+\begin{align*}
+f'(x)
+&=
+-\frac{x}{2}
+w'\biggl(-\frac{x^2}4\biggr)
+&&\Rightarrow&
+w'\biggl(-\frac{x^2}4\biggr)
+&=
+-\frac{2}{x}f'(x)
+\\
+f''(x)
+&=
+\frac{x^2}{4}w''\biggl(-\frac{x^2}4\biggr)
+-\frac12w'\biggl(-\frac{x^2}4\biggr)
+&&\Rightarrow&
+w''\biggl(-\frac{x^2}4\biggr)
+&=
+\frac{4}{x^2}f''(x)
++\frac{2}{x^2}w'\biggl(-\frac{x^2}4\biggr)
+\\
+&&&&
+&=
+\frac{4}{x^2}f''(x)
+-\frac{4}{x^3}f'(x).
+\end{align*}
+Einsetzen in die Differentialgleichung von $w(z)$ ergibt
+\begin{align*}
+0=
+zw''+\beta w'-w
+&=
+-\frac{x^2}4
+\biggl(
+\frac{4}{x^2}f''(x)-\frac{4}{x^3}f'(x)
+\biggr)
++\frac12\biggl(
+-\frac2xf'(x)
+\biggr)
+-f(x)
+\\
+&=
+-f''(x)
+-f(x),
+\end{align*}
+was gleichbedeutend ist mit der Differentialgleichung $f''=-f$, die
+tatsächlich die Kosinus-Funktion als Lösung hat.
+\end{beispiel}
+
+%
+% Die Differentialgleichung für 1F1
+%
+\subsubsection{Die Differentialgleichung für $\mathstrut_1F_1$}
+Wir setzen wieder $w(z) = \mathstrut_1F_1(\alpha;\beta;z)$.
+Es sind die Operatoren $D_\alpha$ und $D_{\beta-1}$ anzuwenden.
+Es ergibt sich die Differentialgleichung
+\begin{align*}
+\biggl(z\frac{d}{dz}+\alpha\biggr)w
+&=
+\frac{d}{dz}\biggl(z\frac{d}{dz} +\beta-1\biggr)w
+\\
+zw'+\alpha w
+&=
+\frac{d}{dz}
+(zw'+\beta w - w)
+\\
+zw'+\alpha w
+&=
+zw'' +w'+\beta w' - w'
+\\
+0
+&=
+zw'' + (\beta - z)w' - \alpha w.
+\end{align*}
+
+%
+% Die hypergeometrische Differentialgleichung für 2F1
+%
+\subsubsection{Die Differentialgleichung für $\mathstrut_2F_1$}
+Für die hypergeometrische Funktion $\mathstrut_2F_1(\alpha,\beta;\gamma;z)$
+ist die Difrentialgleichung von der Form
+\[
+\biggl(z\frac{d}{dz} + \alpha\biggr)
+\biggl(z\frac{d}{dz} + \beta\biggr)w
+=
+\frac{d}{dz}
+\biggl(z\frac{d}{dz}+\gamma -1\biggr)
+w.
+\]
+Durchführen der Ableitungen auf beiden Seiten ergibt für die linke Seite
+\begin{align*}
+\biggl(z\frac{d}{dz} + \alpha\biggr)
+\biggl(z\frac{d}{dz} + \beta\biggr)w
+&=
+\biggl(z\frac{d}{dz} + \alpha\biggr)
+(zw'+\beta w)
+\\
+&=
+z^2w'' + zw' + \beta zw' + \alpha(zw'+\beta w)
+\\
+&=
+z^2w'' + (1+\alpha+\beta )zw' + \beta\alpha w
+\intertext{und die rechte Seite}
+\frac{d}{dz}\biggl(z\frac{d}{dz}+\gamma-1\biggr)w
+&=
+\frac{d}{dz}(zw'+\gamma w-w)
+\\
+&=
+zw''+w'+\gamma w' - w'
+\\
+&= 
+zw'' +\gamma w'.
+\end{align*}
+Durch Gleichsetzen ergibt sich jetzt
+\begin{align*}
+z^2w'' + (1+\alpha+\beta )zw' + \alpha\beta w
+&=
+zw'' +\gamma w'
+\\
+0
+&=
+z(1-z)w''
++
+(\gamma-z(1+\alpha+\beta))w'
+-
+\alpha\beta
+w
+\end{align*}
+Dies ist die früher definierte hypergeometrische Differentialgleichung.
+
+%
+%
+%
+\subsubsection{Hypereometrische Funktionen von $x^2$ und $x^3$}
+Die hypergeometrischen Funktionen $w(z)$ als Lösungen der hypergeometrischen
+Differentialgleichungen sind Potenzreihen, in denen kein Koeffizient
+verschwindet, sofern die Lösung nicht ein Polynom ist.
+Die trigonometrischen Funktionen sind nicht von dieser Art.
+Sie lassen sich als Funktionen von $x^2$ schreiben.
+Wir untersuchen in diesem Abschnitt, wie sich eine Differentialgleichung
+von $y(x) = x^lw(tx^k)$ aus der Differentialgleichung für $w(z)$ gewinnen
+lässt.
 
 
 

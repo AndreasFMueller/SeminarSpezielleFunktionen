@@ -1,0 +1,174 @@
+%
+% eulertransformation.tex
+%
+% (c) 2021 Prof Dr Andreas Müller, OST Ostschweizer Fachhochschule
+%
+\section{Euler-Transformation der hypergeometrischen Funktionen
+\label{buch:integral:section:eulertransformation}}
+\rhead{Euler-Transformation}
+Die hypergeometrischen Funktionen wurden bisher einerseits
+als Reihen mit einer speziellen Rekursionsrelation der Reihenglieder
+und als Lösungen einer speziellen Art von Differentialgleichung
+erkannt.
+In diesem Abschnitt soll untersucht werden, ob man sie auch
+auch durch Integrale definieren kann.
+
+\subsection{Integraldarstellung der hypergeometrischen Funktion
+$\mathstrut_2F_1$}
+
+XXX An dieser Stelle Abschnitt 4.3.5 (Integraldarstellung) einfügen
+
+\begin{satz}[Euler]
+Die hypergeometrische Funktion $\mathstrut_2F_1$ kann durch das 
+Integral
+\begin{equation}
+\mathstrut_2F_1\biggl(\begin{matrix}a,b\\c\end{matrix};z\biggr)
+=
+\frac{\Gamma(c)}{\Gamma(b)\Gamma(c-b)}
+\int_0^1
+t^{b-1}(1-t)^{c-b-1}(1-zt)^{-a}
+\,dt
+\end{equation}
+dargestellt werden.
+\end{satz}
+
+\subsection{Integraldarstellung als Integraltransformation}
+Im vorangegangenen Abschnitt wurde gezeigt, wie sich die Funktion
+$\mathstrut_2F_1$ als ein Integral des Integranden
+\[
+t^{b-1}(1-t)^{c-b-1} (1-xt)^{-a}
+\]
+ausdrücken lässt.
+Der letzte Faktor $(1-xt)^{-a}$ kann mit der Binomialreihe
+\begin{align*}
+(1+x)^\alpha
+&=
+1
++ 
+\alpha x
++
+\frac{\alpha(\alpha-1)}{2!}x^2
++
+\frac{\alpha(\alpha-1)(\alpha-2)}{3!}x^3
++
+\\
+&=
+1
++
+\frac{-\alpha}{1}(-x)
++
+\frac{-\alpha(-\alpha+1)}{2!} (-x)^2
++
+\frac{-\alpha(-\alpha+1)(-\alpha+2)}{3!} (-x)^3
++
+\dots
+\\
+&=
+\sum_{k=0}^\infty \frac{(-\alpha)_k}{k!} (-x)^k
+=
+\mathstrut_0F_1\biggl(
+\begin{matrix}
+\text{---}\\-\alpha
+\end{matrix}
+;-x
+\biggr)
+\end{align*}
+als hypergeometrische Funktion geschrieben werden.
+Die Integraldarstellung von $\mathstrut_2F_1$ kann daher auch als
+\[
+\mathstrut_2F_1\biggl(\begin{matrix}a,b\\c\end{matrix};z\biggr)
+=
+\frac{\Gamma(c)}{\Gamma(b)\Gamma(c-b)}
+\int_0^1 t^{b-1}(1-t)^{c-b-1}
+\,
+\mathstrut_0F_1(;a;zt)\,dt
+\]
+Eine gewisse Ähnlichkeit zur Laplace-Transformation ist dieser
+Formel nicht abzusprechen.
+Die Funktion \( t^{b-1}(1-t)^{c-b-1} \) wird statt mit der
+Exponentialfunktion $e^{xt} = \mathstrut_0F_0(xt)$ mit der
+hypergeometrischen Funktion $\mathstrut_0F_1(;a;xt)$ multipliziert und
+integriert.
+Dies suggeriert, dass sich möglicherweise jede der hypergeometrischen
+Funktionen $\mathstrut_{p+1}F_{q+1}$ durch ein Integral, dessen 
+Integrand $\mathstrut pF_q$ enthält, ausdrücken lässt.
+
+\begin{satz}
+Es gilt
+\[
+\mathstrut_{p+1}F_{q+1}\biggl(
+\begin{matrix}
+a_1,\dots,a_{p+1}\\
+b_1,\dots,b_{q+1}
+\end{matrix}
+;z
+\biggr)
+=
+\frac{\Gamma(b_{q+1})}{\Gamma(a_{p+1})\Gamma(b_{q-1}-a_{p+1})}
+\int_0^1
+t^{a_{p+1}-1}(1-t)^{b_{q+1}-a_{p+1}-1}
+\mathstrut_pF_q\biggl(
+\begin{matrix}
+a_1,\dots,a_p\\
+b_1,\dots,b_q
+\end{matrix};zt
+\biggr)
+\,dt
+\]
+\end{satz}
+
+\begin{proof}[Beweis]
+Sei $I$ das Integral auf der rechten Seite.
+Wir setzen die Reihenentwicklung der Funktion $\mathstrut_pF_q$ in
+die Integralformel ein und erhalten
+\begin{align*}
+I
+&=
+\int_0^1 t^{a_{p+1}-1}(1-t)^{b_{q+1}-a_{p+1}-1}
+\sum_{k=0}^\infty
+\frac{(a_1)_k\cdots (a_p)_k}{(b_1)_k\cdots (b_q)_k}
+\frac{(zt)^k}{k!}
+\,dt
+\\
+&=
+\sum_{k=0}^\infty
+\frac{(a_1)_k\cdots (a_p)_k}{(b_1)_k\cdots (b_q)_k}
+\frac{z^k}{k!}
+\int_0^1
+t^{a_{p+1}+k-1}(1-t)^{b_{q+1}-a_{p+1}-1}
+\,dt.
+\intertext{Das verbleibende Integral auf der rechten Seite ist das
+Beta-Integral $B(a_{p+1}+k, b_{q+1}-a_{p+1})$:
+}
+&=
+\sum_{k=0}^\infty
+\frac{(a_1)_k\cdots (a_p)_k}{(b_1)_k\cdots (b_q)_k}
+\frac{z^k}{k!}
+B(a_{p+1}+k, b_{q+1}-a_{p+1}).
+\intertext{Mit der Rekursionsformel aus
+Lemma~\ref{buch:rekursion:gamma:betareklemma}
+für das Beta-Integral folgt}
+&=
+\sum_{k=0}^\infty
+\frac{(a_1)_k\cdots (a_p)_k}{(b_1)_k\cdots (b_q)_k}
+\frac{z^k}{k!}
+\frac{(a_{p+1})_k}{(b_{q+1})_k} B(a_{p+1},b_{q+1}-a_{p+1})
+\\
+&=
+\sum_{k=0}^\infty
+\frac{(a_1)_k\cdots (a_{p+1})_k}{(b_1)_k\cdots (b_{q+})_k}
+\frac{z^k}{k!}
+\frac{\Gamma(a_{p+1})\Gamma(b_{q+1}-a_{p+1})}{\Gamma(b_{q+1})}
+\\
+&=
+\frac{\Gamma(a_{p+1})\Gamma(b_{q+1}-a_{p+1})}{\Gamma(b_{q+1})}
+\,\mathstrut_{p+1}F_{q+1}\biggl(
+\begin{matrix}a_1,\dots,a_{p+1}\\
+b_1,\dots,b_{q+1}
+\end{matrix}; z\biggr).
+\end{align*}
+Auflösen nach $\mathstrut_{p+1}F_{q+1}$ ergibt die behauptete
+Formel.
+\end{proof}
+
+

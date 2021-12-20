@@ -692,13 +692,26 @@ geschrieben werden:}
 &=
 \frac{(x+y)_n}{(y)_n}
 \int_0^1 t^{x-1}(1-t)^{y+n-1}\,dt.
-\intertext{Wir streben an, mit dem Grenzübergang $n\to\infty$ aus den
+\end{align*}
+Wir halten dieses Zwischenresultat für spätere Verwendung fest.
+
+\begin{lemma}
+\label{buch:rekursion:gamma:betareklemma}
+Für $n\in\mathbb{N}$ gilt
+\[
+B(x,y+n) = \frac{(y)_n}{(x+y)_n} B(x,y).
+\]
+\end{lemma}
+
+Wir streben an, mit dem Grenzübergang $n\to\infty$ aus den
 Pochhammer-Symbolen Gamma-Funktionen zu machen, dazu müssen gemäss
 Definition~\ref{buch:rekursion:gamma:def:definition} weitere Faktoren
 $1/(n!\,n^{x-1})$ vorhanden sein.
 Wir erweitern geeignet und nehmen die übrig bleibenden Faktoren in
 das Integral.
-So ergibt sich}
+So ergibt sich
+\begin{align*}
+B(x,y)
 &=
 \frac{(x+y)_n}{n!\, n^{x+y-1}}
 \frac{n!\,n^{y-1}}{(y)_n}
