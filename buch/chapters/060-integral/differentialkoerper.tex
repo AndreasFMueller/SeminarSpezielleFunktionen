@@ -157,4 +157,146 @@ Im nächsten Abschnitt dann soll der Risch-Algorithmus skizziert werden.
 
 \subsection{Die Fehlerfunktion ist keine elementare Funktion
 \label{buch:integrale:section:fehlernichtelementar}}
+% \url{https://youtu.be/bIdPQTVF5n4}
+Mit Hilfe des Satzes von Liouville kann man jetzt beweisen, dass 
+die Fehlerfunktion keine elementare Funktion ist.
+Dazu braucht man die folgende spezielle Form des Satzes.
+
+\begin{satz}
+\label{buch:integrale:satz:elementarestammfunktion}
+Wenn $f(x)$ und $g(x)$ rationale Funktionen von $x$ sind, dann
+ist die Stammfunktion von $f(x)e^{g(x)}$ genau dann eine 
+elementare Funktion, wenn es eine rationale Funktion gibt, die
+Lsung der Differentialgleichung
+\[
+r'(x) + g'(x)r(x)=f(x)
+\]
+ist.
+\end{satz}
+
+\begin{satz}
+Die Funktion $x\mapsto e^{-x^2}$ hat keine elementare Stammfunktion.
+\label{buch:iintegrale:satz:expx2}
+\end{satz}
+
+\begin{proof}[Beweis]
+Unter Anwendung des Satzes~\ref{buch:integrale:satz:elementarestammfunktion}
+auf $f(x)=1$ und $g(x)=-x^2$ folgt, $e^{-x^2}$ genau dann eine rationale 
+Stammfunktion hat, wenn es eine rationale Funktion $r(x)$ gibt, die
+Lösung der Differentialgleichung
+\begin{equation}
+r'(x) -2xr(x)=1
+\label{buch:integrale:expx2dgl}
+\end{equation}
+ist.
+
+Zunächst halten wir fest, dass $r(x)$ kein Polynom sein kann.
+Wäre nämlich 
+\[
+r(x)
+=
+a_0 + a_1x + \dots + a_nx^n
+=
+\sum_{k=0}^n a_kx^k
+\quad\Rightarrow\quad
+r'(x)
+=
+a_1 + 2a_2x + \dots + na_nx^{n-1}
+=
+\sum_{k=1}^n
+ka_kx^{k-1}
+\]
+ein Polynom, dann ergäbe sich beim Einsetzen in die Differentialgleichung
+\begin{align*}
+1
+&=
+r'(x)-2xr(x)
+\\
+&=
+a_1 + 2a_2x + 3a_3x^2 + \dots + (n-1)a_{n-1}x^{n-2} + na_nx^{n-1}
+\\
+&\qquad
+-
+2a_0x -2a_1x^2 -2a_2x^3 - \dots - 2a_{n-1}x^n - 2a_nx^{n+1}
+\\
+&
+\hspace{0.7pt}
+\renewcommand{\arraycolsep}{1.8pt}
+\begin{array}{crcrcrcrcrcrcrcr}
+=&a_1&+&2a_2x&+&3a_3x^2&+&\dots&+&(n-1)a_{n-1}x^{n-2}&+&na_{n  }x^{n-1}& &           & & \\
+ &   &-&2a_0x&-&2a_1x^2&-&\dots&-&    2a_{n-3}x^{n-2}&-&2a_{n-2}x^{n-1}&-&2a_{n-1}x^n&-&2a_nx^{n+1}
+\end{array}
+\\
+&=
+a_1
++
+(2a_2-2a_0)x
++
+(3a_3-2a_1)x^2
+%+
+%(4a_4-2a_2)x^3
++
+\dots
++
+(na_n-2a_{n-2})x^{n-1}
+-
+2a_{n-1}x^n
+-
+2a_nx^{n+1}.
+\end{align*}
+Koeffizientenvergleich zeigt, dass $a_1=1$ sein muss.
+Aus den letzten zwei Termen liest man ebenfalls mittels Koeffizientenvergleich
+ab, dass $a_n=0$ und $a_{n-1}=0$ sein müssen.
+Aus den Koeffizienten $(ka_k-2a_{k-2})=0$ folgt, dass
+$a_{k-2}=\frac{k}{2}a_k$ für alle $k>1$ sein muss, diese Koeffizienten
+verschwinden also auch, inklusive $a_1=0$.
+Dies ist allerdings im Widerspruch zu $a_1=1$.
+Es folgt, dass $r(x)$ kein Polynom sein kann.
+
+Der Nenner der rationalen Funktion $r(x)$ hat also mindestens eine Nullstelle
+$\alpha$, man kann daher $r(x)$ auch schreiben als
+\[
+r(x) = \frac{s(x)}{(x-\alpha)^n},
+\]
+wobei die rationale Funktion $s(x)$ keine Nullstellen und keine Pole hat.
+Einsetzen in die Differentialgleichung ergibt:
+\[
+1
+=
+r'(x) -2xr(x)
+=
+\frac{s'(x)}{(x-\alpha)^n}
+-n
+\frac{s(x)}{(x-\alpha)^{n+1}}
+-
+\frac{2xs(x)}{(x-\alpha)^n}.
+\]
+Multiplizieren mit $(x-\alpha)^{n+1}$ gibt
+\[
+(x-\alpha)^{n+1}
+=
+s'(x)(x-\alpha)
+-
+ns(x)
+-
+2xs(x)(x-\alpha)
+\]
+Setzt man $x=\alpha$ ein, verschwinden alle Terme ausser dem mittleren
+auf der rechten Seite, es bleibt
+\[
+ns(\alpha) = 0.
+\]
+Dies widerspricht aber der Wahl der rationalen Funktion $s(x)$, für die
+$\alpha$ keine Nullstelle ist.
+
+Somit kann es keine rationale Funktion $r(x)$ geben, die eine Lösung der
+Differentialgleichung~\eqref{buch:integrale:expx2dgl} ist und
+die Funktion $e^{-x^2}$ hat keine elementare Stammfunktion.
+\end{proof}
+
+Der Satz~\ref{buch:iintegrale:satz:expx2} rechtfertigt die Einführung 
+der Fehlerfunktion $\operatorname{erf}(x)$ als neue spezielle Funktion,
+mit deren Hilfe die Funktion $e^{-x^2}$ integriert werden kann.
+
+
 
