@@ -19,6 +19,7 @@ $\mathstrut_2F_1$}
 XXX An dieser Stelle Abschnitt 4.3.5 (Integraldarstellung) einfügen
 
 \begin{satz}[Euler]
+\label{buch:integrale:eulertransformation:satz}
 Die hypergeometrische Funktion $\mathstrut_2F_1$ kann durch das 
 Integral
 \begin{equation}
@@ -28,9 +29,34 @@ Integral
 \int_0^1
 t^{b-1}(1-t)^{c-b-1}(1-zt)^{-a}
 \,dt
+\label{buch:integrale:eulertransformation:satzeqn}
 \end{equation}
 dargestellt werden.
 \end{satz}
+
+\subsubsection{Alternative Parametrisierungen}
+Die Substitution $t=\sin^2 s$ ermöglicht eine alternative Parametrisierung
+der Integraldarstellung der hypergeometrischen Funktion.
+Wenden wir sie auf~\eqref{buch:integrale:eulertransformation:satzeqn}
+an, erhalten wir wegen $dt = 2\cos s\sin s\,ds$
+\begin{align*}
+\mathstrut_2F_1\biggl(\begin{matrix}a,b\\c\end{matrix};z\biggr)
+&=
+\frac{\Gamma(c)}{\Gamma(b)\Gamma(c-b)}
+\int_0^{\frac{\pi}2}
+\sin^{2(b-1)}(s)\,
+(1-\sin^2s)^{c-b-1} (1-z\sin^2 s)^{-a}
+\,\cos s\sin s
+\,ds
+\\
+&=
+\frac{\Gamma(c)}{\Gamma(b)\Gamma(c-b)}
+\int_0^{\frac{\pi}2}
+\sin^{2b-1}(s)\,\cos^{2c-2b-1}(s)\, (1-z\sin^2 s)^{-a}
+\,ds.
+\end{align*}
+
+XXX Parametrisierung für Intervall $[0,\infty)$
 
 \subsection{Integraldarstellung als Integraltransformation}
 Im vorangegangenen Abschnitt wurde gezeigt, wie sich die Funktion
@@ -171,4 +197,45 @@ Auflösen nach $\mathstrut_{p+1}F_{q+1}$ ergibt die behauptete
 Formel.
 \end{proof}
 
-
+Auch die Euler-Transformation lässt sich mit Hilfe der Substitution
+$t=\sin^2 s$ in eine alternative Parametrisierung umschreiben.
+Sie ist
+\begin{align*}
+\mathstrut_{p+1}F_{q+1}\biggl(
+\begin{matrix}
+a_1,\dots,a_{p+1}\\
+b_1,\dots,b_{q+1}
+\end{matrix}
+;z
+\biggr)
+&=
+\frac{2\Gamma(b_{q+1})}{\Gamma(a_{p+1})\Gamma(b_{q-1}-a_{p+1})}
+\\
+&\quad\times
+\int_0^{\frac{\pi}2}
+\sin^{2a_{p+1}-2}(s)\, \cos^{2b_{q+1}-2a_{p+1}-2}(s)
+\,
+\mathstrut_pF_q\biggl(
+\begin{matrix}
+a_1,\dots,a_p\\
+b_1,\dots,b_q
+\end{matrix};z\sin^2 s
+\biggr)
+\sin s\cos s
+\,ds
+\\
+&=
+\frac{2\Gamma(b_{q+1})}{\Gamma(a_{p+1})\Gamma(b_{q-1}-a_{p+1})}
+\\
+&\quad\times
+\int_0^{\frac{\pi}2}
+\sin^{2a_{p+1}-1}(s)\, \cos^{2b_{q+1}-2a_{p+1}-1}(s)
+\,
+\mathstrut_pF_q\biggl(
+\begin{matrix}
+a_1,\dots,a_p\\
+b_1,\dots,b_q
+\end{matrix};z\sin^2 s
+\biggr)
+\,ds.
+\end{align*}
