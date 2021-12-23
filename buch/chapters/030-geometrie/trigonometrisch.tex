@@ -501,19 +501,19 @@ zum Beispiel für $n=3$:
 \cos^3\alpha-3\cos\alpha(1-\cos^2\alpha)
 \\
 &=
-4\cos^3\alpha-3\cos\alpha
+4\cos^3\alpha-3\cos\alpha,
 \\
 \sin 3\alpha
 &=
--3\cos^2\alpha\sin\alpha
-+
+3\cos^2\alpha\sin\alpha
+-
 \sin^3\alpha
 =
--3(1-\sin^2\alpha)\sin\alpha+\sin^3\alpha
+3(1-\sin^2\alpha)\sin\alpha-\sin^3\alpha
 \\
 &=
-4\sin^3\alpha
--3\sin\alpha
+-4\sin^3\alpha
++3\sin\alpha.
 \end{align*}
 Indem man diese Formeln als kubische Gleichungen für die
 Unbekannte $\cos\alpha$ bzw.~$\sin\alpha$ betrachtet, kann
@@ -526,6 +526,230 @@ algebraische Operationen bestimmen.
 
 \subsubsection{Eine Tabelle der Werte der trigonometrischen Funktionen
 aufstellen}
+Die älteste Tabelle der Werte trigonometrischer Funktionen stammt aus der
+Feder von Hipparcos aus dem zweiten Jahrhundert BCE.
+Sie hatte eine Auflösung von $1^\circ$.
+Wie kann man eine solche Tabelle mit den Mitteln der damaligen Zeit,
+also insbesondere ganz ohne Dezimalbrüche, zusammenstellen?
+
+Aus speziellen Dreiecken kann man die einige wenige bekannte Winkel
+finden und die zugehörigen Werte der trigonemetrischen Funktionen
+bestimmen.
+In einem rechtwinklig gleichschenkligen Dreieck liest man
+\[
+\sin 45^\circ = \cos 45^\circ
+\]
+ab.
+Ein gleichseitiges Dreieck erlaubt
+\begin{align*}
+\sin 30^\circ &= \frac{1}{2} &
+\cos 30^\circ &= \frac{\sqrt{3}}{2}
+\\
+\sin 60^\circ &= \frac{\sqrt{3}}{2} &
+\cos 60^\circ &= \frac{1}{2}
+\intertext{zu bestimmen.
+Mit Hilfe der Halbwinkelformeln werden daraus die Werte
+von $15^\circ$:}
+\sin 15^\circ &= \sqrt{\frac{2-\sqrt{3}}{4}} &
+\cos 15^\circ &= \sqrt{\frac{2+\sqrt{3}}{4}}.
+\end{align*}
+Mit Hilfe der Additionstheoreme kann man jetzt auch noch die Werte
+für den Winkel $75^\circ$ bestimmen.
+Damit sind die Werte der Sinus- und Kosinus-Funktion für alle
+Vielfachen von $15^\circ$ bekannt.
+
+Etwas spezieller ist die Situation eines Fünfecks, welches den
+Zentriwinkel $72^\circ$ hat, damit kann man die Werte 
+\begin{align*}
+\sin 36^\circ &=
+\sqrt{\frac{5-\sqrt{5}}8}
+&&\text{und}&
+\cos 36^\circ &=
+\sqrt{\frac{3+\sqrt{5}}{8}}
+\\
+\sin 72^\circ &=
+2
+\sqrt{\frac{5-\sqrt{5}}8}
+\sqrt{\frac{3+\sqrt{5}}{8}}
+=
+\sqrt{5+\sqrt{5}}
+&&&
+\cos 72^\circ &=
+\frac{3+\sqrt{5}}{8}
+-
+\frac{5-\sqrt{5}}{8}
+=
+\frac{-1+\sqrt{5}}{4}
+\intertext{%
+Mit den Halbwinkelformeln kann man dies nochmals teilen, bis man
+die Winkel}
+\sin 18^\circ &=
+\sqrt{\frac12-\frac12
+\sqrt{\frac{3+\sqrt{5}}{8}}
+}
+&&\text{und}&
+\cos 18^\circ &=
+\sqrt{\frac12+\frac12
+\sqrt{\frac{3+\sqrt{5}}{8}}
+}
+\intertext{sowie}
+\sin 9^\circ &=
+\sqrt{\frac12-\frac12
+\sqrt{\frac12+\frac12
+\sqrt{\frac{3+\sqrt{5}}{8}}
+}
+}
+&&\text{und}&
+\cos 9^\circ &=
+\sqrt{\frac12+\frac12
+\sqrt{\frac12+\frac12
+\sqrt{\frac{3+\sqrt{5}}{8}}
+}
+}
+\end{align*}
+ausgwertet hat.
+
+\begin{table}
+\centering
+\begin{tabular}{|>{$}r<{$}>{$}c<{$}>{$}l<{$}|>{$}r<{$}>{$}c<{$}>{$}l<{$}|>{$}r<{$}|>{$}r<{$}|}
+\hline
+\alpha&&&90^\circ-\alpha&&&\sin\alpha&\cos\alpha\\
+\hline
+ 0^\circ & &                   &          & &                  &0.00000000&1.00000000\\
+ 3^\circ &=&18^\circ-15^\circ  & 87^\circ &=&72^\circ+15^\circ &0.05233596&0.99862953\\
+ 6^\circ &=&15^\circ-\phantom{0}9^\circ   & 84^\circ &=&75^\circ+\phantom{0}9^\circ  &0.10452846&0.99452190\\
+ 9^\circ & &                   & 81^\circ &=&90^\circ-\phantom{0}9^\circ  &0.15643447&0.98768834\\
+12^\circ &=&30^\circ-18^\circ  & 78^\circ &=&60^\circ+18^\circ &0.20791169&0.97814760\\
+15^\circ & &                   & 75^\circ & &                  &0.25881905&0.96592583\\
+18^\circ & &                   & 72^\circ & &                  &0.30901699&0.95105652\\
+21^\circ &=&30^\circ-\phantom{0}9^\circ   & 69^\circ &=&60^\circ+\phantom{0}9^\circ  &0.35836795&0.93358043\\
+24^\circ &=&15^\circ+\phantom{0}9^\circ   & 66^\circ &=&75^\circ-\phantom{0}9^\circ  &0.40673664&0.91354546\\
+27^\circ &=&45^\circ-18^\circ  & 63^\circ &=&45^\circ+18^\circ &0.45399050&0.89100563\\
+30^\circ & &                   & 60^\circ & &                  &0.50000000&0.86600254\\
+33^\circ &=&45^\circ-12^\circ  & 57^\circ &=&45^\circ+12^\circ &0.54463903&0.83867057\\
+36^\circ & &                   & 54^\circ &=&90^\circ-36^\circ &0.58778525&0.80901699\\
+39^\circ &=&30^\circ+\phantom{0}9^\circ   & 51^\circ &=&60^\circ-\phantom{0}9^\circ  &0.62932039&0.77714596\\
+42^\circ &=&30^\circ+12^\circ  & 48^\circ &=&60^\circ-12^\circ &0.66913060&0.74314483\\
+45^\circ & &                   &          & &                  &0.70710678&0.70710678\\
+\hline
+\end{tabular}
+\caption{Tabelle der Werte der trigonometrischen für Winkel, die ganzzahlige
+Vielfache von $3^\circ$ sind.
+Für die Winkel in der Spalte $90^\circ-\alpha$ sind die Sinus- und
+Kosinus-Werte zu vertauschen.
+\label{buch:geometrie:trigo:tabelle}}
+\end{table}
+Ausgehend von bereits behandelten Vielfachen von $15^\circ$ kann man
+jetzt mit Hilfe der Additionstheoreme durch Addition und Subtraktion
+der bereits behandelten Winkel jeden Winkel bekommen, der ein Vielfaches
+von $3^\circ$ ist, sie sind in der Tabelle~\ref{buch:geometrie:trigo:tabelle}
+zusammengestellt.
+
+Zum Beispiel ergeben sich für den Winkel $3^\circ = 18^\circ - 15^\circ$
+mit den Additionstheoremen die folgenden Werte:
+\begin{align*}
+\sin3^\circ
+&=
+\sin(18^\circ-15^\circ)
+\\
+&=\sin18^\circ \cos 15^\circ - \cos18^\circ\sin15^\circ
+\\
+&=
+\sqrt{\frac12-\frac12
+\sqrt{\frac{3+\sqrt{5}}{8}}
+}
+\sqrt{\frac{2+\sqrt{3}}{4}}
+-
+\sqrt{\frac12+\frac12
+\sqrt{\frac{3+\sqrt{5}}{8}}
+}
+\sqrt{\frac{2-\sqrt{3}}{4}}
+\\
+&=
+0.05233595624294377,
+\\
+\cos3^\circ
+&=
+\cos(18^\circ-15^\circ)
+\\
+&=
+\cos18^\circ\cos15^\circ + \sin18^\circ\sin15^\circ
+\\
+&=
+\sqrt{\frac12+\frac12
+\sqrt{\frac{3+\sqrt{5}}{8}}
+}
+\sqrt{\frac{2+\sqrt{3}}{4}}
++
+\sqrt{\frac12-\frac12
+\sqrt{\frac{3+\sqrt{5}}{8}}
+}
+\sqrt{\frac{2-\sqrt{3}}{4}}
+\\
+&=
+0.998629534754574.
+\end{align*}
+
+
+Wie man es auch dreht und wendet, es scheint keine rein geometrische
+Möglichkeit zu geben, einen die Werte der Sinus- und Kosinus-Funktion
+von $1^\circ$ zu bestimmen, mit denen man die bisher erhaltene Tabelle
+auf diese Auflösung verfeinern könnte.
+Da man aber bereits die Werte für $\sin3^\circ$ und $\cos3^\circ$ 
+bestimmt hat, kann man die kubischen Gleichungen für $c=\cos1^\circ$
+und $s=\sin1^\circ$
+\begin{align*}
+\cos3^\circ &= 4c^3-3c
+&&\Rightarrow&
+c^3-3c-\cos3^\circ&=0
+\\
+\sin3^\circ &= -4s^3+3s
+&&\Rightarrow&
+4s^3-3s+\sin3^\circ&=0
+\end{align*}
+zu lösen versuchen.
+Es stellt sich allerdings heraus, dass die Gleichung drei reelle
+Lösungen hat, nämlich
+\[
+c=\cos1^\circ,\; \cos121^\circ,\; \cos241^\circ
+\qquad\text{und}\qquad
+s=\sin1^\circ,\; \sin121^\circ,\; \sin241^\circ.
+\]
+Dies bedeutet, dass der {\em casus irreduzibilis} für die Lösung
+der kubischen Gleichung vorliegt, der nur mit Hilfe komplexer Zahlen
+behandelt werden kann.
+Dazu muss die dritte Wurzel aus einer komplexen Zahl gezogen werden,
+was wieder gleichbedeutend mit der Bestimmung der Sinus- und Kosinus-Werte
+von $1^\circ$ ist.
+Damit bleibt für den Winkel $1^\circ$ nur ein numerisches Verfahren.
+Zum Beispiel kann man das Newton-Verfahren verwenden mit dem Startwert
+$s_0=\pi/180$ für die Iteration, die $\sin 1^\circ$ liefern soll, und
+$c_0=\sqrt{1-s_0^2}$ für die Kosinus-Iteration.
+Die Konvergenz ist sehr schnell, bereits nach zwei Iterationen hat
+man einen auf 16 Stellen genauen wert, wie man in
+Tabelle~\ref{buch:geometrie:trigo:newtontabelle} sieht.
+Mit einer einzigen Anwendung des Additionstheorems kann man jetzt
+aus den Werten der Tabelle~\ref{buch:geometrie:trigo:tabelle}
+die Werte von Sinus und Kosinus für jedes ganzzahlige
+Vielfache von $1^\circ$ berechnen.
+\begin{table}
+\centering
+\begin{tabular}{|>{$}c<{$}|>{$}r<{$}|>{$}r<{$}|}
+\hline
+i&s_i&c_i\\
+\hline
+ 0 & 0.\underline{01745}329251994330 & 0.\underline{9998476}796893682 \\
+ 1 & 0.\underline{0174524064372}2863 & 0.\underline{999847695156391}5 \\
+ 2 & 0.\underline{01745240643728351} & 0.\underline{999847695156391}2 \\
+ 3 & 0.\underline{01745240643728351} & 0.\underline{999847695156391}3 \\
+\hline
+   &  \sin1^\circ & \cos1^\circ \\
+\hline
+\end{tabular}
+\caption{Newton-Iteration zur Bestimmung von $\sin1^\circ$ und
+$\cos1^\circ$
+\label{buch:geometrie:trigo:newtontabelle}}
+\end{table}
 
 \subsection{Differentialgleichungen}
 

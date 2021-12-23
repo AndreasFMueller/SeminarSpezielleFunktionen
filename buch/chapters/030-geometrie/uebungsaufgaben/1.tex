@@ -1,0 +1,71 @@
+Berechnen Sie $\sin\alpha$ und $\cos\alpha$ für den Winkel
+$\alpha=5\nicefrac{5}{8}^\circ$ exakt.
+
+\begin{loesung}
+Der Winkel $\alpha=5\nicefrac{5}{8}^\circ$ ist
+$\alpha=\bigl(\frac{45}{8}\bigr)^\circ$, also ein Sechzehntel eines rechten
+Winkels.
+Den Wert von $\sin\alpha$ und $\cos\alpha$ erhält man also, indem
+man dreimal die Halbwinkelformeln
+\begin{align*}
+\sin\frac{\alpha}2
+&=
+\sqrt{\frac{1-\cos\alpha}{2}}
+&
+\cos\frac{\alpha}2
+&=
+\sqrt{\frac{1+\cos\alpha}{2}}
+\intertext{auf $\sin 45^\circ=\cos 45^\circ=1/\sqrt{2}$ anwendet:}
+\sin\biggl(\frac{45}2\biggr)^\circ
+&=
+\sqrt{\frac{2-\sqrt{2\mathstrut}}{4}}
+&
+\cos\biggl(\frac{45}2\biggr)^\circ
+&=
+\sqrt{\frac{2+\sqrt{2\mathstrut}}{4}}
+\\
+&=
+0.382683432365090
+&
+&=
+0.923879532511287
+\\
+\intertext{auf $\sin 45^\circ=\cos 45^\circ=1/\sqrt{2}$ anwendet:}
+\sin\biggl(\frac{45}4\biggr)^\circ
+&=
+\sqrt{\frac12-\frac12
+\sqrt{\frac{2+\sqrt{2\mathstrut}}{4}}
+}
+&
+\cos\biggl(\frac{45}4\biggr)^\circ
+&=
+\sqrt{\frac12+\frac12
+\sqrt{\frac{2+\sqrt{2\mathstrut}}{4}}
+}
+\\
+&= 0.195090322016128
+&
+&= 0.980785280403230
+\\
+\sin\biggl(\frac{45}8\biggr)^\circ
+&=
+\sqrt{\frac12-\frac12
+\sqrt{\frac12+\frac12
+\sqrt{\frac{2+\sqrt{2\mathstrut}}{4}}
+}
+}
+&
+\cos\biggl(\frac{45}8\biggr)^\circ
+&=
+\sqrt{\frac12+\frac12
+\sqrt{\frac12+\frac12
+\sqrt{\frac{2+\sqrt{2\mathstrut}}{4}}
+}
+}
+\\
+&= 0.098017140329560
+&
+&= 0.995184726672197
+\qedhere
+\end{align*}
+\end{loesung}
