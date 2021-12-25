@@ -272,6 +272,189 @@ b_n
 \end{align*}
 berücksichtigen dies.
 
+\subsubsection{Selbstadjungierte Operatoren und Eigenvektoren}
+Symmetrische Matrizen spielen eine spezielle Rolle in der
+endlichdimensionalen linearen Algebra, weil sie sich immer
+mit einer orthonormierten Basis diagonalisieren lassen.
+In der vorliegenden Situation undendlichdimensionaler Vektorräume
+brauchen wir eine angepasste Definition.
+
+\begin{definition}
+Eine lineare Selbstabbildung $A\colon V\to V$
+eines Vektorrraums mit Skalarprodukt
+heisst {\em selbstadjungiert}, wenn für alle Vektoren $u,v\in V$
+heisst $\langle Au,v\rangle = \langle u,Av\rangle$.
+\end{definition}
+
+Es ist wohlbekannt, dass Eigenvektoren einer symmetrischen Matrix
+zu verschiedenen Eigenwerten orthogonal sind.
+Der Beweis ist direkt übertragbar, wir halten das Resultat hier
+für spätere Verwendung fest.
+
+\begin{satz}
+Sind $f$ und $g$ Eigenvektoren eines selbstadjungierten Operators $A$
+zu verschiedenen Eigenwerten $\lambda$ und $\mu$, dann sind $f$ und $g$
+orthogonal.
+\end{satz}
+
+\begin{proof}[Beweis]
+Im vorliegenden Zusammenhang möchten wir die Eigenschaft nutzen,
+dass Eigenfunktionen eines selbstadjungierten Operatores zu verschiedenen
+Eigenwerten orthogonal sind.
+Dazu seien $Df = \lambda f$ und $Dg=\mu g$ und wir rechnen
+\begin{equation*}
+\renewcommand{\arraycolsep}{2pt}
+\begin{array}{rcccrl}
+\langle Df,g\rangle &=& \langle \lambda f,g\rangle &=& \lambda\phantom{)}\langle f,g\rangle
+&\multirow{2}{*}{\hspace{3pt}$\biggl\}\mathstrut-\mathstrut$}\\
+=\langle f,Dg\rangle &=& \langle f,\mu g\rangle &=& \mu\phantom{)}\langle f,g\rangle&
+\\[2pt]
+\hline
+         0           & &                        &=& (\lambda-\mu)\langle f,g\rangle&
+\end{array}
+\end{equation*}
+Da $\lambda-\mu\ne 0$ ist, muss $\langle f,g\rangle=0$ sein.
+\end{proof}
+
+\begin{beispiel}
+Sei $C^1([0,2\pi], \mathbb{C})=C^1(S^1,\mathbb{C})$
+der Vektorraum der $2\pi$-periodischen differenzierbaren Funktionen mit
+dem Skalarprodukt 
+\[
+\langle f,g\rangle
+=
+\frac{1}{2\pi}\int_0^{2\pi} \overline{f(t)}g(t)\,dt
+\]
+enthält die Funktionen $e_n(t) = e^{int}$.
+Der Operator
+\[
+D=i\frac{d}{dt}
+\]
+ist selbstadjungiert, denn mit Hilfe von partieller Integration erhält man
+\[
+\langle Df,g\rangle
+=
+\frac{1}{2\pi}
+\int_0^{2\pi}
+\underbrace{
+\overline{i\frac{df(t)}{dt}}
+}_{\uparrow}
+\underbrace{g(t)}_{\downarrow}
+\,dt
+=
+\underbrace{
+\frac{-i}{2\pi}
+\biggl[
+\overline{f(t)}g(t)
+\biggr]_0^{2\pi}
+}_{\displaystyle=0}
++
+\frac{1}{2\pi}
+\int_0^{2\pi}
+\overline{f(t)}i\frac{dg(t)}{dt}
+\,dt
+=
+\langle f,Dg\rangle
+\]
+unter Ausnützung der $2\pi$-Periodizität der Funktionen.
+
+Die Funktionen $e_n(t)$ sind Eigenfunktionen des Operators $D$, denn
+\[
+De_n(t) = i\frac{d}{dt}e^{int} = -n e^{int} = -n e_n(t).
+\]
+Nach obigem Satz sind die Eigenfunktionen von $D$ orthogonal.
+\end{beispiel}
+
+Das Beispiel illustriert, dass orthogonale Funktionenfamilien
+ein automatisches Nebenprodukt selbstadjungierter Operatoren sind.
+
+%
+% Besselfunktionen also orthogonale Funktionenfamilie
+%
+\subsection{Bessel-Funktionen als orthogonale Funktionenfamilie}
+Auch die Besselfunktionen sind eine orthogonale Funktionenfamilie.
+Sie sind Funktionen differenzierbaren Funktionen $f(r)$ für $r>0$
+mit $f'(r)=0$ und für $r\to\infty$ nimmt $f(r)$ so schnell ab, dass
+auch $rf(r)$ noch gegen $0$ strebt.
+Das Skalarprodukt ist
+\[
+\langle f,g\rangle
+=
+\int_0^\infty r f(r) g(r)\,dr,
+\]
+als Operator verwenden wir
+\[
+A = \frac{d^2}{dr^2} + \frac{1}{r}\frac{d}{dr} + s(r),
+\]
+wobei $s(r)$ eine beliebige integrierbare Funktion sein kann.
+Zunächst überprüfen wir, ob dieser Operator wirklich selbstadjungiert ist.
+Dazu rechnen wir
+\begin{align}
+\langle Af,g\rangle
+&=
+\int_0^\infty
+r\,\biggl(f''(r)+\frac1rf'(r)+s(r)f(r)\biggr) g(r)
+\,dr
+\notag
+\\
+&=
+\int_0^\infty rf''(r)g(r)\,dr
++
+\int_0^\infty f'(r)g(r)\,dr
++
+\int_0^\infty s(r)f(r)g(r)\,dr.
+\notag
+\intertext{Der letzte Term ist symmetrisch in $f$ und $g$, daher
+ändern wir daran weiter nichts.
+Auf das erste Integral kann man partielle Integration anwenden und erhält}
+&=
+\biggl[rf'(r)g(r)\biggr]_0^\infty
+-
+\int_0^\infty f'(r)g(r) + rf'(r)g'(r)\,dr
++
+\int_0^\infty f'(r)g(r)\,dr
++
+\int_0^\infty s(r)f(r)g(r)\,dr.
+\notag
+\intertext{Der erste Term verschwindet wegen der Bedingungen an die
+Funktionen $f$ und $g$.
+Der erste Term im zweiten Integral hebt sich gegen das
+zweite Integral weg.
+Der letzte Term ist das Skalarprodukt von $f'$ und $g'$.
+Somit ergibt sich
+}
+&=
+-\langle f',g'\rangle
++
+\int_0^\infty s(r) f(r)g(r)\,dr.
+\label{buch:integrale:orthogonal:besselsa}
+\end{align}
+Vertauscht man die Rollen von $f$ und $g$, erhält man das Gleiche, da im
+letzten Ausdruck~\eqref{buch:integrale:orthogonal:besselsa} die Funktionen
+$f$ und $g$ symmetrische auftreten.
+Damit ist gezeigt, dass der Operator $A$ selbstadjungiert ist.
+Es folgt nun, dass Eigenvektoren des Operators $A$ automatisch
+orthogonal sind.
+
+Eigenfunktionen von $A$ sind aber Lösungen der Differentialgleichung
+\[
+\begin{aligned}
+&&
+Af&=\lambda f
+\\
+&\Rightarrow\qquad&
+f''(r) +\frac1rf'(r) + s(r)f(r) &= \lambda f(r)
+\\
+&\Rightarrow\qquad&
+r^2f''(r) +rf'(r)+ (-\lambda r^2+s(r)r^2)f(r) &= 0
+\end{aligned}
+\]
+sind.
+Durch eine geeignete Wahl der Funktion $s(r)$ kann jetzt der
+Zusammenhang mit der Besselschen Differentialgleichung hergestellt werden.
+Ihre Lösungen zu verschiedenen Werten des Parameters müssen also
+orthogonal sein, insbesondere sind die Besselfunktion $J_\nu(r)$
+und $J_\mu(r)$ orthogonal wenn $\mu\ne\nu$ ist.
 
 %
 % Orthogonale Polynome
@@ -325,6 +508,15 @@ Die ersten beiden Funktionen sind das konstante Polynom $1$ und
 das Polynome $x$.
 Nach obiger Beobachtung ist das Skalarprodukt $\langle 1,x\rangle=0$,
 also ist $P_1(x)=x$.
+Die Graphen der entstehenden Polynome sind in
+Abbildung~\ref{buch:integral:orthogonal:legendregraphen}
+dargestellt.
+\begin{figure}
+\centering
+\includegraphics{chapters/060-integral/images/legendre.pdf}
+\caption{Graphen der Legendre-Polynome $P_n(x)$ für $n=1,\dots,10$.
+\label{buch:integral:orthogonal:legendregraphen}}
+\end{figure}
 
 \begin{lemma}
 Die Polynome $P_{2n}(x)$ sind gerade, die Polynome $P_{2n+1}(x)$ sind
@@ -467,9 +659,24 @@ P_4(x) =
 \]
 setzen muss.
 
+\begin{figure}
+\centering
+\includegraphics{chapters/060-integral/images/orthogonal.pdf}
+\caption{Orthogonalität der Legendre-Polynome $P_4(x)$ ({\color{blue}blau})
+und $P_7(x)$ ({\color{darkgreen}grün}).
+Die blaue Fläche ist die Fläche unter dem Graphen 
+von $P_4(x)^2$, $P_4(x)$ muss durch die Wurzel aus diesem Flächeninhalt
+geteilt werden, um ein Polynome mit Norm $1$ zu erhalten.
+Für die grüne Fläche ist es $P_7(x)$.
+Die rote Kurve ist der Graph der Funktion $P_4(x)\cdot P_7(x)$,
+die rote Fläche ist deren Integral, sie ist $0$, d.~h.~die beiden
+Funktionen sind orthogonal.
+\label{buch:integral:orthogonal:legendreortho}}
+\end{figure}
+
 \begin{table}
 \centering
-\renewcommand{\arraystretch}{1.5}
+\renewcommand{\arraystretch}{1.2}
 \begin{tabular}{|>{$}c<{$}|>{$}l<{$}|}
 \hline
 n&P_n(x)\\
@@ -495,7 +702,7 @@ n&P_n(x)\\
  9&\frac1{128}(12155x^9-25740x^7+18018x^5-4620x^3+315x)
 \\
 10&\frac1{256}(46189x^{10}-109395x^8+90090x^6-30030x^4+3465x^2-63)
-\\
+\\[2pt]
 \hline
 \end{tabular}
 \caption{Die Legendre-Polynome $P_n(x)$ für $n=0,1,\dots,10$ sind
@@ -503,9 +710,16 @@ orthogonale Polynome vom Grad $n$, die den Wert $P_n(1)=1$ haben.
 \label{buch:integral:table:legendre-polynome}}
 \end{table}
 
+
+
 Die so konstruierten Polynome heissen die {\em Legendre-Polynome}.
 Durch weitere Durchführung des Verfahrens liefert die Polynome in
 Tabelle~\ref{buch:integral:table:legendre-polynome}.
+Die Graphen sind in Abbildung~\ref{buch:integral:orthogonal:legendregraphen}
+dargestellt.
+Abbildung~\ref{buch:integral:orthogonal:legendreortho} illustriert, 
+dass die die beiden Polynome $P_4(x)$ und $P_7(x)$ orthogonal sind.
+Das Produkt $P_4(x)\cdot P_7(x)$ hat Integral $=0$.
 
 
 %%
@@ -520,3 +734,4 @@ Tabelle~\ref{buch:integral:table:legendre-polynome}.
 \input{chapters/060-integral/legendredgl.tex}
 
 \input{chapters/060-integral/gaussquadratur.tex}
+

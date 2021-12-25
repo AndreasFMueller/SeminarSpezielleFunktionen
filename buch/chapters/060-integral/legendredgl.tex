@@ -209,12 +209,14 @@ dass Eigenfunktionen eines selbstadjungierten Operatores zu verschiedenen
 Eigenwerten orthogonal sind.
 Dazu seien $Df = \lambda f$ und $Dg=\mu g$ und wir rechnen
 \begin{equation*}
-\begin{array}{rcccl}
-\langle Df,g\rangle &=& \langle \lambda f,g\rangle &=& \lambda\langle f,g\rangle
-\\
-=\langle f,Dg\rangle &=& \langle f,\mu g\rangle &=& \mu\langle f,g\rangle
-\\
-                     & &                    0   &=& (\lambda-\mu)\langle f,g\rangle
+\renewcommand{\arraycolsep}{2pt}
+\begin{array}{rcccrl}
+\langle Df,g\rangle &=& \langle \lambda f,g\rangle &=& \lambda\phantom{)}\langle f,g\rangle
+&\multirow{2}{*}{\hspace{3pt}$\biggl\}\mathstrut-\mathstrut$}\\
+=\langle f,Dg\rangle &=& \langle f,\mu g\rangle &=& \mu\phantom{)}\langle f,g\rangle&
+\\[2pt]
+\hline
+         0           & &                        &=& (\lambda-\mu)\langle f,g\rangle&
 \end{array}
 \end{equation*}
 Da $\lambda-\mu\ne 0$ ist, muss $\langle f,g\rangle=0$ sein.
@@ -271,8 +273,8 @@ gleiche Standardierdisierungsbedingung wie die Legendre-Polyonome
 erfüllen, also ist $\bar{P}_n(x)=P_n(x)$.
 
 \subsubsection{Legendre-Funktionen zweiter Art}
-Siehe Wikipedia-Artikel \url{https://de.wikipedia.org/wiki/Legendre-Polynom}
-
+%Siehe Wikipedia-Artikel \url{https://de.wikipedia.org/wiki/Legendre-Polynom}
+%
 Die Potenzreihenmethode liefert natürlich auch Lösungen der
 Legendreschen Differentialgleichung, die sich nicht als Polynome
 darstellen lassen.
@@ -340,6 +342,7 @@ a_7 &= 0
 a_8 &= \frac{7\cdot 6-2}{8\cdot 7}a_6 = \frac{40}{8\cdot 7} = -\frac17
 \\
 a_9 &= 0
+\\
 a_{10} &= \frac{9\cdot 8-2}{10\cdot 9}a_8 = \frac{70}{10\cdot 9} = -\frac19,
 \end{align*}
 woraus sich die Reihenentwicklung

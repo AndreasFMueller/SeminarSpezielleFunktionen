@@ -13,6 +13,9 @@ erkannt.
 In diesem Abschnitt soll untersucht werden, ob man sie auch
 auch durch Integrale definieren kann.
 
+%
+% Integraldarstellung der hypergeometrischen Funktion 2F1
+%
 \subsection{Integraldarstellung der hypergeometrischen Funktion
 $\mathstrut_2F_1$}
 
@@ -56,8 +59,33 @@ an, erhalten wir wegen $dt = 2\cos s\sin s\,ds$
 \,ds.
 \end{align*}
 
-XXX Parametrisierung für Intervall $[0,\infty)$
+Die Substitution $t=s/(s+1)$ wird das Integral zu einem Integral
+über $[0,\infty)$
+\begin{align*}
+\mathstrut_2F_1\biggl(\begin{matrix}a,b\\c\end{matrix};z\biggr)
+&=
+\frac{\Gamma(c)}{\Gamma(b)\Gamma(c-b)}
+\int_0^1
+\biggl(\frac{s}{s+1}\biggr)^{b-1}
+\biggl(\frac{1}{s+1}\biggr)^{c-b-1}
+\biggl(\frac{1+s-zs}{s+1}\biggr)^{-a}
+\,dt
+\\
+&=
+\frac{\Gamma(c)}{\Gamma(b)\Gamma(c-b)}
+\int_0^1
+\frac{
+s^{b-1}
+}{
+(s+1)^{c-a}
+}
+(1+s-zs)^{-a}
+\,dt
+\end{align*}
 
+%
+% Integraldarstellung asl Integraltransformation
+%
 \subsection{Integraldarstellung als Integraltransformation}
 Im vorangegangenen Abschnitt wurde gezeigt, wie sich die Funktion
 $\mathstrut_2F_1$ als ein Integral des Integranden
@@ -117,7 +145,7 @@ hypergeometrischen Funktion $\mathstrut_0F_1(;a;xt)$ multipliziert und
 integriert.
 Dies suggeriert, dass sich möglicherweise jede der hypergeometrischen
 Funktionen $\mathstrut_{p+1}F_{q+1}$ durch ein Integral, dessen 
-Integrand $\mathstrut pF_q$ enthält, ausdrücken lässt.
+Integrand $\mathstrut_pF_q$ enthält, ausdrücken lässt.
 
 \begin{satz}
 Es gilt
