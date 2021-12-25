@@ -1,0 +1,99 @@
+%
+% legendre.tex -- plots of legendre polynomials
+%
+% (c) 2021 Prof Dr Andreas Müller, OST Ostschweizer Fachhochschule
+%
+\documentclass[tikz]{standalone}
+\usepackage{amsmath}
+\usepackage{times}
+\usepackage{txfonts}
+\usepackage{pgfplots}
+\usepackage{csvsimple}
+\usetikzlibrary{arrows,intersections,math}
+\begin{document}
+\def\skala{6.5}
+\input{legendrepaths.tex}
+\begin{tikzpicture}[>=latex,thick,scale=\skala]
+
+\definecolor{fone}{rgb}{1,0,0}
+\definecolor{ftwo}{rgb}{1.0,0,0.8}
+\definecolor{fthree}{rgb}{0.8,0,1}
+\definecolor{ffour}{rgb}{0,0,1}
+\definecolor{ffive}{rgb}{0,0.8,1}
+\definecolor{fsix}{rgb}{0,1,1}
+\definecolor{fseven}{rgb}{0,0.6,0}
+\definecolor{feight}{rgb}{0.2,1,0.6}
+\definecolor{fnine}{rgb}{0.6,0.8,0.2}
+\definecolor{ften}{rgb}{1,0.4,0}
+
+\def\dx{1}
+\def\dy{0.25}
+
+\def\achsen{
+	\draw[->] ({-1-(0.1/\skala)},0) -- ({1+(0.3/\skala)},0)
+		coordinate[label={$x$}];
+	\draw[->] (0,{-(\dy)-(0.1/\skala)}) -- (0,{(\dy)+(0.3/\skala)})
+		coordinate[label={right:$y$}];
+	\foreach \x in {-1,-0.9,...,1.001}{
+		\draw ({\dx*\x},{-0.05/\skala}) -- ({\dx*\x},{0.05/\skala});
+	}
+	\foreach \x in {-1,-0.5,0.5,1}{
+		\draw ({-0.05/\skala},{\dy*\x}) -- ({0.05/\skala},{\dy*\x});
+		\node at ({\dx*\x},{-0.05/\skala}) [below] {$\mathstrut\x$};
+		\node at ({-0.05/\skala},{\dy*\x}) [left] {$\mathstrut\x$};
+	}
+}
+
+\begin{scope}[yshift=0cm]
+	\node[color=fone] at (-0.70,{-0.9*\dy}) [right] {$n=1\mathstrut$};
+	\node[color=ftwo] at (-0.90,{0.9*\dy}) [right] {$n=2\mathstrut$};
+	\draw[line width=1.4pt,color=fone] \legendreone;
+	\draw[line width=1.4pt,color=ftwo] \legendretwo;
+	\achsen
+\end{scope}
+
+\begin{scope}[yshift=-0.6cm]
+	\node[color=fthree] at (-0.96,{-0.9*\dy}) [right] {$n=3\mathstrut$};
+	\node[color=ffour] at (-0.96,{0.9*\dy}) [right] {$n=4\mathstrut$};
+	\draw[line width=1.4pt,color=fthree] \legendrethree;
+	\draw[line width=1.4pt,color=ffour] \legendrefour;
+	\achsen
+\end{scope}
+
+\begin{scope}[yshift=-1.2cm]
+	\node[color=ffive] at (-0.96,{-0.9*\dy}) [right] {$n=5\mathstrut$};
+	\node[color=fsix] at (-0.96,{0.9*\dy}) [right] {$n=6\mathstrut$};
+	\draw[line width=1.4pt,color=ffive] \legendrefive;
+	\draw[line width=1.4pt,color=fsix] \legendresix;
+	\achsen
+\end{scope}
+
+\begin{scope}[yshift=-1.8cm]
+	\node[color=fseven] at (-0.96,{-0.9*\dy}) [right] {$n=7\mathstrut$};
+	\node[color=feight] at (-0.96,{0.9*\dy}) [right] {$n=8\mathstrut$};
+	\draw[line width=1.4pt,color=fseven] \legendreseven;
+	\draw[line width=1.4pt,color=feight] \legendreeight;
+	\achsen
+\end{scope}
+
+\begin{scope}[yshift=-2.4cm]
+	\node[color=fnine] at (-0.96,{-0.9*\dy}) [right] {$n=9\mathstrut$};
+	\node[color=ften] at (-0.96,{0.9*\dy}) [right] {$n=10\mathstrut$};
+	\draw[line width=1.4pt,color=fnine] \legendrenine;
+	\draw[line width=1.4pt,color=ften] \legendreten;
+	\achsen
+\end{scope}
+
+%\draw[line width=1.4pt,color=ftwo] \legendretwo;
+%\draw[line width=1.4pt,color=fthree] \legendrethree;
+%\draw[line width=1.4pt,color=ffour] \legendrefour;
+%\draw[line width=1.4pt,color=ffive] \legendrefive;
+%\draw[line width=1.4pt,color=fsix] \legendresix;
+%\draw[line width=1.4pt,color=fseven] \legendreseven;
+%\draw[line width=1.4pt,color=feight] \legendreeight;
+%\draw[line width=1.4pt,color=fnine] \legendrenine;
+%\draw[line width=1.4pt,color=ften] \legendreten;
+
+\end{tikzpicture}
+\end{document}
+

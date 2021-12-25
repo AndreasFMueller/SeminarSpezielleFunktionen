@@ -1,0 +1,79 @@
+%
+% orthogonal.tex -- plots of legendre polynomials
+%
+% (c) 2021 Prof Dr Andreas Müller, OST Ostschweizer Fachhochschule
+%
+\documentclass[tikz]{standalone}
+\usepackage{amsmath}
+\usepackage{times}
+\usepackage{txfonts}
+\usepackage{pgfplots}
+\usepackage{csvsimple}
+\usetikzlibrary{arrows,intersections,math}
+\begin{document}
+\def\skala{6}
+\input{legendrepaths.tex}
+\begin{tikzpicture}[>=latex,thick,scale=\skala]
+
+\definecolor{fone}{rgb}{1,0,0}
+\definecolor{ftwo}{rgb}{1.0,0,0.8}
+\definecolor{fthree}{rgb}{0.8,0,1}
+\definecolor{ffour}{rgb}{0,0,1}
+\definecolor{ffive}{rgb}{0,0.8,1}
+\definecolor{fsix}{rgb}{0,1,1}
+\definecolor{fseven}{rgb}{0,0.6,0}
+\definecolor{feight}{rgb}{0.2,1,0.6}
+\definecolor{fnine}{rgb}{0.6,0.8,0.2}
+\definecolor{ften}{rgb}{1,0.4,0}
+
+\def\dx{1}
+\def\Dy{3}
+\def\dy{3}
+
+\begin{scope}
+\clip (-1,-0.6) rectangle (1,1);
+
+%\pgfmathparse{\Dy/(\normalizationfour*\normalizationfour)}
+%\xdef\dy{\pgfmathresult}
+\fill[color=ffour!70,opacity=0.5] (-1,0) -- \produktvier -- (1,0) -- cycle;
+
+%\pgfmathparse{\Dy/(\normalizationeight*\normalizationeight)}
+%\xdef\dy{\pgfmathresult}
+\fill[color=fseven!70,opacity=0.5] (-1,0) -- \produktsieben -- (1,0) -- cycle;
+
+%\pgfmathparse{\Dy/(\normalizationfour*\normalizationeight)}
+%\xdef\dy{\pgfmathresult}
+\fill[color=red!50,opacity=0.5] (-1,0) -- \produktortho -- (1,0) -- cycle;
+
+%\pgfmathparse{\Dy/\normalizationfour}
+%\xdef\dy{\pgfmathresult}
+%\draw[line width=1.4pt,color=ffour] \legendrefour;
+%
+%\pgfmathparse{\Dy/\normalizationeight}
+%\xdef\dy{\pgfmathresult}
+%\draw[line width=1.4pt,color=feight] \legendreeight;
+
+%\pgfmathparse{\Dy/(\normalizationfour*\normalizationeight)}
+%\xdef\dy{\pgfmathresult}
+\draw[line width=1.4pt,color=red] \produktortho;
+
+\end{scope}
+
+\draw[->] ({-1-(0.1/\skala)},0) -- ({1+(0.3/\skala)},0)
+	coordinate[label={$x$}];
+\draw[->] (0,{-{0.2*\Dy}-(0.1/\skala)}) -- (0,{1+(0.3/\skala)})
+	coordinate[label={right:$y$}];
+\foreach \x in {-1,-0.9,...,1.001}{
+	\draw ({\dx*\x},{-0.1/\skala}) -- ({\dx*\x},{0.1/\skala});
+}
+\foreach \y in {-0.2,-0.1,0.1,0.2,0.3}{
+	\draw ({-0.1/\skala},{\Dy*\y}) -- ({0.1/\skala},{\Dy*\y});
+	\node at ({-0.1/\skala},{\Dy*\y}) [left] {$\mathstrut\y$};
+}
+\foreach \x in {-1,-0.5,0.5,1}{
+	\node at ({\dx*\x},{-0.1/\skala}) [below] {$\mathstrut\x$};
+}
+
+\end{tikzpicture}
+\end{document}
+
