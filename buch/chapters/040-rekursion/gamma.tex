@@ -22,7 +22,7 @@ Kann man eine reelle oder komplexe Funktion finden, die die
 Funktionalgleichung~\eqref{buch:rekursion:eqn:gammadef}
 erfüllt und damit die Fakultät auf beliebige Argumente ausdehnt?
 
-\subsection{Produktformel}
+\subsection{Definition als Grenzwert}
 Die Fakultät $n!$ ist ein Produkt von $n$ Faktoren, es ist daher
 natürlich zu versuchen, auch $x!$ als ein Produkt zu schreiben.
 Allerdings kann es nicht möglich sein, dies mit einer endlichen
@@ -237,7 +237,7 @@ ist.
 Die Approximation mit Hilfe der Grenzwertdefinition kann also
 grundsätzlich nicht mehr als zwei korrekte Nachkommastellen liefern.
 
-\subsubsection{Produktformel}
+\subsection{Produktformel}
 Ein möglicher Ausweg aus den numerischen Schwierigkeiten mit der
 Grenzwertdefinition ist, den schnell wachsenden Faktor $n!$
 in den Zähler zu bringen, so dass er der Konvergenz etwas nachhilft.
@@ -428,6 +428,55 @@ Man beachte, dass das Integral für $x=0$ nicht definiert ist, eine
 Potenzreihenentwicklung um einen Punkt $x_0$ auf der positiven reellen
 Achse kann also höchstens den Konvergenzradius $\varrho=|x_0|$ haben.
 
+\subsubsection{Funktionalgleichung für die Integraldefinition}
+Tatsächlich ist es einfach nachzuprüfen, dass die Funktionalgleichung
+der Gamma-Funktion auch für die Definition~\ref{buch:rekursion:def:gamma}
+Korrekt ist. 
+Dazu ist zunächgst nachzurechnen, dass mindestens ein Wert der neuen 
+Definition übereinstimmt mit der alten Definnition, zum Beispiel der
+Wert
+\[
+\Gamma(1)
+=
+\int_0^\infty t^{1-1}e^{-t}\,dt
+=
+\biggl[ -e^{-t} \biggr]_0^\infty
+=
+1.
+\]
+Ausserdem muss die Funktionalgleichung erfüllt sein, also
+\begin{align*}
+\Gamma(z)
+&=
+\int_0^\infty
+\underbrace{t^{z-1}}_{\displaystyle\uparrow}
+\underbrace{e^{-t}}_{\displaystyle\downarrow}
+\,dt
+=
+\underbrace{\biggl[
+\frac{1}{z} t^z e^{-t}
+\biggr]_0^\infty}_{\displaystyle=0}
++
+\frac{1}{z}
+\int_0^\infty
+t^z e^{-t}
+\,dt
+=
+\frac{1}{z}\Gamma(z+1)
+\\
+\Rightarrow\qquad
+z\Gamma(z)&=\Gamma(z+1).
+\end{align*}
+Dies beweist aber nur, dass die beiden Definitionen für positiv
+ganzzahlige Argumente übereinstimmen.
+Der folgende Abschnitt macht deutlich, dass es sehr viele Funktionen gibt,
+die ebenfalls die Funktionalgleichung erfüllen.
+Eine vollständige Rechtfertigung für diese Definition wird später
+in Abschnitt~\ref{buch:rekursion:gamma:subsection:beta}
+\eqref{buch:rekursion:gamma:integralbeweis}
+auf Seite~\pageref{buch:rekursion:gamma:integralbeweis}
+gegeben.
+
 \begin{figure}
 \centering
 \includegraphics{chapters/040-rekursion/images/gammaplot.pdf}
@@ -436,6 +485,28 @@ Funktion $\Gamma(z)+\sin(\pi z)$, die für ganzzahlige Argumente ebenfalls
 die Werte der Fakultät annimmt.
 \label{buch:rekursion:fig:gamma}}
 \end{figure}
+
+\subsubsection{Alternative Lösungen}
+Die Funktion $\Gamma(z)$ ist nicht die einzige Funktion, die natürlichen
+Zahlen die Werte $\Gamma(n+1) = n!$ der Fakultät annimmt.
+Indem man eine beliebige Funktion $f(z)$ addiert, die auf alle
+natürlichen Zahlen verschwindet, also $f(n)=0$ für $n\in\mathbb{N}$,
+erhält man eine weitere Funktion, die auf natürlichen Zahlen
+die Werte der Fakultät annimmt.
+Ein Beispiel einer solchen Funktion ist
+\begin{equation}
+z\mapsto f(z)=\Gamma(z) + \sin \pi z,
+\label{buch:rekursion:eqn:gammaalternative}
+\end{equation}
+die Funktion $f(z)=\sin\pi z$ verschwindet sogar auf allen ganzen
+Zahlen.
+
+In Abbildung~\ref{buch:rekursion:fig:gamma} ist die Gamma-Funktion
+in rot geplotet, die Funktion~\eqref{buch:rekursion:eqn:gammaalternative}
+in grün.
+Die Punkte $(n,(n-1)!)$ sind in blau bezeichnet, sie sind beiden Graphen
+gemeinsam.
+
 
 % XXX Beweis der Integraldarstellung der Gamma-Funktion
 
@@ -471,27 +542,6 @@ Durch die Substitution $st = u$ oder $t=\frac{u}{s}$ wird daraus
 \frac{1}{s^\alpha} \Gamma(\alpha+1).
 \]
 \end{proof}
-
-\subsubsection{Alternative Lösungen}
-Die Funktion $\Gamma(z)$ ist nicht die einzige Funktion, die natürlichen
-Zahlen die Werte $\Gamma(n+1) = n!$ der Fakultät annimmt.
-Indem man eine beliebige Funktion $f(z)$ addiert, die auf alle
-natürlichen Zahlen verschwindet, also $f(n)=0$ für $n\in\mathbb{N}$,
-erhält man eine weitere Funktion, die auf natürlichen Zahlen
-die Werte der Fakultät annimmt.
-Ein Beispiel einer solchen Funktion ist
-\begin{equation}
-z\mapsto f(z)=\Gamma(z) + \sin \pi z,
-\label{buch:rekursion:eqn:gammaalternative}
-\end{equation}
-die Funktion $f(z)=\sin\pi z$ verschwindet sogar auf allen ganzen
-Zahlen.
-
-In Abbildung~\ref{buch:rekursion:fig:gamma} ist die Gamma-Funktion
-in rot geplotet, die Funktion~\eqref{buch:rekursion:eqn:gammaalternative}
-in grün.
-Die Punkte $(n,(n-1)!)$ sind in blau bezeichnet, sie sind beiden Graphen
-gemeinsam.
 
 \subsubsection{Pol erster Ordnung bei $z=0$}
 Wir haben zu prüfen, dass sowohl der Wert $\Gamma(1)$ korrekt ist als
@@ -609,511 +659,511 @@ $y(10^k) - \Gamma(\frac{5}{2})$ zusammengefasst.
 Die Genauigkeit erreicht sechs korrekte Nachkommastellen mit nur
 337 Auswertungen des Integranden.
 
+%%
+%% Beta-Integrale
+%%
+%\subsection{Die Beta-Funktion}
 %
-% Beta-Integrale
+%\begin{definition}
+%\label{buch:rekursion:gamma:def:beta-funktion}
+%Das Beta-Integral ist das Integral
+%\[
+%B(x,y)
+%=
+%\int_0^1 t^{x-1} (1-t)^{y-1}\,dt
+%\]
+%für $\operatorname{Re}x>0$, $\operatorname{Re}y>0$.
+%\end{definition}
 %
-\subsection{Die Beta-Funktion}
-
-\begin{definition}
-\label{buch:rekursion:gamma:def:beta-funktion}
-Das Beta-Integral ist das Integral
-\[
-B(x,y)
-=
-\int_0^1 t^{x-1} (1-t)^{y-1}\,dt
-\]
-für $\operatorname{Re}x>0$, $\operatorname{Re}y>0$.
-\end{definition}
-
-Aus der Definition kann man sofort ablesen, dass $B(x,y)=B(y,x)$.
-Für $y=1$ folgt ausserdem
-\[
-B(x,1) = \int_0^1 t^{x-1}\,dt = \biggl[ \frac{t^x}{x}\biggr]_0^1 = \frac{1}{x}.
-\]
-Speziell gilt $B(1,1)=1$.
-
-\subsubsection{Rekursionsformeln für das Beta-Integral}
-Aus der Definition folgt direkt
-\begin{align*}
-B(x,y+1)
-&=
-\int_0^1 t^{x-1} (1-t)^{y+1-1}\,dt
-=
-\int_0^1 (1-t) t^{x-1} (1-t)^{y-1}\,dt
-\\
-&=
-\int_0^1 t^{x-1} (1-t)^{y-1}\,dt
--
-\int_0^1 t^{x} (1-t)^{y-1}\,dt
-\\
-&=
-B(x,y) - B(x+1,y)
-\end{align*}
-oder
-\begin{equation}
-B(x+1,y) = B(x,y) - B(x,y+1).
-\label{buch:rekursion:gamma:betarek1}
-\end{equation}
+%Aus der Definition kann man sofort ablesen, dass $B(x,y)=B(y,x)$.
+%Für $y=1$ folgt ausserdem
+%\[
+%B(x,1) = \int_0^1 t^{x-1}\,dt = \biggl[ \frac{t^x}{x}\biggr]_0^1 = \frac{1}{x}.
+%\]
+%Speziell gilt $B(1,1)=1$.
 %
-%XXX Vergleich mit der Rekursionsformel für Binomialkoeffizienten
+%\subsubsection{Rekursionsformeln für das Beta-Integral}
+%Aus der Definition folgt direkt
+%\begin{align*}
+%B(x,y+1)
+%&=
+%\int_0^1 t^{x-1} (1-t)^{y+1-1}\,dt
+%=
+%\int_0^1 (1-t) t^{x-1} (1-t)^{y-1}\,dt
+%\\
+%&=
+%\int_0^1 t^{x-1} (1-t)^{y-1}\,dt
+%-
+%\int_0^1 t^{x} (1-t)^{y-1}\,dt
+%\\
+%&=
+%B(x,y) - B(x+1,y)
+%\end{align*}
+%oder
+%\begin{equation}
+%B(x+1,y) = B(x,y) - B(x,y+1).
+%\label{buch:rekursion:gamma:betarek1}
+%\end{equation}
+%%
+%%XXX Vergleich mit der Rekursionsformel für Binomialkoeffizienten
+%%
+%Durch partielle Integration kann man eine weitere Rekursionsformel finden.
+%Dazu berechnet man
+%\begin{align}
+%B(x,y+1)
+%&=
+%\int_0^1 t^{x-1}(1-t)^{y}\,dt
+%\notag
+%\\
+%&=
+%\biggl[\frac{t^x}x(1-t)^y\biggr]_0^1
+%+
+%\frac{y}x \int_0^1 t^x(1-t)^{y-1}\,dt
+%\notag
+%\\
+%&=
+% \frac{y}x B(x+1,y).
+%\label{buch:rekursion:gamma:betarek2}
+%\end{align}
+%Durch Gleichsetzen
+%\eqref{buch:rekursion:gamma:betarek1}
+%und
+%\eqref{buch:rekursion:gamma:betarek2}
+%entsteht die Rekursionsformel
+%\[
+%B(x,y)-B(x,y+1)
+%=
+%B(x+1,y)
+%=
+%\frac{x}{y}B(x,y+1)
+%\]
+%oder
+%\begin{equation}
+%B(x,y)
+%=
+%\frac{x+y}{y}B(x,y+1).
+%\label{buch:rekursion:gamma:betarek3}
+%\end{equation}
 %
-Durch partielle Integration kann man eine weitere Rekursionsformel finden.
-Dazu berechnet man
-\begin{align}
-B(x,y+1)
-&=
-\int_0^1 t^{x-1}(1-t)^{y}\,dt
-\notag
-\\
-&=
-\biggl[\frac{t^x}x(1-t)^y\biggr]_0^1
-+
-\frac{y}x \int_0^1 t^x(1-t)^{y-1}\,dt
-\notag
-\\
-&=
- \frac{y}x B(x+1,y).
-\label{buch:rekursion:gamma:betarek2}
-\end{align}
-Durch Gleichsetzen
-\eqref{buch:rekursion:gamma:betarek1}
-und
-\eqref{buch:rekursion:gamma:betarek2}
-entsteht die Rekursionsformel
-\[
-B(x,y)-B(x,y+1)
-=
-B(x+1,y)
-=
-\frac{x}{y}B(x,y+1)
-\]
-oder
-\begin{equation}
-B(x,y)
-=
-\frac{x+y}{y}B(x,y+1).
-\label{buch:rekursion:gamma:betarek3}
-\end{equation}
-
-\subsubsection{Beta-Funktion und Gamma-Funktion}
-Die Rekursionsbeziehung~\eqref{buch:rekursion:gamma:betarek3}
-kann jetzt dazu verwendet werden, eine Darstellung der Beta-Funktion
-durch die Gamma-Funktion zu finden.
-Durch $n$-fache Anwendung von \eqref{buch:rekursion:gamma:betarek3}
-ergibt sich zunächst
-\begin{align*}
-B(x,y)
-&=
-\frac{x+y}{y}
-B(x,y+1)
-=
-\frac{x+y}{y}
-\frac{x+y+1}{y+1}
-B(x,y+2)
-\\
-&=
-\frac{x+y}{y}
-\frac{x+y+1}{y+1}
-\cdot
-\ldots
-\cdot
-\frac{x+y+n-1}{y+n-1}
-B(x,y+n)
-=
-\frac{(x+y)_n}{(y)_n}
-B(x,y+n)
-\intertext{Die Beta-Funktion auf der rechten Seite kann als Integral
-geschrieben werden:}
-&=
-\frac{(x+y)_n}{(y)_n}
-\int_0^1 t^{x-1}(1-t)^{y+n-1}\,dt.
-\end{align*}
-Wir halten dieses Zwischenresultat für spätere Verwendung fest.
-
-\begin{lemma}
-\label{buch:rekursion:gamma:betareklemma}
-Für $n\in\mathbb{N}$ gilt
-\[
-B(x,y+n) = \frac{(y)_n}{(x+y)_n} B(x,y).
-\]
-\end{lemma}
-
-Wir streben an, mit dem Grenzübergang $n\to\infty$ aus den
-Pochhammer-Symbolen Gamma-Funktionen zu machen, dazu müssen gemäss
-Definition~\ref{buch:rekursion:gamma:def:definition} weitere Faktoren
-$1/(n!\,n^{x-1})$ vorhanden sein.
-Wir erweitern geeignet und nehmen die übrig bleibenden Faktoren in
-das Integral.
-So ergibt sich
-\begin{align*}
-B(x,y)
-&=
-\frac{(x+y)_n}{n!\, n^{x+y-1}}
-\frac{n!\,n^{y-1}}{(y)_n}
-\int_0^1 n^{x} t^{x-1}(1-t)^{y+n-1}\,dt.
-\intertext{Mit der Substition $s/n=t$ wird das Integral zu einem Integral
-über das Interval $[0,n]$}
-&=
-\frac{(x+y)_n}{n!\, n^{x+y-1}}
-\frac{n!\,n^{y-1}}{(y)_n}
-\int_0^n
-n^{x}
-\biggl(\frac{s}{n}\biggr)^{x-1}
-\biggl(1-\frac{s}{n}\biggr)^{y+n-1}
-\,\frac{ds}{n}.
-\\
-&=
-\frac{(x+y)_n}{n!\, n^{x+y-1}}
-\frac{n!\,n^{y-1}}{(y)_n}
-\int_0^n
-n^{x-1}
-\biggl(\frac{s}{n}\biggr)^{x-1}
-\biggl(1-\frac{s}{n}\biggr)^{y+n-1}
-\,ds.
-\intertext{Beim Grenzübergang $n\to\infty$ wird daraus}
-&=
-\underbrace{\frac{(x+y)_n}{n!\, n^{x+y-1}}}_{\displaystyle \to 1/\Gamma(x+y)}
-\underbrace{\frac{n!\,n^{y-1}}{(y)_n}}_{\displaystyle\to \Gamma(y)}
-\int_0^n
-s^{x-1}
-\underbrace{\biggl(1-\frac{s}{n}\biggr)^{n}}_{\displaystyle\to e^{-s}}
-\underbrace{\biggl(1-\frac{s}{n}\biggr)^{y-1}}_{\displaystyle\to 1}
-\,ds.
-\\
-&\to \frac{\Gamma(y)}{\Gamma(x+y)} \int_0^\infty s^{x-1}e^{-s}\,ds
-=
-\frac{\Gamma(y)\Gamma(x)}{\Gamma(x+y)}.
-\end{align*}
-
-\begin{satz}
-Die Beta-Funktion kann aus der Gamma-Funktion nach
-\begin{equation}
-B(x,y) = \frac{\Gamma(x)\Gamma(y)}{\Gamma(x+y)}
-\label{buch:rekursion:gamma:betagamma}
-\end{equation}
-berechnet werden.
-\end{satz}
-
-\subsubsection{Der Wert von $\Gamma(\frac12)$?}
-Als Anwendung der Formel~\eqref{buch:rekursion:gamma:betagamma}
-untersuchen wir den Fall $y=1-x$.
-In diesem Fall wird der Nenner zu $\Gamma(x+1-x)=\Gamma(1)=1$ und damit
-\begin{equation}
-\Gamma(x)\Gamma(1-x)
-=
-B(x,1-x) 
-=
-\int_0^1 t^{x-1}(1-t)^{-x}\,dt.
-\label{buch:rekursion:gamma:spiegelung-betaintegral}
-\end{equation}
-Sofern man in der Lage ist, das Integral auf der rechten Seite von
-\eqref{buch:rekursion:gamma:spiegelung-betaintegral} auszuwerten,
-kann man eine einfache Beziehung zwischen zwei Werten der Gamma-Funktion
-an Stellen, die durch eine Spiegelung an der Geraden
-$\operatorname{Re}x=\frac12$ auseinander hervorgehen.
-Für $x=\frac12$ wird der Ausdruck besonders einfach:
-\[
-\Gamma({\textstyle\frac12})^2
-=
-\int_0^1 t^{\frac12}(1-t)^{-\frac12}\,dt
-=
-\int_0^1 \sqrt{\frac{t}{1-t}}\,dt.
-\]
-Mit der Substition $t=\sin^2 s$ wird daraus
-\[
-\int_0^{\frac{\pi}2}
-\sqrt{\frac{\sin^2s}{1-\sin^2s}}
-2\sin s\cos s
-\,ds
-=
-2
-\int_0^{\frac{\pi}2}
-\sin^2 s\,ds
-=
-2
-\int_0^{\frac{\pi}2}
-\frac{1-\cos 2s}{2}\,ds
-=
-\frac{\pi}2-\int_0^{\frac{\pi}2}\cos 2s\,ds,
-\]
-wobei wir $dt = 2\sin s\cos s\,ds$ verwendet haben.
-Da $\cos 2s$ eine im Intervall $[0,\frac{\pi}2]$ bezüglich
-des Punktes $\frac{\pi}4$ ungerade Funktion ist, verschwindet
-das zweite Integral.
-Somit folgt
-\begin{equation}
-\Gamma({\textstyle\frac12})^2 = \frac{\pi}{2}
-\qquad\Rightarrow\qquad
-\Gamma({\textstyle\frac12}) = \sqrt{\frac{\pi}{2}}.
-\label{buch:rekursion:gamma:gamma12}
-\end{equation}
-Matt Parker hat auf seinem Youtube-Kanal {\em Stand-up Maths} dieses Resultat
-sogar zum Titel eines Videos\footnote{\url{https://youtu.be/dGnIJFzkLI4}}
-gemacht:
-{\em What is the factorial of $-\nicefrac{1}{2}$?}
-Die Antwort ist natürlich nur möglich, indem man
-$(-\frac12)!$ als Wert
-\[
-(-{\textstyle\frac12})!
-=
-\Gamma(-{\textstyle\frac12}+1)
-=
-\Gamma({\textstyle\frac12})
-=
-\sqrt{\frac{\pi}2}
-\]
-der Gamma-Funktion interpretiert.
-
-\subsubsection{Alternative Parametrisierungen}
-Die Substitution $t=\sin^2 s$ hat im vorangegangenen Abschnitt
-ermöglicht, $\Gamma(\frac12)$ zu ermitteln.
-Die Substition erlaubt aber auch, das Beta-Integral in eine alternative
-Form zu bringen.
-Aus der Definition~\ref{buch:rekursion:gamma:def:beta-funktion}
-wird damit
-\begin{align*}
-B(x,y)
-&=
-\int_0^1 t^{x-1} (1-t)^{y-1}\,dt
-\\
-&=
-2
-\int_0^{\frac{\pi}2} \sin^{2(x-1)} s\cdot (1-\sin^2 s)^{y-1}
-\cdot \sin s\cos s\,ds
-\\
-&=
-2
-\int_0^{\frac{\pi}2} \sin^{2x-1}s \cos^{2y-1} s\,ds.
-\intertext{Unter Verwendung der Formel~\eqref{buch:rekursion:gamma:betagamma},
-die die Beta-Funktion durch Gamma-Funktionen auszudrücken erlaubt, findet
-man die Formel}
-\int_0^{\frac{\pi}2} \sin^{2x-1}s \cos^{2y-1} s\,ds
-&=
-\frac{\Gamma(x)\Gamma(y)}{2\Gamma(x+y)}
-\end{align*}
-für ein bestimmtes Integral von Potenzen von Sinus- und Kosinus-Funktionen.
-
-Die alternative Substitution $t = s/(s+1)$ verwandelt das Beta-Integral
-$B(x,y)$ in ein Integral über die positive Halbachse ab:
-\begin{align}
-B(x,y)
-&=
-\int_0^1 t^{x-1}(1-t)^{y-1}\,dt
-\notag
-\\
-&=
-\int_0^\infty
-\frac{s^{x-1}}{(s+1)^{x-1}}
-\frac{1}{(s+1)^{y-1}}
-\frac{ds}{(s+1)^2}
-\notag
-\\
-&=
-\int_0^\infty
-\frac{s^{x-1}}{(s+1)^{x+y}}\,ds,
-\label{buch:rekursion:gamma:beta:sinf}
-\end{align}
-wobei wir
-\[
-\frac{dt}{ds}
-=
-\frac{d}{ds}
-\frac{s}{s+1}
-=
-\frac{(s+1)-s}{(s+1)^2}
-=
-\frac{1}{(s+1)^2}
-\]
-verwendet haben.
-Diese Darstellung des Beta-Integrals wird später
-% XXX Ort ergänzen
-dazu verwendet, die Spiegelungsformel für die Gamma-Funktion
-herzuleiten.
-
-Eine weitere mögliche Parametrisierung verwendet $t = (1+s)/2$
-mit $dt=\frac12 ds$.
-Damit wird das Beta-Integral
-\begin{equation}
-B(x,y)
-=
-\int_0^1 t^{x-1}(1-t)^{y-1}\,dt
-=
-\frac12
-\int_{-1}^1
-\biggl(\frac{1+s}2\biggr)^{x-1}
-\biggl(\frac{1-s}2\biggr)^{y-1}
-\,ds
-=
-2^{1-x-y}
-\int_{-1}^1
-(1+s)^{x-1}(1-s)^{y-1}
-\,ds.
-\label{buch:rekursion:gamma:beta:symm}
-\end{equation}
-
-\subsubsection{Die Verdoppelungsformel von Legendre}
-Die trigonometrische Substitution kann dazu verwendet werden, die
-Legendresche Verdoppelungsformel für die Gamma-Funktion herzuleiten.
-
-\begin{satz}[Legendre]
-\[
-\Gamma(x)\Gamma(x+{\textstyle\frac12})
-=
-2^{1-2x}\sqrt{\pi}
-\Gamma(2x)
-\]
-\end{satz}
-
-\begin{proof}[Beweis]
-Der Wert $\Gamma(2x)$ entsteht, wenn man $B(x,x)$ mit Hilfe der
-Gamma-Funktion als
-\[
-B(x,x)
-=
-\frac{\Gamma(x)^2}{\Gamma(2x)}
-\]
-schreibt.
-Das Ziel ist, $B(x,x)$ auf einem alternativen Weg zu berechnen.
-
-Mit Hilfe von \eqref{buch:rekursion:gamma:beta:symm}
-kann man das Beta-Integral zu
-\begin{align*}
-B(x,x)
-&=
-2^{1-2x}
-\int_{-1}^1
-(1+s)^{x-1}(1-s)^{x-1}
-\,ds
-=
-2^{1-2x}
-\int_{-1}^1(1-s^2)^{x-1}\,ds
-\end{align*}
-vereinfachen.
-Der Integrand ist gerade, es folgt
-\[
-B(x,x)
-=
-2^{1-2x}
-\cdot 2
-\int_0^1(1-s^2)^{x-1}\,ds.
-\]
-Das Integral kann mit der Substitution $s^2=t$ wieder in die Form
-eines Beta-Integrals gebracht werden:
-\begin{align*}
-2\int_0^1(1-s^2)^{x-1}\,ds
-&=
-\int_0^1 (1-t)^{x-1} \,\frac{dt}{\sqrt{t}}
-=
-\int_0^1 t^{\frac12-1}(1-t)^{x-1}\,dt
-=
-B({\textstyle\frac12},x).
-\end{align*}
-In der Substitution haben wir $2s\,ds = dt$ oder $2\,ds = dt/\sqrt{t}$
-verwendet.
-Das letzte Beta-Integral kann man nun wieder mit Gamma-Funktionen
-schreiben, nämlich als
-\[
-B({\textstyle\frac12},x)
-=
-\frac{\Gamma({\textstyle\frac12})\Gamma(x)}{\Gamma(x+{\textstyle\frac12})}.
-\]
-Setzt man alles zusammen, erhält man jetzt
-\begin{align*}
-\frac{\Gamma(x)^2}{\Gamma(2x)}
-&=
-\frac1{2^{2x-1}}
-\frac{\Gamma({\textstyle\frac12})\Gamma(x)}{\Gamma(x+{\textstyle\frac12})}
-\\
-\Rightarrow\qquad
-\Gamma(x)\Gamma(x+{\textstyle\frac12})
-&=
-2^{1-2x}
-\Gamma({\textstyle\frac12})\Gamma(2x)
-=
-2^{1-2x}\sqrt{\pi}\Gamma(2x),
-\end{align*}
-wobei wir den bekannten Wert $\Gamma(\frac12)=\sqrt{\pi}$ verwendet haben.
-\end{proof}
-
-Setzt man $x=\frac12$ in die Verdoppelungsformel ein, erhält man
-\[
-\Gamma({\textstyle\frac12})\Gamma(1) = 2^{1-2\frac12}\sqrt{\pi}\Gamma(1)
-\qquad\Rightarrow\qquad
-\Gamma({\textstyle\frac12}) = \sqrt{\pi},
-\]
-in Übereinstimmung mit dem bereits bekannten Wert.
-
-\subsubsection{Beta-Funktion und Binomialkoeffizienten}
-Die Binomialkoeffizienten können mit Hilfe der Fakultät als
-\begin{equation}
-\binom{n}{k}
-=
-\frac{n!}{(n-k)!\,k!}
-=
-\frac{\Gamma(n-1)}{\Gamma(n-k-1)\Gamma(k-1)}
-=
-\frac{(n-2)\Gamma(n-2)}{\Gamma(n-k-1)\Gamma(k-1)}
-=
-\frac{n-2}{B(n-k-1,k-1)}
-\label{buch:rekursion:gamma:binombeta}
-\end{equation}
-geschrieben werden.
-Die Rekursionsbeziehung
-\[
-\binom{n+1}{k} = \binom{n}{k-1} + \binom{n}{k}
-\]
-der Binomialkoeffizienten erzeugt das vertraute Pascal-Dreieck,
-die Formel \eqref{buch:rekursion:gamma:binombeta} für die
-Binomialkoeffizienten macht daraus
-\[
-\frac{n-1}{B(n-k,k-1)}
-=
-\frac{n-2}{B(n-k,k-2)}
-+
-\frac{n-2}{B(n-k-1,k-1)},
-\]
-die für ganzzahlige Argumente gilt.
-Wir wollen nachrechnen, dass dies für beliebige Argumente gilt.
-\begin{align*}
-\frac{(n-1)\Gamma(n-1)}{\Gamma(n-k)\Gamma(k-1)}
-&=
-\frac{(n-2)\Gamma(n-2)}{\Gamma(n-k)\Gamma(k-2)}
-+
-\frac{(n-2)\Gamma(n-2)}{\Gamma(n-k-1)\Gamma(k-1)}
-\\
-\frac{\Gamma(n)}{\Gamma(n-k)\Gamma(k-1)}
-&=
-\frac{\Gamma(n-1)}{\Gamma(n-k)\Gamma(k-2)}
-+
-\frac{\Gamma(n-1)}{\Gamma(n-k-1)\Gamma(k-1)}
-\intertext{Durch Zusammenfassen der Faktoren im Zähler mit Hilfe
-der Rekursionsformel für die Gamma-Funktion und Multiplizieren
-mit dem gemeinsamen Nenner
-$\Gamma(n-k)\Gamma(k-1)=(n-k-1)\Gamma(n-k-1)(k-2)\Gamma(k-2)$ wird daraus}
-\Gamma(n)
-&=
-(k-2)
-\Gamma(n-1)
-+
-(n-k-1)
-\Gamma(n-1)
-\intertext{Indem wir die Rekursionsformel für die Gamma-Funktion auf
-die rechte Seite anwenden können wir erreichen, dass in allen Termen
-ein Faktor
-$\Gamma(n-1)$ auftritt:}
-(n-1)\Gamma(n-1)
-&=
-(k-2)\Gamma(n-1)
-+
-(n+k-1)\Gamma(n-1)
-\\
-n-1
-&=
-k-2
-+
-n-k-1
-\end{align*}
-
+%\subsubsection{Beta-Funktion und Gamma-Funktion}
+%Die Rekursionsbeziehung~\eqref{buch:rekursion:gamma:betarek3}
+%kann jetzt dazu verwendet werden, eine Darstellung der Beta-Funktion
+%durch die Gamma-Funktion zu finden.
+%Durch $n$-fache Anwendung von \eqref{buch:rekursion:gamma:betarek3}
+%ergibt sich zunächst
+%\begin{align*}
+%B(x,y)
+%&=
+%\frac{x+y}{y}
+%B(x,y+1)
+%=
+%\frac{x+y}{y}
+%\frac{x+y+1}{y+1}
+%B(x,y+2)
+%\\
+%&=
+%\frac{x+y}{y}
+%\frac{x+y+1}{y+1}
+%\cdot
+%\ldots
+%\cdot
+%\frac{x+y+n-1}{y+n-1}
+%B(x,y+n)
+%=
+%\frac{(x+y)_n}{(y)_n}
+%B(x,y+n)
+%\intertext{Die Beta-Funktion auf der rechten Seite kann als Integral
+%geschrieben werden:}
+%&=
+%\frac{(x+y)_n}{(y)_n}
+%\int_0^1 t^{x-1}(1-t)^{y+n-1}\,dt.
+%\end{align*}
+%Wir halten dieses Zwischenresultat für spätere Verwendung fest.
+%
+%\begin{lemma}
+%\label{buch:rekursion:gamma:betareklemma}
+%Für $n\in\mathbb{N}$ gilt
+%\[
+%B(x,y+n) = \frac{(y)_n}{(x+y)_n} B(x,y).
+%\]
+%\end{lemma}
+%
+%Wir streben an, mit dem Grenzübergang $n\to\infty$ aus den
+%Pochhammer-Symbolen Gamma-Funktionen zu machen, dazu müssen gemäss
+%Definition~\ref{buch:rekursion:gamma:def:definition} weitere Faktoren
+%$1/(n!\,n^{x-1})$ vorhanden sein.
+%Wir erweitern geeignet und nehmen die übrig bleibenden Faktoren in
+%das Integral.
+%So ergibt sich
+%\begin{align*}
+%B(x,y)
+%&=
+%\frac{(x+y)_n}{n!\, n^{x+y-1}}
+%\frac{n!\,n^{y-1}}{(y)_n}
+%\int_0^1 n^{x} t^{x-1}(1-t)^{y+n-1}\,dt.
+%\intertext{Mit der Substition $s/n=t$ wird das Integral zu einem Integral
+%über das Interval $[0,n]$}
+%&=
+%\frac{(x+y)_n}{n!\, n^{x+y-1}}
+%\frac{n!\,n^{y-1}}{(y)_n}
+%\int_0^n
+%n^{x}
+%\biggl(\frac{s}{n}\biggr)^{x-1}
+%\biggl(1-\frac{s}{n}\biggr)^{y+n-1}
+%\,\frac{ds}{n}.
+%\\
+%&=
+%\frac{(x+y)_n}{n!\, n^{x+y-1}}
+%\frac{n!\,n^{y-1}}{(y)_n}
+%\int_0^n
+%n^{x-1}
+%\biggl(\frac{s}{n}\biggr)^{x-1}
+%\biggl(1-\frac{s}{n}\biggr)^{y+n-1}
+%\,ds.
+%\intertext{Beim Grenzübergang $n\to\infty$ wird daraus}
+%&=
+%\underbrace{\frac{(x+y)_n}{n!\, n^{x+y-1}}}_{\displaystyle \to 1/\Gamma(x+y)}
+%\underbrace{\frac{n!\,n^{y-1}}{(y)_n}}_{\displaystyle\to \Gamma(y)}
+%\int_0^n
+%s^{x-1}
+%\underbrace{\biggl(1-\frac{s}{n}\biggr)^{n}}_{\displaystyle\to e^{-s}}
+%\underbrace{\biggl(1-\frac{s}{n}\biggr)^{y-1}}_{\displaystyle\to 1}
+%\,ds.
+%\\
+%&\to \frac{\Gamma(y)}{\Gamma(x+y)} \int_0^\infty s^{x-1}e^{-s}\,ds
+%=
+%\frac{\Gamma(y)\Gamma(x)}{\Gamma(x+y)}.
+%\end{align*}
+%
+%\begin{satz}
+%Die Beta-Funktion kann aus der Gamma-Funktion nach
+%\begin{equation}
+%B(x,y) = \frac{\Gamma(x)\Gamma(y)}{\Gamma(x+y)}
+%\label{buch:rekursion:gamma:betagamma}
+%\end{equation}
+%berechnet werden.
+%\end{satz}
+%
+%\subsubsection{Der Wert von $\Gamma(\frac12)$?}
+%Als Anwendung der Formel~\eqref{buch:rekursion:gamma:betagamma}
+%untersuchen wir den Fall $y=1-x$.
+%In diesem Fall wird der Nenner zu $\Gamma(x+1-x)=\Gamma(1)=1$ und damit
+%\begin{equation}
+%\Gamma(x)\Gamma(1-x)
+%=
+%B(x,1-x) 
+%=
+%\int_0^1 t^{x-1}(1-t)^{-x}\,dt.
+%\label{buch:rekursion:gamma:spiegelung-betaintegral}
+%\end{equation}
+%Sofern man in der Lage ist, das Integral auf der rechten Seite von
+%\eqref{buch:rekursion:gamma:spiegelung-betaintegral} auszuwerten,
+%kann man eine einfache Beziehung zwischen zwei Werten der Gamma-Funktion
+%an Stellen, die durch eine Spiegelung an der Geraden
+%$\operatorname{Re}x=\frac12$ auseinander hervorgehen.
+%Für $x=\frac12$ wird der Ausdruck besonders einfach:
+%\[
+%\Gamma({\textstyle\frac12})^2
+%=
+%\int_0^1 t^{\frac12}(1-t)^{-\frac12}\,dt
+%=
+%\int_0^1 \sqrt{\frac{t}{1-t}}\,dt.
+%\]
+%Mit der Substition $t=\sin^2 s$ wird daraus
+%\[
+%\int_0^{\frac{\pi}2}
+%\sqrt{\frac{\sin^2s}{1-\sin^2s}}
+%2\sin s\cos s
+%\,ds
+%=
+%2
+%\int_0^{\frac{\pi}2}
+%\sin^2 s\,ds
+%=
+%2
+%\int_0^{\frac{\pi}2}
+%\frac{1-\cos 2s}{2}\,ds
+%=
+%\frac{\pi}2-\int_0^{\frac{\pi}2}\cos 2s\,ds,
+%\]
+%wobei wir $dt = 2\sin s\cos s\,ds$ verwendet haben.
+%Da $\cos 2s$ eine im Intervall $[0,\frac{\pi}2]$ bezüglich
+%des Punktes $\frac{\pi}4$ ungerade Funktion ist, verschwindet
+%das zweite Integral.
+%Somit folgt
+%\begin{equation}
+%\Gamma({\textstyle\frac12})^2 = \frac{\pi}{2}
+%\qquad\Rightarrow\qquad
+%\Gamma({\textstyle\frac12}) = \sqrt{\frac{\pi}{2}}.
+%\label{buch:rekursion:gamma:gamma12}
+%\end{equation}
+%Matt Parker hat auf seinem Youtube-Kanal {\em Stand-up Maths} dieses Resultat
+%sogar zum Titel eines Videos\footnote{\url{https://youtu.be/dGnIJFzkLI4}}
+%gemacht:
+%{\em What is the factorial of $-\nicefrac{1}{2}$?}
+%Die Antwort ist natürlich nur möglich, indem man
+%$(-\frac12)!$ als Wert
+%\[
+%(-{\textstyle\frac12})!
+%=
+%\Gamma(-{\textstyle\frac12}+1)
+%=
+%\Gamma({\textstyle\frac12})
+%=
+%\sqrt{\frac{\pi}2}
+%\]
+%der Gamma-Funktion interpretiert.
+%
+%\subsubsection{Alternative Parametrisierungen}
+%Die Substitution $t=\sin^2 s$ hat im vorangegangenen Abschnitt
+%ermöglicht, $\Gamma(\frac12)$ zu ermitteln.
+%Die Substition erlaubt aber auch, das Beta-Integral in eine alternative
+%Form zu bringen.
+%Aus der Definition~\ref{buch:rekursion:gamma:def:beta-funktion}
+%wird damit
+%\begin{align*}
+%B(x,y)
+%&=
+%\int_0^1 t^{x-1} (1-t)^{y-1}\,dt
+%\\
+%&=
+%2
+%\int_0^{\frac{\pi}2} \sin^{2(x-1)} s\cdot (1-\sin^2 s)^{y-1}
+%\cdot \sin s\cos s\,ds
+%\\
+%&=
+%2
+%\int_0^{\frac{\pi}2} \sin^{2x-1}s \cos^{2y-1} s\,ds.
+%\intertext{Unter Verwendung der Formel~\eqref{buch:rekursion:gamma:betagamma},
+%die die Beta-Funktion durch Gamma-Funktionen auszudrücken erlaubt, findet
+%man die Formel}
+%\int_0^{\frac{\pi}2} \sin^{2x-1}s \cos^{2y-1} s\,ds
+%&=
+%\frac{\Gamma(x)\Gamma(y)}{2\Gamma(x+y)}
+%\end{align*}
+%für ein bestimmtes Integral von Potenzen von Sinus- und Kosinus-Funktionen.
+%
+%Die alternative Substitution $t = s/(s+1)$ verwandelt das Beta-Integral
+%$B(x,y)$ in ein Integral über die positive Halbachse ab:
+%\begin{align}
+%B(x,y)
+%&=
+%\int_0^1 t^{x-1}(1-t)^{y-1}\,dt
+%\notag
+%\\
+%&=
+%\int_0^\infty
+%\frac{s^{x-1}}{(s+1)^{x-1}}
+%\frac{1}{(s+1)^{y-1}}
+%\frac{ds}{(s+1)^2}
+%\notag
+%\\
+%&=
+%\int_0^\infty
+%\frac{s^{x-1}}{(s+1)^{x+y}}\,ds,
+%\label{buch:rekursion:gamma:beta:sinf}
+%\end{align}
+%wobei wir
+%\[
+%\frac{dt}{ds}
+%=
+%\frac{d}{ds}
+%\frac{s}{s+1}
+%=
+%\frac{(s+1)-s}{(s+1)^2}
+%=
+%\frac{1}{(s+1)^2}
+%\]
+%verwendet haben.
+%Diese Darstellung des Beta-Integrals wird später
+%% XXX Ort ergänzen
+%dazu verwendet, die Spiegelungsformel für die Gamma-Funktion
+%herzuleiten.
+%
+%Eine weitere mögliche Parametrisierung verwendet $t = (1+s)/2$
+%mit $dt=\frac12 ds$.
+%Damit wird das Beta-Integral
+%\begin{equation}
+%B(x,y)
+%=
+%\int_0^1 t^{x-1}(1-t)^{y-1}\,dt
+%=
+%\frac12
+%\int_{-1}^1
+%\biggl(\frac{1+s}2\biggr)^{x-1}
+%\biggl(\frac{1-s}2\biggr)^{y-1}
+%\,ds
+%=
+%2^{1-x-y}
+%\int_{-1}^1
+%(1+s)^{x-1}(1-s)^{y-1}
+%\,ds.
+%\label{buch:rekursion:gamma:beta:symm}
+%\end{equation}
+%
+%\subsubsection{Die Verdoppelungsformel von Legendre}
+%Die trigonometrische Substitution kann dazu verwendet werden, die
+%Legendresche Verdoppelungsformel für die Gamma-Funktion herzuleiten.
+%
+%\begin{satz}[Legendre]
+%\[
+%\Gamma(x)\Gamma(x+{\textstyle\frac12})
+%=
+%2^{1-2x}\sqrt{\pi}
+%\Gamma(2x)
+%\]
+%\end{satz}
+%
+%\begin{proof}[Beweis]
+%Der Wert $\Gamma(2x)$ entsteht, wenn man $B(x,x)$ mit Hilfe der
+%Gamma-Funktion als
+%\[
+%B(x,x)
+%=
+%\frac{\Gamma(x)^2}{\Gamma(2x)}
+%\]
+%schreibt.
+%Das Ziel ist, $B(x,x)$ auf einem alternativen Weg zu berechnen.
+%
+%Mit Hilfe von \eqref{buch:rekursion:gamma:beta:symm}
+%kann man das Beta-Integral zu
+%\begin{align*}
+%B(x,x)
+%&=
+%2^{1-2x}
+%\int_{-1}^1
+%(1+s)^{x-1}(1-s)^{x-1}
+%\,ds
+%=
+%2^{1-2x}
+%\int_{-1}^1(1-s^2)^{x-1}\,ds
+%\end{align*}
+%vereinfachen.
+%Der Integrand ist gerade, es folgt
+%\[
+%B(x,x)
+%=
+%2^{1-2x}
+%\cdot 2
+%\int_0^1(1-s^2)^{x-1}\,ds.
+%\]
+%Das Integral kann mit der Substitution $s^2=t$ wieder in die Form
+%eines Beta-Integrals gebracht werden:
+%\begin{align*}
+%2\int_0^1(1-s^2)^{x-1}\,ds
+%&=
+%\int_0^1 (1-t)^{x-1} \,\frac{dt}{\sqrt{t}}
+%=
+%\int_0^1 t^{\frac12-1}(1-t)^{x-1}\,dt
+%=
+%B({\textstyle\frac12},x).
+%\end{align*}
+%In der Substitution haben wir $2s\,ds = dt$ oder $2\,ds = dt/\sqrt{t}$
+%verwendet.
+%Das letzte Beta-Integral kann man nun wieder mit Gamma-Funktionen
+%schreiben, nämlich als
+%\[
+%B({\textstyle\frac12},x)
+%=
+%\frac{\Gamma({\textstyle\frac12})\Gamma(x)}{\Gamma(x+{\textstyle\frac12})}.
+%\]
+%Setzt man alles zusammen, erhält man jetzt
+%\begin{align*}
+%\frac{\Gamma(x)^2}{\Gamma(2x)}
+%&=
+%\frac1{2^{2x-1}}
+%\frac{\Gamma({\textstyle\frac12})\Gamma(x)}{\Gamma(x+{\textstyle\frac12})}
+%\\
+%\Rightarrow\qquad
+%\Gamma(x)\Gamma(x+{\textstyle\frac12})
+%&=
+%2^{1-2x}
+%\Gamma({\textstyle\frac12})\Gamma(2x)
+%=
+%2^{1-2x}\sqrt{\pi}\Gamma(2x),
+%\end{align*}
+%wobei wir den bekannten Wert $\Gamma(\frac12)=\sqrt{\pi}$ verwendet haben.
+%\end{proof}
+%
+%Setzt man $x=\frac12$ in die Verdoppelungsformel ein, erhält man
+%\[
+%\Gamma({\textstyle\frac12})\Gamma(1) = 2^{1-2\frac12}\sqrt{\pi}\Gamma(1)
+%\qquad\Rightarrow\qquad
+%\Gamma({\textstyle\frac12}) = \sqrt{\pi},
+%\]
+%in Übereinstimmung mit dem bereits bekannten Wert.
+%
+%\subsubsection{Beta-Funktion und Binomialkoeffizienten}
+%Die Binomialkoeffizienten können mit Hilfe der Fakultät als
+%\begin{equation}
+%\binom{n}{k}
+%=
+%\frac{n!}{(n-k)!\,k!}
+%=
+%\frac{\Gamma(n-1)}{\Gamma(n-k-1)\Gamma(k-1)}
+%=
+%\frac{(n-2)\Gamma(n-2)}{\Gamma(n-k-1)\Gamma(k-1)}
+%=
+%\frac{n-2}{B(n-k-1,k-1)}
+%\label{buch:rekursion:gamma:binombeta}
+%\end{equation}
+%geschrieben werden.
+%Die Rekursionsbeziehung
+%\[
+%\binom{n+1}{k} = \binom{n}{k-1} + \binom{n}{k}
+%\]
+%der Binomialkoeffizienten erzeugt das vertraute Pascal-Dreieck,
+%die Formel \eqref{buch:rekursion:gamma:binombeta} für die
+%Binomialkoeffizienten macht daraus
+%\[
+%\frac{n-1}{B(n-k,k-1)}
+%=
+%\frac{n-2}{B(n-k,k-2)}
+%+
+%\frac{n-2}{B(n-k-1,k-1)},
+%\]
+%die für ganzzahlige Argumente gilt.
+%Wir wollen nachrechnen, dass dies für beliebige Argumente gilt.
+%\begin{align*}
+%\frac{(n-1)\Gamma(n-1)}{\Gamma(n-k)\Gamma(k-1)}
+%&=
+%\frac{(n-2)\Gamma(n-2)}{\Gamma(n-k)\Gamma(k-2)}
+%+
+%\frac{(n-2)\Gamma(n-2)}{\Gamma(n-k-1)\Gamma(k-1)}
+%\\
+%\frac{\Gamma(n)}{\Gamma(n-k)\Gamma(k-1)}
+%&=
+%\frac{\Gamma(n-1)}{\Gamma(n-k)\Gamma(k-2)}
+%+
+%\frac{\Gamma(n-1)}{\Gamma(n-k-1)\Gamma(k-1)}
+%\intertext{Durch Zusammenfassen der Faktoren im Zähler mit Hilfe
+%der Rekursionsformel für die Gamma-Funktion und Multiplizieren
+%mit dem gemeinsamen Nenner
+%$\Gamma(n-k)\Gamma(k-1)=(n-k-1)\Gamma(n-k-1)(k-2)\Gamma(k-2)$ wird daraus}
+%\Gamma(n)
+%&=
+%(k-2)
+%\Gamma(n-1)
+%+
+%(n-k-1)
+%\Gamma(n-1)
+%\intertext{Indem wir die Rekursionsformel für die Gamma-Funktion auf
+%die rechte Seite anwenden können wir erreichen, dass in allen Termen
+%ein Faktor
+%$\Gamma(n-1)$ auftritt:}
+%(n-1)\Gamma(n-1)
+%&=
+%(k-2)\Gamma(n-1)
+%+
+%(n+k-1)\Gamma(n-1)
+%\\
+%n-1
+%&=
+%k-2
+%+
+%n-k-1
+%\end{align*}
+%
 
 %
 %
