@@ -3,7 +3,7 @@
 %
 % (c) 2021 Prof Dr Andreas Müller, OST Ostschweizer Fachhochschule
 %
-\section{Euler-Transformation der hypergeometrischen Funktionen
+\section{Integraleigenschaften hypergeometrischer Funktionen
 \label{buch:integral:section:eulertransformation}}
 \rhead{Euler-Transformation}
 Die hypergeometrischen Funktionen wurden bisher einerseits
@@ -18,8 +18,79 @@ auch durch Integrale definieren kann.
 %
 \subsection{Integraldarstellung der hypergeometrischen Funktion
 $\mathstrut_2F_1$}
+Das Integral
+\[
+f(x)
+=
+\int_0^1 t^{b-1} (1-t)^{c-b-1} (1-xt)^{-a}\,dt
+\]
+kann im allgemeinen nicht in geschlossener Form evaluiert werden.
+Es wäre daher naheliegend, es als neues spezielle Funktion zu definieren.
+Die folgende Rechnung soll aber zeigen, dass es sich durch die bereits
+bekannte hypergeometrische Fujnktion $\mathstrut_2F_1$ ausdrücken
+lässt.
 
-XXX An dieser Stelle Abschnitt 4.3.5 (Integraldarstellung) einfügen
+Die Newtonsche binomische Reihe ermöglicht, den $x$ enthaltenden
+Faktor als
+\[
+(1-xt)^{-a}
+=
+\sum_{k=0}^\infty
+\frac{(a)_k}{k!} x^k t^k
+\]
+zu schreiben.
+Setzt man dies ins Integral ein, erhält man
+\[
+f(x)
+=
+\sum_{k=0}^\infty \frac{(a)_k}{k!} x^k
+\int_0^1 t^{b-1} (1-t)^{c-b-1} t^k\,dt
+=
+\sum_{k=0}^\infty \frac{(a)_k}{k!} x^k
+\int_0^1 t^{k+b-1} (1-t)^{c-b-1} t^k\,dt.
+\]
+Das Integral ist die Beta-Funktion $B(k+b,c-b)$ und kann daher mit Hilfe
+der Gamma-Funktion geschrieben werden.
+Es gilt
+\[
+B(k+b,c-b)
+=
+\frac{\Gamma(k+b)\Gamma(c-b)}{\Gamma(c+k)}.
+\]
+Mit Hilfe der Funktionalgleichung der Gamma-Funktion kann man
+\begin{align*}
+\Gamma(u+k)
+&=
+\Gamma(u+k-1) (u+k-1)
+=
+\Gamma(u+k-2) (u+k-2)(u+k-1)
+\\
+&=
+\ldots
+\\
+&=
+\Gamma(u) u(u+1)\cdots(u+k-2)(u+k-1)
+\end{align*}
+schreiben, womit das Integral zu
+\begin{align*}
+f(x)
+&=
+\sum_{k=0}^\infty \frac{(a)_k}{k!} x^k
+\frac{\Gamma(k+b)\Gamma(c-b)}{\Gamma(c+k)}
+=
+\sum_{k=0}^\infty \frac{(a)_k}{k!} x^k
+\frac{\Gamma(b)(b)_k\Gamma(c-b)}{\Gamma(c)(c)_k}
+\\
+&=
+\frac{\Gamma(b)\Gamma(c-b)}{\Gamma(c)}
+\sum_{k=0}^\infty\frac{(a)_k(b)_k}{(c)_k} x^k
+=
+\frac{\Gamma(b)\Gamma(c-b)}{\Gamma(c)}\,\mathstrut_2F_1(a,b;c;x)
+\end{align*}
+vereinfacht werden kann.
+Damit ist das Integral bestimmt. 
+Durch Auflösung nach der hypergeometrischen Funktion bekommt man
+die folgende Integraldarstellung.
 
 \begin{satz}[Euler]
 \label{buch:integrale:eulertransformation:satz}
@@ -148,7 +219,8 @@ Funktionen $\mathstrut_{p+1}F_{q+1}$ durch ein Integral, dessen
 Integrand $\mathstrut_pF_q$ enthält, ausdrücken lässt.
 
 \begin{satz}
-Es gilt
+Es gilt die sogennannte Euler-Transformationsformel
+\index{Euler-Transformation}%
 \[
 \mathstrut_{p+1}F_{q+1}\biggl(
 \begin{matrix}
