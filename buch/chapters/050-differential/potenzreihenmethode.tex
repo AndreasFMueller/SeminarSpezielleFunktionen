@@ -11,15 +11,15 @@ entwickeln.
 Wir gehen in diesem Abschnitt von einer Differentialgleichung der
 Form
 \begin{equation}
-a_n(x)y^{(n)}(x)
+b_n(x)y^{(n)}(x)
 +
-a_{n-1}(x)y^{(n-1)}(x)
+b_{n-1}(x)y^{(n-1)}(x)
 +
 \dots
 +
-a_1(x)y'(x)
+b_1(x)y'(x)
 +
-a_0(x)y(x)
+b_0(x)y(x)
 =
 f(x)
 \label{buch:differentialgleichungen:eqn:potenzreihendgl}
@@ -28,12 +28,12 @@ mit der Randbedingung $y(0)=y_0$ aus.
 Schon im einfachsten Fall einer homogenen Differentialgleichung erster
 Ordnung ergibt sich die Beziehung
 \[
-a_1(x) y'(x) = a_0(x)y(x),
+b_1(x) y'(x) = b_0(x)y(x),
 \]
 wobei wir uns $y(x)$ und damit auch $y'(x)$ als Potenzreihe vorstellen.
 Insbesondere ist 
 \[
-\frac{a_1(x)}{a_0(x)} = \frac{y(x)}{y'(x)}
+\frac{b_1(x)}{b_0(x)} = \frac{y(x)}{y'(x)}
 \]
 ein Quotient von Potenzreihen, den man natürlich wieder als 
 Potenzreihe schreiben kann.
@@ -57,19 +57,124 @@ G\biggl(x,t,
 mit einer Funktion $G$, die analytisch ist in allen Variablen
 und der Randbedingung
 \[
-\frac{\partial j}{\partial t^j}u(x,0) = \varphi_j(x)\quad\text{für $k=0,\dots,k-1$}
+\frac{\partial^j}{\partial t^j}u(x,0)
+=
+\varphi_j(x)\quad\text{für $k=0,\dots,k-1$}
 \]
 mit analytischen Funktion $\varphi_j$ hat eine in einer Umgebung von 
 $t=0$ eindeutige analytische Lösung.
 \end{satz}
 
 Im folgenden werden wir daher weitere einschränkende Annahmen über
-die Koeffizienten $a_k(x)$ machen.
+die Koeffizienten $b_k(x)$ machen.
 
+%
+% Potenzreihenansatz und Koeffizientenvergleich
+%
 \subsection{Potenzreihenansatz und Koeffizientenvergleich}
+In Abschnitt~\ref{buch:differentialgleichungen:section:beispiele}
+wurde von einer grossen Zahl interessanter Funktionen gezeigt, dass
+sie einerseits eine Lösungen einer Differentialgleichung sind, 
+andererseits aber auch eine Potenzreihendarstellung sind.
+Der Satz von Cauchy-Kowalevskaja hat gezeigt, dass dies das zu
+erwartende Resultat ist.
+
+Da wir bei einer linearen Differentialgleichung mit analytischen
+Koeffizienten eine analytische Lösungsfunktion erwarten dürfen,
+können wir auch versuchen, die Lösung der Differentialgleichung
+von Anfang an als Potenzreihe
+\[
+y(x)
+=
+\sum_{k=0}^{\infty} a_kx^k
+\]
+anzusetzen.
+Die Ableitungen von $y(x)$ sind gleichermassen als Potenzreihen
+\begin{align*}
+y'(x)
+&=
+\sum_{k=1}^\infty ka_kx^{k-1}
+\\
+y''(x)
+&=
+\sum_{k=2}^\infty k(k-1)a_kx^{k-2}
+\\
+&\vdots\\
+y^{(n)}(x)
+&=
+\sum_{k=n}^\infty
+k(k-1)\cdots(k-n+1) a_kx^{k-n}
+=
+\sum_{k=n}^\infty
+(k-n+1)_n a_k x^{k-n}
+=
+\sum_{l=0}^\infty
+(l+1)_na_{l+n}x^l
+\end{align*}
+darstellbar.
+
+Der Ansatz für $y(x)$ und seine Ableitungen kann jetzt in die
+Differentialgleichung eingsetzt werden.
+Durch Ausmultiplizieren wird die Differentialgleichung zu
+einer Identität von Potenzreihen.
+Zwei Potenzreihen können nur dann übereinstimmen, wenn alle
+Koeffizienten übereinstimmen.
+So entsteht eine Menge von linearen Gleichungen für die
+Koeffizienten $a_k$.
+Die Koeffizienten $a_0$ bis $a_{n-1}$ werden gegeben durch die
+Anfangswerte der Funktion und der ersten $n-1$ Ableitungen, die
+ebenfalls nötig sind, um die Lösungsfunktion eindeutig festzulegen.
+Durch Lösen des linearen Gleichungssystems können jetzt die Koeffizienten
+und damit die Lösung bestimmt werden.
+
+Setzt man zum Beispiel voraus, dass $b_n(0)\ne 0$ ist, dann ist der
+konstante Term
+\begin{equation}
+b_n(0) n! a_n + b_{n-1}(0) (n-1)! a_{n-1}
++ \dots +
+b_2(0) 2! a_2 + b_1(0) a_1 + b_0(0) a_0 = 0.
+\label{buch:differntialgleichungen:eqn:konstterm}
+\end{equation}
+Diese Gleichung ermöglicht, nach $a_n$ aufzulösen:
+\[
+a_n
+=
+-
+\frac{1}{b_n(0)\,n!}\bigl(
+b_{n-1}(0)\,(n-1)!\,a_{n-1} + \dots + 
+b_2(0)\,2!\,a_2 + b_1(0)\, a_1 + b_0(0)\, a_0
+\bigr).
+\]
+Falls jedoch der Koeffizient $b_n(x)$ eine Nullstelle bei $x=0$
+hat, ist es mit Gleichung~\eqref{buch:differntialgleichungen:eqn:konstterm}
+allein nicht möglich, $a_n$ zu bestimmen.
+
+Ein besonders einfacher Fall ist jener, in dem alle Koeffizienten der
+Differentialgleichung konstant sind. 
+In diesem Fall führen die Koeffizienten von $x^k$ auf die Gleichung
+\begin{equation}
+b_n n! a_{n+k} + b_{n-1} (n-1)! a_{n-1+k}
++ \dots +
+b_2 2! a_{2+k} + b_1 a_{1+k} + b_0 a_{k} = 0.
+\label{buch:differntialgleichungen:eqn:kterm}
+\end{equation}
+für alle $k$.
+Die Gleichungen sind also immer lösbar und ergeben
+\[
+a_{n+k}
+=
+-
+\frac{1}{b_n\,n!}\bigl(
+b_{n-1}\,(n-1)!\,a_{n-1+k} + \dots + 
+b_2\,2!\,a_{2+k} + b_1\, a_{1+k} + b_0\, a_k
+\bigr).
+\]
 
 
 
+%
+% Die Newtonsche Reihe
+%
 \subsection{Die Newtonsche Reihe}
 Wir lösen die
 Differentialgleichung~\eqref{buch:differentialgleichungen:eqn:wurzeldgl1}
@@ -258,6 +363,9 @@ q(x)&=\sum_{k=0}^\infty q_kx^k = q_0+q_1x+q_2x^2+q_3x^3+\dots
 \end{align*}
 entwickeln lassen.
 
+%
+% Potenzreihenmethode funktioniert nicht
+%
 \subsubsection{Die Potenzreihenmethode funktioniert nicht}
 Für die Differentialgleichung
 \eqref{buch:differentialgleichungen:eqn:dglverallg}
@@ -302,6 +410,9 @@ kann, für die also auch die Koeffizienten $a_k\ne 0$ sein können.
 Sind die Lösungen nicht ganzzahlig, dann müssen alle Koeffizienten 
 $a_k=0$ sein, die einzige Potenzreihe ist die triviale Funktion $y(x)=0$.
 
+%
+% Verallgemeinerte Potenzreihe
+%
 \subsubsection{Verallgemeinerte Potenzreihe}
 Für Differentialgleichungen der Art
 \eqref{buch:differentialgleichungen:eqn:dglverallg}
@@ -499,6 +610,9 @@ q_{n-l}
 \end{equation}
 die für jedes $n$ erfüllt sein müssen.
 
+%
+% Indexgleichung
+%
 \subsubsection{Indexgleichung}
 Die Gleichungen~\eqref{buch:differentialgleichungen:eqn:verallgkoefgl}
 müssen erfüllt sein, wenn eine Lösung in Form einer verallgemeinerten
@@ -525,6 +639,9 @@ Wir bezeichnen die beiden Nullstellen mit $\varrho_1$ und $\varrho_2$.
 Wenn $p_0$ und $q_0$ reell sind, sind die Nullstellen entweder reell
 oder konjugiert komplex.
 
+%
+% Rekursive Bestimmung der $a_n$
+%
 \subsubsection{Rekursive Bestimmung der $a_n$}
 Der Koeffizient $a_{n}$ kann nur dann aus den vorangegangene
 Koeffizienten $a_{n-1},a_{n-2},\dots$ bestimmt werden, wenn
