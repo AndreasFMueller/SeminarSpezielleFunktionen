@@ -1,0 +1,60 @@
+Finden Sie $x$ so, dass $\sin x = 2$.
+
+\begin{loesung}
+Es ist klar, dass die Lösung nicht reell sein kann, da reelle
+Argumente immer nur Sinus-Werte zwischen $-1$ und $1$ ergeben kann.
+Die Darstellung der Sinus-Funktion als Linearkombination von
+Exponentialfunktionen ergibt
+\[
+\sin x = \frac{e^{ix}-e^{-ix}}{2i} = 2.
+\]
+Wir schreiben $y=e^{ix}$ und multiplizieren die Gleichung mit $y$,
+so entsteht die quadratische Gleichung
+\[
+y^2-4iy-1=0
+\]
+mit den Lösungen
+\[
+y_{\pm}
+=
+2i\pm \sqrt{-4+1}
+=
+2i\pm \sqrt{-3}
+=
+(2\pm \sqrt{3})i
+=
+(2\pm\sqrt{3})e^{\frac{i\pi}2}.
+\]
+Davon muss jetzt der Logarithmus bestimmt werden.
+Der Realteil des Logarithmus ist der Betrag von $y_\pm$:
+\begin{align*}
+|y_\pm| &= 2\pm \sqrt{3}
+\\
+\operatorname{arg} y_\pm &= \frac{\pi}2.
+\end{align*}
+Daraus bekommt man
+\[
+x_\pm
+=
+\frac{1}{i}
+\log y_\pm
+=
+\frac{1}{i}
+(
+\log |y_\pm|
++
+i\arg y_\pm
+)
+=
+\frac{\pi}2
+-i
+\log(2\pm\sqrt{3})
+\approx
+\begin{cases}
+1.5707963 - 1.3169579i\\
+1.5707963 + 1.3169579i
+\end{cases}
+\]
+Weitere Lösungen erhält man natürlich durch Addition von ganzzahligen
+Vielfachen von $2\pi$.
+\end{loesung}

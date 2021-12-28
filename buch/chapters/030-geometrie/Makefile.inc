@@ -11,4 +11,5 @@ CHAPTERFILES = $(CHAPTERFILES)						\
 	chapters/030-geometrie/flaeche.tex				\
 	chapters/030-geometrie/laenge.tex				\
 	chapters/030-geometrie/uebungsaufgaben/1.tex			\
+	chapters/030-geometrie/uebungsaufgaben/2.tex			\
 	chapters/030-geometrie/chapter.tex
