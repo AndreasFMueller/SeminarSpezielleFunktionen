@@ -20,14 +20,37 @@ die Bessel-Funktionen.
 \subsection{Die Besselsche Differentialgleichung}
 % XXX Wo taucht diese Gleichung auf
 Die Besselsche Differentialgleichung ist die Differentialgleichung
-\[
+\begin{equation}
 x^2\frac{d^2y}{dx^2} + x\frac{dy}{dx} + (x^2-\alpha^2)y = 0
-\]
+\label{buch:differentialgleichungen:eqn:bessel}
+\end{equation}
 zweiter Ordnung
 für eine auf dem Interval $[0,\infty)$ definierte Funktion $y(x)$.
 Der Parameter $\alpha$ ist eine beliebige komplexe Zahl $\alpha\in \mathbb{C}$,
 die Lösungsfunktionen hängen daher von $\alpha$ ab.
 
+\subsubsection{Eigenwertproblem}
+Die Besselsche Differentialgleichung
+\eqref{buch:differentialgleichungen:eqn:bessel}
+kann man auch als Eigenwertproblem für den Bessel-Operator
+\index{Bessel-Operator}%
+\[
+B = x^2\frac{d^2}{dx^2} + x\frac{dy}{dx} + x^2
+\]
+schreiben.
+Eine Lösung $y(x)$ der Gleichung
+\eqref{buch:differentialgleichungen:eqn:bessel}
+erfüllt
+\[
+By
+=
+x^2y''+xy+x^2y
+=\alpha^2 y,
+\]
+ist also eine Eigenfunktion des Bessel-Operators zum Eigenwert
+$\alpha$.
+
+\subsubsection{Indexgleichung}
 Die Besselsche Differentialgleichung ist eine Differentialgleichung
 der Art~\eqref{buch:differentialgleichungen:eqn:dglverallg} mit
 \[
