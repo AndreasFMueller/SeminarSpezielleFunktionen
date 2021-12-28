@@ -11,4 +11,6 @@ CHAPTERFILES = $(CHAPTERFILES)						\
 	chapters/020-exponential/dilog.tex				\
 	chapters/020-exponential/eili.tex				\
 	chapters/020-exponential/uebungsaufgaben/0.tex			\
+	chapters/020-exponential/uebungsaufgaben/1.tex			\
+	chapters/020-exponential/uebungsaufgaben/2.tex			\
 	chapters/020-exponential/chapter.tex

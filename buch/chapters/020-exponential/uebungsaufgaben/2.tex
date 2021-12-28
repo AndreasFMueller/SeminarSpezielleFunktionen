@@ -1,0 +1,17 @@
+Finden Sie $x$ derart, dass $(\tan x)^{\tan x}=2$
+
+\begin{loesung}
+Zunächst setzen wir $y=\tan x$, dann wird die Gleichung zu $y^y = 2$.
+Der Logarithmus davon ist $y\log y = \log 2$.
+Mit der Bezeichnung $t=\log y$ wird daraus die Gleichung
+\[
+te^t = \log 2,
+\]
+die mit der Lambert-$W$-Funktion gelöst werden kann, die Lösung ist
+$t=W(\log 2)$.
+Darus kann man jetzt wieder $y=e^t=e^{W(\log 2)}$ bekommen.
+So finden wir die Lösung
+$x = \arctan e^{W(\log 2)}\approx 1.00064239632968$.
+Durch Addition von ganzzahligen Vielfachen von $\pi$ erhält man
+weitere Lösungen.
+\end{loesung}
