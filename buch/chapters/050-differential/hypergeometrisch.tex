@@ -868,6 +868,70 @@ Dies ist die früher definierte hypergeometrische Differentialgleichung.
 
 
 %
+% Gerade und ungerade Funktionen
+%
+\subsubsection{Gerade und ungerade Funktionen}
+Hypergeometrische Funktionen, deren Reihe mehr als einen Term
+enthalten, enthalten immer mindestens eine gerade und eine ungerade
+Potenz der unabhängigen Variable.
+Sie können also grundsätzlich weder gerade noch ungerade sein.
+Andererseits haben die Differentialgleichungen $y''+y=0$ oder $y''-y=0$
+besonders praktische Lösungen, die sich zusätzlich durch besondere
+Symmetrien auszeichnen.
+Die Differentialgleichung $y''+y=0$ hat zum Beispiel die gerade
+Lösung $\cos x$ und die ungerade Lösung $\sin x$.
+Auch die Differentialgleichung $y''-y=0$ hat eine gerade Lösung,
+$\cosh x$, und eine ungerade Lösung, $\sinh x$.
+
+Hat die hypergeometrische Differentialgleichung gerade und
+ungerade Lösungen?
+Wenn es eine gerade Lösung $y(x)$ gibt, dann sollte die Substitution
+$x \to -x$ eine neue Differentialgleichung geben, die ebenfalls $y(x)$
+als Lösung hat.
+\begin{align*}
+ x(1-x)\frac{d^2y}{dx^2} + (c+(a+b+1)x)\frac{dy}{dx}-aby&=0
+\\
+-x(1+x)\frac{d^2y}{dx^2} - (c-(a+b+1)x)\frac{dy}{dx}-aby&=0
+\end{align*}
+Die Differenz dieser beiden Gleichungen ist
+\begin{align*}
+2x\frac{d^2y}{dx^2} +2c \frac{dy}{dx}&=0
+&&\Rightarrow&
+\frac{d}{dx} \log \frac{dy}{dx} &= -\frac{c}{x}
+\\
+&&&\Rightarrow&
+\log \frac{dy}{dx} &= -c\log x
+\\
+&&&\Rightarrow&
+\frac{dy}{dx} &= x^{-c}
+\\
+&&&\Rightarrow&
+y(x) &= \frac{1}{-c+1}x^{-c+1}
+\end{align*}
+Dies zeigt, dass die hypergeometrische Differentialgleichung im
+allgemeinen keine geraden oder ungeraden Lösungen hat.
+
+Die gerade oder ungeraden Funktionen, die in früheren Beispielen
+als hypergeometrische Funktionen dargestellt wurden, konnten also
+nicht Lösungen der hypergeometrische Differentialgleichung sein.
+Die Potenzreihenentwicklung einer geraden Funktion enthält nur
+gerade Potenzen der unabhängigen Variablen, bei einer ungeraden
+Funktion sind es nur die ungeraden Potenzen.
+Die einzige Möglichkeit, eine gerade Funktion $g(x)$ oder eine ungerade
+Funktion $u(x)$  als eine hypergeometrische Funktion darzustellen,
+ist die Verwendung eines quadratischen Arguments, also in der Form
+\[
+g(x)
+=
+\mathstrut_pF_q\biggl(\begin{matrix}a_1,\dots,a_p\\b_1,\dots,b_1\end{matrix};x^2\biggr)
+\qquad\text{und}\qquad
+u(x)
+=
+x\,
+\mathstrut_pF_q\biggl(\begin{matrix}a_1,\dots,a_p\\b_1,\dots,b_1\end{matrix};x^2\biggr).
+\]
+
+%
 %
 %
 \subsubsection{Hypergeometrische Funktionen von $x^2$ und $x^3$}
