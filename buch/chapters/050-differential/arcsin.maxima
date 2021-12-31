@@ -1,0 +1,5 @@
+u: asin(x);
+up: diff(u,x);
+upp: diff(up,x);
+
+(1-x^2)*upp-x*up ;

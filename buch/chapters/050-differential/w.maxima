@@ -1,0 +1,101 @@
+
+z: s*x^2;
+equation: z*(1-z)*Ypp + (c-(a+b+1)*z)*Yp-a*b*Y;
+
+gradef(w(x), wp(x));
+gradef(wp(x), wpp(x));
+
+g: w(z);
+gp: diff(g, x);
+gpp: diff(gp, x);
+
+Ag: matrix(
+[ coeff(g,  w(z)), coeff(g,  wp(z)), coeff(g,  wpp(z)) ],
+[ coeff(gp, w(z)), coeff(gp, wp(z)), coeff(gp, wpp(z)) ],
+[ coeff(gpp,w(z)), coeff(gpp,wp(z)), coeff(gpp,wpp(z)) ]
+);
+Agi: invert(Ag);
+W: Agi.matrix([G],[Gp],[Gpp]);
+
+eg: subst(W[1,1], Y, equation);
+eg: subst(W[2,1], Yp, eg);
+eg: subst(W[3,1], Ypp, eg);
+eg: 4*s*x*eg;
+eg: expand(ratsimp(eg));
+ratsimp(subst(0, G,  subst(0, Gp,  eg)) / Gpp);
+ratsimp(subst(0, G,  subst(0, Gpp, eg)) / Gp);
+ratsimp(subst(0, Gp, subst(0, Gpp, eg)) / G);
+
+
+u: x*w(z);
+up: diff(u, x);
+upp: diff(up, x);
+
+Au: matrix(
+[ coeff(u,  w(z)), coeff(u,  wp(z)), coeff(u,  wpp(z)) ],
+[ coeff(up, w(z)), coeff(up, wp(z)), coeff(up, wpp(z)) ],
+[ coeff(upp,w(z)), coeff(upp,wp(z)), coeff(upp,wpp(z)) ]
+);
+Aui: invert(Au);
+W: Aui.matrix([U],[Up],[Upp]);
+
+eu: subst(W[1,1], Y, equation);
+eu: subst(W[2,1], Yp, eu);
+eu: subst(W[3,1], Ypp, eu);
+eu: 4*s*x^3*eu;
+eu: expand(ratsimp(eu));
+display2d: false$
+ratsimp(subst(0, U,  subst(0, Up,  eu)) / Upp);
+ratsimp(subst(0, U,  subst(0, Upp, eu)) / Up);
+ratsimp(subst(0, Up, subst(0, Upp, eu)) / U);
+
+display2d: true$
+
+/* allgemeiner Fall, f(x) = x^nu w(s * x^rho) */
+
+z: s*x^nu;
+f: x^rho * w(z);
+fp: diff(f, x);
+fpp: diff(fp, x);
+
+Af: ratsimp(matrix(
+[ coeff(f,  w(z)), coeff(f,  wp(z)), coeff(f,  wpp(z)) ],
+[ coeff(fp, w(z)), coeff(fp, wp(z)), coeff(fp, wpp(z)) ],
+[ coeff(fpp,w(z)), coeff(fpp,wp(z)), coeff(fpp,wpp(z)) ]
+));
+Afi: invert(Af);
+Afi: ratsimp(Afi);
+W: Afi.matrix([F],[Fp],[Fpp]);
+
+ef: subst(W[1,1], Y, equation);
+ef: subst(W[2,1], Yp, ef);
+ef: subst(W[3,1], Ypp, ef);
+ ef: s * nu^2 * ef; 
+ef: expand(ratsimp(ef));
+display2d: true$
+c2: ratsimp(subst(0, F,  subst(0, Fp,  ef)) / Fpp);
+c1: ratsimp(subst(0, F,  subst(0, Fpp, ef)) / Fp);
+c0: ratsimp(subst(0, Fp, subst(0, Fpp, ef)) / F);
+
+ratsimp(subst(1, s, subst(3/2, c, subst(1/2, b, subst(1/2, a,
+	subst(2, nu, subst(1, rho, c2)))))));
+ratsimp(subst(1, s, subst(3/2, c, subst(1/2, b, subst(1/2, a,
+	subst(2, nu, subst(1, rho, c1)))))));
+ratsimp(subst(1, s, subst(3/2, c, subst(1/2, b, subst(1/2, a,
+	subst(2, nu, subst(1, rho, c0)))))));
+
+
+/* Differentialgleichung von 0F1 */
+
+display2d: true$
+equation0f1: z*Ypp + beta*Yp - Y;
+e0f1: subst(W[1,1], Y, equation0f1);
+e0f1: subst(W[2,1], Yp, e0f1);
+e0f1: subst(W[3,1], Ypp, e0f1);
+e0f1: s*nu^2*x^(rho+nu) * e0f1;
+e0f1: expand(ratsimp(e0f1));
+display2d: false$
+ratsimp(subst(0, F,  subst(0, Fp,  e0f1)) / Fpp);
+ratsimp(subst(0, F,  subst(0, Fpp, e0f1)) / Fp);
+ratsimp(subst(0, Fp, subst(0, Fpp, e0f1)) / F);
+

@@ -5,6 +5,7 @@
 %
 \section{Hypergeometrische Differentialgleichung
 \label{buch:differentialgleichungen:section:hypergeometrisch}}
+\rhead{Hypergeometrische Differentialgleichung}
 Die hypergeometrische Funktion $\mathstrut_2F1(a,b;c;x)$ wurde in
 Abschnitt~\ref{buch:rekursion:section:hypergeometrische-funktion}
 als Potenzreihe mit sehr speziellen Koeffizienten, die sich aus
@@ -377,6 +378,7 @@ x(1-x)\frac{d^2y}{dx^2}
 -ab y
 =
 0
+\label{buch:differentialgleichungen:eqn:eulerhyper}
 \end{equation}
 hat die Lösung
 \[
@@ -628,20 +630,20 @@ Dies ist natürlich die Differentialgleichung der Exponentialfunktion.
 \subsubsection{Die Differentialgleichungen für $\mathstrut_1F_0$}
 In diesen Fälle gibt es nur jeweils einen einzigen Operator
 anzuwenden.
-Wir betrachten zunächst den Fall $w(z) = \mathstrut_1F_0(\alpha; z)$
+Wir betrachten zunächst den Fall $w(z) = \mathstrut_1F_0(a; z)$
 und finden direkt die Differentialgleichung
 \begin{align*}
-\biggl(z\frac{d}{dz}+\alpha\biggr)w
+\biggl(z\frac{d}{dz}+a\biggr)w
 &=
 \frac{d}{dz}w
 \\
-zw'+\alpha w
+zw'+a w
 &=
 w'
 \\
 (1-z)w'
 &=
-\alpha w.
+a w.
 \end{align*}
 
 \begin{beispiel}
@@ -684,29 +686,33 @@ sie erfüllt also die genannte Differentialgleichung.
 %
 \subsubsection{Die Differentialgleichungen für $\mathstrut_0F_1$}
 Für die Funktion $\mathstrut_0F_1$ setzen wir
-$w(z)=\mathstrut_0F_1(;\beta;z)$.
+$w(z)=\mathstrut_0F_1(;b;z)$.
 In diesem Fall gibt es keine Operatoren $D_{a_i}$ anzuwenden, die
 linke Seite der Differentialgleichung ist also einfach die Funktion $w$.
-Für die rechte Seite ist der Operator $D_{\beta-1}$ anzuwenden, was auf
+Für die rechte Seite ist der Operator $D_{b-1}$ anzuwenden, was auf
 die Differentialgleichung
-\begin{align*}
+\begin{align}
 w
 &=
 \frac{d}{dz}
-\biggl(z\frac{d}{dz}+\beta -1\biggr)w
+\biggl(z\frac{d}{dz}+b -1\biggr)w
+\notag
 \\
 w
 &=
-\frac{d}{dz}(zw'+\beta w - w)
+\frac{d}{dz}(zw'+b w - w)
+\notag
 \\
 w
 &=
-zw''+w'+\beta w' -w'
+zw''+w'+b w' -w'
+\notag
 \\
 0
 &=
-zw''+\beta w' - w
-\end{align*}
+zw''+b w' - w
+\label{buch:differentialgleichungen:0f1:dgl}
+\end{align}
 führt.
 
 \begin{beispiel}
@@ -787,90 +793,100 @@ tatsächlich die Kosinus-Funktion als Lösung hat.
 % Die Differentialgleichung für 1F1
 %
 \subsubsection{Die Differentialgleichung für $\mathstrut_1F_1$}
-Wir setzen wieder $w(z) = \mathstrut_1F_1(\alpha;\beta;z)$.
-Es sind die Operatoren $D_\alpha$ und $D_{\beta-1}$ anzuwenden.
+Wir setzen wieder $w(z) = \mathstrut_1F_1(a;b;z)$.
+Es sind die Operatoren $D_a$ und $D_{b-1}$ anzuwenden.
 Es ergibt sich die Differentialgleichung
 \begin{align*}
-\biggl(z\frac{d}{dz}+\alpha\biggr)w
+\biggl(z\frac{d}{dz}+a\biggr)w
 &=
-\frac{d}{dz}\biggl(z\frac{d}{dz} +\beta-1\biggr)w
+\frac{d}{dz}\biggl(z\frac{d}{dz} +b-1\biggr)w
 \\
-zw'+\alpha w
+zw'+a w
 &=
 \frac{d}{dz}
-(zw'+\beta w - w)
+(zw'+b w - w)
 \\
-zw'+\alpha w
+zw'+a w
 &=
-zw'' +w'+\beta w' - w'
+zw'' +w'+b w' - w'
 \\
 0
 &=
-zw'' + (\beta - z)w' - \alpha w.
+zw'' + (b - z)w' - a w.
 \end{align*}
 
 %
 % Die hypergeometrische Differentialgleichung für 2F1
 %
 \subsubsection{Die Differentialgleichung für $\mathstrut_2F_1$}
-Für die hypergeometrische Funktion $\mathstrut_2F_1(\alpha,\beta;\gamma;z)$
+Für die hypergeometrische Funktion $\mathstrut_2F_1(a,b;c;z)$
 ist die Difrentialgleichung von der Form
 \[
-\biggl(z\frac{d}{dz} + \alpha\biggr)
-\biggl(z\frac{d}{dz} + \beta\biggr)w
+\biggl(z\frac{d}{dz} + a\biggr)
+\biggl(z\frac{d}{dz} + b\biggr)w
 =
 \frac{d}{dz}
-\biggl(z\frac{d}{dz}+\gamma -1\biggr)
+\biggl(z\frac{d}{dz}+c -1\biggr)
 w.
 \]
 Durchführen der Ableitungen auf beiden Seiten ergibt für die linke Seite
 \begin{align*}
-\biggl(z\frac{d}{dz} + \alpha\biggr)
-\biggl(z\frac{d}{dz} + \beta\biggr)w
+\biggl(z\frac{d}{dz} + a\biggr)
+\biggl(z\frac{d}{dz} + b\biggr)w
 &=
-\biggl(z\frac{d}{dz} + \alpha\biggr)
-(zw'+\beta w)
+\biggl(z\frac{d}{dz} + a\biggr)
+(zw'+b w)
 \\
 &=
-z^2w'' + zw' + \beta zw' + \alpha(zw'+\beta w)
+z^2w'' + zw' + b zw' + a(zw'+b w)
 \\
 &=
-z^2w'' + (1+\alpha+\beta )zw' + \beta\alpha w
+z^2w'' + (1+a+b )zw' + ba w
 \intertext{und die rechte Seite}
-\frac{d}{dz}\biggl(z\frac{d}{dz}+\gamma-1\biggr)w
+\frac{d}{dz}\biggl(z\frac{d}{dz}+c-1\biggr)w
 &=
-\frac{d}{dz}(zw'+\gamma w-w)
+\frac{d}{dz}(zw'+c w-w)
 \\
 &=
-zw''+w'+\gamma w' - w'
+zw''+w'+c w' - w'
 \\
 &= 
-zw'' +\gamma w'.
+zw'' +c w'.
 \end{align*}
 Durch Gleichsetzen ergibt sich jetzt
 \begin{align*}
-z^2w'' + (1+\alpha+\beta )zw' + \alpha\beta w
+z^2w'' + (1+a+b )zw' + ab w
 &=
-zw'' +\gamma w'
+zw'' +c w'
 \\
 0
 &=
 z(1-z)w''
 +
-(\gamma-z(1+\alpha+\beta))w'
+(c-z(1+a+b))w'
 -
-\alpha\beta
+ab
 w
 \end{align*}
 Dies ist die früher definierte hypergeometrische Differentialgleichung.
 
-\subsubsection{Differentialgleichungen für $w(x^2)$ und $xw(x^2)}
-
-
 %
 % Gerade und ungerade Funktionen
 %
-\subsubsection{Gerade und ungerade Funktionen}
+\subsection{Differentialgleichung für
+$x^\varrho\cdot\mathstrut_pF_q(a_i;b_j;sx^\nu)$}
+In verschiedenen Beispielen ist gezeigt worden, wie sich
+wohlbekannte Funktionen durch hypergeometrische Funktionen
+ausdrücken lassen.
+Aus der Differentialgleichung der hypergeometrischen Funktionen
+muss sich daher auch eine Differentialgleichung für die
+gesuchten Funktionen ergeben.
+Zum Beispiel lassen sich die Besselfunktionen durch hypergeometrische
+Funktionen des Argumentes $-x^2/4$ schreiben, es muss also auch
+möglich sein, die besselsche Differentialgleichung wieder aus
+der eulerschen hypergeometrischen Differentialgleichung zu gewinnen.
+
+\subsubsection{Gerade und ungerade}
 Hypergeometrische Funktionen, deren Reihe mehr als einen Term
 enthalten, enthalten immer mindestens eine gerade und eine ungerade
 Potenz der unabhängigen Variable.
@@ -883,6 +899,8 @@ Lösung $\cos x$ und die ungerade Lösung $\sin x$.
 Auch die Differentialgleichung $y''-y=0$ hat eine gerade Lösung,
 $\cosh x$, und eine ungerade Lösung, $\sinh x$.
 
+\subsubsection{Symmetrien der eulerschen hypergeometrischen
+Differentialgleichung}
 Hat die hypergeometrische Differentialgleichung gerade und
 ungerade Lösungen?
 Wenn es eine gerade Lösung $y(x)$ gibt, dann sollte die Substitution
@@ -911,6 +929,7 @@ y(x) &= \frac{1}{-c+1}x^{-c+1}
 Dies zeigt, dass die hypergeometrische Differentialgleichung im
 allgemeinen keine geraden oder ungeraden Lösungen hat.
 
+\subsubsection{Zusammengesetzte Funktionen}
 Die gerade oder ungeraden Funktionen, die in früheren Beispielen
 als hypergeometrische Funktionen dargestellt wurden, konnten also
 nicht Lösungen der hypergeometrische Differentialgleichung sein.
@@ -927,22 +946,523 @@ g(x)
 \qquad\text{und}\qquad
 u(x)
 =
-x\,
+x\cdot
 \mathstrut_pF_q\biggl(\begin{matrix}a_1,\dots,a_p\\b_1,\dots,b_1\end{matrix};x^2\biggr).
 \]
 
+Viele wohlbekannte Funktionen $f(x)$ können aus einer hypergeometrischen
+Funktion $w(z)$ als $g(x)=w(\pm x^2)$ oder $u(x)=xw(\pm x^2)$ erhalten
+werden.
+Für die hypergeometrische Funktion $w(z)$ ist eine definierende
+Differentialgleichung bekannt.
+Im Folgenden soll daraus eine Differentialgleichung für $f(x)$
+abgeleitet werden.
+
+Der Fall $w(-x^2)$ könnte natürlich auch durch Verwendung eines
+imaginären Arguments wie in $w((ix)^2)$ auf den Fall $w(x^2)$ 
+zurückgeführt werden.
+Um aber die Differentialgleichungen reell zu belassen, schreiben
+wir $g(x)=w(sx^2)$ für eine gerade Funktion beziehungsweise
+$u(x)=xw(sx^2)$ für eine ungerade Funktion.
+Der Faktor $s$ kann ausserdem dazu verwendet werden, das Argument
+zu skalieren, wie es zum Beispiel in der Darstellung der
+Kosinus-Funktion als $\cos x = \mathstrut_0F_1(;\frac12;-\frac{x^2}4)$
+nötig ist.
+
+Um die Differentialgleichung für $g$ oder $u$ zu finden, berechnen wir die
+Ableitungen von $g$ und $u$, drücken die Ableitungen von $w$ durch die
+Ableitungen $g$ und $u$ aus und setzen sie in die Differentialgleichung
+für $w$ ein.
+Wir wollen dies im Folgenden nur für ein paar Beispiele niedrigerer
+Ordnung tun.
+
+%
+% Differentialgleichungen für g(x)=w(sx^2)
+%
+\subsubsection{Differentialgleichungen für $g(x)=w(sx^2)$ für $w=\mathstrut_2F_1$}
+Die Ableitungen von $g$ sind
+\[
+\begin{linsys}{3}
+  g(x)&=&w(sx^2)& &           & &                \\
+ g'(x)&=&       & &2sxw'(sx^2)& &                \\
+g''(x)&=&       & & 2sw'(sx^2)&+&4s^2x^2w''(sx^2)\\
+\end{linsys}
+\]
+Dies sind lineare Gleichungssysteme für die Ableitungen
+von $w$, die wir nach $w'$ und $w''$ auflösen können.
+Dies wird einfacher, wenn wir das Gleichungssysteme in
+Matrixschreibweise darstellen mit der Matrix
+\begin{equation*}
+\begin{pmatrix}
+  g(x)\\
+ g'(x)\\
+g''(x)
+\end{pmatrix}
+=
+\underbrace{
+\begin{pmatrix}
+1&   0&       0\\
+0& 2sx&       0\\
+0&  2s& 4s^2x^2
+\end{pmatrix}
+}_{\displaystyle = A_g}
+\begin{pmatrix}
+w(sx^2)\\
+w'(sx^2)\\
+w''(sx^2)
+\end{pmatrix}
+\qquad\Rightarrow\qquad
+A_g^{-1}
+=
+\begin{pmatrix}
+1&            0       &               0  \\
+0&  \frac{1}{2sx}     &               0  \\
+0& -\frac{1}{4s^2x^3} & \frac{1}{4s^2x^2}
+\end{pmatrix}
+\end{equation*}
+Damit lassen sich jetzt die Ableitungen von $w$ ausdrücken:
+\begin{align*}
+  w(sx^2) &= g(x) \\
+ w'(sx^2) &= \frac{1}{2sx} g'(x) \\
+w''(sx^2) &= \frac{1}{4s^2x^3}g'(x) + \frac{4}{4s^2x^2} g''(x) 
+\end{align*}
+Durch Einsetzen dieser Ausdrücke in die eulersche hypergeometrische
+Differentialgleichung~\eqref{buch:differentialgleichungen:eqn:eulerhyper}
+%\[
+%z(1-z) \frac{d^2y}{dz^2} + (c+(a+b+1)z)\frac{dy}{dz} - abz = 0
+%\]
+finden wir jetzt die Differentialgleichungen für $g(x)$ 
+wie folgt:
+\begin{equation}
+x(1-sx^2)g''(x)
++
+(2c-1-(2a+2b+1)sx^2) g'(x)
+-4absx g(x)
+=
+0.
+\label{buch:differential:hypergeometrisch:geradedgl}
+\end{equation}
+
+
 %
 %
 %
-\subsubsection{Hypergeometrische Funktionen von $x^2$ und $x^3$}
-Die hypergeometrischen Funktionen $w(z)$ als Lösungen der hypergeometrischen
-Differentialgleichungen sind Potenzreihen, in denen kein Koeffizient
-verschwindet, sofern die Lösung nicht ein Polynom ist.
-Die trigonometrischen Funktionen sind nicht von dieser Art.
-Sie lassen sich als Funktionen von $x^2$ schreiben.
-Wir untersuchen in diesem Abschnitt, wie sich eine Differentialgleichung
-von $y(x) = x^lw(tx^k)$ aus der Differentialgleichung für $w(z)$ gewinnen
-lässt.
+\subsubsection{Differentialgleichung von $x^\varrho w(sx^\nu)$}
+Die Methode der verallgemeinerten Potenzreihen zeigt, dass eine
+gewöhnliche Potenzreihe, wie $\mathstrut_pF_q$ eine ist,
+manchmal nicht reicht, um eine Lösung einer Differentialgleichung
+darzustellen.
+Die Besselsche Differentialgleichung ist von dieser Art.
+Eine verallgemeinerte Potenzreihe erhält man mit Hilfe eines
+zusätzlichen Faktors der Form $x^\varrho$.
+Der Fall $\varrho=1$ deckt auch die früher vorgeschlagene
+Funktion $u(x)=x\cdot \mathstrut_pF_q(sx^2)$ ab.
 
+In den bisherigen Beispielen haben wir als Argument für eine
+hypergeometrische Funktion $\mathstrut_pF_q$ einen Ausdruck
+der Form $sx^2$ verwendet, was für die Beispiele gereicht hat,
+aber zum Beispiel für die später untersuchten Airy-Funktionen
+nicht genügt.
+Daher soll jetzt für eine Funktion $f(x)
+= x^\varrho\cdot \mathstrut_pF_q(sx^\nu)$ eine Differentialgleichung
+aus der Differentialgleichung der hypergeometrischen Funktion
+abgeleitet werden.
+Dabei soll der im vorangegangenen Abschnitt behandelte Fall
+$\varrho=0$ und $\nu=2$ als Leitlinie dienen.
 
+Wie vorhin beginnen wir damit, die Ableitungen von $f(x)$ zu
+berechnen:
+\[
+\begin{linsys}{4}
+f(x)   &=& x^\varrho w(sx^\nu)
+       & &
+       & &
+\\
+f'(x)  &=& \varrho x^{\varrho-1}   w(sx^\nu)
+       &+& \nu s x^{\varrho+\nu-1} w'(sx^\nu)
+       & &
+\\
+f''(x) &=& (\varrho-1)\varrho x^{\varrho-2}      w(sx^\nu)
+       &+& \nu(2\varrho+\nu-1)sx^{\varrho+\nu-2} w'(sx^\nu)
+       &+& \nu^2 s^2 x^{\varrho+2\nu-2}          w''(sx^\nu)
+\end{linsys}
+\]
+Dies ist ein lineares Gleichungssystem, welches in Matrixform
+geschrieben werden kann als
+\[
+\begin{pmatrix}
+f(x)\\
+f'(x)\\
+f''(x)
+\end{pmatrix}
+=
+%                [          rho          ]
+%                [         x             ]
+%                [                       ]
+%(%o40)  Col 1 = [          rho - 1      ]
+%                [     rho x             ]
+%                [                       ]
+%                [     2         rho - 2 ]
+%                [ (rho  - rho) x        ]
+%
+%         [                   0                   ]
+%         [                                       ]
+%         [                rho + nu - 1           ]
+% Col 2 = [          nu s x                       ]
+%         [                                       ]
+%         [               2          rho + nu - 2 ]
+%         [ (2 nu rho + nu  - nu) s x             ]
+%
+%         [           0            ]
+%         [                        ]
+% Col 3 = [           0            ]
+%         [                        ]
+%         [   2  2  rho + 2 nu - 2 ]
+%         [ nu  s  x               ]
+\underbrace{
+\begin{pmatrix}
+x^\varrho
+	& 0
+		& 0 \\
+\varrho x^{\varrho-1}
+	& \nu s x^{\varrho+\nu-2}
+		& 0 \\
+(\varrho-1)\varrho x^{\varrho-2}
+	& \nu(2\varrho+\nu-1)sx^{\varrho+\nu-2}
+		& \nu^2 s^2 x^{\varrho+2\nu-2}
+\end{pmatrix}
+}_{\displaystyle = A_f}
+=
+\begin{pmatrix}
+w(sx^\nu)\\
+w'(sx^\nu)\\
+w''(sx^\nu)
+\end{pmatrix}.
+\]
+Die Inverse der Matrix $A_f$ ist
+\[
+A_f^{-1}
+=
+%                [               1                 ]
+%                [              ----               ]
+%                [               rho               ]
+%                [              x                  ]
+%                [                                 ]
+%                [              (- rho) - nu       ]
+%                [         rho x                   ]
+%(%o42)  Col 1 = [       - -----------------       ]
+%                [               nu s              ]
+%                [                                 ]
+%                [     2            (- rho) - 2 nu ]
+%                [ (rho  + nu rho) x               ]
+%                [ ------------------------------- ]
+%                [               2  2              ]
+%                [             nu  s               ]
+%         [                   0                    ]
+%         [                                        ]
+%         [            (- rho) - nu + 1            ]
+%         [           x                            ]
+%         [           -----------------            ]
+% Col 2 = [                 nu s                   ]
+%         [                                        ]
+%         [                     (- rho) - 2 nu + 1 ]
+%         [   (2 rho + nu - 1) x                   ]
+%         [ - ------------------------------------ ]
+%         [                    2  2                ]
+%         [                  nu  s                 ]
+%         [          0          ]
+%         [                     ]
+%         [          0          ]
+%         [                     ]
+% Col 3 = [  (- rho) - 2 nu + 2 ]
+%         [ x                   ]
+%         [ ------------------- ]
+%         [         2  2        ]
+%         [       nu  s         ]
+\renewcommand{\arraystretch}{1.7}
+\frac{1}{x^\varrho}
+\begin{pmatrix}
+\displaystyle 1
+	& 0
+		& 0
+\\
+\displaystyle-\frac{\varrho}{\nu s} x^{-\nu}
+	&\displaystyle \frac{1}{\nu s} x^{-\nu+1}
+		& 0
+\\
+\displaystyle\frac{\varrho^2+\nu\varrho}{\nu^2s^2}x^{-2\nu}
+	&\displaystyle -\frac{2\varrho+\nu-1}{\nu^2s^2} x^{-2\nu+1}
+		&\displaystyle \frac{1}{\nu^2s^2} x^{-2\nu+2}
+\end{pmatrix}
+\] 
+Damit kann man jetzt die Funktion $w(sx^\nu)$ und die Ableitungen
+$w'(sx^\nu)$ und $w''(sx^\nu)$ durch $f$ und die Ableitungen davon
+ausdrücken als
+\begin{equation}
+\renewcommand{\arraystretch}{2.3}
+\begin{linsys}{4}
+w(sx^\nu)
+	&=& \displaystyle \frac{1}{x^\varrho} f(x)
+	& & 
+	& &
+\\
+w'(sx^\nu)
+	&=& \displaystyle -\frac{\varrho}{\nu s} x^{-\varrho-\nu} f(x)
+	&+& \displaystyle \frac{1}{\nu s}x^{-\varrho-\nu+1}
+	& &
+\\
+w''(sx^\nu)
+	&=& \displaystyle \frac{\varrho^2+\nu\varrho}{\nu^2 s^2}x^{-\varrho-2\nu}
+	&-& \displaystyle \frac{2\varrho+\nu-1}{\nu^2s^2} x^{-\varrho-2\nu+1}
+	&+& \displaystyle \frac{1}{\nu^2 s^2} x^{-\varrho-2\nu+2}.
+\end{linsys}
+\label{buch:differentialgleichungen:hypergeometrisch:wsubst}
+\end{equation}
+Einsetzen in die Differentialgleichung der hypergeometrischen Funktion
+$\mathstrut_2F_1$ liefert die Differentialgleichung
+\begin{equation}
+\begin{aligned}
+sx^4(x^2-1) f''
+%(%i50) ratsimp(subst(0,F,subst(0,Fp,ef))/Fpp)
+%(%o50) -x^((-rho)-2*nu)*(s*x^6-x^4)
+%(%i51) ratsimp(subst(0,F,subst(0,Fpp,ef))/Fp)
+%\\
+&-(
+	((-2\varrho-\nu+1) s x^5 +x^\nu(b+a+1)\nu s x^3-c\nu x)
+	+
+	(2\varrho+\nu-1)x^3
+)f'
+\\
+%(%o51) -x^((-rho)-2*nu)*(((-2*rho)-nu+1)*s*x^5+x^nu*((b+a+1)*nu*s*x^3-c*nu*x)
+%                                             +(2*rho+nu-1)*x^3)
+%(%i52) ratsimp(subst(0,Fp,subst(0,Fpp,ef))/F)
+%(%o52) -x^((-rho)-2*nu)*(a*b*nu^2*s*x^(2*nu)+(rho^2+nu*rho)*s*x^4
+%                                            +x^nu
+%                                             *(((-b)-a-1)*nu*rho*s*x^2
+%                                              +c*nu*rho)
+%                                            +((-rho^2)-nu*rho)*x^2)
+&-(
+	ab\nu^2 sx^{2\nu}
+	+ \varrho(\varrho+\nu)sx^4
+	+ x^\nu((-b-a-1)\nu\varrho s x^2 + c\nu\varrho)
+	- \varrho(\varrho+\nu)x^2
+)f
+=0
+\end{aligned}
+\label{buch:differentialgleichungen:hypergeometrisch:2f1dgl}
+\end{equation}
+für die Funktion
+\[
+f(x)=x^\varrho \cdot\mathstrut_2F_1\biggl(
+\begin{matrix}a,b\\c\end{matrix}; sx^\nu
+\biggr).
+\]
+Die Differentialgleichung
+\eqref{buch:differentialgleichungen:hypergeometrisch:2f1dgl}
+ist etwas unübersichtlich, daher soll sie in einem Beispiel illustriert
+werden.
 
+\begin{beispiel}
+Früher in Aufgabe \ref{401} auf Seite \pageref{401}
+wurde gezeigt, dass 
+\[
+\arcsin x = x\,\mathstrut_2F_1\biggl(
+\begin{matrix}\frac12,\frac12\\\frac32\end{matrix};x^2
+\biggr)
+=
+x^\nu\cdot \mathstrut_2F_1\biggl(
+\begin{matrix}a,b\\c\end{matrix};
+sx^\nu
+\biggr)
+\]
+ist.
+Die Arkus-Sinus-Funktion ist daher Lösung der Differentialgleichung
+\eqref{buch:differentialgleichungen:hypergeometrisch:2f1dgl}
+mit
+\[
+\varrho=1,\quad
+a=\frac12,\quad
+b=\frac12,\quad
+c=\frac32,\quad
+s=1,\quad
+\nu=2,
+\]
+also
+\begin{equation}
+-\frac{x^2-1}{x}f''
+-f'
+=
+0
+\qquad\Rightarrow\qquad
+(1-x^2)f''=xf'.
+\label{buch:differentialgleichungen:hypergeometrisch:beispiel:arcsindgl}
+\end{equation}
+Tatsächlich ist
+\[
+\frac{d}{dx}\arcsin x
+=
+\frac{1}{(1-x^2)^{\frac12}}
+\qquad\text{und}\qquad
+\frac{d^2}{dx^2} \arcsin x
+=
+\frac{x}{(1-x^2)^{\frac32}},
+\]
+und nach Einsetzen in die Differentialgleichung
+\[
+(1-x^2)
+\cdot
+\frac{x}{(1-x^2)^{\frac32}}
+-
+x
+\cdot
+\frac{1}{(1-x^2)^{\frac12}}
+=
+0.
+\]
+Die Arkus-Sinus-Funktion ist also tatsächlich eine Lösung der
+Differentialgleichung
+\eqref{buch:differentialgleichungen:hypergeometrisch:beispiel:arcsindgl}.
+\end{beispiel}
+
+%
+%
+%
+\subsubsection{Differentialgleichung für Funktionen, die aus $\mathstrut_0F_1$ zusammengesetzt sind}
+Die Substitutionen 
+\eqref{buch:differentialgleichungen:hypergeometrisch:wsubst}
+angewendet auf die Differentialgleichung
+\eqref{buch:differentialgleichungen:0f1:dgl}
+der Funktion $\mathstrut_0F_1$
+liefert
+%
+%(%i60) ratsimp(subst(0,F,subst(0,Fp,e0f1))/Fpp)
+%(%o60) x^2
+%(%i61) ratsimp(subst(0,F,subst(0,Fpp,e0f1))/Fp)
+%(%o61) ((-2*rho)+(beta-1)*nu+1)*x
+%(%i62) ratsimp(subst(0,Fp,subst(0,Fpp,e0f1))/F)
+%(%o62) (-nu^2*s*x^nu)+rho^2+(1-beta)*nu*rho
+\begin{equation}
+x^2f''
++
+(-2\varrho+(\beta-1)\nu+1)xf'
++
+(-\nu^2sx^\nu + \varrho^2 -(\beta-1)\nu\varrho)f
+=
+0.
+\label{buch:differentialgleichungen:0F1:dgl}
+\end{equation}
+Die nächsten zwei Abschnitte sollen zeigen, wie sich daraus für die
+Bessel-Funktionen wie auch die Airy-Funktionen, die sich durch
+$\mathstrut_0F_1$ ausdrücken, die Besselsche und die Airysche
+Differentialgleichung wiedergewonnen werden kann.
+
+%
+% Besselsche Differentialgleichung
+%
+\subsubsection{Besselsche Differentialgleichung}
+Die Besselfunktionen lassen sich in der Form
+\begin{equation}
+J_\alpha(x)
+=
+\frac{(x/2)^\alpha}{\Gamma(\alpha+1)} \,
+\mathstrut_0F_1\biggl(
+\begin{matrix}\text{---}\\\alpha+1\end{matrix};-\frac14x^2
+\biggr)
+=
+\frac{1}{2^\alpha\Gamma(\alpha+1)}
+x^\varrho\cdot
+\mathstrut_0F_1\biggl(
+\begin{matrix}\text{---}\\b\end{matrix};sx^\nu
+\biggr)
+\label{buch:differentialgleichungen:0f1:besselfunktion}
+\end{equation}
+schreiben.
+Somit sollte sich aus der
+Differentialgleichung~\eqref{buch:differentialgleichungen:0f1:dgl}
+der Funktion $\mathstrut_0F_1$ die Besselsche Differentialgleichung
+\eqref{buch:differentialgleichungen:eqn:bessel} rekonstruieren lassen.
+Dazu substituieren wir die aus
+\eqref{buch:differentialgleichungen:0f1:besselfunktion}
+abgelesenen Parameter
+\[
+\varrho=\alpha,\quad\nu=2,\quad s=-\frac14,\quad b=\alpha+1
+\]
+in \eqref{buch:differentialgleichungen:0F1:dgl} und erhalten
+die Differentialgleichung
+\begin{equation}
+x^2y''
++
+%(-2\alpha+2\alpha+1)xy'
+xy'
++
+%(-4sx^2 + \alpha^2 -2\alpha^2)y
+(x^2 - \alpha^2)y
+=
+0.
+\label{buch:differentialgleichungen:0F1:besseldgl}
+\end{equation}
+Dies ist tatsächlich die Besselsche Differentialgleichung.
+
+%
+% Airy-Differentialgleichung
+%
+\subsubsection{Die Airy-Differentialgleichung}
+Die in Aufgabe \ref{501} untersuchte
+Airy-Differentialgleichung $y''-xy=0$ hat die Funktionen
+\begin{align*}
+y_1(x)
+&=
+\mathstrut_0F_1\biggl(
+\begin{matrix}\text{---}\\\frac23\end{matrix};\frac{x^3}9
+\biggr)
+=x^\varrho\cdot \mathstrut_0F_1\biggl(
+\begin{matrix}\text{---}\\b\end{matrix};sx^\nu
+\biggr)
+&&\text{mit $\varrho=0$, $\nu=3$, $s=\frac19$, $b=\frac23$, }
+\intertext{und}
+y_2(x)
+&=
+x\cdot
+\mathstrut_0F_1\biggl(
+\begin{matrix}\text{---}\\\frac23\end{matrix};\frac{x^3}9
+\biggr)
+=x^\varrho\cdot \mathstrut_0F_1\biggl(
+\begin{matrix}\text{---}\\b\end{matrix};sx^\nu
+\biggr)
+&&\text{mit $\varrho=1$, $\nu=3$, $s=\frac19$, $b=\frac43$, }
+\end{align*}
+als Lösungen.
+Die Differentialgleichung von $\mathstrut_0F_1$ sollte sich in diesem
+Fall also auf die Airy-Differentialgleichung reduzieren lassen.
+
+Bei der Substition der Parameter in die Differentialgleichung
+\eqref{buch:differentialgleichungen:0F1:dgl} beachten wird, dass
+die beiden möglichen Werte für $b$ auf $b-1=\pm\frac13$
+führen, mit dem positiven Zeichen für den zweiten Fall, in dem $\varrho=1$
+ist.
+So ergibt sich die Differentialgleichung
+\begin{align*}
+x^2y''
++
+(-2\varrho\pm\frac13\cdot 3+1)xy'
++
+(-x^\nu + \varrho^2 \mp\frac13\cdot 3\varrho)y
+&=
+0
+\\
+x^2y''
++
+(-2\varrho\pm1+1)xy'
++
+(-x^3 + \varrho^2 \mp\varrho)y
+&=
+0
+\\
+x^2y''
+-
+x^3y
+&=
+0
+\qquad\Rightarrow\qquad y''-xy=0.
+\end{align*}
+Dies ist wie erwartet die Airy-Differentialgleichung.
