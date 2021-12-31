@@ -526,25 +526,27 @@ Die Koeffizienten $k!/(2k+1)!$ müssen jetzt durch Pochhammer-Symbole
 mit jeweils $k$ Faktoren ausgedrückt werden.
 Dazu muss die Fakultät $(2k+1)!$ in zwei Produkte
 \[
-(2k+1)
+(2k+1)!
 =
 2\cdot 3 \cdot 4\cdot 5\cdot \ldots \cdot 2k \cdot (2k+1)
 =
-(2\cdot 4 \cdot 6\cdot\ldots\cdot 2k)
+\underbrace{(2\cdot 4 \cdot 6\cdot\ldots\cdot 2k)}_{\textstyle\text{gerade Faktoren}}
 \cdot
-(3\cdot 5\cdot 7\cdot \ldots \cdot (2k+1))
+\underbrace{(3\cdot 5\cdot 7\cdot \ldots \cdot (2k+1))}_{\textstyle\text{ungerade Faktoren}}
 \]
 aufgespaltet werden.
-Diese Produkte haben zwar $k$-Faktoren, aber sie sind keine
+Diese Produkte haben zwar jeweils $k$ Faktoren, aber sie sind keine
 Pochhammer-Symbole, weil die Differenz aufeinanderfolgender Faktoren 
 jeweils $2$ ist.
-Wir dividieren die geraden Faktoren durch $2$ und dividieren die 
-ungeraden durch $2$, dadurch ändert sich das Produkt nicht und wird
-\[
+Wir dividieren sowohl die geraden Faktoren wie auch die 
+ungeraden Faktoren durch $2$, damit sich das Produkt nicht ändert,
+müssen wird mit $2^{2k}$ kompensieren:
+\begin{align*}
 (2k+1)!
-=
-(1\cdot2\cdot3\cdot\ldots\cdot k)
+&=
+2^k(1\cdot2\cdot3\cdot\ldots\cdot k)
 \cdot
+2^k
 \biggl(
 \frac{3}{2}\cdot
 \frac{5}{2}\cdot
@@ -552,26 +554,33 @@ ungeraden durch $2$, dadurch ändert sich das Produkt nicht und wird
 \ldots\cdot
 \frac{2k+1}{2}
 \biggr)
-=
+\\
+&=
+4^k
+\cdot
 (1)_k\cdot \biggl(\frac{3}{2}\biggr)_k
-\]
+\end{align*}
 Setzt man dies in die Reihe ein, wird
 \[
 f(z)
 =
 \sum_{k=0}^\infty
-\frac{(1)_k}{(1)_k\cdot (\frac{3}{2})_k}
+\frac{(1)_k}{(1)_k\cdot (\frac{3}{2})_k\cdot 4^k}
 z^k
 =
-\mathstrut_1F_2(1;1,\frac{3}{2};z).
+\mathstrut_1F_2\biggl(1;1,\frac{3}{2};\frac{z}4\biggr).
 \]
 Damit lässt sich die Sinus-Funktion als
 \begin{equation}
 \sin x
 =
-x\,\mathstrut_1F_2\biggl(\begin{matrix}1\\1,\frac32\end{matrix};-x^2\biggr)
+x\cdot \mathstrut_1F_2\biggl(
+\begin{matrix}1\\1,\frac32\end{matrix};-\frac{x^2}4
+\biggr)
 =
-x\,\mathstrut_0F_1\biggl(\begin{matrix}\text{---}\\\frac32\end{matrix};-x^2\biggr)
+x\cdot\mathstrut_0F_1\biggl(
+\begin{matrix}\text{---}\\\frac32\end{matrix};-\frac{x^2}4
+\biggr)
 \label{buch:rekursion:hypergeometrisch:eqn:sinhyper}
 \end{equation}
 durch eine hypergeometrische Funktion ausdrücken.
@@ -596,12 +605,12 @@ xf(-x^2)
 =
 x\,\mathstrut_1F_2\biggl(
 \begin{matrix}1\\1,\frac{3}{2}\end{matrix}
-;x^2
+;\frac{x^2}{4}
 \biggr)
 =
 x\,\mathstrut_0F_1\biggl(
 \begin{matrix}\text{---}\\\frac{3}{2}\end{matrix}
-;x^2
+;\frac{x^2}4
 \biggr).
 \end{align*}
 Bis auf das Vorzeichen des Arguments der hypergeometrischen Funktion

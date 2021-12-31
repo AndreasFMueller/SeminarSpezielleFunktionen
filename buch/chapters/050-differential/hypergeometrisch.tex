@@ -1356,6 +1356,44 @@ Bessel-Funktionen wie auch die Airy-Funktionen, die sich durch
 $\mathstrut_0F_1$ ausdrücken, die Besselsche und die Airysche
 Differentialgleichung wiedergewonnen werden kann.
 
+\begin{beispiel}
+Die hyperbolische Funktion
+\[
+\sinh x
+=
+x\cdot \mathstrut_0F_1\biggl(
+\begin{matrix}\text{---}\\\frac32\end{matrix};\frac{x^2}{4}
+\biggr)
+\]
+hat die Differentialgleichung
+\eqref{buch:differentialgleichungen:0F1:dgl}
+mit den Parametern
+\[
+\varrho=1,\quad
+s=\frac14,\quad
+\nu=2,\quad
+b=\frac32.
+\]
+Einsetzen der Parameter in
+\eqref{buch:differentialgleichungen:0F1:dgl}
+liefert
+\[
+0
+=
+x^2f''
++
+\biggl(-2+\frac12\cdot 2 + 1\biggr) xf'
++
+\biggl(-2^2\frac14x^2 + 1^2 - \frac12 \cdot 2 \cdot 1\biggr) f
+=
+x^2f''
+-x^2f
+\]
+Daraus ergib sich die bekannte Differentialgleichung
+$y''-y=0$
+der hyperbolischen Funktionen.
+\end{beispiel}
+
 %
 % Besselsche Differentialgleichung
 %

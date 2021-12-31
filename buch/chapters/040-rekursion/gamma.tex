@@ -525,7 +525,7 @@ Laplace-Transformation der Potenzfunktion zu berechnen.
 \begin{satz}
 Die Laplace-Transformierte der Potenzfunktion $f(t)=t^\alpha$ ist
 \[
-(\mathcal{L}f)(s)
+(\mathscr{L}f)(s)
 =
 \frac{1}{s^\alpha} \Gamma(\alpha+1).
 \qedhere
@@ -535,13 +535,13 @@ Die Laplace-Transformierte der Potenzfunktion $f(t)=t^\alpha$ ist
 \begin{proof}[Beweis]
 Die Laplace-Transformierte ist das Integral
 \[
-(\mathcal{L}f)(s)
+(\mathscr{L}f)(s)
 =
 \int_0^\infty t^\alpha e^{-st}\,dt
 \]
 Durch die Substitution $st = u$ oder $t=\frac{u}{s}$ wird daraus
 \[
-(\mathcal{L}f)(s)
+(\mathscr{L}f)(s)
 =
 \int_0^\infty \biggl(\frac{u}{s}\biggr)^\alpha e^{-u}\,du
 =
