@@ -164,11 +164,11 @@ und umgekehrt:
 \[
 \sin\alpha
 =
-\sqrt{1-\cos^2\alpha}
+\sqrt{1-\cos^2\alpha\mathstrut}
 \qquad\text{und}\qquad
 \cos\alpha
 =
-\sqrt{1-\sin^2\alpha}
+\sqrt{1-\sin^2\alpha\mathstrut}
 \]
 Da sich alle Funktionen durch $\cos\alpha$ und $\sin\alpha$ ausdrücken
 lassen, können alle auch nur durch eine ausgedrückt werden.
@@ -187,14 +187,14 @@ Tabelle~\ref{buch:geometrie:tab:trigo} zusammengestellt ist.
 \hline
 \sin\alpha
 	&\sin\alpha
-	&\sqrt{1-\cos^2}
+	&\sqrt{1-\cos^2\alpha\mathstrut}
 		&\displaystyle\frac{\tan\alpha}{\sqrt{1+\tan^2\alpha}}
 		&\displaystyle\frac{1}{\sqrt{1+\cot^2\alpha}}
 			&\displaystyle\frac{1}{\sec\alpha}
 			&\displaystyle\frac{\sqrt{\csc^2\alpha-1}}{\csc\alpha}
 \\
 \cos\alpha
-	&\sqrt{1-\sin^2\alpha}
+	&\sqrt{1-\sin^2\alpha\mathstrut}
 	&\cos\alpha
 		&\displaystyle\frac{1}{\sqrt{1+\tan^2\alpha}}
 		&\displaystyle\frac{\cot\alpha}{\sqrt{1+\cot^2\alpha}}
@@ -202,16 +202,16 @@ Tabelle~\ref{buch:geometrie:tab:trigo} zusammengestellt ist.
 			&\displaystyle\frac{1}{\csc\alpha}
 \\
 \tan\alpha
-	&\displaystyle\frac{\sin\alpha}{\sqrt{1-\sin^2\alpha}}
-	&\displaystyle\frac{\sqrt{1-\cos^2\alpha}}{\cos\alpha}
+	&\displaystyle\frac{\sin\alpha}{\sqrt{1-\sin^2\alpha\mathstrut}}
+	&\displaystyle\frac{\sqrt{1-\cos^2\alpha\mathstrut}}{\cos\alpha}
 		&\tan\alpha
 		&\displaystyle\frac{1}{\cot\alpha}
 			&\displaystyle\frac{1}{\sqrt{\sec^2\alpha-1}}
 			&\displaystyle\sqrt{\csc^2\alpha-1}
 \\
 \cot\alpha
-	&\displaystyle\frac{\sqrt{1-\sin^2\alpha}}{\sin\alpha}
-	&\displaystyle\frac{\cos\alpha}{\sqrt{1-\cos^2\alpha}}
+	&\displaystyle\frac{\sqrt{1-\sin^2\alpha\mathstrut}}{\sin\alpha}
+	&\displaystyle\frac{\cos\alpha}{\sqrt{1-\cos^2\alpha\mathstrut}}
 		&\displaystyle\frac{1}{\tan\alpha}
 		&\cot\alpha
 			&\displaystyle\sqrt{\sec^2\alpha-1}
@@ -219,14 +219,14 @@ Tabelle~\ref{buch:geometrie:tab:trigo} zusammengestellt ist.
 \\
 \sec\alpha
 	&\displaystyle\frac{1}{\sin\alpha}
-	&\displaystyle\frac{1}{\sqrt{1-\cos^2\alpha}}
+	&\displaystyle\frac{1}{\sqrt{1-\cos^2\alpha\mathstrut}}
 		&\displaystyle\frac{\sqrt{1+\tan^2\alpha}}{\tan\alpha}
 		&\displaystyle\sqrt{1+\cot^2\alpha}
 			&\sec\alpha
 			&\displaystyle\frac{\csc\alpha}{\sqrt{\csc^2\alpha-1}}
 \\
 \csc\alpha
-	&\displaystyle\frac{1}{\sqrt{1-\sin^2\alpha}}
+	&\displaystyle\frac{1}{\sqrt{1-\sin^2\alpha\mathstrut}}
 	&\displaystyle\frac{1}{\cos\alpha}
 		&\displaystyle\sqrt{1+\tan^2\alpha}
 		&\displaystyle\frac{\sqrt{1+\cot^2\alpha}}{\cot\alpha}
@@ -424,7 +424,7 @@ Seite auflösen, so erhält man die Halbwinkelformeln
 &&\Rightarrow&
 \cos^2\frac{\alpha}2 &=\frac{1+\cos\alpha}2
 \\
-\sin^2\alpha &= \frac{1-\cos\alpha}2
+\sin^2\alpha &= \frac{1-\cos2\alpha}2
 &&\Rightarrow&
 \sin^2\frac{\alpha}2 &= \frac{1-\cos\alpha}2.
 \end{align*}
