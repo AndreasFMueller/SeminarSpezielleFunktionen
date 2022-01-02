@@ -1,0 +1,149 @@
+%
+% fibonacci.tex -- template for standalon tikz images
+%
+% (c) 2021 Prof Dr Andreas Müller, OST Ostschweizer Fachhochschule
+%
+\documentclass[tikz]{standalone}
+\usepackage{amsmath}
+\usepackage{times}
+\usepackage{txfonts}
+\usepackage{pgfplots}
+\usepackage{csvsimple}
+\usetikzlibrary{arrows,intersections,math}
+\begin{document}
+\input{fibonaccigrid.tex}
+\def\skala{1}
+\definecolor{darkgreen}{rgb}{0,0.6,0}
+\begin{tikzpicture}[>=latex,thick,scale=\skala]
+
+\def\achsen{
+	\draw[->] (-2.1,0) -- (10.8,0)
+		coordinate[label={$\operatorname{Re}F(z)$}];
+	\draw[->] (0,-2.6) -- (0,2.7)
+		coordinate[label={right:$\operatorname{Im}F(z)$}];
+	\node at (10.8,2.7) {$\mathbb{C}$};
+}
+
+\def\zahl#1#2{
+	\fill[color=white,opacity=0.8]
+		({#1-0.65},-0.6) rectangle ({#1+0.65},-0.2);
+	\node[color=darkgreen] at (#1,-0.43) {$#2\mathstrut$};
+}
+
+\draw[color=gray!20,line width=2.0pt] (-2,3.2) -- (11.3,3.2);
+
+\def\topskala{1.55}
+
+\draw[->,color=darkgreen!30,line width=5pt]
+		({-0.2*\topskala},4.3) to[out=-120,in=120] (-0.1,0.2);
+\draw[->,color=darkgreen!30,line width=5pt]
+		({0.9*\topskala},4.3) to[out=-110,in=70] (0.9,-5.1);
+\draw[->,color=darkgreen!30,line width=5pt]
+		({2.0*\topskala},4.3) to[out=-90,in=76] (1.0,-10.6);
+
+\draw[->,color=darkgreen!30,line width=5pt]
+		({3.0*\topskala},4.3) to[out=-90,in=90] (2.0,0.2);
+\draw[->,color=darkgreen!30,line width=5pt]
+		({3.9*\topskala},4.3) to[out=-110,in=80] (3.0,-5.3);
+\draw[->,color=darkgreen!30,line width=5pt]
+		({4.8*\topskala},4.3) to[out=-120,in=90] (5.0,-10.8);
+
+\draw[->,color=darkgreen!30,line width=5pt]
+		({6.0*\topskala},4.3) to[out=-90,in=70] (8.1,0.2);
+
+
+\begin{scope}[yshift=4.8cm,scale=\topskala]
+
+	\draw[->] (-0.7,0) -- (6.8,0)
+		coordinate[label={$\operatorname{Re}z$}];
+	\draw[->] (0,-0.7) -- (0,0.8)
+		coordinate[label={right:$\operatorname{Im}z$}];
+	\foreach \x in {-0.5,-0.4,...,6.501}{
+		\draw[color=gray,line width=0.1pt] (\x,-0.5) -- (\x,0.5);
+	}
+	\foreach \y in {-0.5,-0.4,...,0.501}{
+		\draw[color=gray,line width=0.1pt] (-0.5,\y) -- (6.5,\y);
+	}
+
+	\foreach \n in {0,3,6}{
+		\foreach \x in {-0.5,-0.4,...,0.501}{
+			\draw[color=blue,line width=0.7pt]
+				({\n+\x},-0.5) -- ({\n+\x},0.5);
+		}
+		\foreach \y in {-0.5,-0.4,...,0.501}{
+			\draw[color=red,line width=0.7pt]
+				({\n-0.5},\y) -- ({\n+0.5},\y);
+		}
+	}
+	\foreach \n in {0,...,6}{
+		\fill[color=white,opacity=0.8]
+			({\n-0.1},-0.28) rectangle ({\n+0.1},-0.05);
+		\node[color=darkgreen] at (\n,0) [below] {$\n$};
+		\fill[color=darkgreen] (\n,0) circle[radius=0.05];
+		\fill[color=white] (\n,0) circle[radius=0.02];
+	}
+
+	\node at (6.8,0.8) {$\mathbb{C}$};
+
+\end{scope}
+
+\begin{scope}[scale=1]
+	\begin{scope}
+		\clip (-2,-2.6) rectangle (10.5,2.6);
+		\fibgrid
+	\end{scope}
+	\achsen
+	\begin{scope}
+		\clip (-2,-2.6) rectangle (10.5,2.6);
+		\fibzero
+		\fibthree
+		\fibsix
+	\end{scope}
+	\fibcurve
+	\node[color=magenta] at (-1.3,-1.8) {$n=0$};
+	\node[color=magenta] at (1.9,0.8) {$n=3$};
+	\node[color=magenta] at (8,2.3) {$n=6$};
+	\zahl{0}{F(0)=0}
+	\zahl{2}{F(3)=2}
+	\zahl{8}{F(6)=8}
+\end{scope}
+
+\begin{scope}[yshift=-5.5cm,scale=1]
+	\begin{scope}
+		\clip (-2,-2.6) rectangle (10.5,2.6);
+		\fibgrid
+	\end{scope}
+	\achsen
+	\begin{scope}
+		\clip (-2,-2.6) rectangle (10.5,2.6);
+		\fibone
+		\fibfour
+	\end{scope}
+	\fibcurve
+	\node[color=magenta] at (1,1.2) {$n=1$};
+	\node[color=magenta] at (3,1.1) {$n=4$};
+	\zahl{1}{F(1)=1}
+	\zahl{4}{F(4)=3}
+\end{scope}
+
+\begin{scope}[yshift=-11cm,scale=1]
+	\begin{scope}
+		\clip (-2,-2.6) rectangle (10.5,2.6);
+		\fibgrid
+	\end{scope}
+	\achsen
+	\begin{scope}
+		\clip (-2,-2.6) rectangle (10.5,2.6);
+		\fibtwo
+		\fibfive
+	\end{scope}
+	\fibcurve
+	\node[color=magenta] at (0.7,1.1) {$n=2$};
+	\node[color=magenta] at (5,1.5) {$n=5$};
+	\zahl{2}{F(2)=1}
+	\zahl{5}{F(5)=5}
+\end{scope}
+
+\end{tikzpicture}
+\end{document}
+

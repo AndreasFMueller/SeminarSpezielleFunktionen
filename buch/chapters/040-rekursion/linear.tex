@@ -110,25 +110,47 @@ Die Nullstellen des charakteristischen Polynoms
 \qquad
 \lambda_\pm = \begin{cases}
 \displaystyle
-\frac{\sqrt{5}+1}{2}=\varphi
+\frac{1+\sqrt{5}}{2}=\varphi
 \\[8pt]
 \displaystyle
-\frac{\sqrt{5}-1}{2}=\frac{1}{\varphi},
+\frac{1-\sqrt{5}}{2}=-\frac{1}{\varphi},
 \end{cases}
 \]
 dabei ist $\varphi$ das Verhältnis des goldenen Schnittes.
 Die Anfangsbedingungen $F(0)=0$ und $F(1)=1$ bedeutet, dass
-\[
-F(z) = \varphi^z - \frac{1}{\varphi^z}
-\]
-Dies ist die Funktion, die Matt Parker visualisiert hat.
+\begin{equation}
+F(z) = \frac{1}{\sqrt{5}}\varphi^z - \frac{1}{\sqrt{5}}\frac{1}{(-\varphi)^z}
+\label{buch:rekursion:linear:fibonaccifunktion}
+\end{equation}
+Dies ist die Funktion, die Matt Parker in seinem Video visualisiert hat.
+\begin{figure}
+\centering
+\includegraphics[width=0.82\textwidth]{chapters/040-rekursion/images/fibonacci.pdf}
+\caption{Komplexe Fibonacci-Zahlen-Funktion $F(z)$ von
+\eqref{buch:rekursion:linear:fibonaccifunktion}
+dargestellt als Abbildung $\mathbb{C}\to\mathbb{C}$.
+Die ganzzahligen $z$ werden auf die wohlbekannten Fibonacci-Zahlen
+abgebildet.
+Zur besseren Lesbarkeit wird der Wertebereich dreimal dargestellt,
+damit die Bilder der einzelnen reellen Teilintervalle in verschiedene
+Wertebereich-Bilder verteilt werden können.
+$x$-Werte zwischen $3n-\frac12$ und $3n+\frac12$ werden im obersten
+Bildbereich dargestellt, solche zwischen $3n+\frac12$ und $3n+\frac32$ 
+im mittleren und schliesslich solche zwischen $3n+\frac32$ und $3n+\frac52$
+im untersten.
+Die reelle Achse wird auf die grüne Kurve abgebildet.
+\label{buch:rekursion:linear:fibonaccigraph}}
+\end{figure}
+Abbildung~\eqref{buch:rekursion:linear:fibonaccigraph} zeigt die Abbildung
+$z\mapsto F(z)$.
 Allerdings sind die Funktionen
 \[
 F_{kl}(z)
 =
+\frac{1}{\sqrt{5}}
 \varphi^ze^{2k\pi iz}
 -
-\frac{1}{\varphi^z} e^{2l\pi z}
+\frac{1}{\sqrt{5}(-\varphi)^z} e^{2l\pi z}
 \]
 ebenfalls Lösungen der Differenzengleichung mit den gleichen 
 Anfangswerten.
