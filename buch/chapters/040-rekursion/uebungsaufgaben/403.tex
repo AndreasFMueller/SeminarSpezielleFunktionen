@@ -2,10 +2,43 @@ Finden Sie eine Formel für $\Gamma(\frac12+n)$ für $n\in\mathbb{N}$.
 
 \begin{loesung}
 Die Funktionalgleichung für die Gamma-Funktion bedeutet
+\begin{align*}
+\Gamma({\textstyle\frac12}+n)
+&=
+({\textstyle\frac12}+n-1)
+\Gamma({\textstyle\frac12}+n-1)
+\\
+&=
+({\textstyle\frac12}+n-1)
+({\textstyle\frac12}+n-2)
+\Gamma({\textstyle\frac12}+n-2)
+\\
+&=
+({\textstyle\frac12}+n-1)
+({\textstyle\frac12}+n-2)
+\dots
+({\textstyle\frac12})
+\cdot
+\Gamma({\textstyle\frac12})
+\\
+&=
+\Gamma({\textstyle\frac12})
+\cdot
+({\textstyle\frac12})
+\dots
+({\textstyle\frac12}+n-1)
+=
+\Gamma({\textstyle\frac12})\cdot ({\textstyle\frac12})_n
+=
+\sqrt{\pi\mathstrut}\cdot ({\textstyle\frac12})_n.
+\end{align*}
+Mit dem Resultat von Aufgaben~\ref{404} kann jetzt das Pochhammer-Symbol
+durch bekanntere Funktionen dargestellt und somit der
+gesuchte $\Gamma$-Funktionswert als
 \[
 \Gamma({\textstyle\frac12}+n)
 =
-({\textstyle\frac12}+n-1)
-\Gamma({\textstyle\frac12}+n-1)
+\frac{(2n)!\cdot \sqrt{\pi\mathstrut}}{n!\cdot 2^{2n}}
 \]
+geschrieben werden.
 \end{loesung}

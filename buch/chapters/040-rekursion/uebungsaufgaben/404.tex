@@ -1,0 +1,36 @@
+Finden Sie einen einfachen Ausdruck für $(\frac12)_n$, der nur
+Fakultäten und andere elmentare Funktionen verwendet.
+
+\begin{loesung}
+Das Pochhammer-Symbol $(\frac12)_n$ kann wie folgt durch bekanntere
+Funktionen dargestellt werden:
+\begin{align*}
+({\textstyle\frac12})_n
+&=
+\frac12
+\biggl(\frac12 + 1\biggr)
+\biggl(\frac12 + 2\biggr)
+\dots
+\biggl(\frac12 + n-1\biggr)
+\\
+&=
+\frac12\cdot
+\frac32\cdot
+\ldots
+\cdot
+\frac{2n-1}2
+\\
+&=
+\frac{
+1\cdot 3 \cdot\ldots\cdot (2n-1)
+}{
+2^n
+}
+\\
+&=
+\frac{(2n)!}{2^n\cdot n!}\cdot\frac{1}{2^n}
+=
+\frac{(2n)!}{n!\cdot 2^{2n}}.
+\qedhere
+\end{align*}
+\end{loesung}
