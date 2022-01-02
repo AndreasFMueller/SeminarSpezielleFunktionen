@@ -1,0 +1,98 @@
+%
+% tikztemplate.tex -- template for standalon tikz images
+%
+% (c) 2021 Prof Dr Andreas Müller, OST Ostschweizer Fachhochschule
+%
+\documentclass[tikz]{standalone}
+\usepackage{amsmath}
+\usepackage{times}
+\usepackage{txfonts}
+\usepackage{pgfplots}
+\usepackage{csvsimple}
+\usetikzlibrary{arrows,intersections,math}
+\begin{document}
+\def\skala{4}
+\definecolor{darkgreen}{rgb}{0,0.6,0}
+\begin{tikzpicture}[>=latex,thick,scale=\skala]
+\def\n{8}
+
+\fill[color=gray!20] (-1.1,-1.1) rectangle (2.1,2.1);
+\fill[color=white] (-1.11,-1.11) rectangle (0,0);
+\fill[color=white] (0,0) rectangle (1,1);
+\fill[color=white] (1,1) rectangle (2.22,2.22);
+
+\draw[->] (-1.1,0) -- (2.3,0) coordinate[label={$x$}];
+\draw[->] (0,-1.1) -- (0,2.3) coordinate[label={left:$y$}];
+
+\draw[color=gray!50,line width=1pt] (-1.1,-1.1) -- (2.2,2.2);
+
+\begin{scope}
+\clip (-1.1,-1.1) rectangle (2.1,2.1);
+
+\draw[color=red!40,line width=1.4pt]
+	plot[domain=0:2.2,samples=100] ({\x},{\x*\x});
+\draw[color=red,line width=1.4pt]
+	plot[domain=0:2.2,samples=100] ({\x*\x},{\x});
+
+\draw[color=blue!40,line width=1.4pt]
+	plot[domain=-1.1:2.2,samples=100] ({\x},{\x*\x*\x});
+\draw[color=blue,line width=1.4pt]
+	plot[domain=-1.1:2.2,samples=100] ({\x*\x*\x},{\x});
+
+\draw[color=darkgreen!40,line width=1.4pt]
+	(0,0)
+	--
+	plot[domain=-3:0.1,samples=100] ({exp(\x)},{exp(2*\n*\x)});
+\draw[color=darkgreen,line width=1.4pt]
+	(0,0)
+	--
+	plot[domain=-3:0.1,samples=100] ({exp(2*\n*\x)},{exp(\x)});
+
+\draw[color=orange!40,line width=1.4pt]
+	plot[domain=0.02:-2,samples=100] ({-exp(\x)},{-exp((2*\n+11)*\x)})
+	--
+	(0,0)
+	--
+	plot[domain=-2:0.05,samples=100] ({exp(\x)},{exp((2*\n+11)*\x)});
+\draw[color=orange,line width=1.4pt]
+	plot[domain=0.02:-2,samples=100] ({-exp((2*\n+11)*\x)},{-exp(\x)})
+	--
+	(0,0)
+	--
+	plot[domain=-2:0.05,samples=100] ({exp((2*\n+11)*\x)},{exp(\x)});
+
+\end{scope}
+
+\draw (-1,{0.1/\skala}) -- (-1,{-0.1/\skala});
+\node at (-1,{0.1/\skala}) [above] {$-1$};
+\draw (1,{0.1/\skala}) -- (1,{-0.1/\skala});
+\node at (1,{-0.1/\skala}) [below] {$1$};
+\draw (2,{0.1/\skala}) -- (2,{-0.1/\skala});
+\node at (2,{-0.1/\skala}) [below] {$2$};
+
+\draw ({-0.1/\skala},-1) -- ({0.1/\skala},-1);
+\node at ({0.1/\skala},-1) [right] {$-1$};
+\draw ({-0.1/\skala},1) -- ({0.1/\skala},1);
+\node at ({-0.1/\skala},1) [left] {$1$};
+\draw ({-0.1/\skala},2) -- ({0.1/\skala},2);
+\node at ({-0.1/\skala},2) [left] {$2$};
+
+\node at (0,0) [below right] {$0$};
+
+\node[color=orange] at (1.05,2.1) [above left] {$x^{27}$};
+\node[color=darkgreen] at (1.03,2.1) [above right] {$x^{16}$};
+\node[color=blue] at (1.30,2.1) [above] {$x^3$};
+\node[color=red] at ({sqrt(2.1)-0.04},2.1) [above right] {$x^2$};
+
+\node[color=orange] at (2.05,1.04) [below right]
+	{$\root{27}\of{x\mathstrut}$};
+\node[color=darkgreen] at (2.05,1.03) [above right]
+	{$\root{16}\of{x\mathstrut}$};
+\node[color=blue] at (2.07,1.28) [right]
+	{$\root{3}\of{x\mathstrut}$};
+\node[color=red] at (2.05,{sqrt(2.05)-0.02}) [above right]
+	{$\sqrt{x\mathstrut}$};
+
+\end{tikzpicture}
+\end{document}
+

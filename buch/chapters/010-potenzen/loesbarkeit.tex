@@ -3,16 +3,149 @@
 %
 % (c) 2021 Prof Dr Andreas Müller, OST Ostschweizer Fachhochscule
 %
-\section{Lösungen von Polynomegleichungen
+\section{Lösungen von Polynomgleichungen
 \label{buch:potenzen:section:loesungen}}
 \rhead{Lösungen von Polynomgleichungen}
+Die Berechnung von Polynomen ist sehr einfach, da nur arithmetische 
+Grundoperationen benötigt werden.
+In vielen Anwendungen sind jedoch die Argumente gefragt, für die ein
+Polynom einen bestimmten Wert annimmt.
+Es geht also um die Lösung von Gleichungen der Form
+\[
+p(x) = c
+\]
+für ein Polynome $p(x)$ und eine Konstante $c\in\mathbb{C}$.
 
 %
 % Fundamentalsatz der Algebra
 %
 \subsection{Fundamentalsatz der Algebra}
 
+\begin{satz}[Gauss]
+Jedes Polynom $p(x)=a_nx^n+\dots + a_2x^2 + a_1x + a_0\in\mathbb{C}[x]$
+zerfällt in ein Produkt
+\[
+p(x)
+=
+a_n
+(x-\alpha_1)(x-\alpha_2)\cdots(x-\alpha_n)
+\]
+für Nullstellen $\alpha_k\in\mathbb{C}$.
+\end{satz}
+
 %
 % Lösbarkeit durch Wurzelausdrücke
 %
 \subsection{Lösbarkeit durch Wurzelausdrücke}
+Der Fundamentalsatz macht keine Aussage darüber, wie die Nullstellen
+eines Polynoms gefunden werden können.
+Selbst für besonders einfache Gleichungen der Form
+\[
+x^n = c
+\qquad
+\text{oder Polynome der Form}
+\qquad
+p(x) = x^n -c
+\]
+gibt es keine direkte, nur auf den arithmetischen
+Operationen basierende Methode, eine Nullstelle oder Faktorisierung
+in endlich vielen Schritten zu finden.
+Dies rechtfertigt, für diese einfachen Fälle eine neue, spezielle
+Funktion zu definieren, die mindestens für reelle Koeffizienten 
+die Nullstelle als Rückgabewert hat.
+
+\begin{figure}
+\centering
+\includegraphics{chapters/010-potenzen/images/wurzel.pdf}
+\caption[Graph der Wurzelfunktionen]{Graph der Wurzelfunktionen
+%$x\mapsto\root{n}\of{x\mathstrut}$
+\ensuremath{x\mapsto\root{n}\of{x}}
+als Umkehrfunktionen der Potenzfunktionen $x\mapsto x^n$ für
+$n=2$ ({\color{red}rot}), $n=3$ ({\color{blue}blau}),
+$n=16$ ({\color{darkgreen}grün}) und $n=27$ ({\color{orange}orange}).
+\label{buch:potenzen:fig:wurzel}
+}
+\end{figure}
+
+\begin{definition}
+Die inverse Funktion der Potenzfunktion
+$f\colon \mathbb{R}\to\mathbb{R}:x\mapsto y=f(x)=x^n$
+heisst die $n$-{\em te Wurzel} und wird
+\[
+\root{n}\of{\mathstrut\phantom{m}}
+=
+f^{-1}
+\colon
+D\to\mathbb{R}
+:
+y\mapsto f^{-1}(y)=\root{n}\of{\mathstrut y}
+\]
+geschrieben.
+Für gerades $n$ ist der Definitionsbereich der Wurzel nur
+$D=\mathbb{R}_{\ge 0}$, für ungerades $n$ ist $D=\mathbb{R}$.
+Für $n=2$ wird die Wurzel als
+\(
+\root{2}\of{\mathstrut y}
+=
+\sqrt{\mathstrut y}
+\)
+geschrieben.
+\end{definition}
+
+TODO: Graph der Wurzelfunktion hinzufügen
+
+Mit der Wurzelfunktion ist es jetzt möglich, auch kompliziertere
+Gleichungen zu lösen:
+\begin{enumerate}
+\item
+Für negative Argument $y<0$ müssen Quadratwurzeln als
+$\sqrt{y\mathstrut}=i\sqrt{-y\mathstrut}$ definiert werden.
+\item
+Mindestens der Betrag der Wurzel einer komplexen Zahl lässt
+sich jetzt sofort mittels $|\root{n}\of{c\mathstrut}|=\root{n}\of{|c|\mathstrut}$
+berechnen.
+Für das Argument sind jedoch die in
+Abschnitt~\label{buch:geometrie:section:trigonometrisch} definierten
+trigonometrischen Funktionen notwendig.
+\item
+Die quadratische Gleichung 
+\[
+ax^2+bx+c=0
+\]
+hat die Nullstellen
+\[
+x_{1,2} = \frac{-b\pm\sqrt{b^2-4ac\mathstrut}}{2a}.
+\]
+\item
+Für kubische Gleichungen hat Cardano eine Lösung gefunden, die
+Nur Wurzelausdrücke und arithmetische Operationen verwendet.
+Die Gleichung $x^3+px+q=0$ hat die Nullstelle
+\[
+x
+=
+\root{3}\of{-\frac{q}2+\sqrt{\frac{q^2}4+\frac{p^3}{27}}}
++
+\root{3}\of{-\frac{q}2-\sqrt{\frac{q^2}4+\frac{p^3}{27}}}.
+\]
+Falls das Argument der Quadratwurzel negativ ist, muss eine
+Kubikwurzel aus einer komplexen Zahl berechnet werden, was
+wieder über die Möglichkeiten der oben definierten Wurzelfunktionen
+hinausgeht.
+\item
+Für die Lösung einer Gleichung vierten Grades hat Ferrari eine
+Formel angegeben, die mit Wurzelausdrücken und arithmetischen
+Operationen auskommt.
+\end{enumerate}
+
+Allerdings ist damit auch bereits ausgeschöpft, was die
+Wurzelfunktionen zur Lösung von Polynomgleichungen beitragen
+können.
+Der folgende Satz von Abel zeigt, dass man für Polynomgleichungen
+höheren Grades nicht mit einer Lösung durch Wurzelausdrücke
+rechnen kann.
+
+\begin{satz}[Abel]
+Für Polynomegleichungen vom Grad $n\ge 5$ gibt es keine allgemeine
+Lösung durch Wurzelausdrücke.
+\end{satz}
+

@@ -6,6 +6,67 @@
 \section{Polynome
 \label{buch:potenzen:section:polynome}}
 \rhead{Polynome}
+Die wohl einfachsten Funktionen, die sich mit den arithmetischen
+Operationen konstruieren lassen, sind die Polynome.
+
+\begin{definition}
+\index{Polynom}%
+Ein {\em Polynome} vom Grad $n$ ist die Funktion
+\[
+p(x) = a_nx^2n + a_{n-1}x^{n-1} + \dots + a_2x^2 + a_1x + a_0,
+\]
+wobei $a_n\ne 0$ sein muss.
+Das Polynom heisst {\em normiert}, wenn $a_n=1$ ist.
+\index{normiert}%
+Die Menge aller Polynome mit Koeffizienten in der Menge $K$ wird mit
+$K[x]$ bezeichnet.
+\end{definition}
+
+Die Menge $K[x]$ ist heisst auch der {\em Polynomring}, weil $K[x]$
+mit der Addition, Subtraktion und Multiplikation von Polynomen ein
+Ring mit $1$ ist.
+Im Folgenden werden wir uns auf die Fälle $K=\mathbb{R}$ und $K=\mathbb{C}$
+beschränken.
+
+In Abschnitt~\ref{buch:integral:section:orthogonale-polynome} werden
+Familien von Polynomen konstruiert werden, die sich durch eine
+Orthogonalitätseigenschaft auszeichnen.
+Diese Polynome lassen sich typischerweise auch als Lösungen von
+Differentialgleichungen finden.
+Ausserdem werden hypergeometrische Funktionen
+\[
+\mathstrut_pF_q(a_1,\dots,a_p;b_1,\dots,b_q;z)
+\], die in
+Abschnitt~\ref{buch:rekursion:section:hypergeometrische-funktion}
+definiert werden, zu Polynomen, wenn mindestens einer der
+Parameter $a_k$ negativ ganzzahlig ist.
+Polynome sind also bereits eine Vielfältige Quelle von speziellen
+Funktionen.
+
+Viele spezielle Funktionen werden aber komplizierter sein und
+sich nicht als einfache Polynome ausdrücken lassen.
+Genau diese Unmöglichkeit rechtfertigt ja, neue Funktionen
+zu definieren.
+Es bleibt aber immer noch die Notwendigkeit, effiziente 
+Berechnungsverfahren für die speziellen Funktionen zu konstruieren.
+Dank des folgenden Satzes kann dies immer mit Polynomen geschehen.
+
+\begin{satz}[Weierstrasse]
+Eine auf einem kompakten Intervall $[a,b]$ stetige Funktion $f(x)$
+lässt sich durch eine Folge $p_n(x)$ von Polynomen gleichmässig
+approximieren.
+\end{satz}
+
+Der Satz sagt in dieser Form nichts darüber aus, wie die
+Approximationspolynome konstruiert werden sollen.
+Von Bernstein gibt es konstruktive Beweise dieses Satzes,
+welche auch explizit eine Folge von Approximationspolynomen
+konstruieren.
+In der späteren Entwicklung werden wir für die meisten
+speziellen Funktionen Potenzreihen entwickeln, deren Partialsummen
+ebenfalls als Approximationen dienen können.
+Weitere Möglichkeiten liefern Interpolationsmethoden der
+numerischen Mathematik.
 
 \subsection{Faktorisierung und Nullstellen}
 % wird später gebraucht um bei der Definition der hypergeometrischen Reihe

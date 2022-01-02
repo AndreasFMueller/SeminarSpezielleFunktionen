@@ -10,7 +10,7 @@ CHAPTERFILES = $(CHAPTERFILES)						\
 	chapters/020-exponential/lambertw.tex				\
 	chapters/020-exponential/dilog.tex				\
 	chapters/020-exponential/eili.tex				\
-	chapters/020-exponential/uebungsaufgaben/0.tex			\
-	chapters/020-exponential/uebungsaufgaben/1.tex			\
-	chapters/020-exponential/uebungsaufgaben/2.tex			\
+	chapters/020-exponential/uebungsaufgaben/200.tex		\
+	chapters/020-exponential/uebungsaufgaben/201.tex		\
+	chapters/020-exponential/uebungsaufgaben/202.tex		\
 	chapters/020-exponential/chapter.tex
