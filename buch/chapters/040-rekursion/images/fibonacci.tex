@@ -49,7 +49,7 @@
 		({4.8*\topskala},4.3) to[out=-120,in=90] (5.0,-10.8);
 
 \draw[->,color=darkgreen!30,line width=5pt]
-		({6.0*\topskala},4.3) to[out=-90,in=70] (8.1,0.2);
+		({6.0*\topskala},4.3) to[out=-90,in=65] (8.1,0.2);
 
 
 \begin{scope}[yshift=4.8cm,scale=\topskala]
@@ -67,14 +67,15 @@
 
 	\foreach \n in {0,3,6}{
 		\foreach \x in {-0.5,-0.4,...,0.501}{
-			\draw[color=blue,line width=0.7pt]
+			\draw[color=red,line width=0.7pt]
 				({\n+\x},-0.5) -- ({\n+\x},0.5);
 		}
 		\foreach \y in {-0.5,-0.4,...,0.501}{
-			\draw[color=red,line width=0.7pt]
+			\draw[color=blue,line width=0.7pt]
 				({\n-0.5},\y) -- ({\n+0.5},\y);
 		}
 	}
+	\draw[color=darkgreen,line width=1.4pt] (0,0) -- (6.5,0);
 	\foreach \n in {0,...,6}{
 		\fill[color=white,opacity=0.8]
 			({\n-0.1},-0.28) rectangle ({\n+0.1},-0.05);
@@ -100,9 +101,9 @@
 		\fibsix
 	\end{scope}
 	\fibcurve
-	\node[color=magenta] at (-1.3,-1.8) {$n=0$};
-	\node[color=magenta] at (1.9,0.8) {$n=3$};
-	\node[color=magenta] at (8,2.3) {$n=6$};
+	\node[color=magenta] at (-1.3,-1.8) {$z=0$};
+	\node[color=magenta] at (1.9,0.8) {$z=3$};
+	\node[color=magenta] at (8,2.3) {$z=6$};
 	\zahl{0}{F(0)=0}
 	\zahl{2}{F(3)=2}
 	\zahl{8}{F(6)=8}
@@ -120,10 +121,10 @@
 		\fibfour
 	\end{scope}
 	\fibcurve
-	\node[color=magenta] at (1,1.2) {$n=1$};
-	\node[color=magenta] at (3,1.1) {$n=4$};
+	\node[color=magenta] at (1,1.2) {$z=1$};
+	\node[color=magenta] at (3,1.1) {$z=4$};
 	\zahl{1}{F(1)=1}
-	\zahl{4}{F(4)=3}
+	\zahl{3}{F(4)=3}
 \end{scope}
 
 \begin{scope}[yshift=-11cm,scale=1]
@@ -138,8 +139,8 @@
 		\fibfive
 	\end{scope}
 	\fibcurve
-	\node[color=magenta] at (0.7,1.1) {$n=2$};
-	\node[color=magenta] at (5,1.5) {$n=5$};
+	\node[color=magenta] at (0.7,1.1) {$z=2$};
+	\node[color=magenta] at (5,1.5) {$z=5$};
 	\zahl{2}{F(2)=1}
 	\zahl{5}{F(5)=5}
 \end{scope}
