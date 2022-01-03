@@ -1,0 +1,89 @@
+%
+% hyperbel.tex -- Hyperbel-Definition
+%
+% (c) 2021 Prof Dr Andreas Müller, OST Ostschweizer Fachhochschule
+%
+\documentclass[tikz]{standalone}
+\usepackage{amsmath}
+\usepackage{times}
+\usepackage{txfonts}
+\usepackage{pgfplots}
+\usepackage{csvsimple}
+\usetikzlibrary{arrows,intersections,math,calc}
+\begin{document}
+\pgfmathparse{14/18.8}
+\xdef\skala{\pgfmathresult}
+\def\hyperbel#1#2#3{
+\begin{scope}
+	\clip (-9,-7) rectangle (9,7);
+	\draw[color=#3,line width=1.4pt] plot[domain=-2:2,samples=100]
+		({#1*cosh(\x)},{#2*sinh(\x)});
+	\draw[color=#3,line width=1.4pt] plot[domain=-2:2,samples=100]
+		({-#1*cosh(\x)},{#2*sinh(\x)});
+\end{scope}
+}
+\definecolor{darkgreen}{rgb}{0,0.6,0}
+\def\punkt#1#2#3{ ({#1*cosh(#3)},{#2*sinh(#3)}) }
+\begin{tikzpicture}[>=latex,thick,scale=\skala]
+
+\def\e{5}
+
+\coordinate (F1) at (\e,0);
+\coordinate (F2) at (-\e,0);
+
+\draw[->] (-9.1,0) -- (9.4,0) coordinate[label={$x$}];
+\draw[->] (0,-7.1) -- (0,7.3) coordinate[label={right:$y$}];
+
+
+\begin{scope}
+\clip (-9,-7) rectangle (9,7);
+
+\draw[color=gray] (-12,-9) -- (12,9);
+\draw[color=gray] (-12,9) -- (12,-9);
+\end{scope}
+
+\foreach \a in {0.5,1,...,4.5}{
+	\pgfmathparse{sqrt(\e*\e-\a*\a)}
+	\xdef\b{\pgfmathresult}
+	\hyperbel{\a}{\b}{red!20}
+}
+
+\def\a{4}
+\def\b{3}
+\def\t{1.2}
+%\coordinate (P) at \punkt{\a}{\b}{\t};
+\coordinate (P) at ({1.8107*\a},{1.5095*\b});
+
+\draw[color=gray] (\e,0) arc (0:atan(\b/\a):\e);
+
+\draw[color=darkgreen,line width=1.4pt] (F1) -- (P) -- (F2);
+
+\draw[color=blue,line width=1.4pt] (0,0) -- (\a,0) -- (\a,\b);
+\node[color=blue] at ({0.5*\a},0) [above] {$a$};
+\node[color=blue] at (\a,{0.5*\b}) [left] {$b$};
+
+\fill[color=blue] (F1) circle[radius=0.10];
+\fill[color=blue] (F2) circle[radius=0.10];
+
+\hyperbel{\a}{\b}{red}
+
+\node at (F1) [above left] {$F_1$};
+\node at (F2) [above left] {$F_2$};
+
+\node[color=blue] at (F1) [below] {$e$};
+\node[color=blue] at (F2) [below] {$-e$};
+
+\fill[color=darkgreen] (P) circle[radius=0.1];
+\node[color=darkgreen] at (P) [below right]  {$P$};
+
+\fill[color=red] (\a,0) circle[radius=0.1];
+\node[color=red] at (\a,0) [below left] {$A_+$};
+\fill[color=red] (-\a,0) circle[radius=0.1];
+\node[color=red] at (-\a,0) [below right] {$A_-$};
+
+\node[color=darkgreen] at ($0.5*(F2)+0.5*(P)$) [above left] {$\overline{F_2P}$};
+\node[color=darkgreen] at ($0.5*(F1)+0.5*(P)$) [right] {$\overline{F_1P}$};
+
+\end{tikzpicture}
+\end{document}
+

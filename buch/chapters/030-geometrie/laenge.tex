@@ -280,10 +280,149 @@ Tatsächlich ist die Ableitung davon
 was mit der Integralformel~\ref{buch:geometrie:eqn:kreislaenge} 
 übereinstimmt.
 
-\subsection{Hyperbeln und Ellipsen
-\label{buch:geometrie:subsection:hyperbeln-und-ellipsen}}
+\subsection{Hyperbeln
+\label{buch:geometrie:subsection:hyperbeln}}
+\begin{figure}
+\centering
+\includegraphics{chapters/030-geometrie/images/kegelschnitte.pdf}
+\caption{Hyperbeln, Parabeln und Ellipsen sind die Schnittkurven einer
+Ebene mit einem Kegel
+\label{buch:geometrie:laenge:fig:kegelschnitte}}
+\end{figure}
+Eine Hyperbel entsteht durch Schneiden eines geraden Kreiskegels mit
+einer Ebene wie in Abbildung~\ref{buch:geometrie:laenge:fig:kegelschnitte}.
+Es lässt sich ableiten, dass die Punkte der Hyperbel die Eigenschaft
+haben, dass die Differenzt der Entfernung von zwei festen Punkte,
+den sogenannten Brennpunkten, konstant ist.
+Dies ist die Definition, von der wir in diesem Abschnitt ausgehen
+wollen.
+
+\subsubsection{Geometrie einer Hyperbel}
+\begin{figure}
+\centering
+\includegraphics{chapters/030-geometrie/images/hyperbel.pdf}
+\caption{Geometrie einer Hyperbel in der Ebene.
+Die Hyperbel besteht aus den Punkten $P$ der Ebene, deren Entfernungsdifferenz
+$\overline{F_1P}-\overline{F_2P}$
+von zwei vorgegebenen Punkten $F_1$ und $F_2$ konstant ist.
+Die Differenz $\pm 2a$ führt auf die Hyperbeln mit Halbachsen
+$a$ und $b$.
+\label{buch:geometrie:hyperbel:fig:2d}}
+\end{figure}
+Die Brennpunkte der Hyperbel sollen $F_1=(e,0)$ und $F_2=(-e,0)$ sein.
+Die Grösse $e$ heisst auch die {\em lineare Exzentrizität} der Hyperbel.
+Die beiden Äste der Hyperbel schneiden die $x$-Achse in den Punkten
+$A_\pm=(\pm a,0)$.
+In Abbildung~\ref{buch:geometrie:hyperbel:fig:2d} ist diese Situation
+dargestellt.
+
+Die Differenz der Entfernungen von $A_+$ zu den beiden Brennpunkten ist
+\[
+\overline{A_+F_2}
+-
+\overline{A_+F_1}
+=
+(e+a)-(e-a) = 2a
+\]
+Für einen beliebigen Punkt $P=(x,y)$ in der Ebene wird die Bedingung
+an die Abstände zu
+\[
+\overline{PF_2}
+-
+\overline{PF_1}
+=
+\sqrt{(x+e)^2+y^2}
+-
+\sqrt{(x-e)^2+y^2}
+=
+2a.
+\]
+Quadrieren ergibt
+\begin{align*}
+4a^2
+&=
+(x+e)^2+y^2
++
+2\sqrt{
+((x+e)^2+y^2)
+((x-e)^2+y^2)
+}
++
+(x-e)^2+y^2
+\\
+2a^2-x^2-e^2-y^2
+&=
+\sqrt{
+y^4 + y^2((x+e)^2 + (x-e)^2) +(x^2-e^2)^2
+}
+\\
+&=
+\sqrt{y^4 + 2y^2 ( x^2+e^2) +x^4 - 2x^2e^2 + e^4}.
+\end{align*}
+Erneutes Quadrieren bringt auch die Wurzel auf der rechten Seiten
+zum Verschwinden:
+\begin{align}
+4a^4 + x^4 + e^4 + y^4
+-4a^2(x^2+y^2+e^2)
++2y^2(x^2+e^2)+2x^2e^2
+&=
+y^4+2y^2(x^2 +e^2) + x^4 -2x^2e^2+e^4
+\notag
+\\
+4a^4
+-4a^2(x^2+y^2+e^2)
++2x^2e^2
+&=
+-2x^2e^2
+\notag
+\\
+a^4+x^2e^2&=a^2(x^2+y^2+e^2)
+\notag
+\\
+x^2(e^2-a^2)&=a^2(e^2-a^2) + a^2y^2.
+\notag
+\end{align}
+Schreiben wir $b^2=e^2-a^2$ und stellen die Gleichung etwas um,
+ergibt sich
+\begin{equation}
+b^2x^2 - a^2y^2 = a^2b^2
+\qquad\Rightarrow\qquad
+\frac{x^2}{a^2} - \frac{y^2}{b^2} = 1.
+\label{buch:geometrie:hyperbel:gleichung}
+\end{equation}
+Die Zahlen $a$ und $b$ heissen die {\em grosse} bzw.~{\em kleine Halbachse}
+der Hyperbel.
+
+Die Hyperbeln können auch als Graphen einer Funktion von $x$ gefunden werden.
+Dazu wird die Gleichung~\eqref{buch:geometrie:hyperbel:gleichung}
+nach $y$ aufgelöst:
+\[
+\frac{y^2}{b^2} = \frac{x^2}{a^2} - 1
+\qquad\Rightarrow\qquad
+y
+=
+\pm
+b\sqrt{\frac{x^2}{a^2}-1}.
+\]
+Die rechte Seite hat für $|x|<a$ keine reellen Werte.
+Ebenso kann die Hyperbel als Graph der Funktion
+\[
+y\mapsto x = \pm a\sqrt{1+\frac{y^2}{b^2}}
+\]
+dargestellt werden, die für alle $x\in\mathbb{R}$ definiert ist und
+nur Werte mit Betrag $\ge a$ hat.
+
+Ein besonders einfacher Spezialfall ist $a=b=1$, genannt eine
+{\em gleichseitige Hyperbel}.
+\index{gleichseitige Hyperbel}%
+\index{Hyperbel, gleichseitig}%
+In diesem Fall ist $x^2-y^2=1$ und $e^2=2$.
+
+\subsubsection{Länge eines gleichseitigen Hyperbelbogens}
 Die Funktion $f(x)=\sqrt{1+x^2}$ beschreibt eine gleichseitige
-Hyperbel.
+Hyperbel, die gegenüber der Situation in
+Abbildung~\ref{buch:geometrie:hyperbel:fig:2d}
+an der Winkelhalbierenden des ersten Quadranten gespiegelt ist.
 Die Bogenlänge zwischen dem Punkt $(0,1)$ und $(x,y)$ auf der
 Hyperbel ist gegeben durch das Integral:
 \[
@@ -301,6 +440,61 @@ verwendet werden, die entstehenden Integrals, dies ändert jedoch
 nichts an der Schwierigkeit, einen Ausdruck für den Wert des
 Integrals anzugeben.
 
+\subsubsection{Parametrisierung mit hyperbolischen Funktionen}
+Etwas allgemeiner wird eine Hyperbel durch die Gleichung
+\begin{equation}
+\frac{x^2}{a^2} - \frac{y^2}{b^2} = 1
+\label{buch:geometrie:hyperbel:eqn}
+\end{equation}
+beschrieben.
+Die hyperbolischen Funktionen parametrisieren alle Paare von Zahlen
+$(X,Y=(\cosh t,\sinh t)$ mit der Eigenschaft $X^2-Y^2=1$.
+Aus \eqref{buch:geometrie:hyperbel:eqn} folgt daher, dass
+\[
+\frac{x}{a} = \cosh t, \frac{y}{b} = \sinh t
+\qquad\Rightarrow\qquad
+x=a\cosh t, y=b\sinh t.
+\]
+Somit ist 
+\[
+\gamma\colon
+\mathbb{R}\to\mathbb{R}^2
+:
+t\mapsto \begin{pmatrix}a\cosh t\\b\sinh t\end{pmatrix}
+\]
+eine Parametrisierung der Hyperbel.
+Für die Länge eines Hyperbelbogens zwischen zwei Parameterwerten
+$t_0$ und $t_1$ wird dann
+\begin{align*}
+l
+&=
+\int_{t_0}^{t_1}
+\sqrt{a^2 \sinh^2 t + b^2 \cosh^2 t}
+\,dt
+=
+\int_{t_0}^{t_1}
+\sqrt{a^2 \sinh^2 t + b^2 (1+\sinh^2 t)}
+\,dt
+\\
+&=
+b
+\int_{t_0}^{t_1}
+\sqrt{1 + \frac{a^2+b^2}{b^2} \sinh^2 t }
+\,dt
+=
+b
+\int_{t_0}^{t_1}
+\sqrt{1 + \frac{e^2}{b^2} \sinh^2 t }
+\,dt.
+\end{align*}
+Das Integral auf der rechten Seite ist nicht mit elementaren Funktionen
+ausführbar und rechtfertigt die Definition neuer spezieller Funktionen.
+Die Kurvenlänge auf einer Hyperbel kann mit den in
+Kapitel~\ref{buch:chapter:elliptischefunktionen}
+beschriebenen elliptischen Integralen beschrieben werden.
+
+\subsection{Ellipsen
+\label{buch:geometrie:subsection:ellipsen}}
 Für eine Ellipse kann man die Parameterdarstellung 
 \[
 t\mapsto \begin{pmatrix}a\cos t\\b\sin t\end{pmatrix}
@@ -317,12 +511,24 @@ a^2 \sin^2 t + b^2 \cos^2t
 }
 \,dt
 =
+\int_\alpha^\beta
+\sqrt{
+a^2 - (a^2-b^2)\cos^2 t
+}
+\,dt
+=
 a
 \int_\alpha^\beta
 \sqrt{
-\sin^2 t + \frac{b^2}{a^2} \cos^2t
+1 - \frac{a^2-b^2}{a^2} \cos^2t
 }
 \,dt.
+=
+a\int_\alpha^\beta
+\sqrt{
+1-\varepsilon^2 \cos^2t
+}
+\,dt
 \]
 Auch dieses Integral ist nicht in geschlossener Form lösbar.
 Dies motiviert in Kapitel~\ref{buch:chapter:elliptischefunktionen}
@@ -330,7 +536,8 @@ die Definition~\ref{buch:elliptisch:def:integrale123}
 der sogenannten elliptischen Intefrale als neue
 spezielle Funktionen.
 Auf Seite~\pageref{buch:elliptisch:fig:ellipsenumfang} wird gezeigt,
-dass der Umfang einer Ellipse $aE(b/a)$ ist (siehe auch
+dass der Umfang einer Ellipse $4aE(\varepsilon)$ ist,
+wobei $\varepsilon=e/a$ und $e^2=a^2-b^2$ (siehe auch
 Abbildung~\ref{buch:elliptisch:fig:ellipsenumfang}).
 
 
