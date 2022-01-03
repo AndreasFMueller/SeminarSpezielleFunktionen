@@ -18,6 +18,7 @@
 \definecolor{fokusfarbe}{rgb}{0.8,0.0,0.0}
 \definecolor{scheitelfarbe}{rgb}{0,0.6,0}
 \definecolor{leitfarbe}{rgb}{0.8,0.2,0.8}
+\definecolor{mantelfarbe}{rgb}{0.2,0.6,1.0}
 
 \newboolean{showgrid}
 \setboolean{showgrid}{false}
@@ -37,38 +38,56 @@
 \fill (0,0) circle[radius=0.05];
 }{}
 
+%
+% Lage der Schnittebene
+%
 \begin{scope}[yshift=-7.5cm]
+	% Hyperbel
+	\begin{scope}[xshift=-4.5cm]
+		\clip (-2,-2.5) rectangle (2,1.5);
+		\fill[color=kegelfarbe!40]
+			(-1.4,-3) -- (1.4,-3) -- (-1.4,3) -- (1.4,3) -- cycle;
+		\begin{scope}[xshift=-0.3cm]
+			\draw[color=ebenenfarbe,line width=1.4pt]
+				(-0.4,-3) -- (0.4,3);
+		\end{scope}
+		\begin{scope}
+			\draw[color=mantelfarbe,line width=1.2pt]
+				(-0.4,-3) -- (0.4,3);
+		\end{scope}
+	\end{scope}
 
-\begin{scope}
-\clip (-2,-2.5) rectangle (2,1.5);
-\fill[color=kegelfarbe!40]
-	(-1.4,-3) -- (1.4,-3) -- (-1.4,3) -- (1.4,3) -- cycle;
-\begin{scope}[xshift=0.5cm]
-\draw[color=ebenenfarbe,line width=1.4pt]
-	(-1.4,-3) -- (1.4,3);
-\end{scope}
-\end{scope}
+	% Parabel
+	\begin{scope}
+		\clip (-2,-2.5) rectangle (2,1.5);
+		\fill[color=kegelfarbe!40]
+			(-1.4,-3) -- (1.4,-3) -- (-1.4,3) -- (1.4,3) -- cycle;
+		\begin{scope}[xshift=0.5cm]
+			\draw[color=ebenenfarbe,line width=1.4pt]
+				(-1.4,-3) -- (1.4,3);
+		\end{scope}
+		\begin{scope}
+			\draw[color=mantelfarbe,line width=1.2pt]
+				(-1.4,-3) -- (1.4,3);
+		\end{scope}
+	\end{scope}
 
-\begin{scope}[xshift=-4.5cm]
-\clip (-2,-2.5) rectangle (2,1.5);
-\fill[color=kegelfarbe!40]
-	(-1.4,-3) -- (1.4,-3) -- (-1.4,3) -- (1.4,3) -- cycle;
-\begin{scope}[xshift=-0.3cm]
-\draw[color=ebenenfarbe,line width=1.4pt] (-0.4,-3) -- (0.4,3);
-\end{scope}
-\end{scope}
-
-\begin{scope}[xshift=4.5cm]
-\clip (-2,-2.5) rectangle (2,1.5);
-\fill[color=kegelfarbe!40]
-	(-1.4,-3) -- (1.4,-3) -- (-1.4,3) -- (1.4,3) -- cycle;
-\begin{scope}[xshift=0.9cm]
-\draw[color=ebenenfarbe,line width=1.4pt] (-3.4,-3) -- (3.4,3);
-\end{scope}
-\end{scope}
+	% Ellipse
+	\begin{scope}[xshift=4.5cm]
+		\clip (-2,-2.5) rectangle (2,1.5);
+		\fill[color=kegelfarbe!40]
+			(-1.4,-3) -- (1.4,-3) -- (-1.4,3) -- (1.4,3) -- cycle;
+		\begin{scope}[xshift=0.9cm]
+			\draw[color=ebenenfarbe,line width=1.4pt]
+				(-3.4,-3) -- (3.4,3);
+		\end{scope}
+	\end{scope}
 
 \end{scope}
 
+%
+% Beschriftung der 3D-Abbildung
+%
 \def\marke#1#2#3#4{
 	\fill[color=white,opacity=0.5]
 		({#1-0.25},{#2-0.2}) rectangle ({#1+0.20},{#2+0.2});
@@ -97,15 +116,18 @@
 \marke{5.3}{-0.0}{scheitelfarbe}{$S_2$}
 \node[color=yellow] at (4.8,-2.7) [below right] {$P$};
 
+%
+% Beschriftung und geometrische Örter
+%
 \begin{scope}[yshift=-5.5cm]
-\node at (-4.5,0)
+	\node at (-4.5,0)
 	{Hyperbel: $\overline{F_1P}-\overline{F_2P}=\text{const}$\strut};
 
-\fill[color=white,opacity=0.7] (-1.3,-0.25) rectangle (1.3,0.25);
-\node at (0,0) {Parabel: $\overline{FP}=\overline{lP}$\strut};
+	\fill[color=white,opacity=0.7] (-1.3,-0.25) rectangle (1.3,0.25);
+	\node at (0,0) {Parabel: $\overline{FP}=\overline{lP}$\strut};
 
-\fill[color=white,opacity=0.7] (2.4,-0.25) rectangle (6.6,0.25);
-\node at (4.5,0)
+	\fill[color=white,opacity=0.7] (2.4,-0.25) rectangle (6.6,0.25);
+	\node at (4.5,0)
 	{Ellipse: $\overline{F_1P}+\overline{F_2P}=\text{const}$\strut};
 \end{scope}
 

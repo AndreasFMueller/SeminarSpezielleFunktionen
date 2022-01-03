@@ -13,6 +13,7 @@ global_settings {
 #declare imagescale = 0.090;
 #declare r = 0.03;
 #declare R = 1.3 * r;
+#declare rkurve = 0.6 * r;
 
 camera {
 	location <-33, 20, 50>
@@ -77,6 +78,7 @@ union {
 #declare kurvenfarbe = rgb<0.4,0.8,0>;
 #declare leitfarbe = rgb<0.8,0.2,0.8>;
 #declare ebenenfarbe = rgbt<0.6,0.4,0.2,0.0>;
+#declare mantelfarbe = rgb<0.2,0.6,1.0>;
 
 #declare kegelhoehe = 3;
 #declare kegelradius = 1.4;
@@ -150,6 +152,32 @@ intersection {
 	}
 }
 
+#declare ymantel = kegelradius - 1;
+#declare xmantel = sqrt(kegelradius*kegelradius-ymantel*ymantel);
+
+union {
+	cylinder {
+		<3+xmantel,-kegelhoehe,ymantel>,
+		<3-xmantel,kegelhoehe,-ymantel>,
+		0.5 * rkurve
+	}
+	sphere { <3+xmantel,-kegelhoehe,ymantel>, 0.5 * rkurve }
+	sphere { <3-xmantel,kegelhoehe,-ymantel>, 0.5 * rkurve }
+	cylinder {
+		<3-xmantel,-kegelhoehe,ymantel>,
+		<3+xmantel,kegelhoehe,-ymantel>,
+		0.5 * rkurve
+	}
+	sphere { <3-xmantel,-kegelhoehe,ymantel>, 0.5 * rkurve }
+	sphere { <3+xmantel,kegelhoehe,-ymantel>, 0.5 * rkurve }
+	pigment {
+		color mantelfarbe
+	}
+	finish {
+		specular 0.5
+		metallic
+	}
+}
 
 #declare e3 = <0, 1, 0>;
 #declare tunten = -offsethyperbel / vdot(nparabel-nhyperbel, e3);
@@ -185,7 +213,6 @@ intersection {
 	Origin + (-a * cosh(s) * xaxis + b * sinh(s) * yaxis)
 #end
 
-#declare rkurve = 0.6 * r;
 
 // Hyperbel
 union {
@@ -272,6 +299,23 @@ intersection {
 	//no_shadow
 	pigment {
 		color kegelfarbetransparent
+	}
+	finish {
+		specular 0.5
+		metallic
+	}
+}
+
+union {
+	cylinder {
+		<0,-kegelhoehe,kegelradius>,
+		<0,kegelhoehe,-kegelradius>,
+		0.5 * rkurve
+	}
+	sphere { <0,-kegelhoehe,kegelradius>, 0.5 * rkurve }
+	sphere { <0,kegelhoehe,-kegelradius>, 0.5 * rkurve }
+	pigment {
+		color mantelfarbe
 	}
 	finish {
 		specular 0.5
