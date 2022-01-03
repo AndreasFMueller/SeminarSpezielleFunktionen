@@ -18,6 +18,9 @@ Ausdrücke berechnen lässt.
 Es ist daher notwendig, neue spezielle Funktionen zu definieren,
 die trigonometrischen Funktionen.
 
+%
+% Definition der trigonometrischen Funktionen
+%
 \subsection{Definition der trigonometrischen Funktionen}
 % XXX Abbildung Jakobsstab
 Eines der ältesten Messgeräte für Winkel ist der Jakobsstab,
@@ -727,7 +730,7 @@ Zum Beispiel kann man das Newton-Verfahren verwenden mit dem Startwert
 $s_0=\pi/180$ für die Iteration, die $\sin 1^\circ$ liefern soll, und
 $c_0=\sqrt{1-s_0^2}$ für die Kosinus-Iteration.
 Die Konvergenz ist sehr schnell, bereits nach zwei Iterationen hat
-man einen auf 16 Stellen genauen wert, wie man in
+man einen auf 16 Stellen genauen Wert, wie man in
 Tabelle~\ref{buch:geometrie:trigo:newtontabelle} sieht.
 Mit einer einzigen Anwendung des Additionstheorems kann man jetzt
 aus den Werten der Tabelle~\ref{buch:geometrie:trigo:tabelle}
@@ -769,8 +772,48 @@ ermöglicht.
 \label{buch:trigo:table:sinus}}
 \end{table}
 
-
-
+%
+% Trigonometrische Funktionen und Matrixexponentialfunktion
+%
+\subsection{Trigonometrische Funktionen und Matrixexponentialfunktion
+\label{buch:geometrie:trigo:matrixexp}}
+Die Exponentialfunktion erfüllt auf ganz natürlich Art eine
+Additionsgesetz, es ist $\exp(t_1+t_2)=\exp(t_1)\exp(t_2)$.
+Diese Eigenschaft bleibt erhalten, wenn man als Argumente der
+Potenzreihe Matrizen verwendet, wenigstens wenn diese Matrizen
+vertauschen.
+Insbesondere gilt
+\[
+\exp(\alpha J+\beta J)
+=
+\exp(\alpha J) \exp(\beta J).
+\]
+Setzt man $\alpha J$ in die Potenzreihe der Exponentialfunktion ein, 
+bekommt man
+\begin{align*}
+\exp(\alpha J)
+&=
+\sum_{k=0}^\infty \frac{\alpha^k}{k!}J^k
+\\
+&=
+\biggl(
+\sum_{j=0}^\infty \frac{\alpha^{2j}}{(2j)!}(-1)^j
+\biggr)E
++
+\biggl(
+\sum_{j=0}^\infty \frac{\alpha^{2j+1}}{(2j+1)!}(-1)^j
+\biggr)J,
+\end{align*}
+somit folgt
+\begin{align*}
+\cos\alpha
+&=
+\sum_{j=0}^\infty (-1)^j\frac{\alpha^{2j}}{(2j)!}
+\\
+\sin\alpha
+&=
+\sum_{j=0}^\infty (-1)^j\frac{\alpha^{2j+1}}{(2j+1)!}
+\end{align*}
 
 
 

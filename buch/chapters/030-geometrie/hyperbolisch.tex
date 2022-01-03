@@ -6,4 +6,511 @@
 \section{Hyperbolische Funktionen
 \label{buch:geometrie:section:hyperbolisch}}
 \rhead{Hyperbolische Funktionen}
+Drehmatrizen werden durch die Eigenschaft charakterisiert, dass
+sie Längen von und Winkel zwischen Vektoren in der Ebene nicht
+ändern.
+Die trigonometrischen Funktionen ermöglichten, alle Drehungen
+zu parametrisieren.
 
+%
+% Das Minkowski-Skalarprodukt
+%
+\subsection{Das Minkowski-Skalarprodukt in der Ebene}
+
+\begin{definition}
+Das Minkowski-Skalarprodukt in der Ebene ist definiert als
+\[
+\langle x,y\rangle
+=
+-x_0y_0+x_1y_1
+\]
+für $x,y\in\mathbb{R}$.
+\end{definition}
+
+Das Minkowski-Skalarprodukt ist nicht definit, es gibt Vektoren, die
+``Länge''  $0$ haben, zum Beispiel ist 
+\[
+\biggl\langle
+\begin{pmatrix}1\\1\end{pmatrix},
+\begin{pmatrix}1\\1\end{pmatrix}
+\biggr\rangle
+=
+0
+\qquad\text{und}\qquad
+\biggl\langle
+\begin{pmatrix}1\\0\end{pmatrix},
+\begin{pmatrix}1\\0\end{pmatrix}
+\biggr\rangle
+=
+-1,
+\]
+es ist daher nicht einfach möglich, eine Vektorlänge mit
+$\sqrt{\langle x,x\rangle}$ zu definieren.
+Die Gram-Matrix des Skalarproduktes ist
+\[
+G
+=
+\begin{pmatrix}
+\langle e_0,e_0\rangle& \langle e_0,e_1\rangle\\
+\langle e_1,e_0\rangle& \langle e_1,e_1\rangle
+\end{pmatrix}
+=
+\begin{pmatrix*}[r]
+-1&0\\
+ 0&1
+\end{pmatrix*} 
+\]
+wobei $e_0$ und $e_1$ die Standardbasisvektoren der Ebene sind.
+
+%
+% Matrizen, die das Skalarprodukt invariant lassen
+%
+\subsection{Matrizen, die das Skalarprodukt invariant lassen}
+In Anlehnung an das Vorgehen bei den Drehmatrizen suchen wir jetzt nach
+Matrizen
+\[
+A
+=
+\begin{pmatrix}
+a_{00}&a_{01}\\
+a_{10}&a_{11}
+\end{pmatrix}
+,
+\]
+die das Minkowski-Skalarprodukt nicht ändern.
+
+\subsubsection{Gleichungen für $A$}
+Erhaltung des Skalarproduktes bedeutet, dass 
+\[
+AGA^t = G
+\]
+gelten muss.
+Durch Ausmultiplizieren findet man
+\begin{align*}
+AG&=
+\begin{pmatrix*}[r]
+-a_{00}& a_{01}\\
+-a_{10}& a_{11}
+\end{pmatrix*},
+\\
+AGA^t
+&=
+\begin{pmatrix*}[r]
+-a_{00}& a_{01}\\
+-a_{10}& a_{11}
+\end{pmatrix*}
+\begin{pmatrix}
+a_{00}&a_{10}\\
+a_{01}&a_{11}
+\end{pmatrix}
+=
+\begin{pmatrix}
+-a_{00}^2+a_{01}^2 & -a_{00}a_{10} +a_{01}a_{11} \\
+-a_{00}a_{10} +a_{01}a_{11} & -a_{10}^2+a_{11}^2
+\end{pmatrix}.
+\end{align*}
+Daraus ergeben sich die folgenden Gleichungen für die Koeffizienten
+der Matrix $A$
+\begin{align*}
+-1 &= -a_{00}^2+a_{01}^2          & 0 &= -a_{00}a_{10} +a_{01}a_{11} \\
+ 0 &= -a_{00}a_{10} +a_{01}a_{11} & 1 &= -a_{10}^2+a_{11}^2
+\end{align*}
+Die beiden Gleichungen in der linken unteren und der rechten oberen Ecke
+sind identisch.
+Aus der Gleichung in der linken oberen Ecke folgt, dass $|a_{00}|\ge 1$
+sein muss.
+Ebenso folgt aus der Gleichung in der rechten unteren Ecke, dass
+$|a_{11}| \ge 1$ sein muss.
+Insbesondere kann man die anderen beiden Gleichungen durch die 
+$a_{00}a_{11}$ teilen und erhält
+\begin{equation}
+\frac{a_{10}}{a_{11}} = \frac{a_{01}}{a_{00}}
+\label{buch:geometrie:hyperbolisch:eqn:aaaa}
+\end{equation}
+
+\subsubsection{Orientierungstreue Abbildungen}
+Wir verlangen jetzt zusätzlich, dass $\det A= a_{00}a_{11}-a_{01}{a_{10}} = 1$
+ist.
+Löst man \eqref{buch:geometrie:hyperbolisch:eqn:aaaa} nach $a_{10}$ aus
+und setzt in die Determinante ein, erhält man
+\[
+1
+=
+a_{00}a_{11} - a_{01} \frac{a_{01}a_{11}}{a_{00}} 
+=
+\frac{ a_{00}^2-a_{01}^2}{a_{00}} a_{11} 
+=
+\frac{a_{11}}{a_{00}},
+\]
+woraus $a_{00}=a_{11}$ folgt, wir schreiben dafür zur Abkürzung $c=a_{00}$.
+Durch Umstellen der Gleichung \eqref{buch:geometrie:hyperbolisch:eqn:aaaa}
+folgt jetzt auch
+\[
+\frac{a_{01}}{a_{10}} = \frac{a_{11}}{a_{00}} = 1
+\qquad\Rightarrow\qquad
+a_{01}=a_{10},
+\]
+wir schreiben dafür $s=a_{01}=a_{10}$.
+Die Gleichungen reduzieren sich jetzt auf
+\begin{equation}
+1= c^2-s^2,
+\label{buch:geometrie:hyperbolish:eqn:cs}
+\end{equation}
+die anderen Gleichungen sind automatisch erfüllt.
+
+\subsubsection{Erhaltung der Zeitrichtung}
+In der speziellen Relativitätstheorie spielt das Minkowski-Skalarprodukt
+eine besondere Rolle.
+Die Koordinaten $x_0$ hat darin die Bedeutung der Zeit,
+man weiss aus Experimenten wie dem Michelson-Morley-Experiment,
+dass die Grösse $\langle x,x\rangle$ ist eine Invariante ist.
+Die Transformationen mit der Matrix $A$ beschreiben also zulässige
+Koordinatentransformationenn, die Invariante erhalten.
+
+Für Transformationen, die zusätzlich die Zeitrichtung erhalten sollen,
+muss $a_{00}=a_{11}=c>0$ verlangt werden.
+
+\subsubsection{Parametrisierung mit $t=s/c$}
+Unter der Annahme $c>0$ lässt sich die Matrix vollständig
+durch den Parameter $t=s/c$ beschreiben.
+Dividiert man \eqref{buch:geometrie:hyperbolish:eqn:cs} durch $c^2$,
+kann $c$ durch $t$ ausdrücken:
+\[
+\frac{1}{c^2}
+=
+ 1-\frac{s^2}{c^2}
+=
+1-t^2
+\qquad\Rightarrow\qquad
+c = \frac{1}{\sqrt{1-t^2}}.
+\]
+Daraus kann man jetzt auch 
+\[
+s=\frac{t}{\sqrt{1-t^2}}
+\]
+bestimmen.
+Wir schreiben
+\[
+H_t
+=
+\frac{1}{\sqrt{1+t^2}}
+\begin{pmatrix}
+1&t\\
+t&1
+\end{pmatrix}.
+\]
+Diese Formeln erinnern natürlich and die Formeln, mit denen
+der hyperbolische Sinus und Kosinus aus dem hyperbolischen
+Tangens berechnet werden kann.
+Dieser Zusammenhang und soll im nächsten Abschnitt hergestellt
+werden.
+
+%
+% Hyperbolische Funktionen
+% 
+\subsection{Hyperbolische Funktionen}
+Die trigonometrischen Funktionen ermöglichten eine Parametrisierung
+der Drehmatrizen $D_\alpha$ derart, dass
+$D_{\alpha+\beta}=D_\alpha D_\beta$.
+Die Parametrisierung der Matrizen $H_t$ mit $t=s/c$ erfüllt diese
+Bedingung nicht.
+
+\subsubsection{Additionstheoreme}
+Die Additionsregeln für $t$, $s$ und $c$ ergeben sich, indem die
+Matrizen $H_{t_1}$ und $H_{t_2}$ ausmultipliziert werden:
+\begin{align*}
+H_{t_1}H_{t_2}
+&=
+\begin{pmatrix}
+c_1&s_1\\
+s_1&c_1
+\end{pmatrix}
+\begin{pmatrix}
+c_2&s_2\\
+s_2&c_2
+\end{pmatrix}
+\\
+&=
+\begin{pmatrix}
+c_1c_2+s_1s_2 & c_1s_2 + s_1c_2 \\
+s_1c_2+c_1s_2 & s_1s_2 + c_1c_2
+\end{pmatrix}
+=
+H_t.
+\end{align*}
+Für die Parameter der Matrix $H_t$ folgt damit
+\[
+\left.
+\begin{aligned}
+c&=c_1c_2+s_1s_2
+\\
+s&=c_1s_2+s_1c_2
+\end{aligned}
+\quad\right\}
+\qquad\Rightarrow\qquad
+t
+=
+\frac{c_1s_2+s_1c_2}{c_1c_2+s_1s_2}
+=
+\frac{\frac{s_2}{c_2}+\frac{s_1}{c_1}}{1+\frac{s_1}{c_1}\frac{s_2}{c_2}}
+=
+\frac{t_1+t_2}{1+t_1t_2}.
+\]
+Auch diese Formel ist aus der Theorie der hyperbolischen Funktionen
+als das Additionstheorem für den hyperbolischen Tangens bekannt.
+
+\subsubsection{Matrixexponentialform}
+Die Reihenentwicklung der trigonometrischen Funktionen in
+Abschnitt~\ref{buch:geometrie:trigo:matrixexp} hat gezeigt,
+dass eine Lösung für die Drehmatrix, die das Additionstheorem
+erfüllt, besonders einfach mit Hilfe der Matrixexponentialfunktion
+gefunden werden kann.
+Die Grundlage dafür war die Matrix $J$.
+
+Für die hyperbolischen Funktionen verwenden wir die Matrix
+\[
+K
+=
+\begin{pmatrix}
+0&1\\
+1&0
+\end{pmatrix},
+\]
+damit lässt sich $H_t$ als
+\[
+H_t
+=
+c E + s K
+=
+\frac{1}{\sqrt{1+t^2}} E + \frac{t}{\sqrt{1+t^2}} K
+\]
+schreiben.
+Die Matrix $K$ hat die Potenzen
+\[
+E
+=
+K^2 =  K^4 = \dots = K^{2j}
+\qquad\text{und}\qquad
+K
+= K^3 = K^5 = \dots = K^{2j+1},
+\]
+für $j\in\mathbb{N}$.
+
+Die Exponentialreihe von $\tau K$ ist
+\begin{align*}
+\exp(\tau K)
+&=
+\sum_{k=0}^\infty \frac{\tau^k}{k!} K^k
+\\
+&=
+\biggl(
+\sum_{k=0}^\infty \frac{\tau^{2j}}{(2j)!}
+\biggr)
+E
++
+\biggl(
+\sum_{k=0}^\infty \frac{\tau^{2j+1}}{(2j+1)!}
+\biggr)
+K
+\end{align*}
+Dies ist eine Matrix der Form $H_t$, wenn man
+\begin{equation}
+\begin{aligned}
+s(\tau)&=
+\sum_{k=0}^\infty \frac{\tau^{2j+1}}{(2j+1)!}
+\\
+c(\tau)&=
+\sum_{k=0}^\infty \frac{\tau^{2j}}{(2j)!}
+\end{aligned}
+\label{buch:geometrie:hyperbolisch:hypreihen}
+\end{equation}
+schreibt.
+
+\subsubsection{Definition der hyperbolischen Funktionen}
+Die beiden Reihen~\eqref{buch:geometrie:hyperbolisch:hypreihen}
+kann man auch direkt aus der Exponentialfunktion bekommen.
+Wir definieren
+
+\begin{definition}
+\label{buch:geometrie:hyperbolisch:def}
+Die Funktionen
+\[
+\begin{aligned}
+\sinh(\tau)&=\frac{e^\tau-e^{-\tau}}2
+&&\text{und}&
+\cosh(\tau)&=\frac{e^\tau+e^{-\tau}}2.
+\end{aligned}
+\]
+heissen der {\em hyperbolische Sinus} und der {\em hyperbolische Kosinus}.
+Die Quotienten
+\[
+\begin{aligned}
+\tanh\tau &= \frac{\sinh \tau}{\cosh \tau}
+&&\text{und}&
+\coth\tau &= \frac{\cosh \tau}{\sinh \tau}
+\end{aligned}
+\]
+heissen der {\em hyperbolische Tangens} und der {\em hyperbolische Kotangens}.
+\end{definition}
+
+\subsubsection{Elementare Eigenschaften}
+Es ist nachzuprüfen, dass $\cosh^2 \tau-\sinh^2\tau=1$ ist.
+Das kann man ebenfalls direkt nachrechnen:
+\begin{align*}
+\cosh^2\tau - \sinh^2\tau
+&=
+\biggl(
+\frac{e^{\tau}+e^{-\tau}}2
+\biggr)^2
+-
+\biggl(
+\frac{e^{\tau}-e^{-\tau}}2
+\biggr)^2
+\\
+&=
+\frac14\bigl(
+e^{2\tau}+2+e^{-2\tau}
+-
+e^{2\tau}-2+e^{-2\tau}
+\bigr)
+=1.
+\end{align*}
+Damit liefern die Funktionen $\cosh\tau$ und $\sinh\tau$
+tatsächlich eine Parametrisierung der Matrizen
+\[
+\tau \mapsto H_{\tau}
+=
+\begin{pmatrix}
+\cosh\tau & \sinh\tau \\
+\sinh\tau & \cosh\tau 
+\end{pmatrix},
+\]
+die das Minkowski-Skalarprodukt invariant lassen.
+
+\subsubsection{Additionstheoreme}
+Für die Definition~\ref{buch:geometrie:hyperbolisch:def} kann man die
+Additionstheoreme auch direkt verifizieren.
+Es gilt
+\begin{align*}
+\cosh(\tau_1+\tau_2)
+&=
+\frac{e^{\tau_1+\tau_2}+e^{-\tau_1-\tau_2}}{2}
+\\
+&=
+\frac{e^{\tau_1}e^{\tau_2}+e^{-\tau_1}e^{-\tau_2}}{2}
+\\
+&=
+\frac{2e^{\tau_1}e^{\tau_2}
++
+{\color{darkred}e^{\tau_1}e^{-\tau_2}}
+-
+{\color{orange}e^{\tau_1}e^{-\tau_2}}
++
+{\color{blue}e^{\tau_1}e^{-\tau_2}}
+-
+{\color{darkgreen}e^{\tau_1}e^{-\tau_2}}
++
+2e^{-\tau_1}e^{-\tau_2}}{4}
+\\
+&=
+\frac{
+(e^{\tau_1}e^{\tau_2}
++
+{\color{darkred}e^{\tau_1}e^{-\tau_2}}
++
+{\color{blue}e^{\tau_1}e^{-\tau_2}}
++
+e^{-\tau_1}e^{-\tau_2}
+)
++
+(
+e^{\tau_1}e^{\tau_2}
+-
+{\color{orange}e^{-\tau_1}e^{-\tau_2}}
+-
+{\color{darkgreen}e^{\tau_1}e^{-\tau_2}}
++
+e^{-\tau_1}e^{-\tau_2})
+}{4}
+\\
+&=
+\frac{
+(e^{\tau_1}+e^{-\tau_1})
+(e^{\tau_2}+e^{-\tau_2})
++
+(e^{\tau_1}-e^{-\tau_1})
+(e^{\tau_2}-e^{-\tau_2})
+}{4}
+\\
+&=
+\frac{ e^{\tau_1}+e^{-\tau_1} }{2}
+\frac{ e^{\tau_2}+e^{-\tau_2} }{2}
++
+\frac{e^{\tau_1}-e^{-\tau_1}}{2}
+\frac{e^{\tau_2}-e^{-\tau_2}}{2}
+\\
+&=
+\cosh\tau_1 \cosh\tau_2 + \sinh\tau_1\sinh\tau_2
+\\
+\sinh(\tau_1+\tau_2)
+&=
+\frac{e^{\tau_1+\tau_2}-e^{-\tau_1-\tau_2}}{2}
+\\
+&=
+\frac{e^{\tau_1}e^{\tau_2}-e^{-\tau_1}e^{-\tau_2}}{2}
+\\
+&=
+\frac{2e^{\tau_1}e^{\tau_2}
+-
+{\color{darkred}e^{\tau_1}e^{-\tau_2}}
++
+{\color{orange}e^{\tau_1}e^{-\tau_2}}
++
+{\color{blue}e^{\tau_1}e^{-\tau_2}}
+-
+{\color{darkgreen}e^{\tau_1}e^{-\tau_2}}
+-
+2e^{-\tau_1}e^{-\tau_2}}{4}
+\\
+&=
+\frac{
+(e^{\tau_1}e^{\tau_2}
+-
+{\color{darkred}e^{\tau_1}e^{-\tau_2}}
++
+{\color{blue}e^{-\tau_1}e^{\tau_2}}
+-
+e^{-\tau_1}e^{-\tau_2}
+)
++
+(
+e^{\tau_1}e^{\tau_2}
++
+{\color{orange}e^{\tau_1}e^{-\tau_2}}
+-
+{\color{darkgreen}e^{-\tau_1}e^{\tau_2}}
+-
+e^{-\tau_1}e^{-\tau_2})
+}{4}
+\\
+&=
+\frac{
+(e^{\tau_1}+e^{-\tau_1})
+(e^{\tau_2}-e^{-\tau_2})
++
+(e^{\tau_1}-e^{-\tau_1})
+(e^{\tau_2}+e^{-\tau_2})
+}{4}
+\\
+&=
+\frac{ e^{\tau_1}+e^{-\tau_1} }{2}
+\frac{ e^{\tau_2}-e^{-\tau_2} }{2}
++
+\frac{e^{\tau_1}-e^{-\tau_1}}{2}
+\frac{e^{\tau_2}+e^{-\tau_2}}{2}
+\\
+&=
+\cosh\tau_1 \sinh\tau_2 + \sinh\tau_1\cosh\tau_2.
+\end{align*}
+Damit sind die Additionstheoreme für die hyperbolischen Funktionen
+bewiesen.
