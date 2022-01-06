@@ -208,7 +208,7 @@ Im vorliegenden Zusammenhang möchten wir die Eigenschaft nutzen,
 dass Eigenfunktionen eines selbstadjungierten Operatores zu verschiedenen
 Eigenwerten orthogonal sind.
 Dazu seien $Df = \lambda f$ und $Dg=\mu g$ und wir rechnen
-\begin{equation*}
+\begin{equation}
 \renewcommand{\arraycolsep}{2pt}
 \begin{array}{rcccrl}
 \langle Df,g\rangle &=& \langle \lambda f,g\rangle &=& \lambda\phantom{)}\langle f,g\rangle
@@ -218,7 +218,8 @@ Dazu seien $Df = \lambda f$ und $Dg=\mu g$ und wir rechnen
 \hline
          0           & &                        &=& (\lambda-\mu)\langle f,g\rangle&
 \end{array}
-\end{equation*}
+\label{buch:integrale:eqn:eigenwertesenkrecht}
+\end{equation}
 Da $\lambda-\mu\ne 0$ ist, muss $\langle f,g\rangle=0$ sein.
 
 Der Operator $D$ ist selbstadjungiert, d.~h.
@@ -364,23 +365,4 @@ In dieser Normierung muss statt des eben berechneten $y(x)$ die Funktion
 Q_1(x) = x \operatorname{artanh}x-1
 \]
 verwendet werden.
-
-\subsubsection{Selbstadjungierte Form einer Differentialgleichung zweiter Ordnung}
-Partielle Integration wurde verwendet, um zu zeigen, dass die zu
-einigen bekannten Differentialgleichungen gehörigen Differentialoperatoren
-als selbstadjungierte Operatoren in einem Funktionenraum mit einem
-geeigneten Skalarprodukt sind.
-
-TODO:
-\url{https://mathworld.wolfram.com/Self-Adjoint.html}
-
-\begin{beispiel}
-TODO
-
-Auch die hypergeometrische Differentialgleichung kann in selbstadjungierte
-Form gebracht werden.
-\url{https://encyclopediaofmath.org/wiki/Hypergeometric_equation}
-\end{beispiel}
-
-
 

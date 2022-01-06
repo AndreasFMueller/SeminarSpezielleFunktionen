@@ -1504,3 +1504,35 @@ x^3y
 \qquad\Rightarrow\qquad y''-xy=0.
 \end{align*}
 Dies ist wie erwartet die Airy-Differentialgleichung.
+
+\subsection{Differentialgleichung der Tschebyscheff-Polynome}
+Die Tschebyscheff-Polynome erster Art haben die Darstellung
+\[
+T_n(x) = \cos(n\arccos x).
+\]
+Die Ableitungen sind
+\begin{align*}
+T'_n(x) &= \frac{n}{\sqrt{1-x^2}} \sin(n\arccos x)
+\\
+T''_n(x) &= 
+-\frac{n^2}{1-x^2} T_n(x)
++
+n\frac{x}{(1-x^2)^{\frac32}} \sin(n\arccos x)
+\end{align*}
+Multipliziert man $T_n''(x)$  mit $(1-x^2)$ und subtrahiert
+man $xT_n'(x)$, fällt der Term $\sin(n\arccos x)$ weg und es bleibt
+\begin{equation}
+(1-x^2)T''_n(x) -xT'_n(x) = -n^2 T_n(x),
+\label{buch:differential:tschebyscheff:Tdgl}
+\end{equation}
+die Tschebyscheff-Polynome sind also Lösungen der Differentialgleichung
+\begin{equation}
+(1-x^2)y'' -xy' +n^2 y=0,
+\label{buch:differential:tschebyscheff:Tdgl}
+\end{equation}
+sie heisst die {\em Tschbeyscheff-Differentialgleichung}.
+
+\subsubsection{Tschebyscheff-Differentialgleichung und hypergeometrische Differentialgleichung}
+TODO
+
+\url{https://en.wikipedia.org/wiki/Chebyshev_polynomials}

@@ -268,14 +268,15 @@ gefunden werden kann.
 Die Grundlage dafür war die Matrix $J$.
 
 Für die hyperbolischen Funktionen verwenden wir die Matrix
-\[
+\begin{equation}
 K
 =
 \begin{pmatrix}
 0&1\\
 1&0
 \end{pmatrix},
-\]
+\label{buch:geometrie:hyperbolisch:matrixK}
+\end{equation}
 damit lässt sich $H_t$ als
 \[
 H_t
@@ -352,6 +353,22 @@ Die Quotienten
 \]
 heissen der {\em hyperbolische Tangens} und der {\em hyperbolische Kotangens}.
 \end{definition}
+
+\begin{satz}
+\label{buch:geometrie:hyperbolisch:Hparametrisierung}
+Die orientierungserhaltenden $2\times 2$-Matrizen, die das
+Minkowski-Skalarprodukt invariant lassen und die Zeitrichtung
+erhalten, lassen sich mit den hyperbolischen Funktionen als
+\[
+H_{\tau}
+=
+\begin{pmatrix}
+\cosh \tau & \sinh \tau \\
+\sinh \tau & \cosh \tau
+\end{pmatrix}
+\]
+parametrisieren.
+\end{satz}
 
 \subsubsection{Elementare Eigenschaften}
 Es ist nachzuprüfen, dass $\cosh^2 \tau-\sinh^2\tau=1$ ist.

@@ -11,5 +11,6 @@ CHAPTERFILES = $(CHAPTERFILES)						\
 	chapters/060-integral/risch.tex					\
 	chapters/060-integral/orthogonal.tex				\
 	chapters/060-integral/legendredgl.tex				\
+	chapters/060-integral/sturm.tex					\
 	chapters/060-integral/gaussquadratur.tex			\
 	chapters/060-integral/chapter.tex

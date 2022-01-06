@@ -396,8 +396,159 @@ t-\frac{t^3}{3!} + \frac{t^5}{5!} - \frac{t^7}{t!} + \dots
 \end{align*}
 
 \subsubsection{Hyperbolische Funktionen}
+Die Ableitungen der hyperbolischen Funktionen sind
+\begin{equation}
+\left.
+\begin{aligned}
+\frac{d}{dt} \sinh t & = \cosh t \\
+\frac{d}{dt} \cosh t & = \sinh t\\
+\end{aligned}
+\right\}
+\qquad\Rightarrow\qquad
+\left\{\quad
+\begin{aligned}
+\frac{d^2}{dt^2}\sinh t&=\sinh t\\
+\frac{d^2}{dt^2}\cosh t&=\cosh t\\
+\end{aligned}\right.
+\label{buch:differentialgleichungen:trigo:hyperabl}
+\end{equation}
+Man beachte die Ähnlichkeit zu den entsprechenden Formeln
+\eqref{buch:differentialgleichungen:trigo:ableitungen}
+für die trigonometrischen Funktionen.
+Die hyperbolischen Funktionen sind also linear unabhängige Lösungen
+der Differentialgleichung zweiter Ordnung
+\begin{equation}
+y'' -y = 0.
+\label{buch:differentialgleichungen:trigo:hyperdgl}
+\end{equation}
+Das charakteristische Polynom von
+\eqref{buch:differentialgleichungen:trigo:hyperdgl}
+ist
+\[
+\lambda^2-1 = (\lambda+1)(\lambda-1) = 0
+\]
+mit den Nullstellen $\pm 1$.
+Die Lösungen von
+\eqref{buch:differentialgleichungen:trigo:hyperdgl}
+müssen also Linearkombinationen von $y_{\pm}(x)=e^{\pm x}$ sein.
+Wir schreiben $y(x)=Ay_+(x)+By_-(x)$.
 
+Die Anfangsbedingungen 
+\[
+\begin{pmatrix}
+ y(0)\\
+y'(0)
+\end{pmatrix}
+=
+\begin{pmatrix}
+ y_+(0) &  y_-(0) \\
+y'_+(0) & y'_-(0) 
+\end{pmatrix}
+\begin{pmatrix}
+A\\B
+\end{pmatrix}
+=
+\begin{pmatrix}
+  1     &    1    \\
+  1     &   -1
+\end{pmatrix}
+\begin{pmatrix}
+A\\B
+\end{pmatrix}
+\]
+kann mit Hilfe der inversen Matrix aufgelöst werden.
 
+\[
+\begin{pmatrix}
+A\\B
+\end{pmatrix}
+=
+\begin{pmatrix}
+  1     &    1    \\
+  1     &   -1
+\end{pmatrix}^{-1}
+=
+\frac12
+\begin{pmatrix*}[r]
+1&1\\
+1&-1
+\end{pmatrix*}
+\begin{pmatrix}
+ y(0)\\
+y'(0)
+\end{pmatrix}
+\]
+Für die Standardbasisvektoren als Anfangswerte findet man jetzt wie bei
+den trigonometrischen Funktionen 
+\begin{align*}
+\left.
+\begin{aligned}
+ y(0)&=1\\
+y'(0)&=0
+\end{aligned}
+\quad\right\}
+&&&\Rightarrow&
+\begin{pmatrix}A\\B\end{pmatrix}
+&=
+\frac12
+\begin{pmatrix*}[r]
+1&1\\
+1&-1
+\end{pmatrix*}
+\begin{pmatrix}1\\0\end{pmatrix}
+=
+\begin{pmatrix}\frac12\\\frac12\end{pmatrix}
+&&\Rightarrow&
+y(x)&=\frac{e^x+e^{-x}}2=\cosh x
+\\
+\left.
+\begin{aligned}
+ y(0)&=0\\
+y'(0)&=1
+\end{aligned}
+\quad\right\}
+&&&\Rightarrow&
+\begin{pmatrix}A\\B\end{pmatrix}
+&=
+\frac12
+\begin{pmatrix*}[r]
+1&1\\
+1&-1
+\end{pmatrix*}
+\begin{pmatrix}0\\1\end{pmatrix}
+=
+\begin{pmatrix*}[r]\frac12\\-\frac12\end{pmatrix*}
+&&\Rightarrow&
+y(x)&=\frac{e^x-e^{-x}}2=\sinh x
+\end{align*}
+
+Die Ableitung der Matrix $H_{\tau}$ von 
+Satz~\ref{buch:geometrie:hyperbolisch:Hparametrisierung} ist
+\begin{align*}
+\frac{d}{d\tau} H_{\tau}
+&=
+\frac{d}{d\tau}
+\begin{pmatrix}
+\cosh\tau & \sinh\tau\\
+\sinh\tau & \cosh\tau
+\end{pmatrix}
+=
+\begin{pmatrix}
+\sinh\tau & \cosh\tau\\
+\cosh\tau & \sinh\tau
+\end{pmatrix}
+\\
+\frac{d}{d\tau} H_{\tau}
+\bigg|_{\tau=0}
+&=
+\begin{pmatrix}
+0&1\\
+1&0
+\end{pmatrix}
+=
+K,
+\end{align*}
+wobei die Matrix von \eqref{buch:geometrie:hyperbolisch:matrixK} ist.
 
 
 

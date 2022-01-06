@@ -1,0 +1,479 @@
+%
+% sturm.tex
+%
+% (c) 2022 Prof Dr Andreas Müller, OST Ostschweizer Fachhochschule
+%
+\subsection{Sturm-Liouville-Problem
+\label{buch:integrale:subsection:sturm-liouville-problem}}
+Sowohl bei den Bessel-Funktionen wie bei den Legendre-Polynomen
+konnte die Orthogonalität der Funktionen dadurch gezeigt werden,
+dass sie als Eigenfunktionen eines bezüglich eines geeigneten
+Skalarproduktes selbstadjungierten Operators erkannt wurden.
+
+\subsubsection{Differentialgleichung}
+Das klassische Sturm-Liouville-Problem ist das folgende Eigenwertproblem.
+Gesucht sind Lösungen der Differentialgleichung
+\begin{equation}
+((p(x)y'(x))' + q(x)y(x) = \lambda w(x) y(x)
+\label{buch:integrale:eqn:sturm-liouville}
+\end{equation}
+auf dem Intervall $(a,b)$, die zusätzlich die Randbedingungen
+\begin{equation}
+\begin{aligned}
+k_a y(a) + h_a p(a) y'(a) &= 0 \\
+k_b y(b) + h_b p(b) y'(b) &= 0
+\end{aligned}
+\label{buch:integrale:sturm:randbedingung}
+\end{equation}
+erfüllen, wobei $|k_i|^2 + |h_i|^2\ne 0$ mit $i=a,b$.
+Weitere Bedingungen an die Funktionen $p(x)$, $q(x)$, $w(x)$  sowie die
+Lösungsfunktionen $y(x)$ sollen später geklärt werden.
+
+\subsubsection{Das verallgemeinerte Eigenwertproblem für symmetrische Matrizen}
+Ein zu \eqref{buch:integrale:eqn:sturm-liouville} analoges Eigenwertproblem
+für Matrizen ist das folgende verallgemeinerte Eigenwertproblem.
+Das gewohnte Eigenwertproblem verwendet die Matrix $B=E$.
+
+\begin{definition}
+Seien $A$ und $B$ $n\times n$-Matrizen.
+$v$ heisst verallgemeinerter Eigenvektor zum Eigenwert $\lambda$,
+wenn
+\[
+Av = \lambda Bv.
+\]
+\end{definition}
+
+Für symmetrische Matrizen lässt sich dieses Problem auf ein 
+Optimierungsproblem reduzieren.
+
+\begin{satz}
+Seien $A$ und $B$ symmetrische $n\times n$-Matrizen und sei ausserdem
+$B$ positiv definit.
+Ist $v$ ein Vektor, der die Grösse
+\[
+f(v)=\frac{v^tAv}{v^tBv}
+\]
+maximiert, ist ein verallgemeinerter Eigenvektor für die Matrizen $A$
+und $B$.
+\end{satz}
+
+\begin{proof}[Beweis]
+Sei $\lambda = f(v)$ der maximale Wert und $u\ne 0$ ein beliebiger Vektor. 
+Da $v$ die Grösse $f(v)$ maximiert, muss die Ableitung
+von $f(u+tv)$ für $t=0$ verschwinden.
+Um diese Ableitung zu berechnen, bestimmen wir zunächst die Ableitung
+von $(v+tu)^tM(v+tu)$  an der Stelle $t=0$ für eine beliebige
+symmetrische Matrix:
+\begin{align*}
+\frac{d}{dt}
+(v+tu)^tM(v+tu)
+&=
+\frac{d}{dt}\bigl(
+v^tv + t(v^tMu+u^tMv) + t^2 u^tMu
+\bigr)
+=
+v^tMu+u^tMv + 2tv^tMv
+\\
+\frac{d}{dt}
+(v^t+tu^t)M(v+tu)
+\bigg|_{t=0}
+&=
+v^tMu+u^tMv
+=
+2v^tMu
+\end{align*}
+Dies wenden wir jetzt auf den Quotenten $\lambda(v+tu)$ an.
+\begin{align*}
+\frac{d}{dt}f(v+tu)\bigg|_{t=0}
+&=
+\frac{d}{dt}
+\frac{(v+tu)^tA(v+tu)}{(v+tu)^tB(v+tu)}\bigg|_{t=0}
+\\
+&=
+\frac{2u^tAv(v^tBv) - 2u^tBv(v^tAv)}{(v^tBv)^2}
+=
+\frac{2}{v^tBv}
+u^t
+\biggl(
+Av - \frac{v^tAv}{v^tBv} Bv
+\biggr)
+\\
+&=
+2
+\frac{
+u^t(
+Av - \lambda Bv
+)
+}{v^tBv}
+\end{align*}
+Da $v$ ein Maximum von $\lambda(v)$ ist, verschwindet diese Ableitung
+für alle Vektoren $u$, somit gilt
+\[
+u^t(Av-\lambda Bv)=0
+\]
+für alle $u$, also auch $Av=\lambda Bv$.
+Dies beweist, dass $v$ ein verallgemeinerter Eigenvektor zum
+Eigenwert $\lambda$ ist.
+\end{proof}
+
+\begin{satz}
+Verallgemeinerte Eigenvektoren $u$ und $v$ von $A$ und $B$
+zu verschiedenen Eigenwerten erfüllen $u^tBv=0$.
+\end{satz}
+
+\begin{proof}
+Seien $\lambda$ und $\mu$ die Eigenwerte, also $Au=\lambda Bu$
+und $Av=\mu Bv$.
+Wie in \eqref{buch:integrale:eqn:eigenwertesenkrecht}
+berechnen wir das Skalarprodukt auf zwei Arten
+\[
+\renewcommand{\arraycolsep}{2pt}
+\begin{array}{rcccrl}
+ u^tAv &=&u^t\lambda Bv &=& \lambda\phantom{\mathstrut-\mu)} u^tBv
+	&\multirow{2}{*}{\hspace{3pt}$\bigg\}\mathstrut-\mathstrut$}\\
+=v^tAu &=&v^t\mu Bu     &=&  \mu\phantom{)}u^tBv         &\\
+\hline
+     0 & &              &=& (\lambda - \mu)u^tBv.        &
+\end{array}
+\]
+Da die Eigenwerte verschieden sind, ist $\lambda-\mu\ne 0$, es folgt, 
+dass $u^tBv=0$ sein muss.
+\end{proof}
+
+Verallgemeinerte Eigenwerte und Eigenvektoren verhalten sich also
+ganz analog zu den gewöhnlichen Eigenwerten und Eigenvektoren.
+Da $B$ positiv definit ist, ist $B$ auch invertierbar.
+Zudem kann $B$ zur Definition des verallgemeinerten Skalarproduktes
+\[
+\langle u,v\rangle_B = u^tBv
+\]
+verwendet werden.
+Die Matrix 
+\[
+\tilde{A} = B^{-1}A
+\]
+ist bezüglich dieses Skalarproduktes selbstadjungiert, denn es gilt
+\[
+\langle\tilde{A}u,v\rangle_B
+=
+(B^{-1}Au)^t Bv
+=
+u^tA^t(B^{-1})^tBv
+=
+u^tAv
+=
+u^tBB^{-1}Av
+=
+\langle u,\tilde{A}v\rangle.
+\]
+Das verallgemeinerte Eigenwertproblem für symmetrische Matrizen
+ist damit ein gewöhnliches Eigenwertproblem für selbstadjungierte
+Matrizen des Operators $\tilde{A}$ bezüglich des verallgemeinerten
+Skalarproduktes $\langle\,\;,\;\rangle_B$.
+
+\subsubsection{Der Operator $L_0$ und die Randbedingung}
+Die Differentialgleichung kann auch in Operatorform geschrieben werden.
+Dazu schreiben wir
+\[
+L_0 
+=
+-\frac{d}{dx}p(x)\frac{d}{dx}.
+\]
+Bezüglich des gewöhnlichen Skalarproduktes
+\[
+\langle f,g\rangle
+=
+\int_a^b f(x)g(x)\,dx
+\]
+für Funktionen auf dem Intervall $[a,b]$ ist der Operator $L_0$
+tatsächlich selbstadjungiert.
+Mit partieller Integration rechnet man nach:
+\begin{align}
+\langle f,L_0g\rangle
+&=
+\int_a^b f(x) \biggl(-\frac{d}{dx}p(x)\frac{d}{dx}\biggr)g(x)\,dx
+\notag
+\\
+&=
+-\int_a^b f(x) \frac{d}{dx}\bigl( p(x) g'(x) \bigr)\,dx
+\notag
+\\
+&=
+-\biggl[f(x) p(x)g'(x)\biggr]_a^b
++
+\int_a^b f'(x) p(x) g'(x) \,dx
+\notag
+\\
+\langle L_0f,g\rangle
+&=
+-\biggl[f'(x)p(x)g(x)\biggr]_a^b
++
+\int_a^b f'(x) p(x) g'(x) \,dx.
+\notag
+\intertext{Die beiden Skalarprodukte führen also auf das gleiche
+Integral, sie unterscheiden sich nur um die Randterme}
+\langle f,L_0g\rangle
+-
+\langle L_0f,g\rangle
+&=
+-f(b)p(b)g'(b) + f(a)p(a)g'(a)
++f'(b)p(b)g(b) - f'(a)p(a)g(a)
+\label{buch:integrale:sturm:sabedingung}
+\\
+&=
+-
+p(b)
+\left|\begin{matrix}
+f(b) &g(b)\\
+f'(b)&g'(b)
+\end{matrix}\right|
++
+p(a)
+\left|\begin{matrix}
+f(a) &g(a)\\
+f'(a)&g'(a)
+\end{matrix}\right|
+\notag
+\\
+&=
+-
+\left|\begin{matrix}
+f(b) &g(b)\\
+p(b)f'(b)&p(b)g'(b)
+\end{matrix}\right|
++
+\left|\begin{matrix}
+f(a) &g(a)\\
+p(a)f'(a)&p(a)g'(a)
+\end{matrix}\right|.
+\notag
+\end{align}
+Um zu erreichen, dass der Operator selbstadjunigert wird, muss 
+sichergestellt werden, dass entweder $p$ oder die Determinanten
+an den Intervallenden verschwinden.
+Dies passiert genau dann, wenn die Vektoren 
+\[
+\begin{pmatrix}
+f(a)\\
+p(a)f'(a)
+\end{pmatrix}
+\text{\;und\;}
+\begin{pmatrix}
+g(a)\\
+p(a)g'(a)
+\end{pmatrix}
+\]
+linear abhängig sind.
+In zwei Dimensionen bedeutet lineare Abhängigkeit, dass es
+eine nichttriviale Linearform mit Koeffizienten $h_a, k_a$ gibt,
+die auf beiden Vektoren verschwindet.
+Ausgeschrieben bedeutet dies, dass die Randbedingung
+\eqref{buch:integrale:sturm:randbedingung}
+erfüllt sein muss.
+
+\subsubsection{Skalarprodukt}
+Das Ziel der folgenden Abschnitte ist, das Sturm-Liouville-Problem als
+Eigenwertproblem für einen selbstadjungierten Operator in einem 
+Funktionenraum mit einem geeigneten Skalarprodukt zu finden.
+
+Wir haben bereits gezeigt, dass die Randbedingung
+\eqref{buch:integrale:sturm:randbedingung} sicherstellt, dass der
+Operator $L_0$ für das Standardskalarprodukt selbstadjungiert ist.
+Dies entspricht der Symmetrie der Matrix $A$.
+
+Die Komponente $q(x)$ stellt keine besonderen Probleme, denn
+\[
+\langle f,qg\rangle
+=
+\int_a^b f(x)q(x)g(x)\,dx
+=
+\langle qf,g\rangle.
+\]
+Der Operator $f(x) \mapsto q(x)f(x)$, der eine Funktion mit 
+der Funktion $q(x)$ multipliziert, ist also ebenfalls symmetrisch.
+Dasselbe gilt für einen Operator, der mit $w(x)$ multipliziert.
+Da $w(x)$ eine positive Funktion ist, ist der Operator $f(x)\mapsto w(x)f(x)$
+sogar positiv definit.
+Dies entspricht der Matrix $B$.
+Nach den Erkenntnissen des vorangegangenen Abschnittes ist das
+verallgemeinerte Eigenwertproblem daher ein Eigenwertproblem
+für einen modifizierten Operator bezüglich eines alternativen
+Skalarproduktes.
+
+Als Skalarprodukt muss also das Integral
+\[
+\langle f,g\rangle_w
+=
+\int_a^b f(x)g(x)w(x)\,dx
+\]
+mit der Gewichtsfunktion $w(x)$ verwendet werden.
+Damit dies ein vernünftiges Skalarprodukt ist, muss $w(x)>0$ im
+Innerend es Intervalls sein.
+
+\subsubsection{Der Vektorraum $H$}
+Damit können wir jetzt die Eigenschaften der in Frage kommenden
+Funktionen zusammenstellen.
+Zunächst müssen sie auf dem Intervall $[a,b]$ definiert sein und
+das Integral
+\[
+\int_a^b |f(x)|^2 w(x)\,dx < \infty
+\]
+muss existieren.
+Wir bezeichnen den Vektorraum der Funktionen, deren Quadrat mit
+der Gewichtsfunktion $w(x)$ integrierbar sind, mit
+$L^2([a,b],w)$.
+
+Damit auch $\langle qf,f\rangle_w$ und $\langle L_0f,0f\rangle_w$
+wohldefiniert sind, müssen zusätzlich die Integrale
+\[
+\int_a^b |f(x)|^2 q(x) w(x)\,dx
+\qquad\text{und}\qquad
+\int_a^b |f'(x)|^2 p(x) w(x)\,dx
+\]
+existieren.
+Wir setzen daher
+\[
+H
+=
+\biggl\{
+f\in L^2([a,b],w)\;\bigg|\;
+\int_a^b |f'(x)|^2p(x)w(x)\,dx<\infty,
+\int_a^b |f(x)|^2q(x)w(x)\,dx<\infty
+\biggr\}.
+\]
+
+\subsubsection{Differentialoperator}
+Das verallgemeinerte Eigenwertproblem für $A$ und $B$ ist ein
+gewöhnliches Eigenwertproblem für die Operator $\tilde{A}=B^{-1}A$
+bezüglich des modifizierten Skalarproduktes.
+Das Sturm-Liouville-Problem ist also ein Eigenwertproblem im
+Vektorraum $H$ mit dem Skalarprodukt $\langle\,\;,\;\rangle_w$.
+Der Operator
+\[
+L = \frac{1}{w(x)} \biggl(-\frac{d}{dx} p(x)\frac{d}{dx} + q(x)\biggr)
+\]
+heisst der {\em Sturm-Liouville-Operator}.
+Eine Lösung des Sturm-Liouville-Problems ist eine Funktion $y(x)$ derart,
+dass 
+\[
+Ly = \lambda y,
+\]
+$\lambda$ ist der zu $y(x)$ gehörige Eigenwert.
+Der Operator ist definiert auf Funktionen des im vorangegangenen Abschnitt
+definierten Vektorraumes $H$.
+
+
+
+\subsubsection{Beispiel: Trigonometrische Funktionen}
+Die trigonometrischen Funktionen sind Eigenfunktionen des Operators
+$d^2/dx^2$, also eines Sturm-Liouville-Operators mit $p(x)=1$, $q(x)=0$
+und $w(x)=0$.
+Auf dem Intervall $(-\pi,\pi)$ können wir die Randbedingungen
+\bgroup
+\renewcommand{\arraycolsep}{2pt}
+\[
+\begin{aligned}
+&
+\begin{array}{lclclcl}
+k_{-\pi}          &=&1,&\qquad&h_{-\pi}          &=&0\\
+k_{\phantom{-}\pi}&=&1,&\qquad&h_{\phantom{-}\pi}&=&0
+\end{array}
+\;\bigg\}
+&&\Rightarrow&
+\begin{array}{lcl}
+y(-\pi)          &=&0\\
+y(\phantom{-}\pi)&=&0\\
+\end{array}
+\;\bigg\}
+&\quad\Rightarrow&
+y(x) &= B\sin nx
+\\
+&
+\begin{array}{lclclcl}
+k_{-\pi}          &=&0,&\qquad&h_{-\pi}          &=&1\\
+k_{\phantom{-}\pi}&=&0,&\qquad&h_{\phantom{-}\pi}&=&1
+\end{array}
+\;\bigg\}
+&&\Rightarrow&
+\begin{array}{lcl}
+y'(-\pi)          &=&0\\
+y'(\phantom{-}\pi)&=&0\\
+\end{array}
+\; \bigg\}
+&\quad\Rightarrow&
+y(x) &= A\cos nx
+\end{aligned}
+\]
+\egroup
+verwenden.
+Die Orthogonalität der Sinus- und Kosinus-Funktionen folgt jetzt
+ganz ohne weitere Rechnung.
+
+An dieser Lösung ist nicht ganz befriedigend, dass die trigonometrischen
+Funktionen nicht mit einer einzigen Randbedingung gefunden werden können.
+Der Ausweg ist, periodische Randbedingungen zu verlangen, also
+$y(-\pi)=y(\pi)$ und $y'(-\pi)=y'(\pi)$.
+Dann ist wegen
+\begin{align*}
+\langle f,L_0g\rangle - \langle L_0f,g\rangle
+&=
+-f(\pi)g'(\pi)+f(-\pi)g'(-\pi)+f'(\pi)g(\pi)-f'(-\pi)g(-\pi)
+\\
+&=
+-f(\pi)g'(\pi)+f(\pi)g'(\pi)+f'(\pi)g(\pi)-f'(\pi)g(\pi)
+=0
+\end{align*}
+die Bedingung~\eqref{buch:integrale:sturm:sabedingung}
+ebenfalls erfüllt, $L_0$ ist in diesem Raum selbstadjungiert.
+
+\subsubsection{Beispiel: Bessel-Funktionen}
+Der Bessel-Operator \eqref{buch:differentialgleichungen:bessel-operator}
+hat die Form eines Sturm-Liouville-Operators
+\[
+x^2\frac{d^2}{dx^2} + x\frac{d}{dx} + x^2
+=
+\frac{d}{dx} x^2 \frac{d}{dx} + x^2
+\]
+mit $p(x)=x^2$, $q(x)=x^2$.
+
+XXX TODO: Faktor 2 fehlt.
+
+\subsubsection{Beispiel: Tschebyscheff-Polynome}
+Die Tschebyscheff-Polynome sind Lösungen der
+Tschebyscheff-Differentialgleichung
+\[
+(1-x^2)y'' -xy' = n^2y
+\]
+auf dem Intervall $(-1,1)$.
+Auch dieses Problem kann als Sturm-Liouville-Problem formuliert
+werden mit
+\begin{align*}
+w(x) &= \frac{1}{\sqrt{1-x^2}} \\
+p(x) &= \sqrt{1-x^2} \\
+q(x) &= 0
+\end{align*}
+Das zugehörige Sturm-Liouville-Eigenwertproblem ist
+\[
+\frac{d}{dx}\sqrt{1-x^2}\frac{d}{dx} y(x)
+=
+\lambda \frac{1}{\sqrt{1-x^2}} y(x).
+\]
+Führt man die Ableitungen auf der linken Seite aus, entsteht die
+Gleichung
+\begin{align*}
+\sqrt{1-x^2} y''(x) -\frac{x}{\sqrt{1-x^2}}y'(x)
+&=  \lambda \frac{1}{\sqrt{1-x^2}} y(x)
+\intertext{Multiplikation mit $\sqrt{1-x^2}$ ergibt}
+(1-x^2)
+y''(x) 
+-
+xy'(x)
+&=
+\lambda y(x).
+\end{align*}
+Es folgt, dass die Tschebyscheff-Polynome orthogonal sind 
+bezüglich des Skalarproduktes
+\[
+\langle f,g\rangle = \int_{-1}^1 f(x)g(x)\frac{dx}{\sqrt{1-x^2}}.
+\]
+
