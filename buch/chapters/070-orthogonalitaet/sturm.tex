@@ -3,14 +3,15 @@
 %
 % (c) 2022 Prof Dr Andreas Müller, OST Ostschweizer Fachhochschule
 %
-\subsection{Sturm-Liouville-Problem
+\section{Das Sturm-Liouville-Problem
 \label{buch:integrale:subsection:sturm-liouville-problem}}
+\rhead{Das Sturm-Liouville-Problem}
 Sowohl bei den Bessel-Funktionen wie bei den Legendre-Polynomen
 konnte die Orthogonalität der Funktionen dadurch gezeigt werden,
 dass sie als Eigenfunktionen eines bezüglich eines geeigneten
 Skalarproduktes selbstadjungierten Operators erkannt wurden.
 
-\subsubsection{Differentialgleichung}
+\subsection{Differentialgleichung}
 Das klassische Sturm-Liouville-Problem ist das folgende Eigenwertproblem.
 Gesucht sind Lösungen der Differentialgleichung
 \begin{equation}
@@ -29,7 +30,7 @@ erfüllen, wobei $|k_i|^2 + |h_i|^2\ne 0$ mit $i=a,b$.
 Weitere Bedingungen an die Funktionen $p(x)$, $q(x)$, $w(x)$  sowie die
 Lösungsfunktionen $y(x)$ sollen später geklärt werden.
 
-\subsubsection{Das verallgemeinerte Eigenwertproblem für symmetrische Matrizen}
+\subsection{Das verallgemeinerte Eigenwertproblem für symmetrische Matrizen}
 Ein zu \eqref{buch:integrale:eqn:sturm-liouville} analoges Eigenwertproblem
 für Matrizen ist das folgende verallgemeinerte Eigenwertproblem.
 Das gewohnte Eigenwertproblem verwendet die Matrix $B=E$.
@@ -171,7 +172,7 @@ ist damit ein gewöhnliches Eigenwertproblem für selbstadjungierte
 Matrizen des Operators $\tilde{A}$ bezüglich des verallgemeinerten
 Skalarproduktes $\langle\,\;,\;\rangle_B$.
 
-\subsubsection{Der Operator $L_0$ und die Randbedingung}
+\subsection{Der Operator $L_0$ und die Randbedingung}
 Die Differentialgleichung kann auch in Operatorform geschrieben werden.
 Dazu schreiben wir
 \[
@@ -271,7 +272,7 @@ Ausgeschrieben bedeutet dies, dass die Randbedingung
 \eqref{buch:integrale:sturm:randbedingung}
 erfüllt sein muss.
 
-\subsubsection{Skalarprodukt}
+\subsection{Skalarprodukt}
 Das Ziel der folgenden Abschnitte ist, das Sturm-Liouville-Problem als
 Eigenwertproblem für einen selbstadjungierten Operator in einem 
 Funktionenraum mit einem geeigneten Skalarprodukt zu finden.
@@ -310,7 +311,7 @@ mit der Gewichtsfunktion $w(x)$ verwendet werden.
 Damit dies ein vernünftiges Skalarprodukt ist, muss $w(x)>0$ im
 Innerend es Intervalls sein.
 
-\subsubsection{Der Vektorraum $H$}
+\subsection{Der Vektorraum $H$}
 Damit können wir jetzt die Eigenschaften der in Frage kommenden
 Funktionen zusammenstellen.
 Zunächst müssen sie auf dem Intervall $[a,b]$ definiert sein und
@@ -342,7 +343,7 @@ f\in L^2([a,b],w)\;\bigg|\;
 \biggr\}.
 \]
 
-\subsubsection{Differentialoperator}
+\subsection{Differentialoperator}
 Das verallgemeinerte Eigenwertproblem für $A$ und $B$ ist ein
 gewöhnliches Eigenwertproblem für die Operator $\tilde{A}=B^{-1}A$
 bezüglich des modifizierten Skalarproduktes.
@@ -362,9 +363,13 @@ $\lambda$ ist der zu $y(x)$ gehörige Eigenwert.
 Der Operator ist definiert auf Funktionen des im vorangegangenen Abschnitt
 definierten Vektorraumes $H$.
 
+\subsection{Beispiele}
+Die meisten der früher vorgestellten Funktionenfamilien stellen sich
+als Lösungen eines geeigneten Sturm-Liouville-Problems heraus.
+Alle Eigenschaften aus der Sturm-Liouville-Theorie gelten daher
+automatisch für diese Funktionenfamilien.
 
-
-\subsubsection{Beispiel: Trigonometrische Funktionen}
+\subsubsection{Trigonometrische Funktionen}
 Die trigonometrischen Funktionen sind Eigenfunktionen des Operators
 $d^2/dx^2$, also eines Sturm-Liouville-Operators mit $p(x)=1$, $q(x)=0$
 und $w(x)=0$.
@@ -426,7 +431,7 @@ Dann ist wegen
 die Bedingung~\eqref{buch:integrale:sturm:sabedingung}
 ebenfalls erfüllt, $L_0$ ist in diesem Raum selbstadjungiert.
 
-\subsubsection{Beispiel: Bessel-Funktionen}
+\subsubsection{Bessel-Funktionen}
 Der Bessel-Operator \eqref{buch:differentialgleichungen:bessel-operator}
 hat die Form eines Sturm-Liouville-Operators
 \[
@@ -438,7 +443,7 @@ mit $p(x)=x^2$, $q(x)=x^2$.
 
 XXX TODO: Faktor 2 fehlt.
 
-\subsubsection{Beispiel: Tschebyscheff-Polynome}
+\subsubsection{Tschebyscheff-Polynome}
 Die Tschebyscheff-Polynome sind Lösungen der
 Tschebyscheff-Differentialgleichung
 \[
@@ -476,4 +481,129 @@ bezüglich des Skalarproduktes
 \[
 \langle f,g\rangle = \int_{-1}^1 f(x)g(x)\frac{dx}{\sqrt{1-x^2}}.
 \]
+
+\subsubsection{Jacobi-Polynome}
+TODO
+
+\subsubsection{Hypergeometrische Differentialgleichungen}
+%\url{https://encyclopediaofmath.org/wiki/Hypergeometric_equation}
+Auch die Eulersche hypergeometrische Differentialgleichung
+lässt sich in die Form eines Sturm-Liouville-Operators
+bringen.
+Dazu setzt man
+\begin{align*}
+p(z)
+&=
+z^c(z-1)^{a+b+1-c}
+\\
+q(z)
+&=
+-abz^{c-1}(z-1)^{a+b-c}
+\\
+w(z)
+&=
+z^{c-1}(z-1)^{a+b-c}.
+\end{align*}
+Setzt man dies in den Sturm-Liouville-Operator ein, erhält man
+\begin{equation}
+L
+=
+-\frac{d}{dz}p(z)\frac{d}{dz} + q(z)
+=
+-p(z)\frac{d^2}{dz^2}
+-p'(z)\frac{d}{dz}
++q(z)
+\label{buch:orthgonalitaet:eqn:hypersturm}
+\end{equation}
+Wir brauchen also
+\begin{align*}
+p'(z)
+&=
+cz^{c-1}(z-1)^{a+b+1-c}
++
+(a+b+1-c)
+z^c
+(z-1)^{a+b-c}
+\\
+&=
+\bigl(
+c(z-1)+
+(a+b+1-c)z
+\bigr)
+\cdot
+z^{c-1}(z-1)^{a+b-c}
+\\
+&=
+-
+\bigl(
+c-(a+b+1)z
+\bigr)
+\cdot
+z^{c-1}(z-1)^{a+b-c}.
+\end{align*}
+Einsetzen in~\eqref{buch:orthgonalitaet:eqn:hypersturm} liefert
+\begin{align*}
+L
+%=
+%-\frac{d}{dz}p(z)\frac{d}{dz}+q(z)
+&=
+-z^c(z-1)^{a+b+1-c} \frac{d^2}{dz^2}
++
+w(z)
+(c-(a+b+1)z)
+\frac{d}{dz}
+-
+abw(z)
+\\
+&=
+w(z)
+\biggl(
+-
+z(z-1)
+\frac{d^2}{dz^2}
++
+(c-(a+b+1)z)
+\frac{d}{dz}
+-ab
+\biggr)
+\\
+&=
+w(z)
+\biggl(
+z(1-z)
+\frac{d^2}{dz^2}
++
+(c-(a+b+1)z)
+\frac{d}{dz}
+-ab
+\biggr).
+\end{align*}
+Die Klammer auf der rechten Seite ist tatsächlich die linke Seite der
+eulerschen hypergeometrischen Differentialgleichung.
+
+Die hypergeometrische Funktion $\mathstrut_2F_1(a,b;c;z)$ ist ein
+Eigenvektor des Operators $L$ zum Eigenwert $\lambda$.
+Sei jetzt $w(z)$ eine Eigenfunktion zum Eigenwert $\lambda\ne 0$,
+also
+\[
+z(1-z)w''(z) + (c-(a+b+1)z)w'(z) - ab w(z) = \lambda w(z).
+\]
+Kann man $a$ und $b$ so in $a_1$ und $b_1$ ändern, dass $a+b=a_1+b_1$
+gleich bleiben aber das Produkt den Wert $a_1b_1=ab-\lambda$?
+$a_1$ und $b_1$ sind die Lösungen der quadratischen Gleichung
+\[
+x^2 - (a+b)x + ab-\lambda = 0.
+\]
+Alle Eigenfunktionen des Operators $L$ sind also hypergeometrische
+Funktion $\mathstrut_2F_1$.
+
+Da die Gewichtsfunktion $w(z)$ bei der Ersetzung $a\to a_1$ und $b\to b_1$
+sich nicht ändert ($w(z)$ hängt nur von der Summe $a+b$ ab, welche sich
+nicht ändert), sind die beide beiden Eigenfunktionen bezüglich
+des Skalarproduktes mit der Gewichtsfunktion $w(z)$ orthogonal.
+
+
+
+
+
 

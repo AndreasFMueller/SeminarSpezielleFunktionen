@@ -1,7 +1,8 @@
 %
 % Anwendung: Gauss-Quadratur
 %
-\subsection{Anwendung: Gauss-Quadratur}
+\section{Anwendung: Gauss-Quadratur}
+\rhead{Gauss-Quadratur}
 Orthogonale Polynome haben eine etwas unerwartet Anwendung in einem
 von Gauss erdachten numerischen Integrationsverfahren.
 Es basiert auf der Beobachtung, dass viele Funktionen sich sehr
@@ -10,7 +11,7 @@ Wenn man also sicherstellt, dass ein Verfahren für Polynome
 sehr gut funktioniert, darf man auch davon ausgehen, dass es für
 andere Funktionen nicht allzu schlecht sein wird.
 
-\subsubsection{Interpolationspolynome}
+\subsection{Interpolationspolynome}
 Zu einer stetigen Funktion $f(x)$ auf dem Intervall $[-1,1]$ 
 ist ein Polynome vom Grad $n$ gesucht, welches in den Punkten
 $x_0<x_1<\dots<x_n$ die Funktionswerte $f(x_i)$ annimmt.
@@ -58,7 +59,7 @@ f(x_j)
 \]
 hat, das Polynome $p(x)$ ist also das gesuchte Interpolationspolynom.
 
-\subsubsection{Integrationsverfahren auf der Basis von Interpolation}
+\subsection{Integrationsverfahren auf der Basis von Interpolation}
 Das Integral einer stetigen Funktion $f(x)$ auf dem Intervall $[-1,1]$
 kann mit Hilfe des Interpolationspolynoms approximiert werden.
 Wenn $|f(x)-p(x)|<\varepsilon$ ist im Intervall $[-1,1]$, dann gilt
@@ -96,7 +97,7 @@ gewichtete Summe
 \]
 approximiert.
 
-\subsubsection{Integrationsverfahren, die für Polynome exakt sind}
+\subsection{Integrationsverfahren, die für Polynome exakt sind}
 Ein Polynom vom Grad $2n$ hat $2n+1$ Koeffizienten.
 Um das Polynom durch ein Interpolationspolynom exakt wiederzugeben,
 braucht man $2n+1$ Stützstellen.
@@ -223,7 +224,7 @@ verallgemeinert werden.
 Allerdings ist die Rechnung zur Bestimmung der Stützstellen und
 Gewichte sehr mühsam.
 
-\subsubsection{Stützstellen und Orthogonalpolynome}
+\subsection{Stützstellen und Orthogonalpolynome}
 Sei $R_n=\{p(X)\in\mathbb{R}[X] \mid \deg p\le n\}$ der Vektorraum
 der Polynome vom Grad $n$.
 
@@ -281,7 +282,7 @@ $p(x)$ sein.
 
 Der Satz~\ref{buch:integral:satz:gaussquadratur} begründet das
 {\em Gausssche Quadraturverfahren}.
-Die in Abschnitt~\ref{buch:integral:subsection:orthogonale-polynome}
+Die in Abschnitt~\ref{buch:integral:section:orthogonale-polynome}
 bestimmten Legendre-Polynome $P_n$ haben die im Satz
 verlangte Eigenschaft,
 dass sie auf allen Polynomen geringeren Grades orthogonal sind.
@@ -296,7 +297,7 @@ auf Seite~\pageref{buch:integral:beispiel:gaussquadraturn1} befundenen
 Sützstellen.
 \end{beispiel}
 
-\subsubsection{Fehler der Gauss-Quadratur}
+\subsection{Fehler der Gauss-Quadratur}
 Das Gausssche Quadraturverfahren mit $n$ Stützstellen berechnet
 Integrale von Polynomen bis zum Grad $2n-1$ exakt.
 Für eine beliebige Funktion kann man die folgende Fehlerabschätzung
@@ -480,5 +481,5 @@ die Konvergenz des Verfahrens in diesem Fall sehr viel schlechter ist.
 Dies zeigt auch der Graph in
 Abbildung~\ref{buch:integral:gaussquadratur:fehler}.
 
-\subsubsection{Skalarprodukte mit Gewichtsfunktion}
+\subsection{Skalarprodukte mit Gewichtsfunktion}
 
