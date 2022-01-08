@@ -1,0 +1,104 @@
+%
+% jacobi.tex -- template for standalon tikz images
+%
+% (c) 2021 Prof Dr Andreas Müller, OST Ostschweizer Fachhochschule
+%
+\documentclass[tikz]{standalone}
+\usepackage{amsmath}
+\usepackage{times}
+\usepackage{txfonts}
+\usepackage{pgfplots}
+\usepackage{csvsimple}
+\usetikzlibrary{arrows,intersections,math}
+\begin{document}
+\def\skala{1}
+\input{jacobipaths.tex}
+\begin{tikzpicture}[>=latex,thick,scale=\skala]
+
+\def\dx{6}
+\def\dy{2}
+\def\dwy{1}
+
+\begin{scope}
+	\begin{scope}
+		\clip (-6,-2.55) rectangle (6,2.55);
+		\fill[color=red!20] \legendreweight
+			-- ({1*\dx},0) -- ({-1*\dx},0) -- cycle;
+		%\draw[color=blue] \legendrea;
+		\draw[color=blue] \legendreb;
+		\draw[color=blue] \legendrec;
+		\draw[color=blue] \legendred;
+		\draw[color=blue] \legendree;
+		\draw[color=blue] \legendref;
+		\draw[color=blue] \legendreg;
+		\draw[color=blue] \legendreh;
+		\draw[color=blue] \legendrei;
+		\draw[color=blue] \legendrek;
+		\draw[color=red] \legendreweight;
+	\end{scope}
+	\draw[->] (-6.1,0) -- (6.1,0) coordinate[label={$x$}];
+	\draw[->] (0,-2.55) -- (0,2.6) coordinate[label={right:$y$}];
+	\node at (6,2.3) [left] {$a=0$};
+	\node at (-6,2.3) [right] {$b=0$};
+\end{scope}
+
+\begin{scope}[yshift=-5.6cm]
+	\begin{scope}
+		\clip (-6,-2.55) rectangle (6,2.55);
+		\fill[color=red!20] \aoneweight
+			-- ({1*\dx},0) -- ({-1*\dx},0) -- cycle;
+		%\draw[color=blue] \aonea;
+		\draw[color=blue] \aoneb;
+		\draw[color=blue] \aonec;
+		\draw[color=blue] \aoned;
+		\draw[color=blue] \aonee;
+		\draw[color=blue] \aonef;
+		\draw[color=blue] \aoneg;
+		\draw[color=blue] \aoneh;
+		\draw[color=blue] \aonei;
+		\draw[color=blue] \aonek;
+		\draw[color=blue] \aonel;
+		\draw[color=blue] \aonem;
+		\draw[color=blue] \aonen;
+		\draw[color=blue] \aoneo;
+		\draw[color=red] \aoneweight;
+	\end{scope}
+	\draw[->] (-6.1,0) -- (6.1,0) coordinate[label={$x$}];
+	\draw[->] (0,-2.55) -- (0,2.6) coordinate[label={right:$y$}];
+	\node at (6,2.3) [left] {$a=1$};
+	\node at (-6,2.3) [right] {$b=0$};
+\end{scope}
+
+\begin{scope}[yshift=-11.2cm]
+	\begin{scope}
+		\clip (-6,-2.55) rectangle (6,2.55);
+		\fill[color=red!20] \aminusoneweight
+			-- ({1*\dx},3)
+			-- ({1*\dx},0) -- ({-1*\dx},0) -- cycle;
+		%\draw[color=blue] \aminusonea;
+		\draw[color=blue] \aminusoneb;
+		\draw[color=blue] \aminusonec;
+		\draw[color=blue] \aminusoned;
+		\draw[color=blue] \aminusonee;
+		\draw[color=blue] \aminusonef;
+		\draw[color=blue] \aminusoneg;
+		\draw[color=blue] \aminusoneh;
+		\draw[color=blue] \aminusonei;
+		\draw[color=blue] \aminusonek;
+		\draw[color=blue] \aminusonel;
+		\draw[color=blue] \aminusonem;
+		\draw[color=blue] \aminusonen;
+		\draw[color=blue] \aminusoneo;
+		\draw[color=red] \aminusoneweight;
+	\end{scope}
+	\draw[->] (-6.1,0) -- (6.1,0) coordinate[label={$x$}];
+	\draw[->] (0,-2.55) -- (0,2.6) coordinate[label={right:$y$}];
+	\node at (6,2.3) [left] {$a=-1$};
+	\node at (-6,2.3) [right] {$b=0$};
+\end{scope}
+
+
+
+\end{tikzpicture}
+\end{document}
+

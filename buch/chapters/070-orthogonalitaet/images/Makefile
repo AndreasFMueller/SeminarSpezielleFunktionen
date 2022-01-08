@@ -4,7 +4,7 @@
 #
 # (c) 2021 Prof Dr Andreas Müller, OST Ostschweizer Fachhochschule
 #
-all:	legendre.pdf orthogonal.pdf weight.pdf
+all:	legendre.pdf orthogonal.pdf weight.pdf jacobi.pdf
 
 legendrepaths.tex:	legendre.m
 	octave legendre.m
@@ -19,3 +19,14 @@ weight.pdf:	weight.tex weightfunction.tex
 weightfunction.tex:	weight.m
 	octave weight.m
 
+jacobi:	jacobi.cpp
+	g++ --std=c++11 -O -Wall -g -o jacobi jacobi.cpp
+
+jacobipaths.tex:	jacobi Makefile
+	./jacobi --a=0 --b=0 --prefix=legendre --outfile=jacobipaths.tex
+	./jacobi --a=1 --b=0 --degree=14 --prefix=aone >> jacobipaths.tex
+	./jacobi --a=2 --b=0 --prefix=atwo >> jacobipaths.tex
+	./jacobi --a=-1 --b=0 --degree=14 --prefix=aminusone >> jacobipaths.tex
+	./jacobi --a=-2 --b=0 --prefix=aminustwo >> jacobipaths.tex
+jacobi.pdf:	jacobi.tex jacobipaths.tex
+	pdflatex jacobi.tex
