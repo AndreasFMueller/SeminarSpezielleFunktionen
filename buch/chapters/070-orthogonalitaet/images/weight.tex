@@ -1,0 +1,174 @@
+%
+% weight.tex -- Einfluss der Gewichtsfunktion auf die möglichen Funktionen
+%
+% (c) 2021 Prof Dr Andreas Müller, OST Ostschweizer Fachhochschule
+%
+\documentclass[tikz]{standalone}
+\usepackage{amsmath}
+\usepackage{times}
+\usepackage{txfonts}
+\usepackage{pgfplots}
+\usepackage{csvsimple}
+\usetikzlibrary{arrows,intersections,math}
+\begin{document}
+\def\skala{6}
+\begin{tikzpicture}[>=latex,thick,scale=\skala]
+
+\definecolor{hell}{rgb}{0.4,0.4,1}
+
+\xdef\sfour{0.16}
+\xdef\sthree{0.20}
+\xdef\stwo{0.27}
+\xdef\sone{0.45}
+
+\begin{scope}
+	\clip (-1,-1) rectangle (1,1);
+
+	\xdef\s{0.16}
+	\fill[color=blue!40] 
+		plot[domain=0.7:0.99,samples=20]
+			({\x},{\s*exp(-0.48*ln(1-\x))})
+		-- (1,1) -- (1,-1) --
+		plot[domain=0.99:0.7,samples=20]
+			({\x},{-\s*exp(-0.48*ln(1-\x))})
+		-- cycle;
+
+	\xdef\s{0.20}
+	\fill[color=blue!40]
+		plot[domain=0.033:0.33,samples=20]
+			({\x},{\s*exp(-0.28*ln(1/3-\x))})
+		-- ({1/3},1) -- 
+		plot[domain=0.34:0.6333,samples=20]
+			({\x},{\s*exp(-0.28*ln(\x-1/3))})
+		--
+		plot[domain=0.6333:0.34,samples=20]
+			({\x},{-\s*exp(-0.28*ln(\x-1/3))})
+		-- ({1/3},-1) -- 
+		plot[domain=0.333:0.033,samples=20]
+			({\x},{-\s*exp(-0.28*ln(1/3-\x))})
+		-- cycle;
+
+	\xdef\s{0.27}
+	\fill[color=blue!40]
+		(-0.6333,-\s) rectangle (-0.0333,\s);
+
+	\xdef\s{0.45}
+	\fill[color=blue!40]
+		(-1,0) 
+		--
+		plot[domain=-0.99:-0.7,samples=100]
+			({\x},{\s*exp(0.48*ln(1+\x))})
+		--
+		plot[domain=-0.7:-0.99,samples=100]
+			({\x},{-\s*exp(0.48*ln(1+\x))})
+		--
+		cycle;
+
+\end{scope}
+
+\def\rechteck#1#2{
+	\fill[color=hell!#1]
+			({#2/300},1) rectangle ({(#2+1.1)/300},-1);
+}
+
+\def\verlauf{
+	\foreach\x in {0,1,...,100.1}{
+		\rechteck{\x}{\x}
+		\rechteck{\x}{-\x}
+	}
+}
+
+\def\rand{
+	plot[domain=0.7:0.99,samples=20]
+		({\x},{\sfour*exp(-0.48*ln(1-\x))})
+	-- (1,1) -- (1,-1) --
+	plot[domain=0.99:0.7,samples=20]
+		({\x},{-\sfour*exp(-0.48*ln(1-\x))})
+	--
+	plot[domain=0.6333:0.34,samples=20]
+		({\x},{-\sthree*exp(-0.28*ln(\x-1/3))})
+	-- ({1/3},-1) -- 
+	plot[domain=0.333:0.033,samples=20]
+		({\x},{-\sthree*exp(-0.28*ln(1/3-\x))})
+	--
+	(-0.0333,-\stwo) -- (-0.6333,-\stwo)
+	--
+	plot[domain=-0.7:-0.998,samples=100]
+		({\x},{-\sone*exp(0.48*ln(1+\x))})
+	--
+	(-1,0) 
+	--
+	plot[domain=-0.998:-0.7,samples=100]
+		({\x},{\sone*exp(0.48*ln(1+\x))})
+	--
+	(-0.6333,\stwo) -- (-0.0333,\stwo)
+	--
+	plot[domain=0.033:0.33,samples=20]
+		({\x},{\sthree*exp(-0.28*ln(1/3-\x))})
+	-- ({1/3},1) -- 
+	plot[domain=0.34:0.6333,samples=20]
+		({\x},{\sthree*exp(-0.28*ln(\x-1/3))})
+	-- cycle;
+}
+
+\begin{scope}
+	\clip (-1,-1) rectangle (1,1);
+	\begin{scope}
+		\clip \rand;
+		\fill[left color=hell,right color=white]
+			(-1,-1) rectangle (-0.6666,1);
+		\fill[left color=white,right color=hell]
+			(-0.6666,-1) rectangle (-0.3333,1);
+		\fill[left color=hell,right color=white]
+			(-0.3333,-1) rectangle (0,1);
+		\fill[left color=white,right color=hell]
+			(0,-1) rectangle (0.3333,1);
+		\fill[left color=hell,right color=white]
+			(0.3333,-1) rectangle (0.6666,1);
+		\fill[left color=white,right color=hell]
+			(0.6666,-1) rectangle (1,1);
+	\end{scope}
+	\draw[color=white,line width=0.5pt] \rand;
+	\draw[color=white,line width=0.5pt] ({-2/3},-1) -- ({-2/3},1);
+	\draw[color=white,line width=0.5pt] ({2/3},-1) -- ({2/3},1);
+\end{scope}
+
+\draw[->] (-1.1,0) -- (1.1,0) coordinate[label={$x$}];
+\draw[->] (0,-1.1) -- (0,1.1) coordinate[label={right:$y$}];
+
+\begin{scope}
+	\clip (-1,-1) rectangle (1,1);
+
+	\input{weightfunction.tex}
+
+\end{scope}
+
+\draw[line width=0.2pt] (-1,-1) -- (-1,1);
+\draw[line width=0.2pt] ({-1/3},-1) -- ({-1/3},1);
+
+\draw ({-1/3},{-0.1/\skala}) -- ({-1/3},{0.1/\skala});
+\draw ({1/3},{-0.1/\skala}) -- ({1/3},{0.1/\skala});
+\draw (1,{-0.1/\skala}) -- (1,{0.1/\skala});
+
+\node at (-1,0) [below left] {$-1$};
+\node at (1,0) [below right] {$1$};
+
+\def\marke#1#2#3{
+	\fill[color=white,opacity=0.7]
+		({#1-0.03},{#2-0.12})
+		rectangle
+		({#1+0.03},{#2+0.12});
+}
+
+\marke{-1}{0.2}{}
+\node at (-1,0.2) [rotate=90] {$\alpha=-1.9$};
+\marke{-1/3}{0.2}{}
+\node at ({-1/3},0.2) [rotate=90] {$\alpha=-0.9$};
+\marke{1/3}{0.2}{}
+\node at ({1/3},0.2) [rotate=90] {$\alpha=1$};
+\marke{1}{0.2}{}
+\node at (1,0.2) [rotate=90] {$\alpha=2$};
+
+\end{tikzpicture}
+\end{document}
+
