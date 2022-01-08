@@ -11,7 +11,7 @@
 \usepackage{csvsimple}
 \usetikzlibrary{arrows,intersections,math}
 \begin{document}
-\def\skala{1}
+\def\skala{1.07}
 \input{jacobipaths.tex}
 \begin{tikzpicture}[>=latex,thick,scale=\skala]
 
@@ -36,10 +36,14 @@
 		\draw[color=blue] \legendrek;
 		\draw[color=red] \legendreweight;
 	\end{scope}
-	\draw[->] (-6.1,0) -- (6.1,0) coordinate[label={$x$}];
+	\draw[->] (-6.1,0) -- (6.3,0) coordinate[label={$x$}];
 	\draw[->] (0,-2.55) -- (0,2.6) coordinate[label={right:$y$}];
 	\node at (6,2.3) [left] {$a=0$};
 	\node at (-6,2.3) [right] {$b=0$};
+	\draw ({-1*\dx},-0.1) -- ({-1*\dx},0.1);
+	\draw ({1*\dx},-0.1) -- ({1*\dx},0.1);
+	\node at ({1*\dx},-0.1) [below] {$1$};
+	\node at ({-0.97*\dx},-0.1) [below left] {$-1$};
 \end{scope}
 
 \begin{scope}[yshift=-5.6cm]
@@ -63,10 +67,15 @@
 		\draw[color=blue] \aoneo;
 		\draw[color=red] \aoneweight;
 	\end{scope}
-	\draw[->] (-6.1,0) -- (6.1,0) coordinate[label={$x$}];
+	\draw[->] (-6.1,0) -- (6.3,0) coordinate[label={$x$}];
 	\draw[->] (0,-2.55) -- (0,2.6) coordinate[label={right:$y$}];
+	\fill[color=white,opacity=0.8] (4.9,2.1) rectangle (5.9,2.5);
 	\node at (6,2.3) [left] {$a=1$};
 	\node at (-6,2.3) [right] {$b=0$};
+	\draw ({-1*\dx},-0.1) -- ({-1*\dx},0.1);
+	\draw ({1*\dx},-0.1) -- ({1*\dx},0.1);
+	\node at ({1*\dx},-0.1) [below] {$1$};
+	\node at ({-0.97*\dx},-0.1) [below left] {$-1$};
 \end{scope}
 
 \begin{scope}[yshift=-11.2cm]
@@ -91,10 +100,14 @@
 		\draw[color=blue] \aminusoneo;
 		\draw[color=red] \aminusoneweight;
 	\end{scope}
-	\draw[->] (-6.1,0) -- (6.1,0) coordinate[label={$x$}];
+	\draw[->] (-6.1,0) -- (6.3,0) coordinate[label={$x$}];
 	\draw[->] (0,-2.55) -- (0,2.6) coordinate[label={right:$y$}];
 	\node at (6,2.3) [left] {$a=-1$};
 	\node at (-6,2.3) [right] {$b=0$};
+	\draw ({-1*\dx},-0.1) -- ({-1*\dx},0.1);
+	\draw ({1*\dx},-0.1) -- ({1*\dx},0.1);
+	\node at ({1*\dx},-0.1) [below] {$1$};
+	\node at ({-0.97*\dx},-0.1) [below left] {$-1$};
 \end{scope}
 
 
