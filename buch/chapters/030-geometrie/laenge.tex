@@ -242,6 +242,29 @@ l(\alpha)
 \end{equation}
 für die Länge der Kurve.
 
+%
+% hierhin verschoben für bessere Platzierung
+%
+\begin{figure}
+\centering
+\includegraphics{chapters/030-geometrie/images/kegelschnitte.pdf}
+\caption{Hyperbeln, Parabeln und Ellipsen sind die Schnittkurven einer
+Ebene mit einem Kegel.
+Der Winkel zwischen der Achse des Kegels und der Schnittebene bestimmt,
+welche Art von Schnittkurve entsteht.
+Wenn keine der Mantellinien des Kegels parallel ist zur Ebene, dann
+entsteht eine Ellipse (rechts).
+In der Mitte ist genau eine Mantellinie (hellblau) parallel zur Ebene,
+es ensteht eine Parabel und links gibt es genau zwei verschiedene
+Mantellinien des Kegels (hellblau), die zur Ebene parallel sind,
+es entsteht eine Hyperbel.
+\label{buch:geometrie:laenge:fig:kegelschnitte}}
+\end{figure}
+%
+
+%
+% Kreis
+%
 \subsection{Kreis}
 Die Länge eines Bogens auf dem Einheitskreis zwischen dem Punkt
 $(1,0)$ und $P=(x,y)$ mit $x^2+y^2=1$ ist nach Definition der
@@ -280,32 +303,30 @@ Tatsächlich ist die Ableitung davon
 was mit der Integralformel~\ref{buch:geometrie:eqn:kreislaenge} 
 übereinstimmt.
 
-\subsection{Hyperbeln
-\label{buch:geometrie:subsection:hyperbeln}}
-\begin{figure}
-\centering
-\includegraphics{chapters/030-geometrie/images/kegelschnitte.pdf}
-\caption{Hyperbeln, Parabeln und Ellipsen sind die Schnittkurven einer
-Ebene mit einem Kegel.
-Der Winkel zwischen der Achse des Kegels und der Schnittebene bestimmt,
-welche Art von Schnittkurve entsteht.
-Wenn keine der Mantellinien des Kegels parallel ist zur Ebene, dann
-entsteht eine Ellipse (rechts).
-In der Mitte ist genau eine Mantellinie (hellblau) parallel zur Ebene,
-es ensteht eine Parabel und links gibt es genau zwei verschiedene
-Mantellinien des Kegels (hellblau), die zur Ebene parallel sind,
-es entsteht eine Hyperbel.
-\label{buch:geometrie:laenge:fig:kegelschnitte}}
-\end{figure}
-Eine Hyperbel entsteht durch Schneiden eines geraden Kreiskegels mit
-einer Ebene wie in Abbildung~\ref{buch:geometrie:laenge:fig:kegelschnitte}.
-Es lässt sich ableiten, dass die Punkte der Hyperbel die Eigenschaft
-haben, dass die Differenzt der Entfernung von zwei festen Punkte,
-den sogenannten Brennpunkten, konstant ist.
-Dies ist die Definition, von der wir in diesem Abschnitt ausgehen
-wollen.
+\subsection{Kegelschnitte
+\label{buch:geometrie:subsection:kegelschnitte}}
+Kegelschnitte sind die Schnittkurven eines geraden Kreiskegels
+mit einer Ebene (Abbildung~\ref{buch:geometrie:laenge:fig:kegelschnitte}).
+Der Kreis ist der Spezialfall des Schnittes mit einer horizontalen
+Ebene.
+Im Gegensatz zum Kreis lässt sich aber die Kurvenlänge nicht mehr
+in geschlossener Form berechnen.
 
-\subsubsection{Geometrie einer Hyperbel}
+\subsubsection{Koordinatengleichung}
+Aus der in Abbildung~\ref{buch:geometrie:laenge:fig:kegelschnitte}
+dargestellten Geometrie kann man die folgende Charakterisierung von
+Ellipsen und Hyperbeln ableiten.
+
+\begin{definition}
+\label{buch:geometrie:def:kegelschnitte}
+Gegeben sind die Punkte $F_1$ und $F_2$ in der Ebene, sie heissen
+die {\em Brennpunkte}.
+Die Punkte in der Ebene, deren Abstandssumme von zwei festen Punkten $F_1$
+und $F_2$ konstant ist, bilden eine {\em Ellipse}.
+Die Punkte in der Ebene, deren Abstandsdifferenz von zwei festen Punkten
+$F_1$ und $F_2$ konstant ist, bilden eine {\em Hyperbel}.
+\end{definition}
+
 \begin{figure}
 \centering
 \includegraphics{chapters/030-geometrie/images/hyperbel.pdf}
@@ -317,40 +338,76 @@ Die Differenz $\pm 2a$ führt auf die Hyperbeln mit Halbachsen
 $a$ und $b$.
 \label{buch:geometrie:hyperbel:fig:2d}}
 \end{figure}
-Die Brennpunkte der Hyperbel sollen $F_1=(e,0)$ und $F_2=(-e,0)$ sein.
-Die Grösse $e$ heisst auch die {\em lineare Exzentrizität} der Hyperbel.
-Die beiden Äste der Hyperbel schneiden die $x$-Achse in den Punkten
-$A_\pm=(\pm a,0)$.
-In Abbildung~\ref{buch:geometrie:hyperbel:fig:2d} ist diese Situation
-dargestellt.
+\begin{figure}
+\centering
+\includegraphics{chapters/030-geometrie/images/ellipse.pdf}
+\caption{Geometrie einer Ellipse in der Ebene.
+Die Ellipse besteht aus den Punkten $P$ der Ebene, deren Entfernungssumme
+$\overline{F_1P}+\overline{F_2P}$
+zu zwei vorgegebenen Punkten $F_1$ und $F_2$ konstant ist.
+Die Summe $\pm 2a$ führt auf die Ellipsen mit Halbachsen
+$a$ und $b$.
+\label{buch:geometrie:ellipse:fig:2d}}
+\end{figure}
+Aus der Definition~\ref{buch:geometrie:def:kegelschnitte} soll jetzt
+eine Koordinatengleichung für Ellipsen und Hyperbeln hergeleitet werden.
+Die Brennpunkte haben die Koordinaten $F_1=(e,0)$ und $F_2=(-e,0)$.
+Die Grösse $e$ heisst auch die {\em lineare Exzentrizität}.
+Die Abstandssumme bzw.~-differenz wird mit $2a$ bezeichnet
 
-Die Differenz der Entfernungen von $A_+$ zu den beiden Brennpunkten ist
+Die Punkte $A_+=(a,0)$ und $A_-=(-a,0)$ sind Punkte der gesuchten
+Kurven,
+denn die Summe bzw.~Differenz der Entfernungen von $A_+$ zu den beiden
+Brennpunkten ist
 \[
 \overline{A_+F_2}
--
+\pm
 \overline{A_+F_1}
 =
+\begin{cases}
+(a-e)+(a+e) = 2a
+&\qquad\text{Ellipse}
+\\
 (e+a)-(e-a) = 2a
+&\qquad\text{Hyperbel}
+\end{cases}
 \]
+In Abbildung~\ref{buch:geometrie:hyperbel:fig:2d} ist diese Situation
+für eine Hyperbel dargestellt, in 
+Abbildung~\ref{buch:geometrie:ellipse:fig:2d} für eine Ellipse.
+Für eine Ellipse ist $e<a$, für eine Hyperbel ist $e>a$, wir schreiben
+\[
+b^2
+=
+\begin{cases}
+a^2-e^2&\qquad\text{Ellipse} \\
+e^2-a^2&\qquad\text{Hyperbel}
+\end{cases}
+\]
+Die Zahlen $a$ und $b$ heissen die {\em grosse} bzw.~{\em kleine Halbachse}
+der Ellipse bzw.~Hyperbel.
+
 Für einen beliebigen Punkt $P=(x,y)$ in der Ebene wird die Bedingung
 an die Abstände zu
 \[
 \overline{PF_2}
--
+\pm
 \overline{PF_1}
 =
 \sqrt{(x+e)^2+y^2}
--
+\pm
 \sqrt{(x-e)^2+y^2}
 =
 2a.
 \]
+Hier und in der folgenden Rechnung gilt das obere Zeichen jeweils
+für die Ellipse, das untere für die Hyperbel.
 Quadrieren ergibt
 \begin{align*}
 4a^2
 &=
 (x+e)^2+y^2
-+
+\pm
 2\sqrt{
 ((x+e)^2+y^2)
 ((x-e)^2+y^2)
@@ -360,12 +417,12 @@ Quadrieren ergibt
 \\
 2a^2-x^2-e^2-y^2
 &=
-\sqrt{
+\pm\sqrt{
 y^4 + y^2((x+e)^2 + (x-e)^2) +(x^2-e^2)^2
 }
 \\
 &=
-\sqrt{y^4 + 2y^2 ( x^2+e^2) +x^4 - 2x^2e^2 + e^4}.
+\pm\sqrt{y^4 + 2y^2 ( x^2+e^2) +x^4 - 2x^2e^2 + e^4}.
 \end{align*}
 Erneutes Quadrieren bringt auch die Wurzel auf der rechten Seiten
 zum Verschwinden:
@@ -390,22 +447,31 @@ a^4+x^2e^2&=a^2(x^2+y^2+e^2)
 x^2(e^2-a^2)&=a^2(e^2-a^2) + a^2y^2.
 \notag
 \end{align}
-Schreiben wir $b^2=e^2-a^2$ und stellen die Gleichung etwas um,
-ergibt sich
+Die Differenz $e^2-a^2$ ist bis auf das Vorzeichen identisch mit $b^2$,
+genauer gilt
+\begin{equation*}
+\mp x^2b^2 = \mp a^2b^2 + a^2y^2.
+\end{equation*}
+Nach Division durch $\mp a^2b^2$ bleibt
 \begin{equation}
-b^2x^2 - a^2y^2 = a^2b^2
+\frac{x^2}{a^2} = 1 \mp{y^2}{b^2}
 \qquad\Rightarrow\qquad
-\frac{x^2}{a^2} - \frac{y^2}{b^2} = 1.
+\frac{x^2}{a^2} \pm \frac{y^2}{b^2} = 1,
 \label{buch:geometrie:hyperbel:gleichung}
 \end{equation}
-Die Zahlen $a$ und $b$ heissen die {\em grosse} bzw.~{\em kleine Halbachse}
-der Hyperbel.
+die Koordinatengleichunggleichung einer Ellipse bwz.~Hyperbel.
 
+
+\subsubsection{Hyperbeln}
 Die Hyperbeln können auch als Graphen einer Funktion von $x$ gefunden werden.
 Dazu wird die Gleichung~\eqref{buch:geometrie:hyperbel:gleichung}
 nach $y$ aufgelöst:
 \[
-\frac{y^2}{b^2} = \frac{x^2}{a^2} - 1
+\frac{x^2}{a^2}
+-
+\frac{y^2}{b^2}
+=
+1
 \qquad\Rightarrow\qquad
 y
 =
@@ -500,19 +566,39 @@ ausführbar und rechtfertigt die Definition neuer spezieller Funktionen.
 Die Kurvenlänge auf einer Hyperbel kann mit den in
 Kapitel~\ref{buch:chapter:elliptischefunktionen}
 beschriebenen elliptischen Integralen beschrieben werden.
+\begin{figure}
+\centering
+\includegraphics{chapters/030-geometrie/images/parabel.pdf}
+\caption{Eine Parabel ist die Menge der Punkte, die von der Geraden $l$
+und dem Brennpunkt $F$ gleichen Abstand haben.
+\label{buch:geometrie:fig:parabel}}
+\end{figure}
 
-\subsection{Ellipsen
-\label{buch:geometrie:subsection:ellipsen}}
-Für eine Ellipse kann man die Parameterdarstellung 
+\subsubsection{Ellipsen}
+Sei $(x,y)$ ein Punkt, der die
+Ellipsengleichung~\eqref{buch:geometrie:hyperbel:gleichung} erfüllt.
+Dann erfüllt $(X,Y)=(x/a, y/b)$ die Gleichung $X^2+Y^2=1$, ein Punkt auf
+einem Kreis.
+Insbesondere gibt es ein $t\in\mathbb{R}$ derart, dass
 \[
-t\mapsto \begin{pmatrix}a\cos t\\b\sin t\end{pmatrix}
+\frac{x}{a} = \cos t ,\quad \frac{y}{b}=\sin t
+\qquad\Rightarrow\qquad
+x=a\cos t,\quad y=b\sin t.
 \]
-verwenden.
+Somit ist
+\[
+\gamma
+\colon
+\mathbb{R}\to\mathbb{R}^2
+:
+t \mapsto\begin{pmatrix}a\cos t\\b\sin t\end{pmatrix}
+\]
+eine Parametrisierung der Ellipse.
 Die Länge eines Ellipsenbogens zwischen den Winkelargumenten $\alpha$ und
 $\beta$ ist dann
-\[
+\begin{align*}
 l(\alpha,\beta)
-=
+&=
 \int_\alpha^\beta
 \sqrt{
 a^2 \sin^2 t + b^2 \cos^2t
@@ -524,29 +610,105 @@ a^2 \sin^2 t + b^2 \cos^2t
 a^2 - (a^2-b^2)\cos^2 t
 }
 \,dt
-=
+\\
+&=
 a
 \int_\alpha^\beta
 \sqrt{
 1 - \frac{a^2-b^2}{a^2} \cos^2t
 }
-\,dt.
+\,dt
 =
 a\int_\alpha^\beta
 \sqrt{
 1-\varepsilon^2 \cos^2t
 }
-\,dt
-\]
+\,dt.
+\end{align*}
 Auch dieses Integral ist nicht in geschlossener Form lösbar.
 Dies motiviert in Kapitel~\ref{buch:chapter:elliptischefunktionen}
 die Definition~\ref{buch:elliptisch:def:integrale123}
-der sogenannten elliptischen Intefrale als neue
+der sogenannten elliptischen Integrale als neue
 spezielle Funktionen.
 Auf Seite~\pageref{buch:elliptisch:fig:ellipsenumfang} wird gezeigt,
 dass der Umfang einer Ellipse $4aE(\varepsilon)$ ist,
 wobei $\varepsilon=e/a$ und $e^2=a^2-b^2$ (siehe auch
 Abbildung~\ref{buch:elliptisch:fig:ellipsenumfang}).
+
+\subsubsection{Parabeln}
+Aus der Geometrie der Kegelschnitte
+(Abbildung~\ref{buch:geometrie:def:kegelschnitte})
+kann auch die folgende Charakterisierung einer Parabel abgeleitet werden.
+
+\begin{definition}
+\label{buch:geometrie:def:parabel}
+Sei $F$ ein Punkt in der Ebene $l$ eine Gerade, die $F$ nicht enthält.
+$F$ heisst {\em Brennpunkt}, $l$ heisst {\em Leitgerade} der Parabel.
+Die Menge aller Punkte $P$, die von $F$ und $l$ den gleichen
+Abstand haben, heisst {\em Parabel}.
+Die {\em Brennweite} $f$ ist der halbe Abstand von $F$ zu $l$,
+also $\overline{Fl}=2f$.
+\end{definition}
+
+Ohne Einschränkung der Allgemeinheit kann man $F=(0,f)$ und
+$l$ als die Gerade $y=-f$ annehmen
+(siehe Abbildung~\ref{buch:geometrie:fig:parabel}).
+Ein Punkt $P=(x,y)$ liegt genau dann auf der Parabel, wenn
+\begin{align*}
+\overline{Pl}
+&=
+\overline{PF}
+\\
+(y+f)^2
+&=
+x^2 + (y-f)^2
+\\
+y^2+2yf+f^2
+&=
+x^2 + y^2-2yf+f^2
+\\
+4yf
+&=
+x^2
+\qquad\Rightarrow\qquad y=\frac{1}{4f}x^2.
+\end{align*}
+Eine Parabel ist also der Graph einer quadratischen Funktion.
+
+Parabeln haben erhebliche praktische Bedeutung, weil sie parallel zur
+Achse einfallende Strahlen im Brennpunkt $F$ fokusieren.
+
+\subsubsection{Bogenlänge einer Parabel}
+Die Länge eines Parabelbogens zwischen $x_1$ und $x_2$ ist
+\begin{align*}
+l(x_1,x_2)
+&=
+\int_{x_1}^{x_2}
+\sqrt{1+\biggl(\frac{1}{2f}x\biggr)^2}
+\,dx
+\end{align*}
+Mit der Substitution $x=2ft$ wird das Integral zu
+\[
+l(x_1,x_2)
+=
+2f
+\int_{x_1/2f}^{x_2/2f}
+\sqrt{1+t^2}
+\,dt
+=
+f\biggl[
+\operatorname{arsinh} t +t\sqrt{1+t^2}
+\biggr]_{x_1/2f}^{x_2/2f}
+=
+\biggl[
+f
+\operatorname{arsinh}\frac{x}{2f}
++
+\frac{x}{4f}\sqrt{4f^2+x^2}
+\biggr]_{x_1}^{x_2}.
+\]
+Während also Ellipsen- und Hyperbelbogen nicht in geschlossener
+Form berechnet werden können, ist dies für Parabelbögen sehr wohl
+möglich.
 
 
 

@@ -370,126 +370,6 @@ Nach obigem Satz sind die Eigenfunktionen von $D$ orthogonal.
 Das Beispiel illustriert, dass orthogonale Funktionenfamilien
 ein automatisches Nebenprodukt selbstadjungierter Operatoren sind.
 
-%%
-%% Besselfunktionen also orthogonale Funktionenfamilie
-%%
-%\subsection{Bessel-Funktionen als orthogonale Funktionenfamilie}
-%Auch die Besselfunktionen sind eine orthogonale Funktionenfamilie.
-%Sie sind Funktionen differenzierbaren Funktionen $f(r)$ für $r>0$
-%mit $f'(r)=0$ und für $r\to\infty$ nimmt $f(r)$ so schnell ab, dass
-%auch $rf(r)$ noch gegen $0$ strebt.
-%Das Skalarprodukt ist
-%\[
-%\langle f,g\rangle
-%=
-%\int_0^\infty r f(r) g(r)\,dr,
-%\]
-%als Operator verwenden wir
-%\[
-%A = \frac{d^2}{dr^2} + \frac{1}{r}\frac{d}{dr} + s(r),
-%\]
-%wobei $s(r)$ eine beliebige integrierbare Funktion sein kann.
-%Zunächst überprüfen wir, ob dieser Operator wirklich selbstadjungiert ist.
-%Dazu rechnen wir
-%\begin{align}
-%\langle Af,g\rangle
-%&=
-%\int_0^\infty
-%r\,\biggl(f''(r)+\frac1rf'(r)+s(r)f(r)\biggr) g(r)
-%\,dr
-%\notag
-%\\
-%&=
-%\int_0^\infty rf''(r)g(r)\,dr
-%+
-%\int_0^\infty f'(r)g(r)\,dr
-%+
-%\int_0^\infty s(r)f(r)g(r)\,dr.
-%\notag
-%\intertext{Der letzte Term ist symmetrisch in $f$ und $g$, daher
-%ändern wir daran weiter nichts.
-%Auf das erste Integral kann man partielle Integration anwenden und erhält}
-%&=
-%\biggl[rf'(r)g(r)\biggr]_0^\infty
-%-
-%\int_0^\infty f'(r)g(r) + rf'(r)g'(r)\,dr
-%+
-%\int_0^\infty f'(r)g(r)\,dr
-%+
-%\int_0^\infty s(r)f(r)g(r)\,dr.
-%\notag
-%\intertext{Der erste Term verschwindet wegen der Bedingungen an die
-%Funktionen $f$ und $g$.
-%Der erste Term im zweiten Integral hebt sich gegen das
-%zweite Integral weg.
-%Der letzte Term ist das Skalarprodukt von $f'$ und $g'$.
-%Somit ergibt sich
-%}
-%&=
-%-\langle f',g'\rangle
-%+
-%\int_0^\infty s(r) f(r)g(r)\,dr.
-%\label{buch:integrale:orthogonal:besselsa}
-%\end{align}
-%Vertauscht man die Rollen von $f$ und $g$, erhält man das Gleiche, da im
-%letzten Ausdruck~\eqref{buch:integrale:orthogonal:besselsa} die Funktionen
-%$f$ und $g$ symmetrische auftreten.
-%Damit ist gezeigt, dass der Operator $A$ selbstadjungiert ist.
-%Es folgt nun, dass Eigenvektoren des Operators $A$ automatisch
-%orthogonal sind.
-%
-%Eigenfunktionen von $A$ sind aber Lösungen der Differentialgleichung
-%\[
-%\begin{aligned}
-%&&
-%Af&=\lambda f
-%\\
-%&\Rightarrow\qquad&
-%f''(r) +\frac1rf'(r) + s(r)f(r) &= \lambda f(r)
-%\\
-%&\Rightarrow\qquad&
-%r^2f''(r) +rf'(r)+ (-\lambda r^2+s(r)r^2)f(r) &= 0
-%\end{aligned}
-%\]
-%sind.
-%
-%Durch die Wahl $s(r)=1$ wird der Operator $A$ zum Bessel-Operator
-%$B$ definiert in
-%\eqref{buch:differentialgleichungen:bessel-operator}.
-%Die Lösungen der Besselschen Differentialgleichung zu verschiedenen Werten
-%des Parameters müssen also orthogonal sein, insbesondere sind die
-%Besselfunktion $J_\nu(r)$ und $J_\mu(r)$ orthogonal wenn $\mu\ne\nu$ ist.
-%
-%
-% Orthogonale Polynome
-%
-\subsection{Orthogonale Polynome
-\label{buch:integral:subsection:orthogonale-polynome}}
-Die Polynome $1,x,x^2,\dots,x^n$ bilden eine Basis des Vektorraums
-der Polynome vom Grad $\le n$.
-Bezüglich des Skalarproduktes
-\[
-\langle p,q\rangle
-=
-\int_{-1}^1 p(x)q(x)\,dx
-\]
-sind sie jedoch nicht orthogonal, denn es ist
-\[
-\langle x^i,x^j\rangle
-=
-\int_{-1}^1 x^{i+j}\,dx
-=
-\biggl[\frac{x^{i+j+1}}{i+j+1}\biggr]_{-1}^1
-=
-\begin{cases}
-\displaystyle
-\frac{2}{i+j+1}&\qquad\text{$i+j$ gerade}\\
-              0&\qquad\text{$i+j$ ungerade}.
-\end{cases}
-\]
-Wir können daher das Gram-Schmidtsche Orthonormalisierungsverfahren
-anwenden, um eine orthogonale Basis von Polynomen zu finden, was
-wir im Folgenden tun wollen.
 
 % XXX Orthogonalisierungsproblem so formulieren, dass klar wird,
 % XXX dass man ein "Normierungskriterium braucht.
@@ -714,8 +594,6 @@ orthogonale Polynome vom Grad $n$, die den Wert $P_n(1)=1$ haben.
 \label{buch:integral:table:legendre-polynome}}
 \end{table}
 
-
-
 Die so konstruierten Polynome heissen die {\em Legendre-Polynome}.
 Durch weitere Durchführung des Verfahrens liefert die Polynome in
 Tabelle~\ref{buch:integral:table:legendre-polynome}.
@@ -725,3 +603,220 @@ Abbildung~\ref{buch:integral:orthogonal:legendreortho} illustriert,
 dass die die beiden Polynome $P_4(x)$ und $P_7(x)$ orthogonal sind.
 Das Produkt $P_4(x)\cdot P_7(x)$ hat Integral $=0$.
 
+%
+% Rekursionsrelation
+%
+\subsection{Drei-Term-Rekursion
+\label{buch:orthogonal:subsection:rekursionsrelation}}
+Die Berechnung der Legendre-Polynome mit Hilfe des Gram-Schmidt-Verfahrens
+ist ausserordentlich mühsame wenig hilfreich, wenn es darum geht, Werte
+der Polynome zu berechnen.
+Glücklicherweise erfüllen orthogonale Polynome automatisch eine 
+Rekursionsbeziehung mit nur drei Termen.
+Zum Beispiel kann man zeigen, dass für die Legendre-Polynome die
+Relation
+\begin{align*}
+nP_n(x) &= (2n-1)xP_{n-1}(x) - (n-1)P_{n-2}(x),\;\forall n\ge 2,
+\\
+P_1(x) &= x,
+\\
+P_0(x) &= 1.
+\end{align*}
+Mit so einer Rekursionsbeziehung ist es sehr einfach, die Funktionswerte
+für alle $P_n(x)$ zu berechnen.
+
+\begin{definition}
+Eine Folge von Polynomen $p_n(x)$ heisst orthogonal bezüglich des
+Skalarproduktes $\langle\,\;,\;\rangle_w$, wenn 
+\[
+\langle p_n,p_m\rangle_w = h_n \delta_{nm}
+\]
+für alle $n$, $m$.
+\end{definition}
+
+\subsubsection{Allgemeine Drei-Term-Rekursion für orthogonale Polynome}
+Der folgende Satz besagt, dass $p_n$ eine Rekursionsbeziehung erfüllt.
+
+\begin{satz}
+\label{buch:orthogonal:satz:drei-term-rekursion}
+Eine Folge bezüglich $\langle\,\;,\;\rangle_w$ orthogonaler Polynome $p_n$ 
+mit dem Grade $\deg p_n = n$ erfüllt eine Rekursionsbeziehung der Form
+\begin{equation}
+p_{n+1}(x)
+=
+(A_nx+B_n)p_n(x) - C_np_{n-1}(x)
+\label{buch:orthogonal:eqn:rekursion}
+\end{equation}
+für $n\ge 0$, wobei $p_{-1}(x)=0$ gesetzt wird.
+Die Zahlen $A_n$, $B_n$ und $C_n$ sind reell und es ist
+$A_{n-1}A_nC_n\ge 0$ für $n>0$. 
+Wenn $k_n>0$ der Leitkoeffizient von $p_n(x)$ ist, dann gilt
+\begin{equation}
+A_n=\frac{k_{n+1}}{k_n},
+\qquad
+C_{n+1} = \frac{A_{n+1}}{A_n}\frac{h_{n+1}}{h_n}.
+\label{buch:orthogonal:eqn:koeffizientenrelation}
+\end{equation}
+\end{satz}
+
+\subsubsection{Multiplikationsoperator mit $x$}
+Man kann die Relation auch nach dem Produkt $xp_n(x)$ auflösen, dann
+wird sie
+\begin{equation}
+xp_n(x)
+=
+\frac{1}{A_n}p_{n+1}(x)
+-
+\frac{B_n}{A_n}p_n(x)
++
+\frac{C_n}{A_n}p_{n-1}(x).
+\label{buch:orthogonal:eqn:multixrelation}
+\end{equation}
+Die Multiplikation mit $x$ ist eine lineare Abbildung im Raum der Funktionen.
+Die Relation~\eqref{buch:orthogonal:eqn:multixrelation} besagt, dass diese
+Abbildung in der Basis der Polynome $p_k$ tridiagonale Form hat.
+
+\subsubsection{Drei-Term-Rekursion für die Tschebyscheff-Polynome}
+Eine Relation der Form~\eqref{buch:orthogonal:eqn:multixrelation}
+wurde bereits in 
+Abschnitt~\ref{buch:potenzen:tschebyscheff:rekursionsbeziehungen}
+hergeleitet.
+In der Form~\eqref{buch:orthogonal:eqn:rekursion} geschrieben lautet
+sie
+\[
+T_{n+1}(x) = 2x\,T_n(x)-T_{n-1}(x).
+\]
+also
+$A_n=2$, $B_n=0$ und $C_n=1$.
+
+\subsubsection{Beweis von Satz~\ref{buch:orthogonal:satz:drei-term-rekursion}}
+Die Relation~\eqref{buch:orthogonal:eqn:multixrelation} zeigt auch,
+dass der Beweis die Koeffizienten $\langle xp_k,p_j\rangle_w$
+berechnen muss.
+Dabei wird wiederholt der folgende Trick verwendet.
+Für jede beliebige Funktion $f$ mit $\|f\|_w^2<\infty$ ist
+\[
+\langle fp_k,p_j\rangle_w
+=
+\langle p_k,fp_j\rangle_w.
+\]
+Für $f(x)=x$ kann man weiter verwenden, dass $xp_k(x)$ ein Polynom
+vom Grad $k+1$ ist.
+Die Gleichheit $\langle xp_k,p_j\rangle_w=\langle p_k,xp_j\rangle_w$
+ermöglicht also, den Faktor $x$ dorthin zu schieben, wo es nützlicher ist.
+
+\begin{proof}[Beweis des Satzes]
+Multipliziert man die rechte Seite von
+\eqref{buch:orthogonal:eqn:rekursion} aus, dann ist der einzige Term
+vom Grad $n+1$ der Term $A_nxp_n(x)$.
+Der Koeffizient $A_n$ ist also dadurch festgelegt, dass
+\begin{equation}
+b(x)
+=
+p_{n+1}(x) - A_nxp_n(x)
+\label{buch:orthogonal:rekbeweis}
+\end{equation}
+Grad $\le n$ hat.
+Dazu müssen sich die Terme vom Grad $n+1$ in den Polynomen wegheben,
+d.~h.~$k_{n+1}-A_nk_n=0$, woraus die erste Beziehung in
+\eqref{buch:orthogonal:eqn:koeffizientenrelation} folgt.
+
+Die Polynome $p_k$ sind durch Orthogonalisierung der Monome
+$1$, $x$,\dots $x^{k}$ entstanden.
+Dies bedeutet, dass $\langle p_n,x^k\rangle_w=0$ für alle $k<n$
+gilt und daher auch $\langle p_n,Q\rangle_w=0$ für jedes Polynome
+$Q(x)$ vom Grad $<n$.
+
+Das Polynom $b(x)$ ist vom Grad $\le n$, es lässt sich also als
+Linearkombination
+\[
+b(x) = \sum_{k=0}^n b_k p_k(x)
+\]
+der $p_k$ mit $k\le n$ schreiben.
+Die Koeffizienten $b_j$ kann man erhalten, indem man 
+\eqref{buch:orthogonal:rekbeweis} Skalar mit $p_j$ multipliziert.
+Dabei erhält man
+\[
+h_jb_j
+=
+\langle b,p_j\rangle_w
+=
+\langle p_{n+1},p_j\rangle_w
+-
+A_n\langle xp_n,p_j\rangle_w.
+\]
+Für $j\le n$ verschwindet der erste Term nach der Definition einer
+Folge von orthogonalen Polynomen.
+Den zweiten Term kann man umformen in
+\[
+\langle xp_n,p_j\rangle_w
+=
+\langle p_n,xp_j\rangle_w.
+\]
+Darin ist $xp_j$ ein Polynom vom Grad $j+1$.
+Für $n>j+1$ folgt, dass der zweite Term verschwindet.
+Somit sind alle $b_j=0$ mit $j<n-1$, nur der Term $j=n-1$
+bleibt bestehen.
+Mit $B_n=b_n$ und $C_n=b_{n-1}$ bekommt man die somit die
+Rekursionsbeziehung~\eqref{buch:orthogonal:eqn:rekursion}.
+
+Indem man das Skalarprodukt von~\eqref{buch:orthogonal:eqn:rekursion}
+mit $p_{n-1}$ bildet, findet man
+\begin{align}
+\underbrace{\langle
+p_{n+1},p_{n-1}
+\rangle_w}_{\displaystyle=0}
+&=
+\langle (A_nx+B_n)p_n+C_np_{n-1},p_{n-1} \rangle_w
+\notag
+\\
+0
+&=
+A_n\langle xp_n,p_{n-1} \rangle_w
++B_n\underbrace{\langle p_n,b_{n-1}\rangle_w}_{\displaystyle=0}
+-C_n\|p_{n-1}\|_w^2
+\notag
+\\
+0
+&=
+A_n\langle p_n,xp_{n-1} \rangle_w
+-C_n\|p_{n-1}\|_w^2
+\label{buch:orthogonal:eqn:rekbeweis2}
+\end{align}
+Indem man $xp_n$ als
+\[
+xp_{n-1}(x)
+=
+\frac{k_{n-1}}{k_n} p_n(x)
++
+\sum_{k=0}^{n-1} d_kp_k(x)
+\]
+schreibt, bekommt man
+\begin{align*}
+\langle
+p_n,
+xp_{n-1}
+\rangle_w
+&=
+\biggl\langle
+p_n,
+\frac{k_{n-1}}{k_n} p_n
++
+\sum_{k=0}^{n-1} d_kp_k
+\biggr\rangle_w
+=
+\frac{k_{n-1}}{k_n}h_n
++
+\sum_{k=0}^{n-1} d_k\underbrace{\langle p_n,p_k\rangle_w}_{\displaystyle=0}
+\end{align*}
+Eingesetzt in~\eqref{buch:orthogonal:eqn:rekbeweis2} erhält man
+\[
+A_n\frac{k_{n-1}}{k_n}h_n = C_n h_{n-1}
+\qquad\Rightarrow\qquad
+C_n
+=
+A_n\frac{k_{n-1}}{k_n}\frac{h_n}{h_{n-1}},
+\]
+damit ist auch die zweite Beziehung von
+\eqref{buch:orthogonal:eqn:koeffizientenrelation}.
+\end{proof}

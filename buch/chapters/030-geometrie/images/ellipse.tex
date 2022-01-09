@@ -1,0 +1,81 @@
+%
+% ellipse.tex -- Geometrie einer Ellipse
+%
+% (c) 2022 Prof Dr Andreas Müller, OST Ostschweizer Fachhochschule
+%
+\documentclass[tikz]{standalone}
+\usepackage{amsmath}
+\usepackage{times}
+\usepackage{txfonts}
+\usepackage{pgfplots}
+\usepackage{csvsimple}
+\usetikzlibrary{arrows,intersections,math,calc}
+\begin{document}
+\def\skala{1}
+\definecolor{darkgreen}{rgb}{0,0.6,0}
+\begin{tikzpicture}[>=latex,thick,scale=\skala]
+
+\def\e{3}
+
+\begin{scope}
+\clip (-6.3,-5.5) rectangle (6.3,5.5);
+\foreach \s in {7,8,9,11,12,13,14,15,16}{
+	%\def\s{9}
+	\pgfmathparse{\s/2}
+	\xdef\a{\pgfmathresult}
+	\pgfmathparse{sqrt(\a*\a-\e*\e)}
+	\xdef\b{\pgfmathresult}
+	\draw[color=red!30,line width=1.4pt] 
+		plot[domain=0:360,samples=100]
+			({\a*cos(\x)},{\b*sin(\x)});
+}
+\end{scope}
+
+\coordinate (O) at (0,0);
+\coordinate (F1) at (3,0);
+\coordinate (F2) at (-3,0);
+\coordinate (A) at (5,0);
+\coordinate (Aminus) at (-5,0);
+\coordinate (B) at (0,4);
+
+\def\winkel{140}
+\pgfmathparse{5*cos(\winkel)}
+\xdef\Px{\pgfmathresult}
+\pgfmathparse{4*sin(\winkel)}
+\xdef\Py{\pgfmathresult}
+\coordinate (P) at (\Px,\Py);
+
+\draw[->] (-6.3,0) -- (6.5,0) coordinate[label={$x$}];
+\draw[->] (0,-5.6) -- (0,5.8) coordinate[label={right:$y$}];
+
+\draw[color=blue,line width=1pt] (0,0) -- (0,4);
+\draw[color=blue,line width=1pt] (0,0) -- (3,0);
+\draw[color=blue,line width=1pt] (0,4) -- (3,0);
+
+\draw[color=red,line width=1.4pt] 
+	plot[domain=0:360,samples=100]
+		({5*cos(\x)},{4*sin(\x)});
+
+\node[color=blue] at ($0.5*(O)+0.5*(F1)$) [above] {$e$};
+\node[color=blue] at ($0.5*(O)+0.5*(B)$) [left] {$b$};
+\node[color=blue] at ($0.5*(F1)+0.5*(B)$) [above right] {$a$};
+
+\fill[color=darkgreen] (P) circle[radius=0.08];
+\node[color=darkgreen] at (P) [above left] {$P$};
+\draw[color=darkgreen,line width=1.4pt] (F1) -- (P) -- (F2);
+\node[color=darkgreen] at ($0.55*(P)+0.45*(F1)$) [below] {$\overline{F_1P}$};
+\node[color=darkgreen] at ($0.50*(P)+0.50*(F2)$) [left] {$\overline{F_2P}$};
+
+\fill[color=red] (A) circle[radius=0.08];
+\node[color=red] at (A) [above right] {$A_+$};
+\fill[color=red] (Aminus) circle[radius=0.08];
+\node[color=red] at (Aminus) [above left] {$A_-$};
+
+\fill[color=blue] (F1) circle[radius=0.08];
+\fill[color=blue] (F2) circle[radius=0.08];
+\node at (F1) [below right] {$F_1$};
+\node at (F2) [below left] {$F_2$};
+
+\end{tikzpicture}
+\end{document}
+

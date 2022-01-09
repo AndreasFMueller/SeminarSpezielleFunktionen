@@ -7,9 +7,11 @@
 all:									\
 	deftrig.pdf							\
 	einheitskreis.pdf						\
+	ellipse.pdf							\
 	hyperbelflaeche.pdf						\
 	hyperbel.pdf							\
 	kegelschnitte.pdf						\
+	parabel.pdf							\
 	polargleichung.pdf						\
 	zylinder.pdf
 
@@ -19,11 +21,17 @@ deftrig.pdf:	deftrig.tex
 einheitskreis.pdf:	einheitskreis.tex
 	pdflatex einheitskreis.tex
 
+ellipse.pdf:	ellipse.tex
+	pdflatex ellipse.tex
+
 hyperbelflaeche.pdf:	hyperbelflaeche.tex
 	pdflatex hyperbelflaeche.tex
 
 hyperbel.pdf:	hyperbel.tex
 	pdflatex hyperbel.tex
+
+parabel.pdf:	parabel.tex
+	pdflatex parabel.tex
 
 polargleichung.pdf:	polargleichung.tex
 	pdflatex polargleichung.tex

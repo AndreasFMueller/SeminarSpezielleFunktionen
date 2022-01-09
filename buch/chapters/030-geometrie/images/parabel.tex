@@ -1,0 +1,59 @@
+%
+% parabel.tex -- template for standalon tikz images
+%
+% (c) 2021 Prof Dr Andreas Müller, OST Ostschweizer Fachhochschule
+%
+\documentclass[tikz]{standalone}
+\usepackage{amsmath}
+\usepackage{times}
+\usepackage{txfonts}
+\usepackage{pgfplots}
+\usepackage{csvsimple}
+\usetikzlibrary{arrows,intersections,math,calc}
+\begin{document}
+\def\skala{1}
+\definecolor{darkgreen}{rgb}{0,0.6,0}
+\begin{tikzpicture}[>=latex,thick,scale=\skala]
+
+\def\f{2.0}
+\def\X{2.7}
+\coordinate (F) at (0,\f);
+
+\begin{scope}
+	\clip (-6.1,-1) rectangle (6.1,4.6);
+	\foreach \x in {-5.5,-5,...,6}{
+		\draw[color=gray!30,line width=1pt]
+			(\x,4.7) -- (\x,{\x*\x/(4*\f)});
+		\draw[color=gray!50,line width=1pt]
+			(\x,{\x*\x/(4*\f)}) -- (F);
+	}
+\end{scope}
+
+\draw[->] (-6.1,0) -- (6.4,0) coordinate[label={$x$}];
+\draw[->] (0,-2.3) -- (0,4.8) coordinate[label={right:$y$}];
+
+\begin{scope}
+	\clip (-6.05,-1) rectangle (6.05,4.6);
+	\draw[color=red,line width=2pt]
+		plot[domain=-6.2:6.2,samples=100] ({\x},{\x*\x/(4*\f)});
+\end{scope}
+
+\fill[color=darkgreen] (\X,{\X*\X/(4*\f)}) circle[radius=0.08];
+\draw[color=darkgreen,line width=1pt] (F) -- (\X,{\X*\X/(4*\f)}) -- (\X,-\f);
+\node[color=darkgreen] at (\X,{\X*\X/(4*\f)})
+	[below right] {$P{\color{black}\mathstrut=(x,y)}$};
+
+\node[color=darkgreen] at (\X,{0.5*(-\f+\X*\X/(4*\f))})
+	[right] {$\overline{Pl}{\color{black}\mathstrut=y+f}$};
+\node[color=darkgreen] at ($0.8*(F)+0.2*(\X,{\X*\X/(4*\f)})+(0,-0.2)$)
+	[above right]
+	{$\overline{PF}{\color{black}\mathstrut=\sqrt{x^2+(y-f)^2}}$};
+
+\node at (F) [above left] {${\color{blue}F}=(0,f)$};
+\draw[color=blue,line width=1pt] (-6,-\f) -- (6,-\f);
+\fill[color=blue] (F) circle[radius=0.08];
+\node[color=blue] at (-4,-\f) [above] {$l$};
+
+\end{tikzpicture}
+\end{document}
+
