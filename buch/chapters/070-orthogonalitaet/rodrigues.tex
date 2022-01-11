@@ -1,0 +1,202 @@
+%
+% rodrigues.tex
+%
+% (c) 2022 Prof Dr Andreas Müller, OST Ostschweizer Fachhochschule
+%
+\section{Rodrigues-Formeln
+\label{buch:orthogonalitaet:section:rodrigues}}
+Die Drei-Term-Rekursionsformel ermöglicht Werte orthogonaler Polynome
+effizient zu berechnen.
+Die Rekursionsformel erhöht den Grad eines Polynoms, indem mit $x$ 
+multipliziert wird.
+mit der Ableitung kann man den Grad aber auch senken, man könnte daher
+auch nach einer Rekursionsformel fragen, die bei einem Polynom hohen
+Grades beginnt und mit Hilfe von Ableitungen zu geringeren Graden
+absteigt.
+Solche Formeln heissen Rodrigues-Formeln nach dem Entdecker Olinde
+Rodrigues, der eine solche Formal als erster für Legendre-Polynome
+gefunden hat.
+
+In diesem Abschnitt sei $p_n(x)$ eine bezüglich des Skalarproduktes
+$\langle\,\;,\;\rangle_w$ auf dem Intervall $[a,b]$ orthogonale Familie
+von Polynomen mit genaum dem Grad $\deg p_n=n$.
+Die Skalarprodukte sollen 
+\[
+\langle p_n,p_m\rangle_w = h_n\delta_{nm}
+\]
+sein.
+
+\subsection{Pearsonsche Differentialgleichung}
+Die {\em Pearsonsche Differentialgleichung} ist die Differentialgleichung
+\begin{equation}
+B(x) y' - A(x) y = 0,
+\label{buch:orthogonal:eqn:pearson}
+\end{equation}
+wobei $B(x)$ ein Polynom vom Grad höchstens $2$ ist und $A(x)$ ein
+höchstens lineares Polynom.
+Die Gleichung~\eqref{buch:orthogonal:eqn:pearson}
+kann gelöst werden, wenn $y$ und $B(x)$ keine Nullstellen  haben.
+Dann kann man die Gleichung umstellen in
+\[
+\frac{y'}{y}
+=
+(\log y)'
+=
+\frac{A(x)}{B(x)}
+\qquad\Rightarrow\qquad
+y = \exp\biggl( \int\frac{A(x)}{B(x)}\biggr)\,dx.
+\]
+Im folgenden nehmen wir zusätzlich an, dass
+\begin{equation}
+\lim_{x\to a+} w(x)B(x) = 0,
+\qquad\text{und}\qquad
+\lim_{x\to b-} w(x)B(x) = 0.
+\end{equation}
+Falls $w(x)$ an den Intervallenden einen von $0$ verschiedenen
+Grenzwert hat, bedeutet dies, dass $B(a)=B(b)=0$ sein muss.
+Falls $w(x)$ am Intervallende divergiert, muss $B(x)$ dort eine
+Nullstelle höherer Ordnung haben, was aber für ein Polynom
+zweiten Grades nicht möglich ist.
+
+\subsection{Rekursionsformel}
+Multiplikation mit $B(x)$ wird den Grad eines Polynomes typischerweise 
+um $2$ erhöhen, die Ableitung wird ihn wieder um $1$ reduzieren.
+Etwas formeller kann man dies wie folgt formulieren:
+
+\begin{satz}
+Für alle $n\ge 0$ ist
+\[
+q_n(x)
+=
+\frac{1}{w(x)}
+\frac{d^n}{dx^n} B(x)^n w(x)
+\]
+ein Polynom vom Grad höchstens $n$.
+\end{satz}
+
+\begin{proof}[Beweis]
+Wenn $r_0(x)$ irgend eine differenzierbare Funktion ist, dann ist
+\begin{align*}
+\frac{d^n}{dx^n}
+r_0(x) B(x)^n w(x)
+&=
+\frac{d^{n-1}}{dx^{n-1}}\frac{d}{dx} r_0(x) B(x)^n w(x)
+\\
+&=
+\frac{d^{n-1}}{dx^{n-1}}
+\bigl(r_0'(x)B(x)+ nB'(x)B(x)^{n-1}w(x) + B(x)^n w'(x) \bigr)
+\\
+&=
+\frac{d^{n-1}}{dx^{n-1}}
+(r_0'(x)B(x)+nB'(x)+A(x)) B(x)^{n-1} w(x)
+=
+\frac{d^{n-1}}{dx^{n-1}} r_1(x)B^{n-1}(x) w(x).
+\end{align*}
+Für die Funktionen $r_k$ gilt die Rekursionsformel
+\begin{equation}
+r_k(x) = r_{k-1}'(x)B(x) + kB'(x) + A(x).
+\label{buch:orthogonal:rodrigues:rekursion:beweis1}
+\end{equation}
+Wenn $r_0(x)$ ein Polynom ist, dann sind alle Funktionen $r_k(x)$
+ebenfalls Polynome.
+Durch wiederholte Anwendung dieser Formel kann man schliessen, dass 
+\[
+\frac{d^n}{dx^n} r_0(x) B(x)^n w(x)
+=
+r_n(x) w(x).
+\]
+Insbesondere folgt für $r_0(x)=1$, dass man durch $w(x)$ dividieren kann
+und dass $r_n(x)=q_n(x)$.
+
+Wir müssen auch noch den Grad von $r_k(x)$ bestimmen.
+Dazu verwenden wir 
+\eqref{buch:orthogonal:rodrigues:rekursion:beweis1} und berechnen den
+Grad:
+\begin{equation*}
+\deg r_k(x)
+=
+\max \bigl(
+\underbrace{\deg(r_{k-1}'(x) B(x))}_{\displaystyle \deg r_{k-1}(x) -1 + 2}
+,
+\underbrace{\deg(B'(x))}_{\displaystyle \le 1}
+,
+\underbrace{\deg(A(x))}_{\displaystyle \le 1}
+\bigr)
+\le \max r_{k-1}(x) + 1.
+\end{equation*}
+Aus $\deg r_0(x)=0$ kann man jetzt ablesen, dass $\deg r_k(x)\le k$ ist.
+Damit ist gezeigt, dass $\deg q_n(x)\le n$.
+\end{proof}
+
+\begin{satz}
+Es gibt Konstanten $c_n$ derart, dass
+\[
+p_n(x)
+=
+\frac{c_n}{w(x)} \frac{d^n}{dx^n} \bigl(B(x)^n w(x)\bigr) 
+\]
+gilt.
+\end{satz}
+
+\begin{proof}[Beweis]
+Wir müssen zeigen, dass die Polynome orthogonal sind auf allen Monomen
+von geringerem Grad.
+\begin{align*}
+\langle q_n, x^k\rangle_w
+&=
+\int_a^b q_n(x)x^kw(x)\,dx
+\\
+&=
+\int_a^b \frac{1}{w(x)}\frac{d^n}{dx^n}(B(x)^n w(x)) x^k w(x)\,dx
+\\
+&=
+\int_a^b \frac{d^n}{dx^n}(B(x)^n w(x)) x^k \,dx
+\\
+&=
+\biggl[\frac{d^{n-1}}{dx^{n-1}}(B(x)^n w(x)) x^k \biggr]_a^b
+-
+\int_a^b \frac{d^{n-1}}{dx^{n-1}}(B(x)^n w(x))kx^{k-1}\,dx
+\end{align*}
+Durch $n$-fache Iteration wird das Integral auf $0$ reduziert.
+Es bleiben nur die eckigen Klammern stehen, doch wenn man die Produktregel
+auswertet, bleibt immer mindestens ein Produkt $B(x)w(x)$ stehen,
+nach den Voraussetzungen an den Grenzwert dieses Produktes an den
+Intervallenden verschwinden diese Terme alle.
+Damit sind die $q_n(x)$ Polynome, die $w$-orthogonal sind auf allen
+$x^k$ mit $k<n$, also Vielfache der $w$-Orthgonalpolynome.
+\end{proof}
+
+\subsubsection{Legendre-Polynome}
+Legendre-Polynome sind orthogonale Polynome zum Standardskalarprodukt
+mit $w(x)=1$.
+Die Pearsonsche Differentialgleichung ist für $A(x)=0$ immer erfüllt.
+Die Randbedingung bedeutet wegen $w(x)=1$, dass $B(x)$ an den
+Endpunkten des Intervalls verschwinden muss.
+Da $B(x)$ ein Polynom höchstens vom Grad $2$ ist, muss $B(x)$ ein
+Vielfaches von $(x-1)(x+1)=x^-1$ sein.
+Die Rodrigues-Formel für die Legendre-Polynome hat daher die Form
+\[
+P_n(x)
+=
+c_n
+\frac{d^n}{dx^n}
+(x^2-1)^n,
+\]
+darin müssen die Konstanten $c_n$ noch bestimmt werden.
+In der für die Legendre-Polynome gewählten Normierung ist
+\[
+c_n = \frac1{2^n n!}
+\qquad\text{und damit}\qquad
+P_n(x)
+=
+\frac{1}{2^nn!}
+\frac{d^n}{dx^n}
+(x^2-1)^n.
+\]
+
+\subsubsection{Hermite-Polynome}
+TODO
+
+\url{https://en.wikipedia.org/wiki/Rodrigues%27_formula}
+
+

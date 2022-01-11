@@ -6,6 +6,7 @@
 
 CHAPTERFILES = $(CHAPTERFILES)						\
 	chapters/070-orthogonalitaet/orthogonal.tex			\
+	chapters/070-orthogonalitaet/rodrigues.tex			\
 	chapters/070-orthogonalitaet/legendredgl.tex			\
 	chapters/070-orthogonalitaet/bessel.tex				\
 	chapters/070-orthogonalitaet/jacobi.tex				\
