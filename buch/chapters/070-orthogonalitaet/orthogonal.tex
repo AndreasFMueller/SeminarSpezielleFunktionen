@@ -176,7 +176,7 @@ C([a,b]) \times C([a,b]) \to \mathbb{R}
 das {\em gewichtete Skalarprodukt} mit {\em Gewichtsfunktion $w(x)$}.
 \end{definition}
 
-\subsubsection{Gram-Schmidt-Orthonormalisierung}
+\subsection{Gram-Schmidt-Orthonormalisierung}
 In einem reellen Vektorraum $V$ mit Skalarprodukt $\langle\;\,,\;\rangle$
 kann aus einer beleibigen Basis $b_1,\dots,b_n$ mit Hilfe des 
 Gram-Schmidtschen Orthogonalisierungsverfahrens immer eine
@@ -274,105 +274,16 @@ b_n
 \end{align*}
 berücksichtigen dies.
 
-\subsubsection{Selbstadjungierte Operatoren und Eigenvektoren}
-Symmetrische Matrizen spielen eine spezielle Rolle in der
-endlichdimensionalen linearen Algebra, weil sie sich immer
-mit einer orthonormierten Basis diagonalisieren lassen.
-In der vorliegenden Situation undendlichdimensionaler Vektorräume
-brauchen wir eine angepasste Definition.
-
-\begin{definition}
-Eine lineare Selbstabbildung $A\colon V\to V$
-eines Vektorrraums mit Skalarprodukt
-heisst {\em selbstadjungiert}, wenn für alle Vektoren $u,v\in V$
-heisst $\langle Au,v\rangle = \langle u,Av\rangle$.
-\end{definition}
-
-Es ist wohlbekannt, dass Eigenvektoren einer symmetrischen Matrix
-zu verschiedenen Eigenwerten orthogonal sind.
-Der Beweis ist direkt übertragbar, wir halten das Resultat hier
-für spätere Verwendung fest.
-
-\begin{satz}
-Sind $f$ und $g$ Eigenvektoren eines selbstadjungierten Operators $A$
-zu verschiedenen Eigenwerten $\lambda$ und $\mu$, dann sind $f$ und $g$
-orthogonal.
-\end{satz}
-
-\begin{proof}[Beweis]
-Im vorliegenden Zusammenhang möchten wir die Eigenschaft nutzen,
-dass Eigenfunktionen eines selbstadjungierten Operatores zu verschiedenen
-Eigenwerten orthogonal sind.
-Dazu seien $Df = \lambda f$ und $Dg=\mu g$ und wir rechnen
-\begin{equation*}
-\renewcommand{\arraycolsep}{2pt}
-\begin{array}{rcccrl}
-\langle Df,g\rangle &=& \langle \lambda f,g\rangle &=& \lambda\phantom{)}\langle f,g\rangle
-&\multirow{2}{*}{\hspace{3pt}$\biggl\}\mathstrut-\mathstrut$}\\
-=\langle f,Dg\rangle &=& \langle f,\mu g\rangle &=& \mu\phantom{)}\langle f,g\rangle&
-\\[2pt]
-\hline
-         0           & &                        &=& (\lambda-\mu)\langle f,g\rangle&
-\end{array}
-\end{equation*}
-Da $\lambda-\mu\ne 0$ ist, muss $\langle f,g\rangle=0$ sein.
-\end{proof}
-
-\begin{beispiel}
-Sei $C^1([0,2\pi], \mathbb{C})=C^1(S^1,\mathbb{C})$
-der Vektorraum der $2\pi$-periodischen differenzierbaren Funktionen mit
-dem Skalarprodukt 
-\[
-\langle f,g\rangle
-=
-\frac{1}{2\pi}\int_0^{2\pi} \overline{f(t)}g(t)\,dt
-\]
-enthält die Funktionen $e_n(t) = e^{int}$.
-Der Operator
-\[
-D=i\frac{d}{dt}
-\]
-ist selbstadjungiert, denn mit Hilfe von partieller Integration erhält man
-\[
-\langle Df,g\rangle
-=
-\frac{1}{2\pi}
-\int_0^{2\pi}
-\underbrace{
-\overline{i\frac{df(t)}{dt}}
-}_{\uparrow}
-\underbrace{g(t)}_{\downarrow}
-\,dt
-=
-\underbrace{
-\frac{-i}{2\pi}
-\biggl[
-\overline{f(t)}g(t)
-\biggr]_0^{2\pi}
-}_{\displaystyle=0}
-+
-\frac{1}{2\pi}
-\int_0^{2\pi}
-\overline{f(t)}i\frac{dg(t)}{dt}
-\,dt
-=
-\langle f,Dg\rangle
-\]
-unter Ausnützung der $2\pi$-Periodizität der Funktionen.
-
-Die Funktionen $e_n(t)$ sind Eigenfunktionen des Operators $D$, denn
-\[
-De_n(t) = i\frac{d}{dt}e^{int} = -n e^{int} = -n e_n(t).
-\]
-Nach obigem Satz sind die Eigenfunktionen von $D$ orthogonal.
-\end{beispiel}
-
-Das Beispiel illustriert, dass orthogonale Funktionenfamilien
-ein automatisches Nebenprodukt selbstadjungierter Operatoren sind.
-
-
-% XXX Orthogonalisierungsproblem so formulieren, dass klar wird,
-% XXX dass man ein "Normierungskriterium braucht.
+%
+% Legendre-Polynome
+%
+\subsection{Legendre-Polynome
+\label{buch:orthogonal:subsection:legendre-polynome}}
+Der Gram-Schmidtsche Orthogonalisierungsprozess kann für jedes beliebige
+Skalarprodukt aus der Folge $1$, $x$, $x^2,\dots$ der Monome ein
+Folge von orthogonalisierten Polynomen machen.
+In diesem Abschnitt rechnen wir den Fall konstanter Gewichtsfunktione
+$w(x)=1$ durch, er führt auf die sogenannten {\em Legendre-Polynome}.
 
 Da wir auf die Normierung verzichten, brauchen wir ein anderes
 Kriterium, welches die Polynome eindeutig festlegen kann.
@@ -380,6 +291,10 @@ Wir bezeichnen das Polynom vom Grad $n$, das bei diesem Prozess
 entsteht, mit $P_n(x)$ und legen willkürlich aber traditionskonform
 fest, dass $P_n(1)=1$ sein soll.
 
+%
+% Symmetrie-Eigenschaften
+%
+\subsubsection{Symmetrieeigenschaften}
 Das Skalarprodukt berechnet ein Integral eines Produktes von zwei
 Polynomen über das symmetrische Interval $[-1,1]$.
 Ist die eine gerade und die andere ungerade, dann ist das
@@ -403,6 +318,7 @@ dargestellt.
 \end{figure}
 
 \begin{lemma}
+\label{buch:orthogonal:lemma:symmetrie}
 Die Polynome $P_{2n}(x)$ sind gerade, die Polynome $P_{2n+1}(x)$ sind
 ungerade Funktionen von $x$.
 \end{lemma}
@@ -435,6 +351,10 @@ $P_{n-4}(x)$ ist, die die gleiche Parität wie $x^n$ haben.
 Also hat auch $P_n(x)$ die gleiche Parität, was das Lemma beweist.
 \end{proof}
 
+%
+% Orthogonalisierung nach Gram-Schmidt
+%
+\subsubsection{Orthogonalisierung mit Gram-Schmidt}
 Die Ortogonalisierung von $x^2$ liefert daher
 \[
 p(x) = x^2
@@ -476,7 +396,7 @@ Für $P_3(x)$ brauchen wir nur die Skalaprodukte
 \qquad
 \Rightarrow
 \qquad
-p(x) = x^3 - \frac{\frac25}{\frac23}x=x^3-\frac{3}{5}x
+p(x) = x^3 - \frac{\;\frac25\;}{\frac23}x=x^3-\frac{3}{5}x
 \]
 Die richtige Standardisierung ergibt sich,
 indem man durch $p(1)=\frac25$ dividiert, also
@@ -516,7 +436,7 @@ Die Skalarprodukte sind
 =
 \int_{-1}^1 \frac14(9x^4-6x^2+1)\,dx
 =
-\frac14(\frac{18}{5}-4+2)
+\frac14\biggl(\frac{18}{5}-4+2\biggr)
 =\frac25.
 \end{align*}
 Daraus folgt für $p(x)$
@@ -604,219 +524,292 @@ dass die die beiden Polynome $P_4(x)$ und $P_7(x)$ orthogonal sind.
 Das Produkt $P_4(x)\cdot P_7(x)$ hat Integral $=0$.
 
 %
-% Rekursionsrelation
+% Verschiedene Gewichtsfunktionen
 %
-\subsection{Drei-Term-Rekursion
-\label{buch:orthogonal:subsection:rekursionsrelation}}
-Die Berechnung der Legendre-Polynome mit Hilfe des Gram-Schmidt-Verfahrens
-ist ausserordentlich mühsame wenig hilfreich, wenn es darum geht, Werte
-der Polynome zu berechnen.
-Glücklicherweise erfüllen orthogonale Polynome automatisch eine 
-Rekursionsbeziehung mit nur drei Termen.
-Zum Beispiel kann man zeigen, dass für die Legendre-Polynome die
-Relation
+\subsection{Gewichtsfunktionen
+\label{buch:orthogonal:subsection:gewichtsfunktionen}}
+Das Standardskalarprodukt auf dem Raum der Funktionen auf dem
+Interval $[-1,1]$ ist das Skalarprodukt mit der Gewichtsfunktion
+$w(x)=1$, es führt auf die Legendre-Polynome.
+Die Wahl einer anderen Gewichtsfunktion ändert natürlich
+das Resultat der Orthogonalisierung.
+Nullstellen und Pole der Gewichtsfunktion ändern die Menge der
+Funktionen, für die das Skalarprodukt definiert.
+Diesem Zusammenhang soll im ersten Unterabschnitt nachgegangen werden.
+Danach sollen verschiedene für die Praxis relevante Gewichtsfunktionen
+vorgestellt werden.
+
+\begin{figure}
+\centering
+\includegraphics{chapters/070-orthogonalitaet/images/weight.pdf}
+\caption{Nullstellen und Pole der Gewichtsfunktion (rot) legen Ort
+und Grad von Polen und Nullstellen der Funktionen fest, die beschränkte
+$\|\,\cdot\,\|_w$-Norm haben.
+An den Stellen $\pm 1$ und $\pm\frac12$ hat die Gewichtsfunktion
+Pole bzw.~Nullstellen mit Grad $\alpha$.
+Der blaue Bereich deutet an, wie schnell die Funktion $f$ in diesem
+Bereich anwachsen kann, bzw.~wie schnell nahe der Polstelle gegen $0$
+gehen muss.
+\label{buch:orthogonalitaet:fig:gewicht}}
+\end{figure}
+%
+% Pole und Nullstellen der Gewichtsfunktion
+%
+\subsubsection{Pole und Nullstellen
+\label{buch:orthogonal:pole-und-nullstellen}}
+Das Skalarprodukt $\langle\,\;,\;\rangle_w$ ist nur sinnvoll
+für Funktionen $f(x)$, für die die Norm $\|f\|_w$ definiert ist.
+An einer Nullstelle $x_0$ der Gewichtsfunktion $w$ darf die Funktion $f$ 
+einen Pol haben. 
+Solange $f(x)$ für $x\to x_0$ nicht zu schnell divergiert, kann
+das Produkt $|f(x)|^2 w(x)$ immer noch integrierbar sein.
+
+Um dies etwas genauer zu quantifizieren, nehmen wir an, dass
+$w(x)$ an der Stelle $x_0$ eine Nullstelle vom Grad $\alpha$ hat.
+Dies bedeutet, dass $w(x) \approx C|x-x_0|^\alpha$ ist für eine geeignete
+Konstante $C$ und für $|x-x_0|<\varepsilon$.
+Ein Pol von $f$ vom Grad $a$ an der Stelle $x_0$ führt entsprechend auf
+eine Abschätzung $|f(x)| \approx D|f(x)|^{-a}$ für $|x-x_0|<\varepsilon$.
+Dann ist
+\[
+|f(x)|^2 w(x) \approx CD |x-x_0|^{\alpha-2a}.
+\]
+Für das Integral in der Nähe von $x_0$ ist
 \begin{align*}
-nP_n(x) &= (2n-1)xP_{n-1}(x) - (n-1)P_{n-2}(x),\;\forall n\ge 2,
+\int_{x_0-\varepsilon}^{x_0+\varepsilon}
+|f(x)|^2 w(x)\,dx
+&\approx 
+CD
+\int_{x_0-\varepsilon}^{x_0+\varepsilon}
+|x-x_0|^{\alpha-2a}\,dx
 \\
-P_1(x) &= x,
-\\
-P_0(x) &= 1.
+&=
+2CD
+\int_0^\varepsilon
+t^{\alpha-2a}
+\,dt
+=
+2CD
+\begin{cases}
+\displaystyle
+\;
+\biggl[\frac{t^{\alpha-2a+1}}{\alpha-2a+1}\biggr]_0^\varepsilon
+&\qquad
+\alpha-2a\ne-1
+\\[7pt]
+\displaystyle
+\;
+\biggl[ \log t \biggr]_0^\varepsilon
+&\qquad
+\text{sonst.}
+\end{cases}
 \end{align*}
-Mit so einer Rekursionsbeziehung ist es sehr einfach, die Funktionswerte
-für alle $P_n(x)$ zu berechnen.
+Der Zähler $t^{\alpha-2a+1}$ divergiert für $t\to 0$ genau dann,
+wenn $\alpha-2a+1<0$ oder $\alpha<2a-1$.
+Auch im zweiten Fall, für $\alpha-2a+1=0$, divergiert das Integral.
+Damit die Norm $\|f\|_w$ definiert ist, muss also $a<\frac12(\alpha+1)$
+sein.
+
+Ganz ähnlich führt eine Polstelle von $w$ vom Grad $\alpha$
+an der Stelle $x_0$ dazu, dass $f$ dort eine Nullstelle vom Grad
+$a$ haben muss.
+Das Normintegral konvergiert nur, wenn $2a-\alpha > -1$ ist
+oder $a > \frac12(\alpha+1)$.
+ 
+Pole der Gewichtsfunktion schränken also ein, welche Funktionen
+überhaupt der Untersuchung mit Hilfe des Skalarproduktes
+$\langle\,\;,\;\rangle_w$ zugänglich sind
+(Abbildung~\ref{buch:orthogonalitaet:fig:gewicht}).
+Ist die Ordnung $\alpha$ des Poles grösser als $1$, dann müssen die Funktionen
+eine Nullstelle mindestens vom Grad $\frac12(a+1)$ haben.
+Nullstellen der Gewichtsfunktion erweitern die Klasse der Funktionen.
+Ist die Ordnung der Nullstelle $\alpha$, dann dürfen die Funktionen einen
+Pol der Ordnung kleiner als $\frac12(\alpha+1)$ haben.
+
+\begin{lemma}
+\label{buch:orthogonal:lemma:gewichtsfunktion}
+Sei $w(x)\ge 0$ auf dem Intervall $(a,b)$.
+Der Vektorraum $H_w$ von auf $(a,b)$ definierten Funktionen sei
+\[
+H_w
+=
+\biggl\{
+f:\colon(a,b) \to \mathbb{R}
+\;\bigg|\;
+\int_a^b |f(x)|^2 w(x)\,dx
+\biggr\}.
+\]
+Die Funktionen $f\in H_w$ haben folgende Eigenschaften
+\begin{enumerate}
+\item
+Ist $\xi\in[a,b]$ eine Nullstelle vom Grad $\alpha$ der Funktion $w(x)$,
+dann 
+\item
+Ist $\xi\in[a,b]$ eine Polstelle vom Grad $a$ der Funktion $w(x)$,
+dann hat $f$ eine Nullstelle mindestens from Grad 
+\end{enumerate}
+\end{lemma}
+
+
+%
+% Die Jacobische Gewichtsfunktion
+%
+\subsubsection{Jacobische Gewichtsfunktion}
+Die Gewichtsfunktion für die Legendre-Polynome war $w(x)=1$, alle
+Punkte im Intervall $(-1,1)$ hatten das gleiche Gewicht.
+Diese soll jetzt ersetzt werden durch eine Gewichtsfunktion, die
+den Punkten an den Intervallenden mehr oder weniger Gewicht gibt,
+wobei auch zugelassen sein soll, dass die Gewichtung nicht symmetrisch
+ist.
 
 \begin{definition}
-Eine Folge von Polynomen $p_n(x)$ heisst orthogonal bezüglich des
-Skalarproduktes $\langle\,\;,\;\rangle_w$, wenn 
+\label{buch:orthogonal:def:jacobi-gewichtsfunktion}
+Die {\em Jacobi-Gewichtsfunktion} ist die Funktion
+\index{Jacobi-Gewichtsfunktion}%
 \[
-\langle p_n,p_m\rangle_w = h_n \delta_{nm}
+w^{(\alpha,\beta)}
+\colon (-1,1)\to\mathbb{R}
+:
+x\mapsto w^{(\alpha,\beta)}(x) = (1-x)^\alpha(1+x)^\beta
 \]
-für alle $n$, $m$.
+mit $\alpha,\beta\in\mathbb{R}$.
+Das Skalarprodukt zugehörige Skalarprodukt wird auch als
+\[
+\langle\,\;,\;\rangle_{w^{(\alpha,\beta)}}
+=
+\langle\,\;,\;\rangle_{(\alpha,\beta)}
+\]
+bezeichnet und die zugehörige Norm mit
+\[
+\|f\|_{(\alpha,\beta)}
+=
+\langle f,f\rangle_{(\alpha,\beta)}
+=
+\int_{-1}^1 |f(x)|^2 w^{(\alpha,\beta)}(x)\,dx.
+\]
 \end{definition}
 
-\subsubsection{Allgemeine Drei-Term-Rekursion für orthogonale Polynome}
-Der folgende Satz besagt, dass $p_n$ eine Rekursionsbeziehung erfüllt.
-
-\begin{satz}
-\label{buch:orthogonal:satz:drei-term-rekursion}
-Eine Folge bezüglich $\langle\,\;,\;\rangle_w$ orthogonaler Polynome $p_n$ 
-mit dem Grade $\deg p_n = n$ erfüllt eine Rekursionsbeziehung der Form
-\begin{equation}
-p_{n+1}(x)
-=
-(A_nx+B_n)p_n(x) - C_np_{n-1}(x)
-\label{buch:orthogonal:eqn:rekursion}
-\end{equation}
-für $n\ge 0$, wobei $p_{-1}(x)=0$ gesetzt wird.
-Die Zahlen $A_n$, $B_n$ und $C_n$ sind reell und es ist
-$A_{n-1}A_nC_n\ge 0$ für $n>0$. 
-Wenn $k_n>0$ der Leitkoeffizient von $p_n(x)$ ist, dann gilt
-\begin{equation}
-A_n=\frac{k_{n+1}}{k_n},
-\qquad
-C_{n+1} = \frac{A_{n+1}}{A_n}\frac{h_{n+1}}{h_n}.
-\label{buch:orthogonal:eqn:koeffizientenrelation}
-\end{equation}
-\end{satz}
-
-\subsubsection{Multiplikationsoperator mit $x$}
-Man kann die Relation auch nach dem Produkt $xp_n(x)$ auflösen, dann
-wird sie
-\begin{equation}
-xp_n(x)
-=
-\frac{1}{A_n}p_{n+1}(x)
--
-\frac{B_n}{A_n}p_n(x)
-+
-\frac{C_n}{A_n}p_{n-1}(x).
-\label{buch:orthogonal:eqn:multixrelation}
-\end{equation}
-Die Multiplikation mit $x$ ist eine lineare Abbildung im Raum der Funktionen.
-Die Relation~\eqref{buch:orthogonal:eqn:multixrelation} besagt, dass diese
-Abbildung in der Basis der Polynome $p_k$ tridiagonale Form hat.
-
-\subsubsection{Drei-Term-Rekursion für die Tschebyscheff-Polynome}
-Eine Relation der Form~\eqref{buch:orthogonal:eqn:multixrelation}
-wurde bereits in 
-Abschnitt~\ref{buch:potenzen:tschebyscheff:rekursionsbeziehungen}
-hergeleitet.
-In der Form~\eqref{buch:orthogonal:eqn:rekursion} geschrieben lautet
-sie
+\begin{definition}
+\label{buch:orthogonal:def:jacobi-polynome}
+Die {\em Jacobi-Polynome} $P^{(\alpha,\beta)}_n(x)$ sind 
+\index{Jacobi-Polynome}%
+Polynome vom Grad $n$, die bezüglich des Skalarproduktes
+$\langle\,\;,\;\rangle_{w^{(\alpha,\beta)}}$ orthogonal sind
+und mit
 \[
-T_{n+1}(x) = 2x\,T_n(x)-T_{n-1}(x).
+P_n^{(\alpha,\beta)}(1) = \binom{n+\alpha}n
 \]
-also
-$A_n=2$, $B_n=0$ und $C_n=1$.
+normiert sind.
+\end{definition}
 
-\subsubsection{Beweis von Satz~\ref{buch:orthogonal:satz:drei-term-rekursion}}
-Die Relation~\eqref{buch:orthogonal:eqn:multixrelation} zeigt auch,
-dass der Beweis die Koeffizienten $\langle xp_k,p_j\rangle_w$
-berechnen muss.
-Dabei wird wiederholt der folgende Trick verwendet.
-Für jede beliebige Funktion $f$ mit $\|f\|_w^2<\infty$ ist
-\[
-\langle fp_k,p_j\rangle_w
-=
-\langle p_k,fp_j\rangle_w.
-\]
-Für $f(x)=x$ kann man weiter verwenden, dass $xp_k(x)$ ein Polynom
-vom Grad $k+1$ ist.
-Die Gleichheit $\langle xp_k,p_j\rangle_w=\langle p_k,xp_j\rangle_w$
-ermöglicht also, den Faktor $x$ dorthin zu schieben, wo es nützlicher ist.
+In Abbildung~\ref{buch:orthogonal:fig:jacobi-parameter}
+ist die Abhängigkeit der Jacobi-Polynome von den Parametern $\alpha$
+und $\beta$ illustriert.
+Für $\alpha=\beta=0$ entsteht die Gewichtsfunktion
+$w^{(0,0)}(x)=1$, die Legendre-Polynome sind also der Spezialfall
+$\alpha=\beta=0$ der Jacobi-Polynome.
 
-\begin{proof}[Beweis des Satzes]
-Multipliziert man die rechte Seite von
-\eqref{buch:orthogonal:eqn:rekursion} aus, dann ist der einzige Term
-vom Grad $n+1$ der Term $A_nxp_n(x)$.
-Der Koeffizient $A_n$ ist also dadurch festgelegt, dass
-\begin{equation}
-b(x)
-=
-p_{n+1}(x) - A_nxp_n(x)
-\label{buch:orthogonal:rekbeweis}
-\end{equation}
-Grad $\le n$ hat.
-Dazu müssen sich die Terme vom Grad $n+1$ in den Polynomen wegheben,
-d.~h.~$k_{n+1}-A_nk_n=0$, woraus die erste Beziehung in
-\eqref{buch:orthogonal:eqn:koeffizientenrelation} folgt.
+Der Exponent $\alpha$ in der Gewichtsfunktion $w^{(\alpha,\beta)}(x)$
+steuert das Gewicht, welches Punkte am rechten Rand des Intervalls
+erhalten.
+Für positive Werte von $\alpha$ hat $w^{(\alpha,\beta)}(x)$ eine
+Nullstelle vom Grad $\alpha$ an der Stelle $x=1$, nach
+Lemma~\ref{buch:orthogonal:lemma:gewichtsfunktion}
+dürfen die Funktionen einen Pole der Ordnung $<\frac12(\alpha-1)$ haben.
+Je grösser $\alpha$ ist, desto weniger Gewicht haben die Punkte
+am rechten Rand des Intervalls und desto schneller darf eine Funktion
+für $x\to 1$ divergieren.
 
-Die Polynome $p_k$ sind durch Orthogonalisierung der Monome
-$1$, $x$,\dots $x^{k}$ entstanden.
-Dies bedeutet, dass $\langle p_n,x^k\rangle_w=0$ für alle $k<n$
-gilt und daher auch $\langle p_n,Q\rangle_w=0$ für jedes Polynome
-$Q(x)$ vom Grad $<n$.
+Für negative Werte von $\alpha$ hat $w^{(\alpha,\beta)}(x)$ einen
+Pol vom Grad $-\alpha$ an der Stelle $x=1$.
+Funktionen müssen daher also ein Nullstelle mindestens vom Grad
+$\frac12(1-\alpha)$ haben.
 
-Das Polynom $b(x)$ ist vom Grad $\le n$, es lässt sich also als
-Linearkombination
-\[
-b(x) = \sum_{k=0}^n b_k p_k(x)
-\]
-der $p_k$ mit $k\le n$ schreiben.
-Die Koeffizienten $b_j$ kann man erhalten, indem man 
-\eqref{buch:orthogonal:rekbeweis} Skalar mit $p_j$ multipliziert.
-Dabei erhält man
-\[
-h_jb_j
-=
-\langle b,p_j\rangle_w
-=
-\langle p_{n+1},p_j\rangle_w
--
-A_n\langle xp_n,p_j\rangle_w.
-\]
-Für $j\le n$ verschwindet der erste Term nach der Definition einer
-Folge von orthogonalen Polynomen.
-Den zweiten Term kann man umformen in
-\[
-\langle xp_n,p_j\rangle_w
-=
-\langle p_n,xp_j\rangle_w.
-\]
-Darin ist $xp_j$ ein Polynom vom Grad $j+1$.
-Für $n>j+1$ folgt, dass der zweite Term verschwindet.
-Somit sind alle $b_j=0$ mit $j<n-1$, nur der Term $j=n-1$
-bleibt bestehen.
-Mit $B_n=b_n$ und $C_n=b_{n-1}$ bekommt man die somit die
-Rekursionsbeziehung~\eqref{buch:orthogonal:eqn:rekursion}.
+\begin{figure}
+\centering
+\includegraphics[width=\textwidth]{chapters/070-orthogonalitaet/images/jacobi.pdf}
+\caption{Jacobi-Polynome vom Grad $1$ bis $14$ für verschiedene Werte
+der Parameter $\alpha$ und $\beta$.
+Je grösser $\alpha$, desto weniger Gewicht bekommen die Funktionswerte am
+rechten Rand und desto grösser werden die Funktionswerte.
+Für negative $\alpha$ müssen die Polynome dagegen eine Nullstelle am
+rechten Rand haben.
+\label{buch:orthogonal:fig:jacobi-parameter}}
+\end{figure}
 
-Indem man das Skalarprodukt von~\eqref{buch:orthogonal:eqn:rekursion}
-mit $p_{n-1}$ bildet, findet man
-\begin{align}
-\underbrace{\langle
-p_{n+1},p_{n-1}
-\rangle_w}_{\displaystyle=0}
-&=
-\langle (A_nx+B_n)p_n+C_np_{n-1},p_{n-1} \rangle_w
-\notag
-\\
-0
-&=
-A_n\langle xp_n,p_{n-1} \rangle_w
-+B_n\underbrace{\langle p_n,b_{n-1}\rangle_w}_{\displaystyle=0}
--C_n\|p_{n-1}\|_w^2
-\notag
-\\
-0
-&=
-A_n\langle p_n,xp_{n-1} \rangle_w
--C_n\|p_{n-1}\|_w^2
-\label{buch:orthogonal:eqn:rekbeweis2}
-\end{align}
-Indem man $xp_n$ als
+%
+% Tschebyscheff-Gewichtsfunktion
+%
+\subsubsection{Tschebyscheff-Gewichtsfunktion}
+Es wird später gezeigt werden, dass die Tschebyscheff-Polynome
+von Abschnitt~\ref{buch:polynome:section:tschebyscheff} eine
+Familie orthogonaler Polynome sein.
+Das zugehörige Skalarprodukt hat die Gewichtsfunktion
 \[
-xp_{n-1}(x)
+w_{\text{Tschebyscheff}}(x)
 =
-\frac{k_{n-1}}{k_n} p_n(x)
-+
-\sum_{k=0}^{n-1} d_kp_k(x)
+\frac{1}{\sqrt{1-x^2}}
+=
+\frac{1}{\sqrt{(1-x)(1+x)}}
+=
+(1-x)^{-\frac{1}{2}}
+(1+x)^{-\frac{1}{2}}
+=
+w^{(-\frac12,-\frac12)}(x).
 \]
-schreibt, bekommt man
-\begin{align*}
-\langle
-p_n,
-xp_{n-1}
-\rangle_w
-&=
-\biggl\langle
-p_n,
-\frac{k_{n-1}}{k_n} p_n
-+
-\sum_{k=0}^{n-1} d_kp_k
-\biggr\rangle_w
-=
-\frac{k_{n-1}}{k_n}h_n
-+
-\sum_{k=0}^{n-1} d_k\underbrace{\langle p_n,p_k\rangle_w}_{\displaystyle=0}
-\end{align*}
-Eingesetzt in~\eqref{buch:orthogonal:eqn:rekbeweis2} erhält man
+Die {\em Tschebyscheff-Gewichtsfunktion} ist also ein Spezialfall der
+Jacobi-Gewichtsfunktion.
+\index{Tschebyscheff-Gewichtsfunktion}%
+
+%
+% Hermite-Gewichtsfunktion
+%
+\subsubsection{Hermite-Gewichtsfunktion}
+Die Gewichtsfunktion
 \[
-A_n\frac{k_{n-1}}{k_n}h_n = C_n h_{n-1}
-\qquad\Rightarrow\qquad
-C_n
+w_{\text{Hermite}}(x)
 =
-A_n\frac{k_{n-1}}{k_n}\frac{h_n}{h_{n-1}},
+w(x)
+=
+e^{-\frac{x^2}{2}}
 \]
-damit ist auch die zweite Beziehung von
-\eqref{buch:orthogonal:eqn:koeffizientenrelation}.
-\end{proof}
+heisst die {\em Hermite-Gewichtsfunktion}.
+\index{Hermite-Gewichtsfunktion}%
+Sie hat keine Nullstellen und geht für $x\to\pm\infty$ so schnell
+gegen $0$, dass für alle Polynome 
+\[
+\int_{-\infty}^\infty |f(x)|^2 e^{-\frac{x^2}{2}}\,dx<\infty
+\]
+ist.
+Als Definitionsintervall kann daher die ganze reelle Achse
+verwendet werden, also $a=-\infty$ und $b=\infty$.
+Die mit dieser Gewichtsfunktion konstruierten Polynome heissen
+bei geeigneter Normierung die {\em Hermite-Polynome}.
+% XXX Normierung der Hermite-Polynome festlegen
+\index{Hermite-Polynome}%
+
+%
+% Laguerre-Gewichtsfunktion
+%
+\subsection{Laguerre-Gewichtsfunktion}
+Ähnlich wie die Hermite-Gewichtsfunktion ist die
+{\em Laguerre-Gewichtsfunktion}
+\index{Laguerre-Gewichtsfunktion}%
+\[
+w_{\text{Laguerre}}(x)
+=
+w^{-x}
+\]
+auf ganz $\mathbb{R}$ definiert, und sie geht für $x\to\infty$ wieder
+sehr rasch gegen $0$.
+Für $x\to-\infty$ hingegen wächst sie so schnell an, dass für alle Polynome
+$p(x)$ das Integral
+\[
+\int_{-\infty}^\infty p(x)e^{-x}\,dx
+\]
+unbeschränkt ist.
+Die Laguerre-Gewichtsfunktion ist daher nur geeignet für den
+Definitionsbereich $(0,\infty)$.
+Die bezüglich der Laguerre-Gewichtsfunktion orthogonalen Polynome
+heissen bei geeigneter Normierung die {\em Laguerre-Polynome}.
+\index{Laguerre-Polynome}%

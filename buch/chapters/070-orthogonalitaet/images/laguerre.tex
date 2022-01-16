@@ -1,0 +1,87 @@
+%
+% laguerre.tex -- Laguerre-Polynome
+%
+% (c) 2021 Prof Dr Andreas Müller, OST Ostschweizer Fachhochschule
+%
+\documentclass[tikz]{standalone}
+\usepackage{amsmath}
+\usepackage{times}
+\usepackage{txfonts}
+\usepackage{pgfplots}
+\usepackage{csvsimple}
+\usetikzlibrary{arrows,intersections,math}
+\begin{document}
+\def\dx{1}
+\def\dy{0.33333}
+\input{laguerrepaths.tex}
+
+\definecolor{fone}{rgb}{1,0,0}
+\definecolor{ftwo}{rgb}{1.0,0,0.8}
+\definecolor{fthree}{rgb}{0.8,0,1}
+\definecolor{ffour}{rgb}{0,0,1}
+\definecolor{ffive}{rgb}{0,0.8,1}
+\definecolor{fsix}{rgb}{0,1,1}
+\definecolor{fseven}{rgb}{0,0.6,0}
+\definecolor{feight}{rgb}{0.2,1,0.6}
+\definecolor{fnine}{rgb}{0.6,0.8,0.2}
+\definecolor{ften}{rgb}{1,0.4,0}
+
+\def\skala{1}
+\begin{tikzpicture}[>=latex,thick,scale=\skala]
+
+
+\begin{scope}
+\clip (0,-5) rectangle (12,5);
+
+\draw[color=fone] \laguerrezero;
+\draw[color=ftwo] \laguerreone;
+\draw[color=fthree] \laguerretwo;
+\draw[color=ffour] \laguerrethree;
+\draw[color=ffive] \laguerrefour;
+\draw[color=fsix] \laguerrefive;
+\draw[color=fseven] \laguerresix;
+\draw[color=feight] \laguerreseven;
+\draw[color=fnine] \laguerreeight;
+\draw[color=ften] \laguerrenine;
+
+\end{scope}
+
+\draw[->] (-0.1,0) -- (12.4,0) coordinate[label={$x$}];
+\draw[->] (0,{-5.1}) -- (0,{5.3}) coordinate[label={$y$}];
+
+\def\marke#1#2{
+	\node[color=#1] at (0.5,{5-0.42*#2}) [right] {$n=#2$};
+}
+
+\marke{fone}{0}
+\marke{ftwo}{1}
+\marke{fthree}{2}
+\marke{ffour}{3}
+\marke{ffive}{4}
+\marke{fsix}{5}
+\marke{fseven}{6}
+\marke{feight}{7}
+\marke{fnine}{8}
+\marke{ften}{9}
+
+\foreach \x in {1,...,12}{
+	\draw ({\x},-0.05) -- ({\x},0.05);
+}
+\node at (5,-0.05) [below] {$5$};
+\node at (10,-0.05) [below] {$10$};
+
+\foreach \y in {1,...,15}{
+	\draw (-0.05,{\y*\dy}) -- (0.05,{\y*\dy});
+	\draw (-0.05,{-\y*\dy}) -- (0.05,{-\y*\dy});
+}
+\node at (-0.05,{1*\dy}) [left] {$1$};
+\node at (-0.05,{5*\dy}) [left] {$5$};
+\node at (-0.05,{10*\dy}) [left] {$10$};
+\node at (-0.05,{15*\dy}) [left] {$15$};
+\node at (-0.05,{-5*\dy}) [left] {$-5$};
+\node at (-0.05,{-10*\dy}) [left] {$-10$};
+\node at (-0.05,{-15*\dy}) [left] {$-15$};
+
+\end{tikzpicture}
+\end{document}
+

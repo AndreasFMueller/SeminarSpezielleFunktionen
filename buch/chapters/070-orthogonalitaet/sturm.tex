@@ -36,8 +36,11 @@ für Matrizen ist das folgende verallgemeinerte Eigenwertproblem.
 Das gewohnte Eigenwertproblem verwendet die Matrix $B=E$.
 
 \begin{definition}
+\index{verallgemeinerter Eigenvektor}%
+\index{Eigenvektor, verallgemeinerter}%
+\label{buch:orthogonal:sturm:verallgemeinerter-eigenvektor}
 Seien $A$ und $B$ $n\times n$-Matrizen.
-$v$ heisst verallgemeinerter Eigenvektor zum Eigenwert $\lambda$,
+$v$ heisst {\em verallgemeinerter Eigenvektor} zum Eigenwert $\lambda$,
 wenn
 \[
 Av = \lambda Bv.
@@ -324,7 +327,7 @@ Wir bezeichnen den Vektorraum der Funktionen, deren Quadrat mit
 der Gewichtsfunktion $w(x)$ integrierbar sind, mit
 $L^2([a,b],w)$.
 
-Damit auch $\langle qf,f\rangle_w$ und $\langle L_0f,0f\rangle_w$
+Damit auch $\langle qf,f\rangle_w$ und $\langle L_0f,f\rangle_w$
 wohldefiniert sind, müssen zusätzlich die Integrale
 \[
 \int_a^b |f(x)|^2 q(x) w(x)\,dx
@@ -431,17 +434,217 @@ Dann ist wegen
 die Bedingung~\eqref{buch:integrale:sturm:sabedingung}
 ebenfalls erfüllt, $L_0$ ist in diesem Raum selbstadjungiert.
 
-\subsubsection{Bessel-Funktionen}
+\subsubsection{Bessel-Funktionen $J_n(x)$}
 Der Bessel-Operator \eqref{buch:differentialgleichungen:bessel-operator}
-hat die Form eines Sturm-Liouville-Operators
+kann wie folgt in die Form eines Sturm-Liouville-Operators gebracht 
+werden.
+Zunächst rechnet man
 \[
+B
+=
 x^2\frac{d^2}{dx^2} + x\frac{d}{dx} + x^2
 =
-\frac{d}{dx} x^2 \frac{d}{dx} + x^2
+x\biggl(
+x\frac{d^2}{dx^2} + \frac{d}{dx} + x
+\biggr)
+=
+x\biggl(
+\frac{d}{dx}(-x)\frac{d}{dx} + x
+\biggr).
 \]
-mit $p(x)=x^2$, $q(x)=x^2$.
+Somit ist $B$ ein Sturm-Liouville-Operator für 
+\begin{equation}
+\begin{aligned}
+p(x) &= -x \\
+q(x) &= x \\
+w(x) &= \frac{1}{x}.
+\end{aligned}
+\label{buch:orthogonal:sturm:bessel:n}
+\end{equation}
+Am linken Rand kann als Randbedingung 
+\[
+\lim_{x\to 0} p(x) y'(x) = 0
+\]
+verwendet werden, die für alle Bessel-Funktionen erfüllt ist.
+Dies entspricht der Wahl $k_0=0$ und $h_0=1$.
+Am rechten Rand für $x\to\infty$ kann man
+\[
+\lim_{x\to\infty} y(x)=0
+\]
+verlangen, was der Wahl $k_\infty=1$ und $h_\infty=0$ entspricht.
+Damit ist die Bessel-Differentialgleichung erkannt als ein
+Sturm-Liouville-Problem für $\lambda=n^2$.
+Es folgt damit sofort, dass die Besselfunktionen orthogonale
+Funktionen bezüglich des Skalarproduktes mit der Gewichtsfunktion
+$w(x)=1/x$ sind.
 
-XXX TODO: Faktor 2 fehlt.
+\subsubsection{Bessel-Funktionen $J_n(s x)$}
+Das Sturm-Liouville-Problem mit den Funktionen
+\eqref{buch:orthogonal:sturm:bessel:n}
+ist jedoch nicht die einzige Möglichkeit, die Bessel-Differentialgleichung
+in ein Sturm-Liouville-Problem zu verwandeln.
+Das Problem \eqref{buch:orthogonal:sturm:bessel:n} ging davon
+aus, dass $n^2$ der verallgemeinerte Eigenwert sein soll.
+Im Folgenden sollen hingegen die Funktionen $J_n(s x)$ für
+konstantes $n$, aber verschiedene $s$ untersucht und
+als orthogonal erkannt werden.
+
+Die Funktion $y(x) = J_n(x)$ ist eine Lösung der Bessel-Differentialgleichung
+\[
+x^2y'' + xy' + x^2y = n^2y.
+\]
+Setzt man $x=s t$ und $f(t)=y(s t)$, dann wird die Ableitung 
+\[
+\begin{aligned}
+f'(t)
+&=
+\frac{d}{dt}y(s t)
+=
+y'(s t) \cdot s
+&&\Rightarrow
+&
+\frac{f'(t)}{s}
+&=
+y'(x)
+\\
+f''(t)
+&=
+\frac{d^2}{dt^2} y(s t)
+=
+y''(s t) \cdot s^2
+&&\Rightarrow
+&
+\frac{f''(t)}{s^2}
+&=
+y''(x).
+\end{aligned}
+\]
+Setzt man diese in die Besselsche Differentialgleichung ein,
+findet man
+\begin{align*}
+x^2y''+xy'+x^2y
+=
+s^2 t^2 \frac{f''(t)}{s^2}
++
+s t \frac{f'(t)}{s}
++
+s^2 t^2 f(t)
+&=
+n^2 f(t).
+\end{align*}
+Damit ist gezeigt, dass die Funktionen $J_n(s x)$ Lösungen
+der Differentialgleichung
+\begin{equation}
+x^2y'' + xy' + (s^2 x^2  - n^2) y = 0
+\label{buch:orthogonal:sturm:eqn:bessellambda}
+\end{equation}
+ist.
+
+Die Differentialgleichung
+\eqref{buch:orthogonal:sturm:eqn:bessellambda}
+soll jetzt ebenfalls als ein Sturm-Liouville-Problem betrachtet
+werden, diesmal aber mit festem $n$ und $s^2$ als dem verallgemeinerten
+Eigenwert.
+Dazu wird
+\begin{equation}
+\begin{aligned}
+p(x) &= -x \\
+q(x) &= -\frac{n^2}{x} \\
+w(x) &= x
+\end{aligned}
+\label{buch:orthgonal:sturm:bessel:lambdaparams}
+\end{equation}
+gesetzt.
+Das zugehörige Sturm-Liouville-Problem ist jetzt
+\[
+\frac{1}{x}\biggl(
+\frac{d}{dx} (-x)\frac{d}{dx} -\frac{n^2}{x}
+\biggr)
+y
+=
+\lambda y
+\quad\Rightarrow\quad
+y'' + \frac{1}{x}y' - \frac{n^2}{x^2}y = \lambda y,
+\]
+oder nach Multiplikation mit $x^2$
+\begin{equation}
+x^2y'' + xy' + ((-\lambda)x^2 - n^2) y = 0.
+\end{equation}
+Die Funktionen $J_n(sx)$ sind daher verallgemeinerte Eigenfunktionen
+des Sturm-Liouville-Problems
+\eqref{buch:orthgonal:sturm:bessel:lambdaparams}
+für den Eigenwert $\lambda = -s^2$.
+
+\begin{satz}[Orthogonalität der Bessel-Funktionen]
+Die Bessel-Funktionen $J_n(sx)$ für verschiedene $s$ sind orthogonal
+bezüglich des Skalarproduktes mit der Gewichtsfunktion $w(x)=x$,
+d.~h.
+\[
+\int_0^\infty J_n(s_1x) J_n(s_2x) x\,dx
+=
+0
+\]
+für $s_1\ne s_2$.
+\end{satz}
+
+\begin{proof}[Beweis]
+Um die Bessel-Funktionen als Lösung des Sturm-Liouville-Problems
+\eqref{buch:orthgonal:sturm:bessel:lambdaparams}
+zu betrachten, müssen noch geeignete Randbedingungen formuliert werden.
+Für $n>0$ kann man 
+$J_n(0)=0$ verwenden, also $k_0=1$ und $h_0=0$.
+Für $J_0$ ist dies nicht geeignet, aber wegen $J_0'(0)=0$ kann
+man für $n=0$ verwenden $k_0=0$ und $h_0=1$ wählen.
+
+Für den rechten Rand kann man verwenden, dass die Ableitung der
+Bessel-Funktionen wie $x^{-3/2}$ gegen $0$ geht, gilt
+\[
+\lim_{x\to\infty} p(x) J_n(sx) = 0,
+\]
+weil $p(x)J_n(sx)$ wie $x^{-1/2}$ gegen $0$ geht.
+Dies bedeutet, dass $k_\infty=0$ und $h_\infty=1$
+verwendet werden kann.
+Damit sind geeignete Randbedingungen für das Sturm-Liouville-Problem
+gefunden.
+\end{proof}
+
+\subsubsection{Laguerre-Polynome}
+Die Laguerre-Polynome sind orthogonal bezüglich des Skalarprodukts
+mit der Laguerre-Gewichtsfunktion $w(x)=e^{-x}$ und erfüllen die
+Laguerre-Differentialgleichung
+\eqref{buch:differentialgleichungen:eqn:laguerre-dgl}.
+mit $p(x)=-xe^{-x}$ wird 
+\[
+\frac{1}{w(x)}
+\biggl(
+-
+\frac{d}{dx} p(x) \frac{d}{dx}
+\biggr)
+=
+e^x \biggl(xe^{-x}\frac{d^2}{dx^2} + (1-x)e^{-x}\frac{d}{dx}\biggr),
+\]
+dies sind die abgeleiteten Terme in der Laguerre-Differentialgleichung.
+Der Definitionsbereich ist $(0,\infty)$.
+Als Randbedingung am linken kann man $y(0)=1$ verwenden, welche
+auch die Laguerre-Polynome ergeben hat.
+Am rechten Rand ist die Bedingung
+\[
+\lim_{x\to\infty} p(x)y'(x)
+=
+\lim_{x\to\infty} xe^{-x} y'(x)
+=
+0
+\]
+für beliebige Polynomlösungen erfüllt, dies ist der Fall
+$k_{\infty}=0$ und $h_\infty=1$.
+
+Das zugehörige verallgemeinerte Eigenwertproblem  wird damit
+\[
+xy'' + (1-x)y' - \lambda y = 0,
+\]
+also die Laguerre-Differentialgleichung.
+Somit folgt, dass die Laguerre-Polynome orthogonal sind bezüglich
+des Skalarproduktes mit der Laguerre-Gewichtsfunktion.
 
 \subsubsection{Tschebyscheff-Polynome}
 Die Tschebyscheff-Polynome sind Lösungen der
@@ -484,6 +687,7 @@ bezüglich des Skalarproduktes
 
 \subsubsection{Jacobi-Polynome}
 TODO
+
 
 \subsubsection{Hypergeometrische Differentialgleichungen}
 %\url{https://encyclopediaofmath.org/wiki/Hypergeometric_equation}

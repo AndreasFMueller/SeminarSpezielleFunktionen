@@ -367,3 +367,93 @@ Q_1(x) = x \operatorname{artanh}x-1
 \]
 verwendet werden.
 
+%
+% 
+%
+\subsection{Laguerre-Differentialgleichung
+\label{buch:orthogonal:subsection:laguerre-differentialgleichung}}
+Die Laguerre-Gewichtsfunktion $w_{\text{Laguerre}}(x)=e^{-x}$
+\index{Laguerre-Gewichtsfunktion}%
+führte auf die Laguerre-Polynome $L_n(x)$, die in 
+\eqref{buch:orthogonal:eqn:laguerre-polynom-hypergeometrisch}
+als hypergeometrische Funktionen erkannt wurden.
+Sie sind daher auch Lösungen der Differentialgleichung
+der hypergeometrischen Funktion $\mathstrut_1F_1$, die in
+\eqref{buch:differentialgleichungen:1f1} dargestellt ist.
+
+Die Parameter der Darstellung von $L_n(x)$ als hypergeometrische
+Funktion sind
+\[
+L_n(x) = \mathstrut_1F_1\biggl(
+\begin{matrix}-n\\1\end{matrix}
+;x
+\biggr)
+\qquad\Rightarrow\qquad
+\left\{
+\begin{aligned}
+a&=-n\\
+b&=1.
+\end{aligned}
+\right.
+\]
+Einsetzen dieser Parametrer in die Differentialgleichung
+\eqref{buch:differentialgleichungen:1f1}
+\begin{equation}
+zw'' + (1-z)w'+nw=0
+\label{buch:differentialgleichungen:eqn:laguerre-dgl}
+\end{equation}
+Dies ist die {\em Laguerre-Differentialgleichung}.
+\index{Laguerre-Differentialgleichung}%
+\index{Differentialgleichung!Laguerre}%
+Die Laguerre-Polynome sind also Lösungen der Laguerre-Differentialgleichung,
+wenn der Parameter $n$ nicht-negativ ganzzahlig ist.
+
+Die allgemeine Laguerre-Differentialgleichung lässt beliebige reelle
+Werte für den Koeffizienten von $y$ zu, sie lautet
+\[
+zw''+(1-z)w'+\lambda w=0.
+\]
+Die Anfangsbedingungen für die hypergeometrische Funktion als Lösung 
+\begin{align*}
+L_n(0)  &= \mathstrut_1F_1(-\lambda; 1; 0) = 1\\
+\\
+L'_n(0) &=
+\frac{d}{dx}
+\mathstrut_1F_1(-\lambda;1;0) = \frac{-\lambda}{1}
+\end{align*}
+Der Satz
+\ref{buch:differentialgleichungen:satz:1f1-dgl-loesungen}
+schlägt eine zweite Lösung vor, im vorliegenden Fall mit $b=1$
+ist die zweite Lösung jedoch identisch zu ersten, es muss daher
+ein anderer Weg zu einer zweiten Lösung gesucht werden.
+
+XXX TODO: zweite Lösung der Differentialgleichung.
+
+\subsubsection{Die assoziierte Laguerre-Differentialgleichung}
+\index{assoziierte Laguerre-Differentialgleichung}%
+\index{Laguerre-Differentialgleichung, assoziierte}%
+Die {\em assoziierte Laguerre-Differentialgleichung} ist die
+Differentialgleichung
+\begin{equation}
+zw'' + (\nu  +1-z)w' + \lambda w = 0,
+\label{buch:differentialgleichungen:eqn:assoziierte-laguerre-dgl}
+\end{equation}
+also die Differentialgleichung für die hypergeometrische Funktion
+$\mathstrut_1F_1$ mit Parametern $a=-\lambda$ und $b=\nu+1$.
+Die Gleichung
+\eqref{buch:differentialgleichungen:eqn:assoziierte-laguerre-dgl}
+hat daher die Lösung
+\(
+\mathstrut_1F_1(-\lambda;\nu+1;x).
+\)
+Für natürliches $\lambda$ sind diese Lösungen Polynome
+\[
+L_n^{(\nu)}(x)
+=
+\mathstrut_1F_1\biggl(
+\begin{matrix}-n\\\nu+1\end{matrix}
+;x\biggr),
+\]
+sie heissen die {\em assoziierten Laguerre-Polynome}.
+\index{assoziierte Laguerre-Polynome}%
+\index{Laguerre-Polynome, assoziierte}%

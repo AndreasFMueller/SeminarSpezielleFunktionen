@@ -796,24 +796,144 @@ tatsächlich die Kosinus-Funktion als Lösung hat.
 Wir setzen wieder $w(z) = \mathstrut_1F_1(a;b;z)$.
 Es sind die Operatoren $D_a$ und $D_{b-1}$ anzuwenden.
 Es ergibt sich die Differentialgleichung
-\begin{align*}
+\begin{align}
 \biggl(z\frac{d}{dz}+a\biggr)w
 &=
 \frac{d}{dz}\biggl(z\frac{d}{dz} +b-1\biggr)w
+\notag
 \\
 zw'+a w
 &=
 \frac{d}{dz}
 (zw'+b w - w)
+\notag
 \\
 zw'+a w
 &=
 zw'' +w'+b w' - w'
+\notag
 \\
 0
 &=
 zw'' + (b - z)w' - a w.
+\label{buch:differentialgleichungen:1f1}
+\end{align}
+Die hypergeometrische Funktion $\mathstrut_1F_1$ ist eine Lösung 
+den Anfangsbedingungen $w(0)=1$, $w'(0)=a/b$.
+Eine zweite, linear unabhängige Lösung der Differentialgleichung
+\eqref{buch:differentialgleichungen:1f1} kann als verallgemeinerte
+Potenzreihe $w(z) = z^\varrho v(z)$ gefunden werden.
+Die Ableitungen dieses Ansatzes sind
+\begin{align*}
+w'(z) 
+&=
+\varrho z^{\varrho-1} v(z) + z^\varrho v'(z)
+\\
+w''(z)
+&=
+\varrho(\varrho-1) z^{\varrho-2} v(z)
++
+2\varrho z^{\varrho-1} v'(z)
++
+z^\varrho v''(z).
 \end{align*}
+Einsetzen derselben in~\eqref{buch:differentialgleichungen:1f1}
+ergibt die Gleichung
+\begin{align*}
+z\bigl(
+\varrho(\varrho-1)z^{\varrho-2}v + 2\varrho z^{\varrho-1}v'+z^\varrho v''
+\bigr)
++
+(b-z)\bigl(\varrho z^{\varrho-1}v+z^\varrho v'\bigr)
+-
+a z^\varrho v
+&=
+0
+\\
+z^{\varrho+1} v''
++
+z^\varrho
+(2\varrho + b-z)
+v'
++
+(\varrho(\varrho-1)z^{\varrho-1}
++(b-z)
+\varrho
+z^{\varrho-1}
+-
+az^\varrho
+)
+v
+&=
+0
+\\
+z^{\varrho+1} v''
++
+z^\varrho(2\varrho+b-z)v'
++
+(\varrho(\varrho-1+b) z^{\varrho-1} v
++
+(\varrho-a)z^\varrho v
+&=
+0
+\end{align*}
+Die letzte Gleichung wird wieder zu einer Differentialgleichung
+der Form~\eqref{buch:differentialgleichungen:1f1}, wenn der erste
+der Koeffizienten von $v$ verschwindet, wenn also 
+$\varrho-1+b=0$ ist, oder $\varrho=1-b$.
+Setzt man diesen Wert ein, entsteht die Differentialgleichung
+\[
+zv'' + (2(1-b)+b-z) v' - (a+b-1)v = 0
+\qquad\Rightarrow\qquad
+zv'' + (2-b-z) v' - (a+b-1)v = 0.
+\]
+Dies ist eine hypergeometrische Differentialgleichung für
+$\mathstrut_1F_1$ mit den Parametern $2-b$ und $1-b-a$.
+Es folgt, dass 
+\[
+w_2(z)
+=
+x^{1-b} \mathstrut_1F_1\biggl(
+\begin{matrix}
+a+b-1\\
+2-b
+\end{matrix}
+;z
+\biggr).
+\]
+Falls $2-b$ keine negative ganze Zahl ist, ist die hypergeometrische
+Funktion wohldefiniert.
+
+Wir fassen diese Resultat zusammen:
+\begin{satz}
+\label{buch:differentialgleichungen:satz:1f1-dgl-loesungen}
+Die Differentialgleichung
+\[
+zw'' + (b-z)w' - aw = 0
+\]
+hat die Funktion
+\[
+w_1(z)
+=
+\mathstrut_1F_1\biggl(
+\begin{matrix}a\\b\end{matrix};z
+\biggr)
+\]
+als Lösung.
+Falls $b-2\not\in\mathbb{N}$ ist, ist 
+\[
+w_2(z)
+=
+z^{1-b}
+\cdot
+\mathstrut_1F_1\biggl(
+\begin{matrix}a+b-1\\2-b\end{matrix}
+;z
+\biggr)
+\]
+eine zweite Lösung.
+Für $b=1$ ist $w_2(z)=w_1(z)$.
+\end{satz}
 
 %
 % Die hypergeometrische Differentialgleichung für 2F1
@@ -1521,10 +1641,10 @@ n\frac{x}{(1-x^2)^{\frac32}} \sin(n\arccos x)
 \end{align*}
 Multipliziert man $T_n''(x)$  mit $(1-x^2)$ und subtrahiert
 man $xT_n'(x)$, fällt der Term $\sin(n\arccos x)$ weg und es bleibt
-\begin{equation}
+\begin{equation*}
 (1-x^2)T''_n(x) -xT'_n(x) = -n^2 T_n(x),
-\label{buch:differential:tschebyscheff:Tdgl}
-\end{equation}
+%\label{buch:differential:tschebyscheff:Tdgl}
+\end{equation*}
 die Tschebyscheff-Polynome sind also Lösungen der Differentialgleichung
 \begin{equation}
 (1-x^2)y'' -xy' +n^2 y=0,
@@ -1532,7 +1652,111 @@ die Tschebyscheff-Polynome sind also Lösungen der Differentialgleichung
 \end{equation}
 sie heisst die {\em Tschbeyscheff-Differentialgleichung}.
 
-\subsubsection{Tschebyscheff-Differentialgleichung und hypergeometrische Differentialgleichung}
-TODO
+\subsubsection{Tschebyscheff-Differentialgleichung und hypergeometrische
+Differentialgleichung}
+Die hypergeometrische Differentialgleichung hat eine ähnliche Struktur
+wie die Tschebyscheff-Differentialgleichung
+\eqref{buch:differential:tschebyscheff:Tdgl}.
+Der Koeffizient der zweiten Ableitung hat jedoch die Nullstellen
+$\pm 1$ bei der Tschebyscheff-Differentialgleichung, während es bei
+der hypergeometrischen Differentialgleichung die Nullstellen
+$0$ und $1$ sind.
+Wir verwenden daher die Substitution $z = \frac12(1-x)$ und 
+$w(z)=y(1-2z)$ und formen damit die hypergeometrische
+Differentialgleichung um.
+Der Faktor $z(1-z)$ wird damit zu
+\[
+z(1-z)
+=
+\frac12(1-x)\biggl(1-\frac12(1-x)\biggr)
+=
+\frac12(1-x) \frac12(1+x)
+=
+\frac14 (1-x^2).
+\]
+Die Ableitungen sind 
+\begin{align*}
+w'(z) &= -2y'(1-2z) \\
+w''(z) &= 4y''(1-2z),
+\end{align*}
+wir setzen sie in die hypergeometrische Differentialgleichung ein
+\begin{align*}
+0
+&=
+z(1-z) w'(z) 
++
+(c-(a+b+1)z) w'(z) - ab w(z)
+\\
+&=
+\frac14(1-x^2) 4y''(x)
+-
+2
+\biggl(c-(a+b+1)\frac12(1-x)\biggr)
+y'(x)
+-aby(x).
+\\
+&=
+(1-x^2)y''
++
+(a+b+1-2c-(a+b+1)x) y'
+-
+aby
+\end{align*}
+Diese Differentialgleichung kann tatsächlich in die Form der 
+Tschebyscheff-Differentialgleichung gebracht werden, wenn man setzt
+\begin{equation}
+\left.
+\begin{aligned}
+a&=\phantom{-}n\\
+b&=-n\\
+c&=\frac{a+b+1}2
+\end{aligned}
+\right\}
+\;
+\quad\Rightarrow\quad
+(1-x^2)y''+
+\biggl(\underbrace{a+b+1-2\frac{a+b+1}2}_{\displaystyle=0}-(\underbrace{n-n+1}_{\displaystyle=1})x\biggr)y'
+-n(-n)y=0.
+\end{equation}
+Die letzte Gleichung ist identisch mit
+\eqref{buch:differential:tschebyscheff:Tdgl}.
+Die beiden Parameter $a$ und $b$ dürfen natürlich auch vertauscht
+werden.
 
-\url{https://en.wikipedia.org/wiki/Chebyshev_polynomials}
+\subsubsection{Tschebyscheff-Polynome als hypergeometrische Funktionen}
+Aus der Umformung der eulerschen hypergeometrischen Differentialgleichung
+in die Tschebyscheff-Differntialgleichung kann man jetzt ablesen, dass
+eine Lösung der Tschebyscheff-Differentialgleichung auch mit der
+hypergeometrischen Funktion $\mathstrut_2F_1$ geschrieben werden kann,
+nämlich
+\[
+y(x)
+=
+\mathstrut_2F_1\biggl(
+\begin{matrix}
+n,-n\\
+\frac12
+\end{matrix};\frac{1-x}2
+\biggr).
+\]
+Wegen $b=-n$ ist diese Funktion ein Polynom mit den Werten
+\[
+\begin{aligned}
+y(1) &= 1 \\
+y'(1)&= n^2,
+\end{aligned}
+\]
+den gleichen Werten, die auch das Tschbescheff-Polynome $T_n(x)$ annimmt.
+Es folgt daher
+\begin{equation}
+T_n(x)
+=
+\mathstrut_2F_1\biggl(
+\begin{matrix}n,-n\\\frac12\end{matrix};
+\frac{1-x}2
+\biggr).
+\end{equation}
+Auch die Tschebyscheff-Polynome lassen sich also mit Hilfe einer
+hypergeometrischen Funktion schreiben.
+
+%\url{https://en.wikipedia.org/wiki/Chebyshev_polynomials}

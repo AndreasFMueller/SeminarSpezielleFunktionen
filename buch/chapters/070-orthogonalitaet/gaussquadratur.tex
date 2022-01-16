@@ -482,4 +482,81 @@ Dies zeigt auch der Graph in
 Abbildung~\ref{buch:integral:gaussquadratur:fehler}.
 
 \subsection{Skalarprodukte mit Gewichtsfunktion}
+Die Nullstellen der Legendre-Polynome ergaben ein gutes
+Integrationsverfahren für Polynome auf einem beschränkten
+Intervall.
+Die Beispiele haben aber auch gezeigt, dass Stellen, wo die
+Ableitung des Integranden divergiert, die Genauigkeit stark
+beeinträchtigen können.
+Ausserdem ist das Verfahren nicht anwendbar auf uneigentliche
+Integrale.
+
+\subsubsection{Umgang mit Singularitäten}
+Die Lösung des Problems mit Stellen mit divergenter Ableitung
+besteht darin, die Stützstellen in der Nähe dieser Stellen
+zu konzentrieren.
+Die Verwendung einer Gewichtsfunktion $w(x)$ kann genau dies
+erreichen.
+Statt das Integral einer Funktion $f(x)$ zu bestimmen, 
+kann man $f(x)=g(x)w(x)$ schreiben, wobei $w(x)$ so
+gewählt werden soll, dass das Verhalten der Steigung an
+den Intervallenden gut wiedergibt.
+Dies ist mit einer Jacobischen Gewichtsfunktion immer möglich.
+Statt der Nullstellen der Legendre-Polynome sind dann die
+Nullstellen der Jacobi-Polynome  und die Funktionswete von $g(x)$
+an diesen Stellen zu verwenden,  die Gewichte sind
+die Integrale von $l_i(x) P^{(\alpha,\beta)}(x)$.
+
+\subsubsection{Uneigentliche Integrale}
+Die Berechnung eines uneigentlichen Integrals auf dem Intervall
+$(0,\infty)$ oder $(-\infty,\infty)$ ist aus mehreren Gründen nicht
+direkt mit dem früher beschriebenen Gauss-Quadraturverfahren
+möglich.
+
+Die Stützstellen, die bei der Gauss-Quadratur in einem Intervall
+$(a,b)$ verwendet werden, entstehen dadurch, dass man die Nullstellen
+der Legendre-Polynome in $(-1,1)$ auf das Intervall $(a,b)$
+skaliert.
+Dies führt offensichtlich nicht zum Erfolg, wenn ein oder beide
+Intervallgrenzen unendlich sind.
+Dieses Problem kann dadurch gelöst werden, dass man das unendliche
+Intervall $(a,\infty)$ mit
+\[
+x =  a + \frac{1-t}{t}
+\]
+auf das Intervall $[0,1]$ transformiert.
+
+Will man beim Intervall $(0,\infty)$ bleiben, dann ist zu beachten,
+dass das Integral eines Polynomes immer divergent ist, es ist also
+auf jeden Fall nötig, den Integranden durch Funktionen zu approximieren,
+die genügend schnell gegen $0$ gehen.
+Polynome beliebigen Grades können verwendet werden, wenn sie mit
+einer Funktion multipliziert werden, die schneller als jedes Polynom
+gegen $0$ geht, so dass das Integral immer noch konvergiert.
+Die Funktionen $e^{-x}$ für das Intervall $(0,\infty)$ oder
+$e^{-x^2}$ für das Intervall $(-\infty,\infty)$ kommen dafür in Frage.
+
+Um das Integral von $f(x)$ im Intervall $(0,\infty)$ zu berechnen,
+schreibt man daher zunächst
+\[
+\int_0^\infty f(x)\,dx
+=
+\int_0^\infty g(x)e^{-x}\,dx
+=
+\int_0^\infty g(x) w(x)\,dx
+\quad\text{mit}\quad
+w(x)=e^{-x}
+\text{ und }
+g(x)=f(x)e^x.
+\]
+Dann approximiert $g(x)$ man durch ein Interpolationspolynom,
+so wie man das bei der Gauss-Quadratur gemacht hat.
+Als Stützstellen müssen dazu die Nullstellen der Laguerre-Polynome
+verwendet werden.
+Als Gewichte $w_i$ sind die Integrale der $l_i(x)e^{-x}$
+zu verwenden.
+
+
+
+
 

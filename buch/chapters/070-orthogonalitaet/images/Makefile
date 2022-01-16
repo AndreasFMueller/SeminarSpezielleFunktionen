@@ -4,7 +4,7 @@
 #
 # (c) 2021 Prof Dr Andreas Müller, OST Ostschweizer Fachhochschule
 #
-all:	legendre.pdf orthogonal.pdf weight.pdf jacobi.pdf
+all:	legendre.pdf orthogonal.pdf weight.pdf jacobi.pdf laguerre.pdf
 
 legendrepaths.tex:	legendre.m
 	octave legendre.m
@@ -21,6 +21,11 @@ weightfunction.tex:	weight.m
 
 jacobi:	jacobi.cpp
 	g++ --std=c++11 -O -Wall -g -o jacobi jacobi.cpp
+
+laguerre.pdf:	laguerre.tex laguerrepaths.tex
+	pdflatex laguerre.tex
+laguerrepaths.tex:	laguerre.m
+	octave laguerre.m
 
 jacobipaths.tex:	jacobi Makefile
 	./jacobi --a=0 --b=0 --prefix=legendre --outfile=jacobipaths.tex

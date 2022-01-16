@@ -1,0 +1,95 @@
+\subsubsection{Selbstadjungierte Operatoren und Eigenvektoren}
+Symmetrische Matrizen spielen eine spezielle Rolle in der
+endlichdimensionalen linearen Algebra, weil sie sich immer
+mit einer orthonormierten Basis diagonalisieren lassen.
+In der vorliegenden Situation undendlichdimensionaler Vektorräume
+brauchen wir eine angepasste Definition.
+
+\begin{definition}
+Eine lineare Selbstabbildung $A\colon V\to V$
+eines Vektorrraums mit Skalarprodukt
+heisst {\em selbstadjungiert}, wenn für alle Vektoren $u,v\in V$
+heisst $\langle Au,v\rangle = \langle u,Av\rangle$.
+\end{definition}
+
+Es ist wohlbekannt, dass Eigenvektoren einer symmetrischen Matrix
+zu verschiedenen Eigenwerten orthogonal sind.
+Der Beweis ist direkt übertragbar, wir halten das Resultat hier
+für spätere Verwendung fest.
+
+\begin{satz}
+Sind $f$ und $g$ Eigenvektoren eines selbstadjungierten Operators $A$
+zu verschiedenen Eigenwerten $\lambda$ und $\mu$, dann sind $f$ und $g$
+orthogonal.
+\end{satz}
+
+\begin{proof}[Beweis]
+Im vorliegenden Zusammenhang möchten wir die Eigenschaft nutzen,
+dass Eigenfunktionen eines selbstadjungierten Operatores zu verschiedenen
+Eigenwerten orthogonal sind.
+Dazu seien $Df = \lambda f$ und $Dg=\mu g$ und wir rechnen
+\begin{equation*}
+\renewcommand{\arraycolsep}{2pt}
+\begin{array}{rcccrl}
+\langle Df,g\rangle &=& \langle \lambda f,g\rangle &=& \lambda\phantom{)}\langle f,g\rangle
+&\multirow{2}{*}{\hspace{3pt}$\biggl\}\mathstrut-\mathstrut$}\\
+=\langle f,Dg\rangle &=& \langle f,\mu g\rangle &=& \mu\phantom{)}\langle f,g\rangle&
+\\[2pt]
+\hline
+         0           & &                        &=& (\lambda-\mu)\langle f,g\rangle&
+\end{array}
+\end{equation*}
+Da $\lambda-\mu\ne 0$ ist, muss $\langle f,g\rangle=0$ sein.
+\end{proof}
+
+\begin{beispiel}
+Sei $C^1([0,2\pi], \mathbb{C})=C^1(S^1,\mathbb{C})$
+der Vektorraum der $2\pi$-periodischen differenzierbaren Funktionen mit
+dem Skalarprodukt 
+\[
+\langle f,g\rangle
+=
+\frac{1}{2\pi}\int_0^{2\pi} \overline{f(t)}g(t)\,dt
+\]
+enthält die Funktionen $e_n(t) = e^{int}$.
+Der Operator
+\[
+D=i\frac{d}{dt}
+\]
+ist selbstadjungiert, denn mit Hilfe von partieller Integration erhält man
+\[
+\langle Df,g\rangle
+=
+\frac{1}{2\pi}
+\int_0^{2\pi}
+\underbrace{
+\overline{i\frac{df(t)}{dt}}
+}_{\uparrow}
+\underbrace{g(t)}_{\downarrow}
+\,dt
+=
+\underbrace{
+\frac{-i}{2\pi}
+\biggl[
+\overline{f(t)}g(t)
+\biggr]_0^{2\pi}
+}_{\displaystyle=0}
++
+\frac{1}{2\pi}
+\int_0^{2\pi}
+\overline{f(t)}i\frac{dg(t)}{dt}
+\,dt
+=
+\langle f,Dg\rangle
+\]
+unter Ausnützung der $2\pi$-Periodizität der Funktionen.
+
+Die Funktionen $e_n(t)$ sind Eigenfunktionen des Operators $D$, denn
+\[
+De_n(t) = i\frac{d}{dt}e^{int} = -n e^{int} = -n e_n(t).
+\]
+Nach obigem Satz sind die Eigenfunktionen von $D$ orthogonal.
+\end{beispiel}
+
+Das Beispiel illustriert, dass orthogonale Funktionenfamilien
+ein automatisches Nebenprodukt selbstadjungierter Operatoren sind.
