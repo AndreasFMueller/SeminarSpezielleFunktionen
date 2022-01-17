@@ -43,12 +43,17 @@
 \hsize=13.6cm
 
 \begin{scope}
-\clip (0,0) rectangle({\bogenbreite},{\bogenhoehe});
+\clip (0,{0.0*\bogenhoehe}) rectangle({\bogenbreite},{0.6*\bogenhoehe});
 %\clip (0,0) rectangle ({\bogenbreite},20.2);
 %\node at (18.7,8.9) [scale=5.0]{\includegraphics{nozzle-hell.jpg}};
 %\node at (18.7,8.9) [scale=5.0]{\includegraphics{nozzle-hell3.jpg}};
 %\node at (18.7,8.9) [scale=5.0]{\includegraphics{nozzle.jpg}};
 %\node at ({\bogenbreite/2},13.0) {\includegraphics[width=42cm]{matrix.pdf}};
+\node at ({\bogenbreite/2+5},5.0) {\includegraphics[width=42cm]{../buch/chapters/090-pde/membran/membran.png}};
+\node at (11,11) {\includegraphics[width=8cm]{../buch/chapters/090-pde/kugel/spherical33.png}};
+\node at (20,11) {\includegraphics[width=8cm]{../buch/chapters/090-pde/kugel/spherical32.png}};
+\node at (28,11) {\includegraphics[width=8cm]{../buch/chapters/090-pde/kugel/spherical31.png}};
+\node at (36,11) {\includegraphics[width=8cm]{../buch/chapters/090-pde/kugel/spherical30.png}};
 \end{scope}
 
 \node at ({\einschlag+2*\gelenk+\ruecken+1.5*\breite},24.3)
@@ -71,15 +76,16 @@
 	{\hbox to\hsize{\hfill%
 	\sf \fontsize{13}{5}\selectfont
 	Joshua Bär,                     % E
+	Selvin Blöchlinger,		% E
 	Marc Benz,			% MSE
-	Manuel Cattaneo,		% MSE
-	Fabian Dünki%,                  % E
+	Manuel Cattaneo%,		% MSE
 	}};
 
 \node at ({\einschlag+2*\gelenk+\ruecken+1.5*\breite},17.75)
 	[color=white,scale=1]
 	{\hbox to\hsize{\hfill%
 	\sf \fontsize{13}{5}\selectfont
+	Fabian Dünki,                  % E
 	Robin Eberle,                   % E
 	Enez Erdem,                     % B
 	Nilakshan Eswararajah%,          % B
@@ -89,26 +95,27 @@
 	[color=white,scale=1]
 	{\hbox to\hsize{\hfill%
 	\sf \fontsize{13}{5}\selectfont
+	Réda Hadouche,			% E
 	David Hugentobler,              % E
 	Alain Keller,                   % E
-	Yanik Kuster,                   % E
-	Marc Kühne%,                    % B
+	Yanik Kuster%,                   % E
 	}};
  
 \node at ({\einschlag+2*\gelenk+\ruecken+1.5*\breite},16.45)
 	[color=white,scale=1]
 	{\hbox to\hsize{\hfill%
 	\sf \fontsize{13}{5}\selectfont
+	Marc Kühne%,                    % B
 	Erik Löffler,                   % E
 	Kevin Meili,                    % M-I
-	Andrea Mozzini Vellen,          % E
-	Patrick Müller%,                % MSE
+	Andrea Mozzini Vellen%,          % E
 	}};
 
 \node at ({\einschlag+2*\gelenk+\ruecken+1.5*\breite},15.8)
 	[color=white,scale=1]
 	{\hbox to\hsize{\hfill%
 	\sf \fontsize{13}{5}\selectfont
+	Patrick Müller,                % MSE
 	Naoki Pross,                    % E
 	Thierry Schwaller,              % E
 	Tim Tönz%                       % E

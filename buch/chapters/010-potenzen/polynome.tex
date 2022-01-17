@@ -78,5 +78,27 @@ numerischen Mathematik.
 % Muss später ausgedehnt werden auf Potenzreihen
 
 \subsection{Polynom-Berechnung}
-% Effiziente Berechnung von Polynomen ist zentral für die Numerik
+Die naive Berechnung der Werte eines Polynoms beginnt mit der Berechnung
+der Potenzen.
+Die Anzahl nötiger Multiplikationen kann minimiert werden, indem man
+das Polynom als
+\[
+a_nx^n
++
+a_{n+1}x^{n+1}
++
+\dots
++
+a_1x
++
+a_0
+=
+((\dots((a_nx+a_{n-1})x+a_{n-2})x+\dots )x+a_1)x+a_0
+\]
+schreibt.
+Beginnend bei der innersten Klammer sind genau $n$ Multiplikationen
+und $n+1$ Additionen nötig, im Gegensatz zu $2n$ Multiplikationen
+und $n$ Additionen bei der naiven Vorgehensweise.
+
+
 

@@ -1,0 +1,37 @@
+Finden Sie eine Potenzreihe für die Funktion
+\(
+z\mapsto \frac{1}{z}
+\)
+im Punkt $z_0\ne 0$.
+
+\begin{hinweis}
+Berechnen Sie $1/(z_0 - (z_0-z))$.
+\end{hinweis}
+
+\begin{loesung}
+Die Funktion im Hinweis kann in die Form einer geometrischen Reihe
+gebracht werden:
+\begin{align*}
+\frac{1}{z_0-(z_0-z)}
+&=
+\frac{1}{z_0}
+\cdot
+\frac{1}{1-(\frac{z_0-z}{z_0})}
+=
+\frac{1}{z_0}
+\sum_{k=0}^\infty \biggl(\frac{z_0-z}{z_0}\biggr)^k
+=
+\frac{1}{z_0}
+\sum_{k=0}^\infty \frac{(-1)^k}{z_0^k} (z-z_0)^k
+=
+\sum_{k=0}^\infty \frac{(-1)^k}{z_0^{k+1}} (z-z_0)^k.
+\end{align*}
+Die Koeffizienten der gesuchten Potenzreihe sind daher 
+\[
+a_k = \frac{(-1)^k}{z_0^{k+1}}.
+\qedhere
+\]
+\end{loesung}
+
+
+

@@ -16,6 +16,10 @@ zum Beispiel beim Design von Filtern in der Elektronik.
 Nach dem Satz von Weierstrass~\ref{buch:potenzen:satz:weierstrass}
 lässt sich jede stetige Funktion auf einem kompakten Intervall durch
 ein Polynom approximieren.
+Interpolation kann zur Konstruktion solcher approximierender Polynome
+verwendet werden, wie die folgenden Abschnitte zeigen sollen.
+Die Optimierung des Approximationsfehlers führt auf die Spezifikation
+einer interessanten Familie von Polynomen.
 
 \subsubsection{Lagrange-Interplationspolynome}
 Eine mögliche Lösung des Problems, solche approximierenden Polynome
@@ -66,6 +70,7 @@ Für $j\ne k$ enthält der Zähler von $l_j(x_k)$ den Faktor
 $(x-x_k)$, der für $x=x_k$ verschwindet.
 Daher verschwindet auch $l_j(x)$ für $x=x_k$.
 
+\index{Lagrange-Interpolationspolynom}%
 Das sogenannte {\em Lagrange-Interpolationspolynom} ist das Polynom
 \[
 p(x)
@@ -132,6 +137,7 @@ bekannt, dass die Kosinus eines Vielfachen des Winkels immer
 als Polynom des Kosinus des Winkels dargestellt werden können.
 
 \begin{definition}
+\index{Tschebyscheff-Polynom}%
 \label{buch:potenzen:def:tschebyscheff}
 Das Polynom
 \[
@@ -166,6 +172,7 @@ orthogonaler Polynome sind.
 Mit der Abkürzung $y=\arccos(x)$ oder $x=\cos(y)$ bekommt man aus
 der Definition~\label{buch:potenzen:def:tschebyscheff}
 der Tschebyscheff-Polynome
+\index{Drei-Term-Rekursion!für Tschebyscheff-Polynome}
 \begin{align*}
 xT_n(x)
 &=
@@ -183,7 +190,11 @@ x\,T_n(x)
 Auflösen nach $T_{n+1}(x)$ ergibt
 \begin{equation}
 T_{n+1}(x) = 2x\,T_n(x)-T_{n-1}(x),
-\quad T_1(x)=x, T_0(x)=1
+\quad
+\text{mit Startwerten}
+\quad T_1(x)=x,
+\quad
+T_0(x)=1.
 \label{buch:potenzen:tschebyscheff:eqn:rekursion}
 \end{equation}
 Damit können die Tschebyscheff-Polynome sehr effizient berechnet werden:
@@ -233,6 +244,7 @@ sehr effizient zu berechnen.
 \subsubsection{Multiplikationsformel}
 Aus der Definition mit Hilfe trigonometrischer Funktionen
 lässt sich auch eine Multiplikationsformel ableiten.
+\index{Multiplikationsformel}%
 
 \begin{satz}
 Es gilt

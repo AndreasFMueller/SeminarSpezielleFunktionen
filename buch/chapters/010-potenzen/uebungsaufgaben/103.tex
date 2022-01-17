@@ -1,0 +1,21 @@
+Verwenden Sie das Resultat von Aufgabe~\ref{101}, um die $k$-te Ableitung
+der Funktion $1/z$ an der Stelle $z_0$ zu berechnen.
+
+\begin{loesung}
+Die Taylor-Reihe von $f(z)=1/z$ an der Stelle $z_0$ ist
+\[
+\mathscr{T}_{z_0}f(z)
+=
+\sum_{k=0}^\infty
+\frac{f^{(k)}(z_0)}{k!}
+(z-z_0)^k
+=
+\sum_{k=0}^\infty
+\frac{(-1)^k}{z_0^{k+1}} (z-z_0)^k
+\quad\Rightarrow\quad
+f^{(k)}(z_0)
+=
+k!\frac{(-1)^k}{z_0^{k+1}}.
+\qedhere
+\]
+\end{loesung}
