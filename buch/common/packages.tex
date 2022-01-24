@@ -67,6 +67,7 @@
 \usepackage{gensymb}
 \usepackage{mathtools}
 \usepackage[many]{tcolorbox}
+\usepackage{incgraph}
 
 % import the listing styles
 \input{common/lststyles.tex}
@@ -74,3 +75,7 @@
 \usepackage{caption}
 \usepackage[mode=buildnew]{standalone}
 \usepackage[backend=bibtex]{biblatex}
+
+% set this variable to false when preparing the PDF for the printer
+\newboolean{includecover}
+\setboolean{includecover}{true}
