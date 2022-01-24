@@ -34,6 +34,11 @@ speziellefunktionen.pdf:
 		buch.pdf 1-20 \
 		../cover/back.pdf {},1
 
+SeminarSpezielleFunktionen.pdf:	SeminarSpezielleFunktionen.tex $(TEXFILES) \
+	buch.ind $(BLXFILES)
+	pdflatex buch.tex
+	bibtex buch
+
 #
 # This Makefile can also construct the short tests
 #

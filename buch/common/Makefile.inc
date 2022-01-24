@@ -16,6 +16,7 @@ images:
 	done
 
 BUCHFILES =								\
+	common/content.tex						\
 	common/macros.tex						\
 	common/lststyles.tex						\
 	common/packages.tex						\

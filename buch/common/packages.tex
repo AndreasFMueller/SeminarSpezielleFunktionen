@@ -78,4 +78,8 @@
 
 % set this variable to false when preparing the PDF for the printer
 \newboolean{includecover}
+\if0\IncludeBookCover
+\setboolean{includecover}{false}
+\else
 \setboolean{includecover}{true}
+\fi
