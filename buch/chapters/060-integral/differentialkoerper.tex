@@ -135,18 +135,459 @@ Im nächsten Abschnitt dann soll der Risch-Algorithmus skizziert werden.
 
 \subsection{Elementare Funktionen
 \label{buch:integrale:section:elementar}}
+Es soll die Frage beantwortet werden, welche Stammfunktionen sich
+in ``geschlossener Form'' oder durch ``wohlbekannte Funktionen''
+ausdrücken lassen.
+Welche Funktionen dabei als ``wohlbekannt'' gelten dürfen ist
+ziemlich willkürlich.
+Sicher möchte man Potenzen und Wurzeln, Logarithmus und Exponentialfunktion,
+aber auch die trigonometrischen Funktionen dazu zählen dürfen.
+Ausserdem will man beliebig mit den arithmetischen Operationen
+rechnen.
+So entsteht die Menge der Funktionen, die man ``elementar'' nennen
+will.
 
+In der Menge der elementaren Funktionen möchte man jetzt
+Stammfunktionen ausgewählter Funktionen suchen.
+Dazu muss man von jeder Funktion ihre Ableitung kennen.
+Die Ableitungsoperation macht aus der Funktionenmenge eine
+differentielle Algebra.
+Der Satz von Liouville (Satz~\ref{buch:integrale:satz:liouville1}) 
+liefert Bedingungen, die erfüllt sein müssen, wenn eine Funktion
+eine elementare Stammfunktion hat.
+Sind diese Bedingungen nicht erfüllbar, ist auch keine 
+elementare Stammfunktion möglich.
 
-\subsubsection{Rationale Funktionen}
+In den folgenden Abschnitten soll die differentielle Algebra
+der elementaren Funktionen konstruiert werden.
 
-\subsubsection{Wurzeln}
+\subsubsection{Körper}
+Die einfachsten Funktionen sind die die Konstanten, für die wir
+für die nachfolgenden Betrachtungen fast immer die komplexen Zahlen
+$\mathbb{C}$
+zu Grunde legen wollen.
+Dabei ist vor allem wichtig, dass sich darin alle arithmetischen
+Operationen durchführen lassen mit der einzigen Ausnahme, dass
+nicht durch $0$ dividiert werden darf.
+Man nennt $\mathbb{C}$ daher ein {\em Körper}.
+\index{Körper}%
+\label{buch:integrale:def:koerper}
 
-\subsubsection{Die trigonometrischen Funktionen}
+\subsubsection{Polynome und rationale Funktionen}
+Die Polynome einer Variablen beschreiben eine Menge von
+Funktionen, in der Addition, Subtraktion, Multiplikation
+von Funktionen und Multiplikation mit komplexen Zahlen
+uneingeschränkt möglich ist.
+Wir bezeichen wie früher die Menge der Polynome in $z$ mit
+$\mathbb{C}[z]$.
 
-\subsection{Differentielle Algebra
-\label{buch:integrale:section:dalgebra}}
+Die Division ist erst möglich, wenn man beliebige Brüche
+zulässt, deren Zähler und Nenner Polynome sind.
+Die Menge
+\[
+\mathbb{C}(z)
+=
+\biggl\{
+\frac{p(z)}{q(z)}
+\;\bigg|\;
+p,q\in \mathbb{C}[z]
+\biggr\}
+\]
+heisst die Menge der {\em rationalen Funktionen}.
+\label{buch:integrale:def:rationalefunktion}
+\index{Funktion, rationale}%
+\index{rationale Funktion}%
+In ihr sind jetzt alle arithmetischen Operationen ausführbar
+ausser natürlich die Division durch die Nullfunktion.
+Die rationalen Funktionen bilden also wieder eine Körper.
+
+Die Tatsache, dass die rationalen Funktionen einen Körper
+bilden bedeutet auch, dass die Konstruktion erneut durchgeführt
+werden kann.
+Ausgehend von einem beliebigen Körper $K$ können wieder zunächst
+die Polynome $K[X]$ und anschliesen die rationalen Funktionen $K[X]$
+in der neuen Variablen, jetzt aber mit Koeffizienten in $K$
+gebildet werden.
+So entstehen Funktionen von mehreren Variablen und, indem
+wir für die neue Variable $X$ zum Beispiel die im übernächsten
+Abschnitt betrachtete Wurzel $X=\sqrt{z}$
+einsetzen, rationale Funktionen in $z$ und $\sqrt{z}$.
+
+Solche Funktionenkörper werden im folgenden mit geschweiften
+Buchstaben $\mathscr{D}$ bezeichnet.
+\index{Funktionenkörper}%
 
 \subsubsection{Ableitungsoperation}
+In allen Untersuchungen soll immer die Ableitungsoperation
+mit berücksichtigt werden.
+In unserer Betrachtungsweise spielt es keine Rolle, dass die
+Ableitung aus einem Grenzwert entsteht, es sind nur die algebraischen
+Eigenschaften wichtig.
+Diese sind in der folgenden Definition zusammengefasst.
+
+\begin{definition}
+\label{buch:integrale:def:derivation}
+Ein {\em Ableitungsoperator} oder eine {\em Derivation} einer Algebra
+$\mathscr{D}$ von Funktionen ist eine lineare Abbildung
+\[
+\frac{d}{dz}
+\colon \mathscr{D} \to \mathscr{D}
+:
+f \mapsto \frac{df}{dz} = f',
+\]
+die zusätzlich die Produktregel
+\begin{equation}
+\frac{d}{dz} (fg)
+=
+\frac{df}{dz} \cdot g + f \cdot \frac{dg}{dz}
+\qquad\Leftrightarrow\qquad
+(fg)' = f' g + fg'
+\label{buch:integrale:eqn:produktregel}
+\end{equation}
+\index{Produktregel}%
+erfüllt.
+Die Funktion $f'\in \mathscr{D}$ heisst auch die {\em Ableitung}
+von $f\in\mathscr{D}$.
+\index{Derivation}%
+\index{Ableitungsoperator}%
+\index{Ableitung}%
+\end{definition}
+
+Die Produktregel hat zum Beispiel auch die bekannten Quotientenregel
+zur Folge.
+Dazu betrachten wir das Produkt $f= (f/g)\cdot g$ und leiten es mit
+Hilfe der Produktregel ab:
+\[
+\frac{d}{dz}f
+=
+\frac{d}{dz}
+\biggl(
+\frac{f}{g}\cdot g
+\biggr)
+=
+{\color{darkred}
+\frac{d}{dz}
+\biggl(
+\frac{f}{g}
+\biggr)}
+\cdot g
++
+\frac{f}{g}\cdot \frac{d}{dz}g.
+\]
+Jetzt lösen wir nach der {\color{darkred}roten} Ableitung des Quotienten
+auf und erhalten
+\begin{equation}
+\biggl(\frac{f}{g}\biggr)'
+=
+\frac{d}{dz}\biggl(\frac{f}{g}\biggr)
+=
+\frac1g\biggl(
+\frac{d}{dz}f - \frac{f}{g}\cdot \frac{d}{dz}g
+\biggr)
+=
+\frac{1}{g}
+\biggl(
+f'-\frac{fg'}{g}
+\biggr)
+=
+\frac{f'g-fg'}{g^2}.
+\label{buch:integrale:eqn:quotientenregel}
+\end{equation}
+Dies ist die Quotientenregel.
+
+Aus der Produktregel folgt natürlich sofort auch die Potenzregel
+für die Ableitung der $n$ten Potenz einer Funktion $f\in\mathscr{D}$, 
+sie lautet:
+\begin{equation}
+\frac{d}{dz} f^n
+= 
+\underbrace{
+f'f^{n-1} + ff'f^{n-2} + f^2f'f^{n-3}+\dots f^{n-1}f'
+}_{\displaystyle \text{$n$ Terme}}
+=
+nf^{n-1}f'.
+\label{buch:integrale:eqn:potenzregel}
+\end{equation}
+In dieser Form versteckt sich natürlich auch die Kettenregel, die
+Potenzfunktion ist die äussere Funktion, $f$ die innere, $f'$ ist also
+die Ableitung er inneren Funktion, wie in der Kettenregel verlangt.
+Falls $f$ ein Element von $\mathscr{D}$ ist mit der Eigenschaft
+$df/dz=1$, dann entsteht die übliche Produktregel.
+
+\begin{definition}
+Eine Algebra $\mathscr{D}$ von Funktionen mit einem Ableitungsoperator 
+$d/dz$ heisst eine {\em differentielle Algebra}.
+\index{differentielle Algebra}%
+\index{Algebra, differentielle}%
+In einer differentiellen Algebra gelten die üblichen
+Ableitungsregeln.
+\end{definition}
+
+Die Potenzregel war in der Form~\eqref{buch:integrale:eqn:potenzregel}
+geschrieben worden, nicht als die Ableitung von $z$.
+Der Grund dafür ist, dass wir gar nicht voraussetzen wollen, dass in
+unserer differentiellen Algebra eine Funktion existiert, die die
+Rolle von $z$ hat.
+Dies ist gar nicht nötig, wie das folgende Beispiel zeigt.
+
+\begin{beispiel}
+Als Funktionenmenge $\mathscr{D}$ nehmen wir rationale Funktionen
+in zwei Variablen, die wir $\cos x $ und $\sin x$ nennen.
+Diese Menge bezeichnen wir mit
+$\mathscr{D}=\mathbb{Q}(\cos x,\sin x)$
+Der Ableitungsoperator ist 
+\begin{align*}
+\frac{d}{dx} \cos x &= -\sin x
+\\
+\frac{d}{dx} \sin x &= \phantom{-}\cos x.
+\end{align*}
+Die Funktionen von $\mathbb{Q}(\cos x,\sin x)$ sind also Brüche,
+deren Zähler und Nenner Polynome in $\cos x$ und $\sin x$ sind.
+Aus den Produkt- und Quotientenregeln und den Ableitungsregeln für
+$\cos x$ und $\sin x$ folgt, dass die Ableitung einer Funktion in
+$\mathscr{D}$ wieder in $\mathscr{D}$ ist, $\mathscr{D}$ ist eine
+differentielle Algebra.
+\end{beispiel}
+
+Die konstanten Funktionen spielen eine besondere Rolle.
+Da wir bei der Ableitung nicht von der Vorstellung einer
+Funktion mit einem variablen Argument ausgehen wollten und 
+die Ableitung nicht als Grenzwert definieren wollten, müssen
+wir auch bei der Definition der ``Konstanten'' einen neuen
+Weg gehen.
+In der Analysis sind die Konstanten genau die Funktionen,
+deren Ableitung $0$ ist.
+
+\begin{definition}
+\label{buch:integrale:def:konstante}
+Ein Element $f\in \mathscr{D}$ mit $df/dz=f'=0$ heissen
+{\em Konstante} in $\mathscr{D}$.
+\index{Konstante}%
+\end{definition}
+
+Die in der Potenzregel~\eqref{buch:integrale:eqn:potenzregel}
+vermisste Funktion $z$ kann man ähnlich zu den Konstanten
+zu definieren versuchen.
+$z$ müsste ein Element von $\mathscr{D}$ mit $z' = 1$ sein.
+Allerdings gibt es viele solche Elemente, ist $c$ eine Konstanten
+und $z'=1$, dann ist auch $(z+c)'=1$, $(z+c)$ hat also für
+die Zwecke unserer Untersuchung die gleichen Eigenschaften wie
+$z$.
+Dies deckt sich natürlich auch mit der Erwartung, dass Stammfunktionen
+nur bis auf eine Konstante bestimmt sind.
+Eine differentielle Algebra muss allerdings kein Element $z$ mit der
+Eigenschaft $z'=1$ enthalten.
+
+\begin{beispiel}
+In $\mathscr{D}=\mathbb{Q}(\cos x,\sin x)$ gibt es kein Element $x$.
+Ein solches wäre von der Form
+\[
+x = \frac{p(\cos x,\sin x)}{q(\cos x,\sin x)}.
+\]
+Eine solche goniometrische Beziehung würde für $x=\frac{\pi}4$ bedeuten,
+dass
+\[
+\frac{\pi}4
+=
+\frac{p(\sqrt{2}/2,\sqrt{2}/2)}{q(\sqrt{2}/2,\sqrt{2}/2)}.
+\]
+Auf der rechten Seite steht ein Quotient von Polynome, in dessen
+Argument nur rationale Zahlen und $\sqrt{2}$ steht.
+So ein Ausdruck kann immer in die Form
+\[
+\pi
+=
+4\frac{a\sqrt{2}+b}{c\sqrt{2}+d}
+=
+\frac{4(a\sqrt{2}+b)(c\sqrt{2}-d)}{2c^2+d^2}
+=
+r\sqrt{2}+s
+\]
+gebracht werden.
+Die Zahl auf der rechten Seite ist zwar irrational, aber sie ist Nullstelle
+des quadratischen Polynoms
+\[
+p(x)
+=
+(x-r\sqrt{2}-s)(x+r\sqrt{2}-s)
+=
+x^2
+-2sx
+-2r^2+s^2
+\]
+mit rationalen Koeffizienten, wie man mit der Lösungsformel für die
+quadratische Gleichung nachprüfen kann.
+Es ist bekannt, dass $\pi$ als transzendente Zahl nicht Nullstelle
+eines Polynoms mit rationalen Koeffizienten ist.
+Dieser Widerspruch zeigt, dass $x$ nicht in $\mathbb{Q}(\cos x, \sin x)$
+vorkommen kann.
+\end{beispiel}
+
+In einer differentiellen Algebra kann jetzt die Frage nach der
+Existenz einer Stammfunktion gestellt werden.
+
+\begin{aufgabe}
+Gegeben eine differentielle Algebra $\mathscr{D}$ und ein Element
+$f\in\mathscr{D}$, entscheide, ob es ein Element $F\in\mathscr{D}$ 
+gibt mit der Eigenschaft $F'=f$.
+Ein solches $F\in\mathscr{D}$ heisst {\em Stammfunktion} von $f$.
+\end{aufgabe}
+
+\begin{satz}
+In einer differentiellen Algebra $\mathscr{D}$ mit $z\in\mathscr{D}$
+hat die Potenzfunktion $f=z^n$ für $n\in\mathbb{N}\setminus\{-1\}$
+ein Stammfunktion, nämlich 
+\[
+F = \frac{1}{n+1} z^{n+1}.
+\]
+\label{buch:integrale:satz:potenzstammfunktion}
+\end{satz}
+
+\begin{proof}[Beweis]
+Tatsächlich kann man dies sofort nachrechnen, muss allerdings die
+Fälle $n+1 >0$ und $n+1<0$ unterscheiden, da die Potenzregel
+\eqref{buch:integrale:eqn:potenzregel} nur für natürliche Exponenten
+gilt.
+Man erhält
+\begin{align*}
+n+1&>0\colon
+&
+\frac{d}{dz}\frac{1}{n+1}z^{n+1}
+&=
+\frac{1}{n+1}(n+1)z^{n+1-1}
+=
+z^n,
+\\
+n+1&<0\colon
+&
+\frac{d}{dz}\frac{1}{n+1}\frac{1}{z^{-(n+1)}}
+&=
+\frac{1}{n+1}\frac{1'z^{-(n+1)}-1(-(n+1))z^{-n-1-1}}{z^{-2n-2}}
+\\
+&&
+&=
+\frac{1}{n+1}
+\frac{(n+1)z^n{-n-2}}{z^{-2n-2}}
+\\
+&&
+&=
+\frac{1}{z^{-n}}=z^n.
+\end{align*}
+Man beachte, dass in dieser Rechnung nichts anderes als die
+algebraischen Eigenschaften der Produkt- und Quotientenregel
+verwendet wurden.
+\end{proof}
+
+\subsubsection{Wurzeln}
+Die Wurzelfunktionen sollen natürlich als elementare Funktionen
+erlaubt sein.
+Es ist bekannt, dass $\sqrt{z}\not\in \mathscr{D}=\mathbb{C}(z)$
+ist, ein solches Element müsste also erst noch hinzugefügt werden.
+Dabei muss auch seine Ableitung definiert werden.
+Auch dabei dürfen wir nicht auf eine Grenzwertüberlegung zurückgreifen,
+vielmehr müssen wir die Ableitung auf vollständig algebraische
+Weise bestimmen.
+
+Wir schreiben $f=\sqrt{z}$ und leiten die Gleichung $f^2=z$ nach $z$ ab.
+Dabei ergibt sich nach der Potenzregel
+\[
+\frac{d}{dz}f^2 = 2f'f = \frac{d}{dz}z=1
+\qquad\Rightarrow\qquad f' = \frac{1}{2f}.
+\]
+Diese Rechnung lässt sich auch auf $n$-Wurzeln $g=\root{n}\of{z}$ mit
+der Gleichung $g^n = z$ verallgemeinern.
+Die Ableitung der $n$-ten Wurzel ist
+\begin{equation}
+\frac{d}{dz}g^n
+=
+ng^{n-1} = \frac{d}{dz}z=1
+\qquad\Rightarrow\qquad
+\frac{d}{dz}g = \frac{1}{ng^{n-1}}.
+\end{equation}
+Es ist also möglich, eine differentielle Algebra $\mathscr{D}$ mit einer
+$n$-ten Wurzel $g$ zu einer grösseren differentiellen Algebra $\mathscr{D}(g)$
+zu erweitern, in der wieder alle Regeln für das Rechnen mit Ableitungen
+erfüllt sind.
+
+\subsubsection{Algebraische Elemente}
+% Begriff der algebraischen Funktion
+% Konjugation, Spur und Norm
+
+\subsubsection{Logarithmen und Exponentialfunktionen}
+Die Funktion $z^{-1}$ musste im
+Satz~\ref{buch:integrale:satz:potenzstammfunktion}
+ausgeschlossen werden, sie hat keine Stammfunktion in $\mathbb{C}(z)$.
+Aus der Analysis ist bekannt, dass die Logarithmusfunktion $\log z$ 
+eine Stammfunktion ist.
+Der Logarithmus von $z$ aber auch der Logarithmus $\log f(z)$
+einer beliebigen Funktion $f(z)$ oder die Exponentialfunktion $e^{f(z)}$
+sollen ebenfalls elementare Funktionen sein.
+Da wir aber auch hier nicht auf die analytischen Eigenschaften zurückgreifen
+wollen, brauchen wir ein rein algebraische Definition.
+
+\begin{definition}
+\label{buch:integrale:def:logexp}
+Sei $\mathscr{D}$ ein differentielle Algebra und $f\in\mathscr{D}$.
+Ein Element $\vartheta\in\mathscr{D}$ heisst ein {\em Logarithmus}
+von $f$, geschrieben $\vartheta = \log f$, wenn $f\vartheta' = f'$ gilt.
+$\vartheta$ heisst eine Exponentialfunktion von $f$ wenn
+$\vartheta'=\vartheta f'$ gilt.
+\end{definition}
+
+Die Formel für die Exponentialfunktion ist etwas vertrauter, sie ist
+die bekannte Kettenregel
+\begin{equation}
+\vartheta'
+=
+\frac{d}{dz} e^f
+=
+e^f \cdot \frac{d}{dz} f
+=
+\vartheta \cdot f'.
+\label{buch:integrale:eqn:exponentialableitung}
+\end{equation}
+Da wir uns vorstellen, dass Logarithmen Umkehrfunktionen von 
+Exponentialfunktionen sein sollen, 
+muss die definierende Gleichung genau wie
+\eqref{buch:integrale:eqn:exponentialableitung}
+aussehen, allerdings mit vertauschten Plätzen von $f$ und $\vartheta$,
+also 
+\begin{equation}
+\vartheta' = \vartheta\cdot f'
+\qquad
+\rightarrow
+\qquad
+f' = f\cdot \vartheta'
+\;\Leftrightarrow\;
+\vartheta' = (\log f)' = \frac{f'}{f}.
+\label{buch:integrale:eqn:logarithmischeableitung}
+\end{equation}
+Dies ist die aus der Analysis bekannte Formel für die logarithmische
+Ableitung.
+
+Der Logarithmus von $f$ und die Exponentialfunktion von $f$ sollen
+also ebenfalls als elementare Funktionen betrachtet werden.
+
+\subsubsection{Die trigonometrischen Funktionen}
+Die bekannten trigonometrischen Funktionen und ihre Umkehrfunktionen
+sollten natürlich auch elementare Funktionen sein.
+Dabei kommt uns zur Hilfe, dass sie sich mit Hilfe der Exponentialfunktion
+als
+\[
+\cos f = \frac{e^{if}+e^{-if}}2
+\qquad\text{und}\qquad
+\sin f = \frac{e^{if}-e^{-if}}{2i}
+\]
+schreiben lassen.
+Eine differentielle Algebra, die die Exponentialfunktionen von $if$ und
+$-if$ enthält, enthält also automatisch auch die trigonometrischen
+Funktionen.
+Im Folgenden ist es daher nicht mehr nötig, die trigonometrischen
+Funktionen speziell zu untersuchen.
+
+\subsection{Erweiterungen einer differentiellen Algebra
+\label{buch:integrale:section:erweiterungen}}
+
 
 \subsubsection{Logarithmen und Exponentiale}
 
