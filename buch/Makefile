@@ -14,6 +14,9 @@ include papers/common/includes.inc
 
 ALLTEXFILES = $(TEXFILES) $(CHAPTERFILES)
 
+#
+# Buchblock für Druckerei
+#
 buch.pdf:	buch.tex $(TEXFILES) buch.ind $(BLXFILES)
 	pdflatex buch.tex
 	bibtex buch
@@ -25,19 +28,27 @@ buch.idx:	buch.tex $(TEXFILES) images
 buch.ind:	buch.idx
 	makeindex buch.idx
 
+#
+# Papers in einzelne PDF-Files separieren für digitales Feedback
+#
 separate:	buch.aux buch.pdf
 	bash splitpapers
 
-speziellefunktionen.pdf:	
-	pdfjam --outfile speziellefunktionen.pdf \
-		../cover/front.pdf 1,{} \
-		buch.pdf 1-20 \
-		../cover/back.pdf {},1
-
+#
+# Version mit Buchdeckeln für Release/Website
+#
 SeminarSpezielleFunktionen.pdf:	SeminarSpezielleFunktionen.tex $(TEXFILES) \
-	buch.ind $(BLXFILES)
-	pdflatex buch.tex
-	bibtex buch
+	SeminarSpezielleFunktionen.ind $(BLXFILES)
+	pdflatex SeminarSpezielleFunktionen.tex
+	bibtex SeminarSpezielleFunktionen
+
+SeminarSpezielleFunktionen.idx:	SeminarSpezielleFunktionen.tex $(TEXFILES) \
+	images
+	touch SeminarSpezielleFunktionen.ind
+	pdflatex SeminarSpezielleFunktionen.tex
+
+SeminarSpezielleFunktionen.ind:	SeminarSpezielleFunktionen.idx
+	makeindex SeminarSpezielleFunktionen
 
 #
 # This Makefile can also construct the short tests
