@@ -510,7 +510,130 @@ zu erweitern, in der wieder alle Regeln für das Rechnen mit Ableitungen
 erfüllt sind.
 
 \subsubsection{Algebraische Elemente}
-% Begriff der algebraischen Funktion
+Die Charakterisierung der Wurzelfunktionen passt zwar zum verlangten
+algebraischen Vorgehen, ist aber zu spezielle und nicht gut für die
+nachfolgenden Untersuchengen geeignet.
+Etwas allgemeiner ist der Begriff der algebraischen Elemente.
+
+\begin{definition}
+\label{buch:integrale:def:algebraisches-element}
+Seien $K\subset L$ zwei Körper.
+Ein Element $\alpha \in L$ heisst {\em algebraisch} über $K$,
+wenn $\alpha$ Nullstelle eines Polynoms $p\in K[X]$ mit Koeffizienten
+in $K$ ist.
+\index{algebraisch}%
+\end{definition}
+
+Jedes Element $\alpha\in K$ ist algebraisch, da $\alpha$ Nullstelle
+von $X-\alpha\in K[X]$ ist.
+Die $n$tem Wurzeln eines Elemente $\alpha\in K$ sind ebenfalls algebraisch,
+da sie Nullstellen des Polynoms $p(X) = X^n - \alpha$ sind.
+Allerdings ist nicht klar, dass diese Wurzeln überhaupt existieren.
+Nach dem Satz von Abel~\ref{buch:potenzen:satz:abel} gibt es aber
+Nullstellen von Polynomen, die sich nicht als Wurzelausdrücke schreiben
+lassen.
+Der Begriff der algebraischen Elemente ist also allgemeiner als der
+Begriff der Wurzel.
+
+\begin{definition}
+\label{buch:integrale:def:algebraisch-abgeschlossen}
+Ein Körper $K$ heisst {\em algebraisch abgeschlossen}, wenn jedes Polynom mit
+Koeffizienten in $K$ eine Nullstelle in $K$ hat.
+\end{definition}
+
+Der Körper $\mathbb{C}$ ist nach dem
+Fundamentalsatz~\label{buch:potenzen:satz:fundamentalsatz}
+der Algebra algebraisch abgeschlossen.
+Da wir aber mit Funktionen arbeiten, müssen wir auch Wurzeln
+von Funktionen finden können.
+Dies ist nicht selbstverständlich, wie das folgende Beispiel zeigt.
+
+\begin{beispiel}
+Es gibt keine stetige Funktion $f\colon \mathbb{C}\to\mathbb{C}$, die
+die Gleichung $f(z)^2 = z$ und $f(1)=1$ erfüllt.
+Für die Argumente $z(t)= e^{it}$ folgt, dass $f(z(t)) = e^{it/2}$ sein
+muss.
+Setzt man aber $t=\pm \pi$ ein, ergeben sich die Werte
+$f(z(\pm\pi))=e^{\pm i\pi/2}=\pm 1$, die beiden Grenzwerte
+für $t\to\pm\pi$ sind also verschieden.
+\end{beispiel}
+
+Die Mathematik hat verschiedene ``Tricks'' entwickelt, wie mit diesem
+Problem umgegangen werden kann: Funktionskeime, Garben, Riemannsche
+Flächen.
+Sie sind alle gleichermassen gut geeignet, das Problem zu lösen.
+Für die vorliegende Aufgabe genügt es aber, dass es tatsächlich
+immer ein wie auch immer geartetes Element gibt, welches Nullstelle
+des Polynoms ist.
+
+Ist $f$ eine Nullstelle des Polynoms $p(X)$ mit Koeffizienten in
+$\mathscr{D}$, dann kann man die Ableitung wie folgt berechnen.
+Zunächst leitet man $p(f)$ ab:
+\begin{align}
+0&=
+\frac{d}{dz}(a_nf^n + a_{n-1}f^{n-1}+\ldots+a_1f+a_0)
+\notag
+\\
+&=
+a_n'f^n + a_{n-1}'f^{n-1}+\ldots+a_1'f+a_0'
++
+na_nf^{n-1}f'
++
+(n-1)a_nf^{n-2}f'
++
+\ldots
++
+a_2ff'
++
+a_1f'
+\notag
+\\
+&=
+a_n'f^n + a_{n-1}'f^{n-1}+\ldots+a_1'f+a_0'
++
+(
+na_nf^{n-1}
++
+(n-1)a_nf^{n-2}
++
+\ldots
++
+a_2f
++
+a_1
+)f'
+\notag
+\\
+\Rightarrow
+\qquad
+f'&=\frac{
+a_n'f^n + a_{n-1}'f^{n-1}+\dots+a_1'f+a_0'
+}{
+na_nf^{n-1}
++
+(n-1)a_nf^{n-2}
++
+\dots
++
+a_1
+}.
+\label{buch:integrale:eqn:algabl}
+\end{align}
+Das einzige, was dabei schief gehen könnte ist, dass der Nenner ebenfalls
+verschwindet.
+Dieses Problem kann man dadurch lösen, dass man als Polynom das
+sogenannte Minimalpolynom verwendet.
+
+\begin{definition}
+Das {\em Minimalpolynome} $m(X)$ eines algebraischen Elementes $\alpha$ ist
+das Polynom kleinsten Grades, welches $m(\alpha)=0$ erfüllt.
+\end{definition}
+
+Da das Minimalpolynom den kleinstmöglichen Grad hat, kann der Nenner
+von~\eqref{buch:integrale:eqn:algabl},
+der noch kleineren Grad hat, unmöglich verschwinden.
+
+\subsubsection{Konjugation, Spur und Norm}
 % Konjugation, Spur und Norm
 
 \subsubsection{Logarithmen und Exponentialfunktionen}
@@ -588,10 +711,11 @@ Funktionen speziell zu untersuchen.
 \subsection{Erweiterungen einer differentiellen Algebra
 \label{buch:integrale:section:erweiterungen}}
 
+\subsubsection{Monome}
 
-\subsubsection{Logarithmen und Exponentiale}
+\subsubsection{Ableitungen von Polynomen und rationalen Funktionen von Monomen}
 
-\subsubsection{Elementare Körpererweiterungen}
+\subsubsection{Partialbruchzerlegungen}
 
 \subsection{Der Satz von Liouville
 \label{buch:integrale:section:liouville}}
