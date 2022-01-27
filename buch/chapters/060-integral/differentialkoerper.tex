@@ -427,6 +427,7 @@ In einer differentiellen Algebra kann jetzt die Frage nach der
 Existenz einer Stammfunktion gestellt werden.
 
 \begin{aufgabe}
+\label{buch:integrale:aufgabe:existenz-stammfunktion}
 Gegeben eine differentielle Algebra $\mathscr{D}$ und ein Element
 $f\in\mathscr{D}$, entscheide, ob es ein Element $F\in\mathscr{D}$ 
 gibt mit der Eigenschaft $F'=f$.
@@ -632,9 +633,139 @@ das Polynom kleinsten Grades, welches $m(\alpha)=0$ erfüllt.
 Da das Minimalpolynom den kleinstmöglichen Grad hat, kann der Nenner
 von~\eqref{buch:integrale:eqn:algabl},
 der noch kleineren Grad hat, unmöglich verschwinden.
+Das Minimalpolynom ist auch im wesentlichen eindeutig.
+Gäbe es nämlich zwei verschiedene Minimalpolynome $m_1$ und $m_2$,
+dann müsste $\alpha$ auch eine Nullstelle des grössten gemeinsamen
+Teilers $m_3=\operatorname{ggT}(m_1,m_2)$ sein.
+Wären die beiden Polynome wesentlich verschieden, dann hätte $m_3$
+kleineren Grad, im Widerspruch zur Definition des Minimalpolynoms.
+Also unterscheiden sich die beiden Polynome $m_1$ und $m_2$ nur um
+einen skalaren Faktor.
 
 \subsubsection{Konjugation, Spur und Norm}
 % Konjugation, Spur und Norm
+Das Minimalpolynom eines algebraischen Elementes ist nicht
+eindeutig bestimmt.
+Zum Beispiel ist $\sqrt{2}$ algebraisch über $\mathbb{Q}$, das
+Minimalpolynom ist $m(X)=X^2-2\in\mathbb{Q}[X]$. 
+Es hat aber noch eine zweite Nullstelle $-\sqrt{2}$.
+Mit rein algebraischen Mitteln sind die beiden Nullstellen $\pm\sqrt{2}$
+nicht zu unterscheiden, erst die Verwendung der Vergleichsrelation
+ermöglicht, sie zu unterscheiden.
+
+Dasselbe gilt für die imaginäre Einheit $i$, die das Minimalpolynom
+$m(X)=X^2+1\in\mathbb{R}[X]$ hat.
+Hier gibt es nicht einmal mehr eine Vergleichsrelation, mit der man
+die beiden Nullstellen unterscheiden könnte.
+In der Tat ändert sich aus algebraischer Sicht nichts, wenn man in
+allen Formeln $i$ durch $-i$ ersetzt.
+
+Etwas komplizierter wird es bei $\root{3}\of{2}$.
+Das Polynom $m=x^3-2\in\mathbb{Q}[X]$ hat $\root{3}\of{2}$ als
+Nullstelle und dies ist auch tatsächlich das Minimalpolynom.
+Das Polynom hat noch zwei weitere Nullstellen
+\[
+\alpha_+ = \frac{-1+i\sqrt{3}}{2}\root{3}\of{2}
+\qquad\text{und}\qquad
+\alpha_- = \frac{-1-i\sqrt{3}}{2}\root{3}\of{2}.
+\]
+Die beiden Lösungen gehen durch die Vertauschung von $i$ und $-i$ 
+auseinander hervor.
+Betrachtet man dasselbe Polynom aber als Polynom in $\mathbb{R}[X]$,
+dann ist es nicht mehr das Minimalpolynom von $\root{3}\of{2}$, da
+$X-\root{3}\of{2}\in\mathbb{R}[X]$ kleineren Grad und $\root{3}\of{2}$
+als Nullstelle hat.
+Indem man
+\[
+m(X)/(X-\root{3}\of{2})=X^2+\root{3}\of{2}X+\root{3}\of{2}^2=m_2(X)
+\]
+rechnet, bekommt man das Minimalpolynom der beiden Nullstellen $\alpha_+$
+und $\alpha_-$.
+Wir lernen aus diesen Beispielen, dass das Minimalpolynom vom Grundkörper
+abhängig ist (Die Faktorisierung $(X-\root{3}\of{2})\cdot m_2(X)$ von
+$m(X)$ ist in $\mathbb{Q}[X]$ nicht möglich) und dass wir keine 
+algebraische Möglichkeit haben, die verschiedenen Nullstellen des
+Minimalpolynoms zu unterscheiden.
+
+Die beiden Nullstellen $\alpha_+$ und $\alpha_-$ des Polynoms $m_2(X)$
+erlauben, $m_2(X)=(X-\alpha_+)(X-\alpha_-)$ zu faktorisieren.
+Durch Ausmultiplizieren
+\[
+(X-\alpha_+)(X-\alpha_-)
+=
+X^2 -(\alpha_++\alpha_-)X+\alpha_+\alpha_-
+\]
+und Koeffizientenvergleich mit $m_2(X)$ findet man die symmetrischen 
+Formeln
+\[
+\alpha_+ + \alpha_- = \root{3}\of{2}
+\qquad\text{und}\qquad
+\alpha_+ \alpha_ = \root{3}\of{2}.
+\]
+Diese Ausdrücke sind nicht mehr abhängig von einer speziellen Wahl
+der Nullstellen.
+
+Das Problem verschärft sich nocheinmal, wenn wir Funktionen betrachten.
+Das Polynom $m(X)=X^3-z$ ist das Minimalpolynom der Funktion $\root{3}\of{z}$.
+Die komplexe Zahl $z=re^{i\varphi}$ hat aber drei die algebraisch nicht
+unterscheidbaren Nullstellen 
+\[
+\alpha_0(z)=\root{3}\of{r}e^{i\varphi/3},
+\quad
+\alpha_1(z)=\root{3}\of{r}e^{i\varphi/3+2\pi/3}
+\qquad\text{und}\qquad
+\alpha_2(z)=\root{3}\of{r}e^{i\varphi/3+4\pi/3}.
+\]
+Aus der Faktorisierung $ (X-\alpha_0(z)) (X-\alpha_1(z)) (X-\alpha_2(z))$
+und dem Koeffizientenvergleich mit dem Minimalpolynom kann man wieder
+schliessen, dass die Relationen
+\[
+\alpha_0(z) + \alpha_1(z) + \alpha_2(z)=0
+\qquad\text{und}\qquad
+\alpha_0(z)  \alpha_1(z) \alpha_2(z) = z
+\]
+gelten.
+
+Wir können also oft keine Aussagen über individuelle Nullstellen
+eines Minimalpolynoms machen, sondern nur über deren Summe oder
+Produkt.
+
+\begin{definition}
+\index{buch:integrale:def:spur-und-norm}
+Sie $m(X)\in K[X]$ das Minimalpolynom eines über $K$ algebraischen
+Elements und
+\[
+m(X) = a_nX^n + a_{n-1}X^{n-1} + \ldots + a_1X + a_0.
+\]
+Dann heissen
+\[
+\operatorname{Tr}(\alpha) = -a_{n-1}
+\qquad\text{und}\qquad
+\operatorname{Norm}(\alpha) = (-1)^n a_0
+\]
+die {\em Spur} und die {\em Norm} des Elementes $\alpha$.
+\index{Spur eines algebraischen Elementes}%
+\index{Norm eines algebraischen Elementes}%
+\end{definition}
+
+Die Spur und die Norm können als Spur und Determinante einer Matrix
+verstanden werden, diese allgemeineren Definitionen, die man in der
+Fachliteratur, z.~B.~in~\cite{buch:lang} nachlesen kann, führen aber
+für unsere Zwecke zu weit.
+
+\begin{hilfssatz}
+Die Ableitungen von Spur und Norm sind
+\[
+\operatorname{Tr}(\alpha)'
+=
+\operatorname{Tr}(\alpha')
+\qquad\text{und}\qquad
+\operatorname{Norm}(\alpha)'
+=
+\operatorname{Tr}(\alpha)'
+\]
+XXX Wirklich?
+\end{hilfssatz}
 
 \subsubsection{Logarithmen und Exponentialfunktionen}
 Die Funktion $z^{-1}$ musste im
@@ -708,12 +839,392 @@ Funktionen.
 Im Folgenden ist es daher nicht mehr nötig, die trigonometrischen
 Funktionen speziell zu untersuchen.
 
-\subsection{Erweiterungen einer differentiellen Algebra
-\label{buch:integrale:section:erweiterungen}}
+\subsubsection{Elementare Funktionen}
+Damit sind wir nun in der Lage, den Begriff der elementaren Funktion
+genau zu fassen.
+
+\begin{definition}
+\label{buch:integrale:def:einfache-elementare-funktion}
+Sie $\mathscr{D}$ eine differentielle Algebra über $\mathbb{C}$ und
+$\mathscr{D}(\vartheta)$ eine Erweiterung von $\mathscr{D}$ um eine
+neue Funktion $\vartheta$, dann heissen $\vartheta$ und die Elemente
+von $\mathscr{D}(\vartheta)$ einfach elementar, wenn eine der folgenden
+Bedingungen erfüllt ist:
+\begin{enumerate}
+\item $\vartheta$ ist algebraisch über $\mathscr{D}$, d.~h.~$\vartheta$
+ist eine ``Wurzel''.
+\item $\vartheta$ ist ein Logarithmus einer Funktion in $\mathscr{D}$,
+d.~h.~es gibt $f\in \mathscr{D}$ mit $f'=f\vartheta'$
+(Definition~\ref{buch:integrale:def:logexp}).
+\item $\vartheta$ ist eine Exponentialfunktion einer Funktion in $\mathscr{D}$,
+d.~h.~es bit $f\in\mathscr{D}$ mit $\vartheta'=\vartheta f'$
+(Definition~\ref{buch:integrale:def:logexp}).
+\end{enumerate}
+\end{definition}
+
+Einfache elementare Funktionen entstehen also ausgehend von einer 
+differentiellen Algebra, indem man genau einmal eine Wurzel, einen
+Logarithmus oder eine Exponentialfunktion hinzufügt.
+So etwas wie die zusammengesetzte Funktion $e^{\sqrt{z}}$ ist
+damit noch nicht möglich.
+Daher erlauben wir, dass man die gesuchten Funktionen in mehreren
+Schritten aufbauen kann.
+
+\begin{definition}
+Sei $\mathscr{F}$ eine differentielle Algebra, die die differentielle
+Algebra $\mathscr{D}$ enthält, also $\mathscr{D}\subset\mathscr{F}$.
+$\mathscr{F}$ und die Elemente von $\mathscr{F}$ heissen einfach,
+wenn es endlich viele Elemente $\vartheta_1,\dots,\vartheta_n$ gibt
+derart, dass
+\[
+\renewcommand{\arraycolsep}{2pt}
+\begin{array}{ccccccccccccc}
+\mathscr{D}
+&\subset&
+\mathscr{D}(\vartheta_1)
+&\subset&
+\mathscr{D}(\vartheta_1,\vartheta_2)
+&\subset&
+\;
+\cdots
+\;
+&\subset&
+\mathscr{D}(\vartheta_1,\vartheta_2,\dots,\vartheta_{n-1})
+&\subset&
+\mathscr{D}(\vartheta_1,\vartheta_2,\dots,\vartheta_{n-1},\vartheta_n)
+&=&
+\mathscr{F}
+\\
+\|
+&&
+\|
+&&
+\|
+&&
+&&
+\|
+&&
+\|
+&&
+\\
+\mathscr{F}_0
+&\subset&
+\mathscr{F}_1
+&\subset&
+\mathscr{F}_2
+&\subset&
+\cdots
+&\subset&
+\mathscr{F}_{n-1}
+&\subset&
+\mathscr{F}_{n\mathstrut}
+&&
+\end{array}
+\]
+gilt so, dass jedes $\vartheta_{i+1}$ einfach ist über 
+$\mathscr{F}_i=\mathscr{D}(\vartheta_1,\dots,\vartheta_i)$.
+\end{definition}
+
+In Worten bedeutet dies, dass man den Funktionen von $\mathscr{D}$ 
+nacheinander Wurzeln, Logarithmen oder Exponentialfunktionen einzelner
+Funktionen hinzufügt.
+Die Aufgabe~\ref{buch:integrale:aufgabe:existenz-stammfunktion} kann
+jetzt so formuliert werden.
+
+\begin{aufgabe}
+\label{buch:integrale:aufgabe:existenz-stammfunktion-dalg}
+Gegeben ist eine Differentielle Algebra $\mathscr{D}$ und eine
+Funktion $f\in \mathscr{D}$.
+Gibt es eine Folge $\vartheta_1,\dots,\vartheta_n$ und eine Funktion
+$F\in\mathscr{D}(\vartheta_1,\dots,\vartheta_n)$ derart, dass
+$F'=f$.
+\end{aufgabe}
+
+Das folgende Beispiel zeigt, wie man möglicherweise mehrere 
+Erweiterungsschritte vornehmen muss, um zu einer Stammfunktion
+zu kommen.
+Es illustriert auch die zentrale Rolle, die der Partialbruchzerlegung
+in der weiteren Entwicklung zukommen wird.
+
+\begin{beispiel}
+\label{buch:integrale:beispiel:nichteinfacheelementarefunktion}
+Es soll eine Stammfunktion der Funktion
+\[
+f(z)
+=
+\frac{z}{(az+b)(cz+d)}
+\in
+\mathbb{C}(z)
+\]
+gefunden werden.
+In der Analysis lernt man, dass solche Integrale mit der
+Partialbruchzerlegung 
+\[
+\frac{z}{(az+b)(cz+d)}
+=
+\frac{A_1}{az+b}+\frac{A_2}{cz+d}
+=
+\frac{A_1cz+A_1d+A_2az+A_2b}{(az+b)(cz+d)}
+\quad\Rightarrow\quad
+\left\{
+\renewcommand{\arraycolsep}{2pt}
+\begin{array}{rcrcr}
+cA_1&+&aA_2&=&1\\
+dA_1&+&bA_2&=&0
+\end{array}
+\right.
+\]
+bestimmt werden.
+Die Lösung des Gleichungssystems ergibt
+$A_1=b/(bc-ad)$ und $A_2=d/(ad-bc)$.
+Die Stammfunktion kann dann aus
+\begin{align*}
+\int f(z)\,dz
+&=
+\int\frac{A_1}{az+b}\,dz
++
+\int\frac{A_2}{cz+d}\,dz
+=
+\frac{A_1}{a}\int\frac{a}{az+b}\,dz
++
+\frac{A_2}{c}\int\frac{c}{cz+d}\,dz
+\end{align*}
+bestimmt werden.
+In den Integralen auf der rechten Seite ist der Zähler jeweils die
+Ableitung des Nenners, der Integrand hat also die Form $g'/g$.
+Genau diese Form tritt in der Definition eines Logarithmus auf.
+Die Stammfunktion ist jetzt
+\[
+F(z)
+=
+\int f(z)\,dz
+=
+\frac{A_1}{a}\log(az+b)
++
+\frac{A_2}{c}\log(cz+d)
+=
+\frac{b\log(az+b)}{a(bc-ad)}
++
+\frac{d\log(cz+d)}{c(ad-bc)}.
+\]
+Die beiden Logarithmen kann man nicht durch rein rationale Operationen
+ineinander überführen.
+Sie müssen daher beide der Algebra $\mathscr{D}$ hinzugefügt werden.
+\[
+\left.
+\begin{aligned}
+\vartheta_1&=\log(az+b)\\
+\vartheta_2&=\log(cz+d)
+\end{aligned}
+\quad
+\right\}
+\qquad\Rightarrow\qquad
+F(z) \in \mathscr{F}=\mathscr{D}(\vartheta_1,\vartheta_2).
+\]
+Die Stammfunktion $F(z)$ ist also keine einfache elementare Funktion,
+aber $F$ ist immer noch eine elementare Funktion.
+\end{beispiel}
+
+\subsection{Partialbruchzerlegung
+\label{buch:integrale:section:partialbruchzerlegung}}
+Die Konstruktionen des letzten Abschnitts haben gezeigt,
+wie man die Funktionen, die man als Stammfunktionen einer Funktion
+zulassen möchte, schrittweise konstruieren kann.
+Die Aufgabe~\ref{buch:integrale:aufgabe:existenz-stammfunktion-dalg}
+ist eine rein algebraische Formulierung der ursprünglichen
+Aufgabe~\ref{buch:integrale:aufgabe:existenz-stammfunktion}.
+Schliesslich hat das Beispiel auf
+Seite~\pageref{buch:integrale:beispiel:nichteinfacheelementarefunktion}
+gezeigt, dass es im allgemeinen mehrere Schritte braucht, um zu einer
+elementaren Stammfunktion zu gelangen.
+Die Lösung setzt sich aus den Termen der Partialbruchzerlegung.
+In diesem Abschnitt soll diese genauer studiert werden.
+
+In diesem Abschnitt gehen wir immer von einer differentiellen
+Algebra über den komplexen Zahlen aus und verlangen, dass die
+Konstanten in allen betrachteten differentiellen Algebren
+$\mathbb{C}$ sind.
 
 \subsubsection{Monome}
+Die beiden Funktionen $\vartheta-1=\log(az+b)$ und $\vartheta_2=(cz+d)$,
+die im Beispiel hinzugefügt werden mussten, verhalten sich ich algebraischer
+Hinsicht wie ein Monom: man kann es nicht faktorisieren oder bereits
+bekannte Summanden aufspalten.
+Solchen Funktionen kommt eine besondere Bedeutung zu.
+
+\begin{definition}
+\label{buch:integrale:def:monom}
+Die Funktion $\vartheta$ heisst ein Monom, wenn $\vartheta$ nicht
+algebraisch ist über $\mathscr{D}$ und $\mathscr{D}(\vartheta)$ die
+gleichen Konstanten enthält wie $\mathscr{D}$.
+\end{definition}
+
+\begin{beispiel}
+Als Beispiel beginnen wir mit den komplexen Zahlen $\mathbb{C}$
+und fügen die Funktion $\vartheta_1=z$ hinzu und erhalten
+$\mathscr{D}=\mathbb{C}(z)$.
+Die Funktionen $z^k$ sind für alle $k$ linear unabhängig, d.~h.~es
+gibt keinen Ausdruck
+\[
+a_nz^n + a_{n-1}z^{n-1}+\cdots+a_1z+a_0=0.
+\]
+Dies ist gleichbedeutend damit, dass $z$ nicht algebraisch ist.
+Das Monom $z$ ist also auch ein Monom im Sinne der
+Definition~\ref{buch:integrale:def:monom}.
+\end{beispiel}
+
+\begin{beispiel}
+Wir beginnen wieder mit $\mathbb{C}$ und fügen die Funktion
+$e^z$ hinzu.
+Gäbe es eine Beziehung
+\[
+b_m(e^z)^m + b_{m-1}(e^z)^{m-1}+\dots+b_1e^z + b_0=0
+\]
+mit komplexen Koeffizienten $b_i\in\mathbb{C}$,
+dann würde daraus durch Einsetzen von $z=1$ die Relation
+\[
+b_me^m + b_{m-1}e^{m-1} + \dots + b_1e + b_0=0,
+\]
+die zeigen würde, dass $e$ eine algebraische Zahl ist.
+Es ist aber bekannt, dass $e$ transzendent ist.
+Dieser Widersprich zeigt, dass $e^z$ ein Monom ist.
+\end{beispiel}
+
+\begin{beispiel}
+Jetzt fügen wir die Exponentialfunktion $\vartheta_2=e^z$
+der differentiellen Algebra $\mathscr{D}=\mathbb{C}(z)$ hinzu
+und erhalten $\mathscr{F}_1=\mathscr{D}(e^z) = \mathbb{C}(z,e^z)$.
+Gäbe es das Minimalpolynom 
+\begin{equation}
+b_m(z)(e^z)^m + b_{m-1}(z)(e^z)^{m-1}+\dots+b_1(z)e^z + b_0(z)=0
+\label{buch:integrale:beweis:exp-analytisch}
+\end{equation}
+mit Koeffizienten $b_i\in\mathbb{C}(z)$, dann könnte man mit dem
+gemeinsamen Nenner der Koeffizienten durchmultiplizieren und erhielte
+eine Relation~\eqref{buch:integrale:beweis:exp-analytisch} mit
+Koeffizienten in $\mathbb{C}[z]$.
+Dividiert man durch $e^{mz}$ erhält man
+\[
+b_m(z) + b_{m-1}(z)\frac{1}{e^z} + \dots + b_1(z)\frac{1}{(e^z)^{m-1}} + b_0(z)\frac{1}{(e^z)^m}=0.
+\]
+Aus der Analysis weiss man, dass die Exponentialfunktion schneller
+anwächst als jedes Polynom, alle Terme auf der rechten Seite
+konvergieren daher gegen 0 für $z\to\infty$.
+Das bedeutet, dass $b_m(z)\to0$ für $z\to \infty$.
+Das Polynom~\eqref{buch:integrale:beweis:exp-analytisch} wäre also gar
+nicht das Minimalpolynom.
+Dieser Widerspruch zeigt, dass $e^z$ nicht algebraisch ist über
+$\mathbb{C}(z)$ und damit ein Monom ist\footnote{Etwas unbefriedigend
+an diesem Argument ist, dass man hier wieder rein analytische statt
+algebraische Eigenschaften von $e^z$ verwendet.
+Gäbe es aber eine minimale Relation wie
+\eqref{buch:integrale:beweis:exp-analytisch}
+mit Polynomkoeffizienten, dann wäre sie von der Form
+\[
+P(z,e^z)=p(z)(e^z)^m + q(z,e^z)=0,
+\]
+wobei Grad von $e^z$ in $q$ höchstens $m-1$ ist.
+Die Ableitung wäre dann
+\[
+Q(z,e^z)
+=
+mp(z)(e^z)^m + p'(z)(e^z)^m + r(z,e^z)
+=
+(mp(z) + p'(z))(e^z)^m + r(z,e^z)
+=0,
+\]
+wobei der Grad von $e^z$ in $r$ wieder höchstens $m-1$ ist.
+Bildet man $mP(z,e^z) - Q(z,e^z) = 0$ ensteht eine Relation,
+in der der Grad des Koeffizienten von $(e^z)^m$ um eins abgenommen hat.
+Wiederholt man dies $m$ mal, verschwindet der Term $(e^z)^m$, die
+Relation~\eqref{buch:integrale:beweis:exp-analytisch}
+war also gar nicht minimal.
+Dieser Widerspruch zeigt wieder, dass $e^z$ nicht algebraisch ist,
+verwendet aber nur die algebraischen Eigenschaften der differentiellen
+Algebra.
+}.
+\end{beispiel}
+
+\begin{beispiel}
+Wir hätten auch in $\mathbb{Q}$ arbeiten können und $\mathbb{Q}$
+erst die Exponentialfunktion $e^z$ und dann den Logarithmus $z$ von $e^z$
+hinzufügen können.
+Es gibt aber noch weitere Logarithmen von $e^z$ zum Beispiel $z+2\pi i$.
+Offenbar ist $\psi=z+2\pi i\not\in \mathbb{Q}(z,e^z)$, wir könnten also
+auch noch $\psi$ hinzufügen.
+Zwar ist $\psi$ auch nicht algebraisch, aber wenn wir $\psi$ hinzufügen,
+dann wird aber die Menge der Konstanten grösser, sie umfasst jetzt
+$\mathbb{Q}(2\pi i)$.
+Die Bedingung in der Definition~\ref{buch:integrale:def:monom},
+dass die Menge der Konstanten nicht grösser werden darf, ist also
+verletzt.
+
+Hätte man mit $\mathbb{Q}(e^z, z+2\pi i)$ begonnen, wäre $z$ aus
+dem gleichen Grund kein Monom, aber $z+2\pi i$ wäre eines im Sinne
+der Definition~\ref{buch:integrale:def:monom}.
+In allen Rechnungen könnte man $\psi=z+2\pi i$ nicht weiter aufteilen,
+da $\pi$ oder seine Potenzen keine Elemente von $\mathbb{Q}(e^z)$ sind.
+\end{beispiel}
+
+Da wir im Folgenden davon ausgehen, dass die Konstanten unserer
+differentiellen Körper immer $\mathbb{C}$ sind, wird es jeweils
+genügen zu untersuchen, ob eine neu hinzuzufügende Funktion algebraisch
+ist oder nicht.
 
 \subsubsection{Ableitungen von Polynomen und rationalen Funktionen von Monomen}
+Fügt man einer differentiellen Algebra ein Monom hinzu, dann lässt
+sich etwas mehr über Ableitungen von Polynomen oder Brüchen in diesen
+Monomen sagen.
+Diese Eigenschaften werden später bei der Auflösung der Partialbruchzerlegung
+nützlich sein.
+
+\begin{satz}
+Sei
+\[
+P
+=
+A_nX^n + A_{n-1}X^{n-1} + \dots A_1X+A_0
+\in\mathscr{D}[X]
+\]
+ein Polynom mit Koeffizienten in einer differentiellen Algebra $\mathscr{D}$
+und $\vartheta$ ein Monom über $\mathscr{D}$.
+Dann gilt
+\begin{enumerate}
+\item
+Falls $\vartheta=\log f$ ist, ist $P(\vartheta)'$ genau dann ein
+Polynom vom Grad $n$ in $\vartheta$, wenn der Leitkoeffizient $A_n$
+nicht konstant ist.
+\item
+Falls $\vartheta = \exp f$ ist, ist $P(\vartheta)'$ ein Polynom
+in $\vartheta$ vom Grad $n$.
+\end{enumerate}
+\end{satz}
+
+\begin{proof}[Beweis]
+Für Exponentialfunktion ist $\vartheta'=\vartheta f'$, die Ableitung
+fügt also einfach einen Faktor $f'$ hinzu.
+Terme der Form $A_k\vartheta^k$ haben die Ableitung
+\[
+(A_k\vartheta^k)
+=
+A'_k\vartheta^k + A_kk\vartheta^{k-1}\vartheta'
+=
+A'_k\vartheta^k + A_kk\vartheta^{k-1}\vartheta f'
+=
+(A'_k + kA_k f)\vartheta^k
+\]
+Damit wird die Ableitung von $P(\vartheta)$
+\[
+P(\vartheta)'
+=
+(A'_n+nA_nf')\vartheta^n
++
+(A'_{n-1}+(n-1)A_{n-1}f')\vartheta^{n-1}
++ \dots + 
+(A'-1+A_1f')\vartheta + A_0'.
+\]
+Der Grad der Ableitung kann sich also nur ändern, wenn $A_n'+nA_nf'=0$ ist.
+\end{proof}
 
 \subsubsection{Partialbruchzerlegungen}
 
