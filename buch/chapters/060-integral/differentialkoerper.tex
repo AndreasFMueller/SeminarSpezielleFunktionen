@@ -1179,6 +1179,7 @@ Diese Eigenschaften werden später bei der Auflösung der Partialbruchzerlegung
 nützlich sein.
 
 \begin{satz}
+\label{buch:integrale:satz:polynom-ableitung-grad}
 Sei
 \[
 P
@@ -1191,14 +1192,19 @@ und $\vartheta$ ein Monom über $\mathscr{D}$.
 Dann gilt
 \begin{enumerate}
 \item
-Falls $\vartheta=\log f$ ist, ist $P(\vartheta)'$ genau dann ein
+\label{buch:integrale:satz:polynom-ableitung-grad-log}
+Falls $\vartheta=\log f$ ist, ist $P(\vartheta)'$ ein
 Polynom vom Grad $n$ in $\vartheta$, wenn der Leitkoeffizient $A_n$
-nicht konstant ist.
+nicht konstant ist, andernfalls ein Polynom vom Grad $n-1$.
 \item
-Falls $\vartheta = \exp f$ ist, ist $P(\vartheta)'$ ein Polynom
+\label{buch:integrale:satz:polynom-ableitung-grad-exp}
+Falls $\vartheta = \exp f$ ist, dann ist $P(\vartheta)'$ ein Polynom
 in $\vartheta$ vom Grad $n$.
 \end{enumerate}
 \end{satz}
+
+Der Satz macht also genaue Aussagen darüber, wie sich der Grad eines
+Polynoms in $\vartheta$ beim Ableiten ändert.
 
 \begin{proof}[Beweis]
 Für Exponentialfunktion ist $\vartheta'=\vartheta f'$, die Ableitung
@@ -1211,25 +1217,480 @@ A'_k\vartheta^k + A_kk\vartheta^{k-1}\vartheta'
 =
 A'_k\vartheta^k + A_kk\vartheta^{k-1}\vartheta f'
 =
-(A'_k + kA_k f)\vartheta^k
+(A'_k + kA_k f)\vartheta^k.
 \]
-Damit wird die Ableitung von $P(\vartheta)$
-\[
+Damit wird die Ableitung des Polynoms
+\begin{equation}
 P(\vartheta)'
 =
-(A'_n+nA_nf')\vartheta^n
+\underbrace{(A'_n+nA_nf')\vartheta^n}_{\displaystyle=(A_n\vartheta^n)'}
 +
 (A'_{n-1}+(n-1)A_{n-1}f')\vartheta^{n-1}
 + \dots + 
-(A'-1+A_1f')\vartheta + A_0'.
-\]
+(A'_1+A_1f')\vartheta + A_0'.
+\label{buch:integrale:ableitung:polynom}
+\end{equation}
 Der Grad der Ableitung kann sich also nur ändern, wenn $A_n'+nA_nf'=0$ ist.
+Dies bedeutet aber wegen
+\(
+(A_n\vartheta^n)'
+=
+0
+\), dass  $A_n\vartheta^n=c$ eine Konstante ist.
+Da alle Konstanten bereits in $\mathscr{D}$ sind, folgt, dass
+\[
+\vartheta^n=\frac{c}{A_n}
+\qquad\Rightarrow\qquad
+\vartheta^n - \frac{c}{A_n}=0,
+\]
+also wäre $\vartheta$ algebraisch über $\mathscr{D}$, also auch kein Monom.
+Dieser Widerspruch zeigt, dass der Leitkoeffizient nicht verschwinden kann.
+
+Für die erste Aussage ist die Ableitung der einzelnen Terme des Polynoms
+\[
+(A_k\vartheta^k)'
+=
+A_k'\vartheta^k + A_kk\vartheta^{k-1}\vartheta'
+=
+A_k'\vartheta^k + A_kk\vartheta^{k-1}\frac{f'}{f}
+=
+\biggl(A_k'\vartheta + kA_k\frac{f'}{f}\biggr)\vartheta^{k-1}.
+\]
+Die Ableitung des Polynoms ist daher
+\[
+P(\vartheta)'
+=
+A_n'\vartheta^n + \biggl(nA_n\frac{f'}{f}+ A'_{n-1}\biggr)\vartheta^{n-1}+\dots
+\]
+Wenn $A_n$ keine Konstante ist, ist $A_n'\ne 0$ und der Grad von
+$P(\vartheta)'$ ist $n$.
+Wenn $A_n$ eine Konstante ist, müssen wir noch zeigen, dass der nächste
+Koeffizient nicht verschwinden kann.
+Wäre der zweite Koeffizient $=0$, dann wäre die Ableitung
+\[
+(nA_n\vartheta+A_{n-1})'
+=
+nA_n\vartheta'+A'_{n-1}
+=
+nA_n\frac{f'}{f}+A'_{n-1}
+=
+0,
+\]
+d.h. $nA_n\vartheta+A_{n-1}=c$ wäre eine Konstante.
+Da alle Konstanten schon in $\mathscr{D}$ sind, müsste auch
+\[
+\vartheta = \frac{c-A_{n-1}}{nA_n} \in \mathscr{D}
+\]
+sein, wieder wäre $\vartheta$ kein Monom.
+\end{proof}
+
+Der nächste Satz gibt Auskunft über den führenden Term in
+$(\log P(\vartheta))' = P(\vartheta)'/P(\vartheta)$.
+
+\begin{satz}
+\label{buch:integrale:satz:log-polynom-ableitung-grad}
+Sei $P$ ein Polynom vom Grad $n$ wie in
+\label{buch:integrale:satz:log-polynom-ableitung}
+welches zusätzlich normiert ist, also $A_n=1$.
+\begin{enumerate}
+\item
+\label{buch:integrale:satz:log-polynom-ableitung-log}
+Ist $\vartheta=\log f$, dann ist
+$(\log P(\vartheta))' = P(\vartheta)'/P(\vartheta)$ und $P(\vartheta)'$
+hat Grad $n-1$.
+\item
+\label{buch:integrale:satz:log-polynom-ableitung-exp}
+Ist $\vartheta=\exp f$, dann gibt es ein Polynom $N(\vartheta)$ so, dass
+$(\log P(\vartheta))'
+=
+P(\vartheta)'/P(\vartheta)
+=
+N(\vartheta)/P(\vartheta)+nf'$
+ist.
+Falls $P(\vartheta)=\vartheta$ ist $N=0$, andernfalls ist $N(\vartheta)$
+ein Polynom vom Grad $<n$.
+\end{enumerate}
+\end{satz}
+
+\begin{proof}[Beweis]
+Die Gleichung $(\log P(\vartheta))'=P(\vartheta)'/P(\vartheta)$ ist die
+Definition eines Logarithmus, es geht also vor allem um die Frage
+des Grades von $P(\vartheta)'$.
+Da der Leitkoeffizient als $1$ und damit konstant vorausgesetzt wurde,
+folgt die Behauptung \ref{buch:integrale:satz:log-polynom-ableitung-log}
+aus 
+Aussage \ref{buch:integrale:satz:polynom-ableitung-grad-log}
+von Satz~\ref{buch:integrale:satz:polynom-ableitung-grad}.
+
+Für Aussage \ref{buch:integrale:satz:log-polynom-ableitung-exp}
+beachten wir wieder die
+Ableitungsformel~\eqref{buch:integrale:ableitung:polynom}
+und berücksichtigen, dass $A_n=1$ eine Konstante ist.
+Da $A_n'=0$ ist, wird
+\begin{align*}
+P(\vartheta)'
+&=
+nA_n\vartheta^n f' + \text{Terme niedrigeren Grades in $\vartheta$}.
+\intertext{Das Polynom $nf'P(\vartheta)$ hat den gleichen Term vom
+Grad $n$, man kann also $P(\vartheta)'$ auch schreiben als}
+&=
+nf'
+P(\vartheta)
++
+\underbrace{
+\text{Terme niedrigeren Grades in $\vartheta$}}_{\displaystyle=N(\vartheta)}.
+\end{align*}
+Division durch $P(\vartheta)$ ergibt die versprochene Formel.
+
+Im Fall $P(\vartheta)=\vartheta$ ist $n=1$ und
+$(\log P(\vartheta))'=P(\vartheta)'/P(\vartheta)
+=
+\vartheta f'/\vartheta
+=
+nf'$ und somit $N(\vartheta)=0$.
 \end{proof}
 
 \subsubsection{Partialbruchzerlegungen}
+Der vorangegangene Abschnitt hat gezeigt, dass sich Monome im Sinne
+der Definition~\ref{buch:integrale:def:monom} algebraisch wie eine
+unabhängige Variable verhalten.
+Für die Berechnung von Integralen rationaler Funktionen in einer
+Variablen $x$ verwendet
+man die Partialbruchzerlegung, um Brüche mit einfachen Nennern zu
+erhalten.
+Es liegt daher nahe, dieselbe Idee auch auf die 
+Monome $\vartheta_i$ zu verwenden.
+Dazu muss man die Brüche besser verstehen, die in einer Partialbruchzerlegung
+vorkommen können.
+
+Eine Partialbruchzerlegung in der Variablen $X$ setzt sich zusammen
+aus Brüchen der Form
+\begin{equation}
+g(X)
+=
+\frac{P(X)}{Q(X)^r},
+\label{buch:integrale:eqn:partialbruch-quotient}
+\end{equation}
+wobei das Nennerpolynom $Q(X)$ ist ein normiertes irreduzibles Polynom
+vom Grad $q$ und $P(X)$ ein beliebiges Polynom vom Grad $p<q$.
+
+Ist der Grad von $P(X)$
+im Quotienten 
+\eqref{buch:integrale:eqn:partialbruch-quotient}
+grösser als $q$, dann kann man $P(X)$ um Vielfache von Potenzen von
+$Q(X)$ reduzieren und eine Summe von Termen der Art
+\eqref{buch:integrale:eqn:partialbruch-quotient}
+erhalten, deren Nenner alle Grad $< q$ haben.
+Die Anzahl neu enstehender Terme ist dabei ums grösser, je grösser
+der Grad des Zählers ist.
+Dies ist der Inhalt des folgenden Satzes.
+
+\begin{satz}
+\label{buch:integrale:satz:partialbruch-reduktion}
+Sei $Q(X)$ ein irreduzibles Polynom vom Grad $q$ und $P(X)$ ein beliebiges
+Polynom vom Grad $p < (k+1)q$.
+Dann gibt es Polynome $P_i(X)$, $i=0,\dots,k$, vom Grad $<q$ derart,
+dass
+\begin{equation}
+\frac{P(X)}{Q(X)^r}
+=
+\sum_{i=0}^k \frac{P_i(X)}{Q(X)^{r-i}}.
+\label{buch:integrale:satz:partialbruch-aufgeloest}
+\end{equation}
+\end{satz}
+
+\begin{proof}[Beweis]
+Für $k=0$ ist $p<q$ und es muss nichts weiter gezeigt werden.
+
+Sei jetzt also $k>0$ das kleinste $k$ so, dass $p<(k+1)q$.
+Insbesondere ist dann $kq\le p$.
+Nach dem euklidischen Satz für die Division von $P(X)$ durch $Q(X)^k$
+gibt es ein Polynom $P_k(X)$ vom Grad $\le p-qk$ derart, dass
+\[
+P(X) = P_k(X)Q(X)^k + R_k(X)
+\]
+mit einem Rest $R_k(X)$ vom Grad $<kq$.
+Es folgt
+\[
+\frac{ P(X)}{Q(X)^r}
+=
+\frac{P_k(X)}{Q(X)^{r-k}}
++
+\frac{R_k(X)}{Q(X)^r}.
+\]
+Der zweite Term ist wieder von der im Satz beschriebenen Art, allerdings
+mit einem Wert von $k$, der um $1$ kleiner ist.
+Durch rekursive Anwendung der gleichen Prozedur in $k$ weiteren Schritten
+erhält man die Form
+Das gleiche Argument kann jetzt auf das Polynom $R_k(X)$ anstelle
+von $P(X)$ angewendet werden,  erhalt man den Ausdruck
+\eqref{buch:integrale:satz:partialbruch-aufgeloest}.
+\end{proof}
+
+In der differentiellen Algebra $\mathscr{D}(\vartheta)$ muss man jetzt
+auch Bescheid wissen über die Partialbruchzerlegung von Ableitungen solcher
+Terme.
+
+\begin{satz}
+\label{buch:integrale:satz:partialbruch-monom}
+Sei $\vartheta$ ein Monom über $\mathscr{D}$ und
+seien $P(\vartheta),Q(\vartheta)\in\mathscr{D}[\vartheta]$ Polynome,
+wobei $Q(\vartheta)$ ein irreduzibles normiertes Polynom vom Grad $q$
+ist und $P(\vartheta)$ ein beliebiges Polynom vom Grad $p<q$.
+Dann ist die Ableitung
+\begin{equation}
+g(\vartheta)'
+=
+\biggl(
+\frac{P(\vartheta)}{Q(\vartheta)^r}
+\biggr)'
+=
+-r\frac{P(\vartheta)Q(\vartheta)'}{Q(\vartheta)^{r+1}}
++
+\frac{P(\vartheta)'}{Q(\vartheta)^r}.
+\label{buch:integrale:eqn:partialbruch-ableitung}
+\end{equation}
+Falls $\vartheta=\exp f$ eine Exponentialfunktion ist und
+$Q(\vartheta)=\vartheta$, dann hat die Partialbruchzerlegung von $g(X)'$
+die Form
+\begin{equation}
+g(\vartheta)'
+=
+\frac{
+{P(\vartheta)'-rP(\vartheta)f}
+}{
+\vartheta^{r}
+}.
+\label{buch:integrale:eqn:partialbruch-ableitung-fall0}
+\end{equation}
+Für $Q(\vartheta)\ne \vartheta$ oder $\vartheta$ keine Exponentialfunktion
+hat die Partialbruchzerlegung von $g(X)'$ die Form
+\[
+g(\vartheta)'
+=
+\frac{R(\vartheta)}{Q(\vartheta)^{r+1}}+\frac{S(\vartheta)}{Q(\vartheta)^r}
+\qquad\text{mit $R(\vartheta)\ne 0$}.
+\]
+\end{satz}
+
+\begin{proof}[Beweis]
+Schreibt man den Quotienten $g(\vartheta)$ als
+$g(\vartheta)=P(\vartheta)Q(\vartheta)^{-r}$, dann folgt aus
+Produkt- und Potenzregel
+\[
+g(\vartheta)'
+=
+P(\vartheta)'Q(\vartheta)^{-r}
++
+P(\vartheta)\bigl(Q(\vartheta)^{-r}\bigr)'
+=
+\frac{P(\vartheta)'}{Q(\vartheta)^{r}}
+-r\frac{P(\vartheta)Q(\vartheta)'}{Q(\vartheta)^{r+1}},
+\]
+dies ist
+\eqref{buch:integrale:eqn:partialbruch-ableitung}.
+Auf die Ableitungen von $P(\vartheta)$ und $Q(\vartheta)$ können 
+jetzt die Sätze
+\ref{buch:integrale:satz:polynom-ableitung-grad},
+\ref{buch:integrale:satz:log-polynom-ableitung-grad}
+und
+\ref{buch:integrale:satz:partialbruch-monom}
+angewendet werden.
+Es sind jweils zwei Dinge zu prüfen: es dürfen in der Partialbruchzerlegung
+im Nenner keine Potenzen $<r$ vorkommen und wegen $R\ne 0$ muss der Nenner
+$Q(\vartheta)^{r+1}$ vorkommen.
+
+Falls $\vartheta=\log f$ ist, ist $Q(\vartheta)'$ ein Polynom vom
+Grad $q-1$ nach Satz~\eqref{buch:integrale:satz:polynom-ableitung-grad}
+\ref{buch:integrale:satz:polynom-ableitung-grad-log}
+und $P(\vartheta)'$ ist ein Polynom vom Grad höchstens $p$.
+Der Zähler $P(\vartheta)Q(\vartheta)'$ im zweiten Term ist nicht
+durch $Q(\vartheta)$ teilbar, denn weil $Q(\vartheta)$ irreduzibel
+ist, müsste $Q(\vartheta)$ entweder $P(\vartheta)$ oder $Q(\vartheta)'$
+teilen, aber beide haben zu geringen Grad.
+
+Falls $\vartheta=\exp f$ ist, ist $Q(\vartheta)'$ ein Polynom vom
+Grad $q$ und $P(\vartheta)'$ ist eine Polynom vom Grad $p$.
+Der Grad von $P(\vartheta)Q(\vartheta)'$ ist $<2q$, daher 
+werden nach
+Satz~\ref{buch:integrale:satz:partialbruch-reduktion}
+keine Nenner mit kleinerem Exponenten als $r$ auftreten.
+Es ist noch zu prüfen, ob $Q(\vartheta)$ den Nenner des zweiten Termes
+von~\eqref{buch:integrale:eqn:partialbruch-ableitung} teilt.
+Nehmen wir $Q(\vartheta)\mid P(\vartheta)Q(\vartheta)'$ an, dann muss
+$Q(\vartheta)\mid Q(\vartheta)'$ sein.
+Für
+\[
+Q(\vartheta) = \vartheta^q + q_{q-1}\vartheta^{q-1} + \dots
+\]
+ist die Ableitung
+\[
+Q(\vartheta)'
+=
+q\vartheta^q f'
++
+\dots
+\]
+und damit
+\[
+\frac{Q(\vartheta)'}{Q(\vartheta)}
+=
+qf'.
+\]
+Andererseits ist in der 
+Aussage~\label{buch:integrale:satz:log-polynom-ableitung-exp}
+von
+Satz~\ref{buch:integrale:satz:log-polynom-ableitung-grad}
+angewendet auf das Polynom $Q(\vartheta)$ das Polynom $N(\vartheta)=0$,
+und daher muss $Q(\vartheta)=\vartheta$ und $q=1$ sein.
+Dies ist der einzige Ausnahmefall, in die Partialbruchzerlegung die Form
+\eqref{buch:integrale:eqn:partialbruch-ableitung-fall0}
+annimmt.
+\end{proof}
+
+Der Satz besagt also, dass in fast allen Fällen die einzelnen Terme
+der Partialbruchzerlegung der Ableitungen wieder von der gleichen
+Form sind.
 
 \subsection{Der Satz von Liouville
 \label{buch:integrale:section:liouville}}
+Die Funktion
+\[
+f(z) = \frac{(z+1)^2}{(z-1)^3} \in \mathbb{C}(z) = \mathscr{D}
+\]
+kann mit Hilfe der Partialbruchzerlegung
+\[
+f(z)
+=
+\frac{1}{z-1}
++
+\frac{4}{(z-1)^2}
++
+\frac{4}{(z-1)^3}
+\]
+integriert werden.
+Die Integranden $(z-1)^{-k}$ mit $k>1$ können mit der Potenzregel
+integriert werden, aber für eine Stammfunktion $1/(z-1)$ muss
+der Logarithmus $\log(z-1)$ hinzugefügt werden.
+Die Stammfunktion 
+\[
+\int f(z)\,dz
+=
+\int
+\frac{1}{z-1}
+\,dz
++
+\int
+\frac{4}{(z-1)^2}
+\,dz
++
+\int
+\frac{4}{(z-1)^3}
+\,dz
+=
+\log(z-1)
+-
+\underbrace{\frac{4z-2}{(z-1)^2}}_{\displaystyle\in\mathscr{D}}
+\in \mathscr{D}(\log(z-1)) = \mathscr{F}
+\]
+hat eine sehr spezielle Form.
+Sie besteht aus einem Term in $\mathscr{D}$ und einem Logarithmus
+einer Funktion von $\mathscr{D}$, also einem Monom über $\mathscr{D}$.
+
+\subsubsection{Einfach elementare Stammfunktionen}
+Der in diesem Abschnitt zu beweisende Satz von Liouville zeigt,
+dass die im einführenden Beispiel konstruierte Form der Stammfunktion
+eine allgemeine Eigenschaft elementar integrierbarer
+Funktionen ist.
+Zunächst aber soll dieses Bespiel etwas verallgemeinert werden.
+
+\begin{satz}[Liouville-Vorstufe]
+\label{buch:integrale:satz:liouville-vorstufe-1}
+Sei $\vartheta$ ein Monom über $\mathscr{D}$ und $g\in\mathscr{D}(\vartheta)$
+mit $g'\in\mathscr{D}$.
+Dann hat $g$ die Form $v_0 + c_1\vartheta$ mit $v_0\in\mathscr{D}$ und
+$c_1\in\mathbb{C}$.
+\end{satz}
+
+\begin{proof}[Beweis]
+In Anlehnung an das einführende Beispiel nehmen wir an, dass die
+Stammfunktion $g\in\mathscr{D}[\vartheta]$ für ein Monom $\vartheta$
+über $\mathscr{D}$ ist.
+Dann hat $g$ die Partialbruchzerlegung
+\[
+g
+=
+H(\vartheta)
++
+\sum_{j\le r(i)} \frac{P_{ij}(\vartheta)}{Q_i(\vartheta)^j}
+\]
+mit irreduziblen normierten Polynomen $Q_i(\vartheta)$ und
+Polynomen $P_{ij}(\vartheta)$ vom Grad kleiner als $\deg Q_i(\vartheta)$.
+Ausserdem ist $H(\vartheta)$ ein Polynom.
+Die Ableitung von $g$ muss jetzt aber wieder in $\mathscr{D}$ sein.
+Zu ihrer Berechnung können die Sätze
+\ref{buch:integrale:satz:polynom-ableitung-grad},
+\ref{buch:integrale:satz:log-polynom-ableitung-grad}
+und
+\ref{buch:integrale:satz:partialbruch-monom}
+verwendet werden.
+Diese besagen, dass in der Partialbruchzerlegung die Exponenten der
+Nenner die Quotienten in der Summe nicht kleiner werden.
+Die Ableitung $g'\in\mathscr{D}$ darf aber gar keine Nenner mit
+$\vartheta$ enthalten, also dürfen die Quotienten gar nicht erst
+vorkommen.
+$g=H(\vartheta)$ muss also ein Polynom in $\vartheta$ sein.
+Die Ableitung des Polynoms darf wegen $g'\in\mathscr{d}$ das Monom
+$\vartheta$ ebenfalls nicht mehr enthalten, daher kann es höchstens vom
+Grad $1$ sein.
+Nach Satz~\ref{buch:integrale:satz:log-polynom-ableitung-grad}
+muss ausserdem der Leitkoeffizient von $g$ eine Konstante sein,
+das Polynom hat also genau die behauptete Form.
+\end{proof}
+
+\begin{satz}[Liouville-Vorstufe]
+\label{buch:integrale:satz:liouville-vorstufe-2}
+Sei $\vartheta$ algebraische über $\mathscr{D}$ und
+$g\in\mathscr{D}(\vartheta)$ mit $g'\in\mathscr{D}$.
+\end{satz}
+
+\subsubsection{Elementare Stammfunktionen}
+Nach den Vorbereitungen über einfach elementare Stammfunktionen 
+in den Sätzen~\label{buch:integrale:satz:liouville-vorstufe-1}
+und
+\label{buch:integrale:satz:liouville-vorstufe-2} sind wir jetzt
+in der Lage, den allgemeinen Satz von Liouville zu formulieren
+und zu beweisen.
+
+\begin{satz}[Liouville]
+Sei $\mathscr{D}$ ein Differentialkörper, $\mathscr{F}$ einfach über
+$\mathscr{D}$ mit gleichem Konstantenkörper $\mathbb{C}$.
+Wenn $g\in \mathscr{F}$ eine Stammfunktion von $f\in\mathscr{D}$ ist,
+also $g'=f$, dann gibt es Zahlen $c_i\in\mathbb{C}$ und
+$v_0,v_i\in\mathscr{D}$ derart, dass
+\begin{equation}
+g = v_0 + \sum_{i=1}^k c_i \log v_i
+\qquad\Rightarrow\qquad
+g' = v_0' + \sum_{i=1}^k c_i \frac{v_i'}{v_i} = f
+\label{buch:integrale:satz:liouville-fform}
+\end{equation}
+gilt.
+\end{satz}
+
+Der Satz hat zur Folge, dass eine elementare Stammfunktion für $f$ 
+nur dann existieren kann, wenn sich $f$ in der speziellen Form
+\eqref{buch:integrale:satz:liouville-fform}
+schreiben lässt.
+Die Aufgabe~\ref{buch:integrale:aufgabe:existenz-stammfunktion-dalg}
+lässt sich damit jetzt lösen.
+
+
+\begin{proof}[Beweis]
+Wenn die Stammfunktion $g\in\mathscr{D}$ ist, dann hat $g$ die Form
+\eqref{buch:integrale:satz:liouville-fform} mit $v_0=g$, die Summe
+wird nicht benötigt.
+
+\end{proof}
 
 \subsection{Die Fehlerfunktion ist keine elementare Funktion
 \label{buch:integrale:section:fehlernichtelementar}}
