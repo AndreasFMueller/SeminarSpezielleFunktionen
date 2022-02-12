@@ -1604,7 +1604,7 @@ eine allgemeine Eigenschaft elementar integrierbarer
 Funktionen ist.
 Zunächst aber soll dieses Bespiel etwas verallgemeinert werden.
 
-\begin{satz}[Liouville-Vorstufe]
+\begin{satz}[Liouville-Vorstufe für Monome]
 \label{buch:integrale:satz:liouville-vorstufe-1}
 Sei $\vartheta$ ein Monom über $\mathscr{D}$ und $g\in\mathscr{D}(\vartheta)$
 mit $g'\in\mathscr{D}$.
@@ -1648,7 +1648,7 @@ muss ausserdem der Leitkoeffizient von $g$ eine Konstante sein,
 das Polynom hat also genau die behauptete Form.
 \end{proof}
 
-\begin{satz}[Liouville-Vorstufe]
+\begin{satz}[Liouville-Vorstufe für algebraische Elemente]
 \label{buch:integrale:satz:liouville-vorstufe-2}
 Sei $\vartheta$ algebraische über $\mathscr{D}$ und
 $g\in\mathscr{D}(\vartheta)$ mit $g'\in\mathscr{D}$.
@@ -1690,6 +1690,120 @@ Wenn die Stammfunktion $g\in\mathscr{D}$ ist, dann hat $g$ die Form
 \eqref{buch:integrale:satz:liouville-fform} mit $v_0=g$, die Summe
 wird nicht benötigt.
 
+Wir verwenden Induktion nach der Anzahl der Elemente, die zu $\mathscr{D}$
+hinzugefügt werden müssen, um einen Differentialkörper 
+$\mathscr{F}=\mathscr{D}(\vartheta_1,\dots,\vartheta_n)$ zu konstruieren,
+der $g$ enthält.
+Da $f\in\mathscr{D}\subset\mathscr{D}(\vartheta_1)$ ist, können wir die
+Induktionsannahme auf die Erweiterung
+\[
+\mathscr{D}(\vartheta_1)\subset\mathscr{D}(\vartheta_1,\vartheta_2)
+\subset\cdots\subset \mathscr{D}(\vartheta_1,\cdots,\vartheta_n)=\mathscr{F}
+\]
+anwenden, die durch Hinzufügen von nur $n-1$ Elemente
+$\vartheta_2,\dots,\vartheta_n$ aus $\mathscr{D}(\vartheta_1)$ den
+Differentialkörper $\mathscr{F}$ erreicht, der $g$ enthält.
+Sie besagt, dass sich $g$ schreiben lässt als
+\[
+g = w_0 + \sum_{i=1}^{k_1} c_i\log w_i
+\qquad\text{mit $c_i\in\mathbb{C}$ und $w_0,w_i\in\mathscr{D}(\vartheta_1)$.}
+\]
+Wir müssen jetzt zeigen, dass sich dieser Ausdruck umformen lässt 
+in den Ausdruck der Form~\eqref{buch:integrale:satz:liouville-fform}.
+
+Der Term $w_0\in\mathscr{D}(\vartheta_1)$ hat eine Partialbruchzerlegung
+\[
+H(\vartheta_1)
++
+\sum_{j\le r(l)} \frac{P_{lj}(\vartheta_1)}{Q_l(\vartheta_1)^j}
+\]
+in der Variablen $\vartheta_1$.
+
+Da $w_i\in\mathscr{D}(\vartheta_1)$ ist, kann man Zähler und Nenner
+von $w_i$ als Produkt irreduzibler normierter Polynome schreiben:
+\[
+w_i
+=
+\frac{h_i Z_{i1}(\vartheta_1)^{s_{i1}}\cdots Z_{im(i)}^{s_{im(i)}}
+}{
+N_{i1}(\vartheta_1)^{t_{i1}}\cdots N_{in(i)}(\vartheta_1)^{t_{in(i)}}
+}
+\]
+Der Logarithmus hat die Form
+\begin{align*}
+\log w_i
+&= \log h_i + 
+s_{i1}
+\log Z_{i1}(\vartheta_1)
++
+\cdots
++
+s_{im(i)}
+\log Z_{im(i)}
+-
+t_{i1}
+\log
+N_{i1}(\vartheta_1)
+-
+\cdots
+-
+t_{in(i)}
+\log
+N_{in(i)}(\vartheta_1).
+\end{align*}
+$g$ kann also geschrieben werden als eine Summe von Polynomen, Brüchen,
+wie sie in der Partialbruchzerlegung vorkommen, Logarithmen von irreduziblen
+normierten Polynomen und Logarithmen von Elementen von $\mathscr{D}$.
+
+Die Ableitung $g'$ muss jetzt aber wieder in $\mathscr{D}$ sein, beim
+Ableiten müssen also alle Terme verschwinden, die $\vartheta_1$ enthalten.
+Dabei spielt es eine Rolle, ob $\vartheta_1$ ein Monom oder algebraisch ist.
+\begin{enumerate}
+\item
+Wenn $\vartheta_1$ ein Monom ist, dann kann man wie im Beweis des
+Satzes~\ref{buch:integrale:satz:liouville-vorstufe-1} argumentieren,
+dass die Brüchterme gar nicht vorkommen und
+$H(\vartheta_1)=v_0+c_1\vartheta_1$ sein muss.
+Die Ableitung Termen der Form $\log Z(\vartheta_1)$ ist ein Bruchterm
+mit dem irreduziblen Nenner $Z(\vartheta_1)$, die ebenfalls verschwinden
+müssen.
+Ist $\vartheta_1$ eine Exponentialfunktion, dann ist
+$\vartheta_1' \in \mathscr{D}(\vartheta_1)\setminus\mathscr{D}$, also muss
+$c_1=0$ sein.
+Ist  $\vartheta_1$ ein Logarithmus, also $\vartheta_1=\log v_1$, dann
+kommen nur noch Terme der in 
+\eqref{buch:integrale:satz:liouville-fform}
+erlaubten Form vor.
+
+\item
+Wenn $\vartheta_1$ algebraisch vom Grad $m$ ist, dann ist
+\[
+g' = w_0' + \sum_{i=1}^{k_1} d_i\frac{w_i'}{w_i} = f.
+\]
+Weder $w_0$ noch $\log w_i$ sind in $\mathscr{D}(\vartheta_1)$.
+Aber wenn man $\vartheta_1$ durch die $m$ konjugierten Elemente
+ersetzt und alle summiert, dann ist
+\[
+mf
+=
+\operatorname{Tr}(w_0) + \sum_{i=1}^{k_1} d_i \log\operatorname{Norm}(w_i).
+\]
+Da die Spur und die Norm in $\mathscr{D}$ sind, folgt, dass
+\[
+f
+=
+\underbrace{\frac{1}{m}
+\operatorname{Tr}(w_0)}_{\displaystyle= v_0}
++
+\sum_{i=1}^{k_1} \underbrace{\frac{d_i}{m}}_{\displaystyle=c_i}
+\log
+\underbrace{ \operatorname{Norm}(w_i)}_{\displaystyle=v_i}
+=
+v_0 + \sum_{i=1}^{k_1} c_i\log v_i
+\]
+die verlangte Form hat.
+\qedhere
+\end{enumerate}
 \end{proof}
 
 \subsection{Die Fehlerfunktion ist keine elementare Funktion
