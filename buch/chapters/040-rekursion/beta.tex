@@ -480,19 +480,28 @@ bereits bekannten Wert.
 
 \subsubsection{Beta-Funktion und Binomialkoeffizienten}
 Die Binomialkoeffizienten können mit Hilfe der Fakultät als
-\begin{equation}
+\begin{align*}
 \binom{n}{k}
-=
+&=
 \frac{n!}{(n-k)!\,k!}
+\intertext{geschrieben werden.
+Drückt man die Fakultäten durch die Gamma-Funktion aus, erhält man}
+&=
+\frac{\Gamma(n+1)}{\Gamma(n-k+1)\Gamma(k+1)}.
+\intertext{Schreibt man $x=k-1$ und $y=n-k+1$, wird daraus 
+wegen $x+y=k+1+n-k+1=n+2=(n+1)+1$}
+&=
+\frac{\Gamma(x+y-1)}{\Gamma(x)\Gamma(y)}.
+\intertext{Die Rekursionsformel für die Gamma-Funktion erlaubt,
+den Zähler umzuwandeln in $\Gamma(x+y-1)=\Gamma(x+y)/(x+y-1)$, so dass
+der Binomialkoeffizient schliesslich}
+&=
+\frac{\Gamma(x+y)}{(x+y-1)\Gamma(x)\Gamma(y)}
 =
-\frac{\Gamma(n-1)}{\Gamma(n-k-1)\Gamma(k-1)}
-=
-\frac{(n-2)\Gamma(n-2)}{\Gamma(n-k-1)\Gamma(k-1)}
-=
-\frac{n-2}{B(n-k-1,k-1)}
+\frac{1}{(n-1)B(n-k+1,k+1)}
 \label{buch:rekursion:gamma:binombeta}
-\end{equation}
-geschrieben werden.
+\end{align*}
+geschrieben werden kann.
 Die Rekursionsbeziehung
 \[
 \binom{n+1}{k} = \binom{n}{k-1} + \binom{n}{k}
