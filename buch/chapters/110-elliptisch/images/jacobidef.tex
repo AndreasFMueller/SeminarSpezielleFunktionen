@@ -1,0 +1,100 @@
+%
+% tikztemplate.tex -- template for standalon tikz images
+%
+% (c) 2021 Prof Dr Andreas Müller, OST Ostschweizer Fachhochschule
+%
+\documentclass[tikz]{standalone}
+\usepackage{amsmath}
+\usepackage{times}
+\usepackage{txfonts}
+\usepackage{pgfplots}
+\usepackage{csvsimple}
+\usetikzlibrary{arrows,intersections,math,calc}
+\definecolor{darkgreen}{rgb}{0,0.6,0}
+\begin{document}
+\def\skala{8}
+\begin{tikzpicture}[>=latex,thick,scale=\skala]
+
+\def\a{1.6}
+\def\w{40}
+\pgfmathparse{atan(sin(\w)/(\a*cos(\w)))}
+\xdef\v{\pgfmathresult}
+
+\pgfmathparse{cos(\w)}
+\xdef\cn{\pgfmathresult}
+\pgfmathparse{sin(\w)}
+\xdef\sn{\pgfmathresult}
+\pgfmathparse{sqrt(\a*\a*cos(\w)*cos(\w)+sin(\w)*sin(\w))}
+\xdef\r{\pgfmathresult}
+\pgfmathparse{\r/\a}
+\xdef\dn{\pgfmathresult}
+
+\draw[color=red,line width=1.4pt] ({\cn},0) -- ({\cn},{\sn});
+\node[color=red] at ({\cn},{0.3*\sn})
+	[above,rotate=90] {$\operatorname{sn}(u,k)$};
+\node[color=red] at ({\a*\cn},{0.3*\sn})
+	[above,rotate=90] {$\operatorname{sn}(u,k)$};
+
+\draw[->,line width=1pt] ({-0.1/\skala},0) -- ({\a+0.4/\skala},0)
+	coordinate[label={$x$}];
+\draw[->,line width=1pt] (0,{-0.1/\skala}) -- (0,{1+0.3/\skala})
+	coordinate[label={right:$y$}];
+
+\draw[color=gray,line width=1.4pt]
+	plot[domain=-0.5:90.5,samples=100] ({cos(\x)},{sin(\x)});
+\draw[color=gray!50,line width=1.4pt]
+	plot[domain=-0.5:90.5,samples=100] ({cos(\x)},{sin(\x)/\a});
+\draw[color=black,line width=1.4pt]
+	plot[domain=-0.5:90.5,samples=100] ({\a*cos(\x)},{sin(\x)});
+
+\def\punkt#1#2{
+	\fill[color=#2] #1 circle[radius={0.10/\skala}];
+	\fill[color=white] #1 circle[radius={0.06/\skala}];
+}
+
+\fill[color=darkgreen!50] (0,0) -- (0:0.35) arc (0:\v:0.35) -- cycle;
+%\draw[color=darkgreen] (0:0.35) arc (0:\v:0.35);
+\node[color=darkgreen] at ({\v/2}:0.28) {$\vartheta$};
+
+\draw[color=red!40,line width=1.4pt] ({\a*\cn},0) -- ({\a*\cn},{\sn});
+
+\draw[color=darkgreen!40,line width=1.4pt] (0,0) -- ({\a*\cn},{\sn});
+\draw[color=darkgreen,line width=1.4pt] (0,0) -- ({\cn},{\sn/\a});
+\node[color=darkgreen] at ({0.6*\cn},{0.6*\sn/\a})
+	[below,rotate=\v] {$\operatorname{dn}(u,k)$};
+\punkt{({\cn},{\sn/\a})}{darkgreen}
+\node[color=darkgreen] at ({0.87*\a*\cn},{0.87*\sn})
+	[above,rotate=\v] {$r=a\operatorname{dn}(u,k)$};
+
+\fill[color=gray!50] (0,0) -- (0:0.2) arc (0:\w:0.2) -- cycle;
+\node at ({\w/2}:0.15) {$\varphi$};
+
+
+\draw (0,0) -- (\w:1);
+
+\punkt{({\a*\cn},{\sn})}{black}
+\punkt{({\cn},{\sn})}{red!50}
+
+\node at ({\a*\cn},{\sn})
+	[above right] {$P=(a\cos\varphi,\sin\varphi)$};
+\node at ($(\w:1)+({-0.1/\skala},0)$)
+	[left] {$Q=(\cos\varphi,\sin\varphi)$};
+
+\node at (\a,0) [below] {$a\mathstrut$};
+\node at ({-0.1/\skala},1) [left] {$1$};
+\node at ({-0.1/\skala},{1/\a}) [left] {$\displaystyle\frac{1}{a}$};
+\draw ({-0.1/\skala},{1/\a}) -- ({0.1/\skala},{1/\a});
+
+\draw[color=blue!40,line width=1.4pt] (0,0) -- ({\a*\cn},0);
+\draw ({\a*\cn},{-0.1/\skala}) -- ({\a*\cn},{0.1/\skala});
+\node[color=blue] at ({\a*\cn},{-0.1/\skala})
+	[below] {$a\operatorname{cn}(u,k)$};
+\draw[color=blue,line width=1.4pt] (0,0) -- ({\cn},0);
+\node[color=blue] at ({0.5*\cn},0) [below] {$\operatorname{cn}(u,k)$};
+\punkt{({cos(\w)},0)}{blue}
+
+\node at (0,0) [below left] {$O$};
+
+\end{tikzpicture}
+\end{document}
+

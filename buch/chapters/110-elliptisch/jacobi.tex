@@ -21,6 +21,7 @@ trigonometrischen Funktionen auf die Geometrie von Ellipsen erweitern,
 dann muss man die Umkehrfunktionen der elliptischen Integrale dafür ins
 Auge fassen.
 
+
 %
 % ellpitische Funktionen als Trigonometrie
 %
@@ -131,7 +132,8 @@ Für die Koordinaten eines Punktes auf der Ellipse ist dies nicht so einfach,
 weil es nicht nur eine Ellipse gibt, sondern für jede numerische Exzentrizität
 mindestens eine mit Halbeachse $1$.
 Wir wählen die Ellipsen so, dass $a$ die grosse Halbachse ist, also $a>b$.
-Als Normierungsbedingung verwenden wir, dass $b=1$ sein soll.
+Als Normierungsbedingung verwenden wir, dass $b=1$ sein soll, wie in
+Abbildung~\ref{buch:elliptisch:fig:jacobidef}.
 Dann ist $a=1/\varepsilon>1$.
 In dieser Normierung haben Punkte $(x,y)$ auf der Ellipse $y$-Koordinaten
 zwischen $-1$ und $1$ und $x$-Koordinaten zwischen $-a$ und $a$.
@@ -150,7 +152,7 @@ k
 \frac{\sqrt{a^2-1}}{a},
 \]
 die Zahl $k$ heisst auch der {\em Modulus}.
-Man kann $a$ auch durch $k$ ausdrücken, durch quadrieren und umstellen
+Man kann $a$ auch durch $k$ ausdrücken, durch Quadrieren und Umstellen
 findet man
 \[
 k^2a^2 = a^2-1
@@ -170,8 +172,15 @@ x^2(k^2-1) + y^2 = 1.
 %
 % Definition der elliptischen Funktionen
 %
+\begin{figure}
+\centering
+\includegraphics{chapters/110-elliptisch/images/jacobidef.pdf}
+\caption{Definition der elliptischen Funktionen als Trigonometrie
+an einer Ellipse mit Halbachsen $a$ und $1$.
+\label{buch:elliptisch:fig:jacobidef}}
+\end{figure}
 \subsubsection{Definition der elliptischen Funktionen}
-Die elliptischen Funktionen für einen Punkt auf der Ellipse mit Modulus $k$
+Die elliptischen Funktionen für einen Punkt $P$ auf der Ellipse mit Modulus $k$
 können jetzt als Verhältnisse der Koordinaten des Punktes definieren.
 Es stellt sich aber die Frage, was man als Argument verwenden soll.
 Es soll so etwas wie den Winkel $\varphi$ zwischen der $x$-Achse und dem
@@ -198,13 +207,15 @@ die Funktionen
 \[
 \begin{aligned}
 &\text{sinus amplitudinis:}&
-\operatorname{sn}(u,k)&= y \\
+{\color{red}\operatorname{sn}(u,k)}&= y \\
 &\text{cosinus amplitudinis:}&
-\operatorname{cn}(u,k)&= \frac{x}{a} \\
+{\color{blue}\operatorname{cn}(u,k)}&= \frac{x}{a} \\
 &\text{delta amplitudinis:}&
-\operatorname{dn}(u,k)&=\frac{r}{a}
+{\color{darkgreen}\operatorname{dn}(u,k)}&=\frac{r}{a},
 \end{aligned}
 \]
+die auch in Abbildung~\ref{buch:elliptisch:fig:jacobidef}
+dargestellt sind.
 Aus der Gleichung der Ellipse folgt sofort, dass
 \[
 \operatorname{sn}(u,k)^2 + \operatorname{cn}(u,k)^2 = 1
@@ -275,8 +286,68 @@ k^2\operatorname{cn}(u,k)^2
 =
 \frac{a^2-a^2+1}{a^2}
 =
-1-k^2.
+1-k^2 =: k^{\prime 2}.
 \end{align*}
+Wir stellen die hiermit gefundenen Relationen zwischen den grundlegenden
+Jacobischen elliptischen Funktionen für später zusammen in den Formeln
+\begin{equation}
+\begin{aligned}
+\operatorname{sn}^2(u,k)
++
+\operatorname{cn}^2(u,k)
+&=
+1
+\\
+\operatorname{dn}^2(u,k) + k^2\operatorname{sn}^2(u,k)
+&=
+1
+\\
+\operatorname{dn}^2(u,k)  -k^2\operatorname{cn}^2(u,k)
+&=
+k^{\prime 2}.
+\end{aligned}
+\label{buch:elliptisch:eqn:jacobi-relationen}
+\end{equation}
+zusammen.
+So wie es möglich ist, $\sin\alpha$ durch $\cos\alpha$ auszudrücken,
+ist es mit
+\eqref{buch:elliptisch:eqn:jacobi-relationen}
+jetzt auch möglich jede grundlegende elliptische Funktion durch
+jede anderen auszudrücken.
+Die Resultate sind in der Tabelle~\ref{buch:elliptisch:fig:jacobi-relationen}
+zusammengestellt.
+
+\begin{table}
+\centering
+\renewcommand{\arraystretch}{2.1}
+\begin{tabular}{|>{$\displaystyle}c<{$}|>{$\displaystyle}c<{$}>{$\displaystyle}c<{$}>{$\displaystyle}c<{$}|}
+\hline
+&\operatorname{sn}(u,k)
+&\operatorname{cn}(u,k)
+&\operatorname{dn}(u,k)\\
+\hline
+\operatorname{sn}(u,k)
+&\operatorname{sn}(u,k)
+&\sqrt{1-\operatorname{cn}^2(u,k)}
+&\frac1k\sqrt{1-\operatorname{dn}^2(u,k)}
+\\
+\operatorname{cn}(u,k)
+&\sqrt{1-\operatorname{sn}^2(u,k)}
+&\operatorname{cn}(u,k)
+&\frac{1}{k}\sqrt{\operatorname{dn}^2(u,k)-k^{\prime2}}
+\\
+\operatorname{dn}(u,k)
+&\sqrt{1-k^2\operatorname{sn}^2(u,k)}
+&\sqrt{k^{\prime2}+k^2\operatorname{cn}^2(u,k)}
+&\operatorname{dn}(u,k)
+\\
+\hline
+\end{tabular}
+\caption{Jede der Jacobischen elliptischen Funktionen lässt sich
+unter Verwendung der Relationen~\eqref{buch:elliptisch:eqn:jacobi-relationen}
+durch jede andere ausdrücken.
+\label{buch:elliptisch:fig:jacobi-relationen}}
+\end{table}
 
 %
 % Ableitungen der Jacobi-ellpitischen Funktionen
@@ -352,6 +423,11 @@ elliptischen Funktionen nach $\varphi$ ableiten:
 \\
 \frac{d}{d\varphi} \operatorname{dn}(u,z)
 &=
+\frac{1}{a}\frac{dr}{d\varphi}
+=
+\frac{1}{a}\frac{d\sqrt{x^2+y^2}}{d\varphi}
+\\
+&=
 \frac{x}{ar} \frac{dx}{d\varphi}
 +
 \frac{y}{ar} \frac{dy}{d\varphi}
@@ -397,7 +473,7 @@ wählt, dass
 =
 \frac{r}{a}
 \]
-Damit haben wir die Ableitungsregeln
+Damit haben wir die grundlegenden Ableitungsregeln
 \begin{align*}
 \frac{d}{du}\operatorname{sn}(u,k)
 &=
@@ -411,7 +487,198 @@ Damit haben wir die Ableitungsregeln
 &=
 -k^2\operatorname{sn}(u,k)\operatorname{cn}(u,k)
 \end{align*}
+der elliptischen Funktionen nach Jacobi.
 
+%
+% Das Argument u
+%
+\subsubsection{Das Argument $u$}
+Die Gleichung 
+\begin{equation}
+\frac{d\varphi}{du}
+=
+\operatorname{dn}(u,k)
+\label{buch:elliptisch:eqn:uableitung}
+\end{equation}
+ermöglicht, $\varphi$ in Abhängigkeit von $u$ zu berechnen, ohne jedoch
+die geometrische Bedeutung zu klären.
+Das beginnt bereits damit, dass der Winkel $\varphi$ nicht nicht der
+Polarwinkel des Punktes $P$ in Abbildung~\ref{buch:elliptisch:fig:jacobidef}
+ist, diesen nennen wir $\vartheta$.
+Der Zusammenhang zwischen $\varphi$ und $\vartheta$ ist
+\begin{equation}
+\frac1{a}\tan\varphi = \tan\vartheta
+\label{buch:elliptisch:eqn:phitheta}
+\end{equation}
+
+Um die geometrische Bedeutung besser zu verstehen, nehmen wir jetzt an,
+dass die Ellipse mit einem Parameter $t$ parametrisiert ist, dass also
+$\varphi(t)$, $\vartheta(t)$ und $u(t)$ Funktionen von $t$ sind.
+Die Ableitung von~\eqref{buch:elliptisch:eqn:phitheta} ist
+\[
+\frac1{a}\cdot \frac{1}{\cos^2\varphi}\cdot \dot{\varphi}
+=
+\frac{1}{\cos^2\vartheta}\cdot \dot{\vartheta}.
+\]
+Daraus kann die Ableitung von $\vartheta$ nach $\varphi$ bestimmt
+werden, sie ist
+\[
+\frac{d\vartheta}{d\varphi}
+=
+\frac{\dot{\vartheta}}{\dot{\varphi}}
+=
+\frac{1}{a}
+\cdot
+\frac{\cos^2\vartheta}{\cos^2\varphi}
+=
+\frac{1}{a}
+\cdot
+\frac{(x/r)^2}{(x/a)^2}
+=
+\frac{1}{a}\cdot
+\frac{a^2}{r^2}
+=
+\frac{1}{a}\cdot\frac{1}{\operatorname{dn}^2(u,k)}.
+\]
+Damit kann man jetzt mit Hilfe von~\eqref{buch:elliptisch:eqn:uableitung} 
+Die Ableitung von $\vartheta$ nach $u$ ermitteln, sie ist
+\[
+\frac{d\vartheta}{du}
+=
+\frac{d\vartheta}{d\varphi}
+\cdot
+\frac{d\varphi}{du}
+=
+\frac{1}{a}\cdot\frac{1}{\operatorname{dn}^2(u,k)}
+\cdot
+\operatorname{dn}(u,k)
+=
+\frac{1}{a}
+\cdot
+\frac{1}{\operatorname{dn}(u,k)}
+=
+\frac{1}{a}
+\cdot\frac{a}{r}
+=
+\frac{1}{r},
+\]
+wobei wir auch die Definition der Funktion $\operatorname{dn}(u,k)$
+verwendet haben.
+
+In der Parametrisierung mit dem Parameter $t$ kann man jetzt die Ableitung
+von $u$ nach $t$ berechnen als
+\[
+\frac{du}{dt}
+=
+\frac{du}{d\vartheta}
+\frac{d\vartheta}{dt}
+=
+r
+\dot{\vartheta}.
+\]
+Darin ist $\dot{\vartheta}$ die Winkelgeschwindigkeit des Punktes um
+das Zentrum $O$ und $r$ ist die aktuelle Entfernung des Punktes $P$
+von $O$.
+$r\dot{\vartheta}$ ist also die Geschwindigkeitskomponenten des Punktes
+$P$ senkrecht auf den aktuellen Radiusvektor.
+Der Parameter $u$, der zum Punkt $P$ gehört, ist also das Integral
+\[
+u(P) = \int_0^P r\,d\vartheta.
+\]
+Für einen Kreis ist die Geschwindigkeit von $P$ immer senkrecht
+auf dem Radiusvektor und der Radius ist konstant, so dass
+$u(P)=\vartheta(P)$ ist.
+
+%
+% Die abgeleiteten elliptischen Funktionen
+%
+\begin{figure}
+\centering
+\includegraphics[width=\textwidth]{chapters/110-elliptisch/images/jacobi12.pdf}
+\caption{Die Verhältnisse der Funktionen
+$\operatorname{sn}(u,k)$,
+$\operatorname{cn}(u,k)$
+udn
+$\operatorname{dn}(u,k)$
+geben Anlass zu neun weitere Funktionen, die sich mit Hilfe
+des Strahlensatzes geometrisch interpretieren lassen.
+\label{buch:elliptisch:fig:jacobi12}}
+\end{figure}
+\begin{table}
+\renewcommand{\arraystretch}{2.5}
+\begin{tabular}{|>{$\displaystyle}c<{$}|>{$\displaystyle}c<{$}>{$\displaystyle}c<{$}>{$\displaystyle}c<{$}>{$\displaystyle}c<{$}|}
+\hline
+\cdot &
+\frac{1}{1} &
+\frac{1}{\operatorname{sn}(u,k)} &
+\frac{1}{\operatorname{cn}(u,k)} &
+\frac{1}{\operatorname{dn}(u,k)} 
+\\[5pt]
+\hline
+1&
+\operatorname{nn}(u,k)=\frac{1}{1} &
+\operatorname{ns}(u,k)=\frac{1}{\operatorname{sn}(u,k)} &
+\operatorname{nc}(u,k)=\frac{1}{\operatorname{cn}(u,k)} &
+\operatorname{nd}(u,k)=\frac{1}{\operatorname{dn}(u,k)}
+\\
+\operatorname{sn}(u,k) &
+\operatorname{sn}(u,k)=\frac{\operatorname{sn}(u,k)}{1}&
+\operatorname{ss}(u,k)=\frac{\operatorname{sn}(u,k)}{\operatorname{sn}(u,k)}&
+\operatorname{sc}(u,k)=\frac{\operatorname{sn}(u,k)}{\operatorname{cn}(u,k)}&
+\operatorname{sd}(u,k)=\frac{\operatorname{sn}(u,k)}{\operatorname{dn}(u,k)}
+\\
+\operatorname{cn}(u,k) &
+\operatorname{cn}(u,k)=\frac{\operatorname{cn}(u,k)}{1} &
+\operatorname{cs}(u,k)=\frac{\operatorname{cn}(u,k)}{\operatorname{sn}(u,k)}&
+\operatorname{cc}(u,k)=\frac{\operatorname{cn}(u,k)}{\operatorname{cn}(u,k)}&
+\operatorname{cd}(u,k)=\frac{\operatorname{cn}(u,k)}{\operatorname{dn}(u,k)}
+\\
+\operatorname{dn}(u,k) &
+\operatorname{dn}(u,k)=\frac{\operatorname{dn}(u,k)}{1} &
+\operatorname{ds}(u,k)=\frac{\operatorname{dn}(u,k)}{\operatorname{sn}(u,k)}&
+\operatorname{dc}(u,k)=\frac{\operatorname{dn}(u,k)}{\operatorname{cn}(u,k)}&
+\operatorname{dd}(u,k)=\frac{\operatorname{dn}(u,k)}{\operatorname{dn}(u,k)}
+\\[5pt]
+\hline
+\end{tabular}
+\caption{Zusammenstellung der abgeleiteten Jacobischen elliptischen
+Funktionen als Quotienten der grundlegenden Jacobischen elliptischen
+Funktionen.
+\label{buch:elliptisch:table:abgeleitetjacobi}}
+\end{table}
+\subsubsection{Die abgeleiteten elliptischen Funktionen}
+Zusätzlich zu den grundlegenden Jacobischen elliptischen Funktioenn
+lassen sich weitere elliptische Funktionen bilden, die unglücklicherweise
+die {\em abgeleiteten elliptischen Funktionen} genannt werden.
+Ähnlich wie die trigonometrischen Funktionen $\tan\alpha$, $\cot\alpha$,
+$\sec\alpha$ und $\csc\alpha$ als Quotienten von $\sin\alpha$ und
+$\cos\alpha$ definiert sind, sind die abgeleiteten elliptischen Funktionen
+die in Tabelle~\ref{buch:elliptisch:table:abgeleitetjacobi} zusammengestellten
+Quotienten der grundlegenden Jacobischen elliptischen Funktionen.
+Die Bezeichnungskonvention ist, dass die Funktion $\operatorname{pq}(u,k)$
+ein Quotient ist, dessen Zähler durch den Buchstaben p bestimmt ist,
+der Nenner durch den Buchstaben q.
+Der Buchstabe n steht für eine $1$, die Buchstaben s, c und d stehen für
+die Anfangsbuchstaben der grundlegenden Jacobischen elliptischen
+Funktionen.
+Meint man irgend eine der Jacobischen elliptischen Funktionen, schreibt
+man manchmal auch $\operatorname{zn}(u,k)$.
+
+In Abbildung~\ref{buch:elliptisch:fig:jacobi12} sind die Quotienten auch
+geometrisch interpretiert.
+Der Wert der Funktion $\operatorname{nq}(u,k)$ ist die auf dem Strahl
+mit Polarwinkel $\varphi$ abgetragene Länge bis zu den vertikalen
+Geraden, die den verschiedenen möglichen Nennern entsprechen.
+Entsprechend ist der Wert der Funktion $\operatorname{dq}(u,k)$ die
+Länge auf dem Strahl mit Polarwinkel $\vartheta$.
+
+Die Relationen~\ref{buch:elliptisch:eqn:jacobi-relationen}
+ermöglichen, jede Funktion $\operatorname{zn}(u,k)$ durch jede
+andere auszudrücken.
+
+\subsubsection{Ableitung der abgeleiteten elliptischen Funktionen}
+
+\subsubsection{TODO}
 XXX algebraische Beziehungen \\
 XXX Additionstheoreme \\
 XXX Perioden

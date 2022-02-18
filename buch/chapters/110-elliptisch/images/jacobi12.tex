@@ -1,0 +1,210 @@
+%
+% tikztemplate.tex -- template for standalon tikz images
+%
+% (c) 2021 Prof Dr Andreas Müller, OST Ostschweizer Fachhochschule
+%
+\documentclass[tikz]{standalone}
+\usepackage{amsmath}
+\usepackage{times}
+\usepackage{txfonts}
+\usepackage{pgfplots}
+\usepackage{csvsimple}
+\definecolor{darkgreen}{rgb}{0,0.6,0}
+
+\definecolor{zaehlerblau}{rgb}{0,0.8,0.8}
+\definecolor{zaehlergruen}{rgb}{0.0,0.4,0.2}
+\definecolor{zaehlerrot}{rgb}{1.0,0.0,0.0}
+\definecolor{zaehlerschwarz}{rgb}{1.0,0.6,0.2}
+
+\definecolor{nennerblau}{rgb}{0.2,0.4,1}
+\definecolor{nennergruen}{rgb}{0,0.6,0}
+\definecolor{nennerrot}{rgb}{0.8,0,0.4}
+\definecolor{nennerschwarz}{rgb}{1,0.8,0}
+
+
+\usetikzlibrary{arrows,intersections,math,calc}
+\begin{document}
+\def\skala{10}
+\begin{tikzpicture}[>=latex,thick,scale=\skala]
+
+\def\a{1.6}
+\def\w{41}
+\pgfmathparse{atan(sin(\w)/(\a*cos(\w)))}
+\xdef\v{\pgfmathresult}
+\pgfmathparse{(\w+\v)/2+2}
+\xdef\u{\pgfmathresult}
+
+\pgfmathparse{cos(\w)}
+\xdef\cn{\pgfmathresult}
+\pgfmathparse{sin(\w)}
+\xdef\sn{\pgfmathresult}
+\pgfmathparse{sqrt(\a*\a*cos(\w)*cos(\w)+sin(\w)*sin(\w))}
+\xdef\r{\pgfmathresult}
+\pgfmathparse{\r/\a}
+\xdef\dn{\pgfmathresult}
+
+\pgfmathparse{1/\sn}
+\xdef\ns{\pgfmathresult}
+\pgfmathparse{1/\cn}
+\xdef\nc{\pgfmathresult}
+\pgfmathparse{1/\dn}
+\xdef\nd{\pgfmathresult}
+
+\pgfmathparse{\sn/\cn}
+\xdef\sc{\pgfmathresult}
+\pgfmathparse{\cn/\sn}
+\xdef\cs{\pgfmathresult}
+
+\pgfmathparse{\sn/\dn}
+\xdef\sd{\pgfmathresult}
+\pgfmathparse{\dn/\sn}
+\xdef\ds{\pgfmathresult}
+
+\pgfmathparse{\cn/\dn}
+\xdef\cd{\pgfmathresult}
+\pgfmathparse{\dn/\cn}
+\xdef\dc{\pgfmathresult}
+
+
+\def\zaehler#1#2#3#4#5#6{
+\begin{scope}[rotate=#3]
+	\fill[color=#4!50,opacity=0.5]
+		({#1-2/\skala},{#6-0.2/\skala})
+		rectangle
+		({#2+5.5/\skala},{#6+0.6/\skala});
+	\node[color=#4] at ({#2+1/\skala},{#6+0.2/\skala})
+		[right,rotate=#3] {#5};
+\end{scope}
+}
+
+\begin{scope}
+\clip ({\cn-1.5/\skala},{-0.7/\skala})
+	rectangle
+	({\cs+3.4/\skala},{(\cs+3.7/\skala)*tan(\w)});
+
+\zaehler{1}{\ns}{\w}{zaehlerschwarz}{Zähler $1$}{0.2/\skala}
+\zaehler{\dn}{\ds}{\v}{zaehlergruen}{Zähler $\operatorname{dn}(u,k)$}{0}
+\zaehler{\cn}{\cs}{0}{zaehlerblau}{Zähler $\operatorname{cn}(u,k)$}{(-0.3/\skala)}
+
+\fill[color=zaehlerrot!50,opacity=0.5]
+	({\cn-0.2},{(\cn-0.2)*tan(\v)+1.0/\skala})
+	--
+	({\cs+1.2},{(\cs+1.2)*tan(\v)+1.0/\skala})
+	--
+	({\cs+1.2},{(\cs+1.2)*tan(\w)-0.15/\skala})
+	--
+	({\cn-0.2},{(\cn-0.2)*tan(\w)-0.15/\skala})
+	--
+	cycle;
+\end{scope}
+
+\begin{scope}[rotate=\u]
+\node[color=zaehlerrot] at (0:{(\ds+\ns)/2+1/\skala})
+	[right,rotate={\u-3}]
+	{Zähler $\operatorname{sn}(u,k)$};
+\end{scope}
+
+\def\rechteck#1#2#3{
+	\fill[color=#2!50,opacity=0.5] ({#1-0.55/\skala},{-0.6/\skala})
+		rectangle ({#1+0.55/\skala},{1+3.2/\skala});
+	\node[color=#2] at ({#1-0/\skala},{1+0.8/\skala}) [right,rotate=90] {#3};
+}
+
+\rechteck{\cn}{nennerschwarz}{Nenner $1$}
+\rechteck{\cd}{nennergruen}{Nenner $\operatorname{dn}(u,k)$}
+\rechteck{1}{nennerblau}{Nenner $\operatorname{cn}(u,k)$}
+\rechteck{\cs}{nennerrot}{Nenner $\operatorname{sn}(u,k)$}
+
+\draw[color=gray!50] (\cn,0) -- (\cn,1);
+\draw[color=gray!50] (\cd,0) -- (\cd,1);
+\draw[color=gray!50] (1,0) -- (1,1);
+\draw[color=gray!50] (\cs,0) -- (\cs,1);
+
+\def\punkt#1#2{
+	\fill[color=#2] #1 circle[radius={0.10/\skala}];
+	\fill[color=white] #1 circle[radius={0.06/\skala}];
+}
+
+\draw[->] ({-0.1/\skala},0) -- ({\cs+0.8/\skala},0)
+	coordinate[label={$x$}];
+\draw[->] (0,{-0.1/\skala}) -- (0,{1+3.0/\skala})
+	coordinate[label={right:$y$}];
+
+\draw[color=gray] (0,1) -- (\cs,1);
+\draw[color=gray!50,line width=1.4pt]
+        plot[domain=0:90,samples=100] ({cos(\x)},{sin(\x)/\a});
+
+\draw[line width=1.4pt] (1,0) arc (0:{\w-4.5}:1);
+\draw[line width=1.4pt,color=gray!40] ({\w-4.5}:1) arc ({\w-4.5}:\w:1);
+\draw[line width=1.4pt] ({\w}:1) arc (\w:90:1);
+
+\draw (1,0) -- (1,\sc);
+\node at (1,\sc) [above right,rotate=-90] {$\operatorname{sc}(u,k)\mathstrut$};
+
+\draw (0,0) -- (\w:\ns);
+\draw (0,0) -- (\v:\ds);
+
+\node at ($0.95*(\w:\ns)$)
+	[above,rotate=\w] {$\operatorname{ns}(u,k)\mathstrut$};
+\node at ($0.95*(\w:\nc)$)
+	[above,rotate=\w] {$\operatorname{nc}(u,k)\mathstrut$};
+
+\node at (\w:1) [above left,rotate=\w] {$1\mathstrut$};
+\node at (\v:1) [above left,rotate=\v] {$1\mathstrut$};
+
+
+\draw[color=red,line width=1.4pt] (\cn,0) -- (\cn,\sn);
+\node[color=red] at (\cn,\sn)
+	[above right,rotate=-90] {$\operatorname{sn}(u,k)\mathstrut$};
+
+\fill[color=darkgreen!50] (0,0) -- (0:0.35) arc (0:\v:0.35) -- cycle;
+\node[color=darkgreen] at ({\v/2}:0.28) {$\vartheta$};
+\draw[color=darkgreen,line width=1.4pt] (0,0) -- (\v:\dn);
+\node[color=darkgreen] at ($1.0*(\v:\dn)$)
+	[above left,rotate=\v] {$\operatorname{dn}(u,k)\mathstrut$};
+
+\fill[color=gray!50] (0,0) -- ({0.2},0) arc (0:\w:0.2) -- cycle;
+\node[color=black] at ({\w/2}:0.13) {$\varphi$};
+\draw[color=black] (0,0) -- (\cs,1);
+
+
+\draw[color=blue,line width=1.4pt] (0,0) -- (\cn,0);
+\node[color=blue] at (\cn,0)
+	[below] {$\operatorname{cn}(u,k)\mathstrut$};
+
+\draw[color=gray!50,line width=1pt] (\cd,0) -- (\cd,\sd);
+\node at (\cd,0) [below] {$\operatorname{cd}(u,k)\mathstrut$};
+\node at (\cd,\sd) [above right,rotate=-90] {$\operatorname{sd}(u,k)\mathstrut$};
+
+\draw[color=gray!50,line width=1pt] (\cs,0) -- (\cs,1);
+
+\punkt{(\cn,\sn)}{red}
+\punkt{(\cn,0)}{blue}
+\punkt{(\v:\dn)}{darkgreen}
+
+\punkt{(1,\sc)}{black}
+\punkt{(\cs,1)}{black}
+
+\punkt{(\cd,0)}{black}
+\punkt{(\cd,\sd)}{black}
+
+\punkt{(\w:\nd)}{black}
+\punkt{(\cs,0)}{black}
+\punkt{(\v:\ds)}{black}
+\punkt{(\v:\dc)}{black}
+
+\node at (\w:\nd) [above left,rotate=\w] {$\operatorname{nd}(u,k)\mathstrut$};
+\node at (\cs,0) [below] {$\operatorname{cs}(u,k)\mathstrut$};
+\node at (\v:\ds) [above left,rotate=\v] {$\operatorname{ds}(u,k)\mathstrut$};
+\node at (\v:\dc) [above left,rotate=\v] {$\operatorname{dc}(u,k)\mathstrut$};
+\node at (1,0) [below] {$1\mathstrut$};
+\node at (\cs,1) [above right,rotate=-90] {$1\mathstrut$};
+
+\draw ({-0.1/\skala},1) -- ({0.1/\skala},1);
+\node at ({-0.1/\skala},1) [left] {$1$};
+\draw ({-0.1/\skala},{1/\a}) -- ({0.1/\skala},{1/\a});
+\node at ({-0.1/\skala},{1/\a}) [left] {$\displaystyle\frac1a$};
+
+\end{tikzpicture}
+\end{document}
+
