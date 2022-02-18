@@ -25,3 +25,8 @@ front.pdf:	front.tex buchcover.pdf
 back.pdf:	back.tex buchcover.pdf
 	pdflatex back.tex
 
+lncover.pdf:	lncover.tex
+	pdflatex lncover.tex
+lncover.png:	lncover.pdf Makefile
+	convert -density 300 -extract 2007x2834+0+0 lncover.pdf \
+		lncover.png
