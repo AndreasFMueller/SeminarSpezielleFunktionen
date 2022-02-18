@@ -490,6 +490,97 @@ Damit haben wir die grundlegenden Ableitungsregeln
 der elliptischen Funktionen nach Jacobi.
 
 %
+% Der Grenzfall $k=1$
+%
+\subsubsection{Der Grenzwert $k\to1$}
+\begin{figure}
+\centering
+\includegraphics{chapters/110-elliptisch/images/sncnlimit.pdf}
+\caption{Grenzfälle der Jacobischen elliptischen Funktionen 
+für die Werte $0$ und $1$ des Parameters $k$.
+\label{buch:elliptisch:fig:sncnlimit}}
+\end{figure}
+Für $k=1$ ist $k^{\prime2}=1-k^2=$ und es folgt aus den
+Relationen~\eqref{buch:elliptisch:eqn:jacobi-relationen}
+\[
+\operatorname{cn}^2(u,k)
+-
+k^2
+\operatorname{dn}^2(u,k)
+=
+k^{\prime2}
+=
+0
+\qquad\Rightarrow\qquad
+\operatorname{cn}^2(u,1)
+=
+\operatorname{dn}^2(u,1),
+\]
+die beiden Funktionen
+$\operatorname{cn}(u,k)$
+und
+$\operatorname{dn}(u,k)$
+fallen also zusammen.
+Die Ableitungsregeln werden dadurch vereinfacht:
+\begin{align*}
+\operatorname{sn}'(u,1)
+&=
+\operatorname{cn}(u,1)
+\operatorname{dn}(u,1)
+=
+\operatorname{cn}^2(u,1)
+=
+1-\operatorname{sn}^2(u,1)
+&&\Rightarrow& y'&=1-y^2
+\\
+\operatorname{cn}'(u,1)
+&=
+-
+\operatorname{sn}(u,1)
+\operatorname{dn}(u,1)
+=
+-
+\operatorname{sn}(u,1)\operatorname{cn}(u,1)
+&&\Rightarrow&
+\frac{z'}{z}&=(\log z)' = -y
+\end{align*}
+Die erste Differentialgleichung für $y$ lässt sich separieren, man findet
+die Lösung
+\[
+\frac{y'}{1-y^2}
+=
+1
+\quad\Rightarrow\quad
+\int \frac{dy}{1-y^2} = \int \,du
+\quad\Rightarrow\quad
+\operatorname{artanh}(y) = u
+\quad\Rightarrow\quad
+\operatorname{sn}(u,1)=\tanh u.
+\]
+Damit kann man jetzt auch $z$ berechnen:
+\begin{align*}
+(\log \operatorname{cn}(u,1))'
+&=
+\tanh u
+&&\Rightarrow&
+\log\operatorname{cn}(u,1)
+&=
+-\int\tanh u\,du
+=
+-\log\cosh u
+\\
+&
+&&\Rightarrow&
+\operatorname{cn}(u,1)
+&=
+\frac{1}{\cosh u}
+=
+\operatorname{sech}u.
+\end{align*}
+Die Grenzfunktionen sind in Abbildung~\ref{buch:elliptisch:fig:sncnlimit}
+dargestellt.
+
+%
 % Das Argument u
 %
 \subsubsection{Das Argument $u$}
@@ -605,6 +696,7 @@ des Strahlensatzes geometrisch interpretieren lassen.
 \label{buch:elliptisch:fig:jacobi12}}
 \end{figure}
 \begin{table}
+\centering
 \renewcommand{\arraystretch}{2.5}
 \begin{tabular}{|>{$\displaystyle}c<{$}|>{$\displaystyle}c<{$}>{$\displaystyle}c<{$}>{$\displaystyle}c<{$}>{$\displaystyle}c<{$}|}
 \hline
@@ -616,34 +708,36 @@ des Strahlensatzes geometrisch interpretieren lassen.
 \\[5pt]
 \hline
 1&
-\operatorname{nn}(u,k)=\frac{1}{1} &
+&%\operatorname{nn}(u,k)=\frac{1}{1} &
 \operatorname{ns}(u,k)=\frac{1}{\operatorname{sn}(u,k)} &
 \operatorname{nc}(u,k)=\frac{1}{\operatorname{cn}(u,k)} &
 \operatorname{nd}(u,k)=\frac{1}{\operatorname{dn}(u,k)}
 \\
 \operatorname{sn}(u,k) &
 \operatorname{sn}(u,k)=\frac{\operatorname{sn}(u,k)}{1}&
-\operatorname{ss}(u,k)=\frac{\operatorname{sn}(u,k)}{\operatorname{sn}(u,k)}&
+&%\operatorname{ss}(u,k)=\frac{\operatorname{sn}(u,k)}{\operatorname{sn}(u,k)}&
 \operatorname{sc}(u,k)=\frac{\operatorname{sn}(u,k)}{\operatorname{cn}(u,k)}&
 \operatorname{sd}(u,k)=\frac{\operatorname{sn}(u,k)}{\operatorname{dn}(u,k)}
 \\
 \operatorname{cn}(u,k) &
 \operatorname{cn}(u,k)=\frac{\operatorname{cn}(u,k)}{1} &
 \operatorname{cs}(u,k)=\frac{\operatorname{cn}(u,k)}{\operatorname{sn}(u,k)}&
-\operatorname{cc}(u,k)=\frac{\operatorname{cn}(u,k)}{\operatorname{cn}(u,k)}&
+&%\operatorname{cc}(u,k)=\frac{\operatorname{cn}(u,k)}{\operatorname{cn}(u,k)}&
 \operatorname{cd}(u,k)=\frac{\operatorname{cn}(u,k)}{\operatorname{dn}(u,k)}
 \\
 \operatorname{dn}(u,k) &
 \operatorname{dn}(u,k)=\frac{\operatorname{dn}(u,k)}{1} &
 \operatorname{ds}(u,k)=\frac{\operatorname{dn}(u,k)}{\operatorname{sn}(u,k)}&
 \operatorname{dc}(u,k)=\frac{\operatorname{dn}(u,k)}{\operatorname{cn}(u,k)}&
-\operatorname{dd}(u,k)=\frac{\operatorname{dn}(u,k)}{\operatorname{dn}(u,k)}
+%\operatorname{dd}(u,k)=\frac{\operatorname{dn}(u,k)}{\operatorname{dn}(u,k)}
 \\[5pt]
 \hline
 \end{tabular}
 \caption{Zusammenstellung der abgeleiteten Jacobischen elliptischen
-Funktionen als Quotienten der grundlegenden Jacobischen elliptischen
-Funktionen.
+Funktionen in hinteren drei Spalten als Quotienten der grundlegenden
+Jacobischen elliptischen Funktionen.
+Die erste Spalte zum Nenner $1$ enthält die grundlegenden
+Jacobischen elliptischen Funktionen.
 \label{buch:elliptisch:table:abgeleitetjacobi}}
 \end{table}
 \subsubsection{Die abgeleiteten elliptischen Funktionen}
@@ -675,8 +769,232 @@ Länge auf dem Strahl mit Polarwinkel $\vartheta$.
 Die Relationen~\ref{buch:elliptisch:eqn:jacobi-relationen}
 ermöglichen, jede Funktion $\operatorname{zn}(u,k)$ durch jede
 andere auszudrücken.
+Die schiere Anzahl solcher Beziehungen macht es unmöglich, sie 
+übersichtlich in einer Tabelle zusammenzustellen, daher soll hier
+nur an einem Beispiel das Vorgehen gezeigt werden:
+
+\begin{beispiel}
+Die Funktion $\operatorname{sc}(u,k)$ soll durch $\operatorname{cd}(u,k)$
+ausgedrückt werden.
+Zunächst ist 
+\[
+\operatorname{sc}(u,k)
+=
+\frac{\operatorname{sn}(u,k)}{\operatorname{cn}(u,k)}
+\]
+nach Definition.
+Im Resultat sollen nur noch $\operatorname{cn}(u,k)$ und
+$\operatorname{dn}(u,k)$ vorkommen.
+Daher eliminieren wir zunächst die Funktion $\operatorname{sn}(u,k)$
+mit Hilfe von \eqref{buch:elliptisch:eqn:jacobi-relationen} und erhalten
+\begin{equation}
+\operatorname{sc}(u,k)
+=
+\frac{\sqrt{1-\operatorname{cn}^2(u,k)}}{\operatorname{cn}(u,k)}.
+\label{buch:elliptisch:eqn:allgausdruecken}
+\end{equation}
+Nun genügt es, die Funktion $\operatorname{cn}(u,k)$ durch
+$\operatorname{cd}(u,k)$ auszudrücken.
+Aus der Definition und der
+dritten Relation in \eqref{buch:elliptisch:eqn:jacobi-relationen} 
+erhält man
+\begin{align*}
+\operatorname{cd}^2(u,k)
+&=
+\frac{\operatorname{cn}^2(u,k)}{\operatorname{dn}^2(u,k)}
+=
+\frac{\operatorname{cn}^2(u,k)}{k^{\prime2}+k^2\operatorname{cn}^2(u,k)}
+\\
+\Rightarrow
+\qquad
+k^{\prime 2}
+\operatorname{cd}^2(u,k)
++
+k^2\operatorname{cd}^2(u,k)\operatorname{cn}^2(u,k)
+&=
+\operatorname{cn}^2(u,k)
+\\
+\operatorname{cn}^2(u,k)
+-
+k^2\operatorname{cd}^2(u,k)\operatorname{cn}^2(u,k)
+&=
+k^{\prime 2}
+\operatorname{cd}^2(u,k)
+\\
+\operatorname{cn}^2(u,k)
+&=
+\frac{
+k^{\prime 2}
+\operatorname{cd}^2(u,k)
+}{
+1 - k^2\operatorname{cd}^2(u,k)
+}
+\end{align*}
+Für den Zähler brauchen wir $1-\operatorname{cn}^2(u,k)$, also
+\[
+1-\operatorname{cn}^2(u,k)
+=
+\frac{
+1
+-
+k^2\operatorname{cd}^2(u,k)
+-
+k^{\prime 2}
+\operatorname{cd}^2(u,k)
+}{
+1
+-
+k^2\operatorname{cd}^2(u,k)
+}
+=
+\frac{1-\operatorname{cd}^2(u,k)}{1-k^2\operatorname{cd}^2(u,k)}
+\]
+Einsetzen in~\eqref{buch:elliptisch:eqn:allgausdruecken} gibt
+\begin{align*}
+\operatorname{sc}(u,k)
+&=
+\frac{
+\sqrt{1-\operatorname{cd}^2(u,k)}
+}{\sqrt{1-k^2\operatorname{cd}^2(u,k)}}
+\cdot
+\frac{
+\sqrt{1 - k^2\operatorname{cd}^2(u,k)}
+}{
+k'
+\operatorname{cd}(u,k)
+}
+=
+\frac{
+\sqrt{1-\operatorname{cd}^2(u,k)}
+}{
+k'
+\operatorname{cd}(u,k)
+}.
+\qedhere
+\end{align*}
+\end{beispiel}
 
 \subsubsection{Ableitung der abgeleiteten elliptischen Funktionen}
+Aus den Ableitungen der grundlegenden Jacobischen elliptischen Funktionen
+können mit der Quotientenregel nun auch beliebige Ableitungen der
+abgeleiteten Jacobischen elliptischen Funktionen gefunden werden.
+Als Beispiel berechnen wir die Ableitung von $\operatorname{sc}(u,k)$.
+Sie ist
+\begin{align*}
+\frac{d}{du}
+\operatorname{sc}(u,k)
+&=
+\frac{d}{du}
+\frac{\operatorname{sn}(u,k)}{\operatorname{cn}(u,k)}
+=
+\frac{
+\operatorname{sn}'(u,k)\operatorname{cn}(u,k)
+-
+\operatorname{sn}(u,k)\operatorname{cn}'(u,k)}{
+\operatorname{cn}^2(u,k)
+}
+\\
+&=
+\frac{
+\operatorname{cn}^2(u,k)\operatorname{dn}(u,k)
++
+\operatorname{sn}^2(u,k)\operatorname{dn}(u,k)
+}{
+\operatorname{cn}^2(u,k)
+}
+=
+\frac{(
+\operatorname{sn}^2(u,k)
++
+\operatorname{cn}^2(u,k)
+)\operatorname{dn}(u,k)}{
+\operatorname{cn}^2(u,k)
+}
+\\
+&=
+\frac{1}{\operatorname{cn}(u,k)}
+\cdot
+\frac{\operatorname{dn}(u,k)}{\operatorname{cn}(u,k)}
+=
+\operatorname{nc}(u,k)
+\operatorname{dc}(u,k).
+\end{align*}
+Man beachte, dass das Quadrat der Nennerfunktion im Resultat
+der Quotientenregel zur Folge hat, dass die
+beiden Funktionen im Resultat beide den gleichen Nenner haben wie
+die Funktion, die abgeleitet wird.
+
+Mit etwas Fleiss kann man nach diesem Muster alle Ableitungen
+\begin{equation}
+%\small
+\begin{aligned}
+\operatorname{sn}'(u,k)
+&= 
+\phantom{-}
+\operatorname{cn}(u,k)\,\operatorname{dn}(u,k)
+&&\qquad&
+\operatorname{ns}'(u,k)
+&=
+-
+\operatorname{cs}(u,k)\,\operatorname{ds}(u,k)
+\\
+\operatorname{cn}'(u,k)
+&= 
+-
+\operatorname{sn}(u,k)\,\operatorname{dn}(u,k)
+&&&
+\operatorname{nc}'(u,k)
+&=
+\phantom{-}
+\operatorname{sc}(u,k)\,\operatorname{dc}(u,k)
+\\
+\operatorname{dn}'(u,k)
+&= 
+-k^2
+\operatorname{sn}(u,k)\,\operatorname{cn}(u,k)
+&&&
+\operatorname{nd}'(u,k)
+&=
+\phantom{-}
+k^2
+\operatorname{sd}(u,k)\,\operatorname{cd}(u,k)
+\\
+\operatorname{sc}'(u,k)
+&=
+\phantom{-}
+\operatorname{dc}(u,k)\,\operatorname{nc}(u,k)
+&&&
+\operatorname{cs}'(u,k)
+&=
+-
+\operatorname{ds}(u,k)\,\operatorname{ns}(u,k)
+\\
+\operatorname{cd}'(u,k)
+&=
+-k^{\prime2}
+\operatorname{sd}(u,k)\,\operatorname{nd}(u,k)
+&&&
+\operatorname{dc}'(u,k)
+&=
+\phantom{-}
+k^{\prime2}
+\operatorname{dc}(u,k)\,\operatorname{nc}(u,k)
+\\
+\operatorname{ds}'(d,k)
+&=
+-
+\operatorname{cs}(u,k)\,\operatorname{ns}(u,k)
+&&&
+\operatorname{sd}'(d,k)
+&=
+\phantom{-}
+\operatorname{cd}(u,k)\,\operatorname{nd}(u,k)
+\end{aligned}
+\label{buch:elliptisch:eqn:alleableitungen}
+\end{equation}
+finden.
+Man beachte, dass in jeder Identität alle Funktionen den gleichen
+zweiten Buchstaben haben.
 
 \subsubsection{TODO}
 XXX algebraische Beziehungen \\
@@ -836,9 +1154,9 @@ Je nach Vorzeichen sind also eine andere elliptische Funktion als
 Lösung zu verwenden.
 
 %
-% Jacobi elliptische Funktionen und elliptische Integrale
+% Jacobischen elliptische Funktionen und elliptische Integrale
 %
-\subsubsection{Jacobi elliptische Funktionen als elliptische Integrale}
+\subsubsection{Jacobische elliptische Funktionen als elliptische Integrale}
 Die in Tabelle~\ref{buch:elliptisch:tabelle:loesungsfunktionen}
 zusammengestellten Differentialgleichungen ermöglichen nun, den
 Zusammenhang zwischen den Funktionen 
@@ -875,7 +1193,7 @@ ist daher
 \[
 y(u) = F^{-1}(u+C).
 \]
-Die Jacobi elliptischen Funktionen sind daher inverse Funktionen
+Die Jacobischen elliptischen Funktionen sind daher inverse Funktionen
 der unvollständigen elliptischen Integrale.
 
 \subsubsection{Differentialgleichung zweiter Ordnung}

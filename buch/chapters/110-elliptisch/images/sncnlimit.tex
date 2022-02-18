@@ -1,0 +1,79 @@
+%
+% sncnlimit.tex -- template for standalon tikz images
+%
+% (c) 2021 Prof Dr Andreas Müller, OST Ostschweizer Fachhochschule
+%
+\documentclass[tikz]{standalone}
+\usepackage{amsmath}
+\usepackage{times}
+\usepackage{txfonts}
+\usepackage{pgfplots}
+\usepackage{csvsimple}
+\definecolor{darkgreen}{rgb}{0,0.6,0}
+\usetikzlibrary{arrows,intersections,math,calc}
+\begin{document}
+\def\skala{2}
+\begin{tikzpicture}[>=latex,thick,scale=\skala]
+
+\def\pitick#1#2{
+	\draw (#1,{-0.1/\skala}) -- (#1,{0.1/\skala});
+	\node at (#1,{-0.1/\skala}) [below] {$\mathstrut #2$};
+}
+
+\def\achsen{
+	\draw[->] ({-0.1/\skala},0) -- ({6.4+0.3/\skala},0)
+		coordinate[label=$u$];
+	\pitick{3.1415}{\pi}
+	\pitick{2*3.1415}{2\pi}
+	\draw ({-0.1/\skala},1) -- ({0.1/\skala},1);
+	\node at ({-0.1/\skala},1) [left] {$1$};
+	\node at ({-0.1/\skala},0) [left] {$0$};
+}
+
+\begin{scope}
+\achsen
+\draw[->] (0,{-1-0.1/\skala}) -- (0,{1+0.3/\skala})
+	coordinate[label={right:$y$}];
+\draw[color=red!50,line width=1.4pt]
+	plot[domain=0:365,samples=100] ({3.1415*\x/180},{sin(\x)});
+\draw[color=red,line width=1.4pt]
+	plot[domain=0:6.4,samples=100]
+		({\x},{(exp(\x)-exp(-\x))/(exp(\x)+exp(-\x))});
+\node[color=red] at ({1.5*3.1415},1)
+	[above] {$\operatorname{sn}(u,1)=\tanh u$};
+\node[color=red] at ({1.5*3.1415},{-1+0.14})
+	[above] {$\operatorname{sn}(u,0)=\sin u$};
+\end{scope}
+
+\begin{scope}[yshift=-2.4cm]
+\achsen
+\draw[->] (0,{-1-0.1/\skala}) -- (0,{1+0.3/\skala})
+	coordinate[label={right:$y$}];
+
+\draw[color=blue!50,line width=1.4pt]
+	plot[domain=0:365,samples=100] ({3.1415*\x/180},{cos(\x)});
+\draw[color=blue,line width=1.4pt]
+	plot[domain=0:6.4,samples=100] ({\x},{2/(exp(\x)+exp(-\x))});
+\node[color=blue] at (3.1415,{-1+0.15})
+	[above] {$\operatorname{cn}(u,0)=\cos u$};
+\node[color=blue] at (3.1415,{2/(exp(3.1415)+exp(-3.1415))+0.05})
+	[above] {$\operatorname{sech}u$};
+\end{scope}
+
+\begin{scope}[yshift=-4.8cm]
+\achsen
+\draw[->] (0,{-0-0.1/\skala}) -- (0,{1+0.3/\skala})
+	coordinate[label={right:$y$}];
+\node[color=darkgreen] at (3.1415,1) [above] {$\operatorname{dn}(u,0) = 1$};
+\draw[color=darkgreen,line width=1.4pt]
+	plot[domain=0:6.4,samples=100] ({\x},{2/(exp(\x)+exp(-\x))});
+\draw[color=darkgreen!50,line width=1.4pt]
+	(0,1) -- (6.4,1);
+\node[color=darkgreen] at (3.1415,{2/(exp(3.1415)+exp(-3.1415))+0.05})
+	[above] {$\operatorname{dn}(u,1)=\operatorname{sech}u$};
+\node at (0,{-0.1/\skala}) [below] {$\mathstrut 0$};
+\end{scope}
+
+\end{tikzpicture}
+\end{document}
+

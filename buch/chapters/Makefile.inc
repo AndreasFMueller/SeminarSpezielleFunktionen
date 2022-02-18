@@ -15,5 +15,8 @@ include chapters/030-geometrie/Makefile.inc
 include chapters/040-rekursion/Makefile.inc
 include chapters/060-integral/Makefile.inc
 include chapters/070-orthogonalitaet/Makefile.inc
+include chapters/075-fourier/Makefile.inc
 include chapters/080-funktionentheorie/Makefile.inc
+include chapters/090-pde/Makefile.inc
+include chapters/110-elliptisch/Makefile.inc
 

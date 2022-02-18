@@ -4,7 +4,8 @@
 # (c) 2021 Prof Dr Andreas Müller, OST Ostschweizer Fachhochschule
 #
 all:	lemniskate.pdf ellipsenumfang.pdf unvollstaendig.pdf rechteck.pdf \
-	ellipse.pdf pendel.pdf jacobiplots.pdf jacobidef.pdf jacobi12.pdf
+	ellipse.pdf pendel.pdf jacobiplots.pdf jacobidef.pdf jacobi12.pdf \
+	sncnlimit.pdf
 
 lemniskate.pdf:	lemniskate.tex
 	pdflatex lemniskate.tex
@@ -66,3 +67,7 @@ jacobidef.pdf:	jacobidef.tex
 
 jacobi12.pdf:	jacobi12.tex
 	pdflatex jacobi12.tex
+
+sncnlimit.pdf:	sncnlimit.tex
+	pdflatex sncnlimit.tex
+
