@@ -17,15 +17,47 @@ color: #990000;
 <body> 
 <div id="demo"></div> 
 <script> 
-var deadline = new Date("May 17, 2021 17:00:00").getTime(); 
+var deadline = 0;
+
+function	checkfor(d) {
+	let now = new Date().getTime();
+	let ds = new Date().toDateString().substr(0, 17) + " " + d + ":00";
+	console.log("time string: " + ds);
+	let start = new Date(ds).getTime();
+	console.log("now: " + now);
+	if ((start > now) && ((start-now) < 1800000)) {
+		deadline = start;
+		console.log("set deadline to: " + ds);
+	} else {
+		console.log("skipping: " + ds);
+	}
+}
+
+checkfor("08:10");
+checkfor("09:05");
+checkfor("10:10");
+checkfor("11:05");
+checkfor("12:10");
+checkfor("13:10");
+checkfor("14:05");
+checkfor("15:10");
+checkfor("16:05");
+checkfor("17:00");
+checkfor("17:55");
+checkfor("19:00");
+
+checkfor("21:41");
+checkfor("22:40");
+checkfor("23:10");
+
 var x = setInterval(function() { 
-var now = new Date().getTime(); 
-var t = deadline - now; 
+let now = new Date().getTime(); 
+let t = deadline - now; 
 if (t > 0) { 
-	var days = Math.floor(t / (1000 * 60 * 60 * 24)); 
-	var hours = Math.floor((t%(1000 * 60 * 60 * 24))/(1000 * 60 * 60)); 
-	var minutes = Math.floor((t % (1000 * 60 * 60)) / (1000 * 60)); 
-	var seconds = Math.floor((t % (1000 * 60)) / 1000); 
+	let days = Math.floor(t / (1000 * 60 * 60 * 24)); 
+	let hours = Math.floor((t%(1000 * 60 * 60 * 24))/(1000 * 60 * 60)); 
+	let minutes = Math.floor((t % (1000 * 60 * 60)) / (1000 * 60)); 
+	let seconds = Math.floor((t % (1000 * 60)) / 1000); 
 	document.getElementById("demo").innerHTML
 		= ("00" + minutes).slice(-2) + ":" + ("00" + seconds).slice(-2); 
 } else {
