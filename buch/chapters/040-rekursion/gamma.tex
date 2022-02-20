@@ -494,6 +494,28 @@ die Werte der Fakultät annimmt.
 \label{buch:rekursion:fig:gamma}}
 \end{figure}
 
+\subsubsection{Der Wert $\Gamma(\frac12)$}
+Die Integraldarstellung kann dazu verwendet werden, $\Gamma(\frac12)$ 
+zu berechnen.
+Dazu verwendet man die Substition $t=s^2$ in der Integraldefinition
+der Gamma-Funktion und berechnen
+\begin{align}
+\Gamma({\textstyle\frac12})
+&=
+\int_0^\infty t^{-\frac12} e^{-t}\,dt
+=
+\int_0^\infty s^{-1} e^{-s^2}\cdot 2s\,ds
+=
+2\int_0^\infty e^{-s^2}\,ds
+=
+\int_{-\infty}^\infty e^{-s^2}\,ds
+=
+\sqrt{\pi}.
+\label{buch:rekursion:gamma:betagamma}
+\end{align}
+Der Integrand im letzten Integral ist die Wahrscheinlichkeitsdichte
+einer Normalverteilung, deren Integral wohlbekannt ist.
+
 \subsubsection{Alternative Lösungen}
 Die Funktion $\Gamma(z)$ ist nicht die einzige Funktion, die natürlichen
 Zahlen die Werte $\Gamma(n+1) = n!$ der Fakultät annimmt.
@@ -515,8 +537,28 @@ in grün.
 Die Punkte $(n,(n-1)!)$ sind in blau bezeichnet, sie sind beiden Graphen
 gemeinsam.
 
+In Abschnitt~\ref{buch:funktionentheorie:subsection:satz-von-carlson}
+wir mit Mitteln der komplexen Funktionentheorie gezeigt, dass eine
+Funktion, die für ganzzahlige Argument mit $\Gamma(x)$ zusammenfällt
+und sich im Rest der rechten Halbebene nur durch eine beschränkte
+Funktion von $\Gamma(x)$ unterscheidet, mit $\Gamma(x)$
+identisch sein muss.
+Von Wielandt stammt das folgende, noch etwas speziellere Resultat,
+welches hier nicht bewiesen wird.
 
+\begin{satz}[Wielandt]
+Ist $f(z)$ eine für $\operatorname{Re}z>0$ definiert Funktion mit
+den folgenden drei Eigenschaften
+\begin{enumerate}
+\item $f(1)=1$
+\item $f(z+1)=zf(z)$ für $\operatorname{Re}z>0$
+\item $f(z)$ ist beschränkt im Streifen $1\le \operatorname{Re}z< 2$
+\end{enumerate}
+Dann ist $ f(z) = \Gamma(z) $.
+\end{satz}
 
+% XXX Gamma in the interval (1,2)
+%Man beachte, dass 
 
 \subsubsection{Laplace-Transformierte der Potenzfunktion}
 Die Integraldarstellung der Gamma-Funktion erlaubt jetzt auch, die
@@ -548,6 +590,7 @@ Durch die Substitution $st = u$ oder $t=\frac{u}{s}$ wird daraus
 \frac{1}{s^\alpha}\int_0^\infty u^{\alpha} e^{-u}\,du
 =
 \frac{1}{s^\alpha} \Gamma(\alpha+1).
+\qedhere
 \]
 \end{proof}
 
@@ -599,7 +642,7 @@ Daraus ergibt sich für $\Gamma(z)$ der Ausdruck
 \[
 \Gamma(z) = \frac{\Gamma(1)}{z} + f(z) = \frac{1}{z} + f(z).
 \]
-Die Gamma-Funktion hat daher and er Stelle $z=0$ einen Pol erster Ordnung.
+Die Gamma-Funktion hat daher an der Stelle $z=0$ einen Pol erster Ordnung.
 
 \subsubsection{Ausdehnung auf $\operatorname{Re}z<0$}
 Die Integralformel konvergiert nicht für $\operatorname{Re}z\le 0$.

@@ -11,6 +11,7 @@ CHAPTERFILES = $(CHAPTERFILES)						\
 	chapters/080-funktionentheorie/fortsetzung.tex			\
 	chapters/080-funktionentheorie/anwendungen.tex			\
 	chapters/080-funktionentheorie/gammareflektion.tex		\
+	chapters/080-funktionentheorie/carlson.tex			\
 	chapters/080-funktionentheorie/uebungsaufgaben/1.tex		\
 	chapters/080-funktionentheorie/uebungsaufgaben/2.tex		\
 	chapters/080-funktionentheorie/chapter.tex

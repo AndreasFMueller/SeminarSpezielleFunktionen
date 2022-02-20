@@ -4,7 +4,8 @@
 # (c) 2021 Prof Dr Andreas Müller, OST Ostschweizer Fachhochschule
 #
 all:	nonanalytic.pdf integralanalytisch.pdf laurent.pdf \
-	fortsetzreziprok.pdf forts.pdf logforts.pdf gammapfad.pdf
+	fortsetzreziprok.pdf forts.pdf logforts.pdf gammapfad.pdf \
+	carlsonpath.pdf
 
 nonanalytic.pdf:	nonanalytic.tex
 	pdflatex nonanalytic.tex
@@ -26,4 +27,7 @@ logforts.pdf:	logforts.tex
 
 gammapfad.pdf:	gammapfad.tex
 	pdflatex gammapfad.tex
+
+carlsonpath.pdf:	carlsonpath.tex
+	pdflatex carlsonpath.tex
 

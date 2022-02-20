@@ -1,0 +1,59 @@
+%
+% carlsonpath.tex -- template for standalon tikz images
+%
+% (c) 2021 Prof Dr Andreas Müller, OST Ostschweizer Fachhochschule
+%
+\documentclass[tikz]{standalone}
+\usepackage{amsmath}
+\usepackage{times}
+\usepackage{txfonts}
+\usepackage{pgfplots}
+\usepackage{csvsimple}
+\usetikzlibrary{arrows,intersections,math}
+\begin{document}
+\def\skala{1}
+\begin{tikzpicture}[>=latex,thick,scale=\skala]
+
+\definecolor{darkgreen}{rgb}{0,0.6,0}
+
+\def\xh{0.001}
+\def\r{4.6}
+\pgfmathparse{asin(\xh/\r)}
+\xdef\w{\pgfmathresult}
+
+\draw[->] (-1.1,0) -- (7.4,0) coordinate[label=$\operatorname{Re}z$];
+\draw[->] (0,-5.2) -- (0,5.4) coordinate[label={right:$\operatorname{Im}z$}];
+
+\draw[->,color=red,line width=0.5pt] (0,0) -- (50:\r);
+\node at (50:{0.7*\r}) [left] {$R$};
+
+\node[color=red] at (-30:\r) [below right] {$C_1$};
+
+\draw (-0.1,\r) -- (0.1,\r);
+\draw (-0.1,-\r) -- (0.1,-\r);
+\node at (-0.1,-\r) [left] {$-R$};
+\node at (-0.1,\r) [left] {$R$};
+
+\draw[color=red,line width=1.4pt]
+	({-90+\w}:\r) arc ({-90+\w}:{90-\w}:\r)
+	--
+	cycle;
+\draw[->,color=red,line width=1.4pt] (-30:\r) -- (-31:\r);
+\draw[->,color=red,line width=1.4pt] (30:\r) -- (29:\r);
+\draw[->,color=red,line width=1.4pt] (\xh,{0.5*\r}) -- (\xh,{0.5*\r+0.1});
+\draw[->,color=red,line width=1.4pt] (\xh,{-0.5*\r}) -- (\xh,{-0.5*\r+0.1});
+
+\def\a{2.6}
+\def\xstep{0.7}
+
+\foreach \k in {1,...,10}{
+	\fill[color=blue] ({\k*\xstep},0) circle[radius=0.08];
+	\node at ({\k*\xstep},0) [below] {$\k$};
+}
+
+\fill[color=darkgreen] (\a,0) circle[radius=0.08];
+\node[color=darkgreen] at (\a,0) [above] {$a$};
+
+\end{tikzpicture}
+\end{document}
+
