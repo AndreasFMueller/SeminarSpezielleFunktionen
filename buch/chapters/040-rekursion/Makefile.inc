@@ -13,4 +13,5 @@ CHAPTERFILES = $(CHAPTERFILES)						\
 	chapters/040-rekursion/uebungsaufgaben/402.tex			\
 	chapters/040-rekursion/uebungsaufgaben/403.tex			\
 	chapters/040-rekursion/uebungsaufgaben/404.tex			\
+	chapters/040-rekursion/uebungsaufgaben/405.tex			\
 	chapters/040-rekursion/chapter.tex

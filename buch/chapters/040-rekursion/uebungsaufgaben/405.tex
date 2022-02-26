@@ -1,0 +1,118 @@
+Schreiben Sie die Potenzreihe
+\begin{align*}
+\arctan x
+&=
+x
+-
+\frac{x^3}{3}
++
+\frac{x^5}{5}
+-
+\frac{x^7}{7}
++
+\dots
+\intertext{als}
+\arctan x
+&=
+x\, \biggl(
+\frac{1}{2\cdot 0+1}(-x^2)^0
++
+\frac{1}{2\cdot 1 + 1}(-x^2)^1
++
+\frac{1}{2\cdot 2 + 1}(-x^2)^2
++
+\frac{1}{2\cdot 2+1}(-x^2)^3
+\biggr)
+=
+x f(-x^2),
+\intertext{mit der Funktion}
+f(z)
+&=
+1
++\frac{1}{3}z
++\frac{1}{5}z^2
++\frac{1}{7}z^3
++\dots
+=
+\sum_{k=0}^\infty
+\frac{1}{2k+1}z^k.
+\end{align*}
+Schreiben Sie $f(z)$ mit Hilfe der hypergeometrischen Reihe
+$\mathstrut_2F_1$.
+
+\begin{hinweis}
+Verwenden Sie dazu
+$({\textstyle\frac12})_k$ und
+$({\textstyle\frac32})_k$.
+\end{hinweis}
+
+\begin{loesung}
+Gemäss dem Hinweis betrachtet man
+\begin{align*}
+({\textstyle\frac12})_k
+&=
+\frac12\cdot\frac32\cdot\frac52\cdot\ldots\cdot\frac{2k-1}{2}
+\\
+({\textstyle\frac32})_k
+&=
+\phantom{\frac12\cdot\mathstrut}
+\frac32\cdot\frac52\cdot\ldots
+\cdot\frac{2k-1}{2}
+\cdot\frac{2k+1}{2}.
+\end{align*}
+Da beide Pochhammer-Symbole jeweils $k$ Faktoren $2$ im Nenner haben,
+kürzen sich diese im Quotienten alle weg.
+Der Quotient ist daher
+\[
+\frac{(\frac12)_k}{(\frac32)_k}
+=
+\frac{1}{2k+1},
+\]
+also genau der Nenner, den wir für die Potenzreihe von $f(z)$ brauchen.
+Somit ist
+\[
+f(z)
+=
+\sum_{k=0}^\infty
+\frac{(\frac12)_k}{(\frac32)_k}z^k.
+\]
+Man könnte versucht sein zu schliessen, dass
+$f(z)=\mathstrut_1F_1(\frac12;\frac32;z)$ sei, dies ist
+aber nicht korrekt, da in der hypergeometrischen Reihe immer 
+auch ein Nenner $k!$ vorkommt.
+Wir brauchen daher einen zusätzlichen Faktor $(a_2)_k$, der
+sich gegen $k!$ wegkürzen lässt, oder
+\[
+f(z)
+=
+\sum_{k=0}^\infty
+\frac{(\frac12)_k}{(\frac32)_k}z^k
+=
+\sum_{k=0}^\infty
+\frac{(\frac12)_k(a_2)_k}{(\frac32)_k}\frac{z^k}{k!}.
+\]
+Dies geht natürlich nur, wenn $(a_2)_k=k!$, also $a_2=1$.
+Somit ist die gesuchte Funktion
+\[
+f(z)
+=
+\sum_{k=0}^\infty
+\frac{(\frac12)_k(1)_k}{(\frac32)_k}
+\frac{z^k}{k!}
+=
+\mathstrut_2F_1\biggl(
+\begin{matrix}\frac12,1\\\frac32\end{matrix};z
+\biggr).
+\]
+Damit kann man jetzt den Arkustangens schreiben als
+\[
+\arctan x
+=
+x\cdot\mathstrut_2F_1\biggl(
+\begin{matrix}\frac12,1\\\frac32\end{matrix};-x^2
+\biggr).
+\qedhere
+\]
+\end{loesung}
+
+
