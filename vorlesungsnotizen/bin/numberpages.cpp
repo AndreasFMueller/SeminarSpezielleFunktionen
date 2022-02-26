@@ -14,7 +14,8 @@
 #include <sys/stat.h>
 
 void	usage(char *progname) {
-	std::cout << "usage: " << progname << " [ -f ] [ -s section ] <unnumbered.pdf> <numbered.pdf>" << std::endl;
+	std::cout << "usage: " << progname << " [ -f ] [ -s section ] ";
+	std::cout << "<unnumbered.pdf> <numbered.pdf>" << std::endl;
 }
 
 struct option	longoptions[] = {
@@ -29,7 +30,8 @@ int	main(int argc, char *argv[]) {
 	bool	debug = false;
 	std::string	section;
 	int	c, longindex, rc;
-	while (EOF != (c = getopt_long(argc, argv, "dfhs:?", longoptions, &longindex))) {
+	while (EOF != (c = getopt_long(argc, argv, "dfhs:?", longoptions,
+		&longindex))) {
 		switch (c) {
 		case 'd':
 			debug = true;
