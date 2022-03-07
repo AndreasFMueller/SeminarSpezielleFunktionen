@@ -1,36 +1,20 @@
 %
-% main.tex -- Paper zum Thema <laguerre>
+% main.tex -- Paper zum Thema Laguerre-Polynome
 %
 % (c) 2020 Hochschule Rapperswil
 %
-\chapter{Thema\label{chapter:laguerre}}
-\lhead{Thema}
+\chapter{Laguerre-Polynome\label{chapter:laguerre}}
+\lhead{Laguerre-Polynome}
 \begin{refsection}
-\chapterauthor{Hans Muster}
+\chapterauthor{Patrik Müller}
 
-Ein paar Hinweise für die korrekte Formatierung des Textes
-\begin{itemize}
-\item
-Absätze werden gebildet, indem man eine Leerzeile einfügt.
-Die Verwendung von \verb+\\+ ist nur in Tabellen und Arrays gestattet.
-\item
-Die explizite Platzierung von Bildern ist nicht erlaubt, entsprechende
-Optionen werden gelöscht. 
-Verwenden Sie Labels und Verweise, um auf Bilder hinzuweisen.
-\item
-Beginnen Sie jeden Satz auf einer neuen Zeile. 
-Damit ermöglichen Sie dem Versionsverwaltungssysteme, Änderungen
-in verschiedenen Sätzen von verschiedenen Autoren ohne Konflikt 
-anzuwenden.
-\item 
-Bilden Sie auch für Formeln kurze Zeilen, einerseits der besseren
-Übersicht wegen, aber auch um GIT die Arbeit zu erleichtern.
-\end{itemize}
+Hier kommt eine Einleitung.
 
-\input{papers/laguerre/teil0.tex}
-\input{papers/laguerre/teil1.tex}
-\input{papers/laguerre/teil2.tex}
-\input{papers/laguerre/teil3.tex}
+\input{papers/laguerre/definition}
+\input{papers/laguerre/eigenschaften}
+\input{papers/laguerre/quadratur}
+\input{papers/laguerre/transformation}
+\input{papers/laguerre/wasserstoff}
 
 \printbibliography[heading=subbibliography]
 \end{refsection}
