@@ -1,0 +1,29 @@
+%
+% quadratur.tex 
+%
+% (c) 2022 Patrik Müller, Ostschweizer Fachhochschule
+%
+\section{Gauss-Laguerre Quadratur
+\label{laguerre:section:quadratur}}
+
+\begin{align}
+    \int_a^b f(x) w(x)
+    \approx
+    \sum_{i=1}^N f(x_i) A_i
+    \label{laguerre:gaussquadratur}
+\end{align}
+
+\begin{align}
+    \int_{0}^{\infty} f(x) e^{-x} dx 
+    \approx
+    \sum_{i=1}^{N} f(x_i) A_i
+    \label{laguerre:laguerrequadratur}
+\end{align}
+
+\begin{align}
+    A_i 
+    = 
+    \frac{x_i}{(n + 1)^2 \left[ L_{n + 1}(x_i)\right]^2}
+    \label{laguerre:quadratur_gewichte}
+\end{align}
+
