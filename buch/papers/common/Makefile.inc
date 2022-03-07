@@ -18,6 +18,7 @@ PAPERFILES = \
 	papers/laguerre/main.tex \
 	papers/zeta/main.tex \
 	papers/0f1/main.tex \
+	papers/nav/main.tex \
 	papers/kra/main.tex \
 	papers/kugel/main.tex \
 	papers/hermite/main.tex \
@@ -68,6 +69,9 @@ buch14-blx.bbl:	buch14-blx.aux
 buch15-blx.bbl:	buch15-blx.aux
 	bibtex buch15-blx
 
+buch16-blx.bbl:	buch16-blx.aux
+	bibtex buch16-blx
+
 BLXFILES = buch.bbl \
 	buch1-blx.bbl \
 	buch2-blx.bbl \
@@ -84,6 +88,7 @@ BLXFILES = buch.bbl \
 	buch13-blx.bbl \
 	buch14-blx.bbl \
 	buch15-blx.bbl \
+	buch16-blx.bbl \
 
 PAPER_DIRECTORIES = \
 	000template \
@@ -96,6 +101,7 @@ PAPER_DIRECTORIES = \
 	laguerre \
 	zeta \
 	0f1 \
+	nav \
 	kra \
 	kugel \
 	hermite \
@@ -112,6 +118,7 @@ PAPER_MAKEFILEINC = \
 	papers/laguerre/Makefile.inc \
 	papers/zeta/Makefile.inc \
 	papers/0f1/Makefile.inc \
+	papers/nav/Makefile.inc \
 	papers/kra/Makefile.inc \
 	papers/kugel/Makefile.inc \
 	papers/hermite/Makefile.inc \

@@ -8,6 +8,7 @@ include papers/sturmliouville/Makefile.inc
 include papers/laguerre/Makefile.inc
 include papers/zeta/Makefile.inc
 include papers/0f1/Makefile.inc
+include papers/nav/Makefile.inc
 include papers/kra/Makefile.inc
 include papers/kugel/Makefile.inc
 include papers/hermite/Makefile.inc
@@ -24,6 +25,7 @@ TEXFILES = \
 	$(dependencies-laguerre) \
 	$(dependencies-zeta) \
 	$(dependencies-0f1) \
+	$(dependencies-nav) \
 	$(dependencies-kra) \
 	$(dependencies-kugel) \
 	$(dependencies-hermite) \
