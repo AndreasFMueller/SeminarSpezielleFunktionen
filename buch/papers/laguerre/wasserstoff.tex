@@ -1,0 +1,29 @@
+%
+% wasserstoff.tex 
+%
+% (c) 2022 Patrik Müller, Ostschweizer Fachhochschule
+%
+\section{Radialer Schwingungsanteil eines Wasserstoffatoms
+\label{laguerre:section:radial_h_atom}}
+
+\begin{align}
+    \nonumber
+    - \frac{\hbar^2}{2m} 
+    &
+    \left( 
+        \frac{1}{r^2} \pdv{}{r}
+        \left( r^2 \pdv{}{r} \right)
+        +
+        \frac{1}{r^2 \sin \vartheta} \pdv{}{\vartheta}
+        \left( \sin \vartheta \pdv{}{\vartheta} \right)
+        +
+        \frac{1}{r^2 \sin^2 \vartheta} \pdv[2]{}{\varphi}
+    \right)
+    u(r, \vartheta, \varphi)
+    \\
+    & -
+    \frac{e^2}{4 \pi \epsilon_0 r} u(r, \vartheta, \varphi)
+    =
+    E u(r, \vartheta, \varphi)
+    \label{laguerre:pdg_h_atom}
+\end{align}

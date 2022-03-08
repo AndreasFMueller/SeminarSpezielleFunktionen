@@ -1,0 +1,48 @@
+%
+% definition.tex 
+%
+% (c) 2022 Patrik Müller, Ostschweizer Fachhochschule
+%
+\section{Definition
+\label{laguerre:section:definition}}
+\rhead{Definition}
+
+\begin{align}
+    x y''(x) + (1 - x) y'(x) + n y(x)
+    =
+    0 
+    \label{laguerre:dgl}
+\end{align}
+
+\begin{align}
+    L_n(x)
+    =
+    \sum_{k=0}^{n} 
+    \frac{(-1)^k}{k!}
+    \begin{pmatrix}
+        n \\
+        k
+    \end{pmatrix}
+    x^k
+    \label{laguerre:polynom}
+\end{align}
+
+\begin{align}
+    x y''(x) + (\alpha + 1 - x) y'(x) + n y(x)
+    =
+    0 
+    \label{laguerre:generell_dgl}
+\end{align}
+
+\begin{align}
+    L_n^\alpha (x)
+    =
+    \sum_{k=0}^{n} 
+    \frac{(-1)^k}{k!}
+    \begin{pmatrix}
+        n + \alpha \\
+        n - k
+    \end{pmatrix}
+    x^k
+    \label{laguerre:polynom}
+\end{align}
