@@ -1,7 +1,7 @@
 include papers/000template/Makefile.inc
 include papers/lambertw/Makefile.inc
 include papers/fm/Makefile.inc
-include papers/nlwave/Makefile.inc
+include papers/parzyl/Makefile.inc
 include papers/fresnel/Makefile.inc
 include papers/kreismembran/Makefile.inc
 include papers/sturmliouville/Makefile.inc
@@ -19,7 +19,7 @@ TEXFILES = \
 	$(dependencies-000template) \
 	$(dependencies-lambertw) \
 	$(dependencies-fm) \
-	$(dependencies-nlwave) \
+	$(dependencies-parzyl) \
 	$(dependencies-fresnel) \
 	$(dependencies-kreismembran) \
 	$(dependencies-sturmliouville) \

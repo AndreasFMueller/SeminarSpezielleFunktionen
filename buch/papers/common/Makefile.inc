@@ -11,7 +11,7 @@ PAPERFILES = \
 	papers/000template/main.tex \
 	papers/lambertw/main.tex \
 	papers/fm/main.tex \
-	papers/nlwave/main.tex \
+	papers/parzyl/main.tex \
 	papers/fresnel/main.tex \
 	papers/kreismembran/main.tex \
 	papers/sturmliouville/main.tex \
@@ -99,7 +99,7 @@ PAPER_DIRECTORIES = \
 	000template \
 	lambertw \
 	fm \
-	nlwave \
+	parzyl \
 	fresnel \
 	kreismembran \
 	sturmliouville \
@@ -117,7 +117,7 @@ PAPER_MAKEFILEINC = \
 	papers/000template/Makefile.inc \
 	papers/lambertw/Makefile.inc \
 	papers/fm/Makefile.inc \
-	papers/nlwave/Makefile.inc \
+	papers/parzyl/Makefile.inc \
 	papers/fresnel/Makefile.inc \
 	papers/kreismembran/Makefile.inc \
 	papers/sturmliouville/Makefile.inc \
