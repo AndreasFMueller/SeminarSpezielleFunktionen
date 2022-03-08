@@ -3,12 +3,12 @@
 #
 # (c) 2021 Prof Dr Andreas Müller, OST Ostschweizer Fachhochschule
 #
-dependencies-nlwave =						\
-	papers/nlwave/packages.tex					\
-	papers/nlwave/main.tex					\
-	papers/nlwave/references.bib				\
-	papers/nlwave/teil0.tex					\
-	papers/nlwave/teil1.tex					\
-	papers/nlwave/teil2.tex					\
-	papers/nlwave/teil3.tex
+dependencies-parzyl =						\
+	papers/parzyl/packages.tex					\
+	papers/parzyl/main.tex					\
+	papers/parzyl/references.bib				\
+	papers/parzyl/teil0.tex					\
+	papers/parzyl/teil1.tex					\
+	papers/parzyl/teil2.tex					\
+	papers/parzyl/teil3.tex
 
