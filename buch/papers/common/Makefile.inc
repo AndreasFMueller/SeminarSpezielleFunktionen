@@ -24,6 +24,7 @@ PAPERFILES = \
 	papers/kugel/main.tex \
 	papers/hermite/main.tex \
 	papers/ellfilter/main.tex \
+	papers/dreieck/main.tex \
 	
 buch1-blx.bbl:	buch1-blx.aux
 	bibtex buch1-blx
@@ -76,6 +77,9 @@ buch16-blx.bbl:	buch16-blx.aux
 buch17-blx.bbl:	buch17-blx.aux
 	bibtex buch17-blx
 
+buch18-blx.bbl:	buch18-blx.aux
+	bibtex buch18-blx
+
 BLXFILES = buch.bbl \
 	buch1-blx.bbl \
 	buch2-blx.bbl \
@@ -94,6 +98,7 @@ BLXFILES = buch.bbl \
 	buch15-blx.bbl \
 	buch16-blx.bbl \
 	buch17-blx.bbl \
+	buch18-blx.bbl \
 
 PAPER_DIRECTORIES = \
 	000template \
@@ -112,6 +117,7 @@ PAPER_DIRECTORIES = \
 	kugel \
 	hermite \
 	ellfilter \
+	dreieck \
 	
 PAPER_MAKEFILEINC = \
 	papers/000template/Makefile.inc \
@@ -130,4 +136,5 @@ PAPER_MAKEFILEINC = \
 	papers/kugel/Makefile.inc \
 	papers/hermite/Makefile.inc \
 	papers/ellfilter/Makefile.inc \
+	papers/dreieck/Makefile.inc \
 	

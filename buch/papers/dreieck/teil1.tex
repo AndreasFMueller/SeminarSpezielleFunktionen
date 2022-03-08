@@ -1,0 +1,261 @@
+%
+% teil1.tex -- Beispiel-File für das Paper
+%
+% (c) 2020 Prof Dr Andreas Müller, Hochschule Rapperswil
+%
+\section{Ordnungsstatistik und Beta-Funktion
+\label{dreieck:section:ordnungsstatistik}}
+\rhead{Ordnungsstatistik und Beta-Funktion}
+In diesem Abschnitt ist $X$ eine Zufallsvariable mit der Verteilungsfunktion
+$F_X(x)$, und $X_i$, $1\le i\le n$ sei ein Stichprobe von unabhängigen
+Zufallsvariablen, die wie $X$ verteilt sind.
+Ziel ist, die Verteilungsfunktion und die Wahrscheinlichkeitsdichte
+des grössten, zweitgrössten, $k$-t-grössten Wertes in der Stichprobe
+zu finden.
+
+\subsection{Verteilung von $\operatorname{max}(X_1,\dots,X_n)$ und
+$\operatorname{min}(X_1,\dots,X_n)$
+\label{dreieck:subsection:minmax}}
+Die Verteilungsfunktion von $\operatorname{max}(X_1,\dots,X_n)$ hat
+den Wert
+\begin{align*}
+F_{\operatorname{max}(X_1,\dots,X_n)}(x)
+&=
+P(\operatorname{max}(X_1,\dots,X_n) \le x)
+\\
+&=
+P(X_1\le x\wedge \dots \wedge X_n\le x)
+\\
+&=
+P(X_1\le x) \cdot \ldots \cdot P(X_n\le x)
+\\
+&=
+P(X\le x)^n
+=
+F_X(x)^n.
+\end{align*}
+Für die Gleichverteilung ist
+\[
+F_{\text{equi}}(x)
+=
+\begin{cases}
+0&\qquad x< 0
+\\
+x&\qquad 0\le x\le 1
+\\
+1&\qquad 1<x.
+\end{cases}
+\]
+In diesem Fall ist Verteilung des Maximums
+\[
+F_{\operatorname{max}(X_1,\dots,X_n)}(x)
+=
+\begin{cases}
+0&\qquad x<0\\
+x^n&\qquad 0\le x\le 1\\
+1&\qquad 1 < x.
+\end{cases}
+\]
+Mit der zugehörigen Wahrscheinlichkeitsdichte
+\[
+\varphi_{\operatorname{max}(X_1,\dots,X_n)}
+=
+\frac{d}{dx}
+F_{\operatorname{max}(X_1,\dots,X_n)}(x)
+=
+\begin{cases}
+nx^{n-1}&\qquad 0\le x\le 1\\
+0       &\qquad \text{sonst}
+\end{cases}
+\]
+kann man zum Beispiel den Erwartungswert
+\[
+E(\operatorname{max}(X_1,\dots,X_n))
+=
+\int_{-\infty}^\infty 
+x
+\varphi_{\operatorname{X_1,\dots,X_n}}(x)
+\,dx
+=
+\int_{0}^1 x\cdot nx^{n-1}\,dt
+=
+\biggl[
+\frac{n}{n+1}x^{n+1}
+\biggr]_0^1
+=
+\frac{n}{n+1}
+\]
+berechnen.
+
+Ganz analog kann man auch die Verteilungsfunktion von
+$\operatorname{min}(X_1,\dots,X_n)$ bestimmen.
+Sie ist
+\begin{align*}
+F_{\operatorname{min}(X_1,\dots,X_n)}(x)
+&=
+P(x\le X_1\vee \dots \vee x\le X_n)
+\\
+&=
+1-
+P(x > X_1\wedge \dots \wedge x > X_n)
+\\
+&=
+1-
+(1-P(x\le X_1)) \cdot\ldots\cdot (1-P(x\le X_n))
+\\
+&=
+1-(1-F_X(x))^n,
+\end{align*}
+Im Speziellen für im Intervall $[0,1]$ gleichverteilte $X_i$ ist die
+Verteilungsfunktion des Minimums
+\[
+F_{\operatorname{min}(X_1,\dots,X_n)}(x)
+=
+\begin{cases}
+0        &\qquad x<0        \\
+1-(1-x)^n&\qquad 0\le x\le 1\\
+1        &\qquad 1 < x
+\end{cases}
+\]
+mit Wahrscheinlichkeitsdichte
+\[
+\varphi_{\operatorname{min}(X_1,\dots,X_n)}
+=
+\frac{d}{dx}
+F_{\operatorname{min}(X_1,\dots,X_n)}
+=
+\begin{cases}
+n(1-x)^{n-1}&\qquad 0\le x\le 1\\
+0           &\qquad \text{sonst}
+\end{cases}
+\]
+und Erwartungswert
+\begin{align*}
+E(\operatorname{min}(X_1,\dots,X_n)
+&=
+\int_{-\infty}^\infty x\varphi_{\operatorname{min}(X_1,\dots,X_n)}(x)\,dx
+=
+\int_0^1 x\cdot n(1-x)^{n-1}\,dx
+\\
+&=
+\bigl[ -x(1-x)^n \bigr]_0^1 + \int_0^1 (1-x)^n\,dx
+=
+\biggl[
+-
+\frac{1}{n+1}
+(1-x)^{n+1}
+\biggr]_0^1
+=
+\frac{1}{n+1}.
+\end{align*}
+Es ergibt sich daraus als natürlich Verallgemeinerung die Frage nach
+der Verteilung des zweitegrössten oder zweitkleinsten Wertes unter den
+Werten $X_i$.
+
+\subsection{Der $k$-t-grösste Wert}
+Sie wieder $X_i$ eine Stichprobe von $n$ unabhängigen wie $X$ verteilten
+Zufallsvariablen.
+Diese werden jetzt der Grösse nach sortiert, die sortierten Werte werden
+mit
+\[
+X_{1:n} \le X_{2:n} \le \dots \le X_{(n-1):n} \le X_{n:n}
+\]
+bezeichnet.
+Die Grössen $X_{k:n}$ sind Zufallsvariablen, sie heissen die $k$-ten
+Ordnungsstatistiken.
+Die in Abschnitt~\ref{dreieck:subsection:minmax} behandelten Zufallsvariablen
+$\operatorname{min}(X_1,\dots,X_n)$
+und
+$\operatorname{max}(X_1,\dots,X_n)$
+sind die Fälle
+\begin{align*}
+X_{1:n} &= \operatorname{min}(X_1,\dots,X_n) \\
+X_{n:n} &= \operatorname{max}(X_1,\dots,X_n).
+\end{align*}
+
+Um den Wert der Verteilungsfunktion von $X_{k:n}$ zu berechnen, müssen wir 
+die Wahrscheinlichkeit bestimmen, dass $k$ der $n$ Werte $X_i$ $x$ nicht
+übersteigen.
+Es muss also eine Partition von $[n]=\{1,\dots,n\}$ in eine
+$k$-elementige $I=\{i_1,\dots,i_k\}$ Teilmenge und ihre
+$(n-k)$-elementige Komplementmenge $[n]\setminus I$ geben
+derart, dass die $X_{i} \le x$ sind für $i\in I$ und $X_{j}> x$ für 
+$j\in [n]\setminus I$.
+Daraus kann man ablesen, dass
+\begin{align*}
+F_{X_{k:n}}(x)
+&=
+P\biggl(
+\bigvee_{I\subset[n]\wedge |I|=k}
+\bigwedge_{i\in I} (X_i\le x)
+\wedge
+\bigwedge_{j\in [n]\setminus I} (X_i > x)
+\biggr).
+\intertext{Da die verschiedenen $k$-elementigen Teilmengen $I\subset[n]$
+zu disjunkten Ereignissen gehören, ist die Wahrscheinlichkeit eine Summe}
+&=
+\sum_{I\subset[n]\wedge |I|=k}
+P\biggl(
+\bigwedge_{i\in I} (X_i\le x)
+\wedge
+\bigwedge_{j\in [n]\setminus I} (X_i > x)
+\biggr)
+\\
+&=
+\sum_{I\subset[n]\wedge |I|=k}
+\prod_{i\in I}
+P(X_i\le x)
+\cdot
+\prod_{j\in [n]\setminus I}
+P(X_j > x)
+\\
+&=
+\sum_{I\subset[n]\wedge |I|=k}
+F_X(x)^k
+(1-F_X(x))^{n-k}.
+\intertext{Die Anzahl solcher Teilmengen $I$ ist gegeben durch den
+Binomialkoeffizienten gebeben, die Verteilungsfunktion ist daher}
+F_{X_{k:n}}(x)
+&=
+\binom{n}{k}
+F_X(x)^k
+(1-F_X(x))^{n-k}.
+\end{align*}
+Für im Intervall $[0,1]$ gleichverteilte $X_i$ ist die Verteilungsfunktion
+der $k$-ten Ordnungsstatistik
+\[
+F_{X_{k:n}}(x)
+=
+\binom{n}{k} x^k(1-x)^{n-k}.
+\]
+Ihre Ableitung nach $x$ ist die Wahrscheinlichkeitsdichte und damit
+wird es jetzt auch möglich, den Erwartungswert zu ermitteln:
+\begin{align*}
+E(X_{k:n})
+&=
+\int_{0}^1
+\underbrace{x\llap{\phantom{\bigg|}}\mathstrut}_{\downarrow}
+\underbrace{\frac{d}{dx}\binom{n}{k}x^k(1-x)^{n-k}}_{\uparrow}
+\,dx
+=
+\biggl[
+x\binom{n}{k}x^k(1-x)^{n-k}
+\biggr]_0^1
+-
+\int_0^1
+\binom{n}{k}x^k(1-x)^{n-k}
+\,dx
+\\
+&=
+\binom{n}{k}
+\biggl(
+0^{n-k}
+-
+\int_0^1  x^k(1-x)^{n-k}\,dx
+\biggr)
+\end{align*}
+
+
+
+
+
