@@ -12,22 +12,87 @@
 \usetikzlibrary{arrows,intersections,math}
 \begin{document}
 \def\skala{8}
+\definecolor{darkgreen}{rgb}{0,0.6,0}
+\input{orderpath.tex}
 \begin{tikzpicture}[>=latex,thick,scale=\skala]
 
-\draw[color=red,line width=1.4pt] ({-0.1/\skala},0) 
+\def\dx{1}
+\def\dy{0.5}
+
+\def\pfad#1#2{
+\draw[color=#2,line width=1.4pt] ({-0.1/\skala},0) 
 	--
-	plot[domain=0:1,samples=100] ({\x},{0.5*\x*\x*\x*\x*\x*\x})
+	#1
 	--
 	({1+0.1/\skala},0.5);
+}
 
-\draw[color=red,line width=1.4pt] ({-0.1/\skala},0) 
-	--
-	plot[domain=0:1,samples=100] ({\x},{0.5*(\x*\x*\x*\x)})
-	--
-	({1+0.1/\skala},0.5);
+\pfad{\orderzero}{darkgreen!20}
+\pfad{\orderone}{darkgreen!20}
+\pfad{\ordertwo}{darkgreen!20}
+\pfad{\orderthree}{darkgreen!20}
+\pfad{\orderfour}{darkgreen!20}
+\pfad{\orderfive}{darkgreen!20}
+\pfad{\ordersix}{darkgreen!20}
+\pfad{\ordereight}{darkgreen!20}
+\pfad{\ordernine}{darkgreen!20}
+\pfad{\orderten}{darkgreen!20}
+\pfad{\orderseven}{darkgreen}
 
-\draw[->] ({-0.1/\skala},0) -- (1.1,0) coordinate[label={$1$}];
+\draw[->] ({-0.1/\skala},0) -- (1.1,0) coordinate[label={$x$}];
 \draw[->] (0,{-0.1/\skala}) -- (0,0.6) coordinate[label={left:$F(X)$}];
+\foreach \x in {0,0.2,0.4,0.6,0.8,1}{
+	\draw (\x,{-0.1/\skala}) -- (\x,{0.1/\skala});
+	\node at (\x,{-0.1/\skala}) [below] {$\x$};
+}
+\foreach \y in {0.5,1}{
+	\draw ({-0.1/\skala},{\y*\dy}) -- ({0.1/\skala},{\y*\dy});
+	\node at ({-0.1/\skala},{\y*\dy}) [left] {$\y$};
+}
+
+\node[color=darkgreen] at (0.65,{0.5*\dy}) [above,rotate=55] {$k=7$};
+
+\begin{scope}[yshift=-0.7cm]
+\def\dy{0.125}
+
+\def\pfad#1#2{
+	\draw[color=#2,line width=1.4pt] ({-0.1/\skala},0) 
+		--
+		#1
+		--
+		({1+0.1/\skala},0.0);
+}
+
+\begin{scope}
+\clip ({-0.1/\skala},{-0.1/\skala})
+	rectangle ({1+0.1/\skala},{0.56+0.1/\skala});
+\pfad{\orderdzero}{red!20}
+\pfad{\orderdone}{red!20}
+\pfad{\orderdtwo}{red!20}
+\pfad{\orderdthree}{red!20}
+\pfad{\orderdfour}{red!20}
+\pfad{\orderdfive}{red!20}
+\pfad{\orderdsix}{red!20}
+\pfad{\orderdeight}{red!20}
+\pfad{\orderdnine}{red!20}
+\pfad{\orderdten}{red!20}
+\pfad{\orderdseven}{red}
+\end{scope}
+
+\draw[->] ({-0.1/\skala},0) -- (1.1,0) coordinate[label={$x$}];
+\draw[->] (0,{-0.1/\skala}) -- (0,0.6) coordinate[label={left:$\varphi(X)$}];
+\foreach \x in {0,0.2,0.4,0.6,0.8,1}{
+	\draw (\x,{-0.1/\skala}) -- (\x,{0.1/\skala});
+	\node at (\x,{-0.1/\skala}) [below] {$\x$};
+}
+\foreach \y in {1,2,3,4}{
+	\draw ({-0.1/\skala},{\y*\dy}) -- ({0.1/\skala},{\y*\dy});
+	\node at ({-0.1/\skala},{\y*\dy}) [left] {$\y$};
+}
+
+\node[color=red] at (0.67,{2.7*\dy}) [above] {$k=7$};
+
+\end{scope}
 
 \end{tikzpicture}
 \end{document}
