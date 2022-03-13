@@ -3,11 +3,17 @@
 %
 % (c) 2021 Prof Dr Andreas Müller, OST Ostschweizer Fachhochschule
 %
-\subsection{Die Beta-Funktion
-\label{buch:rekursion:gamma:subsection:beta}}
+\section{Die Beta-Funktion
+\label{buch:rekursion:gamma:section:beta}}
 Die Eulersche Integralformel für die Gamma-Funktion in
-Definition~\ref{buch:rekursion:def:gamma} wurde bisher nicht
-gerechtfertigt.
+Definition~\ref{buch:rekursion:def:gamma} wurde in
+Abschnitt~\ref{buch:subsection:integral-eindeutig}
+mit dem Satz von Mollerup gerechtfertigt.
+Man kann Sie aber auch als Grenzfall der Beta-Funktion verstehen,
+die in diesem Abschnitt dargestellt wird.
+
+
+\subsection{Beta-Integral}
 In diesem Abschnitt wird das Beta-Integral eingeführt, eine Funktion
 von zwei Variablen, welches eine Integral-Definition mit einer
 reichaltigen Menge von Rekursionsbeziehungen hat, die sich direkt auf
@@ -232,6 +238,16 @@ B(x,y) = \frac{\Gamma(x)\Gamma(y)}{\Gamma(x+y)}
 \end{equation}
 berechnet werden.
 \end{satz}
+
+%
+% Info über die Beta-Verteilung
+%
+\input{chapters/040-rekursion/betaverteilung.tex}
+
+\subsection{Weitere Eigenschaften der Gamma-Funktion}
+Die nahe Verwandtschaft der Gamma- mit der Beta-Funktion ermöglicht
+nun, weitere Eigenschaften der Gamma-Funktion mit Hilfe der Beta-Funktion
+herzuleiten.
 
 \subsubsection{Nochmals der Wert von $\Gamma(\frac12)$?}
 Der Wert von $\Gamma(\frac12)=\sqrt{\pi}$ wurde bereits in
@@ -483,84 +499,4 @@ Setzt man $x=\frac12$ in die Verdoppelungsformel ein, erhält man
 \]
 in Übereinstimmung mit dem aus \eqref{buch:rekursion:gamma:gamma12}
 bereits bekannten Wert.
-
-\subsubsection{Beta-Funktion und Binomialkoeffizienten}
-Die Binomialkoeffizienten können mit Hilfe der Fakultät als
-\begin{align*}
-\binom{n}{k}
-&=
-\frac{n!}{(n-k)!\,k!}
-\intertext{geschrieben werden.
-Drückt man die Fakultäten durch die Gamma-Funktion aus, erhält man}
-&=
-\frac{\Gamma(n+1)}{\Gamma(n-k+1)\Gamma(k+1)}.
-\intertext{Schreibt man $x=k-1$ und $y=n-k+1$, wird daraus 
-wegen $x+y=k+1+n-k+1=n+2=(n+1)+1$}
-&=
-\frac{\Gamma(x+y-1)}{\Gamma(x)\Gamma(y)}.
-\intertext{Die Rekursionsformel für die Gamma-Funktion erlaubt,
-den Zähler umzuwandeln in $\Gamma(x+y-1)=\Gamma(x+y)/(x+y-1)$, so dass
-der Binomialkoeffizient schliesslich}
-&=
-\frac{\Gamma(x+y)}{(x+y-1)\Gamma(x)\Gamma(y)}
-=
-\frac{1}{(n-1)B(n-k+1,k+1)}
-\label{buch:rekursion:gamma:binombeta}
-\end{align*}
-geschrieben werden kann.
-Die Rekursionsbeziehung
-\[
-\binom{n+1}{k} = \binom{n}{k-1} + \binom{n}{k}
-\]
-der Binomialkoeffizienten erzeugt das vertraute Pascal-Dreieck,
-die Formel \eqref{buch:rekursion:gamma:binombeta} für die
-Binomialkoeffizienten macht daraus
-\[
-\frac{n-1}{B(n-k,k-1)}
-=
-\frac{n-2}{B(n-k,k-2)}
-+
-\frac{n-2}{B(n-k-1,k-1)},
-\]
-die für ganzzahlige Argumente gilt.
-Wir wollen nachrechnen, dass dies für beliebige Argumente gilt.
-\begin{align*}
-\frac{(n-1)\Gamma(n-1)}{\Gamma(n-k)\Gamma(k-1)}
-&=
-\frac{(n-2)\Gamma(n-2)}{\Gamma(n-k)\Gamma(k-2)}
-+
-\frac{(n-2)\Gamma(n-2)}{\Gamma(n-k-1)\Gamma(k-1)}
-\\
-\frac{\Gamma(n)}{\Gamma(n-k)\Gamma(k-1)}
-&=
-\frac{\Gamma(n-1)}{\Gamma(n-k)\Gamma(k-2)}
-+
-\frac{\Gamma(n-1)}{\Gamma(n-k-1)\Gamma(k-1)}
-\intertext{Durch Zusammenfassen der Faktoren im Zähler mit Hilfe
-der Rekursionsformel für die Gamma-Funktion und Multiplizieren
-mit dem gemeinsamen Nenner
-$\Gamma(n-k)\Gamma(k-1)=(n-k-1)\Gamma(n-k-1)(k-2)\Gamma(k-2)$ wird daraus}
-\Gamma(n)
-&=
-(k-2)
-\Gamma(n-1)
-+
-(n-k-1)
-\Gamma(n-1)
-\intertext{Indem wir die Rekursionsformel für die Gamma-Funktion auf
-die rechte Seite anwenden können wir erreichen, dass in allen Termen
-ein Faktor
-$\Gamma(n-1)$ auftritt:}
-(n-1)\Gamma(n-1)
-&=
-(k-2)\Gamma(n-1)
-+
-(n+k-1)\Gamma(n-1)
-\\
-n-1
-&=
-k-2
-+
-n-k-1
-\end{align*}
 
