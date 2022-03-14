@@ -14,6 +14,7 @@ include papers/kra/Makefile.inc
 include papers/kugel/Makefile.inc
 include papers/hermite/Makefile.inc
 include papers/ellfilter/Makefile.inc
+include papers/dreieck/Makefile.inc
 
 TEXFILES = \
 	$(dependencies-000template) \
@@ -32,4 +33,5 @@ TEXFILES = \
 	$(dependencies-kugel) \
 	$(dependencies-hermite) \
 	$(dependencies-ellfilter) \
+	$(dependencies-dreieck) \
 

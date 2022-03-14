@@ -1,0 +1,236 @@
+%
+% beta.tex -- display some symmetric beta distributions
+%
+% (c) 2021 Prof Dr Andreas Müller, OST Ostschweizer Fachhochschule
+%
+\documentclass[tikz]{standalone}
+\usepackage{amsmath}
+\usepackage{times}
+\usepackage{txfonts}
+\usepackage{pgfplots}
+\usepackage{csvsimple}
+\usetikzlibrary{arrows,intersections,math,calc}
+\input{betapaths.tex}
+\begin{document}
+\def\skala{12}
+\definecolor{colorone}{rgb}{1.0,0.6,0.0}
+\definecolor{colortwo}{rgb}{1.0,0.0,0.0}
+\definecolor{colorthree}{rgb}{0.6,0.0,0.6}
+\definecolor{colorfour}{rgb}{0.6,0.0,1.0}
+\definecolor{colorfive}{rgb}{0.0,0.0,1.0}
+\definecolor{colorsix}{rgb}{0.4,0.6,1.0}
+\definecolor{colorseven}{rgb}{0.0,0.0,0.0}
+\definecolor{coloreight}{rgb}{0.0,0.8,0.8}
+\definecolor{colornine}{rgb}{0.0,0.8,0.2}
+\definecolor{colorten}{rgb}{0.2,0.4,0.0}
+\definecolor{coloreleven}{rgb}{0.6,1.0,0.0}
+\definecolor{colortwelve}{rgb}{1.0,0.8,0.4}
+
+\def\achsen{
+	\foreach \x in {0.1,0.2,0.3,0.4,0.5,0.6,0.7,0.8,0.9}{
+		\draw ({\x*\dx},{-0.1/\skala}) -- ({\x*\dx},{0.1/\skala});
+		\node at ({\x*\dx},{-0.1/\skala}) [below] {$\x$};
+	}
+	\foreach \y in {1,2,3,4}{
+		\draw ({-0.1/\skala},{\y*\dy}) -- ({0.1/\skala},{\y*\dy});
+		\node at ({-0.1/\skala},{\y*\dy}) [left] {$\y$};
+	}
+	\def\x{1}
+	\draw ({\x*\dx},{-0.1/\skala}) -- ({\x*\dx},{0.1/\skala});
+	\node at ({\x*\dx},{-0.1/\skala}) [below] {$\x$};
+	\def\x{0}
+	\node at ({\x*\dx},{-0.1/\skala}) [below] {$\x$};
+
+	\draw[->] ({-0.1/\skala},0) -- ({1*\dx+0.4/\skala},0)
+		coordinate[label={$x$}];
+	\draw[->] (0,{-0.1/\skala}) -- (0,{\betamax*\dy+0.4/\skala},0)
+		coordinate[label={right:$\beta(a,b,x)$}];
+}
+
+\def\farbcoord#1#2{
+	({\dx*(0.63+((#1)/5)*0.27)},{\dx*(0.18+((#2)/5)*0.27)})
+}
+\def\farbviereck{
+	\foreach \x in {1,2,3,4}{
+		\draw[color=gray!30] \farbcoord{\x}{0} -- \farbcoord{\x}{4};
+		\draw[color=gray!30] \farbcoord{0}{\x} -- \farbcoord{4}{\x};
+	}
+	\draw[->] \farbcoord{0}{0} -- \farbcoord{4.4}{0}
+		coordinate[label={$a$}];
+	\draw[->] \farbcoord{0}{0} -- \farbcoord{0}{4.4}
+		coordinate[label={left: $b$}];
+	\foreach \x in {1,2,3,4}{
+		\node[color=gray] at \farbcoord{4}{\x} [right] {\tiny $b=\x$};
+		%\fill[color=white,opacity=0.7] 
+		%	\farbcoord{(\x-0.1)}{3.3}
+		%	rectangle
+		%	\farbcoord{(\x+0.1)}{4};
+		\node[color=gray] at \farbcoord{\x}{4} [right,rotate=90]
+			{\tiny $a=\x$};
+	}
+}
+\def\farbpunkt#1#2#3{
+	\fill[color=#3] \farbcoord{#1}{#2} circle[radius={0.1/\skala}];
+}
+
+\begin{tikzpicture}[>=latex,thick,scale=\skala]
+
+\def\dx{1.1}
+\def\dy{0.1}
+\def\opa{0.1}
+
+\def\betamax{4.9}
+
+\begin{scope}
+\clip (0,0) rectangle ({1*\dx},{\betamax*\dy});
+\fill[color=colorone,opacity=\opa]    (0,0) -- \betaaa -- (\dx,0) -- cycle;
+\fill[color=colortwo,opacity=\opa]    (0,0) -- \betabb -- (\dx,0) -- cycle;
+\fill[color=colorthree,opacity=\opa]  (0,0) -- \betacc -- (\dx,0) -- cycle;
+\fill[color=colorfour,opacity=\opa]   (0,0) -- \betadd -- (\dx,0) -- cycle;
+\fill[color=colorfive,opacity=\opa]   (0,0) -- \betaee -- (\dx,0) -- cycle;
+\fill[color=colorsix,opacity=\opa]    (0,0) -- \betaff -- (\dx,0) -- cycle;
+\fill[color=colorseven,opacity=\opa]  (0,0) -- \betagg -- (\dx,0) -- cycle;
+\fill[color=coloreight,opacity=\opa]  (0,0) -- \betahh -- (\dx,0) -- cycle;
+\fill[color=colornine,opacity=\opa]   (0,0) -- \betaii -- (\dx,0) -- cycle;
+\fill[color=colorten,opacity=\opa]    (0,0) -- \betajj -- (\dx,0) -- cycle;
+\fill[color=coloreleven,opacity=\opa] (0,0) -- \betakk -- (\dx,0) -- cycle;
+\fill[color=colortwelve,opacity=\opa] (0,0) -- \betall -- (\dx,0) -- cycle;
+
+\draw[color=colorone]    \betaaa;
+\draw[color=colortwo]    \betabb;
+\draw[color=colorthree]  \betacc;
+\draw[color=colorfour]   \betadd;
+\draw[color=colorfive]   \betaee;
+\draw[color=colorsix]    \betaff;
+\draw[color=colorseven]  \betagg;
+\draw[color=coloreight]  \betahh;
+\draw[color=colornine]   \betaii;
+\draw[color=colorten]    \betajj;
+\draw[color=coloreleven] \betakk;
+\draw[color=colortwelve] \betall;
+
+\end{scope}
+
+\achsen
+
+\farbviereck
+
+\farbpunkt{\alphatwelve}{\betatwelve}{colortwelve}
+\farbpunkt{\alphaeleven}{\betaeleven}{coloreleven}
+\farbpunkt{\alphaten}{\betaten}{colorten}
+\farbpunkt{\alphanine}{\betanine}{colornine}
+\farbpunkt{\alphaeight}{\betaeight}{coloreight}
+\farbpunkt{\alphaseven}{\betaseven}{colorseven}
+\farbpunkt{\alphasix}{\betasix}{colorsix}
+\farbpunkt{\alphafive}{\betafive}{colorfive}
+\farbpunkt{\alphafour}{\betafour}{colorfour}
+\farbpunkt{\alphathree}{\betathree}{colorthree}
+\farbpunkt{\alphatwo}{\betatwo}{colortwo}
+\farbpunkt{\alphaone}{\betaone}{colorone}
+
+
+\def\betamax{4.9}
+
+\begin{scope}[yshift=-0.6cm]
+
+\begin{scope}
+\clip (0,0) rectangle ({1*\dx},{\betamax*\dy});
+\fill[color=colorone,opacity=\opa]    (0,0) -- \betaea -- (\dx,0) -- cycle;
+\fill[color=colortwo,opacity=\opa]    (0,0) -- \betaeb -- (\dx,0) -- cycle;
+\fill[color=colorthree,opacity=\opa]  (0,0) -- \betaec -- (\dx,0) -- cycle;
+\fill[color=colorfour,opacity=\opa]   (0,0) -- \betaed -- (\dx,0) -- cycle;
+\fill[color=colorfive,opacity=\opa]   (0,0) -- \betaee -- (\dx,0) -- cycle;
+\fill[color=colorsix,opacity=\opa]    (0,0) -- \betaef -- (\dx,0) -- cycle;
+\fill[color=colorseven,opacity=\opa]  (0,0) -- \betaeg -- (\dx,0) -- cycle;
+\fill[color=coloreight,opacity=\opa]  (0,0) -- \betaeh -- (\dx,0) -- cycle;
+\fill[color=colornine,opacity=\opa]   (0,0) -- \betaei -- (\dx,0) -- cycle;
+\fill[color=colorten,opacity=\opa]    (0,0) -- \betaej -- (\dx,0) -- cycle;
+\fill[color=coloreleven,opacity=\opa] (0,0) -- \betaek -- (\dx,0) -- cycle;
+\fill[color=colortwelve,opacity=\opa] (0,0) -- \betael -- (\dx,0) -- cycle;
+
+\draw[color=colorone]    \betaea;
+\draw[color=colortwo]    \betaeb;
+\draw[color=colorthree]  \betaec;
+\draw[color=colorfour]   \betaed;
+\draw[color=colorfive]   \betaee;
+\draw[color=colorsix]    \betaef;
+\draw[color=colorseven]  \betaeg;
+\draw[color=coloreight]  \betaeh;
+\draw[color=colornine]   \betaei;
+\draw[color=colorten]    \betaej;
+\draw[color=coloreleven] \betaek;
+\draw[color=colortwelve] \betael;
+\end{scope}
+
+\achsen
+
+\farbviereck
+
+\farbpunkt{\alphafive}{\betatwelve}{colortwelve}
+\farbpunkt{\alphafive}{\betaeleven}{coloreleven}
+\farbpunkt{\alphafive}{\betaten}{colorten}
+\farbpunkt{\alphafive}{\betanine}{colornine}
+\farbpunkt{\alphafive}{\betaeight}{coloreight}
+\farbpunkt{\alphafive}{\betaseven}{colorseven}
+\farbpunkt{\alphafive}{\betasix}{colorsix}
+\farbpunkt{\alphafive}{\betafive}{colorfive}
+\farbpunkt{\alphafive}{\betafour}{colorfour}
+\farbpunkt{\alphafive}{\betathree}{colorthree}
+\farbpunkt{\alphafive}{\betatwo}{colortwo}
+\farbpunkt{\alphafive}{\betaone}{colorone}
+
+\end{scope}
+
+\begin{scope}[yshift=-1.2cm]
+
+\begin{scope}
+\clip (0,0) rectangle ({1*\dx},{\betamax*\dy});
+\fill[color=colorone,opacity=\opa]    (0,0) -- \betaal -- (\dx,0) -- cycle;
+\fill[color=colortwo,opacity=\opa]    (0,0) -- \betabl -- (\dx,0) -- cycle;
+\fill[color=colorthree,opacity=\opa]  (0,0) -- \betacl -- (\dx,0) -- cycle;
+\fill[color=colorfour,opacity=\opa]   (0,0) -- \betadl -- (\dx,0) -- cycle;
+\fill[color=colorfive,opacity=\opa]   (0,0) -- \betael -- (\dx,0) -- cycle;
+\fill[color=colorsix,opacity=\opa]    (0,0) -- \betafl -- (\dx,0) -- cycle;
+\fill[color=colorseven,opacity=\opa]  (0,0) -- \betagl -- (\dx,0) -- cycle;
+\fill[color=coloreight,opacity=\opa]  (0,0) -- \betahl -- (\dx,0) -- cycle;
+\fill[color=colornine,opacity=\opa]   (0,0) -- \betail -- (\dx,0) -- cycle;
+\fill[color=colorten,opacity=\opa]    (0,0) -- \betajl -- (\dx,0) -- cycle;
+\fill[color=coloreleven,opacity=\opa] (0,0) -- \betakl -- (\dx,0) -- cycle;
+\fill[color=colortwelve,opacity=\opa] (0,0) -- \betall -- (\dx,0) -- cycle;
+
+\draw[color=colorone]    \betaal;
+\draw[color=colortwo]    \betabl;
+\draw[color=colorthree]  \betacl;
+\draw[color=colorfour]   \betadl;
+\draw[color=colorfive]   \betael;
+\draw[color=colorsix]    \betafl;
+\draw[color=colorseven]  \betagl;
+\draw[color=coloreight]  \betahl;
+\draw[color=colornine]   \betail;
+\draw[color=colorten]    \betajl;
+\draw[color=coloreleven] \betakl;
+\draw[color=colortwelve] \betall;
+\end{scope}
+
+\achsen
+
+\farbviereck
+
+\farbpunkt{\alphatwelve}{\betatwelve}{colortwelve}
+\farbpunkt{\alphaeleven}{\betatwelve}{coloreleven}
+\farbpunkt{\alphaten}{\betatwelve}{colorten}
+\farbpunkt{\alphanine}{\betatwelve}{colornine}
+\farbpunkt{\alphaeight}{\betatwelve}{coloreight}
+\farbpunkt{\alphaseven}{\betatwelve}{colorseven}
+\farbpunkt{\alphasix}{\betatwelve}{colorsix}
+\farbpunkt{\alphafive}{\betatwelve}{colorfive}
+\farbpunkt{\alphafour}{\betatwelve}{colorfour}
+\farbpunkt{\alphathree}{\betatwelve}{colorthree}
+\farbpunkt{\alphatwo}{\betatwelve}{colortwo}
+\farbpunkt{\alphaone}{\betatwelve}{colorone}
+
+\end{scope}
+
+\end{tikzpicture}
+\end{document}
+

@@ -6,7 +6,10 @@
 
 CHAPTERFILES = $(CHAPTERFILES)						\
 	chapters/040-rekursion/gamma.tex				\
+	chapters/040-rekursion/bohrmollerup.tex				\
+	chapters/040-rekursion/integral.tex				\
 	chapters/040-rekursion/beta.tex					\
+	chapters/040-rekursion/betaverteilung.tex			\
 	chapters/040-rekursion/linear.tex				\
 	chapters/040-rekursion/hypergeometrisch.tex			\
 	chapters/040-rekursion/uebungsaufgaben/401.tex			\

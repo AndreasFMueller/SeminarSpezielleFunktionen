@@ -1,0 +1,137 @@
+Für Funktionen auf dem Interval $(-\frac{\pi}2,\frac{\pi}2)$ ist
+\[
+\langle f,g\rangle
+=
+\frac12\int_{-\frac{\pi}2}^{\frac{\pi}2} f(x)g(x)\cos x\,dx
+\]
+ein Skalarprodukt.
+Bestimmen Sie bezüglich dieses Skalarproduktes orthogonale Polynome
+bis zum Grad $2$.
+
+\begin{hinweis}
+Verwenden Sie
+\begin{align*}
+\int_{-\frac{\pi}2}^{\frac{\pi}2} 1\cos x\,dx
+&=
+1,
+&
+\int_{-\frac{\pi}2}^{\frac{\pi}2} x^2\cos x\,dx
+&=
+\frac{\pi^2-8}{2},
+&
+\int_{-\frac{\pi}2}^{\frac{\pi}2} x^4\cos x\,dx
+&=
+\frac{\pi^4-48\pi^2+384}{8}.
+\end{align*}
+\end{hinweis}
+
+\begin{loesung}
+Wir müssen den Gram-Schmidt-Orthogonalisierungsprozess für die
+Polynome $f_0(x)=1$, $f_1(x)=x$ und $f_2(x)=x^2$ durchführen.
+Zunächst halten wir fest, dass
+\[
+\langle f_0,f_0\rangle
+=
+\frac12
+\int_{-\frac{\pi}2}^{\frac{\pi}2} \cos x\,dx
+=
+1,
+\]
+das Polynom $g_0(x)=f_0(x)$ ist hat also Norm $1$.
+
+Ein dazu orthogonales Polynom ist
+\(
+f_1(x) - \langle g_0,f_1\rangle g_0(x),
+\)
+wir müssen also das Skalarprodukt
+\[
+\langle g_0,f_1\rangle
+=
+\frac{1}{2}
+\int_{-\frac{\pi}2}^{\frac{\pi}2}
+x\cos x\,dx
+\]
+bestimmen.
+Es verschwindet, weil die Funktion $x\cos x$ ungerade ist.
+Somit ist die Funktion $f_1(x)=x$ orthogonal zu $f_0(x)=1$, um sie auch zu
+normieren berechnen wir das Integral
+\[
+\| f_1\|^2
+=
+\frac12\int_{-\frac{\pi}2}^{\frac{\pi}2} x^2\cos x\,dx
+=
+\frac{\pi^2-8}{4},
+\]
+und 
+\[
+g_1(x)
+=
+\frac{2}{\sqrt{\pi^2-8}} x.
+\]
+
+Zur Berechnung von $g_2$ müssen wir die Skalarprodukte
+\begin{align*}
+\langle g_0,f_2\rangle
+&=
+\frac{1}{2}
+\int_{-\frac{\pi}2}^{\frac{\pi}2}
+x^2
+\cos x
+\,dx
+=
+\frac{\pi^2-8}{4}
+\\
+\langle g_1,f_2\rangle
+&=
+\frac{1}{2}
+\int_{-\frac{\pi}2}^{\frac{\pi}2}
+\frac{2}{\sqrt{\pi^2-8}}
+x
+\cdot x^2
+\cos x
+\,dx
+=
+0
+\end{align*}
+bestimmen.
+Damit wird das dritte Polynom
+\[
+f_2(x)
+- g_0(x)\langle g_0,f_2\rangle
+- g_1(x)\langle g_1,f_2\rangle
+=
+x^2 - \frac{\pi^2-8}{4},
+\]
+welches bereits orthogonal ist zu $g_0$ und $g_1$.
+Wir können auch noch erreichen, obwohl das nicht verlangt war,
+dass es normiert ist, indem wir die Norm berechnen:
+\[
+\left\| x^2-\frac{\pi^2-8}{4} \right\|^2
+=
+\frac12
+\int_{-\frac{\pi}2}^{\frac{\pi}2}
+\biggl(x^2-\frac{\pi^2-8}{4}\biggr)^2
+\cos x\,dx
+=
+20-2\pi^2
+\]
+woraus sich
+\[
+g_2(x)
+=
+\frac{1}{\sqrt{20-2\pi^2}}
+\biggl(
+x^2 - \frac{\pi^2-8}{4}
+\biggr).
+\]
+Damit haben wir die ersten drei bezüglich des obigen Skalarproduktes
+orthogonalen Polynome
+\begin{align*}
+g_0(x)&=1,
+&
+g_1(x)&=\frac{2x}{\sqrt{\pi^2-8}},
+&
+g_2(x)&=\frac{1}{\sqrt{20-2\pi^2}}\biggl(x^2-\frac{\pi^2-8}{4}\biggr)
+\end{align*}
+gefunden.
+\end{loesung}
