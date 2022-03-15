@@ -5,4 +5,150 @@
 %
 \section{Kugelfunktionen
 \label{buch:pde:section:kugel}}
+Kugelsymmetrische Probleme können oft vorteilhaft in Kugelkoordinaten
+beschrieben werden.
+Die Separationsmethode kann auf partielle Differentialgleichungen
+mit dem Laplace-Operator angewendet werden.
+Die daraus resultierenden gewöhnlichen Differentialgleichungen führen
+einerseits auf die Laguerre-Differentialgleichung für den radialen
+Anteil sowie auf Kugelfunktionen für die Koordinaten der
+geographischen Länge und Breite.
+
+\subsection{Kugelkoordinaten}
+Wir verwenden Kugelkoordinaten $(r,\vartheta,\varphi)$, wobei $r$
+der Radius ist, $\vartheta$ die geographische Breite gemessen vom
+Nordpol der Kugel und $\varphi$ die geographische Breite.
+Der Definitionsbereich für Kugelkoordinaten ist
+\[
+\Omega
+=
+\{(r,\vartheta,\varphi)
+\;|\;
+r\ge 0\wedge 
+0\le \vartheta\le \pi\wedge
+0\le \varphi< 2\pi
+\}.
+\]
+Die Entfernung eines Punktes von der $z$-Achse ist $r\sin\vartheta$.
+Daraus lassen sich die karteischen Koordinaten eines Punktes mit Hilfe
+von
+\[
+\begin{pmatrix}x\\y\\z\end{pmatrix}
+=
+\begin{pmatrix}
+r\cos\vartheta\\
+r\sin\vartheta\cos\varphi\\
+r\sin\vartheta\sin\varphi
+\end{pmatrix}.
+\]
+Man beachte, dass die Punkte auf der $z$-Achse keine eindeutigen
+Kugelkoordinaten haben.
+Sie sind charakterisiert durch $r\sin\vartheta=0$, was $\cos\vartheta=\pm1$
+impliziert.
+Entsprechend führen alle Werte von $\varphi$ auf den gleichen Punkt
+$(0,0,\pm r)$.
+
+\subsection{Der Laplace-Operator in Kugelkoordinaten}
+Der Laplace-Operator in Kugelkoordinaten lautet
+\begin{align}
+\Delta
+&=
+\frac{1}{r^2} \frac{\partial}{\partial r}r^2\frac{\partial}{\partial r}
++
+\frac{1}{r^2\sin\vartheta}\frac{\partial}{\partial\vartheta}
+\sin\vartheta\frac{\partial}{\partial\vartheta}
++
+\frac{1}{r^2\sin^2\vartheta}\frac{\partial^2}{\partial\varphi^2}.
+\label{buch:pde:kugel:laplace1}
+\intertext{Dies kann auch geschrieben werden als}
+&=
+\frac{\partial^2}{\partial r^2}
++
+\frac{2}{r}\frac{\partial}{\partial r}
++
+\frac{1}{r^2\sin\vartheta}\frac{\partial}{\partial\vartheta}
+\sin\vartheta\frac{\partial}{\partial\vartheta}
++
+\frac{1}{r^2\sin^2\vartheta}\frac{\partial^2}{\partial\varphi^2}
+\label{buch:pde:kugel:laplace2}
+\intertext{oder}
+&=
+\frac{1}{r}
+\frac{\partial^2}{\partial r^2} r
++
+\frac{1}{r^2\sin\vartheta}\frac{\partial}{\partial\vartheta}
+\sin\vartheta\frac{\partial}{\partial\vartheta}
++
+\frac{1}{r^2\sin^2\vartheta}\frac{\partial^2}{\partial\varphi^2}.
+\label{buch:pde:kugel:laplace3}
+\end{align}
+Dabei ist zu berücksichtigen, dass mit der Notation gemeint ist,
+dass ein Ableitungsoperator auf alles wirkt, was rechts im gleichen
+Term steht.
+Der Operator
+\[
+\frac{1}{r}
+\frac{\partial^2}{\partial r^2}r
+\quad\text{wirkt daher als}\quad
+\frac{1}{r}
+\frac{\partial^2}{\partial r^2}rf
+=
+\frac{1}{r}
+\frac{\partial}{\partial r}\biggl(f + r\frac{\partial f}{\partial r}\biggr)
+=
+\frac{1}{r}
+\frac{\partial f}{\partial r}
++
+\frac{1}{r}
+\frac{\partial f}{\partial r}
++
+\frac{\partial^2f}{\partial r^2}.
+=
+\frac{2}{r}\frac{\partial f}{\partial r}
++
+\frac{\partial^2f}{\partial r^2},
+\]
+was die Äquivalenz der beiden Formen
+\eqref{buch:pde:kugel:laplace2}
+und
+\eqref{buch:pde:kugel:laplace3}
+rechtfertigt.
+Auch die Äquivalenz mit
+\eqref{buch:pde:kugel:laplace1}
+kann auf ähnliche Weise verstanden werden.
+
+Die Herleitung dieser Formel ist ziemlich aufwendig und soll hier
+nicht dargestellt werden.
+Es sei aber darauf hingewiesen, dass sich für $\vartheta=\frac{\pi}2$ 
+wegen $\sin\vartheta=\sin\frac{\pi}2=1$
+der eingeschränkte Operator
+\[
+\Delta
+= 
+\frac{1}{r^2}\frac{\partial }{\partial r} r^2\frac{\partial}{\partial r}
++
+\frac{1}{r^2}\frac{\partial^2}{\partial\varphi^2}
+\]
+ergibt.
+Wendet man wie oben die Produktregel auf den ersten Term an, entsteht die
+Form
+\[
+\frac{\partial^2}{\partial r^2}
++
+\frac{2}{r}
+\frac{\partial}{\partial r}
++
+\frac{1}{r^2}\frac{\partial^2}{\partial\varphi^2}
+\]
+die {\em nicht} übereinstimmt mit dem Laplace-Operator in 
+Polarkoordinaten~\eqref{buch:pde:kreis:laplace}.
+Der Unterschied rührt daher, dass der Laplace-Operator die Krümmung
+der Koordinatenlinien berücksichtigt, in diesem Fall der Meridiane.
+
+
+\subsection{Separation}
+
+
+
+
 
