@@ -145,8 +145,243 @@ Polarkoordinaten~\eqref{buch:pde:kreis:laplace}.
 Der Unterschied rührt daher, dass der Laplace-Operator die Krümmung
 der Koordinatenlinien berücksichtigt, in diesem Fall der Meridiane.
 
-
 \subsection{Separation}
+In Abschnitt~\ref{buch:pde:subsection:eigenwertproblem}
+wurde bereits gzeigt, wie die Wellengleichung
+\[
+\frac{1}{c^2}
+\frac{\partial^2 U}{\partial t^2}
+-\Delta U
+=
+0
+\]
+durch Separation der Zeit auf ein Eigenwertproblem für eine
+Funktion $u$ reduziert werden kann, die nur von den Ortskoordinaten
+abhängt.
+Es geht also nur noch darum, dass Eigenwertproblem
+\[
+\Delta u = -\lambda^2 u
+\]
+mit geeigneten Randbedingungen zu lösen.
+Dazu gehören einerseits eventuelle Gebietsränder, die im Moment
+nicht interessieren.
+Andererseits muss sichergestellt sein, dass die Lösungsfunktionen
+stetig und differentierbar sind an den Orten, wo das Koordinatensystem
+singulär ist.
+So müssen $u(r,\vartheta,\varphi)$ $2\pi$-periodisch in $\varphi$ sein.
+% XXX Ableitungen
+
+\subsubsection{Separation des radialen Anteils}
+Für das Eigenwertproblem verwenden wir den Ansatz
+\[
+u(r,\vartheta,\varphi)
+=
+R(r) \Theta(\vartheta) \Phi(\varphi),
+\]
+den wir in die Differentialgleichung einsetzen.
+So erhalten wir
+\[
+\biggl(\frac{1}{r^2}R''(r)+\frac{2}{r}R'(r) \biggr)
+\Theta(\vartheta)\Phi(\varphi)
++
+R(r)
+\frac{1}{r^2\sin\vartheta}
+\frac{\partial}{\partial\vartheta}(\sin\vartheta \Theta'(\vartheta))
+\Phi(\varphi)
++
+R(r)\Theta(\vartheta)
+\frac{1}{r^2\sin\vartheta} \Phi''(\varphi)
+=
+-\lambda^2 R(r)\Theta(\vartheta)\Phi(\varphi).
+\]
+Die Gleichung lässt sich nach Multiplikation mit $r^2$ und
+Division durch $u$ separieren in 
+\begin{equation}
+\frac{R''(r)+2rR'(r)+\lambda^2r^2}{R(r)}
++
+\frac{1}{\Theta(\vartheta) \sin\vartheta}
+\frac{\partial}{\partial\vartheta}\sin\vartheta\Theta'(\vartheta)
++
+\frac{1}{\sin^2\vartheta}\frac{\Phi''(\varphi)}{\Phi(\varphi)}
+=
+0
+\label{buch:pde:kugel:separiert2}
+\end{equation}
+Der erste Term hängt nur von $r$ ab, die anderen nur von $\vartheta$ und
+$\varphi$, daher muss der erste Term konstant sein.
+Damit ergbit sich für den Radialanteil die gewöhnliche Differentialgleichung
+\[
+R''(r) + 2rR'(r) +\lambda^2 r^2 = \mu^2 R(r),
+\]
+die zum Beispiel mit der Potenzreihenmethode gelöst werden kann.
+Sie kann aber durch eine geeignete Substition nochmals auf die
+Laguerre-Differentialgleichung reduziert werden, wie in
+Kapitel~\ref{chapter:laguerre} dargelegt wird.
+
+\subsubsection{Kugelflächenanteil}
+Für die Separation der verbleibenden winkelabhängigen Teile muss die
+Gleichung
+\[
+\frac{1}{\Theta(\vartheta) \sin\vartheta}
+\frac{\partial}{\partial\vartheta}\sin\vartheta\Theta'(\vartheta)
++
+\frac{1}{\sin^2\vartheta}\frac{\Phi''(\varphi)}{\Phi(\varphi)}
+=
+-\mu^2
+\]
+mit $\sin^2\vartheta$ multipliziert werden, was auf
+\[
+\frac{\sin\vartheta}{\Theta(\vartheta)}
+\frac{\partial}{\partial\vartheta}\sin\vartheta\Theta'(\vartheta)
++
+\frac{\Phi''(\varphi)}{\Phi(\varphi)}
+=
+-\mu^2\sin^2\vartheta
+\quad\Rightarrow\quad
+\frac{\sin\vartheta}{\Theta(\vartheta)}
+\frac{\partial}{\partial\vartheta}\sin\vartheta\Theta'(\vartheta)
++
+\mu^2\sin^2\vartheta
+=
+-
+\frac{\Phi''(\varphi)}{\Phi(\varphi)}
+\]
+führt.
+Die linke Seite der letzten Gleichung hängt nur von $\vartheta$
+ab, die rechte nur von $\varphi$, beide Seiten müssen daher
+konstant sein, wir bezeichnen diese Konstante mit $\alpha^2$.
+So ergibt sich die Differentialgleichung
+\[
+\alpha^2
+=
+-\frac{\Phi''(\varphi)}{\Phi(\varphi)}
+\]
+für die Abhängigkeit von $\varphi$, mit der allgemeinen Lösung
+\[
+\Phi(\varphi)
+=
+A\cos\alpha \varphi
++
+B\sin\alpha \varphi.
+\]
+Die Randbedingungen verlangen, dass $\Phi(\varphi)$ eine $2\pi$-periodische
+Funktion ist, was genau dann möglich ist, wenn $\alpha=m$ ganzzahlig ist.
+Damit ergibt sich für die $\vartheta$-Abhängigkeit die Differentialgleichung
+\begin{equation}
+\frac{\sin\vartheta}{\Theta(\vartheta)}
+\frac{\partial}{\partial\vartheta}\sin\vartheta\Theta'(\vartheta)
++
+\mu^2\sin^2\vartheta
+=
+m^2.
+\label{buch:pde:kugel:eqn:thetaanteil}
+\end{equation}
+
+\subsubsection{Abhängigkeit von $\vartheta$}
+Die Differentialgleichung~\eqref{buch:pde:kugel:eqn:thetaanteil}
+ist etwas unhandlich, daher verwenden wir die Substitution $z=\cos\vartheta$,
+um die trigonometrischen Funktionen los zu werden.
+Wegen
+\[
+\frac{dz}{d\vartheta} = -\sin\vartheta =-\sqrt{1-z^2}
+\]
+können die Ableitungen nach $\vartheta$ auch durch Ableitungen nach $z$
+ausgedrückt werden.
+Wir schreiben dazu $Z(z)=\Theta(\vartheta)$ und berechnen 
+\[
+\Theta'(\vartheta)
+=
+\frac{d\Theta}{d\vartheta}
+=
+\frac{dZ}{dz}\frac{dz}{d\vartheta}
+=
+-
+\sqrt{1-z^2}
+Z'(z).
+\]
+Dies bedeutet auch, dass
+\[
+\sin\vartheta\frac{d}{d\vartheta}
+=
+-
+(1-z^2)\frac{d}{dz},
+\]
+damit lässt sich die Differentialgleichung für $\Theta(\vartheta)$ umschreiben
+in eine Differentialgleichung für $Z(z)$, nämlich
+\[
+(1-z^2)\frac{d}{dz}(1-z^2)\frac{d}{dz} Z(z)
++
+\mu^2
+(1-z^2)
+Z(z)
+=
+m^2
+Z(z).
+\]
+Indem man die Ableitung im ersten Term mit Hilfe der Produktregel
+ausführt, kann man die Gleichung
+\[
+(1-z^2)\biggl(
+-2zZ'(z) + (1-z^2)Z''(z)
+\biggr)
++
+\mu^2(1-z^2)Z(z)
+=
+-m^2 Z(z)
+\]
+bekommen.
+Division durch $1-z^2$ ergibt die
+{\em Legendre-Differentialgleichung}
+\begin{equation}
+(1-z^2)Z''(z)
+-2zZ'(z)
++
+\biggl(
+\mu^2 - \frac{m^2}{1-z^2}
+\biggr)
+Z(z)
+=
+0.
+\label{buch:pde:kugel:eqn:legendre-dgl}
+\end{equation}
+Eine Diskussion der Lösungen dieser Differentialgleichung erfolgt im
+Kapitel~\ref{chapter:kugel}.
+
+\subsection{Kugelfunktionen}
+Die Legendre-Differentialgleichung~\eqref{buch:pde:kugel:eqn:legendre-dgl}
+hat Lösungen für Werte von $\mu$ derart, dass $\mu^2=l(l+1)$ für natürliche
+Zahlen $l$.
+Die Lösungen sind sogar Polynome, die wir mit $P_l^{(m)}(z)$ 
+bezeichnen, dabei ist $m$ eine ganze Zahl mit $-l\le m\le l$.
+Die Funktionen $P_l^{(m)}(\cos\vartheta)e^{im\varphi}$ 
+sind daher alle Lösungen des von $\vartheta$ und $\varphi$
+abhängigen Teils der Lösungen des Eigenwertproblems.
+Mit einer geeigneten Normierung kann man zudem eine Familie von
+bezüglich des Skalarproduktes
+\[
+\langle f,g\rangle_{S^2}
+=
+\int_{-\pi}^{\pi}
+\int_{0}^{\pi}
+\overline{f(\vartheta,\varphi)}
+g(\vartheta,\varphi)
+\sin\vartheta
+\,d\vartheta
+\,d\varphi
+\]
+orthonormiete Funktionen auf der Kugeloberfläche erhalten, die
+man normalerweise als 
+\[
+Y_{lm}(\vartheta,\varphi)
+=
+\frac{1}{\sqrt{2\pi}}
+\sqrt{
+\frac{2l+1}{2}\cdot
+\frac{(l-m)!}{(l+m)!}
+}
+P_{l}^{(m)}(\cos\vartheta)e^{im\varphi}
+\]
+bezeichnet.
 
 
 
