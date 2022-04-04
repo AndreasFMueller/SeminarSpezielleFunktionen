@@ -1,0 +1,81 @@
+%
+% teil3.tex -- Beispiel-File für Teil 3
+%
+% (c) 2020 Prof Dr Andreas Müller, Hochschule Rapperswil
+%
+\section{Beispiel Verfolgungskurve
+\label{lambertw:section:teil4}}
+\rhead{Beispiel Verfolgungskurve}
+In diesem Abschnitt wird rechnerisch das Beispiel einer Verfolgungskurve beschreiben.
+
+\subsection{Ziel bewegt sich auf einer Gerade
+\label{lambertw:subsection:malorum}}
+Das zu verfolgende Ziel \(Z\) wandert auf einer Gerade, wobei diese Gerade der \(y\)-Achse entspricht. Der Verfolger \(V\) startet auf einem beliebigen Punkt auf dem ersten Quadrant. Diese Anfangspunkte oder Anfangsbedingungen können wie folgt formuliert werden:
+\begin{equation}
+	Z
+	=
+	\left( \begin{array}{c} 0 \\ t \end{array} \right)
+	;
+	V
+	=
+	\left( \begin{array}{c} x \\ y \end{array} \right)
+	\label{lambertw:equation2}
+\end{equation}
+Wenn man diese Startpunkte in die Gleichung der Verfolgungskurve einfügt ergibt sich folgender Ausdruck:
+\begin{equation}
+	\frac{\left( \begin{array}{c} 0-x \\ t-y \end{array} \right)}{\sqrt{x^2 + (t-y)^2}}
+	\circ
+	\left(\begin{array}{c} \dot{x} \\ \dot{y} \end{array}\right)
+	=
+	1
+	\label{lambertw:equation3}
+\end{equation}
+Macht man den linken Term Bruchfrei und löst das Skalarprodukt auf, dann ergibt sich folgende DGL:
+\[
+	\left( \begin{array}{c} 0-x \\ t-y \end{array} \right)
+	\circ
+	\left(\begin{array}{c} \dot{x} \\ \dot{y} \end{array}\right)
+	= \sqrt{x^2 + (t-y)^2}\\
+\]
+\begin{equation}
+		-x \cdot \dot{x} + (t-y) \cdot \dot{y}
+		= \sqrt{x^2 + (t-y)^2}
+		\label{lambertw:equation4}
+\end{equation}
+Im nächsten Schritt quadriert man beide Seiten, erweitert den neu entstandenen quadratischen Term, bringt alles auf die linke Seite und klammert gemeinsames aus.
+\begin{align*}
+	((t-y) \dot{y} - x \dot{x})^2
+	&= x^2 + (t-y)^2 \\
+	x^2 \dot{x}^2 - 2x(t-y) \dot{x} \dot{y} + (t-y)^2 \dot{y}
+	&= x^2 + (t-y)^2 \\
+	\dot{x}^2 x^2 - x^2 - 2x(t-y) \dot{x} \dot{y} + \dot{y}^2 (t-y)^2 - (t-y)^2
+	&= 0 \\
+	(\dot{x}^2 - 1) \cdot x^2 - 2x(t-y) \dot{x} \dot{y} + (\dot{y}^2 - 1) \cdot (t-y)^2
+	&= 0
+\end{align*}
+Der letzte Ausdruck kann mittels folgender Beziehung \(\dot{x}^2 + \dot{y}^2 = 1\) vereinfacht werden und anschliessend mit \(-1\) multiplizieren:
+\[
+	\underbrace{(\dot{x}^2 - 1)}_{\mathclap{-\dot{y}^2}} \cdot x^2 - 2x(t-y) \dot{x} \dot{y} + \underbrace{(\dot{y}^2 - 1)}_{\mathclap{-\dot{x}^2}} \cdot (t-y)^2
+	= 0
+\]
+\begin{align*}
+	- \dot{y}^2 \cdot x^2 - 2x(t-y) \dot{x} \dot{y} - \dot{x}^2 \cdot (t-y)^2
+	&= 0 \\
+	\dot{y}^2 \cdot x^2 + 2x(t-y) \dot{x} \dot{y} + \dot{x}^2 \cdot (t-y)^2
+	&= 0
+\end{align*}
+Im letzten Ausdruck erkennt man das Muster einer binomischen Formel, was den Ausdruck wesentlich vereinfacht:
+\begin{align*}
+	x^2 \dot{y}^2  + 2 \cdot x \dot{y} \cdot (t-y) \dot{x}  + (t-y)^2 \dot{x}^2
+	&= 0 \\
+	(x \dot{y} + (t-y) \dot{x})^2
+	&= 0
+\end{align*}
+Wenn man nun beidseitig die Quadratwurzel zieht, dann ergibt sich im Vergleich zu \eqref{lambertw:equation4} eine wesentlich einfachere DGL:
+\begin{equation}
+	x \dot{y} + (t-y) \dot{x}
+	= 0
+	\label{lambertw:equation5}
+\end{equation}
+
+
