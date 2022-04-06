@@ -5,24 +5,32 @@
 #
 global N;
 N = 201;
-global n;
-n = 11;
+global nmin;
+global nmax;
+nmin = -4;
+nmax = 7;
+n = nmax - nmin + 1
+A = 3;
 
-t = (0:n-1) / (n-1)
-alpha = 1 + 4 * t.^2
+t = (nmin:nmax) / nmax;
+alpha = 1 + A * t .* abs(t)
+#alpha(1) = 0.01;
 
 #alpha = [ 1, 1.03, 1.05, 1.1, 1.25, 1.5, 2, 2.5, 3, 4, 5 ];
 beta = alpha;
 names = [ "one"; "two"; "three"; "four"; "five"; "six"; "seven"; "eight";
-	  "nine"; "ten"; "eleven" ]
+	  "nine"; "ten"; "eleven"; "twelve" ]
 
 function retval = Beta(a, b, x)
 	retval = x^(a-1) * (1-x)^(b-1) / beta(a, b);
+	if (retval > 100)
+		retval = 100
+	end
 end
 
 function plotbeta(fn, a, b, name)
 	global N;
-	fprintf(fn, "\\def\\beta%s{\n", name);
+	fprintf(fn, "\\def\\beta%s{\n", strtrim(name));
 	fprintf(fn, "\t({%.4f*\\dx},{%.4f*\\dy})", 0, Beta(a, b, 0));
 	for x = (1:N-1)/(N-1)
 		X = (1-cos(pi * x))/2;
@@ -35,8 +43,8 @@ end
 fn = fopen("betapaths.tex", "w");
 
 for i = (1:n)
-	fprintf(fn, "\\def\\alpha%s{%f}\n", names(i,:), alpha(i));
-	fprintf(fn, "\\def\\beta%s{%f}\n", names(i,:), beta(i));
+	fprintf(fn, "\\def\\alpha%s{%f}\n", strtrim(names(i,:)), alpha(i));
+	fprintf(fn, "\\def\\beta%s{%f}\n", strtrim(names(i,:)), beta(i));
 end
 
 for i = (1:n)

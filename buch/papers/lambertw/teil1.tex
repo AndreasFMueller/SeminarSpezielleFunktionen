@@ -3,9 +3,116 @@
 %
 % (c) 2020 Prof Dr Andreas Müller, Hochschule Rapperswil
 %
-\section{Teil 1
+\section{Beispiel ()
 \label{lambertw:section:teil1}}
 \rhead{Problemstellung}
+
+
+
+%\begin{figure}[H]
+%	\centering
+%	\includegraphics[width=0.5\textwidth]{.\Bilder\something.pdf}
+%   \label{pursuer:grafik1}
+%\end{figure}
+
+
+
+Je nach Verfolgungsstrategie die der Verfolger verwendet, entsteht eine andere DGL.
+Für dieses konkrete Beispiel wird einfachheitshalber die simpelste Strategie gewählt.
+Bei dieser Strategie bewegt sich der Verfolger immer direkt auf sein Ziel hinzu.
+Womit der Geschwindigkeitsvektor des Verfolgers zu jeder Zeit direkt auf das Ziel zeigt.
+
+Um die DGL dieses Problems herzuleiten wird der Sachverhalt in der Grafik \eqref{pursuer:grafik1} aufgezeigt.
+Der Punkt $P$ ist der Verfolger und der Punkt $A$ ist sein Ziel.
+
+Um dies mathematisch beschreiben zu können, wird der Richtungsvektor
+\begin{equation}
+    \frac{A-P}{|A-P|}
+    =
+    \frac{\dot{P}}{|\dot{P}|}
+\end{equation}
+benötigt. Durch die Subtraktion der Ortsvektoren $\overrightarrow{OP}$ und $\overrightarrow{OA}$ entsteht ein Vektor der vom Punkt $P$ auf $A$ zeigt.
+Da die Länge dieses Vektors beliebig sein kann, wird durch Division mit dem Betrag, die Länge auf eins festgelegt.
+Aus dem Verfolgungsproblem ist auch ersichtlich, dass die Punkte $A$ und $P$ nicht am gleichen Ort starten und so eine Division durch Null ausgeschlossen ist.
+Wenn die Punkte $A$ und $P$ trotzdem am gleichen Ort starten, ist die Lösung trivial.
+
+Nun wird die Gleichung mit deren rechten Seite skalar multipliziert, um das Gleichungssystem von zwei auf eine Gleichung zu reduzieren.
+\begin{equation}
+    \label{pursuer:pursuerDGL}
+    \frac{A-P}{|A-P|}\cdot \frac{\dot{P}}{|\dot{P}|}
+    =
+    1
+\end{equation}
+Diese DGL ist der Kern des Verfolgungsproblems, insofern sich der Verfolger immer direkt auf sein Ziel zubewegt.
+
+
+\subsection{Beispiel}
+Das Verfolgungsproblem wird mithilfe eines konkreten Beispiels veranschaulicht. Dafür wird die einfachste Strategie verwendet, bei der sich der Verfolger direkt auf sein Ziel hinzu bewegt. Für dieses Problem wurde bereits die DGL \eqref{pursuer:pursuerDGL} hergeleitet.
+
+Um dieses Beispiel einfach zu halten, wird für den Verfolger und das Ziel jeweils eine konstante Geschwindigkeit von eins gewählt. Das Ziel wiederum startet im Ursprung und bewegt sich linear auf der positiven Y-Achse.
+
+\begin{align}
+    v_P^2
+    &=
+    \dot{P}\cdot\dot{P}
+    =
+    1
+    \\[5pt]
+    v_A
+    &=
+    1
+    \\[5pt]
+    A
+    &=
+    \begin{pmatrix}
+    	0 \\
+    	v_A\cdot t
+    \end{pmatrix}
+	=
+	\begin{pmatrix}
+		0 \\
+		t
+	\end{pmatrix}
+	\\[5pt]
+	P
+	&=
+	\begin{pmatrix}
+		x \\
+		y
+	\end{pmatrix}
+\end{align}
+
+Die Anfangsbedingungen dieses Problems sind.
+
+\begin{align}
+	y(t)\bigg|_{t=0}
+	&=
+	y_0
+	\\[5pt]
+	x(t)\bigg|_{t=0}
+	&=
+	x_0 \\[5pt]
+	\frac{\,dy}{\,dx}(t)\bigg|_{t=0}
+	&=
+	\frac{y_A(t) -y_P(t)}{x_A(t)-x_P(t)}\bigg|_{t=0}
+\end{align}
+
+Mit den vorangegangenen Definitionen kann nun die DGL \eqref{pursuer:pursuerDGL} gelöst werden.
+Dafür wird als erstes das Skalarprodukt ausgerechnet.
+
+\begin{equation}
+	\dfrac{-x\cdot\dot{x}+(t-y)\cdot\dot{y}}{\sqrt{x^2+(t-y)^2}} = 1
+\end{equation}
+
+
+
+
+
+
+
+
+
+
 Sed ut perspiciatis unde omnis iste natus error sit voluptatem
 accusantium doloremque laudantium, totam rem aperiam, eaque ipsa
 quae ab illo inventore veritatis et quasi architecto beatae vitae

@@ -1,0 +1,82 @@
+Die Differentialgleichung
+\begin{equation}
+\frac{\partial u}{\partial t} = \kappa \frac{\partial^2 u}{\partial x^2}
+\qquad
+\text{im Gebiet}
+\qquad
+(t,x)\in \Omega=\mathbb{R}^+\times (0,l)
+\label{505:waermeleitungsgleichung}
+\end{equation}
+beschreibt die Änderung der Temperatur eines Stabes der Länge $l$.
+Die homogene Randbedingung
+\begin{equation}
+u(t,0)=
+u(t,l)=0
+\label{505:homogene-randbedingung}
+\end{equation}
+besagt, dass der Stab an seinen Enden auf Temperatur $0$ gehalten.
+Zur Lösung dieser Differentialgleichung muss auch die Temperatur
+zur Zeit $t=0$ in Form einer Randbedingung
+\[
+u(0,x) = T_0(x)
+\]
+gegeben sein.
+Führen Sie Separation für die
+Differentialgleichung~\eqref{505:waermeleitungsgleichung}
+durch und bestimmen Sie die zulässigen Werte der Separationskonstanten.
+
+\begin{loesung}
+Man verwendet den Ansatz $u(t,x)= T(t)\cdot X(x)$ und setzt diesen 
+in die Differentialgleichung ein, die dadurch zu
+\[
+T'(t)X(x) = \kappa T(t) X''(x)
+\]
+wird.
+Division durch $T(t)X(x)$ wird dies zu
+\[
+\frac{T'(t)}{T(t)}
+=
+\kappa
+\frac{X''(x)}{X(x)}.
+\]
+Da die linke Seite nur von $t$ abhängt, die rechte aber nur von $x$, müssen
+beide Seiten konstant sein.
+Wir bezeichnen die Konstante mit $-\lambda^2$, so dass wir die beiden
+gewöhnlichen Differentialgleichungen
+\begin{align*}
+\frac{1}{\kappa}
+\frac{T'(t)}{T(t)}&=-\lambda^2
+&
+\frac{X''(x)}{X(x)}&=-\lambda^2
+\\
+T'(t)&=-\lambda^2\kappa T(t)
+&
+X''(x) &= -\lambda^2 X(x)
+\intertext{welche die Lösungen}
+T(t)&=Ce^{-\lambda^2\kappa t}
+&
+X(x)&= A\cos\lambda x + B\sin\lambda x
+\end{align*}
+haben.
+Die Lösung $X(x)$ muss aber auch die homogene Randbedingung 
+\eqref{505:homogene-randbedingung} erfüllen.
+Setzt man $x=0$ und $x=l$ ein, folgt
+\begin{align*}
+0 = X(0)&=A\cos 0 + B\sin 0 = A
+&
+0 = X(l)&=B\sin \lambda l,
+\end{align*}
+woraus man schliessen kann, dass $\lambda l$ ein ganzzahliges
+Vielfaches von $\pi$ ist, wir schreiben $\lambda l = k\pi$ oder
+\[
+\lambda = \frac{k\pi}{l}.
+\]
+Damit sind die möglichen Werte $\lambda$ bestimmt und man kann jetzt
+auch die möglichen Lösungen aufschreiben, sie sind
+\[
+u(t,x)
+=
+\sum_{k=1}^\infty b_k e^{-k^2\pi^2\kappa t/l^2}\sin\frac{k\pi x}{l}.
+\qedhere
+\]
+\end{loesung}

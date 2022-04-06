@@ -13,4 +13,5 @@ CHAPTERFILES = $(CHAPTERFILES)						\
 	chapters/070-orthogonalitaet/jacobi.tex				\
 	chapters/070-orthogonalitaet/sturm.tex				\
 	chapters/070-orthogonalitaet/gaussquadratur.tex			\
+	chapters/070-orthogonalitaet/uebungsaufgaben/701.tex		\
 	chapters/070-orthogonalitaet/chapter.tex

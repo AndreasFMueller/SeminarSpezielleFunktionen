@@ -1,36 +1,39 @@
 %
+
 % main.tex -- Paper zum Thema <kugel>
 %
 % (c) 2020 Hochschule Rapperswil
 %
-\chapter{Thema\label{chapter:kugel}}
-\lhead{Thema}
+\chapter{Recurrence Relations for Spherical Harmonics in Quantum Mechanics\label{chapter:kugel}}
+\lhead{Recurrence Relations in Quantum Mechanics}
 \begin{refsection}
-\chapterauthor{Hans Muster}
+\chapterauthor{Manuel Cattaneo, Naoki Pross}
 
-Ein paar Hinweise für die korrekte Formatierung des Textes
-\begin{itemize}
-\item
-Absätze werden gebildet, indem man eine Leerzeile einfügt.
-Die Verwendung von \verb+\\+ ist nur in Tabellen und Arrays gestattet.
-\item
-Die explizite Platzierung von Bildern ist nicht erlaubt, entsprechende
-Optionen werden gelöscht. 
-Verwenden Sie Labels und Verweise, um auf Bilder hinzuweisen.
-\item
-Beginnen Sie jeden Satz auf einer neuen Zeile. 
-Damit ermöglichen Sie dem Versionsverwaltungssysteme, Änderungen
-in verschiedenen Sätzen von verschiedenen Autoren ohne Konflikt 
-anzuwenden.
-\item 
-Bilden Sie auch für Formeln kurze Zeilen, einerseits der besseren
-Übersicht wegen, aber auch um GIT die Arbeit zu erleichtern.
-\end{itemize}
+\begin{verbatim}
 
-\input{papers/kugel/teil0.tex}
-\input{papers/kugel/teil1.tex}
-\input{papers/kugel/teil2.tex}
-\input{papers/kugel/teil3.tex}
+Ideas and current research goals
+--------------------------------
+
+- Recurrence relations for spherical harmonics
+- Associated Legendre polynomials
+- Rodrigues' type formula aka Rodrigues' formula
+- Applications:
+  * Quantization of angular momentum
+  * Gravitational field measurements (NASA ebb and flow, ESA goce)
+  * Literally anything that needs basis functions on the surface of a sphere
+
+Literature
+----------
+
+- Nichtkommutative Bildverarbeitung, T. Mendez, p57+
+- Linear Algebra Done Right, S. Axler, p212,221,231,237
+- Introduction to Quantum Mechanics, D. J. Griffith, p201+
+- Seminar Quantenmechanik, A. Müller, p101,106,114,121
+- Introduction to Partial Differential Equations, J. Oliver, p510+
+- Partial Differential Equations in Engineering Problems, K. Miller, p175,190
+
+\end{verbatim}
+
 
 \printbibliography[heading=subbibliography]
 \end{refsection}
