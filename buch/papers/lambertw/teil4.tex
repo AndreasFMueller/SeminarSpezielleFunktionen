@@ -10,13 +10,15 @@ In diesem Abschnitt wird rechnerisch das Beispiel einer Verfolgungskurve beschre
 
 \subsection{Ziel bewegt sich auf einer Gerade
 \label{lambertw:subsection:malorum}}
-Das zu verfolgende Ziel \(Z\) wandert auf einer Gerade, wobei diese Gerade der \(y\)-Achse entspricht. Der Verfolger \(V\) startet auf einem beliebigen Punkt auf dem ersten Quadrant. Diese Anfangspunkte oder Anfangsbedingungen können wie folgt formuliert werden:
+Das zu verfolgende Ziel \(A\) wandert auf einer Gerade, wobei diese Gerade der \(y\)-Achse entspricht. Der Verfolger \(P\) startet auf einem beliebigen Punkt auf dem ersten Quadrant.Um die Rechnungen zu vereinfachen wir die Geschwindigkeit \(v\) auf 1 gesetzt. Diese Anfangspunkte oder Anfangsbedingungen können wie folgt formuliert werden:
 \begin{equation}
-	Z
+	A
+	=
+	\left( \begin{array}{c} 0 \\ v \cdot t \end{array} \right)
 	=
 	\left( \begin{array}{c} 0 \\ t \end{array} \right)
 	;
-	V
+	P
 	=
 	\left( \begin{array}{c} x \\ y \end{array} \right)
 	\label{lambertw:equation2}
@@ -53,7 +55,7 @@ Im nächsten Schritt quadriert man beide Seiten, erweitert den neu entstandenen 
 	(\dot{x}^2 - 1) \cdot x^2 - 2x(t-y) \dot{x} \dot{y} + (\dot{y}^2 - 1) \cdot (t-y)^2
 	&= 0
 \end{align*}
-Der letzte Ausdruck kann mittels folgender Beziehung \(\dot{x}^2 + \dot{y}^2 = 1\) vereinfacht werden und anschliessend mit \(-1\) multiplizieren:
+Der letzte Ausdruck kann mittels folgender Beziehung \(\dot{x}^2 + \dot{y}^2 = 1\) vereinfacht werden, anschliessend wird die Gleichung mit \(-1\) multipliziert:
 \[
 	\underbrace{(\dot{x}^2 - 1)}_{\mathclap{-\dot{y}^2}} \cdot x^2 - 2x(t-y) \dot{x} \dot{y} + \underbrace{(\dot{y}^2 - 1)}_{\mathclap{-\dot{x}^2}} \cdot (t-y)^2
 	= 0
@@ -77,5 +79,17 @@ Wenn man nun beidseitig die Quadratwurzel zieht, dann ergibt sich im Vergleich z
 	= 0
 	\label{lambertw:equation5}
 \end{equation}
+Um die Ableitung nach der Zeit wegzubringen wird beidseitig mit \(\dot{x}\) dividiert, wobei \(\frac{\dot{y}}{\dot{x}} = \frac{dy}{dt}/\frac{dx}{dt} = \frac{dy}{dx}\) entspricht.
+\[
+	x \frac{\dot{y}}{\dot{x}} + (t-y) \frac{\dot{x}}{\dot{x}}
+	= 0
+\]
+Nach dem kürzen ergibt sich folgende DGL:
+\begin{equation}
+	x y^{\prime} + t - y
+	= 0
+	\label{lambertw:equation6}
+\end{equation}
+Hier wäre es passend wenn man die Abhängigkeit nach \(t\) komplett wegbringen könnte. Um dies zu erreichen muss man 
 
 
