@@ -737,6 +737,57 @@ rechten Rand haben.
 \label{buch:orthogonal:fig:jacobi-parameter}}
 \end{figure}
 
+\subsubsection{Jacobi-Gewichtsfunktion und Beta-Verteilung
+\label{buch:orthogonal:subsection:beta-verteilung}}
+Die Jacobi-Gewichtsfunktion entsteht aus der Wahrscheinlichkeitsdichte
+der Beta-Verteilung, die in
+Abschnitt~\ref{buch:rekursion:subsection:beta-verteilung}
+eingeführt wurde mit Hilfe der Variablen-Transformation $x = 2t-1$
+oder $t=(x+1)/2$.
+Das Integral mit der Jacobi-Gewichtsfunktion $w^{(\alpha,\beta)}(x)$
+kann damit umgeformt werden in
+\begin{align*}
+\int_{-1}^1
+f(x)\,w^{(\alpha,\beta)}(x)\,dx
+&=
+\int_0^1
+f(2t-1) w^{(\alpha,\beta)}(2t-1)\,2\,dt
+\\
+&=
+\int_0^1
+f(2t-1)
+(1-(2t-1))^\alpha (1+(2t-1))^\beta
+\,2\,dt
+\\
+&=
+2^{\alpha+\beta+1}
+\int_0^1
+f(2t-1)
+\,
+t^\beta
+(1-t)^\alpha
+\,dt
+\\
+&=
+2^{\alpha+\beta+1}
+B(\alpha+1,\beta+1)
+\int_0^1
+f(2t-1)
+\,
+\frac{
+t^\beta
+(1-t)^\alpha
+}{B(\alpha+1,\beta+1)}
+\,dt.
+\end{align*}
+Auf der letzten Zeile steht ein Integral mit der Wahrscheinlichkeitsdichte
+der Beta-Verteilung.
+Orthogonale Funktionen bezüglich der Jacobischen Gewichtsfunktion
+$w^{(\alpha,\beta)}$ werden mit der genannten Substitution also
+zu orthogonalen Funktionen bezüglich der Beta-Verteilung mit
+Parametern $\beta+1$ und $\alpha+1$.
+
+
 %
 % Tschebyscheff-Gewichtsfunktion
 %

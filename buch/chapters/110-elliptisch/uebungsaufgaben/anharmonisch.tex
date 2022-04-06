@@ -1,0 +1,62 @@
+%
+% anharmonisch.tex -- Potential einer anharmonischen Schwingung
+%
+% (c) 2021 Prof Dr Andreas Müller, OST Ostschweizer Fachhochschule
+%
+\documentclass[tikz]{standalone}
+\usepackage{amsmath}
+\usepackage{times}
+\usepackage{txfonts}
+\usepackage{pgfplots}
+\usepackage{csvsimple}
+\usetikzlibrary{arrows,intersections,math}
+\begin{document}
+\def\skala{1}
+\definecolor{darkgreen}{rgb}{0,0.6,0}
+\begin{tikzpicture}[>=latex,thick,scale=\skala]
+
+\def\E{3}
+\def\K{0.2}
+\def\D{0.0025}
+
+\pgfmathparse{sqrt(\K/\D)}
+\xdef\xnull{\pgfmathresult}
+
+\pgfmathparse{sqrt((\K+sqrt(\K*\K-4*\E*\D))/\D)}
+\xdef\xplus{\pgfmathresult}
+\pgfmathparse{sqrt((\K-sqrt(\K*\K-4*\E*\D))/\D)}
+\xdef\xminus{\pgfmathresult}
+
+\def\xmax{13}
+
+\fill[color=darkgreen!20] (0,-1.5) rectangle (\xminus,4.7);
+\node[color=darkgreen] at ({0.5*\xminus},4.7) [below] {anziehende Kraft\strut};
+
+\fill[color=orange!20] (\xplus,-1.5) rectangle (\xmax,4.7);
+\node[color=orange] at ({0.5*(\xplus+\xmax)},4.7) [below] {abstossende\strut};
+\node[color=orange] at ({0.5*(\xplus+\xmax)},4.3) [below] {Kraft\strut};
+
+\node[color=gray] at (\xnull,4.7) [below] {verbotener Bereich\strut};
+
+\draw (-0.1,\E) -- (0.1,\E);
+\node at (-0.1,\E) [left] {$E$};
+
+\draw[color=red,line width=1pt]
+	plot[domain=0:13,samples=100]
+		({\x},{\E-(0.5*\K-0.25*\D*\x*\x)*\x*\x});
+
+\draw[->] (-0.1,0) -- ({\xmax+0.3},0) coordinate[label={$x$}];
+\draw[->] (0,-1.5) -- (0,5) coordinate[label={right:$f(x)$}];
+
+\fill[color=blue] (\xminus,0) circle[radius=0.08];
+\node[color=blue] at (\xminus,0) [below left] {$x_-\mathstrut$};
+
+\fill[color=blue] (\xplus,0) circle[radius=0.08];
+\node[color=blue] at (\xplus,0) [below right] {$x_+\mathstrut$};
+
+\fill[color=blue] (\xnull,0) circle[radius=0.08];
+\node[color=blue] at (\xnull,0) [below] {$x_0\mathstrut$};
+
+\end{tikzpicture}
+\end{document}
+
