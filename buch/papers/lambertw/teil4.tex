@@ -21,7 +21,7 @@ Das zu verfolgende Ziel \(A\) wandert auf einer Gerade, wobei diese Gerade der \
 	P
 	=
 	\left( \begin{array}{c} x \\ y \end{array} \right)
-	\label{lambertw:equation2}
+	\label{lambertw:Anfangspunkte}
 \end{equation}
 Wenn man diese Startpunkte in die Gleichung der Verfolgungskurve einfügt ergibt sich folgender Ausdruck:
 \begin{equation}
@@ -30,7 +30,7 @@ Wenn man diese Startpunkte in die Gleichung der Verfolgungskurve einfügt ergibt
 	\left(\begin{array}{c} \dot{x} \\ \dot{y} \end{array}\right)
 	=
 	1
-	\label{lambertw:equation3}
+	\label{lambertw:eqMitAnfangspunkte}
 \end{equation}
 Macht man den linken Term Bruchfrei und löst das Skalarprodukt auf, dann ergibt sich folgende DGL:
 \[
@@ -42,7 +42,7 @@ Macht man den linken Term Bruchfrei und löst das Skalarprodukt auf, dann ergibt
 \begin{equation}
 		-x \cdot \dot{x} + (t-y) \cdot \dot{y}
 		= \sqrt{x^2 + (t-y)^2}
-		\label{lambertw:equation4}
+		\label{lambertw:eq1BspVerfolgKurve}
 \end{equation}
 Im nächsten Schritt quadriert man beide Seiten, erweitert den neu entstandenen quadratischen Term, bringt alles auf die linke Seite und klammert gemeinsames aus.
 \begin{align*}
@@ -73,7 +73,7 @@ Im letzten Ausdruck erkennt man das Muster einer binomischen Formel, was den Aus
 	(x \dot{y} + (t-y) \dot{x})^2
 	&= 0
 \end{align*}
-Wenn man nun beidseitig die Quadratwurzel zieht, dann ergibt sich im Vergleich zu \eqref{lambertw:equation4} eine wesentlich einfachere DGL:
+Wenn man nun beidseitig die Quadratwurzel zieht, dann ergibt sich im Vergleich zu \eqref{lambertw:eq1BspVerfolgKurve} eine wesentlich einfachere DGL:
 \begin{equation}
 	x \dot{y} + (t-y) \dot{x}
 	= 0
@@ -88,8 +88,79 @@ Nach dem kürzen ergibt sich folgende DGL:
 \begin{equation}
 	x y^{\prime} + t - y
 	= 0
-	\label{lambertw:equation6}
+	\label{lambertw:DGLmitT}
 \end{equation}
-Hier wäre es passend wenn man die Abhängigkeit nach \(t\) komplett wegbringen könnte. Um dies zu erreichen muss man 
-
-
+Hier wäre es passend wenn man die Abhängigkeit nach \(t\) komplett wegbringen könnte. Um dies zu erreichen muss man auf die Definition der Bogenlänge aus Analysis 2 zurückgreifen:
+\begin{equation}
+	s
+	= 
+	v \cdot t
+	=
+	t
+	=
+	\int_{x_0}^{x_{end}}\sqrt{1+y^{\prime\, 2}} \: dx
+	\label{lambertw:eqZuBogenlaenge}
+\end{equation}
+Nicht gerade auffällig ist die Richtung in welche hier integriert wird. Wenn der Verfolger sich wie vorgesehen am Anfang im ersten Quadranten befindet, dann muss sich dieser nach links bewegen, was nicht der üblichen Integrationsrichtung entspricht. Um eine Integration wie üblich von links nach rechts ausführen zu können, müssen die Integrationsgenerzen vertauscht werden, was in einem Vorzeichenwechsel resultiert. Wenn man nun \eqref{lambertw:eqZuBogenlaenge} in die DGL \eqref{lambertw:DGLmitT} einfügt, dann ergibt sich folgender Ausdruck:
+\begin{equation}
+	x y^{\prime} - \int\sqrt{1+y^{\prime\, 2}} \: dx - y
+	= 0
+	\label{lambertw:DGLohneT}
+\end{equation}
+Um das Integral los zu werden, leitet man den vorherigen Ausdruck \eqref{lambertw:DGLohneT} nach \(x\) ab:
+\begin{align*}
+	y^{\prime}+ xy^{\prime\prime} - \sqrt{1+y^{\prime\, 2}} - y^{\prime}
+	&= 0 \\
+	xy^{\prime\prime} - \sqrt{1+y^{\prime\, 2}}
+	&= 0
+\end{align*}
+Mittels der Substitution \(y^{\prime} = u\) kann vorherige DGL in eine erster Ordnung umgewandelt werden:
+\begin{equation*}
+	xu^{\prime} - \sqrt{1+u^2}
+	= 0
+	\label{lambertw:DGLmitU}
+\end{equation*}
+Welche mittels Separation gelöst werden kann:
+\begin{align*}
+	arsinh(u) + C_L
+	&=
+	ln(x) + C_R \\
+	arsinh(u)
+	&=
+	ln(x) + C \\
+	u
+	&=
+	sinh(ln(x) + C)
+\end{align*}
+In dem man die Substitution rückgängig macht, erhält man eine weitere DGL erster Ordnung die bereits separiert ist:
+\begin{equation}
+	y^{\prime}
+	=
+	sinh(ln(x) + C)
+\end{equation}
+Diese kann mit den selben Methoden gelöst werden, diesmal in Kombination mit der exponentiellen Definition der \(sinh\)-Funktion:
+\begin{align*}
+	y
+	&=
+	\int sinh(ln(x) + C) \\
+	&=
+	\int \frac{1}{2} (e^{ln(x)+C} - e^{-(ln(x)+C)}) \\
+	&=
+	C_1 + C_2 x^2 - C_3 ln(x)
+\end{align*}
+Das Resultat wie ersichtlich ist folgende Funktion welche mittels Anfangsbedingungen parametrisiert werden kann: 
+\begin{equation}
+	y(x)
+	=
+	C_1 + C_2 x^2 - C_3 ln(x)
+	\label{lambertw:funkLoes}
+\end{equation}
+Für die Koeffizienten \(C_1, C_2\) und \(C_3\) ergibt sich ein Anfangswertproblem, welches für deren Bestimmung gelöst werden muss. Zuerst soll aber eine qualitative Intuition, oder Idee für das Aussehen der Funktion \(\bf{y(x)}\) geschaffen werden:
+\begin{itemize}
+	\item
+	Für grosse \(x\)-Werte welche in der Regel in der Nähe von \(x_0\) sein sollten, ist der quadratisch Term in der Funktion dominant und somit für immer kleiner werdende \(x\) geht der Verfolger in Richtung \(y\)-Achse wobei seine Steigung stetig sinkt, was Sinn macht wenn der Verfolgte entlang der \(y\)-Achse steigt.
+	\item
+	Für \(x\)-Werte in der Nähe von \(0\) ist das asymptotische Verhalten des Logarithmus dominant, dies macht auch Sinn da sich der Verfolgte auf der \(y\)-Achse bewegt und der Verfolger im nachgeht.
+	\item
+	Aufgrund des Monotoniewechsels in der Kurve muss die Kurve auch ein Minimum aufweisen. Es stellt sich nun die Frage: Wo befindet sich dieser Punkt? Durch eine logische Überlegung kann eine Abschätzung darüber getroffen werden und zwar, dass dieser dann entsteht, wenn \(A\) und \(P\) die gleiche \(y\)-Koordinaten besitzen. In diesem Moment ändert die Richtung der \(y\)-Komponente der Geschwindigkeit und somit auch sein Vorzeichen.
+\end{itemize}
