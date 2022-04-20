@@ -5,7 +5,7 @@
 #
 all:	lemniskate.pdf ellipsenumfang.pdf unvollstaendig.pdf rechteck.pdf \
 	ellipse.pdf pendel.pdf jacobiplots.pdf jacobidef.pdf jacobi12.pdf \
-	sncnlimit.pdf
+	sncnlimit.pdf slcl.pdf
 
 lemniskate.pdf:	lemniskate.tex
 	pdflatex lemniskate.tex
@@ -71,3 +71,10 @@ jacobi12.pdf:	jacobi12.tex
 sncnlimit.pdf:	sncnlimit.tex
 	pdflatex sncnlimit.tex
 
+slcl:	slcl.cpp
+	g++ -O -Wall -std=c++11 slcl.cpp -o slcl `pkg-config --cflags gsl` `pkg-config --libs gsl`
+
+slcldata.tex:	slcl
+	./slcl --outfile=slcldata.tex --a=0 --b=13.4 --steps=200
+slcl.pdf:	slcl.tex slcldata.tex
+	pdflatex slcl.tex
