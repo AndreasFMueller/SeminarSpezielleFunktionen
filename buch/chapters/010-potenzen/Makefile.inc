@@ -4,7 +4,7 @@
 # (c) 2021 Prof Dr Andreas Müller, OST Ostschweizer Fachhochschule
 #
 
-CHAPTERFILES = $(CHAPTERFILES)						\
+CHAPTERFILES += 							\
 	chapters/010-potenzen/loesbarkeit.tex				\
 	chapters/010-potenzen/polynome.tex				\
 	chapters/010-potenzen/tschebyscheff.tex				\
