@@ -267,15 +267,21 @@ Die Ableitung von $Y(\tau)=X(t(\tau))$ nach $\tau$ ist
 =
 \alpha
 \dot{X}(t(\tau))
-\qquad\Rightarrow\qquad
-\frac{1}{\alpha^2}\frac{dY}{d\tau}
+\quad\Rightarrow\quad
+\frac{1}{\alpha}\frac{dY}{d\tau}
 =
-\dot{X}(t(\tau)).
+\dot{X}(t(\tau))
+\quad\Rightarrow\quad
+\frac{1}{\alpha^2}\biggl(\frac{dY}{d\tau}\biggr)^2
+=
+\dot{X}(t(\tau))^2.
 \]
 Die Differentialgleichung für $Y(\tau)$ ist
 \[
-\frac{2mk^2}{\delta x_+^2\alpha^2}
+\frac{2m}{\delta x_+^2\alpha^2}
+\biggl(
 \frac{dY}{d\tau}
+\biggr)^2
 =
 (1-Y^2)(1-k^2Y^2).
 \]
@@ -283,7 +289,7 @@ Der Koeffizient vor der Ableitung wird $1$, wenn man
 \[
 \alpha^2
 =
-\frac{2mk^2}{\delta x_+^2}
+\frac{2m}{\delta x_+^2}
 \]
 wählt.
 Diese Differentialgleichug hat die Lösung
@@ -299,9 +305,9 @@ x(t)
 x_- X(t)
 =
 x_- \operatorname{sn}\biggl(
-t\sqrt{\frac{\delta x_+^2}{2mk^2} }
+t\sqrt{\frac{\delta x_+^2}{2m} }
 ,k
-\biggr)
+\biggr).
 \end{align*}
 Das Produkt $\delta x_+^2$ kann auch als
 \[
