@@ -27,19 +27,30 @@
 \draw[color=red,line width=2.0pt]
 	plot[domain=45:\a,samples=100] ({\x}:{sqrt(2*cos(2*\x))});
 
-\draw[->] (-1.5,0) -- (1.5,0) coordinate[label={$x$}];
-\draw[->] (0,-0.7) -- (0,0.7) coordinate[label={right:$y$}];
+\draw[->] (-1.5,0) -- (1.7,0) coordinate[label={$X$}];
+\draw[->] (0,-0.7) -- (0,0.7) coordinate[label={right:$Y$}];
 
 \fill[color=white] (1,0) circle[radius=0.02];
 \draw (1,0) circle[radius=0.02];
+\node at ({1},0) [below] {$\displaystyle a\mathstrut$};
+
 \fill[color=white] (-1,0) circle[radius=0.02];
 \draw (-1,0) circle[radius=0.02];
+\node at ({-1},0) [below] {$\displaystyle\llap{$-$}a\mathstrut$};
 
 \node[color=blue] at (\a:{0.6*sqrt(2*cos(2*\a))}) [below] {$r$};
 \node[color=red] at ({\b}:{sqrt(2*cos(2*\b))}) [above] {$s$};
 
 \fill[color=white] (\a:{sqrt(2*cos(2*\a))}) circle[radius=0.02];
 \draw[color=red] (\a:{sqrt(2*cos(2*\a))}) circle[radius=0.02];
+
+\draw ({sqrt(2)},{-0.1/\skala}) -- ({sqrt(2)},{0.1/\skala});
+\node at ({sqrt(2)},0) [below right]
+	{$\displaystyle a\mathstrut\sqrt{2}$};
+\draw ({-sqrt(2)},{-0.1/\skala}) -- ({-sqrt(2)},{0.1/\skala});
+\node at ({-sqrt(2)},0) [below left]
+	{$\displaystyle -a\mathstrut\sqrt{2}$};
+
 
 \end{tikzpicture}
 \end{document}

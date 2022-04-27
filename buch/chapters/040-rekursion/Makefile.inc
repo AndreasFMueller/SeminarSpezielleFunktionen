@@ -4,7 +4,7 @@
 # (c) 2021 Prof Dr Andreas Müller, OST Ostschweizer Fachhochschule
 #
 
-CHAPTERFILES = $(CHAPTERFILES)						\
+CHAPTERFILES += 							\
 	chapters/040-rekursion/gamma.tex				\
 	chapters/040-rekursion/bohrmollerup.tex				\
 	chapters/040-rekursion/integral.tex				\
