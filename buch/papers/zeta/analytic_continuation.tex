@@ -110,7 +110,7 @@ Zunächst teilen wir nun das Integral aus \eqref{zeta:equation:integral1} auf al
     dx,
 \end{equation}
 wobei wir uns nun auf den ersten Teil konzentrieren werden.
-Dabei setzen wir das Wissen aus \eqref{zeta:equation:integral2} ein und erhalten
+Dabei setzen wir das Wissen aus \eqref{zeta:equation:psi} ein und erhalten
 \begin{align}
     \int_0^{1}
     x^{\frac{s}{2}-1}
@@ -148,9 +148,9 @@ Dabei setzen wir das Wissen aus \eqref{zeta:equation:integral2} ein und erhalten
     x^{\frac{s}{2}-\frac{3}{2}}
     -
     x^{\frac{s}{2}-1}
-    dx.
+    dx. \label{zeta:equation:integral3}
 \end{align}
-Dabei kann das zweite integral gelöst werden als
+Dabei kann das zweite Integral gelöst werden als
 \begin{equation}
     \frac{1}{2}
     \int_0^1
@@ -161,5 +161,104 @@ Dabei kann das zweite integral gelöst werden als
     =
     \frac{1}{s(s-1)}.
 \end{equation}
-
+Das erste Integral aus \eqref{zeta:equation:integral3} mit $\psi \left(\frac{1}{x} \right)$ ist nicht lösbar in dieser Form.
+Deshalb substituieren wir $x = \frac{1}{u}$ und $dx = -\frac{1}{u^2}du$.
+Die untere Integralgrenze wechselt ebenfalls zu $x_0 = 0 \rightarrow u_0 = \infty$.
+Dies ergibt
+\begin{align}
+    \int_{\infty}^{1}
+    {\frac{1}{u}}^{\frac{s}{2}-\frac{3}{2}}
+    \psi(u)
+    \frac{-du}{u^2}
+    &=
+    \int_{1}^{\infty}
+    {\frac{1}{u}}^{\frac{s}{2}-\frac{3}{2}}
+    \psi(u)
+    \frac{du}{u^2}
+    \\
+    &=
+    \int_{1}^{\infty}
+    x^{(-1) \left(\frac{s}{2}+\frac{1}{2}\right)}
+    \psi(x)
+    dx,
+\end{align}
+wobei wir durch Multiplikation mit $(-1)$ die Integralgrenzen tauschen dürfen.
+Es ist zu beachten das diese Grenzen nun identisch mit den Grenzen des zweiten Integrals von \eqref{zeta:equation:integral2} sind.
+Wir setzen beide Lösungen ein in Gleichung \eqref{zeta:equation:integral3} und erhalten
+\begin{equation}
+    \int_0^{1}
+    x^{\frac{s}{2}-1}
+    \psi(x)
+    dx
+    =
+    \int_{1}^{\infty}
+    x^{(-1) \left(\frac{s}{2}+\frac{1}{2}\right)}
+    \psi(x)
+    dx,
+    +
+    \frac{1}{s(s-1)}.
+\end{equation}
+Dieses Resultat setzen wir wiederum ein in \eqref{zeta:equation:integral2}, um schlussendlich
+\begin{align}
+    \frac{\Gamma \left( \frac{s}{2} \right)}{\pi^{\frac{s}{2}}}
+    \zeta(s)
+    &=
+    \int_0^{1}
+    x^{\frac{s}{2}-1}
+    \psi(x)
+    dx
+    +
+    \int_1^{\infty}
+    x^{\frac{s}{2}-1}
+    \psi(x)
+    dx
+    \nonumber
+    \\
+    &=
+    \frac{1}{s(s-1)}
+    +
+    \int_{1}^{\infty}
+    x^{(-1) \left(\frac{s}{2}+\frac{1}{2}\right)}
+    \psi(x)
+    dx,
+    +
+    \int_1^{\infty}
+    x^{\frac{s}{2}-1}
+    \psi(x)
+    dx
+    \\
+    &=
+    \frac{1}{s(s-1)}
+    +
+    \int_{1}^{\infty}
+    \left(
+    x^{-\frac{s}{2}-\frac{1}{2}}
+    +
+    x^{\frac{s}{2}-1}
+    \right)
+    \psi(x)
+    dx
+    \\
+    &=
+    \frac{-1}{s(1-s)}
+    +
+    \int_{1}^{\infty}
+    \left(
+    x^{\frac{1-s}{2}}
+    +
+    x^{\frac{s}{2}}
+    \right)
+    \frac{\psi(x)}{x}
+    dx,
+\end{align}
+zu erhalten.
+Wenn wir dieses Resultat genau anschauen, erkennen wir dass sich nichts verändert wenn $s$ mit $1-s$ ersetzt wird.
+Somit haben wir die analytische Fortsetzung gefunden als
+\begin{equation}\label{zeta:equation:functional}
+    \frac{\Gamma \left( \frac{s}{2} \right)}{\pi^{\frac{s}{2}}}
+    \zeta(s)
+    =
+    \frac{\Gamma \left( \frac{1-s}{2} \right)}{\pi^{\frac{1-s}{2}}}
+    \zeta(1-s).
+\end{equation}
 
