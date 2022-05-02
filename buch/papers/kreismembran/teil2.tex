@@ -1,40 +1,49 @@
 %
-% teil2.tex -- Beispiel-File für teil2 
-%
 % (c) 2020 Prof Dr Andreas Müller, Hochschule Rapperswil
 %
-\section{Teil 2 
-\label{kreismembran:section:teil2}}
-\rhead{Teil 2}
-Sed ut perspiciatis unde omnis iste natus error sit voluptatem
-accusantium doloremque laudantium, totam rem aperiam, eaque ipsa
-quae ab illo inventore veritatis et quasi architecto beatae vitae
-dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit
-aspernatur aut odit aut fugit, sed quia consequuntur magni dolores
-eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam
-est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci
-velit, sed quia non numquam eius modi tempora incidunt ut labore
-et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima
-veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam,
-nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure
-reprehenderit qui in ea voluptate velit esse quam nihil molestiae
-consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla
-pariatur?
 
-\subsection{De finibus bonorum et malorum
-\label{kreismembran:subsection:bonorum}}
-At vero eos et accusamus et iusto odio dignissimos ducimus qui
-blanditiis praesentium voluptatum deleniti atque corrupti quos
-dolores et quas molestias excepturi sint occaecati cupiditate non
-provident, similique sunt in culpa qui officia deserunt mollitia
-animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis
-est et expedita distinctio. Nam libero tempore, cum soluta nobis
-est eligendi optio cumque nihil impedit quo minus id quod maxime
-placeat facere possimus, omnis voluptas assumenda est, omnis dolor
-repellendus. Temporibus autem quibusdam et aut officiis debitis aut
-rerum necessitatibus saepe eveniet ut et voluptates repudiandae
-sint et molestiae non recusandae. Itaque earum rerum hic tenetur a
-sapiente delectus, ut aut reiciendis voluptatibus maiores alias
-consequatur aut perferendis doloribus asperiores repellat.
+\section{Lösung der partiellen Differentialgleichung
+	\label{kreismembran:section:teil2}}
+\rhead{Lösung der partiellen Differentialgleichung}
+
+Wie im vorherigen Kapitel gezeigt, lautet die partielle Differentialgleichung, die die Schwingungen einer Membran beschreibt:
+\begin{equation*}
+	\frac{1}{c^2}\frac{\partial^2u}{\partial t^2} = \Delta u
+\end{equation*}
+Da es sich um eine Kreisscheibe handelt, werden Polarkoordinaten verwendet, so dass sich der Laplaceoperator ergibt:
+\begin{equation*}
+	\Delta
+	=
+	\frac{\partial^2}{\partial r^2}
+	+
+	\frac1r
+	\frac{\partial}{\partial r}
+	+
+	\frac{1}{r 2}
+	\frac{\partial^2}{\partial\varphi^2}.
+	\label{buch:pde:kreis:laplace}
+\end{equation*}
+
+Es wird eine runde elastische Membran berücksichtigt, die den Gebietbereich $\Omega$ abdeckt und am Rand $\Gamma$ befestigt ist.
+Es wird daher davon ausgegangen, dass die Membran aus einem homogenen Material von vernachlässigbarer Dicke gefertigt ist.
+Die Membran kann verformt werden, aber innere elastische Kräfte wirken den Verformungen entgegen. Es wirken keine äusseren Kräfte. Es handelt sich somit von einer kreisförmligen eigespannten homogenen schwingenden Membran.
+
+Daher ist die Membranabweichung im Punkt $(r,\theta)$ $\in$ $\overline{\rm \Omega}$ zum Zeitpunkt $t$:
+\begin{align*}
+	u: \overline{\rm \Omega} \times \mathbb{R}_{\geq 0} &\longrightarrow \mathbb{R}\\
+	(r,\theta,t) &\longmapsto u(r,\theta,t)
+\end{align*}
+Da die Membran am Rand befestigt ist, kann es keine Schwingungen geben, so dass die \textit{Dirichlet-Randbedingung} gilt:
+\begin{equation*}
+	u\big|_{\Gamma} = 0
+\end{equation*}
 
 
+Um eine eindeutige Lösung bestimmen zu können, werden die folgenden Anfangsbedingungen festgelegt:
+
+\begin{align*}
+	u(r,\theta, 0) &:= f(x,y)\\
+	\frac{\partial}{\partial t} u(r,\theta, 0) &:= g(x,y)
+\end{align*}
+
+An dieser Stelle könnte man zum Beispiel die bereits in Kapitel (TODO:refKAPITEL) vorgestellte Methode der Separation anwenden. Da es sich in diesem Fall jedoch um einem achsensymmetrischen Problem handelt, das in Polarkoordinaten formuliert ist, wird man die Transformationsmethode verwenden, insbesondere die Hankel Transformation.
