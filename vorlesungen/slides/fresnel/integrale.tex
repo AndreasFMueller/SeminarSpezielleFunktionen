@@ -1,10 +1,11 @@
 %
-% fresnel.tex -- slide template
+% integrale.tex -- Definition der Fresnel Integrale
 %
 % (c) 2021 Prof Dr Andreas Müller, OST Ostschweizer Fachhochschule
 %
 \bgroup
 \input{../slides/fresnel/eulerpath.tex}
+\definecolor{darkgreen}{rgb}{0,0.6,0}
 \begin{frame}[t]
 \setlength{\abovedisplayskip}{5pt}
 \setlength{\belowdisplayskip}{5pt}
@@ -15,57 +16,103 @@
 \begin{block}{Definition}
 Fresnel-Integrale:
 \begin{align*}
-S(t)
+\color{red}S(t)
 &=
-\int_0^t \sin(\tau^2)\,d\tau
+\int_0^t \sin\biggl(\frac{\pi\tau^2}2\biggr)\,d\tau
 \\
-C(t)
+\color{blue}C(t)
 &=
-\int_0^t \cos(\tau^2)\,d\tau
+\int_0^t \cos\biggl(\frac{\pi\tau^2}2\biggr)\,d\tau
 \end{align*}
-\uncover<2->{%
+\uncover<3->{%
 Können nicht in geschlossener Form ausgewertet werden.
 }
 \end{block}
-\uncover<3->{%
-\begin{block}{Kurve}
+\uncover<4->{%
+\begin{block}{Euler-Spirale}
 \[
-\gamma(t)
+\gamma_a(t)
 =
 \begin{pmatrix}
-S(t)\\C(t)
+C_a(t)\\S_a(t)
+\end{pmatrix}
+=
+\begin{pmatrix}
+\displaystyle
+\int_0^t \cos (a\tau^2)\,d\tau\\[8pt]
+\displaystyle
+\int_0^t \sin (a\tau^2)\,d\tau
 \end{pmatrix}
 \]
 \end{block}}
 \end{column}
 \begin{column}{0.48\textwidth}
-\uncover<4->{%
-\begin{block}{Euler-Spirale}
+\ifthenelse{\boolean{presentation}}{
+\only<2-4>{%
 \begin{center}
-\begin{tikzpicture}[>=latex,thick,scale=2.7]
+\begin{tikzpicture}[>=latex,thick,scale=1]
+\def\dx{0.6}
+\def\dy{1.5}
 
-\draw[->] (-1.05,0) -- (1.05,0) coordinate[label={$C(t)$}];
-\draw[->] (0,-1.05) -- (0,1.05) coordinate[label={right:$S(t)$}];
+\begin{scope}
+	\draw[color=gray!50] (0,{0.5*\dy}) -- (3,{0.5*\dy});
+	\draw[color=gray!50] (0,{-0.5*\dy}) -- (-3,{-0.5*\dy});
+	\draw[->] (-3,0) -- (3.3,0) coordinate[label={$t$}];
+	\draw[->] (0,-1.5) -- (0,1.5) coordinate[label={left:$S(t)$}];
+	\draw (-0.1,{0.5*\dy}) -- (0.1,{0.5*\dy});
+	\node at (-0.1,{0.5*\dy}) [left] {$\frac12$};
+	\draw (-0.1,{-0.5*\dy}) -- (0.1,{-0.5*\dy});
+	\node at (0.1,{-0.5*\dy}) [right] {$-\frac12$};
+	\draw[color=red,line width=1.4pt] \Splotright;
+	\draw[color=red,line width=1.4pt] \Splotleft;
+\end{scope}
 
-\draw[color=red,line width=1.4pt] \fresnela;
-\draw[color=red,line width=1.4pt] \fresnelb;
-
-\fill[color=blue] ({sqrt(3.14159/8)},{sqrt(3.14159/8)}) circle[radius=0.02];
-\fill[color=blue] ({-sqrt(3.14159/8)},{-sqrt(3.14159/8)}) circle[radius=0.02];
-
-\draw (1,-0.03) -- (1,0.03);
-\node at (1,-0.03) [below] {$1$};
-\draw (-1,-0.03) -- (-1,0.03);
-\node at (-1,0.03) [above] {$-1$};
-\draw (-0.03,1) -- (0.03,1);
-\node at (-0.03,1) [left] {$1$};
-\draw (-0.03,-1) -- (0.03,-1);
-\node at (0.03,-1) [right] {$-1$};
-\node at (0,0) [below right] {$0$};
+\begin{scope}[yshift=-3.4cm]
+	\draw[color=gray!50] (0,{0.5*\dy}) -- (3,{0.5*\dy});
+	\draw[color=gray!50] (0,{-0.5*\dy}) -- (-3,{-0.5*\dy});
+	\draw[->] (-3,0) -- (3.3,0) coordinate[label={$t$}];
+	\draw[->] (0,-1.5) -- (0,1.5) coordinate[label={left:$C(t)$}];
+	\draw (-0.1,{0.5*\dy}) -- (0.1,{0.5*\dy});
+	\node at (-0.1,{0.5*\dy}) [left] {$\frac12$};
+	\draw (-0.1,{-0.5*\dy}) -- (0.1,{-0.5*\dy});
+	\node at (0.1,{-0.5*\dy}) [right] {$-\frac12$};
+	\draw[color=blue,line width=1.4pt] \Cplotright;
+	\draw[color=blue,line width=1.4pt] \Cplotleft;
+\end{scope}
 
 \end{tikzpicture}
 \end{center}
-\end{block}}
+}}{}
+\uncover<5->{%
+\begin{center}
+\begin{tikzpicture}[>=latex,thick,scale=3.5]
+
+\draw[color=gray!50] (-0.5,-0.5) rectangle (0.5,0.5);
+
+\draw[->] (-0.8,0) -- (0.9,0) coordinate[label={$\color{blue}C(t)$}];
+\draw[->] (0,-0.8) -- (0,0.9) coordinate[label={right:$\color{red}S(t)$}];
+
+\draw[color=darkgreen,line width=1.0pt] \fresnela;
+\draw[color=darkgreen,line width=1.0pt] \fresnelb;
+
+\fill[color=orange] (0.5,0.5) circle[radius=0.02];
+\fill[color=orange] (-0.5,-0.5) circle[radius=0.02];
+
+\draw (0.5,-0.02) -- (0.5,0.02);
+\node at (0.5,-0.02) [below right] {$\frac12$};
+
+\draw (-0.5,-0.02) -- (-0.5,0.02);
+\node at (-0.5,0.02) [above left] {$-\frac12$};
+
+\draw (-0.01,0.5) -- (0.02,0.5);
+\node at (-0.02,0.5) [above left] {$\frac12$};
+
+\draw (-0.02,-0.5) -- (0.02,-0.5);
+\node at (0.02,-0.5) [below right] {$-\frac12$};
+
+\end{tikzpicture}
+\end{center}
+}
 \end{column}
 \end{columns}
 \end{frame}
