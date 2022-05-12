@@ -3,38 +3,25 @@
 %
 % (c) 2020 Prof Dr Andreas Müller, Hochschule Rapperswil
 %
-\section{Teil 3
+\section{K-Tanh
 \label{transfer:section:teil3}}
-\rhead{Teil 3}
-Sed ut perspiciatis unde omnis iste natus error sit voluptatem
-accusantium doloremque laudantium, totam rem aperiam, eaque ipsa
-quae ab illo inventore veritatis et quasi architecto beatae vitae
-dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit
-aspernatur aut odit aut fugit, sed quia consequuntur magni dolores
-eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam
-est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci
-velit, sed quia non numquam eius modi tempora incidunt ut labore
-et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima
-veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam,
-nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure
-reprehenderit qui in ea voluptate velit esse quam nihil molestiae
-consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla
-pariatur?
-
-\subsection{De finibus bonorum et malorum
-\label{transfer:subsection:malorum}}
-At vero eos et accusamus et iusto odio dignissimos ducimus qui
-blanditiis praesentium voluptatum deleniti atque corrupti quos
-dolores et quas molestias excepturi sint occaecati cupiditate non
-provident, similique sunt in culpa qui officia deserunt mollitia
-animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis
-est et expedita distinctio. Nam libero tempore, cum soluta nobis
-est eligendi optio cumque nihil impedit quo minus id quod maxime
-placeat facere possimus, omnis voluptas assumenda est, omnis dolor
-repellendus. Temporibus autem quibusdam et aut officiis debitis aut
-rerum necessitatibus saepe eveniet ut et voluptates repudiandae
-sint et molestiae non recusandae. Itaque earum rerum hic tenetur a
-sapiente delectus, ut aut reiciendis voluptatibus maiores alias
-consequatur aut perferendis doloribus asperiores repellat.
+\rhead{K-Tanh}
 
 
+\subsection{Algorithmus
+\label{transfer:subsection:Ktanh-Algorithmus}}
+\cite{transfer:DBLP:journals/corr/abs-1909-07729}
+\subsubsection{Vereinfacht
+\label{transfer:subsection:Ktanh-Algorithmus:Vereinfacht}}
+Negative Werte werden nicht separat behandelt. Diese werden dank der Syymertrie um den Ursprung mit einem einfachen Vorzeichenwechsel aus den positiven berechnet.
+Für $x < 0.25$ gilt $y = x$.
+Ist $x > 3.75$ gitl $y = 1$.
+Ist der Wert zwischen diesen Grenzen, werden über einen Lookuptable geeignete Werte gefunden um aus dem $x$ die Approximation des Tanh zu berechnen.
+Dafür werden eine bestimmte Anzahl LSBs des Exponenten und MSBs der Mantisse zu einem Index $t$ zusammengestzt. Der dann die Stelle im Lookuptable zeigt.
+Damit werden die richtigen Werte für $E_{t}, r_{t}, b_{t}$ aus der Tabelle, die im Vorhinein schon berechnet wurden, ausgelesen.
+Damit hat man das $E$ bereits gefunden und mit der Formel
+\[
+    M_{o} \leftarrow\left(M_{i} \gg r\right)+b
+\]
+
+kann das neue $M$ berechnet werden.
