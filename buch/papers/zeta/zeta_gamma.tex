@@ -1,0 +1,53 @@
+\section{Zusammenhang mit Gammafunktion} \label{zeta:section:zusammenhang_mit_gammafunktion}
+\rhead{Zusammenhang mit Gammafunktion}
+
+Dieser Abschnitt stellt die Verbindung zwischen der Gamma- und der Zetafunktion her.
+
+%TODO ref Gamma
+Wenn in der Gammafunkion die Integrationsvariable $t$ substituieren mit $t = nu$ und $dt = n du$, dann können wir die Gleichung umstellen und erhalten den Zusammenhang mit der Zetafunktion
+\begin{align}
+    \Gamma(s)
+    &=
+    \int_0^{\infty} t^{s-1} e^{-t} dt
+    \\
+    &=
+    \int_0^{\infty} n^{s\cancel{-1}}u^{s-1} e^{-nu} \cancel{n}du
+    &&
+    \text{Division durch }n^s
+    \\
+    \frac{\Gamma(s)}{n^s}
+    &=
+    \int_0^{\infty} u^{s-1} e^{-nu}du
+    &&
+    \text{Zeta durch Summenbildung } \sum_{n=1}^{\infty}
+    \\
+    \Gamma(s) \zeta(s)
+    &=
+    \int_0^{\infty} u^{s-1}
+    \sum_{n=1}^{\infty}e^{-nu}
+    du.
+    \label{zeta:equation:zeta_gamma1}
+\end{align}
+Die Summe über $e^{-nu}$ können wir als geometrische Reihe schreiben und erhalten
+\begin{align}
+    \sum_{n=1}^{\infty}e^{-u^n}
+    &=
+    \sum_{n=0}^{\infty}e^{-u^n}
+    -
+    1
+    \\
+    &=
+    \frac{1}{1 - e^{-u}} - 1
+    \\
+    &=
+    \frac{1}{e^u - 1}.
+\end{align}
+Wenn wir dieses Resultat einsetzen in \eqref{zeta:equation:zeta_gamma1} und durch $\Gamma(s)$ teilen, erhalten wir
+\begin{equation}\label{zeta:equation:zeta_gamma_final}
+    \zeta(s)
+    =
+    \frac{1}{\Gamma(s)}
+    \int_0^{\infty}
+    \frac{u^{s-1}}{e^u -1}
+    du.
+\end{equation}

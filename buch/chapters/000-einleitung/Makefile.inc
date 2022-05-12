@@ -4,5 +4,5 @@
 # (c) 2022 Prof Dr Andreas Müller, OST Ostschweizer Fachhochschule
 #
 
-CHAPTERFILES = $(CHAPTERFILES)						\
+CHAPTERFILES += 							\
 	chapters/000-einleitung/chapter.tex
