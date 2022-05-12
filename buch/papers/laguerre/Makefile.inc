@@ -9,8 +9,6 @@ dependencies-laguerre =						\
 	papers/laguerre/references.bib				\
 	papers/laguerre/definition.tex					\
 	papers/laguerre/eigenschaften.tex				\
-	papers/laguerre/quadratur.tex					\
-	papers/laguerre/transformation.tex				\
-	papers/laguerre/wasserstoff.tex	
+	papers/laguerre/quadratur.tex					
 
 
