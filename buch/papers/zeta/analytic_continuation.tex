@@ -14,8 +14,8 @@ Zuerst definieren die Dirichletsche Etafunktion als
 wobei die Reihe bis auf die alternierenden Vorzeichen die selbe wie in der Zetafunktion ist.
 Diese Etafunktion konvergiert gemäss dem Leibnitz-Kriterium im Bereich $\Re(s) > 0$, da dann die einzelnen Glieder monoton fallend sind.
 
-Wenn wir es nun schaffen, die sehr ähnliche Zetafunktion mit der Etafunktion auszudrücken, dann haben die gesuchte Fortsetzung.
-Die folgenden Schritte zeigen, wie man dazu kommt:
+Wenn wir es nun schaffen, die sehr ähnliche Zetafunktion durch die Etafunktion auszudrücken, dann haben die gesuchte Fortsetzung.
+Zuerst wiederholen wir zweimal die Definition der Zetafunktion \eqref{zeta:equation1}, wobei wir sie einmal durch $2^{s-1}$ teilen
 \begin{align}
     \zeta(s)
     &=
@@ -26,8 +26,10 @@ Die folgenden Schritte zeigen, wie man dazu kommt:
     \zeta(s)
     &=
     \sum_{n=1}^{\infty}
-    \frac{2}{(2n)^s} \label{zeta:align2}
-    \\
+    \frac{2}{(2n)^s}. \label{zeta:align2}
+\end{align}
+Durch Subtraktion der beiden Gleichungen \eqref{zeta:align1} minus \eqref{zeta:align2}, ergibt sich
+\begin{align}
     \left(1 - \frac{1}{2^{s-1}} \right)
     \zeta(s)
     &=
@@ -36,14 +38,15 @@ Die folgenden Schritte zeigen, wie man dazu kommt:
     + \frac{1}{3^s}
     \underbrace{-\frac{2}{4^s} + \frac{1}{4^s}}_{-\frac{1}{4^s}}
     \ldots
-    && \text{\eqref{zeta:align1}} - \text{\eqref{zeta:align2}}
     \\
-    &= \eta(s)
-    \\
-    \zeta(s)
-    &=
-    \left(1 - \frac{1}{2^{s-1}} \right)^{-1} \eta(s).
+    &= \eta(s).
 \end{align}
+Dies ist die Fortsetzung auf den noch unbekannten Bereich $0 < \Re(s) < 1$
+\begin{equation}
+    \zeta(s)
+    :=
+    \left(1 - \frac{1}{2^{s-1}} \right)^{-1} \eta(s).
+\end{equation}
 
 \subsection{Fortsetzung auf ganz $\mathbb{C}$} \label{zeta:subsection:auf_ganz}
 Für die Fortsetzung auf den Rest von $\mathbb{C}$, verwenden wir den Zusammenhang von Gamma- und Zetafunktion aus \ref{zeta:section:zusammenhang_mit_gammafunktion}.
@@ -61,7 +64,7 @@ Nun substituieren wir $t$ mit $t = \pi n^2 x$ und $dt=\pi n^2 dx$ und erhalten
     (\pi n^2)^{\frac{s}{2}}
     x^{\frac{s}{2}-1}
     e^{-\pi n^2 x}
-    dx
+    \,dx
     && \text{Division durch } (\pi n^2)^{\frac{s}{2}}
     \\
     \frac{\Gamma \left( \frac{s}{2} \right)}{\pi^{\frac{s}{2}} n^s}
@@ -69,7 +72,7 @@ Nun substituieren wir $t$ mit $t = \pi n^2 x$ und $dt=\pi n^2 dx$ und erhalten
     \int_0^{\infty}
     x^{\frac{s}{2}-1}
     e^{-\pi n^2 x}
-    dx
+    \,dx
     && \text{Zeta durch Summenbildung } \sum_{n=1}^{\infty}
     \\
     \frac{\Gamma \left( \frac{s}{2} \right)}{\pi^{\frac{s}{2}}}
@@ -79,7 +82,7 @@ Nun substituieren wir $t$ mit $t = \pi n^2 x$ und $dt=\pi n^2 dx$ und erhalten
     x^{\frac{s}{2}-1}
     \sum_{n=1}^{\infty}
     e^{-\pi n^2 x}
-    dx. \label{zeta:equation:integral1}
+    \,dx. \label{zeta:equation:integral1}
 \end{align}
 Die Summe kürzen wir ab als $\psi(x) = \sum_{n=1}^{\infty} e^{-\pi n^2 x}$.
 %TODO Wieso folgendes -> aus Fourier Signal
@@ -97,82 +100,103 @@ Zunächst teilen wir nun das Integral aus \eqref{zeta:equation:integral1} auf al
     \int_0^{\infty}
     x^{\frac{s}{2}-1}
     \psi(x)
-    dx
+    \,dx
+    =
+    \underbrace{
+    \int_0^{1}
+    x^{\frac{s}{2}-1}
+    \psi(x)
+    \,dx
+    }_{I_1}
+    +
+    \underbrace{
+    \int_1^{\infty}
+    x^{\frac{s}{2}-1}
+    \psi(x)
+    \,dx
+    }_{I_2}
+    =
+    I_1 + I_2,
+\end{equation}
+wobei wir uns nun auf den ersten Teil $I_1$ konzentrieren werden.
+Dabei setzen wir die Definition von $\psi(x)$ aus \eqref{zeta:equation:psi} ein und erhalten
+\begin{align}
+    I_1
     =
     \int_0^{1}
     x^{\frac{s}{2}-1}
     \psi(x)
-    dx
-    +
-    \int_1^{\infty}
-    x^{\frac{s}{2}-1}
-    \psi(x)
-    dx,
-\end{equation}
-wobei wir uns nun auf den ersten Teil konzentrieren werden.
-Dabei setzen wir das Wissen aus \eqref{zeta:equation:psi} ein und erhalten
-\begin{align}
-    \int_0^{1}
-    x^{\frac{s}{2}-1}
-    \psi(x)
-    dx
+    \,dx
     &=
     \int_0^{1}
     x^{\frac{s}{2}-1}
     \left(
     - \frac{1}{2}
     + \frac{\psi\left(\frac{1}{x} \right)}{\sqrt{x}}
-    + \frac{1}{2 \sqrt{x}}.
+    + \frac{1}{2 \sqrt{x}}
     \right)
-    dx
+    \,dx
     \\
     &=
     \int_0^{1}
     x^{\frac{s}{2}-\frac{3}{2}}
     \psi \left( \frac{1}{x} \right)
     + \frac{1}{2}
-    \left(
+    \biggl(
     x^{\frac{s}{2}-\frac{3}{2}}
     -
     x^{\frac{s}{2}-1}
-    \right)
-    dx
+    \biggl)
+    \,dx
     \\
     &=
+    \underbrace{
     \int_0^{1}
     x^{\frac{s}{2}-\frac{3}{2}}
     \psi \left( \frac{1}{x} \right)
-    dx
-    + \frac{1}{2}
-    \int_0^1
-    x^{\frac{s}{2}-\frac{3}{2}}
-    -
-    x^{\frac{s}{2}-1}
-    dx. \label{zeta:equation:integral3}
-\end{align}
-Dabei kann das zweite Integral gelöst werden als
-\begin{equation}
+    \,dx
+    }_{I_3}
+    +
+    \underbrace{
     \frac{1}{2}
     \int_0^1
     x^{\frac{s}{2}-\frac{3}{2}}
     -
     x^{\frac{s}{2}-1}
-    dx
+    \,dx
+    }_{I_4}. \label{zeta:equation:integral3}
+\end{align}
+Dabei kann das zweite Integral $I_4$ gelöst werden als
+\begin{equation}
+    I_4
+    =
+    \frac{1}{2}
+    \int_0^1
+    x^{\frac{s}{2}-\frac{3}{2}}
+    -
+    x^{\frac{s}{2}-1}
+    \,dx
     =
     \frac{1}{s(s-1)}.
 \end{equation}
-Das erste Integral aus \eqref{zeta:equation:integral3} mit $\psi \left(\frac{1}{x} \right)$ ist nicht lösbar in dieser Form.
+Das erste Integral $I_3$ aus \eqref{zeta:equation:integral3} mit $\psi \left(\frac{1}{x} \right)$ ist nicht lösbar in dieser Form.
 Deshalb substituieren wir $x = \frac{1}{u}$ und $dx = -\frac{1}{u^2}du$.
 Die untere Integralgrenze wechselt ebenfalls zu $x_0 = 0 \rightarrow u_0 = \infty$.
 Dies ergibt
 \begin{align}
+    I_3
+    =
     \int_{\infty}^{1}
-    {\frac{1}{u}}^{\frac{s}{2}-\frac{3}{2}}
+    \left(
+    \frac{1}{u}
+    \right)^{\frac{s}{2}-\frac{3}{2}}
     \psi(u)
     \frac{-du}{u^2}
     &=
     \int_{1}^{\infty}
-    {\frac{1}{u}}^{\frac{s}{2}-\frac{3}{2}}
+    \left(
+    \frac{1}{u}
+    \right)^{\frac{s}{2}-\frac{3}{2}}
     \psi(u)
     \frac{du}{u^2}
     \\
@@ -180,21 +204,23 @@ Dies ergibt
     \int_{1}^{\infty}
     x^{(-1) \left(\frac{s}{2}+\frac{1}{2}\right)}
     \psi(x)
-    dx,
+    \,dx,
 \end{align}
 wobei wir durch Multiplikation mit $(-1)$ die Integralgrenzen tauschen dürfen.
 Es ist zu beachten das diese Grenzen nun identisch mit den Grenzen des zweiten Integrals von \eqref{zeta:equation:integral2} sind.
 Wir setzen beide Lösungen ein in Gleichung \eqref{zeta:equation:integral3} und erhalten
 \begin{equation}
+    I_1
+    =
     \int_0^{1}
     x^{\frac{s}{2}-1}
     \psi(x)
-    dx
+    \,dx
     =
     \int_{1}^{\infty}
     x^{(-1) \left(\frac{s}{2}+\frac{1}{2}\right)}
     \psi(x)
-    dx
+    \,dx
     +
     \frac{1}{s(s-1)}.
 \end{equation}
@@ -206,12 +232,12 @@ Dieses Resultat setzen wir wiederum ein in \eqref{zeta:equation:integral2}, um s
     \int_0^{1}
     x^{\frac{s}{2}-1}
     \psi(x)
-    dx
+    \,dx
     +
     \int_1^{\infty}
     x^{\frac{s}{2}-1}
     \psi(x)
-    dx
+    \,dx
     \nonumber
     \\
     &=
@@ -220,12 +246,12 @@ Dieses Resultat setzen wir wiederum ein in \eqref{zeta:equation:integral2}, um s
     \int_{1}^{\infty}
     x^{(-1) \left(\frac{s}{2}+\frac{1}{2}\right)}
     \psi(x)
-    dx
+    \,dx
     +
     \int_1^{\infty}
     x^{\frac{s}{2}-1}
     \psi(x)
-    dx
+    \,dx
     \\
     &=
     \frac{1}{s(s-1)}
@@ -237,7 +263,7 @@ Dieses Resultat setzen wir wiederum ein in \eqref{zeta:equation:integral2}, um s
     x^{\frac{s}{2}-1}
     \right)
     \psi(x)
-    dx
+    \,dx
     \\
     &=
     \frac{-1}{s(1-s)}
@@ -249,7 +275,7 @@ Dieses Resultat setzen wir wiederum ein in \eqref{zeta:equation:integral2}, um s
     x^{\frac{s}{2}}
     \right)
     \frac{\psi(x)}{x}
-    dx,
+    \,dx,
 \end{align}
 zu erhalten.
 Wenn wir dieses Resultat genau anschauen, erkennen wir dass sich nichts verändert wenn $s$ mit $1-s$ ersetzt wird.
@@ -261,4 +287,4 @@ Somit haben wir die analytische Fortsetzung gefunden als
     \frac{\Gamma \left( \frac{1-s}{2} \right)}{\pi^{\frac{1-s}{2}}}
     \zeta(1-s).
 \end{equation}
-
+%TODO Definitionen und Gleichungen klarer unterscheiden
