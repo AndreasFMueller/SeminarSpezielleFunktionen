@@ -1,0 +1,85 @@
+%
+% animation.tex
+%
+% (c) 2022 Prof Dr Andreas Müller,
+%
+\documentclass[aspectratio=169]{beamer}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{epic}
+\usepackage{color}
+\usepackage{array}
+\usepackage{ifthen}
+\usepackage{lmodern}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{nccmath}
+\usepackage{mathtools}
+\usepackage{adjustbox}
+\usepackage{multimedia}
+\usepackage{verbatim}
+\usepackage{wasysym}
+\usepackage{stmaryrd}
+\usepackage{tikz}
+\usetikzlibrary{shapes.geometric}
+\usetikzlibrary{decorations.pathreplacing}
+\usetikzlibrary{calc}
+\usetikzlibrary{arrows}
+\usetikzlibrary{3d}
+\usetikzlibrary{arrows,shapes,math,decorations.text,automata}
+\usepackage{pifont}
+\usepackage[all]{xy}
+\usepackage[many]{tcolorbox}
+\mode<beamer>{%
+\usetheme[hideothersubsections,hidetitle]{Hannover}
+}
+\beamertemplatenavigationsymbolsempty
+\begin{document}
+
+\def\spektrum#1#2{
+\only<#1>{
+	\begin{scope}
+	\color{red}
+	\input{#2}
+	\end{scope}
+}
+}
+
+\begin{frame}
+\begin{center}
+\begin{tikzpicture}[>=latex,thick]
+\def\df{0.37}
+\def\da{1}
+
+\draw[->,color=gray] (0,-0.1) -- (0,6.3) [right] coordinate[label={right:$a$}];
+
+\foreach \a in {1,...,5}{
+	\draw[color=gray!50] (-6,{(6-\a)*\da}) -- (6,{(6-\a)*\da});
+}
+\draw[color=gray!50] (-6,{6*\da}) -- (6,{6*\da});
+\foreach \f in {-15,-10,-5,5,10,15}{
+	\draw[color=gray!50] ({\f*\df},0) -- ({\f*\df},{6*\da});
+}
+
+\input{parts.tex}
+
+\draw[->] (-6.1,0) -- (6.9,0) coordinate[label={$f$}];
+\foreach \f in {-16,...,16}{
+	\draw ({\f*\df},-0.05) -- ({\f*\df},0.05);
+}
+\foreach \f in {-15,-10,-5,5,10,15}{
+	\node at ({\f*\df},-0.1) [below] {$\f f_m$};
+	\draw ({\f*\df},-0.1) -- ({\f*\df},0.1);
+}
+\node at (0,-0.1) [below] {$0$};
+
+\foreach \a in {1,...,5}{
+	\node at (6,{(6-\a)*\da}) [right] {$-\a$};
+}
+\node at (6,{6*\da}) [right] {$\phantom{-}0$};
+
+\end{tikzpicture}
+\end{center}
+\end{frame}
+
+\end{document}

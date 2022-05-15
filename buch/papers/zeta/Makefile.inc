@@ -7,8 +7,7 @@ dependencies-zeta =						\
 	papers/zeta/packages.tex					\
 	papers/zeta/main.tex					\
 	papers/zeta/references.bib				\
-	papers/zeta/teil0.tex					\
-	papers/zeta/teil1.tex					\
-	papers/zeta/teil2.tex					\
-	papers/zeta/teil3.tex
+	papers/zeta/einleitung.tex					\
+	papers/zeta/analytic_continuation.tex					\
+    papers/zeta/zeta_gamma.tex \
 
