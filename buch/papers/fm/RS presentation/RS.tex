@@ -1,0 +1,162 @@
+\documentclass[11pt,aspectratio=169]{beamer}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage[ngerman]{babel}
+\usepackage{tikz}
+\usetheme{Hannover}
+
+\begin{document}
+	\author{Joshua Bär}
+	\title{FM - Bessel}
+	\subtitle{}
+	\logo{}
+	\institute{OST Ostschweizer Fachhochschule}
+	\date{16.5.2022}
+	\subject{Mathematisches Seminar}
+	%\setbeamercovered{transparent}
+	\setbeamercovered{invisible}
+	\setbeamertemplate{navigation symbols}{}
+	\begin{frame}[plain]
+		\maketitle
+	\end{frame}
+%-------------------------------------------------------------------------------	
+\section{Einführung}
+	\begin{frame}
+		\frametitle{Frequenzmodulation}
+		\begin{itemize}
+		\visible<1->{\item Für Übertragung von Daten}
+		\visible<2->{\item Amplituden unabhängig}
+		\end{itemize}
+	\end{frame}
+%-------------------------------------------------------------------------------	
+	\begin{frame}
+	\frametitle{Parameter}
+	\begin{center}
+		\begin{tabular}{ c c c } 
+			\hline
+			Nutzlas & Fehler & Versenden \\
+			\hline 
+			3 & 2 & 7 Werte eines Polynoms vom Grad 2 \\ 
+			4 & 2 & 8 Werte eines Polynoms vom Grad 3 \\
+\visible<1->{3}& 
+\visible<1->{3}& 
+\visible<1->{9 Werte eines Polynoms vom Grad 2} \\ 
+			&&\\
+\visible<1->{$k$} & 
+\visible<1->{$t$} & 
+\visible<1->{$k+2t$ Werte eines Polynoms vom Grad $k-1$} \\ 
+			\hline
+			&&\\
+			&&\\
+			\multicolumn{3}{l} {
+				\visible<1>{Ausserdem können bis zu $2t$ Fehler erkannt werden!}
+			}
+		\end{tabular}
+	\end{center}	
+	\end{frame}
+
+%-------------------------------------------------------------------------------	
+
+\section{Diskrete Fourier Transformation}
+	\begin{frame}
+		\frametitle{Idee}
+		\begin{itemize}
+			\item Fourier-transformieren
+			\item Übertragung
+			\item Rücktransformieren
+		\end{itemize}
+	\end{frame}
+%-------------------------------------------------------------------------------	
+	\begin{frame}
+		\begin{figure}
+			\only<1>{
+			\includegraphics[width=0.9\linewidth]{images/fig1.pdf}
+			}
+			\only<2>{
+			\includegraphics[width=0.9\linewidth]{images/fig2.pdf}
+			}
+			\only<3>{
+			\includegraphics[width=0.9\linewidth]{images/fig3.pdf}
+			}
+			\only<4>{
+			\includegraphics[width=0.9\linewidth]{images/fig4.pdf}
+			}
+			\only<5>{
+			\includegraphics[width=0.9\linewidth]{images/fig5.pdf}
+			}
+			\only<6>{
+			\includegraphics[width=0.9\linewidth]{images/fig6.pdf}
+			}
+			\only<7>{
+			\includegraphics[width=0.9\linewidth]{images/fig7.pdf}
+			}
+	\end{figure}
+	\end{frame}
+%-------------------------------------------------------------------------------		
+	\begin{frame}
+	\frametitle{Diskrete Fourier Transformation}
+	\begin{itemize}
+	\item Diskrete Fourier-Transformation gegeben durch:
+	\visible<1->{
+	\[
+	\label{ft_discrete}
+	\hat{c}_{k} 
+	= \frac{1}{N} \sum_{n=0}^{N-1}
+	{f}_n \cdot e^{-\frac{2\pi j}{N} \cdot kn}
+	\]}
+	\visible<2->{
+	\item Ersetzte
+	\[
+	w = e^{-\frac{2\pi j}{N} k}
+	\]}
+	\visible<3->{
+	\item Wenn $N$ konstant:
+	\[
+	\hat{c}_{k}=\frac{1}{N}( {f}_0 w^0 + {f}_1 w^1 + {f}_2 w^2 + \dots + {f}_{N-1} w^N)
+	\]}
+	\end{itemize}
+	\end{frame}	
+
+%-------------------------------------------------------------------------------	
+
+%-------------------------------------------------------------------------------
+	\begin{frame}
+		\frametitle{Ein Beispiel}
+		
+		\begin{itemize}
+			
+			\onslide<1->{\item endlicher Körper $q = 11$}
+			
+			\onslide<2->{ist eine Primzahl}
+
+			\onslide<3->{beinhaltet die Zahlen $\mathbb{F}_{11} = \{0,1,2,3,4,5,6,7,8,9,10\}$}
+			
+			\vspace{10pt}
+			
+			\onslide<4->{\item Nachrichtenblock $=$ Nutzlast $+$ Fehlerkorrekturstellen}
+			
+			\onslide<5->{$n = q - 1 = 10$ Zahlen}
+			
+			\vspace{10pt}
+			
+			\onslide<6->{\item Max.~Fehler $t = 2$}
+			
+			\onslide<7->{maximale Anzahl von Fehler, die wir noch korrigieren können}
+			
+			\vspace{10pt}
+			
+			\onslide<8->{\item Nutzlast $k = n -2t = 6$ Zahlen}
+			
+			\onslide<9->{Fehlerkorrkturstellen $2t = 4$ Zahlen}
+			
+			\onslide<10->{Nachricht $m = [0,0,0,0,4,7,2,5,8,1]$}
+			
+			\onslide<11->{als Polynom $m(X) = 4X^5 + 7X^4 + 2X^3 + 5X^2 + 8X + 1$}
+			
+		\end{itemize}
+		
+	\end{frame}
+
+
+\end{document}
