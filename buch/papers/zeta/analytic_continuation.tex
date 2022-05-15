@@ -1,0 +1,264 @@
+\section{Analytische Fortsetzung} \label{zeta:section:analytische_fortsetzung}
+\rhead{Analytische Fortsetzung}
+
+%TODO missing Text
+
+\subsection{Fortsetzung auf $\Re(s) > 0$} \label{zeta:subsection:auf_bereich_ge_0}
+Zuerst definieren die Dirichletsche Etafunktion als
+\begin{equation}\label{zeta:equation:eta}
+    \eta(s)
+    =
+    \sum_{n=1}^{\infty}
+    \frac{(-1)^{n-1}}{n^s},
+\end{equation}
+wobei die Reihe bis auf die alternierenden Vorzeichen die selbe wie in der Zetafunktion ist.
+Diese Etafunktion konvergiert gemäss dem Leibnitz-Kriterium im Bereich $\Re(s) > 0$, da dann die einzelnen Glieder monoton fallend sind.
+
+Wenn wir es nun schaffen, die sehr ähnliche Zetafunktion mit der Etafunktion auszudrücken, dann haben die gesuchte Fortsetzung.
+Die folgenden Schritte zeigen, wie man dazu kommt:
+\begin{align}
+    \zeta(s)
+    &=
+    \sum_{n=1}^{\infty}
+    \frac{1}{n^s} \label{zeta:align1}
+    \\
+    \frac{1}{2^{s-1}}
+    \zeta(s)
+    &=
+    \sum_{n=1}^{\infty}
+    \frac{2}{(2n)^s} \label{zeta:align2}
+    \\
+    \left(1 - \frac{1}{2^{s-1}} \right)
+    \zeta(s)
+    &=
+    \frac{1}{1^s}
+    \underbrace{-\frac{2}{2^s} + \frac{1}{2^s}}_{-\frac{1}{2^s}}
+    + \frac{1}{3^s}
+    \underbrace{-\frac{2}{4^s} + \frac{1}{4^s}}_{-\frac{1}{4^s}}
+    \ldots
+    && \text{\eqref{zeta:align1}} - \text{\eqref{zeta:align2}}
+    \\
+    &= \eta(s)
+    \\
+    \zeta(s)
+    &=
+    \left(1 - \frac{1}{2^{s-1}} \right)^{-1} \eta(s).
+\end{align}
+
+\subsection{Fortsetzung auf ganz $\mathbb{C}$} \label{zeta:subsection:auf_ganz}
+Für die Fortsetzung auf den Rest von $\mathbb{C}$, verwenden wir den Zusammenhang von Gamma- und Zetafunktion aus \ref{zeta:section:zusammenhang_mit_gammafunktion}.
+Wir beginnen damit, die Gammafunktion für den halben Funktionswert zu berechnen als
+\begin{equation}
+    \Gamma \left( \frac{s}{2} \right)
+    =
+    \int_0^{\infty} t^{\frac{s}{2}-1} e^{-t} dt.
+\end{equation}
+Nun substituieren wir $t$ mit $t = \pi n^2 x$ und $dt=\pi n^2 dx$ und erhalten
+\begin{align}
+    \Gamma \left( \frac{s}{2} \right)
+    &=
+    \int_0^{\infty}
+    (\pi n^2)^{\frac{s}{2}}
+    x^{\frac{s}{2}-1}
+    e^{-\pi n^2 x}
+    dx
+    && \text{Division durch } (\pi n^2)^{\frac{s}{2}}
+    \\
+    \frac{\Gamma \left( \frac{s}{2} \right)}{\pi^{\frac{s}{2}} n^s}
+    &=
+    \int_0^{\infty}
+    x^{\frac{s}{2}-1}
+    e^{-\pi n^2 x}
+    dx
+    && \text{Zeta durch Summenbildung } \sum_{n=1}^{\infty}
+    \\
+    \frac{\Gamma \left( \frac{s}{2} \right)}{\pi^{\frac{s}{2}}}
+    \zeta(s)
+    &=
+    \int_0^{\infty}
+    x^{\frac{s}{2}-1}
+    \sum_{n=1}^{\infty}
+    e^{-\pi n^2 x}
+    dx. \label{zeta:equation:integral1}
+\end{align}
+Die Summe kürzen wir ab als $\psi(x) = \sum_{n=1}^{\infty} e^{-\pi n^2 x}$.
+%TODO Wieso folgendes -> aus Fourier Signal
+Es gilt
+\begin{equation}\label{zeta:equation:psi}
+    \psi(x)
+    =
+    - \frac{1}{2}
+    + \frac{\psi\left(\frac{1}{x} \right)}{\sqrt{x}}
+    + \frac{1}{2 \sqrt{x}}.
+\end{equation}
+
+Zunächst teilen wir nun das Integral aus \eqref{zeta:equation:integral1} auf als
+\begin{equation}\label{zeta:equation:integral2}
+    \int_0^{\infty}
+    x^{\frac{s}{2}-1}
+    \psi(x)
+    dx
+    =
+    \int_0^{1}
+    x^{\frac{s}{2}-1}
+    \psi(x)
+    dx
+    +
+    \int_1^{\infty}
+    x^{\frac{s}{2}-1}
+    \psi(x)
+    dx,
+\end{equation}
+wobei wir uns nun auf den ersten Teil konzentrieren werden.
+Dabei setzen wir das Wissen aus \eqref{zeta:equation:psi} ein und erhalten
+\begin{align}
+    \int_0^{1}
+    x^{\frac{s}{2}-1}
+    \psi(x)
+    dx
+    &=
+    \int_0^{1}
+    x^{\frac{s}{2}-1}
+    \left(
+    - \frac{1}{2}
+    + \frac{\psi\left(\frac{1}{x} \right)}{\sqrt{x}}
+    + \frac{1}{2 \sqrt{x}}.
+    \right)
+    dx
+    \\
+    &=
+    \int_0^{1}
+    x^{\frac{s}{2}-\frac{3}{2}}
+    \psi \left( \frac{1}{x} \right)
+    + \frac{1}{2}
+    \left(
+    x^{\frac{s}{2}-\frac{3}{2}}
+    -
+    x^{\frac{s}{2}-1}
+    \right)
+    dx
+    \\
+    &=
+    \int_0^{1}
+    x^{\frac{s}{2}-\frac{3}{2}}
+    \psi \left( \frac{1}{x} \right)
+    dx
+    + \frac{1}{2}
+    \int_0^1
+    x^{\frac{s}{2}-\frac{3}{2}}
+    -
+    x^{\frac{s}{2}-1}
+    dx. \label{zeta:equation:integral3}
+\end{align}
+Dabei kann das zweite Integral gelöst werden als
+\begin{equation}
+    \frac{1}{2}
+    \int_0^1
+    x^{\frac{s}{2}-\frac{3}{2}}
+    -
+    x^{\frac{s}{2}-1}
+    dx
+    =
+    \frac{1}{s(s-1)}.
+\end{equation}
+Das erste Integral aus \eqref{zeta:equation:integral3} mit $\psi \left(\frac{1}{x} \right)$ ist nicht lösbar in dieser Form.
+Deshalb substituieren wir $x = \frac{1}{u}$ und $dx = -\frac{1}{u^2}du$.
+Die untere Integralgrenze wechselt ebenfalls zu $x_0 = 0 \rightarrow u_0 = \infty$.
+Dies ergibt
+\begin{align}
+    \int_{\infty}^{1}
+    {\frac{1}{u}}^{\frac{s}{2}-\frac{3}{2}}
+    \psi(u)
+    \frac{-du}{u^2}
+    &=
+    \int_{1}^{\infty}
+    {\frac{1}{u}}^{\frac{s}{2}-\frac{3}{2}}
+    \psi(u)
+    \frac{du}{u^2}
+    \\
+    &=
+    \int_{1}^{\infty}
+    x^{(-1) \left(\frac{s}{2}+\frac{1}{2}\right)}
+    \psi(x)
+    dx,
+\end{align}
+wobei wir durch Multiplikation mit $(-1)$ die Integralgrenzen tauschen dürfen.
+Es ist zu beachten das diese Grenzen nun identisch mit den Grenzen des zweiten Integrals von \eqref{zeta:equation:integral2} sind.
+Wir setzen beide Lösungen ein in Gleichung \eqref{zeta:equation:integral3} und erhalten
+\begin{equation}
+    \int_0^{1}
+    x^{\frac{s}{2}-1}
+    \psi(x)
+    dx
+    =
+    \int_{1}^{\infty}
+    x^{(-1) \left(\frac{s}{2}+\frac{1}{2}\right)}
+    \psi(x)
+    dx
+    +
+    \frac{1}{s(s-1)}.
+\end{equation}
+Dieses Resultat setzen wir wiederum ein in \eqref{zeta:equation:integral2}, um schlussendlich
+\begin{align}
+    \frac{\Gamma \left( \frac{s}{2} \right)}{\pi^{\frac{s}{2}}}
+    \zeta(s)
+    &=
+    \int_0^{1}
+    x^{\frac{s}{2}-1}
+    \psi(x)
+    dx
+    +
+    \int_1^{\infty}
+    x^{\frac{s}{2}-1}
+    \psi(x)
+    dx
+    \nonumber
+    \\
+    &=
+    \frac{1}{s(s-1)}
+    +
+    \int_{1}^{\infty}
+    x^{(-1) \left(\frac{s}{2}+\frac{1}{2}\right)}
+    \psi(x)
+    dx
+    +
+    \int_1^{\infty}
+    x^{\frac{s}{2}-1}
+    \psi(x)
+    dx
+    \\
+    &=
+    \frac{1}{s(s-1)}
+    +
+    \int_{1}^{\infty}
+    \left(
+    x^{-\frac{s}{2}-\frac{1}{2}}
+    +
+    x^{\frac{s}{2}-1}
+    \right)
+    \psi(x)
+    dx
+    \\
+    &=
+    \frac{-1}{s(1-s)}
+    +
+    \int_{1}^{\infty}
+    \left(
+    x^{\frac{1-s}{2}}
+    +
+    x^{\frac{s}{2}}
+    \right)
+    \frac{\psi(x)}{x}
+    dx,
+\end{align}
+zu erhalten.
+Wenn wir dieses Resultat genau anschauen, erkennen wir dass sich nichts verändert wenn $s$ mit $1-s$ ersetzt wird.
+Somit haben wir die analytische Fortsetzung gefunden als
+\begin{equation}\label{zeta:equation:functional}
+    \frac{\Gamma \left( \frac{s}{2} \right)}{\pi^{\frac{s}{2}}}
+    \zeta(s)
+    =
+    \frac{\Gamma \left( \frac{1-s}{2} \right)}{\pi^{\frac{1-s}{2}}}
+    \zeta(1-s).
+\end{equation}
+

@@ -3,38 +3,110 @@
 %
 % (c) 2020 Prof Dr Andreas Müller, Hochschule Rapperswil
 %
-\section{Teil 3
-\label{fresnel:section:teil3}}
-\rhead{Teil 3}
-Sed ut perspiciatis unde omnis iste natus error sit voluptatem
-accusantium doloremque laudantium, totam rem aperiam, eaque ipsa
-quae ab illo inventore veritatis et quasi architecto beatae vitae
-dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit
-aspernatur aut odit aut fugit, sed quia consequuntur magni dolores
-eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam
-est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci
-velit, sed quia non numquam eius modi tempora incidunt ut labore
-et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima
-veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam,
-nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure
-reprehenderit qui in ea voluptate velit esse quam nihil molestiae
-consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla
-pariatur?
+\section{Numerische Berechnung der Fresnel-Integrale
+\label{fresnel:section:numerik}}
+\rhead{Numerische Berechnung}
+Die Fresnel-Integrale können mit verschiedenen Methoden effizient berechnet
+werden.
 
-\subsection{De finibus bonorum et malorum
-\label{fresnel:subsection:malorum}}
-At vero eos et accusamus et iusto odio dignissimos ducimus qui
-blanditiis praesentium voluptatum deleniti atque corrupti quos
-dolores et quas molestias excepturi sint occaecati cupiditate non
-provident, similique sunt in culpa qui officia deserunt mollitia
-animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis
-est et expedita distinctio. Nam libero tempore, cum soluta nobis
-est eligendi optio cumque nihil impedit quo minus id quod maxime
-placeat facere possimus, omnis voluptas assumenda est, omnis dolor
-repellendus. Temporibus autem quibusdam et aut officiis debitis aut
-rerum necessitatibus saepe eveniet ut et voluptates repudiandae
-sint et molestiae non recusandae. Itaque earum rerum hic tenetur a
-sapiente delectus, ut aut reiciendis voluptatibus maiores alias
-consequatur aut perferendis doloribus asperiores repellat.
+\subsection{Komplexe Fehlerfunktionen}
+Es wurde schon darauf hingewiesen, dass der Integrand der Fresnel-Integrale
+mit $e^{t^2}$ verwandt ist.
+Tatsächlich kann gezeigt werden dass sich die Fresnel-Integrale mit 
+Hilfe der komplexen Fehlerfunktion als
+\[
+\left.
+\begin{matrix}
+S_1(z)
+\\
+C_1(z)
+\end{matrix}
+\;
+\right\}
+=
+\frac{1\pm i}4\biggl(
+\operatorname{erf}\biggl(\frac{1+i}2\sqrt{\pi}z\biggr)
+\mp
+\operatorname{erf}\biggl(\frac{1-i}2\sqrt{\pi}z\biggr)
+\biggr)
+\]
+ausdrücken lassen \cite{fresnel:fresnelC}.
+Diese Darstellung ist jedoch für die numerische Berechnung nur
+beschränkt nützlich, weil die meisten Bibliotheken für die Fehlerfunktion
+diese nur für reelle Argument auszuwerten gestatten.
+
+\subsection{Als Lösung einer Differentialgleichung}
+Da die Fresnel-Integrale die sehr einfachen Differentialgleichungen
+\[
+C'(x) = \cos \biggl(\frac{\pi}2 x^2\biggr)
+\qquad\text{und}\qquad
+S'(x) = \sin \biggl(\frac{\pi}2 x^2\biggr)
+\]
+erfüllen, kann man eine Methode zur Lösung von Differentialgleichung
+verwenden.
+Die Abbildungen~\ref{fresnel:figure:plot} und \ref{fresnel:figure:eulerspirale}
+wurden auf diese Weise erzeugt.
+
+\subsection{Taylor-Reihe integrieren}
+Die Taylorreihen
+\begin{align*}
+\cos x
+&=
+\sum_{k=0}^\infty \frac{(-1)^k}{(2k)!} x^{2k}
+&&\text{und}&
+\sin x
+&= 
+\sum_{k=0}^\infty \frac{(-1)^k}{(2k+1)!} x^{2k+1}
+\intertext{%
+der trigonometrischen Funktionen werden durch Einsetzen von $x=t^2$
+zu}
+\cos t^2
+&=
+\sum_{k=0}^\infty \frac{(-1)^k}{(2k)!} t^{4k}
+&&\text{und}&
+\sin t^2
+&= 
+\sum_{k=0}^\infty \frac{(-1)^k}{(2k+1)!} t^{4k+2}.
+\intertext{%
+Die Fresnel-Integrale $C_1(x)$ und $S_1(x)$ können daher durch
+termweise Integration mit Hilfe der Reihen}
+C_1(x)
+&=
+\sum_{k=0}^\infty \frac{(-1)^k}{(2k)!} \frac{x^{4k+1}}{4k+1}
+&&\text{und}&
+S_1(x)
+&=
+\sum_{k=0}^\infty \frac{(-1)^k}{(2k+1)!} \frac{x^{4k+3}}{4k+3}
+\end{align*}
+berechnet werden.
+Diese Reihen sind insbesondere für kleine Werte von $x$ sehr
+schnell konvergent.
+
+\subsection{Hypergeometrische Reihen}
+Aus der Reihenentwicklung kann jetzt auch eine Darstellung der
+Fresnel-Integrale durch hypergeometrische Reihen gefunden werden
+\cite{fresnel:fresnelC}.
+Es ergibt sich
+\begin{align*}
+S(z)
+&=
+\frac{\pi z^3}{6}
+\cdot
+\mathstrut_1F_2\biggl(
+\begin{matrix}\frac34\\\frac32,\frac74\end{matrix}
+;
+-\frac{\pi^2z^4}{16}
+\biggr)
+\\
+C(z)
+&=
+z
+\cdot
+\mathstrut_1F_2\biggl(
+\begin{matrix}\frac14\\\frac12,\frac54\end{matrix}
+;
+-\frac{\pi^2z^4}{16}
+\biggr).
+\end{align*}
 
 
