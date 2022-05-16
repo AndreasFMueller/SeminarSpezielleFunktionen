@@ -3,27 +3,77 @@
 %
 % (c) 2022 Patrik Müller, Ostschweizer Fachhochschule
 %
-\section{Gauss-Laguerre Quadratur
-\label{laguerre:section:quadratur}}
-
+\section{Gauss-Quadratur
+  \label{laguerre:section:quadratur}}
+ {\large \color{red} TODO: Einleitung und kurze Beschreibung Gauss-Quadratur}
 \begin{align}
-    \int_a^b f(x) w(x)
-    \approx
-    \sum_{i=1}^N f(x_i) A_i
-    \label{laguerre:gaussquadratur}
+\int_a^b f(x) w(x)
+\approx
+\sum_{i=1}^N f(x_i) A_i
+\label{laguerre:gaussquadratur}
 \end{align}
 
+\subsection{Gauss-Laguerre-Quadratur
+\label{laguerre:subsection:gausslag-quadratur}}
+Die Gauss-Quadratur kann auch auf Skalarprodukte mit Gewichtsfunktionen
+ausgeweitet werden.
+In unserem Falle möchten wir die Gauss Quadratur auf die Laguerre-Polynome
+$L_n$ ausweiten.
+Diese sind orthogonal im Intervall $(0, \infty)$ bezüglich
+der Gewichtsfunktion $e^{-x}$.
+Gleichung~\eqref{laguerre:laguerrequadratur} lässt sich wiefolgt umformulieren:
 \begin{align}
-    \int_{0}^{\infty} f(x) e^{-x} dx 
-    \approx
-    \sum_{i=1}^{N} f(x_i) A_i
-    \label{laguerre:laguerrequadratur}
+\int_{0}^{\infty} f(x) e^{-x} dx
+\approx
+\sum_{i=1}^{N} f(x_i) A_i
+\label{laguerre:laguerrequadratur}
 \end{align}
 
+\subsubsection{Stützstellen und Gewichte}
+Nach der Definition der Gauss-Quadratur müssen als Stützstellen die Nullstellen
+des verwendeten Polynoms genommen werden.
+Das heisst für das Laguerre-Polynom $L_n$ müssen dessen Nullstellen $x_i$ und
+als Gewichte $A_i$ werden die Integrale $l_i(x)e^{-x}$ verwendet werden.
+Dabei sind
+\begin{align*}
+l_i(x_j)
+=
+\delta_{ij}
+=
+\begin{cases}
+1 & i=j           \\
+0 & \text{sonst.}
+\end{cases}
+\end{align*}
+Laut \cite{abramowitz+stegun} sind die Gewichte also
 \begin{align}
-    A_i 
-    = 
-    \frac{x_i}{(n + 1)^2 \left[ L_{n + 1}(x_i)\right]^2}
-    \label{laguerre:quadratur_gewichte}
+A_i
+=
+\frac{x_i}{(n + 1)^2 \left[ L_{n + 1}(x_i)\right]^2}
+.
+\label{laguerre:quadratur_gewichte}
 \end{align}
 
+\subsubsection{Fehlerterm}
+Der Fehlerterm $R_n$ folgt direkt aus der Approximation
+\begin{align*}
+\int_0^{\infty} f(x) e^{-x} dx
+=
+\sum_{i=1}^n f(x_i) A_i + R_n
+\end{align*}
+un \cite{abramowitz+stegun} gibt in als
+\begin{align}
+R_n
+=
+\frac{(n!)^2}{(2n)!} f^{(2n)}(\xi)
+,\quad
+0 < \xi < \infty
+\label{lagurre:lag_error}
+\end{align}
+an.
+
+{
+\large \color{red}
+TODO:
+Noch mehr Text / bessere Beschreibungen in allen Abschnitten
+}
