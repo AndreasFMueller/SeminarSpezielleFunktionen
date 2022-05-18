@@ -97,13 +97,13 @@ union {
 	}
 #end
 
-#macro winkel(w, p, q, staerke)
+#macro winkel(w, p, q, staerke, r)
 	#declare n = vnormalize(w);
 	#declare pp = vnormalize(p - vdot(n, p) * n);
 	#declare qq = vnormalize(q - vdot(n, q) * n);
 	intersection {
 		sphere { <0, 0, 0>, 1 + staerke }
-		cone { <0, 0, 0>, 0, 1.2 * vnormalize(w), 0.4 }
+		cone { <0, 0, 0>, 0, 1.2 * vnormalize(w), r }
 		plane { -vcross(n, qq) * vdot(vcross(n, qq), pp), 0 }
 		plane { -vcross(n, pp) * vdot(vcross(n, pp), qq), 0 }
 	}
@@ -113,8 +113,30 @@ union {
 	sphere { p, 1.5 * staerke }
 #end
 
+#macro dreieck(p, q, r, farbe)
+	#declare n1 = vnormalize(vcross(p, q));
+	#declare n2 = vnormalize(vcross(q, r));
+	#declare n3 = vnormalize(vcross(r, p));
+	intersection {
+		plane { n1, 0 }
+		plane { n2, 0 }
+		plane { n3, 0 }
+		sphere { <0, 0, 0>, 1 + 0.001 }
+		pigment {
+			color farbe
+		}
+		finish {
+			metallic
+			specular 0.4
+		}
+	}
+#end
+
 #declare fett = 0.015;
-#declare fine = 0.010;
+#declare fein = 0.010;
+
+#declare klein = 0.3;
+#declare gross = 0.4;
 
 #declare dreieckfarbe = rgb<0.6,0.6,0.6>;
 #declare rot = rgb<0.8,0.2,0.2>;
