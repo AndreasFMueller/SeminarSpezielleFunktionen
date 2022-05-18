@@ -6,9 +6,11 @@
 dependencies-nav =						\
 	papers/nav/packages.tex					\
 	papers/nav/main.tex					\
-	papers/nav/references.bib				\
-	papers/nav/teil0.tex					\
-	papers/nav/teil1.tex					\
-	papers/nav/teil2.tex					\
-	papers/nav/teil3.tex
+	papers/nav/einleitung.tex				\
+	papers/nav/flatearth.tex				\
+	papers/nav/geschichte.tex				\
+	papers/nav/nautischesdreieck.tex			\
+	papers/nav/sincos.tex					\
+	papers/nav/trigo.tex					\
+	papers/nav/references.bib
 
