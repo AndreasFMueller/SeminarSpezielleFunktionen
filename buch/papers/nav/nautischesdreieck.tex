@@ -1,0 +1,206 @@
+\section{Das Nautische Dreieck}
+\subsection{Definition des Nautischen Dreiecks}
+Ursprünglich ist das nautische Dreieck ein Hilfsmittel der sphärischen Astronomie um die momentane Position eines Fixsterns oder Planeten an der \textbf{Himmelskugel}. 
+Die Himmelskugel ist eine gedachte Kugel, welche die Erde und dessen Beobachter umgibt und als Rechenfläche für Koordinaten in der Astronomie und Geodäsie dient.\\
+Das Nautische Dreieck definiert sich durch folgende Ecken:
+\begin{itemize}
+	\item Zenit 
+	\item Gestirn
+	\item Himmelspol
+\end{itemize}
+Der Zenit ist jener Punkt, der vom Erdmittelpunkt durch denn eigenen Standort an die Himmelskugel verlängert wird.
+Ein Gestirn ist ein Planet oder ein Fixstern, zu welchen es diverse Jahrbücher mit allen astronomischen Eigenschaften gibt. 
+Der Himmelspol ist der Nordpol an die Himmelskugel projiziert.
+\\
+Zur Anwendung der Formeln der sphärischen Trigonometrie gelten folgende einfache Zusammenhänge:
+\begin{itemize}
+	\item Seitenlänge Zenit zu Himmelspol $= \frac{\pi}{2} - \phi $
+	\item Seitenlänge Himmelspol zu Gestirn $= \frac{\pi}{2} - \delta$
+	\item Seitenlänge Zenit zu Gestirn $= \frac{\pi}{2} - h$
+	\item Winkel von Zenit zu Himmelsnordpol zu Gestirn$=\pi - \alpha$
+	\item Winkel von Himmelsnordpol zu Zenit und Gestirn$= \tau$
+\end{itemize}
+Um mit diesen Zusammenhängen zu rechnen benötigt man folgende Legende:
+
+$\alpha \ \widehat{=} \ Rektaszension $
+
+$\delta \ \widehat{=} \ Deklination =$ Breitengrad des Gestirns 
+
+$\theta \ \widehat{=} \ Sternzeit\ von\ Greenwich$
+
+$\phi \ \widehat{=} \ Geographische \ Breite $
+
+$\tau = \theta-\alpha \ \widehat{=} \ Stundenwinkel =$ Längengrad des Gestirns 
+
+$a \ \widehat{=} \ Azimut $
+
+$h \ \widehat{=} \ Hoehe$
+
+
+
+\newpage
+\subsection{Zusammenhang des Nautischen Dreiecks und des Kugeldreiecks auf der Erdkugel}
+\begin{figure}[h]
+	\begin{center}
+		\includegraphics[height=5cm,width=5cm]{papers/nav/bilder/kugel3.png}
+		\caption[Nautisches Dreieck]{Nautisches Dreieck}
+	\end{center}
+\end{figure}
+
+Wie man im oberen Bild sieht und auch am Anfang dieses Kapitels bereits erwähnt wurde, liegt das Nautische Dreieck auf der Himmelskugel mit den Ecken Zenit, Gestirn und Himmelsnordpol. 
+Das selbe Dreieck kann man aber auch auf die Erdkugel projezieren und hat dann die Ecken Standort, Bildpunkt und Nordpol. 
+Als Bildpunkt wird in der astronomischen Navigation der Punkt bezeichnet, an dem eine gedachte Linie vom Mittelpunkt eines beobachteten Gestirns zum Mittelpunkt der Erde die Erdoberfläche schneidet.
+
+
+\section{Standortbestimmung ohne elektronische Hilfsmittel}
+Um den eigenen Standort herauszufinden, wird in diesem Kapitel die Projektion Nautische Dreieck auf der Erdkugel zur Hilfe genommen. 
+Mithilfe einiger Hilfsmittel und der Sphärischen Trigonometrie kann man dann die Längen- und Breitengrade des eigenen Standortes bestimmen.
+
+\begin{figure}[h]
+	\begin{center}
+		\includegraphics[width=6cm]{papers/nav/bilder/dreieck.png}
+		\caption[Dreieck für die Standortbestimmung]{Dreieck für die Standortbestimmung}
+	\end{center}
+\end{figure}
+
+
+
+
+\subsection{Ecke P - Unser Standort}
+Unser eigener Standort ist der gesuchte Punkt A. 
+
+\subsection{Ecke A - Nordpol}
+Der Vorteil ander Idee des Nautischen Dreiecks ist, dass eine Ecke immer der Nordpol (in der Himmelskugel der Himmelsnordpol) ist. 
+Somit ist diese Ecke immer bekannt und nur deswegen sind die Zusammenhänge von Rektaszension, Sternzeit und Deklination so simpel.
+\newpage
+\subsection{Ecke B und C - Bildpunkt X und Y}
+Für die Standortermittlung benötigt man als weiteren Punkt ein Gestirn bzw. seinen Bildpunkt auf der Erdkugel. 
+Damit das trigonometrische Rechnen einfacher wird, werden hier zwei Gestirne zur Hilfe genommen.
+\\
+Es gibt diverse Gestirne, die man nutzen kann.
+\begin{itemize}
+	\item Sonne
+	\item Mond
+	\item Die vier Navigationsplaneten Venus, Mars, Jupiter und Saturn
+\end{itemize} 
+
+Zu all diesen Gestirnen gibt es Ephemeriden (Jahrbücher). 
+Dort findet man unter Anderem die Rektaszension und  Deklination, welche für jeden Tag und Stunde beschrieben ist. Für Minuten genaue Angaben muss man dann zwischen den Stunden interpolieren.
+Mithilfe dieser beiden Angaben kann man die Längen- und Breitengrade diverser Gestirne berechnen.
+
+\subsubsection{Sternzeit und Rektaszension}
+Die Rektaszension $\alpha$ gibt an, in welchem Winkel das Gestirn zum Frühlingspunkt steht. 
+Der Frühlungspunkt ist der Nullpunkt auf dem Himmelsäquator. 
+Die Tatsache, dass sich die Himmelskugel  ca. vier Minuten schneller um die eigene Achse dreht als die Erdkugel, stellt hier ein kleines Problem dar.
+Die Lösung ist die Sternzeit. 
+Am Frühlingspunkt (21. März) 12:00 Uhr ist die Sternzeit
+$\theta = 0$. 
+
+Die Sternzeit geht vom Frühlungspunkt aus, an welchem die Sonne den Himmelsäquator schneidet.
+Für die Standortermittlung auf der Erdkugel ist es am einfachsten, wenn man die Sternzeit von Greenwich berechnet. 
+Für die Sternzeit von Greenwich braucht man als erstes das Julianische Datum $T$ vom aktuellen Tag, welches sich leicht recherchieren lässt.
+Im Anschluss berechnet man die Sternzeit von Greenwich
+\\
+\\
+$T_{Greenwich} = 6^h 41^m 50^s,54841 + 8640184^s,812866 \cdot T + 0^s,093104 \cdot T^2 - 0^s,0000062 \cdot T^3$.
+\\
+\\
+Wenn mann die Sternzeit von Greenwich ausgerechnet hat, kann man den Längengrad des Gestirns $\lambda = \theta - \alpha$ mithilfe der Rektaszension und Sternzeit bestimmen. 
+Dies gilt analog auch für das zweite Gestirn.
+
+\subsubsection{Deklination}
+Die Deklination $\delta$ beschreibt den Winkel zwischen dem Himmelsäquator und Gestirn und ergibt schlussendlich den Breitengrad.
+
+
+\newpage
+\subsection{Bestimmung des eigenen Standortes P}
+Nun hat man die Koordinaten der beiden Gestirne und man weiss die Koordinaten des Nordpols.
+Somit können wir ein erstes Kugeldreieck auf der Erde aufspannen.
+
+
+\begin{figure}[h]
+	\begin{center}
+		\includegraphics[width=4.5cm]{papers/nav/bilder/dreieck.png}
+		\caption[Dreieck für die Standortbestimmung]{Dreieck für die Standortbestimmung}
+	\end{center}
+\end{figure}
+
+
+\subsubsection{Bestimmung des ersten Dreiecks}
+
+$A=$ Nordpol
+
+$B=$ Bildpunkt des Gestirns X
+
+$C=$ Bildpunkt des Gestirns Y
+\\
+\\
+Mithilfe des sphärischen Trigonometrie und den darausfolgenden Zusammenhängen des Nautischen Dreiecks können wir nun alle Seiten des Dreiecks $ABC$ berechnen.
+
+Die Seitenlänge der Seite "Nordpol zum Bildpunkt X" sei $c$. 
+Dann ist $c = \frac{\pi}{2} - \delta_1$. 
+
+Die Seitenlänge der Seite "Nordpol zum Bildpunkt Y" sei $b$.
+Dann ist $b = \frac{\pi}{2} - \delta_2$. 
+
+Der Innenwinkel beim der Ecke "Nordpol" sei $\alpha$.
+Dann ist $ \alpha = |\lambda_1 - \lambda_2|$. 
+\\
+\\
+mit 
+
+$\delta_1 =$ Deklination Bildpunkt X
+
+$\delta_2 =$ Deklination Bildpunk Y
+
+$\lambda_1 =$ Längengrad Bildpunkt X
+
+$\lambda_2 =$ Längengrad Bildpunkt Y
+
+Wichtig ist: Die Differenz der Längengrade ist gleich der Innenwinkel Alpha, deswegen der Betrag!
+\\
+\\
+Nun haben wir die beiden Seiten $c\ und\ b$ und den Winkel $\alpha$, der sich zwischen diesen Seiten befindet. 
+Mithilfe des Seiten-Kosinussatzes 
+$cos(a) = \cos(b)\cdot \cos(c) + \sin(b) \cdot \sin(c)\cdot \cos(\alpha)$ 
+können wir nun die dritte Seitenlänge bestimmen. 
+Es ist darauf zu achten, dass hier natürlich die Seitenlängen in Bogenmass sind und dementsprechend der Kosinus und Sinus verwendet wird. 
+
+Jetzt fehlen noch die beiden anderen Innenwinkel $\beta \ und\ \gamma$.
+Diese bestimmen wir mithilfe des Sinussatzes $\frac{\sin (a)}{\sin (\alpha)} =\frac{\sin (b)}{\sin (\beta)} = \frac{\sin (c)}{\sin (\gamma)}$.
+Hier muss man aufpassen, dass man Seite von Winkel unterscheiden kann. 
+Im Zähler sind die Seiten, im Nenner die Winkel. 
+Somit ist $\beta =\sin^{-1} [\sin(b) \cdot \frac{\sin(\alpha)}{\sin(a)}] $.
+
+Schlussendlich haben wir die Seiten $a,b\ und \ c$, die Ecken A,B und C und die Winkel $\alpha, \beta \ und \ \gamma$ bestimmt und somit das ganze erste Kugeldreieck berechnet.
+
+\subsubsection{Bestimmung des zweiten Dreiecks}
+Wir bilden nun ein zweites Dreieck, welches die Ecken B und C des ersten Dreiecks besitzt. 
+Die dritte Ecke ist der eigene Standort P.
+Unser Standort definiere sich aus einer geographischen Breite $\delta$ und einer geographischen Länge $\lambda$. 
+
+Die Seite von P zu B sei $pb$ und die Seite von P zu C sei $pc$.
+Die beiden Seitenlängen kann man mit dem Sextant messen und durch eine einfache Formel bestimmen, nämlich $pb=\frac{\pi}{2} - h_{B}$ und $pc=\frac{\pi}{2} - h_{C}$ 
+
+mit $h_B=$ Höhe von Gestirn in B und $h_C=$ Höhe von Gestirn in C mit Sextant gemessen.
+\\
+
+Nun muss man eine Verbindungslinie ziehen zwischen P und A. Die Länge $l$ dieser Linie entspricht der gesuchten geographischen Breite $\delta$. Diese lässt sich mithilfe des Dreiecks $ABP$, den bekannten Seiten $c\ und \ pb$ und des Seiten-Kosinussatzes berechnen.
+
+Für den Seiten-Kosinussatz benötigt es noch $\kappa$. 
+Da wir aber $pc$, $pb$ und $a$ kennen, kann man mit dem Seiten-Kosinussatz den Winkel $\beta1$ berechnen und anschliessend $\beta + \beta1 =\kappa$.
+
+Somit ist $cos(l) = \cos(c)\cdot \cos(pb) + \sin(c) \cdot \sin(pb) \cdot \cos(\kappa)$
+
+und
+
+$\delta  =\cos^{-1} [\cos(c) \cdot \cos(pb) + \sin(c) \cdot \sin(pb) \cdot \cos(\kappa)]$.
+\\
+
+Für die Geographische Länge $\lambda$ des eigenen Standortes muss man den Winkel $\omega$, welcher sich im Dreieck $ACP$ in der Ecke bei $A$ befindet mithilfe des Sinussatzes $\frac{\sin (a)}{\sin (\alpha)} =\frac{\sin (b)}{\sin (\beta)} = \frac{\sin (c)}{\sin (\gamma)}$ bestimmen. 
+\\
+
+Somit ist $\omega=\sin^{-1}[\sin(pc) \cdot \frac{\sin(\gamma)}{\sin(l)}]$ und unsere gesuchte geographische Länge schlussendlich 
+$\lambda=\lambda_1 - \omega$ mit $\lambda_1$=Längengrad Bildpunkt XXX.
+\newpage
+\listoffigures
