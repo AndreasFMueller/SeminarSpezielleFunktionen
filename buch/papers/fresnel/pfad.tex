@@ -1,0 +1,34 @@
+%
+% pfad.tex -- template for standalon tikz images
+%
+% (c) 2021 Prof Dr Andreas Müller, OST Ostschweizer Fachhochschule
+%
+\documentclass[tikz]{standalone}
+\usepackage{amsmath}
+\usepackage{times}
+\usepackage{txfonts}
+\usepackage{pgfplots}
+\usepackage{csvsimple}
+\usetikzlibrary{arrows,intersections,math}
+\begin{document}
+\def\skala{1}
+\definecolor{darkgreen}{rgb}{0,0.6,0}
+\begin{tikzpicture}[>=latex,thick,scale=\skala]
+
+\draw[->] (-1,0) -- (9,0) coordinate[label={$\operatorname{Re}$}];
+\draw[->] (0,-1) -- (0,6) coordinate[label={left:$\operatorname{Im}$}];
+
+\draw[->,color=red,line width=1.4pt] (0,0) -- (7,0);
+\draw[->,color=blue,line width=1.4pt] (7,0) arc (0:45:7);
+\draw[->,color=darkgreen,line width=1.4pt] (45:7) -- (0,0);
+
+\node[color=red] at (3.5,0) [below] {$\gamma_1(t) = tR$};
+\node[color=blue] at (25:7) [right] {$\gamma_2(t) = Re^{it}$};
+\node[color=darkgreen] at (45:3.5) [above left] {$\gamma_3(t) = te^{i\pi/4}$};
+
+\node at (7,0) [below] {$R$};
+\node at (45:7) [above] {$Re^{i\pi/4}$};
+
+\end{tikzpicture}
+\end{document}
+

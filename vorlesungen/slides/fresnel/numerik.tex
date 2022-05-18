@@ -1,0 +1,124 @@
+%
+% numerik.tex -- numerische Berechnung der Fresnel Integrale
+%
+% (c) 2021 Prof Dr Andreas Müller, OST Ostschweizer Fachhochschule
+%
+\bgroup
+\begin{frame}[t]
+\setlength{\abovedisplayskip}{5pt}
+\setlength{\belowdisplayskip}{5pt}
+\frametitle{Numerik}
+\vspace{-20pt}
+\begin{columns}[t,onlytextwidth]
+\begin{column}{0.48\textwidth}
+\begin{block}{Taylor-Reihe}
+\begin{align*}
+\sin t^{\uncover<2->{\color<2>{red}2}}
+&=
+\sum_{k=0}^\infty
+(-1)^k \frac{t^{
+\ifthenelse{\boolean{presentation}}{\only<1>{2k+1}}{}
+\only<2->{\color<2>{red}4k+2}
+}
+}{
+(2k+1)!
+}
+\\
+%\int \sin t^2\,dt
+\uncover<4->{
+S_1(t)
+&=
+\sum_{k=0}^\infty
+(-1)^k \frac{t^{4k+3}}{(2k+1)!(4n+3)}
+}
+\\
+\cos t^{\uncover<3->{\color<3>{red}2}}
+&=
+\sum_{k=0}^\infty
+(-1)^k \frac{t^{
+\ifthenelse{\boolean{presentation}}{\only<-2>{2k}}{}
+\only<3->{\color<3>{red}4k}}
+}{
+(2k)!
+}
+\\
+%\int \sin t^2\,dt
+\uncover<5->{
+C_1(t)
+&=
+\sum_{k=0}^\infty
+(-1)^k \frac{t^{4k+1}}{(2k)!(4k+1)}
+}
+\end{align*}
+\end{block}
+\end{column}
+\begin{column}{0.48\textwidth}
+\uncover<6->{
+\begin{block}{Differentialgleichung}
+\[
+\dot{\gamma}_1(t)
+=
+\begin{pmatrix}
+\cos t^2\\ \sin t^2
+\end{pmatrix}
+\uncover<7->{
+\;
+\to
+\;
+\gamma_1(t)
+=
+\begin{pmatrix}
+C_1(t)\\S_1(t)
+\end{pmatrix}
+}
+\]
+\end{block}}
+\uncover<8->{%
+\begin{block}{Hypergeometrische Reihen}
+\begin{align*}
+\uncover<9->{%
+S(t)
+&=
+\frac{\pi z^3}{6}
+\cdot
+\mathstrut_1F_2\biggl(
+\begin{matrix}\frac34\\\frac32,\frac74\end{matrix}
+;
+-\frac{\pi^2z^4}{16}
+\biggr)
+}
+\\
+\uncover<10->{
+C(t)
+&=
+z
+\cdot
+\mathstrut_1F_2\biggl(
+\begin{matrix}\frac14\\\frac12,\frac54\end{matrix}
+;
+-\frac{\pi^2z^4}{16}
+\biggr)}
+\end{align*}
+\end{block}}
+\end{column}
+\end{columns}
+\uncover<11->{%
+\begin{block}{Komplexe Fehlerfunktion}
+\[
+\left.
+\begin{matrix}
+S(z)\\
+C(z)
+\end{matrix}
+\right\}
+=
+\frac{1\pm i}{4}
+\left(
+\operatorname{erf}\biggl({\frac{1+i}2}\sqrt{\pi}z\biggr)
+\mp i
+\operatorname{erf}\biggl({\frac{1-i}2}\sqrt{\pi}z\biggr)
+\right)
+\]
+\end{block}}
+\end{frame}
+\egroup
