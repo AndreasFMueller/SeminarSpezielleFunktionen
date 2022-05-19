@@ -15,6 +15,9 @@
 \definecolor{darkgreen}{rgb}{0,0.6,0}
 \begin{tikzpicture}[>=latex,thick,scale=\skala]
 
+\fill[color=gray!40] (0,0) -- (2,0) arc (0:45:2) -- cycle;
+\node at (22.5:1.4) {$\displaystyle\frac{\pi}4$};
+
 \draw[->] (-1,0) -- (9,0) coordinate[label={$\operatorname{Re}$}];
 \draw[->] (0,-1) -- (0,6) coordinate[label={left:$\operatorname{Im}$}];
 
