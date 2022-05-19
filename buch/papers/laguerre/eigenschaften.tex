@@ -25,13 +25,20 @@ Sturm\--Liouville\--Problem umwandeln können, haben wir bewiesen, dass es sich
 bei
 den Laguerre\--Polynomen um orthogonale Polynome handelt (siehe
 Abschnitt~\ref{buch:integrale:subsection:sturm-liouville-problem}).
-Der Sturm-Liouville-Operator hat die Form
+Der Sturm-Liouville-Operator
 \begin{align}
 S
 =
 \frac{1}{w(x)} \left(-\frac{d}{dx}p(x) \frac{d}{dx} + q(x) \right).
 \label{laguerre:slop}
 \end{align}
+und der Laguerre-Operator
+\begin{align}
+\Lambda
+=
+x \frac{d}{dx^2} + (\nu + 1 -x) \frac{d}{dx}
+\end{align}
+sind einander gleichzusetzen.
 Aus der Beziehung
 \begin{align}
 S
@@ -56,7 +63,7 @@ Durch Separation erhalten wir dann
 \begin{align*}
 \int \frac{dp}{p}
  & =
--\int \frac{\nu + 1 - x}{x}dx
+-\int \frac{\nu + 1 - x}{x} \, dx
 \\
 \log p
  & =

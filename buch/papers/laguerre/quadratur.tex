@@ -7,7 +7,7 @@
   \label{laguerre:section:quadratur}}
  {\large \color{red} TODO: Einleitung und kurze Beschreibung Gauss-Quadratur}
 \begin{align}
-\int_a^b f(x) w(x)
+\int_a^b f(x) w(x) \, dx
 \approx
 \sum_{i=1}^N f(x_i) A_i
 \label{laguerre:gaussquadratur}
@@ -33,7 +33,7 @@ Gleichung~\eqref{laguerre:laguerrequadratur} lässt sich wiefolgt umformulieren:
 Nach der Definition der Gauss-Quadratur müssen als Stützstellen die Nullstellen
 des verwendeten Polynoms genommen werden.
 Das heisst für das Laguerre-Polynom $L_n$ müssen dessen Nullstellen $x_i$ und
-als Gewichte $A_i$ werden die Integrale $l_i(x)e^{-x}$ verwendet werden.
+als Gewichte $A_i$ die Integrale $l_i(x)e^{-x}$ verwendet werden.
 Dabei sind
 \begin{align*}
 l_i(x_j)
@@ -57,7 +57,7 @@ A_i
 \subsubsection{Fehlerterm}
 Der Fehlerterm $R_n$ folgt direkt aus der Approximation
 \begin{align*}
-\int_0^{\infty} f(x) e^{-x} dx
+\int_0^{\infty} f(x) e^{-x} \, dx
 =
 \sum_{i=1}^n f(x_i) A_i + R_n
 \end{align*}
