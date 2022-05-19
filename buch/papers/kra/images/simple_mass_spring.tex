@@ -1,0 +1,64 @@
+% create tikz drawing of a simple mass spring system
+
+\tikzstyle{hmline}=[{Latex[length=3.3,width=2.2]}-{Latex[length=3.3,width=2.2]},line width=0.3]
+\tikzstyle{vmline}=[red, dashed,line width=0.4,dash pattern=on 1pt off 1pt]
+\tikzstyle{ground}=[pattern=north east lines]
+\tikzstyle{mass}=[line width=0.6,red!30!black,fill=red!40!black!10,rounded corners=1,top color=red!40!black!20,bottom color=red!40!black!10,shading angle=20]
+\tikzstyle{spring}=[line width=0.8,blue!7!black!80,snake=coil,segment amplitude=5,line cap=round]
+
+\begin{tikzpicture}[scale=2]
+    \newcommand{\ticks}[2]
+    {
+        % arguments: x, y coordinates
+        \draw[thick] (#1, #2 - 0.1 / 2) --++ (0, 0.1);
+    }
+
+    \tikzmath{
+        \hWall = 1.5;
+        \wWall = 0.3;
+        \lWall = 3.5;
+        \hMass = 0.6;
+        \wMass = 1.1;
+        \xMass1 = 1.2;
+        \xMass2 = 2.2;
+        \xAxisYpos = 0;
+        \originX1 = 0;
+        \originY1 = 0.5;
+        \originX2 = 0;
+        \originY2 = -2;
+        \springscale=7;
+    }
+
+    % create x axis
+    \draw[->,thick] (0,\xAxisYpos) --+ (\lWall, 0) node[right]{$x$};
+
+    % create ticks on x axis
+    \ticks{\wWall}{\xAxisYpos}
+    \ticks{\xMass1}{\xAxisYpos}
+    \ticks{\xMass2}{\xAxisYpos}
+
+    % create underground
+    \draw[ground] (\originX1, \originY1) ++ (0, 0) --+(\lWall,0) --+(\lWall, \wWall) --+(\wWall, \wWall) --+(\wWall, \hWall) --+(0, \hWall) -- cycle;
+    \draw[ground] (\originX2, \originY2) ++ (0, 0) --+(\lWall,0) --+(\lWall, \wWall) --+(\wWall, \wWall) --+(\wWall, \hWall) --+(0, \hWall) -- cycle;
+
+    % create masses
+    \draw[mass] (\originX1, \originY1) ++ (\xMass1, \wWall) rectangle ++ (\wMass,\hMass) node[midway] {$m$};
+    \draw[mass] (\originX2, \originY2) ++ (\xMass2, \wWall) rectangle ++ (\wMass,\hMass) node[midway] {$m$};
+
+    % create springs
+    \draw[spring, segment length=(\xMass1 - \wWall) * \springscale] (\originX1, \originY1) ++ (\wWall, \wWall + \hMass / 2) --+ (\xMass1 - \wWall, 0);
+    \draw[spring, segment length=(\xMass2 - \wWall) * \springscale] (\originX2, \originY2) ++ (\wWall, \wWall + \hMass / 2) --+ (\xMass2 - \wWall, 0);
+
+    % create vertical measurement line 
+    \draw[vmline] (\xMass1, \xAxisYpos) --+(0, \originY1 + \wWall);
+    \draw[vmline] (\xMass2, \xAxisYpos) --+(0, \originY2 + \hMass+\wWall);
+    \draw[vmline] (\wWall, \originY1+\wWall) --(\wWall, \originY2 + \hWall);
+
+    % create horizontal measurement line
+    \draw[hmline] (\wWall, \xAxisYpos + 0.2) -- (\xMass1, \xAxisYpos + 0.2) node[midway,fill=white,inner sep=0] {$\ell_0$};
+    \draw[hmline] (\xMass1, \xAxisYpos + 0.2) -- (\xMass2, \xAxisYpos + 0.2) node[midway,fill=white,inner sep=0] {$\Delta_{x}$};
+    \draw[hmline] (\wWall, \xAxisYpos - 0.3) -- (\xMass2, \xAxisYpos - 0.3) node[midway,fill=white,inner sep=0] {$\ell_{1}$};
+
+    %  create force arrow
+    \draw[->,blue, very thick,line cap=round] (\xMass2 + \wMass / 2, \originY2 + \wWall + \hMass + 0.15) node[above] {$\vb{F_{R}}$} --+ (-0.5, 0);
+\end{tikzpicture}
