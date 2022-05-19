@@ -8,7 +8,6 @@ dependencies-nav =						\
 	papers/nav/main.tex					\
 	papers/nav/einleitung.tex				\
 	papers/nav/flatearth.tex				\
-	papers/nav/geschichte.tex				\
 	papers/nav/nautischesdreieck.tex			\
 	papers/nav/sincos.tex					\
 	papers/nav/trigo.tex					\
