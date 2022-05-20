@@ -15,7 +15,7 @@
 	\logo{}
 	\institute{OST Ostschweizer Fachhochschule}
 	\date{16.5.2022}
-	\subject{Mathematisches Seminar- Spezielle Funktionen}
+	\subject{Mathematisches Seminar}
 	%\setbeamercovered{transparent}
 	\setbeamercovered{invisible}
 	\setbeamertemplate{navigation symbols}{}
@@ -27,7 +27,9 @@
 	\begin{frame}
 		\frametitle{Frequenzmodulation}
 		
-		\visible<1->{\begin{equation} \cos(\omega_c t+\beta\sin(\omega_mt))\end{equation}}
+		\visible<1->{
+            \begin{equation} \cos(\omega_c t+\beta\sin(\omega_mt))
+        \end{equation}}
 		
 		\only<2>{\includegraphics[scale= 0.7]{images/fm_in_time.png}}
 		\only<3>{\includegraphics[scale= 0.7]{images/fm_frequenz.png}}
@@ -43,13 +45,13 @@
 	\visible<1->{\begin{align}
 			\cos(\beta\sin\varphi)
 			&=
-			J_0(\beat) + 2\sum_{m=1}^\infty J_{2m}(\beta) \cos(2m\varphi)
+			J_0(\beta) + 2\sum_{m=1}^\infty J_{2m}(\beta) \cos(2m\varphi)
 			\\
 			\sin(\beta\sin\varphi)
 			&=
-			J_0(\beat) + 2\sum_{m=1}^\infty J_{2m}(\beta) \cos(2m\varphi)
+			J_0(\beta) + 2\sum_{m=1}^\infty J_{2m}(\beta) \cos(2m\varphi)
 			\\
-			J_{-n}(\beat) &= (-1)^n J_n(\beta)
+			J_{-n}(\beta) &= (-1)^n J_n(\beta)
 		\end{align}}
 	\visible<2->{\begin{align}
 			\cos(A + B) 
@@ -72,7 +74,7 @@
 		\begin{align}
 			\cos(\omega_ct+\beta\sin(\omega_mt))
 			&=
-			\sum_{k= -\infty}^\infty J_{k}(\beta) \cos((\omega_c+k\omgea_m)t)
+			\sum_{k= -\infty}^\infty J_{k}(\beta) \cos((\omega_c+k\omega_m)t)
 		\end{align}
 	\end{frame}
 %-------------------------------------------------------------------------------	
@@ -106,7 +108,7 @@
 %-------------------------------------------------------------------------------
 \begin{frame}
 \frametitle{Beta Parameter}
-	\onslide<1->{\begin{equation}\sum_{k= -\infty}^\infty J_{k}(\beta) \cos((\omega_c+k\omgea_m)t)\end{equation}}
+	\onslide<1->{\begin{equation}\sum_{k= -\infty}^\infty J_{k}(\beta) \cos((\omega_c+k\omega_m)t)\end{equation}}
 	\only<1>{\includegraphics[scale=0.7]{images/beta_0.001.png}}
 	\only<2>{\includegraphics[scale=0.7]{images/beta_0.1.png}}
 	\only<3>{\includegraphics[scale=0.7]{images/beta_0.5.png}}
