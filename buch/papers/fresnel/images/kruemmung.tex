@@ -1,0 +1,51 @@
+%
+% kruemmung.tex -- Krümmung einer ebenen Kurve
+%
+% (c) 2021 Prof Dr Andreas Müller, OST Ostschweizer Fachhochschule
+%
+\documentclass[tikz]{standalone}
+\usepackage{amsmath}
+\usepackage{times}
+\usepackage{txfonts}
+\usepackage{pgfplots}
+\usepackage{csvsimple}
+\usetikzlibrary{arrows,intersections,math,calc}
+\begin{document}
+\def\skala{1}
+\begin{tikzpicture}[>=latex,thick,scale=\skala]
+
+\begin{scope}
+\clip (-1,-1) rectangle (4,4);
+
+\def\r{3}
+\def\winkel{30}
+
+\fill[color=blue!20] (0,0) -- (0:{0.6*\r}) arc (0:\winkel:{0.6*\r}) -- cycle;
+\fill[color=blue!20] (\winkel:\r)
+	-- ($(\winkel:\r)+(0,{0.6*\r})$) arc (90:{90+\winkel}:{0.6*\r}) -- cycle;
+\node[color=blue] at ({0.5*\winkel}:{0.45*\r}) {$\Delta\varphi$};
+
+\node[color=blue] at ($(\winkel:\r)+({90+0.5*\winkel}:{0.45*\r})$)
+	{$\Delta\varphi$};
+
+\draw[line width=0.3pt] (0,0) circle[radius=\r];
+
+\draw[->] (0,0) -- (0:\r);
+\draw[->] (0,0) -- (\winkel:\r);
+
+\draw[->] (0:\r) -- ($(0:\r)+(90:0.7*\r)$);
+\draw[->] (\winkel:\r) -- ($(\winkel:\r)+({90+\winkel}:0.7*\r)$);
+\draw[->,color=gray] (\winkel:\r) -- ($(\winkel:\r)+(0,0.7*\r)$);
+
+\draw[color=red,line width=1.4pt] (0:\r) arc (0:\winkel:\r);
+\node[color=red] at ({0.5*\winkel}:\r) [left] {$\Delta s$};
+\fill[color=red] (0:\r) circle[radius=0.05];
+\fill[color=red] (\winkel:\r) circle[radius=0.05];
+
+\node at (\winkel:{0.5*\r}) [above] {$r$};
+\node at (0:{0.5*\r}) [below] {$r$};
+\end{scope}
+
+\end{tikzpicture}
+\end{document}
+

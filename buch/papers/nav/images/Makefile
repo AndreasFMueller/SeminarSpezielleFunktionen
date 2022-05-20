@@ -50,7 +50,8 @@ DREIECKE3D =								\
 	dreieck3d4.pdf							\
 	dreieck3d5.pdf							\
 	dreieck3d6.pdf							\
-	dreieck3d7.pdf
+	dreieck3d7.pdf							\
+	dreieck3d8.pdf
 
 dreiecke3d: $(DREIECKE3D)
 
@@ -105,4 +106,18 @@ dreieck3d7.jpg:	dreieck3d7.png
 	convert dreieck3d7.png -density 300 -units PixelsPerInch dreieck3d7.jpg
 dreieck3d7.pdf:	dreieck3d7.tex dreieck3d7.jpg
 	pdflatex dreieck3d7.tex
+
+dreieck3d8.png:	dreieck3d8.pov common.inc
+	povray +A0.1 $(POVRAYOPTIONS) -Odreieck3d8.png dreieck3d8.pov
+dreieck3d8.jpg:	dreieck3d8.png
+	convert dreieck3d8.png -density 300 -units PixelsPerInch dreieck3d8.jpg
+dreieck3d8.pdf:	dreieck3d8.tex dreieck3d8.jpg
+	pdflatex dreieck3d8.tex
+
+dreieck3d9.png:	dreieck3d9.pov common.inc
+	povray +A0.1 $(POVRAYOPTIONS) -Odreieck3d9.png dreieck3d9.pov
+dreieck3d9.jpg:	dreieck3d9.png
+	convert dreieck3d9.png -density 300 -units PixelsPerInch dreieck3d9.jpg
+dreieck3d9.pdf:	dreieck3d9.tex dreieck3d9.jpg
+	pdflatex dreieck3d9.tex
 

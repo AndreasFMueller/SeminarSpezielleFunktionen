@@ -6,9 +6,9 @@
 #include "common.inc"
 
 union {
-	seite(A, B, fine)
-	seite(A, C, fine)
-	punkt(A, fine)
+	seite(A, B, fein)
+	seite(A, C, fein)
+	punkt(A, fein)
 	punkt(B, fett)
 	punkt(C, fett)
 	punkt(P, fett)

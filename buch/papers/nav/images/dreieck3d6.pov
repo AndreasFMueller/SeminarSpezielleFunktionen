@@ -25,7 +25,7 @@ union {
 }
 
 object {
-	winkel(B, A, P, fine)
+	winkel(B, A, P, fein, gross)
 	pigment {
 		color rgb<0.6,0.2,0.6>
 	}
