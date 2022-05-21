@@ -11,7 +11,7 @@ global sigma2;
 sigma2 = 1;
 
 global s;
-s = 1;
+s = 1.4;
 
 global cmax;
 cmax = 0.9;
@@ -40,7 +40,7 @@ end
 
 global N0;
 N0 = f0(0)
-N0 = 0.5;
+N0 = 0.4;
 
 function retval = f1(x,y)
 	global N0;
@@ -115,13 +115,13 @@ endfunction
 
 fn = fopen("curvature.inc", "w");
 punkte = zeros(4,3);
-for ix = (0:xsteps)
+for ix = (0:xsteps-1)
 	x = xmin + ix * hx;
 	punkte(1,1) = x;      
 	punkte(2,1) = x;
 	punkte(3,1) = x + hx;
 	punkte(4,1) = x + hx;
-	for iy = (0:ysteps)
+	for iy = (0:ysteps-1)
 		y = ymin + iy * hy;
 		punkte(1,2) = y;
 		punkte(2,2) = y + hy;

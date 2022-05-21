@@ -72,7 +72,8 @@ arrow(<0,0,-2.1>, <0,0,2.1>, 0.01, White)
 #include "curvature.inc"
 
 #declare sigma = 1;
-#declare N0 = 0.5;
+#declare s = 1.4;
+#declare N0 = 0.4;
 #declare funktion = function(r) {
 	(exp(-r*r/(sigma*sigma)) / sigma
 	-
@@ -80,7 +81,7 @@ arrow(<0,0,-2.1>, <0,0,2.1>, 0.01, White)
 };
 #declare hypot = function(xx, yy) { sqrt(xx*xx+yy*yy) };
 
-#declare Funktion = function(x,y) { funktion(hypot(x+1,y)) - funktion(hypot(x-1,y)) };
+#declare Funktion = function(x,y) { funktion(hypot(x+s,y)) - funktion(hypot(x-s,y)) };
 #macro punkt(xx,yy)
 	<xx, Funktion(xx, yy), yy>
 #end
