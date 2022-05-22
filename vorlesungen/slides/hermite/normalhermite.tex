@@ -1,0 +1,88 @@
+%
+% normalhermite.tex -- integrability of hermite polynomials
+%
+% (c) 2021 Prof Dr Andreas Müller, OST Ostschweizer Fachhochschule
+%
+\bgroup
+\begin{frame}[t]
+\setlength{\abovedisplayskip}{5pt}
+\setlength{\belowdisplayskip}{5pt}
+\frametitle{Hermite-Polynome}
+\vspace{-20pt}
+\begin{columns}[t,onlytextwidth]
+\begin{column}{0.48\textwidth}
+\begin{block}{Definition (Rodrigues-Formel)}
+\[
+H_n(x)
+=
+(-1)^n e^{x^2} \frac{d^n}{dx^n} e^{-x^2}
+\]
+\end{block}
+\vspace{-10pt}
+\begin{block}{Orthogonalität}
+$H_n(x)$ sind orthogonale Polynome bezüglich $w(x)=e^{-x^2}$, d.~h.
+\begin{align*}
+\langle H_n,H_m\rangle_w
+&=
+\int H_n(x)H_m(x)e^{-x^2}\,dx
+\\
+&=
+\biggl\{
+\renewcommand{\arraycolsep}{1pt}
+\begin{array}{l@{\quad}l}
+1&\text{falls $n=m$}\\
+0&\text{sonst}
+\end{array}
+\biggr\}
+=
+\delta_{mn}
+\end{align*}
+\end{block}
+\vspace{-10pt}
+\begin{block}{Rekursion: Auf-/Absteigeoperatoren}
+Rekursionsformel:
+\[
+H_n(x)
+=
+2x\cdot H_{n-1}(x) - H_{n-1}'(x)
+\]
+\end{block}
+\end{column}
+\begin{column}{0.48\textwidth}
+\begin{block}{Stammfunktion}
+\begin{align*}
+\int H_n(x) e^{-x^2}\,dx
+&=
+\int \bigl({\color{red}2x}H_{n-1}(x)
+\\
+&\qquad -H_{n-1}'(x)\bigr) e^{-x^2}\,dx
+\\
+{\color{gray}(e^{-x^2}=-2x)}
+&=
+{\color{red}-}\int {\color{red}(e^{-x^2})'} H_{n-1}(x)\,dx
+\\
+&\qquad
+-
+\int H_{n-1}'(x) e^{-x^2}\,dx
+\\
+\text{\color{gray}(Produktregel)}
+&=
+\int (e^{-x^2}H_{n-1}(x))'\,dx
+\\
+\text{\color{gray}(Ableitung)}
+&=
+e^{-x^2}H_{n-1}(x)
+\end{align*}
+ausser für $n=0$:
+\[
+\int
+H_0(x)e^{-x^2}\,dx
+=
+\int
+e^{-x^2}\,dx
+\]
+\end{block}
+\end{column}
+\end{columns}
+\end{frame}
+\egroup
