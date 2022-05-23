@@ -5,4 +5,114 @@
 %
 \subsection{Integranden der Form $R(x,\sqrt{ax^2+bx+c})$
 \label{buch:integral:subsection:rxy}}
+Für rationale Funktionen lässt sich immer eine Stammfunktion in einem
+Erweiterungskörper angeben, der durch hinzufügen einzelner logarithmischer
+Funktionen entsteht.
+Die dabei verwendeten Techniken lassen sich verallgemeinern.
+Zur Illustration und Motivation des später beschriebenen Risch-Algorithmus
+stellen wir uns in diesem Abschnitt der Aufgabe, Integrale
+mit einem Integranden zu berechnen, der eine rationale Funktion von $x$
+und $\sqrt{ax^2+bx+c}$ ist.
+
+%
+% Aufgabenstellung
+%
+\subsubsection{Aufgabenstellung}
+Eine rationale Funktion von $x$ und $\sqrt{ax^2+bx+c}$ ist ein
+Element des Differentialkörpers, den man aus $\mathbb{Q}(x)$ durch
+hinzufügen des Elementes
+\[
+y=\sqrt{ax^2+bx+c}
+\]
+erhält.
+Eine Funktion $f\in\mathbb{Q}(x,y)$ kann geschrieben werden als Bruch
+\begin{equation}
+f
+=
+\frac{
+\tilde{p}_0 + \tilde{p}_1y + \dots + \tilde{p}_n y^n
+}{
+\tilde{q}_0 + \tilde{q}_1y + \dots + \tilde{q}_m y^m
+}
+\label{buch:integral:sqrat:eqn:ftilde}
+\end{equation}
+mit rationalen Koeffizienten $\tilde{p}_i,\tilde{q}_i\in\mathbb{Q}(x)$.
+Gesucht ist eine Stammfunktion von $f$.
+
+%
+% Algebraische Vereinfachungen
+%
+\subsubsection{Algebraische Vereinfachungen}
+Da $x^2=ax^2+bx+c$ ein Polynom ist, sind auch alle geraden Potenzen
+von $y$ Polynome in $\mathbb{Q}(x)$,
+und die ungeraden Potenzen von $y$ lassen sich als Produkt aus einem
+Polynom und dem Faktor $y$ schreiben.
+Der Integrand~\eqref{buch:integral:sqrat:eqn:ftilde} 
+lässt sich daher vereinfachen zu einem Bruch der Form
+\begin{equation}
+f(x)
+=
+\frac{p_0+p_1y}{q_0+q_1y},
+\label{buch:integral:sqrat:eqn:moebius}
+\end{equation}
+wobei $p_i$ und $q_i$ rationale Funktionen in $\mathbb{Q}(x)$ sind.
+
+%
+% Rationalisieren
+%
+\subsubsection{Rationalisieren}
+Unschön an der Form~\eqref{buch:integral:sqrat:eqn:moebius} ist die
+Tatsache, dass $y$ sowohl im Nenner wie auch im Zähler auftreten kann.
+Da aber $y$ die quadratische Identität $y^2=ax^2+bx+c$ erfüllt,
+kann das $y$ im Nenner durch Erweitern mit $q_0-q_1y$ zum verschwinden
+gebracht werden.
+Die Rechnung ergibt
+\begin{align*}
+\frac{p_0+p_1y}{q_0+q_1y}
+&=
+\frac{p_0+p_1y}{q_0+q_1y}
+\cdot
+\frac{q_0-q_1y}{q_0-q_1y}
+=
+\frac{(p_0+p_1y)(q_0-q_1y)}{q_0^2-q_1^2y^2}
+\\
+&=
+\frac{p_0q_0-p_1q_1(ax^2+bx+c)}{q_0^2-q_1^2(ax^2+bx+c)}
++
+\frac{q_0p_1-q_1p_0}{q_0^2-q_1^2(ax^2+bx+c)} y.
+\end{align*}
+Die Quotienten enthalten $y$ nicht mehr, sind also in $\mathbb{Q}(x)$.
+In der späteren Rechnung stellt sich heraus, dass es praktischer ist,
+das $y$ im Nenner zu haben, was man durch erweitern mit $y$ wieder
+unter Ausnützung von $y^2=ax^2+bx+c$ erreichen kann.
+Die zu integrierende Funktion  kann also in der Form
+\begin{equation}
+f(x)
+=
+W_1 + W_2\frac{1}{y}
+\end{equation}
+geschrieben werden mit rationalen Funktionen
+$W_1,W_2\in\mathbb{Q}(x)$.
+Eine Stammfunktion von $W_1$ kann mit der Methode von
+Abschnitt~\ref{buch:integral:subsection:rationalefunktionen}
+gefunden werden.
+Im Folgenden kümmern wir uns daher nur noch um $W_1$.
+
+\subsubsection{Polynomdivision}
+
+\subsubsection{Integranden der Form $p(x)/y$}
+
+\subsubsection{Partialbruchzerlegung}
+
+\begin{equation}
+\int
+\frac{1}{(x-\alpha)^k \sqrt{ax^2+bx+c}}
+\label{buch:integral:sqrat:eqn:2teart}
+\end{equation}
+
+\subsubsection{Integrale der Form \eqref{buch:integral:sqrat:eqn:2teart}}
+
+
+
+
 
