@@ -4,26 +4,49 @@ Die Himmelskugel ist eine gedachte Kugel, welche die Erde und dessen Beobachter 
 Der Zenit ist jener Punkt, der vom Erdmittelpunkt durch denn eigenen Standort an die Himmelskugel verlängert wird.
 Ein Gestirn ist ein Planet oder ein Fixstern, zu welchen es diverse Jahrbücher mit allen astronomischen Eigenschaften gibt. 
 Der Himmelspol ist der Nordpol an die Himmelskugel projiziert.
-Das nautische Dreieck hat die Ecken Zenit, Gestirn und Himmelspol, wie man in der Abbildung 21.5 sehen kann.
+Das nautische Dreieck definiert sich durch folgende Ecken: Zenit, Gestirn und Himmelspol.
 
 Ursprünglich ist das nautische Dreieck ein Hilfsmittel der sphärischen Astronomie um die momentane Position eines Fixsterns oder Planeten an der Himmelskugel zu bestimmen. 
 
-\subsection{Das Bilddreieck}
+Für die Definition gilt:
+\begin{center}
+	\begin{tabular}{ c c c }
+		Winkel && Name / Beziehung \\ 
+		\hline
+		$\alpha$ && Rektaszension \\  
+		$\delta$ && Deklination \\
+		$\theta$ && Sternzeit von Greenwich\\
+		$\phi$  &&  Geographische Breite\\
+		$\tau=\theta-\alpha$ && Stundenwinkel und Längengrad des Gestirns. \\
+		$a$ &&      Azimut\\
+		$h$ &&      Höhe
+	\end{tabular}
+\end{center}
+
+\begin{itemize}
+	\item Seitenlänge Zenit zu Himmelspol $= \frac{\pi}{2} - \phi $
+	\item Seitenlänge Himmelspol zu Gestirn $= \frac{\pi}{2} - \delta$
+	\item Seitenlänge Zenit zu Gestirn $= \frac{\pi}{2} - h$
+	\item Winkel von Zenit zu Himmelsnordpol zu Gestirn$=\pi - \alpha$
+	\item Winkel von Himmelsnordpol zu Zenit und Gestirn$= \tau$
+\end{itemize}
+
+
+\subsection{Zusammenhang des nautischen Dreiecks und des Kugeldreiecks auf der Erdkugel}
 \begin{figure}
 	\begin{center}
-		\includegraphics[width=8cm]{papers/nav/bilder/kugel3.png}
+		\includegraphics[height=5cm,width=8cm]{papers/nav/bilder/kugel3.png}
 		\caption[Nautisches Dreieck]{Nautisches Dreieck}
 	\end{center}
 \end{figure}
- Man kann das nautische Dreieck auf die Erdkugel projizieren.
-Dieses Dreieck nennt man dann Bilddreieck. 
-Als Bildpunkt wird in der astronomischen Navigation der Punkt bezeichnet, an dem eine gedachte Linie vom Mittelpunkt eines beobachteten Gestirns zum Mittelpunkt der Erde die Erdoberfläche schneidet. 
-Die Projektion auf der Erdkugel hat die Ecken Nordpol, Standort und Bildpunkt.
+
+Wie man in der Abbildung 21.4 sieht, liegt das nautische Dreieck auf der Himmelskugel mit den Ecken Zenit, Gestirn und Himmelsnordpol. 
+Das selbe Dreieck kann man aber auch auf die Erdkugel projizieren. Als Bildpunkt wird in der astronomischen Navigation der Punkt bezeichnet, an dem eine gedachte Linie vom Mittelpunkt eines beobachteten Gestirns zum Mittelpunkt der Erde die Erdoberfläche schneidet. Die Projektion auf der Erdkugel hat die Ecken Nordpol, Standort und Bildpunkt.
 
 \section{Standortbestimmung ohne elektronische Hilfsmittel}
 Um den eigenen Standort herauszufinden, wird in diesem Kapitel die Projektion des nautische Dreiecks auf die Erdkugel zur Hilfe genommen. 
 Mithilfe eines Sextanten, einem Jahrbuch und der sphärischen Trigonometrie kann man dann die Längen- und Breitengrade des eigenen Standortes bestimmen.
-Was ein Sextant und ein Jahrbuch ist, wird im Abschnitt 21.6.3 erklärt.
+Was ein Sextant und ein Jahrbuch ist, wird im Kapitel 21.6 erklärt.
 \begin{figure}
 	\begin{center}
 		\includegraphics[width=10cm]{papers/nav/bilder/dreieck.pdf}
@@ -36,8 +59,8 @@ Was ein Sextant und ein Jahrbuch ist, wird im Abschnitt 21.6.3 erklärt.
 
 \subsection{Ecke $P$ und $A$}
 Unser eigener Standort ist der gesuchte Ecke $P$ und die Ecke $A$ ist in unserem Fall der Nordpol.
-Der Vorteil an der Idee des nautischen Dreiecks ist, dass eine Ecke immer der Nordpol ist. 
-Somit ist diese Ecke immer bekannt und nur deswegen sind die Zusammenhänge von Rektaszension, Sternzeit und Deklination so einfach.
+Der Vorteil ander Idee des nautischen Dreiecks ist, dass eine Ecke immer der Nordpol ist. 
+Somit ist diese Ecke immer bekannt und nur deswegen sind die Zusammenhänge von Rektaszension, Sternzeit und Deklination so simpel.
 
 \subsection{Ecke $B$ und $C$ - Bildpunkt $X$ und $Y$}
 Für die Standortermittlung benötigt man als weiteren Punkt ein Gestirn bzw. seinen Bildpunkt auf der Erdkugel. 
@@ -46,8 +69,8 @@ Es gibt diverse Gestirne, die man nutzen kann wie zum Beispiel die Sonne, der Mo
 
 Die Bildpunkte von den beiden Gestirnen $X$ und $Y$ bilden die beiden Ecken $B$ und $C$ im Dreieck der Abbildung 21.5.
 \subsection{Ephemeriden}
-Zu all diesen Gestirnen gibt es Ephemeriden. 
-Diese enthalten die Rektaszensionen und Deklinationen in Abhängigkeit von der Zeit.
+Zu all diesen Gestirnen gibt es Ephemeriden, die man auch Jahrbücher nennt. 
+In diesen findet man Begriffe wie Rektaszension, Deklination und Sternzeit.
 
 \begin{figure}
 	\begin{center}
@@ -60,24 +83,25 @@ Diese enthalten die Rektaszensionen und Deklinationen in Abhängigkeit von der Z
 Die Deklination $\delta$ beschreibt den Winkel zwischen dem Himmelsäquator und Gestirn und entspricht dem Breitengrad des Gestirns.
 
 \subsubsection{Rektaszension und Sternzeit}
-Die Rektaszension $\alpha$ gibt an, in welchem Winkel das Gestirn zum Frühlingspunkt, welcher der Nullpunkt auf dem Himmelsäquator ist, steht und geht vom Koordinatensystem der Himmelskugel aus.
-
+Die Rektaszension $\alpha$ gibt an, in welchem Winkel das Gestirn zum Frühlingspunkt steht und geht vom Koordinatensystem der Himmelskugel aus.
+Der Frühlungspunkt ist der Nullpunkt auf dem Himmelsäquator. 
 Die Tatsache, dass sich die Himmelskugel  ca. vier Minuten schneller um die eigene Achse dreht als die Erdkugel, stellt hier ein kleines Problem dar.
 Die Lösung ist die Sternzeit. 
-Mit dieser können wir die schnellere Drehung der Himmelskugel ausgleichen und können die am Frühlingspunkt (21. März) 12:00 Uhr ist die Sternzeit $\theta = 0$. 
+Mit dieser können wir die schnellere Drehung der Himmelskugel ausgleichen und können die 
+Am Frühlingspunkt (21. März) 12:00 Uhr ist die Sternzeit
+$\theta = 0$. 
 
 Die Sternzeit geht vom Frühlungspunkt aus, an welchem die Sonne den Himmelsäquator schneidet.
 Für die Standortermittlung auf der Erdkugel ist es am einfachsten, wenn man die Sternzeit von Greenwich berechnet. 
-Für die Sternzeit von Greenwich $\theta$ braucht man als erstes das Julianische Datum $T$ vom aktuellen Tag, welches sich leicht nachschlagen lässt.
+Für die Sternzeit von Greenwich $\theta $braucht man als erstes das Julianische Datum $T$ vom aktuellen Tag, welches sich leicht recherchieren lässt.
 Im Anschluss berechnet man die Sternzeit von Greenwich
 
 \[\theta = 6^h 41^m 50^s,54841 + 8640184^s,812866 \cdot T + 0^s,093104 \cdot T^2 - 0^s,0000062 \cdot T^3.\]
 
-Wenn man die Sternzeit von Greenwich ausgerechnet hat, kann man den Längengrad des Gestirns $\lambda = \theta - \alpha$ bestimmen, wobei $\alpha$ die Rektaszension und $\theta$ die Sternzeit von Greenwich ist.
+Wenn man die Sternzeit von Greenwich ausgerechnet hat, kann man den Längengrad des Gestirns $\lambda = \theta - \alpha$ mithilfe der Rektaszension und Sternzeit von Greenwich bestimmen. 
 Dies gilt analog auch für das zweite Gestirn.
 \subsubsection{Sextant}
-Ein Sextant ist ein nautisches Messinstrument, mit dem man den Winkel zwischen der Blickrichtung zu weit entfernten Objekten bestimmen kann. Es wird vor allem der Winkelabstand zu Gestirnen gemessen. 
-Man benutzt ihn vor allem für die astronomische Navigation auf See.
+Ein Sextant ist ein nautisches Messinstrument, mit dem man den Winkel zwischen der Blickrichtung zu weit entfernten Objekten bestimmen kann, insbesondere den Winkelabstand zu einem Gestirn vom Horizont. Man nutze ihn vor allem für die astronomische Navigation auf See.
 
 \begin{figure}
 	\begin{center}
@@ -85,32 +109,7 @@ Man benutzt ihn vor allem für die astronomische Navigation auf See.
 		\caption[Sextant]{Sextant}
 	\end{center}
 \end{figure}
-\subsubsection{Eingeschaften}
-Für das nautische Dreieck gibt es folgende Eigenschaften:
-\begin{center}
-	\begin{tabular}{ l c l }
-		Legende && Name / Beziehung \\ 
-		\hline
-		$\alpha$ && Rektaszension \\  
-		$\delta$ && Deklination \\
-		$\theta$ && Sternzeit von Greenwich\\
-		$\phi$  &&  Geographische Breite\\
-		$\tau=\theta-\alpha$ && Stundenwinkel und Längengrad des Gestirns. \\
-		$a$ &&      Azimut\\
-		$h$ &&      Höhe
-	\end{tabular}
-\end{center}
-\begin{center}
-	\begin{tabular}{ l c l }
-		Eigenschaften \\
-		\hline
-		Seitenlänge Zenit zu Himmelspol= && $\frac{\pi}{2} - \phi$  \\  
-		Seitenlänge Himmelspol zu Gestirn= && $\frac{\pi}{2} - \delta$  \\
-		Seitenlänge Himmelspol zu Gestirn= && $\frac{\pi}{2} - h$ \\
-		Winkel von Zenit zu Himmelsnordpol zu Gestirn=  &&  $\pi-\alpha$\\
-		Winkel von Himmelsnordpol zu Zenit zu Gestirn= && $\tau$\\
-	\end{tabular}
-\end{center}
+
 \subsection{Bestimmung des eigenen Standortes $P$}
 Nun hat man die Koordinaten der beiden Gestirne und man weiss die Koordinaten des Nordpols.
 Damit wir unseren Standort bestimmen können, bilden wir zuerst das Dreieck $ABC$, dann das Dreieck $BPC$ und zum Schluss noch das Dreieck $ABP$.
