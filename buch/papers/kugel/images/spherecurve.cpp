@@ -102,7 +102,7 @@ public:
 		}
 		u = pow(u,2);
 		(*this)[0] = u;
-		(*this)[1] = green;
+		(*this)[1] = green * u * (1 - u);
 		(*this)[2] = 1-u;
 		double	l = l0norm();
 		for (int i = 0; i < 3; i++) {
@@ -284,7 +284,7 @@ public:
  */
 int	main(int argc, char *argv[]) {
 	surface	S("spherecurve.inc", 5, 10);
-	color::green = 0.3;
+	color::green = 1.0;
 	S.draw();
 	std::cout << "umin: " << S.umin() << std::endl;
 	std::cout << "umax: " << S.umax() << std::endl;
