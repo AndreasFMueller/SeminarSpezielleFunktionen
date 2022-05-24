@@ -11,12 +11,12 @@ global_settings {
 	assumed_gamma 1
 }
 
-#declare imagescale = 0.14;
+#declare imagescale = 0.13;
 
 camera {
 	location <10, 10, -40>
 	look_at <0, 0, 0>
-	right 16/9 * x * imagescale
+	right x * imagescale
 	up y * imagescale
 }
 

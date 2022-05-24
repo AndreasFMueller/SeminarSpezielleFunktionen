@@ -14,12 +14,17 @@ curvature.png:	curvature.pov curvature.inc
 curvature.jpg:	curvature.png
 	convert curvature.png -density 300 -units PixelsPerInch curvature.jpg
 
-spherecurve.inc:	spherecurve.m
+spherecurve2.inc:	spherecurve.m
 	octave spherecurve.m
 
 spherecurve.png:	spherecurve.pov spherecurve.inc
-	povray +A0.1 +W1920 +H1080 +Ospherecurve.png spherecurve.pov
+	povray +A0.1 +W1080 +H1080 +Ospherecurve.png spherecurve.pov
 
 spherecurve.jpg:	spherecurve.png
 	convert spherecurve.png -density 300 -units PixelsPerInch spherecurve.jpg
 
+spherecurve:	spherecurve.cpp
+	g++ -o spherecurve -g -Wall -O spherecurve.cpp
+
+spherecurve.inc:	spherecurve
+	./spherecurve

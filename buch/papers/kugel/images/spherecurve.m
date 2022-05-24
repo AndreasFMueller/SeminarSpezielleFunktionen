@@ -1,5 +1,5 @@
 #
-# spherecurv.m
+# spherecurve.m
 #
 # (c) 2022 Prof Dr Andreas Müller, OST Ostschweizer Fachhochschule
 #
@@ -125,7 +125,7 @@ function dreieck(fn, v0, v1, v2)
 	fprintf(fn, "    }\n");
 endfunction
 
-fn = fopen("spherecurve.inc", "w");
+fn = fopen("spherecurve2.inc", "w");
 
 	for i = (1:phisteps)
 		# Polkappe nord
