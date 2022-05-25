@@ -5,8 +5,134 @@
 %
 \subsection{Körpererweiterungen
 \label{buch:integral:subsection:koerpererweiterungen}}
+Das Beispiel des Körpers $\mathbb{Q}(\!\sqrt{2})$ auf Seite
+\pageref{buch:integral:beispiel:Qsqrt2} illustriert eine Möglichkeit,
+einen kleinen Körper zu vergrössern.
+Das Prinzip ist verallgemeinerungsfähig und soll in diesem Abschnitt
+erarbeitet werden.
+
 %
 % algebraische Zahl-Erweiterungen
+\subsubsection{Algebraische Erweiterungen}
+Der Körper $\mathbb{Q}(\!\sqrt{2})$ entsteht aus dem Körper $\mathbb{Q}$
+dadurch, dass man die Zahl $\sqrt{2}$ hinzufügt und alle erlaubten
+arithmetischen Operationen zulässt.
+Die Darstellung von Elementen von $\mathbb{Q}(\!\sqrt{2})$ als
+$a+b\sqrt{2}$ ist möglich, weil die Zahl $\alpha=\sqrt{2}$ die 
+algebraische Relation
+\[
+\alpha^2-2 = \sqrt{2}^2 -2 = 0
+\]
+erfüllt.
+Voraussetzung für diese Aussage ist, dass es die Zahl $\sqrt{2}$ in einem
+geeigneten grösseren Körper gibt. 
+Die reellen oder komplexen Zahlen bilden einen solchen Körper.
+Wir verallemeinern diese Situation wie folgt.
+
+\begin{definition}
+Ist $K$ ein Körper, dann heisst ein Körper $L$ mit $K\subset L$ ein
+{\em Erweiterungskörper} von $K$.
+\index{Erweiterungskoerper@Erweiterungskörper}
+\end{definition}
+
+\begin{definition}
+\label{buch:integral:definition:algebraisch}
+Sei $K\subset L$ eine Körpererweiterung.
+Das Element $\alpha\in L$ heisst {\em algebraisch} über $K$, wenn es
+ein Polynom $p(x)\in K[x]$ gibt derart, dass $\alpha$ eine Nullstelle
+von $p(x)$ ist, also gibt mit $p(\alpha)=0$.
+Das normierte Polynom $m(x)$ geringsten Grades, welches $m(\alpha)=0$
+erfüllt, heisst das {\em Minimalpolynom} von $\alpha$.
+\index{Minimalpolynom}%
+\end{definition}
+
+Man sagt auch $\alpha$ ist algebraisch vom Grad $n$, wenn das Minimalpolynom
+den Grad $n$ hat.
+Wenn $\alpha\ne 0$ algebraisch ist, dann ist auch $1/\alpha$ algebraisch,
+wie das folgende Argument zeigt.
+Für das Minimalpolynom $m(x)$ von $\alpha$, ist $m(\alpha)=0$.
+Teilt man diese Gleichung durch $\alpha^n$ teilt, erhält man 
+\[
+m_0\frac{1}{\alpha^n}
++
+m_1\frac{1}{\alpha^{n-1}}
++
+\ldots
++
+m_{n-1}\frac{1}{\alpha}
++
+1
+=
+0,
+\]
+das Polynom
+\[
+\hat{m}(x)
+=
+m_0x^n + m_1x^{n-1} + \ldots m_{n-1} x + 1
+\in
+K[x]
+\]
+hat also $\alpha^{-1}$ als Nullstelle.
+Das Polynom $\hat{m}(x)$ beweist daher, dass $\alpha^{-1}$ algebraisch ist.
+
+Die Zahl $\sqrt{2}\in\mathbb{R}$ ist also algebraisch über $\mathbb{Q}$
+und jede andere Quadratwurzel von Elementen von $\mathbb{Q}$ ist
+ebenfalls algebraisch über $\mathbb{Q}$.
+Auch der Körper $\mathbb{Q}(\alpha)$ kann für jede andere Quadratwurzel
+auf die genau gleiche Art wie für $\sqrt{2}$ konstruiert werden.
+
+\begin{definition}
+\label{buch:integral:definition:algebraischeerweiterung}
+Sei $K\subset L$ eine Körpererweiterung und $\alpha\in L$ ein algebraisches
+Element mit Minimalpolynom $m(x)\in K[x]$.
+Dann heisst die Menge
+\begin{equation}
+K(\alpha)
+=
+\{
+a_0 + a_1\alpha + \ldots +a_n\alpha^n
+\;|\;
+a_i\in K
+\}
+\label{buch:integral:eqn:algelement}
+\end{equation}
+mit $n=\deg m(x) - 1$ der durch Adjunktion von $\alpha$ erhaltene
+Erweiterungsköper.
+\end{definition}
+
+Wieder muss nur überprüft werden, dass jedes Produkt oder jeder
+Quotient von Ausdrücken der Form~\eqref{buch:integral:eqn:algelement}
+wieder in diese Form gebracht werden kann.
+Dazu sei
+\[
+m(x)
+=
+m_0+m_1x + m_2x^2
++\ldots +m_{n-1}x^{n-1} + x^n
+\]
+das Minimalpolynom von $\alpha$.
+Die Gleichung $m(\alpha)=0$ kann nach $\alpha^n$ aufgelöst werden und
+liefert
+\[
+\alpha^n = -m_0 - m_1\alpha - m_2\alpha^2 -\ldots -m_{n-1}\alpha^{n-1}.
+\]
+Damit kann jede Potenz von $\alpha$ mit einem Exponenten grösser als $n$
+in eine Linearkombination von Potenzen mit kleineren Exponenten
+reduziert werden.
+Ein Polynom in $\alpha$ kann also immer auf die
+Form~\eqref{buch:integral:eqn:algelement}
+gebracht werden.
+
+XXX Quotienten
+
 % rationale Funktionen als Körpererweiterungen
+\subsubsection{Rationale Funktionen als Körpererweiterung}
+
 % Erweiterungen mit algebraischen Funktionen 
-%
+\subsubsection{Algebraische Funktionen}
+
+% Transzendente Körpererweiterungen
+\subsubsection{Transzendente Erweiterungen}
+
+
