@@ -27,7 +27,7 @@ erfüllt.
 Voraussetzung für diese Aussage ist, dass es die Zahl $\sqrt{2}$ in einem
 geeigneten grösseren Körper gibt. 
 Die reellen oder komplexen Zahlen bilden einen solchen Körper.
-Wir verallemeinern diese Situation wie folgt.
+Wir verallgemeinern diese Situation wie folgt.
 
 \begin{definition}
 Ist $K$ ein Körper, dann heisst ein Körper $L$ mit $K\subset L$ ein
@@ -124,15 +124,116 @@ Ein Polynom in $\alpha$ kann also immer auf die
 Form~\eqref{buch:integral:eqn:algelement}
 gebracht werden.
 
-XXX Quotienten
-
-% rationale Funktionen als Körpererweiterungen
-\subsubsection{Rationale Funktionen als Körpererweiterung}
-
-% Erweiterungen mit algebraischen Funktionen 
-\subsubsection{Algebraische Funktionen}
+Es muss aber noch gezeigt werden, dass auch der Kehrwert eines Elements
+der Form~\eqref{buch:integral:eqn:algelement} in dieser Form geschrieben
+werden kann.
+Sei also $a(\alpha)$ so ein Element, dann sind die beiden Polynome
+$a(x)$ und $m(x)$ teilerfremd, der grösste gemeinsame Teiler ist $1$.
+Mit dem erweiterten euklidischen Algorithmus kann man zwei Polynome
+$s(x)$ und $t(x)$ finden derart, dass $s(x)a(x)+t(x)m(x)=1$.
+Setzt man $\alpha$ für $x$ ein, verschwindet das Minimalpolynom und
+es bleibt
+\[
+s(\alpha)a(\alpha) = 1
+\qquad\Rightarrow\qquad
+s(\alpha) = \frac{1}{a(\alpha)}.
+\]
+Damit ist $s(\alpha)$ eine Darstellung von $1/a(\alpha)$ in der 
+Form~\eqref{buch:integral:eqn:algelement}.
 
 % Transzendente Körpererweiterungen
 \subsubsection{Transzendente Erweiterungen}
+Nicht alle Zahlen in $\mathbb{R}$ sind algebraisch.
+Lindemann bewies 1882 einen allgemeinen Satz, aus dem folgt,
+dass $\pi$ und $e$ nicht algebraisch sind, es gibt also
+kein Polynom mit rationalen Koeffizienten, welches $\pi$
+oder $e$ als Nullstelle hat.
+
+\begin{definition}
+Eine Zahl $\alpha\in L$ in einer Körpererweiterung $K\subset L$ 
+heisst {\em transzendent}, wenn $\alpha$ nicht algebraisch ist,
+wenn es also kein Polynom in $K[x]$ gibt, welches $\alpha$ als
+Nullstelle hat.
+\end{definition}
+
+Die Zahlen $\pi$ und $e$ sind also transzendent.
+Eine andere Art, diese Eigenschaft zu beschreiben ist zu sagen,
+dass die Potenzen
+\[
+1=\pi^0, \pi, \pi^2,\pi^3,\dots
+\]
+linear unabhängig sind.
+Gäbe es nämlich eine lineare Abhängigkeit, dann gäbe es Koeffizienten
+$l_i$ derart, dass
+\[
+l_0 + l_1\pi^1 + l_2\pi^2 + \ldots + l_{n-1}\pi^{n-1} + l_{n}\pi^n = l(\pi)=0,
+\]
+und damit wäre dann ein Polynom gefunden, welches $\pi$ als Nullstelle hat.
+
+Selbstverstländlich kann man zu einem transzendenten Element $\alpha$
+immer noch einen Körper konstruieren, der alle Zahlen enthält, welche man
+mit den arithmetischen Operationen aus $\alpha$ bilden kann.
+Man kann ihn schreiben als
+\[
+K(\alpha)
+=
+\biggl\{
+\frac{p(\alpha)}{q(\alpha)}
+\;\bigg|\;
+p(x),q(x)\in K[x] \wedge p(x)\ne 0
+\biggr\},
+\]
+aber die Vereinfachungen zur
+Form~\eqref{buch:integral:eqn:algelement}, die bei einem algebraischen
+Element $\alpha$ möglich waren, können jetzt nicht mehr durchgeführt
+werden.
+$K\subset K(\alpha)$ ist zwar immer noch eine Körpererweiterung, aber
+$K(\alpha)$ ist nicht mehr ein endlichdimensionaler Vektorraum.
+Die Körpererweiterung $K\subset K(\alpha)$ heisst {\em transzendent}.
+
+% rationale Funktionen als Körpererweiterungen
+\subsubsection{Rationale Funktionen als Körpererweiterung}
+Die unabhängige Variable wird bei Rechnen so behandelt, dass die
+Potenzen alle linear unabhängig sind.
+Dies ist die Grundlage für den Koeffizientenvergleich.
+Der Körper der rationalen Funktion $K(x)$
+ist also eine transzendente Körpererweiterung von $K$.
+
+% Erweiterungen mit algebraischen Funktionen 
+\subsubsection{Algebraische Funktionen}
+Für das Integrationsproblem möchten wir nicht nur rationale Funktionen
+verwenden können, sondern auch Wurzelfunktionen.
+Wir möchten also zum Beispiel auch mit der Funktion $\sqrt{ax^2+bx+c}$
+und allem, was man mit arithmetischen Operationen daraus machen kann,
+arbeiten können.
+Eine Körpererweiterung, die $\sqrt{ax^2+bx+c}$ enthält, enthält auch
+alles, was man daraus bilden kann.
+Doch wie bekommen wir die Funktion $\sqrt{ax^2+bx+c}$ in den Körper?
+
+Die Art und Weise, wie man Wurzeln in der Schule kennenlernt ist als
+eine neue Operation, die zu einer Zahl die Quadratwurzel liefert.
+Diese Idee, den Körper mit einer weiteren Funktion anzureichern,
+führt über nicht auf eine nützliche neue algebraische Struktur.
+Wir dürfen daher $\sqrt{ax^2+bx+c}$ nicht als die Zusammensetzung
+einer einzelnen neuen Funktion $\sqrt{\phantom{A}}$ mit
+einem Polynom betrachten.
+
+Die Wurzel $\sqrt{ax^2+bx+c}$ ist aber auch die Nullstelle des Polynoms
+\[
+p(z)
+=
+z^2 - [ax^2+bx+c]
+\in
+K(x)[z]
+\]
+mit Koeffizienten in $K(x)$.
+Die eckigen Klammern sollen helfen, die Koeffizienten in $K(x)$
+zu erkennen.
+Die Funktion $\sqrt{ax^2+bx+c}$ ist also algebraisch über $K(x)$.
+Einen Funktionenkörper, der die Funktion enthält, kann man also erhalten,
+indem man den Körper $K(x)$ um das über $K(x)$ algebraische Element
+$y=\sqrt{ax^2+bx+c}$ zu $K(x,y)=K(x,\sqrt{ax^2+bx+c}$ erweitert.
+Wurzelfunktion werden daher nicht als Zusammensetzungen, sondern als
+algebraische Erweiterungen eines Funktionenkörpers betrachtet.
 
 
