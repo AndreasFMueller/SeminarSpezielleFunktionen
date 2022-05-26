@@ -2,9 +2,8 @@
 \rhead{Zusammenhang mit der Gammafunktion}
 
 In diesem Abschnitt wird gezeigt, wie sich die Zetafunktion durch die Gammafunktion $\Gamma(s)$ ausdrücken lässt.
-Dieser Zusammenhang der Art $\zeta(s) = f(\Gamma(s))$ wird später für die Herleitung der analytischen Fortsetzung gebraucht.
+Dieser Zusammenhang der Art $\zeta(s) = f(\Gamma(s))$ ist nicht nur interessant, er wird später auch für die Herleitung der analytischen Fortsetzung gebraucht.
 
-%TODO ref Gamma
 Wir erinnern uns an die Definition der Gammafunktion in \eqref{buch:rekursion:gamma:integralbeweis}
 \begin{equation*}
     \Gamma(s)
@@ -51,12 +50,12 @@ Die Summe über $e^{-nu}$ können wir als geometrische Reihe schreiben und erhal
     &=
     \frac{1}{e^u - 1}.
 \end{align}
-Wenn wir dieses Resultat einsetzen in \eqref{zeta:equation:zeta_gamma1} und durch $\Gamma(s)$ teilen, erhalten wir %TODO formulieren als Satz
+Wenn wir dieses Resultat einsetzen in \eqref{zeta:equation:zeta_gamma1} und durch $\Gamma(s)$ teilen, erhalten wir den gewünschten Zusammenhang
 \begin{equation}\label{zeta:equation:zeta_gamma_final}
     \zeta(s)
     =
     \frac{1}{\Gamma(s)}
     \int_0^{\infty}
     \frac{u^{s-1}}{e^u -1}
-    du.
+    du \qed
 \end{equation}

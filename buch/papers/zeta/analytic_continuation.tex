@@ -1,7 +1,26 @@
 \section{Analytische Fortsetzung} \label{zeta:section:analytische_fortsetzung}
 \rhead{Analytische Fortsetzung}
 
-%TODO missing Text
+Die analytische Fortsetzung der Riemannschen Zetafunktion ist äusserst interessant.
+Sie ermöglicht die Berechnung von $\zeta(-1)$ und weiterer spannender Werte.
+So liegen zum Beispiel unendlich viele Nullstellen der Zetafunktion bei $\Re(s) = 0.5$.
+Diese sind relevant für die Primzahlverteilung und sind Gegenstand der Riemannschen Vermutung.
+
+Es werden zwei verschiedene Fortsetzungen benötigt.
+Die erste erweitert die Zetafunktion auf $\Re(s) > 0$.
+Die zweite verwendet eine Spiegelung an der $\Re(s) = 0.5$ Linie und erschliesst damit die ganze komplexe Ebene.
+Eine grafische Darstellung dieses Plans ist in Abbildung \ref{zeta:fig:continuation_overview} zu sehen.
+\begin{figure}
+    \centering
+    \input{papers/zeta/continuation_overview.tikz.tex}
+    \caption{
+        Die verschiedenen Abschnitte der Riemannschen Zetafunktion. 
+        Die originale Definition von \eqref{zeta:equation1} ist im grünen Bereich gültig.
+        Für den blauen Bereich gilt \eqref{zeta:equation:fortsetzung1}.
+        Um den roten Bereich zu bekommen verwendet die Funktionalgleichung \eqref{zeta:equation:functional} eine Spiegelung an $\Re(s) = 0.5$.
+    }
+    \label{zeta:fig:continuation_overview}
+\end{figure}
 
 \subsection{Fortsetzung auf $\Re(s) > 0$} \label{zeta:subsection:auf_bereich_ge_0}
 Zuerst definieren die Dirichletsche Etafunktion als
@@ -42,7 +61,7 @@ Durch Subtraktion der beiden Gleichungen \eqref{zeta:align1} minus \eqref{zeta:a
     &= \eta(s).
 \end{align}
 Dies ist die Fortsetzung auf den noch unbekannten Bereich $0 < \Re(s) < 1$
-\begin{equation}
+\begin{equation} \label{zeta:equation:fortsetzung1}
     \zeta(s)
     :=
     \left(1 - \frac{1}{2^{s-1}} \right)^{-1} \eta(s).
