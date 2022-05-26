@@ -12,9 +12,9 @@ union {
 	punkt(A, fett)
 	punkt(B, fett)
 	punkt(C, fett)
-	punkt(P, fine)
-	seite(B, P, fine)
-	seite(C, P, fine)
+	punkt(P, fein)
+	seite(B, P, fein)
+	seite(C, P, fein)
 	pigment {
 		color dreieckfarbe
 	}
@@ -25,7 +25,7 @@ union {
 }
 
 object {
-	winkel(A, B, C, fine)
+	winkel(A, B, C, fein, gross)
 	pigment {
 		color rot
 	}
@@ -36,7 +36,7 @@ object {
 }
 
 object {
-	winkel(B, C, A, fine)
+	winkel(B, C, A, fein, gross)
 	pigment {
 		color gruen
 	}
@@ -47,7 +47,7 @@ object {
 }
 
 object {
-	winkel(C, A, B, fine)
+	winkel(C, A, B, fein, gross)
 	pigment {
 		color blau
 	}

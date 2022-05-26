@@ -12,6 +12,7 @@ global_settings {
 
 #declare imagescale = 0.034;
 
+#declare O = <0, 0, 0>;
 #declare A = vnormalize(< 0, 1, 0>);
 #declare B = vnormalize(< 1, 2, -8>);
 #declare C = vnormalize(< 5, 1, 0>);
@@ -97,13 +98,13 @@ union {
 	}
 #end
 
-#macro winkel(w, p, q, staerke)
+#macro winkel(w, p, q, staerke, r)
 	#declare n = vnormalize(w);
 	#declare pp = vnormalize(p - vdot(n, p) * n);
 	#declare qq = vnormalize(q - vdot(n, q) * n);
 	intersection {
-		sphere { <0, 0, 0>, 1 + staerke }
-		cone { <0, 0, 0>, 0, 1.2 * vnormalize(w), 0.4 }
+		sphere { O, 1 + staerke }
+		cone { O, 0, 1.2 * vnormalize(w), r }
 		plane { -vcross(n, qq) * vdot(vcross(n, qq), pp), 0 }
 		plane { -vcross(n, pp) * vdot(vcross(n, pp), qq), 0 }
 	}
@@ -113,37 +114,74 @@ union {
 	sphere { p, 1.5 * staerke }
 #end
 
+#macro dreieck(p, q, r, farbe)
+	#declare n1 = vnormalize(vcross(p, q));
+	#declare n2 = vnormalize(vcross(q, r));
+	#declare n3 = vnormalize(vcross(r, p));
+	intersection {
+		plane { n1, 0 }
+		plane { n2, 0 }
+		plane { n3, 0 }
+		sphere { <0, 0, 0>, 1 + 0.001 }
+		pigment {
+			color farbe
+		}
+		finish {
+			metallic
+			specular 0.4
+		}
+	}
+#end
+
+#macro ebenerwinkel(a, p, q, s, r, farbe)
+	#declare n = vnormalize(-vcross(p, q));
+	#declare np = vnormalize(-vcross(p, n));
+	#declare nq = -vnormalize(-vcross(q, n));
+//	arrow(a, a + n, 0.02, White)
+//	arrow(a, a + np, 0.01, Red)
+//	arrow(a, a + nq, 0.01, Blue)
+	intersection {
+		cylinder { a - (s/2) * n, a + (s/2) * n, r }
+		plane { np, vdot(np, a) }
+		plane { nq, vdot(nq, a) }
+		pigment {
+			farbe
+		}
+		finish {
+			metallic
+			specular 0.5
+		}
+	}
+#end
+
+#macro komplement(a, p, q, s, r, farbe)
+	#declare n = vnormalize(-vcross(p, q));
+//	arrow(a, a + n, 0.015, Orange)
+	#declare m = vnormalize(-vcross(q, n));
+//	arrow(a, a + m, 0.015, Pink)
+	ebenerwinkel(a, p, m, s, r, farbe)
+#end
+
 #declare fett = 0.015;
-#declare fine = 0.010;
+#declare fein = 0.010;
+
+#declare klein = 0.3;
+#declare gross = 0.4;
 
 #declare dreieckfarbe = rgb<0.6,0.6,0.6>;
 #declare rot = rgb<0.8,0.2,0.2>;
 #declare gruen = rgb<0,0.6,0>;
 #declare blau = rgb<0.2,0.2,0.8>;
 
+#declare kugelfarbe = rgb<0.8,0.8,0.8>;
+#declare kugeltransparent = rgbt<0.8,0.8,0.8,0.5>;
+
+#macro kugel(farbe)
 sphere {
 	<0, 0, 0>, 1
 	pigment {
-		color rgb<0.8,0.8,0.8>
+		color farbe
 	}
 }
+#end
 
-//union {
-//	sphere { A, 0.02 }
-//	sphere { B, 0.02 }
-//	sphere { C, 0.02 }
-//	sphere { P, 0.02 }
-//	pigment {
-//		color Red
-//	}
-//}
-
-//union {
-//	winkel(A, B, C)
-//	winkel(B, P, C)
-//	seite(B, C, 0.01)
-//	seite(B, P, 0.01)
-//	pigment {
-//		color rgb<0,0.6,0>
-//	}
-//}

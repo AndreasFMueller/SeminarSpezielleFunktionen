@@ -1,0 +1,49 @@
+%
+% apfel.tex
+%
+% (c) 2021 Prof Dr Andreas Müller, OST Ostschweizer Fachhochschule
+%
+\documentclass[tikz]{standalone}
+\usepackage{times}
+\usepackage{amsmath}
+\usepackage{txfonts}
+\usepackage[utf8]{inputenc}
+\usepackage{graphics}
+\usetikzlibrary{arrows,intersections,math}
+\usepackage{ifthen}
+\begin{document}
+
+\newboolean{showgrid}
+\setboolean{showgrid}{false}
+\def\breite{7}
+\def\hoehe{4}
+
+\input{eulerpath.tex}
+
+\begin{tikzpicture}[>=latex,thick]
+
+% Povray Bild
+\begin{scope}
+\clip(-0.6,-0.6) rectangle (7,6);
+\node at (3.1,2.2) [rotate=-3] {\includegraphics[width=9.4cm]{apfel.jpg}};
+\end{scope}
+
+% Gitter
+\ifthenelse{\boolean{showgrid}}{
+\draw[step=0.1,line width=0.1pt] (-\breite,-\hoehe) grid (\breite, \hoehe);
+\draw[step=0.5,line width=0.4pt] (-\breite,-\hoehe) grid (\breite, \hoehe);
+\draw                            (-\breite,-\hoehe) grid (\breite, \hoehe);
+\fill (0,0) circle[radius=0.05];
+}{}
+
+\draw[color=gray!50] (0,0) rectangle (4,4);
+\draw[->] (-0.5,0) -- (7.5,0) coordinate[label={$C(t)$}];
+\draw[->] (0,-0.5) -- (0,6.0) coordinate[label={left:$S(t)$}];
+\begin{scope}[scale=8]
+\draw[color=red,opacity=0.5,line width=1.4pt] \fresnela;
+\end{scope}
+
+\end{tikzpicture}
+
+\end{document}
+

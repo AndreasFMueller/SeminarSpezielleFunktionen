@@ -1,0 +1,9 @@
+y: sqrt(a*x^2+b*x+c);
+
+F: log(x + b/(2 * a) + y/sqrt(a))/sqrt(a);
+
+f: diff(F, x);
+
+ratsimp(f);
+
+ratsimp(y*f);

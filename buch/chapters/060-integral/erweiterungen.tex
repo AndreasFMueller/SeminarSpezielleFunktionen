@@ -1,0 +1,249 @@
+%
+% erweiterungen.tex
+%
+% (c) 2022 Prof Dr Andreas Müller, OST Ostschweizer Fachhochschlue
+%
+\subsection{Körpererweiterungen
+\label{buch:integral:subsection:koerpererweiterungen}}
+Das Beispiel des Körpers $\mathbb{Q}(\!\sqrt{2})$ auf Seite
+\pageref{buch:integral:beispiel:Qsqrt2} illustriert eine Möglichkeit,
+einen kleinen Körper zu vergrössern.
+Das Prinzip ist verallgemeinerungsfähig und soll in diesem Abschnitt
+erarbeitet werden.
+
+%
+% algebraische Zahl-Erweiterungen
+\subsubsection{Algebraische Erweiterungen}
+Der Körper $\mathbb{Q}(\!\sqrt{2})$ entsteht aus dem Körper $\mathbb{Q}$
+dadurch, dass man die Zahl $\sqrt{2}$ hinzufügt und alle erlaubten
+arithmetischen Operationen zulässt.
+Die Darstellung von Elementen von $\mathbb{Q}(\!\sqrt{2})$ als
+$a+b\sqrt{2}$ ist möglich, weil die Zahl $\alpha=\sqrt{2}$ die 
+algebraische Relation
+\[
+\alpha^2-2 = \sqrt{2}^2 -2 = 0
+\]
+erfüllt.
+Voraussetzung für diese Aussage ist, dass es die Zahl $\sqrt{2}$ in einem
+geeigneten grösseren Körper gibt. 
+Die reellen oder komplexen Zahlen bilden einen solchen Körper.
+Wir verallgemeinern diese Situation wie folgt.
+
+\begin{definition}
+Ist $K$ ein Körper, dann heisst ein Körper $L$ mit $K\subset L$ ein
+{\em Erweiterungskörper} von $K$.
+\index{Erweiterungskoerper@Erweiterungskörper}
+\end{definition}
+
+\begin{definition}
+\label{buch:integral:definition:algebraisch}
+Sei $K\subset L$ eine Körpererweiterung.
+Das Element $\alpha\in L$ heisst {\em algebraisch} über $K$, wenn es
+ein Polynom $p(x)\in K[x]$ gibt derart, dass $\alpha$ eine Nullstelle
+von $p(x)$ ist, also gibt mit $p(\alpha)=0$.
+Das normierte Polynom $m(x)$ geringsten Grades, welches $m(\alpha)=0$
+erfüllt, heisst das {\em Minimalpolynom} von $\alpha$.
+\index{Minimalpolynom}%
+\end{definition}
+
+Man sagt auch $\alpha$ ist algebraisch vom Grad $n$, wenn das Minimalpolynom
+den Grad $n$ hat.
+Wenn $\alpha\ne 0$ algebraisch ist, dann ist auch $1/\alpha$ algebraisch,
+wie das folgende Argument zeigt.
+Für das Minimalpolynom $m(x)$ von $\alpha$, ist $m(\alpha)=0$.
+Teilt man diese Gleichung durch $\alpha^n$ teilt, erhält man 
+\[
+m_0\frac{1}{\alpha^n}
++
+m_1\frac{1}{\alpha^{n-1}}
++
+\ldots
++
+m_{n-1}\frac{1}{\alpha}
++
+1
+=
+0,
+\]
+das Polynom
+\[
+\hat{m}(x)
+=
+m_0x^n + m_1x^{n-1} + \ldots m_{n-1} x + 1
+\in
+K[x]
+\]
+hat also $\alpha^{-1}$ als Nullstelle.
+Das Polynom $\hat{m}(x)$ beweist daher, dass $\alpha^{-1}$ algebraisch ist.
+
+Die Zahl $\sqrt{2}\in\mathbb{R}$ ist also algebraisch über $\mathbb{Q}$
+und jede andere Quadratwurzel von Elementen von $\mathbb{Q}$ ist
+ebenfalls algebraisch über $\mathbb{Q}$.
+Auch der Körper $\mathbb{Q}(\alpha)$ kann für jede andere Quadratwurzel
+auf die genau gleiche Art wie für $\sqrt{2}$ konstruiert werden.
+
+\begin{definition}
+\label{buch:integral:definition:algebraischeerweiterung}
+Sei $K\subset L$ eine Körpererweiterung und $\alpha\in L$ ein algebraisches
+Element mit Minimalpolynom $m(x)\in K[x]$.
+Dann heisst die Menge
+\begin{equation}
+K(\alpha)
+=
+\{
+a_0 + a_1\alpha + \ldots +a_n\alpha^n
+\;|\;
+a_i\in K
+\}
+\label{buch:integral:eqn:algelement}
+\end{equation}
+mit $n=\deg m(x) - 1$ der durch Adjunktion von $\alpha$ erhaltene
+Erweiterungsköper.
+\end{definition}
+
+Wieder muss nur überprüft werden, dass jedes Produkt oder jeder
+Quotient von Ausdrücken der Form~\eqref{buch:integral:eqn:algelement}
+wieder in diese Form gebracht werden kann.
+Dazu sei
+\[
+m(x)
+=
+m_0+m_1x + m_2x^2
++\ldots +m_{n-1}x^{n-1} + x^n
+\]
+das Minimalpolynom von $\alpha$.
+Die Gleichung $m(\alpha)=0$ kann nach $\alpha^n$ aufgelöst werden und
+liefert
+\[
+\alpha^n = -m_0 - m_1\alpha - m_2\alpha^2 -\ldots -m_{n-1}\alpha^{n-1}.
+\]
+Damit kann jede Potenz von $\alpha$ mit einem Exponenten grösser als $n$
+in eine Linearkombination von Potenzen mit kleineren Exponenten
+reduziert werden.
+Ein Polynom in $\alpha$ kann also immer auf die
+Form~\eqref{buch:integral:eqn:algelement}
+gebracht werden.
+
+Es muss aber noch gezeigt werden, dass auch der Kehrwert eines Elements
+der Form~\eqref{buch:integral:eqn:algelement} in dieser Form geschrieben
+werden kann.
+Sei also $a(\alpha)$ so ein Element, dann sind die beiden Polynome
+$a(x)$ und $m(x)$ teilerfremd, der grösste gemeinsame Teiler ist $1$.
+Mit dem erweiterten euklidischen Algorithmus kann man zwei Polynome
+$s(x)$ und $t(x)$ finden derart, dass $s(x)a(x)+t(x)m(x)=1$.
+Setzt man $\alpha$ für $x$ ein, verschwindet das Minimalpolynom und
+es bleibt
+\[
+s(\alpha)a(\alpha) = 1
+\qquad\Rightarrow\qquad
+s(\alpha) = \frac{1}{a(\alpha)}.
+\]
+Damit ist $s(\alpha)$ eine Darstellung von $1/a(\alpha)$ in der 
+Form~\eqref{buch:integral:eqn:algelement}.
+
+%
+% Komplexe Zahlen
+%
+\subsubsection{Komplexe Zahlen}
+Die imaginäre Einheit $i$ hat die Eigenschaft, dass $i^2=-1$, insbesondere
+ist sie Nullstelle des Polynoms $m(x)=x^2+1\in\mathbb{Q}[x]$.
+Die Menge $\mathbb{Q}(i)$ ist daher eine algebraische Körpererweiterung
+von $\mathbb{Q}$ bestehend aus den komplexen Zahlen mit rationalem
+Real- und Imaginärteil.
+
+% Transzendente Körpererweiterungen
+\subsubsection{Transzendente Erweiterungen}
+Nicht alle Zahlen in $\mathbb{R}$ sind algebraisch.
+Lindemann bewies 1882 einen allgemeinen Satz, aus dem folgt,
+dass $\pi$ und $e$ nicht algebraisch sind, es gibt also
+kein Polynom mit rationalen Koeffizienten, welches $\pi$
+oder $e$ als Nullstelle hat.
+
+\begin{definition}
+Eine Zahl $\alpha\in L$ in einer Körpererweiterung $K\subset L$ 
+heisst {\em transzendent}, wenn $\alpha$ nicht algebraisch ist,
+wenn es also kein Polynom in $K[x]$ gibt, welches $\alpha$ als
+Nullstelle hat.
+\end{definition}
+
+Die Zahlen $\pi$ und $e$ sind also transzendent.
+Eine andere Art, diese Eigenschaft zu beschreiben ist zu sagen,
+dass die Potenzen
+\[
+1=\pi^0, \pi, \pi^2,\pi^3,\dots
+\]
+linear unabhängig sind.
+Gäbe es nämlich eine lineare Abhängigkeit, dann gäbe es Koeffizienten
+$l_i$ derart, dass
+\[
+l_0 + l_1\pi^1 + l_2\pi^2 + \ldots + l_{n-1}\pi^{n-1} + l_{n}\pi^n = l(\pi)=0,
+\]
+und damit wäre dann ein Polynom gefunden, welches $\pi$ als Nullstelle hat.
+
+Selbstverstländlich kann man zu einem transzendenten Element $\alpha$
+immer noch einen Körper konstruieren, der alle Zahlen enthält, welche man
+mit den arithmetischen Operationen aus $\alpha$ bilden kann.
+Man kann ihn schreiben als
+\[
+K(\alpha)
+=
+\biggl\{
+\frac{p(\alpha)}{q(\alpha)}
+\;\bigg|\;
+p(x),q(x)\in K[x] \wedge p(x)\ne 0
+\biggr\},
+\]
+aber die Vereinfachungen zur
+Form~\eqref{buch:integral:eqn:algelement}, die bei einem algebraischen
+Element $\alpha$ möglich waren, können jetzt nicht mehr durchgeführt
+werden.
+$K\subset K(\alpha)$ ist zwar immer noch eine Körpererweiterung, aber
+$K(\alpha)$ ist nicht mehr ein endlichdimensionaler Vektorraum.
+Die Körpererweiterung $K\subset K(\alpha)$ heisst {\em transzendent}.
+
+% rationale Funktionen als Körpererweiterungen
+\subsubsection{Rationale Funktionen als Körpererweiterung}
+Die unabhängige Variable wird bei Rechnen so behandelt, dass die
+Potenzen alle linear unabhängig sind.
+Dies ist die Grundlage für den Koeffizientenvergleich.
+Der Körper der rationalen Funktion $K(x)$
+ist also eine transzendente Körpererweiterung von $K$.
+
+% Erweiterungen mit algebraischen Funktionen 
+\subsubsection{Algebraische Funktionen}
+Für das Integrationsproblem möchten wir nicht nur rationale Funktionen
+verwenden können, sondern auch Wurzelfunktionen.
+Wir möchten also zum Beispiel auch mit der Funktion $\sqrt{ax^2+bx+c}$
+und allem, was man mit arithmetischen Operationen daraus machen kann,
+arbeiten können.
+Eine Körpererweiterung, die $\sqrt{ax^2+bx+c}$ enthält, enthält auch
+alles, was man daraus bilden kann.
+Doch wie bekommen wir die Funktion $\sqrt{ax^2+bx+c}$ in den Körper?
+
+Die Art und Weise, wie man Wurzeln in der Schule kennenlernt ist als
+eine neue Operation, die zu einer Zahl die Quadratwurzel liefert.
+Diese Idee, den Körper mit einer weiteren Funktion anzureichern,
+führt über nicht auf eine nützliche neue algebraische Struktur.
+Wir dürfen daher $\sqrt{ax^2+bx+c}$ nicht als die Zusammensetzung
+einer einzelnen neuen Funktion $\sqrt{\phantom{A}}$ mit
+einem Polynom betrachten.
+
+Die Wurzel $\sqrt{ax^2+bx+c}$ ist aber auch die Nullstelle des Polynoms
+\[
+p(z)
+=
+z^2 - [ax^2+bx+c]
+\in
+K(x)[z]
+\]
+mit Koeffizienten in $K(x)$.
+Die eckigen Klammern sollen helfen, die Koeffizienten in $K(x)$
+zu erkennen.
+Die Funktion $\sqrt{ax^2+bx+c}$ ist also algebraisch über $K(x)$.
+Einen Funktionenkörper, der die Funktion enthält, kann man also erhalten,
+indem man den Körper $K(x)$ um das über $K(x)$ algebraische Element
+$y=\sqrt{ax^2+bx+c}$ zu $K(x,y)=K(x,\sqrt{ax^2+bx+c}$ erweitert.
+Wurzelfunktion werden daher nicht als Zusammensetzungen, sondern als
+algebraische Erweiterungen eines Funktionenkörpers betrachtet.
+
+
