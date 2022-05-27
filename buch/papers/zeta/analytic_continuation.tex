@@ -106,15 +106,65 @@ und finden Zeta durch die Summenbildung $\sum_{n=1}^{\infty}$
     \,dx. \label{zeta:equation:integral1}
 \end{equation}
 Die Summe kürzen wir ab als $\psi(x) = \sum_{n=1}^{\infty} e^{-\pi n^2 x}$.
-%TODO Wieso folgendes -> aus Fourier Signal
-Es gilt
-\begin{equation}\label{zeta:equation:psi}
-    \psi(x)
+Im Abschnitt \ref{zeta:subsec:poisson_summation} wird die poissonsche Summenformel $\sum f(n) = \sum F(n)$ bewiesen.
+In unserem Problem ist $f(n) =  e^{-\pi n^2 x}$ und die zugehörige Fouriertransformation $F(n)$ ist
+\begin{equation}
+    F(n)
     =
+    \mathcal{F}
+    (
+    e^{-\pi n^2 x}
+    )
+    =
+    \frac{1}{\sqrt{x}}
+    e^{\frac{-n^2 \pi}{x}}.
+\end{equation}
+Dadurch ergibt sich
+\begin{equation}\label{zeta:equation:psi}
+    \sum_{n=-\infty}^{\infty}
+    e^{-\pi n^2 x}
+    =
+    \frac{1}{\sqrt{x}}
+    \sum_{n=-\infty}^{\infty}
+    e^{\frac{-n^2 \pi}{x}},
+\end{equation}
+wobei wir die Summen so verändern müssen, dass sie bei $n=1$ beginnen und wir $\psi(x)$ erhalten als
+\begin{align}
+    2
+    \sum_{n=1}^{\infty}
+    e^{-\pi n^2 x}
+    +
+    1
+    &=
+    \frac{1}{\sqrt{x}}
+    \left(
+    2
+    \sum_{n=1}^{\infty}
+    e^{\frac{-n^2 \pi}{x}}
+    +
+    1
+    \right)
+    \\
+    2
+    \psi(x)
+    +
+    1
+    &=
+    \frac{1}{\sqrt{x}}
+    \left(
+    2
+    \psi\left(\frac{1}{x}\right)
+    +
+    1
+    \right)
+    \\
+    \psi(x)
+    &=
     - \frac{1}{2}
     + \frac{\psi\left(\frac{1}{x} \right)}{\sqrt{x}}
-    + \frac{1}{2 \sqrt{x}}.
-\end{equation}
+    + \frac{1}{2 \sqrt{x}}.\label{zeta:equation:psi}
+\end{align}
+Diese Gleichung wird später wichtig werden.
 
 Zunächst teilen wir nun das Integral aus \eqref{zeta:equation:integral1} auf als
 \begin{equation}\label{zeta:equation:integral2}
@@ -309,3 +359,119 @@ Somit haben wir die analytische Fortsetzung gefunden als
     \zeta(1-s).
 \end{equation}
 %TODO Definitionen und Gleichungen klarer unterscheiden
+
+\subsection{Poissonsche Summenformel} \label{zeta:subsec:poisson_summation}
+
+Der Beweis für Gleichung \ref{zeta:equation:psi} folgt direkt durch die poissonsche Summenformel.
+Um diese zu beweisen, berechnen wir zunächst die Fourierreihe der Dirac Delta Funktion.
+
+\begin{lemma}
+    Die Fourierreihe der periodischen Dirac Delta Funktion $\sum \delta(x - 2\pi k)$ ist
+    \begin{equation} \label{zeta:equation:fourier_dirac}
+        \sum_{k=-\infty}^{\infty}
+        \delta(x - 2\pi k)
+        =
+        \frac{1}{2\pi}
+        \sum_{n=-\infty}^{\infty}
+        e^{i n x}.
+    \end{equation}
+\end{lemma}
+
+\begin{proof}[Beweis]
+    Eine Fourierreihe einer beliebigen periodischen Funktion $f(x)$ berechnet sich als
+    \begin{align}
+        f(x)
+        &=
+        \sum_{n=-\infty}^{\infty}
+        c_n
+        e^{i n x} \\
+        c_n
+        &=
+        \frac{1}{2\pi}
+        \int_{-\pi}^{\pi}
+        f(x)
+        e^{-i n x}
+        \, dx.
+    \end{align}
+    Wenn $f(x)=\delta(x)$ eingesetz wird ergeben sich konstante Koeffizienten
+    \begin{equation}
+        c_n
+        =
+        \frac{1}{2\pi}
+        \int_{-\pi}^{\pi}
+        \delta(x)
+        e^{-i n x}
+        \, dx
+        =
+        \frac{1}{2\pi},
+    \end{equation}
+    womit die sehr einfache Fourierreihe der Dirac Delta Funktion berechnet wäre.
+\end{proof}
+
+\begin{satz}[Poissonsche Summernformel]
+    Die Summe einer Funktion $f(n)$ über alle ganzen Zahlen $n$ ist äquivalent zur Summe ihrer Fouriertransformation $F(k)$ über alle ganzen Zahlen $k$
+    \begin{equation}
+        \sum_{n=-\infty}^{\infty}
+        f(n)
+        =
+        \sum_{k=-\infty}^{\infty}
+        F(k).
+    \end{equation}
+\end{satz}
+
+\begin{proof}[Beweis]
+    Wir schreiben die Summe über die Fouriertransformation aus
+    \begin{align}
+        \sum_{k=-\infty}^{\infty}
+        F(k)
+        &=
+        \sum_{k=-\infty}^{\infty}
+        \int_{-\infty}^{\infty}
+        f(x)
+        e^{-i 2\pi x k}
+        \, dx
+        \\
+        &=
+        \int_{-\infty}^{\infty}
+        f(x)
+        \underbrace{
+        \sum_{k=-\infty}^{\infty}
+        e^{-i 2\pi x k}
+        }_{\text{\eqref{zeta:equation:fourier_dirac}}}
+        \, dx,
+    \end{align}
+    und verwenden die Fouriertransformation der Dirac Funktion aus \eqref{zeta:equation:fourier_dirac}
+    \begin{align}
+        \sum_{k=-\infty}^{\infty}
+        e^{-i 2\pi x k}
+        &=
+        2 \pi
+        \sum_{k=-\infty}^{\infty}
+        \delta(-2\pi x - 2\pi k)
+        \\
+        &=
+        \frac{2 \pi}{2 \pi}
+        \sum_{k=-\infty}^{\infty}
+        \delta(x + k).
+    \end{align}
+    Wenn wir dies einsetzen und erhalten wir den gesuchten Beweis für die poissonsche Summenformel
+    \begin{equation}
+        \sum_{k=-\infty}^{\infty}
+        F(k)
+        =
+        \int_{-\infty}^{\infty}
+        f(x)
+        \sum_{k=-\infty}^{\infty}
+        \delta(x + k)
+        \, dx
+        =
+        \sum_{k=-\infty}^{\infty}
+        \int_{-\infty}^{\infty}
+        f(x)
+        \delta(x + k)
+        \, dx
+        =
+        \sum_{k=-\infty}^{\infty}
+        f(k).
+    \end{equation}
+\end{proof}
