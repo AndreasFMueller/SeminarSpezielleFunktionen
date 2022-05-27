@@ -14,7 +14,7 @@ Eine grafische Darstellung dieses Plans ist in Abbildung \ref{zeta:fig:continuat
     \centering
     \input{papers/zeta/continuation_overview.tikz.tex}
     \caption{
-        Die verschiedenen Abschnitte der Riemannschen Zetafunktion. 
+        Die verschiedenen Abschnitte der Riemannschen Zetafunktion.
         Die originale Definition von \eqref{zeta:equation1} ist im grünen Bereich gültig.
         Für den blauen Bereich gilt \eqref{zeta:equation:fortsetzung1}.
         Um den roten Bereich zu bekommen verwendet die Funktionalgleichung \eqref{zeta:equation:functional} eine Spiegelung an $\Re(s) = 0.5$.
@@ -76,33 +76,35 @@ Wir beginnen damit, die Gammafunktion für den halben Funktionswert zu berechnen
     \int_0^{\infty} t^{\frac{s}{2}-1} e^{-t} dt.
 \end{equation}
 Nun substituieren wir $t$ mit $t = \pi n^2 x$ und $dt=\pi n^2 dx$ und erhalten
-\begin{align}
+\begin{equation}
     \Gamma \left( \frac{s}{2} \right)
-    &=
+    =
     \int_0^{\infty}
     (\pi n^2)^{\frac{s}{2}}
     x^{\frac{s}{2}-1}
     e^{-\pi n^2 x}
-    \,dx
-    && \text{Division durch } (\pi n^2)^{\frac{s}{2}}
-    \\
+    \,dx.
+\end{equation}
+Analog zum Abschnitt \ref{zeta:section:zusammenhang_mit_gammafunktion} teilen wir durch $(\pi n^2)^{\frac{s}{2}}$
+\begin{equation}
     \frac{\Gamma \left( \frac{s}{2} \right)}{\pi^{\frac{s}{2}} n^s}
-    &=
+     =
     \int_0^{\infty}
     x^{\frac{s}{2}-1}
     e^{-\pi n^2 x}
-    \,dx
-    && \text{Zeta durch Summenbildung } \sum_{n=1}^{\infty}
-    \\
+    \,dx,
+\end{equation}
+und finden Zeta durch die Summenbildung $\sum_{n=1}^{\infty}$
+\begin{equation}
     \frac{\Gamma \left( \frac{s}{2} \right)}{\pi^{\frac{s}{2}}}
     \zeta(s)
-    &=
+    =
     \int_0^{\infty}
     x^{\frac{s}{2}-1}
     \sum_{n=1}^{\infty}
     e^{-\pi n^2 x}
     \,dx. \label{zeta:equation:integral1}
-\end{align}
+\end{equation}
 Die Summe kürzen wir ab als $\psi(x) = \sum_{n=1}^{\infty} e^{-\pi n^2 x}$.
 %TODO Wieso folgendes -> aus Fourier Signal
 Es gilt
