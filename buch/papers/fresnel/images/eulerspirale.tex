@@ -1,0 +1,41 @@
+%
+% eulerspirale.tex -- Darstellung der Eulerspirale
+%
+% (c) 2022 Prof Dr Andreas Müller, OST Ostschweizer Fachhochschule
+%
+\documentclass[tikz]{standalone}
+\usepackage{amsmath}
+\usepackage{times}
+\usepackage{txfonts}
+\usepackage{pgfplots}
+\usepackage{csvsimple}
+\usetikzlibrary{arrows,intersections,math}
+\begin{document}
+\def\skala{1}
+\definecolor{darkgreen}{rgb}{0,0.6,0}
+\begin{tikzpicture}[>=latex,thick,scale=\skala]
+
+\input{eulerpath.tex}
+
+\def\s{8}
+
+\begin{scope}[scale=\s]
+\draw[color=blue] (-0.5,-0.5) rectangle (0.5,0.5);
+\draw[color=darkgreen,line width=1.4pt] \fresnela;
+\draw[color=darkgreen,line width=1.4pt] \fresnelb;
+\fill[color=blue] (0.5,0.5) circle[radius={0.1/\s}];
+\fill[color=blue] (-0.5,-0.5) circle[radius={0.1/\s}];
+\draw (-0.5,{-0.05/\s}) -- (-0.5,{0.05/\s});
+\draw (0.5,{-0.05/\s}) -- (0.5,{-0.05/\s});
+\node at (-0.5,0) [above left] {$\frac12$};
+\node at (0.5,0) [below right] {$\frac12$};
+\node at (0,-0.5) [below right] {$\frac12$};
+\node at (0,0.5) [above left] {$\frac12$};
+\end{scope}
+
+\draw[->] (-6.7,0) -- (6.9,0) coordinate[label={$C(x)$}];;
+\draw[->] (0,-5.8) -- (0,6.1) coordinate[label={left:$S(x)$}];;
+
+\end{tikzpicture}
+\end{document}
+

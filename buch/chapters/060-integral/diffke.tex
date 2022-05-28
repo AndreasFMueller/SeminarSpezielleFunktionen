@@ -1,0 +1,237 @@
+%
+% diffke.tex
+%
+% (c) 2022 Prof Dr Andreas Müller, OST Ostschweizer Fachhochschlue
+%
+\subsection{Differentialkörper und ihre Erweiterungen
+\label{buch:integral:subsection:diffke}}
+Die Ableitung wird in den Grundvorlesungen der Analysis jeweils
+als ein Grenzprozess eingeführt.
+Die praktische Berechnung von Ableitungen verwendet aber praktisch
+nie diese Definition, sondern fast ausschliesslich die rein algebraischen
+Ableitungsregeln.
+So wie die Wurzelfunktionen im letzten Abschnitt als algebraische
+Körpererweiterungen erkannt wurden, muss jetzt auch für die Ableitung
+eine rein algebraische Definition gefunden werden.
+Die entstehende Struktur ist der Differentialkörper, der in diesem
+Abschnitt definiert werden soll.
+
+%
+% Derivation
+%
+\subsubsection{Derivation}
+Für die praktische Berechnung der Ableitung einer Funktion verwendet
+man in erster Linie die bekannten Rechenregeln.
+Dazu gehören für zwei Funktionen $f$ und $g$
+\begin{itemize}
+\item Linearität: $(\alpha f+\beta g)' = \alpha f' + \beta g'$ für
+Konstanten $\alpha$, $\beta$.
+\item Produktregel: $(fg)'=f'g+fg'$.
+\index{Produktregel}%
+\item Quotientenregel: $(f/g)' = (f'g-fg')/g^2$.
+\index{Quotientenregel}%
+\end{itemize}
+Die ebenfalls häufig verwendete Kettenregel $(f\circ g)' = (f'\circ g) g'$
+\index{Kettenregel}%
+für zusammengesetzte Funktionen wird später kaum benötigt, da wir
+Verkettungen durch Körpererweiterungen ersetzen wollen.
+Die Ableitung hat somit die rein algebraischen Eigenschaften
+einer Derivation gemäss folgender Definition.
+
+\begin{definition}
+Sei $\mathscr{F}$ ein Körper.
+Eine {\em Derivation} ist eine lineare Abbildung
+\index{Derivation}%
+$D\colon \mathscr{F}\to\mathscr{F}$
+mit der Eigenschaft
+\[
+D(fg) = (Df)g+f(Dg).
+\]
+Ein {\em Differentialkörper} ist ein Körper mit einer Derivation.
+\index{Differentialkoerper@Differentialkörper}%
+\end{definition}
+
+Die Ableitung in einem Funktionenkörper ist eine Derivation,
+die sich zusätzlich dadurch auszeichnet, dass $Dx=x'=1$.
+Sie wird weiterhin mit dem Strich bezeichnet.
+
+%
+% Ableitungsregeln
+%
+\subsubsection{Ableitungsregeln}
+Die Definition einer Derivation macht keine Aussagen über Quotienten,
+diese kann man aber aus den Eigenschaften einer Derivation sofort
+ableiten.
+Wir schreiben $q=f/g$ für $f,g\in\mathscr{F}$, dann ist $f=qg$.
+Nach der Kettenregel gilt
+\(
+f'=q'g+qg'
+\).
+Substituiert man darin $q=f/g$ und löst nach $q'$ auf, erhält man
+\[
+f'=q'g+\frac{fg'}{g}
+\qquad\Rightarrow\qquad
+q'=\frac1{g}\biggl(f'-\frac{fg'}{g}\biggr)
+=
+\frac{f'g-fg'}{g^2}.
+\]
+
+
+%
+% Konstantenkörper
+%
+\subsubsection{Konstantenkörper}
+Die Ableitung einer Konstanten verschwindet.
+Beim Hinzufügen von Funktionen zu einem Funktionenkörper können weitere
+Konstanten hinzukommen, ohne dass dies auf den ersten Blick sichtbar wird.
+Zum Beispiel enthält $\mathbb{Q}(x,\!\sqrt{x+\pi})$ wegen
+$(\!\sqrt{x+\pi})^2-x=\pi$ auch die Konstante $\pi$.
+Eine Derivation ermöglicht dank des nachfolgenden Satzes auch,
+solche Konstanten zu erkennen.
+
+\begin{satz}
+Sei $\mathscr{F}$ ein Körper und $D$ eine Derivation in $\mathscr{F}$.
+Dann ist die Menge $C=\{a\in\mathscr{F}\;|\;Da=0\}$ ein Körper.
+\end{satz}
+
+\begin{proof}[Beweis]
+Es muss gezeigt werden, dass Summe und Produkt von Element von $C$ 
+wieder in $C$ liegen.
+Wenn $Da=Db=0$, dann ist $D(a+b)=Da+Db=0$, also ist $a+b\in C$.
+Für das Produkt gilt $D(ab)=(Da)b+a(Db)=0b+a0=0$, also ist auch
+$ab\in C$.
+\end{proof}
+
+Die Menge $C$ heisst der {\em Konstantenkörper} von $\mathscr{F}$.
+\index{Konstantenkörper}%
+
+%
+% Ableitung algebraischer Elemente
+%
+\subsubsection{Ableitung und algebraische Körpererweiterungen}
+Die Rechenregeln in einem Differentialkörper $\mathscr{F}$ legen auch die
+Ableitung eines algebraischen Elements fest.
+Sei $m(z)=m_0+m_1z+\ldots+m_{n-1}z^{n-1}+z^n$ das Minimalpolynom eines
+über $\mathscr{F}$ algebraischen Elements $f$.
+Aus $m(f)=0$ folgt durch Ableiten
+\[
+0
+=
+m(f)'
+=
+m_0'
++
+(m_1'f+m_1f')
++
+(m_2'f + m_12f'f)
++
+\ldots
++
+(m_{n-1}'f^{n-1} + m_{n-1} (n-1)f'f^{n-2})
++
+nf'f^{n-1}.
+\]
+Zusammenfassen der Ableitung $f'$ auf der linken Seite liefert die
+Gleichung
+\[
+f'(
+m_1+2m_2f+\ldots+(n-1)m_{n-1}f^{n-2}+nf^{n-1}
+)
+=
+m_0' + m_1'f + m_2'f^2 + \ldots + m_{n-1}'f^{n-1} + f^n,
+\]
+aus der
+\[
+f'
+=
+\frac{
+m_0' + m_1'f + m_2'f^2 + \ldots + m_{n-1}'f^{n-1} + f^n
+}{
+m_1+2m_2f+\ldots+(n-1)m_{n-1}f^{n-2}+nf^{n-1}
+}
+\]
+als Element von $\mathscr{F}(g)$ berechnet werden kann.
+Die Ableitungsoperation lässt sich somit auf die Körpererweiterung
+$\mathscr{F}(f)$ fortsetzen.
+
+\begin{beispiel}
+Das über $\mathbb{Q}(x)$ algebraische Element $y=\sqrt{ax^2+bx+c}$
+hat das Minimalpolynom
+\[
+m(z)
+=
+z^2 - [ax^2+bx+c]
+\in
+\mathbb{Q}(x)[z]
+\]
+mit Koeffizienten $m_0 = ax^2+bx+c,$ $m_1=0$ und $m_2=1$.
+Es hat die Ableitung
+\[
+y'
+= 
+\frac{m_0'}{2m_2y}
+=
+\frac{
+2ax+b
+}{
+2y
+}
+\in
+\mathbb{Q}(x,y)
+\]
+wegen $m_0'=2ax+b$.
+\end{beispiel}
+
+\begin{definition}
+Eine differentielle Körpererweiterung ist eine Körpererweiterung
+$\mathscr{K}\subset\mathscr{F}$ von Differentialkörpern derart, dass
+die Ableitungen $D_{\mathscr{K}}$ in $\mathscr{K}$
+und $D_{\mathscr{F}}$ in $\mathscr{F}$ übereinstimmen:
+\(
+D_{\mathscr{K}}g= D_{\mathscr{F}} g
+\)
+für alle $g\in\mathscr{K}$.
+\end{definition}
+
+%
+% Logarithmus und Exponantialfunktion
+%
+\subsubsection{Logarithmus und Exponentialfunktion}
+Die Exponentialfunktion und der Logarithmus sind nicht algebraisch
+über $\mathbb{Q}(x)$, sie lassen sich nicht durch eine algebraische
+Gleichung charakterisieren.
+Sie zeichnen sich aber durch besondere Ableitungseigenschaften aus.
+Die Theorie der gewöhnlichen Differentialgleichungen garantiert,
+dass eine Funktion durch eine Differentialgleichung und Anfangsbedingungen
+festgelegt ist.
+\label{buch:integral:expundlog}
+Für die Exponentialfunktion und der Logarithmus haben die 
+Ableitungseigenschaften
+\[
+\exp'(x) = \exp(x)
+\qquad\text{und}\qquad
+x \log'(x) = 1.
+\]
+\index{Exponentialfunktion}%
+\index{Logarithmus}%
+In der algebraischen Beschreibung eines Funktionenkörpers gibt es
+das Konzept des Wertes einer Funktion an einer bestimmten Stelle nicht.
+Somit können keine Anfangsbedingungen vorgegeben werden.
+Da die Gleichung für $\exp$ linear sind, sind Vielfache einer Lösung wieder
+Lösungen,
+insbesondere ist mit $\exp(x)$ auch $a\exp(x)$ eine Lösung.
+Die Gleichung für $\log$ ist nicht linear, aber es ist
+$\log'(x) = 1/x$, $\log$ ist eine Stammfunktion von $1/x$, die
+nur bis auf eine Konstante bestimmt ist.
+Tatsächlich gilt
+\[
+x(\log(x)+a)'
+=
+x\log(x) + xa' = x\log(x)=1,
+\]
+die Funktion $\log(x)+a$ ist also auch eine Lösung für den Logarithmus.
+
+Die Eigenschaft, dass die Exponentialfunktion die Umkehrfunktion
+des Logarithmus ist, lässt sich mit den Mitteln eines Differentialkörpers
+nicht ausdrücken.
+
