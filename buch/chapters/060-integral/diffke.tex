@@ -106,6 +106,94 @@ Die Menge $C$ heisst der {\em Konstantenkörper} von $\mathscr{F}$.
 \index{Konstantenkörper}%
 
 %
+% Ableitung algebraischer Elemente
+%
+\subsubsection{Ableitung und algebraische Körpererweiterungen}
+Die Rechenregeln in einem Differentialkörper $\mathscr{F}$ legen auch die
+Ableitung eines algebraischen Elements fest.
+Sei $m(z)=m_0+m_1z+\ldots+m_{n-1}z^{n-1}+z^n$ das Minimalpolynom eines
+über $\mathscr{F}$ algebraischen Elements $f$.
+Aus $m(f)=0$ folgt durch Ableiten
+\[
+0
+=
+m(f)'
+=
+m_0'
++
+(m_1'f+m_1f')
++
+(m_2'f + m_12f'f)
++
+\ldots
++
+(m_{n-1}'f^{n-1} + m_{n-1} (n-1)f'f^{n-2})
++
+nf'f^{n-1}.
+\]
+Zusammenfassen der Ableitung $f'$ auf der linken Seite liefert die
+Gleichung
+\[
+f'(
+m_1+2m_2f+\ldots+(n-1)m_{n-1}f^{n-2}+nf^{n-1}
+)
+=
+m_0' + m_1'f + m_2'f^2 + \ldots + m_{n-1}'f^{n-1} + f^n,
+\]
+aus der
+\[
+f'
+=
+\frac{
+m_0' + m_1'f + m_2'f^2 + \ldots + m_{n-1}'f^{n-1} + f^n
+}{
+m_1+2m_2f+\ldots+(n-1)m_{n-1}f^{n-2}+nf^{n-1}
+}
+\]
+als Element von $\mathscr{F}(g)$ berechnet werden kann.
+Die Ableitungsoperation lässt sich somit auf die Körpererweiterung
+$\mathscr{F}(f)$ fortsetzen.
+
+\begin{beispiel}
+Das über $\mathbb{Q}(x)$ algebraische Element $y=\sqrt{ax^2+bx+c}$
+hat das Minimalpolynom
+\[
+m(z)
+=
+z^2 - [ax^2+bx+c]
+\in
+\mathbb{Q}(x)[z]
+\]
+mit Koeffizienten $m_0 = ax^2+bx+c,$ $m_1=0$ und $m_2=1$.
+Es hat die Ableitung
+\[
+y'
+= 
+\frac{m_0'}{2m_2y}
+=
+\frac{
+2ax+b
+}{
+2y
+}
+\in
+\mathbb{Q}(x,y)
+\]
+wegen $m_0'=2ax+b$.
+\end{beispiel}
+
+\begin{definition}
+Eine differentielle Körpererweiterung ist eine Körpererweiterung
+$\mathscr{K}\subset\mathscr{F}$ von Differentialkörpern derart, dass
+die Ableitungen $D_{\mathscr{K}}$ in $\mathscr{K}$
+und $D_{\mathscr{F}}$ in $\mathscr{F}$ übereinstimmen:
+\(
+D_{\mathscr{K}}g= D_{\mathscr{F}} g
+\)
+für alle $g\in\mathscr{K}$.
+\end{definition}
+
+%
 % Logarithmus und Exponantialfunktion
 %
 \subsubsection{Logarithmus und Exponentialfunktion}
@@ -116,6 +204,7 @@ Sie zeichnen sich aber durch besondere Ableitungseigenschaften aus.
 Die Theorie der gewöhnlichen Differentialgleichungen garantiert,
 dass eine Funktion durch eine Differentialgleichung und Anfangsbedingungen
 festgelegt ist.
+\label{buch:integral:expundlog}
 Für die Exponentialfunktion und der Logarithmus haben die 
 Ableitungseigenschaften
 \[
@@ -128,10 +217,19 @@ x \log'(x) = 1.
 In der algebraischen Beschreibung eines Funktionenkörpers gibt es
 das Konzept des Wertes einer Funktion an einer bestimmten Stelle nicht.
 Somit können keine Anfangsbedingungen vorgegeben werden.
-Da die Gleichungen linear sind, sind Vielfache einer Lösung wieder
-Lösungen.
-Insbesondere ist mit $\exp(x)$ auch $a\exp(x)$ eine Lösung und mit
-$\log(x)$ auch $a\log(x)$ für alle Konstanten $a$.
+Da die Gleichung für $\exp$ linear sind, sind Vielfache einer Lösung wieder
+Lösungen,
+insbesondere ist mit $\exp(x)$ auch $a\exp(x)$ eine Lösung.
+Die Gleichung für $\log$ ist nicht linear, aber es ist
+$\log'(x) = 1/x$, $\log$ ist eine Stammfunktion von $1/x$, die
+nur bis auf eine Konstante bestimmt ist.
+Tatsächlich gilt
+\[
+x(\log(x)+a)'
+=
+x\log(x) + xa' = x\log(x)=1,
+\]
+die Funktion $\log(x)+a$ ist also auch eine Lösung für den Logarithmus.
 
 Die Eigenschaft, dass die Exponentialfunktion die Umkehrfunktion
 des Logarithmus ist, lässt sich mit den Mitteln eines Differentialkörpers

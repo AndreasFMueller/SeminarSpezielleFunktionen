@@ -3,7 +3,7 @@
 %
 % (c) 2022 Prof Dr Andreas Müller, OST Ostschweizer Fachhochschlue
 %
-\subsection{Log-Exp-Notation für elementare Funktionen
+\subsection{Log-Exp-Notation für trigonometrische und hyperbolische Funktionen
 \label{buch:integral:subsection:logexp}}
 Die Integration rationaler Funktionen hat bereits gezeigt, dass
 eine Stammfunktion nicht immer im Körper der rationalen Funktionen
@@ -37,6 +37,7 @@ x \operatorname{arcosh} x - \sqrt{x^2-1}.
 In der Stammfunktion treten Funktionen auf, die auf den ersten
 Blick nichts mit den Funktionen im Integranden zu tun haben.
 
+\subsubsection{Trigonometrische und hyperbolische Funktionen}
 Die trigonometrischen und hyperbolichen Funktionen
 in~\eqref{buch:integration:risch:allgform}
 lassen sich alle durch Exponentialfunktionen ausdrücken.
@@ -53,7 +54,7 @@ So gilt
 &\qquad&
 \cosh x &= \frac12\bigl( e^x + e^{-x} \bigr).
 \end{aligned}
-\label{buch:integral:risch:trighypinv}
+\label{buch:integral:risch:trighyp}
 \end{equation}
 Nach Multiplikation mit $e^{ix}$ bzw.~$e^{x}$ entsteht eine
 quadratische Gleichung in $e^{ix}$ bzw.~$e^{x}$.
@@ -66,27 +67,27 @@ Die Rechnung ergibt
 &=
 \frac{1}{i}\log\bigl(
 iy\pm\sqrt{1-y^2}
-\bigr)
+\bigr),
 &
 &\qquad&
 \arccos y
 &=
 \log\bigl(
 y\pm \sqrt{y^2-1}
-\bigr)
+\bigr),
 \\
 \operatorname{arsinh}y
 &=
 \log\bigl(
 y \pm \sqrt{1+y^2}
-\bigr)
+\bigr),
 &
 &\qquad&
 \operatorname{arcosh} y
 &=
 \log\bigl(
 y\pm \sqrt{y^2-1}
-\bigr)
+\bigr).
 \end{aligned}
 \label{buch:integral:risch:trighypinv}
 \end{equation}
@@ -97,6 +98,7 @@ Man nennt dies die $\log$-$\exp$-Notation der trigonometrischen
 und hyperbolischen Funktionen.
 \index{logexpnotation@$\log$-$\exp$-Notation}%
 
+\subsubsection{$\log$-$\exp$-Notation}
 Wendet man die Substitutionen
 \eqref{buch:integral:risch:trighyp}
 und
@@ -110,7 +112,7 @@ an, entstehen die Beziehungen
 &=
 \frac12i\bigl(
 \log(1-ix) - \log(1+ix)
-\bigr)
+\bigr),
 \\
 \int\bigl(
 {\textstyle\frac12}
@@ -121,12 +123,12 @@ e^{-ix}
 \bigr)
 &=
 -{\textstyle\frac12}ie^{ix}
-+{\textstyle\frac12}ie^{-ix}
++{\textstyle\frac12}ie^{-ix},
 \\
 \int
 \frac{1}{\sqrt{1-x^2}}
 &=
--i\log\bigl(ix+\sqrt{1-x^2})
+-i\log\bigl(ix+\sqrt{1-x^2}),
 \\
 \int \log\bigl(x+\sqrt{x^2-1}\bigr)
 &=

@@ -132,7 +132,9 @@ ac + 2bd + (ad+bc)\sqrt{2} \in \mathbb{Q}(\!\sqrt{2})
 \end{align*}
 \end{beispiel}
 
-
+%
+% Rationale Funktionen
+%
 \subsubsection{Rationalen Funktionen}
 Die als Antworten auf die Frage nach einer Stammfunktion akzeptablen
 Funktionen sollten alle rationalen Zahlen sowie die unabhängige
@@ -173,6 +175,29 @@ Dazu muss man nur verstehen, dass die Operation des gleichnamig Machens
 zweier Brüche auch für Nenner funktioniert, die Polynome sind, und die
 Summe wzeier Brüche von Polynomen wieder in einen Bruch von Polynomen
 umwandelt.
+
+%
+% Warum rationale Zahlen?
+%
+\subsubsection{Warum die Beschränkung auf rationale Zahlen?}
+Aus mathematischer Sicht gibt es gute Gründe, Analysis im Körper $\mathbb{R}$
+oder $\mathbb{C}$ zu betreiben.
+Da Ableitung und Integral als Grenzwerte definiert sind, stellt diese
+Wahl des Körpers sicher, dass die Grenzwerte auch tatsächlich existieren.
+Der Fundamentalsatz der Algebra garantiert, dass über $\mathbb{C}$
+jedes Polynome in Linearfaktoren zerlegt werden kann.
+
+Der Einfachheit der Analyse in $\mathbb{R}$ oder $\mathbb{C}$ steht
+die Schwierigkeit gegenüber, beliebige Elemente von $\mathbb{R}$ in
+einem Computer exakt darzustellen.
+Für Brüche in $\mathbb{Q}$ gibt es eine solche Darstellung durch
+Paare von Ganzzahlen, wie sie die GNU Multiprecision Arithmetic Library
+\cite{buch:gmp} realisiert.
+Irrationale Zahlen dagegen können nur exakt gehandhabt werden, wenn
+man im wesentlichen symbolisch mit ihnen rechnet. 
+Die Grundlage dafür wird in
+Abschnitt~\ref{buch:integral:subsection:koerpererweiterungen}
+gelegt.
 
 
 

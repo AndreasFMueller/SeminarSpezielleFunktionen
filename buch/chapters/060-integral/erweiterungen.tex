@@ -97,8 +97,8 @@ a_i\in K
 \}
 \label{buch:integral:eqn:algelement}
 \end{equation}
-mit $n=\deg m(x) - 1$ der durch Adjunktion von $\alpha$ erhaltene
-Erweiterungsköper.
+mit $n=\deg m(x) - 1$ der durch {\em Adjunktion} oder Hinzufügen
+von $\alpha$ erhaltene Erweiterungsköper.
 \end{definition}
 
 Wieder muss nur überprüft werden, dass jedes Produkt oder jeder
@@ -151,7 +151,9 @@ Die Menge $\mathbb{Q}(i)$ ist daher eine algebraische Körpererweiterung
 von $\mathbb{Q}$ bestehend aus den komplexen Zahlen mit rationalem
 Real- und Imaginärteil.
 
+%
 % Transzendente Körpererweiterungen
+%
 \subsubsection{Transzendente Erweiterungen}
 Nicht alle Zahlen in $\mathbb{R}$ sind algebraisch.
 Lindemann bewies 1882 einen allgemeinen Satz, aus dem folgt,
@@ -201,7 +203,9 @@ $K\subset K(\alpha)$ ist zwar immer noch eine Körpererweiterung, aber
 $K(\alpha)$ ist nicht mehr ein endlichdimensionaler Vektorraum.
 Die Körpererweiterung $K\subset K(\alpha)$ heisst {\em transzendent}.
 
+%
 % rationale Funktionen als Körpererweiterungen
+%
 \subsubsection{Rationale Funktionen als Körpererweiterung}
 Die unabhängige Variable wird bei Rechnen so behandelt, dass die
 Potenzen alle linear unabhängig sind.
@@ -209,7 +213,9 @@ Dies ist die Grundlage für den Koeffizientenvergleich.
 Der Körper der rationalen Funktion $K(x)$
 ist also eine transzendente Körpererweiterung von $K$.
 
+%
 % Erweiterungen mit algebraischen Funktionen 
+%
 \subsubsection{Algebraische Funktionen}
 Für das Integrationsproblem möchten wir nicht nur rationale Funktionen
 verwenden können, sondern auch Wurzelfunktionen.
@@ -245,5 +251,93 @@ indem man den Körper $K(x)$ um das über $K(x)$ algebraische Element
 $y=\sqrt{ax^2+bx+c}$ zu $K(x,y)=K(x,\sqrt{ax^2+bx+c}$ erweitert.
 Wurzelfunktion werden daher nicht als Zusammensetzungen, sondern als
 algebraische Erweiterungen eines Funktionenkörpers betrachtet.
+
+%
+% Konjugation
+%
+\subsubsection{Konjugation}
+Die komplexen Zahlen sind die algebraische Erweiterung der reellen Zahlen
+um die Nullstelle $i$ des Polynoms $m(x)=x^2+1$.
+Die Zahl $-i$ ist aber auch eine Nullstelle von $m(x)$, die mit algebraischen
+Mitteln nicht von $i$ unterscheidbar ist.
+Die komplexe Konjugation $a+bi\mapsto a-bi$ vertauscht die beiden 
+\index{Konjugation, komplexe}%
+\index{komplexe Konjugation}%
+Nullstellen des Minimalpolynoms.
+
+Ähnliches gilt für die Körpererweiterung $\mathbb{Q}(\!\sqrt{2})$.
+$\sqrt{2}$ und $\sqrt{2}$ sind beide Nullstellen des Minimalpolynoms
+$m(x)=x^2-2$, die mit algebraischen Mitteln nicht unterschiedbar sind.
+Sie haben zwar verschiedene Vorzeichen, doch ohne eine Ordnungsrelation
+können diese nicht unterschieden werden.
+\index{Ordnungsrelation}%
+Eine Ordnungsrelation zwischen rationalen Zahlen lässt sich zwar
+definieren, aber die Zahl $\sqrt{2}$ ist nicht rational, es braucht
+also eine zusätzliche Annahme, zum Beispiel die Identifikation von
+$\sqrt{2}$ mit einer reellen Zahl in $\mathbb{R}$, wo der Vergleich
+möglich ist.
+
+Auch in $\mathbb{Q}(\!\sqrt{2})$ ist die Konjugation
+$a+b\sqrt{2}\mapsto a-b\sqrt{2}$ eine Selbstabbildung, die
+die Körperoperationen respektiert.
+
+Das Polynom $m(x)=x^2-x-1$ hat die Nullstellen
+\[
+\frac12 \pm\sqrt{\biggl(\frac12\biggr)^2+1}
+=
+\frac{1\pm\sqrt{5}}{2}
+=
+\left\{
+\bgroup
+\renewcommand{\arraystretch}{2.20}
+\renewcommand{\arraycolsep}{2pt}
+\begin{array}{lcl}
+\displaystyle
+\frac{1+\sqrt{5}}{2} &=& \phantom{-}\varphi \\
+\displaystyle
+\frac{1-\sqrt{5}}{2} &=& \displaystyle-\frac{1}{\varphi}.
+\end{array}
+\egroup
+\right.
+\]
+Sie erfüllen die gleiche algebraische Relation $x^2=x+1$.
+Sie sind sowohl im Vorzeichen wie auch im absoluten Betrag 
+verschieden, beides verlangt jedoch eine Ordnungsrelation als
+Voraussetzung, die uns fehlt.
+Aus beiden kann man mit rationalen Operationen $\sqrt{5}$ gewinnen,
+denn
+\[
+\sqrt{5}
+=
+4\varphi-1
+=
+-4\biggl(-\frac{1}{\varphi}\biggr)^2-1
+\qquad\Rightarrow\qquad
+\mathbb{Q}(\!\sqrt{5})
+=
+\mathbb{Q}(\varphi)
+=
+\mathbb{Q}(-1/\varphi).
+\]
+Die Abbildung $a+b\varphi\mapsto a-b/\varphi$ ist eine Selbstabbildung
+des Körpers $\mathbb{Q}(\!\sqrt{5})$, welche die beiden Nullstellen 
+vertauscht.
+
+Dieses Phänomen gilt für jede algebraische Erweiterung.
+Die Nullstellen des Minimalpolynoms, welches die Erweiterung
+definiert, sind grundsätzlich nicht unterscheidbar.
+Mit der Adjunktion einer Nullstelle enthält der Erweiterungskörper
+auch alle anderen.
+Sind $\alpha_1$ und $\alpha_2$ zwei Nullstellen des Minimalpolynoms,
+dann definiert die Abbildung $\alpha_1\mapsto\alpha_2$ eine Selbstabbildung,
+die die Nullstellen permutiert.
+
+Die algebraische Körpererweiterung
+$\mathbb{Q}(x)\subset \mathbb{Q}(x,\sqrt{ax^2+bx+c})$
+ist nicht unterscheidbar von
+$\mathbb{Q}(x)\subset \mathbb{Q}(x,-\!\sqrt{ax^2+bx+c})$.
+Für das Integrationsproblem bedeutet dies, dass alle Methoden so
+formuliert werden müssen, dass die Wahl der Nullstellen auf die
+Lösung keinen Einfluss haben.
 
 
