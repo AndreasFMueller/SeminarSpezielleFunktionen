@@ -26,8 +26,10 @@ Integral der Form
 ,
 \label{laguerre:gamma}
 \end{align}
-welches alle Eigenschaften erfüllt, um mit der Gauss-Laguerre-Quadratur
-berechnet zu werden.
+Der Term $e^{-t}$ ist genau die Gewichtsfunktion der Laguerre-Integration und
+der Definitionsbereich passt ebenfalls genau für dieses Verfahren.
+Zu erwähnen ist auch, dass für die verallgemeinerte Laguerre-Integration die
+Gewichtsfunktion $t^\nu e^{-t}$ genau dem Integranden für $\nu=z-1$ entspricht.
 
 \subsubsection{Funktionalgleichung}
 Die Funktionalgleichung der Gamma-Funktion besagt
@@ -38,6 +40,19 @@ z \Gamma(z) = \Gamma(z+1).
 Mittels dieser Gleichung kann der Wert von $\Gamma(z)$ an einer bestimmten,
 geeigneten Stelle evaluiert werden und dann zurückverschoben werden,
 um das gewünschte Resultat zu erhalten.
+
+In Abbildung~\ref{laguerre:fig:integrand} ist der Integrand $t^z$ für
+unterschiedliche Werte von $z$ dargestellt.
+Man erkennt, dass für kleine $z$ sich ein singulärer Integrand ergibt,
+was dazu führt, dass die Genauigkeit sich verschlechtert.
+Die Genauigkeit verschlechtert sich aber auch zunehmends für grosse $z$,
+da in diesem Fall der Integrand sehr schnell anwächst.
+\begin{figure}
+\centering
+\scalebox{0.8}{\input{papers/laguerre/images/integrands.pgf}}
+\caption{Integrand $t^z$ mit unterschiedlichen Werten für $z$}
+\label{laguerre:fig:integrand}
+\end{figure}
 
 \subsection{Berechnung mittels Gauss-Laguerre-Quadratur}
 
@@ -52,7 +67,7 @@ R_n
 Nun stellt sich die Frage,
 ob die Approximation mittels Gauss-Laguerre-Quadratur verbessert werden kann,
 wenn man das Problem an einer geeigneten Stelle evaluiert und
-dann zurückverschiebt mit der Funktionalgleichung.
+dann mit der Funktionalgleichung zurückverschiebt.
 Dazu wollen wir den Fehlerterm in
 Gleichung~\eqref{laguerre:lagurre:lag_error} anpassen und dann minimieren.
 Zunächst wollen wir dies nur für $z\in \mathbb{R}$ und $0<z<1$ definieren.

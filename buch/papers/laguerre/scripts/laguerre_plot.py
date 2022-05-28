@@ -29,7 +29,7 @@ fig, ax = plt.subplots(num=1, clear=True, constrained_layout=True, figsize=(6, 4
 for n in np.arange(0, 8):
     k = np.arange(0, n + 1)[None]
     L = np.sum((-1) ** k * ss.binom(n, k) / ss.factorial(k) * t ** k, -1)
-    ax.plot(t, L, label=f"n={n}")
+    ax.plot(t, L, label=f"$n={n}$")
 
 ax.set_xticks(get_ticks(int(t[0]), t[-1]), minor=True)
 ax.set_xticks(get_ticks(0, t[-1], step))
@@ -97,4 +97,5 @@ ax.arrow(
     clip_on=False,
 )
 
-fig.savefig(f"{img_path}/laguerre_polynomes.pdf")
+fig.savefig(f"{img_path}/laguerre_polynomes.pgf")
+# plt.show()
