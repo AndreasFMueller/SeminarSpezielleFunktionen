@@ -181,44 +181,81 @@
         \end{equation*}
         und konvergiert im Bereich $\Re(s) > 0$.
     \end{frame}
+    \begin{frame}
+        \frametitle{Fortsetzung auf $\Re(s) > 0$}
+        \begin{align}
+            \zeta(s)
+            &=
+            \sum_{n=1}^{\infty}
+            \frac{1}{n^s} \label{zeta:align1}
+            \\
+            \frac{1}{2^{s-1}}
+            \zeta(s)
+            &=
+            \sum_{n=1}^{\infty}
+            \frac{2}{(2n)^s} \label{zeta:align2}
+        \end{align}
+        \pause
+        \eqref{zeta:align1} - \eqref{zeta:align2}:
+        \begin{align*}
+            \left(1 - \frac{1}{2^{s-1}} \right)
+            \zeta(s)
+            &=
+            \frac{1}{1^s}
+            \underbrace{-\frac{2}{2^s} + \frac{1}{2^s}}_{-\frac{1}{2^s}}
+            + \frac{1}{3^s}
+            \underbrace{-\frac{2}{4^s} + \frac{1}{4^s}}_{-\frac{1}{4^s}}
+            \ldots
+            \\
+            &= \eta(s)
+        \end{align*}
+    \end{frame}
+    \begin{frame}
+        \frametitle{Fortsetzung auf $\Re(s) > 0$}
+        Somit haben wir die Fortsetzung gefunden als
+        \begin{equation} \label{zeta:equation:fortsetzung1}
+            \zeta(s)
+            :=
+            \left(1 - \frac{1}{2^{s-1}} \right)^{-1} \eta(s).
+        \end{equation}
+    \end{frame}
+    \begin{frame}
+        \frametitle{Spiegelungseigenschaft für $\Re(s) < 0$}
+        \begin{equation*}\label{zeta:equation:functional}
+            \frac{\Gamma \left( \frac{s}{2} \right)}{\pi^{\frac{s}{2}}}
+            \zeta(s)
+            =
+            \frac{\Gamma \left( \frac{1-s}{2} \right)}{\pi^{\frac{1-s}{2}}}
+            \zeta(1-s).
+        \end{equation*}
+    \end{frame}
+    %TODO maybe explain gamma-fct
 
-% Zuerst wiederholen wir zweimal die Definition der Zetafunktion \eqref{zeta:equation1}, wobei wir sie einmal durch $2^{s-1}$ teilen
-% \begin{align}
-%     \zeta(s)
-%     &=
-%     \sum_{n=1}^{\infty}
-%     \frac{1}{n^s} \label{zeta:align1}
-%     \\
-%     \frac{1}{2^{s-1}}
-%     \zeta(s)
-%     &=
-%     \sum_{n=1}^{\infty}
-%     \frac{2}{(2n)^s}. \label{zeta:align2}
-% \end{align}
-% Durch Subtraktion der beiden Gleichungen \eqref{zeta:align1} minus \eqref{zeta:align2}, ergibt sich
-% \begin{align}
-%     \left(1 - \frac{1}{2^{s-1}} \right)
-%     \zeta(s)
-%     &=
-%     \frac{1}{1^s}
-%     \underbrace{-\frac{2}{2^s} + \frac{1}{2^s}}_{-\frac{1}{2^s}}
-%     + \frac{1}{3^s}
-%     \underbrace{-\frac{2}{4^s} + \frac{1}{4^s}}_{-\frac{1}{4^s}}
-%     \ldots
-%     \\
-%     &= \eta(s).
-% \end{align}
-% Dies ist die Fortsetzung auf den noch unbekannten Bereich $0 < \Re(s) < 1$
-% \begin{equation} \label{zeta:equation:fortsetzung1}
-%     \zeta(s)
-%     :=
-%     \left(1 - \frac{1}{2^{s-1}} \right)^{-1} \eta(s).
-% \end{equation}
-%     \section{Euler Produkt}
-% 
-%     \section{Weitere Eigenschaften}
-% 
-% 
+    \section{Euler Produkt und Primzahlen}
+    \begin{frame}
+        \frametitle{Wieso ist die Zeta Funktion so bekannt?}
+        \begin{itemize}
+            \item Interessante Funktionswerte z.B. $\zeta(2) = \frac{\pi^2}{6}$
+            \item Primzahlenverteilung (Riemannhypothese)
+            \item Forschungsgebiet der analytischen Zahlentheorie seit dem 18. Jahrhundert
+            \item ...
+        \end{itemize}
+    \end{frame}
+    \begin{frame}
+        \frametitle{Primzahlfunktion}
+        \begin{center}
+           \scalebox{0.5}{\input{../primzahlfunktion.pgf}}
+        \end{center}
+    \end{frame}
+    \begin{frame}
+        \frametitle{Zusammenhang Zeta und Primzahlen}
+        %TODO
+    \end{frame}
+
+
+    \section{Weitere Eigenschaften}
+
+
 
 \end{document}
 
