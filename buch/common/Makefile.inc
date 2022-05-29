@@ -4,8 +4,14 @@
 # (c) 2021 Prof Dr Andreas Mueller, OST Ostschweizer Fachhochschule
 #
 
-
 SUBDIRECTORIES = chapters 
+
+# change the following variables to suit your environment
+
+pdflatex = pdflatex
+bibtex = bibtex
+makeindex = makeindex
+touch = touch
 
 .PHONY:	images
 

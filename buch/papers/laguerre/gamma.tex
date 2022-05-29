@@ -1,0 +1,76 @@
+%
+% gamma.tex 
+%
+% (c) 2022 Patrik Müller, Ostschweizer Fachhochschule
+%
+\section{Anwendung: Berechnung der Gamma-Funktion
+  \label{laguerre:section:quad-gamma}}
+Die Gauss-Laguerre-Quadratur kann nun verwendet werden,
+um exponentiell abfallende Funktionen im Definitionsbereich $(0, \infty)$ zu
+berechnen.
+Dabei bietet sich z.B. die Gamma-Funkion bestens an, wie wir in den folgenden
+Abschnitten sehen werden.
+
+\subsection{Gamma-Funktion}
+Die Gamma-Funktion ist eine Erweiterung der Fakultät auf die reale und komplexe
+Zahlenmenge.
+Die Definition~\ref{buch:rekursion:def:gamma} beschreibt die Gamma-Funktion als
+Integral der Form
+\begin{align}
+\Gamma(z)
+ & =
+\int_0^\infty t^{z-1} e^{-t} dt
+,
+\quad
+\text{wobei Realteil von $z$ grösser als $0$}
+,
+\label{laguerre:gamma}
+\end{align}
+welches alle Eigenschaften erfüllt, um mit der Gauss-Laguerre-Quadratur
+berechnet zu werden.
+
+\subsubsection{Funktionalgleichung}
+Die Funktionalgleichung besagt
+\begin{align}
+z \Gamma(z) = \Gamma(z+1).
+\label{laguerre:gamma_funktional}
+\end{align}
+Mittels dieser Gleichung kann der Wert an einer bestimmten,
+geeigneten Stelle evaluiert werden und dann zurückverschoben werden,
+um das gewünschte Resultat zu erhalten.
+
+\subsection{Berechnung mittels Gauss-Laguerre-Quadratur}
+
+Fehlerterm:
+\begin{align*}
+R_n
+=
+(z - 2n)_{2n} \frac{(n!)^2}{(2n)!} \xi^{z-2n-1}
+\end{align*}
+
+\subsubsection{Finden der optimalen Berechnungsstelle}
+Nun stellt sich die Frage,
+ob die Approximation mittels Gauss-Laguerre-Quadratur verbessert werden kann,
+wenn man das Problem an einer geeigneten Stelle evaluiert und
+dann zurückverschiebt mit der Funktionalgleichung.
+Dazu wollen wir den Fehlerterm in
+Gleichung~\eqref{laguerre:lagurre:lag_error} anpassen und dann minimieren.
+Zunächst wollen wir dies nur für $z\in \mathbb{R}$ und $0<z<1$ definieren.
+Zudem nehmen wir an, dass die optimale Stelle $x^* \in \mathbb{R}$, $z < x^*$
+ist.
+Dann fügen wir einen Verschiebungsterm um $m$ Stellen ein, daraus folgt
+\begin{align*}
+R_n
+=
+\frac{(z - 2n)_{2n}}{(z - m)_m} \frac{(n!)^2}{(2n)!} \xi^{z + m - 2n - 1}
+.
+\end{align*}
+
+{
+\large \color{red}
+TODO:
+Geeignete Minimierung für Fehler finden, so dass sie mit den emprisich
+bestimmen optimalen Punkten übereinstimmen.
+}
+
+\subsection{Resultate}

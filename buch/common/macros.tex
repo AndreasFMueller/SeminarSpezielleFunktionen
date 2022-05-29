@@ -23,7 +23,9 @@
 \vfill\pagebreak}
 \newenvironment{teilaufgaben}{
 \begin{enumerate}
-\renewcommand{\labelenumi}{\alph{enumi})}
+\renewcommand{\theenumi}{\alph{enumi})}
+%\renewcommand{\labelenumi}{\alph{enumi})}
+\renewcommand{\labelenumi}{\theenumi}
 }{\end{enumerate}}
 % Aufgabe
 \newcounter{problemcounter}[chapter]

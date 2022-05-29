@@ -1,0 +1,65 @@
+%
+% minmax.tex -- Minimum und Maximum
+%
+% (c) 2021 Prof Dr Andreas Müller, OST Ostschweizer Fachhochschule
+%
+\bgroup
+\begin{frame}[t]
+\setlength{\abovedisplayskip}{5pt}
+\setlength{\belowdisplayskip}{5pt}
+\frametitle{Minimum und Maximum}
+\vspace{-20pt}
+\begin{columns}[t,onlytextwidth]
+\begin{column}{0.48\textwidth}
+\begin{block}{Maximum}
+Verteilungsfunktion von
+\[
+Z=\operatorname{max}(X_1,\dots,X_n)
+\]
+\begin{align*}
+F_Z(x)
+&=
+P(Z\le x)
+\\
+&=
+P(X_1\le x\wedge\dots\wedge X_n\le x)
+\\
+&=
+P(X_1\le x)\cdot \ldots\cdot P(X_n\le x)
+\\
+&=
+F_X(x)^n
+\end{align*}
+\end{block}
+\end{column}
+\begin{column}{0.48\textwidth}
+\begin{block}{Minimum}
+Verteilungsfunktion von
+\[
+Z=\operatorname{min}(X_1,\dots,X_n)
+\]
+\begin{align*}
+F_Z(x)
+&=
+P(Z\le x)
+\\
+&=P(\overline{
+X_1\le x\wedge\dots\wedge X_n \le x
+})
+\\
+&=
+1-P(
+X_1> x\wedge\dots\wedge X_n > x
+)
+\\
+&=
+1-(P(X_1>x)\cdot\ldots\cdot P(X_n>x))
+\\
+&=
+1-(1-F_X(x))^n
+\end{align*}
+\end{block}
+\end{column}
+\end{columns}
+\end{frame}
+\egroup

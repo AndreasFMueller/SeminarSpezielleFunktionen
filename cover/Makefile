@@ -13,6 +13,8 @@ buchcover.png:	buchcover.pdf  Makefile
 		buchcover.png
 buchcover.jpg:	buchcover.png
 	convert buchcover.png buchcover.jpg
+buchcover-small.jpg:	buchcover.jpg
+	convert buchcover.jpg -scale 50% buchcover-small.jpg
 backcover.png:	buchcover.pdf Makefile
 	convert -density 300 -extract 2054x2900+192+190 buchcover.pdf \
 		backcover.png

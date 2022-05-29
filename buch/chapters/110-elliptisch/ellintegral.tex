@@ -7,7 +7,7 @@
 \label{buch:elliptisch:section:integral}}
 \rhead{Elliptisches Integral}
 Bei der Berechnung des Ellipsenbogens in 
-Abschnitt~\ref{buch:geometrie:subsection:hyperbeln-und-ellipsen}
+Abschnitt~\ref{buch:geometrie:subsection:kegelschnitte}
 sind wir auf ein Integral gestossen, welches sich nicht in geschlossener
 Form ausdrücken liess.
 Um solche Integrale in den Griff zu bekommen, ist es nötig, sie als
@@ -172,7 +172,188 @@ die {\em Jacobi-Normalform} heisst.
 
 \subsubsection{Vollständige elliptische Integrale als hypergeometrische
 Funktionen}
-XXX Als hypergeometrische Funktionen \url{https://www.youtube.com/watch?v=j0t1yWrvKmE} \\
+%XXX Als hypergeometrische Funktionen \url{https://www.youtube.com/watch?v=j0t1yWrvKmE} \\
+Das vollständige elliptische Integral $K(k)$ kann mit Hilfe der 
+Binomialreihe umgeformt werden in eine hypergeometrische Reihe.
+Da im Integral nur $k^2$ auftaucht, wird sich $K(k)$ als
+hypergeometrische Funktion von $k^2$ ausdrücken lassen.
+
+\begin{satz}
+\label{buch:elliptisch:satz:hyperK}
+Das vollständige elliptische Integral $K(k)$ lässt sich durch die
+hypergeometrische Funktion $\mathstrut_2F_1$ als
+\[
+K(k)
+=
+\frac{\pi}2
+\cdot
+\mathstrut_2F_1\biggl(
+\begin{matrix}\frac12,\frac12\\1\end{matrix};1;k^2
+\biggr)
+\]
+ausdrücken.
+\end{satz}
+
+\begin{proof}[Beweis]
+Zunächst ist das vollständige elliptische Integral in der Legendre-Form
+\begin{align}
+K(k)
+&=
+\int_0^{\frac{\pi}2}
+\frac{d\vartheta}{\sqrt{1-k^2\sin^2\vartheta}}
+%\notag
+%\\
+%&
+=
+\int_0^{\frac{\pi}2}
+\bigl(
+1-(k\sin\vartheta)^2
+\bigr)^{-\frac12}\,d\vartheta.
+\notag
+\intertext{Die Wurzel im letzten Integral kann mit Hilfe der binomischen
+Reihe vereinfacht werden zu}
+&=
+\sum_{n=0}^\infty
+(-1)^n k^2\binom{-\frac12}{n}
+\int_0^{\frac{\pi}2}
+\sin^{2n}\vartheta
+\,d\vartheta.
+\label{buch:elliptisch:beweis:ellharm2}
+\end{align}
+Der verallgemeinerte Binomialkoeffizient lässt sich nach
+\begin{align*}
+\binom{-\frac12}{n}
+&=
+\frac{(-\frac12)(-\frac32)(-\frac52)\cdot\ldots\cdot(-\frac12-n+1)}{n!}
+=
+(-1)^n
+\cdot
+\frac{1}{n!}
+\cdot
+\frac12\cdot\frac32\cdot\frac52\cdot\ldots\cdot\biggl(\frac12+n-1\biggr)
+=
+(-1)^n\frac{(\frac12)_n}{n!}
+\end{align*}
+vereinfachen.
+Setzt man dies in \eqref{buch:elliptisch:beweis:ellharm2} ein, erhält
+man
+\begin{align*}
+K(k)
+&=
+\sum_{n=0}^\infty
+(-1)^n k^{2n}
+\cdot
+(-1)^n
+\frac{(\frac12)_n}{n!}
+\cdot
+\int_0^{\frac{\pi}2} \sin^{2n}\vartheta\,d\vartheta
+=
+\sum_{n=0}^\infty
+\frac{(\frac12)_n}{n!}
+\int_0^{\frac{\pi}2} \sin^{2n}\vartheta\,d\vartheta
+\cdot (k^2)^n.
+\end{align*}
+Es muss jetzt also nur noch das Integral von $\sin^{2n}\vartheta$
+berechnet werden.
+Mit partieller Integration kann man
+\begin{align*}
+\int \sin^m\vartheta\,d\vartheta
+&=
+\int
+\underbrace{\sin \vartheta}_{\uparrow}
+\underbrace{\sin^{m-1}\vartheta}_{\downarrow}
+\,d\vartheta
+\\
+&=
+-\cos\vartheta\sin^{m-1}\vartheta
++
+\int \cos^2\vartheta (m-1)\sin^{m-2}\vartheta\,d\vartheta
+\\
+&=
+-\cos\vartheta \sin^{m-1}\vartheta
++
+(m-1)
+\int
+(1-\sin^2\vartheta)
+\sin^{m-2}\vartheta\,d\vartheta.
+\end{align*}
+Wegen $\sin 0=0$ und
+$\cos\frac{\pi}2=0$ verschwindet der erste Term im bestimmten Integral
+und der zweite wird
+\begin{align*}
+\int_0^{\frac{\pi}2}
+\sin^{m} \vartheta
+\,d\vartheta
+&=
+(m-1)
+\int_0^{\frac{\pi}2}
+\sin^{m-2}\vartheta\,d\vartheta
+-
+(m-1)
+\int_0^{\frac{\pi}2}
+\sin^m \vartheta\,d\vartheta
+\\
+m
+\int_0^{\frac{\pi}2}
+\sin^{m} \vartheta\,d\vartheta
+&=
+(m-1)
+\int_0^{\frac{\pi}2}
+\sin^{m-2} \vartheta\,d\vartheta
+\\
+\int_0^{\frac{\pi}2}
+\sin^{m} \vartheta\,d\vartheta
+&=
+\frac{m-1}{m}
+\int_0^{\frac{\pi}2}
+\sin^{m-2} \vartheta\,d\vartheta.
+\end{align*}
+Mit dieser Rekursionsformel kann jetzt das Integral berechnet werden.
+Es folgt
+\begin{align*}
+\int_0^{\frac{\pi}2}
+\sin^{2n}\vartheta\,d\vartheta
+&=
+\frac{2n-1}{2n}
+\int_0^{\frac{\pi}2}
+\sin^{2n-2}\vartheta\,d\vartheta
+\\
+&=
+\frac{2n-1}{2n}
+\frac{2n-3}{2n-2}
+\frac{2n-5}{2n-4}
+\cdots
+\frac{2n-(2n-1)}{2(n-1)}
+\int_0^{\frac{\pi}2}
+\sin^{2n-4}\vartheta\,d\vartheta
+\\
+&=
+\frac{
+(n-\frac12)(n-\frac32)(n-\frac52)\cdot\ldots\cdot\frac32\cdot\frac12
+}{
+n!
+}
+\int_0^{\frac{\pi}2} 1\,d\vartheta
+\\
+&=
+\frac{(\frac12)_n}{n!}
+\cdot
+\frac{\pi}2.
+\end{align*}
+Damit wird die Reihenentwicklung für $K(k)$ jetzt zu
+\[
+K(k)
+=
+\frac{\pi}2
+\sum_{n=0}^\infty
+\frac{(\frac12)_n(\frac12)_n}{n!} \cdot \frac{(k^2)^n}{n!}
+=
+\frac{\pi}2
+\cdot
+\mathstrut_2F_1\biggl(\begin{matrix}\frac12,\frac12\\1\end{matrix};k^2\biggr),
+\]
+dies beweist die Behauptung.
+\end{proof}
 
 
 
@@ -246,6 +427,29 @@ numerischer Exzentrizität $\varepsilon$ und kleiner Halbachse $1$.
 Für den extremen Wert $\varepsilon=0$ entsteht der Umfang einer Ellipse,
 also $E(0)=\frac{\pi}2$.
 Für $\varepsilon=1$ ist $a=0$, es entsteht eine Strecke mit Länge $E(1)=1$.
+
+\begin{satz}
+\label{buch:elliptisch:satz:hyperE}
+Das volständige elliptische Integral $E(k)$ ist
+\[
+E(k)
+=
+\int_0^{\frac{\pi}2} \sqrt{1-k^2\sin^2\vartheta}\,d\vartheta
+=
+\frac{\pi}2
+\cdot
+\mathstrut_2F_1\biggl(
+\begin{matrix}-\frac12,\frac12\\1\end{matrix};
+k^2
+\biggr).
+\]
+\end{satz}
+
+\begin{proof}[Beweis]
+Die Identität kann wie im Satz~\ref{buch:elliptisch:satz:hyperK} mit
+Hilfe einer Entwicklung der Wurzel mit der Binomialreihe gefunden
+werden.
+\end{proof}
 
 \subsubsection{Komplementäre Integrale}
 
@@ -447,7 +651,7 @@ werden, dass $1-k'^2=k^2$ ist.
 
 \begin{definition}
 Ist $0\le k\le 1$ der Modul eines elliptischen Integrals, dann heisst
-$k' = \sqrt{1-k^2}$ er {\em Komplementärmodul} oder {\em Komplement
+$k' = \sqrt{1-k^2}$ der {\em Komplementärmodul} oder {\em Komplement
 des Moduls}. Es ist $k^2+k'^2=1$.
 \end{definition}
 

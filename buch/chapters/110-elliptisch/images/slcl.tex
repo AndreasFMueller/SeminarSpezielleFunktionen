@@ -1,0 +1,88 @@
+%
+% tikztemplate.tex -- template for standalon tikz images
+%
+% (c) 2021 Prof Dr Andreas Müller, OST Ostschweizer Fachhochschule
+%
+\documentclass[tikz]{standalone}
+\usepackage{amsmath}
+\usepackage{times}
+\usepackage{txfonts}
+\usepackage{pgfplots}
+\usepackage{csvsimple}
+\usetikzlibrary{arrows,intersections,math}
+\begin{document}
+\input{slcldata.tex}
+\def\skala{1}
+\begin{tikzpicture}[>=latex,thick,scale=\skala]
+
+% add image content here
+\def\lemniscateconstant{2.6220575542}
+\pgfmathparse{(3.1415926535/2)/\lemniscateconstant}
+\xdef\scalechange{\pgfmathresult}
+
+\pgfmathparse{\scalechange*(180/3.1415926535)}
+\xdef\ts{\pgfmathresult}
+
+\def\dx{1}
+\def\dy{3}
+
+\draw[line width=0.3pt]
+	({\lemniscateconstant*\dx},0)
+	--
+	({\lemniscateconstant*\dx},{1*\dy});
+\draw[line width=0.3pt]
+	({2*\lemniscateconstant*\dx},0)
+	--
+	({2*\lemniscateconstant*\dx},{-1*\dy});
+\draw[line width=0.3pt]
+	({3*\lemniscateconstant*\dx},0)
+	--
+	({3*\lemniscateconstant*\dx},{-1*\dy});
+\draw[line width=0.3pt]
+	({4*\lemniscateconstant*\dx},0)
+	--
+	({4*\lemniscateconstant*\dx},{1*\dy});
+\draw[line width=0.3pt]
+	({5*\lemniscateconstant*\dx},0)
+	--
+	({5*\lemniscateconstant*\dx},{1*\dy});
+
+\draw[color=red!40,line width=1.4pt]
+	plot[domain=0:13,samples=200] ({\x},{\dy*sin(\ts*\x)});
+\draw[color=blue!40,line width=1.4pt]
+	plot[domain=0:13,samples=200] ({\x},{\dy*cos(\ts*\x)});
+
+\draw[color=red,line width=1.4pt] \slpath;
+\draw[color=blue,line width=1.4pt] \clpath;
+
+\draw[->] (0,{-1*\dy-0.1}) -- (0,{1*\dy+0.4}) coordinate[label={right:$r$}];
+\draw[->] (-0.1,0) -- (13.6,0) coordinate[label={$s$}];
+
+\foreach \i in {1,2,3,4,5}{
+	\draw ({\lemniscateconstant*\i},-0.1) -- ({\lemniscateconstant*\i},0.1);
+}
+\node at ({\lemniscateconstant*\dx},0)   [below left]  {$\frac{\varpi}2\mathstrut$};
+\node at ({2*\lemniscateconstant*\dx},0) [below left]  {$\varpi\mathstrut$};
+\node at ({3*\lemniscateconstant*\dx},0) [below right] {$\frac{3\varpi}2\mathstrut$};
+\node at ({4*\lemniscateconstant*\dx},0) [below right] {$2\varpi\mathstrut$};
+\node at ({5*\lemniscateconstant*\dx},0) [below left]  {$\frac{5\varpi}2\mathstrut$};
+
+\node[color=red] at ({1.6*\lemniscateconstant*\dx},{0.6*\dy})
+	[below left] {$\operatorname{sl}(s)$};
+\node[color=red!50] at ({1.5*\lemniscateconstant*\dx},{sin(1.5*90)*\dy*0.90})
+	[above right] {$\sin \bigl(\frac{\pi}{\varpi}s\bigr)$};
+
+\node[color=blue] at ({1.4*\lemniscateconstant*\dx},{-0.6*\dy})
+	[above right] {$\operatorname{cl}(s)$};
+\node[color=blue!50] at ({1.5*\lemniscateconstant*\dx},{cos(1.5*90)*\dy*0.90})
+	[below left] {$\cos\bigl(\frac{\pi}{\varpi}s\bigr)$};
+
+\draw (-0.1,{1*\dy}) -- (0.1,{1*\dy});
+\draw (-0.1,{-1*\dy}) -- (0.1,{-1*\dy});
+\node at (0,{1*\dy}) [left] {$1\mathstrut$};
+\node at (0,0) [left] {$0\mathstrut$};
+\node at (0,{-1*\dy}) [left] {$-1\mathstrut$};
+
+\end{tikzpicture}
+\end{document}
+

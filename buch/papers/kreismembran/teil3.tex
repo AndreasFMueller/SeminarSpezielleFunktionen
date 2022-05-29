@@ -3,38 +3,76 @@
 %
 % (c) 2020 Prof Dr Andreas Müller, Hochschule Rapperswil
 %
-\section{Teil 3
+\section{Lösungsmethode 2: Transformationsmethode
 \label{kreismembran:section:teil3}}
-\rhead{Teil 3}
-Sed ut perspiciatis unde omnis iste natus error sit voluptatem
-accusantium doloremque laudantium, totam rem aperiam, eaque ipsa
-quae ab illo inventore veritatis et quasi architecto beatae vitae
-dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit
-aspernatur aut odit aut fugit, sed quia consequuntur magni dolores
-eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam
-est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci
-velit, sed quia non numquam eius modi tempora incidunt ut labore
-et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima
-veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam,
-nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure
-reprehenderit qui in ea voluptate velit esse quam nihil molestiae
-consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla
-pariatur?
+\rhead{Lösungsmethode 2: Transformationsmethode}
+Die Hankel-Transformation wird dann zur Lösung der Differentialgleichung verwendet. Es müssen jedoch einige Änderungen an dem Problem vorgenommen werden, damit es mit den Annahmen übereinstimmt, die für die Verwendung der Hankel-Transformation erforderlich sind. Das heisst, dass die Funktion u nur von der Entfernung zum Ausgangspunkt abhängt. Wir führen also das Konzept einer unendlichen und achsensymmetrischen Membran ein:
+\begin{equation*}
+	\frac{\partial^2u}{\partial t^2}
+	=
+	c^2  \left(\frac{\partial^2 u}{\partial r^2}
+	+
+	\frac{1}{r}
+	\frac{\partial u}{\partial r} \right), \quad 0<r<\infty, \quad t>0
+	\label{eq:PDE_inf_membane}
+\end{equation*}
 
-\subsection{De finibus bonorum et malorum
-\label{kreismembran:subsection:malorum}}
-At vero eos et accusamus et iusto odio dignissimos ducimus qui
-blanditiis praesentium voluptatum deleniti atque corrupti quos
-dolores et quas molestias excepturi sint occaecati cupiditate non
-provident, similique sunt in culpa qui officia deserunt mollitia
-animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis
-est et expedita distinctio. Nam libero tempore, cum soluta nobis
-est eligendi optio cumque nihil impedit quo minus id quod maxime
-placeat facere possimus, omnis voluptas assumenda est, omnis dolor
-repellendus. Temporibus autem quibusdam et aut officiis debitis aut
-rerum necessitatibus saepe eveniet ut et voluptates repudiandae
-sint et molestiae non recusandae. Itaque earum rerum hic tenetur a
-sapiente delectus, ut aut reiciendis voluptatibus maiores alias
-consequatur aut perferendis doloribus asperiores repellat.
+\begin{align}
+	u(r,0)=f(r), \quad \frac{\partial}{\partial t} u(r,0) = g(r), \quad \text{für} \quad 0<r<\infty
+	\label{eq:PDE_inf_membane_RB}
+\end{align}
+
+Mit Anwendung der Hankel-Transformation nullter Ordnung in Abhängigkeit von $r$ auf die Gleichungen \eqref{eq:PDE_inf_membane} und \eqref{eq:PDE_inf_membane_RB}:
+
+\begin{align}
+	\tilde{u}(\kappa,t)=\int_{0}^{\infty}r J_0(\kappa r)u(r,t) dr,
+\end{align}
+
+bekommt man:
+
+\begin{equation*}
+	\frac{d^2 \tilde{u}}{dt^2} + c^2\kappa^2\tilde{u}=0,
+\end{equation*}
+
+\begin{equation*}
+	\tilde{u}(\kappa,0)=\tilde{f}(\kappa), \quad 
+	\frac{\partial}{\partial t}\tilde{u}(\kappa,0)=\tilde{g}(\kappa).
+\end{equation*}
+
+Die allgemeine Lösung für diese Transformation lautet, wie schon gesehen, wie folgt
+
+\begin{equation*}
+	\tilde{u}(\kappa,t)=\tilde{f}(\kappa)\cos(c\kappa t) + \frac{1}{c\kappa}\tilde{g}(\kappa)\sin(c\kappa t).
+\end{equation*}
+
+Wendet man an nun die inverse Hankel-Transformation an, so erhält man die formale Lösung
+
+\begin{align}
+	u(r,t)=\int_{0}^{\infty}\kappa\tilde{f}(\kappa)\cos(c\kappa t) J_0(\kappa r) d\kappa +\frac{1}{c}\int_{0}^{\infty}\tilde{g}(\kappa)\sin(c\kappa t)J_0(\kappa r) d\kappa.
+	\label{eq:formale_lösung}
+\end{align}
+
+Es wird daher davon ausgegangen, dass sich die Membran verformt und zum Zeitpunkt $t=0$ freigegeben wird
+
+\begin{equation*}
+	u(r,0)=f(r)=Aa(r^2 + a^2)^{-\frac{1}{2}}, \quad \frac{d}{dt}(r,0)=g(r)=0
+\end{equation*}
+
+so dass $\tilde{g}(\kappa)\equiv 0$ und
+
+\begin{equation*}
+	\tilde{f}(\kappa)=Aa\int_{0}^{\infty}r(a^2 + r^2)^{-\frac{1}{2}} J_0 (\kappa r) dr=\frac{Aa}{\kappa}e^{-a\kappa}
+\end{equation*}
+
+Die formale Lösung  \eqref{eq:formale_lösung} lautet also
+\begin{align*}
+	u(r,t)&=Aa\int_{0}^{\infty}e^{-a\kappa} J_0(\kappa r)\cos(c\kappa t)dk=AaRe\int_{0}^{\infty}e^{-\kappa(a+ict)} J_0(\kappa r)dk\\
+	&=AaRe\left\{r^2+\left(a+ict\right)^2\right\}^{-\frac{1}{2}}
+\end{align*}
+
+
+\subsection{Vergleich der Lösungen
+\label{kreismembran:vergleich}}
+Hier kommt noch der Vergleich der Lösungen ;)
 
 

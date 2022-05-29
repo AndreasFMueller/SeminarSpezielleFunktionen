@@ -651,8 +651,11 @@ Abschnitt~\ref{buch:funktionentheorie:section:fortsetzung}
 beschrieben wird, kann die Funktion auf ganz $\mathbb{C}$ ausgedehnt
 werden, mit Ausnahme einzelner Pole.
 Die Funktionalgleichung gilt natürlich für alle $z\in\mathbb{C}$,
-für die $\Gamma(z)$ definiert ist.
-In einer Umgebung von $z=-n$ gilt
+für die $\Gamma(z)$ definiert ist, nicht nur für diejenigen $z$, für
+die das Integral konvergiert. 
+Wir können Sie daher verwenden, um das Argument in den Bereich
+zu bringen, wo das Integral zur Berechnung verwendet werden kann.
+Dazu berechnen wir
 \[
 \Gamma(z)
 =
@@ -665,12 +668,20 @@ In einer Umgebung von $z=-n$ gilt
 \dots
 =
 \frac{\Gamma(z+n)}{z(z+1)(z+2)\cdots(z+n-1)}
+=
+\frac{\Gamma(z+n)}{(z)_n}.
 \]
-Keiner der Faktoren im Nenner verschwindet in der Nähe von $z=-n$, der
-Zähler hat aber einen Pol erster Ordnung an dieser Stelle.
-Daher hat auch der Quotient einen Pol erster Ordnung.
-Abbildung~\ref{buch:rekursion:fig:gamma} zeigt die Pole bei den
-nicht negativen ganzen Zahlen.
+Dies gilt für jedes natürlich $n$.
+Für $n$ gross genug, genauer für 
+$n\ge |\operatorname{Re}z|$,
+ist $\operatorname{Re}(z+n)=\operatorname{Re}z + n>0$ und damit
+kann $\Gamma(z+n)$ mit der Integralformel berechnet werden.
+
+Die Gamma-Funktion hat keine Nullstellen, aber in der Nähe von $z=-n$
+hat der Nenner eine Nullstelle erster Ordnung.
+Somit hat $\Gamma(z)$ Pole erster Ordnung bei den negativen
+ganzen Zahlen und bei $0$, wie sie in
+Abbildung~\ref{buch:rekursion:fig:gamma} gezeigt werden.
 
 \subsubsection{Numerische Berechnung}
 \begin{table}
@@ -714,4 +725,6 @@ Die Genauigkeit erreicht sechs korrekte Nachkommastellen mit nur
 %
 %
 %
+\input{chapters/040-rekursion/bohrmollerup.tex}
+\input{chapters/040-rekursion/integral.tex}
 

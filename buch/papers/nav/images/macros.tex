@@ -1,0 +1,54 @@
+\def\winkelAlpha#1{
+	\begin{scope}
+		\clip (A) circle[radius=1.1];
+		\fill[color=#1!20] \kanteAB -- \kanteCA -- cycle;
+	\end{scope}
+	\node[color=#1] at ($(A)+(222:0.82)$) {$\alpha$};
+}
+
+\def\winkelOmega#1{
+	\begin{scope}
+		\clip (A) circle[radius=0.7];
+		\fill[color=#1!20] \kanteAP -- \kanteCA -- cycle;
+	\end{scope}
+	\node[color=#1] at ($(A)+(285:0.50)$) {$\omega$};
+}
+
+\def\winkelGamma#1{
+	\begin{scope}
+		\clip (C) circle[radius=1.0];
+		\fill[color=#1!20] \kanteCA -- \kanteBC -- cycle;
+	\end{scope}
+	\node[color=#1] at ($(C)+(155:0.60)$) {$\gamma$};
+}
+
+\def\winkelKappa#1{
+	\begin{scope}
+		\clip (B) circle[radius=1.2];
+		\fill[color=#1!20] \kanteBP -- \kanteAB -- cycle;
+	\end{scope}
+	\node[color=#1] at ($(B)+(15:1.00)$) {$\kappa$};
+}
+
+\def\winkelBeta#1{
+	\begin{scope}
+		\clip (B) circle[radius=0.8];
+		\fill[color=#1!20] \kanteBC -- \kanteAB -- cycle;
+	\end{scope}
+	\node[color=#1] at ($(B)+(35:0.40)$) {$\beta$};
+}
+
+\def\winkelBetaEins#1{
+	\begin{scope}
+		\clip (B) circle[radius=0.8];
+		\fill[color=#1!20] \kanteBP -- \kanteCB -- cycle;
+	\end{scope}
+	\node[color=#1] at ($(B)+(330:0.60)$) {$\beta_1$};
+}
+
+\def\seiteC#1{ \node[color=#1] at (-1.9,5.9) {$c$}; }
+\def\seiteB#1{ \node[color=#1] at (3.2,6.5) {$b$}; }
+\def\seiteL#1{ \node[color=#1] at (-0.2,4.5) {$l$}; }
+\def\seiteA#1{ \node[color=#1] at (2,3) {$a$}; }
+\def\seitePB#1{ \node[color=#1] at (-2.1,1) {$p_b$}; }
+\def\seitePC#1{ \node[color=#1] at (2.5,1.5) {$p_c$}; }
