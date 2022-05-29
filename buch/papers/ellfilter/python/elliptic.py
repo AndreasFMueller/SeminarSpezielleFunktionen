@@ -5,84 +5,14 @@ import scipy.special
 import scipyx as spx
 import numpy as np
 import matplotlib.pyplot as plt
-import matplotlib
 from matplotlib.patches import Rectangle
 
-matplotlib.rcParams.update({
-    "pgf.texsystem": "pdflatex",
-    'font.family': 'serif',
-    'font.size': 9,
-    'text.usetex': True,
-    'pgf.rcfonts': False,
-})
+import plot_params
 
 def last_color():
-    plt.gca().lines[-1].get_color()
+    return plt.gca().lines[-1].get_color()
 
-# %% Buttwerworth filter F_N plot
-
-w = np.linspace(0,1.5, 100)
-plt.figure(figsize=(4,2.5))
-
-for N in range(1,5):
-    F_N = w**N
-    plt.plot(w, F_N**2, label=f"$N={N}$")
-plt.gca().add_patch(Rectangle(
-    (0, 0),
-    1, 1,
-    fc ='green',
-    alpha=0.2,
-    lw = 10,
-))
-plt.gca().add_patch(Rectangle(
-    (1, 1),
-    0.5, 1,
-    fc ='green',
-    alpha=0.2,
-    lw = 10,
-))
-plt.xlim([0,1.5])
-plt.ylim([0,2])
-plt.grid()
-plt.xlabel("$w$")
-plt.ylabel("$F^2_N(w)$")
-plt.legend()
-plt.savefig("F_N_butterworth.pdf")
-plt.show()
-
-# %% Cheychev filter F_N plot
-
-w = np.linspace(0,1.5, 100)
-
-plt.figure(figsize=(4,2.5))
-for N in range(1,5):
-    # F_N = np.cos(N * np.arccos(w))
-    F_N = scipy.special.eval_chebyt(N, w)
-    plt.plot(w, F_N**2, label=f"$N={N}$")
-plt.gca().add_patch(Rectangle(
-    (0, 0),
-    1, 1,
-    fc ='green',
-    alpha=0.2,
-    lw = 10,
-))
-plt.gca().add_patch(Rectangle(
-    (1, 1),
-    0.5, 1,
-    fc ='green',
-    alpha=0.2,
-    lw = 10,
-))
-plt.xlim([0,1.5])
-plt.ylim([0,2])
-plt.grid()
-plt.xlabel("$w$")
-plt.ylabel("$F^2_N(w)$")
-plt.legend()
-plt.savefig("F_N_chebychev.pdf")
-plt.show()
-
-# %% define elliptic functions
+# define elliptic functions
 
 def ell_int(k):
     """ Calculate K(k) """
@@ -130,6 +60,73 @@ assert np.allclose(sn_inv(sn(z ,k), k), z)
 assert np.allclose(cn_inv(cn(z ,k), k), z)
 assert np.allclose(dn_inv(dn(z ,k), k), z)
 assert np.allclose(cd_inv(cd(z ,k), k), z)
+
+
+# %% Buttwerworth filter F_N plot
+
+w = np.linspace(0,1.5, 100)
+plt.figure(figsize=(4,2.5))
+
+for N in range(1,5):
+    F_N = w**N
+    plt.plot(w, F_N**2, label=f"$N={N}$")
+plt.gca().add_patch(Rectangle(
+    (0, 0),
+    1, 1,
+    fc ='green',
+    alpha=0.2,
+    lw = 10,
+))
+plt.gca().add_patch(Rectangle(
+    (1, 1),
+    0.5, 1,
+    fc ='orange',
+    alpha=0.2,
+    lw = 10,
+))
+plt.xlim([0,1.5])
+plt.ylim([0,2])
+plt.grid()
+plt.xlabel("$w$")
+plt.ylabel("$F^2_N(w)$")
+plt.legend()
+plt.tight_layout()
+plt.savefig("F_N_butterworth.pgf")
+plt.show()
+
+# %% Cheychev filter F_N plot
+
+w = np.linspace(0,1.5, 100)
+
+plt.figure(figsize=(4,2.5))
+for N in range(1,5):
+    # F_N = np.cos(N * np.arccos(w))
+    F_N = scipy.special.eval_chebyt(N, w)
+    plt.plot(w, F_N**2, label=f"$N={N}$")
+plt.gca().add_patch(Rectangle(
+    (0, 0),
+    1, 1,
+    fc ='green',
+    alpha=0.2,
+    lw = 10,
+))
+plt.gca().add_patch(Rectangle(
+    (1, 1),
+    0.5, 1,
+    fc ='orange',
+    alpha=0.2,
+    lw = 10,
+))
+plt.xlim([0,1.5])
+plt.ylim([0,2])
+plt.grid()
+plt.xlabel("$w$")
+plt.ylabel("$F^2_N(w)$")
+plt.legend()
+plt.tight_layout()
+plt.savefig("F_N_chebychev.pgf")
+plt.show()
+
 
 # %% plot arcsin
 
@@ -314,3 +311,46 @@ for n in (1,2,3,4):
     plt.plot(omega, np.abs(G))
 plt.grid()
 plt.show()
+
+
+
+
+# %%
+
+
+k = np.concatenate(([0.00001,0.0001,0.001], np.linspace(0,1,101)[1:-1], [0.999,0.9999, 0.99999]), axis=0)
+K = ell_int(k)
+K_prime = ell_int(np.sqrt(1-k**2))
+
+
+f, axs = plt.subplots(1,2, figsize=(5,2.5))
+axs[0].plot(k, K, linewidth=0.1)
+axs[0].text(k[30], K[30]+0.1, f"$K$")
+axs[0].plot(k, K_prime, linewidth=0.1)
+axs[0].text(k[30], K_prime[30]+0.1, f"$K^\prime$")
+axs[0].set_xlim([0,1])
+axs[0].set_ylim([0,4])
+axs[0].set_xlabel("$k$")
+
+axs[1].axvline(x=np.pi/2, color="gray", linewidth=0.5)
+axs[1].axhline(y=np.pi/2, color="gray", linewidth=0.5)
+axs[1].text(0.1, np.pi/2 + 0.1, "$\pi/2$")
+axs[1].text(np.pi/2+0.1, 0.1, "$\pi/2$")
+axs[1].plot(K, K_prime, linewidth=1)
+
+k = np.array([0.1,0.2,0.4,0.6,0.9,0.99])
+K = ell_int(k)
+K_prime = ell_int(np.sqrt(1-k**2))
+
+axs[1].plot(K, K_prime, '.', color=last_color(), markersize=2)
+for x, y, n in zip(K, K_prime, k):
+    axs[1].text(x+0.1, y+0.1, f"$k={n:.2f}$", rotation_mode="anchor")
+axs[1].set_ylabel("$K^\prime$")
+axs[1].set_xlabel("$K$")
+axs[1].set_xlim([0,6])
+axs[1].set_ylim([0,5])
+plt.tight_layout()
+plt.savefig("k.pgf")
+plt.show()
+
+print(K[0], K[-1])

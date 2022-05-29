@@ -35,7 +35,7 @@ plt.show()
 # %% Cheychev filter F_N plot
 
 w = np.linspace(-1.1,1.1, 1000)
-plt.figure(figsize=(5.5,2))
+plt.figure(figsize=(5.5,2.5))
 for N in [3,6,11]:
     # F_N = np.cos(N * np.arccos(w))
     F_N = scipy.special.eval_chebyt(N, w)
@@ -44,9 +44,10 @@ plt.xlim([-1.2,1.2])
 plt.ylim([-2,2])
 plt.grid()
 plt.xlabel("$w$")
-plt.ylabel("$C_N(w)$")
+plt.ylabel("$T_N(w)$")
 plt.legend()
-plt.savefig("F_N_chebychev2.pdf")
+plt.tight_layout()
+plt.savefig("F_N_chebychev2.pgf")
 plt.show()
 
 # %% Build Chebychev polynomials

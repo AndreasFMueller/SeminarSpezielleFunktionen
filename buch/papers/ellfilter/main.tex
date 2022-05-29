@@ -11,16 +11,15 @@
 
 \section{Einleitung}
 
-Lineare filter
+% Lineare filter
 
-Filter, Signalverarbeitung
+% Filter, Signalverarbeitung
 
 
 Der womöglich wichtigste Filtertyp ist das Tiefpassfilter.
 Dieses soll im Durchlassbereich unter der Grenzfrequenz $\Omega_p$ unverstärkt durchlassen und alle anderen Frequenzen vollständig auslöschen.
 
-Bei der Implementierung von Filtern
-
+% Bei der Implementierung von Filtern
 
 In der Elektrotechnik führen Schaltungen mit linearen Bauelementen wie Kondensatoren, Spulen und Widerständen immer zu linearen zeitinvarianten Systemen (LTI-System von englich \textit{time-invariant system}).
 Die Übertragungsfunktion im Frequenzbereich $|H(\Omega)|$ eines solchen Systems ist dabei immer eine rationale Funktion, also eine Division von zwei Polynomen.
@@ -39,15 +38,12 @@ Damit das Filter implementierbar und stabil ist, muss $H(\Omega)^2$ eine rationa
 
 $N \in \mathbb{N} $ gibt dabei die Ordnung des Filters vor, also die maximale Anzahl Pole oder Nullstellen.
 
-% In \eqref{ellfilter:eq:h_omega} wird $F_N(w)$ so verzogen, dass $F_N(w) \forall |w| < 1$
-
-
 Damit ein Filter die Passband Kondition erfüllt muss $|F_N(w)| \leq 1 \forall |w| \leq 1$ und für $|w| \geq 1$ sollte die Funktion möglichst schnell divergieren.
 Eine einfaches Polynom, dass das erfüllt, erhalten wir wenn $F_N(w) = w^N$.
 Tatsächlich erhalten wir damit das Butterworth Filter, wie in Abbildung \ref{ellfilter:fig:butterworth} ersichtlich.
 \begin{figure}
     \centering
-    \includegraphics[scale=1]{papers/ellfilter/python/F_N_butterworth.pdf}
+    \input{papers/ellfilter/python/F_N_butterworth.pgf}
     \caption{$F_N$ für Butterworth filter. Der grüne Bereich definiert die erlaubten Werte für alle $F_N$-Funktionen.}
     \label{ellfilter:fig:butterworth}
 \end{figure}
@@ -60,7 +56,7 @@ wenn $F_N(w)$ eine rationale Funktion ist, ist auch $H(\Omega)$ eine rationale F
         w^N                            & \text{Butterworth} \\
         T_N(w)                         & \text{Tschebyscheff, Typ 1}  \\
         [k_1 T_N (k^{-1} w^{-1})]^{-1} & \text{Tschebyscheff, Typ 2}  \\
-        R_N(w)                         & \text{Elliptisch (Cauer)}    \\
+        R_N(w, \xi)                    & \text{Elliptisch (Cauer)}    \\
     \end{cases}
 \end{align}
 
@@ -73,9 +69,9 @@ Es scheint so als sind gewisse Eigenschaften dieser speziellen Funktionen verant
 \section{Tschebyscheff-Filter}
 
 Als Einstieg betrachent Wir das Tschebyscheff-Filter, welches sehr verwand ist mit dem elliptischen Filter.
-Genauer ausgedrückt sind die Tschebyscheff-1 und -2 Fitler ein Spezialfall davon.
+Genauer ausgedrückt sind die Tschebyscheff-1 und -2 Filter Spezialfälle davon.
 
-Der Name des Filters deutet schon an, dass die Tschebyschff-Polynome $T_N$ relevant sind für das Filter:
+Der Name des Filters deutet schon an, dass die Tschebyscheff-Polynome $T_N$ für das Filter relevant sind:
 \begin{align}
     T_{0}(x)&=1\\
     T_{1}(x)&=x\\
@@ -83,15 +79,17 @@ Der Name des Filters deutet schon an, dass die Tschebyschff-Polynome $T_N$ relev
     T_{3}(x)&=4x^{3}-3x\\
     T_{n+1}(x)&=2x~T_{n}(x)-T_{n-1}(x).
 \end{align}
-Bemerkenswert ist, dass die Polynome im Intervall $[-1, 1]$ mit der Trigonometrischen Funktion
-\begin{equation} \label{ellfilter:eq:chebychef_polynomials}
-    T_N(w) = \cos \left( N \cos^{-1}(w) \right)
-\end{equation}
+Bemerkenswert ist, dass die Polynome im Intervall $[-1, 1]$ mit der trigonometrischen Funktion
+\begin{align} \label{ellfilter:eq:chebychef_polynomials}
+    T_N(w) &= \cos \left( N \cos^{-1}(w) \right) \\
+           &= \cos \left(N~z \right), \quad w= \cos(z)
+\end{align}
 übereinstimmt.
+Der Zusammenhang lässt sich mit den Doppel- und Mehrfachwinkelfunktionen der trigonometrischen Funktionen erklären.
 Abbildung \ref{ellfilter:fig:chebychef_polynomials} zeigt einige Tschebyscheff-Polynome.
 \begin{figure}
     \centering
-    \includegraphics[scale=1]{papers/ellfilter/python/F_N_chebychev2.pdf}
+    \input{papers/ellfilter/python/F_N_chebychev2.pgf}
     \caption{Die Tschebyscheff-Polynome $C_N$.}
     \label{ellfilter:fig:chebychef_polynomials}
 \end{figure}
@@ -101,103 +99,123 @@ Diese Eigenschaft ist sehr nützlich für ein Filter.
 Wenn wir die Tschebyscheff-Polynome quadrieren, passen sie perfekt in die Voraussetzungen für Filterfunktionen, wie es Abbildung \ref{ellfiter:fig:chebychef} demonstriert.
 \begin{figure}
     \centering
-    \includegraphics[scale=1]{papers/ellfilter/python/F_N_chebychev.pdf}
+    \input{papers/ellfilter/python/F_N_chebychev.pgf}
     \caption{Die Tschebyscheff-Polynome füllen den erlaubten Bereich besser, und erhalten dadurch eine steilere Flanke im Sperrbereich.}
     \label{ellfiter:fig:chebychef}
 \end{figure}
 
 
 Die analytische Fortsetzung von \eqref{ellfilter:eq:chebychef_polynomials} über das Intervall $[-1,1]$ hinaus stimmt mit den Polynomen überein, wie es zu erwarten ist.
-Die genauere Betrachtung wird uns dann helfen die elliptischen Filter zu verstehen.
+Die genauere Betrachtung wird uns dann helfen die elliptischen Filter besser zu verstehen.
 
-\begin{equation}
+Starten wir mit der Funktion, die als erstes auf $w$ angewendet wird, dem Arcuscosinus.
+Die invertierte Funktion des Kosinus kann als definites Integral dargestellt werden:
+\begin{align}
     \cos^{-1}(x)
-    =
-    \int_{0}^{x}
+    &=
+    \int_{x}^{1}
     \frac{
         dz
     }{
         \sqrt{
             1-z^2
         }
-    }
-\end{equation} %TOdO is it minus dz?
-
-\begin{equation}
+    }\\
+    &=
+    \int_{0}^{x}
     \frac{
-        1
+        -1
     }{
         \sqrt{
             1-z^2
         }
     }
-    \in \mathbb{R}
-    \quad
-    \forall
-    \quad
-    -1  \leq z \leq 1
-\end{equation}
-Wenn $|z|$ über 1 hinausgeht, wird der Term unter der Wurzel negativ.
-Durch die Quadratwurzel entstehen zwei Reinkomplexe Lösungen
+    ~dz
+    + \frac{\pi}{2}
+\end{align}
+Der Integrand oder auch die Ableitung
 \begin{equation}
     \frac{
-        1
+        -1
     }{
         \sqrt{
             1-z^2
         }
     }
-    = i \xi \quad | \quad \xi \in \mathbb{R}
-    \quad
-    \forall
-    \quad
-    z \leq -1 \cup z \geq 1
 \end{equation}
-
+bestimmt dabei die Richtung, in der die Funktion verläuft.
+Der reelle Arcuscosinus is bekanntlich nur für $|z| \leq 1$ definiert.
+Hier bleibt der Wert unter der Wurzel positiv und das Integral liefert reelle Werte.
+Doch wenn $|z|$ über 1 hinausgeht, wird der Term unter der Wurzel negativ.
+Durch die Quadratwurzel entstehen für den Integranden zwei rein komplexe Lösungen.
+Der Wert des Arcuscosinus verlässt also bei $z= \pm 1$ den reellen Zahlenstrahl und knickt in die komplexe Ebene ab.
+Abbildung \ref{ellfilter:fig:arccos} zeigt den $\arccos$ in der komplexen Ebene.
 \begin{figure}
     \centering
     \input{papers/ellfilter/tikz/arccos.tikz.tex}
     \caption{Die Funktion $z = \cos^{-1}(w)$ dargestellt in der komplexen ebene.}
     \label{ellfilter:fig:arccos}
 \end{figure}
+Wegen der Periodizität des Kosinus ist auch der Arcuscosinus $2\pi$-periodisch und es entstehen periodische Nullstellen.
+% \begin{equation}
+%     \frac{
+%         1
+%     }{
+%         \sqrt{
+%             1-z^2
+%         }
+%     }
+%     \in \mathbb{R}
+%     \quad
+%     \forall
+%     \quad
+%     -1  \leq z \leq 1
+% \end{equation}
+% \begin{equation}
+%     \frac{
+%         1
+%     }{
+%         \sqrt{
+%             1-z^2
+%         }
+%     }
+%     = i \xi \quad | \quad \xi \in \mathbb{R}
+%     \quad
+%     \forall
+%     \quad
+%     z \leq -1 \cup z \geq 1
+% \end{equation}
 
-
-
+Die Tschebyscheff-Polynome skalieren diese Nullstellen mit dem Ordnungsfaktor $N$, wie dargestellt in Abbildung \ref{ellfilter:fig:arccos2}.
 \begin{figure}
     \centering
     \input{papers/ellfilter/tikz/arccos2.tikz.tex}
     \caption{
-        $z$-Ebene der Tschebyscheff-Funktion.
-        Je grösser die Ordnung $N$ gewählt wird, desto mehr Nullstellen werden hat das Tschebyscheff-Polynom.
+        $z_1=N \cos^{-1}(w)$-Ebene der Tschebyscheff-Funktion.
+        Die eingefärbten Pfade sind Verläufe von $w~\forall~[-\infty, \infty]$ für verschiedene Ordnungen $N$.
+        Je grösser die Ordnung $N$ gewählt wird, desto mehr Nullstellen werden passiert.
     }
-    % \label{ellfilter:fig:arccos}
+    \label{ellfilter:fig:arccos2}
 \end{figure}
-
-
-
-
-
-% Analytische Fortsetzung
-
-
+Somit passert $\cos( N~\cos^{-1}(w))$ im Intervall $[-1, 1]$ $N$ Nullstellen.
+Durch die spezielle Anordnung der Nullstellen hat die Funktion Equirippel-Verhalten und ist dennoch ein Polynom, was sich perfekt für linear Filter eignet.
 
 \section{Jacobische elliptische Funktionen}
 
-
-Für das elliptische Filter, wird statt der für das Tschebyscheff-Filter benutzen Kreis-Trigonometrie die elliptischen Funktionen gebraucht.
-Der begriff elliptische Funktion wird für sehr viele Funktionen gebraucht, daher ist es hier wichtig zu erwähnen, dass es ausschliesslich um die Jacobischen elliptischen Funktionen geht.
-
-Im Wesentlichen erweitern die Jacobi elliptischen Funktionen die trigonometrische Funktionen für Ellipsen.
-
 %TODO $z$ or $u$ for parameter?
 
-neu zwei parameter
-$sn(z, k)$
-$z$ ist das winkelargument
+Für das elliptische Filter wird statt der, für das Tschebyscheff-Filter benutzen Kreis-Trigonometrie die elliptischen Funktionen gebraucht.
+Der Begriff elliptische Funktion wird für sehr viele Funktionen gebraucht, daher ist es hier wichtig zu erwähnen, dass es ausschliesslich um die Jacobischen elliptischen Funktionen geht.
+
+Im Wesentlichen erweitern die Jacobi elliptischen Funktionen die trigonometrische Funktionen für Ellipsen.
+Zum Beispiel gibt es analog zum Sinus den elliptischen $\sn(z, k)$.
+Im Gegensatz zum den trigonometrischen Funktionen haben die elliptischen Funktionen zwei parameter.
+Zum einen gibt es den \textit{elliptische Modul} $k$, der die Exzentrizität der Ellipse parametrisiert.
+Zum andern das Winkelargument $z$.
 Im Kreis ist der Radius für alle Winkel konstant, bei Ellipsen ändert sich das.
 Dies hat zur Folge, dass bei einer Ellipse die Kreisbodenstrecke nicht linear zum Winkel verläuft.
 Darum kann hier nicht der gewohnte Winkel verwendet werden.
-An deren stelle kommt der parameter $k$ zum Einsatz, welcher durch das elliptische Integral erster Art
+Das Winkelargument $z$ kann durch das elliptische Integral erster Art
 \begin{equation}
     z
     =
@@ -211,11 +229,17 @@ An deren stelle kommt der parameter $k$ zum Einsatz, welcher durch das elliptisc
             1-k^2 \sin^2 \theta
         }
     }
+    =
+    \int_{0}^{\phi}
+    \frac{
+        dt
+    }{
+        \sqrt{
+            (1-t^2)(1-k^2 t^2)
+        }
+    } %TODO which is right? are both functions from phi?
 \end{equation}
 mit dem Winkel $\phi$ in Verbindung liegt.
-
-
-
 
 Dabei wird das vollständige und unvollständige Elliptische integral unterschieden.
 Beim vollständigen Integral
@@ -231,25 +255,75 @@ Beim vollständigen Integral
         }
     }
 \end{equation}
-wird über ein viertel Ellipsenbogen integriert also bis $\phi=\pi/2$.
+wird über ein viertel Ellipsenbogen integriert also bis $\phi=\pi/2$ und liefert das Winkelargument für eine Vierteldrehung.
+Die Zahl wird oft auch abgekürzt mit $K = K(k)$ und ist für das elliptische Filter sehr relevant.
+Alle elliptishen Funktionen sind somit $4K$-periodisch.
 
-Die Jacobischen elliptischen Funktionen können mit der inversen Funktion
+Neben dem $\sn$ gibt es zwei weitere basis-elliptische Funktionen $\cn$ und $\dn$.
+Dazu kommen noch weitere abgeleitete Funktionen, die durch Quotienten und Kehrwerte dieser Funktionen zustande kommen.
+Insgesamt sind es die zwölf Funktionen
+\begin{equation*}
+    \sn \quad
+    \ns \quad
+    \scelliptic \quad
+    \sd \quad
+    \cn \quad
+    \nc \quad
+    \cs \quad
+    \cd \quad
+    \dn \quad
+    \nd \quad
+    \ds \quad
+    \dc.
+\end{equation*}
+
+Die Jacobischen elliptischen Funktionen können mit der inversen Funktion des kompletten elliptischen Integrals erster Art
 \begin{equation}
     \phi = F^{-1}(z, k)
 \end{equation}
-definiert werden. Dabei ist zu beachten dass nur das $z$ Argument der Funktion invertiert wird also
+definiert werden. Dabei ist zu beachten dass nur das $z$ Argument der Funktion invertiert wird, also
 \begin{equation}
     z = F(\phi, k)
     \Leftrightarrow
     \phi = F^{-1}(z, k).
 \end{equation}
-Mithilfe von $F^{-1}$ kann $sn^{-1}$ mit dem Elliptischen integral dargestellt werden:
+Mithilfe von $F^{-1}$ kann zum Beispiel $sn^{-1}$ mit dem Elliptischen integral dargestellt werden:
 \begin{equation}
     \sin(\phi)
     =
     \sin \left( F^{-1}(z, k) \right)
     =
-    \sn(u, k)
+    \sn(z, k)
+    =
+    w
+\end{equation}
+
+\begin{equation}
+    \phi
+    =
+     F^{-1}(z, k)
+     =
+     \sin^{-1} \big( \sn (z, k ) \big)
+     =
+    \sin^{-1} ( w )
+\end{equation}
+
+\begin{equation}
+    F(\phi, k)
+    =
+    z
+    =
+    F( \sin^{-1} \big( \sn (z, k ) \big) , k)
+    =
+    F( \sin^{-1} ( w ), k)
+\end{equation}
+
+\begin{equation}
+    \sn^{-1}(w, k)
+    =
+    F(\phi, k),
+    \quad
+    \phi = \sin^{-1}(w)
 \end{equation}
 
 \begin{align}
@@ -306,28 +380,90 @@ In der reellen Richtung ist sie $4K(k)$-periodisch und in der imaginären Richtu
 
 %TODO sn^{-1} grafik
 
+\begin{figure}
+    \centering
+    \input{papers/ellfilter/tikz/sn.tikz.tex}
+    \caption{
+        $z$-Ebene der Funktion $z = \sn^{-1}(w, k)$.
+        Die Funktion ist in der realen Achse $4K$-periodisch und in der imaginären Achse $2jK^\prime$-periodisch.
+    }
+    % \label{ellfilter:fig:cd2}
+\end{figure}
 
 \section{Elliptische rationale Funktionen}
 
+Kommen wir nun zum eigentlichen Teil dieses Papers, den elliptischen rationalen Funktionen
+\begin{align}
+    R_N(\xi, w) &= \cd \left(N~f_1(\xi)~\cd^{-1}(w, 1/\xi), f_2(\xi)\right) \\
+                &= \cd \left(N~\frac{K_1}{K}~\cd^{-1}(w, k), k_1)\right) , \quad k= 1/\xi, k_1 = 1/f(\xi) \\
+                &= \cd \left(N~K_1~z , k_1 \right), \quad w= \cd(z K, k)
+\end{align}
 
-\begin{equation}
-    R_N(\xi, w) = \cd \left(N~f_1(\xi)~\cd^{-1}(w, 1/\xi), f_2(\xi)\right)
-\end{equation}
-\begin{equation}
-    R_N(\xi, w) = \cd (N~u K_1, k_1), \quad w= \cd(uK, k)
-\end{equation}
+
+sieht ähnlich aus wie die trigonometrische Darstellung der Tschebyschef-Polynome \eqref{ellfilter:eq:chebychef_polynomials}
+Anstelle vom Kosinus kommt hier die $\cd$-Funktion zum Einsatz.
+Die Ordnungszahl $N$ kommt auch als Faktor for.
+Zusätzlich werden noch zwei verschiedene elliptische Module $k$ und $k_1$ gebraucht.
 
 
-sieht ähnlich aus wie die trigonometrische darstellung der Tschebyschef-Polynome
 
-der Ordnungszahl $N$ kommt auch als Faktor for 
+Sinus entspricht $\sn$
 
-%TODO cd^{-1} grafik mit 
+Damit die Nullstellen an ähnlichen Positionen zu liegen kommen wie bei den Tschebyscheff-Polynomen, muss die $\cd$-Funktion gewählt werden.
 
+Die $\cd^{-1}(w, k)$-Funktion ist um $K$ verschoben zur $\sn^{-1}(w, k)$-Funktion, wie ersichtlich in Abbildung \ref{ellfilter:fig:cd}.
+\begin{figure}
+    \centering
+    \input{papers/ellfilter/tikz/cd.tikz.tex}
+    \caption{
+        $z$-Ebene der Funktion $z = \sn^{-1}(w, k)$.
+        Die Funktion ist in der realen Achse $4K$-periodisch und in der imaginären Achse $2jK^\prime$-periodisch.
+    }
+    \label{ellfilter:fig:cd}
+\end{figure}
+Auffallend ist, dass sich alle Nullstellen und Polstellen um $K$ verschoben haben.
+
+Durch das Konzept vom fundamentalen Rechteck, siehe Abbildung \ref{ellfilter:fig:fundamental_rectangle} können für alle inversen Jaccobi elliptischen Funktionen die Positionen der Null- und Polstellen anhand eines Diagramms ermittelt werden.
+Der erste Buchstabe bestimmt die Position der Nullstelle und der zweite Buchstabe die Polstelle.
+\begin{figure}
+    \centering
+    \input{papers/ellfilter/tikz/fundamental_rectangle.tikz.tex}
+    \caption{
+        Fundamentales Rechteck der inversen Jaccobi elliptischen Funktionen.
+    }
+    \label{ellfilter:fig:fundamental_rectangle}
+\end{figure}
+
+Auffallend an der $w = \sn(z, k)$-Funktion ist, dass sich $w$ auf der reellen Achse wie der Kosinus immer zwischen $-1$ und $1$ bewegt, während bei $\mathrm{Im(z) = K^\prime}$ die Werte zwischen $\pm 1/k$ und $\pm \infty$ verlaufen.
+Die Funktion hat also Equirippel-Verhalten um $w=0$ und um $w=\pm \infty$.
+Falls es möglich ist diese Werte abzufahren im Sti der Tschebyscheff-Polynome, kann ein Filter gebaut werden, dass Equirippel-Verhalten im Durchlass- und Sperrbereich aufweist.
+
+
+
+Analog zu Abbildung \ref{ellfilter:fig:arccos2} können wir auch bei den elliptisch rationalen Funktionen die komplexe $z$-Ebene betrachten, wie ersichtlich in Abbildung \ref{ellfilter:fig:cd2}, um die besser zu verstehen.
+\begin{figure}
+    \centering
+    \input{papers/ellfilter/tikz/cd2.tikz.tex}
+    \caption{
+        $z_1$-Ebene der elliptischen rationalen Funktionen.
+        Je grösser die Ordnung $N$ gewählt wird, desto mehr Nullstellen passiert.
+    }
+    \label{ellfilter:fig:cd2}
+\end{figure}
+% Da die $\cd^{-1}$-Funktion 
+
+
+
+\begin{figure}
+    \centering
+    \input{papers/ellfilter/python/F_N_elliptic.pgf}
+    \caption{$F_N$ für ein elliptischs filter.}
+    \label{ellfilter:fig:elliptic}
+\end{figure}
 
 \subsection{Degree Equation}
 
-Der $cd^{-1}$ Term muss so verzogen werden, dass die umgebene $cd$ funktion die nullstellen und pole trifft.
+Der $\cd^{-1}$ Term muss so verzogen werden, dass die umgebene $\cd$-Funktion die Nullstellen und Pole trifft.
 Dies trifft ein wenn die Degree Equation erfüllt ist.
 
 \begin{equation}
@@ -345,19 +481,7 @@ Bei den Tschebyscheff-Polynomen haben wir gesehen, dass die Trigonometrische For
 Im gegensatz zum $\cos^{-1}$ hat der $\cd^{-1}$ nicht nur Nullstellen sondern auch Pole.
 Somit entstehen bei den elliptischen rationalen Funktionen, wie es der name auch deutet, rationale Funktionen, also ein Bruch von zwei Polynomen.
 
-
-
-
-\begin{figure}
-    \centering
-    \includegraphics[scale=1]{papers/ellfilter/python/F_N_elliptic.pdf}
-    \caption{$F_N$ für ein elliptischs filter.}
-    \label{ellfilter:fig:elliptic}
-\end{figure}
-
-
-
-
+Da Transformationen einer rationalen Funktionen mit Grundrechenarten, wie es in \eqref{ellfilter:eq:h_omega} der Fall ist, immer noch rationale Funktionen ergeben, stellt dies kein Problem für die Implementierung dar.
 
 \input{papers/ellfilter/teil0.tex}
 \input{papers/ellfilter/teil1.tex}
