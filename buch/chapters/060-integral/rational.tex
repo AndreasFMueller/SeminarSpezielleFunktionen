@@ -5,4 +5,199 @@
 %
 \subsection{Rationale Funktionen und Funktionenkörper
 \label{buch:integral:subsection:rational}}
+Welche Funktionen sollen als Antwort auf die Frage nach einer Stammfunktion
+akzeptiert werden?
+Polynome in der unabhängigen Variablen $x$ sollten sicher dazu gehören,
+also alles, was man mit Hilfe der Multiplikation, Addition und Subtraktion
+aus Koeffizienten zum Beispiel in den rationalen Zahlen $\mathbb{Q}$ und
+der unabhängigen Variablen aufbauen kann.
+Doch welche weiteren Operationen sollen zugelassen werden und was lässt
+sich über die entstehende Funktionenmenge aussagen?
+
+\subsubsection{Körper}
+Die kleinste Zahlenmenge, in der alle arithmetischen Operationen soweit
+sinnvoll durchgeführt werden können, ist die Menge $\mathbb{Q}$ der
+rationalen Zahlen.
+Etwas formaler ist eine solche Menge, in der die Arithmetik uneingeschränkt
+ausgeführt werden kann, ein Körper gemäss der folgenden Definition.
+\index{Korper@Körper}%
+
+\begin{definition}
+\label{buch:integral:definition:koerper}
+Eine {\em Körper} ist eine Menge $K$ mit zwei Verknüpfungen $+$, die Addition,
+und $\cdot$, die Multiplikation,
+welche die folgenden Eigenschaften haben.
+\begin{center}
+\renewcommand{\tabcolsep}{0pt}
+\begin{tabular}{p{68mm}p{4mm}p{68mm}}
+%Eigenschaften der
+Addition:
+\begin{enumerate}[{\bf A}.1)]
+\item assoziativ: $(a+b)+c=a+(b+c)$
+für alle $a,b,c\in K$
+\item kommutativ: $a+b=b+a$
+für alle $a,b\in K$
+\item Neutrales Element der Addition: es gibt ein Element $0\in K$ mit
+der Eigenschaft $a+0=a$ für alle $a\in K$
+\item Additiv inverses Element: zu jedem Element $a\in K$ gibt es das Element
+$-a$ mit der Eigenschaft $a+(-a)=0$.
+\end{enumerate}
+&&%
+%Eigenschaften der
+Multiplikation:
+\begin{enumerate}[{\bf M}.1)]
+\item assoziativ: $(a\cdot b)\cdot c=a\cdot (b\cdot c)$
+für alle $a,b,c\in K$
+\index{Assoziativgesetz}%
+\index{assoziativ}%
+\item kommutativ: $a\cdot b=b\cdot a$
+für alle $a,b\in K$
+\index{Kommutativgesetz}%
+\index{kommutativ}%
+\item Neutrales Element der Multiplikation: es gibt ein Element $1\in K$ mit
+der Eigenschaft $a\cdot 1 =a$ für alle $a\in K$
+\index{neutrales Element}%
+\item Multiplikativ inverses Element: zu jedem Element
+\index{inverses Element}%
+$a\in K^*=K\setminus\{0\}$
+gibt es das Element $a^{-1}$ mit der Eigenschaft $a\cdot a^{-1}=1$.
+\index{Einheitengruppe}%
+\index{Gruppe der invertierbaren Elemente}%
+\end{enumerate}
+\end{tabular}
+\end{center}
+\vspace{-22pt}
+Ausserdem gilt das Distributivgesetz: für alle $a,b,c\in K$ gilt
+$a\cdot(b+c)=a\cdot b + a\cdot c$.
+\index{Disitributivgesetz}%
+Die Menge $K^*$ heisst auch die {\em Einheitengruppe} oder die
+{\em Gruppe der invertierbaren Elemente} des Körpers.
+\end{definition}
+
+Das Assoziativgesetz {\bf A}.1 besagt, dass Summen mit beliebig
+vielen Termen ohne Klammern geschrieben werden kann, weil es nicht
+darauf ankommt, in welcher Reihenfolge die Additionen ausgeführt werden.
+Ebenso für das Assoziativgesetz {\bf M}.1 der Multiplikation.
+Die Kommutativgesetze {\bf A}.2 und {\bf M}.2 implizieren, dass man
+nicht auf die Reihenfolge der Summanden oder Faktoren achten muss.
+Das Distributivgesetz schliesslich besagt, dass man Produkte ausmultiplizieren
+oder gemeinsame Faktoren ausklammern kann, wie man es in der Schule
+gelernt hat.
+
+Die rellen Zahlen $\mathbb{R}$ und die komplexen Zahlen $\mathbb{C}$
+bilden ebenfalls einen Körper, die von den rationalen Zahlen geerbten
+Eigenschaften der Verknüpfungen setzen sich auf $\mathbb{R}$ und
+$\mathbb{C}$ fort.
+Es lassen sich allerdings auch Zahlkörper zwischen $\mathbb{Q}$ und
+$\mathbb{R}$ konstruieren, wie das folgende Beispiel zeigt.
+
+\begin{beispiel}
+\label{buch:integral:beispiel:Qsqrt2}
+Die Menge
+\[
+\mathbb{Q}(\!\sqrt{2})
+=
+\{
+a+b\sqrt{2}
+\;|\;
+a,b\in \mathbb{Q}
+\}
+\]
+ist eine Teilmenge von $\mathbb{R}$.
+Die Rechenoperationen haben alle verlangten Eigenschaften, wenn gezeigt
+werden kann, dass Produkte und Quotienten von Zahlen in $\mathbb{Q}(\!\sqrt{2})$
+wieder in $\mathbb{Q}(\!\sqrt{2})$ sind.
+Dazu rechnet man
+\begin{align*}
+(a+b\sqrt{2})
+(c+d\sqrt{2})
+&=
+ac + 2bd + (ad+bc)\sqrt{2} \in \mathbb{Q}(\!\sqrt{2})
+\intertext{und}
+\frac{a+b\sqrt{2}}{c+d\sqrt{2}}
+&=
+\frac{a+b\sqrt{2}}{c+d\sqrt{2}}
+\cdot
+\frac{c-d\sqrt{2}}{c-d\sqrt{2}}
+=
+\frac{ac-2bd +(-ad+bc)\sqrt{2}}{c^2-2d^2}
+\\
+&=
+\underbrace{\frac{ac-2bd}{c^2-2d^2}}_{\displaystyle\in\mathbb{Q}}
++
+\underbrace{\frac{-ad+bc}{c^2-2d^2}}_{\displaystyle\in\mathbb{Q}}
+\sqrt{2}
+\in \mathbb{Q}(\!\sqrt{2}).
+\qedhere
+\end{align*}
+\end{beispiel}
+
+%
+% Rationale Funktionen
+%
+\subsubsection{Rationalen Funktionen}
+Die als Antworten auf die Frage nach einer Stammfunktion akzeptablen
+Funktionen sollten alle rationalen Zahlen sowie die unabhängige
+Variable $x$ enthalten.
+Ausserdem sollte man beliebige arithmetische Operationen mit
+diesen Ausdrücken durchführen können.
+Mit Addition, Subtraktion und Multiplikation entstehen aus den
+rationalen Zahlen und der unabhängigen Variablen die Polynome $\mathbb{Q}[x]$
+(siehe auch Abschnitt~\ref{buch:potenzen:section:polynome}).
+
+
+\begin{definition}
+Die Menge
+\[
+\mathbb{Q}(x)
+=
+\biggl\{
+\frac{p(x)}{q(x)}
+\;\bigg|\;
+p(x),q(x)\in\mathbb{Q}[x]
+\wedge
+q(x)\ne 0
+\biggr\},
+\]
+bestehend aus allen Quotienten von Polynomen, deren Nenner nicht
+das Nullpolynom ist, heisst der Körper der {\em rationalen Funktionen}
+\index{rationale Funktion}%
+mit Koeffizienten in $\mathbb{Q}$.
+\end{definition}
+
+Die Definition erlaubt, dass der Nenner Nullstellen hat, die sich in
+Polen der Funktion äussern.
+Die Eigenschaften eines Körpers sind sicher erfüllt, wenn wir uns
+nur davon überzeugen können,
+dass die arithmetischen Operationen nicht aus dieser Funktionenmenge
+herausführen.
+Dazu muss man nur verstehen, dass die Operation des gleichnamig Machens 
+zweier Brüche auch für Nenner funktioniert, die Polynome sind, und die
+Summe wzeier Brüche von Polynomen wieder in einen Bruch von Polynomen
+umwandelt.
+
+%
+% Warum rationale Zahlen?
+%
+\subsubsection{Warum die Beschränkung auf rationale Zahlen?}
+Aus mathematischer Sicht gibt es gute Gründe, Analysis im Körper $\mathbb{R}$
+oder $\mathbb{C}$ zu betreiben.
+Da Ableitung und Integral als Grenzwerte definiert sind, stellt diese
+Wahl des Körpers sicher, dass die Grenzwerte auch tatsächlich existieren.
+Der Fundamentalsatz der Algebra garantiert, dass über $\mathbb{C}$
+jedes Polynome in Linearfaktoren zerlegt werden kann.
+
+Der Einfachheit der Analyse in $\mathbb{R}$ oder $\mathbb{C}$ steht
+die Schwierigkeit gegenüber, beliebige Elemente von $\mathbb{R}$ in
+einem Computer exakt darzustellen.
+Für Brüche in $\mathbb{Q}$ gibt es eine solche Darstellung durch
+Paare von Ganzzahlen, wie sie die GNU Multiprecision Arithmetic Library
+\cite{buch:gmp} realisiert.
+Irrationale Zahlen dagegen können nur exakt gehandhabt werden, wenn
+man im wesentlichen symbolisch mit ihnen rechnet. 
+Die Grundlage dafür wird in
+Abschnitt~\ref{buch:integral:subsection:koerpererweiterungen}
+gelegt.
+
+
 

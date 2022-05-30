@@ -20,7 +20,9 @@ elliptischen Funktionen hergestellt werden.
 \caption{Bogenlänge und Radius der Lemniskate von Bernoulli.
 \label{buch:elliptisch:fig:lemniskate}}
 \end{figure}
-Die Lemniskate von Bernoulli ist die Kurve vierten Grades mit der Gleichung
+Die {\em Lemniskate von Bernoulli} ist die Kurve vierten Grades
+mit der Gleichung
+\index{Lemniskate von Bernoulli}%
 \begin{equation}
 (X^2+Y^2)^2 = 2a^2(X^2-Y^2).
 \label{buch:elliptisch:eqn:lemniskate}
@@ -161,13 +163,14 @@ Parameters $k$.
 
 Die Länge des rechten Blattes der Lemniskate wird mit $\varpi$ bezeichnet
 und hat den numerischen Wert
-\[
+\begin{equation}
 \varpi
 =
 2\int_0^1\sqrt{\frac{1}{1-t^4}}\,dt
 =
 2.6220575542.
-\]
+\label{buch:elliptisch:eqn:varpi}
+\end{equation}
 $\varpi$ ist auch als die {\em lemniskatische Konstante} bekannt.
 \index{lemniskatische Konstante}%
 Der Lemniskatenbogen zwischen dem Nullpunkt und $(1,0)$ hat die Länge
@@ -179,7 +182,7 @@ $\varpi/2$.
 \subsection{Bogenlängenparametrisierung}
 Die Lemniskate mit der Gleichung
 \[
-(X^2+X^2)^2=2(X^2-X^2)
+(X^2+Y^2)^2=2(X^2-Y^2)
 \]
 (der Fall $a=1$ in \eqref{buch:elliptisch:eqn:lemniskate})
 kann mit Jacobischen elliptischen Funktionen
@@ -332,7 +335,8 @@ Dies bedeutet, dass die Bogenlänge zwischen den Parameterwerten $0$ und $s$
 =
 s,
 \]
-der Parameter $t$ ist also ein Bogenlängenparameter.
+der Parameter $t$ ist also ein Bogenlängenparameter, man darf also
+$s=t$ schreiben.
 
 Die mit dem Faktor $1/\sqrt{2}$ skalierte Standard-Lemniskate mit der
 Gleichung
@@ -355,10 +359,9 @@ y(t)
 \end{equation}
 
 \subsection{Der lemniskatische Sinus und Kosinus}
-Der Sinus Berechnet die Gegenkathete zu einer gegebenen Bogenlänge des
+Der Sinus berechnet die Gegenkathete zu einer gegebenen Bogenlänge des
 Kreises, er ist die Umkehrfunktion der Funktion, die der Gegenkathete
 die Bogenlänge zuordnet.
-
 Daher ist es naheliegend, die Umkehrfunktion von $s(r)$ in 
 \eqref{buch:elliptisch:eqn:lemniskatebogenlaenge}
 den {\em lemniskatischen Sinus} zu nennen mit der Bezeichnung
@@ -368,6 +371,13 @@ Der Kosinus ist der Sinus des komplementären Winkels.
 Auch für die lemniskatische Bogenlänge $s(r)$ lässt sich eine
 komplementäre Bogenlänge definieren, nämlich die Bogenlänge zwischen
 dem Punkt $(x(r), y(r))$ und $(1,0)$.
+Da die Bogenlänge zwischen $(0,0)$ und $(1,0)$ in
+in \eqref{buch:elliptisch:eqn:varpi} bereits bereichnet wurde.
+ist sie $\varpi/2-s$.
+Der {\em lemniskatische Kosinus} ist daher
+$\operatorname{cl}(s) = \operatorname{sl}(\varpi/2-s)$
+Graphen des lemniskatische Sinus und Kosinus sind in
+Abbildung~\label{buch:elliptisch:figure:slcl} dargestellt.
 
 Da die Parametrisierung~\eqref{buch:elliptisch:lemniskate:bogenlaenge}
 eine Bogenlängenparametrisierung ist, darf man $t=s$ schreiben.

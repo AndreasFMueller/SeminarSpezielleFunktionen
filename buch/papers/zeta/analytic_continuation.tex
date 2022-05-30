@@ -1,7 +1,26 @@
 \section{Analytische Fortsetzung} \label{zeta:section:analytische_fortsetzung}
 \rhead{Analytische Fortsetzung}
 
-%TODO missing Text
+Die analytische Fortsetzung der Riemannschen Zetafunktion ist äusserst interessant.
+Sie ermöglicht die Berechnung von $\zeta(-1)$ und weiterer spannender Werte.
+So liegen zum Beispiel unendlich viele Nullstellen der Zetafunktion bei $\Re(s) = 0.5$.
+Diese sind relevant für die Primzahlverteilung und sind Gegenstand der Riemannschen Vermutung.
+
+Es werden zwei verschiedene Fortsetzungen benötigt.
+Die erste erweitert die Zetafunktion auf $\Re(s) > 0$.
+Die zweite verwendet eine Spiegelung an der $\Re(s) = 0.5$ Linie und erschliesst damit die ganze komplexe Ebene.
+Eine grafische Darstellung dieses Plans ist in Abbildung \ref{zeta:fig:continuation_overview} zu sehen.
+\begin{figure}
+    \centering
+    \input{papers/zeta/continuation_overview.tikz.tex}
+    \caption{
+        Die verschiedenen Abschnitte der Riemannschen Zetafunktion.
+        Die originale Definition von \eqref{zeta:equation1} ist im grünen Bereich gültig.
+        Für den blauen Bereich gilt \eqref{zeta:equation:fortsetzung1}.
+        Um den roten Bereich zu bekommen verwendet die Funktionalgleichung \eqref{zeta:equation:functional} eine Spiegelung an $\Re(s) = 0.5$.
+    }
+    \label{zeta:fig:continuation_overview}
+\end{figure}
 
 \subsection{Fortsetzung auf $\Re(s) > 0$} \label{zeta:subsection:auf_bereich_ge_0}
 Zuerst definieren die Dirichletsche Etafunktion als
@@ -14,8 +33,8 @@ Zuerst definieren die Dirichletsche Etafunktion als
 wobei die Reihe bis auf die alternierenden Vorzeichen die selbe wie in der Zetafunktion ist.
 Diese Etafunktion konvergiert gemäss dem Leibnitz-Kriterium im Bereich $\Re(s) > 0$, da dann die einzelnen Glieder monoton fallend sind.
 
-Wenn wir es nun schaffen, die sehr ähnliche Zetafunktion mit der Etafunktion auszudrücken, dann haben die gesuchte Fortsetzung.
-Die folgenden Schritte zeigen, wie man dazu kommt:
+Wenn wir es nun schaffen, die sehr ähnliche Zetafunktion durch die Etafunktion auszudrücken, dann haben die gesuchte Fortsetzung.
+Zuerst wiederholen wir zweimal die Definition der Zetafunktion \eqref{zeta:equation1}, wobei wir sie einmal durch $2^{s-1}$ teilen
 \begin{align}
     \zeta(s)
     &=
@@ -26,8 +45,10 @@ Die folgenden Schritte zeigen, wie man dazu kommt:
     \zeta(s)
     &=
     \sum_{n=1}^{\infty}
-    \frac{2}{(2n)^s} \label{zeta:align2}
-    \\
+    \frac{2}{(2n)^s}. \label{zeta:align2}
+\end{align}
+Durch Subtraktion der beiden Gleichungen \eqref{zeta:align1} minus \eqref{zeta:align2}, ergibt sich
+\begin{align}
     \left(1 - \frac{1}{2^{s-1}} \right)
     \zeta(s)
     &=
@@ -36,14 +57,15 @@ Die folgenden Schritte zeigen, wie man dazu kommt:
     + \frac{1}{3^s}
     \underbrace{-\frac{2}{4^s} + \frac{1}{4^s}}_{-\frac{1}{4^s}}
     \ldots
-    && \text{\eqref{zeta:align1}} - \text{\eqref{zeta:align2}}
     \\
-    &= \eta(s)
-    \\
-    \zeta(s)
-    &=
-    \left(1 - \frac{1}{2^{s-1}} \right)^{-1} \eta(s).
+    &= \eta(s).
 \end{align}
+Dies ist die Fortsetzung auf den noch unbekannten Bereich $0 < \Re(s) < 1$
+\begin{equation} \label{zeta:equation:fortsetzung1}
+    \zeta(s)
+    :=
+    \left(1 - \frac{1}{2^{s-1}} \right)^{-1} \eta(s).
+\end{equation}
 
 \subsection{Fortsetzung auf ganz $\mathbb{C}$} \label{zeta:subsection:auf_ganz}
 Für die Fortsetzung auf den Rest von $\mathbb{C}$, verwenden wir den Zusammenhang von Gamma- und Zetafunktion aus \ref{zeta:section:zusammenhang_mit_gammafunktion}.
@@ -54,125 +76,198 @@ Wir beginnen damit, die Gammafunktion für den halben Funktionswert zu berechnen
     \int_0^{\infty} t^{\frac{s}{2}-1} e^{-t} dt.
 \end{equation}
 Nun substituieren wir $t$ mit $t = \pi n^2 x$ und $dt=\pi n^2 dx$ und erhalten
-\begin{align}
+\begin{equation}
     \Gamma \left( \frac{s}{2} \right)
-    &=
+    =
     \int_0^{\infty}
     (\pi n^2)^{\frac{s}{2}}
     x^{\frac{s}{2}-1}
     e^{-\pi n^2 x}
-    dx
-    && \text{Division durch } (\pi n^2)^{\frac{s}{2}}
-    \\
+    \,dx.
+\end{equation}
+Analog zum Abschnitt \ref{zeta:section:zusammenhang_mit_gammafunktion} teilen wir durch $(\pi n^2)^{\frac{s}{2}}$
+\begin{equation}
     \frac{\Gamma \left( \frac{s}{2} \right)}{\pi^{\frac{s}{2}} n^s}
-    &=
+     =
     \int_0^{\infty}
     x^{\frac{s}{2}-1}
     e^{-\pi n^2 x}
-    dx
-    && \text{Zeta durch Summenbildung } \sum_{n=1}^{\infty}
-    \\
+    \,dx,
+\end{equation}
+und finden Zeta durch die Summenbildung $\sum_{n=1}^{\infty}$
+\begin{equation}
     \frac{\Gamma \left( \frac{s}{2} \right)}{\pi^{\frac{s}{2}}}
     \zeta(s)
-    &=
+    =
     \int_0^{\infty}
     x^{\frac{s}{2}-1}
     \sum_{n=1}^{\infty}
     e^{-\pi n^2 x}
-    dx. \label{zeta:equation:integral1}
-\end{align}
+    \,dx. \label{zeta:equation:integral1}
+\end{equation}
 Die Summe kürzen wir ab als $\psi(x) = \sum_{n=1}^{\infty} e^{-\pi n^2 x}$.
-%TODO Wieso folgendes -> aus Fourier Signal
-Es gilt
-\begin{equation}\label{zeta:equation:psi}
-    \psi(x)
+Im Abschnitt \ref{zeta:subsec:poisson_summation} wird die poissonsche Summenformel $\sum f(n) = \sum F(n)$ bewiesen.
+In unserem Problem ist $f(n) =  e^{-\pi n^2 x}$ und die zugehörige Fouriertransformation $F(n)$ ist
+\begin{equation}
+    F(n)
     =
+    \mathcal{F}
+    (
+    e^{-\pi n^2 x}
+    )
+    =
+    \frac{1}{\sqrt{x}}
+    e^{\frac{-n^2 \pi}{x}}.
+\end{equation}
+Dadurch ergibt sich
+\begin{equation}\label{zeta:equation:psi}
+    \sum_{n=-\infty}^{\infty}
+    e^{-\pi n^2 x}
+    =
+    \frac{1}{\sqrt{x}}
+    \sum_{n=-\infty}^{\infty}
+    e^{\frac{-n^2 \pi}{x}},
+\end{equation}
+wobei wir die Summen so verändern müssen, dass sie bei $n=1$ beginnen und wir $\psi(x)$ erhalten als
+\begin{align}
+    2
+    \sum_{n=1}^{\infty}
+    e^{-\pi n^2 x}
+    +
+    1
+    &=
+    \frac{1}{\sqrt{x}}
+    \left(
+    2
+    \sum_{n=1}^{\infty}
+    e^{\frac{-n^2 \pi}{x}}
+    +
+    1
+    \right)
+    \\
+    2
+    \psi(x)
+    +
+    1
+    &=
+    \frac{1}{\sqrt{x}}
+    \left(
+    2
+    \psi\left(\frac{1}{x}\right)
+    +
+    1
+    \right)
+    \\
+    \psi(x)
+    &=
     - \frac{1}{2}
     + \frac{\psi\left(\frac{1}{x} \right)}{\sqrt{x}}
-    + \frac{1}{2 \sqrt{x}}.
-\end{equation}
+    + \frac{1}{2 \sqrt{x}}.\label{zeta:equation:psi}
+\end{align}
+Diese Gleichung wird später wichtig werden.
 
 Zunächst teilen wir nun das Integral aus \eqref{zeta:equation:integral1} auf als
 \begin{equation}\label{zeta:equation:integral2}
     \int_0^{\infty}
     x^{\frac{s}{2}-1}
     \psi(x)
-    dx
+    \,dx
+    =
+    \underbrace{
+    \int_0^{1}
+    x^{\frac{s}{2}-1}
+    \psi(x)
+    \,dx
+    }_{I_1}
+    +
+    \underbrace{
+    \int_1^{\infty}
+    x^{\frac{s}{2}-1}
+    \psi(x)
+    \,dx
+    }_{I_2}
+    =
+    I_1 + I_2,
+\end{equation}
+wobei wir uns nun auf den ersten Teil $I_1$ konzentrieren werden.
+Dabei setzen wir die Definition von $\psi(x)$ aus \eqref{zeta:equation:psi} ein und erhalten
+\begin{align}
+    I_1
     =
     \int_0^{1}
     x^{\frac{s}{2}-1}
     \psi(x)
-    dx
-    +
-    \int_1^{\infty}
-    x^{\frac{s}{2}-1}
-    \psi(x)
-    dx,
-\end{equation}
-wobei wir uns nun auf den ersten Teil konzentrieren werden.
-Dabei setzen wir das Wissen aus \eqref{zeta:equation:psi} ein und erhalten
-\begin{align}
-    \int_0^{1}
-    x^{\frac{s}{2}-1}
-    \psi(x)
-    dx
+    \,dx
     &=
     \int_0^{1}
     x^{\frac{s}{2}-1}
     \left(
     - \frac{1}{2}
     + \frac{\psi\left(\frac{1}{x} \right)}{\sqrt{x}}
-    + \frac{1}{2 \sqrt{x}}.
+    + \frac{1}{2 \sqrt{x}}
     \right)
-    dx
+    \,dx
     \\
     &=
     \int_0^{1}
     x^{\frac{s}{2}-\frac{3}{2}}
     \psi \left( \frac{1}{x} \right)
     + \frac{1}{2}
-    \left(
+    \biggl(
     x^{\frac{s}{2}-\frac{3}{2}}
     -
     x^{\frac{s}{2}-1}
-    \right)
-    dx
+    \biggl)
+    \,dx
     \\
     &=
+    \underbrace{
     \int_0^{1}
     x^{\frac{s}{2}-\frac{3}{2}}
     \psi \left( \frac{1}{x} \right)
-    dx
-    + \frac{1}{2}
-    \int_0^1
-    x^{\frac{s}{2}-\frac{3}{2}}
-    -
-    x^{\frac{s}{2}-1}
-    dx. \label{zeta:equation:integral3}
-\end{align}
-Dabei kann das zweite Integral gelöst werden als
-\begin{equation}
+    \,dx
+    }_{I_3}
+    +
+    \underbrace{
     \frac{1}{2}
     \int_0^1
     x^{\frac{s}{2}-\frac{3}{2}}
     -
     x^{\frac{s}{2}-1}
-    dx
+    \,dx
+    }_{I_4}. \label{zeta:equation:integral3}
+\end{align}
+Dabei kann das zweite Integral $I_4$ gelöst werden als
+\begin{equation}
+    I_4
+    =
+    \frac{1}{2}
+    \int_0^1
+    x^{\frac{s}{2}-\frac{3}{2}}
+    -
+    x^{\frac{s}{2}-1}
+    \,dx
     =
     \frac{1}{s(s-1)}.
 \end{equation}
-Das erste Integral aus \eqref{zeta:equation:integral3} mit $\psi \left(\frac{1}{x} \right)$ ist nicht lösbar in dieser Form.
+Das erste Integral $I_3$ aus \eqref{zeta:equation:integral3} mit $\psi \left(\frac{1}{x} \right)$ ist nicht lösbar in dieser Form.
 Deshalb substituieren wir $x = \frac{1}{u}$ und $dx = -\frac{1}{u^2}du$.
 Die untere Integralgrenze wechselt ebenfalls zu $x_0 = 0 \rightarrow u_0 = \infty$.
 Dies ergibt
 \begin{align}
+    I_3
+    =
     \int_{\infty}^{1}
-    {\frac{1}{u}}^{\frac{s}{2}-\frac{3}{2}}
+    \left(
+    \frac{1}{u}
+    \right)^{\frac{s}{2}-\frac{3}{2}}
     \psi(u)
     \frac{-du}{u^2}
     &=
     \int_{1}^{\infty}
-    {\frac{1}{u}}^{\frac{s}{2}-\frac{3}{2}}
+    \left(
+    \frac{1}{u}
+    \right)^{\frac{s}{2}-\frac{3}{2}}
     \psi(u)
     \frac{du}{u^2}
     \\
@@ -180,21 +275,23 @@ Dies ergibt
     \int_{1}^{\infty}
     x^{(-1) \left(\frac{s}{2}+\frac{1}{2}\right)}
     \psi(x)
-    dx,
+    \,dx,
 \end{align}
 wobei wir durch Multiplikation mit $(-1)$ die Integralgrenzen tauschen dürfen.
 Es ist zu beachten das diese Grenzen nun identisch mit den Grenzen des zweiten Integrals von \eqref{zeta:equation:integral2} sind.
 Wir setzen beide Lösungen ein in Gleichung \eqref{zeta:equation:integral3} und erhalten
 \begin{equation}
+    I_1
+    =
     \int_0^{1}
     x^{\frac{s}{2}-1}
     \psi(x)
-    dx
+    \,dx
     =
     \int_{1}^{\infty}
     x^{(-1) \left(\frac{s}{2}+\frac{1}{2}\right)}
     \psi(x)
-    dx
+    \,dx
     +
     \frac{1}{s(s-1)}.
 \end{equation}
@@ -206,12 +303,12 @@ Dieses Resultat setzen wir wiederum ein in \eqref{zeta:equation:integral2}, um s
     \int_0^{1}
     x^{\frac{s}{2}-1}
     \psi(x)
-    dx
+    \,dx
     +
     \int_1^{\infty}
     x^{\frac{s}{2}-1}
     \psi(x)
-    dx
+    \,dx
     \nonumber
     \\
     &=
@@ -220,12 +317,12 @@ Dieses Resultat setzen wir wiederum ein in \eqref{zeta:equation:integral2}, um s
     \int_{1}^{\infty}
     x^{(-1) \left(\frac{s}{2}+\frac{1}{2}\right)}
     \psi(x)
-    dx
+    \,dx
     +
     \int_1^{\infty}
     x^{\frac{s}{2}-1}
     \psi(x)
-    dx
+    \,dx
     \\
     &=
     \frac{1}{s(s-1)}
@@ -237,7 +334,7 @@ Dieses Resultat setzen wir wiederum ein in \eqref{zeta:equation:integral2}, um s
     x^{\frac{s}{2}-1}
     \right)
     \psi(x)
-    dx
+    \,dx
     \\
     &=
     \frac{-1}{s(1-s)}
@@ -249,7 +346,7 @@ Dieses Resultat setzen wir wiederum ein in \eqref{zeta:equation:integral2}, um s
     x^{\frac{s}{2}}
     \right)
     \frac{\psi(x)}{x}
-    dx,
+    \,dx,
 \end{align}
 zu erhalten.
 Wenn wir dieses Resultat genau anschauen, erkennen wir dass sich nichts verändert wenn $s$ mit $1-s$ ersetzt wird.
@@ -261,4 +358,120 @@ Somit haben wir die analytische Fortsetzung gefunden als
     \frac{\Gamma \left( \frac{1-s}{2} \right)}{\pi^{\frac{1-s}{2}}}
     \zeta(1-s).
 \end{equation}
+%TODO Definitionen und Gleichungen klarer unterscheiden
 
+\subsection{Poissonsche Summenformel} \label{zeta:subsec:poisson_summation}
+
+Der Beweis für Gleichung \ref{zeta:equation:psi} folgt direkt durch die poissonsche Summenformel.
+Um diese zu beweisen, berechnen wir zunächst die Fourierreihe der Dirac Delta Funktion.
+
+\begin{lemma}
+    Die Fourierreihe der periodischen Dirac Delta Funktion $\sum \delta(x - 2\pi k)$ ist
+    \begin{equation} \label{zeta:equation:fourier_dirac}
+        \sum_{k=-\infty}^{\infty}
+        \delta(x - 2\pi k)
+        =
+        \frac{1}{2\pi}
+        \sum_{n=-\infty}^{\infty}
+        e^{i n x}.
+    \end{equation}
+\end{lemma}
+
+\begin{proof}[Beweis]
+    Eine Fourierreihe einer beliebigen periodischen Funktion $f(x)$ berechnet sich als
+    \begin{align}
+        f(x)
+        &=
+        \sum_{n=-\infty}^{\infty}
+        c_n
+        e^{i n x} \\
+        c_n
+        &=
+        \frac{1}{2\pi}
+        \int_{-\pi}^{\pi}
+        f(x)
+        e^{-i n x}
+        \, dx.
+    \end{align}
+    Wenn $f(x)=\delta(x)$ eingesetz wird ergeben sich konstante Koeffizienten
+    \begin{equation}
+        c_n
+        =
+        \frac{1}{2\pi}
+        \int_{-\pi}^{\pi}
+        \delta(x)
+        e^{-i n x}
+        \, dx
+        =
+        \frac{1}{2\pi},
+    \end{equation}
+    womit die sehr einfache Fourierreihe der Dirac Delta Funktion berechnet wäre.
+\end{proof}
+
+\begin{satz}[Poissonsche Summernformel]
+    Die Summe einer Funktion $f(n)$ über alle ganzen Zahlen $n$ ist äquivalent zur Summe ihrer Fouriertransformation $F(k)$ über alle ganzen Zahlen $k$
+    \begin{equation}
+        \sum_{n=-\infty}^{\infty}
+        f(n)
+        =
+        \sum_{k=-\infty}^{\infty}
+        F(k).
+    \end{equation}
+\end{satz}
+
+\begin{proof}[Beweis]
+    Wir schreiben die Summe über die Fouriertransformation aus
+    \begin{align}
+        \sum_{k=-\infty}^{\infty}
+        F(k)
+        &=
+        \sum_{k=-\infty}^{\infty}
+        \int_{-\infty}^{\infty}
+        f(x)
+        e^{-i 2\pi x k}
+        \, dx
+        \\
+        &=
+        \int_{-\infty}^{\infty}
+        f(x)
+        \underbrace{
+        \sum_{k=-\infty}^{\infty}
+        e^{-i 2\pi x k}
+        }_{\text{\eqref{zeta:equation:fourier_dirac}}}
+        \, dx,
+    \end{align}
+    und verwenden die Fouriertransformation der Dirac Funktion aus \eqref{zeta:equation:fourier_dirac}
+    \begin{align}
+        \sum_{k=-\infty}^{\infty}
+        e^{-i 2\pi x k}
+        &=
+        2 \pi
+        \sum_{k=-\infty}^{\infty}
+        \delta(-2\pi x - 2\pi k)
+        \\
+        &=
+        \frac{2 \pi}{2 \pi}
+        \sum_{k=-\infty}^{\infty}
+        \delta(x + k).
+    \end{align}
+    Wenn wir dies einsetzen und erhalten wir den gesuchten Beweis für die poissonsche Summenformel
+    \begin{equation}
+        \sum_{k=-\infty}^{\infty}
+        F(k)
+        =
+        \int_{-\infty}^{\infty}
+        f(x)
+        \sum_{k=-\infty}^{\infty}
+        \delta(x + k)
+        \, dx
+        =
+        \sum_{k=-\infty}^{\infty}
+        \int_{-\infty}^{\infty}
+        f(x)
+        \delta(x + k)
+        \, dx
+        =
+        \sum_{k=-\infty}^{\infty}
+        f(k).
+    \end{equation}
+\end{proof}

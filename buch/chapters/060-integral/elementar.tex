@@ -5,3 +5,210 @@
 %
 \subsection{Elementare Funktionen
 \label{buch:integral:subsection:elementar}}
+Etwas allgemeiner kann man sagen, dass in den
+Beispielen~\eqref{buch:integration:risch:eqn:integralbeispiel2}
+algebraische Erweiterungen von $\mathbb{Q}(x)$ und Erweiterungen
+um Logarithmen oder Exponentialfunktionen vorgekommen sind.
+Die Stammfunktionen verwenden dieselben Funktionen oder höchstens
+Erweiterungen um Logarithmen von Funktionen, die man schon im
+Integranden gesehen hat.
+
+%
+% Exponentielle und logarithmische Funktione
+%
+\subsubsection{Exponentielle und logarithmische Funktionen}
+In Abschnitt~\ref{buch:integral:subsection:diffke} haben wir
+bereits die Exponentialfunktion $e^x$ und die Logarithmusfunktion 
+$\log x$ charakterisiert als eine Körpererweiterung durch 
+Elemente, die der Differentialgleichung
+\[
+\exp' = \exp
+\qquad\text{und}\qquad
+\log' = \frac{1}{x}
+\]
+genügen.
+Für die Stammfunktionen, die in 
+Abschnitt~\ref{buch:integral:subsection:logexp}
+gefunden wurden, sind aber Logarithmusfunktionen nicht von
+$x$ sondern von beliebigen über $\mathbb{Q}$ algebraischen Elementen
+nötig.
+Um zu verstehen, wie wir diese Funktion als Körpererweiterung erhalten
+könnten, betrachten wir die Ableitung einer Exponentialfunktion
+$\vartheta(x) = \exp(f(x))$ und eines
+Logarithmus 
+$\psi(x) = \log(f(x))$, wie man sie mit der Kettenregel
+berechnet hätte:
+\begin{align*}
+\vartheta'(x)
+&=\exp(f(x)) \cdot f'(x)
+&
+\psi'(x)
+&=
+\frac{f'(x)}{f(x)}
+\quad\Leftrightarrow\quad
+f(x)\psi'(x)
+=
+f'(x).
+\end{align*}
+Dies motiviert die folgende Definition
+
+\begin{definition}
+\label{buch:integral:def:explog}
+Sei $\mathscr{F}$ ein Differentialklörper und $f\in\mathscr{F}$.
+Ein Exponentialfunktion von $f$ ist ein $\vartheta\in \mathscr{F}$mit
+$\vartheta' = \vartheta f'$.
+Ein Logarithmus von $f$ ist ein $\vartheta\in\mathscr{F}$ mit
+$f\vartheta'=f'$.
+\end{definition}
+
+Für $f=x$ mit $f'=1$ reduziert sich die 
+Definition~\ref{buch:integral:def:explog}
+auf die Definition der Exponentialfunktion $\exp(x)$ und
+Logarithmusfunktion $\log(x)$ auf Seite~\pageref{buch:integral:expundlog}.
+
+
+%
+%
+%
+\subsubsection{Transzendente Körpererweiterungen}
+Die Wurzelfunktionen haben wir früher als algebraische Erweiterungen
+eines Differentialkörpers erkannt.
+Die logarithmischen und exponentiellen Elemente gemäss
+Definition~\ref{buch:integral:def:explog} sind nicht algebraisch.
+
+\begin{definition}
+\label{buch:integral:def:transzendent}
+Sei $\mathscr{F}\subset\mathscr{G}$ eine Körpererweiterung und
+$\vartheta\in\mathscr{G}$.
+$\vartheta$ heisst {\em transzendent}, wenn $\vartheta$ nicht
+algebraisch ist.
+\end{definition}
+
+\begin{beispiel}
+Die Funktion $f = e^x + e^{2x} + e^{x/2}$ ist sicher transzendent,
+in diesem Beispiel zeigen wir, dass es mindestens drei verschiedene
+Möglichkeiten gibt, eine Körpererweiterung von $\mathbb{Q}(x)$ zu
+konstruieren, die $f$ enthält.
+
+Erste Möglichkeit: $f=\vartheta_1 + \vartheta_2 + \vartheta_3$ mit
+$\vartheta_1=e^x$,
+$\vartheta_2=e^{2x}$
+und
+$\vartheta_3=e^{x/2}$.
+Jedes der Elemente $\vartheta_i$ ist exponentiell über $\mathbb{Q}(x)$ und 
+$f$ ist in
+\[
+\mathbb{Q}(x)
+\subset
+\mathbb{Q}(x,\vartheta_1)
+\subset
+\mathbb{Q}(x,\vartheta_1,\vartheta_2)
+\subset
+\mathbb{Q}(x,\vartheta_1,\vartheta_2,\vartheta_3)
+\ni
+f.
+\]
+Jede dieser Körpererweiterungen ist transzendent.
+
+Zweite Möglichkeit: $\vartheta_1=e^x$ ist exponentiell über 
+$\mathbb{Q}(x)$ und $\mathbb{Q}(x,\vartheta_1)$ enthält wegen
+\[
+(\vartheta_1^2)'
+=
+2\vartheta_1\vartheta_1'
+=
+2\vartheta_1^2,
+\]
+somit ist $\vartheta_1^2=\vartheta_2$ eine Exponentialfunktion von $2x$
+über $\mathbb{Q}(x)$.
+Das Element $\vartheta_3=e^{x/2}$ ist zwar auch exponentiell über
+$\mathbb{Q}(x)$, es ist aber auch eine Nullstelle des Polynoms
+$m(z)=z^2-[\vartheta_1]$.
+Die Erweiterung
+$\mathbb{Q}(x,\vartheta_1)\subset\mathbb{Q}(x,\vartheta_1,\vartheta_3)$
+ist eine algebraische Erweiterung, die
+$f=\vartheta_1 + \vartheta_1^2+\vartheta_3$ enthält.
+
+Dritte Möglichkeit: $\vartheta_3=e^{x/2}$ ist exponentiell über
+$\mathbb{Q}(x)$.
+Die transzendente Körpererweiterung
+\[
+\mathbb{Q}(x) \subset \mathbb{Q}(x,\vartheta_3)
+\]
+enthält das Element
+$f=\vartheta_3^4+\vartheta_3^2 + \vartheta_3 $.
+\end{beispiel}
+
+Das Beispiel zeigt, dass man nicht sagen kann, dass eine Funktion
+ausschliesslich in einer algebraischen oder transzendenten Körpererweiterung
+zu finden ist. 
+Vielmehr gibt es für die gleiche Funktion möglicherweise verschiedene
+Körpererweiterungen, die alle die Funktion enthalten können.
+
+%
+% Elementare Funktionen
+%
+\subsubsection{Elementare Funktionen}
+Die Stammfunktionen~\eqref{buch:integration:risch:eqn:integralbeispiel2}
+können aufgebaut werden, indem man dem Körper $\mathbb{Q}(x)$ schrittweise
+sowohl algebraische wie auch transzendente Elemente hinzufügt,
+wie in der folgenden Definition, die dies für abstrakte
+Differentialkörpererweiterungen formuliert.
+
+\begin{definition}
+Eine Körpererweiterung $\mathscr{F}\subset\mathscr{G}$ heisst 
+{\em transzendente elementare Erweiterung}, wenn 
+$\mathscr{G} = \mathscr{F}(\vartheta_1,\dots,\vartheta_n)$ und
+jedes der Element $\vartheta_i$ transzendent und logarithmisch oder
+exponentiell ist über
+$\mathscr{F}_{i-1}=\mathscr{F}(\vartheta_1,\dots,\vartheta_{i-1})$.
+Die Körpererweiterung $\mathscr{F}\subset\mathscr{G}$ heisst
+{\em elementare Erweiterung}, wenn 
+$\mathscr{G} = \mathscr{F}(\vartheta_1,\dots,\vartheta_n)$ und
+jedes Element $\vartheta_i$ ist entweder logarithmisch, exponentiell
+oder algebraisch über $\mathscr{F}_{i-1}$.
+\end{definition}
+
+Die Funktionen, die als akzeptable Stammfunktionen für das Integrationsproblem
+in Betracht kommen, sind also jene, die in einer geeigneten elementaren
+Erweiterung des von $\mathbb{Q}(x)$ liegen.
+Ausserdem können auch noch weitere Konstanten nötig sein, sowohl
+algebraische Zahlen wie auch Konstanten wie $\pi$ oder $e$.
+
+\begin{definition}
+Sei $\mathscr{K}(x)$ der Differentialklörper der rationalen Funktionen
+über dem Konstantenkörper $\mathscr{K}\supset\mathbb{Q}$, der in $\mathbb{C}$
+enthalten ist.
+Ist $\mathscr{F}\supset \mathscr{K}(x)$ eine transzendente elementare 
+Erweiterung von $\mathscr{K}(x)$, dann heisst $\mathscr{F}$
+ein Körper von {\em transzendenten elementaren Funktionen}.
+Ist $\mathscr{F}$ eine elementare Erweiterung von $\mathscr{K}(x)$, dann
+heisst $\mathscr{F}$ ein Körper von {\em elementaren Funktionen}.
+\end{definition}
+
+\subsubsection{Das Integrationsproblem}
+Die elementaren Funktionen enthalten alle Funktionen, die sich mit
+arithmetischen Operationen, Wurzeln, Exponentialfunktionen, Logarithmen und
+damit auch mit trigonometrischen und hyperbolischen Funktionen und ihren
+Umkehrfunktionen aus den rationalen Zahlen, der unabhängigen Variablen $x$ 
+und möglicherweise einigen zusätzlichen Konstanten aufbauen lassen.
+Sei also $f$ eine Funktion in einem Körper von elementaren
+Funktionen
+\[
+\mathscr(F)
+=
+\mathbb{Q}(\alpha_1,\dots,\alpha_l)(x,\vartheta_1,\dots,\vartheta_n).
+\]
+Eine elementare Stammfunktion ist eine Funktion $F=\int f$ in einer
+elementaren Körpererweiterung
+\[
+\mathscr{G}
+=
+\mathbb{Q}(\alpha_1,\dots,\alpha_l,\dots,\alpha_{l+k})
+(x,\vartheta_1,\dots,\vartheta_n,\dots,\vartheta_{n+m})
+\]
+mit $F'=f$.
+Das Ziel ist, $F$ mit Hilfe eines Algorithmus zu bestimmen.
+
+
+
