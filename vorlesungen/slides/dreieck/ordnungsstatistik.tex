@@ -8,11 +8,76 @@
 \setlength{\abovedisplayskip}{5pt}
 \setlength{\belowdisplayskip}{5pt}
 \frametitle{Ordnungstatistik}
+\vspace{-10pt}
+\begin{block}{Angeordnete Stichprobe}
+\[
+X_{1:n}
+\le
+X_{2:n}
+\le
+\dots
+\le
+X_{(n-1):n}
+\le
+X_{n:n}
+\]
+$X_{k:n} = \mathstrut$der $k$-te von $n$ Werten
+\end{block}
 \vspace{-20pt}
 \begin{columns}[t,onlytextwidth]
-\begin{column}{0.48\textwidth}
+\begin{column}{0.44\textwidth}
+\uncover<2->{%
+\begin{block}{Verteilungsfunktion}
+\begin{align*}
+F_{X_{k:n}}(x)
+&=
+P(X_{k:n} \le x)
+\\
+&\uncover<3->{=
+P\bigl(
+|\{i\;|\; {\color<4>{red}X_i\le x}\}| \ge k
+\bigr)}
+\\
+&\uncover<5->{=
+P(\text{Anzahl $A_i$}\ge k)}
+\\
+&\uncover<9->{=
+P(K\ge k)}
+\\
+\uncover<6->{
+F_{X_i}(x)&= P(X_i\le x)}\uncover<7->{ = P(A_i)}\uncover<10->{ = p}
+}
+\end{align*}
+\uncover<4->{$A_i=\{X_i\le x\}$}\uncover<7->{ ist ein Beroulli- Experiment 
+\uncover<10->{mit Eintretens- wahrscheinlichkeit $p$}
+\end{block}}
 \end{column}
-\begin{column}{0.48\textwidth}
+\begin{column}{0.52\textwidth}
+\uncover<8->{%
+\begin{block}{Wiederholtes Bernoulli-Experiment}
+$K=\mathstrut$Anzahl $k$, für die $A$ eingetreten
+ist\only<11->{, ist binomialverteilt:}
+\begin{align*}
+\uncover<12->{P(K=k) 
+&=
+\phantom{\sum_{i=k}^n\mathstrut}
+\binom{n}{k} p^k (1-p)^{n-k}
+}
+\\
+\uncover<13->{
+P(K\ge k)
+&=
+\sum_{i=k}^n
+\binom{n}{i} p^i (1-p)^{n-i}
+}
+\\
+\uncover<14->{
+&=
+\sum_{i=k}^n
+\binom{n}{i} F_X(x)^i (1-F_X(x))^{n-i}
+}
+\end{align*}
+\end{block}}
 \end{column}
 \end{columns}
 \end{frame}
