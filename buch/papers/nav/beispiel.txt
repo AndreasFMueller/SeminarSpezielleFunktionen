@@ -1,6 +1,6 @@
 Datum: 28. 5. 2022
 Zeit: 15:29:49 UTC
-Sternzeit: 7h 54m 26.593s
+Sternzeit: 7h 54m 26.593s  7.90738694h
 
 Deneb
 
