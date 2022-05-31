@@ -1,0 +1,133 @@
+\section{Tschebyscheff-Filter}
+
+Als Einstieg betrachent Wir das Tschebyscheff-Filter, welches sehr verwand ist mit dem elliptischen Filter.
+Genauer ausgedrückt sind die Tschebyscheff-1 und -2 Filter Spezialfälle davon.
+
+Der Name des Filters deutet schon an, dass die Tschebyscheff-Polynome $T_N$ für das Filter relevant sind:
+\begin{align}
+    T_{0}(x)&=1\\
+    T_{1}(x)&=x\\
+    T_{2}(x)&=2x^{2}-1\\
+    T_{3}(x)&=4x^{3}-3x\\
+    T_{n+1}(x)&=2x~T_{n}(x)-T_{n-1}(x).
+\end{align}
+Bemerkenswert ist, dass die Polynome im Intervall $[-1, 1]$ mit der trigonometrischen Funktion
+\begin{align} \label{ellfilter:eq:chebychef_polynomials}
+    T_N(w) &= \cos \left( N \cos^{-1}(w) \right) \\
+           &= \cos \left(N~z \right), \quad w= \cos(z)
+\end{align}
+übereinstimmt.
+Der Zusammenhang lässt sich mit den Doppel- und Mehrfachwinkelfunktionen der trigonometrischen Funktionen erklären.
+Abbildung \ref{ellfilter:fig:chebychef_polynomials} zeigt einige Tschebyscheff-Polynome.
+\begin{figure}
+    \centering
+    \input{papers/ellfilter/python/F_N_chebychev2.pgf}
+    \caption{Die Tschebyscheff-Polynome $C_N$.}
+    \label{ellfilter:fig:chebychef_polynomials}
+\end{figure}
+Da der Kosinus begrenzt zwischen $-1$ und $1$ ist, sind auch die Tschebyscheff-Polynome begrenzt.
+Geht man aber über das Intervall $[-1, 1]$ hinaus, divergieren die Funktionen mit zunehmender Ordnung immer steiler gegen $\pm \infty$.
+Diese Eigenschaft ist sehr nützlich für ein Filter.
+Wenn wir die Tschebyscheff-Polynome quadrieren, passen sie perfekt in die Voraussetzungen für Filterfunktionen, wie es Abbildung \ref{ellfiter:fig:chebychef} demonstriert.
+\begin{figure}
+    \centering
+    \input{papers/ellfilter/python/F_N_chebychev.pgf}
+    \caption{Die Tschebyscheff-Polynome füllen den erlaubten Bereich besser, und erhalten dadurch eine steilere Flanke im Sperrbereich.}
+    \label{ellfiter:fig:chebychef}
+\end{figure}
+
+
+Die analytische Fortsetzung von \eqref{ellfilter:eq:chebychef_polynomials} über das Intervall $[-1,1]$ hinaus stimmt mit den Polynomen überein, wie es zu erwarten ist.
+Die genauere Betrachtung wird uns dann helfen die elliptischen Filter besser zu verstehen.
+
+Starten wir mit der Funktion, die als erstes auf $w$ angewendet wird, dem Arcuscosinus.
+Die invertierte Funktion des Kosinus kann als definites Integral dargestellt werden:
+\begin{align}
+    \cos^{-1}(x)
+    &=
+    \int_{x}^{1}
+    \frac{
+        dz
+    }{
+        \sqrt{
+            1-z^2
+        }
+    }\\
+    &=
+    \int_{0}^{x}
+    \frac{
+        -1
+    }{
+        \sqrt{
+            1-z^2
+        }
+    }
+    ~dz
+    + \frac{\pi}{2}
+\end{align}
+Der Integrand oder auch die Ableitung
+\begin{equation}
+    \frac{
+        -1
+    }{
+        \sqrt{
+            1-z^2
+        }
+    }
+\end{equation}
+bestimmt dabei die Richtung, in der die Funktion verläuft.
+Der reelle Arcuscosinus is bekanntlich nur für $|z| \leq 1$ definiert.
+Hier bleibt der Wert unter der Wurzel positiv und das Integral liefert reelle Werte.
+Doch wenn $|z|$ über 1 hinausgeht, wird der Term unter der Wurzel negativ.
+Durch die Quadratwurzel entstehen für den Integranden zwei rein komplexe Lösungen.
+Der Wert des Arcuscosinus verlässt also bei $z= \pm 1$ den reellen Zahlenstrahl und knickt in die komplexe Ebene ab.
+Abbildung \ref{ellfilter:fig:arccos} zeigt den $\arccos$ in der komplexen Ebene.
+\begin{figure}
+    \centering
+    \input{papers/ellfilter/tikz/arccos.tikz.tex}
+    \caption{Die Funktion $z = \cos^{-1}(w)$ dargestellt in der komplexen ebene.}
+    \label{ellfilter:fig:arccos}
+\end{figure}
+Wegen der Periodizität des Kosinus ist auch der Arcuscosinus $2\pi$-periodisch und es entstehen periodische Nullstellen.
+% \begin{equation}
+%     \frac{
+%         1
+%     }{
+%         \sqrt{
+%             1-z^2
+%         }
+%     }
+%     \in \mathbb{R}
+%     \quad
+%     \forall
+%     \quad
+%     -1  \leq z \leq 1
+% \end{equation}
+% \begin{equation}
+%     \frac{
+%         1
+%     }{
+%         \sqrt{
+%             1-z^2
+%         }
+%     }
+%     = i \xi \quad | \quad \xi \in \mathbb{R}
+%     \quad
+%     \forall
+%     \quad
+%     z \leq -1 \cup z \geq 1
+% \end{equation}
+
+Die Tschebyscheff-Polynome skalieren diese Nullstellen mit dem Ordnungsfaktor $N$, wie dargestellt in Abbildung \ref{ellfilter:fig:arccos2}.
+\begin{figure}
+    \centering
+    \input{papers/ellfilter/tikz/arccos2.tikz.tex}
+    \caption{
+        $z_1=N \cos^{-1}(w)$-Ebene der Tschebyscheff-Funktion.
+        Die eingefärbten Pfade sind Verläufe von $w~\forall~[-\infty, \infty]$ für verschiedene Ordnungen $N$.
+        Je grösser die Ordnung $N$ gewählt wird, desto mehr Nullstellen werden passiert.
+    }
+    \label{ellfilter:fig:arccos2}
+\end{figure}
+Somit passert $\cos( N~\cos^{-1}(w))$ im Intervall $[-1, 1]$ $N$ Nullstellen.
+Durch die spezielle Anordnung der Nullstellen hat die Funktion Equirippel-Verhalten und ist dennoch ein Polynom, was sich perfekt für linear Filter eignet.

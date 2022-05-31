@@ -1,0 +1,189 @@
+\section{Jacobische elliptische Funktionen}
+
+%TODO $z$ or $u$ for parameter?
+
+Für das elliptische Filter wird statt der, für das Tschebyscheff-Filter benutzen Kreis-Trigonometrie die elliptischen Funktionen gebraucht.
+Der Begriff elliptische Funktion wird für sehr viele Funktionen gebraucht, daher ist es hier wichtig zu erwähnen, dass es ausschliesslich um die Jacobischen elliptischen Funktionen geht.
+
+Im Wesentlichen erweitern die Jacobi elliptischen Funktionen die trigonometrische Funktionen für Ellipsen.
+Zum Beispiel gibt es analog zum Sinus den elliptischen $\sn(z, k)$.
+Im Gegensatz zum den trigonometrischen Funktionen haben die elliptischen Funktionen zwei parameter.
+Zum einen gibt es den \textit{elliptische Modul} $k$, der die Exzentrizität der Ellipse parametrisiert.
+Zum andern das Winkelargument $z$.
+Im Kreis ist der Radius für alle Winkel konstant, bei Ellipsen ändert sich das.
+Dies hat zur Folge, dass bei einer Ellipse die Kreisbodenstrecke nicht linear zum Winkel verläuft.
+Darum kann hier nicht der gewohnte Winkel verwendet werden.
+Das Winkelargument $z$ kann durch das elliptische Integral erster Art
+\begin{equation}
+    z
+    =
+    F(\phi, k)
+    =
+    \int_{0}^{\phi}
+    \frac{
+        d\theta
+    }{
+        \sqrt{
+            1-k^2 \sin^2 \theta
+        }
+    }
+    =
+    \int_{0}^{\phi}
+    \frac{
+        dt
+    }{
+        \sqrt{
+            (1-t^2)(1-k^2 t^2)
+        }
+    } %TODO which is right? are both functions from phi?
+\end{equation}
+mit dem Winkel $\phi$ in Verbindung liegt.
+
+Dabei wird das vollständige und unvollständige Elliptische integral unterschieden.
+Beim vollständigen Integral
+\begin{equation}
+    K(k)
+    =
+    \int_{0}^{\pi / 2}
+    \frac{
+        d\theta
+    }{
+        \sqrt{
+            1-k^2 \sin^2 \theta
+        }
+    }
+\end{equation}
+wird über ein viertel Ellipsenbogen integriert also bis $\phi=\pi/2$ und liefert das Winkelargument für eine Vierteldrehung.
+Die Zahl wird oft auch abgekürzt mit $K = K(k)$ und ist für das elliptische Filter sehr relevant.
+Alle elliptishen Funktionen sind somit $4K$-periodisch.
+
+Neben dem $\sn$ gibt es zwei weitere basis-elliptische Funktionen $\cn$ und $\dn$.
+Dazu kommen noch weitere abgeleitete Funktionen, die durch Quotienten und Kehrwerte dieser Funktionen zustande kommen.
+Insgesamt sind es die zwölf Funktionen
+\begin{equation*}
+    \sn \quad
+    \ns \quad
+    \scelliptic \quad
+    \sd \quad
+    \cn \quad
+    \nc \quad
+    \cs \quad
+    \cd \quad
+    \dn \quad
+    \nd \quad
+    \ds \quad
+    \dc.
+\end{equation*}
+
+Die Jacobischen elliptischen Funktionen können mit der inversen Funktion des kompletten elliptischen Integrals erster Art
+\begin{equation}
+    \phi = F^{-1}(z, k)
+\end{equation}
+definiert werden. Dabei ist zu beachten dass nur das $z$ Argument der Funktion invertiert wird, also
+\begin{equation}
+    z = F(\phi, k)
+    \Leftrightarrow
+    \phi = F^{-1}(z, k).
+\end{equation}
+Mithilfe von $F^{-1}$ kann zum Beispiel $sn^{-1}$ mit dem Elliptischen integral dargestellt werden:
+\begin{equation}
+    \sin(\phi)
+    =
+    \sin \left( F^{-1}(z, k) \right)
+    =
+    \sn(z, k)
+    =
+    w
+\end{equation}
+
+\begin{equation}
+    \phi
+    =
+     F^{-1}(z, k)
+     =
+     \sin^{-1} \big( \sn (z, k ) \big)
+     =
+    \sin^{-1} ( w )
+\end{equation}
+
+\begin{equation}
+    F(\phi, k)
+    =
+    z
+    =
+    F( \sin^{-1} \big( \sn (z, k ) \big) , k)
+    =
+    F( \sin^{-1} ( w ), k)
+\end{equation}
+
+\begin{equation}
+    \sn^{-1}(w, k)
+    =
+    F(\phi, k),
+    \quad
+    \phi = \sin^{-1}(w)
+\end{equation}
+
+\begin{align}
+    \sn^{-1}(w, k)
+        & =
+    \int_{0}^{\phi}
+    \frac{
+        d\theta
+    }{
+        \sqrt{
+            1-k^2 \sin^2 \theta
+        }
+    },
+    \quad
+    \phi = \sin^{-1}(w)
+    \\
+        & =
+    \int_{0}^{w}
+    \frac{
+        dt
+    }{
+        \sqrt{
+            (1-t^2)(1-k^2 t^2)
+        }
+    }
+\end{align}
+
+Beim $\cos^{-1}(x)$ haben wir gesehen, dass die analytische Fortsetzung bei $x < -1$ und $x > 1$ rechtwinklig in die Komplexen zahlen wandert.
+Wenn man das gleiche mit $\sn^{-1}(w, k)$ macht, erkennt man zwei interessante Stellen.
+Die erste ist die gleiche wie beim $\cos^{-1}(x)$ nämlich bei $t = \pm 1$.
+Der erste Term unter der Wurzel wird dann negativ, während der zweite noch positiv ist, da $k \leq 1$.
+\begin{equation}
+    \frac{
+        1
+    }{
+        \sqrt{
+            (1-t^2)(1-k^2 t^2)
+        }
+    }
+    \in \mathbb{R}
+    \quad \forall \quad
+    -1 \leq t \leq 1
+\end{equation}
+Die zweite stelle passiert wenn beide Faktoren unter der Wurzel negativ werden, was bei $t = 1/k$ der Fall ist.
+
+
+
+
+Funktion in relle und komplexe Richtung periodisch
+
+In der reellen Richtung ist sie $4K(k)$-periodisch und in der imaginären Richtung $4K^\prime(k)$-periodisch.
+
+
+
+%TODO sn^{-1} grafik
+
+\begin{figure}
+    \centering
+    \input{papers/ellfilter/tikz/sn.tikz.tex}
+    \caption{
+        $z$-Ebene der Funktion $z = \sn^{-1}(w, k)$.
+        Die Funktion ist in der realen Achse $4K$-periodisch und in der imaginären Achse $2jK^\prime$-periodisch.
+    }
+    % \label{ellfilter:fig:cd2}
+\end{figure}
