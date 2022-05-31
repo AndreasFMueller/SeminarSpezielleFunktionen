@@ -22,25 +22,25 @@
 Im Abschnitt~\ref{laguerre:section:definition} haben wir behauptet,
 dass die Laguerre-Polynome orthogonale Polynome sind.
 Zu dieser Behauptung möchten wir nun einen Beweis liefern.
-Wenn wir die Laguerre\--Differentialgleichung in ein
-Sturm\--Liouville\--Problem umwandeln können, haben wir bewiesen, dass es sich
-bei
-den Laguerre\--Polynomen um orthogonale Polynome handelt (siehe
+Wenn wir \eqref{laguerre:dgl} in ein
+Sturm-Liouville-Problem umwandeln können, haben wir bewiesen, dass es sich
+bei den Laguerre-Polynomen um orthogonale Polynome handelt (siehe
 Abschnitt~\ref{buch:integrale:subsection:sturm-liouville-problem}).
-Der Sturm-Liouville-Operator
+Der Beweis kann äquivalent auch über den Sturm-Liouville-Operator
 \begin{align}
 S
 =
 \frac{1}{w(x)} \left(-\frac{d}{dx}p(x) \frac{d}{dx} + q(x) \right).
 \label{laguerre:slop}
 \end{align}
-und der Laguerre-Operator
+und den Laguerre-Operator
 \begin{align}
 \Lambda
 =
 x \frac{d}{dx^2} + (\nu + 1 -x) \frac{d}{dx}
 \end{align}
-sind einander gleichzusetzen.
+erhalten werden,
+in dem wir diese Operatoren einander gleichsetzen.
 Aus der Beziehung
 \begin{align}
 S
@@ -66,16 +66,18 @@ Durch Separation erhalten wir dann
 \int \frac{dp}{p}
  & =
 -\int \frac{\nu + 1 - x}{x} \, dx
+=
+-\int \frac{\nu + 1}{x} \, dx - \int 1\, dx
 \\
 \log p
  & =
--\log \nu + 1 - x + C
+-(\nu + 1)\log x - x + c
 \\
 p(x)
  & =
 -C x^{\nu + 1} e^{-x}
 \end{align*}
-Eingefügt in Gleichung~\eqref{laguerre:sl-lag} erhalten wir
+Eingefügt in Gleichung~\eqref{laguerre:sl-lag} ergibt sich
 \begin{align*}
 \frac{C}{w(x)}
 \left(
