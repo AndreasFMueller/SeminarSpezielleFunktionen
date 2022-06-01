@@ -117,7 +117,7 @@
 		\tableofcontents
 	\end{frame}
 
-	\section{Linear Filter}
+	\section{Lineare Filter}
 
 	\begin{frame}
 		\frametitle{Lineare Filter}
@@ -349,6 +349,23 @@
 
 	\end{frame}
 
+	\section{Elliptisches Filter}
+
+	\begin{frame}
+		\frametitle{Elliptisches Filter}
+
+		\begin{equation*}
+			z_1 = N~\frac{K_1}{K}~\cd^{-1}(w, k)
+		\end{equation*}
+
+		\begin{center}
+			\scalebox{0.75}{
+				\input{../tikz/cd3.tikz.tex}
+			}
+		\end{center}
+
+	\end{frame}
+
 	\begin{frame}
 		\frametitle{Periodizität in realer und imaginärer Richtung}
 
@@ -360,19 +377,38 @@
 	\end{frame}
 
 	\begin{frame}
+		\frametitle{Gradgleichung}
+
+		\begin{equation}
+			N \frac{K^\prime}{K} = \frac{K^\prime_1}{K_1}
+		\end{equation}
+
+		\begin{center}
+			\scalebox{0.95}{
+				\input{../tikz/elliptic_transform.tikz}
+			}
+		\end{center}
+
+
+	\end{frame}
+
+	\begin{frame}
 		\frametitle{Elliptisches Filter}
 
 		\begin{equation*}
+			R_N = \cd(z_1, k_1),
+			\quad
 			z_1 = N~\frac{K_1}{K}~\cd^{-1}(w, k)
 		\end{equation*}
 
 		\begin{center}
-			\scalebox{0.8}{
+			\scalebox{0.75}{
 				\input{../tikz/cd2.tikz.tex}
 			}
 		\end{center}
 
 	\end{frame}
+
 
 	\begin{frame}
 		\frametitle{Elliptisches Filter}
@@ -398,15 +434,6 @@
 
 			\end{column}
 		\end{columns}
-
-	\end{frame}
-
-	\begin{frame}
-		\frametitle{Gradgleichung}
-
-		\begin{equation}
-			N \frac{K^\prime}{K} = \frac{K^\prime_1}{K_1}
-		\end{equation}
 
 	\end{frame}
 

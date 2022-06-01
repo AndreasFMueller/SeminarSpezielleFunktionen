@@ -1,5 +1,6 @@
 # %%
 
+import enum
 import matplotlib.pyplot as plt
 import scipy.signal
 import numpy as np
@@ -8,7 +9,9 @@ from matplotlib.patches import Rectangle
 
 import plot_params
 
-def ellip_filter(N):
+N=5
+
+def ellip_filter(N, mode=-1):
 
     order = N
     passband_ripple_db = 3
@@ -26,7 +29,16 @@ def ellip_filter(N):
         fs=None
     )
 
-    w, mag_db, phase = scipy.signal.bode((a, b), w=np.linspace(0*omega_c,2*omega_c, 4000))
+    if mode == 0:
+        w = np.linspace(0*omega_c,omega_c, 2000)
+    elif mode == 1:
+        w = np.linspace(omega_c,1.00992*omega_c, 2000)
+    elif mode == 2:
+        w = np.linspace(1.00992*omega_c,2*omega_c, 2000)
+    else:
+        w = np.linspace(0*omega_c,2*omega_c, 4000)
+
+    w, mag_db, phase = scipy.signal.bode((a, b), w=w)
 
     mag = 10**(mag_db/20)
 
@@ -40,9 +52,9 @@ def ellip_filter(N):
 
 plt.figure(figsize=(4,2.5))
 
-for N in [5]:
-    w, FN2, mag, a, b = ellip_filter(N)
-    plt.semilogy(w, FN2, label=f"$N={N}, k=0.1$", linewidth=1)
+for mode, c in enumerate(["green", "orange", "red"]):
+    w, FN2, mag, a, b = ellip_filter(N, mode=mode)
+    plt.semilogy(w, FN2, label=f"$N={N}, k=0.1$", linewidth=1, color=c)
 
 plt.gca().add_patch(Rectangle(
     (0, 0),
@@ -53,21 +65,21 @@ plt.gca().add_patch(Rectangle(
 ))
 plt.gca().add_patch(Rectangle(
     (1, 1),
-    0.01, 1e2-1,
+    0.00992, 1e2-1,
     fc ='orange',
     alpha=0.2,
     lw = 10,
 ))
 
 plt.gca().add_patch(Rectangle(
-    (1.01, 100),
+    (1.00992, 100),
     1, 1e6,
     fc ='red',
     alpha=0.2,
     lw = 10,
 ))
 
-zeros = [0,0.87,1]
+zeros = [0,0.87,0.995]
 poles = [1.01,1.155]
 
 import matplotlib.transforms
@@ -99,7 +111,7 @@ plt.ylim([1e-4,1e6])
 plt.grid()
 plt.xlabel("$w$")
 plt.ylabel("$F^2_N(w)$")
-plt.legend()
+# plt.legend()
 plt.tight_layout()
 plt.savefig("F_N_elliptic.pgf")
 plt.show()
@@ -107,7 +119,9 @@ plt.show()
 
 
 plt.figure(figsize=(4,2.5))
-plt.plot(w, mag, linewidth=1)
+for mode, c in enumerate(["green", "orange", "red"]):
+    w, FN2, mag, a, b = ellip_filter(N, mode=mode)
+    plt.plot(w, mag, linewidth=1, color=c)
 
 plt.gca().add_patch(Rectangle(
     (0, np.sqrt(2)/2),
@@ -118,14 +132,14 @@ plt.gca().add_patch(Rectangle(
 ))
 plt.gca().add_patch(Rectangle(
     (1, 0.1),
-    0.01, np.sqrt(2)/2 - 0.1,
+    0.00992, np.sqrt(2)/2 - 0.1,
     fc ='orange',
     alpha=0.2,
     lw = 10,
 ))
 
 plt.gca().add_patch(Rectangle(
-    (1.01, 0),
+    (1.00992, 0),
     1, 0.1,
     fc ='red',
     alpha=0.2,

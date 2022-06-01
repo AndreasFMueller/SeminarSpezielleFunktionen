@@ -1,0 +1,64 @@
+
+\def\d{0.2}
+\def\n{3}
+\def\nn{2}
+\def\a{2.5}
+
+\begin{tikzpicture}[>=stealth', auto, node distance=2cm, scale=1.2]
+
+    \tikzstyle{zero} = [draw, circle, inner sep =0, minimum height=0.15cm]
+    \tikzstyle{dot} = [fill, circle, inner sep =0, minimum height=0.1cm]
+
+    \tikzset{pole/.style={cross out, draw=black, minimum size=(0.15cm-\pgflinewidth), inner sep=0pt, outer sep=0pt}}
+
+    \begin{scope}[xscale=3, yscale=3]
+
+    \begin{scope}[]
+
+        \fill[orange!30, scale=1.735] (0,0) rectangle (\d*\a+0.5, \d/\a+0.5);
+        \fill[yellow!30] (0,0) rectangle (\d*\a+0.5, \d/\a+0.5);
+
+        \begin{scope}[scale=1.735, red]
+            \draw (0,0) rectangle (\d*\a/\n+0.5/\n, \d/\a+0.5);
+            \draw[gray] (0,0) -- (\d*\a/\n+0.5/\n, \d/\a+0.5);
+
+            \node[zero] at ( \d*\a/\n+0.5/\n, \d/\a+0.5) {};
+            \node[pole, color=red] at ( \d*\a/\n+0.5/\n, 0) {};
+
+
+            \draw[] ( \d*\a/\n+0.5/\n,0)  node[anchor=north] {\small $K_1$};
+            \draw[]  (0, \d/\a+0.5)  node[anchor=east]{\small $jK_1^\prime$};
+
+        \end{scope}
+
+        \begin{scope}[blue]
+            \draw[] (0,0) rectangle (\d*\a+0.5, \d/\a+0.5);
+            \foreach \i in {1,...,\nn} {
+                \draw[gray, dotted] (\i*\d*\a/\n+\i*0.5/\n, 0) -- (\i*\d*\a/\n+\i*0.5/\n, \d/\a+0.5);
+            }
+
+            \node[zero] at ( \d*\a+0.5, \d/\a+0.5) {};
+            \node[pole, color=blue] at ( \d*\a+0.5, 0) {};
+
+            \draw[] ( \d*\a+0.5,0)  node[anchor=north] {\small $K$};
+            \draw[]  (0, \d/\a+0.5)  node[anchor=east]{\small $jK^\prime$};
+
+            \node[dot, gray] at (\d*\a/\n+0.5/\n, \d/\a+0.5) {};
+            \node[above] at (0.5*\d*\a/\n+0.5*0.5/\n, \d/\a+0.5) {\small $K/N$};
+
+        \end{scope}
+
+        \draw[thick, gray, ->] (0,-0.25) -- (0,1.25) node[anchor=south]{$\mathrm{Im}$};
+        \draw[thick, gray, ->] (-0.25,0) -- (2,0) node[anchor=west]{$\mathrm{Re}$};
+
+        \begin{scope}[]
+            \clip(0,0) rectangle (2,1.25);
+            \draw[scale=1, domain=0.1:10,  variable=\x, smooth, samples=200] plot ({\d*\x1+0.5}, {\d/\x+0.5});
+
+        \end{scope}
+    \end{scope}
+
+
+\end{scope}
+
+\end{tikzpicture}

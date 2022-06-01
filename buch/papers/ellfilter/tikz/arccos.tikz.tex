@@ -10,10 +10,10 @@
 
         \clip(-7.5,-2) rectangle (7.5,2);
 
-        \draw[thick, ->, darkgreen] (0, 0) -- (0,1.5);
-        \draw[thick, ->, orange] (1, 0) -- (0,0);
-        \draw[thick, ->, red] (2, 0) -- (1,0);
-        \draw[thick, ->, blue] (2,1.5) -- (2, 0);
+        \draw[ultra thick, ->, darkgreen] (0, 0) -- (0,1.5);
+        \draw[ultra thick, ->, orange] (1, 0) -- (0,0);
+        \draw[ultra thick, ->, red] (2, 0) -- (1,0);
+        \draw[ultra thick, ->, blue] (2,1.5) -- (2, 0);
 
         \foreach \i in {-2,...,1} {
             \begin{scope}[opacity=0.5, xshift=\i*4cm]
@@ -45,7 +45,7 @@
 
     \end{scope}
 
-    \begin{scope}[yshift=-2.5cm]
+    \begin{scope}[yshift=-3cm]
 
         \draw[gray, ->] (-5,0) -- (5,0) node[anchor=west]{$w$};
 

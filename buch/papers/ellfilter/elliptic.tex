@@ -69,7 +69,15 @@ Analog zu Abbildung \ref{ellfilter:fig:arccos2} können wir auch bei den ellipti
     \label{ellfilter:fig:elliptic}
 \end{figure}
 
-\subsection{Degree Equation}
+
+\begin{figure}
+    \centering
+    \input{papers/ellfilter/python/elliptic.pgf}
+    \caption{Die resultierende frequenzantwort eines elliptischs filter.}
+    \label{ellfilter:fig:elliptic_freq}
+\end{figure}
+
+\subsection{Gradgleichung}
 
 Der $\cd^{-1}$ Term muss so verzogen werden, dass die umgebene $\cd$-Funktion die Nullstellen und Pole trifft.
 Dies trifft ein wenn die Degree Equation erfüllt ist.
@@ -81,6 +89,19 @@ Dies trifft ein wenn die Degree Equation erfüllt ist.
 
 Leider ist das lösen dieser Gleichung nicht trivial.
 Die Rechnung wird in \ref{ellfilter:bib:orfanidis} im Detail angeschaut.
+
+\begin{figure}
+    \centering
+    \input{papers/ellfilter/python/k.pgf}
+    \caption{Die Periodizitäten in realer und imaginärer Richtung in Abhängigkeit vom elliptischen Modul $k$.}
+\end{figure}
+
+\begin{figure}
+    \centering
+    \input{papers/ellfilter/tikz/elliptic_transform.tikz}
+    \caption{Die Gradgleichung als geometrisches Problem.}
+\end{figure}
+
 
 
 \subsection{Polynome?}

@@ -324,9 +324,9 @@ K_prime = ell_int(np.sqrt(1-k**2))
 
 
 f, axs = plt.subplots(1,2, figsize=(5,2.5))
-axs[0].plot(k, K, linewidth=0.1)
+axs[0].plot(k, K, linewidth=1)
 axs[0].text(k[30], K[30]+0.1, f"$K$")
-axs[0].plot(k, K_prime, linewidth=0.1)
+axs[0].plot(k, K_prime, linewidth=1)
 axs[0].text(k[30], K_prime[30]+0.1, f"$K^\prime$")
 axs[0].set_xlim([0,1])
 axs[0].set_ylim([0,4])
