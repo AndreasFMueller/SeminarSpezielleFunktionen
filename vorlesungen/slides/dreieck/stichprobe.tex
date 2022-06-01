@@ -12,21 +12,22 @@
 \begin{columns}[t,onlytextwidth]
 \begin{column}{0.48\textwidth}
 \begin{block}{Zufallsvariable}
-Gegeben eine Zufallsvariable $X$ mit
+Gegeben eine Zufallsvariable $X$ \uncover<5->{mit
 Verteilungsfunktion
 \[
 F_X(x)
 =
 P(X\le x)
-\]
-und
+\]}
+\uncover<6->{und
 Wahrscheinlichkeitsdichte
 \[
 \varphi_X(x)
 =
 \frac{d}{dx} F_X(x)
-\]
+\]}
 \end{block}
+\uncover<7->{%
 \begin{block}{Gleichverteilung}
 \[
 F(x) = \begin{cases}
@@ -34,6 +35,7 @@ F(x) = \begin{cases}
 x&\qquad 0\le x \le 1\\
 1&\qquad 1<x
 \end{cases}
+\uncover<8->{
 \qquad\Rightarrow\qquad
 \varphi(x)
 =
@@ -41,19 +43,21 @@ x&\qquad 0\le x \le 1\\
 1&\qquad 0\le x \le 1\\
 0&\qquad\text{sonst}.
 \end{cases}
+}
 \]
-\end{block}
+\end{block}}
 \end{column}
 \begin{column}{0.48\textwidth}
+\uncover<2->{%
 \begin{block}{Stichprobe}
 $n$ Zufallsvariablen $X_1,\dots,X_n$
 \begin{itemize}
-\item
+\item<3->
 alle $X_i$ haben die gleiche Verteilung wie $X$
-\item
+\item<4->
 die $X_i$ sind unabhängig
 \end{itemize}
-\end{block}
+\end{block}}
 \end{column}
 \end{columns}
 \end{frame}
