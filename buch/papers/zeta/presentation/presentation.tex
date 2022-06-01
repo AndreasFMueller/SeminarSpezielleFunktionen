@@ -80,6 +80,7 @@
 \newcommand*{\RD}{\textcolor{red}}
 \newcommand*{\BL}{\textcolor{blue}}
 \newcommand*{\GN}{\textcolor{dgreen}}
+\newcommand*{\YE}{\textcolor{violet}}
 
 
 
@@ -242,20 +243,121 @@
         \end{itemize}
     \end{frame}
     \begin{frame}
+        \frametitle{Euler Produkt: Verbindung von Zeta und Primzahlen}
+        \begin{equation*}
+            \zeta(s)
+            =
+            \sum_{n=1}^\infty
+            \frac{1}{n^s}
+            =
+            \prod_{p \in P}
+            \frac{1}{1-p^{-s}}
+        \end{equation*}
+        \pause
+        Geometrische Reihe
+        \begin{equation*}
+            \prod_{p \in P}
+            \frac{1}{1-p^{-s}}
+            =
+            \prod_{p \in P}
+            \left(
+            1
+            +
+            \frac{1}{p^s}
+            +
+            \frac{1}{p^{2s}}
+            +
+            \frac{1}{p^{3s}}
+            +
+            \ldots
+            \right)
+        \end{equation*}
+        \pause
+        Erste Terme ausmultiplizieren
+        \begin{align*}
+            \left(
+            1
+            +
+            \RD{\frac{1}{2^s}}
+            +
+            \GN{\frac{1}{2^{2s}}}
+            +
+            \frac{1}{2^{3s}}
+            +
+            \ldots
+            \right)
+            \left(
+            1
+            +
+            \BL{\frac{1}{3^s}}
+            +
+            \frac{1}{3^{2s}}
+            +
+            \frac{1}{3^{3s}}
+            +
+            \ldots
+            \right)
+            \left(
+            1
+            +
+            \YE{\frac{1}{5^s}}
+            +
+            \frac{1}{5^{2s}}
+            +
+            \frac{1}{5^{3s}}
+            +
+            \ldots
+            \right)
+            \\
+            =
+            1
+            +
+            \RD{\frac{1}{2^s}}
+            +
+            \BL{\frac{1}{3^s}}
+            +
+            \GN{\frac{1}{4^s}}
+            +
+            \YE{\frac{1}{5^s}}
+            +
+            \ldots
+        \end{align*}
+    \end{frame}
+    \begin{frame}
         \frametitle{Primzahlfunktion}
         \begin{center}
            \scalebox{0.5}{\input{../primzahlfunktion.pgf}}
         \end{center}
     \end{frame}
+
+
+    \section{Darstellungen}
+
     \begin{frame}
-        \frametitle{Zusammenhang Zeta und Primzahlen}
-        %TODO
+        \frametitle{Farbcodierung}
+        \begin{center}
+            \scalebox{0.6}{\input{zeta_color_plot.pgf}}
+        \end{center}
     \end{frame}
 
-
-    \section{Weitere Eigenschaften}
-
-
+    \begin{frame}
+        \frametitle{Konstanter Realteil $\Re(s)=-1$ und $\Im(s)=0\ldots40$}
+        \begin{center}
+            \scalebox{0.6}{\input{../zeta_re_-1_plot.pgf}}
+        \end{center}
+    \end{frame}
+    \begin{frame}
+        \frametitle{Konstanter Realteil $\Re(s)=0$ und $\Im(s)=0\ldots40$}
+        \begin{center}
+            \scalebox{0.6}{\input{../zeta_re_0_plot.pgf}}
+        \end{center}
+    \end{frame}
+    \begin{frame}
+        \frametitle{Konstanter Realteil $\Re(s)=0.5$ und $\Im(s)=0\ldots40$}
+        \begin{center}
+            \scalebox{0.6}{\input{../zeta_re_0.5_plot.pgf}}
+        \end{center}
+    \end{frame}
 
 \end{document}
 
