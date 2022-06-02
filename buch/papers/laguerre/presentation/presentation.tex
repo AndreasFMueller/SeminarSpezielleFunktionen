@@ -1,0 +1,134 @@
+\documentclass[ngerman, aspectratio=169, xcolor={rgb}]{beamer}
+
+% style
+\mode<presentation>{
+	\usetheme{Frankfurt}
+}
+%packages
+\usepackage[utf8]{inputenc}\DeclareUnicodeCharacter{2212}{-}
+\usepackage[ngerman]{babel}
+\usepackage{graphicx}
+\usepackage{array}
+
+\newcolumntype{L}[1]{>{\raggedright\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+\usepackage{ragged2e}
+
+\usepackage{bm} % bold math
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{mathtools}
+\usepackage{amsmath}
+\usepackage{multirow} % multi row in tables
+\usepackage{booktabs} %toprule midrule bottomrue in tables
+\usepackage{scrextend}
+\usepackage{textgreek}
+\usepackage[rgb]{xcolor}
+
+\usepackage{ marvosym } % \Lightning
+
+\usepackage{multimedia} % embedded videos
+
+\usepackage{tikz}
+\usepackage{pgf}
+\usepackage{pgfplots}
+
+\usepackage{algorithmic}
+
+%citations
+\usepackage[style=verbose,backend=biber]{biblatex}
+\addbibresource{references.bib}
+
+
+%math font
+\usefonttheme[onlymath]{serif}
+
+%Beamer Template modifications
+%\definecolor{mainColor}{HTML}{0065A3} % HSR blue
+\definecolor{mainColor}{HTML}{D72864} % OST pink
+\definecolor{invColor}{HTML}{28d79b} % OST pink
+\definecolor{dgreen}{HTML}{38ad36} % Dark green
+
+%\definecolor{mainColor}{HTML}{000000} % HSR blue
+\setbeamercolor{palette primary}{bg=white,fg=mainColor}
+\setbeamercolor{palette secondary}{bg=orange,fg=mainColor}
+\setbeamercolor{palette tertiary}{bg=yellow,fg=red}
+\setbeamercolor{palette quaternary}{bg=mainColor,fg=white} %bg = Top bar, fg = active top bar topic
+\setbeamercolor{structure}{fg=black} % itemize, enumerate, etc (bullet points)
+\setbeamercolor{section in toc}{fg=black} % TOC sections
+\setbeamertemplate{section in toc}[sections numbered]
+\setbeamertemplate{subsection in toc}{%
+	\hspace{1.2em}{$\bullet$}~\inserttocsubsection\par}
+
+\setbeamertemplate{itemize items}[circle]
+\setbeamertemplate{description item}[circle]
+\setbeamertemplate{title page}[default][colsep=-4bp,rounded=true]
+\beamertemplatenavigationsymbolsempty
+
+\setbeamercolor{footline}{fg=gray}
+\setbeamertemplate{footline}{%
+	\hfill\usebeamertemplate***{navigation symbols}
+	\hspace{0.5cm}
+	\insertframenumber{}\hspace{0.2cm}\vspace{0.2cm}
+}
+
+\usepackage{caption}
+\captionsetup{labelformat=empty}
+
+%Title Page
+\title{Laguerre-Polynome}
+\subtitle{Anwendung: Approximation der Gamma-Funktion}
+\author{Patrik Müller}
+% \institute{OST Ostschweizer Fachhochschule}
+% \institute{\includegraphics[scale=0.3]{../img/ost_logo.png}}
+\date{\today}
+
+\input{../packages.tex}
+
+\newcommand*{\QED}{\hfill\ensuremath{\blacksquare}}%
+
+\newcommand*{\HL}{\textcolor{mainColor}}
+\newcommand*{\RD}{\textcolor{red}}
+\newcommand*{\BL}{\textcolor{blue}}
+\newcommand*{\GN}{\textcolor{dgreen}}
+
+\definecolor{darkgreen}{rgb}{0,0.6,0}
+
+
+\makeatletter
+\newcount\my@repeat@count
+\newcommand{\myrepeat}[2]{%
+	\begingroup
+	\my@repeat@count=\z@
+	\@whilenum\my@repeat@count<#1\do{#2\advance\my@repeat@count\@ne}%
+	\endgroup
+}
+\makeatother
+
+\usetikzlibrary{automata,arrows,positioning,calc,shapes.geometric, fadings}
+
+\begin{document}
+
+\begin{frame}
+	\titlepage
+\end{frame}
+
+\begin{frame}{Inhaltsverzeichnis}
+	\tableofcontents
+\end{frame}
+
+\input{sections/laguerre}
+
+\input{sections/gaussquad}
+
+\input{sections/gamma}
+
+\input{sections/gamma_approx}
+
+\appendix
+\begin{frame}
+	\centering
+	\Large
+	\textbf{Vielen Dank für die Aufmerksamkeit}
+\end{frame}
+
+\end{document}

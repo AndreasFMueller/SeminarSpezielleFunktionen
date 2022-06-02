@@ -1,0 +1,50 @@
+\section{Gamma-Funktion}
+
+\begin{frame}{Gamma-Funktion}
+\begin{columns}
+
+\begin{column}{0.48\textwidth}
+\begin{figure}[h]
+\centering
+% \scalebox{0.51}{\input{../images/gammaplot.pdf}}
+\includegraphics[width=1\textwidth]{../images/gammaplot.pdf}
+% \caption{Gamma-Funktion}
+\end{figure}
+\end{column}
+
+\begin{column}{0.52\textwidth}
+Verallgemeinerung der Fakultät
+\begin{align*}
+\Gamma(n) = (n-1)!    
+\end{align*}
+
+Integralformel
+\begin{align*}
+\Gamma(z) 
+=
+\int_0^\infty x^{z-1} e^{-x} \, dx
+,\quad
+\operatorname{Re} z > 0
+\end{align*}
+
+Funktionalgleichung
+\begin{align*}
+z \Gamma(z)
+=
+\Gamma(z + 1)
+\end{align*}
+
+Reflektionsformel
+\begin{align*}
+\Gamma(z) \Gamma(1 - z)
+=
+\frac{\pi}{\sin \pi z}
+, \quad
+\text{für }
+z \notin \mathbb{Z}
+\end{align*}
+
+\end{column}
+\end{columns}
+
+\end{frame}

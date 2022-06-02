@@ -39,7 +39,7 @@ def find_shift(z, target):
 
 def find_optimal_shift(z, n):
     mhat = 1.34093 * n + 0.854093
-    steps = int(np.ceil(mhat - np.real(z))) - 1
+    steps = int(np.floor(mhat - np.real(z)))
     return steps
 
 
@@ -136,7 +136,7 @@ ax.set_xlabel(r"$z$")
 ax.set_ylabel("Relativer Fehler")
 ax.legend(ncol=3, fontsize="small")
 ax.grid(1, "both")
-# fig.savefig(f"{img_path}/rel_error_simple.pgf")
+fig.savefig(f"{img_path}/rel_error_simple.pgf")
 
 
 # Mirrored
@@ -162,7 +162,7 @@ ax2.set_xlabel(r"$z$")
 ax2.set_ylabel("Relativer Fehler")
 ax2.legend(ncol=1, loc="upper left", fontsize="small")
 ax2.grid(1, "both")
-# fig2.savefig(f"{img_path}/rel_error_mirror.pgf")
+fig2.savefig(f"{img_path}/rel_error_mirror.pgf")
 
 
 # Move to target
@@ -202,7 +202,7 @@ ax3.set_yticks(np.arange(len(ns)))
 ax3.set_yticklabels(ns)
 ax3.set_xlabel(r"$z$")
 ax3.set_ylabel(r"$n$")
-# fig3.savefig(f"{img_path}/targets.pdf")
+fig3.savefig(f"{img_path}/targets.pdf")
 
 targets = np.mean(bests, -1)
 intercept, bias = np.polyfit(ns, targets, 1)
@@ -211,16 +211,16 @@ fig4, axs4 = plt.subplots(
 )
 xl = np.array([ns[0] - 0.5, ns[-1] + 0.5])
 axs4[0].plot(xl, intercept * xl + bias, label=r"$\hat{m}$")
-axs4[0].plot(ns, targets, "x", label=r"$\bar{m}$")
-axs4[1].plot(ns, ((intercept * ns + bias) - targets), "-x", label=r"$\hat{m} - \bar{m}$")
+axs4[0].plot(ns, targets, "x", label=r"$\overline{m}$")
+axs4[1].plot(ns, ((intercept * ns + bias) - targets), "-x", label=r"$\hat{m} - \overline{m}$")
 axs4[0].set_xlim(*xl)
 # axs4[0].set_title("Schätzung von Mittelwert")
 # axs4[1].set_title("Fehler")
-axs4[-1].set_xlabel(r"$z$")
+axs4[-1].set_xlabel(r"$n$")
 for ax in axs4:
     ax.grid(1)
     ax.legend()
-# fig4.savefig(f"{img_path}/schaetzung.pgf")
+fig4.savefig(f"{img_path}/estimate.pgf")
 
 print(f"Intercept={intercept:.6g}, Bias={bias:.6g}")
 predicts = np.ceil(intercept * ns[:, None] + bias - x)
@@ -234,14 +234,14 @@ gamma = scipy.special.gamma(x)[:, None]
 n = 8
 targets = np.arange(10, 14)
 gamma = scipy.special.gamma(x)
-fig5, ax5 = plt.subplots(num=1, clear=True, constrained_layout=True)
+fig5, ax5 = plt.subplots(num=5, clear=True, constrained_layout=True)
 for target in targets:
     gamma_lag = eval_laguerre_gamma(x, target=target, n=n, func="shifted")
     rel_error = np.abs(calc_rel_error(gamma, gamma_lag))
-    ax5.semilogy(x, rel_error, label=f"$m={target}$")
+    ax5.semilogy(x, rel_error, label=f"$m={target}$", linewidth=3)
 gamma_lgo = eval_laguerre_gamma(x, n=n, func="optimal_shifted")
 rel_error = np.abs(calc_rel_error(gamma, gamma_lgo))
-ax5.semilogy(x, rel_error, label="$m^*$")
+ax5.semilogy(x, rel_error, "c", linestyle="dotted", label="$m^*$", linewidth=3)
 ax5.set_xlim(x[0], x[-1])
 ax5.set_ylim(5e-9, 5e-8)
 ax5.set_xlabel(r"$z$")
@@ -254,15 +254,25 @@ x = np.linspace(-5+ EPSILON, 5-EPSILON, N)
 gamma = scipy.special.gamma(x)[:, None]
 n = 8
 gamma = scipy.special.gamma(x)
-fig6, ax6 = plt.subplots(num=1, clear=True, constrained_layout=True)
+fig6, ax6 = plt.subplots(num=6, clear=True, constrained_layout=True)
 gamma_lgo = eval_laguerre_gamma(x, n=n, func="optimal_shifted")
 rel_error = np.abs(calc_rel_error(gamma, gamma_lgo))
-ax6.semilogy(x, rel_error, label="$m^*$")
+ax6.semilogy(x, rel_error, label="$m^*$", linewidth=3)
 ax6.set_xlim(x[0], x[-1])
 ax6.set_ylim(5e-9, 5e-8)
 ax6.set_xlabel(r"$z$")
 ax6.grid(1, "both")
 ax6.legend()
 fig6.savefig(f"{img_path}/rel_error_range.pgf")
+
+N = 2001
+x = np.linspace(-5, 5, N)
+gamma = scipy.special.gamma(x)
+fig7, ax7 = plt.subplots(num=7, clear=True, constrained_layout=True)
+ax7.plot(x, gamma)
+ax7.set_xlim(x[0], x[-1])
+ax7.set_ylim(-7.5, 25)
+ax7.grid(1, "both")
+fig7.savefig(f"{img_path}/gamma.pgf")
 
 # plt.show()
