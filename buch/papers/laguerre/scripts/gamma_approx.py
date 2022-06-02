@@ -192,7 +192,7 @@ bests = np.stack(bests, 0)
 
 fig3, ax3 = plt.subplots(num=3, clear=True, constrained_layout=True, figsize=(5, 3))
 v = ax3.imshow(bests, cmap="inferno", aspect="auto", interpolation="nearest")
-plt.colorbar(v, ax=ax3, label=r"$m$")
+plt.colorbar(v, ax=ax3, label=r"$m^*$")
 ticks = np.arange(0, N + 1, N // 5)
 ax3.set_xlim(0, 1)
 ax3.set_xticks(ticks)

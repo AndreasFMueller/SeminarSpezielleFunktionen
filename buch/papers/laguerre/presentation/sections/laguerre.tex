@@ -34,7 +34,7 @@ x y''(x) + (1 - x) y'(x) + n y(x)
 \begin{tikzpicture}[remember picture,overlay]
 %% use here too
 \path[draw=mainColor, very thick,->](0, 1.1) to
-node[anchor=west]{Potenreihenansatz} (0, -0.8);
+node[anchor=west]{Potenzreihenansatz} (0, -0.8);
 \end{tikzpicture}
 }
 
@@ -76,7 +76,7 @@ n &e^{-x} &y(x)
 \item Gewichtsfunktion $w(x) = e^{-x}$
 \end{itemize}
 
-\only<4>{
+\uncover<4->{
 \begin{align*}
 \int_0^\infty e^{-x} L_n(x) L_m(x) \, dx
 =
