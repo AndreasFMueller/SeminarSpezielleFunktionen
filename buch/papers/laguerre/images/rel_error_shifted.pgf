@@ -1050,7 +1050,7 @@
 \pgfsetbuttcap%
 \pgfsetroundjoin%
 \pgfsetlinewidth{3.011250pt}%
-\definecolor{currentstroke}{rgb}{0.000000,0.750000,0.750000}%
+\definecolor{currentstroke}{rgb}{0.750000,0.000000,0.750000}%
 \pgfsetstrokecolor{currentstroke}%
 \pgfsetdash{{3.000000pt}{4.950000pt}}{0.000000pt}%
 \pgfpathmoveto{\pgfqpoint{0.712295in}{0.453273in}}%
@@ -1310,7 +1310,7 @@
 \pgfsetbuttcap%
 \pgfsetroundjoin%
 \pgfsetlinewidth{3.011250pt}%
-\definecolor{currentstroke}{rgb}{0.000000,0.750000,0.750000}%
+\definecolor{currentstroke}{rgb}{0.750000,0.000000,0.750000}%
 \pgfsetstrokecolor{currentstroke}%
 \pgfsetdash{{3.000000pt}{4.950000pt}}{0.000000pt}%
 \pgfpathmoveto{\pgfqpoint{5.398422in}{3.760989in}}%

@@ -241,7 +241,7 @@ for target in targets:
     ax5.semilogy(x, rel_error, label=f"$m={target}$", linewidth=3)
 gamma_lgo = eval_laguerre_gamma(x, n=n, func="optimal_shifted")
 rel_error = np.abs(calc_rel_error(gamma, gamma_lgo))
-ax5.semilogy(x, rel_error, "c", linestyle="dotted", label="$m^*$", linewidth=3)
+ax5.semilogy(x, rel_error, "m", linestyle="dotted", label="$m^*$", linewidth=3)
 ax5.set_xlim(x[0], x[-1])
 ax5.set_ylim(5e-9, 5e-8)
 ax5.set_xlabel(r"$z$")

@@ -48,7 +48,8 @@ R_n(\xi)
 
 \begin{figure}[h]
 \centering
-\scalebox{0.91}{\input{../images/rel_error_simple.pgf}}
+% \scalebox{0.91}{\input{../images/rel_error_simple.pgf}}
+\resizebox{!}{0.72\textheight}{\input{../images/rel_error_simple.pgf}}
 \caption{Relativer Fehler des einfachen Ansatzes für verschiedene reele Werte
 von $z$ und Grade $n$ der Laguerre-Polynome}
 \end{figure}
@@ -123,17 +124,22 @@ da Gauss-Quadratur nur für kleine $n$ praktischen Nutzen hat}
 \end{frame}
 
 \begin{frame}{Verschiebungsterm}
+\begin{columns}
+\begin{column}{0.625\textwidth}
+\begin{figure}[h]
+\centering
+\includegraphics[width=1\textwidth]{../images/targets.pdf}
+\caption{Optimaler Verschiebungsterm $m^*$ in Abhängigkeit von $z$ und $n$}
+\end{figure}
+\end{column}
+\begin{column}{0.375\textwidth}
 \begin{align*}
 \Gamma(z)
 \approx
 \frac{1}{(z-m)_{m}} \sum_{i=1}^{n} x_i^{z + m - 1} A_i
 \end{align*}
-
-\begin{figure}[h]
-\centering
-\includegraphics[width=0.5\textwidth]{../images/targets.pdf}
-\caption{Optimaler Verschiebungsterm $m^*$ in Abhängigkeit von $z$ und $n$}
-\end{figure}
+\end{column}
+\end{columns}
 \end{frame}
 
 \begin{frame}{Schätzen von $m^*$}
