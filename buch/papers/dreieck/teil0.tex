@@ -3,7 +3,48 @@
 %
 % (c) 2020 Prof Dr Andreas Müller, Hochschule Rapperswil
 %
-\section{Testprinzip\label{dreieck:section:testprinzip}}
-\rhead{Testprinzip}
+\section{Problemstellung\label{dreieck:section:problemstellung}}
+\rhead{Problemstellung}
+Es ist bekannt, dass das Fehlerintegral
+\[
+\frac{1}{\sqrt{2\pi}\sigma} \int_{-\infty}^x e^{-\frac{t^2}{2\sigma}}\,dt
+\]
+nicht in geschlossener Form dargestellt werden kann.
+Mit der in Kapitel~\ref{buch:chapter:integral} skizzierten Theorie von
+Liouville und dem Risch-Algorithmus kann dies strengt gezeigt werden.
 
+Andererseits gibt es durchaus Integranden, die $e^{-t^2}$ enthalten,
+für die eine Stammfunktion in geschlossener Form gefunden werden kann.
+Zum Beispiel folgt aus der Ableitung
+\[
+\frac{d}{dt} e^{-t^2}
+=
+-2te^{-t^2}
+\]
+die Stammfunktion
+\[
+\int te^{-t^2}\,dt
+=
+-\frac12 e^{-t^2}.
+\]
+Leitet man $e^{-t^2}$ zweimal ab, erhält man
+\[
+\frac{d^2}{dt^2} e^{-t^2}
+=
+(4t^2-2) e^{-t^2}
+\qquad\Rightarrow\qquad
+\int (t^2-\frac12) e^{-t^2}\,dt
+=
+\frac14
+e^{-t^2}.
+\]
+Es gibt also eine viele weitere Polynome $P(t)$, für die der Integrand
+$P(t)e^{-t^2}$ eine Stammfunktion in geschlossener Form hat.
+Damit stellt sich jetzt das folgende allgemeine Problem.
+
+\begin{problem}
+\label{dreieck:problem}
+Für welche Polynome $P(t)$ hat der Integrand $P(t)e^{-t^2}$
+eine elementare Stammfunktion?
+\end{problem}
 

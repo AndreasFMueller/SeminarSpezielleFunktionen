@@ -3,7 +3,110 @@
 %
 % (c) 2020 Prof Dr Andreas Müller, Hochschule Rapperswil
 %
-\section{Wahrscheinlichkeiten im Dreieckstest
-\label{dreieck:section:wahrscheinlichkeiten}}
-\rhead{Wahrscheinlichkeiten}
+\section{Beliebige Polynome
+\label{dreieck:section:beliebig}}
+\rhead{Beliebige Polynome}
+Im Abschnitt~\ref{dreieck:section:hermite-polynome} wurden die
+Hermite-Polynome $H_n(t)$ mit $n>0$ als Lösungen des gestellten
+Problems erkannt.
+Eine Linearkombination von solchen Polynomen hat natürlich
+ebenfalls eine elementare Stammfunktion.
+Das Problem kann daher neu formuliert werden:
+
+\begin{problem}
+\label{dreieck:problem2}
+Welche Polynome $P(t)$ lassen sich aus den Hermite-Polynomen
+$H_n(t)$ mit $n>0$ linear kombinieren.
+\end{problem}
+
+Sei jetzt
+\[
+P(t) = p_0 + p_1t + \ldots + p_{n-1}t^{n-1} + p_nt^n
+\]
+ein beliebiges Polynom vom Grad $n$.
+Eine elementare Stammfunktion von $P(t)e^{-t^2}$ existiert sicher,
+wenn sich $P(t)$ aus den Funktionen $H_n(t)$ mit $n>0$ linear
+kombinieren lässt.
+Gesucht ist also zunächst eine Darstellung von $P(t)$ als Linearkombination
+von Hermite-Polynomen.
+
+\begin{lemma}
+Jedes Polynome $P(t)$ vom Grad $n$ lässt sich auf eindeutige Art und
+Weise als Linearkombination
+\begin{equation}
+P(t) = a_0H_0(t) + a_1H_1(t) + \ldots + a_nH_n(t)
+=
+\sum_{k=0}^n a_nH_n(t)
+\label{dreieck:lemma}
+\end{equation}
+von Hermite-Polynomen schreiben.
+\end{lemma}
+
+\begin{proof}[Beweis]
+Zunächst halten wir fest, dass aus der
+Rekursionsformel~\eqref{dreieck:rekursion}
+folgt, dass der Leitkoeffizient bei jedem Rekursionsschnitt
+mit $2$ multipliziert wird.
+Der Leitkoeffizient von $H_n(t)$ ist also $2^n$.
+
+Wir führen den Beweis mit vollständiger Induktion.
+Für $n=0$ ist $P(t)=p_0 = p_0 H_0(t)$ als Linearkombination von
+Hermite-Polynomen darstellbar, dies ist die Induktionsverankerung.
+
+Nehmen wir jetzt an, dass sich ein Polynom vom Grad $n-1$ als
+Linearkombination der Polynome $H_0(t),\dots,H_{n-1}(t)$ schreiben
+lässt und untersuchen wir $P(t)$ vom Grad $n$.
+Da der Leitkoeffizient des Polynoms $H_n(t)$ ist $2^n$, ist
+\[
+P(t)
+=
+\underbrace{\biggl(P(t) - \frac{p_n}{2^n} H_n(t)\biggr)}_{\displaystyle = Q(t)}
++
+\frac{p_n}{2^n} H_n(t).
+\]
+Das Polynom $Q(t)$ hat Grad $n-1$, besitzt also nach Induktionsannahme
+eine Darstellung
+\[
+Q(t) = a_0H_0(t)+a_1H_1(t)+\ldots+a_{n-1}H_{n-1}(t)
+\]
+als Linearkombination der Polynome $H_0(t),\dots,H_{n-1}(t)$.
+Somit ist
+\[
+P(t)
+= a_0H_0(t)+a_1H_1(t)+\ldots+a_{n-1}H_{n-1}(t) +
+\frac{p_n}{2^n} H_n(t)
+\]
+eine Darstellung von $P(t)$ als Linearkombination der Polynome
+$H_0(t),\dots,H_n(t)$.
+Damit ist der Induktionsschritt vollzogen und das Lemma für alle
+$n$ bewiesen.
+\end{proof}
+
+\begin{satz}
+\label{dreieck:satz1}
+Die Funktion $P(t)e^{-t^2}$ hat genau dann eine elementare Stammfunktion,
+wenn in der Darstellung~\eqref{dreieck:lemma}
+von $P(t)$ als Linearkombination von Hermite-Polynome $a_0=0$ gilt.
+\end{satz}
+
+\begin{proof}[Beweis]
+Es ist
+\begin{align*}
+\int P(t)e^{-t^2}\,dt
+&=
+a_0\int e^{-t^2}\,dt
++
+\int
+\sum_{k=1} a_kH_k(t)\,dt
+\\
+&=
+\frac{\sqrt{\pi}}2
+\operatorname{erf}(t)
++
+\sum_{k=1} a_k\int H_k(t)\,dt.
+\end{align*}
+Da die Integrale in der Summe alle elementar darstellbar sind,
+ist das Integral genau dann elementar, wenn $a_0=0$ ist.
+\end{proof}
+
 
