@@ -19,6 +19,7 @@ H_n(x)
 \]
 \end{block}
 \vspace{-10pt}
+\uncover<2->{%
 \begin{block}{Orthogonalität}
 $H_n(x)$ sind orthogonale Polynome bezüglich $w(x)=e^{-x^2}$, d.~h.
 \begin{align*}
@@ -37,8 +38,9 @@ $H_n(x)$ sind orthogonale Polynome bezüglich $w(x)=e^{-x^2}$, d.~h.
 =
 \delta_{mn}
 \end{align*}
-\end{block}
+\end{block}}
 \vspace{-10pt}
+\uncover<3->{%
 \begin{block}{Rekursion: Auf-/Absteigeoperatoren}
 Rekursionsformel:
 \[
@@ -46,33 +48,46 @@ H_n(x)
 =
 2x\cdot H_{n-1}(x) - H_{n-1}'(x)
 \]
-\end{block}
+\end{block}}
 \end{column}
 \begin{column}{0.48\textwidth}
+\uncover<4->{%
 \begin{block}{Stammfunktion}
 \begin{align*}
-\int H_n(x) e^{-x^2}\,dx
-&=
-\int \bigl({\color{red}2x}H_{n-1}(x)
+\uncover<4->{
+\int H_n(x) e^{-x^2}\,dx}
+&\uncover<5->{=
+\int \bigl({\color{red}2x}H_{n-1}(x)}
 \\
+\uncover<5->{
 &\qquad -H_{n-1}'(x)\bigr) e^{-x^2}\,dx
+}
 \\
+\uncover<6->{
 {\color{gray}((e^{-x^2})'=-2x)}
 &=
 {\color{red}-}\int {\color{red}(e^{-x^2})'} H_{n-1}(x)\,dx
+}
 \\
+\uncover<6->{
 &\qquad
 -
 \int H_{n-1}'(x) e^{-x^2}\,dx
+}
 \\
+\uncover<7->{
 \text{\color{gray}(Produktregel)}
 &=
 \int (e^{-x^2}H_{n-1}(x))'\,dx
+}
 \\
+\uncover<8->{
 \text{\color{gray}(Ableitung)}
 &=
 e^{-x^2}H_{n-1}(x)
+}
 \end{align*}
+\uncover<9->{%
 ausser für $n=0$:
 \[
 \int
@@ -80,8 +95,8 @@ H_0(x)e^{-x^2}\,dx
 =
 \int
 e^{-x^2}\,dx
-\]
-\end{block}
+\]}
+\end{block}}
 \end{column}
 \end{columns}
 \end{frame}
