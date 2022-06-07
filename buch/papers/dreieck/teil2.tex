@@ -16,10 +16,10 @@ Das Problem kann daher neu formuliert werden:
 \begin{problem}
 \label{dreieck:problem2}
 Welche Polynome $P(t)$ lassen sich aus den Hermite-Polynomen
-$H_n(t)$ mit $n>0$ linear kombinieren.
+$H_n(t)$ mit $n>0$ linear kombinieren?
 \end{problem}
 
-Sei jetzt
+Sei also
 \[
 P(t) = p_0 + p_1t + \ldots + p_{n-1}t^{n-1} + p_nt^n
 \]
@@ -44,7 +44,7 @@ von Hermite-Polynomen schreiben.
 
 \begin{proof}[Beweis]
 Zunächst halten wir fest, dass aus der
-Rekursionsformel~\eqref{dreieck:rekursion}
+Rekursionsformel~\eqref{dreieck:eqn:rekursion}
 folgt, dass der Leitkoeffizient bei jedem Rekursionsschnitt
 mit $2$ multipliziert wird.
 Der Leitkoeffizient von $H_n(t)$ ist also $2^n$.
@@ -53,10 +53,12 @@ Wir führen den Beweis mit vollständiger Induktion.
 Für $n=0$ ist $P(t)=p_0 = p_0 H_0(t)$ als Linearkombination von
 Hermite-Polynomen darstellbar, dies ist die Induktionsverankerung.
 
-Nehmen wir jetzt an, dass sich ein Polynom vom Grad $n-1$ als
+Wir nehmen jetzt im Sinne der Induktionsannahme an,
+dass sich ein Polynom vom Grad $n-1$ als
 Linearkombination der Polynome $H_0(t),\dots,H_{n-1}(t)$ schreiben
-lässt und untersuchen wir $P(t)$ vom Grad $n$.
-Da der Leitkoeffizient des Polynoms $H_n(t)$ ist $2^n$, ist
+lässt und untersuchen ein Polynom $P(t)$ vom Grad $n$.
+Da der Leitkoeffizient des Polynoms $H_n(t)$ ist $2^n$, ist zerlegen
+wir
 \[
 P(t)
 =
@@ -86,7 +88,7 @@ $n$ bewiesen.
 \label{dreieck:satz1}
 Die Funktion $P(t)e^{-t^2}$ hat genau dann eine elementare Stammfunktion,
 wenn in der Darstellung~\eqref{dreieck:lemma}
-von $P(t)$ als Linearkombination von Hermite-Polynome $a_0=0$ gilt.
+von $P(t)$ als Linearkombination von Hermite-Polynomen $a_0=0$ gilt.
 \end{satz}
 
 \begin{proof}[Beweis]
@@ -100,6 +102,7 @@ a_0\int e^{-t^2}\,dt
 \sum_{k=1} a_kH_k(t)\,dt
 \\
 &=
+a_0
 \frac{\sqrt{\pi}}2
 \operatorname{erf}(t)
 +
