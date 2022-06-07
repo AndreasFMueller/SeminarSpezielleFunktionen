@@ -87,20 +87,21 @@ So kann mit dem Taylorpolynom 2. Grades den Sinus und den Kosinus vom Sphärisch
 Es gibt ebenfalls folgende Approximierung der Seiten von der Sphäre in die Ebene:
 \begin{align}
 	a &\approx \sin(a) \nonumber \intertext{und}
-	a^2 &\approx 1-\cos(a). \nonumber
+	\frac{a^2}{2} &\approx 1-\cos(a). \nonumber
 \end{align}
 Die Korrespondenzen zwischen der ebenen- und sphärischen Trigonometrie werden in den kommenden Abschnitten erläutert.
 
 \subsubsection{Sphärischer Satz des Pythagoras}
-Die Korrespondenz \[ a^2 \approx 1-cos(a)\] liefert unter Anderem einen entsprechenden Satz des Pythagoras, nämlich
+Die Korrespondenz \[ a^2 \approx 1- \cos(a)\] liefert unter Anderem einen entsprechenden Satz des Pythagoras, nämlich
 
 \begin{align}
 	\cos(a)\cdot \cos(b) &= \cos(c)  \\
-	\bigg[1-\frac{a^2}{2}\bigg] \cdot \bigg[1-\frac{b^2}{2}\bigg] &= 1-\frac{c^2}{2} \\
-	\xcancel{1}- \frac{a^2}{2} - \frac{b^2}{2} + \xcancel{\frac{a^2b^2}{4}}&= \xcancel{1}- \frac{c^2}{2} \intertext{Höhere Potenzen vernachlässigen} 
+	\bigg[1-\frac{a^2}{2}\bigg] \cdot \bigg[1-\frac{b^2}{2}\bigg] &= 1-\frac{c^2}{2} \intertext{Höhere Potenzen vernachlässigen}
+	\xcancel{1}- \frac{a^2}{2} - \frac{b^2}{2} + \xcancel{\frac{a^2b^2}{4}}&= \xcancel{1}- \frac{c^2}{2}  \\
 	-a^2-b^2 &=-c^2\\
 	a^2+b^2&=c^2
 \end{align}
+Dies ist der wohlbekannte ebener Satz des Pythagoras.
 
 \subsubsection{Sphärischer Sinussatz}
 Den sphärischen Sinussatz 
@@ -116,7 +117,6 @@ In der sphärischen Trigonometrie gibt es den Seitenkosinussatz
 	\cos \ a = \cos b \cdot \cos c + \sin b \cdot \sin c \cdot \cos \alpha \nonumber
 \end{align} %Seitenkosinussatz
 und den Winkelkosinussatz
-
 \begin{align}
 	\cos \gamma = -\cos \alpha \cdot \cos \beta + \sin \alpha \cdot \sin \beta \cdot \cos c, \nonumber
 \end{align} der nur in der sphärischen Trigonometrie vorhanden ist.
@@ -124,8 +124,8 @@ und den Winkelkosinussatz
 Analog gibt es auch beim Seitenkosinussatz eine Korrespondenz zu \[ a^2 \leftrightarrow 1-\cos(a),\] die den ebenen Kosinussatz herleiten lässt, nämlich
 \begin{align}
 	\cos(a)&= \cos(b)\cdot \cos(c) + \sin(b) \cdot \sin(c)\cdot \cos(\alpha)  \\
-	1-\frac{a^2}{2} &= \bigg[1-\frac{b^2}{2}\bigg]\bigg[1-\frac{c^2}{2}\bigg]+bc\cdot\cos(\alpha) \\
-	\xcancel{1}-\frac{a^2}{2} &= \xcancel{1}-\frac{b^2}{2}-\frac{c^2}{2} \xcancel{+\frac{b^2c^2}{4}}+bc \cdot \cos(\alpha)\intertext{Höhere Potenzen vernachlässigen}
+	1-\frac{a^2}{2} &= \bigg[1-\frac{b^2}{2}\bigg]\bigg[1-\frac{c^2}{2}\bigg]+bc\cdot\cos(\alpha) \intertext{Höhere Potenzen vernachlässigen}
+	\xcancel{1}-\frac{a^2}{2} &= \xcancel{1}-\frac{b^2}{2}-\frac{c^2}{2} \xcancel{+\frac{b^2c^2}{4}}+bc \cdot \cos(\alpha)\\
 	a^2&=b^2+c^2-2bc \cdot \cos(\alpha)
 \end{align}
 
