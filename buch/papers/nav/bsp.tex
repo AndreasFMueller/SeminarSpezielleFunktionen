@@ -1,0 +1,81 @@
+\section{Beispielrechnung}
+
+\subsection{Einführung}
+In diesem Abschnitt wird die Theorie vom Abschnitt 21.6 in einem Praxisbeispiel angewendet. 
+Wir haben die Deklination, Rektaszension, Höhe der beiden Planeten Deneb und Arktur und die Sternzeit von Greenwich als Ausgangslage.
+Die Deklinationen und Rektaszensionen sind von einem vergangenen Datum und die Höhe der Gestirne und die Sternzeit wurden von einem uns unbekannten Ort aus gemessen.
+Diesen Punkt gilt es mit dem erlangten Wissen herauszufinden.
+
+\subsection{Vorgehen}
+
+\begin{center}
+	\begin{tabular}{l l l}
+		1. & Koordinaten der Bildpunkte der Gestirne bestimmen \\
+		2. & Dreiecke aufzeichnen und richtig beschriften\\
+		3. & Dreieck ABC bestimmmen\\
+		4. & Dreieck BPC bestimmen \\
+		5. & Dreieck ABP bestimmen \\ 
+		6. & Geographische Breite bestimmen \\
+		7. & Geographische Länge bestimmen \\
+	\end{tabular}
+\end{center}
+
+\subsection{Ausgangslage}
+Die Rektaszension und die Sternzeit sind in der Regeln in Stunden angegeben.
+Für die Umrechnung in Grad kann folgender Zusammenhang verwendet werden:
+\[ Stunden \cdot 15 = Grad\].
+Dies wurde hier bereits gemacht.
+\begin{center}
+	\begin{tabular}{l l l}
+		Sternzeit $s$ & $118.610804^\circ$ \\
+		Deneb&\\
+		& Rektaszension $RA_{Deneb}$& $310.55058^\circ$ \\
+		& Deklination $DEC_{Deneb}$& $45.361194^\circ$ \\
+		& Höhe $H_{Deneb}$ & $50.256027^\circ$ \\ 
+		Arktur &\\
+		& Rektaszension $RA_{Arktur}$& $214.17558^\circ$ \\
+		& Deklination $DEC_{Arktur}$& $19.063222^\circ$ \\
+		& Höhe $H_{Arktur}$ & $47.427444^\circ$ \\  
+	\end{tabular}
+\end{center}
+\subsection{Koordinaten der Bildpunkte}
+Als erstes benötigen wir die Koordinaten der Bildpunkte von Arktur und Deneb. 
+$\delta$ ist die Breite, $\lambda$ die Länge.
+\begin{align}
+\delta_{Deneb}&=DEC_{Deneb} = \underline{\underline{45.361194^\circ}} \nonumber \\ 
+\lambda_{Deneb}&=RA_{Deneb} - s = 310.55058^\circ -118.610804^\circ =\underline{\underline{191.939776^\circ}}   \nonumber \\ 
+\delta_{Arktur}&=DEC_{Arktur} =  \underline{\underline{19.063222^\circ}} \nonumber \\ 
+\lambda_{Arktur}&=RA_{Arktur} - s = 214.17558^\circ -118.610804^\circ = \underline{\underline{5.5647759^\circ}}  \nonumber  
+\end{align}
+
+
+\subsection{Dreiecke definieren}
+Das Festlegen der Dreiecke ist essenziell für die korrekten Berechnungen.
+BILD
+\subsection{Dreieck ABC}
+Nun berechnen wir alle Seitenlängen $a$, $b$, $c$ und die Innnenwinkel $\alpha$, $\beta$ und $\gamma$
+Wir können $b$ und $c$ mit den geltenten Zusammenhängen des nautischen Dreiecks wie folgt bestimmen:
+\begin{align}
+	b=90^\circ-DEC_{Deneb} = 90^\circ - 45.361194^\circ = \underline{\underline{44.638806^\circ}}\nonumber \\
+	c=90^\circ-DEC_{Arktur} = 90^\circ - 19.063222^\circ = \underline{\underline{70.936778^\circ}} \nonumber 
+\end{align}
+Um $a$ zu bestimmen, benötigen wir zuerst den Winkel \[\alpha= RA_{Deneb} - RA_{Arktur} = 310.55058^\circ -214.17558^\circ = \underline{\underline{96.375^\circ}}.\]
+Danach nutzen wir den sphärischen Winkelkosinussatz, um  $a$ zu berechnen:
+\begin{align}
+	a &= \cos^{-1}(\cos(b) \cdot \cos(c) + \sin(b) \cdot \sin(c) \cdot \cos(\alpha)) \nonumber \\
+	 &= \cos^{-1}(\cos(44.638806) \cdot \cos(70.936778) + \sin(44.638806) \cdot \sin(70.936778) \cdot \cos(96.375)) \nonumber \\
+	 &= \underline{\underline{80.8707801^\circ}} \nonumber
+\end{align}
+Für $\beta$ und $\gamma$ nutzen wir den sphärischen Seitenkosinussatz:
+\begin{align}
+	\beta &= \cos^{-1}  \bigg[\frac{\cos(b)-\cos(a) \cdot \cos(c)}{\sin(a) \cdot \sin(c)}\bigg] \nonumber \\
+	&= \cos^{-1}  \bigg[\frac{\cos(44.638806)-\cos(80.8707801) \cdot \cos(70.936778)}{\sin(80.8707801) \cdot \sin(70.936778)}\bigg] \nonumber \\
+	&= \underline{\underline{45.0115314^\circ}} \nonumber
+\end{align}
+
+	\begin{align}
+	\gamma &=  \cos^{-1}  \bigg[\frac{\cos(c)-\cos(b) \cdot \cos(a)}{\sin(a) \cdot \sin(b)}\bigg] \nonumber \\
+	&=  \cos^{-1}  \bigg[\frac{\cos(70.936778)-\cos(44.638806) \cdot \cos(80.8707801)}{\sin(80.8707801) \cdot \sin(44.638806)}\bigg] \nonumber \\
+	&=\underline{\underline{72.0573328^\circ}} \nonumber
+\end{align}
+
