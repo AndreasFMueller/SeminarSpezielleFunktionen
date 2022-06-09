@@ -6,7 +6,10 @@
 \section{Lösungsmethode 2: Transformationsmethode
 \label{kreismembran:section:teil3}}
 \rhead{Lösungsmethode 2: Transformationsmethode}
-Die Hankel-Transformation wird dann zur Lösung der Differentialgleichung verwendet. Es müssen jedoch einige Änderungen an dem Problem vorgenommen werden, damit es mit den Annahmen übereinstimmt, die für die Verwendung der Hankel-Transformation erforderlich sind. Das heisst, dass die Funktion u nur von der Entfernung zum Ausgangspunkt abhängt. Wir führen also das Konzept einer unendlichen und achsensymmetrischen Membran ein:
+Die Hankel-Transformation wird dann zur Lösung der Differentialgleichung verwendet. Es müssen jedoch einige Änderungen an dem Problem vorgenommen werden, damit es mit den Annahmen übereinstimmt, die für die Verwendung der Hankel-Transformation erforderlich sind. Das heisst, dass die Funktion $u$ nur von der Entfernung zum Ausgangspunkt abhängt. 
+
+\subsubsection{Transformation und Reduktion auf eine algebraische Gleichung\label{subsub:transf_reduktion}}
+Führt man also das Konzept einer unendlichen und achsensymmetrischen Membran ein:
 \begin{equation*}
 	\frac{\partial^2u}{\partial t^2}
 	=
@@ -18,16 +21,15 @@ Die Hankel-Transformation wird dann zur Lösung der Differentialgleichung verwen
 \end{equation*}
 
 \begin{align}
-	u(r,0)=f(r), \quad \frac{\partial}{\partial t} u(r,0) = g(r), \quad \text{für} \quad 0<r<\infty
+	u(r,0)=f(r), \quad u_t(r,0) = g(r), \quad \text{für} \quad 0<r<\infty
 	\label{eq:PDE_inf_membane_RB}
 \end{align}
 
 Mit Anwendung der Hankel-Transformation nullter Ordnung in Abhängigkeit von $r$ auf die Gleichungen \eqref{eq:PDE_inf_membane} und \eqref{eq:PDE_inf_membane_RB}:
 
 \begin{align}
-	\tilde{u}(\kappa,t)=\int_{0}^{\infty}r J_0(\kappa r)u(r,t) dr,
+	\tilde{u}(\kappa,t)=\int_{0}^{\infty}r J_0(\kappa r)u(r,t) \; dr,
 \end{align}
-
 bekommt man:
 
 \begin{equation*}
@@ -36,43 +38,47 @@ bekommt man:
 
 \begin{equation*}
 	\tilde{u}(\kappa,0)=\tilde{f}(\kappa), \quad 
-	\frac{\partial}{\partial t}\tilde{u}(\kappa,0)=\tilde{g}(\kappa).
+	\tilde{u}_t(\kappa,0)=\tilde{g}(\kappa).
 \end{equation*}
-
-Die allgemeine Lösung für diese Transformation lautet, wie schon gesehen, wie folgt
+Die allgemeine Lösung für diese Transformation lautet, wie in Gleighung \eqref{eq:cos_sin_überlagerung} gesehen, wie folgt
 
 \begin{equation*}
 	\tilde{u}(\kappa,t)=\tilde{f}(\kappa)\cos(c\kappa t) + \frac{1}{c\kappa}\tilde{g}(\kappa)\sin(c\kappa t).
 \end{equation*}
-
 Wendet man an nun die inverse Hankel-Transformation an, so erhält man die formale Lösung
 
 \begin{align}
-	u(r,t)=\int_{0}^{\infty}\kappa\tilde{f}(\kappa)\cos(c\kappa t) J_0(\kappa r) d\kappa +\frac{1}{c}\int_{0}^{\infty}\tilde{g}(\kappa)\sin(c\kappa t)J_0(\kappa r) d\kappa.
+	u(r,t)=\int_{0}^{\infty}\kappa\tilde{f}(\kappa)\cos(c\kappa t) J_0(\kappa r) \; d\kappa +\frac{1}{c}\int_{0}^{\infty}\tilde{g}(\kappa)\sin(c\kappa t)J_0(\kappa r) \; d\kappa.
 	\label{eq:formale_lösung}
 \end{align}
 
-Es wird daher davon ausgegangen, dass sich die Membran verformt und zum Zeitpunkt $t=0$ freigegeben wird
+\subsubsection{Erfüllung der Anfangsbedingungen\label{subsub:erfüllung_AB}}
+Es wird in Folgenden davon ausgegangen, dass sich die Membran verformt und zum Zeitpunkt $t=0$ freigegeben wird
 
 \begin{equation*}
-	u(r,0)=f(r)=Aa(r^2 + a^2)^{-\frac{1}{2}}, \quad \frac{d}{dt}(r,0)=g(r)=0
+	u(r,0)=f(r)=Aa(r^2 + a^2)^{-\frac{1}{2}}, \quad u_t(r,0)=g(r)=0
 \end{equation*}
-
 so dass $\tilde{g}(\kappa)\equiv 0$ und
-
 \begin{equation*}
-	\tilde{f}(\kappa)=Aa\int_{0}^{\infty}r(a^2 + r^2)^{-\frac{1}{2}} J_0 (\kappa r) dr=\frac{Aa}{\kappa}e^{-a\kappa}
+	\tilde{f}(\kappa)=Aa\int_{0}^{\infty}r(a^2 + r^2)^{-\frac{1}{2}} J_0 (\kappa r) \; dr=\frac{Aa}{\kappa}e^{-a\kappa}
 \end{equation*}
-
 Die formale Lösung  \eqref{eq:formale_lösung} lautet also
 \begin{align*}
-	u(r,t)&=Aa\int_{0}^{\infty}e^{-a\kappa} J_0(\kappa r)\cos(c\kappa t)dk=AaRe\int_{0}^{\infty}e^{-\kappa(a+ict)} J_0(\kappa r)dk\\
+	u(r,t)&=Aa\int_{0}^{\infty}e^{-a\kappa} J_0(\kappa r)\cos(c\kappa t) \; dk=AaRe\int_{0}^{\infty}e^{-\kappa(a+ict)} J_0(\kappa r) \; dk\\
 	&=AaRe\left\{r^2+\left(a+ict\right)^2\right\}^{-\frac{1}{2}}
 \end{align*}
 
+Nimmt man jedoch die allgemeine Lösung mit Summationen, 
+
+\begin{align}
+	u(r, t) = \displaystyle\sum_{m=1}^{\infty} J_0 (k_{m}r)[a_{m}\cos(c \kappa_{m} t)+b_{m}\sin(c \kappa_{m} t)]
+	\label{eq:lösung_unendliche_generelle}
+\end{align}
+kann man die Lösungsmethoden 1 und 2 vergleichen.
 
 \subsection{Vergleich der Lösungen
 \label{kreismembran:vergleich}}
-Hier kommt noch der Vergleich der Lösungen ;)
+Bei der Analyse der Gleichungen \eqref{eq:lösung_endliche_generelle} und \eqref{eq:lösung_unendliche_generelle} fällt sofort auf, dass die Gleichung \eqref{eq:lösung_unendliche_generelle} nicht mehr von $m$ und $n$ abhängt, sondern nur noch von $n$ \cite{nishanth_p_vibrations_2018}. Das macht Sinn, denn $n$ beschreibt die Anzahl der Knotenlinien, und in einer unendlichen Membran gibt es keine. Tatsächlich werden $a_{m0}$, $b_{m0}$ und $\kappa_{m0}$ in $a_m$, $b_m$ bzw. $\kappa_m$ umbenannt. Die beiden Termen $\cos(n\varphi)$ und $\sin(n\varphi)$ verschwinden ebenfalls, da für $n=0$ der $\cos(n\varphi)$ gleich 1 und der $\sin(n \varphi)$ gleich 0 ist.
+Die Funktion hängt also nicht mehr von der Besselfunktionen $n$-ter Ordnung ab, sondern nur von der $0$-ter Ordnung. 
 
 

@@ -5,95 +5,98 @@
 \section{Die Hankel Transformation \label{kreismembran:section:teil2}}
 \rhead{Die Hankel Transformation}
 
-Hermann Hankel (1839-1873) war ein deutscher Mathematiker, der für seinen Beitrag zur mathematischen Analyse und insbesondere für seine namensgebende Transformation bekannt ist.
-Diese Transformation tritt bei der Untersuchung von funktionen auf, die nur von der Enternung des Ursprungs abhängen.
-Er studierte auch funktionen, jetzt Hankel- oder Bessel- Funktionen genannt, der dritten Art.
-Die Hankel Transformation mit Bessel Funktionen al Kern taucht natürlich bei achsensymmetrischen Problemen auf, die in Zylindrischen Polarkoordinaten formuliert sind.
-In diesem Kapitel werden die Theorie der Transformation und einige Eigenschaften der Grundoperationen erläutert.
+Hermann Hankel (1839--1873) war ein deutscher Mathematiker, der für seinen Beitrag zur mathematischen Analysis und insbesondere für die nach ihm benannte Transformation bekannt ist.
+Diese Transformation tritt bei der Untersuchung von Funktionen auf, die nur von der Entfernung des Ursprungs abhängen.
+Er studierte auch Funktionen, jetzt Hankel- oder Bessel- Funktionen genannt, der dritten Art.
+Die Hankel-Transformation, die die Bessel-Funktion enthält, taucht natürlich bei achsensymmetrischen Problemen auf, die in zylindrischen Polarkoordinaten formuliert sind.
+In diesem Abschnitt werden die Theorie der Transformation und einige Eigenschaften der Grundoperationen erläutert.
 
-
-Wir führen die Definition der Hankel Transformation aus der zweidimensionalen Fourier Transformation und ihrer Umkehrung ein, die durch:
+\subsubsection{Hankel-Transformation \label{subsub:hankel_tansformation}}
+Wir führen die Definition der Hankel-Transformation \cite{lokenath_debnath_integral_2015} aus der zweidimensionalen Fourier-Transformation und ihrer Umkehrung ein, die durch:
 \begin{align}
-	\mathscr{F}\{f(x,y)\} & = F(k,l)=\frac{1}{2\pi}\int_{-\infty}^{\infty}\int_{-\infty}^{\infty}e^{-i( \bm{\kappa}\cdot \mathbf{r})}f(x,y) dx dy,\label{equation:fourier_transform}\\
-	\mathscr{F}^{-1}\{F(x,y)\} & = f(x,y)=\frac{1}{2\pi}\int_{-\infty}^{\infty}\int_{-\infty}^{\infty}e^{i(\bm{\kappa}\cdot \mathbf{r}))}F(k,l) dx dy \label{equation:inv_fourier_transform}
+	\mathscr{F}\{f(x,y)\} & = F(k,l)=\frac{1}{2\pi}\int_{-\infty}^{\infty}\int_{-\infty}^{\infty}e^{-i( \bm{\kappa}\cdot \mathbf{r})}f(x,y) \; dx dy,\label{equation:fourier_transform}\\
+	\mathscr{F}^{-1}\{F(x,y)\} & = f(x,y)=\frac{1}{2\pi}\int_{-\infty}^{\infty}\int_{-\infty}^{\infty}e^{i(\bm{\kappa}\cdot \mathbf{r}))}F(k,l) \; dx dy \label{equation:inv_fourier_transform}
 \end{align}
-wo $\mathbf{r}=(x,y)$ und $\bm{\kappa}=(k,l)$. Wie bereits erwähnt, sind Polarkoordinaten für diese Art von Problemen am besten geeignet, also mit, $(x,y)=r(\cos\theta,\sin\theta)$ und $(k,l)=\kappa(\cos\phi,\sin\phi)$, findet man $\bm{\kappa}\cdot\mathbf{r}=\kappa r(\cos(\theta-\phi))$ und danach:
+wo $\mathbf{r}=(x,y)$ und $\bm{\kappa}=(k,l)$. Polarkoordinaten sind für diese Art von Problemen am besten geeignet, mit $(x,y)=r(\cos\theta,\sin\theta)$ und $(k,l)=\kappa(\cos\phi,\sin\phi)$ findet man $\bm{\kappa}\cdot\mathbf{r}=\kappa r(\cos(\theta-\phi))$ und danach:
 \begin{align}
-	F(k,\phi)=\frac{1}{2\pi}\int_{0}^{\infty}r dr \int_{0}^{2\pi}e^{-ikr\cos(\theta-\phi)}f(r,\theta) d\phi.
+	F(k,\phi)=\frac{1}{2\pi}\int_{0}^{\infty}r \; dr \int_{0}^{2\pi}e^{-ikr\cos(\theta-\phi)}f(r,\theta) \; d\phi.
 	\label{equation:F_ohne_variable_wechsel}
 \end{align}
 Dann wird angenommen dass, $f(r,\theta)=e^{in\theta}f(r)$, was keine strenge Einschränkung ist, und es wird eine Änderung der Variabeln vorgenommen $\theta-\phi=\alpha-\frac{\pi}{2}$, um \eqref{equation:F_ohne_variable_wechsel} zu reduzieren:
 \begin{align}
-	F(k,\phi)=\frac{1}{2\pi}\int_{0}^{\infty}rf(r) dr \int_{\phi_{0}}^{2\pi+\phi_{0}}e^{in(\phi-\frac{\pi}{2})+i(n\alpha-kr\sin\alpha)} d\alpha,
+	F(k,\phi)=\frac{1}{2\pi}\int_{0}^{\infty}rf(r) \; dr \int_{\phi_{0}}^{2\pi+\phi_{0}}e^{in(\phi-\frac{\pi}{2})+i(n\alpha-kr\sin\alpha)} \; d\alpha,
 	\label{equation:F_ohne_bessel}
 \end{align}
 wo $\phi_{0}=(\frac{\pi}{2}-\phi)$.
 
-Unter Verwendung der Integral Darstellung der Besselfunktion vom Ordnung n 
-\begin{align}
-	J_n(\kappa r)=\frac{1}{2\pi}\int_{\phi_{0}}^{2\pi + \phi_{0}}e^{i(n\alpha-\kappa r \sin \alpha)} d\alpha
+Unter Verwendung der Integraldarstellung der Besselfunktion vom Ordnung $n$ \eqref{buch:fourier:eqn:bessel-integraldarstellung}
+\begin{equation*}
+	J_n(\kappa r)=\frac{1}{2\pi}\int_{\phi_{0}}^{2\pi + \phi_{0}}e^{i(n\alpha-\kappa r \sin \alpha)} \; d\alpha
 	\label{equation:bessel_n_ordnung}
-\end{align}
+\end{equation*}
 \eqref{equation:F_ohne_bessel} wird sie zu:
 \begin{align}
-	F(k,\phi)&=e^{in(\phi-\frac{\pi}{2})}\int_{0}^{\infty}rJ_n(\kappa r) f(r) dr \label{equation:F_mit_bessel_step_1} \\
+	F(k,\phi)&=e^{in(\phi-\frac{\pi}{2})}\int_{0}^{\infty}rJ_n(\kappa r) f(r) \; dr  \nonumber \\ 
 	&=e^{in(\phi-\frac{\pi}{2})}\tilde{f}_n(\kappa),
 	\label{equation:F_mit_bessel_step_2}
 \end{align}
-wo $\tilde{f}_n(\kappa)$ ist die \textit{Hankel Transformation} von $f(r)$ und ist formell definiert durch:
+wo $\tilde{f}_n(\kappa)$ ist die \textit{Hankel-Transformation} von $f(r)$ und ist formell definiert durch:
 \begin{align}
-	\mathscr{H}_n\{f(r)\}=\tilde{f}_n(\kappa)=\int_{0}^{\infty}rJ_n(\kappa r) f(r) dr.
+	\mathscr{H}_n\{f(r)\}=\tilde{f}_n(\kappa)=\int_{0}^{\infty}rJ_n(\kappa r) f(r) \; dr.
 	\label{equation:hankel}
 \end{align}
 
+\subsubsection{Inverse Hankel-Transformation \label{subsub:inverse_hankel_tansformation}}
 Ähnlich verhält es sich mit der inversen Fourier Transformation in Form von polaren Koordinaten unter der Annahme $f(r,\theta)=e^{in\theta}f(r)$ mit \eqref{equation:F_mit_bessel_step_2}, wird die inverse Fourier Transformation \eqref{equation:inv_fourier_transform}:
 
-\begin{align}
-	e^{in\theta}f(r)&=\frac{1}{2\pi}\int_{0}^{\infty}\kappa d\kappa \int_{0}^{2\pi}e^{i\kappa r \cos (\theta - \phi)}F(\kappa,\phi) d\phi\\
-	&= \frac{1}{2\pi}\int_{0}^{\infty}\kappa \tilde{f}_n(\kappa) d\kappa \int_{0}^{2\pi}e^{in(\phi - \frac{\pi}{2})- i\kappa r \cos (\theta - \phi)} d\phi,
-\end{align}
+\begin{align*}
+	e^{in\theta}f(r)&=\frac{1}{2\pi}\int_{0}^{\infty}\kappa \; d\kappa \int_{0}^{2\pi}e^{i\kappa r \cos (\theta - \phi)}F(\kappa,\phi) \; d\phi  \\
+	&= \frac{1}{2\pi}\int_{0}^{\infty}\kappa \tilde{f}_n(\kappa) \; d\kappa \int_{0}^{2\pi}e^{in(\phi - \frac{\pi}{2})- i\kappa r \cos (\theta - \phi)} \; d\phi,
+\end{align*}
 was durch den Wechsel der Variablen $\theta-\phi=-(\alpha+\frac{\pi}{2})$ und $\theta_0=-(\theta+\frac{\pi}{2})$,
 
-\begin{align}
-	&= \frac{1}{2\pi}\int_{0}^{\infty}\kappa \tilde{f}_n(\kappa) d\kappa \int_{\theta_0}^{2\pi+\theta_0}e^{in(\theta + \alpha - i\kappa r \sin\alpha)} d\alpha \nonumber \\
-	&= e^{in\theta}\int_{0}^{\infty}\kappa J_n(\kappa r) \tilde{f}_n(\kappa) d\kappa,\quad \text{von \eqref{equation:bessel_n_ordnung}}
-\end{align}
+\begin{align*}
+	&= \frac{1}{2\pi}\int_{0}^{\infty}\kappa \tilde{f}_n(\kappa) \; d\kappa \int_{\theta_0}^{2\pi+\theta_0}e^{in(\theta + \alpha - i\kappa r \sin\alpha)} \; d\alpha \\
+	&= e^{in\theta}\int_{0}^{\infty}\kappa J_n(\kappa r) \tilde{f}_n(\kappa) \; d\kappa,
+\end{align*}
 
-Also, die inverse \textit{Hankel Transformation} ist so definiert:
+von \eqref{equation:bessel_n_ordnung} also ist, die inverse \textit{Hankel-Transformation} so definiert:
 \begin{align}
-	\mathscr{H}^{-1}_n\{\tilde{f}_n(\kappa)\}=f(r)=\int_{0}^{\infty}\kappa J_n(\kappa r) \tilde{f}_n(\kappa) d\kappa.
+	\mathscr{H}^{-1}_n\{\tilde{f}_n(\kappa)\}=f(r)=\int_{0}^{\infty}\kappa J_n(\kappa r) \tilde{f}_n(\kappa) \; d\kappa.
 	\label{equation:inv_hankel}
 \end{align}
 
-Anstelle von $\tilde{f}_n(\kappa)$, wird häufig für die Hankel Transformation verwendet, indem die Ordnung angegeben wird.
+Anstelle von $\tilde{f}_n(\kappa)$, wird häufig für die Hankel-Transformation verwendet, indem die Ordnung angegeben wird.
 \eqref{equation:hankel} und \eqref{equation:inv_hankel} Integralen existieren für eine grosse Klasse von Funktionen, die normalerweise in physikalischen Anwendungen benötigt werden.
-Alternativ kann auch die berühmte Hankel Transformationsformel verwendet werden, 
+Alternativ kann auch die berühmte Hankel-Transformationsformel verwendet werden, 
 
-\begin{align}
-	f(r) = \int_{0}^{\infty}\kappa J_n(\kappa r) d\kappa \int_{0}^{\infty} p J_n(\kappa p)f(p) dp,
+\begin{align*}
+	f(r) = \int_{0}^{\infty}\kappa J_n(\kappa r) \; d\kappa \int_{0}^{\infty} p J_n(\kappa p)f(p) \; dp,
 	\label{equation:hankel_integral_formula}
-\end{align}
-um die Hankel Transformation \eqref{equation:hankel} und ihre Inverse \eqref{equation:inv_hankel} zu definieren.
-Insbesondere die Hankel Transformation der nullten Ordnung ($n=0$) und der ersten Ordnung ($n=1$) sind häufig nützlich, um Lösungen für Probleme mit der Laplace Gleichung in einer achsensymmetrischen zylindrischen Geometrie zu finden.
+\end{align*}
+um die Hankel-Transformation \eqref{equation:hankel} und ihre Inverse \eqref{equation:inv_hankel} zu definieren.
+Insbesondere die Hankel-Transformation der nullten Ordnung ($n=0$) und der ersten Ordnung ($n=1$) sind häufig nützlich, um Lösungen für Probleme mit der Laplace Gleichung in einer achsensymmetrischen zylindrischen Geometrie zu finden.
 
-\subsection{Operative Eigenschaften der Hankel Transformation\label{sub:op_properties_hankel}}
-In diesem Kapitel werden die operativen Eigenschaften der Hankel Transformation aufgeführt. Der Beweis für ihre Gültigkeit wird jedoch nicht analysiert.
+\subsection{Operative Eigenschaften der Hankel-Transformation\label{sub:op_properties_hankel}}
+In diesem Kapitel werden die operativen Eigenschaften der Hankel-Transformation aufgeführt. Der Beweis für ihre Gültigkeit wird jedoch nicht analysiert.
 
-\subsubsection{Theorem 1: Skalierung \label{subsub:skalierung}}
-Wenn $\mathscr{H}_n\{f(r)\}=\tilde{f}_n(\kappa)$, dann:
+\begin{satz}{Skalierung:}
+	Wenn $\mathscr{H}_n\{f(r)\}=\tilde{f}_n(\kappa)$, dann:
+	
+	\begin{equation*}
+		\mathscr{H}_n\{f(ar)\}=\frac{1}{a^{2}}\tilde{f}_n \left(\frac{\kappa}{a}\right), \quad a>0.
+	\end{equation*}
+\end{satz}
 
-\begin{equation*}
-	\mathscr{H}_n\{f(ar)\}=\frac{1}{a^{2}}\tilde{f}_n \left(\frac{\kappa}{a}\right), \quad a>0.
-\end{equation*}
-
-\subsubsection{Theorem 2: Persevalsche Relation \label{subsub:perseval}}
+\begin{satz}{Persevalsche Relation (Skalarprodukt bleibt erhalten):}
 Wenn $\tilde{f}(\kappa)=\mathscr{H}_n\{f(r)\}$ und $\tilde{g}(\kappa)=\mathscr{H}_n\{g(r)\}$, dann:
 
 \begin{equation*}
-	\int_{0}^{\infty}rf(r) dr = \int_{0}^{\infty}\kappa\tilde{f}(\kappa)\tilde{g}(\kappa) d\kappa.
+	\int_{0}^{\infty}rf(r)g(r) \; dr = \int_{0}^{\infty}\kappa\tilde{f}(\kappa)\tilde{g}(\kappa) \; d\kappa.
 \end{equation*}
+\end{satz}
 
-\subsubsection{Theorem 3: Hankel Transformationen von Ableitungen \label{subsub:ableitungen}}
+\begin{satz}{Hankel-Transformationen von Ableitungen:}
 Wenn $\tilde{f}_n(\kappa)=\mathscr{H}_n\{f(r)\}$, dann:
 
 \begin{align*}
@@ -101,13 +104,13 @@ Wenn $\tilde{f}_n(\kappa)=\mathscr{H}_n\{f(r)\}$, dann:
 	&\mathscr{H}_1\{f'(r)\}=-\kappa \tilde{f}_0(\kappa),
 \end{align*}
 bereitgestellt dass $[rf(r)]$ verschwindet als $r\to0$ und $r\to\infty$.
+\end{satz}
 
-\subsubsection{Theorem 4 \label{subsub:thorem4}}
+\begin{satz}
 Wenn $\mathscr{H}_n\{f(r)\}=\tilde{f}_n(\kappa)$, dann:
 
 \begin{equation*}
 	\mathscr{H}_n \left\{ \left( \nabla^2 - \frac{n^2}{r^2} f(r)\right)\right\}= \mathscr{H}_n\left\{\frac{1}{r}\frac{d}{dr}\left(r\frac{df}{dr}\right) - \frac{n^2}{r^2}f(r)\right\}=-\kappa^2\tilde{f}_{n}(\kappa),
 \end{equation*}
-bereitgestellt dass $rf'(r)$ und $rf(r)$ verschwinden als $r\to0$ und $r\to\infty$.
-
-
+bereitgestellt dass $rf'(r)$ und $rf(r)$ verschwinden für $r\to0$ und $r\to\infty$.
+\end{satz}
