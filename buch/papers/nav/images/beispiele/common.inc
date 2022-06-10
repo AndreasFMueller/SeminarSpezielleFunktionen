@@ -33,7 +33,18 @@ sky_sphere {
 	}
 }
 
-//kugel(kugeldunkel)
-erde(-100)
-koordinatennetz(gitterfarbe, 9, 0.001)
+erde(0)
 achse(fein, White)
+koordinatennetz(gitterfarbe, 9, 0.001)
+
+union {
+        punkt(Sakura, fett)
+        pigment {
+                color rot
+        }
+        finish {
+                metallic
+                specular 0.9
+        }
+}
+

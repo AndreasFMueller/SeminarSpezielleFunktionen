@@ -31,6 +31,7 @@
 #declare kugeltransparent = rgbt<0.8,0.8,0.8,0.5>;
 
 #declare gitterfarbe = rgb<0.2,0.6,1>;
+#declare gitterfarbe = rgb<1.0,0.8,0>;
 
 //
 // Points Points
@@ -314,7 +315,7 @@ sphere {
 //
 // \brief Display the earth 
 //
-#macro erde()
+#macro erde(winkel)
 sphere {
 	<0, 0, 0>, 1
 	pigment {
@@ -323,6 +324,7 @@ sphere {
 			map_type 1
 		}
 	}
+	rotate <0,winkel,0>
 }
 #end
 
