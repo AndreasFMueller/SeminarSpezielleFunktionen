@@ -3,9 +3,8 @@
 \subsection{Einführung}
 In diesem Abschnitt wird die Theorie vom Abschnitt 21.6 in einem Praxisbeispiel angewendet. 
 Wir haben die Deklination, Rektaszension, Höhe der beiden Planeten Deneb und Arktur und die Sternzeit von Greenwich als Ausgangslage.
-Die Deklinationen und Rektaszensionen sind von einem vergangenen Datum und die Höhe der Gestirne und die Sternzeit wurden von einem uns unbekannten Ort aus gemessen.
-Diesen Punkt gilt es mit dem erlangten Wissen herauszufinden.
-
+Die Deklinationen und Rektaszensionen sind von einem vergangenen Datum und die Höhe der Gestirne und die Sternzeit wurden von unserem Dozenten digital in einer Stadt in Japan mit den Koordinaten 35.716672 N, 140.233336 E bestimmt.
+Wir werden rechnerisch beweisen, dass wir mit diesen Ergebnissen genau auf diese Koordinaten kommen.
 \subsection{Vorgehen}
 
 \begin{center}
@@ -52,7 +51,7 @@ $\delta$ ist die Breite, $\lambda$ die Länge.
 \subsection{Dreiecke definieren}
 Das Festlegen der Dreiecke ist essenziell für die korrekten Berechnungen.
 BILD
-\subsection{Dreieck ABC}
+\subsection{Dreieck $ABC$}
 Nun berechnen wir alle Seitenlängen $a$, $b$, $c$ und die Innnenwinkel $\alpha$, $\beta$ und $\gamma$
 Wir können $b$ und $c$ mit den geltenten Zusammenhängen des nautischen Dreiecks wie folgt bestimmen:
 \begin{align}
@@ -78,4 +77,63 @@ Für $\beta$ und $\gamma$ nutzen wir den sphärischen Seitenkosinussatz:
 	&=  \cos^{-1}  \bigg[\frac{\cos(70.936778)-\cos(44.638806) \cdot \cos(80.8707801)}{\sin(80.8707801) \cdot \sin(44.638806)}\bigg] \nonumber \\
 	&=\underline{\underline{72.0573328^\circ}} \nonumber
 \end{align}
+\subsection{Dreieck $BPC$}
+Als nächstes berechnen wir die Seiten $pb$, $pc$ und die Innenwinkel $\beta_1$ und $\gamma_1$.
+\begin{align}
+	pb&=90^\circ - H_{Arktur} \nonumber \\
+	&= 90^\circ - 47.42744^\circ \nonumber \\
+	&= \underline{\underline{42.572556^\circ}} \nonumber
+\end{align}
+\begin{align}
+	pc &= 90^\circ - H_{Deneb} \nonumber \\
+	&= 90^\circ - 50.256027^\circ \nonumber \\
+	&= \underline{\underline{39.743973^\circ}} \nonumber
+\end{align}
+\begin{align}
+	\beta_1 &= \cos^{-1}  \bigg[\frac{\cos(pc)-\cos(a) \cdot \cos(pb)}{\sin(a) \cdot \sin(pb)}\bigg] \nonumber \\
+	&= \cos^{-1}  \bigg[\frac{\cos(39.743973)-\cos(80.8707801) \cdot \cos(42.572556)}{\sin(80.8707801) \cdot \sin(42.572556)}\bigg] \nonumber \\
+	&=\underline{\underline{12.5211127^\circ}} \nonumber
+\end{align}
+\begin{align}
+	\gamma_1 &= \cos^{-1}  \bigg[\frac{\cos(pb)-\cos(a) \cdot \cos(pc)}{\sin(a) \cdot \sin(pc)}\bigg] \nonumber \\
+	&= \cos^{-1}  \bigg[\frac{\cos(42.572556)-\cos(80.8707801) \cdot \cos(39.743973)}{\sin(80.8707801) \cdot \sin(39.743973)}\bigg] \nonumber \\
+	&=\underline{\underline{13.2618475^\circ}} \nonumber
+\end{align}
+
+\subsection{Dreieck $ABP$}
+Als erster müssen wir den Winkel $\kappa$ berechnen:
+\begin{align}
+	\kappa &= \beta + \beta_1 = 45.011513^\circ + 12.5211127^\circ \nonumber \\
+	&=\underline{\underline{44.6687451^\circ}} \nonumber
+\end{align}
+Danach können wir mithilfe von $\kappa$, $c$ und $pb$ die Seite $l$ berechnen:
+\begin{align}
+	l &= \cos^{-1}(\cos(c) \cdot \cos(pb) + \sin(c) \cdot \sin(pb) \cdot \cos(\kappa)) \nonumber \\
+	&= \cos^{-1}(\cos(70.936778) \cdot \cos(42.572556) + \sin(70.936778) \cdot \sin(42.572556) \cdot \cos(57.5326442)) \nonumber \\
+	&= \underline{\underline{54.2833404^\circ}} \nonumber
+\end{align}
+Damit wir gleich den Längengrad berechnen können, benötigen wir noch den Winkel $\omega$:
+\begin{align}
+	\omega &= \cos^{-1}  \bigg[\frac{\cos(pb)-\cos(c) \cdot \cos(l)}{\sin(c) \cdot \sin(l)}\bigg] \nonumber \\
+	&=\cos^{-1}  \bigg[\frac{\cos(42.572556)-\cos(70.936778) \cdot \cos(54.2833404)}{\sin(70.936778) \cdot \sin(54.2833404)}\bigg] \nonumber \\
+	&= \underline{\underline{44.6687451^\circ}} \nonumber
+\end{align}
+
+\subsection{Längengrad und Breitengrad bestimmen}
+
+\begin{align}
+	\delta &= 90^\circ - l \nonumber \\
+	&= 90^\circ - 54.2833404 \nonumber \\
+	&= \underline{\underline{35.7166596^\circ}} \nonumber
+\end{align}
+\begin{align}
+	\lambda &= \lambda_{Arktur} + \omega \nonumber \\
+	&= 95.5647759^\circ + 44.6687451^\circ \nonumber \\
+	&= \underline{\underline{140.233521^\circ}} \nonumber
+\end{align}
+Wie wir sehen, stimmen die berechneten Koordinaten mit den Koordinaten des Punktes, an welchem gemessen wurde überein. 
+Unsere Methode scheint also zu funktionieren.
+
+
+
 
