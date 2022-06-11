@@ -5,7 +5,7 @@
 //
 #version 3.7;
 #include "colors.inc"
-#include "macros.inc"
+#include "../macros.inc"
 
 global_settings {
 	assumed_gamma 1
@@ -33,3 +33,7 @@ sky_sphere {
 	}
 }
 
+//kugel(kugeldunkel)
+erde(-100)
+koordinatennetz(gitterfarbe, 9, 0.001)
+achse(fein, White)

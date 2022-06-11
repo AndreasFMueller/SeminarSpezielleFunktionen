@@ -5,7 +5,7 @@
 //
 #version 3.7;
 #include "colors.inc"
-#include "macros.inc"
+#include "../macros.inc"
 
 global_settings {
 	assumed_gamma 1
@@ -31,5 +31,20 @@ sky_sphere {
 	pigment {
 		color rgb<1,1,1>
 	}
+}
+
+erde(0)
+achse(fein, White)
+koordinatennetz(gitterfarbe, 9, 0.001)
+
+union {
+        punkt(Sakura, fett)
+        pigment {
+                color rot
+        }
+        finish {
+                metallic
+                specular 0.9
+        }
 }
 

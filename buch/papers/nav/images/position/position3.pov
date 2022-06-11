@@ -1,22 +1,17 @@
 //
-// dreiecke3d.pov
+// position3.pov
 //
 // (c) 2022 Prof Dr Andreas Müller, OST Ostschweizer Fachhochschule
 //
+#version 3.7;
 #include "common.inc"
 
-kugel(kugelfarbe)
+dreieck(B, P, C, kugelfarbe)
 
 union {
-	seite(A, B, fein)
-	seite(A, C, fein)
-	punkt(A, fein)
 	punkt(B, fett)
 	punkt(C, fett)
 	punkt(P, fett)
-	seite(B, C, fett)
-	seite(B, P, fett)
-	seite(C, P, fett)
 	pigment {
 		color dreieckfarbe
 	}
@@ -26,10 +21,24 @@ union {
 	}
 }
 
-object {
-	winkel(B, C, P, fein, gross)
+union {
+	seite(B, C, fett)
+	seite(B, P, fett)
+	seite(C, P, fett)
 	pigment {
-		color rgb<0.6,0.4,0.2>
+		color bekannt
+	}
+	finish {
+		specular 0.95
+		metallic
+	}
+}
+
+union {
+	winkel(B, P, C, fein, gross)
+	winkel(C, B, P, fein, gross)
+	pigment {
+		color unbekannt
 	}
 	finish {
 		specular 0.95
