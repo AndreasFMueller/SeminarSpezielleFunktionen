@@ -6,11 +6,11 @@
 all:	position
 
 POSITION =								\
-	position1.pdf							\
-	position2.pdf							\
-	position3.pdf							\
-	position4.pdf							\
-	position5.pdf	
+	position1.pdf position1-small.pdf				\
+	position2.pdf position2-small.pdf				\
+	position3.pdf position3-small.pdf				\
+	position4.pdf position4-small.pdf				\
+	position5.pdf position5-small.pdf	
 
 position: $(POSITION)
 
@@ -52,3 +52,18 @@ position5.jpg:	position5.png
 position5.pdf:	position5.tex common.tex position5.jpg
 	pdflatex position5.tex
 
+position1-small.pdf:	position1-small.tex common.tex position1.jpg
+	pdflatex position1-small.tex
+position2-small.pdf:	position2-small.tex common.tex position2.jpg
+	pdflatex position2-small.tex
+position3-small.pdf:	position3-small.tex common.tex position3.jpg
+	pdflatex position3-small.tex
+position4-small.pdf:	position4-small.tex common.tex position4.jpg
+	pdflatex position4-small.tex
+position5-small.pdf:	position5-small.tex common.tex position5.jpg
+	pdflatex position5-small.tex
+
+test:	test.pdf
+
+test.pdf:	test.tex $(POSITION)
+	pdflatex test.tex
