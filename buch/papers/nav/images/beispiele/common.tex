@@ -1,0 +1,79 @@
+%
+% common.tex
+%
+% (c) 2022 Prof Dr Andreas Müller, OST Ostschweizer Fachhochschule
+%
+
+\def\labelA{\node at (0.7,3.8) {$A$};}
+
+\def\labelSpica{
+	\node at (-3.6,-2.8) {Spica};
+}
+\def\labelAltair{
+	\node at (3.0,-2.3) {Altair};
+}
+\def\labelArktur{
+	\node at (-3.3,-0.7) {Arktur};
+}
+\def\labelDeneb{
+	\node at (3.4,0.9) {Deneb};
+}
+
+\def\labelP{\node at (0,-0.2) {$P$};}
+
+\def\labellone{\node at (0.1,1.9) {$l$};}
+\def\labelltwo{\node at (0.1,2.0) {$l$};}
+
+\def\labelhSpica{
+	\coordinate (Spica) at (-1.8,-0.3);
+	\node at (Spica) {$h_{\text{Spica}}\mathstrut$};
+}
+\def\labelhAltair{
+	\coordinate (Altair) at (1.1,-1.0);
+	\node at (Altair) {$h_{\text{Altair}}\mathstrut$};
+}
+\def\labelhArktur{
+	\coordinate (Arktur) at (-1.3,-0.3);
+	\node at (Arktur) {$h_{\text{Arktur}}\mathstrut$};
+}
+\def\labelhDeneb{
+	\coordinate (Deneb) at (1.6,0.45);
+	\node at (Deneb) {$h_{\text{Deneb}}\mathstrut$};
+}
+
+\def\labeldSpica{
+	\coordinate (dSpica) at (-1.5,2.6);
+	\fill[color=white,opacity=0.5]
+		($(dSpica)+(-1.8,0.08)$)
+		rectangle
+		($(dSpica)+(-0.06,0.55)$);
+	\node at (dSpica) [above left]
+		{$90^\circ-\delta_{\text{Spica}}\mathstrut$};
+}
+\def\labeldAltair{
+	\coordinate (dAltair) at (2.0,2.1);
+	\fill[color=white,opacity=0.5]
+		($(dAltair)+(0.10,0.05)$)
+		rectangle
+		($(dAltair)+(1.8,0.5)$);
+	\node at (dAltair) [above right]
+		{$90^\circ-\delta_{\text{Altair}}\mathstrut$};
+}
+\def\labeldArktur{
+	\coordinate (dArktur) at (-1.2,2.5);
+	\fill[color=white,opacity=0.5]
+		($(dArktur)+(-1.8,0.05)$)
+		rectangle
+		($(dArktur)+(-0.06,0.5)$);
+	\node at (dArktur) [above left]
+		{$90^\circ-\delta_{\text{Arktur}}\mathstrut$};
+}
+\def\labeldDeneb{
+	\coordinate (dDeneb) at (2.0,2.8);
+	\fill[color=white,opacity=0.5]
+		($(dDeneb)+(0.05,0.5)$)
+		rectangle
+		($(dDeneb)+(1.87,0.05)$);
+	\node at (dDeneb) [above right]
+		{$90^\circ-\delta_{\text{Deneb}}\mathstrut$};
+}

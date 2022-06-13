@@ -17,48 +17,66 @@ Verteilungsfunktion von
 Z=\operatorname{max}(X_1,\dots,X_n)
 \]
 \begin{align*}
+\uncover<3->{
 F_Z(x)
 &=
-P(Z\le x)
+P(Z\le x)}
 \\
+\uncover<4->{
 &=
 P(X_1\le x\wedge\dots\wedge X_n\le x)
+}
 \\
+\uncover<5->{
 &=
 P(X_1\le x)\cdot \ldots\cdot P(X_n\le x)
+}
 \\
+\uncover<6->{
 &=
 F_X(x)^n
+}
 \end{align*}
 \end{block}
 \end{column}
 \begin{column}{0.48\textwidth}
+\uncover<2->{%
 \begin{block}{Minimum}
 Verteilungsfunktion von
 \[
 Z=\operatorname{min}(X_1,\dots,X_n)
 \]
 \begin{align*}
+\uncover<7->{
 F_Z(x)
 &=
 P(Z\le x)
+}
 \\
+\uncover<8->{
 &=P(\overline{
 X_1\le x\wedge\dots\wedge X_n \le x
 })
+}
 \\
+\uncover<9->{
 &=
 1-P(
 X_1> x\wedge\dots\wedge X_n > x
 )
+}
 \\
+\uncover<10->{
 &=
 1-(P(X_1>x)\cdot\ldots\cdot P(X_n>x))
+}
 \\
+\uncover<11->{
 &=
 1-(1-F_X(x))^n
+}
 \end{align*}
-\end{block}
+\end{block}}
 \end{column}
 \end{columns}
 \end{frame}

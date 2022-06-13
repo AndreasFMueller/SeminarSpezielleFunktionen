@@ -1,0 +1,72 @@
+%
+% hermiteentwicklung.tex -- slide template
+%
+% (c) 2021 Prof Dr Andreas Müller, OST Ostschweizer Fachhochschule
+%
+\bgroup
+\begin{frame}[t]
+\setlength{\abovedisplayskip}{5pt}
+\setlength{\belowdisplayskip}{5pt}
+\frametitle{Beliebige Polynome}
+\vspace{-20pt}
+\begin{columns}[t,onlytextwidth]
+\begin{column}{0.48\textwidth}
+\begin{block}{Polynom}
+\[
+P(x)
+=
+p_0 + p_1x + p_2x^2 + \dots + p_nx^n
+\]
+\uncover<2->{%
+als Linearkombination von Hermite-Polynome schreiben:
+\begin{align*}
+P(x)
+&=
+a_0H_0(x)% + a_1H_1(x)
++ \dots + a_nH_n(x)
+\\
+&=
+a_0\cdot 1
+\\
+&\quad + a_1\cdot 2x
+\\
+&\quad + a_2\cdot(4x^2-2) 
+\\
+&\quad + a_3\cdot(8x^3-12x)
+\\
+&\quad + a_4\cdot(16x^4-48x^2+12)
+\\
+&\quad\;\;\vdots
+\\
+&\quad + a_n(2^nx^n + \dots)
+\end{align*}}
+\end{block}
+\end{column}
+\begin{column}{0.48\textwidth}
+\uncover<3->{%
+\begin{block}{Koeffizientenvergleich}
+führt auf ein Gleichungssystem
+\begin{center}
+\begin{tabular}{|>{$}r<{$}>{$}r<{$}>{$}r<{$}>{$}r<{$}>{$}r<{$}>{$}c<{$}|>{$}c<{$}|}
+\hline
+a_0&a_1&a_2&a_3&a_4&\dots&\\
+\hline
+ 1&  0&  0&  0&  0&\dots&p_0\\
+ 0&  2&  0&  0&  0&\dots&p_1\\
+-2&  0&  4&  0&  0&\dots&p_2\\
+ 0&-12&  0&  8&  0&\dots&p_3\\
+12&  0&-48&  0& 16&\dots&p_4\\
+\vdots&\vdots&\vdots&\vdots&\vdots&\ddots&\vdots\\
+\hline
+\end{tabular}
+\end{center}
+\uncover<4->{%
+Dreiecksmatrix}\uncover<5->{, Diagonalelement
+$\ne 0$}
+\uncover<6->{$\Rightarrow$ 
+$\exists$ eindeutige Lösung}
+\end{block}}
+\end{column}
+\end{columns}
+\end{frame}
+\egroup
