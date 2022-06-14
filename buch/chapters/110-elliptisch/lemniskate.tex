@@ -12,6 +12,9 @@ veröffentlich hat.
 In diesem Abschnitt soll die Verbindung zu den Jacobischen
 elliptischen Funktionen hergestellt werden.
 
+%
+% Lemniskate
+%
 \subsection{Lemniskate
 \label{buch:gemotrie:subsection:lemniskate}}
 \begin{figure}
@@ -71,6 +74,165 @@ Sie gilt für Winkel $\varphi\in[-\frac{\pi}4,\frac{\pi}4]$ für das
 rechte Blatt und $\varphi\in[\frac{3\pi}4,\frac{5\pi}4]$ für das linke
 Blatt der Lemniskate.
 
+%
+% Schnitt eines Kegels mit einem Paraboloid
+%
+\subsubsection{Schnitt eines Kegels mit einem Paraboloid}
+\begin{figure}
+\center
+\includegraphics{chapters/110-elliptisch/images/kegelpara.pdf}
+\caption{Leminiskate (rot) als Projektion (gelb) der Schnittkurve (blau)
+eines geraden
+Kreiskegels (grün) mit einem Rotationsparaboloid (hellblau).
+\label{buch:elliptisch:lemniskate:kegelpara}}
+\end{figure}%
+Schreibt man in der Gleichung~\eqref{buch:elliptisch:eqn:lemniskate}
+für die Klammer auf der rechten Seite $Z^2 = X^2 - Y^2$, dann wird die
+Lemniskate die Projektion in die $X$-$Y$-Ebene der Schnittmenge der Flächen,
+die durch die Gleichungen
+\begin{equation}
+X^2-Y^2 = Z^2
+\qquad\text{und}\qquad
+(X^2+Y^2) = R^2 = \sqrt{2}aZ
+\label{buch:elliptisch:eqn:kegelparabolschnitt}
+\end{equation}
+beschrieben wird.
+Die linke Gleichung in 
+\eqref{buch:elliptisch:eqn:kegelparabolschnitt}
+beschreibt einen geraden Kreiskegel, die rechte ist ein Rotationsparaboloid.
+Die Schnittkurve ist in Abbildung~\ref{buch:elliptisch:lemniskate:kegelpara}
+dargestellt.
+
+\subsubsection{Schnitt eines Torus mit einer Ebene}
+\begin{figure}
+\centering
+\includegraphics{chapters/110-elliptisch/images/torusschnitt.pdf}
+\caption{Die Schnittkurve (rot) eines Torus (grün)
+mit einer zur Torusachse parallelen Ebene (blau),
+die den inneren Äquator des Torus berührt, ist eine Lemniskate.
+\label{buch:elliptisch:lemniskate:torusschnitt}}
+\end{figure}
+Schneidet man einen Torus mit einer Ebene, die zur Achse des Torus
+parallel ist und den inneren Äquator des Torus berührt, entsteht
+ebenfalls eine Lemniskate.
+Die Situation ist in Abbildung~\ref{buch:elliptisch:lemniskate:torusschnitt}
+dargestellt.
+
+Der Torus kann mit den Radien $2$ und $1$ mit der $y$-Achse als Torusachse
+kann mit der Parametrisierung
+\[
+(s,t)
+\mapsto
+\begin{pmatrix}
+(2+\cos s) \cos t \\
+\sin s \\
+(2+\cos s) \sin t 
+\end{pmatrix}
+\]
+beschrieben werden.
+Die Gleichung $z=1$ beschreibt eine 
+achsparallele Ebene, die den inneren Äquator berührt.
+Die Schnittkurve erfüllt daher
+\[
+(2+\cos s)\sin t = 1,
+\]
+was wir auch als $2 +\cos s = 1/\sin t$ schreiben können.
+Wir müssen nachprüfen dass die Koordinaten
+$X=(2+\cos s)\cos t$ und $Y=\sin s$ die Gleichung einer Lemniskate
+erfüllen.
+
+Zunächst können wir in der $X$-Koordinate den Klammerausdruck durch 
+\begin{equation}
+X
+=
+(2+\cos s) \cos t
+=
+\frac{1}{\sin t}\cos t
+=
+\frac{\cos t}{\sin t}
+\qquad\Rightarrow\qquad
+X^2
+=
+\frac{\cos^2t}{\sin^2 t}
+=
+\frac{1-\sin^2t}{\sin^2 t}
+\label{buch:elliptisch:lemniskate:Xsin}
+\end{equation}
+ersetzen.
+Auch die $Y$-Koordinaten können wir durch $t$ ausdrücken, 
+nämlich
+\begin{equation}
+Y^2=\sin^2 s = 1-\cos^2 s
+=
+1-
+\biggl(
+\frac{1}{\sin t}
+-2
+\biggr)^2
+=
+\frac{-3\sin^2 t+4\sin t-1}{\sin^2 t}.
+\label{buch:elliptisch:lemniskate:Ysin}
+\end{equation}
+Die Gleichungen
+\eqref{buch:elliptisch:lemniskate:Xsin}
+und
+\eqref{buch:elliptisch:lemniskate:Ysin}
+zeigen, dass man $X^2$ und $Y^2$ sogar einzig durch $\sin t$ 
+parametrisieren kann.
+Um die Ausdrücke etwas zu vereinfachen, schreiben wir $S=\sin t$
+und erhalten zusammenfassend
+\begin{equation}
+\begin{aligned}
+X^2
+&=
+\frac{1-S^2}{S^2}
+\\
+Y^2
+&=
+\frac{-3S^2+4S-1}{S^2}.
+\end{aligned}
+\end{equation}
+Daraus kann man jetzt die Summen und Differenzen der Quadrate
+berechnen, sie sind
+\begin{equation}
+\begin{aligned}
+X^2+Y^2
+&=
+\frac{-4S^2+4S}{S^2}
+=
+\frac{4S(1-S)}{S^2}
+=
+\frac{4(1-S)}{S}
+=
+4\frac{1-S}{S}
+\\
+X^2-Y^2
+&=
+\frac{2-4S+2S^2}{S^2}
+=
+\frac{2(1-S)^2}{S^2}
+=
+2\biggl(\frac{1-S}{S}\biggr)^2.
+\end{aligned}
+\end{equation}
+Durch Berechnung des Quadrates von $X^2+Y^2$ kann man jetzt
+die Gleichung
+\[
+(X^2+Y^2)
+=
+16
+\biggl(\frac{1-S}{S}\biggr)^2
+=
+8 \cdot 2
+\biggl(\frac{1-S}{S}\biggr)^2
+=
+2\cdot 2^2\cdot (X-Y)^2.
+\]
+Dies ist eine Lemniskaten-Gleichung für $a=2$.
+
+%
+% Bogenlänge der Lemniskate
+%
 \subsection{Bogenlänge}
 Die Funktionen
 \begin{equation}

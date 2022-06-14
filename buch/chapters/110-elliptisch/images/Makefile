@@ -79,7 +79,6 @@ slcldata.tex:	slcl
 slcl.pdf:	slcl.tex slcldata.tex
 	pdflatex slcl.tex
 
-POVRAYOPTIONS = -W1920 -H1080
 kegelpara.png:	kegelpara.pov
 	povray +A0.1 -W1080 -H1080 -Okegelpara.png kegelpara.pov
 
@@ -89,3 +88,14 @@ kegelpara.jpg:	kegelpara.png Makefile
 
 kegelpara.pdf:	kegelpara.tex kegelpara.jpg
 	pdflatex kegelpara.tex
+
+torusschnitt.png:	torusschnitt.pov
+	povray +A0.1 -W1920 -H1080 -Otorusschnitt.png torusschnitt.pov
+
+torusschnitt.jpg:	torusschnitt.png Makefile
+	convert -extract 1560x1080+180+0 torusschnitt.png \
+		-density 300 -units PixelsPerInch torusschnitt.jpg
+
+torusschnitt.pdf:	torusschnitt.tex torusschnitt.jpg
+	pdflatex torusschnitt.tex
+
