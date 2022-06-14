@@ -5,7 +5,7 @@
 #
 all:	lemniskate.pdf ellipsenumfang.pdf unvollstaendig.pdf rechteck.pdf \
 	ellipse.pdf pendel.pdf jacobiplots.pdf jacobidef.pdf jacobi12.pdf \
-	sncnlimit.pdf slcl.pdf
+	sncnlimit.pdf slcl.pdf torusschnitt.pdf kegelpara.pdf
 
 lemniskate.pdf:	lemniskate.tex
 	pdflatex lemniskate.tex
