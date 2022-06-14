@@ -78,3 +78,14 @@ slcldata.tex:	slcl
 	./slcl --outfile=slcldata.tex --a=0 --b=13.4 --steps=200
 slcl.pdf:	slcl.tex slcldata.tex
 	pdflatex slcl.tex
+
+POVRAYOPTIONS = -W1920 -H1080
+kegelpara.png:	kegelpara.pov
+	povray +A0.1 -W1080 -H1080 -Okegelpara.png kegelpara.pov
+
+kegelpara.jpg:	kegelpara.png Makefile
+	convert -extract 1080x1000+0+40 kegelpara.png \
+		-density 300 -units PixelsPerInch kegelpara.jpg
+
+kegelpara.pdf:	kegelpara.tex kegelpara.jpg
+	pdflatex kegelpara.tex
