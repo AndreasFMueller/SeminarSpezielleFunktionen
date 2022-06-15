@@ -5,7 +5,7 @@
 #
 all:	lemniskate.pdf ellipsenumfang.pdf unvollstaendig.pdf rechteck.pdf \
 	ellipse.pdf pendel.pdf jacobiplots.pdf jacobidef.pdf jacobi12.pdf \
-	sncnlimit.pdf slcl.pdf
+	sncnlimit.pdf slcl.pdf torusschnitt.pdf kegelpara.pdf
 
 lemniskate.pdf:	lemniskate.tex
 	pdflatex lemniskate.tex
@@ -78,3 +78,27 @@ slcldata.tex:	slcl
 	./slcl --outfile=slcldata.tex --a=0 --b=13.4 --steps=200
 slcl.pdf:	slcl.tex slcldata.tex
 	pdflatex slcl.tex
+
+KEGELSIZE = -W256 -H256
+KEGELSIZE = -W128 -H128
+KEGELSIZE = -W1080 -H1080
+kegelpara.png:	kegelpara.pov
+	povray +A0.1 $(KEGELSIZE) -Okegelpara.png kegelpara.pov
+
+kegelpara.jpg:	kegelpara.png Makefile
+	convert -extract 1080x1040+0+0 kegelpara.png \
+		-density 300 -units PixelsPerInch kegelpara.jpg
+
+kegelpara.pdf:	kegelpara.tex kegelpara.jpg
+	pdflatex kegelpara.tex
+
+torusschnitt.png:	torusschnitt.pov
+	povray +A0.1 -W1920 -H1080 -Otorusschnitt.png torusschnitt.pov
+
+torusschnitt.jpg:	torusschnitt.png Makefile
+	convert -extract 1560x1080+180+0 torusschnitt.png \
+		-density 300 -units PixelsPerInch torusschnitt.jpg
+
+torusschnitt.pdf:	torusschnitt.tex torusschnitt.jpg
+	pdflatex torusschnitt.tex
+

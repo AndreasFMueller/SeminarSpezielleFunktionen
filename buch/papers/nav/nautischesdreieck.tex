@@ -97,7 +97,6 @@ Mithilfe dieser Dreiecken können wir die einfachen Sätze der sphärischen Trig
 	\end{center}
 \end{figure}
 
-
 \subsubsection{Dreieck $ABC$}
 
 \begin{center}
@@ -140,12 +139,9 @@ können wir nun die dritte Seitenlänge bestimmen.
 Es ist darauf zu achten, dass hier natürlich die Seitenlängen in Bogenmass sind und dementsprechend der Kosinus und Sinus verwendet wird. 
 
 Jetzt fehlen noch die beiden anderen Innenwinkel $\beta$ und\ $\gamma$.
-Diese bestimmen wir mithilfe des Sinussatzes \[\frac{\sin (a)}{\sin (\alpha)} =\frac{\sin (b)}{\sin (\beta)} = \frac{\sin (c)}{\sin (\gamma)}.\]
-Hier muss man aufpassen, dass man Seite von Winkel unterscheiden kann. 
-Im Zähler sind die Seiten, im Nenner die Winkel. 
-Somit ist \[\beta =\sin^{-1} [\sin(b) \cdot \frac{\sin(\alpha)}{\sin(a)}].\]
+Diese bestimmen wir mithilfe des Kosinussatzes: \[\beta=\cos^{-1}  \bigg[\frac{\cos(b)-\cos(a) \cdot \cos(c)}{\sin(a) \cdot \sin(c)}\bigg]\] und \[\gamma =  \cos^{-1}  \bigg[\frac{\cos(c)-\cos(b) \cdot \cos(a)}{\sin(a) \cdot \sin(b)}.\bigg]\]
 
-Schlussendlich haben wir die Seiten $a,b\ und \ c$, die Ecken A,B und C und die Winkel $\alpha$, $\beta$  und  $\gamma$ bestimmt und somit das ganze Kugeldreieck $ABC$ berechnet.
+Schlussendlich haben wir die Seiten $a$ $b$ und $c$, die Ecken A,B und C und die Winkel $\alpha$, $\beta$  und  $\gamma$ bestimmt und somit das ganze Kugeldreieck $ABC$ berechnet.
 
 \subsubsection{Dreieck $BPC$}
 Wir bilden nun ein zweites Dreieck, welches die Ecken $B$ und $C$ des ersten Dreiecks besitzt. 
@@ -167,8 +163,7 @@ und
 \delta  =\cos^{-1} [\cos(c) \cdot \cos(pb) + \sin(c) \cdot \sin(pb) \cdot \cos(\kappa)].
 \]
 
-Für die Geographische Länge $\lambda$ des eigenen Standortes muss man den Winkel $\omega$, welcher sich im Dreieck $ACP$ in der Ecke bei $A$ befindet. 
-Mithilfe des Sinussatzes \[\frac{\sin (a)}{\sin (\alpha)} =\frac{\sin (b)}{\sin (\beta)} = \frac{\sin (c)}{\sin (\gamma)}\] können wir das bestimmen. 
-Somit ist \[ \omega=\sin^{-1}[\sin(pc) \cdot \frac{\sin(\gamma)}{\sin(l)}] \]und unsere gesuchte geographische Länge schlussendlich 
+Für die Geographische Länge $\lambda$ des eigenen Standortes nutzt man den Winkel $\omega$, welcher sich im Dreieck $ACP$ in der Ecke bei $A$ befindet. 
+Mithilfe des Kosinussatzes können wir \[\omega = \cos^{-1}  \bigg[\frac{\cos(pb)-\cos(c) \cdot \cos(l)}{\sin(c) \cdot \sin(l)}.\bigg]\] berechnen und schlussentlich dann 
 \[\lambda=\lambda_1 - \omega\]
 wobei $\lambda_1$ die Länge des Bildpunktes $X$ von $C$ ist.
