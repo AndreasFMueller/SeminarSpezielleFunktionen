@@ -123,9 +123,34 @@ union {
 }
 #end
 
-#macro Ebene(farbe)
-box {
-	<-1.8, 0, -1.4>, <1.8, 0.001, 1.4>
+#macro Ebene(l, b, farbe)
+mesh {
+	triangle { <-l, 0, -b>, < l, 0, -b>, < l, 0,  b> }
+	triangle { <-l, 0, -b>, < l, 0,  b>, <-l, 0,  b> }
+	pigment {
+		color farbe
+	}
+	finish {
+		specular 0.9
+		metallic
+	}
+}
+#end
+
+#macro Ebenengitter(l, b, s, r, farbe)
+union {
+	#declare lmax = floor(l / s);
+	#declare ll = -lmax;
+	#while (ll <= lmax)
+		cylinder { <ll * s, 0, -b>, <ll * s, 0, b>, r }
+		#declare ll = ll + 1;
+	#end
+	#declare bmax = floor(b / s);
+	#declare bb = -bmax;
+	#while (bb <= bmax)
+		cylinder { <-l, 0, bb * s>, <l, 0, bb * s>, r }
+		#declare bb = bb + 1;
+	#end
 	pigment {
 		color farbe
 	}
@@ -139,6 +164,59 @@ box {
 #declare b = 0.5;
 #macro T(phi, theta)
 	b * < (2 + cos(theta)) * cos(phi), (2 + cos(theta)) * sin(phi) + 1, sin(theta) >
+#end
+
+#macro breitenkreis(theta, r)
+	#declare phi = 0;
+	#declare phimax = 2 * pi;
+	#declare phisteps = 200;
+	#declare phistep = phimax / phisteps;
+	#while (phi < phimax - phistep/2)
+		cylinder { T(phi, theta), T(phi + phistep, theta), r }
+		sphere { T(phi, theta), r }
+		#declare phi = phi + phistep;
+	#end
+#end
+
+#macro laengenkreis(phi, r)
+	#declare theta = 0;
+	#declare thetamax = 2 * pi;
+	#declare thetasteps = 200;
+	#declare thetastep = thetamax / thetasteps;
+	#while (theta < thetamax - thetastep/2)
+		cylinder { T(phi, theta), T(phi, theta + thetastep), r }
+		sphere { T(phi, theta), r }
+		#declare theta = theta + thetastep;
+	#end
+#end
+
+#macro Torusgitter(farbe, r)
+union {
+	#declare phi = 0;
+	#declare phimax = 2 * pi;
+	#declare phistep = pi / 6;
+	#while (phi < phimax - phistep/2)
+		laengenkreis(phi, r)
+		#declare phi = phi + phistep;
+	#end
+	#declare thetamax = pi;
+	#declare thetastep = pi / 6;
+	#declare theta = thetastep;
+	#while (theta < thetamax - thetastep/2)
+		breitenkreis(theta, r)
+		breitenkreis(thetamax + theta, r)
+		#declare theta = theta + thetastep;
+	#end
+	breitenkreis(0, 1.5 * r)
+	breitenkreis(pi, 1.5 * r)
+	pigment {
+		color farbe
+	}
+	finish {
+		specular 0.9
+		metallic
+	}
+}
 #end
 
 #macro Torus(farbe)
@@ -181,5 +259,7 @@ mesh {
 #declare ebenenfarbe = rgbt<0.2,0.6,1.0,0.2>;
 
 Lemniskate(0.02, Red)
-Ebene(ebenenfarbe)
+Ebene(1.8, 1.4, ebenenfarbe)
+Ebenengitter(1.8, 1.4, 0.5, 0.005, rgb<0.4,1,1>)
 Torus(torusfarbe)
+Torusgitter(Yellow, 0.005)

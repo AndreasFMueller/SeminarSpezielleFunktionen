@@ -81,7 +81,7 @@ Blatt der Lemniskate.
 \begin{figure}
 \center
 \includegraphics{chapters/110-elliptisch/images/kegelpara.pdf}
-\caption{Leminiskate (rot) als Projektion (gelb) der Schnittkurve (blau)
+\caption{Leminiskate (rot) als Projektion (gelb) der Schnittkurve (pink)
 eines geraden
 Kreiskegels (grün) mit einem Rotationsparaboloid (hellblau).
 \label{buch:elliptisch:lemniskate:kegelpara}}
@@ -126,7 +126,7 @@ kann mit der Parametrisierung
 \begin{pmatrix}
 (2+\cos s) \cos t \\
 \sin s \\
-(2+\cos s) \sin t 
+(2+\cos s) \sin t + 1
 \end{pmatrix}
 \]
 beschrieben werden.
@@ -134,9 +134,9 @@ Die Gleichung $z=1$ beschreibt eine
 achsparallele Ebene, die den inneren Äquator berührt.
 Die Schnittkurve erfüllt daher
 \[
-(2+\cos s)\sin t = 1,
+(2+\cos s)\sin t + 1 = 0,
 \]
-was wir auch als $2 +\cos s = 1/\sin t$ schreiben können.
+was wir auch als $2 +\cos s = -1/\sin t$ schreiben können.
 Wir müssen nachprüfen dass die Koordinaten
 $X=(2+\cos s)\cos t$ und $Y=\sin s$ die Gleichung einer Lemniskate
 erfüllen.
@@ -147,9 +147,9 @@ X
 =
 (2+\cos s) \cos t
 =
-\frac{1}{\sin t}\cos t
+-\frac{1}{\sin t}\cos t
 =
-\frac{\cos t}{\sin t}
+-\frac{\cos t}{\sin t}
 \qquad\Rightarrow\qquad
 X^2
 =
