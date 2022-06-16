@@ -22,8 +22,9 @@
 \draw[color=red!20,line width=1.4pt] \lemnispathmore;
 \draw[color=red,line width=1.4pt] \lemnispath;
 
-\draw[->] ({-1.6*\dx},0) -- ({1.6*\dx},0) coordinate[label={$X$}];
+\draw[->] ({-1.6*\dx},0) -- ({1.8*\dx},0) coordinate[label={$X$}];
 \draw[->] (0,{-0.7*\dy}) -- (0,{0.7*\dy}) coordinate[label={right:$Y$}];
+
 \draw ({1.5*\dx},-0.05) -- ({1.5*\dx},0.05);
 \draw ({\dx},-0.05) -- ({\dx},0.05);
 \draw ({0.5*\dx},-0.05) -- ({0.5*\dx},0.05);
@@ -84,6 +85,9 @@
 \CS
 \CT
 \CU
+
+\fill[color=blue] (LA) circle[radius=0.07];
+\node[color=blue] at (LA) [above right] {$S$};
 
 \end{tikzpicture}
 \end{document}

@@ -32,6 +32,13 @@ mit der Gleichung
 \end{equation}
 Sie ist in Abbildung~\ref{buch:elliptisch:fig:lemniskate}
 dargestellt.
+Der Fall $a=1/\sqrt{2}$ ist eine Kurve mit der Gleichung
+\[
+(x^2+y^2)^2 = x^2-y^2,
+\]
+wir nennen sie die {\em Standard-Lemniskate}.
+
+\subsubsection{Scheitelpunkte}
 Die beiden Scheitel der Lemniskate befinden sich bei $X_s=\pm a\sqrt{2}$.
 Dividiert man die Gleichung der Lemniskate durch $X_s^2=4a^4$ entsteht 
 \begin{equation}
@@ -53,10 +60,12 @@ Dividiert man die Gleichung der Lemniskate durch $X_s^2=4a^4$ entsteht
 \label{buch:elliptisch:eqn:lemniskatenormiert}
 \end{equation}
 wobei wir $x=X/a\sqrt{2}$ und $y=Y/a\sqrt{2}$ gesetzt haben.
-In dieser Normierung liegen die Scheitel bei $\pm 1$.
+In dieser Normierung, der Standard-Lemniskaten, liegen die Scheitel
+bei $\pm 1$.
 Dies ist die Skalierung, die für die Definition des lemniskatischen
 Sinus und Kosinus verwendet werden soll.
 
+\subsubsection{Polarkoordinaten}
 In Polarkoordinaten $x=r\cos\varphi$ und $y=r\sin\varphi$
 gilt nach Einsetzen in \eqref{buch:elliptisch:eqn:lemniskatenormiert}
 \begin{equation}
@@ -116,77 +125,80 @@ die den inneren Äquator des Torus berührt, ist eine Lemniskate.
 \end{figure}
 \index{Torus}%
 Schneidet man einen Torus mit einer Ebene, die zur Achse des Torus
-parallel ist und den inneren Äquator des Torus berührt, entsteht
-ebenfalls eine Lemniskate.
-Die Situation ist in Abbildung~\ref{buch:elliptisch:lemniskate:torusschnitt}
-dargestellt.
+parallel ist und den inneren Äquator des Torus berührt, wie in
+Abbildung~\ref{buch:elliptisch:lemniskate:torusschnitt},
+entsteht ebenfalls eine Lemniskate, wie in diesem Abschnitt nachgewiesen
+werden soll.
 
 Der in Abbildung~\ref{buch:elliptisch:lemniskate:torusschnitt}
 dargestellte Torus mit den Radien $2$ und $1$ hat als Achse die
 um eine Einheit in $Z$-Richtung verschobene $Y$-Achse und die
 $X$-$Z$-Ebene als Äquatorebene.
-Sie kann mit
+Der Torus kann mit
 \[
-(s,t)
+(u,v)
 \mapsto
 \begin{pmatrix}
-(2+\cos s) \cos t \\
-\sin s \\
-(2+\cos s) \sin t + 1
+(2+\cos u) \cos v    \\
+   \sin u            \\
+(2+\cos u) \sin v + 1
 \end{pmatrix}
 \]
-parametrisiert werden, die $s$- und $t$-Koordinatenlinien sind 
+parametrisiert werden, die $u$- und $v$-Koordinatenlinien sind 
 in der Abbildung gelb eingezeichnet.
+Die $v$-Koordinatenlinien sind Breitenkreise um die Achse des Torus.
+Aus $u=0$ und $u=\pi$ ergeben sich die Äquatoren des Torus.
+
 Die Gleichung $Z=0$ beschreibt eine achsparallele Ebene, die den
 inneren Äquator berührt.
 Die Schnittkurve erfüllt daher
 \[
-(2+\cos s)\sin t + 1 = 0,
+(2+\cos u)\sin v + 1 = 0,
 \]
-was wir auch als $2 +\cos s = -1/\sin t$ schreiben können.
-Wir müssen nachprüfen dass die Koordinaten
-$X=(2+\cos s)\cos t$ und $Y=\sin s$ die Gleichung einer Lemniskate
+was wir auch als $2 +\cos u = -1/\sin v$ schreiben können.
+Wir müssen nachprüfen, dass die Koordinaten
+$X=(2+\cos u)\cos v$ und $Y=\sin u$ die Gleichung einer Lemniskate
 erfüllen.
 
 Zunächst können wir in der $X$-Koordinate den Klammerausdruck durch
-$\sin t$ ausdrücken und erhalten
+$\sin v$ ausdrücken und erhalten
 \begin{equation}
 X
 =
-(2+\cos s) \cos t
+(2+\cos u) \cos v
 =
--\frac{1}{\sin t}\cos t
+-\frac{1}{\sin v}\cos v
 =
--\frac{\cos t}{\sin t}
+-\frac{\cos v}{\sin v}
 \qquad\Rightarrow\qquad
 X^2
 =
-\frac{\cos^2t}{\sin^2 t}
+\frac{\cos^2v}{\sin^2 v}
 =
-\frac{1-\sin^2t}{\sin^2 t}.
+\frac{1-\sin^2v}{\sin^2 v}.
 \label{buch:elliptisch:lemniskate:Xsin}
 \end{equation}
-Auch die $Y$-Koordinaten können wir durch $t$ ausdrücken, 
+Auch die $Y$-Koordinaten können wir durch $v$ ausdrücken, 
 nämlich
 \begin{equation}
-Y^2=\sin^2 s = 1-\cos^2 s
+Y^2=\sin^2 u = 1-\cos^2 u
 =
 1-
 \biggl(
-\frac{1}{\sin t}
+\frac{1}{\sin v}
 -2
 \biggr)^2
 =
-\frac{-3\sin^2 t+4\sin t-1}{\sin^2 t}.
+\frac{-3\sin^2 v+4\sin v-1}{\sin^2 v}.
 \label{buch:elliptisch:lemniskate:Ysin}
 \end{equation}
 Die Gleichungen
 \eqref{buch:elliptisch:lemniskate:Xsin}
 und
 \eqref{buch:elliptisch:lemniskate:Ysin}
-zeigen, dass man $X^2$ und $Y^2$ sogar einzig durch $\sin t$ 
+zeigen, dass man $X^2$ und $Y^2$ sogar einzig durch $\sin v$ 
 parametrisieren kann.
-Um die Ausdrücke etwas zu vereinfachen, schreiben wir $S=\sin t$
+Um die Ausdrücke etwas zu vereinfachen, schreiben wir $S=\sin v$
 und erhalten zusammenfassend
 \begin{equation}
 \begin{aligned}
@@ -222,8 +234,7 @@ X^2-Y^2
 2\biggl(\frac{1-S}{S}\biggr)^2.
 \end{aligned}
 \end{equation}
-Die Berechnung des Quadrates von $X^2+Y^2$ ergibt
-die Gleichung
+Die Berechnung des Quadrates von $X^2+Y^2$ ergibt die Gleichung
 \[
 (X^2+Y^2)^2
 =
@@ -260,7 +271,7 @@ r^4
 =
 (x(r)^2 + y(r)^2)^2,
 \end{align*}
-sie stellen also eine Parametrisierung der Lemniskate dar.
+sie stellen also eine Parametrisierung der Standard-Lemniskate dar.
 
 Mit Hilfe der Parametrisierung~\eqref{buch:geometrie:eqn:lemniskateparam}
 kann man die Länge $s$ des in Abbildung~\ref{buch:elliptisch:fig:lemniskate}
@@ -382,9 +393,13 @@ Y(t)
 \end{equation}
 Abbildung~\ref{buch:elliptisch:lemniskate:bogenpara} zeigt die
 Parametrisierung. 
-Dem Parameterwert $t=0$ entspricht der Punkt
-$(\sqrt{2},0)$ der Lemniskate.
+Dem Parameterwert $t=0$ entspricht der Scheitelpunkt
+$S=(\sqrt{2},0)$ der Lemniskate.
 
+%
+% Lemniskatengleichung
+%
+\subsubsection{Verfikation der Lemniskatengleichung}
 Dass \eqref{buch:elliptisch:lemniskate:bogeneqn}
 tatsächlich eine Parametrisierung ist kann nachgewiesen werden dadurch,
 dass man die beiden Seiten der definierenden Gleichung der
@@ -441,6 +456,11 @@ X(t)^2-Y(t)^2
 =
 2(X(t)^2-Y(t)^2).
 \end{align*}
+
+%
+% Berechnung der Bogenlänge
+%
+\subsubsection{Berechnung der Bogenlänge}
 Wir zeigen jetzt, dass dies tatsächlich eine Bogenlängenparametrisierung
 der Lemniskate ist.
 Dazu berechnen wir die Ableitungen
@@ -509,19 +529,22 @@ Dazu berechnen wir die Ableitungen
 &=
 1.
 \end{align*}
-Dies bedeutet, dass die Bogenlänge zwischen den Parameterwerten $0$ und $s$
+Dies bedeutet, dass die Bogenlänge zwischen den Parameterwerten $0$ und $t$
 \[
-\int_0^s
-\sqrt{\dot{X}(t)^2 + \dot{Y}(t)^2}
-\,dt
+\int_0^t
+\sqrt{\dot{X}(\tau)^2 + \dot{Y}(\tau)^2}
+\,d\tau
 =
-\int_0^s\,dt
+\int_0^s\,d\tau
 =
-s,
+t,
 \]
-der Parameter $t$ ist also ein Bogenlängenparameter, man darf also
-$s=t$ schreiben.
+der Parameter $t$ ist also ein Bogenlängenparameter.
 
+%
+% Bogenlängenparametrisierung der Standard-Lemniskate
+%
+\subsubsection{Bogenlängenparametrisierung der Standard-Lemniskate}
 Die mit dem Faktor $1/\sqrt{2}$ skalierte Standard-Lemniskate mit der
 Gleichung
 \[
@@ -547,7 +570,13 @@ y(t)
 \text{mit $\displaystyle k=\frac{1}{\sqrt{2}}$}
 \label{buch:elliptisch:lemniskate:bogenlaenge}
 \end{equation}
+Der Punkt $t=0$ entspricht dem Scheitelpunkt $S=(1,0)$ der Lemniskate.
+Der Parameter misst also die Bogenlänge entlang der Lemniskate ausgehend
+vom Scheitel.
 
+%
+% der lemniskatische Sinus und Kosinus
+%
 \subsection{Der lemniskatische Sinus und Kosinus}
 Der Sinus berechnet die Gegenkathete zu einer gegebenen Bogenlänge des
 Kreises, er ist die Umkehrfunktion der Funktion, die der Gegenkathete
@@ -555,50 +584,29 @@ die Bogenlänge zuordnet.
 Daher ist es naheliegend, die Umkehrfunktion von $s(r)$ in 
 \eqref{buch:elliptisch:eqn:lemniskatebogenlaenge}
 den {\em lemniskatischen Sinus} zu nennen mit der Bezeichnung
+\index{lemniskatischer Sinus}%
+\index{Sinus, lemniskatischer}%
 $r=r(s)=\operatorname{sl} s$.
+\index{komplementäre Bogenlänge}
 
+%
+% die komplementäre Bogenlänge
+%
+\subsubsection{Die komplementäre Bogenlänge}
 Der Kosinus ist der Sinus des komplementären Winkels.
 Auch für die lemniskatische Bogenlänge $s(r)$ lässt sich eine
-komplementäre Bogenlänge definieren, nämlich die Bogenlänge zwischen
-dem Punkt $(x(r), y(r))$ und $(1,0)$.
-Da die Bogenlänge zwischen $(0,0)$ und $(1,0)$ in
-in \eqref{buch:elliptisch:eqn:varpi} bereits bereichnet wurde.
-ist sie $\varpi/2-s$.
-Der {\em lemniskatische Kosinus} ist daher
-$\operatorname{cl}(s) = \operatorname{sl}(\varpi/2-s)$.
-Graphen des lemniskatische Sinus und Kosinus sind in
-Abbildung~\ref{buch:elliptisch:figure:slcl} dargestellt.
+komplementäre Bogenlänge $t$ definieren, nämlich die Bogenlänge
+zwischen dem Punkt $(x(r), y(r))$ und dem Scheitelpunkt $S=(1,0)$.
+Dies ist der Parameter der Parametrisierung
+\eqref{buch:elliptisch:lemniskate:bogenlaenge}
+des vorangegangenen Abschnittes.
+Die Bogenlänge zwischen $O=(0,0)$ und $S=(1,0)$ wurde in
+\eqref{buch:elliptisch:eqn:varpi} bereits bereichnet,
+sie ist $\varpi/2$.
+Damit folgt für die beiden Parameter $s$ und $t$ die Beziehung
+$t = \varpi/2 - s$.
 
-Da die Parametrisierung~\eqref{buch:elliptisch:lemniskate:bogenlaenge}
-eine Bogenlängenparametrisierung ist, darf man $t=s$ schreiben.
-Dann kann man aber auch $r(s)$ daraus berechnen,
-es ist
-\[
-r(s)^2
-=
-x(s)^2 + y(s)^2
-=
-\operatorname{cn}(s\sqrt{2},k)^2
-\biggl(
-\operatorname{dn}(\sqrt{2}t,k)^2
-+
-\frac12
-\operatorname{sn}(\sqrt{2}t,k)^2
-\biggr)
-=
-\operatorname{cn}(s\sqrt{2},k)^2.
-\]
-Die Wurzel ist
-\[
-r(s)
-=
-\operatorname{sl} s
-=
-\operatorname{cn}(s\sqrt{2},{\textstyle\frac{1}{\sqrt{2}}}).
-\]
-Damit ist der lemniskatische Sinus durch eine Jacobische elliptische
-Funktion darstellbar.
-
+\subsubsection{Der lemniskatische Kosinus}
 \begin{figure}
 \centering
 \includegraphics[width=\textwidth]{chapters/110-elliptisch/images/slcl.pdf}
@@ -608,3 +616,62 @@ mit derart skaliertem Argument, dass die Funktionen die
 gleichen Nullstellen haben.
 \label{buch:elliptisch:figure:slcl}}
 \end{figure}
+Der {\em lemniskatische Kosinus} ist daher
+$\operatorname{cl}(s) = \operatorname{sl}(\varpi/2-s)$.
+Graphen des lemniskatische Sinus und Kosinus sind in
+Abbildung~\ref{buch:elliptisch:figure:slcl} dargestellt.
+
+Die Parametrisierung~\eqref{buch:elliptisch:lemniskate:bogenlaenge}
+ist eine Bogenlängenparametrisierung der Standard-Lemniskate.
+Man kann sie verwenden, um $r(t)$ zu berechnen.
+Es ist
+\[
+r(t)^2
+=
+x(t)^2 + y(t)^2
+=
+\operatorname{cn}(\sqrt{2}t,k)^2
+\biggl(
+\operatorname{dn}(\sqrt{2}t,k)^2
++
+\frac12
+\operatorname{sn}(\sqrt{2}t,k)^2
+\biggr)
+=
+\operatorname{cn}(\sqrt{2}t,k)^2.
+\]
+Die Wurzel ist
+\[
+r(t)
+=
+\operatorname{cn}(\sqrt{2}t,{\textstyle\frac{1}{\sqrt{2}}})
+.
+\]
+Der lemniskatische Sinus wurde aber in Abhängigkeit von
+$s=\varpi/2-t$ mittels
+\[
+\operatorname{sl}s
+=
+r(s)
+=
+\operatorname{cn}(\sqrt{2}(\varpi/2-s),k)^2
+\]
+definiert.
+Der lemniskatische Kosinus ist definiert als der lemniskatische Sinus
+\index{lemniskatischer Kosinus}%
+\index{Kosinus, lemniskatischer}%
+der komplementären Bogenlänge, also
+\[
+\operatorname{cl}(s)
+=
+\operatorname{sl}(\varpi/2-s)
+=
+\operatorname{cn}(\sqrt{2}s,k)^2.
+\]
+Die Funktion $\operatorname{sl}(s)$ und $\operatorname{cl}(s)$ sind
+in Abbildung~\ref{buch:elliptisch:figure:slcl} dargestellt.
+Sie sind beide $2\varpi$-periodisch.
+Die Abbildung zeigt ausserdem die Funktionen $\sin (\pi s/\varpi)$
+und $\cos(\pi s/\varpi)$, die ebenfalls $2\varpi$-periodisch sind.
+
+
