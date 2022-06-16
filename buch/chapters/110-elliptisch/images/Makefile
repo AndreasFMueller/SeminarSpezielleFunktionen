@@ -96,7 +96,7 @@ torusschnitt.png:	torusschnitt.pov
 	povray +A0.1 -W1920 -H1080 -Otorusschnitt.png torusschnitt.pov
 
 torusschnitt.jpg:	torusschnitt.png Makefile
-	convert -extract 1560x1080+180+0 torusschnitt.png \
+	convert -extract 1640x1080+140+0 torusschnitt.png \
 		-density 300 -units PixelsPerInch torusschnitt.jpg
 
 torusschnitt.pdf:	torusschnitt.tex torusschnitt.jpg
