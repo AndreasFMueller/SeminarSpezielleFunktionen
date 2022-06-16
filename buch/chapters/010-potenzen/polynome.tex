@@ -24,6 +24,7 @@ $K[x]$ bezeichnet.
 \end{definition}
 
 Die Menge $K[x]$ ist heisst auch der {\em Polynomring}, weil $K[x]$
+\index{Polynomring}%
 mit der Addition, Subtraktion und Multiplikation von Polynomen eine
 algebraische Struktur bildet, die man einen Ring mit $1$ nennt.
 \index{Ring}%
@@ -82,32 +83,47 @@ ebenfalls als Approximationen dienen können.
 Weitere Möglichkeiten liefern Interpolationsmethoden der
 numerischen Mathematik.
 
+%
+% Polynomdivision, Teilbarkeit und ggT
+%
 \subsection{Polynomdivision, Teilbarkeit und grösster gemeinsamer Teiler}
 Der schriftliche Divisionsalgorithmus für Zahlen funktioniert 
 auch für die Division von Polynomen.
+\index{Polynome!Divisionsalgorithmus}%
 Zu zwei beliebigen Polynomen $p(x)$ und $q(x)$ lassen sich also
 immer zwei Polynome $a(x)$ und $r(x)$ finden derart, dass
 $p(x) = a(x) q(x) + r(x)$.
 Das Polynom $a(x)$ heisst der {\em Quotient}, $r(x)$ der {\em Rest}
 der Division.
 Das Polynom $p(x)$ heisst {\em teilbar} durch $q(x)$, geschrieben
+\index{teilbar}%
+\index{Polynome!teilbar}%
 $q(x)\mid p(x)$, wenn $r(x)=0$ ist.
 
+%
+% Grösster gemeinsamer Teiler
+%
 \subsubsection{Grösster gemeinsamer Teiler}
 Mit dem Begriff der Teilbarkeit geht auch die Idee des grössten
 gemeinsamen Teilers einher.
 Ein gemeinsamer Teiler zweier Polynome $a(x)$ und $b(x)$ 
+\index{gemeinsamer Teiler}%
 ist ein Polynom $g(x)$, welches beide Polynome teilt, also
 $g(x)\mid a(x)$ und $g(x)\mid b(x)$.
 \index{grösster gemeinsamer Teiler}%
-Ein Polynome $g(x)$ heisst grösster gemeinsamer Teiler von $a(x)$
+Ein Polynom $g(x)$ heisst {\em grösster gemeinsamer Teiler} von $a(x)$
 und $b(x)$, wenn jeder andere gemeinsame Teiler $f(x)$ von $a(x)$
 und $b(x)$ auch ein Teiler von $g(x)$ ist.
 Man beachte, dass die skalaren Vielfachen eines grössten gemeinsamen
 Teilers ebenfalls grösste gemeinsame Teiler sind, der grösste gemeinsame
 Teiler ist also nicht eindeutig bestimmt.
 
+%
+% Der euklidische Algorithmus
+%
 \subsubsection{Der euklidische Algorithmus}
+\index{Algorithmus!euklidisch}%
+\index{euklidischer Algorithmus}%
 Zur Berechnung eines grössten gemeinsamen Teilers steht wie bei den
 ganzen Zahlen der euklidische Algorithmus zur Verfügung.
 Dazu bildet man die Folgen von Polynomen
@@ -144,6 +160,9 @@ a_m(x)&=b_m(x)q_m(x).&&
 Der Index $m$ ist der Index, bei dem zum ersten Mal $r_m(x)=0$ ist.
 Dann ist $g(x)=r_{m-1}(x)$ ein grösster gemeinsamer Teiler.
 
+%
+% Der erweiterte euklidische Algorithmus
+%
 \subsubsection{Der erweiterte euklidische Algorithmus}
 Die Konstruktion der Folgen $a_n(x)$ und $b_n(x)$ kann in Matrixform
 kompakter geschrieben werden als
@@ -265,10 +284,50 @@ g(x) = c(x)a(x)+d(x)b(x)
 gilt.
 \end{satz}
 
+%
+% Faktorisierung und Nullstellen
+%
 \subsection{Faktorisierung und Nullstellen}
 % wird später gebraucht um bei der Definition der hypergeometrischen Reihe
 % die Zaehler- und Nenner-Polynome als Pochhammer-Symbole zu entwickeln
+Ist $\alpha$ eine Nullstelle des Polynoms $a(x)$, also $a(\alpha)=0$.
+Der Divisionsalgorithmus mit für die Polynome $a(x)$ und $b(x)=x-\alpha$
+liefert zwei Polynome $q(x)$ für den Quotienten und $r(x)$ für den Rest
+mit den Eigenschaften
+\[
+a(x)
+=
+q(x) b(x)
++r(x)
+=
+q(x)(x-\alpha)+r(x)
+\qquad\text{mit}\qquad
+\deg r < \deg b(x)=1.
+\]
+Der Rest $r(x)$ ist somit eine Konstante. 
+Setzt man $x=\alpha$ ein, folgt
+\[
+0
+=
+a(\alpha)
+=
+q(\alpha)(\alpha-\alpha)+r(\alpha)
+=
+r(\alpha),
+\]
+der Rest $r(x)$ muss also verschwinden.
+Für eine Nullstelle $\alpha$ von $a(x)$ ist $a(x)$ durch $(x-\alpha)$
+teilbar.
 
+Wenn zwei Polynome $a(x)$ und $b(x)$ eine gemeinsame Nullstelle $\alpha$
+haben, dann ist $(x-\alpha)$ ein Teiler beider Polynome und somit auch
+ein Teiler eines grössten gemeinsamer Teiler.
+Insbesondere sind die Nullstellen des grössten gemeinsamen Teilers
+gemeinsame Nullstellen von $a(x)$ und $b(x)$.
+
+%
+% Koeffizienten-Vergleich
+%
 \subsection{Koeffizienten-Vergleich}
 % Wird gebraucht für die Potenzreihen-Methode
 % Muss später ausgedehnt werden auf Potenzreihen
