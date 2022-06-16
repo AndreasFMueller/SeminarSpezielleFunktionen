@@ -20,8 +20,21 @@ für ein Polynome $p(x)$ und eine Konstante $c\in\mathbb{C}$.
 % Fundamentalsatz der Algebra
 %
 \subsection{Fundamentalsatz der Algebra}
+In Abschnitt~\ref{buch:polynome:subsection:faktorisierung-und-nullstellen}
+wurde gezeigt, dass sich jede Nullstellen $\alpha$ eines Polynoms als
+Faktor $x-\alpha$ abspalten lässt.
+Jedes Polynom liess sich in ein Produkt von Linearfaktoren und
+einen Faktor zerlegen, der keine Nullstellen hat.
+Zum Beispiel hat das Polynom $x^2+1\in\mathbb{R}[x]$ keine
+Nullstellen in $\mathbb{R}$.
+Eine solche Nullstelle müsste eine Quadratwurzel von $-1$ sein.
+Die komplexen Zahlen $\mathbb{C}$ wurden genau mit dem Ziel konstruiert,
+dass $i=\sqrt{-1}$ sinnvoll wird.
+Der Fundamentalsatz der Algebra zeigt, dass $\mathbb{C}$ alle
+Nullstellen von Polynomen enthält.
 
 \begin{satz}[Gauss]
+\index{Fundamentalsatz der Algebra}%
 \label{buch:potenzen:satz:fundamentalsatz}
 Jedes Polynom $p(x)=a_nx^n+\dots + a_2x^2 + a_1x + a_0\in\mathbb{C}[x]$
 zerfällt in ein Produkt
@@ -33,6 +46,7 @@ a_n
 \]
 für Nullstellen $\alpha_k\in\mathbb{C}$.
 \end{satz}
+
 
 %
 % Lösbarkeit durch Wurzelausdrücke
@@ -147,4 +161,58 @@ rechnen kann.
 Für Polynomegleichungen vom Grad $n\ge 5$ gibt es keine allgemeine
 Lösung durch Wurzelausdrücke.
 \end{satz}
+
+
+
+%
+% Algebraische Zahlen
+%
+\subsection{Algebraische Zahlen}
+Die Verwendung der komplexen Zahlen ist für numerische Rechnungen
+zweckmässig.
+In den Anwendungen der Computer-Algebra hingegen erwartet man zum
+Beispiel exakte Formeln für eine Stammfunktion.
+Nicht rationale Zahlen können nur exakt verarbeitet werden, wenn
+Sie sich algebraisch in endlich vielen Schritten charakterisieren
+lassen.
+Dies ist zum Beispiel für rationale Zahlen $\mathbb{Q}$ möglich.
+Gewisse irrationale Zahlen kann man charakterisieren durch 
+die Eigenschaft, Nullstelle eines Polynoms $p(x)\in\mathbb{Q}[x]$
+mit rationalen Koeffizienten zu sein.
+
+\begin{definition}
+Eine Zahl $\alpha$ heisst {\em algebraisch} über $\mathbb{Q}$,
+wenn es ein Polynom
+\index{algebraische Zahl}%
+$p(x)\in \mathbb{Q}[x]$ gibt, welches $\alpha$ als Nullstelle hat.
+Eine Zahl heisst transzendent über $\mathbb{Q}$, wenn sie nicht algebraisch ist
+über $\mathbb{Q}$.
+\end{definition}
+
+Die Zahlen $i=\sqrt{-1}$ und $\sqrt{n\mathstrut}$ für $n\in\mathbb{N}$
+sind also algebraisch über $\mathbb{Z}$.
+Es ist gezeigt worden, dass $\pi$ und $e$ nicht nur irrational
+sind, sondern sogar transzendent.
+
+Eine Polynomgleichung $p(\alpha)=0$ mit $p(x)\in\mathbb{Q}[x]$
+hat eine Rechenregel für $\alpha$ zur Folge.
+Dazu schreibt man
+\[
+p_n\alpha^n + p_{n-1}\alpha^{n-1} + \dots + a_1\alpha + a_0 =0
+\qquad\Rightarrow\qquad
+\alpha^n = -\frac{1}{p_n}\bigl(
+p_{n-1}\alpha^{n-1}+\dots+a_1\alpha+a_0
+\bigr).
+\]
+Diese Regel erlaubt, jede Potenz $\alpha^k$ mit $k\ge n$ durch
+Potenzen von $\alpha^l$ mit $l<n$ auszudrücken.
+Die Zahlen, die sich durch arithmetische Operationen aus
+$\alpha$ bilden lassen, lassen sich also sogar durch lineare
+Operationen aus $1,\alpha,\alpha^2,\dots,\alpha^{n-1}$
+bilden.
+Sie bilden einen endlichdimensionalen Vektorraum über $\mathbb{Q}$.
+Rechnen mit algebraischen Zahlen ist also in einem CAS exakt möglich,
+wie das in Abschnitt~\ref{buch:integrale:section:dkoerper}
+für die Berechnung von Stammfunktionen illustriert wird.
+
 

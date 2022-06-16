@@ -83,6 +83,22 @@ ebenfalls als Approximationen dienen können.
 Weitere Möglichkeiten liefern Interpolationsmethoden der
 numerischen Mathematik.
 
+Diese Betrachtungsweise von Polynomen als Funktionen trägt
+aber den zusätzlichen algebraischen Eigenschaften des Polynomringes
+nicht ausreichend Rechnung.
+Zum Beispiel bedeutet Gleichheit von zwei reellen Funktion $f(x)$ und
+$g(x)$, dass man $f(x)=g(x)$ für alle $x\in\mathbb{R}$ nachprüfen
+muss.
+Für Polynome reicht es jedoch, die Funktionswerte in nur wenigen
+Punkten zu vergleichen.
+Dies äussert sich zum Beispiel auch im Prinzip des
+Koeffizientenvergleichs von
+Satz~\ref{buch:polynome:satz:koeffizientenvergleich}.
+Im Gegensatz zu beliebigen Funktionen kann man daher Aussagen
+über Polynomen immer mit endlich Algorithmen entscheiden.
+Die nächsten Abschnitte sollen diese algebraischen Eigenschaften
+zusammenfassen.
+
 %
 % Polynomdivision, Teilbarkeit und ggT
 %
@@ -287,7 +303,8 @@ gilt.
 %
 % Faktorisierung und Nullstellen
 %
-\subsection{Faktorisierung und Nullstellen}
+\subsection{Faktorisierung und Nullstellen
+\label{buch:polynome:subsection:faktorisierung-und-nullstellen}}
 % wird später gebraucht um bei der Definition der hypergeometrischen Reihe
 % die Zaehler- und Nenner-Polynome als Pochhammer-Symbole zu entwickeln
 Ist $\alpha$ eine Nullstelle des Polynoms $a(x)$, also $a(\alpha)=0$.
@@ -318,6 +335,21 @@ r(\alpha),
 der Rest $r(x)$ muss also verschwinden.
 Für eine Nullstelle $\alpha$ von $a(x)$ ist $a(x)$ durch $(x-\alpha)$
 teilbar.
+Daraus folgt auch, dass ein Polynom $a(x)$ vom Grad $n=\deg a(x)$ höchstens
+$n$ verschiedene Nullstellen haben kann.
+
+Sind $\alpha_1,\dots,\alpha_k$ alle Nullstellen von $a(x)$, dann lässt
+sich $a(x)$ zerlegen in Faktoren
+\[
+a(x)
+=
+(x-\alpha_1)^{m_1}
+(x-\alpha_2)^{m_2}
+\cdots
+(x-\alpha_k)^{m_k}
+b(x).
+\]
+Das Polynom $b(x)\in K[x]$ hat keine Nullstellen in $K$.
 
 Wenn zwei Polynome $a(x)$ und $b(x)$ eine gemeinsame Nullstelle $\alpha$
 haben, dann ist $(x-\alpha)$ ein Teiler beider Polynome und somit auch
@@ -331,7 +363,66 @@ gemeinsame Nullstellen von $a(x)$ und $b(x)$.
 \subsection{Koeffizienten-Vergleich}
 % Wird gebraucht für die Potenzreihen-Methode
 % Muss später ausgedehnt werden auf Potenzreihen
+Wenn zwei Polynome $a(x)$ und $b(x)$ vom Grad $\le n$ die gleichen
+Koeffizienten haben, dann sind sie selbstverständlich gleich.
+Weniger klar ist, ob zwei Polynome, die die gleichen Werte für beliebige
+$x$ haben, auch die gleichen Koeffizienten haben.
+Wir nehmen also an, dass $a(x)=b(x)$ gilt für jedes $x\in K$ und
+wollen daraus ableiten, dass die Koeffizienten übereinstimmen müssen.
+Seien $x_1,\dots,x_n$ verschiedene Elemente in $K$, dann
+hat das Polynom $p(x)=a(x)-b(x)$, welches Grad $\le n$ hat,
+die $n$ Nullstellen $x_k$ für $k=1,\dots,n$.
+$p(x)$ ist also durch alle Polynome $x-x_k$ teilbar.
+Weil $\deg p\le n$ ist, muss 
+\[
+0
+=
+a(x)-b(x)
+=
+p(x)
+=
+p_n
+(x-x_1)(x-x_2)\cdots (x-x_n)
+\]
+sein.
+Ist $y\in K$ verschieden von den Nullstellen $x_i$, dann ist 
+in $y-x_i\ne 0$ für alle $i$.
+Für das Produkt gilt dann
+\[
+0
+=
+p(y) 
+=
+p_n
+(\underbrace{x-x_1}_{\displaystyle \ne 0})
+\cdots
+(\underbrace{x-x_n}_{\displaystyle \ne 0}),
+\]
+so dass $p_n=0$ sein muss, was schliesslich dazu führt, dass alle
+Koeffizienten von $a(x)-b(x)$ verschwinden.
+Daraus folgt das Prinzip des Koeffizientenvergleichs:
 
+\begin{satz}[Koeffizientenvergleich]
+\label{buch:polynome:satz:koeffizientenvergleich}
+Zwei Polynome $a(x)$ und $b(x)$ stimmen genau dann überein, wenn
+sie die gleichen Koeffizienten haben.
+\end{satz}
+
+Man beachte, dass dieses Prinzip nur funktioniert, wenn es genügend
+viele verschiedene Elemente in $K$ gibt.
+Für die endlichen Körper $\mathbb{F}_p$ gilt dies nicht, denn es gilt
+\[
+a(x)
+=
+x^p-x\equiv 0\mod p
+\]
+für jede Zahl $x\in\mathbb{F}_p$, das Polynom $a(x)$ mit Grad $p$
+hat also genau $p$ Nullstellen, es gibt aber keine weitere Nullstelle,
+mit der man wie oben schliessen könnte, dass $a(x)$ das Nullpolynom ist.
+
+%
+% Berechnung von Polynom-Werten
+%
 \subsection{Berechnung von Polynom-Werten}
 Die naive Berechnung der Werte eines Polynoms $p(x)$ vom Grad $n$
 beginnt mit der Berechnung der Potenzen von $x$.
