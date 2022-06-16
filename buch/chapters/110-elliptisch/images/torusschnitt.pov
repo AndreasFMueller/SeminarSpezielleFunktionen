@@ -67,13 +67,50 @@ union {
 }
 #end
 
-arrow(<-2,0,0>,<2,0,0>,0.02,White)
-arrow(<0,-1.1,0>,<0,2.2,0>,0.02,White)
-arrow(<0,0,-1.6>,<0,0,2.4>,0.02,White)
+
+#macro Ticks(tl, tr) 
+union {
+	#declare s = 1;
+	#while (s <= 3.1)
+		cylinder { <-0.5*s-tl, 0, 0>, <-0.5*s+tl, 0, 0>, tr }
+		cylinder { < 0.5*s-tl, 0, 0>, < 0.5*s+tl, 0, 0>, tr }
+		#declare s = s + 1;
+	#end
+
+	#declare s = 1;
+	#while (s <= 4.1)
+		cylinder { <0, 0.5*s-tl, 0>, <0, 0.5*s+tl, 0>, tr }
+		#declare s = s + 1;
+	#end
+	#declare s = 1;
+	#while (s <= 2.1)
+		cylinder { <0,-0.5*s-tl, 0>, <0,-0.5*s+tl, 0>, tr }
+		#declare s = s + 1;
+	#end
+
+	#declare s = 1;
+	#while (s <= 4)
+		cylinder { <0, 0,  0.5*s-tl>, <0, 0,  0.5*s+tl>, tr }
+		#declare s = s + 1;
+	#end
+	#declare s = 1;
+	#while (s <= 3)
+		cylinder { <0, 0, -0.5*s-tl>, <0, 0, -0.5*s+tl>, tr }
+		#declare s = s + 1;
+	#end
+
+	pigment {
+		color White
+	}
+	finish {
+		specular 0.9
+		metallic
+	}
+}
+#end
 
 #declare epsilon = 0.001;
 #declare l = 1.5;
-
 
 #declare a = sqrt(2);
 #macro G2(phi,sg)
@@ -258,8 +295,14 @@ mesh {
 #declare torusfarbe = rgbt<0.2,0.6,0.2,0.2>;
 #declare ebenenfarbe = rgbt<0.2,0.6,1.0,0.2>;
 
+arrow(<-2,0,0>,<2,0,0>,0.02,White)
+arrow(<0,-1.1,0>,<0,2.2,0>,0.02,White)
+arrow(<0,0,-1.7>,<0,0,2.4>,0.02,White)
+Ticks(0.007,0.036)
+
 Lemniskate(0.02, Red)
-Ebene(1.8, 1.4, ebenenfarbe)
-Ebenengitter(1.8, 1.4, 0.5, 0.005, rgb<0.4,1,1>)
+Ebene(1.8, 1.6, ebenenfarbe)
+Ebenengitter(1.8, 1.6, 0.5, 0.005, rgb<0.4,1,1>)
 Torus(torusfarbe)
 Torusgitter(Yellow, 0.005)
+
