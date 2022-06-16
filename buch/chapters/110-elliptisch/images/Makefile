@@ -5,7 +5,7 @@
 #
 all:	lemniskate.pdf ellipsenumfang.pdf unvollstaendig.pdf rechteck.pdf \
 	ellipse.pdf pendel.pdf jacobiplots.pdf jacobidef.pdf jacobi12.pdf \
-	sncnlimit.pdf slcl.pdf torusschnitt.pdf kegelpara.pdf
+	sncnlimit.pdf slcl.pdf torusschnitt.pdf kegelpara.pdf lemnispara.pdf
 
 lemniskate.pdf:	lemniskate.tex
 	pdflatex lemniskate.tex
@@ -102,3 +102,14 @@ torusschnitt.jpg:	torusschnitt.png Makefile
 torusschnitt.pdf:	torusschnitt.tex torusschnitt.jpg
 	pdflatex torusschnitt.tex
 
+lemnispara:	lemnispara.cpp
+	g++ -O2 -Wall -g -o lemnispara `pkg-config --cflags gsl`	\
+		lemnispara.cpp `pkg-config --libs gsl`
+
+lemnisparadata.tex:	lemnispara
+	./lemnispara
+
+lemnispara.pdf:	lemnispara.tex lemnisparadata.tex
+	pdflatex lemnispara.tex
+
+ltest:	lemnispara.pdf

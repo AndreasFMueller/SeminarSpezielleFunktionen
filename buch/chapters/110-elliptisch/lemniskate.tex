@@ -86,9 +86,11 @@ eines geraden
 Kreiskegels (grün) mit einem Rotationsparaboloid (hellblau).
 \label{buch:elliptisch:lemniskate:kegelpara}}
 \end{figure}%
+\index{Kegel}%
+\index{Paraboloid}%
 Schreibt man in der Gleichung~\eqref{buch:elliptisch:eqn:lemniskate}
 für die Klammer auf der rechten Seite $Z^2 = X^2 - Y^2$, dann wird die
-Lemniskate die Projektion in die $X$-$Y$-Ebene der Schnittmenge der Flächen,
+Lemniskate die Projektion in die $X$-$Y$-Ebene der Schnittkurve der Flächen,
 die durch die Gleichungen
 \begin{equation}
 X^2-Y^2 = Z^2
@@ -112,14 +114,18 @@ mit einer zur Torusachse parallelen Ebene (blau),
 die den inneren Äquator des Torus berührt, ist eine Lemniskate.
 \label{buch:elliptisch:lemniskate:torusschnitt}}
 \end{figure}
+\index{Torus}%
 Schneidet man einen Torus mit einer Ebene, die zur Achse des Torus
 parallel ist und den inneren Äquator des Torus berührt, entsteht
 ebenfalls eine Lemniskate.
 Die Situation ist in Abbildung~\ref{buch:elliptisch:lemniskate:torusschnitt}
 dargestellt.
 
-Der Torus kann mit den Radien $2$ und $1$ mit der $y$-Achse als Torusachse
-kann mit der Parametrisierung
+Der in Abbildung~\ref{buch:elliptisch:lemniskate:torusschnitt}
+dargestellte Torus mit den Radien $2$ und $1$ hat als Achse die
+um eine Einheit in $Z$-Richtung verschobene $Y$-Achse und die
+$X$-$Z$-Ebene als Äquatorebene.
+Sie kann mit
 \[
 (s,t)
 \mapsto
@@ -129,9 +135,10 @@ kann mit der Parametrisierung
 (2+\cos s) \sin t + 1
 \end{pmatrix}
 \]
-beschrieben werden.
-Die Gleichung $z=1$ beschreibt eine 
-achsparallele Ebene, die den inneren Äquator berührt.
+parametrisiert werden, die $s$- und $t$-Koordinatenlinien sind 
+in der Abbildung gelb eingezeichnet.
+Die Gleichung $Z=0$ beschreibt eine achsparallele Ebene, die den
+inneren Äquator berührt.
 Die Schnittkurve erfüllt daher
 \[
 (2+\cos s)\sin t + 1 = 0,
@@ -141,7 +148,8 @@ Wir müssen nachprüfen dass die Koordinaten
 $X=(2+\cos s)\cos t$ und $Y=\sin s$ die Gleichung einer Lemniskate
 erfüllen.
 
-Zunächst können wir in der $X$-Koordinate den Klammerausdruck durch 
+Zunächst können wir in der $X$-Koordinate den Klammerausdruck durch
+$\sin t$ ausdrücken und erhalten
 \begin{equation}
 X
 =
@@ -155,10 +163,9 @@ X^2
 =
 \frac{\cos^2t}{\sin^2 t}
 =
-\frac{1-\sin^2t}{\sin^2 t}
+\frac{1-\sin^2t}{\sin^2 t}.
 \label{buch:elliptisch:lemniskate:Xsin}
 \end{equation}
-ersetzen.
 Auch die $Y$-Koordinaten können wir durch $t$ ausdrücken, 
 nämlich
 \begin{equation}
@@ -218,7 +225,7 @@ X^2-Y^2
 Die Berechnung des Quadrates von $X^2+Y^2$ ergibt
 die Gleichung
 \[
-(X^2+Y^2)
+(X^2+Y^2)^2
 =
 16
 \biggl(\frac{1-S}{S}\biggr)^2
@@ -226,7 +233,7 @@ die Gleichung
 8 \cdot 2
 \biggl(\frac{1-S}{S}\biggr)^2
 =
-2\cdot 2^2\cdot (X-Y)^2.
+2\cdot 2^2\cdot (X^2-Y^2).
 \]
 Sie ist eine Lemniskaten-Gleichung für $a=2$.
 
@@ -279,7 +286,7 @@ Kettenregel berechnen kann:
 &&\Rightarrow&
 \dot{y}(r)^2
 &=
-\frac{1-r^2}{2} -r^2 + \frac{r^4}{2(1-r^2)}
+\frac{1-r^2}{2} -r^2 + \frac{r^4}{2(1-r^2)}.
 \end{align*}
 Die Summe der Quadrate ist
 \begin{align*}
@@ -342,6 +349,13 @@ $\varpi/2$.
 %  Bogenlängenparametrisierung
 %
 \subsection{Bogenlängenparametrisierung}
+\begin{figure}
+\centering
+\includegraphics{chapters/110-elliptisch/images/lemnispara.pdf}
+\caption{Parametrisierung der Lemniskate mit Jacobischen elliptischen
+Funktion wie in \eqref{buch:elliptisch:lemniskate:bogeneqn}
+\label{buch:elliptisch:lemniskate:bogenpara}}
+\end{figure}
 Die Lemniskate mit der Gleichung
 \[
 (X^2+Y^2)^2=2(X^2-Y^2)
@@ -350,7 +364,7 @@ Die Lemniskate mit der Gleichung
 kann mit Jacobischen elliptischen Funktionen
 parametrisiert werden.
 Dazu schreibt man
-\[
+\begin{equation}
 \left.
 \begin{aligned}
 X(t)
@@ -364,9 +378,17 @@ Y(t)
 \end{aligned}
 \quad\right\}
 \qquad\text{mit $k=\displaystyle\frac{1}{\sqrt{2}}$}
-\]
-und berechnet die beiden Seiten der definierenden Gleichung der
-Lemniskate.
+\label{buch:elliptisch:lemniskate:bogeneqn}
+\end{equation}
+Abbildung~\ref{buch:elliptisch:lemniskate:bogenpara} zeigt die
+Parametrisierung. 
+Dem Parameterwert $t=0$ entspricht der Punkt
+$(\sqrt{2},0)$ der Lemniskate.
+
+Dass \eqref{buch:elliptisch:lemniskate:bogeneqn}
+tatsächlich eine Parametrisierung ist kann nachgewiesen werden dadurch,
+dass man die beiden Seiten der definierenden Gleichung der
+Lemniskate berechnet.
 Zunächst ist
 \begin{align*}
 X(t)^2
@@ -436,7 +458,7 @@ Dazu berechnen wir die Ableitungen
 &=
 -\sqrt{2}\operatorname{sn}(t,k)\bigl(
 1-{\textstyle\frac12}\operatorname{sn}(t,k)^2
-+{\textstyle\frac12}-{\textstyle\frac12}\operatorname{sn}(u,t)^2
++{\textstyle\frac12}-{\textstyle\frac12}\operatorname{sn}(t,k)^2
 \bigr)
 \\
 &=
@@ -507,6 +529,7 @@ Gleichung
 \]
 hat daher eine Bogenlängenparametrisierung mit
 \begin{equation}
+\left.
 \begin{aligned}
 x(t)
 &=
@@ -515,8 +538,13 @@ x(t)
 \\
 y(t)
 &=
-\frac{1}{\sqrt{2}}\operatorname{cn}(\sqrt{2}t,k)\operatorname{sn}(\sqrt{2}t,k)
+\frac{1}{\sqrt{2}}
+\operatorname{cn}(\sqrt{2}t,k)\operatorname{sn}(\sqrt{2}t,k)
 \end{aligned}
+\quad
+\right\}
+\qquad
+\text{mit $\displaystyle k=\frac{1}{\sqrt{2}}$}
 \label{buch:elliptisch:lemniskate:bogenlaenge}
 \end{equation}
 
@@ -527,7 +555,7 @@ die Bogenlänge zuordnet.
 Daher ist es naheliegend, die Umkehrfunktion von $s(r)$ in 
 \eqref{buch:elliptisch:eqn:lemniskatebogenlaenge}
 den {\em lemniskatischen Sinus} zu nennen mit der Bezeichnung
-$r=\operatorname{sl} s$.
+$r=r(s)=\operatorname{sl} s$.
 
 Der Kosinus ist der Sinus des komplementären Winkels.
 Auch für die lemniskatische Bogenlänge $s(r)$ lässt sich eine
@@ -537,9 +565,9 @@ Da die Bogenlänge zwischen $(0,0)$ und $(1,0)$ in
 in \eqref{buch:elliptisch:eqn:varpi} bereits bereichnet wurde.
 ist sie $\varpi/2-s$.
 Der {\em lemniskatische Kosinus} ist daher
-$\operatorname{cl}(s) = \operatorname{sl}(\varpi/2-s)$
+$\operatorname{cl}(s) = \operatorname{sl}(\varpi/2-s)$.
 Graphen des lemniskatische Sinus und Kosinus sind in
-Abbildung~\label{buch:elliptisch:figure:slcl} dargestellt.
+Abbildung~\ref{buch:elliptisch:figure:slcl} dargestellt.
 
 Da die Parametrisierung~\eqref{buch:elliptisch:lemniskate:bogenlaenge}
 eine Bogenlängenparametrisierung ist, darf man $t=s$ schreiben.
@@ -551,18 +579,32 @@ r(s)^2
 x(s)^2 + y(s)^2
 =
 \operatorname{cn}(s\sqrt{2},k)^2
-\qquad\Rightarrow\qquad
+\biggl(
+\operatorname{dn}(\sqrt{2}t,k)^2
++
+\frac12
+\operatorname{sn}(\sqrt{2}t,k)^2
+\biggr)
+=
+\operatorname{cn}(s\sqrt{2},k)^2.
+\]
+Die Wurzel ist
+\[
 r(s)
 =
-\operatorname{cn}(s\sqrt{2},k)
+\operatorname{sl} s
+=
+\operatorname{cn}(s\sqrt{2},{\textstyle\frac{1}{\sqrt{2}}}).
 \]
+Damit ist der lemniskatische Sinus durch eine Jacobische elliptische
+Funktion darstellbar.
 
 \begin{figure}
 \centering
 \includegraphics[width=\textwidth]{chapters/110-elliptisch/images/slcl.pdf}
 \caption{
 Lemniskatischer Sinus und Kosinus sowie Sinus und Kosinus
-mit derart skaliertem Argument, dass die Funktionen die gleichen Nullstellen
-haben.
+mit derart skaliertem Argument, dass die Funktionen die
+gleichen Nullstellen haben.
 \label{buch:elliptisch:figure:slcl}}
 \end{figure}
