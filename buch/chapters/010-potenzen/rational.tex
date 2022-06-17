@@ -15,11 +15,11 @@ für $x\to\infty$ wegen
 \[
 \lim_{x\to\infty} a_nx^n
 =
-\sign a_n \cdot\infty
+\operatorname{sgn} a_n \cdot\infty
 \qquad\text{und}\qquad
 \lim_{x\to-\infty} a_nx^n
 =
-(-1)^n \sign a_n\cdot \infty.
+(-1)^n \operatorname{sgn} a_n\cdot \infty.
 \]
 Insbesondere kann man nicht erwarten, dass sich eine beschränkte
 Funktion wie $\sin x$ durch Polynome auf dem ganzen Definitionsbereich
@@ -30,7 +30,7 @@ für $x\to\pm\infty$ unbeschränkt anwachsen.
 Eine weitere Einschränkung ist, dass die Menge der Polynome bezüglich
 der arithmetischen Operationen nicht abgeschlossen ist.
 Man kann zwar Polynome addieren und multiplizieren, aber der Quotient
-ist nicht notwendigerweise ein Polynome.
+ist nicht notwendigerweise ein Polynom.
 Abhilfe schafft nur, wenn man Quotienten von Polynomen zulässt.
 
 \begin{definition}
@@ -51,6 +51,7 @@ Da sie beschränkt sein können, haben sie das Potential,
 beschränkte Funktionen besser zu approximieren, als dies mit 
 Polynomen allein möglich wäre.
 Die Theorie der Padé-Approximation, wie sie zum Beispiel im Buch
+\index{Pade-Approximation@Padé-Approximation}%
 \cite{buch:pade} dargestellt ist, ist zum Beispiel auch in der
 Regelungstechnik von Interesse, da sich rationale Funktionen mit
 linearen Komponenten schaltungstechnisch realisieren lassen.
