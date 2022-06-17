@@ -16,22 +16,38 @@ n^3S_{n}
 mit Anfangswerten $S_0=1$ und $S_1=8$ angeben?
 Dies scheint auf den ersten Blick unmöglich kompliziert, man kann aber
 zeigen, dass
-\[
+\begin{equation}
 S_n
 =
 \sum_{k=0}^n 
 \binom{2n-2k}{n-k}^2 \binom{2k}{k}^2
-\]
+\label{buch:rekursion:hypergeometrisch:eqn:Sn}
+\end{equation}
 gilt (\cite[p.~xi]{buch:ab}).
 Die Lösung ist also eine Summe von Summanden, die sehr viel einfacher
 aussehen und vor allem die besondere Eigenschaft haben, dass die
-Quotienten aufeinanderfolgender Terme rationale Funktionen von von $k$
+Quotienten aufeinanderfolgender Terme rationale Funktionen von $k$
 sind.
-% XXX Quotient berechnen
 
-Eine besonders simple solche Funktion ist die geometrische Reihe, die
-im Abschnitt~\ref{buch:rekursion:hypergeometrisch:geometrisch}
-in Erinnerung gerufen wird.
+\begin{definition}
+Ein Folge heisst {\em hypergeometrisch}, wenn der Quotient aufeinanderfolgender
+\index{hypergeometrische Folge}%
+\index{Folge, hypergeometrisch}%
+Terme eine rationale Funktion des Folgenindex ist.
+\end{definition}
+
+Die Terme der Reihenentwicklungen aller bisher behandelten speziellen
+Funktionen waren hypergeometrisch.
+Im aktuellen Abschnitt soll daher die Klasse der sogenannten
+hypergeometrischen Funktionen untersucht werden, die durch diese
+Eigenschaft charakterisiert sind.
+
+In Abschnitt~\ref{buch:rekursion:hypergeometrisch:binomialkoeffizienten}
+wird klar, dass Folgen, deren Terme aus Fakultäten und Binomialkoeffizienten
+immer hypergeometrisch sind.
+Die Untersuchung der geometrischen Reihe in
+Abschnitt~\ref{buch:rekursion:hypergeometrisch:geometrisch}
+motiviert die Namensgebung.
 Abschnitt~\ref{buch:rekursion:hypergeometrisch:reihen}
 definiert den Begriff der hypergeometrischen Reihe und zeigt, 
 wie sie in eine Standardform gebracht werden können.
@@ -39,22 +55,99 @@ In Abschnitt~\ref{buch:rekursion:hypergeometrisch:beispiele}
 schliesslich wird an Hand von Beispielen gezeigt, wie bekannte
 Funktionen als hypergeometrische Funktionen interpretiert werden können.
 
+%
+% Quotienten von Binomialkoeffizienten
+%
+\subsection{Quotienten von Binomialkoeffizienten
+\label{buch:rekursion:hypergeometrisch:binomialkoeffizienten}}
+Aufeinanderfolgende Terme der Summe
+\eqref{buch:rekursion:hypergeometrisch:eqn:Sn}
+sollen als Quotienten eine rationale Funktion haben.
+Dies ist eine allgemeine Eigenschaft von Folgen, die durch Fakultäten
+oder Binomialkoeffizienten definiert sind, wie die beiden folgenden
+Sätze zeigen.
+
+\begin{satz}
+\label{buch:rekursion:hypergeometrisch:satz:fakquo}
+Der Quotient aufeinanderfolgender Folgenglieder
+der Folge $c_k=(a+bk)!$ ist der ein Polynom vom Grad $b$.
+\end{satz}
+\begin{proof}[Beweis]
+\begin{align*}
+\frac{c_{k+1}}{c_k}
+&=
+\frac{(a+b(k+1))!}{(a+bk)!}
+=
+\frac{(a+bk+b)!}{(a+b)!}
+\\
+&=
+(a+bk+1)(a+bk+2)\cdots(a+bk+b)
+=
+(a+bk+1)_b
+\end{align*}
+Das Pochhammer-Symbol hat $b$ Faktoren, es ist ein Polynom vom Grad $b$.
+\end{proof}
+
+\begin{satz}
+\label{buch:rekursion:hypergeometrisch:satz:binomquo}
+Die Quotienten aufeinanderfolgender Werte der Binomialkoeffizienten
+\[
+f_k
+=
+\binom{a+bk}{c+dk}
+\]
+ist eine rationale Funktion von $k$ mit Zähler- und Nennergrad $b$.
+\end{satz}
+
+\begin{proof}[Beweis]
+Indem man die Binomialkoeffizienten mit Fakultäten als
+\[
+\binom{a+bk}{c+dk}
+=
+\frac{(a+bk)!}{(c+dk)!(a-c+(b-d)k)!}
+\]
+ausschreibt, findet man mit
+Satz~\ref{buch:rekursion:hypergeometrisch:satz:fakquo}
+für die Quotienten
+\begin{align}
+\frac{f_{k+1}}{f_k}
+&=
+\frac{(a+bk+1)_b}{(c+dk+1)_d\cdot(a-c+(b-d)k+1)_{b-d}}
+\label{buch:rekursion:eqn:binomquotient}
+\end{align}
+Die Pochhammer-Symbole sind Polynome vom Grad $b$, $d$ bzw.~$b-d$.
+Insbesondere ist auch das Nenner-Polynom vom Grad $d+(b-d)=b$.
+\end{proof}
+
+Aus den Sätzen~\ref{buch:rekursion:hypergeometrisch:satz:fakquo}
+und
+\ref{buch:rekursion:hypergeometrisch:satz:binomquo}
+folgt jetzt sofort, dass auch der Quotient aufeinanderfolgender
+Summanden der Summe~\eqref{buch:rekursion:hypergeometrisch:eqn:Sn}
+eine rationale Funktion von $k$ ist.
+
+%
+% Die geometrische Reihe
+%
 \subsection{Die geometrische Reihe
 \label{buch:rekursion:hypergeometrisch:geometrisch}}
-Die besonders einfache Potenzreihe
+Die Reihe
 \[
 f(q)
 =
 \sum_{k=0}^\infty aq^k
 \]
-heisst die {\em geometrische Reihe}.
+heisst die {\em geometrische Reihe} ist besonders einfache
+Reihe mit einer hypergeometrischen Folge von Termen.
+\index{geometrische Reihe}%
+\index{Reihe!geometrische}%
 Die Partialsummen 
 \[
 S_n
 =
 \sum_{k=0}^n aq^k
 \]
-kann mit der Differenz
+können aus der Differenz
 \begin{equation}
 (1-q)S_n
 =
@@ -75,8 +168,7 @@ a\frac{1-q^{n+1}}{1-q}
 \label{buch:rekursion:hypergeometrisch:eqn:geomsumme}
 \end{equation}
 auflösen kann.
-
-Fü $q<1$ geht $q^n\to 0$ und damit konvergiert
+Für $q<1$ geht $q^n\to 0$ und damit konvergiert
 $S_n$  gegen
 \[
 \sum_{k=0}^\infty aq^k
@@ -97,6 +189,9 @@ Die Berechnung der Summe in
 beruht darauf, dass die Multiplikation mit $q$ einen ``anderen''
 Teil der Summe ergibt, der sich in der Differenze weghebt.
 
+%
+% Hypergeometrische Reihen
+%
 \subsection{Hypergeometrische Reihen
 \label{buch:rekursion:hypergeometrisch:reihen}}
 Es ist plausibel, dass eine etwas lockerere Bedingung an die
@@ -105,11 +200,14 @@ ermöglichen wird, interessante Aussagen über die durch die
 Reihe beschriebenen Funktionen zu machen.
 
 \begin{definition}
-Eine Reihe
+Eine durch die Reihe
 \[
 f(x) = \sum_{k=0}^\infty a_k x^k
 \]
-heisst {\em hypergeometrisch}, wenn der Quotient aufeinanderfolgender
+definierte Funktion $f(x)$ heisst {\em hypergeometrisch},
+wenn der Quotient aufeinanderfolgender
+\index{hypergeometrisch}
+\index{Reihe!hypergeometrisch}
 Koeffizienten eine rationale Funktion von $k$ ist,
 wenn also
 \[
@@ -485,6 +583,7 @@ x\cdot
 
 
 \subsubsection{Trigonometrische Funktionen}
+\index{trigonometrische Funktionen!als hypergeometrische Funktionen}%
 Die Kosinus-Funktion wurde bereits als hypergeometrische Funktion erkannt,
 im Folgenden soll dies auch noch für die Sinus-Funktion
 durchgeführt werden.
@@ -586,6 +685,7 @@ x\cdot\mathstrut_0F_1\biggl(
 durch eine hypergeometrische Funktion ausdrücken.
 
 \subsubsection{Hyperbolische Funktionen}
+\index{hyperbolische Funktionen!als hypergeometrische Funktionen}%
 Die für die Sinus-Funktion angewendete Methode lässt sich auch
 auf die Funktion 
 \begin{align*}
@@ -619,9 +719,47 @@ Dies illustriert die Rolle der hypergeometrischen Funktionen als
 ``grosse Vereinheitlichung'' der bekannten speziellen Funktionen.
 
 \subsubsection{Tschebyscheff-Polynome}
+\index{Tschebyscheff-Polynome}%
+Man kann zeigen, dass auch die Tschebyscheff-Polynome sich durch die
+hypergeometrischen Funktionen
+\begin{equation}
+T_n(x)
+=
+\mathstrut_2F_1\biggl(
+\begin{matrix}-n,n\\\frac12\end{matrix}
+;
+\frac12(1-x)
+\biggr)
+\label{buch:rekursion:hypergeometrisch:tschebyscheff2f1}
+\end{equation}
+ausdrücken lassen.
+Beweisen kann man diese Beziehung zum Beispiel mit Hilfe der
+Differentialgleichungen, denen die Funktionen genügen.
+Diese Methode wird in
+Abschnitt~\ref{buch:differentialgleichungen:section:hypergeometrisch}
+von Kapitel~\ref{buch:chapter:differential} vorgestellt.
 
-TODO
-\url{https://en.wikipedia.org/wiki/Chebyshev_polynomials}
+Die Tschebyscheff-Polynome sind nicht die einzigen Familien von Polynomen,
+\index{Tschebyscheff-Polynome!als hypergeometrische Funktion}
+die sich durch $\mathstrut_pF_q$ ausdrücken lassen.
+Für die zahlreichen Familien von orthogonalen Polynomen, die in
+Kapitel~\ref{buch:chapter:orthogonalitaet} untersucht werden,
+trifft dies auch zu.
+Ein Funktion
+\[
+\mathstrut_pF_q
+\biggl(
+\begin{matrix}
+a_1,\dots,a_p\\
+b_1,\dots,b_q
+\end{matrix}
+;z
+\biggr)
+\]
+ist genau dann ein Polynom, wenn mindestens einer der Parameter
+$a_k$ eine negative ganze Zahl ist.
+Der Grad des Polynoms ist der kleinste Betrag der negativ ganzzahligen
+Werte unter den Parametern $a_k$.
 
 %
 % Ableitung und Stammfunktion
