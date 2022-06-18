@@ -3,7 +3,8 @@
 #
 # (c) 2021 Prof Dr Andreas Müller, OST Ostschweizer Fachhochschule
 #
-all:	gammaplot.pdf fibonacci.pdf order.pdf beta.pdf loggammaplot.pdf
+all:	gammaplot.pdf fibonacci.pdf order.pdf beta.pdf loggammaplot.pdf \
+	0f1.pdf
 
 gammaplot.pdf:	gammaplot.tex gammapaths.tex
 	pdflatex gammaplot.tex
@@ -34,3 +35,12 @@ loggammaplot.pdf:	loggammaplot.tex loggammadata.tex
 
 loggammadata.tex:	loggammaplot.m
 	octave loggammaplot.m
+
+0f1:	0f1.cpp
+	g++ -O -Wall -g -o 0f1 0f1.cpp
+
+0f1data.tex:	0f1
+	./0f1
+
+0f1.pdf:	0f1.tex 0f1data.tex
+	pdflatex 0f1.tex

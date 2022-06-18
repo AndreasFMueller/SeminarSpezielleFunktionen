@@ -20,6 +20,8 @@ für alle natürlichen Zahlen $x\in\mathbb{N}$ definiert werden.
 \end{equation}
 Kann man eine reelle oder komplexe Funktion finden, die die
 Funktionalgleichung~\eqref{buch:rekursion:eqn:gammadef}
+\index{Gamma-Funktion!Funktionalgleichung}%
+\index{Funktionalgleichung der Gamma-Funktion}%
 erfüllt und damit die Fakultät auf beliebige Argumente ausdehnt?
 
 \subsection{Definition als Grenzwert}
@@ -141,6 +143,8 @@ $x\in\mathbb{C}\setminus\{0,-1,-2,-3,\dots\}$ ist der Grenzwert
 \[
 \Gamma(x) = \lim_{n\to\infty} \frac{n!\,n^{x-1}}{(x)_n}.
 \] 
+\index{Grenzwertdefinition der Gamma-Funktion}%
+\index{Gamma-Funktion!Grenzwertdefinition}%
 \end{definition}
 
 \subsubsection{Rekursionsgleichung für $\Gamma(x)$}
@@ -204,7 +208,7 @@ Weil $n/(n+1)\to 1$ ist und die Funktion $z\mapsto z^{x-1}$ für alle
 nach der Definition zulässigen Werte von $x$ eine stetige Funktion ist.
 
 %
-%
+% Numerische Unzulänglichkeit der Grenzwertdefinition
 %
 \subsubsection{Numerische Unzulänglichkeiten der Grenzwertdefinition}
 \begin{table}
@@ -316,6 +320,8 @@ wobei $\gamma$ die Euler-Mascheronische Konstante
 \biggl(\sum_{k=1}^n\frac{1}{k}-\log n\biggr)
 \]
 ist.
+\index{Gamma-Funktion!Produktformel}%
+\index{Produktformel für die Gamma-Funkion}%
 \end{satz}
 
 \begin{proof}[Beweis]
@@ -483,6 +489,8 @@ z
 \mapsto
 \Gamma(z) = \int_0^\infty t^{z-1}e^{-t}\,dt
 \]
+\index{Gamma-Funktion!Integraldefinition}%
+\index{Integraldefinition der Gamma-Funktion}%
 \end{definition}
 
 Man beachte, dass das Integral für $x=0$ nicht definiert ist, eine
@@ -564,6 +572,7 @@ die Werte der Fakultät annimmt.
 \subsubsection{Der Wert $\Gamma(\frac12)$}
 Die Integraldarstellung kann dazu verwendet werden, $\Gamma(\frac12)$ 
 zu berechnen.
+\index{Gamma-Funktion!WertGamma12@Wert von $\Gamma(\frac12)$}%
 Dazu verwendet man die Substition $t=s^2$ in der Integraldefinition
 der Gamma-Funktion und berechnen
 \begin{align}
@@ -618,6 +627,8 @@ Von Wielandt stammt das folgende, noch etwas speziellere Resultat,
 welches hier nicht bewiesen wird.
 
 \begin{satz}[Wielandt]
+\index{Satz!von Wielandt}%
+\index{Wielandt, Satz von}%
 Ist $f(z)$ eine für $\operatorname{Re}z>0$ definiert Funktion mit
 den folgenden drei Eigenschaften
 \begin{enumerate}
@@ -637,6 +648,7 @@ Dann ist $ f(z) = \Gamma(z) $.
 \subsubsection{Laplace-Transformierte der Potenzfunktion}
 Die Integraldarstellung der Gamma-Funktion erlaubt jetzt auch, die
 Laplace-Transformation der Potenzfunktion zu berechnen.
+\index{Laplace-Transformierte der Potenzfunktion}%
 
 \begin{satz}
 Die Laplace-Transformierte der Potenzfunktion $f(t)=t^\alpha$ ist
@@ -672,6 +684,7 @@ Durch die Substitution $st = u$ oder $t=\frac{u}{s}$ wird daraus
 % Pol erster Ordnung bei z=0
 %
 \subsubsection{Pol erster Ordnung bei $z=0$}
+\index{Gamma-Funktion!Pol@Pol bei $z=0$}%
 Wir haben zu prüfen, dass sowohl der Wert $\Gamma(1)$ korrekt ist als
 auch die Rekursionsformel~\eqref{buch:rekursion:eqn:gammadef} gilt.
 Der Wert für $z=1$ ist
@@ -725,6 +738,8 @@ Die Gamma-Funktion hat daher an der Stelle $z=0$ einen Pol erster Ordnung.
 % Ausdehnung auf Re(z) < 0
 %
 \subsubsection{Ausdehnung auf $\operatorname{Re}z<0$}
+\index{Gamma-Funktion!analytische Fortsetzung}%
+\index{analytische Fortsetzung der Gamma-Funktion}%
 Die Integralformel konvergiert nicht für $\operatorname{Re}z\le 0$.
 Durch analytische Fortsetzung, wie sie im
 Abschnitt~\ref{buch:funktionentheorie:section:fortsetzung}
@@ -798,9 +813,11 @@ Um diese Hypothese zu prüfen, berechnen wir das Integral für
 $z=\frac53$ mit Hilfe der äquivalenten Differentialgleichungen
 \begin{equation}
 \dot{y}(t) = t^{z-1}e^{-t}
-\qquad\text{mit Anfangsbedingung $y(0)=0$}.
+\qquad
+\text{mit Anfangsbedingung $y(0)=0$}.
 \label{buch:rekursion:gamma:eqn:gammadgl}
 \end{equation}
+\index{Gamma-Funktion!Loesung@Lösung mit Differentialgleichung}
 Der gesuchte Wert ist der Grenzwert $\lim_{t\to\infty} y(t)$.
 In der Tabelle~\ref{buch:rekursion:gamma:table:gammaintegral}
 sind die Werte von $y(10^k)$ sowie die Differenzen 

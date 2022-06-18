@@ -5,11 +5,26 @@
 %
 \subsection{Der Satz von Bohr-Mollerup
 \label{buch:rekursion:subsection:bohr-mollerup}}
+\begin{figure}
+\centering
+\includegraphics{chapters/040-rekursion/images/loggammaplot.pdf}
+\caption{Der Graph der Funktion $\log|\Gamma(x)|$ ist für $x>0$ konvex. 
+Die blau hinterlegten Bereiche zeigen an, wo die Gamma-Funktion
+negative Werte annimmt.
+\label{buch:rekursion:gamma:loggammaplot}}
+\end{figure}
 Die Integralformel und die Grenzwertdefinition für die Gamma-Funktion
 zeigen beide, dass das Problem der Ausdehnung der Fakultät zu einer
 Funktion $\mathbb{C}\to\mathbb{C}$ eine Lösung hat, aber es ist noch
 nicht klar, in welchem Sinn dies die einzig mögliche Lösung ist.
 Der Satz von Bohr-Mollerup gibt darauf eine Antwort.
+
+Der Graph
+in Abbildung~\ref{buch:rekursion:gamma:loggammaplot}
+zeigt, dass die Werte der Gamma-Funktion für $x>0$ so schnell
+anwachsen, dass sogar die Funktion $\log|\Gamma(x)|$ konvex ist.
+Der Satz von Bohr-Mollerup besagt, dass diese Eigenschaft zur
+Charakterisierung der Gamma-Funktion verwendet werden kann.
 
 \begin{satz}
 \label{buch:satz:bohr-mollerup}
@@ -20,6 +35,8 @@ Eine Funktion $f\colon \mathbb{R}^+\to\mathbb{R}$ mit den Eigenschaften
 \item die Funktion $\log f(t)$ ist konvex
 \end{enumerate}
 ist die Gamma-Funktion: $f(t)=\Gamma(t)$.
+\index{Satz!von Bohr-Mollerup}%
+\index{Bohr-Mollerup, Satz von}%
 \end{satz}
 
 Für den Beweis verwenden wir die folgende Eigenschaft einer konvexen
