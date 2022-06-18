@@ -203,7 +203,41 @@ x\lim_{n\to\infty}
 Weil $n/(n+1)\to 1$ ist und die Funktion $z\mapsto z^{x-1}$ für alle
 nach der Definition zulässigen Werte von $x$ eine stetige Funktion ist.
 
+%
+%
+%
 \subsubsection{Numerische Unzulänglichkeiten der Grenzwertdefinition}
+\begin{table}
+\centering
+%\renewcommand{\arraystretch}{1.1}
+\begin{tabular}{|>{$}c<{$}|>{$}r<{$}|>{$}l<{$}|>{$}l<{$}|}
+\hline
+\log_{10} n&           n&n!n^{x-1}/(x)_n\mathstrut     &       \text{Fehler%
+\vrule height12pt depth6pt width0pt} \\
+\hline
+\text{\vrule height12pt depth0pt width0pt} 
+          1&          10&1.\underline{7}947392559855804&0.0222854050800643\\
+          2&         100&1.\underline{77}46707942830697&0.0022169433775536\\
+          3&        1000&1.\underline{772}6754214755178&0.0002215705700017\\
+          4&       10000&1.\underline{7724}760067171375&0.0000221558116213\\
+          5&      100000&1.\underline{77245}60664742375&0.0000022155687214\\
+          6&     1000000&1.\underline{77245}40724623101&0.0000002215567940\\
+          7&    10000000&1.\underline{7724538}730613721&0.0000000221558560\\
+          8&   100000000&1.\underline{77245385}31233258&0.0000000022178097\\
+          9&  1000000000&1.\underline{77245385}11320680&0.0000000002265519\\
+         10& 10000000000&1.\underline{772453850}9261316&0.0000000000206155\\
+         11&100000000000&1.\underline{77245385}14549788&0.0000000005494627\\
+           &      \infty&1.\underline{7724538509055161}&
+\text{\vrule height12pt depth6pt width0pt} \\
+\hline
+\end{tabular}
+\caption{Numerische Berechnung mit der Grenzwertdefinition
+und rekursiver Berechnung von $n!/(x)_n$ mit Hilfe der Folge
+\eqref{buch:rekursion:gamma:pnfolge}.
+Die Konvergenz ist sehr langsam, die Anzahl korrekter Stellen
+wächst logarithmisch mit $n$.
+\label{buch:rekursion:gamma:produktberechnung}}
+\end{table}
 Die Grenzwertdefinition~\ref{buch:rekursion:gamma:def:definition}
 ist zwar zweifellos richtig, kann aber nicht für die numerische 
 Berechnung der Gamma-Funktion verwendet werden.
@@ -237,6 +271,24 @@ ist.
 Die Approximation mit Hilfe der Grenzwertdefinition kann also
 grundsätzlich nicht mehr als zwei korrekte Nachkommastellen liefern.
 
+Den Quotienten $n!/(x)_n$ kann man mit Hilfe der Rekursionsformel
+\begin{equation}
+p_n = p_{n-1}\cdot \frac{n}{x+n-1},\qquad
+p_0 = 0
+\label{buch:rekursion:gamma:pnfolge}
+\end{equation}
+etwas effizienter berechnen. 
+Insbesondere umgeht man damit das Problem, dass $n!$ den Wertebereich 
+des \texttt{double} Datentyps sprengt.
+Der Wert der Gamma-Funktion kann dann durch $p_nn^{x-1}$ approximiert
+werden.
+Die Tabelle~\ref{buch:rekursion:gamma:produktberechnung} fasst die
+Resultate zusammen und zeigt, dass die Konvergenz logarithmisch ist:
+die Anzahl korrekter Nachkommastellen ist $\log_{10}n$.
+
+%
+% Produktformel
+%
 \subsection{Produktformel}
 Ein möglicher Ausweg aus den numerischen Schwierigkeiten mit der
 Grenzwertdefinition ist, den schnell wachsenden Faktor $n!$
@@ -253,8 +305,10 @@ xe^{\gamma x}
 \prod_{k=1}^\infty
 \biggl(1+\frac{x}k\biggr)\,e^{-\frac{x}{k}},
 \label{buch:rekursion:gamma:eqn:produktformel}
+\index{Gamma-Funktion!Produktformel}%
 \end{equation}
 wobei $\gamma$ die Euler-Mascheronische Konstante
+\index{Euler-Mascheronische Konstante}%
 \[
 \gamma
 =
@@ -368,16 +422,20 @@ vollständig bewiesen.
 
 \begin{table}
 \centering
-\begin{tabular}{|>{$}c<{$}|>{$}c<{$}|>{$}c<{$}|}
+\begin{tabular}{|>{$}c<{$}|>{$}r<{$}|>{$}c<{$}|>{$}c<{$}|}
 \hline
-k &  \Gamma(\frac12,n) & \Gamma(\frac12) - \Gamma(\frac12,n) \\
+k & n &  \Gamma(\frac12,n) & \Gamma(\frac12) - \Gamma(\frac12,n)%
+\text{\vrule height12pt depth6pt width0pt} \\
 \hline
-1 & 1.\underline{7}518166478 & -0.0206372031 \\
-2 & 1.\underline{77}02543372 & -0.0021995137 \\
-3 & 1.\underline{772}2324556 & -0.0002213953 \\
-4 & 1.\underline{7724}316968 & -0.0000221541 \\
-5 & 1.\underline{77245}16354 & -0.0000022156 \\
-6 & 1.\underline{772453}6293 & -0.0000002216 \\
+\text{\vrule height12pt depth0pt width0pt} 
+     1&     10& 1.\underline{7}518166478& -0.0206372031 \\
+     2&    100& 1.\underline{77}02543372& -0.0021995137 \\
+     3&   1000& 1.\underline{772}2324556& -0.0002213953 \\
+     4&  10000& 1.\underline{7724}316968& -0.0000221541 \\
+     5& 100000& 1.\underline{77245}16354& -0.0000022156 \\
+     6&1000000& 1.\underline{772453}6293& -0.0000002216 \\
+\infty&       & 1.\underline{7724538509}&
+\text{\vrule height12pt depth6pt width0pt} \\
 \hline
 \end{tabular}
 \caption{Werte $\Gamma(\frac12,n)$ von $\Gamma(\frac12)$ berechnet mit
@@ -385,6 +443,9 @@ $n=10^k$ Faktoren der
 Produktformel~\eqref{buch:rekursion:gamma:eqn:produktformel}
 und der zugehörige Fehler.
 Die korrekten Nachkommastellen sind unterstrichen.
+Die Konvergenz ist genau gleich langsam wie in der Berechnung mit
+Hilfe der Grenzwert-Definition in
+Tabelle~\ref{buch:rekursion:gamma:produktberechnung}.
 \label{buch:rekursion:gamma:gammatabelle}}
 \end{table}
 
@@ -436,6 +497,9 @@ die richtigen Werte für natürliche Argumente hat, es wird aber auch
 gezeigt, dass dies nicht ausreicht um zu schliessen, dass die
 Integralformel mit der früher definierten Gamma-Funktion übereinstimmt.
 
+%
+% Funktionalgleichung für die Integraldefinition
+%
 \subsubsection{Funktionalgleichung für die Integraldefinition}
 Tatsächlich ist es einfach nachzuprüfen, dass die Funktionalgleichung
 der Gamma-Funktion auch für die Definition~\ref{buch:rekursion:def:gamma}
@@ -494,6 +558,9 @@ die Werte der Fakultät annimmt.
 \label{buch:rekursion:fig:gamma}}
 \end{figure}
 
+%
+% Der Wert Gamma(1/2)
+%
 \subsubsection{Der Wert $\Gamma(\frac12)$}
 Die Integraldarstellung kann dazu verwendet werden, $\Gamma(\frac12)$ 
 zu berechnen.
@@ -516,7 +583,11 @@ der Gamma-Funktion und berechnen
 Der Integrand im letzten Integral ist die Wahrscheinlichkeitsdichte
 einer Normalverteilung, deren Integral wohlbekannt ist.
 
-\subsubsection{Alternative Lösungen}
+%
+% Alternative Lösungen
+%
+\subsubsection{Alternative Lösungen der
+Funktionalgleichung~\ref{buch:rekursion:eqn:gammadef}}
 Die Funktion $\Gamma(z)$ ist nicht die einzige Funktion, die natürlichen
 Zahlen die Werte $\Gamma(n+1) = n!$ der Fakultät annimmt.
 Indem man eine beliebige Funktion $f(z)$ addiert, die auf alle
@@ -560,6 +631,9 @@ Dann ist $ f(z) = \Gamma(z) $.
 % XXX Gamma in the interval (1,2)
 %Man beachte, dass 
 
+%
+% Laplace-Transformierte der Potenzfunktion
+%
 \subsubsection{Laplace-Transformierte der Potenzfunktion}
 Die Integraldarstellung der Gamma-Funktion erlaubt jetzt auch, die
 Laplace-Transformation der Potenzfunktion zu berechnen.
@@ -594,6 +668,9 @@ Durch die Substitution $st = u$ oder $t=\frac{u}{s}$ wird daraus
 \]
 \end{proof}
 
+%
+% Pol erster Ordnung bei z=0
+%
 \subsubsection{Pol erster Ordnung bei $z=0$}
 Wir haben zu prüfen, dass sowohl der Wert $\Gamma(1)$ korrekt ist als
 auch die Rekursionsformel~\eqref{buch:rekursion:eqn:gammadef} gilt.
@@ -644,6 +721,9 @@ Daraus ergibt sich für $\Gamma(z)$ der Ausdruck
 \]
 Die Gamma-Funktion hat daher an der Stelle $z=0$ einen Pol erster Ordnung.
 
+%
+% Ausdehnung auf Re(z) < 0
+%
 \subsubsection{Ausdehnung auf $\operatorname{Re}z<0$}
 Die Integralformel konvergiert nicht für $\operatorname{Re}z\le 0$.
 Durch analytische Fortsetzung, wie sie im
@@ -683,22 +763,29 @@ Somit hat $\Gamma(z)$ Pole erster Ordnung bei den negativen
 ganzen Zahlen und bei $0$, wie sie in
 Abbildung~\ref{buch:rekursion:fig:gamma} gezeigt werden.
 
+%
+% Numerische Berechnung
+%
 \subsubsection{Numerische Berechnung}
 \begin{table}
 \centering
-\begin{tabular}{|>{$}c<{$}|>{$}c<{$}>{$}c<{$}|}
+\begin{tabular}{|>{$}c<{$}|>{$}r<{$}|>{$}c<{$}>{$}c<{$}|}
 \hline
-k & y(10^k) & y(10^k) - \Gamma(\frac{5}{2}) \\
+k &  n=10^k & y(n)         & y(n) - \Gamma(\frac{5}{3}) 
+\text{\vrule height12pt depth6pt width0pt} \\
 \hline
-1 & 0.0000000000 & -0.9027452930 \\
-2 & 0.3319129461 & -0.5708323468 \\
-3 & 0.\underline{902}5209490 & -0.0002243440 \\
-4 & 0.\underline{902745}1207 & -0.0000001723 \\
-5 & 0.\underline{902745}0962 & -0.0000001968 \\
-6 & 0.\underline{902745}0962 & -0.0000001968 \\
+\text{\vrule height12pt depth0pt width0pt} 
+1 &      10 & 0.0000000000 & -0.9027452930 \\
+2 &     100 & 0.3319129461 & -0.5708323468 \\
+3 &    1000 & 0.\underline{902}5209490 & -0.0002243440 \\
+4 &   10000 & 0.\underline{902745}1207 & -0.0000001723 \\
+5 &  100000 & 0.\underline{902745}0962 & -0.0000001968 \\
+6 & 1000000 & 0.\underline{902745}0962 & -0.0000001968 \\
+  & \infty  & 0.\underline{9027452929} &
+\text{\vrule height12pt depth6pt width0pt} \\
 \hline
 \end{tabular}
-\caption{Resultate der Berechnung von $\Gamma(\frac{5}{2})$ mit Hilfe
+\caption{Resultate der Berechnung von $\Gamma(\frac{5}{3})$ mit Hilfe
 der Differentialgleichung \eqref{buch:rekursion:gamma:eqn:gammadgl}.
 Die korrekten Stellen sind unterstrichen.
 Es sind immerhin sechs korrekte Stellen gefunden, wobei nur 337
@@ -708,7 +795,7 @@ Auswertungen des Integranden notwendig waren.
 Im Prinzip könnte die Integraldefinition der numerischen Berechnung
 entgegenkommen.
 Um diese Hypothese zu prüfen, berechnen wir das Integral für
-$z=\frac52$ mit Hilfe der äquivalenten Differentialgleichungen
+$z=\frac53$ mit Hilfe der äquivalenten Differentialgleichungen
 \begin{equation}
 \dot{y}(t) = t^{z-1}e^{-t}
 \qquad\text{mit Anfangsbedingung $y(0)=0$}.
@@ -717,10 +804,13 @@ $z=\frac52$ mit Hilfe der äquivalenten Differentialgleichungen
 Der gesuchte Wert ist der Grenzwert $\lim_{t\to\infty} y(t)$.
 In der Tabelle~\ref{buch:rekursion:gamma:table:gammaintegral}
 sind die Werte von $y(10^k)$ sowie die Differenzen 
-$y(10^k) - \Gamma(\frac{5}{2})$ zusammengefasst.
+$y(10^k) - \Gamma(\frac{5}{3})$ zusammengefasst.
 Die Genauigkeit erreicht sechs korrekte Nachkommastellen mit nur
 337 Auswertungen des Integranden.
 
+Eine noch wesentlich effizientere Auswertung des $\Gamma$-Integrals
+mit Hilfe der Gauss-Laguerre-Quadratur wird in Kapitel~\ref{chapter:laguerre} 
+von Patrick Müller dargestellt.
 
 %
 %
