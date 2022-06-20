@@ -14,7 +14,8 @@ mit der Ableitung kann man den Grad aber auch senken, man könnte daher
 auch nach einer Rekursionsformel fragen, die bei einem Polynom hohen
 Grades beginnt und mit Hilfe von Ableitungen zu geringeren Graden
 absteigt.
-Solche Formeln heissen Rodrigues-Formeln nach dem Entdecker Olinde
+Solche Formeln heissen {\em Rodrigues-Formeln} nach dem Entdecker Olinde
+\index{Rodriguez, Olinde}%
 Rodrigues, der eine solche Formal als erster für Legendre-Polynome
 gefunden hat.
 
@@ -27,12 +28,17 @@ Die Skalarprodukte sollen
 \]
 sein.
 
+%
+% Pearsonsche Differentialgleichung
+%
 \subsection{Pearsonsche Differentialgleichung}
 Die {\em Pearsonsche Differentialgleichung} ist die Differentialgleichung
 \begin{equation}
 B(x) y' - A(x) y = 0,
 \label{buch:orthogonal:eqn:pearson}
 \end{equation}
+\index{Differentialgleichung!Pearsonsche}%
+\index{Pearsonsche Differentialgleichung}%
 wobei $B(x)$ ein Polynom vom Grad höchstens $2$ ist und $A(x)$ ein
 höchstens lineares Polynom.
 Die Gleichung~\eqref{buch:orthogonal:eqn:pearson}
@@ -45,20 +51,31 @@ Dann kann man die Gleichung umstellen in
 =
 \frac{A(x)}{B(x)}
 \qquad\Rightarrow\qquad
-y = \exp\biggl( \int\frac{A(x)}{B(x)}\biggr)\,dx.
+y
+=
+\exp\biggl(
+\int\frac{A(x)}{B(x)}
+\,dx
+\biggr)
+.
 \]
-Im folgenden nehmen wir zusätzlich an, dass
+Im Folgenden nehmen wir zusätzlich an, dass an den Intervallenden
 \begin{equation}
 \lim_{x\to a+} w(x)B(x) = 0,
 \qquad\text{und}\qquad
-\lim_{x\to b-} w(x)B(x) = 0.
+\lim_{x\to b-} w(x)B(x) = 0
 \end{equation}
+gilt.
+
 Falls $w(x)$ an den Intervallenden einen von $0$ verschiedenen
 Grenzwert hat, bedeutet dies, dass $B(a)=B(b)=0$ sein muss.
 Falls $w(x)$ am Intervallende divergiert, muss $B(x)$ dort eine
 Nullstelle höherer Ordnung haben, was aber für ein Polynom
 zweiten Grades nicht möglich ist.
 
+%
+% Rekursionsformel
+%
 \subsection{Rekursionsformel}
 Multiplikation mit $B(x)$ wird den Grad eines Polynomes typischerweise 
 um $2$ erhöhen, die Ableitung wird ihn wieder um $1$ reduzieren.
@@ -66,12 +83,13 @@ Etwas formeller kann man dies wie folgt formulieren:
 
 \begin{satz}
 Für alle $n\ge 0$ ist
-\[
+\begin{equation}
 q_n(x)
 =
 \frac{1}{w(x)}
 \frac{d^n}{dx^n} B(x)^n w(x)
-\]
+\label{buch:orthogonalitaet:rodrigues:eqn:rekursion}
+\end{equation}
 ein Polynom vom Grad höchstens $n$.
 \end{satz}
 
@@ -85,49 +103,64 @@ r_0(x) B(x)^n w(x)
 \\
 &=
 \frac{d^{n-1}}{dx^{n-1}}
-\bigl(r_0'(x)B(x)+ nB'(x)B(x)^{n-1}w(x) + B(x)^n w'(x) \bigr)
+\bigl(r_0'(x)B(x)+ nr_0(x)B'(x)B(x)^{n-1}w(x) + r_0(x)B(x)^n w'(x) \bigr)
 \\
 &=
 \frac{d^{n-1}}{dx^{n-1}}
-(r_0'(x)B(x)+nB'(x)+A(x)) B(x)^{n-1} w(x)
-=
+(\underbrace{r_0'(x)B(x)+nr_0(x)B'(x)+r_0(x)A(x)}_{\displaystyle = r_1(x)})
+B(x)^{n-1} w(x)
+\\
+&=
 \frac{d^{n-1}}{dx^{n-1}} r_1(x)B^{n-1}(x) w(x).
 \end{align*}
-Für die Funktionen $r_k$ gilt die Rekursionsformel
+Iterativ lässt sich eine Folge von
+Funktionen $r_k(x)$ definieren, für die Rekursionsformel
 \begin{equation}
-r_k(x) = r_{k-1}'(x)B(x) + kB'(x) + A(x).
+r_k(x) = r_{k-1}'(x)B(x) + \bigl((n+1-k)B'(x) + A(x)\bigr)r_{k-1}(x)
 \label{buch:orthogonal:rodrigues:rekursion:beweis1}
 \end{equation}
+gilt.
 Wenn $r_0(x)$ ein Polynom ist, dann sind alle Funktionen $r_k(x)$
 ebenfalls Polynome.
-Durch wiederholte Anwendung dieser Formel kann man schliessen, dass 
+Aus der Konstruktion kann man schliessen, dass
 \[
 \frac{d^n}{dx^n} r_0(x) B(x)^n w(x)
 =
 r_n(x) w(x).
 \]
-Insbesondere folgt für $r_0(x)=1$, dass man durch $w(x)$ dividieren kann
-und dass $r_n(x)=q_n(x)$.
+Insbesondere folgt für $r_0(x)=1$, dass die $n$-te Ableitung den
+Faktor $w(x)$ enthält und dass somit $r_n(x)=q_n(x)$ ein Polynom ist.
 
-Wir müssen auch noch den Grad von $r_k(x)$ bestimmen.
-Dazu verwenden wir 
-\eqref{buch:orthogonal:rodrigues:rekursion:beweis1} und berechnen den
-Grad:
+Wir müssen auch noch den Grad von $r_k(x)$ bestimmen, wobei wir
+wieder von $r_0(x)=1$ ausgehen.
+Wir behaupten, dass $\deg r_k(x)\le k$ ist, und beweisen dies
+mit vollständiger Induktion.
+Für $k=0$ ist $\deg r_0(x) = 0 \le k$ die Induktionsverankerung.
+
+Wir nehmen jetzt also an, dass $\deg r_{k-1}(x)\le k-1$ ist und
+verwenden 
+\eqref{buch:orthogonal:rodrigues:rekursion:beweis1} um den Grad zu berechnen:
 \begin{equation*}
 \deg r_k(x)
 =
 \max \bigl(
-\underbrace{\deg(r_{k-1}'(x) B(x))}_{\displaystyle \deg r_{k-1}(x) -1 + 2}
+\underbrace{\deg(r_{k-1}'(x) B(x))}_{\displaystyle (k-1) -1 + 2}
 ,
-\underbrace{\deg(B'(x))}_{\displaystyle \le 1}
+\underbrace{\deg(r_{k-1}(x)B'(x))}_{\displaystyle \le (k-1)+1}
 ,
-\underbrace{\deg(A(x))}_{\displaystyle \le 1}
+\underbrace{\deg(r_{k-1}(x)A(x))}_{\displaystyle \le (k-1)+1}
 \bigr)
-\le \max r_{k-1}(x) + 1.
+\le k.
 \end{equation*}
-Aus $\deg r_0(x)=0$ kann man jetzt ablesen, dass $\deg r_k(x)\le k$ ist.
-Damit ist gezeigt, dass $\deg q_n(x)\le n$.
+Damit ist der Induktionsschritt und $\deg r_k(x)\le k$ bewiesen.
+Damit ist auch gezeigt, dass $\deg q_n(x)\le n$.
 \end{proof}
+
+Die Rodrigues-Formel~\eqref{buch:orthogonalitaet:rodrigues:eqn:rekursion}
+produziert eine Folge von Polynomen aufsteigenden Grades, es ist aber
+noch nicht klar, dass diese Polynome bezüglich des gewählten Skalarproduktes
+orthogonal sind.
+Dies ist der Inhalt des folgenden Satzes.
 
 \begin{satz}
 Es gibt Konstanten $c_n$ derart, dass
@@ -140,7 +173,7 @@ gilt.
 \end{satz}
 
 \begin{proof}[Beweis]
-Wir müssen zeigen, dass die Polynome orthogonal sind auf allen Monomen
+Wir zeigen, dass die Polynome orthogonal sind auf allen Monomen
 von geringerem Grad.
 \begin{align*}
 \langle q_n, x^k\rangle_w
@@ -148,15 +181,17 @@ von geringerem Grad.
 \int_a^b q_n(x)x^kw(x)\,dx
 \\
 &=
-\int_a^b \frac{1}{w(x)}\frac{d^n}{dx^n}(B(x)^n w(x)) x^k w(x)\,dx
+\int_a^b \frac{1}{w(x)}
+\biggl(\frac{d^n}{dx^n}\bigl(B(x)^n w(x)\bigr)\biggr)
+x^k w(x)\,dx
 \\
 &=
-\int_a^b \frac{d^n}{dx^n}(B(x)^n w(x)) x^k \,dx
+\int_a^b \frac{d^n}{dx^n}\bigl(B(x)^n w(x)\bigr) x^k \,dx
 \\
 &=
-\biggl[\frac{d^{n-1}}{dx^{n-1}}(B(x)^n w(x)) x^k \biggr]_a^b
+\biggl[\frac{d^{n-1}}{dx^{n-1}}\bigl(B(x)^n w(x)\bigr) x^k \biggr]_a^b
 -
-\int_a^b \frac{d^{n-1}}{dx^{n-1}}(B(x)^n w(x))kx^{k-1}\,dx
+\int_a^b \frac{d^{n-1}}{dx^{n-1}}\bigl(B(x)^n w(x)\bigr)kx^{k-1}\,dx
 \end{align*}
 Durch $n$-fache Iteration wird das Integral auf $0$ reduziert.
 Es bleiben nur die eckigen Klammern stehen, doch wenn man die Produktregel
@@ -164,9 +199,20 @@ auswertet, bleibt immer mindestens ein Produkt $B(x)w(x)$ stehen,
 nach den Voraussetzungen an den Grenzwert dieses Produktes an den
 Intervallenden verschwinden diese Terme alle.
 Damit sind die $q_n(x)$ Polynome, die $w$-orthogonal sind auf allen
-$x^k$ mit $k<n$, also Vielfache der $w$-Orthgonalpolynome.
+$x^k$ mit $k<n$.
+
+Die Polynome $q_k(x)$ mit $k< n$ haben Grad $<n$ und sind daher
+Linearkombinationen von Monomen vom Grad $<n$.
+Soeben wurde gezeigt, dass $q_n(x)$ orthogonal auf diesen Monomen
+ist, also auch auf $q_k(x)$ mit $k<n$.
+Damit ist gezeigt, dass Polynome $q_n(x)$ eine orthogonale Familie
+von Polynomen bilden.
+Durch Normierung müssen sich daraus die Polynome $p_n(x)$ ergeben.
 \end{proof}
 
+%
+% Legendre-Polynome
+%
 \subsubsection{Legendre-Polynome}
 Legendre-Polynome sind orthogonale Polynome zum Standardskalarprodukt
 mit $w(x)=1$.
@@ -195,6 +241,9 @@ P_n(x)
 (x^2-1)^n.
 \]
 
+%
+% Hermite-Polynome
+%
 \subsubsection{Hermite-Polynome}
 Die Hermite-Polynome sind auf ganz $\mathbb{R}$ definiert und verwenden
 die Gewichtsfunktion
@@ -205,13 +254,13 @@ Für jedes beliebige Polynome $B(x)$, auch für höheren Grad als $2$, ist
 \[
 \lim_{x\to-\infty} B(x) w(x)
 =
-\lim_{x\to-\infty} B(x)^e{-x^2}
+\lim_{x\to-\infty} B(x)e^{-x^2}
 =
 0
 \qquad\text{und}\qquad
 \lim_{x\to\infty} B(x) w(x)
 =
-\lim_{x\to\infty} B(x)^e{-x^2}
+\lim_{x\to\infty} B(x)e^{-x^2}
 =
 0,
 \]
@@ -222,7 +271,7 @@ Die Ableitung der Gewichtsfunktion ist
 \[
 w'(x) = -2xe^{-x^2}.
 \]
-Eingsetzt in die Pearsonsche Differentialgleichung findet man
+Eingesetzt in die Pearsonsche Differentialgleichung findet man
 \[
 \frac{w'(x)}{w(x)}
 =
@@ -238,6 +287,8 @@ B(x) = 1.
 \]
 Die Gradbedingung ist also immer erfüllt und es folgt die Rodrigues-Formel
 für die Hermite-Polynome
+\index{Hermite-Polynom}%
+\index{Polynome!Hermite}%
 \begin{equation}
 H_n(x)
 =
@@ -249,13 +300,15 @@ e^{x^2}\frac{d^n}{dx^n} e^{-x^2}.
 \label{buch:orthogonal:eqn:hermite-rodrigues}
 \end{equation}
 
-Die Hermite-Polynome können mit der Rodrigues-Formel berechnen, aber die 
-Form~\eqref{buch:orthogonal:eqn:hermite-rodrigues} ist dazu nicht gut
-geeignet.
-Dazu dient die Berechnung 
+Die Hermite-Polynome können mit der Rodrigues-Formel berechnet werden,
+aber die Form~\eqref{buch:orthogonal:eqn:hermite-rodrigues} ist dazu
+nicht gut geeignet.
+Zur Vereinfachung dient die Berechnung 
 \[
 -\frac{d}{dx}
+\bigl(
 e^{-x^2}f(x)
+\bigr)
 =
 2xe^{-x^2}f(x)
 -
@@ -270,15 +323,15 @@ vertauscht werden kann, wenn er durch die grosse Klammer auf der
 rechten Seite ersetzt wird.
 Die Rodrigues-Formel bekommt daher die Form
 \[
-H_n(x) = \biggl(\frac{d}{dx}-2x\biggr)^n \cdot 1
+H_n(x) = \biggl(2x-\frac{d}{dx}\biggr)^n \cdot 1.
 \]
 
-TODO: Relation zu hypergeometrischen Funktionen $\mathstrut_1F_1$
+%TODO: Relation zu hypergeometrischen Funktionen $\mathstrut_1F_1$
 
 %\url{https://en.wikipedia.org/wiki/Rodrigues%27_formula}
 
 %
-% Jacoib-Gewichtsfunktion
+% Jacobi-Gewichtsfunktion
 %
 \subsubsection{Jacobi-Gewichtsfunktion}
 %(%i1) w: (1-x)^a*(1+x)^b;
@@ -303,6 +356,8 @@ TODO: Relation zu hypergeometrischen Funktionen $\mathstrut_1F_1$
 %                                    x  - 1
 %
 Die Jacobi-Gewichtsfunktion 
+\index{Jacobi-Gewichtsfunktion}%
+\index{Gewichtsfunktion!Jacobi}%
 \[
 w(x)
 =
@@ -357,9 +412,14 @@ Die Konstanten $c_n$ werden durch die Normierung
 % XXX in welchem Abschnitt
 festgelegt.
 
+%
+% Tschebyscheff-Gewichtsfunktion
+%
 \subsubsection{Die Tschebyscheff-Gewichtsfunktion}
 Die Tschebyscheff-Gewichtsfunktion ist der Spezialfall $a=b=-\frac12$
 der Jacobi-Gewichtsfunktion.
+\index{Tschebyscheff-Gewichtsfunktion}%
+\index{Gewichtsfunktion!Tschebyscheff}%
 Die Rodrigues-Formel für die Tschebyscheff-Polynome lautet daher
 \[
 T_n(x)
@@ -373,8 +433,13 @@ c_n\sqrt{1-x^2} \frac{d^n}{dx^n}
 \]
 wobei wir den korrekten Wert von $c_n$ nicht nachgewiesen haben.
 
+%
+% Laguerre Gewichtsfunktion
+%
 \subsubsection{Die Laguerre-Gewichtsfunktion}
 Die Laguerre-Gewichtsfunktion
+\index{Laguerre-Gewichtsfunktion}%
+\index{Gewichtsfunktion!Laguerre}%
 \[
 w_{\text{Laguerre}}(x)
 =

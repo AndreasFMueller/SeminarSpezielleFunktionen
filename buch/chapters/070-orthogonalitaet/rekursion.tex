@@ -31,7 +31,17 @@ für alle $n$, $m$.
 \end{definition}
 
 \subsubsection{Allgemeine Drei-Term-Rekursion für orthogonale Polynome}
-Der folgende Satz besagt, dass $p_n$ eine Rekursionsbeziehung erfüllt.
+Die Multiplikation mit $x$ macht aus einem Polynom vom Grad $n$ ein
+Polynom vom Grad $n+1$.
+Das Polynom $xp_n(x)$ lässt sich daher als Linearkombination der
+Polynome $p_k(x)$ mit $k\le n+1$ schreiben.
+Es muss also eine lineare Beziehung zwischen den Polynomen $p_k(x)$ und
+$xp_n(x)$ geben, die man nach $p_{n+1}(x)$ auflösen kann, um eine lineare
+Darstellung von $p_{n+1}(x)$ durch die $p_k(x)$ und $p_n(x)$ zu
+bekommen.
+A priori muss man damit rechnen, dass sehr viele Summanden nötig sind.
+Der folgende Satz besagt, dass $p_n(x)$ eine Rekursionsbeziehung mit
+nur drei Termen erfüllt.
 
 \begin{satz}
 \label{buch:orthogonal:satz:drei-term-rekursion}
@@ -55,9 +65,13 @@ C_{n+1} = \frac{A_{n+1}}{A_n}\frac{h_{n+1}}{h_n}.
 \end{equation}
 \end{satz}
 
+Die Rekursionsbeziehung~\eqref{buch:orthogonal:eqn:rekursion} bedeutet,
+dass sich die Werte $p_n(x)$ für alle $n$ ausgehend von $p_1(x)$ und
+$p_0(x)$ mit nur $O(n)$ Operationen ermitteln lassen.
+
 \subsubsection{Multiplikationsoperator mit $x$}
-Man kann die Relation auch nach dem Produkt $xp_n(x)$ auflösen, dann
-wird sie
+Man kann die Relation \eqref{buch:orthogonal:eqn:rekursion}
+auch nach dem Produkt $xp_n(x)$ auflösen, dann wird sie
 \begin{equation}
 xp_n(x)
 =
@@ -68,9 +82,12 @@ xp_n(x)
 \frac{C_n}{A_n}p_{n-1}(x).
 \label{buch:orthogonal:eqn:multixrelation}
 \end{equation}
-Die Multiplikation mit $x$ ist eine lineare Abbildung im Raum der Funktionen.
+Die Multiplikation mit $x$ ist eine lineare Abbildung im Raum der Funktionen,
+die wir weiter unten auch $M_x$ abkürzen.
 Die Relation~\eqref{buch:orthogonal:eqn:multixrelation} besagt, dass diese
 Abbildung in der Basis der Polynome $p_k$ tridiagonale Form hat.
+Ein Beispiel dafür ist im nächsten Abschnitt in
+\eqref{buch:orthogonal:eqn:Mx}
 
 \subsubsection{Drei-Term-Rekursion für die Tschebyscheff-Polynome}
 Eine Relation der Form~\eqref{buch:orthogonal:eqn:multixrelation}
@@ -84,6 +101,22 @@ T_{n+1}(x) = 2x\,T_n(x)-T_{n-1}(x),
 \]
 also
 $A_n=2$, $B_n=0$ und $C_n=1$.
+Die Matrixdarstellung des Multiplikationsoperators $M_x$ in der
+Basis der Tschebyscheff-Polynome hat wegen
+\eqref{buch:orthogonal:eqn:multixrelation} die Form
+\begin{equation}
+M_x
+=
+\begin{pmatrix}
+      0&\frac12&      0&      0&      0&\dots  \\
+\frac12&      0&\frac12&      0&      0&\dots  \\
+      0&\frac12&      0&\frac12&      0&\dots  \\
+      0&      0&\frac12&      0&\frac12&\dots  \\
+      0&      0&      0&\frac12&      0&\dots  \\
+ \vdots& \vdots& \vdots& \vdots& \vdots&\ddots 
+\end{pmatrix}.
+\label{buch:orthogonal:eqn:Mx}
+\end{equation}
 
 \subsubsection{Beweis von Satz~\ref{buch:orthogonal:satz:drei-term-rekursion}}
 Die Relation~\eqref{buch:orthogonal:eqn:multixrelation} zeigt auch,

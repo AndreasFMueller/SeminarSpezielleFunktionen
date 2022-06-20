@@ -73,6 +73,9 @@ gilt.
 Der Plan ist, dies so umzuformen, dass man für $x$ eine beliebige
 komplexe Zahl einsetzen kann.
 
+%
+% Pochhammer-Symbol
+%
 \subsubsection{Pochhammer-Symbol}
 Die spezielle Form des Nenners und des zweiten Faktors im Zähler
 von \eqref{buch:rekursion:gamma:eqn:fakultaet}
@@ -115,6 +118,9 @@ x!
 Der erste Faktor in diesem Ausdruck enthält jetzt nur noch Dinge,
 die für beliebige $x\in\mathbb{C}$ definiert sind.
 
+%
+% Grenwertdefinition
+%
 \subsubsection{Grenzwertdefinition}
 Der zweite Bruch in \eqref{buch:rekursion:gamma:eqn:produkt3}
 besteht aus Termen, die zwar nur für natürliches $x$ definiert sind,
@@ -147,6 +153,9 @@ $x\in\mathbb{C}\setminus\{0,-1,-2,-3,\dots\}$ ist der Grenzwert
 \index{Gamma-Funktion!Grenzwertdefinition}%
 \end{definition}
 
+%
+% Rekursionsgleichung für Gamma(x)
+%
 \subsubsection{Rekursionsgleichung für $\Gamma(x)$}
 Es ist aus der Herleitung klar, dass $\Gamma(n)=(n-1)!$ sein muss.
 Wir sollten dies aber auch direkt aus der
@@ -199,13 +208,48 @@ x\lim_{n\to\infty}
 \frac{n^{x-1}}{(n+1)^{x-1}}
 \\
 &=
+x
 \Gamma(x)
 \lim_{n\to\infty} \biggl(\frac{n}{n+1}\biggr)^{x-1}
 =
-\Gamma(x),
+x\Gamma(x),
 \end{align*}
 Weil $n/(n+1)\to 1$ ist und die Funktion $z\mapsto z^{x-1}$ für alle
 nach der Definition zulässigen Werte von $x$ eine stetige Funktion ist.
+
+%
+% Gamma-Funktion und Pochhammer-Symbol
+%
+\subsubsection{Gamma-Funktion und Pochhammer-Symbol}
+Durch Iteration der Rekursionsformel für $\Gamma(x)$ folgt jetzt
+\begin{align*}
+\Gamma(x+n)
+&=
+(x+n-1) \Gamma(x+n-1)
+\\
+&=
+(x+n-1)(x+n-2)\Gamma(x+n-2)
+\\
+&=
+\underbrace{
+(x+n-1)(x+n-2)\cdots(x-1)(x)
+}_{\text{$n$ Faktoren}} \Gamma(x)
+\\
+&=(x)_n \Gamma(x).
+\end{align*}
+Damit folgt
+
+\begin{satz}
+\label{buch:rekursion:gamma:satz:gamma-pochhammer}
+Die Rekursionsformel für die Gamma-Funktion kann geschrieben werden als
+\[
+\Gamma(x+n) = (x)_n \Gamma(x).
+\]
+Das Pochhammer-Symbol $(x)_n$ ist für alle natürlichen $n$ gegeben durch
+\[
+(x)_n = \frac{\Gamma(x+n)}{\Gamma(x)}.
+\]
+\end{satz}
 
 %
 % Numerische Unzulänglichkeit der Grenzwertdefinition

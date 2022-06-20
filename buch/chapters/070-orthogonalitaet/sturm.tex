@@ -11,6 +11,9 @@ konnte die Orthogonalität der Funktionen dadurch gezeigt werden,
 dass sie als Eigenfunktionen eines bezüglich eines geeigneten
 Skalarproduktes selbstadjungierten Operators erkannt wurden.
 
+%
+% Differentialgleichungen
+%
 \subsection{Differentialgleichung}
 Das klassische Sturm-Liouville-Problem ist das folgende Eigenwertproblem.
 Gesucht sind Lösungen der Differentialgleichung
@@ -30,6 +33,9 @@ erfüllen, wobei $|k_i|^2 + |h_i|^2\ne 0$ mit $i=a,b$.
 Weitere Bedingungen an die Funktionen $p(x)$, $q(x)$, $w(x)$  sowie die
 Lösungsfunktionen $y(x)$ sollen später geklärt werden.
 
+%
+% Das verallgemeinerte Eigenwertproblem für symmetrische Matrizen
+%
 \subsection{Das verallgemeinerte Eigenwertproblem für symmetrische Matrizen}
 Ein zu \eqref{buch:integrale:eqn:sturm-liouville} analoges Eigenwertproblem
 für Matrizen ist das folgende verallgemeinerte Eigenwertproblem.
@@ -175,6 +181,9 @@ ist damit ein gewöhnliches Eigenwertproblem für selbstadjungierte
 Matrizen des Operators $\tilde{A}$ bezüglich des verallgemeinerten
 Skalarproduktes $\langle\,\;,\;\rangle_B$.
 
+%
+% Der Operator L_0 und die Randbedingung
+%
 \subsection{Der Operator $L_0$ und die Randbedingung}
 Die Differentialgleichung kann auch in Operatorform geschrieben werden.
 Dazu schreiben wir
@@ -275,6 +284,9 @@ Ausgeschrieben bedeutet dies, dass die Randbedingung
 \eqref{buch:integrale:sturm:randbedingung}
 erfüllt sein muss.
 
+%
+% Skalarprodukt
+%
 \subsection{Skalarprodukt}
 Das Ziel der folgenden Abschnitte ist, das Sturm-Liouville-Problem als
 Eigenwertproblem für einen selbstadjungierten Operator in einem 
@@ -314,6 +326,9 @@ mit der Gewichtsfunktion $w(x)$ verwendet werden.
 Damit dies ein vernünftiges Skalarprodukt ist, muss $w(x)>0$ im
 Innerend es Intervalls sein.
 
+%
+% Der Vektorraum H
+%
 \subsection{Der Vektorraum $H$}
 Damit können wir jetzt die Eigenschaften der in Frage kommenden
 Funktionen zusammenstellen.
@@ -346,7 +361,10 @@ f\in L^2([a,b],w)\;\bigg|\;
 \biggr\}.
 \]
 
-\subsection{Differentialoperator}
+%
+% Der Sturm-Liouville-Differentialoperator
+%
+\subsection{Der Sturm-Liouville-Differentialoperator}
 Das verallgemeinerte Eigenwertproblem für $A$ und $B$ ist ein
 gewöhnliches Eigenwertproblem für die Operator $\tilde{A}=B^{-1}A$
 bezüglich des modifizierten Skalarproduktes.
@@ -366,12 +384,18 @@ $\lambda$ ist der zu $y(x)$ gehörige Eigenwert.
 Der Operator ist definiert auf Funktionen des im vorangegangenen Abschnitt
 definierten Vektorraumes $H$.
 
+%
+% Beispiele
+%
 \subsection{Beispiele}
 Die meisten der früher vorgestellten Funktionenfamilien stellen sich
 als Lösungen eines geeigneten Sturm-Liouville-Problems heraus.
 Alle Eigenschaften aus der Sturm-Liouville-Theorie gelten daher
 automatisch für diese Funktionenfamilien.
 
+%
+% Trignometrische Funktionen
+%
 \subsubsection{Trigonometrische Funktionen}
 Die trigonometrischen Funktionen sind Eigenfunktionen des Operators
 $d^2/dx^2$, also eines Sturm-Liouville-Operators mit $p(x)=1$, $q(x)=0$
@@ -434,6 +458,9 @@ Dann ist wegen
 die Bedingung~\eqref{buch:integrale:sturm:sabedingung}
 ebenfalls erfüllt, $L_0$ ist in diesem Raum selbstadjungiert.
 
+%
+% Bessel-Funktionen J_n(x)
+%
 \subsubsection{Bessel-Funktionen $J_n(x)$}
 Der Bessel-Operator \eqref{buch:differentialgleichungen:bessel-operator}
 kann wie folgt in die Form eines Sturm-Liouville-Operators gebracht 
@@ -478,6 +505,9 @@ Es folgt damit sofort, dass die Besselfunktionen orthogonale
 Funktionen bezüglich des Skalarproduktes mit der Gewichtsfunktion
 $w(x)=1/x$ sind.
 
+%
+% Bessel-Funktionen J_n(sx)
+%
 \subsubsection{Bessel-Funktionen $J_n(s x)$}
 Das Sturm-Liouville-Problem mit den Funktionen
 \eqref{buch:orthogonal:sturm:bessel:n}
@@ -608,6 +638,9 @@ Damit sind geeignete Randbedingungen für das Sturm-Liouville-Problem
 gefunden.
 \end{proof}
 
+%
+% Laguerre-Polynome
+%
 \subsubsection{Laguerre-Polynome}
 Die Laguerre-Polynome sind orthogonal bezüglich des Skalarprodukts
 mit der Laguerre-Gewichtsfunktion $w(x)=e^{-x}$ und erfüllen die
@@ -646,6 +679,9 @@ also die Laguerre-Differentialgleichung.
 Somit folgt, dass die Laguerre-Polynome orthogonal sind bezüglich
 des Skalarproduktes mit der Laguerre-Gewichtsfunktion.
 
+%
+% Tschebyscheff-Polynome
+%
 \subsubsection{Tschebyscheff-Polynome}
 Die Tschebyscheff-Polynome sind Lösungen der
 Tschebyscheff-Differentialgleichung
@@ -685,10 +721,15 @@ bezüglich des Skalarproduktes
 \langle f,g\rangle = \int_{-1}^1 f(x)g(x)\frac{dx}{\sqrt{1-x^2}}.
 \]
 
+%
+% Jacobi-Polynome
+%
 \subsubsection{Jacobi-Polynome}
 TODO
 
-
+%
+% Hypergeometrische Differentialgleichungen
+%
 \subsubsection{Hypergeometrische Differentialgleichungen}
 %\url{https://encyclopediaofmath.org/wiki/Hypergeometric_equation}
 Auch die Eulersche hypergeometrische Differentialgleichung
