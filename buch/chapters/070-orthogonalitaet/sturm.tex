@@ -371,9 +371,10 @@ bezüglich des modifizierten Skalarproduktes.
 Das Sturm-Liouville-Problem ist also ein Eigenwertproblem im
 Vektorraum $H$ mit dem Skalarprodukt $\langle\,\;,\;\rangle_w$.
 Der Operator
-\[
+\begin{equation}
 L = \frac{1}{w(x)} \biggl(-\frac{d}{dx} p(x)\frac{d}{dx} + q(x)\biggr)
-\]
+\label{buch:orthogonal:sturm-liouville:opL1}
+\end{equation}
 heisst der {\em Sturm-Liouville-Operator}.
 Eine Lösung des Sturm-Liouville-Problems ist eine Funktion $y(x)$ derart,
 dass 
@@ -383,6 +384,15 @@ Ly = \lambda y,
 $\lambda$ ist der zu $y(x)$ gehörige Eigenwert.
 Der Operator ist definiert auf Funktionen des im vorangegangenen Abschnitt
 definierten Vektorraumes $H$.
+Führt man die Differentiation aus, bekommt der Operator die Form
+\begin{equation}
+L
+=
+-\frac{p(x)}{w(x)} \frac{d^2}{dx^2}
+-\frac{p'(x)}{w(x)} \frac{d}{dx}
++\frac{q(x)}{w(x)}.
+\label{buch:orthogonal:sturm-liouville:opL2}
+\end{equation}
 
 %
 % Beispiele
@@ -725,7 +735,74 @@ bezüglich des Skalarproduktes
 % Jacobi-Polynome
 %
 \subsubsection{Jacobi-Polynome}
-TODO
+Die Jacobi-Polynome sind orthogonal bezüglich des Skalarproduktes
+mit der Gewichtsfunktion
+\(
+w^{(\alpha,\beta)}(x) = (1-x)^\alpha(1+x)^\beta,
+\)
+definiert in Definition~\ref{buch:orthogonal:def:jacobi-gewichtsfunktion}.
+%Bei der Herleitung der Rodrigues-Formel für die Jacobi-Polynome wurde erkannt,
+%dass $B(x)=1-x^2$ und $A(x)=\beta-\alpha-(\alpha+\beta)x$ sein muss.
+Man kann zeigen, dass die Jacobi-Polynome Lösungen der
+Jacobi-Differentialgleichung
+\begin{equation}
+(1-x^2)y'' + (\beta-\alpha-(\alpha+\beta + 2)x)y' + n(n+\alpha+\beta+1)y=0
+\label{buch:orthogonal:jacobi:dgl}
+\end{equation}
+sind.
+Es stellt sich die Frage, ob sich Funktionen $p(x)$ und $q(x)$ finden lassen
+derart, dass die Differentialgleichung~\eqref{buch:orthogonal:jacobi:dgl}
+eine Sturm-Liouville-Gleichung wird.
+Gemäss der Form~\eqref{buch:orthogonal:sturm-liouville:opL2} muss
+$p(x)$ so gefunden werden, dass
+\begin{align*}
+\frac{p(x)}{w^{(\alpha,\beta)}(x)} &= 1-x^2 \\
+\frac{p'(x)}{w^{(\alpha,\beta)}(x)} &= \beta-\alpha-(\alpha+\beta+2)x
+\end{align*}
+gilt.
+Der Quotient der ersten beiden Gleichungen ist die logarithmische Ableitung
+\[
+(\log p(x))'
+=
+\frac{p'(x)}{p(x)}
+=
+\frac{1-x^2}{\beta-\alpha-(\alpha+\beta+2)x}
+\]
+die sich in geschlossener Form integrieren lässt.
+Man findet als Stammfunktion
+\[
+p(x)
+=
+(1-x)^{\alpha+1}(1+x)^{\beta+1}.
+\]
+Tatsächlich ist
+\begin{align*}
+\frac{p(x)}{w^{(\alpha,\beta)}(x)}
+&=
+\frac{(1-x)^{\alpha+1}(1+x)^{\beta+1}}{(1-x)^\alpha(1+x)^\beta}
+=
+(1-x)(1+x)=1-x^2
+\\
+\frac{p'(x)}{w^{(\alpha,\beta)}(x)}
+&=
+\frac{
+-(\alpha+1)
+(1-x)^{\alpha}(1+x)^{\beta+1}
++
+(\beta+1)
+(1-x)^{\alpha+1}(1+x)^{\beta}
+}{
+(1-x)^{\alpha}(1+x)^{\beta}
+}
+\\
+&=
+-(\alpha+1)(1+x) + (\beta+1)(1-x)
+=
+\beta-\alpha-(\alpha+\beta+2)x.
+\end{align*}
+Damit ist
+die Jacobische Differentialgleichung 
+als Sturm-Liouville-Differentialgleichung erkannt.
 
 %
 % Hypergeometrische Differentialgleichungen
