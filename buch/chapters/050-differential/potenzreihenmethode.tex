@@ -290,7 +290,7 @@ Für ganzzahliges $\alpha$ wird daraus die binomische Formel
 \]
 
 %
-% Lösung als hypergeometrische Riehe
+% Lösung als hypergeometrische Reihe
 %
 \subsubsection{Lösung als hypergeometrische Funktion}
 Die Newtonreihe verwendet ein absteigendes Produkt im Zähler.
@@ -420,25 +420,43 @@ $a_k=0$ sein, die einzige Potenzreihe ist die triviale Funktion $y(x)=0$.
 Für Differentialgleichungen der Art
 \eqref{buch:differentialgleichungen:eqn:dglverallg}
 ist also ein anderer Ansatz nötig.
-Die Schwierigkeit bestand darin, dass die Gleichungen für die einzelnen
-Koeffizienten $a_k$ voneinander unabhängig waren.
-Mit einem zusätzlichen Potenzfaktor $x^\varrho$ mit nicht
-notwendigerweise ganzzahligen Wert kann die nötige Flexibilität
-erreicht werden.
-Wir verwenden daher den Ansatz
-\[
+Ursache für das Versagen des Potenzreihenansatzes ist, dass die
+Koeffizienten der Differentialgleichung bei $x=0$ eine
+Singularität haben.
+Ist ist daher damit zu rechnen, dass auch die Lösung $y(x)$ an dieser
+Stelle singuläres Verhalten zeigen wird.
+Die Terme einer Potenzreihe um den Punkt $x=0$ sind nicht singulär,
+können eine solche Singularität also nicht wiedergeben.
+Der neue Ansatz sollte ähnlich einfach sein, aber auch gewisse ``einfache''
+Singularitäten darstellen können.
+Die Potenzfunktionen $x^\varrho$ mit $\varrho<1$ erfüllen beide
+Anforderungen.
+
+\begin{definition}
+\label{buch:differentialgleichungen:def:verallpotenzreihe}
+Eine {\em verallgemeinerte Potenzreihe} ist eine Funktion der Form
+\begin{equation}
 y(x)
 =
 x^\varrho \sum_{k=0}^\infty a_kx^k
 =
 \sum_{k=0}^\infty a_k x^{\varrho+k}
-\]
-und versuchen nicht nur die Koeffizienten $a_k$ sondern auch den
-Exponenten $\varrho$ zu bestimmen.
-Durch Modifikation von $\varrho$ können wir immer erreichen, dass
-$a_0\ne 0$ ist.
+\label{buch:differentialgleichungen:eqn:verallpotenzreihe}
+\end{equation}
+mit $a_0\ne 0$.
+\end{definition}
 
-Die Ableitungen von $y(x)$ mit der zugehörigen Potenz von x  sind
+Die Forderung $a_0\ne 0$ kann nötigenfalls durch Modifikation des
+Exponenten $\varrho$ immer erreicht werden.
+
+Wir verwenden also eine verallgemeinerte Potenzreihe der Form
+\eqref{buch:differentialgleichungen:eqn:verallpotenzreihe}
+als Lösungsansatz für die
+Differentialgleichung~\eqref{buch:differentialgleichungen:eqn:dglverallg}.
+Wir berechnen die Ableitungen von $y(x)$ und um sie in der
+Differentialgleichung einzusetzen, versehen wir sie auch gleich mit den
+benötigten Potenzen von $x$.
+So erhalten wir
 \begin{align*}
 xy'(x)
 &=
@@ -453,8 +471,9 @@ x^2y''(x)
 \sum_{k=0}^\infty
 (\varrho+k)(\varrho+k-1)a_kx^{\varrho+k}.
 \end{align*}
-Diese Ableitungen setzen wir jetzt in die Differentialgleichung ein, 
-die dadurch zu
+Diese Ausdrücke setzen wir jetzt in die 
+Differentialgleichung~\eqref{buch:differentialgleichungen:eqn:dglverallg}
+ein, die dadurch zu
 \begin{equation}
 \sum_{k=0}^\infty  (\varrho+k)(\varrho+k-1) a_k x^{\varrho+k}
 +
@@ -489,6 +508,7 @@ Ausgeschrieben geben die einzelnen Terme
 \bigl((\varrho +2)a_2p_0 + (\varrho+1)a_1p_1 + \varrho a_0 p_2\bigr) x^{\varrho+2}
 +
 \dots
+\label{buch:differentialgleichungen:eqn:dglverallg}
 \\
 &+
 q_0a_0x^{\varrho}
@@ -685,18 +705,17 @@ Kapitel~\ref{buch:chapter:funktionentheorie}
 dargestellt werden.
 
 \item
-Fall 3: $\varrho_1-\varrho-2$ ist eine positive ganze Zahl.
+Fall 3: $\varrho_1-\varrho_2$ ist eine positive ganze Zahl.
 In diesem Fall ist im Allgemeinen nur eine Lösung in Form einer
 verallgemeinerten Potenzreihe möglich.
 Auch hier müssen Techniken der Funktionentheorie aus
 Kapitel~\ref{buch:chapter:funktionentheorie}
 verwendet werden, um eine zweite Lösung zu finden.
 
-\end{itemize}
-
 Wenn $\varrho_1-\varrho_2$ eine negative ganze Zahl ist, kann man die
 beiden Nullstellen vertauschen.
-Es folgt dann, dass es eine  
+\end{itemize}
+
 
 
 
