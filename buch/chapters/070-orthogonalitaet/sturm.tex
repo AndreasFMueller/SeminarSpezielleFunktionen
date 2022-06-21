@@ -694,7 +694,8 @@ des Skalarproduktes mit der Laguerre-Gewichtsfunktion.
 %
 \subsubsection{Tschebyscheff-Polynome}
 Die Tschebyscheff-Polynome sind Lösungen der
-Tschebyscheff-Differentialgleichung
+bereits in Kapitel~\ref{buch:chapter:potenzen} hergeleiteten
+Tschebyscheff-Differentialgleichung~\eqref{buch:potenzen:tschebyscheff:dgl}
 \[
 (1-x^2)y'' -xy' = n^2y
 \]
@@ -737,14 +738,16 @@ bezüglich des Skalarproduktes
 \subsubsection{Jacobi-Polynome}
 Die Jacobi-Polynome sind orthogonal bezüglich des Skalarproduktes
 mit der Gewichtsfunktion
-\(
+\[
 w^{(\alpha,\beta)}(x) = (1-x)^\alpha(1+x)^\beta,
-\)
+\]
 definiert in Definition~\ref{buch:orthogonal:def:jacobi-gewichtsfunktion}.
 %Bei der Herleitung der Rodrigues-Formel für die Jacobi-Polynome wurde erkannt,
 %dass $B(x)=1-x^2$ und $A(x)=\beta-\alpha-(\alpha+\beta)x$ sein muss.
-Man kann zeigen, dass die Jacobi-Polynome Lösungen der
-Jacobi-Differentialgleichung
+Man kann zeigen, dass sie Lösungen der
+{\em Jacobi-Diffe\-ren\-tial\-gleichung}
+\index{Jacobi-Differentialgleichung}%
+\index{Differentialgleichung!Jacobi}%
 \begin{equation}
 (1-x^2)y'' + (\beta-\alpha-(\alpha+\beta + 2)x)y' + n(n+\alpha+\beta+1)y=0
 \label{buch:orthogonal:jacobi:dgl}
@@ -760,7 +763,7 @@ $p(x)$ so gefunden werden, dass
 \frac{p'(x)}{w^{(\alpha,\beta)}(x)} &= \beta-\alpha-(\alpha+\beta+2)x
 \end{align*}
 gilt.
-Der Quotient der ersten beiden Gleichungen ist die logarithmische Ableitung
+Der Quotient der beiden Gleichungen ist die logarithmische Ableitung
 \[
 (\log p(x))'
 =
@@ -768,6 +771,7 @@ Der Quotient der ersten beiden Gleichungen ist die logarithmische Ableitung
 =
 \frac{1-x^2}{\beta-\alpha-(\alpha+\beta+2)x}
 \]
+von $p(x)$,
 die sich in geschlossener Form integrieren lässt.
 Man findet als Stammfunktion
 \[
@@ -811,6 +815,7 @@ als Sturm-Liouville-Differentialgleichung erkannt.
 %\url{https://encyclopediaofmath.org/wiki/Hypergeometric_equation}
 Auch die Eulersche hypergeometrische Differentialgleichung
 lässt sich in die Form eines Sturm-Liouville-Operators
+\index{Eulersche hypergeometrische Differentialgleichung!als Sturm-Liouville-Gleichung}%
 bringen.
 Dazu setzt man
 \begin{align*}

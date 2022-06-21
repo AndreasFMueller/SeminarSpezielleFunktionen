@@ -5,6 +5,9 @@
 %
 \newcommand*\sk{\vcenter{\hbox{\includegraphics[scale=0.8]{chapters/080-funktionentheorie/images/operator-1.pdf}}}}
 
+%
+% Löesung linearer Differentialgleichunge mit Singularitäten
+%
 \subsection{Lösungen von linearen Differentialgleichungen mit Singularitäten
 \label{buch:funktionentheorie:subsection:dglsing}}
 Die Potenzreihenmethode hat ermöglicht, mindestens eine Lösung gewisser
@@ -19,6 +22,9 @@ Ziel dieses Abschnitts ist zu zeigen, warum dies nicht möglich war und
 wie diese Schwierigkeit mit Hilfe der analytischen Fortsetzung überwunden
 werden kann.
 
+%
+% Differentialgleichungen mit Singularitäten
+%
 \subsubsection{Differentialgleichungen mit Singularitäten}
 Mit der Besselschen
 Differentialgleichung~\eqref{buch:differentialgleichungen:eqn:bessel}
@@ -93,6 +99,9 @@ Klasse von Singularitäten beschreiben, aber es ist nicht klar,
 welche weiteren Arten von Singularitäten berücksichtigt werden sollten.
 Dies soll im Folgenden geklärt werden.
 
+%
+% Der Lösungsraum einer Differentialgleichung zweiter Ordnung
+%
 \subsubsection{Der Lösungsraum einer Differentialgleichung zweiter Ordnung}
 Eine Differentialgleichung $n$-ter Ordnung hat lokal einen $n$-dimensionalen
 Vektorraum als Lösungsraum.
@@ -126,6 +135,9 @@ Wenn der Punkt $x_0$ aus dem Kontext klar ist, kann er auch weggelassen
 werden: $\mathbb{L}_{x_0}=\mathbb{L}$.
 \end{definition}
 
+%
+% Analytische Fortsetzung auf dem Weg um 0
+%
 \subsubsection{Analytische Fortsetzung auf einem Weg um $0$}
 Die betrachteten Differentialgleichungen haben holomorphe
 Koeffizienten, Lösungen der Differentialgleichung lassen sich
@@ -186,6 +198,9 @@ e^{2\pi i\varrho} z^\varrho
 \]
 schreiben.
 
+%
+% Rechenregeln für die analytische Fortsetzung
+%
 \subsubsection{Rechenregeln für die analytische Fortsetzung}
 Der Operator $\sk$ ist ein Algebrahomomorphismus, d.~h.~für zwei analytische
 Funktionen $f$ und $g$ gilt
@@ -215,7 +230,9 @@ vertauscht, dass also
 \sk(f^{(n)}).
 \]
 
-
+%
+% Analytische Fortsetzung von Lösungen einer Differentialgleichung
+%
 \subsubsection{Analytische Fortsetzung von Lösungen einer Differentialgleichung}
 Wir untersuchen jetzt die Wirkung des Operators $\sk$ auf
 den Lösungsraum $\mathbb{L}$ einer Differentialgleichung mit
@@ -258,7 +275,9 @@ geeigneten Basis in besonders einfache Form gebracht.
 Wir führen diese Diskussion im folgenden nur für eine Differentialgleichung
 zweiter Ordnung $n=2$.
 
-
+%
+% Fall A diagonalisierbar
+%
 \subsubsection{Fall $A$ diagonalisierbar: verallgemeinerte Potenzreihen}
 In diesem Fall kann man die Lösungsfunktionen $w_1$ und $w_2$ so
 wählen, dass die Matrix
@@ -326,6 +345,9 @@ Falls der Operator $\sk$ also diagonalisierbar ist, dann gibt es
 zwei linear unabhängige Lösungen der Differentialgleichung in der
 Form einer verallgemeinerten Potenzreihe.
 
+%
+% Fall $A$ nicht diagonalisierbar
+%
 \subsubsection{Fall $A$ nicht diagonalisierbar: logarithmische Lösungen}
 Falls die Matrix $A$ nicht diagonalisierbar ist, hat sie nur einen
 Eigenwert $\lambda$ und kann durch geeignete Wahl einer Basis in
@@ -421,8 +443,158 @@ in die ursprüngliche Differentialgleichung ein, verschwindet der
 $\log(z)$-Term und für die verbleibenden Koeffizienten kann die
 bekannte Methode des Koeffizientenvergleichs verwendet werden.
 
+%
+% Bessel-Funktionen zweiter Art
+%
 \subsubsection{Bessel-Funktionen zweiter Art
 \label{buch:funktionentheorie:subsubsection:bessel2art}}
+Im Abschnitt~\ref{buch:differentialgleichungen:subsection:bessel1steart}
+waren wir nicht in der Lage, für ganzahlige $\alpha$ zwei linear unabhängige
+Lösungen der Besselschen Differentialgleichung zu finden.
+Die vorangegangenen Ausführungen erklären dies: der Ansatz als
+verallgemeinerte Potenzreihe konnte die Singularität nicht wiedergeben.
+Inzwischen wissen wir, dass wir nach einer Lösung mit einer logarithmischen
+Singularität suchen müssen.
 
+Um dies nachzuprüfen, setzen wir den Ansatz
+\[
+y(x) = \log(x) J_n(x) + z(x)
+\]
+in die Besselsche Differentialgleichung ein.
+Dazu benötigen wir erst die Ableitungen von $y(x)$:
+\begin{align*}
+y'(x)
+&=
+\frac{1}{x} J_n(x) + \log(x)J_n'(x) + z'(x)
+\\
+xy'(x)
+&=
+J_n(x) + x\log(x)J_n'(x) + xz'(x)
+\\
+y''(x)
+&=
+-\frac{1}{x^2} J_n(x)
++\frac2x J_n'(x)
++\log(x) J_n''(x)
++z''(x)
+\\
+x^2y''(x)
+&=
+-J_n(x) + 2xJ'_n(x)+x^2\log(x)J_n''(x) + x^2z''(x).
+\end{align*}
+Die Wirkung des Bessel-Operators auf $y(x)$ ist
+\begin{align*}
+By
+&=
+x^2y''+xy'+x^2y
+\\
+&=
+\log(x) \bigl(
+\underbrace{
+x^2J_n''(x)
++xJ_n'(x)
++x^2J_n(x)
+}_{\displaystyle = n^2J_n(x)}
+\bigr)
+-J_n(x)+2xJ_n'(x)
++J_n(x)
++
+xz'(x)
++
+x^2z''(x)
+\\
+&=
+n^2 \log(x)J_n(x)
++
+2xJ_n(x)
++
+x^2z(x)
++
+xz'(x)
++
+x^2z''(x)
+\end{align*}
+Damit $y(x)$ eine Eigenfunktion zum Eigenwert $n^2$ wird, muss 
+dies mit $n^2y(x)$ übereinstimmen, also
+\begin{align*}
+n^2 \log(x)J_n(x)
++
+2xJ_n(x)
++
+x^2z(x)
++
+xz'(x)
++
+x^2z''(x)
+&=
+n^2\log(x)J_n(x) + n^2z(x).
+\intertext{Die logarithmischen Terme heben sich weg und es bleibt}
+x^2z''(x)
++
+xz'(x)
++
+(x^2-n^2)z(x)
+&=
+-2xJ_n(x).
+\end{align*}
+Eine Lösung für $z(x)$ kann mit Hilfe eines Potenzreihenansatzes
+gefunden werden.
+Sie ist aber nur bis auf einen Faktor festgelegt.
+Tatsächlich kann man aber auch eine direkte Definition geben.
 
+\begin{definition}
+Die Bessel-Funktionen zweiter Art der Ordnung $\alpha$ sind die Funktionen
+\begin{equation}
+Y_\alpha(x)
+=
+\frac{J_\alpha(x) \cos \alpha\pi  - J_{-\alpha}(x)}{\sin \alpha\pi }.
+\label{buch:funktionentheorie:bessel:2teart}
+\end{equation}
+Für ganzzahliges $\alpha$ verschwindet der Nenner in 
+\eqref{buch:funktionentheorie:bessel:2teart},
+daher ist
+\[
+Y_n(x)
+=
+\lim_{\alpha\to n} Y_{\alpha}(x)
+=
+\frac{1}{\pi}\biggl(
+\frac{d}{d\alpha}J_{\alpha}(x)\bigg|_{\alpha=n}
++
+(-1)^n
+\frac{d}{d\alpha}J_{\alpha}(x)\bigg|_{\alpha=-n}
+\biggr).
+\]
+\end{definition}
+
+Die Funktionen $Y_\alpha(x)$ sind Linearkombinationen der Lösungen
+$J_\alpha(x)$ und $J_{-\alpha}(x)$ und damit automatisch auch Lösungen
+der Besselschen Differentialgleichung.
+Dies gilt auch für den Grenzwert im Falle ganzahliger Ordnung $\alpha$.
+Da $J_{\alpha}(x)$ durch eine Reihenentwicklung definiert ist, kann man
+diese Termweise nach $\alpha$ ableiten und damit auch eine 
+Reihendarstellung von $Y_n(x)$ finden.
+Nach einiger Rechnung findet man:
+\begin{align*}
+Y_n(x)
+&=
+\frac{2}{\pi}J_n(x)\log\frac{x}2
+-
+\frac1{\pi}
+\sum_{k=0}^{n-1} \frac{(n-k-1)!}{k!}\biggl(\frac{x}2\biggr)^{2k-n}
+\\
+&\qquad\qquad
+-
+\frac1{\pi}
+\sum_{k=0}^\infty \frac{(-1)^k}{k!\,(n+k)!}
+\biggl(
+\frac{\Gamma'(n+k+1)}{\Gamma(n+k+1)}
++
+\frac{\Gamma'(k+1)}{\Gamma(k+1)}
+\biggr)
+\biggl(
+\frac{x}2
+\biggr)^{2k+n}
+\end{align*}
+(siehe auch \cite[p.~200]{buch:specialfunctions}).
 
