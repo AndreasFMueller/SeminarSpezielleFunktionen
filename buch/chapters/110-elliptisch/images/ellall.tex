@@ -1,0 +1,148 @@
+%
+% ellpolnul.tex -- template for standalon tikz images
+%
+% (c) 2021 Prof Dr Andreas Müller, OST Ostschweizer Fachhochschule
+%
+\documentclass[tikz]{standalone}
+\usepackage{amsmath}
+\usepackage{times}
+\usepackage{txfonts}
+\usepackage{pgfplots}
+\usepackage{csvsimple}
+\usetikzlibrary{arrows,intersections,math,calc}
+\begin{document}
+\input{ellcommon.tex}
+\def\skala{1}
+\begin{tikzpicture}[>=latex,thick,scale=\skala]
+
+%\draw (-1,-1) rectangle (1,1);
+%\node at (-1,-1) [below left] {$0$};
+%\node at (1,-1) [below right] {$K$};
+%\node at (1,1) [above right] {$K+iK'$};
+%\node at (-1,1) [above left] {$iK'$};
+%\node at (0,0) {$u$};
+
+\begin{scope}[xshift=-3cm,yshift=0cm]
+\rechteck{gray}{1}
+\end{scope}
+
+\definecolor{sccolor}{rgb}{0.8,0.2,0.8}
+\definecolor{sdcolor}{rgb}{0.8,0.8,0.2}
+\definecolor{cdcolor}{rgb}{0.2,0.8,0.8}
+
+\begin{scope}[xshift=0cm]
+\rechteck{rot}{\operatorname{sn}(u,k)}
+\nullstelle{(-1,-1)}{rot}
+\pol{(-1,1)}{rot}
+\node at (-1,-1) {$0$};
+\node at (1,-1) {$1$};
+\node at (1,1) {$\frac1k$};
+\node at (-1,1) {$\infty$};
+\end{scope}
+
+\begin{scope}[xshift=3cm]
+\rechteck{blau}{\operatorname{cn}(u,k)}
+\nullstelle{(1,-1)}{blau}
+\pol{(-1,1)}{blau}
+\node at (-1,-1) {$1$};
+\node at (1,-1) {$0$};
+\node at (1,1) {$\frac{ik'}k$};
+\node at (-1,1) {$\infty$};
+\end{scope}
+
+\begin{scope}[xshift=6cm]
+\rechteck{gruen}{\operatorname{dn}(u,k)}
+\nullstelle{(1,1)}{gruen}
+\pol{(-1,1)}{gruen}
+\node at (-1,-1) {$1$};
+\node at (1,-1) {$k'$};
+\node at (1,1) {$0$};
+\node at (-1,1) {$\infty$};
+\end{scope}
+
+%
+% start row with denominator sn(u,k)
+%
+
+\begin{scope}[xshift=-3cm,yshift=-3cm]
+\rechteck{rot}{\operatorname{ns}(u,k)}
+\pol{(-1,-1)}{rot}
+\nullstelle{(-1,1)}{rot}
+\end{scope}
+
+\begin{scope}[xshift=0cm,yshift=-3cm]
+\rechteck{gray}{1}
+\end{scope}
+
+\begin{scope}[xshift=3cm,yshift=-3cm]
+\rechteck{sccolor}{\operatorname{cs}(u,k)}
+\pol{(1,-1)}{sccolor}
+\nullstelle{(-1,-1)}{sccolor}
+\end{scope}
+
+\begin{scope}[xshift=6cm,yshift=-3cm]
+\rechteck{sdcolor}{\operatorname{ds}(u,k)}
+\pol{(-1,1)}{sdcolor}
+\nullstelle{(-1,-1)}{sdcolor}
+\nullstelle{(1,1)}{sdcolor}
+\end{scope}
+
+%
+% start row with denominator cn(u,k)
+%
+
+\begin{scope}[xshift=-3cm,yshift=-6cm]
+\rechteck{blau}{\operatorname{nc}(u,k)}
+\pol{(1,-1)}{blau}
+\nullstelle{(-1,1)}{blau}
+\end{scope}
+
+\begin{scope}[xshift=0cm,yshift=-6cm]
+\rechteck{sccolor}{\operatorname{sc}(u,k)}
+\nullstelle{(1,-1)}{sccolor}
+\pol{(-1,-1)}{sccolor}
+\end{scope}
+
+\begin{scope}[xshift=3cm,yshift=-6cm]
+\rechteck{gray}{1}
+\end{scope}
+
+\begin{scope}[xshift=6cm,yshift=-6cm]
+\rechteck{cdcolor}{\operatorname{dc}(u,k)}
+\nullstelle{(1,1)}{cdcolor}
+\nullstelle{(1,-1)}{cdcolor}
+\pol{(-1,1)}{cdcolor}
+\end{scope}
+
+%
+% start row with denominator dn(u,k)
+%
+
+\begin{scope}[xshift=-3cm,yshift=-9cm]
+\rechteck{gruen}{\operatorname{nd}(u,k)}
+\pol{(1,1)}{gruen}
+\nullstelle{(-1,1)}{gruen}
+\end{scope}
+
+\begin{scope}[xshift=0cm,yshift=-9cm]
+\rechteck{sdcolor}{\operatorname{sd}(u,k)}
+\nullstelle{(-1,1)}{sdcolor}
+\pol{(-1,-1)}{sdcolor}
+\pol{(1,1)}{sdcolor}
+\end{scope}
+
+\begin{scope}[xshift=3cm,yshift=-9cm]
+\rechteck{cdcolor}{\operatorname{cd}(u,k)}
+\pol{(1,1)}{cdcolor}
+\pol{(1,-1)}{cdcolor}
+\nullstelle{(-1,1)}{cdcolor}
+\end{scope}
+
+\begin{scope}[xshift=6cm,yshift=-9cm]
+\rechteck{gray}{1}
+\end{scope}
+
+
+\end{tikzpicture}
+\end{document}
+

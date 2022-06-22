@@ -1,5 +1,5 @@
 %
-% tikztemplate.tex -- template for standalon tikz images
+% ellpolnul.tex -- template for standalon tikz images
 %
 % (c) 2021 Prof Dr Andreas Müller, OST Ostschweizer Fachhochschule
 %
@@ -9,14 +9,11 @@
 \usepackage{txfonts}
 \usepackage{pgfplots}
 \usepackage{csvsimple}
-\usetikzlibrary{arrows,intersections,math}
+\usetikzlibrary{arrows,intersections,math,calc}
 \begin{document}
+\input{ellcommon.tex}
 \def\skala{1}
 \begin{tikzpicture}[>=latex,thick,scale=\skala]
-
-\definecolor{rot}{rgb}{0.8,0,0}
-\definecolor{blau}{rgb}{0,0,1}
-\definecolor{gruen}{rgb}{0,0.6,0}
 
 \draw (-1,-1) rectangle (1,1);
 \node at (-1,-1) [below left] {$0$};
@@ -26,30 +23,33 @@
 \node at (0,0) {$u$};
 
 \begin{scope}[xshift=4cm]
-\fill[color=rot!20] (-1,-1) rectangle (1,1);
+\rechteck{rot}{\operatorname{sn}(u,k)}
+\nullstelle{(-1,-1)}{rot}
+\pol{(-1,1)}{rot}
 \node at (-1,-1) {$0$};
 \node at (1,-1) {$1$};
 \node at (1,1) {$\frac1k$};
 \node at (-1,1) {$\infty$};
-\node[color=rot] at (0,0) {$\operatorname{sn}(u,k)$};
 \end{scope}
 
 \begin{scope}[xshift=7cm]
-\fill[color=blau!20] (-1,-1) rectangle (1,1);
+\rechteck{blau}{\operatorname{cn}(u,k)}
+\nullstelle{(1,-1)}{blau}
+\pol{(-1,1)}{blau}
 \node at (-1,-1) {$1$};
 \node at (1,-1) {$0$};
 \node at (1,1) {$\frac{ik'}k$};
 \node at (-1,1) {$\infty$};
-\node[color=blau] at (0,0) {$\operatorname{cn}(u,k)$};
 \end{scope}
 
 \begin{scope}[xshift=10cm]
-\fill[color=gruen!20] (-1,-1) rectangle (1,1);
+\rechteck{gruen}{\operatorname{dn}(u,k)}
+\nullstelle{(1,1)}{gruen}
+\pol{(-1,1)}{gruen}
 \node at (-1,-1) {$1$};
 \node at (1,-1) {$k'$};
 \node at (1,1) {$0$};
 \node at (-1,1) {$\infty$};
-\node[color=gruen] at (0,0) {$\operatorname{dn}(u,k)$};
 \end{scope}
 
 \end{tikzpicture}
