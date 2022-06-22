@@ -339,6 +339,65 @@ y(u) = F^{-1}(u+C).
 Die Jacobischen elliptischen Funktionen sind daher inverse Funktionen
 der unvollständigen elliptischen Integrale.
 
+%
+%
+%
+\subsubsection{Pole und Nullstellen der Jacobischen elliptischen Funktionen}
+Für die Funktion $y=\operatorname{sn}(u,k)$ erfüllt die Differentialgleichung
+\[
+\frac{dy}{du}
+=
+\sqrt{(1-y^2)(1-k^2y^2)},
+\]
+welche mit dem unbestimmten Integral
+\begin{equation}
+u + C = \int\frac{dy}{\sqrt{(1-y^2)(1-k^2y^2)}}
+\label{buch:elliptisch:eqn:uyintegral}
+\end{equation}
+gelöst werden kann.
+Der Wertebereich des Integrals in \eqref{buch:elliptisch:eqn:uyintegral}
+wurde bereits in
+Abschnitt~\ref{buch:elliptisch:subsection:unvollstintegral}
+auf Seite~\pageref{buch:elliptische:subsubsection:wertebereich}
+diskutiert.
+Daraus können jetzt Nullstellen und Pole der Funktion $\operatorname{sn}(u,k)$
+und mit Hilfe von Tabelle~\ref{buch:elliptisch:fig:jacobi-relationen}
+auch für $\operatorname{cn}(u,k)$ und $\operatorname{dn}(u,k)$
+abgelesen werden:
+\begin{equation}
+\begin{aligned}
+\operatorname{sn}(0,k)&=0
+&
+\operatorname{cn}(0,k)&=1
+&
+\operatorname{dn}(0,k)&=1
+\\
+\operatorname{sn}(iK',k)&=\infty
+&
+\operatorname{cn}(iK',k)&=\infty
+&
+\operatorname{dn}(iK',k)&=\infty
+\\
+\operatorname{sn}(K,k)&=1
+&
+\operatorname{cn}(K,k)&=0
+&
+\operatorname{dn}(K,k)&=k'
+\\
+\operatorname{sn}(K+iK',k)&=\frac{1}{k}
+&
+\operatorname{cn}(K+iK',k)&=\frac{ik'}{k}
+&
+\operatorname{dn}(K+iK',k)&=0
+\end{aligned}
+\label{buch:elliptische:eqn:eckwerte}
+\end{equation}
+Daraus lassen sich jetzt auch die Werte der abgeleiteten Jacobischen
+elliptischen Funktionen ablesen.
+
+
+
+
 
 %
 % Differentialgleichung des anharmonischen Oszillators
