@@ -51,12 +51,13 @@
 \end{scope}
 
 \begin{scope}[xshift=-3cm,yshift=0cm]
-\rechteck{gray}{1}
+\node at (0,0) {$1$};
+\draw[color=gray!20] (-1,-1) rectangle (1,1);
 \end{scope}
 
-\definecolor{sccolor}{rgb}{0.8,0.2,0.8}
-\definecolor{sdcolor}{rgb}{0.8,0.8,0.2}
-\definecolor{cdcolor}{rgb}{0.2,0.8,0.8}
+\definecolor{sccolor}{rgb}{0.8,0.0,1.0}
+\definecolor{sdcolor}{rgb}{0.6,0.6,0.0}
+\definecolor{cdcolor}{rgb}{0.0,0.6,1.0}
 
 \begin{scope}[xshift=0cm]
 \rechteck{rot}{\operatorname{sn}(u,k)}
@@ -74,7 +75,7 @@
 \pol{(-1,1)}{blau}
 \node at (-1,-1) {$1$};
 \node at (1,-1) {$0$};
-\node at (1,1) {$\frac{ik'}k$};
+\node at (1,1) {$\frac{k'}{ik}$};
 \node at (-1,1) {$\infty$};
 \end{scope}
 
@@ -96,23 +97,36 @@
 \rechteck{rot}{\operatorname{ns}(u,k)}
 \pol{(-1,-1)}{rot}
 \nullstelle{(-1,1)}{rot}
+\node at (-1,-1) {$\infty$};
+\node at (1,-1) {$1$};
+\node at (1,1) {$k$};
+\node at (-1,1) {$0$};
 \end{scope}
 
 \begin{scope}[xshift=0cm,yshift=-3cm]
-\rechteck{gray}{1}
+%\rechteck{gray}{1}
+\fill[color=white] (-1,-1) rectangle (1,1);
+\node[color=gray] at (0,0) {$1$};
 \end{scope}
 
 \begin{scope}[xshift=3cm,yshift=-3cm]
 \rechteck{sccolor}{\operatorname{cs}(u,k)}
-\pol{(1,-1)}{sccolor}
-\nullstelle{(-1,-1)}{sccolor}
+\pol{(-1,-1)}{sccolor}
+\nullstelle{(1,-1)}{sccolor}
+\node at (-1,-1) {$\infty$};
+\node at (1,-1) {$0$};
+\node at (1,1) {$\frac{k'}{i}$};
+\node at (-1,1) {$ $};
 \end{scope}
 
 \begin{scope}[xshift=6cm,yshift=-3cm]
 \rechteck{sdcolor}{\operatorname{ds}(u,k)}
-\pol{(-1,1)}{sdcolor}
-\nullstelle{(-1,-1)}{sdcolor}
+\pol{(-1,-1)}{sdcolor}
 \nullstelle{(1,1)}{sdcolor}
+\node at (-1,-1) {$\infty$};
+\node at (1,-1) {$k'$};
+\node at (1,1) {$0$};
+\node at (-1,1) {$ $};
 \end{scope}
 
 %
@@ -123,23 +137,36 @@
 \rechteck{blau}{\operatorname{nc}(u,k)}
 \pol{(1,-1)}{blau}
 \nullstelle{(-1,1)}{blau}
+\node at (-1,-1) {$1$};
+\node at (-1,1) {$0$};
+\node at (1,-1) {$\infty$};
+\node at (1,1) {$\frac{ik}{k'}$};
 \end{scope}
 
 \begin{scope}[xshift=0cm,yshift=-6cm]
 \rechteck{sccolor}{\operatorname{sc}(u,k)}
-\nullstelle{(1,-1)}{sccolor}
-\pol{(-1,-1)}{sccolor}
+\nullstelle{(-1,-1)}{sccolor}
+\pol{(1,-1)}{sccolor}
+\node at (-1,-1) {$0$};
+\node at (1,-1) {$\infty$};
+\node at (-1,1) {$ $};
+\node at (1,1) {$\frac{i}{k'}$};
 \end{scope}
 
 \begin{scope}[xshift=3cm,yshift=-6cm]
-\rechteck{gray}{1}
+%\rechteck{gray}{1}
+\fill[color=white] (-1,-1) rectangle (1,1);
+\node[color=gray] at (0,0) {$1$};
 \end{scope}
 
 \begin{scope}[xshift=6cm,yshift=-6cm]
 \rechteck{cdcolor}{\operatorname{dc}(u,k)}
 \nullstelle{(1,1)}{cdcolor}
-\nullstelle{(1,-1)}{cdcolor}
-\pol{(-1,1)}{cdcolor}
+\pol{(1,-1)}{cdcolor}
+\node at (-1,-1) {$1$};
+\node at (1,-1) {$\infty$};
+\node at (-1,1) {$k$};
+\node at (1,1) {$0$};
 \end{scope}
 
 %
@@ -150,24 +177,36 @@
 \rechteck{gruen}{\operatorname{nd}(u,k)}
 \pol{(1,1)}{gruen}
 \nullstelle{(-1,1)}{gruen}
+\node at (-1,-1) {$1$};
+\node at (-1,1) {$0$};
+\node at (1,-1) {$\frac{1}{k'}$};
+\node at (1,1) {$\infty$};
 \end{scope}
 
 \begin{scope}[xshift=0cm,yshift=-9cm]
 \rechteck{sdcolor}{\operatorname{sd}(u,k)}
-\nullstelle{(-1,1)}{sdcolor}
-\pol{(-1,-1)}{sdcolor}
+\nullstelle{(-1,-1)}{sdcolor}
 \pol{(1,1)}{sdcolor}
+\node at (-1,-1) {$0$};
+\node at (1,-1) {$\frac{1}{k'}$};
+\node at (-1,1) {$ $};
+\node at (1,1) {$\infty$};
 \end{scope}
 
 \begin{scope}[xshift=3cm,yshift=-9cm]
 \rechteck{cdcolor}{\operatorname{cd}(u,k)}
 \pol{(1,1)}{cdcolor}
-\pol{(1,-1)}{cdcolor}
-\nullstelle{(-1,1)}{cdcolor}
+\nullstelle{(1,-1)}{cdcolor}
+\node at (-1,-1) {$1$};
+\node at (-1,1) {$\frac1k $};
+\node at (1,-1) {$0$};
+\node at (1,1) {$\infty$};
 \end{scope}
 
 \begin{scope}[xshift=6cm,yshift=-9cm]
-\rechteck{gray}{1}
+%\rechteck{gray}{1}
+\fill[color=white] (-1,-1) rectangle (1,1);
+\node[color=gray] at (0,0) {$1$};
 \end{scope}
 
 
