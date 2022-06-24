@@ -120,6 +120,11 @@ ellpolnul.pdf:	ellpolnul.tex ellcommon.tex
 ellall.pdf:	ellall.tex ellcommon.tex
 	pdflatex ellall.tex
 
-ellselection.pdf:	ellselection.tex
+rechteckpfade2.tex:	rechteck Makefile
+	./rechteck --outfile rechteckpfade2.tex --k 0.87 --vsteps=1
+ellselection.pdf:	ellselection.tex rechteckpfade2.tex
 	pdflatex ellselection.tex
 
+rechteckpfade3.tex:	rechteck
+	./rechteck --outfile rechteckpfade3.tex --k 0.70710678118654752440 \
+		--vsteps=4

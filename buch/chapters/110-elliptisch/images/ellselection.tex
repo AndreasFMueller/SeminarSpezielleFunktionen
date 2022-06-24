@@ -14,15 +14,22 @@
 \def\skala{1}
 \begin{tikzpicture}[>=latex,thick,scale=\skala]
 
+\input{rechteckpfade2.tex}
+
 \def\l{0.45}
 \pgfmathparse{\l*72/2.54}
 \xdef\L{\pgfmathresult}
+
+\pgfmathparse{4.1/\xmax}
+\xdef\dx{\pgfmathresult}
+\xdef\dy{\dx}
 
 \def\sx{4.1}
 \pgfmathparse{\sx*72/2.54}
 \xdef\Sx{\pgfmathresult}
 
-\def\sy{3.2}
+\pgfmathparse{\dx*\ymax}
+\xdef\sy{\pgfmathresult}
 \pgfmathparse{\sy*72/2.54}
 \xdef\Sy{\pgfmathresult}
 
@@ -36,8 +43,10 @@
 \pgfmathparse{\sy/2}
 \xdef\rechtsy{\pgfmathresult}
 
-\fill[color=red!20] ({-\sx},0) rectangle (\sx,\sy);
-\fill[color=blue!20] ({-\sx},{-\sy}) rectangle (\sx,0);
+\hintergrund
+\netz{0.7pt}
+\fill[color=red!14,opacity=0.7] ({-\sx},0) rectangle (\sx,\sy);
+\fill[color=blue!14,opacity=0.7] ({-\sx},{-\sy}) rectangle (\sx,0);
 \fill[color=yellow!40,opacity=0.5] (0,0) rectangle (\sx,\sy);
 
 \draw (-\sx,-\sy) rectangle (\sx,\sy);
