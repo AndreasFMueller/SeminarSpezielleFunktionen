@@ -17,12 +17,15 @@
 
 \input rechteckpfade3.tex
 
-\pgfmathparse{1/\xmax}
+\pgfmathparse{2/\xmax}
 \xdef\dx{\pgfmathresult}
 \xdef\dy{\dx}
 
-\netz{0.1pt}
-\draw[line width=0.1pt] (-1,0) -- (1,0);
+\begin{scope}[xshift=-1cm,yshift=-1cm]
+\clip (0,0) rectangle (2,2);
+\netz{0.4pt}
+\draw[line width=0.4pt] (-1,0) -- (1,0);
+\end{scope}
 \fill[color=white,opacity=0.5] (-1,-1) rectangle (1,1);
 \draw (-1,-1) rectangle (1,1);
 \node at (-1,-1) [below left] {$0$};
