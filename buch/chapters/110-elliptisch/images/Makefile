@@ -6,7 +6,7 @@
 all:	lemniskate.pdf ellipsenumfang.pdf unvollstaendig.pdf rechteck.pdf \
 	ellipse.pdf pendel.pdf jacobiplots.pdf jacobidef.pdf jacobi12.pdf \
 	sncnlimit.pdf slcl.pdf torusschnitt.pdf kegelpara.pdf lemnispara.pdf \
-	ellpolnul.pdf ellall.pdf
+	ellpolnul.pdf ellall.pdf ellselection.pdf
 
 lemniskate.pdf:	lemniskate.tex
 	pdflatex lemniskate.tex
@@ -119,3 +119,7 @@ ellpolnul.pdf:	ellpolnul.tex ellcommon.tex
 	pdflatex ellpolnul.tex
 ellall.pdf:	ellall.tex ellcommon.tex
 	pdflatex ellall.tex
+
+ellselection.pdf:	ellselection.tex
+	pdflatex ellselection.tex
+
