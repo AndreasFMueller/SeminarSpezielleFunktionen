@@ -451,14 +451,310 @@ Hilfe einer Entwicklung der Wurzel mit der Binomialreihe gefunden
 werden.
 \end{proof}
 
-%
-%
-%
-\subsubsection{Komplementäre Integrale}
+Die Darstellung von $E(k)$ als hypergeometrische Reihe ermöglicht
+jetzt zum Beispiel auch die Berechnung der Ableitung nach dem
+Parameter $k$ mit der Ableitungsformel für die Funktion $\mathstrut_2F_1$.
 
-\subsubsection{Ableitung}
-XXX Ableitung \\
-XXX Stammfunktion \\
+
+%
+% Berechnung mit dem arithmetisch-geometrischen Mittel
+%
+\subsection{Berechnung mit dem arithmetisch-geometrischen Mittel}
+Die numerische Berechnung von elliptischer Integrale mit gewöhnlichen
+numerischen Integrationsroutinen ist nicht sehr effizient.
+Das in diesem Abschnitt vorgestellte arithmetisch-geometrische Mittel
+\index{arithmetisch-geometrisches Mittel}%
+liefert einen Algorithmus mit sehr viel besserer Konvergenz.
+Die Methode lässt sich auch auf die unvollständigen elliptischen
+Integrale von Abschnitt~\eqref{buch:elliptisch:subsection:unvollstintegral}
+verallgemeinern.
+Sie ist ein Speziallfall der sogenannten Landen-Transformation,
+\index{Landen-Transformation}%
+welche ausser für die elliptischen Integrale auch für die 
+Jacobischen elliptischen Funktionen formuliert werden kann und
+für letztere ebenfalls sehr schnelle numerische Algorithmen liefert.
+
+%
+% Das arithmetisch-geometrische Mittel
+%
+\subsubsection{Das arithmetisch-geometrische Mittel}
+Seien $a$ und $b$ zwei nichtnegative reelle Zahlen.
+Aus $a$ und $b$ werden jetzt zwei Folgen konstruiert, deren Glieder
+durch
+\begin{align*}
+a_0&=a &&\text{und}& a_{n+1} &= \frac{a_n+b_n}2 &&\text{arithmetisches Mittel}
+\\
+b_0&=b &&\text{und}& b_{n+1} &= \sqrt{a_nb_n}   &&\text{geometrisches Mittel}
+\end{align*}
+definiert sind.
+
+\begin{satz}
+Falls $a>b>0$ ist, nimmt die Folge $(a_k)_{k\ge 0}$ monoton ab und
+$(b_k)_{k\ge 0}$ nimmt monoton zu.
+Beide konvergieren quadratisch gegen einen gemeinsamen Grenzwert.
+\end{satz}
+
+\begin{definition}
+Der gemeinsame Grenzwert von $a_n$ und $b_n$ heisst das
+{\em arithmetisch-geometrische Mittel} und wird mit 
+\[
+M(a,b)
+=
+\lim_{n\to\infty} a_n
+=
+\lim_{n\to\infty} b_n
+\]
+bezeichnet.
+\index{arithmetisch-geometrisches Mittel}%
+\end{definition}
+
+\begin{proof}[Beweis]
+Zunächst ist zu zeigen, dass die Folgen monoton sind.
+Dies folgt sofort aus der Definition der Folgen:
+\begin{align*}
+a_{n+1} &= \frac{a_n+b_n}{2} \ge \frac{a_n+a_n}{2} = a_n
+\\
+b_{n+1} &= \sqrt{a_nb_n} \ge \sqrt{b_nb_n} = b_n.
+\end{align*}
+Die Konvergenz folgt aus
+\[
+a_{n+1}-b_{n+1}
+\le
+a_{n+1}-b_n
+=
+\frac{a_n+b_n}{2}-b_n
+=
+\frac{a_n-b_n}2
+\le
+\frac{a-b}{2^{n+1}}.
+\]
+Dies zeigt jedoch nur, dass die Konvergenz mindestens ein
+Bit in jeder Iteration ist.
+Aus
+\[
+a_{n+1}^2 - b_{n+1}^2
+=
+\frac{(a_n+b_n)^2}{4} - a_nb_n
+=
+\frac{a_n^2 -2a_nb_n+b_n^2}{4}
+=
+\frac{(a_n-b_n)^2}{4}
+\]
+folgt
+\[
+a_{n+1}-b_{n+1}
+=
+\frac{(a_n-b_n)^2}{2(a_{n+1}+b_{n+1})}.
+\]
+Da der Nenner gegen $2M(a,b)$ konvergiert, wird der Fehler für in
+jeder Iteration quadriert, es liegt also quadratische Konvergenz vor.
+\end{proof}
+
+%
+% Transformation des elliptischen Integrals
+%
+\subsubsection{Transformation des elliptischen Integrals}
+In diesem Abschnitt soll das Integral
+\[
+I(a,b)
+=
+\int_0^{\frac{\pi}2}
+\frac{dt}{\sqrt{a^2\cos^2 t + b^2\sin^2t}}
+\]
+berechnet werden.
+Es ist klar, dass
+\[
+I(sa,sb)
+=
+\frac{1}{s} I(a,b).
+\]
+
+Gauss hat gefunden, dass die Substitution
+\begin{equation}
+\sin t
+=
+\frac{2a\sin t_1}{a+b+(a-b)\sin t_1}
+\label{buch:elliptisch:agm:subst}
+\end{equation}
+zu
+\begin{equation}
+\frac{dt}{a^2\cos^2 t + b^2 \sin^2 t}
+=
+\frac{dt_1}{a_1^2\cos^2 t_1 + b_1^2 \sin^2 t_1}
+\label{buch:elliptisch:agm:dtdt1}
+\end{equation}
+führt.
+Um dies nachzuprüfen, muss man zunächst
+\eqref{buch:elliptisch:agm:subst}
+nach $t_1$ ableiten, was
+\[
+\frac{d}{dt_1}\sin t
+=
+\cos t
+\frac{dt}{dt_1}
+\qquad\Rightarrow\qquad
+\biggl(
+\frac{d}{dt_1}\sin t
+\biggr)^2
+=
+(1-\sin^2t)\biggl(\frac{dt}{dt_1}\biggr)^2
+\]
+ergibt.
+Die Ableitung von $t$ nach $t_1$ kann auch aus
+\eqref{buch:elliptisch:agm:dtdt1}
+ableiten, es ist
+\[
+\biggl(
+\frac{dt}{dt_1}
+\biggr)^2
+=
+\frac{a^2 \cos^2 t + b^2 \sin^2 t}{a_1^2 \cos^2 t_1 + b_1^2 \sin^2 t_1}.
+\]
+Man muss also nachprüfen, dass
+\begin{equation}
+\frac{1}{1-\sin^2 t}
+\frac{d}{dt_1}\sin t
+=
+\frac{a^2 \cos^2 t + b^2 \sin^2 t}{a_1^2 \cos^2 t_1 + b_1^2 \sin^2 t_1}.
+\label{buch:elliptisch:agm:deq}
+\end{equation}
+Dazu muss man zunächst $a_1=(a+b)/2$, $b_1=\sqrt{ab}$ setzen.
+Ausserdem muss man $\cos^2 t$ durch $1-\sin^2t$ ersetzen und
+$\sin t$ durch \eqref{buch:elliptisch:agm:subst}.
+Auch $\cos^2 t_1$ muss man durch $1-\sin^2t_1$ ersetzt werden.
+Dann kann man nach einer langwierigen Rechnung, die sich am leichtesten
+mit einem Computer-Algebra-System ausführen lässt finden, dass
+\eqref{buch:elliptisch:agm:deq}
+tatsächlich korrekt ist.
+
+\begin{satz}
+\label{buch:elliptisch:agm:integrale}
+Für $a_1=(a+b)/2$ und $b_1=\sqrt{ab}$ gilt
+\[
+\int_0^{\frac{\pi}2}
+\frac{dt}{a^2\cos^2 t + b^2 \sin^2 t}
+=
+\int_0^{\frac{\pi}2}
+\frac{dt_1}{a_1^2\cos^2 t_1 + b_1^2 \sin^2 t_1}.
+\]
+\end{satz}
+
+Der Satz~\ref{buch:elliptisch:agm:integrale} zeigt, dass die Ersetzung
+von $a$ und $b$ durch $a_1$ und $b_1$ das Integral $I(a,b)$ nicht ändert.
+Dies gilt natürlich für alle Glieder der Folge zur Bestimmung des
+arithmetisch-geometrischen Mittels.
+
+\begin{satz}
+Für $a\ge b>0$ gilt
+\begin{equation}
+I(a,b)
+=
+\int_0^{\frac{\pi}2}
+\frac{dt}{a^2\cos^2 t + b^2\sin^2t}
+=
+\frac{\pi}{2M(a,b)}
+\end{equation}
+\end{satz}
+
+\begin{proof}[Beweis]
+Zunächst folgt aus Satz~\ref{buch:elliptisch:agm:integrale}, dass
+\[
+I(a,b)
+=
+I(a_1,b_1)
+=
+\dots
+=
+I(a_n,b_n).
+\]
+Ausserdem ist $a_n\to M(a,b)$ und $b_n\to M(a,b)$,
+damit wird 
+\[
+I(a,b)
+=
+\frac{1}{M(a,b)}
+\int_0^{\frac{\pi}2}
+\frac{dt}{\sqrt{\cos^2 t + \sin^2 t}}
+=
+\frac{\pi}{2M(a,b)}.
+\qedhere
+\]
+\end{proof}
+
+%
+%  Berechnung des elliptischen Integrals
+%
+\subsubsection{Berechnung des elliptischen Integrals}
+Das elliptische Integral erster Art hat eine Form, die dem Integral
+$I(a,b)$ bereits sehr ähnlich ist.
+Im die Verbindung herzustellen, berechnen wir
+\begin{align*}
+I(a,b)
+&=
+\int_0^{\frac{\pi}2}
+\frac{dt}{\sqrt{a^2\cos^2 t + b^2 \sin^2 t}}
+\\
+&=
+\frac{1}{a}
+\int_0^{\frac{\pi}2}
+\frac{dt}{\sqrt{1-\sin^2 t + \frac{b^2}{a^2} \sin^2 t}}
+\\
+&=
+\frac{1}{a}
+\int_0^{\frac{\pi}2}
+\frac{dt}{\sqrt{1-(1-\frac{b^2}{a^2})\sin^2 t}}
+=
+K(k)
+\qquad\text{mit}\qquad
+k'=\frac{b^2}{a^2},\;
+k=\sqrt{1-k^{\prime 2}}
+\end{align*}
+
+\begin{satz}
+\label{buch:elliptisch:agm:satz:Ek}
+Für $0<k\le 1$ ist
+\[
+K(k) = I(1,\sqrt{1-k^2}) = \frac{\pi}{2M(1,\sqrt{1-k^2})}
+\]
+\end{satz}
+
+%
+% Numerisches Beispiel
+%
+\subsubsection{Numerisches Beispiel}
+\begin{table}
+\centering
+\begin{tabular}{|>{$}c<{$}|>{$}c<{$}|>{$}c<{$}|}
+\hline
+n& a_n & b_n \\
+\hline
+0 & 1.0000000000000000 &  0.7071067811865476\\
+1 & 0.\underline{8}535533905932737 &  0.\underline{84}08964152537146\\
+2 & 0.\underline{8472}249029234942 &  0.\underline{8472}012667468916\\
+3 & 0.\underline{847213084}8351929 &  0.\underline{8472130847}527654\\
+4 & 0.\underline{847213084793979}2 &  0.\underline{847213084793979}1\\
+\hline
+\end{tabular}
+\caption{Die Berechnung des arithmetisch-geometrischen Mittels für
+$a=1$ und $b=\sqrt{2}/2$ zeigt die sehr rasche Konvergenz.
+\label{buch:elliptisch:agm:numerisch}}
+\end{table}
+In diesem Abschnitt soll als Zahlenbeispiel $E(k)$ für $k=\sqrt{2}/2$
+berechnet werden.
+In diesem speziellen Fall ist $k'=k$.
+Tabelle~\ref{buch:elliptisch:agm:numerisch} zeigt die sehr rasche
+Konvergenz der Berechnung des arithmetisch-geometrischen Mittels
+von $1$ und $\sqrt{2}/2$.
+Mit Satz~\ref{buch:elliptisch:agm:satz:Ek} folgt jetzt
+\[
+K(\sqrt{2}/2)
+=
+\frac{\pi}{2M(1,\sqrt{2}/2)}
+=
+0.751428163461842.
+\]
+Die Berechnung hat nur 4 Mittelwerte, 4 Produkte, 4 Quadratwurzeln und
+eine Division erfordert.
 
 %
 % Unvollständige elliptische Integrale
@@ -551,7 +847,7 @@ Die Faktoren, die in den Integranden der unvollständigen elliptischen
 Integrale vorkommen, haben Nullstellen bei $\pm1$, $\pm1/k$ und
 $\pm 1/\sqrt{n}$
 
-XXX Additionstheoreme \\
+% XXX Additionstheoreme \\
 XXX Parameterkonventionen \\
 
 %
@@ -648,6 +944,9 @@ l({\textstyle\frac{1}{k}})=\int_1^{\frac1{k}}
 \end{equation}
 ausgewertet werden.
 
+%
+% Komplementärmodul
+%
 \subsubsection{Komplementärmodul}
 Im vorangegangen Abschnitt wurde gezeigt, dass der Wertebereicht des
 unvollständigen elliptischen Integrals der ersten Art als komplexe
@@ -751,6 +1050,9 @@ in das blaue.
 \label{buch:elliptisch:fig:rechteck}}
 \end{figure}
 
+%
+% Reelle Argument > 1/k
+%
 \subsubsection{Reelle Argument $> 1/k$}
 Für Argument $x> 1/k$ sind beide Faktoren im Integranden des 
 unvollständigen elliptischen Integrals negativ, das Integral kann
@@ -797,7 +1099,7 @@ F(x,k) = iK(k') - F\biggl(\frac1{kx},k\biggr)
 für die Werte des elliptischen Integrals erster Art für grosse Argumentwerte
 fest.
 
-\subsection{Potenzreihe}
-XXX Potenzreihen \\
-XXX Als hypergeometrische Funktionen \url{https://www.youtube.com/watch?v=j0t1yWrvKmE} \\
-XXX Berechnung mit der Landen-Transformation https://en.wikipedia.org/wiki/Landen%27s_transformation
+%\subsection{Potenzreihe}
+%XXX Potenzreihen \\
+%XXX Als hypergeometrische Funktionen \url{https://www.youtube.com/watch?v=j0t1yWrvKmE} \\
+%XXX Berechnung mit der Landen-Transformation https://en.wikipedia.org/wiki/Landen%27s_transformation
