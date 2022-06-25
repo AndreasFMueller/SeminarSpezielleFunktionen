@@ -578,9 +578,9 @@ Gauss hat gefunden, dass die Substitution
 \end{equation}
 zu
 \begin{equation}
-\frac{dt}{a^2\cos^2 t + b^2 \sin^2 t}
+\frac{dt}{\sqrt{a^2_{\phantom{1}}\cos^2 t + b^2_{\phantom{1}} \sin^2 t}}
 =
-\frac{dt_1}{a_1^2\cos^2 t_1 + b_1^2 \sin^2 t_1}
+\frac{dt_1}{\sqrt{a_1^2\cos^2 t_1 + b_1^2 \sin^2 t_1}}
 \label{buch:elliptisch:agm:dtdt1}
 \end{equation}
 führt.
@@ -608,7 +608,7 @@ ableiten, es ist
 \frac{dt}{dt_1}
 \biggr)^2
 =
-\frac{a^2 \cos^2 t + b^2 \sin^2 t}{a_1^2 \cos^2 t_1 + b_1^2 \sin^2 t_1}.
+\frac{a^2_{\phantom{1}} \cos^2 t + b^2_{\phantom{1}} \sin^2 t}{a_1^2 \cos^2 t_1 + b_1^2 \sin^2 t_1}.
 \]
 Man muss also nachprüfen, dass
 \begin{equation}
@@ -618,7 +618,7 @@ Man muss also nachprüfen, dass
 \frac{a^2 \cos^2 t + b^2 \sin^2 t}{a_1^2 \cos^2 t_1 + b_1^2 \sin^2 t_1}.
 \label{buch:elliptisch:agm:deq}
 \end{equation}
-Dazu muss man zunächst $a_1=(a+b)/2$, $b_1=\sqrt{ab}$ setzen.
+Dazu muss man zunächst $a_1=(a+b)/2$, $b_1=\!\sqrt{ab}$ setzen.
 Ausserdem muss man $\cos^2 t$ durch $1-\sin^2t$ ersetzen und
 $\sin t$ durch \eqref{buch:elliptisch:agm:subst}.
 Auch $\cos^2 t_1$ muss man durch $1-\sin^2t_1$ ersetzt werden.
@@ -724,15 +724,19 @@ K(k) = I(1,\sqrt{1-k^2}) = \frac{\pi}{2M(1,\sqrt{1-k^2})}
 \subsubsection{Numerisches Beispiel}
 \begin{table}
 \centering
-\begin{tabular}{|>{$}c<{$}|>{$}c<{$}|>{$}c<{$}|}
+\begin{tabular}{|>{$}c<{$}|>{$}c<{$}|>{$}c<{$}|>{$}c<{$}|}
 \hline
-n& a_n & b_n \\
+n& a_n & b_n & \pi/2a_n \mathstrut
+\text{\vrule height12pt depth6pt width0pt}\\
 \hline
-0 & 1.0000000000000000 &  0.7071067811865476\\
-1 & 0.\underline{8}535533905932737 &  0.\underline{84}08964152537146\\
-2 & 0.\underline{8472}249029234942 &  0.\underline{8472}012667468916\\
-3 & 0.\underline{847213084}8351929 &  0.\underline{8472130847}527654\\
-4 & 0.\underline{847213084793979}2 &  0.\underline{847213084793979}1\\
+\text{\vrule height12pt depth0pt width0pt}
+  0   & 1.0000000000000000000 & 0.7071067811865475243 & 1.5707963267948965579 \\
+  1   & 0.8535533905932737621 & 0.8408964152537145430 & 1.\underline{8}403023690212201581 \\
+  2   & 0.8472249029234941526 & 0.8472012667468914603 & 1.\underline{8540}488143993356315 \\
+  3   & 0.8472130848351928064 & 0.8472130847527653666 & 1.\underline{854074677}2111781089 \\
+  4   & 0.8472130847939790865 & 0.8472130847939790865 & 1.\underline{854074677301371}8463 \\
+\infty&                       &                       &          1.8540746773013719184 
+\text{\vrule height12pt depth6pt width0pt}\\
 \hline
 \end{tabular}
 \caption{Die Berechnung des arithmetisch-geometrischen Mittels für
@@ -747,11 +751,11 @@ Konvergenz der Berechnung des arithmetisch-geometrischen Mittels
 von $1$ und $\sqrt{2}/2$.
 Mit Satz~\ref{buch:elliptisch:agm:satz:Ek} folgt jetzt
 \[
-K(\sqrt{2}/2)
+K(\!\sqrt{2}/2)
 =
-\frac{\pi}{2M(1,\sqrt{2}/2)}
+\frac{\pi}{2M(1,\!\sqrt{2}/2)}
 =
-0.751428163461842.
+1.854074677301372.
 \]
 Die Berechnung hat nur 4 Mittelwerte, 4 Produkte, 4 Quadratwurzeln und
 eine Division erfordert.
@@ -848,7 +852,7 @@ Integrale vorkommen, haben Nullstellen bei $\pm1$, $\pm1/k$ und
 $\pm 1/\sqrt{n}$
 
 % XXX Additionstheoreme \\
-XXX Parameterkonventionen \\
+% XXX Parameterkonventionen \\
 
 %
 % Wertebereich

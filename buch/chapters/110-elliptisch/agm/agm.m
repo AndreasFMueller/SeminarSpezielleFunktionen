@@ -16,5 +16,5 @@ for i = (1:n)
 	a = A;
 end	
 
-E = 2 / (pi * a)
+K = pi / (2 * a)
 
