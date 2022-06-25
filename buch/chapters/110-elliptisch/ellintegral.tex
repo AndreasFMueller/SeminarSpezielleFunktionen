@@ -547,7 +547,8 @@ a_{n+1}-b_{n+1}
 \frac{(a_n-b_n)^2}{2(a_{n+1}+b_{n+1})}.
 \]
 Da der Nenner gegen $2M(a,b)$ konvergiert, wird der Fehler für in
-jeder Iteration quadriert, es liegt also quadratische Konvergenz vor.
+jeder Iteration quadriert, die Zahl korrekter Stellen verdoppelt sich
+in jeder Iteration, es liegt also quadratische Konvergenz vor.
 \end{proof}
 
 %
@@ -726,16 +727,15 @@ K(k) = I(1,\sqrt{1-k^2}) = \frac{\pi}{2M(1,\sqrt{1-k^2})}
 \centering
 \begin{tabular}{|>{$}c<{$}|>{$}c<{$}|>{$}c<{$}|>{$}c<{$}|}
 \hline
-n& a_n & b_n & \pi/2a_n \mathstrut
-\text{\vrule height12pt depth6pt width0pt}\\
+n& a_n & b_n & \pi/2a_n \mathstrut\text{\vrule height12pt depth6pt width0pt}\\
 \hline
-\text{\vrule height12pt depth0pt width0pt}
-  0   & 1.0000000000000000000 & 0.7071067811865475243 & 1.5707963267948965579 \\
-  1   & 0.8535533905932737621 & 0.8408964152537145430 & 1.\underline{8}403023690212201581 \\
-  2   & 0.8472249029234941526 & 0.8472012667468914603 & 1.\underline{8540}488143993356315 \\
-  3   & 0.8472130848351928064 & 0.8472130847527653666 & 1.\underline{854074677}2111781089 \\
-  4   & 0.8472130847939790865 & 0.8472130847939790865 & 1.\underline{854074677301371}8463 \\
-\infty&                       &                       &          1.8540746773013719184 
+\text{\vrule height12pt depth0pt width0pt}%
+0 & 1.0000000000000000000 & 0.7071067811865475243 & 1.5707963267948965579 \\
+1 & 0.8535533905932737621 & 0.8408964152537145430 & 1.\underline{8}403023690212201581 \\
+2 & 0.8472249029234941526 & 0.8472012667468914603 & 1.\underline{8540}488143993356315 \\
+3 & 0.8472130848351928064 & 0.8472130847527653666 & 1.\underline{854074677}2111781089 \\
+4 & 0.8472130847939790865 & 0.8472130847939790865 & 1.\underline{854074677301371}8463 \\
+\infty&                       &                       &          1.8540746773013719184%
 \text{\vrule height12pt depth6pt width0pt}\\
 \hline
 \end{tabular}
