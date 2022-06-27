@@ -4,22 +4,6 @@ Verwenden Sie den Algorithmus von Aufgabe~\ref{buch:elliptisch:aufgabe:3},
 um dies für $k=\frac12$ nachzurechnen.
 
 \begin{loesung}
-Zunächst müssen wir mit dem Algorithmus des arithmetisch-geometrischen 
-Mittels
-\[
-K(k)
-\approx
-1.685750354812596
-\qquad\text{und}\qquad
-K(k')
-\approx
-2.156515647499643
-\]
-berechnen.
-Aus $k=\frac12$ kann man jetzt die Folgen $k_n$ und $u_n$ berechnen, die innert
-$N=5$ Iterationen konvergiert.
-\end{loesung}
-
 \begin{table}
 \centering
 \renewcommand{\tabcolsep}{5pt}
@@ -44,8 +28,20 @@ $N=5$ Iterationen konvergiert.
 Konvergenz der Folge $k_n$ ist bei $N=5$ eintegreten.
 \label{buch:elliptisch:aufgabe:4:table}}
 \end{table}
-
-\begin{loesung}
+Zunächst müssen wir mit dem Algorithmus des arithmetisch-geometrischen 
+Mittels
+\[
+K(k)
+\approx
+1.685750354812596
+\qquad\text{und}\qquad
+K(k')
+\approx
+2.156515647499643
+\]
+berechnen.
+Aus $k=\frac12$ kann man jetzt die Folgen $k_n$ und $u_n$ berechnen, die innert
+$N=5$ Iterationen konvergiert.
 Sie führt auf 
 \[
 u_N 
@@ -67,7 +63,6 @@ Dazu verwenden wir die komplexe Darstellung:
 =
 3.796672364211658.
 \]
-
 Da der Wert $\operatorname{sn}(u_N,k_N) = \sin u_N$ reell ist, wird auch
 die daraus wie in Aufgabe~\ref{buch:elliptisch:aufgabe:3}
 konstruierte Folge $\operatorname{sn}(u_n,k_n)$ reell sein.
