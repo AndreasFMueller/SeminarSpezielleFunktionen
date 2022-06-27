@@ -12,4 +12,7 @@ CHAPTERFILES += 							\
 	chapters/110-elliptisch/mathpendel.tex				\
 	chapters/110-elliptisch/lemniskate.tex				\
 	chapters/110-elliptisch/uebungsaufgaben/1.tex			\
+	chapters/110-elliptisch/uebungsaufgaben/2.tex			\
+	chapters/110-elliptisch/uebungsaufgaben/3.tex			\
+	chapters/110-elliptisch/uebungsaufgaben/4.tex			\
 	chapters/110-elliptisch/chapter.tex

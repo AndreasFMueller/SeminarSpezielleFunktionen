@@ -340,7 +340,96 @@ Die Jacobischen elliptischen Funktionen sind daher inverse Funktionen
 der unvollständigen elliptischen Integrale.
 
 %
+% Numerische Berechnung mit dem arithmetisch-geometrischen Mittel
 %
+\subsubsection{Numerische Berechnung mit dem arithmetisch-geometrischen Mittel}
+\begin{table}
+\centering
+\begin{tikzpicture}[>=latex,thick]
+
+\begin{scope}[xshift=-2.4cm,yshift=1.2cm]
+\fill[color=red!20]
+	(-1.0,0) -- (-1.0,-2.1) -- (-1.8,-2.1) -- (0,-3.0)
+	-- (1.8,-2.1) -- (1.0,-2.1) -- (1.0,0) -- cycle;
+\node[color=white] at (0,-1.2) [scale=7] {\sf 1};
+\end{scope}
+
+\begin{scope}[xshift=2.9cm,yshift=-1.8cm]
+\fill[color=blue!20]
+	(0.8,0) -- (0.8,2.1) -- (1.4,2.1) -- (0,3.0) -- (-1.4,2.1)
+	-- (-0.8,2.1) -- (-0.8,0) -- cycle;
+\node[color=white] at (0,1.2) [scale=7] {\sf 2};
+\end{scope}
+
+\node at (0,0) {
+\begin{tabular}{|>{$}c<{$}|>{$}c<{$}>{$}c<{$}|>{$}c<{$}>{$}l<{$}|}
+\hline
+n & a_n                & b_n                  & x_n              &
+\mathstrut\text{\vrule height12pt depth6pt width0pt}\\
+\hline
+0 & 1.0000000000000000 & 0.4358898943540673 & 0.5422823228691580 & = \operatorname{sn}(u,k)%
+\mathstrut\text{\vrule height12pt depth0pt width0pt}\\
+1 & 0.7179449471770336 & 0.6602195804079634 & 0.4157689781689663 & \mathstrut\\
+2 & 0.6890822637924985 & 0.6884775317911533 & 0.4017521410983242 & \mathstrut\\
+3 & 0.6887798977918259 & 0.6887798314243237 & 0.4016042867931862 & \mathstrut\\
+4 & 0.6887798646080748 & 0.6887798646080740 & 0.4016042705654757 & \mathstrut\\
+5 & 0.6887798646080744 & 0.6887798646080744 & 0.4016042705654755 & \mathstrut\\
+6 &                    &                    & 0.4016042705654755 & = \sin(a_5u) 
+\mathstrut\text{\vrule height0pt depth6pt width0pt}\\
+\hline
+\end{tabular}
+};
+\end{tikzpicture}
+\caption{Berechnung von $\operatorname{sn}(u,k)$ für $u=0.6$ und $k=0.$2
+mit Hilfe des arithmetisch-geo\-me\-tri\-schen Mittels.
+In der ersten Phase des Algorithmus (rot) wird die Folge der arithmetischen
+und geometrischen Mittel berechnet, in der zweiten Phase werden die
+Approximationen von $x_0=\operatorname{sn}(u,k)$.
+Bei $n=5$ erreicht die Iteration des arithmetisch-geometrischen Mittels
+Maschinengenauigkeit, was sich auch darin äussert, dass sich $x_5$ und
+$x_6=\sin(a_5u)$ nicht unterscheiden.
+\label{buch:elliptisch:agm:table:snberechnung}}
+\end{table}
+In Abschnitt~\ref{buch:elliptisch:subsection:agm} auf
+Seite~\pageref{buch:elliptisch:subsubection:berechnung-fxk-agm}
+wurde erklärt, wie das unvollständige elliptische Integral $F(x,k)$ mit 
+Hilfe des arithmetisch-geometrischen Mittels berechnet werden kann.
+Da $\operatorname{sn}^{-1}(x,k) = F(x,k)$ die Umkehrfunktion ist, kann
+man den Algorithmus auch zur Berechnung von $\operatorname{sn}(u,k)$ 
+verwenden.
+Dazu geht man wie folgt vor:
+\begin{enumerate}
+\item
+$k'=\sqrt{1-k^2}$.
+\item
+Berechne die Folgen des arithmetisch-geometrischen Mittels
+$a_n$ und $b_n$ mit $a_0=1$ und $b_0=k'$, bis zum Folgenindex $N$,
+bei dem ausreichende Konvergenz eintegreten ist.
+\item
+Setze $x_N = \sin(a_N \cdot u)$.
+\item
+Berechnet für absteigende $n=N-1,N-2,\dots$ die Folge $x_n$ mit Hilfe
+der Rekursionsformel
+\begin{equation}
+x_{n}
+=
+\frac{2a_nx_{n+1}}{a_n+b_n+(a_n-b_n)x_{n+1}^2},
+\label{buch:elliptisch:agm:xnrek}
+\end{equation}
+die aus \eqref{buch:elliptisch:agm:subst}
+durch die Substitution $x_n = \sin t_n$ entsteht.
+\item
+Setze $\operatorname{sn}(u,k) = x_0$.
+\end{enumerate}
+Da die Formel \eqref{buch:elliptisch:agm:xnrek} nicht unter den
+numerischen Stabilitätsproblemen leidet, die früher auf
+Seite~\pageref{buch:elliptisch:agm:ellintegral-stabilitaet}
+diskutiert wurden, ist die Berechnung stabil und sehr schnell.
+Tabelle~\ref{buch:elliptisch:agm:table:snberechnung}
+zeigt die Berechnung am Beispiel $u=0.6$ und $k=0.2$.
+
+%
+% Pole und Nullstellen der Jacobischen elliptischen Funktionen
 %
 \subsubsection{Pole und Nullstellen der Jacobischen elliptischen Funktionen}
 \begin{figure}

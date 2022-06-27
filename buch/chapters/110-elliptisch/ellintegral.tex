@@ -459,7 +459,8 @@ Parameter $k$ mit der Ableitungsformel für die Funktion $\mathstrut_2F_1$.
 %
 % Berechnung mit dem arithmetisch-geometrischen Mittel
 %
-\subsection{Berechnung mit dem arithmetisch-geometrischen Mittel}
+\subsection{Berechnung mit dem arithmetisch-geometrischen Mittel
+\label{buch:elliptisch:subsection:agm}}
 Die numerische Berechnung von elliptischer Integrale mit gewöhnlichen
 numerischen Integrationsroutinen ist nicht sehr effizient.
 Das in diesem Abschnitt vorgestellte arithmetisch-geometrische Mittel
@@ -472,7 +473,11 @@ Sie ist ein Speziallfall der sogenannten Landen-Transformation,
 \index{Landen-Transformation}%
 welche ausser für die elliptischen Integrale auch für die 
 Jacobischen elliptischen Funktionen formuliert werden kann und
-für letztere ebenfalls sehr schnelle numerische Algorithmen liefert.
+für letztere ebenfalls sehr schnelle numerische Algorithmen liefert
+(siehe dazu auch die
+Aufgaben~\ref{buch:elliptisch:aufgabe:2}--\ref{buch:elliptisch:aufgabe:4}).
+Sie kann auch verwendet werden, um die Werte der Jacobischen elliptischen
+Funktionen für komplexe Argument zu berechnen.
 
 %
 % Das arithmetisch-geometrische Mittel
@@ -574,7 +579,7 @@ Gauss hat gefunden, dass die Substitution
 \begin{equation}
 \sin t
 =
-\frac{2a\sin t_1}{a+b+(a-b)\sin t_1}
+\frac{2a\sin t_1}{a+b+(a-b)\sin^2 t_1}
 \label{buch:elliptisch:agm:subst}
 \end{equation}
 zu
@@ -1102,6 +1107,136 @@ F(x,k) = iK(k') - F\biggl(\frac1{kx},k\biggr)
 \]
 für die Werte des elliptischen Integrals erster Art für grosse Argumentwerte
 fest.
+
+%
+% AGM und Berechnung von F(x,k)
+%
+\subsubsection{Berechnung von $F(x,k)$ mit dem arithmetisch-geometrischen Mittel\label{buch:elliptisch:subsubection:berechnung-fxk-agm}}
+Wie das vollständige elliptische Integral $K(k)$ kann auch das  
+unvollständige elliptische Integral
+\begin{align*}
+F(x,k)
+&=
+\int_0^x \frac{d\xi}{\sqrt{(1-\xi^2)(1-k^{\prime 2}\xi^2)}}
+=
+\int_0^{\varphi}
+\frac{dt}{\sqrt{1-k^2 \sin^2 t}}
+\\
+&=
+a
+\int_0^{\varphi} \frac{dt}{a^2 \cos^2 t + b^2 \sin^2 t}
+\qquad\text{mit $k=b/a$}
+\end{align*}
+mit dem arithmetisch-geometrischen Mittel berechnet werden.
+Dazu muss die Substitution
+\eqref{buch:elliptisch:agm:subst}
+verwendet werden, um auch den Winkel $\varphi_1$ zu berechnen.
+Dazu muss \eqref{buch:elliptisch:agm:subst} nach $x_1=\sin t_1$ 
+aufgelöst werden.
+Durch Multiplikation mit dem Nenner erhält man mit der Abkürzung
+$x=\sin t$ und $x_1=\sin t_1$  die quadratische Gleichung
+\[
+(a-b)x x_1
+-
+2ax_1
+(a+b)x 
+=
+0,
+\]
+mit der Lösung
+\begin{equation}
+x_1 
+=
+\frac{a-\sqrt{a^2-(a^2-b^2)x^2}}{(a-b)x}.
+\label{buch:elliptisch:unvollstagm:xrek}
+\end{equation}
+Der Algorithmus zur Berechnung des arithmetisch-geometrischen Mittels
+muss daher verallgemeinert werden zu
+\begin{equation}
+\left.
+\begin{aligned}
+a_{n+1} &= \frac{a_n+b_n}2,  &\qquad a_0 &= a
+\\
+b_{n+1} &= \sqrt{a_nb_n},    & b_0 &= b
+\\
+x_{n+1} &= \frac{a_n-\sqrt{a_n^2-(a_n^2-b_n^2)x_n^2}}{(a_n-b_n)x_n}, & x_0 &= x
+\end{aligned}
+\quad
+\right\}
+\label{buch:elliptisch:unvollstagm:rek}
+\end{equation}
+Die Folge $x_n$ konvergiert gegen einen Wert $x_{\infty} = \lim_{n\to\infty} x_n$.
+Der Wert des unvollständigen elliptischen Integrals ist dann der Grenzwert
+\[
+F(x,k)
+=
+\lim_{n\to\infty}
+\frac{\arcsin x_n}{M(a_n,b_n)}
+=
+\frac{\arcsin x_{\infty}}{M(1,\sqrt{1-k^2})}.
+\]
+
+In dieser Form ist die Berechnung allerdings nicht praktisch durchführbar.
+Das Problem ist, dass die Differenz $a_n-b_n$, die in 
+\eqref{buch:elliptisch:unvollstagm:rek}
+im Nenner vorkommt, sehr schnell gegen Null geht.
+Ausserdem ist die Quadratwurzel im Zähler fast gleich gross wie
+$a_n$, was zu Auslöschung und damit ungenauen Resultaten führt.
+\label{buch:elliptisch:agm:ellintegral-stabilitaet}
+
+Eine Möglichkeit, das Problem zu entschärfen, ist, die Rekursionsformel
+nach $\varepsilon = a-b$ zu entwickeln.
+Mit $a+b=2a+\varepsilon$ kann man $b$ aus der Formel elimineren und erhält
+mit Hilfe der binomischen Reihe
+\begin{align*}
+x_1
+&=
+\frac{a}{x\varepsilon}
+\left(1-\sqrt{1-\varepsilon(2a-\varepsilon)x^2/a^2}\right)
+\\
+&=
+\frac{a}{x\varepsilon}
+\biggl(
+1-\sum_{k=0}^\infty
+(-1)^k
+\frac{(\frac12)_k}{k!} \varepsilon^k(2a-\varepsilon)^k\frac{x^{2k}}{a^{2k}}
+\biggr)
+\\
+&=
+\sum_{k=1}^\infty
+(-1)^{k-1} 
+\frac{(\frac12)_k}{k!} \varepsilon^{k-1}(2a-\varepsilon)^k\frac{x^{2k-1}}{a^{2k-1}}
+\\
+&=
+\frac{\frac12}{1!}(2a-\varepsilon)\frac{x}{a}
+-
+\frac{\frac12\cdot(\frac12-1)}{2!}\varepsilon(2a-\varepsilon)^2\frac{x^3}{a^3}
++
+\frac{\frac12\cdot(\frac12-1)(\frac12-2)}{3!}\varepsilon^2(2a-\varepsilon)^3\frac{x^5}{a^5}
+-
+\dots
+\\
+&=
+x\biggl(1-\frac{\varepsilon}{2a}\biggr)
+\biggl(
+1
+-
+\frac{\frac12-1}{2!}\varepsilon(2a-\varepsilon)\frac{x^2}{a^2}
++
+\frac{(\frac12-1)(\frac12-2)}{3!}\varepsilon^2(2a-\varepsilon)^2\frac{x^4}{a^4}
+-
+\dots
+\biggr)
+\\
+&=
+x\biggl(1-\frac{\varepsilon}{2a}\biggr)
+\cdot
+\mathstrut_2F_1\biggl(
+\begin{matrix}-\frac12,1\\2\end{matrix};-\varepsilon(2a-\varepsilon)\frac{x^2}{a^2}
+\biggr).
+\end{align*}
+Diese Form ist wesentlich besser, aber leider kann es bei der numerischen
+Rechnung passieren, dass $\varepsilon < 0$ wird.
 
 %\subsection{Potenzreihe}
 %XXX Potenzreihen \\
