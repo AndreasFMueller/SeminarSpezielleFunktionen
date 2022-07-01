@@ -7,6 +7,7 @@
 \label{buch:integrale:subsection:sturm-liouville-problem}}
 \rhead{Das Sturm-Liouville-Problem}
 Sowohl bei den Bessel-Funktionen wie bei den Legendre-Polynomen
+\index{Bessel-Funktion}%
 konnte die Orthogonalität der Funktionen dadurch gezeigt werden,
 dass sie als Eigenfunktionen eines bezüglich eines geeigneten
 Skalarproduktes selbstadjungierten Operators erkannt wurden.
@@ -57,6 +58,7 @@ Für symmetrische Matrizen lässt sich dieses Problem auf ein
 Optimierungsproblem reduzieren.
 
 \begin{satz}
+\index{Satz!verallgemeinertes Eigenwertproblem}%
 Seien $A$ und $B$ symmetrische $n\times n$-Matrizen und sei ausserdem
 $B$ positiv definit.
 Ist $v$ ein Vektor, der die Grösse
@@ -127,6 +129,7 @@ Eigenwert $\lambda$ ist.
 \end{proof}
 
 \begin{satz}
+\index{Satz!Orthogonalität verallgemeinerter Eigenvektoren}%
 Verallgemeinerte Eigenvektoren $u$ und $v$ von $A$ und $B$
 zu verschiedenen Eigenwerten erfüllen $u^tBv=0$.
 \end{satz}
@@ -153,6 +156,8 @@ dass $u^tBv=0$ sein muss.
 Verallgemeinerte Eigenwerte und Eigenvektoren verhalten sich also
 ganz analog zu den gewöhnlichen Eigenwerten und Eigenvektoren.
 Da $B$ positiv definit ist, ist $B$ auch invertierbar.
+\index{verallgemeinertes Skalarprodukt}%
+\index{Skalarprodukt!verallgemeinertes}%
 Zudem kann $B$ zur Definition des verallgemeinerten Skalarproduktes
 \[
 \langle u,v\rangle_B = u^tBv
@@ -201,6 +206,7 @@ Bezüglich des gewöhnlichen Skalarproduktes
 für Funktionen auf dem Intervall $[a,b]$ ist der Operator $L_0$
 tatsächlich selbstadjungiert.
 Mit partieller Integration rechnet man nach:
+\index{partielle Integration}%
 \begin{align}
 \langle f,L_0g\rangle
 &=
@@ -376,6 +382,8 @@ L = \frac{1}{w(x)} \biggl(-\frac{d}{dx} p(x)\frac{d}{dx} + q(x)\biggr)
 \label{buch:orthogonal:sturm-liouville:opL1}
 \end{equation}
 heisst der {\em Sturm-Liouville-Operator}.
+\index{Sturm-Liouville-Operator}%
+\index{Operator!Sturm-Liouville-}%
 Eine Lösung des Sturm-Liouville-Problems ist eine Funktion $y(x)$ derart,
 dass 
 \[
@@ -529,7 +537,10 @@ Im Folgenden sollen hingegen die Funktionen $J_n(s x)$ für
 konstantes $n$, aber verschiedene $s$ untersucht und
 als orthogonal erkannt werden.
 
-Die Funktion $y(x) = J_n(x)$ ist eine Lösung der Bessel-Differentialgleichung
+Die Funktion $y(x) = J_n(x)$ ist eine Lösung der Besselschen
+Differentialgleichung
+\index{Besselsche Differentialgleichung}%
+\index{Differentialgleichung!Besselsche}%
 \[
 x^2y'' + xy' + x^2y = n^2y.
 \]
@@ -616,6 +627,7 @@ des Sturm-Liouville-Problems
 für den Eigenwert $\lambda = -s^2$.
 
 \begin{satz}[Orthogonalität der Bessel-Funktionen]
+\index{Satz!Orthogonalität der Bessel-Funktionen}%
 Die Bessel-Funktionen $J_n(sx)$ für verschiedene $s$ sind orthogonal
 bezüglich des Skalarproduktes mit der Gewichtsfunktion $w(x)=x$,
 d.~h.
@@ -696,6 +708,8 @@ des Skalarproduktes mit der Laguerre-Gewichtsfunktion.
 Die Tschebyscheff-Polynome sind Lösungen der
 bereits in Kapitel~\ref{buch:chapter:potenzen} hergeleiteten
 Tschebyscheff-Differentialgleichung~\eqref{buch:potenzen:tschebyscheff:dgl}
+\index{Tschebyscheff-Differentialgleichung}%
+\index{Differentialgleichung!Tschebyscheff-}%
 \[
 (1-x^2)y'' -xy' = n^2y
 \]
@@ -727,6 +741,7 @@ xy'(x)
 \lambda y(x).
 \end{align*}
 Es folgt, dass die Tschebyscheff-Polynome orthogonal sind 
+\index{Tschebyscheff-Polynom}%
 bezüglich des Skalarproduktes
 \[
 \langle f,g\rangle = \int_{-1}^1 f(x)g(x)\frac{dx}{\sqrt{1-x^2}}.
@@ -737,6 +752,8 @@ bezüglich des Skalarproduktes
 %
 \subsubsection{Jacobi-Polynome}
 Die Jacobi-Polynome sind orthogonal bezüglich des Skalarproduktes
+\index{Jacobi-Polynome}%
+\index{Polynome!Jacobi-}%
 mit der Gewichtsfunktion
 \[
 w^{(\alpha,\beta)}(x) = (1-x)^\alpha(1+x)^\beta,
@@ -814,6 +831,8 @@ als Sturm-Liouville-Differentialgleichung erkannt.
 \subsubsection{Hypergeometrische Differentialgleichungen}
 %\url{https://encyclopediaofmath.org/wiki/Hypergeometric_equation}
 Auch die Eulersche hypergeometrische Differentialgleichung
+\index{Eulersche hypergeometrische Differentialgleichung}%
+\index{Differentialgleichung!Eulersche hypergeometrische}%
 lässt sich in die Form eines Sturm-Liouville-Operators
 \index{Eulersche hypergeometrische Differentialgleichung!als Sturm-Liouville-Gleichung}%
 bringen.

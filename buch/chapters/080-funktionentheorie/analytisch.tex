@@ -9,6 +9,9 @@
 Holomorphe Funktionen zeichnen sich dadurch aus, dass sie auch immer
 eine konvergente Reihenentwicklung haben, sie sind also analytisch.
 
+%
+% Definition
+%
 \subsection{Definition}
 \index{Taylor-Reihe}%
 \index{Exponentialfunktion}%
@@ -90,29 +93,29 @@ Damit ist gezeigt, dass alle Ableitungen $f^{(n)}(0)=0$ sind.
 Die Taylorreihe von $f(x)$ ist daher die Nullfunktion.
 \end{beispiel}
 
-Die Klasse der Funktionen, die sich durch ihre Taylor-Reihe darstellen
-lassen, zeichnet sich also durch besondere Eigenschaften aus, die in
-der folgenden Definition zusammengefasst werden.
+%Die Klasse der Funktionen, die sich durch ihre Taylor-Reihe darstellen
+%lassen, zeichnet sich also durch besondere Eigenschaften aus, die in
+%der folgenden Definition zusammengefasst werden.
+%
+%\index{analytisch in einem Punkt}%
+%\index{analytisch}%
+%\begin{definition}
+%Eine auf einem offenen Intervall $I\subset \mathbb {R}$ definierte Funktion
+%$f\colon U\to\mathbb{R}$ heisst {\em analytisch im Punkt  $x_0\in I$}, wenn
+%es eine in einer Umgebung von $x_0$ konvergente Potenzreihe
+%\[
+%\sum_{k=0}^\infty a_k(x-x_0)^k = f(x)
+%\]
+%gibt.
+%Sie heisst {\em analytisch}, wenn sie analytisch ist in jedem Punkt von $I$.
+%\end{definition}
 
-\index{analytisch in einem Punkt}%
-\index{analytisch}%
-\begin{definition}
-Eine auf einem offenen Intervall $I\subset \mathbb {R}$ definierte Funktion
-$f\colon U\to\mathbb{R}$ heisst {\em analytisch im Punkt  $x_0\in I$}, wenn
-es eine in einer Umgebung von $x_0$ konvergente Potenzreihe
-\[
-\sum_{k=0}^\infty a_k(x-x_0)^k = f(x)
-\]
-gibt.
-Sie heisst {\em analytisch}, wenn sie analytisch ist in jedem Punkt von $I$.
-\end{definition}
-
-Es ist wohlbekannt aus der elementaren Theorie der Potenzreihen, dass
+Es ist bekannt aus der elementaren Theorie der Potenzreihen
+in Kapitel~\ref{buch:potenzen:section:potenzreihen}, dass
 eine analytische Funktion beliebig oft differenzierbar ist und dass
 die Potenzreihe im Punkt $x_0$ die Taylor-Reihe sein muss.
-Ausserdem sidn Summen, Differenzen und Produkte von analytischen Funktionen
+Ausserdem sind Summen, Differenzen und Produkte von analytischen Funktionen
 wieder analytisch.
-
 Für eine komplexe Funktion lässt sich der Begriff der
 analytischen Funktion genau gleich definieren.
 
@@ -131,8 +134,8 @@ Die Verwendung einer offenen Teilmenge $U\subset\mathbb{C}$ ist wesentlich,
 denn die Funktion $f\colon z\mapsto \overline{z}$ kann in jedem Punkt
 $x_0\in\mathbb{R}$
 der reellen Achse $\mathbb{R}\subset\mathbb{C}$ durch die Potenzreihe 
-$f(x) = x_0 + (x-x_0)$ dargestellt werden.
-Es gibt aber keine Potenzreihe, die $f(z)$ in einer offenen Teilmenge
+$f(x) = x_0 + (x-x_0)$ dargestellt werden,
+es gibt aber keine Potenzreihe, die $f(z)$ in einer offenen Teilmenge
 von $\mathbb{C}$ gegen $f(z)=\overline{z}$ konvergiert.
 
 %
@@ -140,18 +143,20 @@ von $\mathbb{C}$ gegen $f(z)=\overline{z}$ konvergiert.
 %
 \subsection{Konvergenzradius
 \label{buch:funktionentheorie:subsection:konvergenzradius}}
-In der Theorie der Potenzreihen, die man in einem grundlegenden
-Analysiskurs lernt, wird auch genauer untersucht, wie gross
+In der Theorie der Potenzreihen, wie sie in Kapitel~\ref{buch:chapter:potenzen}
+zusammengefasst wurde, wird auch untersucht, wie gross
 eine Umgebung des Punktes $z_0$ ist, in der die Potenzreihe
 im Punkt $z_0$ einer analytischen Funktion konvergiert.
+Die Definition des Konvergenzradius gilt auch für komplexe Funktionen.
 
 \begin{satz}
+\index{Satz!Konvergenzradius}%
 \label{buch:funktionentheorie:satz:konvergenzradius}
 Die Potenzreihe
 \[
 f(z) = \sum_{k=0}^\infty a_0(z-z_0)^k
 \]
-ist konvergent auf einem Kreis mit Radius $\varrho$ und
+ist konvergent auf einem Kreis um $z_0$ mit Radius $\varrho$ und
 \[
 \frac{1}{\varrho}
 =

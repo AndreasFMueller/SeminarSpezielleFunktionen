@@ -19,6 +19,7 @@ wobei $a_n\ne 0$ sein muss.
 Das Polynom heisst {\em normiert}, wenn $a_n=1$ ist.
 \index{normiert}%
 \index{Grad eines Polynoms}%
+\index{Polynom!Grad}%
 Die Menge aller Polynome mit Koeffizienten in der Menge $K$ wird mit
 $K[x]$ bezeichnet.
 \end{definition}
@@ -65,6 +66,8 @@ Berechnungsverfahren für die speziellen Funktionen zu konstruieren.
 Dank des folgenden Satzes kann dies immer mit Polynomen geschehen.
 
 \begin{satz}[Weierstrass]
+\index{Satz!Weierstrass}%
+\index{Weierstrasse, Karl}%
 \label{buch:potenzen:satz:weierstrass}
 \index{Weierstrass, Satz von}%
 Eine auf einem kompakten Intervall $[a,b]$ stetige Funktion $f(x)$
@@ -74,7 +77,9 @@ approximieren.
 
 Der Satz sagt in dieser Form nichts darüber aus, wie die
 Approximationspolynome konstruiert werden sollen.
+\index{Approximationspolynom}%
 Von Bernstein gibt es konstruktive Beweise dieses Satzes,
+\index{Bernstein-Polynom}%
 welche auch explizit eine Folge von Approximationspolynomen
 konstruieren.
 In der späteren Entwicklung werden wir für die meisten
@@ -127,6 +132,7 @@ Ein gemeinsamer Teiler zweier Polynome $a(x)$ und $b(x)$
 ist ein Polynom $g(x)$, welches beide Polynome teilt, also
 $g(x)\mid a(x)$ und $g(x)\mid b(x)$.
 \index{grösster gemeinsamer Teiler}%
+\index{Polynome!grösster gemeinsamer Teiler}%
 Ein Polynom $g(x)$ heisst {\em grösster gemeinsamer Teiler} von $a(x)$
 und $b(x)$, wenn jeder andere gemeinsame Teiler $f(x)$ von $a(x)$
 und $b(x)$ auch ein Teiler von $g(x)$ ist.
@@ -180,6 +186,9 @@ Dann ist $g(x)=r_{m-1}(x)$ ein grösster gemeinsamer Teiler.
 % Der erweiterte euklidische Algorithmus
 %
 \subsubsection{Der erweiterte euklidische Algorithmus}
+\index{Polynome!erweiterter euklidischer Algorithmus}%
+\index{erweiterter euklidischer Algorithmus}%
+\index{euklidischer Algorithmus!erweitert}%
 Die Konstruktion der Folgen $a_n(x)$ und $b_n(x)$ kann in Matrixform
 kompakter geschrieben werden als
 \[
@@ -401,8 +410,11 @@ p_n
 so dass $p_n=0$ sein muss, was schliesslich dazu führt, dass alle
 Koeffizienten von $a(x)-b(x)$ verschwinden.
 Daraus folgt das Prinzip des Koeffizientenvergleichs:
+\index{Koeffizientenvergleich}%
+\index{Polynome!Koeffizientenvergleich}%
 
 \begin{satz}[Koeffizientenvergleich]
+\index{Satz!Koeffizientenvergleich}%
 \label{buch:polynome:satz:koeffizientenvergleich}
 Zwei Polynome $a(x)$ und $b(x)$ stimmen genau dann überein, wenn
 sie die gleichen Koeffizienten haben.
@@ -436,6 +448,7 @@ und $n$ Additionen.
 Die Anzahl nötiger Multiplikationen kann mit dem folgenden Vorgehen
 reduziert werden, welches auch als das {\em Horner-Schema} bekannt ist.
 \index{Horner-Schema}%
+\index{Polynome!Horner-Schema}%
 Statt erst am Schluss alle Terme zu addieren, addiert man so früh
 wie möglich.
 Zum Beispiel multipliziert man $(a_nx+a_{n-1})$ mit $x$, was auf
