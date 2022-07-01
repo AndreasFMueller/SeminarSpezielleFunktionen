@@ -140,7 +140,38 @@ von $\mathbb{C}$ gegen $f(z)=\overline{z}$ konvergiert.
 %
 \subsection{Konvergenzradius
 \label{buch:funktionentheorie:subsection:konvergenzradius}}
+In der Theorie der Potenzreihen, die man in einem grundlegenden
+Analysiskurs lernt, wird auch genauer untersucht, wie gross
+eine Umgebung des Punktes $z_0$ ist, in der die Potenzreihe
+im Punkt $z_0$ einer analytischen Funktion konvergiert.
 
-% XXX auf dem Rand des Konvergenzkreises gibt es immer eine Singularität
+\begin{satz}
+\label{buch:funktionentheorie:satz:konvergenzradius}
+Die Potenzreihe
+\[
+f(z) = \sum_{k=0}^\infty a_0(z-z_0)^k
+\]
+ist konvergent auf einem Kreis mit Radius $\varrho$ und
+\[
+\frac{1}{\varrho}
+=
+\limsup_{n\to\infty} \sqrt[k]{|a_k|}.
+\]
+Falls $a_k\ne 0$ für alle $k$ und der folgende Grenzwert existiert,
+dann gilt auch
+\[
+\varrho = \lim_{n\to\infty} \biggl| \frac{a_n}{a_{n+1}}\biggr|.
+\]
+\end{satz}
 
+\begin{definition}
+\label{buch:funktionentheorie:definition:konvergenzradius}
+\index{Konvergenzradius}%
+Der in Satz~\ref{buch:funktionentheorie:satz:konvergenzradius}
+Radius $\varrho$ des Konvergenzkreises heisst {\em Konvergenzradius}.
+\end{definition}
+
+Man kann auch zeigen, dass der Konvergenzkreis immer so gross ist,
+dass auf seinem Rand ein Wert $z$ liegt, für den die Potenzreihe nicht
+konvergiert.
 
