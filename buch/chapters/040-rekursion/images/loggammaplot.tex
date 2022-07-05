@@ -1,0 +1,89 @@
+%
+% tikztemplate.tex -- template for standalon tikz images
+%
+% (c) 2021 Prof Dr Andreas Müller, OST Ostschweizer Fachhochschule
+%
+\documentclass[tikz]{standalone}
+\usepackage{amsmath}
+\usepackage{times}
+\usepackage{txfonts}
+\usepackage{pgfplots}
+\usepackage{csvsimple}
+\usetikzlibrary{arrows,intersections,math}
+\begin{document}
+\def\skala{1}
+\input{loggammadata.tex}
+\begin{tikzpicture}[>=latex,thick,scale=\skala]
+
+% add image content here
+
+\def\dx{1}
+\def\dy{0.6}
+\def\xmax{8}
+\def\xmin{-4.9}
+\def\ymax{8}
+\def\ymin{-3.1}
+
+\fill[color=blue!20] ({\xmin*\dx},{\ymin*\dy}) rectangle ({-4*\dx},{\ymax*\dy});
+\fill[color=blue!20] ({-3*\dx},{\ymin*\dy}) rectangle ({-2*\dx},{\ymax*\dy});
+\fill[color=blue!20] ({-1*\dx},{\ymin*\dy}) rectangle ({-0*\dx},{\ymax*\dy});
+
+\draw[->] ({\xmin*\dx-0.1},0) -- ({\xmax*\dx+0.3},0)
+	coordinate[label={$x$}];
+\draw[->] (0,{\ymin*\dy-0.1}) -- (0,{\ymax*\dy+0.3})
+	coordinate[label={right:$y$}];
+
+\begin{scope}
+\clip ({\xmin*\dx},{\ymin*\dy}) rectangle ({\xmax*\dx},{\ymax*\dy});
+
+\foreach \x in {-1,-2,-3,-4}{
+	\draw[color=blue,line width=0.3pt]
+		({\x*\dx},{\ymin*\dy}) -- ({\x*\dx},{\ymax*\dy});
+}
+
+\draw[color=red,line width=1pt] \loggammapath;
+
+\loggammaplotzero
+\loggammaplotone
+\loggammaplottwo
+\loggammaplotthree
+\loggammaplotfour
+
+\end{scope}
+
+\foreach \y in {0.1,10,100,1000,1000}{
+	\draw[line width=0.3pt]
+		({\xmin*\dx},{ln(\y)*\dy}) 
+		--
+		({\xmax*\dx},{ln(\y)*\dy}) ;
+}
+
+\foreach \x in {1,...,8}{
+	\draw ({\x*\dx},{-0.05}) -- ({\x*\dx},{0.05});
+	\node at ({\x*\dx},0) [below] {$\x$};
+}
+
+\foreach \x in {-1,...,-4}{
+	\draw ({\x*\dx},{-0.05}) -- ({\x*\dx},{0.05});
+}
+\foreach \x in {-1,...,-3}{
+	\node at ({\x*\dx},0) [below right] {$\x$};
+}
+\node at ({-4*\dx},0) [below left] {$-4$};
+
+\def\htick#1#2{
+	\draw (-0.05,{ln(#1)*\dy}) -- (0.05,{ln(#1)*\dy});
+	\node at (0,{ln(#1)*\dy}) [above right] {#2};
+}
+
+\htick{10}{$10^1$}
+\htick{100}{$10^2$}
+\htick{1000}{$10^3$}
+\htick{0.1}{$10^{-1}$}
+
+\node[color=red] at ({3*\dx},{ln(30)*\dy}) {$y=\log|\Gamma(x)|$};
+
+
+\end{tikzpicture}
+\end{document}
+

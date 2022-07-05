@@ -8,12 +8,14 @@
 Die Eulersche Integralformel für die Gamma-Funktion in
 Definition~\ref{buch:rekursion:def:gamma} wurde in
 Abschnitt~\ref{buch:subsection:integral-eindeutig}
-mit dem Satz von Mollerup gerechtfertigt.
+mit dem Satz~\ref{buch:satz:bohr-mollerup}
+von Bohr-Mollerup gerechtfertigt.
 Man kann Sie aber auch als Grenzfall der Beta-Funktion verstehen,
 die in diesem Abschnitt dargestellt wird.
 
 
-\subsection{Beta-Integral}
+\subsection{Beta-Integral
+\label{buch:rekursion:gamma:subsection:integralbeweis}}
 In diesem Abschnitt wird das Beta-Integral eingeführt, eine Funktion
 von zwei Variablen, welches eine Integral-Definition mit einer
 reichaltigen Menge von Rekursionsbeziehungen hat, die sich direkt auf
@@ -30,6 +32,7 @@ B(x,y)
 \int_0^1 t^{x-1} (1-t)^{y-1}\,dt
 \]
 für $\operatorname{Re}x>0$, $\operatorname{Re}y>0$.
+\index{Beta-Integral}%
 \end{definition}
 
 Aus der Definition kann man sofort ablesen, dass $B(x,y)=B(y,x)$.
@@ -231,6 +234,7 @@ Durch Einsetzen der Integralformel im Ausdruck
 Satz.
 
 \begin{satz}
+\index{Satz!Beta-Funktion und Gamma-Funktion}%
 Die Beta-Funktion kann aus der Gamma-Funktion nach
 \begin{equation}
 B(x,y) = \frac{\Gamma(x)\Gamma(y)}{\Gamma(x+y)}
@@ -320,6 +324,9 @@ $(-\frac12)!$ als Wert
 \]
 der Gamma-Funktion interpretiert.
 
+%
+% Alternative Parametrisierung
+%
 \subsubsection{Alternative Parametrisierungen}
 Die Substitution $t=\sin^2 s$ hat im vorangegangenen Abschnitt
 ermöglicht, $\Gamma(\frac12)$ zu ermitteln.
@@ -382,8 +389,10 @@ wobei wir
 \]
 verwendet haben.
 Diese Darstellung des Beta-Integrals wird später
-% XXX Ort ergänzen
+in Satz~\ref{buch:funktionentheorie:satz:spiegelungsformel}
 dazu verwendet, die Spiegelungsformel für die Gamma-Funktion
+\index{Gamma-Funktion!Spiegelungsformel}%
+\index{Spiegelungsformel der Gamma-Funktion}%
 herzuleiten.
 
 Eine weitere mögliche Parametrisierung verwendet $t = (1+s)/2$
@@ -407,17 +416,23 @@ B(x,y)
 \label{buch:rekursion:gamma:beta:symm}
 \end{equation}
 
+%
+%
+%
 \subsubsection{Die Verdoppelungsformel von Legendre}
 Die trigonometrische Substitution kann dazu verwendet werden, die
 Legendresche Verdoppelungsformel für die Gamma-Funktion herzuleiten.
 
 \begin{satz}[Legendre]
+\index{Satz!Verdoppelungsformel@Verdoppelungsformel für $\Gamma(x)$}%
 \[
 \Gamma(x)\Gamma(x+{\textstyle\frac12})
 =
 2^{1-2x}\sqrt{\pi}
 \Gamma(2x)
 \]
+\index{Verdoppelungsformel}%
+\index{Gamma-Funktion!Verdoppelungsformel von Legendre}%
 \end{satz}
 
 \begin{proof}[Beweis]

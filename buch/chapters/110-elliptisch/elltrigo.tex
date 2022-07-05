@@ -18,6 +18,14 @@ auf einer Ellipse.
 \end{figure}
 % based on Willliam Schwalm, Elliptic functions and elliptic integrals
 % https://youtu.be/DCXItCajCyo
+Die Ellipse wurde in Abschnitt~\ref{buch:geometrie:subsection:kegelschnitte}
+als Kegelschnitt erkannt und auf verschiedene Arten parametrisiert.
+In diesem Abschnitt soll gezeigt werden, wie man die Parametrisierung
+eines Kreises mit trigonometrischen Funktionen verallgemeinern kann
+auf eine Parametrisierung einer Ellipse mit den drei
+Funktionen $\operatorname{sn}(u,k)$,
+$\operatorname{cn}(u,k)$ und $\operatorname{dn}(u,k)$,
+die ähnliche Eigenschaften haben wie die trigonometrischen Funktionen.
 
 %
 % Geometrie einer Ellipse
@@ -112,7 +120,7 @@ Punktes auf dem Einheitskreis interpretieren.
 
 Für die Koordinaten eines Punktes auf der Ellipse ist dies nicht so einfach,
 weil es nicht nur eine Ellipse gibt, sondern für jede numerische Exzentrizität
-mindestens eine mit Halbeachse $1$.
+mindestens eine mit Halbachse $1$.
 Wir wählen die Ellipsen so, dass $a$ die grosse Halbachse ist, also $a>b$.
 Als Normierungsbedingung verwenden wir, dass $b=1$ sein soll, wie in
 Abbildung~\ref{buch:elliptisch:fig:jacobidef}.
@@ -161,7 +169,7 @@ x^2(k^2-1) + y^2 = 1.
 an einer Ellipse mit Halbachsen $a$ und $1$.
 \label{buch:elliptisch:fig:jacobidef}}
 \end{figure}
-\subsubsection{Definition der elliptischen Funktionen}
+\subsubsection{Definition der Jacobischen elliptischen Funktionen}
 Die elliptischen Funktionen für einen Punkt $P$ auf der Ellipse mit Modulus $k$
 können jetzt als Verhältnisse der Koordinaten des Punktes definieren.
 Es stellt sich aber die Frage, was man als Argument verwenden soll.
@@ -472,6 +480,7 @@ wählt, dass
 Damit haben wir die grundlegenden Ableitungsregeln
 
 \begin{satz}
+\index{Satz!Ableitungen der Jacobischen elliptischen Funktionen}%
 \label{buch:elliptisch:satz:ableitungen}
 Die Jacobischen elliptischen Funktionen haben die Ableitungen
 \begin{equation}

@@ -1,7 +1,8 @@
 %
 % Anwendung: Gauss-Quadratur
 %
-\section{Anwendung: Gauss-Quadratur}
+\section{Anwendung: Gauss-Quadratur
+\label{buch:orthogonal:section:gauss-quadratur}}
 \rhead{Gauss-Quadratur}
 Orthogonale Polynome haben eine etwas unerwartet Anwendung in einem
 von Gauss erdachten numerischen Integrationsverfahren.
@@ -229,6 +230,7 @@ Sei $R_n=\{p(X)\in\mathbb{R}[X] \mid \deg p\le n\}$ der Vektorraum
 der Polynome vom Grad $n$.
 
 \begin{satz}
+\index{Satz!Gaussquadratur}%
 \label{buch:integral:satz:gaussquadratur}
 Sei $p$ ein Polynom vom Grad $n$, welches auf allen Polynomen in $R_{n-1}$
 orthogonal sind.
@@ -284,7 +286,7 @@ $p(x)$ sein.
 
 Der Satz~\ref{buch:integral:satz:gaussquadratur} begründet das
 {\em Gausssche Quadraturverfahren}.
-Die in Abschnitt~\ref{buch:integral:section:orthogonale-polynome}
+Die in Abschnitt~\ref{buch:orthogonal:subsection:legendre-polynome}
 bestimmten Legendre-Polynome $P_n$ haben die im Satz
 verlangte Eigenschaft,
 dass sie auf allen Polynomen geringeren Grades orthogonal sind.
@@ -306,6 +308,7 @@ Für eine beliebige Funktion kann man die folgende Fehlerabschätzung
 angeben \cite[theorem 7.3.4, p.~497]{buch:numal}.
 
 \begin{satz}
+\index{Satz!Gausssche Quadraturformel und Fehler}%
 Seien $x_i$ die Stützstellen und $A_i$ die Gewichte einer
 Gaussschen Quadraturformel mit $n+1$ Stützstellen und sei $f$
 eine auf dem Interval $[-1,1]$ $2n+2$-mal stetig differenzierbare
@@ -551,7 +554,7 @@ w(x)=e^{-x}
 \text{ und }
 g(x)=f(x)e^x.
 \]
-Dann approximiert $g(x)$ man durch ein Interpolationspolynom,
+Dann approximiert man $g(x)$ durch ein Interpolationspolynom,
 so wie man das bei der Gauss-Quadratur gemacht hat.
 Als Stützstellen müssen dazu die Nullstellen der Laguerre-Polynome
 verwendet werden.
