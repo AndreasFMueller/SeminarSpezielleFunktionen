@@ -54,7 +54,7 @@ z \notin \mathbb{Z}
 \label{laguerre:gamma_refform}
 \end{align}
 stellt eine Beziehung zwischen den zwei Punkten,
-die aus der Spiegelung an der Geraden $\operatorname{Re} z = 1/2$ hervorgehen,
+die aus der Spiegelung an der Geraden $\real z = 1/2$ hervorgehen,
 her.
 Dadurch lassen Werte der Gamma-Funktion sich für $z$ in der rechten Halbebene
 leicht in die linke Halbebene übersetzen und umgekehrt.
@@ -99,10 +99,20 @@ Somit entscheiden wir uns auf Grund der vorherigen Punkte,
 die zweite Variante weiterzuverfolgen.
 
 \subsubsection{Naiver Ansatz}
+Wenden wir also die Gauss-Laguerre-Quadratur aus
+\eqref{laguerre:laguerrequadratur} auf die Gamma-Funktion
+\eqref{laguerre:gamma} an ergibt sich
+\begin{align}
+\Gamma(z)
+\approx
+\sum_{i=1}^n x_i^{z-1} A_i.
+\label{laguerre:naive_lag}
+\end{align}
 
 \begin{figure}
 \centering
 \input{papers/laguerre/images/rel_error_simple.pgf}
+\vspace{-12pt}
 \caption{Relativer Fehler des naiven Ansatzes
 für verschiedene reele Werte von $z$ und Grade $n$ der Laguerre-Polynome}
 \label{laguerre:fig:rel_error_simple}
@@ -122,13 +132,13 @@ Für das Integral der Gamma-Funktion ergibt sich also
 (z - 2n)_{2n} \xi^{z - 2n - 1}
 \end{align*}
 Eingesetzt im Fehlerterm \eqref{laguerre:lag_error} resultiert
-\begin{align*}
+\begin{align}
 R_n
 =
 (z - 2n)_{2n} \frac{(n!)^2}{(2n)!} \xi^{z-2n-1}
 ,
 \label{laguerre:gamma_err_simple}
-\end{align*}
+\end{align}
 wobei $\xi$ ein geeigneter Wert im Interval $(0, \infty)$ ist
 und $n$ der Grad des verwendeten Laguerre-Polynoms.
 Eine Fehlerabschätzung mit dem Fehlerterm stellt sich als unnütz heraus,
@@ -159,6 +169,7 @@ könnten wir die Reflektionsformel der Gamma-Funktion ausnutzen.
 \begin{figure}
 \centering
 \input{papers/laguerre/images/rel_error_mirror.pgf}
+\vspace{-12pt}
 \caption{Relativer Fehler des naiven Ansatz mit Spiegelung negativer Realwerte
 für verschiedene reele Werte von $z$ und Grade $n$ der Laguerre-Polynome}
 \label{laguerre:fig:rel_error_mirror}
@@ -171,7 +182,8 @@ Die Spiegelung bringt nur für wenige Werte einen,
 für praktische Anwendungen geeigneten,
 relativen Fehler.
 Wie wir aber in Abbildung~\ref{laguerre:fig:rel_error_simple} sehen konnten,
-gibt es für jeden Polynomgrad $n$ ein Intervall $[a, a+1]$, $a \in \mathbb{Z}$,
+gibt es für jeden Polynomgrad $n$ ein Intervall $[a(n), a(n) + 1]$,
+$a(n) \in \mathbb{Z}$,
 in welchem der relative Fehler minimal ist.
 Die Funktionalgleichung der Gamma-Funktion \eqref{laguerre:gamma_funktional}
 könnte uns hier helfen,
@@ -181,17 +193,17 @@ das Problem in den Griff zu bekommen.
 Wie wir im vorherigen Abschnitt gesehen haben,
 scheint der Integrand problematisch.
 Darum möchten wir jetzt den Integranden analysieren,
-um ihn besser verstehen zu können
-und dadurch geeignete Gegenmassnahmen zu entwickeln.
+um ihn besser verstehen zu können und
+dadurch geeignete Gegenmassnahmen zu entwickeln.
 
 % Dieser Abschnitt soll eine grafisches Verständnis dafür schaffen,
 % wieso der Integrand so problematisch ist.
 % Was das heisst sollte in Abbildung~\ref{laguerre:fig:integrand} 
 % und Abbildung~\ref{laguerre:fig:integrand_exp} grafisch dargestellt werden.
-
 \begin{figure}
 \centering
-\input{papers/laguerre/images/integrands.pgf}
+\input{papers/laguerre/images/integrand.pgf}
+\vspace{-12pt}
 \caption{Integrand $x^z$ mit unterschiedlichen Werten für $z$}
 \label{laguerre:fig:integrand}
 \end{figure}
@@ -211,7 +223,8 @@ dass kleine Exponenten um $0$ genauere Resultate liefern sollten.
 
 \begin{figure}
 \centering
-\input{papers/laguerre/images/integrands_exp.pgf}
+\input{papers/laguerre/images/integrand_exp.pgf}
+\vspace{-12pt}
 \caption{Integrand $x^z e^{-x}$ mit unterschiedlichen Werten für $z$}
 \label{laguerre:fig:integrand_exp}
 \end{figure}
@@ -230,10 +243,10 @@ die für grosse Exponenten $z$ nach der Stelle $x=1$ schnell anwachsen.
 Zu grosse Exponenten $z$ sind also immer noch problematisch.
 Kleine positive $z$ scheinen nun also auch zulässig zu sein.
 Damit formulieren wir die Vermutung,
-dass $a$,
-welches das Intervall $[a,a+1]$ definiert,
+dass $a(n)$,
+welches das Intervall $[a(n), a(n) + 1]$ definiert,
 in dem der relative Fehler minimal ist,
-grösser als $0$ und abhängig von $n$ ist.
+grösser als $0$ ist.
 
 \subsubsection{Finden der optimalen Berechnungsstelle}
 % Mittels der Funktionalgleichung \eqref{laguerre:gamma_funktional} 
@@ -242,63 +255,174 @@ grösser als $0$ und abhängig von $n$ ist.
 % evaluiert werden und dann mit der Funktionalgleichung zurückverschoben werden.
 Nun stellt sich die Frage,
 ob die Approximation mittels Gauss-Laguerre-Quadratur verbessert werden kann,
-wenn man das Problem in einem geeigneten Intervall $[a, a+1]$, 
-$a \in \mathbb{Z}$, 
-evaluiert und dann mit der 
+wenn man das Problem in einem geeigneten Intervall $[a(n), a(n)+1]$,
+$a(n) \in \mathbb{Z}$,
+evaluiert und dann mit der
 Funktionalgleichung \eqref{laguerre:gamma_funktional} zurückverschiebt.
-Aus Gründen der Übersichtlichkeit möchten wir das Problem nur für reele Zahlen
-formulieren.
-
-Die optimale Stelle $a \leq z^* \leq a+1$,
-mit $z^* \in \mathbb{R}$ wollen wir finden,
-in dem wir den Fehlerterm \eqref{laguerre:lag_error} anpassen
-und in einem nächsten Schritt minimieren.
-Zudem nehmen wir an,
-dass $z < z^*$ ist.
-Wir fügen einen Verschiebungsterm um $m \in \mathbb{N}$ Stellen ein, 
-daraus folgt
+Für dieses Vorhaben führen wir einen Verschiebungsterm $m \in \mathbb{Z}$ ein.
+Passen wir \eqref{laguerre:naive_lag}
+mit dem Verschiebungsterm $m$
+%,der $z$ and die Stelle $z_m = z + m$ verschiebt, 
+an,
+ergibt sich
+\begin{align}
+\Gamma(z)
+\approx
+s(z, m) \sum_{i=1}^n x_i^{z + m - 1} A_i
+% &&
+% \text{mit }
+% s(z, m)
+% =
+% \begin{cases}
+% \displaystyle
+% \frac{1}{(z - m)_m} & \text{wenn } m \geq 0\\
+% (z + m)_{-m} & \text{wenn } m < 0
+% \end{cases}
+% .
+\label{laguerre:shifted_lag}
+\end{align}
+mit
 \begin{align*}
+s(z, m)
+=
+\begin{cases}
+\displaystyle
+\frac{1}{(z - m)_m} & \text{wenn } m \geq 0 \\
+(z + m)_{-m}        & \text{wenn } m < 0
+\end{cases}
+.
+\end{align*}
+
+Um die optimale Stelle $z^*(n) \in \left[a(n), a(n) + 1\right]$,
+$z^*(n) \in \mathbb{R}$,
+zu finden,
+erweitern wir denn Fehlerterm \eqref{laguerre:gamma_err_simple}
+und erhalten
+\begin{align}
 R_{n,m}(\xi)
 =
-\frac{(z - 2n)_{2n}}{(z - m)_m} \frac{(n!)^2}{(2n)!} \xi^{z + m - 2n - 1}
+s(z, m) \cdot (z - 2n)_{2n} \frac{(n!)^2}{(2n)!} \xi^{z + m - 2n - 1}
 ,\quad
 \text{für }
 \xi \in (0, \infty)
-,
-\end{align*}
-wobei $z^* = z + m - 1$ ist.
-Das Optimierungsproblem daraus lässt sich als
+.
+\label{laguerre:gamma_err_shifted}
+\end{align}
+% wobei  ist
+% mit $z^*(n) \in \mathbb{R}$ wollen wir finden,
+% in dem wir den Fehlerterm \eqref{laguerre:lag_error} anpassen
+% und in einem nächsten Schritt minimieren.
+% Zudem nehmen wir an,
+% dass $z < z^*(n)$ ist.
+% Wir fügen einen Verschiebungsterm um $m \in \mathbb{N}$ Stellen ein,
+% daraus folgt
+%
+% Damit wir den idealen Verschiebungsterm $m^*$ finden können,
+% müssen wir mittels des Fehlerterms \eqref{laguerre:gamma_err_shifted}
+% ein Optimierungsproblem
+%
+% Das Optimierungsproblem daraus lässt sich als
+Daraus formulieren wir das Optimierungproblem
 \begin{align*}
+m^*
+=
 \operatorname*{argmin}_m \max_\xi R_{n,m}(\xi)
+.
 \end{align*}
-formulieren.
 Allerdings ist die Funktion $R_{n,m}(\xi)$ unbeschränkt.
-Dazu müssten wir $\xi$ versuchen unter Kontroller zu bringen,
+Dazu müssten wir $\xi$ versuchen unter Kontrolle zu bringen,
 was ein äussersts schwieriges Unterfangen zu sein scheint.
 Da die Gauss-Quadratur aber sowieso nur wirklich Sinn macht für kleine $n$,
 können die Intervalle $[a(n), a(n)+1]$ empirisch gesucht werden.
 
-
-\begin{align*}
-m^*
-=
-\lceil \alpha n + \beta + \lfloor z \rfloor - z \rceil - \lfloor z \rfloor
-\end{align*}
-
 \begin{figure}
 \centering
-\includegraphics{papers/laguerre/images/targets.pdf}
+% \includegraphics{papers/laguerre/images/targets.pdf}
+\input{papers/laguerre/images/targets.pgf}
+\vspace{-12pt}
 \caption{$a$ in Abhängigkeit von $z$ und $n$}
 \label{laguerre:fig:targets}
 \end{figure}
 
+Wir bestimmen nun die optimalen Verschiebungsterme empirisch
+für $n = 2,\ldots, 12$ im Intervall $z \in (0, 1)$,
+da $z$ sowieso um den Term $m$ verschoben wird,
+reicht die $m^*$ nur in diesem Intervall zu analysieren.
+In Abbildung~\ref{laguerre:fig:targets} sind die empirisch bestimmten $m^*$
+abhängig von $z$ und $n$ dargestellt.
+In $n$-Richtung lässt sich eine klare lineare Abhängigkeit erkennen und
+die Beziehung zu $z$ ist negativ,
+d.h. wenn $z$ grösser ist, wird $m^*$ kleiner.
+Allerdings ist die genaue Beziehung zu $z$
+aus dieser Grafik nicht offensichtlich,
+aber sie scheint regelmässig zu sein.
+Es lässt die Vermutung aufkommen,
+dass die Restriktion von $m^* \in \mathbb{Z}$ Rundungsprobleme verursacht.
+Wir versuchen dieses Problem via lineare Regression und
+geeignete Rundung zu beheben.
+Den linearen Regressor
+\begin{align*}
+\hat{m}
+=
+\alpha n + \beta
+\end{align*}
+machen wir nur abhängig von $n$
+in dem wir den Mittelwert $\overline{m}$ von $m^*$ über $z$ berechnen.
+
+In Abbildung~\ref{laguerre:fig:schaetzung} sind die Resultate
+der linearen Regression aufgezeigt mit $\alpha = 1.34094$ und $\beta =
+0.854093$.
+Die lineare Beziehung ist ganz klar ersichtlich und der Fit scheint zu genügen.
+Der optimalen Verschiebungsterm
+\begin{align*}
+m^*
+\approx
+\lceil \hat{m} - z \rceil
+=
+\lceil \alpha n + \beta - z \rceil
+\end{align*}
+kann nun mit dem linearen Regressor und $z$ gefunden werden.
 
 \begin{figure}
 \centering
-\input{papers/laguerre/images/estimate.pgf}
+\input{papers/laguerre/images/estimates.pgf}
+\vspace{-12pt}
 \caption{Schätzung Mittelwert von $m$ und Fehler}
 \label{laguerre:fig:schaetzung}
 \end{figure}
+
+\subsection{Resultate}
+
+\subsubsection{Relativer Fehler}
+
+\begin{figure}
+\centering
+\input{papers/laguerre/images/rel_error_shifted.pgf}
+\vspace{-12pt}
+\caption{Relativer Fehler des Ansatzes mit Verschiebungsterm
+für verschiedene reele Werte von $z$ und Verschiebungsterme $m$.
+Das verwendete Laguerre-Polynom besitzt den Grad $n = 8$.
+$m^*$ bezeichnet hier den optimalen Verschiebungsterm}
+\label{laguerre:fig:rel_error_shifted}
+\end{figure}
+  
+\begin{figure}
+\centering
+\input{papers/laguerre/images/rel_error_range.pgf}
+\vspace{-12pt}
+\caption{Relativer Fehler des Ansatzes mit optimalen Verschiebungsterm
+für verschiedene reele Werte von $z$ und Grade $n$ der Laguerre-Polynome}
+\label{laguerre:fig:rel_error_range}
+\end{figure}
+
+\subsubsection{Vergleich mit Lanczos-Methode}
+{\color{red}
+$ $\newline
+$n = 7$:\newline
+Lanczos Polynomgrad auf 13 Stellen.\newline
+Unsere Methode auf 7 Stellen
+}
+
 % 2. Die Fehlerabschätzung ist problematisch, 
 % weil die Funktion R_n(\xi) unbeschränkt ist.
 % Daher kann man nicht einfach nach dem Maximum von R_n(\xi) suchen.
@@ -315,11 +439,3 @@ m^*
 % da ja der Witz der Gauss-Integration ist,
 % dass man eben nur sehr kleine n überhaupt in Betracht zieht,
 % d.h. man braucht keine exakte Gesetzmässigkeit für a(n).
-
-
-{
-\large \color{red}
-TODO:
-Geeignete Minimierung für Fehler finden, so dass sie mit den emprisich
-bestimmen optimalen Punkten übereinstimmen.
-}

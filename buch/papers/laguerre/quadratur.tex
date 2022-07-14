@@ -6,10 +6,12 @@
 \section{Gauss-Quadratur
   \label{laguerre:section:quadratur}}
  {\large \color{red} TODO: Einleitung und kurze Beschreibung Gauss-Quadratur}
+ 
+Siehe Abschnitt~\ref{buch:orthogonalitaet:section:gauss-quadratur}
 \begin{align}
 \int_a^b f(x) w(x) \, dx
 \approx
-\sum_{i=1}^N f(x_i) A_i
+\sum_{i=1}^n f(x_i) A_i
 \label{laguerre:gaussquadratur}
 \end{align}
 
@@ -25,7 +27,7 @@ Gleichung~\eqref{laguerre:laguerrequadratur} lässt sich wie folgt umformulieren
 \begin{align}
 \int_{0}^{\infty} f(x) e^{-x} dx
 \approx
-\sum_{i=1}^{N} f(x_i) A_i
+\sum_{i=1}^{n} f(x_i) A_i
 \label{laguerre:laguerrequadratur}
 \end{align}
 
@@ -45,7 +47,7 @@ l_i(x_j)
 0 & \text{sonst.}
 \end{cases}
 \end{align*}
-Laut \cite{abramowitz+stegun} sind die Gewichte also
+Laut \cite{abramowitz+stegun} sind die Gewichte
 \begin{align}
 A_i
 =
