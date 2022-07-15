@@ -1,5 +1,7 @@
 
 \section{Sphärische Trigonometrie}
+\rhead{Sphärische Trigonometrie}
+
 \subsection{Das Kugeldreieck}
 Damit man die Definition des Kugeldreiecks versteht, müssen wir zuerst Begriffe wie Grosskreisebene und Grosskreisbögen verstehen.
 Ein Grosskreis ist ein grösstmöglicher Kreis auf einer Kugeloberfläche.
@@ -14,7 +16,7 @@ Man kann bei Kugeldreiecken nicht so einfach unterscheiden, was Innen oder Ausse
 Wenn man drei Eckpunkte miteinander verbindet, ergeben sich immer 16 Kugeldreiecke. 
 
 Werden drei voneinander verschiedene Punkte, die sich nicht auf derselben Grosskreisebene befinden, mit Grosskreisbögen verbunden werden, so entsteht ein Kugeldreieck $ABC$.
-Für ein Kugeldreieck gilt, dass die Summe der drei Seiten kleiner als $2\pi$ aber grösser als 0 ist.
+Für ein Kugeldreieck gilt, dass die Summe der drei Seiten kleiner als $3\pi$ aber grösser als 0 ist.
 $A$, $B$ und $C$ sind die Ecken des Dreiecks und dessen Seiten sind die Grosskreisbögen zwischen den Eckpunkten (siehe Abbildung \ref{kugel}). 
 
 \begin{figure}
@@ -27,7 +29,7 @@ $A$, $B$ und $C$ sind die Ecken des Dreiecks und dessen Seiten sind die Grosskre
 \end{figure}
 
 \subsection{Rechtwinkliges Dreieck und rechtseitiges Dreieck}
-In der sphärischen Trigonometrie gibt es eine Symetrie zwischen Seiten und Winkeln, also zu jedem Satz über Seiten und Winkel gibt es einen entsprechenden Satz, mit dem man Winkel durch Seiten und Seiten durch Winkel ersetzt hat.
+In der sphärischen Trigonometrie gibt es eine Symmetrie zwischen Seiten und Winkeln, also zu jedem Satz über Seiten und Winkel gibt es einen entsprechenden Satz, mit dem man Winkel durch Seiten und Seiten durch Winkel ersetzt hat.
 
 Wie auch im ebenen Dreieck gibt es beim Kugeldreieck auch ein rechtwinkliges Kugeldreieck, bei dem ein Winkel $\frac{\pi}{2}$ ist. 
 Ein rechtseitiges Dreieck gibt es jedoch nur beim Kugeldreieck, weil dort eine Seitenlänge $\frac{\pi}{2}$ lang sein muss, wie man in der Abbildung \ref{recht} sehen kann.
@@ -42,6 +44,7 @@ Ein rechtseitiges Dreieck gibt es jedoch nur beim Kugeldreieck, weil dort eine S
 \end{figure}
 
 \subsection{Winkelsumme und Flächeninhalt}
+\label{trigo}
 %\begin{figure} ----- Brauche das Bild eigentlich nicht!
 	
 %	\begin{center}
@@ -66,9 +69,9 @@ beschreibt die Abweichung der Innenwinkelsumme von $\pi$ und ist proportional zu
 
 \subsubsection{Flächeninnhalt}
 Mithilfe des Radius $r$ und dem sphärischen Exzess $\epsilon$ gilt für den Flächeninhalt 
-\[ F=\frac{\pi \cdot r^2}{\frac{\pi}{2}} \cdot \epsilon = 2 \cdot r^2 \cdot \epsilon\].
+\[ F=\frac{\pi \cdot r^2}{\frac{\pi}{2}} \cdot \epsilon = 2 \cdot r^2 \cdot \epsilon.\]
 
-\cite{nav:winkel}
+In diesem Kapitel sind keine Begründungen für die erhaltenen Resultate im Abschnitt \ref{trigo} zu erwarten und können in der Referenz \cite{nav:winkel} nachgeschlagen werden.
 \subsection{Seiten und Winkelberechnung}
 Es gibt in der sphärischen Trigonometrie eigentlich gar keinen Satz des Pythagoras, wie man ihn aus der zweidimensionalen Geometrie kennt.
 Es gibt aber einen Satz, der alle drei Seiten eines rechtwinkligen Kugeldreiecks in eine Beziehung bringt. Dieser Satz gilt jedoch nicht für das rechtseitige Kugeldreieck.
@@ -76,7 +79,7 @@ Die Approximation im nächsten Abschnitt wird erklären, warum man dies als eine
 Es gilt nämlich:
 \begin{align}
 	\cos c = \cos a \cdot \cos b \quad \text{wenn}  \nonumber &
-	\quad \alpha = \frac{\pi}{2} \nonumber
+	\quad \alpha = \frac{\pi}{2}. \nonumber
 \end{align}
 
 \subsubsection{Approximation von kleinen Dreiecken}
@@ -92,17 +95,18 @@ Es gibt ebenfalls folgende Approximierung der Seiten von der Sphäre in die Eben
 	a &\approx \sin(a) \nonumber \intertext{und}
 	\frac{a^2}{2} &\approx 1-\cos(a). \nonumber
 \end{align}
-Die Korrespondenzen zwischen der ebenen- und sphärischen Trigonometrie werden in den kommenden Abschnitten erläutert.
+Die Korrespondenzen zwischen der ebenen und sphärischen Trigonometrie werden in den kommenden Abschnitten erläutert.
 
 \subsubsection{Sphärischer Satz des Pythagoras}
-Die Korrespondenz \[ a^2 \approx 1- \cos(a)\] liefert unter Anderem einen entsprechenden Satz des Pythagoras, nämlich
+Die Korrespondenz \[ a^2 \approx 1- \cos(a)\] liefert unter anderem einen entsprechenden Satz des Pythagoras, nämlich
 
 \begin{align*}
-	\cos(a)\cdot \cos(b) &= \cos(c)  \\
-	\bigg[1-\frac{a^2}{2}\bigg] \cdot \bigg[1-\frac{b^2}{2}\bigg] &= 1-\frac{c^2}{2} \intertext{Höhere Potenzen vernachlässigen}
+	\cos(a)\cdot \cos(b) &= \cos(c),  \\
+	\bigg[1-\frac{a^2}{2}\bigg] \cdot \bigg[1-\frac{b^2}{2}\bigg] &= 1-\frac{c^2}{2}. 
+	\intertext{Höhere Potenzen vernachlässigen:} 
 	\xcancel{1}- \frac{a^2}{2} - \frac{b^2}{2} + \xcancel{\frac{a^2b^2}{4}}&= \xcancel{1}- \frac{c^2}{2}  \\
 	-a^2-b^2 &=-c^2\\
-	a^2+b^2&=c^2
+	a^2+b^2&=c^2.
 \end{align*}
 Dies ist der wohlbekannte ebene Satz des Pythagoras.
 
@@ -127,9 +131,9 @@ und den Winkelkosinussatz
 Analog gibt es auch beim Seitenkosinussatz eine Korrespondenz zu \[ a^2 \leftrightarrow 1-\cos(a),\] die den ebenen Kosinussatz herleiten lässt, nämlich
 \begin{align}
 	\cos(a)&= \cos(b)\cdot \cos(c) + \sin(b) \cdot \sin(c)\cdot \cos(\alpha)  \\
-	1-\frac{a^2}{2} &= \bigg[1-\frac{b^2}{2}\bigg]\bigg[1-\frac{c^2}{2}\bigg]+bc\cdot\cos(\alpha) \intertext{Höhere Potenzen vernachlässigen}
+	1-\frac{a^2}{2} &= \bigg[1-\frac{b^2}{2}\bigg]\bigg[1-\frac{c^2}{2}\bigg]+bc\cdot\cos(\alpha). \intertext{Höhere Potenzen vernachlässigen:}
 	\xcancel{1}-\frac{a^2}{2} &= \xcancel{1}-\frac{b^2}{2}-\frac{c^2}{2} \xcancel{+\frac{b^2c^2}{4}}+bc \cdot \cos(\alpha)\\
-	a^2&=b^2+c^2-2bc \cdot \cos(\alpha)
+	a^2&=b^2+c^2-2bc \cdot \cos(\alpha).
 \end{align}
 
 
