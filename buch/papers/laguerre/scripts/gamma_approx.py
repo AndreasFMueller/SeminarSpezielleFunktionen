@@ -1,7 +1,5 @@
 from pathlib import Path
 
-import matplotlib as mpl
-import matplotlib.pyplot as plt
 import numpy as np
 import scipy.special
 
@@ -58,6 +56,8 @@ def laguerre_gamma_shifted(z, x=None, w=None, n=8, target=11):
 
 
 def laguerre_gamma_opt_shifted(z, x=None, w=None, n=8):
+    if z == 0.0:
+        return np.infty
     x, w = _prep_zeros_and_weights(x, w, n)
     n = len(x)
 
@@ -73,6 +73,8 @@ def laguerre_gamma_opt_shifted(z, x=None, w=None, n=8):
 
 
 def laguerre_gamma_simple(z, x=None, w=None, n=8):
+    if z == 0.0:
+        return np.infty
     x, w = _prep_zeros_and_weights(x, w, n)
     z += 0j
     res = np.sum(x ** (z - 1) * w)
@@ -81,6 +83,8 @@ def laguerre_gamma_simple(z, x=None, w=None, n=8):
 
 
 def laguerre_gamma_mirror(z, x=None, w=None, n=8):
+    if z == 0.0:
+        return np.infty
     x, w = _prep_zeros_and_weights(x, w, n)
     z += 0j
     if z.real < 1e-3:
@@ -90,8 +94,8 @@ def laguerre_gamma_mirror(z, x=None, w=None, n=8):
     return laguerre_gamma_simple(z, x, w)
 
 
-def eval_laguerre_gamma(z, x=None, w=None, n=8, func="simple", **kwargs):
-    x, w = _prep_zeros_and_weights(x, w, n)
+def eval_laguerre_gamma(z, x=None, w=None, n=8, func="simple", **kwargs):    
+    x, w = _prep_zeros_and_weights(x, w, n)    
     if func == "simple":
         f = laguerre_gamma_simple
     elif func == "mirror":
@@ -104,4 +108,8 @@ def eval_laguerre_gamma(z, x=None, w=None, n=8, func="simple", **kwargs):
 
 
 def calc_rel_error(x, y):
-    return (y - x) / x
+    mask = np.abs(x) != np.infty
+    rel_error = np.zeros_like(y)
+    rel_error[mask] = (y[mask] - x[mask]) / x[mask]
+    rel_error[~mask] = 0.0
+    return rel_error

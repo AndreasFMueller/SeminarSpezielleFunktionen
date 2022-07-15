@@ -5,7 +5,7 @@ if __name__ == "__main__":
 
     import gamma_approx as ga
 
-    N = 1000
+    N = 1001
     xmin = -5
     xmax = 5
     ns = np.arange(2, 12, 2)
