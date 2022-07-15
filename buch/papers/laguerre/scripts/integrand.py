@@ -6,9 +6,18 @@ if __name__ == "__main__":
     import os
     from pathlib import Path
 
+    import matplotlib as mpl
     import matplotlib.pyplot as plt
     import numpy as np
 
+    mpl.rcParams.update(
+        {
+            "mathtext.fontset": "stix",
+            "font.family": "serif",
+            "font.serif": "TeX Gyre Termes",
+        }
+    )
+    
     EPSILON = 1e-12
     xlims = np.array([-3, 3])
 
@@ -30,4 +39,4 @@ if __name__ == "__main__":
     ax.grid(1, "both")
     labels = [f"$z={zi: 3.1f}$" for zi in np.squeeze(z)]
     ax.legend(labels, ncol=2, loc="upper left", fontsize="small")
-    fig.savefig(f"{img_path}/integrand.pgf")
+    fig.savefig(f"{img_path}/integrand.pdf")

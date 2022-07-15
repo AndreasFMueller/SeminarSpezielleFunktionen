@@ -8,14 +8,15 @@ PRESFOLDER := presentation
 
 FIGURES := \
 	images/targets.pdf \
-	images/estimates.pgf \
-	images/integrand.pgf \
-	images/integrand_exp.pgf \
-	images/laguerre_poly.pgf \
-	images/rel_error_mirror.pgf \
-	images/rel_error_range.pgf \
-	images/rel_error_shifted.pgf \
-	images/rel_error_simple.pgf \
+	images/rel_error_complex.pdf \
+	images/estimates.pdf \
+	images/integrand.pdf \
+	images/integrand_exp.pdf \
+	images/laguerre_poly.pdf \
+	images/rel_error_mirror.pdf \
+	images/rel_error_range.pdf \
+	images/rel_error_shifted.pdf \
+	images/rel_error_simple.pdf \
 	images/gammaplot.pdf
 
 .PHONY: all

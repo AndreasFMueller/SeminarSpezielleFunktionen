@@ -10,8 +10,17 @@ if __name__ == "__main__":
     import os
     from pathlib import Path
 
+    import matplotlib as mpl
     import matplotlib.pyplot as plt
     import scipy.special as ss
+    
+    mpl.rcParams.update(
+        {
+            "mathtext.fontset": "stix",
+            "font.family": "serif",
+            "font.serif": "TeX Gyre Termes",
+        }
+    )
 
     N = 1000
     step = 5
@@ -34,8 +43,8 @@ if __name__ == "__main__":
     ax.set_xlabel(r"$x$", x=1.0, labelpad=-10, rotation=0, fontsize="large")
 
     ylim = 13
-    ax.set_yticks(np.arange(-ylim, ylim), minor=True)
-    ax.set_yticks(np.arange(-step * (ylim // step), ylim, step))
+    ax.set_yticks(get_ticks(-ylim, ylim), minor=True)
+    ax.set_yticks(get_ticks(-step * (ylim // step), ylim, step))
     ax.set_ylim(-ylim, ylim)
     ax.set_ylabel(r"$y$", y=0.95, labelpad=-18, rotation=0, fontsize="large")
 
@@ -94,5 +103,6 @@ if __name__ == "__main__":
         clip_on=False,
     )
 
-    fig.savefig(f"{img_path}/laguerre_poly.pgf")
+    # fig.savefig(f"{img_path}/laguerre_poly.pgf")
+    fig.savefig(f"{img_path}/laguerre_poly.pdf")
     # plt.show()

@@ -1,10 +1,19 @@
 if __name__ == "__main__":
+    import matplotlib as mpl
     import matplotlib.pyplot as plt
     import numpy as np
 
     import gamma_approx as ga
     import targets
 
+    mpl.rcParams.update(
+        {
+            "mathtext.fontset": "stix",
+            "font.family": "serif",
+            "font.serif": "TeX Gyre Termes",
+        }
+    )
+    
     N = 200
     ns = np.arange(2, 13)
     step = 1 / (N - 1)
@@ -32,7 +41,8 @@ if __name__ == "__main__":
     for ax in axs:
         ax.grid(1)
         ax.legend()
-    fig.savefig(f"{ga.img_path}/estimates.pgf")
+    # fig.savefig(f"{ga.img_path}/estimates.pgf")
+    fig.savefig(f"{ga.img_path}/estimates.pdf")
 
     print(f"Intercept={intercept:.6g}, Bias={bias:.6g}")
     predicts = np.ceil(intercept * ns[:, None] + bias - np.real(x))

@@ -10,24 +10,33 @@ def find_best_loc(N=200, a=1.375, b=0.5, ns=None):
     bests = []
     step = 1 / (N - 1)
     x = np.linspace(step, 1 - step, N + 1)
-    gamma = scipy.special.gamma(x)[:, None]
+    gamma = scipy.special.gamma(x)
     for n in ns:
         zeros, weights = np.polynomial.laguerre.laggauss(n)
         est = np.ceil(b + a * n)
         targets = np.arange(max(est - 2, 0), est + 3)
-        glag = [
-            ga.eval_laguerre_gamma(x, target=target, x=zeros, w=weights, func="shifted")
-            for target in targets
-        ]
-        gamma_lag = np.stack(glag, -1)
-        rel_error = np.abs(ga.calc_rel_error(gamma, gamma_lag))
+        rel_error = []
+        for target in targets:
+            gamma_lag = ga.eval_laguerre_gamma(x, target=target, x=zeros, w=weights, func="shifted")
+            rel_error.append(np.abs(ga.calc_rel_error(gamma, gamma_lag)))
+        rel_error = np.stack(rel_error, -1)
         best = np.argmin(rel_error, -1) + targets[0]
         bests.append(best)
     return np.stack(bests, 0)
 
 
 if __name__ == "__main__":
+    import matplotlib as mpl
     import matplotlib.pyplot as plt
+
+    mpl.rcParams.update(
+        {
+            "mathtext.fontset": "stix",
+            "font.family": "serif",
+            "font.serif": "TeX Gyre Termes",
+        }
+    )
+    
     N = 200
     ns = np.arange(2, 13)
     
@@ -45,4 +54,5 @@ if __name__ == "__main__":
     ax.set_yticklabels(ns)
     ax.set_xlabel(r"$z$")
     ax.set_ylabel(r"$n$")
-    fig.savefig(f"{ga.img_path}/targets.pgf")
+    # fig.savefig(f"{ga.img_path}/targets.pgf")
+    fig.savefig(f"{ga.img_path}/targets.pdf")

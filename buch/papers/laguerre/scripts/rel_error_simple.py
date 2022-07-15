@@ -1,9 +1,20 @@
 if __name__ == "__main__":
+    import matplotlib as mpl
     import matplotlib.pyplot as plt
     import numpy as np
     import scipy.special
 
     import gamma_approx as ga
+
+    # mpl.rc("text", usetex=True)
+    mpl.rcParams.update(
+        {
+            "mathtext.fontset": "stix",
+            "font.family": "serif",
+            "font.serif": "TeX Gyre Termes",
+        }
+    )
+    # mpl.rcParams.update({"font.family": "serif", "font.serif": "TeX Gyre Termes"})
 
     # Simple / naive
     xmin = -5
@@ -26,4 +37,5 @@ if __name__ == "__main__":
     # ax.set_ylabel("Relativer Fehler")
     ax.legend(ncol=3, fontsize=ga.fontsize)
     ax.grid(1, "both")
-    fig.savefig(f"{ga.img_path}/rel_error_simple.pgf")
+    # fig.savefig(f"{ga.img_path}/rel_error_simple.pgf")
+    fig.savefig(f"{ga.img_path}/rel_error_simple.pdf")
