@@ -1,0 +1,94 @@
+%
+% lemnispara.tex -- parametrization of the lemniscate
+%
+% (c) 2021 Prof Dr Andreas Müller, OST Ostschweizer Fachhochschule
+%
+\documentclass[tikz]{standalone}
+\usepackage{amsmath}
+\usepackage{times}
+\usepackage{txfonts}
+\usepackage{pgfplots}
+\usepackage{csvsimple}
+\usetikzlibrary{arrows,intersections,math,calc}
+\begin{document}
+\def\skala{1}
+
+\begin{tikzpicture}[>=latex,thick,scale=\skala]
+\def\dx{4}
+\def\dy{4}
+\input{lemnisparadata.tex}
+
+% add image content here
+\draw[color=red!20,line width=1.4pt] \lemnispathmore;
+\draw[color=red,line width=1.4pt] \lemnispath;
+
+\draw[->] ({-1.6*\dx},0) -- ({1.8*\dx},0) coordinate[label={$X$}];
+\draw[->] (0,{-0.7*\dy}) -- (0,{0.7*\dy}) coordinate[label={right:$Y$}];
+
+\draw ({1.5*\dx},-0.05) -- ({1.5*\dx},0.05);
+\draw ({\dx},-0.05) -- ({\dx},0.05);
+\draw ({0.5*\dx},-0.05) -- ({0.5*\dx},0.05);
+\draw ({-0.5*\dx},-0.05) -- ({-0.5*\dx},0.05);
+\draw ({-\dx},-0.05) -- ({-\dx},0.05);
+\draw ({-1.5*\dx},-0.05) -- ({-1.5*\dx},0.05);
+\draw (-0.05,{0.5*\dy}) -- (0.05,{0.5*\dy});
+\draw (-0.05,{-0.5*\dy}) -- (0.05,{-0.5*\dy});
+
+\node at ({\dx},0) [above] {$1$};
+\node at ({-\dx},0) [above] {$-1$};
+\node at ({-0.5*\dx},0) [above] {$-\frac12$};
+\node at ({0.5*\dx},0) [above] {$\frac12$};
+\node at (0,{0.5*\dy}) [left] {$\frac12$};
+\node at (0,{-0.5*\dy}) [left] {$-\frac12$};
+
+\def\s{0.02}
+
+\draw[color=red] ($(LA)-\s*(NA)$) -- ($(LA)+\s*(NA)$);
+\draw[color=red] ($(LB)-\s*(NB)$) -- ($(LB)+\s*(NB)$);
+\draw[color=red] ($(LC)-\s*(NC)$) -- ($(LC)+\s*(NC)$);
+\draw[color=red] ($(LD)-\s*(ND)$) -- ($(LD)+\s*(ND)$);
+\draw[color=red] ($(LE)-\s*(NE)$) -- ($(LE)+\s*(NE)$);
+\draw[color=red] ($(LF)-\s*(NF)$) -- ($(LF)+\s*(NF)$);
+\draw[color=red] ($(LG)-\s*(NG)$) -- ($(LG)+\s*(NG)$);
+\draw[color=red] ($(LH)-\s*(NH)$) -- ($(LH)+\s*(NH)$);
+\draw[color=red] ($(LI)-\s*(NI)$) -- ($(LI)+\s*(NI)$);
+\draw[color=red] ($(LJ)-\s*(NJ)$) -- ($(LJ)+\s*(NJ)$);
+\draw[color=red] ($(LK)-\s*(NK)$) -- ($(LK)+\s*(NK)$);
+\draw[color=red] ($(LL)-\s*(NL)$) -- ($(LL)+\s*(NL)$);
+\draw[color=red] ($(LM)-\s*(NM)$) -- ($(LM)+\s*(NM)$);
+\draw[color=red] ($(LN)-\s*(NN)$) -- ($(LN)+\s*(NN)$);
+\draw[color=red] ($(LO)-\s*(NO)$) -- ($(LO)+\s*(NO)$);
+\draw[color=red] ($(LP)-\s*(NP)$) -- ($(LP)+\s*(NP)$);
+\draw[color=red] ($(LQ)-\s*(NQ)$) -- ($(LQ)+\s*(NQ)$);
+\draw[color=red] ($(LR)-\s*(NR)$) -- ($(LR)+\s*(NR)$);
+\draw[color=red] ($(LS)-\s*(NS)$) -- ($(LS)+\s*(NS)$);
+\draw[color=red] ($(LT)-\s*(NT)$) -- ($(LT)+\s*(NT)$);
+\draw[color=red] ($(LU)-\s*(NU)$) -- ($(LU)+\s*(NU)$);
+
+\CB
+\CC
+\CD
+\CE
+\CF
+\CG
+\CH
+\CI
+\CJ
+\CK
+\CL
+\CM
+\CN
+\CO
+\CP
+\CQ
+\CR
+\CS
+\CT
+\CU
+
+\fill[color=blue] (LA) circle[radius=0.07];
+\node[color=blue] at (LA) [above right] {$S$};
+
+\end{tikzpicture}
+\end{document}
+

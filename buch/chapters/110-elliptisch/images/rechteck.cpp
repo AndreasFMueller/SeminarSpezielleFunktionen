@@ -163,7 +163,7 @@ curvetracer::curve_t	curvetracer::trace(const std::complex<double>& startz,
 		} catch (const toomanyiterations& x) {
 			std::cerr << "iterations exceeded after ";
 			std::cerr << result.size();
-			std::cerr << " points";
+			std::cerr << " points" << std::endl;
 			maxsteps = 0;
 		}
 	}
@@ -230,7 +230,7 @@ void	curvedrawer::operator()(const curvetracer::curve_t& curve) {
 	double	first = true;
 	for (auto z : curve) {
 		if (first) {
-			*_out << "\\draw[color=" << _color << "] ";
+			*_out << "\\draw[color=" << _color << ",line width=#1] ";
 			first = false;
 		} else {
 			*_out << std::endl << "    -- ";
@@ -244,6 +244,7 @@ static struct option	longopts[] = {
 { "outfile",	required_argument,	NULL,	'o' },
 { "k",		required_argument,	NULL,	'k' },
 { "deltax",	required_argument,	NULL,	'd' },
+{ "vsteps",	required_argument,	NULL,	'v' },
 { NULL,		0,			NULL,	 0  }
 };
 
@@ -252,7 +253,8 @@ static struct option	longopts[] = {
  */
 int	main(int argc, char *argv[]) {
 	double	k = 0.625;
-	double	deltax = 0.2;
+	double	Deltax = 0.2;
+	int	vsteps = 4;
 
 	int	c;
 	int	longindex;
@@ -261,13 +263,16 @@ int	main(int argc, char *argv[]) {
 		&longindex)))
 		switch (c) {
 		case 'd':
-			deltax = std::stod(optarg);
+			Deltax = std::stod(optarg);
 			break;
 		case 'o':
 			outfilename = std::string(optarg);
 			break;
 		case 'k':
 			k = std::stod(optarg);
+			break;
+		case 'v':
+			vsteps = std::stoi(optarg);
 			break;
 		}
 
@@ -293,15 +298,21 @@ int	main(int argc, char *argv[]) {
 	curvetracer	ct(f);
 
 	// fill
+	(*cdp->out()) << "\\def\\hintergrund{" << std::endl;
 	(*cdp->out()) << "\\fill[color=red!10] ({" << (-xmax) << "*\\dx},0) "
 		<< "rectangle ({" << xmax << "*\\dx},{" << ymax << "*\\dy});"
 		<< std::endl;
 	(*cdp->out()) << "\\fill[color=blue!10] ({" << (-xmax) << "*\\dx},{"
 		<< (-ymax) << "*\\dy}) rectangle ({" << xmax << "*\\dx},0);"
 		<< std::endl;
+	(*cdp->out()) << "}" << std::endl;
+
+	// macro for grid
+	(*cdp->out()) << "\\def\\netz#1{" << std::endl;
 
 	// "circles"
 	std::complex<double>	dir(0.01, 0);
+	double	deltax = Deltax;
 	for (double im = deltax; im < 3; im += deltax) {
 		std::complex<double>	startz(0, im);
 		std::complex<double>	startw = ct.startpoint(startz);
@@ -316,9 +327,9 @@ int	main(int argc, char *argv[]) {
 	}
 
 	// imaginary axis
-	(*cdp->out()) << "\\draw[color=red] (0,0) -- (0,{" << ymax
+	(*cdp->out()) << "\\draw[color=red,line width=#1] (0,0) -- (0,{" << ymax
 		<< "*\\dy});" << std::endl;
-	(*cdp->out()) << "\\draw[color=blue] (0,0) -- (0,{" << (-ymax)
+	(*cdp->out()) << "\\draw[color=blue,line width=#1] (0,0) -- (0,{" << (-ymax)
 		<< "*\\dy});" << std::endl;
 
 	// arguments between 0 and 1
@@ -353,7 +364,8 @@ int	main(int argc, char *argv[]) {
 
 	// arguments between 1 and 1/k
 	{
-		for (double x0 = 1 + deltax; x0 < 1/k; x0 += deltax) {
+		deltax = (1/k - 1) / vsteps;
+		for (double x0 = 1 + deltax; x0 < 1/k + 0.00001; x0 += deltax) {
 			double	y0 = sqrt(1-1/(x0*x0))/kprime;
 			//std::cout << "y0 = " << y0 << std::endl;
 			double	y = gsl_sf_ellint_F(asin(y0), kprime,
@@ -389,8 +401,9 @@ int	main(int argc, char *argv[]) {
 
 	// arguments larger than 1/k
 	{
+		deltax = Deltax;
 		dir = std::complex<double>(0, 0.01);
-		double	x0 = 1;
+		double	x0 = 1/k;
 		while (x0 <= 1/k + 0.0001) { x0 += deltax; }
 		for (; x0 < 4; x0 += deltax) {
 			std::complex<double>	startz(x0);
@@ -406,6 +419,8 @@ int	main(int argc, char *argv[]) {
 		(*cdp)(curvetracer::mirrory(curve));
 		}
 	}
+
+	(*cdp->out()) << "}" << std::endl;
 
 	// border
 	(*cdp->out()) << "\\def\\xmax{" << xmax << "}" << std::endl;

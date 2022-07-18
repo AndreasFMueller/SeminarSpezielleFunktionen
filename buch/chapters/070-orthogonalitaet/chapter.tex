@@ -8,20 +8,66 @@
 \label{buch:chapter:orthogonalitaet}}
 \lhead{Orthogonalität}
 \rhead{}
+In der linearen Algebra lernt man, dass orthonormierte Basen für die
+Lösung vektorgeometrischer Probleme, bei denen auch das Skalarprodukt
+involviert ist, besonders günstig sind.
+Die Zerlegung eines Vektors in einer Basis verlangt normalerweise nach
+der Lösung eines linearen Gleichungssystems, für orthonormierte
+Basisvektoren beschränkt sie sich auf die Berechnung von Skalarprodukten.
+
+Oft dienen spezielle Funktionen als Basis der Lösungen einer linearen
+partiellen Differentialgleichung (siehe Kapitel~\ref{buch:chapter:pde}).
+Die Randbedingungen müssen dazu in der gewählten Basis von Funktionen
+zerlegt werden.
+Fourier ist es gelungen, die Idee des Skalarproduktes und der Orthogonalität
+auf Funktionen zu verallgemeinern und so zum Beispiel das Wärmeleitungsproblem
+zu lösen.
+
+Der Orthonormalisierungsprozess von Gram-Schmidt wird damit auch auf
+Funktionen anwendbar
+(Abschnitt~\ref{buch:orthogonalitaet:section:orthogonale-funktionen}),
+der Nutzen führt aber noch viel weiter.
+Da $K[x]$ ein Vektorraum ist, führt er von der Basis der Monome
+$\{1,x,x^2,\dots,x^n\}$ 
+auf orthonormierte Polynome.
+Diese haben jedoch eine ganze Reihe weiterer nützlicher Eigenschaften.
+So wird in Abschnitt~\ref{buch:orthogonal:section:drei-term-rekursion}
+gezeigt, dass sich die Werte aller Polynome einer solchen Familie mit
+einer Rekursionsformel effizient berechnen lassen, die höchstens drei
+Terme umfasst.
+In Abschnitt~\ref{buch:orthogonalitaet:section:rodrigues} werden
+die Rodrigues-Formeln vorgeführt, die Polynome durch Anwendung eines
+Differentialoperators hervorbringen.
+In Abschnitt~\ref{buch:orthogonal:section:orthogonale-polynome-und-dgl}
+schliesslich wird gezeigt, dass diese Polynome auch Eigenfunktionen
+eines selbstadjungierten Operators sind.
+Da man in der linearen Algebra auch lernt, dass die Eigenvektoren einer
+symmetrischen Matrix zu verschiedenen Eigenwerten orthogonal sind,
+ist die Orthogonalität plötzlich nicht mehr überraschend.
+
+Die Bessel-Funktionen von
+Abschnitt~\ref{buch:differntialgleichungen:section:bessel}
+sind auch Eigenfunktionen eines Differentialoperators.
+Abschnitt~\ref{buch:orthogonalitaet:section:bessel} findet das zugehörige
+Skalarprodukt, welches andeutet, dass auch für andere Funktionenfamilien
+eine entsprechende Konstruktion möglich ist.
+Das in Abschnitt~\ref{buch:integrale:subsection:sturm-liouville-problem}
+präsentierte Sturm-Liouville-Problem führt sie durch.
+Das Kapitel schliesst mit dem
+Abschnitt~\ref{buch:orthogonal:section:gauss-quadratur}
+über die Gauss-Quadratur, welche die Eigenschaften orthogonaler Polynome
+für einen besonders effizienten numerischen Integrationsalgorithmus
+ausnutzt.
+
 \input{chapters/070-orthogonalitaet/orthogonal.tex}
 \input{chapters/070-orthogonalitaet/rekursion.tex}
 \input{chapters/070-orthogonalitaet/rodrigues.tex}
-%\input{chapters/070-orthogonalitaet/jacobi.tex}
 \input{chapters/070-orthogonalitaet/legendredgl.tex}
 \input{chapters/070-orthogonalitaet/bessel.tex}
 \input{chapters/070-orthogonalitaet/sturm.tex}
 \input{chapters/070-orthogonalitaet/gaussquadratur.tex}
 
-%\section{TODO}
-%\begin{itemize}
-%\end{itemize}
-
-\section*{Übungsaufgaben}
+\section*{Übungsaufgabe}
 \rhead{Übungsaufgaben}
 \aufgabetoplevel{chapters/070-orthogonalitaet/uebungsaufgaben}
 \begin{uebungsaufgaben}
