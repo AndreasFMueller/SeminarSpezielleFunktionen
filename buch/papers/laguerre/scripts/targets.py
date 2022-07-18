@@ -42,8 +42,8 @@ if __name__ == "__main__":
     
     bests = find_best_loc(N, ns=ns)
 
-    fig, ax = plt.subplots(num=1, clear=True, constrained_layout=True, figsize=(4, 2.4))
-    v = ax.imshow(bests, cmap="inferno", aspect="auto", interpolation="nearest")
+    fig, ax = plt.subplots(num=1, clear=True, constrained_layout=True, figsize=(3.5, 2.1))
+    v = ax.imshow(bests, cmap=ga.cmap, aspect="auto", interpolation="nearest")
     plt.colorbar(v, ax=ax, label=r"$m^*$")
     ticks = np.arange(0, N + 1, N // 5)
     ax.set_xlim(0, 1)

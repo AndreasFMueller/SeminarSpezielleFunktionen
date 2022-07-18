@@ -28,7 +28,7 @@ images: $(FIGURES)
 .PHONY: presentation
 presentation: $(PRESFOLDER)/presentation.pdf
 
-images/%.pdf images/%.pgf: scripts/%.py
+images/%.pdf images/%.pgf: scripts/%.py scripts/gamma_approx.py
 	python3 $<
 
 images/gammaplot.pdf: images/gammaplot.tex images/gammapaths.tex

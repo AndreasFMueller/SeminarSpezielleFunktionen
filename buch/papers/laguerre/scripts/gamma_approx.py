@@ -7,6 +7,7 @@ EPSILON = 1e-7
 root = str(Path(__file__).parent)
 img_path = f"{root}/../images"
 fontsize = "medium"
+cmap = "plasma"
 
 
 def _prep_zeros_and_weights(x, w, n):

@@ -48,13 +48,13 @@ darum müssen wir sie mit einer Funktion multiplizieren,
 die schneller als jedes Polynom gegen $0$ geht,
 damit das Integral immer noch konvergiert.
 Die Laguerre-Polynome $L_n$ bieten hier Abhilfe,
-da ihre Gewichtsfunktion $e^{-x}$ schneller
+da ihre Gewichtsfunktion $w(x) = e^{-x}$ schneller
 gegen $0$ konvergiert als jedes Polynom.
 % In unserem Falle möchten wir die Gauss Quadratur auf die Laguerre-Polynome
 % $L_n$ ausweiten.
 % Diese sind orthogonal im Intervall $(0, \infty)$ bezüglich
 % der Gewichtsfunktion $e^{-x}$.
-Gleichung~\eqref{laguerre:gaussquadratur} lässt sich wie folgt
+Die Gleichung~\eqref{laguerre:gaussquadratur} lässt sich wie folgt
 umformulieren:
 \begin{align}
 \int_{0}^{\infty} f(x) e^{-x} dx
@@ -81,7 +81,7 @@ l_i(x_j)
 % .
 \end{align*}
 die Lagrangschen Interpolationspolynome.
-Laut \cite{hildebrand2013introduction} können die Gewicht mit
+Laut \cite{laguerre:hildebrand2013introduction} können die Gewichte mit
 \begin{align*}
 A_i
  & =
@@ -97,7 +97,7 @@ des orthogonalen Polynoms $\phi_n(x)$, $\forall i =0,\ldots,n$ und
 \end{align*}
 dem Normalisierungsfaktor.
 Wir setzen nun $\phi_n(x) = L_n(x)$ und
-nutzen den Vorzeichenwechsel der Laguerrekoeffizienten aus,
+nutzen den Vorzeichenwechsel der Laguerre-Koeffizienten aus,
 damit erhalten wir
 \begin{align*}
 A_i
@@ -135,7 +135,7 @@ n L_n(x) - n L_{n-1}(x)
 &= (x - n - 1) L_n(x) + (n + 1) L_{n+1}(x)
 \end{align*}
 umgeformt werden und da $x_i$ die Nullstellen von $L_n(x)$ sind,
-folgt
+vereinfacht sich der Term zu
 \begin{align*}
 x_i L'_n(x_i)
 &=
@@ -145,7 +145,7 @@ x_i L'_n(x_i)
  (n + 1) L_{n+1}(x_i)
 .
 \end{align*}
-Setzen wir das nun in \eqref{laguerre:gewichte_lag_temp} ein ergibt sicht
+Setzen wir das nun in \eqref{laguerre:gewichte_lag_temp} ein ergibt sich
 \begin{align}
 \nonumber
 A_i
@@ -168,7 +168,7 @@ Der Fehlerterm $R_n$ folgt direkt aus der Approximation
 =
 \sum_{i=1}^n f(x_i) A_i + R_n
 \end{align*}
-und \cite{abramowitz+stegun} gibt ihn als
+und \cite{laguerre:abramowitz+stegun} gibt ihn als
 \begin{align}
 R_n
  & =

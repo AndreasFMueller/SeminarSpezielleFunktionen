@@ -21,7 +21,7 @@ if __name__ == "__main__":
 
     x = np.linspace(xmin + ga.EPSILON, xmax - ga.EPSILON, N)
     gamma = scipy.special.gamma(x)
-    fig, ax = plt.subplots(num=1, clear=True, constrained_layout=True, figsize=(5, 2.5))
+    fig, ax = plt.subplots(num=1, clear=True, constrained_layout=True, figsize=(5, 2))
     for n in ns:
         gamma_lag = ga.eval_laguerre_gamma(x, n=n, func="optimal_shifted")
         rel_err = ga.calc_rel_error(gamma, gamma_lag)

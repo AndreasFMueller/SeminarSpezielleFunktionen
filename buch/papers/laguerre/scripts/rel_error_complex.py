@@ -24,9 +24,9 @@ if __name__ == "__main__":
     lag = ga.eval_laguerre_gamma(input, n=8, func="optimal_shifted").reshape(mesh.shape)
     rel_error = np.abs(ga.calc_rel_error(lanczos, lag))
 
-    fig, ax = plt.subplots(clear=True, constrained_layout=True, figsize=(4, 2.4))
+    fig, ax = plt.subplots(clear=True, constrained_layout=True, figsize=(3.5, 2.1))
     _c = ax.pcolormesh(
-        x, y, rel_error, shading="gouraud", cmap="inferno", norm=mpl.colors.LogNorm()
+        x, y, rel_error, shading="gouraud", cmap=ga.cmap, norm=mpl.colors.LogNorm()
     )
     cbr = fig.colorbar(_c, ax=ax)
     cbr.minorticks_off()

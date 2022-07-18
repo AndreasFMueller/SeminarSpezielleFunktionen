@@ -20,7 +20,7 @@ if __name__ == "__main__":
     x = np.linspace(step, 1 - step, N + 1)
     targets = np.arange(10, 14)
     gamma = scipy.special.gamma(x)
-    fig, ax = plt.subplots(num=1, clear=True, constrained_layout=True, figsize=(5, 2.5))
+    fig, ax = plt.subplots(num=1, clear=True, constrained_layout=True, figsize=(5, 2.1))
     for target in targets:
         gamma_lag = ga.eval_laguerre_gamma(x, target=target, n=n, func="shifted")
         rel_error = np.abs(ga.calc_rel_error(gamma, gamma_lag))
