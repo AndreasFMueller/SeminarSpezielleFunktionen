@@ -6,5 +6,9 @@
 dependencies-fm =						\
 	papers/fm/packages.tex					\
 	papers/fm/main.tex					\
+	papers/fm/01_AM-FM.tex					\
+	papers/fm/02_frequenzyspectrum.tex			\
+	papers/fm/03_bessel.tex					\
+	papers/fm/04_fazit.tex					\
 	papers/fm/references.bib			
 
