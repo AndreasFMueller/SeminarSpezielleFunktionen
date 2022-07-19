@@ -7,16 +7,16 @@
 SOURCES := \
 	01_AM-FM.tex \
 	02_frequenzyspectrum.tex \
-	main.tex \
 	03_bessel.tex \
-	04_fazit.tex
+	04_fazit.tex \
+	main.tex 
 
 #TIKZFIGURES := \
 	tikz/atoms-grid-still.tex \
 
 #FIGURES := $(patsubst tikz/%.tex, figures/%.pdf, $(TIKZFIGURES))
 
-.PHONY: images
+#.PHONY: images
 #images: $(FIGURES)
 
 #figures/%.pdf: tikz/%.tex
