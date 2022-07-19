@@ -8,8 +8,8 @@
 Die Gauss-Laguerre-Quadratur kann nun verwendet werden,
 um exponentiell abfallende Funktionen im Definitionsbereich $(0, \infty)$ zu
 berechnen.
-Dabei bietet sich z.B. die Gamma-Funkion bestens an, wie wir in den folgenden
-Abschnitten sehen werden.
+Dabei bietet sich z.B. die Gamma-Funkion hervorragend an,
+wie wir in den folgenden Abschnitten sehen werden.
 
 \subsection{Gamma-Funktion}
 Die Gamma-Funktion ist eine Erweiterung der Fakultät auf die reale und komplexe
@@ -26,10 +26,12 @@ Integral der Form
 \label{laguerre:gamma}
 .
 \end{align}
-Der Term $e^{-t}$ ist genau die Gewichtsfunktion der Laguerre-Integration und
-der Definitionsbereich passt ebenfalls genau für dieses Verfahren.
-Zu erwähnen ist auch, dass für die verallgemeinerte Laguerre-Integration die
-Gewichtsfunktion $t^\nu e^{-t}$ genau dem Integranden für $\nu=z-1$ entspricht.
+Der Term $e^{-t}$ im Integranden und der Integrationsbereich erfüllen 
+genau die Bedingungen der Laguerre-Integration.
+% Der Term $e^{-t}$ ist genau die Gewichtsfunktion der Laguerre-Integration und
+% der Definitionsbereich passt ebenfalls genau für dieses Verfahren.
+Weiter zu erwähnen ist, dass für die verallgemeinerte Laguerre-Integration die
+Gewichtsfunktion $t^\nu e^{-t}$ exakt dem Integranden für $\nu=z-1$ entspricht.
 
 \subsubsection{Funktionalgleichung}
 Die Gamma-Funktion besitzt die gleiche Rekursionsbeziehung wie die Fakultät,
@@ -62,7 +64,8 @@ leicht in die linke Halbebene übersetzen und umgekehrt.
 \subsection{Berechnung mittels Gauss-Laguerre-Quadratur}
 In den vorherigen Abschnitten haben wir gesehen,
 dass sich die Gamma-Funktion bestens für die Gauss-Laguerre-Quadratur eignet.
-Nun bieten sich uns zwei Optionen diese zu berechnen:
+Nun bieten sich uns zwei Optionen,
+diese zu berechnen:
 \begin{enumerate}
 \item Wir verwenden die verallgemeinerten Laguerre-Polynome, dann $f(x)=1$.
 \item Wir verwenden die Laguerre-Polynome, dann $f(x)=x^{z-1}$.
@@ -92,7 +95,8 @@ und Nullstellen für unterschiedliche $z$.
 In \eqref{laguerre:quadratur_gewichte} ist ersichtlich,
 dass die Gewichte einfach zu berechnen sind.
 Auch die Nullstellen können vorgängig,
-mittels eines geeigneten Verfahrens aus den Polynomen bestimmt werden.
+mittels eines geeigneten Verfahrens,
+aus den Polynomen bestimmt werden.
 Als problematisch könnte sich höchstens
 die zu integrierende Funktion $f(x)=x^{z-1}$ für $|z| \gg 0$ erweisen.
 Somit entscheiden wir uns aufgrund der vorherigen Punkte,
@@ -101,7 +105,8 @@ die zweite Variante weiterzuverfolgen.
 \subsubsection{Direkter Ansatz}
 Wenden wir also die Gauss-Laguerre-Quadratur aus
 \eqref{laguerre:laguerrequadratur} auf die Gamma-Funktion
-\eqref{laguerre:gamma} an ergibt sich
+\eqref{laguerre:gamma} an,
+ergibt sich
 \begin{align}
 \Gamma(z)
 \approx
@@ -157,11 +162,12 @@ und als Stützstellen die Nullstellen des Laguerre-Polynomes $L_n$.
 Evaluieren wir den relativen Fehler unserer Approximation zeigt sich ein
 Bild wie in Abbildung~\ref{laguerre:fig:rel_error_simple}.
 Man kann sehen,
-wie der relative Fehler Nullstellen aufweist für ganzzahlige $z \leq 2n$,
-was laut der Theorie der Gauss-Quadratur auch zu erwarten ist,
-denn die Approximation via Gauss-Quadratur
-ist exakt für zu integrierende Polynome mit Grad $\leq 2n-1$
-und von $z$ auch noch $1$ abgezogen wird im Exponenten.
+wie der relative Fehler Nullstellen aufweist für ganzzahlige $z \leq 2n$.
+Laut der Theorie der Gauss-Quadratur auch ist das zu erwarten,
+da die Approximation via Gauss-Quadratur
+exakt ist für zu integrierende Polynome mit Grad $\leq 2n-1$
+und hinzukommt,
+dass zudem von $z$ noch $1$ abgezogen wird im Exponenten.
 Es ist ersichtlich,
 dass sich für den Polynomgrad $n$ ein Interval gibt,
 in dem der relative Fehler minimal ist.
@@ -347,7 +353,8 @@ m^*
 \end{align*}
 Allerdings ist die Funktion $R_{n,m}(\xi)$ unbeschränkt und
 hat die gleichen Probleme wie die Fehlerabschätzung des direkten Ansatzes.
-Dazu müssten wir $\xi$ versuchen unter Kontrolle zu bringen,
+Dazu müssten wir $\xi$ versuchen,
+unter Kontrolle zu bringen,
 was ein äussersts schwieriges Unterfangen zu sein scheint.
 Da die Gauss-Quadratur aber sowieso
 nur wirklich praktisch sinnvoll für kleine $n$ ist,
@@ -367,8 +374,8 @@ aus dieser Grafik nicht offensichtlich,
 aber sie scheint regelmässig zu sein.
 Es lässt die Vermutung aufkommen,
 dass die Restriktion von $m^* \in \mathbb{Z}$ Rundungsprobleme verursacht.
-Wir versuchen dieses Problem via lineare Regression und
-geeignete Rundung zu beheben.
+Wir versuchen,
+dieses Problem via lineare Regression und geeignete Rundung zu beheben.
 Den linearen Regressor
 \begin{align*}
 \hat{m}
@@ -391,7 +398,7 @@ In Abbildung~\ref{laguerre:fig:schaetzung} sind die Resultate
 der linearen Regression aufgezeigt mit $\alpha = 1.34094$ und $\beta =
 0.854093$.
 Die lineare Beziehung ist ganz klar ersichtlich und der Fit scheint zu genügen.
-Der optimalen Verschiebungsterm kann nun mit
+Der optimale Verschiebungsterm kann nun mit
 \begin{align*}
 m^*
 \approx
@@ -423,7 +430,7 @@ dann beim Übergang auf die orange Linie wechselt.
 \caption{Relativer Fehler des Ansatzes mit Verschiebungsterm
 für verschiedene reele Werte von $z$ und Verschiebungsterme $m$.
 Das verwendete Laguerre-Polynom besitzt den Grad $n = 8$.
-$m^*$ bezeichnet hier den optimalen Verschiebungsterm}
+$m^*$ bezeichnet hier den optimalen Verschiebungsterm.}
 \label{laguerre:fig:rel_error_shifted}
 \end{figure}
 
@@ -433,8 +440,8 @@ Es stellt sich nun die Frage,
 wie der relative Fehler sich für verschiedene $z$ und $n$ verhält.
 In Abbildung~\ref{laguerre:fig:rel_error_range} sind die relativen Fehler für
 unterschiedliche $n$ dargestellt.
-Der relative Fehler scheint immer noch Nullstellen aufzuweisen,
-bei für ganzzahlige $z$.
+Der relative Fehler scheint immer noch Nullstellen aufzuweisen
+für ganzzahlige $z$.
 Durch das Verschieben ergibt sich jetzt aber,
 wie zu erwarten war,
 ein periodischer relativer Fehler mit einer Periodendauer von $1$.
@@ -511,7 +518,7 @@ Diese Methode wurde zum Beispiel in
 Diese Methode erreicht für $n = 7$ typischerweise Genauigkeit von $13$
 korrekten, signifikanten Stellen für reele Argumente.
 Zum Vergleich: die vorgestellte Methode erreicht für $n = 7$ 
-eine minimale Genauigkeit von $6$-$7$ korrekten, signifikanten Stellen 
+eine minimale Genauigkeit von $6$ korrekten, signifikanten Stellen 
 für reele Argumente.
 Das Resultat ist etwas enttäuschend,
 aber nicht unerwartet,
@@ -519,7 +526,7 @@ da die Lanczos-Methode spezifisch auf dieses Problem zugeschnitten ist und
 unsere Methode eine erweiterte allgemeine Methode ist.
 Was die Komplexität der Berechnungen im Betrieb angeht,
 ist die Gauss-Laguerre-Quadratur wesentlich ressourcensparender,
-weil sie nur aus $n$ Funktionasevaluationen, 
+weil sie nur aus $n$ Funktionsevaluationen, 
 wenigen Multiplikationen und Additionen besteht.
-Also könnte diese Methode z.B. Anwendung in Systemen mit wenig Rechenleistung
+Demzufolge könnte diese Methode Anwendung in Systemen mit wenig Rechenleistung
 und/oder knappen Energieressourcen finden.

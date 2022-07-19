@@ -6,19 +6,19 @@
 \section{Gauss-Quadratur
   \label{laguerre:section:quadratur}}
 Die Gauss-Quadratur ist ein numerisches Integrationsverfahren,
-welches die Eigenschaften von orthogonalen Polynomen ausnützt.
+welches die Eigenschaften von orthogonalen Polynomen verwendet.
 Herleitungen und Analysen der Gauss-Quadratur können im 
 Abschnitt~\ref{buch:orthogonal:section:gauss-quadratur} gefunden werden.
 Als grundlegende Idee wird die Beobachtung,
 dass viele Funktionen sich gut mit Polynomen approximieren lassen,
 verwendet.
 Stellt man also sicher,
-dass ein Verfahren gut für Polynome gut funktioniert, 
-sollte es auch für andere Funktionen nicht schlecht funktionieren.
+dass ein Verfahren gut für Polynome funktioniert, 
+sollte es auch für andere Funktionen angemessene Resultate liefern.
 Es wird ein Polynom verwendet, 
 welches an den Punkten $x_0 < x_1 < \ldots < x_n$ 
 die Funktionwerte~$f(x_i)$ annimmt.
-Als Resultat kann das Integral via eine gewichtete Summe der Form
+Als Resultat kann das Integral via einer gewichteten Summe der Form
 \begin{align}
 \int_a^b f(x) w(x) \, dx
 \approx
@@ -44,11 +44,11 @@ a + \frac{1 - t}{t}
 auf das Intervall $[0, 1]$ transformiert,
 kann dies behoben werden.
 Für unseren Fall gilt $a = 0$.
-Das Integral eines Polynomes in diesem Intervall ist immer divergent,
-darum müssen wir das Polynome mit einer Funktion multiplizieren,
+Das Integral eines Polynomes in diesem Intervall ist immer divergent.
+Darum müssen wir das Polynom mit einer Funktion multiplizieren,
 die schneller als jedes Polynom gegen $0$ geht,
 damit das Integral immer noch konvergiert.
-Die Laguerre-Polynome $L_n$ bieten hier Abhilfe,
+Die Laguerre-Polynome $L_n$ schaffen hier Abhilfe,
 da ihre Gewichtsfunktion $w(x) = e^{-x}$ schneller
 gegen $0$ konvergiert als jedes Polynom.
 % In unserem Falle möchten wir die Gauss Quadratur auf die Laguerre-Polynome
@@ -67,7 +67,7 @@ umformulieren:
 \subsubsection{Stützstellen und Gewichte}
 Nach der Definition der Gauss-Quadratur müssen als Stützstellen die Nullstellen
 des verwendeten Polynoms genommen werden.
-Das heisst für das Laguerre-Polynom $L_n$ müssen dessen Nullstellen $x_i$ und
+Für das Laguerre-Polynom $L_n$ müssen demnach dessen Nullstellen $x_i$ und
 als Gewichte $A_i$ die Integrale $l_i(x)e^{-x}$ verwendet werden.
 Dabei sind
 \begin{align*}
@@ -146,7 +146,8 @@ x_i L'_n(x_i)
  (n + 1) L_{n+1}(x_i)
 .
 \end{align*}
-Setzen wir das nun in \eqref{laguerre:gewichte_lag_temp} ein ergibt sich
+Setzen wir das nun in \eqref{laguerre:gewichte_lag_temp} ein,
+ergibt sich
 \begin{align}
 \nonumber
 A_i

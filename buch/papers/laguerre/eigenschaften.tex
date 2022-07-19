@@ -3,24 +3,11 @@
 %
 % (c) 2022 Patrik Müller, Ostschweizer Fachhochschule
 %
-% \section{Eigenschaften
-%   \label{laguerre:section:eigenschaften}}
-% {
-% \large \color{red}
-% TODO:
-% Evtl. nur Orthogonalität hier behandeln, da nur diese für die Gauss-Quadratur
-% benötigt wird.
-% }
-
-% Die Laguerre-Polynome besitzen einige interessante Eigenschaften
-% \rhead{Eigenschaften}
-
-% \subsection{Orthogonalität
-%   \label{laguerre:subsection:orthogonal}}
 \section{Orthogonalität
   \label{laguerre:section:orthogonal}}
-Im Abschnitt~\ref{laguerre:section:definition} haben wir behauptet,
-dass die Laguerre-Polynome orthogonale Polynome sind.
+Im Abschnitt~\ref{laguerre:section:definition} 
+haben wir die Behauptung aufgestellt,
+dass die Laguerre-Polynome orthogonal sind.
 Zu dieser Behauptung möchten wir nun einen Beweis liefern.
 Wenn wir \eqref{laguerre:dgl} in ein
 Sturm-Liouville-Problem umwandeln können, haben wir bewiesen, dass es sich
@@ -40,7 +27,7 @@ und den Laguerre-Operator
 x \frac{d}{dx^2} + (\nu + 1 -x) \frac{d}{dx}
 \end{align}
 erhalten werden,
-in dem wir diese Operatoren einander gleichsetzen.
+indem wir diese Operatoren einander gleichsetzen.
 Aus der Beziehung
 \begin{align}
 S
@@ -58,7 +45,7 @@ Ausserdem ist ersichtlich, dass $p(x)$ die Differentialgleichung
 \begin{align*}
 x \frac{dp}{dx}
 =
--(\nu + 1 - x) p,
+-(\nu + 1 - x) p
 \end{align*}
 erfüllen muss.
 Durch Separation erhalten wir dann
@@ -76,6 +63,7 @@ Durch Separation erhalten wir dann
 p(x)
  & =
 -C x^{\nu + 1} e^{-x}
+.
 \end{align*}
 Eingefügt in Gleichung~\eqref{laguerre:sl-lag} ergibt sich
 \begin{align*}
@@ -117,14 +105,9 @@ Für den rechten Rand ist die Bedingung (Gleichung~\eqref{laguerre:sllag_randb})
 0
 \end{align*}
 für beliebige Polynomlösungen erfüllt für $k_\infty=0$ und $h_\infty=1$.
-Damit können wir schlussfolgern, dass die verallgemeinerten Laguerre-Polynome
-orthogonal bezüglich des Skalarproduktes auf dem Intervall $(0, \infty)$
-mit der verallgemeinerten Laguerre\--Gewichtsfunktion $w(x)=x^\nu e^{-x}$ sind.
+Damit können wir schlussfolgern: 
+Die verallgemeinerten Laguerre-Polynome sind orthogonal
+bezüglich des Skalarproduktes auf dem Intervall $(0, \infty)$
+mit der verallgemeinerten Laguerre\--Gewichtsfunktion $w(x)=x^\nu e^{-x}$.
 Die Laguerre-Polynome ($\nu=0$) sind somit orthognal im Intervall $(0, \infty)$
 mit der Gewichtsfunktion $w(x)=e^{-x}$.
-
-% \subsection{Rodrigues-Formel}
-
-% \subsection{Drei-Terme Rekursion}
-
-% \subsection{Beziehung mit der Hypergeometrischen Funktion}
