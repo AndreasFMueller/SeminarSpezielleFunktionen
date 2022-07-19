@@ -6,9 +6,5 @@
 dependencies-fm =						\
 	papers/fm/packages.tex					\
 	papers/fm/main.tex					\
-	papers/fm/references.bib				\
-	papers/fm/teil0.tex					\
-	papers/fm/teil1.tex					\
-	papers/fm/teil2.tex					\
-	papers/fm/teil3.tex
+	papers/fm/references.bib			
 

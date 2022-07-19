@@ -230,7 +230,8 @@ folgenden Satz.
 \begin{satz}
 \index{Satz!Differentialgleichung von $1/\operatorname{pq}(u,k)$}%
 Wenn die Jacobische elliptische Funktion $\operatorname{pq}(u,k)$
-der Differentialgleichung genügt, dann genügt der Kehrwert
+der Differentialgleichung~\eqref{buch:elliptisch:eqn:1storderdglell}
+genügt, dann genügt der Kehrwert
 $\operatorname{qp}(u,k) = 1/\operatorname{pq}(u,k)$ der Differentialgleichung
 \begin{equation}
 (\operatorname{qp}'(u,k))^2
@@ -277,8 +278,8 @@ vertauscht worden sind.
 % Differentialgleichung zweiter Ordnung
 %
 \subsubsection{Differentialgleichung zweiter Ordnung}
-Leitet die Differentialgleichung~\eqref{buch:elliptisch:eqn:1storderdglell}
-man dies nochmals nach $u$ ab, erhält man die Differentialgleichung
+Leitet man die Differentialgleichung~\eqref{buch:elliptisch:eqn:1storderdglell}
+nochmals nach $u$ ab, erhält man die Differentialgleichung
 \[
 2\operatorname{pq}''(u,k)\operatorname{pq}'(u,k)
 =
@@ -339,6 +340,25 @@ y(u) = F^{-1}(u+C).
 \]
 Die Jacobischen elliptischen Funktionen sind daher inverse Funktionen
 der unvollständigen elliptischen Integrale.
+
+\begin{beispiel}
+Die Differentialgleichung der Funktion $y=\operatorname{sn}(u,k)$ ist
+\[
+(y')^2
+=
+(1-y^2)(1-k^2y^2).
+\]
+Aus \eqref{buch:elliptisch:eqn:yintegral} folgt daher, dass
+\[
+u+C
+=
+\int\frac{dy}{(1-y^2)(1-k^2y^2)}.
+\]
+Das Integral ist das unvollständige elliptische Integral erster Art.
+Mit der Wahl der Konstanten $C$ so, dass $y(0)=0$ ist, ist
+$y(u)=\operatorname{sn}(u,k)$ daher die Umkehrfunktion von
+$y\mapsto F(y,k)=u$.
+\end{beispiel}
 
 %
 % Numerische Berechnung mit dem arithmetisch-geometrischen Mittel
@@ -545,7 +565,7 @@ Wir möchten die nichtlineare Differentialgleichung
 \biggr)^2
 =
 Ax^4+Bx^2 + C
-\label{buch:elliptisch:eqn:allgdgl}
+\label{buch:elliptisch:eqn:anhdgl}
 \end{equation}
 mit Hilfe elliptischer Funktionen lösen.
 Wir nehmen also an, dass die gesuchte Lösung eine Funktion der Form
@@ -562,7 +582,7 @@ a\operatorname{zn}'(bt,k).
 \]
 
 Indem wir diesen Lösungsansatz in die
-Differentialgleichung~\eqref{buch:elliptisch:eqn:allgdgl}
+Differentialgleichung~\eqref{buch:elliptisch:eqn:anhdgl}
 einsetzen, erhalten wir
 \begin{equation}
 a^2b^2 \operatorname{zn}'(bt,k)^2
@@ -672,13 +692,13 @@ Da alle Parameter im
 Lösungsansatz~\eqref{buch:elliptisch:eqn:loesungsansatz} bereits
 festgelegt sind stellt sich die Frage, woher man einen weiteren
 Parameter nehmen kann, mit dem Anfangsbedingungen erfüllen kann.
-Die Differentialgleichung~\eqref{buch:elliptisch:eqn:allgdgl} ist
+Die Differentialgleichung~\eqref{buch:elliptisch:eqn:anhdgl} ist
 autonom, die Koeffizienten der rechten Seite der Differentialgleichung
 sind nicht von der Zeit abhängig. 
 Damit ist eine zeitverschobene Funktion $x(t-t_0)$ ebenfalls eine
 Lösung der Differentialgleichung.
 Die allgmeine Lösung der 
-Differentialgleichung~\eqref{buch:elliptisch:eqn:allgdgl} hat
+Differentialgleichung~\eqref{buch:elliptisch:eqn:anhdgl} hat
 also die Form
 \[
 x(t) = a\operatorname{zn}(b(t-t_0)),
