@@ -1,0 +1,26 @@
+/*
+ * agm.maxima
+ *
+ * (c) 2022 Prof Dr Andreas Müller, OST Ostschweizer Fachhochschule 
+ */
+
+S:  2*a*sin(theta1) / (a+b+(a-b)*sin(theta1)^2);
+
+C2: ratsimp(diff(S, theta1)^2 / (1 - S^2));
+C2: ratsimp(subst(sqrt(1-sin(theta1)^2), cos(theta1), C2));
+C2: ratsimp(subst(S,                     sin(theta),  C2));
+C2: ratsimp(subst(sqrt(1-S^2),           cos(theta),  C2));
+
+D2: (a^2 * cos(theta)^2 + b^2 * sin(theta)^2)
+	/
+    (a1^2 * cos(theta1)^2 + b1^2 * sin(theta1)^2);
+D2: subst((a+b)/2,   a1, D2);
+D2: subst(sqrt(a*b), b1, D2);
+D2: ratsimp(subst(1-S^2,  cos(theta)^2, D2));
+D2: ratsimp(subst(S,      sin(theta),   D2));
+D2: ratsimp(subst(1-sin(theta1)^2, cos(theta1)^2, D2));
+
+Q: D2/C2;
+Q: ratsimp(subst(x, sin(theta1), Q));
+
+Q: ratsimp(expand(ratsimp(Q)));

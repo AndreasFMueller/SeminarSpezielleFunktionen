@@ -20,36 +20,45 @@ P(t)e^{-\frac{t^2}2}
 \]
 in geschlossener Form angeben?
 \end{block}
+\uncover<2->{%
 \begin{block}{``Hermite-Antwort''}
 \[
 \int H_n(x)e^{-x^2}\,dx
 \]
 kann genau für $n>0$ in geschlossener Form angegeben werden.
-\end{block}
+\end{block}}
 \end{column}
 \begin{column}{0.48\textwidth}
+\uncover<3->{%
 \begin{block}{Allgemein}
 \begin{align*}
 \int P(x)e^{-x^2}\,dx
-&=
-\int \sum_{k=0}^n a_kH_k(x)e^{-x^2}\,dx
+&\uncover<4->{=
+\int \sum_{k=0}^n a_kH_k(x)e^{-x^2}\,dx}
 \\
+\uncover<5->{
 &=
 \sum_{k=0}^n
 a_k
 \int
 H_k(x)e^{-x^2}\,dx
+}
 \\
+\uncover<6->{
 &=
 a_0\operatorname{erf}(x) + C
+}
 \\
+\uncover<6->{
 &\hspace*{2mm} + \sum_{k=1}^n a_k\int H_k(x)e^{-x^2}\,dx
+}
 \end{align*}
-\end{block}
+\end{block}}
+\uncover<7->{%
 \begin{theorem}
 Das Integral von $P(x)e^{-x^2}$ ist genau dann elementar darstellbar, wenn
 $a_0=0$
-\end{theorem}
+\end{theorem}}
 \end{column}
 \end{columns}
 \end{frame}
