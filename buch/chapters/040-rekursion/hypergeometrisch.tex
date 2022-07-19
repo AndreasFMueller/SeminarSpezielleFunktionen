@@ -16,22 +16,38 @@ n^3S_{n}
 mit Anfangswerten $S_0=1$ und $S_1=8$ angeben?
 Dies scheint auf den ersten Blick unmöglich kompliziert, man kann aber
 zeigen, dass
-\[
+\begin{equation}
 S_n
 =
 \sum_{k=0}^n 
 \binom{2n-2k}{n-k}^2 \binom{2k}{k}^2
-\]
+\label{buch:rekursion:hypergeometrisch:eqn:Sn}
+\end{equation}
 gilt (\cite[p.~xi]{buch:ab}).
 Die Lösung ist also eine Summe von Summanden, die sehr viel einfacher
 aussehen und vor allem die besondere Eigenschaft haben, dass die
-Quotienten aufeinanderfolgender Terme rationale Funktionen von von $k$
+Quotienten aufeinanderfolgender Terme rationale Funktionen von $k$
 sind.
-% XXX Quotient berechnen
 
-Eine besonders simple solche Funktion ist die geometrische Reihe, die
-im Abschnitt~\ref{buch:rekursion:hypergeometrisch:geometrisch}
-in Erinnerung gerufen wird.
+\begin{definition}
+Ein Folge heisst {\em hypergeometrisch}, wenn der Quotient aufeinanderfolgender
+\index{hypergeometrische Folge}%
+\index{Folge, hypergeometrisch}%
+Terme eine rationale Funktion des Folgenindex ist.
+\end{definition}
+
+Die Terme der Reihenentwicklungen aller bisher behandelten speziellen
+Funktionen waren hypergeometrisch.
+Im aktuellen Abschnitt soll daher die Klasse der sogenannten
+hypergeometrischen Funktionen untersucht werden, die durch diese
+Eigenschaft charakterisiert sind.
+
+In Abschnitt~\ref{buch:rekursion:hypergeometrisch:binomialkoeffizienten}
+wird klar, dass Folgen, deren Terme aus Fakultäten und Binomialkoeffizienten
+immer hypergeometrisch sind.
+Die Untersuchung der geometrischen Reihe in
+Abschnitt~\ref{buch:rekursion:hypergeometrisch:geometrisch}
+motiviert die Namensgebung.
 Abschnitt~\ref{buch:rekursion:hypergeometrisch:reihen}
 definiert den Begriff der hypergeometrischen Reihe und zeigt, 
 wie sie in eine Standardform gebracht werden können.
@@ -39,22 +55,101 @@ In Abschnitt~\ref{buch:rekursion:hypergeometrisch:beispiele}
 schliesslich wird an Hand von Beispielen gezeigt, wie bekannte
 Funktionen als hypergeometrische Funktionen interpretiert werden können.
 
+%
+% Quotienten von Binomialkoeffizienten
+%
+\subsection{Quotienten von Binomialkoeffizienten
+\label{buch:rekursion:hypergeometrisch:binomialkoeffizienten}}
+Aufeinanderfolgende Terme der Summe
+\eqref{buch:rekursion:hypergeometrisch:eqn:Sn}
+sollen als Quotienten eine rationale Funktion haben.
+Dies ist eine allgemeine Eigenschaft von Folgen, die durch Fakultäten
+oder Binomialkoeffizienten definiert sind, wie die beiden folgenden
+Sätze zeigen.
+
+\begin{satz}
+\index{Satz!Quotienten von Fakultäten}%
+\label{buch:rekursion:hypergeometrisch:satz:fakquo}
+Der Quotient aufeinanderfolgender Folgenglieder
+der Folge $c_k=(a+bk)!$ ist der ein Polynom vom Grad $b$.
+\end{satz}
+\begin{proof}[Beweis]
+\begin{align*}
+\frac{c_{k+1}}{c_k}
+&=
+\frac{(a+b(k+1))!}{(a+bk)!}
+=
+\frac{(a+bk+b)!}{(a+b)!}
+\\
+&=
+(a+bk+1)(a+bk+2)\cdots(a+bk+b)
+=
+(a+bk+1)_b
+\end{align*}
+Das Pochhammer-Symbol hat $b$ Faktoren, es ist ein Polynom vom Grad $b$.
+\end{proof}
+
+\begin{satz}
+\index{Satz!Quotienten von Binomialkoeffizienten}%
+\label{buch:rekursion:hypergeometrisch:satz:binomquo}
+Die Quotienten aufeinanderfolgender Werte der Binomialkoeffizienten
+\[
+f_k
+=
+\binom{a+bk}{c+dk}
+\]
+ist eine rationale Funktion von $k$ mit Zähler- und Nennergrad $b$.
+\end{satz}
+
+\begin{proof}[Beweis]
+Indem man die Binomialkoeffizienten mit Fakultäten als
+\[
+\binom{a+bk}{c+dk}
+=
+\frac{(a+bk)!}{(c+dk)!(a-c+(b-d)k)!}
+\]
+ausschreibt, findet man mit
+Satz~\ref{buch:rekursion:hypergeometrisch:satz:fakquo}
+für die Quotienten
+\begin{align}
+\frac{f_{k+1}}{f_k}
+&=
+\frac{(a+bk+1)_b}{(c+dk+1)_d\cdot(a-c+(b-d)k+1)_{b-d}}
+\label{buch:rekursion:eqn:binomquotient}
+\end{align}
+Die Pochhammer-Symbole sind Polynome vom Grad $b$, $d$ bzw.~$b-d$.
+Insbesondere ist auch das Nenner-Polynom vom Grad $d+(b-d)=b$.
+\end{proof}
+
+Aus den Sätzen~\ref{buch:rekursion:hypergeometrisch:satz:fakquo}
+und
+\ref{buch:rekursion:hypergeometrisch:satz:binomquo}
+folgt jetzt sofort, dass auch der Quotient aufeinanderfolgender
+Summanden der Summe~\eqref{buch:rekursion:hypergeometrisch:eqn:Sn}
+eine rationale Funktion von $k$ ist.
+
+%
+% Die geometrische Reihe
+%
 \subsection{Die geometrische Reihe
 \label{buch:rekursion:hypergeometrisch:geometrisch}}
-Die besonders einfache Potenzreihe
+Die Reihe
 \[
 f(q)
 =
 \sum_{k=0}^\infty aq^k
 \]
-heisst die {\em geometrische Reihe}.
+heisst die {\em geometrische Reihe} ist besonders einfache
+Reihe mit einer hypergeometrischen Folge von Termen.
+\index{geometrische Reihe}%
+\index{Reihe!geometrische}%
 Die Partialsummen 
 \[
 S_n
 =
 \sum_{k=0}^n aq^k
 \]
-kann mit der Differenz
+können aus der Differenz
 \begin{equation}
 (1-q)S_n
 =
@@ -75,8 +170,7 @@ a\frac{1-q^{n+1}}{1-q}
 \label{buch:rekursion:hypergeometrisch:eqn:geomsumme}
 \end{equation}
 auflösen kann.
-
-Fü $q<1$ geht $q^n\to 0$ und damit konvergiert
+Für $q<1$ geht $q^n\to 0$ und damit konvergiert
 $S_n$  gegen
 \[
 \sum_{k=0}^\infty aq^k
@@ -97,6 +191,9 @@ Die Berechnung der Summe in
 beruht darauf, dass die Multiplikation mit $q$ einen ``anderen''
 Teil der Summe ergibt, der sich in der Differenze weghebt.
 
+%
+% Hypergeometrische Reihen
+%
 \subsection{Hypergeometrische Reihen
 \label{buch:rekursion:hypergeometrisch:reihen}}
 Es ist plausibel, dass eine etwas lockerere Bedingung an die
@@ -105,11 +202,15 @@ ermöglichen wird, interessante Aussagen über die durch die
 Reihe beschriebenen Funktionen zu machen.
 
 \begin{definition}
-Eine Reihe
+\label{buch:rekursion:hypergeometrisch:def:allg}
+Eine durch die Reihe
 \[
 f(x) = \sum_{k=0}^\infty a_k x^k
 \]
-heisst {\em hypergeometrisch}, wenn der Quotient aufeinanderfolgender
+definierte Funktion $f(x)$ heisst {\em hypergeometrisch},
+wenn der Quotient aufeinanderfolgender
+\index{hypergeometrisch}
+\index{Reihe!hypergeometrisch}
 Koeffizienten eine rationale Funktion von $k$ ist,
 wenn also
 \[
@@ -120,9 +221,13 @@ wenn also
 mit Polynomen $p(k)$ und $q(k)$ ist.
 \end{definition}
 
+%
+% Beispiele von hypergeometrischen Funktionen
+%
+\subsubsection{Beispiele von hypergeometrischen Funktionen}
 Die geometrische Reihe ist natürlich eine hypergeometrische Reihe,
 wobei $p(k)/q(k)=1$ ist.
-Etwas interessanter ist die Exponentialfunktion, durch die Taylor-Reihe
+Etwas interessanter ist die Exponentialfunktion, die durch die Taylor-Reihe
 \[
 e^x = \sum_{k=0}^\infty \frac{x^k}{k!}
 \]
@@ -165,7 +270,30 @@ eine rationale Funktion mit Zählergrad $0$ und Nennergrad $2$.
 Es gibt also eine hypergeometrische Reihe $f(z)$ derart, dass
 $\cos x = f(x^2)$ ist.
 
-Seien $p(k)$ und $q(k)$ zwei Polynome derart, dass
+%
+% Die hypergeometrischen Funktione pFq
+%
+\subsubsection{Die hypergeometrischen Funktionen $\mathstrut_pF_q$}
+Die Definition~\ref{buch:rekursion:hypergeometrisch:def:allg}
+einer hypergeometrischen Funktion wie auch die Verschiedenartigkeit
+der Beispiele kännen den Eindruck vermitteln, dass die diese Klasse
+von Funktionen unübersichtlich gross sein könnte.
+Dem ist jedoch nicht so.
+In diesem Abschnitt soll gezeigt werden, dass alle hypergeometrischen
+Funktionen durch die in
+Definition~\ref{buch:rekursion:hypergeometrisch:def} definierten
+Funktionen $\mathstrut_pF_q$ ausgedrückt werden.
+Die hypergeometrischen Funktionen können also vollständig parametrisiert
+werden.
+
+Zu diesem Zweick sie
+\[
+f(x)
+=
+\sum_{k=0}^\infty a_kx^k
+\]
+eine hypergeometrische Funktion und
+seien $p(k)$ und $q(k)$ zwei Polynome derart, dass
 \[
 \frac{a_{k+1}}{a_k} = \frac{p(k)}{q(k)}.
 \]
@@ -201,12 +329,12 @@ Dazu nehmen wir an, dass $a_i$, $i=1,\dots,n$ die Nullstellen von $p(k)$ sind
 und $b_j$, $j=1,\dots,m$ die Nullstellen von $q(k)$, dass man also
 die Polynome als
 \begin{align*}
-p(k) &= x(k-a_1)(k-a_2)\cdots(k-a_n)
+p(k) &= s(k-a_1)(k-a_2)\cdots(k-a_n)
 \\
 q(k) &= (k-b_1)(k-b_2)\cdots(k-b_m)
 \end{align*}
 schreiben kann.
-Der Faktor $x$ ist nötig, weil die Polynome $p(k)$ und $q(k)$ nicht
+Der Faktor $s$ ist nötig, weil die Polynome $p(k)$ und $q(k)$ nicht
 notwendigerweise normiert sind.
 
 Um das Produkt der Quotienten zu vereinfachen, nehmen wir für den Moment
@@ -216,14 +344,14 @@ Dann ist nach
 \[
 a_{k}
 =
-x^{k}
+s^{k}
 \frac{
 (k-1-a_1) \cdots (2-a_1)(1-a_1)(0-a_1)
 }{
 (k-1-b_1) \cdots (2-b_1)(1-b_1)(0-b_1)
 }
 =
-\frac{(-a_1)_k}{(-b_1)_k} x^k.
+\frac{(-a_1)_k}{(-b_1)_k} s^k.
 \]
 Die Koeffizienten können daher als Quotienten von Pochhammer-Symbolen
 geschrieben werden.
@@ -233,13 +361,16 @@ von der Form
 a_k
 =
 \frac{(-a_1)_k(-a_2)_k\cdots (-a_n)_k}{(-b_1)_k(-b_2)_k\cdots(-b_m)_k}
-x^ka_0.
+s^ka_0.
 \]
-Jede hypergeometrische Reihe kann daher in der Form
+Jede hypergeometrische Funktion kann daher in der Form
 \[
+f(x)
+=
 a_0
 \sum_{k=0}^\infty
 \frac{(-a_1)_k(-a_2)_k\cdots (-a_n)_k}{(-b_1)_k(-b_2)_k\cdots(-b_m)_k}
+s^k
 x^k
 \]
 geschrieben werden.
@@ -273,9 +404,10 @@ zusätzlichen Faktor $(1)_k$ im Zähler des Bruchs von Pochhammer-Symbolen
 kompensieren, wodurch sich der Grad $p$ des Zählers natürlich um $1$
 erhöht.
 
-Die oben analysierte Summe $S$ kann mit der Definition als
+Die oben analysierte Summe für $f(x)$ kann mit der
+Definition~\ref{buch:rekursion:hypergeometrisch:def} als
 \[
-S
+f(x)
 =
 a_0
 \cdot
@@ -283,11 +415,75 @@ a_0
 \begin{matrix}
 -a_1,-a_2,\dots,-a_n,1\\
 -b_1,-b_2,\dots,-a_m
-\end{matrix}; x
+\end{matrix}; sx
 \biggr)
 \]
 beschrieben werden.
 
+%
+% Elementare Rechenregeln
+%
+\subsubsection{Elementare Rechenregeln}
+Die Funktionen $\mathstrut_pF_q$ sind nicht alle unabhängig.
+In Abschnitt~\ref{buch:rekursion:hypergeometrisch:stammableitung}
+wird gezeigt werden, dass Ableitung und Stammfunktion einer hypergeometrischen
+Funktion durch Manipulation der Parameter $a_k$ und $b_k$ bestimmt werden
+können.
+Viel einfacher sind jedoch die folgenden, aus
+Definition~\ref{buch:rekursion:hypergeometrisch:def}
+offensichtlichen Regeln:
+
+\begin{satz}[Permutationsregel]
+\index{Satz!Permutationsregel für hypergeometrische Funktionen}%
+\label{buch:rekursion:hypergeometrisch:satz:permuationsregel}
+Sei $\pi$ eine beliebige Permutation der Zahlen $1,\dots,p$ und $\sigma$ eine
+beliebige Permutation der Zahlen $1,\dots,q$, dann ist 
+\begin{equation}
+\mathstrut_pF_q\biggl(
+\begin{matrix}
+a_1,\dots,a_p\\b_1,\dots,a_q
+\end{matrix}
+;x
+\biggr)
+=
+\mathstrut_pF_q\biggl(
+\begin{matrix}
+a_{\pi(1)},\dots,a_{\pi(p)}\\b_{\sigma(1)},\dots,b_{\sigma(q)}
+\end{matrix}
+;x
+\biggr).
+\label{buch:rekursion:hypergeometrisch:eqn:permuationsregel}
+\end{equation}
+\end{satz}
+
+\begin{satz}[Kürzungsformel]
+\index{Satz!Kürzungsformel für hypergeometrische Funktionen}%
+\label{buch:rekursion:hypergeometrisch:satz:kuerzungsregel}
+Stimmt einer der Koeffizienten $a_k$ mit einem der Koeffizienten $b_i$
+überein, dann können sie weggelassen werden:
+\begin{equation}
+\mathstrut_{p+1}F_{q+1}\biggl(
+\begin{matrix}
+c,a_1,\dots,a_p\\
+c,b_1,\dots,b_q
+\end{matrix};
+x
+\biggr)
+=
+\mathstrut_{p}F_{q}\biggl(
+\begin{matrix}
+a_1,\dots,a_p\\
+b_1,\dots,b_q
+\end{matrix};
+x
+\biggr).
+\label{buch:rekursion:hypergeometrisch:eqn:kuerzungsregel}
+\end{equation}
+\end{satz}
+
+%
+% Beispiele von hypergeometrischen Funktionen
+%
 \subsection{Beispiele von hypergeometrischen Funktionen
 \label{buch:rekursion:hypergeometrisch:beispiele}}
 Viele der bekannten Reihenentwicklungen häufig verwendeter Funktionen
@@ -295,6 +491,9 @@ lassen sich durch die hypergeometrischen Funktionen von
 Definition~\ref{buch:rekursion:hypergeometrisch:def} ausdrücken.
 In diesem Abschnitt werden einige Beispiel dazu gegeben.
 
+%
+% Die geometrische Reihe
+%
 \subsubsection{Die geometrische Reihe}
 In der geometrischen Reihe fehlt der Nenner $k!$, es braucht
 daher einen Term $(1)_k$ im Zähler, um den Nenner zu kompensieren.
@@ -312,6 +511,9 @@ a\sum_{k=0}^\infty
 a\cdot\mathstrut_1F_0(1,x).
 \]
 
+%
+% Die Exponentialfunktion
+%
 \subsubsection{Exponentialfunktion}
 Die Exponentialfunktion ist die Reihe
 \[
@@ -323,7 +525,10 @@ benötigt, es ist daher
 e^x = \mathstrut_0F_0(x).
 \]
 
-\subsubsection{Wurzelfunktion}
+%
+% Wurzelfunktionen
+%
+\subsubsection{Wurzelfunktionen}
 Die Wurzelfunktion $x\mapsto \sqrt{x}$ hat keine Taylor-Entwicklung
 in $x=0$, aber die Funktion $x\mapsto\sqrt{1+x}$ hat die Taylor-Reihe
 \[
@@ -412,11 +617,33 @@ Die Wurzelfunktion ist daher die hypergeometrische Funktion
 \sqrt{1\pm x}
 =
 \sum_{k=0}^\infty
-\biggl(-\frac12\biggr)_k \frac{(-x)^k}{k!}
+\biggl(-\frac12\biggr)_k \frac{(\pm x)^k}{k!}
 =
 \mathstrut_1F_0(-{\textstyle\frac12};\mp x).
 \]
+Mit der Newtonschen Binomialreihe, die in 
+Abschnitt~\ref{buch:differentialgleichungen:subsection:newtonschereihe}
+hergleitet wird,
+kann man ganz analog jede beliebige Wurzelfunktion
+\begin{align*}
+(1+x)^\alpha
+&=
+1+\alpha x + \frac{\alpha(\alpha-1)}{2!}x^2 + \frac{\alpha(\alpha-1)(\alpha-2)}{3!}x^3+\dots
+%\\
+%&
+=
+\sum_{k=0}^\infty \frac{(-\alpha)_k}{k!}x^k
+=
+\mathstrut_1F_0\biggl(\begin{matrix}-\alpha\\\text{---}\end{matrix};-x\biggr)
+\end{align*}
+durch $\mathstrut_1F_0$ ausdrücken.
+Dieses Resultat ist der Inhalt von
+Satz~\ref{buch:differentialgleichungen:satz:newtonschereihe}
 
+
+%
+% Logarithmusfunktion
+%
 \subsubsection{Logarithmusfunktion}
 Für $x\in (-1,1)$ konvergiert die Taylor-Reihe
 \[
@@ -483,8 +710,11 @@ x\cdot
 \mathstrut_2F_1\biggl(\begin{matrix}1,1\\2\end{matrix};-x\biggr).
 \]
 
-
+%
+% Trigonometrische Funktionen
+%
 \subsubsection{Trigonometrische Funktionen}
+\index{trigonometrische Funktionen!als hypergeometrische Funktionen}%
 Die Kosinus-Funktion wurde bereits als hypergeometrische Funktion erkannt,
 im Folgenden soll dies auch noch für die Sinus-Funktion
 durchgeführt werden.
@@ -509,7 +739,7 @@ x f(-x^2).
 Die Funktion $f(z)$ soll jetzt als hypergeometrische Funktion geschrieben
 werden.
 Dazu muss zunächst wieder der Nenner $k!$ wiederhergestellt werden:
-\[
+\begin{equation*}
 f(z)
 =
 1
@@ -521,7 +751,7 @@ f(z)
 \frac{3!}{7!}\cdot \frac{z^3}{3!}
 +
 \dots
-\]
+\end{equation*}
 Die Koeffizienten $k!/(2k+1)!$ müssen jetzt durch Pochhammer-Symbole
 mit jeweils $k$ Faktoren ausgedrückt werden.
 Dazu muss die Fakultät $(2k+1)!$ in zwei Produkte
@@ -561,15 +791,27 @@ müssen wird mit $2^{2k}$ kompensieren:
 (1)_k\cdot \biggl(\frac{3}{2}\biggr)_k
 \end{align*}
 Setzt man dies in die Reihe ein, wird
-\[
+\begin{equation}
 f(z)
 =
 \sum_{k=0}^\infty
 \frac{(1)_k}{(1)_k\cdot (\frac{3}{2})_k\cdot 4^k}
 z^k
 =
-\mathstrut_1F_2\biggl(1;1,\frac{3}{2};\frac{z}4\biggr).
-\]
+\mathstrut_1F_2\biggl(
+\begin{matrix}1\\1,\frac{3}{2}\end{matrix};\frac{z}4
+\biggr)
+=
+\mathstrut_0F_1\biggl(
+\begin{matrix}\text{---}\\\frac{3}{2}\end{matrix};\frac{z}4
+\biggr).
+\label{buch:rekursion:hyperbolisch:eqn:hilfsfunktionf}
+\end{equation}
+Im letzten Schritt wurde die Kürzungsregel
+\eqref{buch:rekursion:hypergeometrisch:eqn:kuerzungsregel}
+von
+Satz~\ref{buch:rekursion:hypergeometrisch:satz:kuerzungsregel}
+angewendet.
 Damit lässt sich die Sinus-Funktion als
 \begin{equation}
 \sin x
@@ -585,28 +827,35 @@ x\cdot\mathstrut_0F_1\biggl(
 \end{equation}
 durch eine hypergeometrische Funktion ausdrücken.
 
+%
+% Hyperbolische Funktionen
+%
 \subsubsection{Hyperbolische Funktionen}
+\index{hyperbolische Funktionen!als hypergeometrische Funktionen}%
 Die für die Sinus-Funktion angewendete Methode lässt sich auch
 auf die Funktion 
 \begin{align*}
 \sinh x
 &=
 \sum_{k=0}^\infty \frac{x^{2k+1}}{(2k+1)!}
-\\
-&=
+%\\
+%&
+=
 x
 \,
 \biggl(
 1+\frac{x^2}{3!} + \frac{x^4}{5!}+\frac{x^6}{7!}+\dots
 \biggr)
-\\
+\intertext{Die Reihe in der Klammer lässt sich mit der Funktion
+$f$ von \eqref{buch:rekursion:hyperbolisch:eqn:hilfsfunktionf}
+schreiben als}
 &=
-xf(-x^2)
-=
-x\,\mathstrut_1F_2\biggl(
-\begin{matrix}1\\1,\frac{3}{2}\end{matrix}
-;\frac{x^2}{4}
-\biggr)
+x\,f(-x^2)
+%=
+%x\cdot\mathstrut_1F_2\biggl(
+%\begin{matrix}1\\1,\frac{3}{2}\end{matrix}
+%;\frac{x^2}{4}
+%\biggr)
 =
 x\cdot\mathstrut_0F_1\biggl(
 \begin{matrix}\text{---}\\\frac{3}{2}\end{matrix}
@@ -618,18 +867,85 @@ ist diese Darstellung identisch mit der von $\sin x$.
 Dies illustriert die Rolle der hypergeometrischen Funktionen als
 ``grosse Vereinheitlichung'' der bekannten speziellen Funktionen.
 
+%
+% Tschebyscheff-Polynome
+%
 \subsubsection{Tschebyscheff-Polynome}
+\index{Tschebyscheff-Polynome}%
+Man kann zeigen, dass auch die Tschebyscheff-Polynome sich durch die
+hypergeometrischen Funktionen
+\begin{equation}
+T_n(x)
+=
+\mathstrut_2F_1\biggl(
+\begin{matrix}-n,n\\\frac12\end{matrix}
+;
+\frac12(1-x)
+\biggr)
+\label{buch:rekursion:hypergeometrisch:tschebyscheff2f1}
+\end{equation}
+ausdrücken lassen.
+Beweisen kann man diese Beziehung zum Beispiel mit Hilfe der
+Differentialgleichungen, denen die Funktionen genügen.
+Diese Methode wird in
+Abschnitt~\ref{buch:differentialgleichungen:section:hypergeometrisch}
+von Kapitel~\ref{buch:chapter:differential} vorgestellt.
 
-TODO
-\url{https://en.wikipedia.org/wiki/Chebyshev_polynomials}
+Die Tschebyscheff-Polynome sind nicht die einzigen Familien von Polynomen,
+\index{Tschebyscheff-Polynome!als hypergeometrische Funktion}
+die sich durch $\mathstrut_pF_q$ ausdrücken lassen.
+Für die zahlreichen Familien von orthogonalen Polynomen, die in
+Kapitel~\ref{buch:chapter:orthogonalitaet} untersucht werden,
+trifft dies auch zu.
+Ein Funktion
+\[
+\mathstrut_pF_q
+\biggl(
+\begin{matrix}
+a_1,\dots,a_p\\
+b_1,\dots,b_q
+\end{matrix}
+;z
+\biggr)
+\]
+ist genau dann ein Polynom, wenn mindestens einer der Parameter
+$a_k$ eine negative ganze Zahl ist.
+Der Grad des Polynoms ist der kleinste Betrag der negativ ganzzahligen
+Werte unter den Parametern $a_k$.
+
+%
+% Die Funktionen 0F1
+%
+\subsubsection{Die Funktionen $\mathstrut_0F_1$}
+\begin{figure}
+\centering
+\includegraphics{chapters/040-rekursion/images/0f1.pdf}
+\caption{Graphen der Funktionen $\mathstrut_0F_1(;\alpha;x)$ für
+verschiedene Werte von $\alpha$.
+\label{buch:rekursion:hypergeometrisch:0f1}}
+\end{figure}
+Die Funktionen $\mathstrut_0F_1$ sind in den Beispielen mit der
+beschränkten trigonometrischen Funktion $\sin x$ und mit der
+exponentiell unbeschränkten Funktion $\sinh x$ mit dem gleichen
+Wert des Parameters und nur einem Wechsel des Vorzeichens des
+Arguments verbunden worden.
+Die Graphen der Funktionen $\mathstrut_0F_1$, die in 
+Abbildung~\ref{buch:rekursion:hypergeometrisch:0f1} dargestellt sind,
+machen dieses Verhalten plausibel.
+Es wird sich später zeigen, dass $\mathstrut_0F_1$ auch mit den Bessel-
+und den Airy-Funktionen verwandt sind.
+
 
 %
 % Ableitung und Stammfunktion
 %
-\subsection{Ableitung und Stammfunktion hypergeometrischer Funktionen}
+\subsection{Ableitung und Stammfunktion hypergeometrischer Funktionen
+\label{buch:rekursion:hypergeometrisch:stammableitung}}
 Sowohl Ableitung wie auch Stammfunktion einer hypergeometrischen
 Funktion lässt sich immer durch hypergeometrische Reihen ausdrücken.
-
+%
+% Ableitung
+%
 \subsubsection{Ableitung}
 Wir gehen aus von der Funktion
 \begin{equation}
@@ -743,7 +1059,7 @@ Damit kann jetzt die Kosinus-Funktion als
 \frac{1}{(\frac12)_k}
 \frac{1}{k!}\biggl(\frac{-x^2}{4}\biggr)^k
 =
-\mathstrut_0F_1\biggl(;\frac12;-\frac{x^2}4\biggr)
+\mathstrut_0F_1\biggl(\begin{matrix}\text{---}\\\frac12\end{matrix};-\frac{x^2}4\biggr)
 \end{align*}
 geschrieben werden kann.
 
@@ -752,16 +1068,22 @@ Die Ableitung der Kosinus-Funktion ist daher
 \frac{d}{dx} \cos x
 &=
 \frac{d}{dx}
-\mathstrut_0F_1\biggl(;\frac12;-\frac{x^2}4\biggr)
+\mathstrut_0F_1\biggl(
+\begin{matrix}\text{---}\\\frac12\end{matrix};-\frac{x^2}4
+\biggr)
 =
 \frac{1}{\frac12}
 \,
-\mathstrut_0F_1\biggl(;\frac32;-\frac{x^2}4\biggr)
+\mathstrut_0F_1\biggl(
+\begin{matrix}\text{---}\\\frac32\end{matrix};-\frac{x^2}4
+\biggr)
 \cdot\biggl(-\frac{x}2\biggr)
 =
 -x
 \cdot
-\mathstrut_0F_1\biggl(;\frac32;-\frac{x^2}4\biggr)
+\mathstrut_0F_1\biggl(
+\begin{matrix}\text{---}\\\frac32\end{matrix};-\frac{x^2}4
+\biggr)
 \intertext{Dies stimmt mit der in
 \eqref{buch:rekursion:hypergeometrisch:eqn:sinhyper}
 gefundenen Darstellung der Sinusfunktion mit Hilfe der hypergeometrischen
@@ -771,6 +1093,9 @@ Funktion $\mathstrut_0F_1$ überein, es ist also wie erwartet}
 \end{align*}
 \end{beispiel}
 
+%
+% Stammfunktion
+%
 \subsubsection{Stammfunktion}
 Eine Stammfunktion kann man auf die gleiche Art und Weise wie
 die Ableitung finden.

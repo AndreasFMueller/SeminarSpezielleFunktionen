@@ -1,0 +1,215 @@
+%
+% ellpolnul.tex -- template for standalon tikz images
+%
+% (c) 2021 Prof Dr Andreas Müller, OST Ostschweizer Fachhochschule
+%
+\documentclass[tikz]{standalone}
+\usepackage{amsmath}
+\usepackage{times}
+\usepackage{txfonts}
+\usepackage{pgfplots}
+\usepackage{csvsimple}
+\usetikzlibrary{arrows,intersections,math,calc}
+\begin{document}
+\input{ellcommon.tex}
+\def\skala{1}
+\begin{tikzpicture}[>=latex,thick,scale=\skala]
+
+%\draw (-1,-1) rectangle (1,1);
+%\node at (-1,-1) [below left] {$0$};
+%\node at (1,-1) [below right] {$K$};
+%\node at (1,1) [above right] {$K+iK'$};
+%\node at (-1,1) [above left] {$iK'$};
+%\node at (0,0) {$u$};
+
+\fill[color=rot!10,opacity=0.5] (-5.5,-4.3) rectangle (7.3,-1.7);
+\fill[color=blau!10,opacity=0.5] (-5.5,-7.3) rectangle (7.3,-4.7);
+\fill[color=gruen!10,opacity=0.5] (-5.5,-10.3) rectangle (7.3,-7.7);
+
+\fill[color=rot!10,opacity=0.5] (-1.3,-10.5) rectangle (1.3,2.5);
+\fill[color=blau!10,opacity=0.5] (1.7,-10.5) rectangle (4.3,2.5);
+\fill[color=gruen!10,opacity=0.5] (4.7,-10.5) rectangle (7.3,2.5);
+
+\begin{scope}[xshift=1.5cm,yshift=2cm]
+\node at (0,0) {Zähler};
+\draw[<-] (-4.5,0) -- (-1,0);
+\draw[->] (1,0) -- (4.5,0);
+\node[color=black] at (-4.5,-0.4) {\Large n};
+\node[color=rot]   at (-1.5,-0.4) {\Large s};
+\node[color=blau]  at (1.5,-0.4)  {\Large c};
+\node[color=gruen] at (4.5,-0.4)  {\Large d};
+\end{scope}
+
+\begin{scope}[xshift=-5.1cm,yshift=-4.5cm]
+\node at (0,0) [rotate=90] {Nenner};
+\draw[<-] (0,-4.5) -- (0,-1);
+\draw[->] (0,1) -- (0,4.5);
+\node[color=gruen] at (0.4,-4.5) [rotate=90] {\Large d};
+\node[color=blau]  at (0.4,-1.5) [rotate=90] {\Large c};
+\node[color=rot]   at (0.4,1.5)  [rotate=90] {\Large s};
+\node[color=black] at (0.4,4.5)  [rotate=90] {\Large n};
+\end{scope}
+
+\begin{scope}[xshift=-3cm,yshift=0cm]
+\node at (0,0) {$1$};
+\draw[color=gray!20] (-1,-1) rectangle (1,1);
+\end{scope}
+
+\definecolor{sccolor}{rgb}{0.8,0.0,1.0}
+\definecolor{sdcolor}{rgb}{0.6,0.6,0.0}
+\definecolor{cdcolor}{rgb}{0.0,0.6,1.0}
+
+\begin{scope}[xshift=0cm]
+\rechteck{rot}{\operatorname{sn}(u,k)}
+\nullstelle{(-1,-1)}{rot}
+\pol{(-1,1)}{rot}
+\node at (-1,-1) {$0$};
+\node at (1,-1) {$1$};
+\node at (1,1) {$\frac1k$};
+\node at (-1,1) {$\infty$};
+\end{scope}
+
+\begin{scope}[xshift=3cm]
+\rechteck{blau}{\operatorname{cn}(u,k)}
+\nullstelle{(1,-1)}{blau}
+\pol{(-1,1)}{blau}
+\node at (-1,-1) {$1$};
+\node at (1,-1) {$0$};
+\node at (1,1) {$\frac{k'}{ik}$};
+\node at (-1,1) {$\infty$};
+\end{scope}
+
+\begin{scope}[xshift=6cm]
+\rechteck{gruen}{\operatorname{dn}(u,k)}
+\nullstelle{(1,1)}{gruen}
+\pol{(-1,1)}{gruen}
+\node at (-1,-1) {$1$};
+\node at (1,-1) {$k'$};
+\node at (1,1) {$0$};
+\node at (-1,1) {$\infty$};
+\end{scope}
+
+%
+% start row with denominator sn(u,k)
+%
+
+\begin{scope}[xshift=-3cm,yshift=-3cm]
+\rechteck{rot}{\operatorname{ns}(u,k)}
+\pol{(-1,-1)}{rot}
+\nullstelle{(-1,1)}{rot}
+\node at (-1,-1) {$\infty$};
+\node at (1,-1) {$1$};
+\node at (1,1) {$k$};
+\node at (-1,1) {$0$};
+\end{scope}
+
+\begin{scope}[xshift=0cm,yshift=-3cm]
+%\rechteck{gray}{1}
+\fill[color=white] (-1,-1) rectangle (1,1);
+\node[color=gray] at (0,0) {$1$};
+\end{scope}
+
+\begin{scope}[xshift=3cm,yshift=-3cm]
+\rechteck{sccolor}{\operatorname{cs}(u,k)}
+\pol{(-1,-1)}{sccolor}
+\nullstelle{(1,-1)}{sccolor}
+\node at (-1,-1) {$\infty$};
+\node at (1,-1) {$0$};
+\node at (1,1) {$\frac{k'}{i}$};
+\node at (-1,1) {$ $};
+\end{scope}
+
+\begin{scope}[xshift=6cm,yshift=-3cm]
+\rechteck{sdcolor}{\operatorname{ds}(u,k)}
+\pol{(-1,-1)}{sdcolor}
+\nullstelle{(1,1)}{sdcolor}
+\node at (-1,-1) {$\infty$};
+\node at (1,-1) {$k'$};
+\node at (1,1) {$0$};
+\node at (-1,1) {$ $};
+\end{scope}
+
+%
+% start row with denominator cn(u,k)
+%
+
+\begin{scope}[xshift=-3cm,yshift=-6cm]
+\rechteck{blau}{\operatorname{nc}(u,k)}
+\pol{(1,-1)}{blau}
+\nullstelle{(-1,1)}{blau}
+\node at (-1,-1) {$1$};
+\node at (-1,1) {$0$};
+\node at (1,-1) {$\infty$};
+\node at (1,1) {$\frac{ik}{k'}$};
+\end{scope}
+
+\begin{scope}[xshift=0cm,yshift=-6cm]
+\rechteck{sccolor}{\operatorname{sc}(u,k)}
+\nullstelle{(-1,-1)}{sccolor}
+\pol{(1,-1)}{sccolor}
+\node at (-1,-1) {$0$};
+\node at (1,-1) {$\infty$};
+\node at (-1,1) {$ $};
+\node at (1,1) {$\frac{i}{k'}$};
+\end{scope}
+
+\begin{scope}[xshift=3cm,yshift=-6cm]
+%\rechteck{gray}{1}
+\fill[color=white] (-1,-1) rectangle (1,1);
+\node[color=gray] at (0,0) {$1$};
+\end{scope}
+
+\begin{scope}[xshift=6cm,yshift=-6cm]
+\rechteck{cdcolor}{\operatorname{dc}(u,k)}
+\nullstelle{(1,1)}{cdcolor}
+\pol{(1,-1)}{cdcolor}
+\node at (-1,-1) {$1$};
+\node at (1,-1) {$\infty$};
+\node at (-1,1) {$k$};
+\node at (1,1) {$0$};
+\end{scope}
+
+%
+% start row with denominator dn(u,k)
+%
+
+\begin{scope}[xshift=-3cm,yshift=-9cm]
+\rechteck{gruen}{\operatorname{nd}(u,k)}
+\pol{(1,1)}{gruen}
+\nullstelle{(-1,1)}{gruen}
+\node at (-1,-1) {$1$};
+\node at (-1,1) {$0$};
+\node at (1,-1) {$\frac{1}{k'}$};
+\node at (1,1) {$\infty$};
+\end{scope}
+
+\begin{scope}[xshift=0cm,yshift=-9cm]
+\rechteck{sdcolor}{\operatorname{sd}(u,k)}
+\nullstelle{(-1,-1)}{sdcolor}
+\pol{(1,1)}{sdcolor}
+\node at (-1,-1) {$0$};
+\node at (1,-1) {$\frac{1}{k'}$};
+\node at (-1,1) {$ $};
+\node at (1,1) {$\infty$};
+\end{scope}
+
+\begin{scope}[xshift=3cm,yshift=-9cm]
+\rechteck{cdcolor}{\operatorname{cd}(u,k)}
+\pol{(1,1)}{cdcolor}
+\nullstelle{(1,-1)}{cdcolor}
+\node at (-1,-1) {$1$};
+\node at (-1,1) {$\frac1k $};
+\node at (1,-1) {$0$};
+\node at (1,1) {$\infty$};
+\end{scope}
+
+\begin{scope}[xshift=6cm,yshift=-9cm]
+%\rechteck{gray}{1}
+\fill[color=white] (-1,-1) rectangle (1,1);
+\node[color=gray] at (0,0) {$1$};
+\end{scope}
+
+
+\end{tikzpicture}
+\end{document}
+

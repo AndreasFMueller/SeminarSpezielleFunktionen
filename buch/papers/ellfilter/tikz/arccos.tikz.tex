@@ -1,0 +1,66 @@
+\begin{tikzpicture}[>=stealth', auto, node distance=2cm, scale=1.2]
+
+    \tikzstyle{zero} = [draw, circle, inner sep =0, minimum height=0.15cm]
+    \tikzset{pole/.style={cross out, draw=black, minimum size=(0.15cm-\pgflinewidth), inner sep=0pt, outer sep=0pt}}
+
+    \draw[gray, ->] (0,-2) -- (0,2) node[anchor=south]{$\mathrm{Im}~z$};
+    \draw[gray, ->] (-5,0) -- (5,0) node[anchor=west]{$\mathrm{Re}~z$};
+
+    \begin{scope}[xscale=0.6]
+
+        \clip(-7.5,-2) rectangle (7.5,2);
+
+        \draw[thick, ->, darkgreen] (0, 0) -- (0,1.5);
+        \draw[thick, ->, orange] (1, 0) -- (0,0);
+        \draw[thick, ->, red] (2, 0) -- (1,0);
+        \draw[thick, ->, blue] (2,1.5) -- (2, 0);
+
+        \foreach \i in {-2,...,1} {
+            \begin{scope}[opacity=0.5, xshift=\i*4cm]
+                \draw[->, orange] (-1, 0) -- (0,0);
+                \draw[->, darkgreen] (0, 0) -- (0,1.5);
+                \draw[->, darkgreen] (0, 0) -- (0,-1.5);
+                \draw[->, orange] (1, 0) -- (0,0);
+                \draw[->, red] (2, 0) -- (1,0);
+                \draw[->, blue] (2,1.5) -- (2, 0);
+                \draw[->, blue] (2,-1.5) -- (2, 0);
+                \draw[->, red] (2, 0) -- (3,0);
+
+                \node[zero] at (1,0) {};
+                \node[zero] at (3,0) {};
+            \end{scope}
+        }
+
+        \node[gray, anchor=north] at (-6,0) {$-3\pi$};
+        \node[gray, anchor=north] at (-4,0) {$-2\pi$};
+        \node[gray, anchor=north] at (-2,0) {$-\pi$};
+        % \node[gray, anchor=north] at (0,0) {$0$};
+        \node[gray, anchor=north] at (2,0) {$\pi$};
+        \node[gray, anchor=north] at (4,0) {$2\pi$};
+        \node[gray, anchor=north] at (6,0) {$3\pi$};
+
+        \node[gray, anchor=east] at (0,-1.5) {$-\infty$};
+        % \node[gray, anchor=south east] at (0, 0) {$0$};
+        \node[gray, anchor=east] at (0, 1.5) {$\infty$};
+
+    \end{scope}
+
+    \begin{scope}[yshift=-2.5cm]
+
+        \draw[gray, ->] (-5,0) -- (5,0) node[anchor=west]{$w$};
+
+        \draw[thick, ->, blue]      (-4, 0) -- (-2, 0);
+        \draw[thick, ->, red]       (-2, 0) -- (0, 0);
+        \draw[thick, ->, orange]    (0, 0) -- (2, 0);
+        \draw[thick, ->, darkgreen] (2, 0) -- (4, 0);
+
+        \node[anchor=south] at (-4,0) {$-\infty$};
+        \node[anchor=south] at (-2,0) {$-1$};
+        \node[anchor=south] at (0,0) {$0$};
+        \node[anchor=south] at (2,0) {$1$};
+        \node[anchor=south] at (4,0) {$\infty$};
+
+    \end{scope}
+
+
+\end{tikzpicture}

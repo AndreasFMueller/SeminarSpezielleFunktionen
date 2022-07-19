@@ -5,18 +5,20 @@
 //
 #include "common.inc"
 
+kugel(kugeldunkel)
+
 union {
 	seite(A, C, fett)
 	seite(A, P, fett)
 	seite(C, P, fett)
 
-	seite(A, B, fine)
-	seite(B, C, fine)
-	seite(B, P, fine)
+	seite(A, B, fein)
+	seite(B, C, fein)
+	seite(B, P, fein)
 	punkt(A, fett)
 	punkt(C, fett)
 	punkt(P, fett)
-	punkt(B, fine)
+	punkt(B, fein)
 	pigment {
 		color dreieckfarbe
 	}
@@ -27,7 +29,7 @@ union {
 }
 
 object {
-	winkel(A, P, C, fine)
+	winkel(A, P, C, fein, gross)
 	pigment {
 		color rgb<0.4,0.4,1>
 	}

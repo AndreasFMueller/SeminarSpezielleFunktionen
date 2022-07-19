@@ -1,0 +1,56 @@
+\section{Einleitung}
+
+% Lineare filter
+
+% Filter, Signalverarbeitung
+
+
+Der womöglich wichtigste Filtertyp ist das Tiefpassfilter.
+Dieses soll im Durchlassbereich unter der Grenzfrequenz $\Omega_p$ unverstärkt durchlassen und alle anderen Frequenzen vollständig auslöschen.
+
+% Bei der Implementierung von Filtern
+
+In der Elektrotechnik führen Schaltungen mit linearen Bauelementen wie Kondensatoren, Spulen und Widerständen immer zu linearen zeitinvarianten Systemen (LTI-System von englich \textit{time-invariant system}).
+Die Übertragungsfunktion im Frequenzbereich $|H(\Omega)|$ eines solchen Systems ist dabei immer eine rationale Funktion, also eine Division von zwei Polynomen.
+Die Polynome habe dabei immer reelle oder komplex-konjugierte Nullstellen.
+
+
+\begin{equation} \label{ellfilter:eq:h_omega}
+    | H(\Omega)|^2 = \frac{1}{1 + \varepsilon_p^2 F_N^2(w)}, \quad w=\frac{\Omega}{\Omega_p}
+\end{equation}
+
+$\Omega = 2 \pi f$ ist die analoge Frequenz
+
+
+% Linear filter
+Damit das Filter implementierbar und stabil ist, muss $H(\Omega)^2$ eine rationale Funktion sein, deren Nullstellen und Pole auf der linken Halbebene liegen.
+
+$N \in \mathbb{N} $ gibt dabei die Ordnung des Filters vor, also die maximale Anzahl Pole oder Nullstellen.
+
+Damit ein Filter die Passband Kondition erfüllt muss $|F_N(w)| \leq 1 \forall |w| \leq 1$ und für $|w| \geq 1$ sollte die Funktion möglichst schnell divergieren.
+Eine einfaches Polynom, dass das erfüllt, erhalten wir wenn $F_N(w) = w^N$.
+Tatsächlich erhalten wir damit das Butterworth Filter, wie in Abbildung \ref{ellfilter:fig:butterworth} ersichtlich.
+\begin{figure}
+    \centering
+    \input{papers/ellfilter/python/F_N_butterworth.pgf}
+    \caption{$F_N$ für Butterworth filter. Der grüne Bereich definiert die erlaubten Werte für alle $F_N$-Funktionen.}
+    \label{ellfilter:fig:butterworth}
+\end{figure}
+
+wenn $F_N(w)$ eine rationale Funktion ist, ist auch $H(\Omega)$ eine rationale Funktion und daher ein lineares Filter. %proof?
+
+\begin{align}
+    F_N(w) & =
+    \begin{cases}
+        w^N                            & \text{Butterworth} \\
+        T_N(w)                         & \text{Tschebyscheff, Typ 1}  \\
+        [k_1 T_N (k^{-1} w^{-1})]^{-1} & \text{Tschebyscheff, Typ 2}  \\
+        R_N(w, \xi)                    & \text{Elliptisch (Cauer)}    \\
+    \end{cases}
+\end{align}
+
+Mit der Ausnahme vom Butterworth filter sind alle Filter nach speziellen Funktionen benannt.
+Alle diese Filter sind optimal für unterschiedliche Anwendungsgebiete.
+Das Butterworth-Filter, zum Beispiel, ist maximal flach im Durchlassbereich.
+Das Tschebyscheff-1 Filter sind maximal steil für eine definierte Welligkeit im Durchlassbereich, währendem es im Sperrbereich monoton abfallend ist.
+Es scheint so als sind gewisse Eigenschaften dieser speziellen Funktionen verantwortlich für die Optimalität dieser Filter.

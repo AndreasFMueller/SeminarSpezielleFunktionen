@@ -18,6 +18,19 @@ auf einer Ellipse.
 \end{figure}
 % based on Willliam Schwalm, Elliptic functions and elliptic integrals
 % https://youtu.be/DCXItCajCyo
+Die Ellipse wurde in Abschnitt~\ref{buch:geometrie:subsection:kegelschnitte}
+als Kegelschnitt erkannt und auf verschiedene Arten parametrisiert.
+In diesem Abschnitt soll gezeigt werden, wie man die Parametrisierung
+eines Kreises mit trigonometrischen Funktionen verallgemeinern kann
+auf eine Parametrisierung einer Ellipse mit den drei
+Funktionen $\operatorname{sn}(u,k)$,
+$\operatorname{cn}(u,k)$ und $\operatorname{dn}(u,k)$,
+die ähnliche Eigenschaften haben wie die trigonometrischen Funktionen.
+
+Die nachstehende Darstellung ist stark inspiriert von William Schwalms 
+sehr zielorientierten Einführung
+\cite{buch:schwalm}, welche auch als Youtube-Videovorlesung
+\cite{buch:schwalm-youtube} zur Verfügung steht.
 
 %
 % Geometrie einer Ellipse
@@ -112,7 +125,7 @@ Punktes auf dem Einheitskreis interpretieren.
 
 Für die Koordinaten eines Punktes auf der Ellipse ist dies nicht so einfach,
 weil es nicht nur eine Ellipse gibt, sondern für jede numerische Exzentrizität
-mindestens eine mit Halbeachse $1$.
+mindestens eine mit Halbachse $1$.
 Wir wählen die Ellipsen so, dass $a$ die grosse Halbachse ist, also $a>b$.
 Als Normierungsbedingung verwenden wir, dass $b=1$ sein soll, wie in
 Abbildung~\ref{buch:elliptisch:fig:jacobidef}.
@@ -161,7 +174,7 @@ x^2(k^2-1) + y^2 = 1.
 an einer Ellipse mit Halbachsen $a$ und $1$.
 \label{buch:elliptisch:fig:jacobidef}}
 \end{figure}
-\subsubsection{Definition der elliptischen Funktionen}
+\subsubsection{Definition der Jacobischen elliptischen Funktionen}
 Die elliptischen Funktionen für einen Punkt $P$ auf der Ellipse mit Modulus $k$
 können jetzt als Verhältnisse der Koordinaten des Punktes definieren.
 Es stellt sich aber die Frage, was man als Argument verwenden soll.
@@ -472,6 +485,7 @@ wählt, dass
 Damit haben wir die grundlegenden Ableitungsregeln
 
 \begin{satz}
+\index{Satz!Ableitungen der Jacobischen elliptischen Funktionen}%
 \label{buch:elliptisch:satz:ableitungen}
 Die Jacobischen elliptischen Funktionen haben die Ableitungen
 \begin{equation}
@@ -1003,10 +1017,60 @@ finden.
 Man beachte, dass in jeder Identität alle Funktionen den gleichen
 zweiten Buchstaben haben.
 
-\subsubsection{TODO}
-XXX algebraische Beziehungen \\
-XXX Additionstheoreme \\
-XXX Perioden
+\subsubsection{Weitere Beziehungen}
+Für die Jacobischen elliptischen Funktionen lässt sich eine grosse
+Zahl weiterer Eigenschaften und Identitäten beweisen.
+Zum Beispiel gibt es Aditionstheoreme, die im Grenzfall $k\to 0$ zu
+den Additionstheoremen für die trigonometrischen Funktionen werden.
+\index{Additionstheorem}%
+Ebenso kann man weitere algebraische Identitäten finden.
+So lässt sich zum Beispiel die einzige reelle Nullstelle von $x^5+x=w$
+mit Jacobischen elliptischen Funktionen darstellen, während es
+nicht möglich ist, diese Lösung als Wurzelausdruck zu schreiben.
+
+Die Jacobischen elliptischen Funktionen lassen sich statt auf dem
+hier gewählten trigonometrischen Weg auch mit Hilfe der Jacobischen
+Theta-Funktionen definieren, die Lösungen einer Wärmeleitungsgleichung
+\index{Theta-Funktionen}%
+\index{Wärmeleitungs-Gleichung}%
+mit geeigneten Randbedingungen sind.
+Diese Vorgehensweise hat den Vorteil, ziemlich direkt zu
+Reihen- und Produktentwicklungen für die Funktionen zu führen.
+Auch die Additionstheorem ergeben sich vergleichsweise leicht.
+Dieser Zugang zu den Jacobischen elliptischen Funktionen wird in der
+Standardreferenz~\cite{buch:ellfun-applications} gewählt.
+
+Bei anderen speziellen Funktionen waren Reihenentwicklungen ein
+wichtiges Hilfsmittel zu deren numerischer Berechnung.
+Bei den Jacobischen elliptischen Funktionen ist diese Methode
+nicht zielführend.
+Im Abschnitt~\ref{buch:elliptisch:subsection:differentialgleichungen}
+wird gezeigt, dass Jacobische elliptische Funktionen gewisse nichtlineare
+Differentialgleichungen zu lösen ermöglichen.
+Dies zeigt auch, dass Jacobischen elliptischen Funktionen
+Umkehrfunktionen der elliptischen Integrale sind, die in
+Abschnitt~\ref{buch:elliptisch:subsection:agm} mit dem
+arithmetisch-geometrischen Mittel berechnet wurden.
+Die dort angetroffenen numerischen Schwierigkeiten treten bei der
+Berechnung der Umkehrfunktion jedoch nicht auf.
+
+Die grundlegende Mechanik dieser Berechnungsmethode wird auf
+Seite~\pageref{buch:elliptisch:jacobi:agm} dargestellt und
+und in den Übungsaufgaben
+\ref{buch:elliptisch:aufgabe:2} bis \ref{buch:elliptisch:aufgabe:5}
+etwas näher untersucht wird.
+
+Aus der Theorie das arithmetisch-geometrischen Mittels lässt sich
+die sogenannte Landen-Trans\-formation herleiten.
+\index{Landen-Transformation}%
+Sie stellt eine Verbindung zwischen
+den Werten der elliptischen Funktionen zu verschiedenen Moduli $k$ her.
+Sie ist die Basis aller effizienten Berechnungsmethoden.
+
+
+% algebraische Beziehungen \\
+% Additionstheoreme \\
+% Perioden
 % use https://math.stackexchange.com/questions/3013692/how-to-show-that-jacobi-sine-function-is-doubly-periodic
 
 

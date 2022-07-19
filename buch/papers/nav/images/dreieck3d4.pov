@@ -5,10 +5,12 @@
 //
 #include "common.inc"
 
+kugel(kugelfarbe)
+
 union {
-	seite(A, B, fine)
-	seite(A, C, fine)
-	punkt(A, fine)
+	seite(A, B, fein)
+	seite(A, C, fein)
+	punkt(A, fein)
 	punkt(B, fett)
 	punkt(C, fett)
 	punkt(P, fett)
@@ -25,7 +27,7 @@ union {
 }
 
 object {
-	winkel(B, C, P, fine)
+	winkel(B, C, P, fein, gross)
 	pigment {
 		color rgb<0.6,0.4,0.2>
 	}
