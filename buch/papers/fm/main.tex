@@ -3,37 +3,30 @@
 %
 % (c) 2020 Hochschule Rapperswil
 % 
-% !TeX root = buch.tex
-%\begin {document}
-\chapter{FM\label{chapter:fm}}
+
+\chapter{FM \(\with\)Bessel\label{chapter:fm}}
 \lhead{FM}
 \begin{refsection}
 
 \chapterauthor{Joshua Bär}
 
-Dieser Abschnitt beschreibt die Beziehung von der Besselfunktion(Ref) zur Frequenz Modulatrion (FM)(acronym?).
-
-%Mit hilfe einer Modulation kann ein Übertragungs Signal \(m(t)\) auf einen Trägerfrequenz \( f_c \) kombiniert werden.
-%Das Ziel ist es dieses modulierte Signal dan im Empfangsspektrum wieder demodulieren und so informationen im Signal \( m(t) \)zu Übertragen.
-
-%Ein paar Hinweise für die korrekte Formatierung des Textes
-%\begin{itemize}
-%\item
-%Absätze werden gebildet, indem man eine Leerzeile einfügt.
-%Die Verwendung von \verb+\\+ ist nur in Tabellen und Arrays gestattet.
-%\item
-%Die explizite Platzierung von Bildern ist nicht erlaubt, entsprechende
-%Optionen werden gelöscht. 
-%Verwenden Sie Labels und Verweise, um auf Bilder hinzuweisen.
-%\item
-%Beginnen Sie jeden Satz auf einer neuen Zeile. 
-%Damit ermöglichen Sie dem Versionsverwaltungssysteme, Änderungen
-%in verschiedenen Sätzen von verschiedenen Autoren ohne Konflikt 
-%anzuwenden.
-%\item 
-%Bilden Sie auch für Formeln kurze Zeilen, einerseits der besseren
-%Übersicht wegen, aber auch um GIT die Arbeit zu erleichtern.
-%\end{itemize}
+Die Frequenzmodulation ist eine Modulation die man auch schon im alten Radio findet. 
+Falls du dich an die Zeit erinnerst, konnte man zwischen \textit{FM-AM} Umschalten, 
+dies bedeutete so viel wie: \textit{F}requenz-\textit{M}odulation und \textit{A}mplituden-\textit{M}odulation.
+Durch die Modulation wird ein Nachrichtensignal \(m(t)\) auf ein Trägersignal (z.B. ein Sinus- oder Rechtecksignal) abgebildet (kombiniert).
+Durch dieses Auftragen vom Nachrichtensignal \(m(t)\) kann das modulierte Signal in einem gewünschten Frequenzbereich übertragen werden.
+Der ursprünglich Frequenzbereich des Nachrichtensignal \(m(t)\) erstreckt sich typischerweise von 0 HZ bis zur Bandbreite \(B_m\).
+\newline
+Beim Empfänger wird dann durch Demodulation das ursprüngliche Nachrichtensignal \(m(t)\) so originalgetreu wie möglich zurückgewonnen.
+\newline
+Beim Trägersignal \(x_c(t)\) handelt es sich um ein informationsloses Hilfssignal.
+Durch die Modulation mit dem Nachrichtensignal \(m(t)\) wird es zum modulierten zu übertragenden Signal.
+Für alle Erklärungen wird ein sinusförmiges Trägersignal benutzt, jedoch kann auch ein Rechtecksignal,
+welches Digital einfach umzusetzten ist, 
+genauso als Trägersignal genutzt werden kann.
+Zuerst wird erklärt was \textit{FM-AM} ist, danach wie sich diese im Frequenzspektrum verhalten.
+Erst dann erklär ich dir wie die Besselfunktion mit der Frequenzmodulation( acro?) zusammenhängt.
+Nun zur Modulation im nächsten Abschnitt.
 
 \input{papers/fm/01_AM-FM.tex}
 \input{papers/fm/02_frequenzyspectrum.tex}
@@ -43,4 +36,4 @@ Dieser Abschnitt beschreibt die Beziehung von der Besselfunktion(Ref) zur Freque
 \printbibliography[heading=subbibliography]
 \end{refsection}
 
-%\end {document}
+
