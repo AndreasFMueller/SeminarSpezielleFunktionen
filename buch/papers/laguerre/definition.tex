@@ -15,14 +15,17 @@ x y''(x) + (\nu + 1 - x) y'(x) + n y(x)
 n \in \mathbb{N}_0
 , \quad
 x \in \mathbb{R}
-.
 \label{laguerre:dgl}
+.
 \end{align}
+Spannenderweise wurde die verallgemeinerte Laguerre-Differentialgleichung
+zuerst von Yacovlevich Sonine (1849 - 1915) beschrieben,
+aber aufgrund ihrer Ähnlichkeit nach Laguerre benannt.
 Die klassische Laguerre-Diffentialgleichung erhält man, wenn $\nu = 0$.
 Hier wird die verallgemeinerte Laguerre-Differentialgleichung verwendet,
-weil die Lösung mit der selben Methode berechnet werden kann,
-aber man zusätzlich die Lösung für den allgmeinen Fall erhält.
-Zur Lösung der Gleichung \eqref{laguerre:dgl} verwenden wir einen
+weil die Lösung mit derselben Methode berechnet werden kann.
+Zusätzlich erhält man aber die Lösung für den allgmeinen Fall.
+Zur Lösung von \eqref{laguerre:dgl} verwenden wir einen
 Potenzreihenansatz.
 Da wir bereits wissen, dass die Lösung orthogonale Polynome sind,
 erscheint dieser Ansatz sinnvoll.
@@ -44,7 +47,7 @@ y''(x)
 =
 \sum_{k=1}^\infty (k+1) k a_{k+1} x^{k-1}
 \end{align*}
-in die Differentialgleichung ein, erhält man:
+in die Differentialgleichung ein, erhält man
 \begin{align*}
 \sum_{k=1}^\infty (k+1) k a_{k+1} x^k
 +
@@ -118,6 +121,15 @@ L_n^\nu(x)
 \sum_{k=0}^{n} \frac{(-1)^k}{(\nu + 1)_k} \binom{n}{k} x^k.
 \label{laguerre:allg_polynom}
 \end{align}
+Die Laguerre-Polynome von Grad $0$ bis $7$ sind in
+Abbildung~\ref{laguerre:fig:polyeval} dargestellt.
+\begin{figure}
+\centering
+% \scalebox{0.8}{\input{papers/laguerre/images/laguerre_poly.pgf}}
+\includegraphics[width=0.9\textwidth]{papers/laguerre/images/laguerre_poly.pdf}
+\caption{Laguerre-Polynome vom Grad $0$ bis $7$}
+\label{laguerre:fig:polyeval}
+\end{figure}
 
 \subsection{Analytische Fortsetzung}
 Durch die analytische Fortsetzung erhalten wir zudem noch die zweite Lösung der
@@ -126,8 +138,10 @@ Differentialgleichung mit der Form
 \Xi_n(x)
 =
 L_n(x) \ln(x) + \sum_{k=1}^\infty d_k x^k
+.
 \end{align*}
-Nach einigen mühsamen Rechnungen,
+Nach einigen aufwändigen Rechnungen, 
+% die am besten ein Computeralgebrasystem übernimmt,
 die den Rahmen dieses Kapitel sprengen würden,
 erhalten wir
 \begin{align*}
@@ -142,16 +156,5 @@ L_n(x) \ln(x)
 \end{align*}
 wobei $\alpha_0 = 0$ und $\alpha_k =\sum_{i=1}^k i^{-1}$,
 $\forall k \in \mathbb{N}$.
-Die Laguerre-Polynome von Grad $0$ bis $7$ sind in
-Abbildung~\ref{laguerre:fig:polyeval} dargestellt.
-\begin{figure}
-\centering
-\includegraphics[width=0.7\textwidth]{%
-    papers/laguerre/images/laguerre_polynomes.pdf%
-}
-\caption{Laguerre-Polynome vom Grad $0$ bis $7$}
-\label{laguerre:fig:polyeval}
-\end{figure}
-
 % https://www.math.kit.edu/iana1/lehre/hm3phys2012w/media/laguerre.pdf
 % http://www.physics.okayama-u.ac.jp/jeschke_homepage/E4/kapitel4.pdf

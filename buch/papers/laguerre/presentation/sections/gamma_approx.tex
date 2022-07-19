@@ -1,0 +1,201 @@
+\section{Approximieren der Gamma-Funktion}
+
+\begin{frame}{Anwenden der Gauss-Laguerre-Quadratur auf $\Gamma(z)$}
+
+\begin{align*}
+\Gamma(z)
+ & =
+\int_0^\infty x^{z-1} e^{-x} \, dx
+\uncover<2->{
+\approx
+\sum_{i=1}^{n} f(x_i) A_i
+}
+\uncover<3->{
+=
+\sum_{i=1}^{n} x^{z-1} A_i
+}
+\\\\
+\uncover<4->{
+ & \text{wobei }
+A_i = \frac{x_i}{(n+1)^2 \left[ L_{n+1}(x_i) \right]^2}
+\text{ und $x_i$ die Nullstellen von $L_n(x)$}
+}
+\end{align*}
+
+\end{frame}
+
+\begin{frame}{Fehlerabschätzung}
+\begin{align*}
+R_n(\xi)
+ & =
+\frac{(n!)^2}{(2n)!} f^{(2n)}(\xi)
+\\
+ & =
+(z - 2n)_{2n} \frac{(n!)^2}{(2n)!} \xi^{z - 2n - 1}
+,\quad
+0 < \xi < \infty
+\end{align*}
+
+% \textbf{Probleme:}
+\begin{itemize}
+\item Funktion ist unbeschränkt
+\item Maximum von $R_n$ gibt oberes Limit des Fehlers an
+\uncover<2->{\item[$\Rightarrow$] Schwierig ein Maximum von $R_n(\xi)$ zu finden}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Einfacher Ansatz}
+
+\begin{figure}[h]
+\centering
+% \scalebox{0.91}{\input{../images/rel_error_simple.pgf}}
+% \resizebox{!}{0.72\textheight}{\input{../images/rel_error_simple.pgf}}
+\includegraphics[width=0.77\textwidth]{../images/rel_error_simple.pdf}
+\caption{Relativer Fehler des einfachen Ansatzes für verschiedene reele Werte
+von $z$ und Grade $n$ der Laguerre-Polynome}
+\end{figure}
+
+\end{frame}
+
+\begin{frame}{Wieso sind die Resultate so schlecht?}
+
+\textbf{Beobachtungen}
+\begin{itemize}
+\item Wenn $z \in \mathbb{Z}$ relativer Fehler $\rightarrow 0$
+\item Gewisse Periodizität zu erkennen
+\item Für grosse und kleine $z$ ergibt sich ein schlechter relativer Fehler
+\item Es gibt Intervalle $[a,a+1]$ mit minimalem relativem Fehler
+\item $a$ ist abhängig von $n$
+\end{itemize}
+
+\uncover<2->{
+\textbf{Ursache?}
+\begin{itemize}
+\item Vermutung: Integrand ist problematisch
+}
+\uncover<3->{
+\item[$\Rightarrow$] Analysieren von $f(x)$ und dem Integranden
+}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{$f(x) = x^z$}
+\begin{figure}[h]
+\centering
+% \scalebox{0.91}{\input{../images/integrand.pgf}}
+\includegraphics[width=0.8\textwidth]{../images/integrand.pdf}
+% \caption{Integrand $x^z$ mit unterschiedlichen Werten für $z$}
+\end{figure}
+\end{frame}
+
+\begin{frame}{Integrand $x^z e^{-x}$}
+\begin{figure}[h]
+\centering
+% \scalebox{0.91}{\input{../images/integrand_exp.pgf}}
+\includegraphics[width=0.8\textwidth]{../images/integrand_exp.pdf}
+% \caption{Integrand $x^z$ mit unterschiedlichen Werten für $z$}
+\end{figure}
+\end{frame}
+
+\begin{frame}{Neuer Ansatz?}
+
+\textbf{Vermutung}
+\begin{itemize}
+\item Es gibt Intervalle $[a(n), a(n)+1]$ in denen der relative Fehler minimal
+ist
+\item $a(n) > 0$
+\end{itemize}
+
+\uncover<2->{
+\textbf{Idee}
+\begin{itemize}
+\item[$\Rightarrow$] Berechnen von $\Gamma(z)$ im geeigneten Intervall und dann
+mit Funktionalgleichung zurückverschieben
+\end{itemize}
+}
+
+\uncover<3->{
+\textbf{Wie finden wir $\boldsymbol{a(n)}$?}
+\begin{itemize}
+\item Minimieren des Fehlerterms mit zusätzlichem Verschiebungsterm
+}
+\uncover<4->{$\Rightarrow$ Schwierig das Maximum des Fehlerterms zu bestimmen}
+\uncover<5->{\item Empirisch $a(n)$ bestimmen}
+\uncover<6->{$\Rightarrow$ Sinnvoll,
+da Gauss-Quadratur nur für kleine $n$ praktischen Nutzen hat}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Verschiebungsterm}
+\begin{columns}
+\begin{column}{0.625\textwidth}
+\begin{figure}[h]
+\centering
+\includegraphics[width=1\textwidth]{../images/targets.pdf}
+\caption{Optimaler Verschiebungsterm $m^*$ in Abhängigkeit von $z$ und $n$}
+\end{figure}
+\end{column}
+\begin{column}{0.375\textwidth}
+\begin{align*}
+\Gamma(z)
+\approx
+\frac{1}{(z-m)_{m}} \sum_{i=1}^{n} x_i^{z + m - 1} A_i
+\end{align*}
+\end{column}
+\end{columns}
+\end{frame}
+
+\begin{frame}{Schätzen von $m^*$}
+\begin{columns}
+\begin{column}{0.65\textwidth}
+\begin{figure}
+\centering
+\vspace{-12pt}
+% \scalebox{0.7}{\input{../images/estimates.pgf}}
+\includegraphics[width=1.0\textwidth]{../images/estimates.pdf}
+% \caption{Integrand $x^z$ mit unterschiedlichen Werten für $z$}
+\end{figure}
+\end{column}
+\begin{column}{0.34\textwidth}
+\begin{align*}
+\hat{m}
+&=
+\alpha n + \beta
+\\
+&\approx
+1.34093 n + 0.854093
+\\
+m^*
+&=
+\lceil \hat{m} - \operatorname{Re}z \rceil
+\end{align*}
+\end{column}
+\end{columns}
+
+\end{frame}
+
+\begin{frame}{}
+\begin{figure}[h]
+\centering
+% \scalebox{0.6}{\input{../images/rel_error_shifted.pgf}}
+\includegraphics{../images/rel_error_shifted.pdf}
+\caption{Relativer Fehler mit $n=8$, unterschiedlichen Verschiebungstermen $m$ und $z\in(0, 1)$}
+\end{figure}
+\end{frame}
+
+\begin{frame}{}
+\begin{figure}[h]
+\centering
+% \scalebox{0.6}{\input{../images/rel_error_range.pgf}}
+\includegraphics{../images/rel_error_range.pdf}
+\caption{Relativer Fehler mit $n=8$, Verschiebungsterm $m^*$ und $z\in(-5, 5)$}
+\end{figure}
+\end{frame}
+
+\begin{frame}{Vergleich mit Lanczos-Methode}
+Maximaler relativer Fehler für $n=6$
+\begin{itemize}
+    \item Lanczos-Methode $< 10^{-12}$
+    \item Unsere Methode $\approx 10^{-6}$ 
+\end{itemize}
+\end{frame}
