@@ -4,7 +4,7 @@
 % (c) 2020 Prof Dr Andreas Müller, Hochschule Rapperswil
 %
 \section{Was sind Verfolgungskurven?
-\label{lambertw:section:teil0}}
+\label{lambertw:section:Was_sind_Verfolgungskurven}}
 \rhead{Teil 0}
 
 Verfolgungskurven tauchen oft auf bei fragen wie, welchen Pfad begeht ein Hund während er einer Katze nachrennt. Ein solches Problem hat im Kern immer ein Verfolger und sein Ziel. Der Verfolger versucht sein Ziel zu ergattern und das Ziel versucht zu entkommen. Der Pfad, der der Verfolger während der Verfolgung begeht, wird Verfolgungskurve genannt. Um diese Kurve zu bestimmen, kann das Verfolgungsproblem als DGL formuliert werden. Diese DGL entspringt der Verfolgungsstrategie des Verfolgers.
@@ -31,17 +31,17 @@ Wie bereits erwähnt, wird der Verfolger durch seine Verfolgungsstrategie defini
         \hline
     \end{tabular}
     \caption{mögliche Verfolgungsstrategien}
-    \label{lambertw:Strategien}
+    \label{lambertw:table:Strategien}
 \end{table}
 
 
 
 
-%\begin{figure}
-%	\centering
-%	\includegraphics{.\papers\lambertw\Bilder\pursuerDGL2.pdf}
-%    \label{pursuer:pursuerDGL2}
-%\end{figure}
+\begin{figure}
+    \centering
+	\includegraphics[scale=0.2]{./papers/lambertw/Bilder/pursuerDGL2.pdf}
+    \label{lambertw:grafic:pursuerDGL2}
+\end{figure}
 
 In der Tabelle \eqref{lambertw:Strategien} sind drei mögliche Strategien aufgezählt.
 Folgend wird nur noch auf die Strategie 1 eingegangen.
@@ -67,7 +67,7 @@ Aus dem Verfolgungsproblem ist auch ersichtlich, dass die Punkte $V$ und $Z$ nic
 Wenn die Punkte $V$ und $Z$ trotzdem am gleichen Ort starten, ist die Lösung trivial.
 Nun wird die Gleichung mit deren rechten Seite skalar multipliziert, um das Gleichungssystem von zwei auf eine Gleichung zu reduzieren.
 \begin{align}
-    \label{pursuer:pursuerDGL}
+    \label{lambertw:pursuerDGL}
     \frac{\overrightarrow{Z}-\overrightarrow{V}}{|\overrightarrow{Z}-\overrightarrow{V}|}\cdot
     \overrightarrow{\dot{V}}
     &=
@@ -87,7 +87,7 @@ Wie der Verfolger wird auch unser Ziel sich strikt an eine Fluchtstrategie halte
 Diese Strategie kann als Parameterdarstellung der Position nach der Zeit beschrieben werden.
 Zum Beispiel könnte ein Ziel auf einer Geraden flüchten, welches auf einer Ebene mit der Parametrisierung
 \begin{equation}
-    \vec{r}(t)
+    \vec{Z}(t)
     =
     \begin{Bmatrix}
         0\\
