@@ -25,7 +25,7 @@ Wir verwenden die Hergeleiteten Gleichungen
     \frac{1}{4}\left(\left(y_0+r_0\right)\eta+\left(r_0-y_0\right)ln\left(\eta\right)-r_0+3y_0\right) \\
     \chi
     &=
-    \frac{r_0+y_0}{r_0-y_0}; \cdot\chi \\
+    \frac{r_0+y_0}{r_0-y_0}\\
     \eta
     &=
     \left(\frac{x}{x_0}\right)^2 
@@ -37,13 +37,13 @@ Wir verwenden die Hergeleiteten Gleichungen
 Wir definieren einen Treffer wenn die Koordinaten des Verfolgers mit denen des Ziels übereinstimmen bei einem diskreten Zeitpunkt $t_1$. Aus dem vorangegangenem Beispiel, sind die Gleichungen zu den x- und y-Koordinaten des Verfolgers bekannt. Die Des Ziels sind
 
 \begin{equation}
-    \overrightarrow{Z}(t)
+    \vec{Z}(t)
     =
     \left( \begin{array}{c} 0 \\ v \cdot t \end{array} \right)
     =
     \left( \begin{array}{c} 0 \\ t \end{array} \right)
     ;\quad
-    \overrightarrow{V}(t)
+    \vec{V}(t)
     =
     \left( \begin{array}{c} x(t) \\ y(t) \end{array} \right)
     \label{lambertw:Anfangspunkte}
@@ -52,7 +52,7 @@ Wir definieren einen Treffer wenn die Koordinaten des Verfolgers mit denen des Z
 Somit gilt es
 
 \begin{equation*}
-    \overrightarrow{Z}(t_1)=\overrightarrow{V}(t_1)
+    \vec{Z}(t_1)=\vec{V}(t_1)
 \end{equation*}
 
 zu lösen. Da die $y(t)$ viel komplexer ist als $x(t)$ wird das Problem in zwei einzelne Teilprobleme zerlegt. Wobei die Bedingung der x- und y-Koordinaten einzeln überprüft werden.
@@ -72,7 +72,10 @@ zu lösen. Da die $y(t)$ viel komplexer ist als $x(t)$ wird das Problem in zwei 
     \\
 \end{align*}
 
-Zuerst wird die Bedingung der x-Koordinate betrachtet. Diese kann durch quadrieren und anschliessendes multiplizieren von $\chi$ vereinfacht werden.
+Zuerst wird die Bedingung der x-Koordinate betrachtet.
+Diese kann durch quadrieren und anschliessendes multiplizieren von $\chi$ vereinfacht werden.
+Es ist zu beachten, dass $W(x)$ die Lambert W-Funktion ist, welche im Kapitel \eqref{buch:section:lambertw} behandelt wurde.
+Die Gleichung
 
 \begin{equation}
     0
@@ -80,7 +83,8 @@ Zuerst wird die Bedingung der x-Koordinate betrachtet. Diese kann durch quadrier
     W\left(\chi\cdot e^{\chi-\frac{4t}{r_0-y_0}}\right)
 \end{equation}
 
-Dies entspricht genau den Nullstellen der Lambert W-Funktion. Da die Lambert W-Funktion genau eine Nullstelle bei
+
+entspricht genau den Nullstellen der Lambert W-Funktion. Da die Lambert W-Funktion genau eine Nullstelle bei
 
 \begin{equation*}
     W(0)=0
@@ -100,5 +104,10 @@ Dies nützt nicht viel, da unendlich viel Zeit vergehen müsste damit ein Treffe
 Somit kann nach den Gestellten Bedingungen das Ziel nie getroffen werden.
 Dieses Resultat ist aber eher akademischer Natur, weil der Verfolger und das Ziel als Punkt betrachtet wurden.
 Wobei aber in Realität nicht von Punkten sondern von Objekten mit einer räumlichen Ausdehnung gesprochen werden kann.
+Dies kann mathematisch mit 
+
+\begin{equation}
+    |\vec{V}-\vec{Z]|<a_min \quad a_min\in\mathbb{R}>0
+\end{equation}
 
 
