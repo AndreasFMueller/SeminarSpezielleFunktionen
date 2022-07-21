@@ -3,45 +3,60 @@
 %
 % (c) 2020 Prof Dr Andreas Müller, Hochschule Rapperswil
 %
-\section{Beispiel Verfolgungskurve
+\section{Beispiel einer Verfolgungskurve
 \label{lambertw:section:teil4}}
-\rhead{Beispiel Verfolgungskurve}
-In diesem Abschnitt wird rechnerisch das Beispiel einer Verfolgungskurve mit der Verfolgungsstrategie 1 beschreiben.
+\rhead{Beispiel einer Verfolgungskurve}
+In diesem Abschnitt wird rechnerisch das Beispiel einer Verfolgungskurve mit der Verfolgungsstrategie 1 beschreiben. Dafür werden zuerst Bewegungsraum, Anfangspositionen und Bewegungsverhalten definiert, in einem nächsten Schritt soll eine Differentialgleichung dafür aufgestellt werden und anschliessend gelöst werden.
 
-Das zu verfolgende Ziel \(\overrightarrow{Z}\) wandert auf einer Gerade mit konstanter Geschwindigkeit \(v = 1\), wobei diese Gerade der \(y\)-Achse entspricht. Der Verfolger \(\overrightarrow{V}\) startet auf einem beliebigen Punkt im ersten Quadrant und bewegt sich auch mit konstanter Geschwindigkeit. Diese Anfangspunkte oder Anfangsbedingungen können wie folgt formuliert werden:
+\subsection{Anfangsbedingungen definieren und einsetzen
+	\label{lambertw:subsection:Anfangsbedingungen}}
+Das zu verfolgende Ziel \(\vec{Z}\) bewegt sich entlang der \(y\)-Achse mit konstanter Geschwindigkeit \(v = 1\), beginnend beim Ursprung des Kartesischen Koordinatensystems. Der Verfolger \(\vec{V}\) startet auf einem beliebigen Punkt im ersten Quadranten und bewegt sich auch mit konstanter Geschwindigkeit \(|\dot{V}| = 1\) in Richtung Ziel. Diese Anfangspunkte oder Anfangsbedingungen können wie folgt formuliert werden:
 \begin{equation}
-	\overrightarrow{Z}
+	\vec{Z}
 	=
 	\left( \begin{array}{c} 0 \\ v \cdot t \end{array} \right)
 	=
 	\left( \begin{array}{c} 0 \\ t \end{array} \right)
-	;
-	\overrightarrow{V}
+	,\:
+	\vec{V}
 	=
 	\left( \begin{array}{c} x \\ y \end{array} \right)
-	\label{lambertw:Anfangspunkte}
+	\:\text{und}\:\:
+	\bigl| \dot{V} \bigl|
+	=
+	1.
+	\label{lambertw:Anfangsbed}
 \end{equation}
-Wenn man diese Startpunkte in die Gleichung der Verfolgungskurve \eqref{lambertw:pursuerDGL} einfügt ergibt sich folgender Ausdruck:
+Wir haben nun die Anfangsbedingungen definiert, jetzt fehlt nur noch eine DGL, welche die fortlaufende Änderung der Position und Bewegungsrichtung des Verfolgers beschreibt. 
+Diese DGL haben wir bereits in Kapitel \ref{lambertw:subsection:Verfolger} definiert, und zwar Gleichung \eqref{lambertw:pursuerDGL}. Wenn man die Startpunkte einfügt ergibt sich folgender Ausdruck:
 \begin{equation}
 	\frac{\left( \begin{array}{c} 0-x \\ t-y \end{array} \right)}{\sqrt{x^2 + (t-y)^2}}
-	\circ
+	\cdot
 	\left(\begin{array}{c} \dot{x} \\ \dot{y} \end{array}\right)
 	=
-	1
-	\label{lambertw:eqMitAnfangspunkte}
+	1.
+	\label{lambertw:eqMitAnfangsbed}
 \end{equation}
-Macht man den linken Term Bruchfrei und löst das Skalarprodukt auf, dann ergibt sich folgende DGL:
+
+\subsection{DGL vereinfachen
+	\label{lambertw:subsection:DGLvereinfach}}
+Nun haben wir eine Gleichung, es stellt sich aber die Frage ob es überhaupt eine geschlossene Lösung dafür gibt. Eine Funktion welche die Beziehung \(y(x)\) beschreibt oder sogar \(x(t)\) und \(y(t)\) liefert. Zum jetzigen Zeitpunkt mag es nicht trivial scheinen, aber mit den gewählten Anfangsbedingungen \eqref{lambertw:Anfangsbed} ist es möglich eine geschlossene Lösung für die Gleichung \eqref{lambertw:eqMitAnfangsbed} zu finden.
+Auf dem Weg dahin muss die definierte DGL zuerst wesentlich vereinfacht werden, sei es mittels algebraische Umformungen oder mit den Tools aus der Analysis. Also legen wir los! 
+
+Zuerst müssen wir den Bruch in \eqref{lambertw:eqMitAnfangsbed} los werden, der sieht so nicht handlich aus. Dafür multiplizieren wir beidseitig mit dem Nenner:
 \[
 	\left( \begin{array}{c} 0-x \\ t-y \end{array} \right)
-	\circ
+	\cdot
 	\left(\begin{array}{c} \dot{x} \\ \dot{y} \end{array}\right)
-	= \sqrt{x^2 + (t-y)^2}\\
+	= \sqrt{x^2 + (t-y)^2},\\
 \]
+In einem weiteren Schritt, lösen wir das Skalarprodukt auf und erhalten folgende Gleichung \eqref{lambertw:eqOhneSkalarprod} ohne vektorielle Grössen:
 \begin{equation}
 		-x \cdot \dot{x} + (t-y) \cdot \dot{y}
 		= \sqrt{x^2 + (t-y)^2}
-		\label{lambertw:eq1BspVerfolgKurve}
+		\label{lambertw:eqOhneSkalarprod}
 \end{equation}
+Ist es nicht schön? Wir sind die 
 Im nächsten Schritt quadriert man beide Seiten, erweitert den neu entstandenen quadratischen Term, bringt alles auf die linke Seite und klammert gemeinsames aus.
 \begin{align*}
 	((t-y) \dot{y} - x \dot{x})^2
@@ -71,7 +86,10 @@ Im letzten Ausdruck erkennt man das Muster einer binomischen Formel, was den Aus
 	(x \dot{y} + (t-y) \dot{x})^2
 	&= 0
 \end{align*}
-Wenn man nun beidseitig die Quadratwurzel zieht, dann ergibt sich im Vergleich zu \eqref{lambertw:eq1BspVerfolgKurve} eine wesentlich einfachere DGL:
+
+\subsection{Zeitabhängigkeit loswerden
+	\label{lambertw:subsection:ZeitabhLoswerden}}
+Wenn man nun beidseitig die Quadratwurzel zieht, dann ergibt sich im Vergleich zu \eqref{lambertw:eqOhneSkalarprod} eine wesentlich einfachere DGL:
 \begin{equation}
 	x \dot{y} + (t-y) \dot{x}
 	= 0
@@ -112,6 +130,9 @@ Um das Integral los zu werden, leitet man den vorherigen Ausdruck \eqref{lambert
 	xy^{\prime\prime} - \sqrt{1+y^{\prime\, 2}}
 	&= 0
 \end{align*}
+
+\subsection{DGL lösen
+	\label{lambertw:subsection:DGLloes}}
 Mittels der Substitution \(y^{\prime} = u\) kann vorherige DGL in eine erster Ordnung umgewandelt werden:
 \begin{equation*}
 	xu^{\prime} - \sqrt{1+u^2}
@@ -149,6 +170,8 @@ Diese kann mit den selben Methoden gelöst werden, diesmal in Kombination mit de
 	C_1 + C_2 x^2 - \frac{ln(x)}{8 \cdot C_2}
 \end{align*}
 
+\subsection{Lösung analysieren
+	\label{lambertw:subsection:LoesAnalys}}
 \begin{figure}
 	\centering
 	\includegraphics{papers/lambertw/Bilder/VerfolgungskurveBsp.png}
@@ -173,7 +196,11 @@ Für die Koeffizienten \(C_1\) und \(C_2\) ergibt sich ein Anfangswertproblem, w
 	\item
 	Aufgrund des Monotoniewechsels in der Kurve muss es auch ein Minimum aufweisen. Es stellt sich nun die Frage: Wo befindet sich dieser Punkt? Durch eine logische Überlegung kann eine Abschätzung darüber getroffen werden und zwar, dass dieser dann entsteht, wenn \(A\) und \(P\) die gleiche \(y\)-Koordinaten besitzen. In diesem Moment ändert die Richtung der \(y\)-Komponente der Geschwindigkeit und somit auch sein Vorzeichen.
 \end{itemize}
-Alle diese Eigenschafte stimmen mit dem überein, was man von einer Kurve dieser Art erwarten würde, siehe \ref{lambertw:BildFunkLoes}. Nun stellt sich die Frage wie die Kurve wirklich aussieht, dies wird durch das Einsetzen folgender Anfangsbedingungen erreicht:
+Alle diese Eigenschafte stimmen mit dem überein, was man von einer Kurve dieser Art erwarten würde, siehe \ref{lambertw:BildFunkLoes}. Nun stellt sich die Frage wie die Kurve wirklich aussieht.
+
+\subsection{Allgemeine Lösung 
+	\label{lambertw:subsection:AllgLoes}}
+Dies wird durch das Einsetzen folgender Anfangsbedingungen erreicht:
 \begin{equation}
 	y(x)\big \vert_{t=0}
 	=
@@ -215,7 +242,12 @@ Leitet man die Funktion \eqref{lambertw:funkLoes} nach x ab und setzt die Anfang
 	\frac{1}{2}\left(\left(y_0+r_0\right)\frac{x}{x_0^2}+\left(r_0-y_0\right)\frac{1}{x}\right) \\
 	-4t
 	&=
-	\left(y_0+r_0\right)\left(\eta-1\right)+\left(r_0-y_0\right)ln\left(\eta\right) \\
+	\left(y_0+r_0\right)\left(\eta-1\right)+\left(r_0-y_0\right)ln\left(\eta\right)
+\end{align*}
+
+\subsection{Funktion nach der Zeit 
+	\label{lambertw:subsection:FunkNachT}}
+\begin{align*}
 	-4t+\left(y_0+r_0\right)
 	&=
 	\left(y_0+r_0\right)\eta+\left(r_0-y_0\right)ln\left(\eta\right) \\
