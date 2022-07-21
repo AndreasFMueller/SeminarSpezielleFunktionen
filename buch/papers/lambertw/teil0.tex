@@ -4,15 +4,27 @@
 % (c) 2020 Prof Dr Andreas Müller, Hochschule Rapperswil
 %
 \section{Was sind Verfolgungskurven?
-\label{lambertw:section:teil0}}
-\rhead{Teil 0}
+\label{lambertw:section:Was_sind_Verfolgungskurven}}
+\rhead{Was sind Verfolgungskurven?}
 
-Verfolgungskurven tauchen oft auf bei fragen wie, welchen Pfad begeht ein Hund während er einer Katze nachrennt. Ein solches Problem hat im Kern immer ein Verfolger und sein Ziel. Der Verfolger versucht sein Ziel zu ergattern und das Ziel versucht zu entkommen. Der Pfad, der der Verfolger während der Verfolgung begeht, wird Verfolgungskurve genannt. Um diese Kurve zu bestimmen, kann das Verfolgungsproblem als DGL formuliert werden. Diese DGL entspringt der Verfolgungsstrategie des Verfolgers.
+Verfolgungskurven tauchen oft auf bei Fragen wie welchen Pfad begeht ein Hund während er einer Katze nachrennt.
+Ein solches Problem hat im Kern immer ein Verfolger und sein Ziel.
+Der Verfolger verfolgt sein Ziel, das versucht zu entkommen.
+Der Pfad, der der Verfolger während der Verfolgung begeht, wird Verfolgungskurve genannt.
+Um diese Kurve zu bestimmen, kann das Verfolgungsproblem als Differentialgleichung formuliert werden.
+Diese Differentialgleichung entspringt der Verfolgungsstrategie des Verfolgers.
 
 
 \subsection{Verfolger und Verfolgungsstrategie
 \label{lambertw:subsection:Verfolger}}
-Wie bereits erwähnt, wird der Verfolger durch seine Verfolgungsstrategie definiert. Wir nehmen an, dass sich der Verfolger stur an eine Verfolgungsstrategie hält. Dabei gibt es viele mögliche Strategien, die der Verfolger wählen könnte. Die möglichen Strategien entstehen durch Festlegung einzelner Parameter, die der Verfolger kontrollieren kann. Der Verfolger hat nur einen direkten Einfluss auf seinen Geschwindigkeitsvektor. Mit diesem kann er neben Richtung und Betrag auch den Abstand zwischen Verfolger und Ziel kontrollieren. Wenn zwei dieser drei Parameter durch die Strategie definiert werden, ist der dritte nicht mehr frei. Daraus folgt, dass eine Strategie zwei dieser drei Parameter festlegen muss, um den Verfolger komplett zu beschreiben.
+Wie bereits erwähnt, wird der Verfolger durch seine Verfolgungsstrategie definiert.
+Wir nehmen an, dass sich der Verfolger stur an eine Verfolgungsstrategie hält.
+Dabei gibt es viele mögliche Strategien, die der Verfolger wählen könnte.
+Die möglichen Strategien entstehen durch Festlegung einzelner Parameter, die der Verfolger kontrollieren kann.
+Der Verfolger hat nur einen direkten Einfluss auf seinen Geschwindigkeitsvektor.
+Mit diesem kann er neben Richtung und Betrag auch den Abstand zwischen Verfolger und Ziel kontrollieren.
+Wenn zwei dieser drei Parameter durch die Strategie definiert werden, ist der dritte nicht mehr frei.
+Daraus folgt, dass eine Strategie zwei dieser drei Parameter festlegen muss, um den Verfolger komplett zu beschreiben.
 
 \begin{table}
     \centering
@@ -31,54 +43,54 @@ Wie bereits erwähnt, wird der Verfolger durch seine Verfolgungsstrategie defini
         \hline
     \end{tabular}
     \caption{mögliche Verfolgungsstrategien}
-    \label{lambertw:Strategien}
+    \label{lambertw:table:Strategien}
 \end{table}
 
 
 
 
-%\begin{figure}
-%	\centering
-%	\includegraphics{.\papers\lambertw\Bilder\pursuerDGL2.pdf}
-%    \label{pursuer:pursuerDGL2}
-%\end{figure}
+\begin{figure}
+    \centering
+	\includegraphics[scale=0.1]{./papers/lambertw/Bilder/pursuerDGL2.pdf}
+    \caption{Vektordarstellung Strategie 1}
+    \label{lambertw:grafic:pursuerDGL2}
+\end{figure}
 
-In der Tabelle \eqref{lambertw:Strategien} sind drei mögliche Strategien aufgezählt.
-Folgend wird nur noch auf die Strategie 1 eingegangen.
-Bei dieser Strategie ist die Geschwindigkeit konstant und der Verfolger bewegt sich immer direkt auf sein Ziel hinzu.
-In der Grafik \eqref{lambertw:pursuerDGL2} ist das Problem dargestellt.
-Wobei $\overrightarrow{V}$ der Ortsvektor des Verfolgers, $\overrightarrow{Z}$ der Ortsvektor des Ziels und $\overrightarrow{\dot{V}}$ der Geschwindigkeitsvektor des Verfolgers ist.
+In der Tabelle \eqref{lambertw:table:Strategien} sind drei mögliche Strategien aufgezählt.
+Im Folgend wird nur noch auf die Strategie 1 eingegangen.
+Bei dieser Strategie ist die Geschwindigkeit konstant und der Verfolger bewegt sich immer direkt auf sein Ziel zu.
+In der Abbildung \eqref{lambertw:grafic:pursuerDGL2} ist das Problem dargestellt,
+wobei $\vec{V}$ der Ortsvektor des Verfolgers, $\vec{Z}$ der Ortsvektor des Ziels und $\dot{\vec{V}}$ der Geschwindigkeitsvektor des Verfolgers ist.
 Die konstante Geschwindigkeit kann man mit der Gleichung
 \begin{equation}
-    |\overrightarrow{\dot{V}}|
-    = konst = A
-    \quad|A\in\mathbb{R}>0
+    |\dot{\vec{V}}|
+    = const = A
+    \quad A\in\mathbb{R}>0
 \end{equation}
 darstellen. Der Geschwindigkeitsvektor wiederum kann mit der Gleichung
 \begin{equation}
-    \frac{\overrightarrow{Z}-\overrightarrow{V}}{|\overrightarrow{Z}-\overrightarrow{V}|}\cdot|\overrightarrow{\dot{V}}|
+    \frac{\vec{Z}-\vec{V}}{|\vec{Z}-\vec{V}|}\cdot|\dot{\vec{V}}|
     =
-    \overrightarrow{\dot{V}}
+    \dot{\vec{V}}
 \end{equation}
 beschrieben werden.
-Durch die Subtraktion der Ortsvektoren $\overrightarrow{V}$ und $\overrightarrow{Z}$ entsteht ein Vektor der vom Punkt $V$ auf $Z$ zeigt.
-Da die Länge dieses Vektors beliebig sein kann, wird durch Division mit dem Betrag, die Länge auf eins festgelegt.
+Die Differenz der Ortsvektoren $\vec{V}$ und $\vec{Z}$ ist ein Vektor der vom Punkt $V$ auf $Z$ zeigt.
+Da die Länge dieses Vektors beliebig sein kann, wird durch Division durch den Betrag, die Länge auf eins festgelegt.
 Aus dem Verfolgungsproblem ist auch ersichtlich, dass die Punkte $V$ und $Z$ nicht am gleichen Ort starten und so eine Division durch Null ausgeschlossen ist.
 Wenn die Punkte $V$ und $Z$ trotzdem am gleichen Ort starten, ist die Lösung trivial.
-Nun wird die Gleichung mit deren rechten Seite skalar multipliziert, um das Gleichungssystem von zwei auf eine Gleichung zu reduzieren.
+Nun wird die Gleichung mit $\dot{\vec{V}}$ skalar multipliziert, um das Gleichungssystem von zwei auf eine Gleichung zu reduzieren.
 \begin{align}
-    \label{pursuer:pursuerDGL}
-    \frac{\overrightarrow{Z}-\overrightarrow{V}}{|\overrightarrow{Z}-\overrightarrow{V}|}\cdot
-    \overrightarrow{\dot{V}}
+    \label{lambertw:pursuerDGL}
+    \frac{\vec{Z}-\vec{V}}{|\vec{Z}-\vec{V}|}\cdot
+    \dot{\vec{V}}
     &=
-    |\overrightarrow{\dot{V}}|^2
+    |\dot{\vec{V}}|^2
     \\
-    \frac{\overrightarrow{Z}-\overrightarrow{V}}{|\overrightarrow{Z}-\overrightarrow{V}|}\cdot \frac{\overrightarrow{\dot{V}}}{|\overrightarrow{\dot{V}}|}
+    \frac{\vec{Z}-\vec{V}}{|\vec{Z}-\vec{V}|}\cdot \frac{\dot{\vec{V}}}{|\dot{\vec{V}}|}
     &=
     1
 \end{align}
-Diese DGL ist der Kern des Verfolgungsproblems, insofern der Verfolger die Strategie 1 verwendet.
-
+Die Lösungen dieser Differentialgleichung sind die gesuchten Verfolgungskurven, insofern der Verfolger die Strategie 1 verwendet.
 
 \subsection{Ziel
 \label{lambertw:subsection:Ziel}}
@@ -87,16 +99,13 @@ Wie der Verfolger wird auch unser Ziel sich strikt an eine Fluchtstrategie halte
 Diese Strategie kann als Parameterdarstellung der Position nach der Zeit beschrieben werden.
 Zum Beispiel könnte ein Ziel auf einer Geraden flüchten, welches auf einer Ebene mit der Parametrisierung
 \begin{equation}
-    \vec{r}(t)
+    \vec{Z}(t)
     =
-    \begin{Bmatrix}
-        0\\
-        t
-    \end{Bmatrix}
+    \left( \begin{array}{c} 0 \\  t \end{array} \right)
 \end{equation}
 beschrieben werden könnte.
 Mit dieser Gleichung ist das Ziel auch schon vollumfänglich definiert.
-Die Fluchtkurve kann eine beliebige Form haben, jedoch wird die zu lösende DGL immer komplexer.
+Die Fluchtkurve kann eine beliebige Form haben, jedoch wird die zu lösende Differentialgleichung immer komplexer.
 
 
 
