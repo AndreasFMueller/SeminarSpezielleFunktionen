@@ -5,10 +5,27 @@
 %
 \section{Gleichungen und Randbedingungen
 \label{buch:pde:section:gleichungen-und-randbedingungen}}
+\rhead{Gebiete, Gleichungen und Randbedingungen}
+Gewöhnliche Differentialgleichungen sind immer auf einem
+Intervall als Definitionsgebiet definiert.
+Partielle Differentialgleichungen sind Gleichungen, die verschiedene
+partielle Ableitungen einer Funktion mehrerer Variablen involvieren,
+das Definitionsgebiet ist daher immer eine höherdimensionale Teilmenge 
+von $\mathbb{R}^n$.
+Sowohl das Gebiet wie auch dessen Rand können wesentlich komplexer sein.
+Eine sorgfältige Definition ist unabdingbar, um Widersprüchen vorzubeugen.
 
+%
+% Gebiete, Differentialoperatoren, Randbedingungen
+%
 \subsection{Gebiete, Differentialoperatoren, Randbedingungen}
+In diesem Abschnitt sollen die Begriffe geklärt werden, die zur
+korrekten Formulierung eines partiellen Differentialgleichungsproblems
+notwendig sind.
 
-
+%
+% Gebiete
+%
 \subsubsection{Gebiete}
 Gewöhnliche Differentialgleichungen haben nur eine unabhängige
 Variable, die gesuchte Lösungsfunktion ist auf eine 
@@ -19,6 +36,7 @@ ermöglicht wesentlich vielfältigere und kompliziertere
 Situationen.
 
 \begin{definition}
+\label{buch:pde:definition:gebiet}
 Ein Gebiet $G\subset\mathbb{R}^n$ ist eine offene Teilmenge
 von $\mathbb{R}^n$, d.~h.~für jeden Punkt $x\in G$ gibt es
 eine kleine Umgebung
@@ -28,8 +46,12 @@ U_{\varepsilon}(x)
 \{y\in\mathbb{R}^n\mid |x-y|<\varepsilon\}
 \), die ebenfalls in $G$ in enthalten ist,
 also $U_{\varepsilon}(x)\subset G$.
+\index{Gebiet}%
 \end{definition}
 
+%
+% Differentialoperatoren
+%
 \subsubsection{Differentialoperatoren}
 Eine gewöhnliche Differentialgleichung für eine Funktion
 ist eine Beziehung zwischen den Werten der Funktion und ihrer
@@ -65,9 +87,13 @@ schreiben.
 Die Koeffizienten $a$, $b_i$, $c_{ij}$ können dabei durchaus auch
 Funktionen der unabhängigen Variablen sein.
 
+%
+% Laplace-Operator
+%
 \subsubsection{Laplace-Operator}
-Der Laplace-Operator hat in einem karteischen Koordinatensystem die
+Der {\em Laplace-Operator} hat in einem karteischen Koordinatensystem die
 Form
+\index{Laplace-Operator}%
 \[
 \Delta
 =
@@ -85,28 +111,109 @@ nicht ändert.
 Man könnte sagen, der Laplace-Operator ist symmetrisch bezüglich
 aller Bewegungen des Raumes.
 
+%
+% Wellengleichung
+%
 \subsubsection{Wellengleichung}
+Da die physikalischen Gesetze invariant sein müssen unter solchen
+Bewegungen, ist zu erwarten, dass der Laplace-Operator in partiellen
+Differentialgleichungen 
+Als Beispiel betrachten wir die Ausbreitung einer Welle, welche sich
+in einem Medium mit der Geschwindigkeit $c$ ausbreitet.
+Ist $u(x,t)$ die Auslenkung der Welle im Punkt $x\in\mathbb{R}^n$
+zur Zeit $t\in\mathbb{R}$, dann erfüllt die Funktion $u(x,t)$
+die partielle Differentialgleichung
+\begin{equation}
+\frac{1}{c^2}
+\frac{\partial^2 u}{\partial t^2}
+=
+\Delta u.
+\label{buch:pde:eqn:waveequation}
+\end{equation}
+In dieser Gleichung treten nicht nur die partiellen Ableitungen
+nach den Ortskoordinaten auf, die der Laplace-Operator miteinander
+verknüpft.
+Die Funktion $u(x,t)$ ist definiert auf einem Gebiet in 
+$\mathbb{R}^{n}\times\mathbb{R}=\mathbb{R}^{n+1}$ mit den Koordinaten
+$(x_1,\dots,x_n,t)$.
+Der Gleichung~\eqref{buch:pde:eqn:waveequation} ist daher eigentlich
+die Gleichung
+\[
+\square u = 0
+\qquad\text{mit}\quad
+\square
+=
+\frac{1}{c^2}\frac{^2}{\partial t^2}
+-
+\Delta
+=
+\frac{1}{c^2}\frac{\partial^2}{\partial t^2}
+-
+\frac{\partial^2}{\partial x_1^2}
+-
+\frac{\partial^2}{\partial x_2^2}
+-\dots- 
+\frac{\partial^2}{\partial x_n^2}
+\]
+wird.
+Der Operator $\square$ heisst auch d'Alembert-Operator.
+\index{dAlembertoperator@d'Alembert-Operator}%
 
-\subsubsection{Eigenfunktionen}
-Eine besonders einfache 
+%
+% Randbedingungen
+%
+\subsubsection{Randbedingungen}
+Die Differentialgleichung oder der Differentialoperator legen die
+Lösung nicht fest.
+Wie bei gewöhnlichen Differentialgleichungen ist dazu die Spezifikation
+geeigneter Randbedingungen nötig.
 
-\subsubsection{Trigonometrische Funktionen}
-Die trigonometrischen Funktionen 
+\begin{definition}
+\label{buch:pde:definition:randbedingungen}
+Eine {\em Randbedingung} für das Gebiet $\Omega$ ist eine Teilmenge
+$F\subset\partial\Omega$ sowie eine auf $F$ definierte Funktion
+$f\colon F\to\mathbb{R}$.
+Eine Funktion $u\colon \overline{\Omega} \to\mathbb{R}$ erfüllt eine
+{\em Dirichlet-Randbedingung}, wenn
+\index{Dirichlet-Randbedingung}%
+\index{Randbedingung!Dirichlet-}%
+\(
+u(x) = f(x)
+\)
+für $x\in F$.
+Sie erfüllt eine {\em Neumann-Randbedingung}, wenn
+\index{Neumann-Randbedingung}%
+\index{Randbedingung!Neumann-}%
+\[
+\frac{\partial u}{\partial n}
+=
+f(x)\qquad\text{für $x\in F$}.
+\]
+Dabei ist
+\[
+\frac{\partial u}{\partial n}
+=
+\frac{d}{dt}
+u(x+tn)
+\bigg|_{t=0}
+=
+\operatorname{grad}u\cdot n
+\]
+\index{Normalableitung}%
+die {\em Normalableitung}, die Richtungsableitung in Richtung des
+Vektors $n$, der senkrecht ist auf dem Rand $\partial\Omega$ von
+$\Omega$.
+\end{definition}
 
-\subsection{Orthogonalität}
-In der linearen Algebra lernt man, dass die Eigenvektoren einer
-symmetrischen Matrix zu verschiedenen Eigenwerten orthgonal sind.
-Dies hat zur Folge, dass die Transformation in eine Eigenbasis
-mit einer orthogonalen Matrix möglich ist, was wiederum die Basis
-von Diagonalisierungsverfahren wie dem Jacobi-Verfahren ist.
+Die Vorgabe nur von Ableitungen kann natürlich die Lösung $u(x)$
+einer linearen partiellen Differentialgleichung nicht eindeutig
+festlegen, dazu ist noch mindestens ein Funktionswert notwendig.
+Die Vorgabe von anderen Ableitungen in Richtungen tangential an den
+Rand liefert keine neue Information, denn ausgehend von dem einen
+Funktionswert auf dem Rand kann man durch Integration entlang
+einer Kurve auf dem Rand eine Neumann-Randbedingung konstruieren,
+die die gleiche Information beinhaltet wie Anforderungen an die
+tangentialen Ableitungen.
+Dirichlet- und Neumann-Randbedingungen sind daher die einzigen
+sinnvollen linearen Randbedingungen.
 
-Das Separationsverfahren wird zeigen, wie sich das Finden einer
-Lösung der Wellengleichung auf Lösungen des Eigenwertproblems
-$\Delta u = \lambda u$ zurückführen lässt.
-Damit stellt sich die Frage, welche Eigenschaften 
-
-
-\subsubsection{Gewöhnliche Differentialglichung}
-
-
-\subsubsection{$n$-dimensionaler Fall}

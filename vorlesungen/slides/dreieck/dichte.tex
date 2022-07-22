@@ -1,0 +1,67 @@
+%
+% dichte.tex -- Wahrscheinlichkeitsdichte
+%
+% (c) 2021 Prof Dr Andreas Müller, OST Ostschweizer Fachhochschule
+%
+\bgroup
+\definecolor{darkgreen}{rgb}{0,0.6,0}
+\begin{frame}[t]
+\setlength{\abovedisplayskip}{5pt}
+\setlength{\belowdisplayskip}{5pt}
+\frametitle{Wahrscheinlichkeitsdichte}
+\vspace{-20pt}
+\begin{columns}[t,onlytextwidth]
+\begin{column}{0.40\textwidth}
+\begin{block}{Definition}
+\[
+\varphi_{X_{k:n}}(x)
+=
+\frac{d}{dx} F_{X_{k:n}}(x)
+\]
+\end{block}
+\end{column}
+\begin{column}{0.60\textwidth}
+\uncover<4->{%
+\begin{block}{Gleichverteilung}
+\[
+{\color{darkgreen}F(x)}=\begin{cases}
+0&x \le 0\\
+x&0\le x \le 1,\\
+1&x\ge 1
+\end{cases}
+\quad
+\uncover<5->{
+{\color{red}\varphi(x)}
+=
+\begin{cases}
+1&0\le x \le 1\\
+0&\text{sonst}
+\end{cases}}
+\]
+\end{block}}
+\end{column}
+\end{columns}
+\uncover<2->{%
+\begin{block}{Ordnungsstatistik}
+nach einiger Rechnung:
+\begin{align*}
+\varphi_{X_{k:n}}(x)
+&=
+{\color<3->{red}\varphi_X(x)}\,k\binom{n}{k}{\color<3->{darkgreen}F_X(x)}^{k-1}
+(1-{\color<3->{darkgreen}F_X(x)})^{n-k}
+\intertext{\uncover<4->{für Gleichverteilung}}
+\uncover<6->{
+\varphi_{X_{k:n}}(x)
+&=
+\begin{cases}
+\displaystyle
+{\color<7->{blue}k\binom{n}{k}}{\color{darkgreen}x}^{k-1}(1-{\color{darkgreen}x})^{n-k}
+&0\le x \le 1\\
+0&\text{sonst}
+\end{cases}
+\qquad\uncover<7->{\text{({\color{blue}Normierung})}}
+}
+\end{align*}
+\end{block}}
+\end{frame}
+\egroup

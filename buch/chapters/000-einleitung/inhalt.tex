@@ -1,0 +1,153 @@
+%
+% Was ist zu erwarten
+%
+\subsection*{Was ist zu erwarten?}
+Spezielle Funktionen wie die eben angedeuteten werden also zu
+Bausteinen, die in der Lösung algebraischer oder auch analytischer
+Probleme verwendet werden können.
+Die Erfahrung zeigt, dass diese Funktionen immer wieder nützlich
+sind, es lohnt sich also, ihre Berechnung zum Beispiel in einer
+Bibliothek zu implementieren.
+Spezielle Funktionen sind in diesem Sinn eine mathematische Form
+des informatischen Prinzips des ``code reuse''.
+
+Die nachstehenden Kapitel sollen die vielfältigen Arten illustrieren,
+wie diese Prinzipien zu neuen und nützlichen speziellen Funktionen
+und ihren Anwendungen führen können.
+Hier eine kurze Übersicht über ihren Inhalt.
+\begin{enumerate}
+\item
+Potenzen und Wurzeln: Potenzen und Polynome sind die einfachsten
+Funktionen, die sich unmittelbar aus den arithmetischen Operationen
+konstruieren lassen.
+Die zugehörigen Umkehrfunktionen sind die Wurzelfunktionen,
+sie lösen gewisse algebraische Gleichungen.
+Aus den Polynomen lassen sich weiter rationale Funktionen und
+Potenzreihen konstruieren, die als wichtige Werkzeuge zur Konstruktion
+spezieller Funktionen in späteren Kapiteln sind.
+\item
+Exponentialfunktion und Exponentialgleichungen.
+Die Exponentialfunktion entsteht aus dem Zinsproblem durch Grenzwert,
+die Jost Bürgi zur Berechnung seiner Logarithmentabelle verwendet hat.
+Hier zeigt sich die Nützlichkeit spezieller Funktionen als Grundlage
+für die numerische Rechnung: Logarithmentafeln waren über Jahrhunderte
+das zentrale Werkzeug für die Durchführung numerischer Rechnung.
+Besonders nützlich ist aber auch die Potenzreihendarstellung der
+Exponentialdarstellung, die meist für die numerische Berechnung
+verwendet wird.
+Die Lambert-$W$-schliesslich löst gewisse Exponentialgleichungen.
+\item
+Spezielle Funktionen aus der Geometrie.
+Dieses Kapitel startet mit der langen Geschichte der trigonometrischen
+Funktionen, den wahrscheinlich wichtigsten speziellen Funktionen für
+geometrische Anwendungen.
+Es führt aber auch die Kegelschnitte, die hyperbolischen Funktionen
+und andere Parametrisierungen der Kegelschnitte ein, die später
+wichtig werden.
+Es beginnt auch die Diskussion einiger geometrischer Fragestellungen
+die sich oft nur durch Definition neuer spezieller Funktionen lösen
+lassen, wie zum Beispiel das Problem der Kurvenlänge auf einer
+Ellipse.
+\item
+Spezielle Funktionen und Rekursion.
+Viele Probleme lassen eine Lösung in rekursiver Form zu.
+Zum Beispiel lässt sich die Fakultät durch eine Rekursionsbeziehung
+vollständig definieren.
+Dieses Kapitel zeigt, wie sich die Fakultät zur Gamma-Funktion
+$\Gamma(x)$ erweitern lässt, die für beliebige reelle $x$
+definiert ist.
+Sie ist aber nur die Spitze eines Eisbergs von weiteren wichtigen
+Funktionen.
+Die Beta-Integrale sind ebenfalls durch Rekursionsbeziehungen
+charakterisiert, lassen sich durch Gamma-Funktionen ausdrücken und 
+haben als Anwendung die Verteilungsfunktionen der Ordnungsstatistiken.
+Lineare Differenzengleichungen sind Rekursionsgleichungen, die sich
+besonders leicht mit Potenzfunktionen lösen lassen.
+Alle diese Funktionen sind Speziallfälle einer sehr viel grösseren
+Klasse von Funktionen, den hypergeometrischen Funktionen, die sich
+durch eine Rekursionsbeziehung der Koeffizienten ihrer
+Potenzreihenentwicklung auszeichnen.
+Es wird sich in nächsten Kapitel zeigen, dass sie besonders gut
+geeignet sind, Lösungen von linearen Differentialgleichungen zu
+beschreiben.
+\item
+Differentialgleichungen.
+Lösungsfunktionen von Differentialgleichungen sind meistens die
+erste Anwendung, in der man die klassschen speziellen Funktionen
+kennenlernt.
+Sie entstehen mit Hilfe der Potenzreihenmethode und können daher
+als hypergeometrische Funktionen geschrieben werden.
+Sie sind aber von derart grosser Bedeutung für die Anwendung,
+dass viele dieser Funktionen als eigenständige Funktionenfamilien
+definiert worden sind.
+Die Bessel-Funktionen werden in diesem Zusammenhang eingehend
+behandelt.
+\item
+Integrale können als Lösungen sehr spezieller Differentialgleichungen
+betrachtet werden.
+Eine Stammfunktion $F(x)$ der Funktion $f(x)$ hat als Ableitung die
+ursprüngliche Funktion: $F'(x)=f(x)$.
+Während Ableiten ein einfacher, algebraischer Prozess ist, 
+scheint das Finden einer Stammfunktion sehr viel anspruchsvoller
+zu sein.
+Spezielle Funktionen sinnvoll sein, wenn eine Stammfunktion sich nicht
+mit den bereits definierten Funktionen ausdrücken lässt.
+Es gibt eine systematische Methode zu entscheiden, ob eine Stammfunktion
+sich durch ``elementare Funktionen'' ausdrücken lässt, sie wird oft
+der Risch-Algorithmus genannt.
+\item
+Orthogonalität.
+Mit dem Integral lassen sich auch für Funktionen Skalarprodukte
+definieren.
+Orthogonalität zwischen Funktionen zeichnet dann Funktionen aus, die
+sich besonders gut zur Darstellung beliebiger stetiger oder
+integrierbarer Funktionen eignen.
+Die Fourier-Theorie und ihre vielen Varianten sind ein Resultat.
+Besonders einfache orthogonale Funktionenfamilien sind die orthogonalen
+Polynome, die ausserdem zu ausserordentlich genauen numerischen
+Integrationsverfahren führen.
+\item
+Integraltransformationen.
+Die trigonometrischen Funktionen sind die Grundlage der Fourier-Theorie.
+Doch auch andere spezielle Funktionenfamilien können ähnlich
+nützliche Integraltransformationen hergeben.
+Die Bessel-Funktionen stellen sich in diesem Zusammenhang als die
+Polarkoordinaten-Variante der Fourier-Theorie in der Ebene heraus.
+\item
+Funktionentheorie.
+Einige Eigenschaften der Lösungen gewöhnlicher Differentialgleichung
+sind allein mit der reellen Analysis nicht zu bewältigen.
+In der Welt der speziellen Funktionen hat man aber strengere
+Anforderungen an Funktionen, sie lassen sich immer als Funktionen
+einer komplexen Variablen verstehen.
+Dieses Kapitel stellt die wichtigsten Eigenschaften komplex
+differenzierbarer Funktionen zusammen und wendet sie zum Beispiel
+auf das Problem an, weitere Lösungen der Bessel-Differentialgleichung
+zu finden.
+\item
+Partielle Differentialgleichungen sind eine der wichtigsten Quellen
+der gewöhnlichen Differentialgleichungen, die nur mit speziellen
+Funktionen gelöst werden können.
+So führen rotationssymmetrische Wellenprobleme in der Ebene
+ganz natürlich auf die Besselsche Differentialgleichung und damit
+auf die Bessel-Funktionen als Lösungsfunktionen.
+\item
+Elliptische Funktionen.
+Einige der in Kapitel~\ref{buch:chapter:geometrie} angesprochenen
+Fragestellungen wie der Berechnung der Bogenlänge auf einer Ellipse
+lassen sich mit keiner der bisher vorgestellten Technik lösen.
+In diesem Kapitel werden die elliptischen Integrale und die
+zugehörigen Umkehrfunktionen vorgestellt.
+Die Jacobischen elliptischen Funktionen verallgemeinern
+die trigonometrischen Funktionen und können gewisse nichtlineare 
+Differentialgleichungen lösen.
+Sie finden auch Anwendungen im Design elliptischer Filter
+(siehe Kapitel~\ref{chapter:ellfilter}).
+\end{enumerate}
+
+Natürlich ist damit das weite Gebiet der speziellen Funktionen
+nur ganz grob umrissen.
+Weitere Aspekte und Anwendungen werden in den Artikeln im zweiten
+Teil vorgestellt.
+Eine Übersicht dazu findet der Leser auf Seite~\pageref{buch:uebersicht}.
+

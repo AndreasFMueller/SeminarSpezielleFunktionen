@@ -4,7 +4,7 @@
 # (c) 2022 Prof Dr Andreas Müller, OST Ostschweizer Fachhochschule
 #
 
-CHAPTERFILES = $(CHAPTERFILES)						\
+CHAPTERFILES += 							\
 	chapters/090-pde/gleichung.tex					\
 	chapters/090-pde/separation.tex					\
 	chapters/090-pde/rechteck.tex					\

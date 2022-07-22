@@ -1,0 +1,82 @@
+%
+% skalarprodukt.tex -- slide template
+%
+% (c) 2021 Prof Dr Andreas Müller, OST Ostschweizer Fachhochschule
+%
+\bgroup
+\begin{frame}[t]
+\setlength{\abovedisplayskip}{5pt}
+\setlength{\belowdisplayskip}{5pt}
+\frametitle{Skalarprodukt}
+\vspace{-20pt}
+\begin{columns}[t,onlytextwidth]
+\begin{column}{0.48\textwidth}
+\begin{block}{Orthogonale Zerlegung}
+Orthogonale $H_k$ normalisieren:
+\[
+\tilde{H}_k(x) = \frac{1}{\|H_k\|_w} H_k(x)
+\]
+mit Gewichtsfunktion $w(x)=e^{-x^2}$
+\end{block}
+\uncover<2->{%
+\begin{block}{``Hermite''-Analyse}
+\begin{align*}
+P(x)
+&=
+\sum_{k=1}^\infty a_k H_k(x)
+=
+\sum_{k=1}^\infty \tilde{a}_k \tilde{H}_k(x)
+\\
+\uncover<3->{
+\tilde{a}_k
+&=
+\| H_k\|_w\, a_k
+}
+\\
+\uncover<4->{
+a_k
+&=
+\frac{1}{\|H_k\|}
+\langle \tilde{H}_k, P\rangle_w
+}\uncover<5->{=
+\frac{1}{\|H_k\|^2}
+\langle H_k, P\rangle_w
+}
+\end{align*}
+\end{block}}
+\end{column}
+\begin{column}{0.48\textwidth}
+\uncover<6->{%
+\begin{block}{Integrationsproblem}
+Bedingung:
+\begin{align*}
+a_0=0
+\uncover<7->{%
+\qquad\Leftrightarrow\qquad
+\langle H_0,P\rangle_w
+&=
+0}
+\\
+\uncover<8->{%
+\int_{-\infty}^\infty
+P(t) w(t)  \,dt
+}\uncover<9->{%
+=
+\int_{-\infty}^\infty
+P(t) e^{-t^2}  \,dt
+&=
+0}
+\end{align*}
+\end{block}}
+\uncover<10->{%
+\begin{theorem}
+Das Integral von $P(t)e^{-t^2}$ ist in geschlossener Form darstellbar
+genau dann, wenn
+\[
+\int_{-\infty}^\infty P(t)e^{-t^2}\,dt = 0
+\]
+\end{theorem}}
+\end{column}
+\end{columns}
+\end{frame}
+\egroup

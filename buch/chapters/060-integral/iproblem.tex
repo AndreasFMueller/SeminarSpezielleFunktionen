@@ -1,0 +1,93 @@
+%
+% iproblem.tex
+%
+% (c) 2022 Prof Dr Andreas Müller, OST Ostschweizer Fachhochschlue
+%
+\subsection{Das Integrationsproblem
+\label{buch:integral:subsection:integrationsproblem}}
+\index{Integrationsproblem}%
+Die Ableitung ist ein einem Differentialkörper mit Hilfe der Ableitungsregeln
+immer ausführbar, ganz ähnlich wie die Berechnung von Potenzen in einem Körper
+immer ausführbar ist.
+Die Umkehrung, also eine sogenannte Stammfunktion zu finden, ist dagegen
+deutlich schwieriger.
+
+\begin{definition}
+\index{Stammfunktion}
+Eine {\em Stammfunktion} einer Funktion $f\in\mathscr{K}$ im Funktionenkörper
+$\mathscr{K}$ ist eine Funktion $F\in\mathscr{K}$ derart, dass $F'=f$.
+Wir schreiben auch $F=\int f$.
+\end{definition}
+
+Zwei Stammfunktionen $F_1$ und $F_2$ einer Funktion $f\in\mathscr{K}$
+haben die Eigenschaft
+\[
+\left.\begin{aligned}
+F_1' &= f \\
+F_2' &= f 
+\end{aligned}\quad\right\}
+\qquad
+\Rightarrow
+\qquad
+(F_1-F_2)' = 0
+\qquad\Rightarrow\qquad
+F_1-F_2\in\mathscr{C},
+\]
+die beiden Stammfunktionen unterscheiden sich daher nur durch eine
+Konstante.
+
+\subsubsection{Stammfunktion von Polynomen}
+Für Polynome ist das Problem leicht lösbar.
+Aus der Ableitungsregel
+\[
+\frac{d}{dx} x^n = nx^{n-1}
+\]
+folgt, dass
+\[
+\int x^n = \frac{1}{n+1} x^{n+1}
+\]
+eine Stammfunktion von $x^n$ ist.
+Da $\int$ linear ist, ergibt sich damit auch eine Stammfunktion für
+ein beliebiges Polynom
+\[
+g(x)
+=
+g_0 + g_1x + g_2x^2 + \dots g_nx^n
+=
+\sum_{k=0}^n g_kx^k
+\in\mathbb{Q}(x)
+\]
+angeben:
+\begin{equation}
+\int g(x)
+=
+g_0x + \frac12g_1x^2 + \frac13g_2x^3 + \dots \frac{1}{n+1}g_nx^{n+1}
+=
+\sum_{k=0}^n 
+\frac{g_k}{k+1}x^{k+1}.
+\label{buch:integral:iproblem:eqn:polyintegral}
+\end{equation}
+
+\subsubsection{Körpererweiterungen}
+Obwohl die Ableitung in einem Differentialkörper immer ausgeführt werden 
+kann, gibt es keine Garantie, dass es eine Stammfunktion im gleichen 
+Körper gibt.
+Im kleinsten denkbaren Funktionenkörper $\mathbb{Q}(x)$
+haben die negativen Potenzen linearer Funktionen die Stammfunktionen
+\[
+\int
+\frac{1}{(x-\alpha)^k}
+=
+\frac{1}{(-k+1)(x-\alpha)^{k-1}}
+\]
+für $k\ne 1$, sind also wieder in $\mathbb{Q}(x)$.
+Für $k=1$ ist aber
+\[
+\int \frac{1}{x-\alpha}
+=
+\log(x-\alpha),
+\]
+es braucht also eine Körpererweiterung um $\log(x-\alpha)$, damit
+$(x-\alpha)^{-1}$ eine Stammfunktion in $\mathbb{Q}(x,\log(x-\alpha))$
+hat.
+

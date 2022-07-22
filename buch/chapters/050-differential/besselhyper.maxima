@@ -1,0 +1,37 @@
+/*
+ * besselhyper.maxima
+ */
+gradef(y(x), yp(x));
+gradef(yp(x), ypp(x));
+
+w(x) := x^alpha * y(-x^2/4);
+
+/* Zusammenhang zwischen Y und W */
+Y: x^(-alpha) * W;
+
+/* erste Ableitung Yp ausgedrückt durch W und W' */
+e: Wp=diff(w(x),x)							$
+e: ratsimp(e);
+e: subst(W * x^(-alpha), y(-x^2/4), e)					$
+e: subst(Yp, yp(-x^2/4), e)						$
+s: solve(e, Yp)								$
+Yp: rhs(s[1])								$
+Yp: ratsimp(Yp);
+ratsimp(subst(0,W,Yp));
+ratsimp(subst(0,Wp,Yp));
+
+/* zweite Ableitung Yp ausgedrückt durch W, W' und W'' */
+e: Wpp = ratsimp(diff(diff(w(x),x),x));
+e: subst(W * x^(-alpha), y(-x^2/4), e)					$
+e: subst(Yp, yp(-x^2/4), e)						$
+e: subst(Ypp, ypp(-x^2/4), e)						$
+e: ratsimp(e)								$
+Ypp: rhs(solve(e, Ypp)[1])						$
+Ypp: ratsimp(Ypp);
+ratsimp(subst(0, W, subst(0, Wp, Ypp)));
+ratsimp(subst(0, W, subst(0, Wpp, Ypp)));
+ratsimp(subst(0, Wp, subst(0, Wpp, Ypp)));
+
+
+B: (-x^2/4) * Ypp + (alpha+1)*Yp - Y;
+expand(-x^(alpha+2) * B);

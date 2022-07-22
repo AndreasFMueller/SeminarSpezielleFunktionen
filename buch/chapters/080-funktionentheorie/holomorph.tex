@@ -83,6 +83,7 @@ Der Term $x-x_0$ und die Gleichung \eqref{komplex:abldef} sind aber auch
 für komplexe Argument sinnvoll, wir definieren daher
 
 \begin{definition}
+\label{buch:funktionentheorie:definition:differenzierbar}
 Die komplexe Funktion $f(z)$ heisst im Punkt $z_0$ komplex differenzierbar
 und hat die komplexe Ableitung $f'(z_0)\in\mathbb C$, wenn
 \index{komplex differenzierbar}%
@@ -107,10 +108,10 @@ Differenzenquotienten finden:
 &=
 \frac{z^n-z_0^n}{z-z_0}
 =
-\frac{(z-z_0)(z^{n-1}+z^{n-2}z_0+z^{n-3}z_0^2+\dots+z^{n-1})}{z-z_0}
+\frac{(z-z_0)(z^{n-1}+z^{n-2}z_0+z^{n-3}z_0^2+\dots+z_0^{n-1})}{z-z_0}
 \\
 &=
-\underbrace{z^{n-1}+z^{n-2}z_0+z^{n-3}z_0^2+\dots+z^{n-1}
+\underbrace{z^{n-1}+z^{n-2}z_0+z^{n-3}z_0^2+\dots+z_0^{n-1}
 }_{\displaystyle \text{$n$ Summanden}}.
 \end{align*}
 Lassen wir jetzt $z$ gegen $z_0$ gehen, wird die rechte Seite
@@ -191,6 +192,7 @@ Dies ist nur möglich, wenn Real- und Imaginärteile übereinstimmen.
 Es folgt also
 
 \begin{satz}
+\index{Satz!Cauchy-Riemann Differentialgleichungen}%
 \label{komplex:satz:cauchy-riemann}
 Real- und Imaginärteil $u(x,y)$ und $v(x,y)$ einer
 komplex differenzierbaren Funktion $f(z)$ mit $f(x+iy)=u(x,y)+iv(x,y)$
@@ -258,11 +260,12 @@ Der Operator
 \frac{\partial^2}{\partial y^2}
 \]
 heisst der {\em Laplace-Operator} in zwei Dimensionen.
-
 \index{Laplace-Operator}%
+\index{Operator!Laplace-}%
 \end{definition}
 
 \begin{definition}
+\label{buch:funktionentheorie:definition:harmonisch}
 Eine Funktion $h(x,y)$ von zwei Variablen heisst {\em harmonisch}, wenn sie
 die Gleichung
 \[

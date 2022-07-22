@@ -25,7 +25,7 @@ function	checkfor(d) {
 	console.log("time string: " + ds);
 	let start = new Date(ds).getTime();
 	console.log("now: " + now);
-	if ((start > now) && ((start-now) < 3600*1000)) {
+	if ((start > now) && ((start-now) < 3300*1000)) {
 		deadline = start;
 		console.log("set deadline to: " + ds);
 	} else {
