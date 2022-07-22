@@ -46,9 +46,6 @@ Daraus folgt, dass eine Strategie zwei dieser drei Parameter festlegen muss, um 
     \label{lambertw:table:Strategien}
 \end{table}
 
-
-
-
 \begin{figure}
     \centering
 	\includegraphics[scale=0.1]{./papers/lambertw/Bilder/pursuerDGL2.pdf}
@@ -57,14 +54,14 @@ Daraus folgt, dass eine Strategie zwei dieser drei Parameter festlegen muss, um 
 \end{figure}
 
 In der Tabelle \eqref{lambertw:table:Strategien} sind drei mögliche Strategien aufgezählt.
-Im Folgend wird nur noch auf die Strategie 1 eingegangen.
+Im Folgenden wird nur noch auf die Strategie 1 eingegangen.
 Bei dieser Strategie ist die Geschwindigkeit konstant und der Verfolger bewegt sich immer direkt auf sein Ziel zu.
 In der Abbildung \eqref{lambertw:grafic:pursuerDGL2} ist das Problem dargestellt,
 wobei $\vec{V}$ der Ortsvektor des Verfolgers, $\vec{Z}$ der Ortsvektor des Ziels und $\dot{\vec{V}}$ der Geschwindigkeitsvektor des Verfolgers ist.
 Die konstante Geschwindigkeit kann man mit der Gleichung
 \begin{equation}
     |\dot{\vec{V}}|
-    = const = A
+    = \operatorname{const} = A
     \quad A\in\mathbb{R}>0
 \end{equation}
 darstellen. Der Geschwindigkeitsvektor wiederum kann mit der Gleichung
@@ -80,12 +77,11 @@ Aus dem Verfolgungsproblem ist auch ersichtlich, dass die Punkte $V$ und $Z$ nic
 Wenn die Punkte $V$ und $Z$ trotzdem am gleichen Ort starten, ist die Lösung trivial.
 Nun wird die Gleichung mit $\dot{\vec{V}}$ skalar multipliziert, um das Gleichungssystem von zwei auf eine Gleichung zu reduzieren.
 \begin{align}
-    \label{lambertw:pursuerDGL}
-    \frac{\vec{Z}-\vec{V}}{|\vec{Z}-\vec{V}|}\cdot
-    \dot{\vec{V}}
+    \frac{\vec{Z}-\vec{V}}{|\vec{Z}-\vec{V}|}\cdot|\dot{\vec{V}}|\cdot\dot{\vec{V}}
     &=
     |\dot{\vec{V}}|^2
     \\
+    \label{lambertw:pursuerDGL}
     \frac{\vec{Z}-\vec{V}}{|\vec{Z}-\vec{V}|}\cdot \frac{\dot{\vec{V}}}{|\dot{\vec{V}}|}
     &=
     1
@@ -105,7 +101,7 @@ Zum Beispiel könnte ein Ziel auf einer Geraden flüchten, welches auf einer Ebe
 \end{equation}
 beschrieben werden könnte.
 Mit dieser Gleichung ist das Ziel auch schon vollumfänglich definiert.
-Die Fluchtkurve kann eine beliebige Form haben, jedoch wird die zu lösende Differentialgleichung immer komplexer.
+Die Fluchtkurve kann eine beliebige Form haben, jedoch wird die zu lösende Differentialgleichung für die Verfolgungskurve immer komplexer.
 
 
 
