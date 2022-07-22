@@ -44,134 +44,137 @@ Nun haben wir eine Gleichung, es stellt sich aber die Frage ob es überhaupt ein
 Auf dem Weg dahin muss die definierte DGL zuerst wesentlich vereinfacht werden, sei es mittels algebraische Umformungen oder mit den Tools aus der Analysis. Also legen wir los! 
 
 Zuerst müssen wir den Bruch in \eqref{lambertw:eqMitAnfangsbed} los werden, der sieht so nicht handlich aus. Dafür multiplizieren wir beidseitig mit dem Nenner:
-\[
+\begin{equation}
 	\left( \begin{array}{c} 0-x \\ t-y \end{array} \right)
 	\cdot
 	\left(\begin{array}{c} \dot{x} \\ \dot{y} \end{array}\right)
-	= \sqrt{x^2 + (t-y)^2},\\
-\]
+	= \sqrt{x^2 + (t-y)^2}.
+	\label{lambertw:eqOhneBruch}
+\end{equation}
 In einem weiteren Schritt, lösen wir das Skalarprodukt auf und erhalten folgende Gleichung \eqref{lambertw:eqOhneSkalarprod} ohne vektorielle Grössen:
 \begin{equation}
 		-x \cdot \dot{x} + (t-y) \cdot \dot{y}
-		= \sqrt{x^2 + (t-y)^2}
+		= \sqrt{x^2 + (t-y)^2}.
 		\label{lambertw:eqOhneSkalarprod}
 \end{equation}
-Ist es nicht schön? Wir sind die 
-Im nächsten Schritt quadriert man beide Seiten, erweitert den neu entstandenen quadratischen Term, bringt alles auf die linke Seite und klammert gemeinsames aus.
-\begin{align*}
-	((t-y) \dot{y} - x \dot{x})^2
-	&= x^2 + (t-y)^2 \\
-	x^2 \dot{x}^2 - 2x(t-y) \dot{x} \dot{y} + (t-y)^2 \dot{y}
-	&= x^2 + (t-y)^2 \\
-	\dot{x}^2 x^2 - x^2 - 2x(t-y) \dot{x} \dot{y} + \dot{y}^2 (t-y)^2 - (t-y)^2
-	&= 0 \\
-	(\dot{x}^2 - 1) \cdot x^2 - 2x(t-y) \dot{x} \dot{y} + (\dot{y}^2 - 1) \cdot (t-y)^2
-	&= 0
-\end{align*}
-Der letzte Ausdruck kann mittels folgender Beziehung \(\dot{x}^2 + \dot{y}^2 = 1\) vereinfacht werden, anschliessend wird die Gleichung mit \(-1\) multipliziert:
-\[
-	\underbrace{(\dot{x}^2 - 1)}_{\mathclap{-\dot{y}^2}} \cdot x^2 - 2x(t-y) \dot{x} \dot{y} + \underbrace{(\dot{y}^2 - 1)}_{\mathclap{-\dot{x}^2}} \cdot (t-y)^2
-	= 0
-\]
-\begin{align*}
-	- \dot{y}^2 \cdot x^2 - 2x(t-y) \dot{x} \dot{y} - \dot{x}^2 \cdot (t-y)^2
-	&= 0 \\
-	\dot{y}^2 \cdot x^2 + 2x(t-y) \dot{x} \dot{y} + \dot{x}^2 \cdot (t-y)^2
-	&= 0
-\end{align*}
-Im letzten Ausdruck erkennt man das Muster einer binomischen Formel, was den Ausdruck wesentlich vereinfacht:
-\begin{align*}
-	x^2 \dot{y}^2  + 2 \cdot x \dot{y} \cdot (t-y) \dot{x}  + (t-y)^2 \dot{x}^2
-	&= 0 \\
+Im letzten Schritt, fällt die Nützlichkeit des Skalarproduktes in der Verfolgungsgleichung \eqref{lambertw:pursuerDGL} markant auf. Meiner Meinung ziemlich elegant und nicht selbstverständlich in der Lage zu sein, das Problem auf eine einzige Gleichung reduzieren zu können.
+
+Die nächsten Schritte sind sehr algebralastig und würden das lesen dieses Papers einfach nur mühsam machen, also werde ich diese auslassen. Hingegen werden ich die algebraische Hauptschritte erwähnen, die notwendig wären falls man es trotzdem selber ausprobieren möchte:
+\begin{itemize}
+	\item
+	Quadrieren und erweitern.
+	\item
+	Gruppieren.
+	\item
+	Substitution von einzelnen Thermen mittels der Beziehung \(\dot{x}^2 + \dot{y}^2 = 1\).
+	\item
+	Und das erkennen des Musters einer Binomischen Formel.
+\end{itemize} 
+Das Resultat aller dieser Vereinfachungen führen zu folgender Gleichung \eqref{lambertw:eqAlgVerinfacht}, die viel handhabbarer ist als zuvor:
+\begin{equation}
 	(x \dot{y} + (t-y) \dot{x})^2
-	&= 0
-\end{align*}
+	= 0.
+	\label{lambertw:eqAlgVerinfacht}
+\end{equation}
+Da der linke Term gleich Null ist, muss auch der Inhalt des Quadrates gleich Null sein, somit folgt eine weitere Vereinfachung, welche zu einer im Vergleich zu \eqref{lambertw:eqOhneSkalarprod} wesentlich einfachere DGL führt:
+\begin{equation}
+	x \dot{y} + (t-y) \dot{x}
+	= 0.
+	\label{lambertw:eqGanzVerinfacht}
+\end{equation}
+Kompakt, ohne Wurzelterme und Quadrate, nur elementare Operationen und Ableitungen. Nun stellt sich die Frage wie es weiter gehen soll, bei der Gleichung \eqref{lambertw:eqGanzVerinfacht} scheinen keine weiteren Vereinfachungen möglich zu sein. Wir brauchen einen neuen Ansatz um unser Ziel einer möglichen Lösung zu verfolgen.
 
 \subsection{Zeitabhängigkeit loswerden
 	\label{lambertw:subsection:ZeitabhLoswerden}}
-Wenn man nun beidseitig die Quadratwurzel zieht, dann ergibt sich im Vergleich zu \eqref{lambertw:eqOhneSkalarprod} eine wesentlich einfachere DGL:
+Der nächste logischer Schritt schient irgendwie die Zeitabhängigkeit in der Gleichung \eqref{lambertw:eqGanzVerinfacht} loszuwerden, aber wieso? Nun, wie am Anfang von Abschnitt \ref{lambertw:subsection:DGLvereinfach} beschrieben, suchen wir eine Lösung der Art \(y(x)\), dies ist natürlich erst möglich wenn wir die Abhängigkeit nach \(t\) eliminieren können.
+
+Der erste Schritt auf dem Weg dahin, ist es die zeitlichen Ableitung los zu werden, dafür wird \eqref{lambertw:eqGanzVerinfacht} beidseitig mit \(\dot{x}\) dividiert, was erlaubt ist, weil diese Änderung ungleich Null ist:
 \begin{equation}
-	x \dot{y} + (t-y) \dot{x}
-	= 0
-	\label{lambertw:equation5}
-\end{equation}
-Um die Ableitung nach der Zeit wegzubringen, wird beidseitig mit \(\dot{x}\) dividiert, wobei \(\frac{\dot{y}}{\dot{x}} = \frac{dy}{dt}/\frac{dx}{dt} = \frac{dy}{dx}\) entspricht.
-\[
 	x \frac{\dot{y}}{\dot{x}} + (t-y) \frac{\dot{x}}{\dot{x}}
-	= 0
-\]
-Nach dem Kürzen und Vereinfachen ergibt sich folgende DGL:
+	= 0.
+	\label{lambertw:eqVorKeineZeitAbleit}
+\end{equation}
+Der Grund dafür ist, dass
+\begin{equation}
+	\frac{\displaystyle\dot{y}}{\displaystyle\dot{x}} 
+	= \frac{\displaystyle\frac{dy}{dt}}{\displaystyle\frac{dx}{dt}}  
+	= \frac{dy}{dx}
+	= y^{\prime},
+	\label{lambertw:eqQuotZeitAbleit}
+\end{equation}
+und somit kann der Quotient dieser zeitlichen Ableitungen in eine Ableitung nach \(x\) umgewandelt werden.
+Nach dem diese Eigenschaft \eqref{lambertw:eqQuotZeitAbleit} in \eqref{lambertw:eqVorKeineZeitAbleit} eingesetzt wird und vereinfacht wurde, entsteht folgende neue Gleichung:
 \begin{equation}
 	x y^{\prime} + t - y
-	= 0
+	= 0.
 	\label{lambertw:DGLmitT}
 \end{equation}
-Hier wäre es passend wenn man die Abhängigkeit nach \(t\) komplett wegbringen könnte. Um dies zu erreichen muss man auf die Definition der Bogenlänge aus Analysis 2 zurückgreifen:
+Hier wäre es natürlich passend wenn man die Abhängigkeit nach \(t\) komplett wegbringen könnte. Um dies zu erreichen muss man auf die Definition der Bogenlänge aus der Analysis zurückgreifen, wobei die Strecke \(s\) folgendem entspricht:
 \begin{equation}
 	s
 	= 
 	v \cdot t
 	=
+	1 \cdot t
+	=
 	t
 	=
-	\int_{x_0}^{x_{end}}\sqrt{1+y^{\prime\, 2}} \: dx
+	\int_{\displaystyle x_0}^{\displaystyle x_{\text{end}}}\sqrt{1+y^{\prime\, 2}} \: dx.
 	\label{lambertw:eqZuBogenlaenge}
 \end{equation}
 Nicht gerade auffällig ist die Richtung in welche hier integriert wird. Wenn der Verfolger sich wie vorgesehen am Anfang im ersten Quadranten befindet, dann muss sich dieser nach links bewegen, was nicht der üblichen Integrationsrichtung entspricht. Um eine Integration wie üblich von links nach rechts ausführen zu können, müssen die Integrationsgenerzen vertauscht werden, was in einem Vorzeichenwechsel resultiert. Wenn man nun \eqref{lambertw:eqZuBogenlaenge} in die DGL \eqref{lambertw:DGLmitT} einfügt, dann ergibt sich folgender Ausdruck:
 \begin{equation}
 	x y^{\prime} - \int\sqrt{1+y^{\prime\, 2}} \: dx - y
-	= 0
+	= 0.
 	\label{lambertw:DGLohneT}
 \end{equation}
-Um das Integral los zu werden, leitet man den vorherigen Ausdruck \eqref{lambertw:DGLohneT} nach \(x\) ab:
-\begin{align*}
+Um das Integral los zu werden, leitet man den vorherigen Ausdruck \eqref{lambertw:DGLohneT} nach \(x\) ab und erhaltet folgende DGL \eqref{lambertw:DGLohneInt}:
+\begin{align}
 	y^{\prime}+ xy^{\prime\prime} - \sqrt{1+y^{\prime\, 2}} - y^{\prime}
-	&= 0 \\
+	&= 0, \\
 	xy^{\prime\prime} - \sqrt{1+y^{\prime\, 2}}
-	&= 0
-\end{align*}
+	&= 0.
+	\label{lambertw:DGLohneInt}
+\end{align}
+Nun sind wir unserem Ziel eine weiteren Schritt näher. Die Gleichung \eqref{lambertw:DGLohneInt} mag auf den ersten Blick nicht gerade einfach sein, aber im Nächsten Abschnitt werden wir sehen, dass sie relativ einfach zu lösen ist.
 
 \subsection{DGL lösen
 	\label{lambertw:subsection:DGLloes}}
-Mittels der Substitution \(y^{\prime} = u\) kann vorherige DGL in eine erster Ordnung umgewandelt werden:
-\begin{equation*}
+Die Gleichung \eqref{lambertw:DGLohneInt} ist eine DGL zweiter Ordnung und kann 
+mittels der Substitution \(y^{\prime} = u\) in eine DGL erster Ordnung umgewandelt werden:
+\begin{equation}
 	xu^{\prime} - \sqrt{1+u^2}
-	= 0
+	= 0.
 	\label{lambertw:DGLmitU}
-\end{equation*}
-Welche mittels Separation gelöst werden kann:
-\begin{align*}
-	arsinh(u) + C_L
+\end{equation}
+Diese \eqref{lambertw:DGLmitU} zu lösen ist ziemlich einfach da sie separierbar ist, also werde ich direkt zur Lösung \eqref{lambertw:loesDGLmitU} übergehen:
+\begin{align}
+	\operatorname{arsinh}(u)
 	&=
-	ln(x) + C_R \\
-	arsinh(u)
-	&=
-	ln(x) + C \\
+	\operatorname{ln}(x) + C, \\
 	u
 	&=
-	sinh(ln(x) + C)
-\end{align*}
-In dem man die Substitution rückgängig macht, erhält man eine weitere DGL erster Ordnung die bereits separiert ist:
+	\operatorname{sinh}(\operatorname{ln}(x) + C).
+	\label{lambertw:loesDGLmitU}
+\end{align}
+Indem man die Substitution rückgängig macht, erhält man eine weitere DGL erster Ordnung die bereits separiert ist und erhält folgende Lösung:
 \begin{equation}
 	y^{\prime}
 	=
-	sinh(ln(x) + C)
+	\operatorname{sinh}(\operatorname{ln}(x) + C).
+	\label{lambertw:loesDGLmitY}
 \end{equation}
-Diese kann mit den selben Methoden gelöst werden, diesmal in Kombination mit der exponentiellen Definition der \(sinh\)-Funktion:
-\begin{align*}
+Diese \eqref{lambertw:loesDGLmitY} kann mit den selben Methoden gelöst werden wie \eqref{lambertw:DGLmitU}, diesmal aber in Kombination mit der exponentiellen Definition der \(\operatorname{sinh}\)-Funktion:
+\begin{equation}
 	y
-	&=
-	\int sinh(ln(x) + C) \\
-	&=
-	\int \frac{1}{2} (e^{ln(x)+C} - e^{-(ln(x)+C)}) \\
-	&=
-	\frac{e^C}{4} x^2 - \frac{ln(x)}{2 \cdot e^C} + C_1 \\
-	&=
-	C_1 + C_2 x^2 - \frac{ln(x)}{8 \cdot C_2}
-\end{align*}
+	=
+	C_1 + C_2 x^2 - \frac{\operatorname{ln}(x)}{8 \cdot C_2}.
+\end{equation}
+Nun haben wir eine Lösung, aber wie es immer mit Lösungen ist, stellt sich die Frage ob sie überhaupt plausibel ist. Dieser Frage werden wir in nächsten Abschnitt \ref{lambertw:subsection:LoesAnalys} nachgehen.
 
 \subsection{Lösung analysieren
 	\label{lambertw:subsection:LoesAnalys}}
+
 \begin{figure}
 	\centering
 	\includegraphics{papers/lambertw/Bilder/VerfolgungskurveBsp.png}
@@ -184,47 +187,87 @@ Das Resultat, wie ersichtlich, ist folgende Funktion \eqref{lambertw:funkLoes} w
 \begin{equation}
 	{\color{red}{y(x)}}
 	=
-	C_1 + C_2 {\color{darkgreen}{x^2}} {\color{blue}{-}} \frac{\color{blue}{ln(x)}}{8 \cdot C_2}
+	C_1 + C_2 {\color{darkgreen}{x^2}} {\color{blue}{-}} \frac{\color{blue}{\operatorname{ln}(x)}}{8 \cdot C_2}.
 	\label{lambertw:funkLoes}
 \end{equation}
-Für die Koeffizienten \(C_1\) und \(C_2\) ergibt sich ein Anfangswertproblem, welches für deren Bestimmung gelöst werden muss. Zuerst soll aber eine qualitative Intuition, oder Idee für das Aussehen der Funktion \(\bf{y(x)}\) geschaffen werden:
+Für die Koeffizienten \(C_1\) und \(C_2\) ergibt sich ein Anfangswertproblem, welches für deren Bestimmung gelöst werden muss. Zuerst soll aber eine qualitative Intuition, oder Idee für das Aussehen der Funktion \(y(x)\) geschaffen werden:
 \begin{itemize}
 	\item
-	Für grosse \(x\)-Werte welche in der Regel in der Nähe von \(x_0\) sein sollten, ist der quadratisch Term in der Funktion dominant und somit für immer kleiner werdende \(x\) geht der Verfolger in Richtung \(y\)-Achse wobei seine Steigung stetig sinkt, was Sinn macht wenn der Verfolgte entlang der \(y\)-Achse steigt.
+	Für grosse \(x\)-Werte, welche in der Regel in der Nähe von \(x_0\) sein sollten, ist der quadratisch Term in der Funktion \eqref{lambertw:funkLoes} dominant. 
+	\item
+	Für immer kleiner werdende \(x\) geht der Verfolger in Richtung \(y\)-Achse, wobei seine Steigung stetig sinkt, was Sinn macht wenn der Verfolgte entlang der \(y\)-Achse steigt. Irgendwann werden Verfolger und Ziel auf gleicher Höhe sein.
 	\item
 	Für \(x\)-Werte in der Nähe von \(0\) ist das asymptotische Verhalten des Logarithmus dominant, dies macht auch Sinn da sich der Verfolgte auf der \(y\)-Achse bewegt und der Verfolger im nachgeht.
 	\item
-	Aufgrund des Monotoniewechsels in der Kurve muss es auch ein Minimum aufweisen. Es stellt sich nun die Frage: Wo befindet sich dieser Punkt? Durch eine logische Überlegung kann eine Abschätzung darüber getroffen werden und zwar, dass dieser dann entsteht, wenn \(A\) und \(P\) die gleiche \(y\)-Koordinaten besitzen. In diesem Moment ändert die Richtung der \(y\)-Komponente der Geschwindigkeit und somit auch sein Vorzeichen.
+	Aufgrund des Monotoniewechsels in der Kurve \eqref{lambertw:funkLoes} muss diese auch ein Minimum aufweisen. Es stellt sich nun die Frage: Wo befindet sich dieser Punkt? 
+	
+	Eine Abschätzung darüber kann getroffen werden und zwar, dass dieser dann entsteht, wenn \(A\) und \(P\) die gleiche \(y\)-Koordinaten besitzen. In diesem Moment ändert die Richtung der \(y\)-Komponente der Geschwindigkeit des Verfolgers, somit auch sein Vorzeichen und dadurch entsteht auch das Minimum.
 \end{itemize}
-Alle diese Eigenschafte stimmen mit dem überein, was man von einer Kurve dieser Art erwarten würde, siehe \ref{lambertw:BildFunkLoes}. Nun stellt sich die Frage wie die Kurve wirklich aussieht.
+Alle diese Eigenschafte stimmen mit dem überein, was man von einer Kurve dieser Art erwarten würde, welche durch die Grafik \ref{lambertw:BildFunkLoes} repräsentiert wurde. Nun stellt sich die Frage wie die Kurve wirklich aussieht. Dies wird im folgenden Abschnitt \ref{lambertw:subsection:AllgLoes} behandelt.
 
-\subsection{Allgemeine Lösung 
+-------------------------------Ab hier muss im Kapitel 12.2 noch einiges bearbeitet werden-----------------
+\subsection{Anfangswertproblem 
 	\label{lambertw:subsection:AllgLoes}}
-Dies wird durch das Einsetzen folgender Anfangsbedingungen erreicht:
+Wie üblich bei der Suche nach einer exakten Lösung, kommt ein Anfangswertproblem auf. Um dies zu lösen, müssen wir zuerst die Anfangswerte definieren. Da wir hier das Problem allgemein lösen, ergeben sich folgende zwei Anfangswerte:
 \begin{equation}
 	y(x)\big \vert_{t=0}
 	=
 	y(x_0)
 	= 
 	y_0
-	\:;\:
+	\label{lambertw:eq1Anfangswert}
+\end{equation}
+und
+\begin{equation}
 	\frac{dy}{dx}\bigg \vert_{t=0}
 	=
 	y^{\prime}(x_0)
 	=
-	\frac{y_0}{x_0}
+	\frac{y_0}{x_0}.
+	\label{lambertw:eq2Anfangswert}
 \end{equation}
-Leitet man die Funktion \eqref{lambertw:funkLoes} nach x ab und setzt die Anfangsbedingungen ein, dann ergibt sich folgendes Gleichungssystem:
-\begin{subequations}
-	\begin{align}
-		y_0
-		&=
-		C_1 + C_2 x^2_0 - \frac{ln(x_0)}{8 \cdot C_2} \\
-		\frac{y_0}{x_0}
-		&=
-		 2 \cdot  C_2 x_0 - \frac{ln(x_0)}{8 \cdot C_2}
-	\end{align}
-\end{subequations}
+Der zweite Anfangswert \eqref{lambertw:eq2Anfangswert} mag nicht grade offensichtlich sein. Die Erklärung dafür ist aber simpel: Der Verfolger wird zum Zeitpunkt \(t=0\) in Richtung Koordinatenursprung bewegen wollen, wo sich das Ziel befindet. Somit entsteht das Steigungsdreieck \(\Delta x = x_0\) und \(\Delta y = y_0\).
+
+Das Lösen des Anfangswertproblems ist ein Problem aus der Algebra, auf welches ich nicht unbedingt eingehen möchte. Zur Vollständigkeit und Nachvollziehbarkeit werde ich aber das Gleichungssystem \eqref{lambertw:eqGleichungssystem} präsentieren, welches notwendig ist um das Anfangswertproblem zu lösen, sowie auch die allgemeine Lösung \eqref{lambertw:eqAllgLoes} die sich nach dem einsetzen der Koeffizienten \(C_1\) und \(C_2\) ergibt.
+
+\begin{itemize}
+	\item
+	Gleichungssystem:
+	\begin{subequations}
+		\begin{align}
+			y_0
+			&=
+			C_1 + C_2 x^2_0 - \frac{\operatorname{ln}(x_0)}{8 \cdot C_2}, \\
+			\frac{y_0}{x_0}
+			&=
+			2 \cdot  C_2 x_0 - \frac{1}{8 \cdot C_2 \cdot x_0}.
+		\end{align}
+		\label{lambertw:eqGleichungssystem}
+	\end{subequations}
+	\item
+	Allgemeine Funktion:
+	\begin{equation}
+		-4t
+		=
+		\left(y_0+r_0\right)\left(\eta-1\right)+\left(r_0-y_0\right)ln\left(\eta\right).
+		\label{lambertw:eqAllgLoes}
+	\end{equation}
+	Wobei aus Übersichtlichkeitsgründen \(\eta\) und \(r_0\) wie folgt definiert wurden:
+	\begin{equation}
+		\eta
+		=
+		\left(\frac{x}{x_0}\right)^2 
+		\:\:\text{und}\:\:
+		r_0
+		=
+		\sqrt{x_0^2+y_0^2}.
+	\end{equation}
+\end{itemize}
+
+
+
+Leitet man die Funktion \eqref{lambertw:funkLoes} nach \(x\) ab und setzt die Anfangsbedingungen ein, dann ergibt sich folgendes Gleichungssystem:
+
 ... Mit folgenden Formeln geht es weiter:
 \begin{align*}
 	\eta
