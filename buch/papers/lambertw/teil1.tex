@@ -4,18 +4,18 @@
 % (c) 2020 Prof Dr Andreas Müller, Hochschule Rapperswil
 %
 \section{Wird das Ziel erreicht?
-\label{lambertw:section:teil1}}
-\rhead{Problemstellung}
+\label{lambertw:section:Wird_das_Ziel_erreicht}}
+\rhead{Wird das Ziel erreicht?}
 
 Sehr oft kommt es vor, dass bei Verfolgungsproblemen die Frage auftaucht, ob das Ziel überhaupt erreicht wird.
 Wenn zum Beispiel die Geschwindigkeit des Verfolgers kleiner ist als diejenige des Ziels, gibt es Anfangsbedingungen bei denen das Ziel nie erreicht wird.
-Sobald diese Frage beantwortet wurde stellt sich meist die Frage, wie lange es dauert bis das Ziel erreicht wird.
+Im Anschluss dieser Frage stellt sich meist die nächste Frage, wie lange es dauert bis das Ziel erreicht wird.
 Diese beiden Fragen werden in diesem Kapitel behandelt und an einem Beispiel betrachtet.
-
-\subsection{Ziel erreichen (überarbeiten)
-\label{lambertw:subsection:ZielErreichen}}
+%
+%\subsection{Ziel erreichen (überarbeiten)
+%\label{lambertw:subsection:ZielErreichen}}
 Für diese Betrachtung wird das Beispiel aus \eqref{lambertw:section:teil4} zur Hilfe genommen.
-Wir verwenden die Hergeleiteten Gleichungen
+Wir verwenden die Hergeleiteten Gleichungen für Startbedingung im ersten Quadranten
 \begin{align*}
     x\left(t\right)
     &=
@@ -32,30 +32,36 @@ Wir verwenden die Hergeleiteten Gleichungen
     \\
     r_0
     &=
-    \sqrt{x_0^2+y_0^2} \\
+    \sqrt{x_0^2+y_0^2} \text{.}\\
 \end{align*}
-Wir definieren einen Treffer wenn die Koordinaten des Verfolgers mit denen des Ziels übereinstimmen bei einem diskreten Zeitpunkt $t_1$. Aus dem vorangegangenem Beispiel, sind die Gleichungen zu den x- und y-Koordinaten des Verfolgers bekannt. Die Des Ziels sind
-
-\begin{equation}
-    \vec{Z}(t)
-    =
-    \left( \begin{array}{c} 0 \\ v \cdot t \end{array} \right)
-    =
-    \left( \begin{array}{c} 0 \\ t \end{array} \right)
-    ;\quad
-    \vec{V}(t)
-    =
-    \left( \begin{array}{c} x(t) \\ y(t) \end{array} \right)
-    \label{lambertw:Anfangspunkte}
-\end{equation}
-
+%
+Das Ziel wird erreicht, wenn die Koordinaten des Verfolgers mit denen des Ziels bei einem diskreten Zeitpunkt $t_1$ übereinstimmen.
 Somit gilt es
 
 \begin{equation*}
     \vec{Z}(t_1)=\vec{V}(t_1)
 \end{equation*}
+%
+zu lösen.
+Aus dem vorangegangenem Beispiel, ist die Parametrisierung des Verfolgers und des Ziels bekannt.
+Das Ziel wird parametrisiert durch
 
-zu lösen. Da $y(t)$ viel komplexer ist als $x(t)$ wird das Problem in zwei einzelne Teilprobleme zerlegt. Wobei die Bedingung der x- und y-Koordinaten einzeln überprüft werden.
+\begin{equation}
+    \vec{Z}(t)
+    =
+    \left( \begin{array}{c} 0 \\ t \end{array} \right)
+\end{equation}
+%
+und der Verfolger durch
+
+\begin{equation}
+    \vec{V}(t)
+    =
+    \left( \begin{array}{c} x(t) \\ y(t) \end{array} \right)
+    \text{.}
+\end{equation}
+%
+ Da $y(t)$ viel komplexer ist als $x(t)$ wird das Problem in zwei einzelne Teilprobleme zerlegt. Wobei die Bedingung der x- und y-Koordinaten einzeln überprüft werden. Es entstehen daher folgende Bedingungen
 
 \begin{align*}
     0
@@ -71,7 +77,8 @@ zu lösen. Da $y(t)$ viel komplexer ist als $x(t)$ wird das Problem in zwei einz
     \frac{1}{4}\left(\left(y_0+r_0\right)\eta+\left(r_0-y_0\right)ln\left(\eta\right)-r_0+3y_0\right)
     \\
 \end{align*}
-
+%
+, welche Beide gleichzeitig erfüllt sein müssen, damit das Ziel erreicht wurde.
 Zuerst wird die Bedingung der x-Koordinate betrachtet.
 Diese kann durch quadrieren und anschliessendes multiplizieren von $\chi$ vereinfacht werden.
 Es ist zu beachten, dass $W(x)$ die Lambert W-Funktion ist, welche im Kapitel \eqref{buch:section:lambertw} behandelt wurde.
@@ -82,26 +89,62 @@ Die Gleichung
     =
     W\left(\chi\cdot e^{\chi-\frac{4t}{r_0-y_0}}\right)
 \end{equation}
-
-
+%
 entspricht genau den Nullstellen der Lambert W-Funktion. Da die Lambert W-Funktion genau eine Nullstelle bei
 
 \begin{equation*}
     W(0)=0
 \end{equation*}
-
-besitzt. Kann die Bedingung weiter vereinfacht werden zu
+%
+besitzt, kann die Bedingung weiter vereinfacht werden zu
 
 \begin{equation}
     0
     =
     \chi\cdot e^{\chi-\frac{4t}{r_0-y_0}}
+    \text{.}
 \end{equation}
-
+%
 Da $\chi\neq0$ und die Exponentialfunktion nie null sein kann, ist diese Bedingung unmöglich zu erfüllen.
 Beim Grenzwert für $t\rightarrow\infty$ geht die Exponentialfunktion gegen null.
-Dies nützt nicht viel, da unendlich viel Zeit vergehen müsste damit ein Treffer möglich wäre.
-Somit kann nach den Gestellten Bedingungen das Ziel nie getroffen werden.
+Dies nützt nicht viel, da unendlich viel Zeit vergehen müsste damit ein Einholen möglich wäre.
+Somit kann nach den Gestellten Bedingungen das Ziel nie erreicht werden.
+Aus der Symmetrie des Problems an der y-Achse können auch alle Anfangspunkte im zweiten Quadranten die Bedingungen nicht erfüllen.
+Bei allen Anfangspunkten mit $y_0<0$ ist ein Einholen unmöglich, da die Geschwindigkeit des Verfolgers und Ziels übereinstimmen und der Verfolger dem Ziel bereits am Anfang nachgeht.
+Wenn die Wertemenge der Anfangsbedingung um die positive y-Achse erweitert wird, kann das Ziel wiederum erreicht werden.
+Sobald der Verfolger auf der positiven y-Achse startet, bewegen sich Verfolger und Ziel aufeinander zu, da der Geschwindigkeitsvektor des Verfolgers auf das Ziel Zeigt und der Verfolger sich auf der Fluchtgeraden befindet.
+Dies führt zwingend dazu, dass der Verfolger das Ziel erreichen wird.
+Die Verfolgungskurve kann in diesem Fall mit
+
+\begin{equation}
+    \vec{V}(t)
+    =
+    \left( \begin{array}{c} 0 \\ y_0-t \end{array} \right)
+\end{equation}
+%
+parametrisiert werden.
+Nun kann der Abstand zwischen Verfolger und Ziel leicht bestimmt und nach 0 aufgelöst werden.
+Daraus folgt
+
+\begin{equation}
+    0
+    =
+    |\vec{V}(t_1)-\vec{Z}(t_1)|
+    =
+    y_0-2t_1
+\end{equation}
+%
+, was aufgelöst zu
+
+\begin{equation}
+    t_1
+    =
+    \frac{y_0}{2}
+\end{equation}
+%
+führt.
+Nun ist klar, dass lediglich Anfangspunkte auf der positiven y-Achse oder direkt auf dem Ziel dazu führen, dass der Verfolger das Ziel bei $t_1$ einholt.
+Bei allen anderen Anfangspunkten wird der Verfolger das Ziel nie erreichen.
 Dieses Resultat ist aber eher akademischer Natur, weil der Verfolger und das Ziel als Punkt betrachtet wurden.
 Wobei aber in Realität nicht von Punkten sondern von Objekten mit einer räumlichen Ausdehnung gesprochen werden kann.
 Somit wird in einer nächsten Betrachtung untersucht, ob der Verfolger dem Ziel näher kommt als ein definierter Trefferradius.
@@ -109,15 +152,18 @@ Falls dies stattfinden sollte, wird dies als Treffer interpretiert.
 Mathematisch kann dies mit
 
 \begin{equation}
-    |\vec{V}-\vec{Z}|<a_min \quad a_min\in\mathbb{R}>0
+    |\vec{V}-\vec{Z}|<a_{min} \quad a_{min}\in\mathbb{R}>0
 \end{equation}
-
-beschrieben werden, wobei $a_min$ dem Trefferradius entspricht.
-Diese Gleichung wird noch quadriert, um die Wurzeln des Betrages loszuwerden.
-Da sowohl der Betrag als auch $a_min$ grösser null sind, bleibt die Aussage unverändert.
+%
+beschrieben werden, wobei $a_{min}$ dem Trefferradius entspricht.
+Durch quadrieren verschwindet die Wurzel des Betrages, womit
 
 \begin{equation}
-    |\vec{V}-\vec{Z}|^2<a_min^2 \quad a_min\in \mathbb{R} > 0
+    |\vec{V}-\vec{Z}|^2<a_{min}^2 \quad a_{min}\in \mathbb{R} > 0
 \end{equation}
+%
+die neue Bedingung ist.
+Da sowohl der Betrag als auch $a_{min}$ grösser null sind, bleibt die Aussage unverändert.
+
 
 
