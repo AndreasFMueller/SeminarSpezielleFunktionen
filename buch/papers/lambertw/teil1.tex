@@ -15,21 +15,20 @@ Diese beiden Fragen werden in diesem Kapitel behandelt und an einem Beispiel bet
 %\subsection{Ziel erreichen (überarbeiten)
 %\label{lambertw:subsection:ZielErreichen}}
 Für diese Betrachtung wird das Beispiel aus \eqref{lambertw:section:teil4} zur Hilfe genommen.
-Wir verwenden die hergeleiteten Gleichungen für Startbedingung im ersten Quadranten
+Wir verwenden die hergeleiteten Gleichungen \eqref{lambertw:eqFunkXNachT} für Startbedingung im ersten Quadranten
 \begin{align*}
     x\left(t\right)
     &=
-    \sqrt{\frac{W\left(\chi\cdot e^{\chi-\frac{4t}{r_0-y_0}}\right)}{\chi}} \\
-    y(x)
+    x_0\cdot\sqrt{\frac{W\left(\chi\cdot e^{\chi-\frac{4t}{r_0-y_0}}\right)}{\chi}} \\
+    y(t)
     &=
-    \frac{1}{4}\left(\left(y_0+r_0\right)\eta+\left(r_0-y_0\right)ln\left(\eta\right)-r_0+3y_0\right) \\
+    \frac{1}{4}\left(\left(y_0+r_0\right)\left(\frac{x(t)}{x_0}\right)^2+\left(r_0-y_0\right)\operatorname{ln}\left(\left(\frac{x(t)}{x_0}\right)^2\right)-r_0+3y_0\right)\\
     \chi
     &=
     \frac{r_0+y_0}{r_0-y_0}\\
     \eta
     &=
-    \left(\frac{x}{x_0}\right)^2 
-    \\
+    \left(\frac{x}{x_0}\right)^2\\
     r_0
     &=
     \sqrt{x_0^2+y_0^2} \text{.}\\
@@ -68,29 +67,28 @@ und der Verfolger durch
     &=
     x(t)
     =
-    \sqrt{\frac{W\left(\chi\cdot e^{\chi-\frac{4t}{r_0-y_0}}\right)}{\chi}}
+    x_0\sqrt{\frac{W\left(\chi\cdot e^{\chi-\frac{4t}{r_0-y_0}}\right)}{\chi}}
     \\
-    v \cdot t
+    t
     &=
     y(t)
     =
-    \frac{1}{4}\left(\left(y_0+r_0\right)\eta+\left(r_0-y_0\right)ln\left(\eta\right)-r_0+3y_0\right)
+    \frac{1}{4}\left(\left(y_0+r_0\right)\left(\frac{x(t)}{x_0}\right)^2+\left(r_0-y_0\right)\operatorname{ln}\left(\left(\frac{x(t)}{x_0}\right)^2\right)-r_0+3y_0\right)
     \\
 \end{align*}
 %
 , welche Beide gleichzeitig erfüllt sein müssen, damit das Ziel erreicht wurde.
 Zuerst wird die Bedingung der x-Koordinate betrachtet.
-Diese kann durch quadrieren und anschliessendes multiplizieren von $\chi$ vereinfacht werden.
-Es ist zu beachten, dass $W(x)$ die Lambert W-Funktion ist, welche im Kapitel \eqref{buch:section:lambertw} behandelt wurde.
-Die Gleichung
-
+Diese kann durch dividieren durch $x_0$, anschliessendes quadrieren und multiplizieren von $\chi$ vereinfacht werden. Daraus folgt 
 \begin{equation}
-    0
-    =
-    W\left(\chi\cdot e^{\chi-\frac{4t}{r_0-y_0}}\right)
+	0
+	=
+	W\left(\chi\cdot e^{\chi-\frac{4t}{r_0-y_0}}\right)
+	\text{.}
 \end{equation}
 %
-entspricht genau den Nullstellen der Lambert W-Funktion. Da die Lambert W-Funktion genau eine Nullstelle bei
+Es ist zu beachten, dass $W(x)$ die Lambert W-Funktion ist, welche im Kapitel  \eqref{buch:section:lambertw} behandelt wurde.
+Diese Gleichung entspricht genau den Nullstellen der Lambert W-Funktion. Da die Lambert W-Funktion genau eine Nullstelle bei
 
 \begin{equation*}
     W(0)=0
@@ -164,6 +162,8 @@ Durch quadrieren verschwindet die Wurzel des Betrages, womit
 %
 die neue Bedingung ist.
 Da sowohl der Betrag als auch $a_{min}$ grösser null sind, bleibt die Aussage unverändert.
+
+
 
 
 
