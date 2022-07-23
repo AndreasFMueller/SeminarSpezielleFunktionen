@@ -18,7 +18,7 @@ if __name__ == "__main__":
 
     # Simple / naive
     xmin = -5
-    xmax = 30
+    xmax = 25
     ns = np.arange(2, 12, 2)
     ylim = np.array([-11, 6])
     x = np.linspace(xmin + ga.EPSILON, xmax - ga.EPSILON, 400)

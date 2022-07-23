@@ -38,7 +38,7 @@ if __name__ == "__main__":
     )
     
     N = 200
-    ns = np.arange(2, 13)
+    ns = np.arange(1, 13)
     
     bests = find_best_loc(N, ns=ns)
 
