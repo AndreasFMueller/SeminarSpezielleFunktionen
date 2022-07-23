@@ -136,7 +136,7 @@ Um das Integral los zu werden, leitet man den vorherigen Ausdruck \eqref{lambert
 	&= 0.
 	\label{lambertw:DGLohneInt}
 \end{align}
-Nun sind wir unserem Ziel eine weiteren Schritt näher. Die Gleichung \eqref{lambertw:DGLohneInt} mag auf den ersten Blick nicht gerade einfach sein, aber im Nächsten Abschnitt werden wir sehen, dass sie relativ einfach zu lösen ist.
+Nun sind wir unserem Ziel einen weiteren Schritt näher. Die Gleichung \eqref{lambertw:DGLohneInt} mag auf den ersten Blick nicht gerade einfach sein, aber im Nächsten Abschnitt werden wir sehen, dass sie relativ einfach zu lösen ist.
 
 \subsection{DGL lösen
 	\label{lambertw:subsection:DGLloes}}
@@ -147,7 +147,7 @@ mittels der Substitution \(y^{\prime} = u\) in eine DGL erster Ordnung umgewande
 	= 0.
 	\label{lambertw:DGLmitU}
 \end{equation}
-Diese \eqref{lambertw:DGLmitU} zu lösen ist ziemlich einfach da sie separierbar ist, also werde ich direkt zur Lösung \eqref{lambertw:loesDGLmitU} übergehen:
+Diese \eqref{lambertw:DGLmitU} zu lösen ist ziemlich einfach da sie separierbar ist, aus diesem Grund werde ich direkt zur Lösung \eqref{lambertw:loesDGLmitU} übergehen:
 \begin{align}
 	\operatorname{arsinh}(u)
 	&=
@@ -157,7 +157,7 @@ Diese \eqref{lambertw:DGLmitU} zu lösen ist ziemlich einfach da sie separierbar
 	\operatorname{sinh}(\operatorname{ln}(x) + C).
 	\label{lambertw:loesDGLmitU}
 \end{align}
-Indem man die Substitution rückgängig macht, erhält man eine weitere DGL erster Ordnung die bereits separiert ist und erhält folgende Lösung:
+Indem man die Substitution rückgängig macht, erhält man eine weitere DGL erster Ordnung die bereits separiert ist und erhält folgende Gleichung:
 \begin{equation}
 	y^{\prime}
 	=
@@ -205,10 +205,9 @@ Für die Koeffizienten \(C_1\) und \(C_2\) ergibt sich ein Anfangswertproblem, w
 \end{itemize}
 Alle diese Eigenschafte stimmen mit dem überein, was man von einer Kurve dieser Art erwarten würde, welche durch die Grafik \ref{lambertw:BildFunkLoes} repräsentiert wurde. Nun stellt sich die Frage wie die Kurve wirklich aussieht. Dies wird im folgenden Abschnitt \ref{lambertw:subsection:AllgLoes} behandelt.
 
--------------------------------Ab hier muss im Kapitel 12.2 noch einiges bearbeitet werden-----------------
 \subsection{Anfangswertproblem 
 	\label{lambertw:subsection:AllgLoes}}
-Wie üblich bei der Suche nach einer exakten Lösung, kommt ein Anfangswertproblem auf. Um dies zu lösen, müssen wir zuerst die Anfangswerte definieren. Da wir hier das Problem allgemein lösen, ergeben sich folgende zwei Anfangswerte:
+Wie üblich bei der Suche nach einer exakten Lösung, kommt ein Anfangswertproblem vor. Um dieses zu lösen, müssen wir zuerst die Anfangswerte definieren. Da wir das Problem allgemein lösen wollen, ergeben sich folgende zwei Anfangswerte:
 \begin{equation}
 	y(x)\big \vert_{t=0}
 	=
@@ -226,9 +225,9 @@ und
 	\frac{y_0}{x_0}.
 	\label{lambertw:eq2Anfangswert}
 \end{equation}
-Der zweite Anfangswert \eqref{lambertw:eq2Anfangswert} mag nicht grade offensichtlich sein. Die Erklärung dafür ist aber simpel: Der Verfolger wird zum Zeitpunkt \(t=0\) in Richtung Koordinatenursprung bewegen wollen, wo sich das Ziel befindet. Somit entsteht das Steigungsdreieck \(\Delta x = x_0\) und \(\Delta y = y_0\).
+Der zweite Anfangswert \eqref{lambertw:eq2Anfangswert} mag nicht grade offensichtlich sein. Die Erklärung dafür ist aber simpel: Der Verfolger wird sich zum Zeitpunkt \(t=0\) in Richtung Koordinatenursprung bewegen wollen, wo sich das Ziel befindet. Somit entsteht das Steigungsdreieck mit \(\Delta x = x_0\) und \(\Delta y = y_0\).
 
-Das Lösen des Anfangswertproblems ist ein Problem aus der Algebra, auf welches ich nicht unbedingt eingehen möchte. Zur Vollständigkeit und Nachvollziehbarkeit werde ich aber das Gleichungssystem \eqref{lambertw:eqGleichungssystem} präsentieren, welches notwendig ist um das Anfangswertproblem zu lösen, sowie auch die allgemeine Lösung \eqref{lambertw:eqAllgLoes} die sich nach dem einsetzen der Koeffizienten \(C_1\) und \(C_2\) ergibt.
+Das Lösen des Anfangswertproblems ist ein Problem aus der Algebra, auf welches ich nicht unbedingt eingehen möchte. Zur Vollständigkeit und Nachvollziehbarkeit, werde ich aber das Gleichungssystem \eqref{lambertw:eqGleichungssystem} präsentieren, welches notwendig ist um das Anfangswertproblem zu lösen, sowie auch die allgemeine Lösung \eqref{lambertw:eqAllgLoes} die sich nach dem einsetzen der Koeffizienten \(C_1\) und \(C_2\) in die Funktion \eqref{lambertw:funkLoes} ergibt.
 
 \begin{itemize}
 	\item
@@ -245,83 +244,125 @@ Das Lösen des Anfangswertproblems ist ein Problem aus der Algebra, auf welches 
 		\label{lambertw:eqGleichungssystem}
 	\end{subequations}
 	\item
-	Allgemeine Funktion:
+	Die allgemeine Funktion:
 	\begin{equation}
-		-4t
+		y(x)
 		=
-		\left(y_0+r_0\right)\left(\eta-1\right)+\left(r_0-y_0\right)ln\left(\eta\right).
+		\frac{1}{4}\left(\left(y_0+r_0\right)\eta+\left(r_0-y_0\right)\operatorname{ln}\left(\eta\right)-r_0+3y_0\right)
 		\label{lambertw:eqAllgLoes}
 	\end{equation}
-	Wobei aus Übersichtlichkeitsgründen \(\eta\) und \(r_0\) wie folgt definiert wurden:
+	Damit die Funkion \eqref{lambertw:eqAllgLoes} trotzdem noch übersichtlich bleibt, wurden \(\eta\) und \(r_0\) wie folgt definiert:
 	\begin{equation}
 		\eta
 		=
-		\left(\frac{x}{x_0}\right)^2 
+		\left(\frac{x}{x_0}\right)^2
 		\:\:\text{und}\:\:
 		r_0
 		=
 		\sqrt{x_0^2+y_0^2}.
 	\end{equation}
 \end{itemize}
+Diese neue allgemein Funktion \eqref{lambertw:eqAllgLoes} weist immer noch die selbe Struktur wie die vorherig hergeleitete Funktion \eqref{lambertw:funkLoes} auf, einerseits einen quadratischen Teil der in \(\eta\) enthalten ist, anderseits den \(\operatorname{ln}\)-Teil. Aus dieser Ähnlichkeit kann geschlossen werden, dass sich \eqref{lambertw:eqAllgLoes} auf eine ähnliche Art verhalten wird.
 
-
-
-Leitet man die Funktion \eqref{lambertw:funkLoes} nach \(x\) ab und setzt die Anfangsbedingungen ein, dann ergibt sich folgendes Gleichungssystem:
-
-... Mit folgenden Formeln geht es weiter:
-\begin{align*}
-	\eta
-	&=
-	\left(\frac{x}{x_0}\right)^2 
-	\:;\:
-	r_0
-	=
-	\sqrt{x_0^2+y_0^2} \\
-	y
-	&=
-	\frac{1}{4}\left(\left(y_0+r_0\right)\eta+\left(r_0-y_0\right)ln\left(\eta\right)-r_0+3y_0\right) \\
-	y^\prime
-	&=
-	\frac{1}{2}\left(\left(y_0+r_0\right)\frac{x}{x_0^2}+\left(r_0-y_0\right)\frac{1}{x}\right) \\
-	-4t
-	&=
-	\left(y_0+r_0\right)\left(\eta-1\right)+\left(r_0-y_0\right)ln\left(\eta\right)
-\end{align*}
+Nun sind wir soweit, dass wir eine \(y(x)\)-Beziehung für beliebige Anfangswerte darstellen können, unser erstes Ziel wurde erreicht. Ist das alles? Nein, wir können einen Schritt weiter gehen und uns Fragen: Ist es analytisch möglich herauszufinden, wo sich Verfolger und Ziel zu jedem Zeitpunkt befinden? Dieser Frage werden wir im nächsten Abschnitt nachgehen.
 
 \subsection{Funktion nach der Zeit 
 	\label{lambertw:subsection:FunkNachT}}
-\begin{align*}
+Lieber Leser sei mir nicht böse, aber in diesem Abschnitt werde ich ein wenig mehr bei den algebraischen Umformungen ins Detail gehen. Dies hat auch einen bestimmten Grund, ich möchte den Einsatz einer speziellen Funktion aufzeigen, sowie auch wann und wieso diese vorkommt. Welche spezielle Funktion? Fragst du dich wahrscheinlich in diesem Moment. Nun, um diese Frage zu kurz zu beantworten, es ist "YouTube's favorite special function" laut dem Mathematiker Michael Penn, die Lambert-W-Funktion \(W(x)\) welche übrigens im Kapitel \ref{buch:section:lambertw} bereits beschrieben wurde.
+
+Also fangen wir an. Der erste Schritt ist es herauszufinden, wie die Zeitabhängigkeit wieder hinein gebracht werden kann. Dafür greifen wir auf die letzte Gleichung zu, in welcher \(t\) noch enthalten war, und zwar DGL \eqref{lambertw:DGLmitT}, welche zur Übersichtlichkeit hier nochmals aufgeführt wird:
+\begin{equation}
+	x y^{\prime} + t - y
+	= 0.
+	\label{lambertw:eqDGLmitTnochmals}
+\end{equation}
+Wie in \eqref{lambertw:eqDGLmitTnochmals} zu sehen ist, werden \(y\) und deren Ableitung \(y^{\prime}\) benötigt, diese sind:
+\begin{subequations}
+	\begin{align}
+		y
+		&=
+		\frac{1}{4}\left(\left(y_0+r_0\right)\eta+\left(r_0-y_0\right)\operatorname{ln}\left(\eta\right)-r_0+3y_0\right), \\
+		\label{lambertw:eqFunkUndAbleit1}
+		y^\prime
+		&=
+		\frac{1}{2}\left(\left(y_0+r_0\right)\frac{x}{x_0^2}+\left(r_0-y_0\right)\frac{1}{x}\right).
+	\end{align}
+	\label{lambertw:eqFunkUndAbleit}
+\end{subequations}
+Wenn man diese Gleichungen \ref{lambertw:eqFunkUndAbleit} in die DGL \label{lambertw:eqDGLmitTnochmals} einfügt, vereinfacht und nach \(t\) auflöst, dann ergibt sich folgenden Ausdruck:
+\begin{equation}
+	-4t
+	=
+	\left(y_0+r_0\right)\left(\eta-1\right)+\left(r_0-y_0\right)\operatorname{ln}\left(\eta\right).
+	\label{lambertw:eqFunkUndAbleitEingefuegt}
+\end{equation}
+In einem nächsten Schritt wird alles mit \(x\) auf die eine Seite gebracht, der Rest auf die andere Seite und anschliessend beidseitig exponentiert, was wie folgt aussieht:
+\begin{align}
 	-4t+\left(y_0+r_0\right)
 	&=
-	\left(y_0+r_0\right)\eta+\left(r_0-y_0\right)ln\left(\eta\right) \\
-	e^{-4t+\left(y_0+r_0\right)}
+	\left(y_0+r_0\right)\eta+\left(r_0-y_0\right)\operatorname{ln}\left(\eta\right), \\
+	e^{\displaystyle -4t+\left(y_0+r_0\right)}
 	&=
-	e^{\left(y_0+r_0\right)\eta}\cdot\eta^{\left(r_0-y_0\right)} \\
-	e^{\frac{-4t}{r_0-y_0}+\frac{y_0+r_0}{r_0-y_0}}
-	&=
-	e^{\frac{y_0+r_0}{r_0-y_0}\eta}\cdot\eta\  \\
-	\chi
-	&=
-	\frac{y_0+r_0}{r_0-y_0}; \cdot\chi \\
-	\chi\cdot e^{\chi-\frac{4t}{r_0-y_0}}
-	&=
-	\chi\eta\cdot e^{\chi\eta} \\
-	W\left(\chi\cdot e^{\chi-\frac{4t}{r_0-y_0}}\right)
-	&=
-	\chi\eta \\
-	\frac{W\left(\chi\cdot e^{\chi-\frac{4t}{r_0-y_0}}\right)}{\chi}
-	&=
-	\eta \\
-	\frac{W\left(\chi\cdot e^{\chi-\frac{4t}{r_0-y_0}}\right)}{\chi}
-	&=
-	\left(\frac{x}{x_0}\right)^2 \\
-	x\left(t\right)
-	&=
-	\sqrt{\frac{W\left(\chi\cdot e^{\chi-\frac{4t}{r_0-y_0}}\right)}{\chi}}
-\end{align*}
+	e^{\displaystyle \left(y_0+r_0\right)\eta}\cdot\eta^{\displaystyle \left(r_0-y_0\right)}.
+	\label{lambertw:eqMitExp}
+\end{align}
+Auf dem rechten Term von \eqref{lambertw:eqMitExp} beginnen wir langsam eine ähnliche Struktur wie \(\eta e^\eta\) zu erkennen, dies schreit nach der Struktur die benötigt wird um \(\eta\) mittels der Lambert-W-Funktion \(W(x)\) zu erhalten. Dies macht durchaus Sinn, wenn wir die Funktion \(x(t)\) finden wollen und \(W(x)\) die Umkehrfunktion von \(x e^x\) ist. 
+
+Die erste Sache die uns in \eqref{lambertw:eqMitExp} stört ist, dass \(\eta\) als Potenz da steht. Dieses Problem können wir loswerden, indem wir beidseitig mit \(\:\displaystyle \frac{1}{r_0-y_0}\:\) potenzieren:
 \begin{equation}
-	y(t)
+	e^{\displaystyle \frac{-4t}{r_0-y_0}+\frac{y_0+r_0}{r_0-y_0}}
 	=
-	\frac{1}{4}\left(\left(y_0+r_0\right)\frac{W\left(\chi\cdot e^{\chi\ -\ \frac{4t}{r_0-y_0}}\right)}{\chi}+\left(r_0-y_0\right)\cdot\mathrm{ln}\ \left(\frac{W\left(\chi\cdot e^{\chi\ -\ \frac{4t}{r_0-y_0}}\right)}{\chi}\right)-r_0+3y_0\right)
-	\label{lambertw:funkNachT}
+	\eta\cdot e^{\displaystyle \frac{y_0+r_0}{r_0-y_0}\eta} .
+	\label{lambertw:eqOhnePotenz}
 \end{equation}
+Das nächste Problem auf welches wir in \eqref{lambertw:eqOhnePotenz} treffen ist, dass \(\eta\) nicht alleine im Exponent steht. Dies kann elegant mit folgender Substitution gelöst werden:
+\begin{equation}
+	\chi
+	=
+	\frac{y_0+r_0}{r_0-y_0}.
+	\label{lambertw:eqChiSubst}
+\end{equation}
+Es gäbe natürlich andere Substitutionen wie z.B. 
+\[\displaystyle \chi=\frac{y_0+r_0}{r_0-y_0}\cdot\eta,\] 
+die auf das selbe Ergebnis führen würden, aber \eqref{lambertw:eqChiSubst} liefert in einem Schritt die kompakteste Lösung. Also fahren wir mit der  Substitution \eqref{lambertw:eqChiSubst} weiter, setzen diese in die Gleichung \eqref{lambertw:eqOhnePotenz} ein und multiplizieren beidseitig mit \(\chi\). Daraus erhalten wir folgende Gleichung:
+\begin{equation}
+	\chi\cdot e^{\displaystyle \chi-\frac{4t}{r_0-y_0}}
+	=
+	\chi\eta\cdot e^{\displaystyle \chi\eta}.
+	\label{lambertw:eqNachSubst}
+\end{equation}
+Schön oder? Nun sind wir endlich soweit, dass wir die angedeutete Lambert-W-Funktion \(W(x)\)einsetzen können. Wenn wir beidseitig \(W(x)\) anwenden, dann erhalten wir folgenden Ausdruck:
+\begin{equation}
+	W\left(\chi\cdot e^{\displaystyle \chi-\frac{4t}{r_0-y_0}}\right)
+	=
+	\chi\eta
+\end{equation}
+Nach dem Auflösen nach \(x\) welches in \(\eta\) enthalten ist, erhalten wir die gesuchte \(x(t)\)-Funktion \eqref{lambertw:eqFunkXNachT}. Dieses \(x(t)\) in Kombination mit \eqref{lambertw:eqFunkUndAbleit1} liefert die Position des Verfolgers zu jedem Zeitpunkt. Das Gleichungspaar \eqref{lambertw:eqFunktionenNachT}, besteht aus folgenden Gleichungen:
+\begin{subequations}
+	\begin{align}
+		\label{lambertw:eqFunkXNachT}
+		x(t)
+		&=
+		x_0\cdot\sqrt{\frac{W\left(\chi\cdot e^{\displaystyle \chi-\frac{4t}{r_0-y_0}}\right)}{\chi}}, \\
+		\label{lambertw:eqFunkYNachT}
+		y(x(t))
+		=
+		y(t)
+		&=
+		\frac{1}{4}\left(\left(y_0+r_0\right)\left(\frac{x(t)}{x_0}\right)^2+\left(r_0-y_0\right)\operatorname{ln}\left(\left(\frac{x(t)}{x_0}\right)^2\right)-r_0+3y_0\right)
+	\end{align}
+	\label{lambertw:eqFunktionenNachT}
+\end{subequations}
+Nun haben wir unser letztes Ziel erreicht und sind in der Lage eine Verfolgung rechnerisch sowie graphisch zu repräsentieren.
+ 
+Wir sind aber noch nicht ganz fertig, ich muss gestehen, dass ich in diesem Abschnitt einen wichtigen Teil verschwiegen habe. Und zwar wieso, dass ich schon bei der Gleichung \eqref{lambertw:eqFunkUndAbleitEingefuegt} wusste, dass man nach einigen Umformungen die Lambert-W-Funktion eingesetzt werden kann.
+Der Grund dafür ist die Struktur
+\begin{equation}
+	y
+	=
+	p(x) +\operatorname{ln}(x),
+	\label{lambertw:eqEinsatzLambW}
+\end{equation}
+bei welcher \(p(x)\) eine beliebige Potenz von \(x\) darstellt. 
+
+Jedes mal wenn \(x\) gesucht ist und in einer Struktur der Art \eqref{lambertw:eqEinsatzLambW} vorkommt, dann kann mit ein paar Umformungen die Struktur \(f(x)e^{f(x)}\) erzielt werden. Wie bereits in diesem Abschnitt \ref{lambertw:subsection:FunkNachT} gezeigt wurde, kann \(x\) nun mittels der \(W(x)\)-Funktion aufgelöst werden. Erstaunlicherweise ist \eqref{lambertw:eqEinsatzLambW} eine Struktur die oftmals vorkommt, was die Lambert-W-Funktion so wichtig macht.
