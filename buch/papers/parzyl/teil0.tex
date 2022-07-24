@@ -7,7 +7,36 @@
 \rhead{Teil 0}
 
 \subsection{Laplace Gleichung}
-
+Die partielle Differentialgleichung
+\begin{equation}
+    \Delta f = 0
+\end{equation}
+ist als Laplace Gleichung bekannt.
+Sie ist eine spezielle Form der poisson Gleichung
+\begin{equation}
+    \Delta f = g
+\end{equation}
+mit g als beliebige Funktion.
+In der Physik hat die Laplace Gleichung in verschieden Gebieten
+verwendet, zum Beispiel im Elektromagnetismus.
+Das Gaussche Gesetz in den Maxwellgleichungen 
+\begin{equation}
+     \nabla \cdot E = \frac{\varrho}{\epsilon_0}
+\label{parzyl:eq:max1}
+\end{equation}
+besagt das die Divergenz eines Elektrischen Feldes an einem 
+Punkt gleich der Ladung an diesem Punkt ist.
+Das elektrische Feld ist hierbei der Gradient des elektrischen
+Potentials
+\begin{equation}
+    \nabla \phi = E.
+\end{equation}
+Eingesetzt in \eqref{parzyl:eq:max1} resultiert
+\begin{equation}
+    \nabla \cdot \nabla \phi = \Delta \phi = \frac{\varrho}{\epsilon_0},
+\end{equation}
+was eine Possion gleichung ist.
+An Ladungsfreien Stellen, ist der rechte Teil der Gleichung $0$. 
 \subsection{Parabolische Zylinderkoordinaten
 \label{parzyl:subsection:finibus}}
 Im parabloischen Zylinderkoordinatensystem bilden parabolische Zylinder die Koordinatenflächen.
