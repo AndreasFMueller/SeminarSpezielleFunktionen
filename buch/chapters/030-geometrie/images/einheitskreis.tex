@@ -41,6 +41,7 @@
 \fill[color=blue] (\a:\r) circle[radius=0.05];
 
 \draw[color=blue,line width=1.4pt] (\r,0) -- (\r,{\r*tan(\a)});
+\fill[color=blue] (\r,{\r*tan(\a)}) circle[radius=1.0pt];
 \node[color=blue] at (\r,{0.5*\r*tan(\a)}) [right] {$\tan\alpha$};
 
 \draw[color=blue,line width=0.4pt] ({\r*cos(\a)},0) -- (\a:\r);
@@ -53,6 +54,7 @@
 \draw[color=blue] (-0.1,{\r*sin(\a)}) -- (0.1,{\r*sin(\a)});
 
 \draw[color=blue,line width=1.4pt] (0,\r) -- ({\r/tan(\a)},\r);
+\fill[color=blue] ({\r/tan(\a)},\r) circle[radius=1.0pt];
 \node[color=blue] at ({0.5*\r/tan(\a)},\r) [above] {$\cot\alpha$};
 
 \draw[color=darkgreen,line width=1pt] (0,0) -- (\b:\r);
@@ -61,9 +63,11 @@
 \fill[color=darkgreen] (\b:\r) circle[radius=0.05];
 
 \draw[color=darkgreen,line width=1.4pt] (0,\r) -- ({\r/tan(\b)},\r);
+\fill[color=darkgreen] ({\r/tan(\b)},\r) circle[radius=1.0pt];
 \node[color=darkgreen] at ({0.5*\r/tan(\b)},\r) [above] {$\cot\beta$};
 
 \draw[color=darkgreen,line width=1.4pt] (\r,0) -- (\r,{\r*tan(\b)});
+\fill[color=darkgreen] (\r,{\r*tan(\b)}) circle[radius=1.0pt];
 \node[color=darkgreen] at (\r,{0.5*\r*tan(\b)}) [right] {$\tan\beta$};
 
 \draw[color=darkgreen,line width=0.4pt] (\b:\r) -- (0,{\r*sin(\b)});

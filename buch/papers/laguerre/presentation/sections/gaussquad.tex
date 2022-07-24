@@ -1,0 +1,67 @@
+\section{Gauss-Quadratur}
+
+\begin{frame}{Gauss-Quadratur}
+\textbf{Idee}
+\begin{itemize}[<+->]
+\item Polynome können viele Funktionen approximieren
+\item Wenn Verfahren gut für Polynome funktioniert,
+sollte es auch für andere Funktionen funktionieren
+\item Integrieren eines Interpolationspolynom
+\item Interpolationspolynom ist durch Funktionswerte $f(x_i)$ bestimmt
+$\Rightarrow$ Integral kann durch Funktionswerte berechnet werden
+\item Evaluation der Funktionswerte an geeigneten Stellen
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Gauss-Quadratur}
+\begin{align*}
+\int_{-1}^{1} f(x) \, dx
+\approx
+\sum_{i=1}^n f(x_i) A_i
+\end{align*}
+
+\begin{itemize}[<+->]
+\item Exakt für Polynome mit Grad $2n-1$
+\item Interpolationspolynome müssen orthogonal sein
+\item Stützstellen $x_i$ sind Nullstellen des Polynoms
+\item Fehler:
+\begin{align*}
+E
+=
+\frac{f^{(2n)}(\xi)}{(2n)!} \int_{-1}^{1} l(x)^2 \, dx
+,\quad
+\text{wobei }
+l(x) = \prod_{i=1}^n (x-x_i)
+\end{align*}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Gauss-Laguerre-Quadratur}
+\begin{itemize}[<+->]
+\item Erweiterung des Integrationsintervall von $[-1, 1]$ auf $(a, b)$
+\item Hinzufügen einer Gewichtsfunktion
+\item Bei uneigentlichen Integralen muss Gewichtsfunktion schneller als jedes
+Integrationspolynom gegen $0$ gehen
+\item[$\Rightarrow$] Für Laguerre-Polynome haben wir den Definitionsbereich
+$(0, \infty)$ und die Gewichtsfunktion $w(x) = e^{-x}$
+\begin{align*}
+\int_0^\infty & f(x) e^{-x} \, dx
+\approx
+\sum_{i=1}^n f(x_i) A_i
+\\
+                & \text{wobei }
+A_i = \frac{x_i}{(n+1)^2 \left[ L_{n+1}(x_i) \right]^2}
+\text{ und $x_i$ die Nullstellen von $L_n(x)$}
+\end{align*}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Fehler der Gauss-Laguerre-Quadratur}
+\begin{align*}
+R_n
+=
+\frac{(n!)^2}{(2n)!} f^{(2n)}(\xi)
+,\quad
+0 < \xi < \infty
+\end{align*}
+\end{frame}

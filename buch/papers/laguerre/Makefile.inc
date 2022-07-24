@@ -7,8 +7,7 @@ dependencies-laguerre =						\
 	papers/laguerre/packages.tex					\
 	papers/laguerre/main.tex					\
 	papers/laguerre/references.bib				\
-	papers/laguerre/teil0.tex					\
-	papers/laguerre/teil1.tex					\
-	papers/laguerre/teil2.tex					\
-	papers/laguerre/teil3.tex
-
+	papers/laguerre/definition.tex					\
+	papers/laguerre/eigenschaften.tex				\
+	papers/laguerre/quadratur.tex				\
+	papers/laguerre/gamma.tex

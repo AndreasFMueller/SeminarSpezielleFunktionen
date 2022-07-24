@@ -4,7 +4,7 @@
 # (c) 2022 Prof Dr Andreas Müller, OST Ostschweizer Fachhochschule
 #
 
-CHAPTERFILES = $(CHAPTERFILES)						\
+CHAPTERFILES += 							\
 	chapters/070-orthogonalitaet/orthogonal.tex			\
 	chapters/070-orthogonalitaet/rekursion.tex			\
 	chapters/070-orthogonalitaet/rodrigues.tex			\
@@ -13,4 +13,5 @@ CHAPTERFILES = $(CHAPTERFILES)						\
 	chapters/070-orthogonalitaet/jacobi.tex				\
 	chapters/070-orthogonalitaet/sturm.tex				\
 	chapters/070-orthogonalitaet/gaussquadratur.tex			\
+	chapters/070-orthogonalitaet/uebungsaufgaben/701.tex		\
 	chapters/070-orthogonalitaet/chapter.tex

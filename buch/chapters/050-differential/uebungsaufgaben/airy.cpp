@@ -44,8 +44,8 @@ double	h0f1(double c, double x) {
 double	f1(double x) {
 	// unfortunately, gsl_sf_hyperg_0F1 does not work if c<1, because
 	// it uses a relation to the bessel functions
-	//return gsl_sf_hyperg_0F1(2/3, x*x*x/9.);
-	return h0f1(2./3., x*x*x/9.);
+	return gsl_sf_hyperg_0F1(2/3, x*x*x/9.);
+	//return h0f1(2./3., x*x*x/9.);
 }
 
 double	f2(double x) {

@@ -1,0 +1,186 @@
+%
+% eigenschaften.tex 
+%
+% (c) 2022 Patrik Müller, Ostschweizer Fachhochschule
+%
+\subsection{Orthogonalität%
+\label{laguerre:subsection:orthogonal}}
+\rhead{Orthogonalität}%
+Im Abschnitt~\ref{laguerre:subsection:potenzreihenansatz}
+haben wir die Behauptung aufgestellt,
+dass die Laguerre-Polynome orthogonal sind.
+Zu dieser Behauptung möchten wir nun einen Beweis liefern.
+%
+Um die Orthogonalität von Funktionen zu zeigen,
+bieten sich folgende Möglichkeiten an:
+\begin{enumerate}
+\item Identifizieren der Funktion als Eigenfunktion eines Skalarproduktes
+mit einem selbstadjungierten Operator.
+Dafür muss aber zuerst bewiesen werden,
+dass der verwendete Operator selbstadjungiert ist.
+Die Theorie dazu findet sich in den
+Abschnitten~\ref{buch:orthogonal:section:orthogonale-polynome-und-dgl} und
+\ref{buch:orthogonalitaet:section:bessel}.
+\item Umformen der Differentialgleichung in die Form der
+Sturm-Liouville-Differentialgleichung,
+denn für dieses verallgemeinerte Problem
+ist die Orthogonalität bereits bewiesen.
+Die Theorie dazu findet sich im Abschnitt~\ref{buch:integrale:subsection:sturm-liouville-problem}.
+\end{enumerate}
+
+% \subsubsection{Plan}
+\subsubsection{Idee}
+Für den Beweis der Orthogonalität der Laguerre-Polynome möchten
+wir den zweiten Ansatz über das Sturm-Liouville-Problem verwenden.
+% Dazu müssen wir die Laguerre-Differentialgleichung~\eqref{laguerre:dgl}
+% in die Form der Sturm-Liouville-Differentialgleichung bringen.
+Allerdings möchten wir nicht die Laguerre-Differentialgleichung
+in die richtige Form bringen,
+sondern den Laguerre-Operator
+\begin{align}
+\Lambda
+=
+x \frac{d}{dx^2} + (\nu + 1 -x) \frac{d}{dx}
+\label{laguerre:lagop}
+.
+\end{align}
+Da es sich beim Sturm-Liouville-Problem um ein Eigenwertproblem handelt,
+kann die Orthogonalität äquivalent über denn Sturm-Liouville-Operator
+\begin{align}
+S
+=
+\frac{1}{w(x)} \left(-\frac{d}{dx}p(x) \frac{d}{dx} + q(x) \right).
+\label{laguerre:slop}
+\end{align}
+bewiesen werden.
+Dazu müssen wir die Operatoren einander gleichsetzen.
+
+% Wenn wir \eqref{laguerre:dgl} in ein
+% Sturm-Liouville-Problem umwandeln können, haben wir bewiesen, dass es sich
+% bei den Laguerre-Polynomen um orthogonale Polynome handelt (siehe
+% Abschnitt~\ref{buch:integrale:subsection:sturm-liouville-problem}).
+% Der Beweis kann äquivalent auch über den Sturm-Liouville-Operator
+% \begin{align}
+% S
+% =
+% \frac{1}{w(x)} \left(-\frac{d}{dx}p(x) \frac{d}{dx} + q(x) \right).
+% \label{laguerre:slop}
+% \end{align}
+% und den Laguerre-Operator
+% \begin{align}
+% \Lambda
+% =
+% x \frac{d}{dx^2} + (\nu + 1 -x) \frac{d}{dx}
+% \end{align}
+% erhalten werden,
+% indem wir diese Operatoren einander gleichsetzen.
+
+\subsubsection{Umformen in Sturm-Liouville-Operator}
+% Aus der Beziehung von
+Setzen wir nun 
+\eqref{laguerre:lagop} und \eqref{laguerre:slop}
+einander gleich
+\begin{align}
+S
+ & =
+\Lambda
+\nonumber
+\\
+\frac{1}{w(x)} \left(-\frac{d}{dx}p(x) \frac{d}{dx} + q(x) \right)
+ & =
+x \frac{d^2}{dx^2} + (\nu + 1 - x) \frac{d}{dx}
+\label{laguerre:sl-lag}
+\end{align}
+lässt sich sofort erkennen, dass $q(x) = 0$.
+Ausserdem ist ersichtlich, dass $p(x)$ die Differentialgleichung
+\begin{align*}
+x \frac{dp}{dx}
+=
+-(\nu + 1 - x) p
+\end{align*}
+erfüllen muss.
+Durch Separation erhalten wir dann
+\begin{align*}
+\int \frac{dp}{p}
+ & =
+-\int \frac{\nu + 1 - x}{x} \, dx
+=
+-\int \frac{\nu + 1}{x} \, dx - \int 1\, dx
+\\
+\log p
+ & =
+-(\nu + 1)\log x - x + c
+\\
+p(x)
+ & =
+-C x^{\nu + 1} e^{-x}
+.
+\end{align*}
+Eingefügt in Gleichung~\eqref{laguerre:sl-lag} ergibt sich
+\begin{align*}
+\frac{C}{w(x)}
+\left(
+x^{\nu+1} e^{-x} \frac{d^2}{dx^2} +
+(\nu + 1 - x) x^{\nu} e^{-x} \frac{d}{dx}
+\right)
+=
+x \frac{d^2}{dx^2} + (\nu + 1 - x) \frac{d}{dx}.
+\end{align*}
+Mittels Koeffizientenvergleich kann nun abgelesen werden,
+dass $w(x) = x^\nu e^{-x}$ und $C=1$ mit $\nu > -1$.
+Die Gewichtsfunktion $w(x)$ wächst für $x\rightarrow-\infty$ sehr schnell an,
+deshalb ist die Laguerre-Gewichtsfunktion nur geeignet für den
+Definitionsbereich $(0, \infty)$.
+
+\subsubsection{Randbedingungen}
+Bleibt nur noch sicherzustellen, dass die Randbedingungen,
+\begin{align}
+k_0 y(0) + h_0 p(0)y'(0)
+ & =
+0
+\label{laguerre:sllag_randa}
+\\
+k_\infty y(\infty) + h_\infty p(\infty) y'(\infty)
+ & =
+0
+\label{laguerre:sllag_randb}
+\end{align}
+mit $|k_i|^2 + |h_i|^2 \neq 0,\,\forall i \in \{0, \infty\}$, erfüllt sind.
+%
+Am linken Rand \eqref{laguerre:sllag_randa} kann $y(0) = 1$, $k_0 = 0$ und
+$h_0 = 1$ verwendet werden,
+was auch die Laguerre-Polynome ergeben haben.
+
+Für den rechten Rand ist die Bedingung \eqref{laguerre:sllag_randb}
+\begin{align*}
+\lim_{x \rightarrow \infty} p(x) y'(x)
+ & =
+\lim_{x \rightarrow \infty} -x^{\nu + 1} e^{-x} y'(x)
+=
+0
+\end{align*}
+für beliebige Polynomlösungen erfüllt für $k_\infty=0$ und $h_\infty=1$.
+
+% Somit können wir schlussfolgern:
+\begin{satz}
+Die Laguerre-Polynome %($\nu=0$)
+\eqref{laguerre:polynom}
+% \begin{align*}
+% L_n(x)
+% =
+% \sum_{k=0}^{n} \frac{(-1)^k}{k!} \binom{n}{k} x^k
+% \end{align*}
+sind orthognale Polynome bezüglich des Skalarproduktes
+im Intervall~$(0, \infty)$ mit der Gewichts\-funktion~$w(x)=e^{-x}$.
+\end{satz}
+
+\begin{satz}
+Die assoziierten Laguerre-Polynome \eqref{laguerre:allg_polynom}
+% \begin{align*}
+% L_n^\nu(x)
+% =
+% \sum_{k=0}^{n} \frac{(-1)^k}{(\nu + 1)_k} \binom{n}{k} x^k.
+% \end{align*}
+sind orthogonale Polynome bezüglich des Skalarproduktes 
+im Intervall~$(0, \infty)$ mit der Gewichts\-funktion~$w(x)=x^\nu e^{-x}$.
+\end{satz}

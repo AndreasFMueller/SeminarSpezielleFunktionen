@@ -1,7 +1,6 @@
-000template
 lambertw
 fm
-nlwave
+parzyl
 fresnel
 kreismembran
 sturmliouville
@@ -14,3 +13,4 @@ kra
 kugel
 hermite
 ellfilter
+dreieck

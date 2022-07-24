@@ -1,0 +1,86 @@
+%
+% 0f1.tex -- template for standalon tikz images
+%
+% (c) 2021 Prof Dr Andreas Müller, OST Ostschweizer Fachhochschule
+%
+\documentclass[tikz]{standalone}
+\usepackage{amsmath}
+\usepackage{times}
+\usepackage{txfonts}
+\usepackage{pgfplots}
+\usepackage{csvsimple}
+\usetikzlibrary{arrows,intersections,math}
+\begin{document}
+\def\skala{1}
+\input{0f1data.tex}
+\definecolor{darkgreen}{rgb}{0,0.6,0}
+\begin{tikzpicture}[>=latex,thick,scale=\skala]
+
+\begin{scope}
+\clip (\xmin,-1) rectangle (\xmax,5);
+\draw[color=blue!5!red,line width=1.4pt] \kurveone;
+\draw[color=blue!16!red,line width=1.4pt] \kurvetwo;
+\draw[color=blue!26!red,line width=1.4pt] \kurvethree;
+\draw[color=blue!37!red,line width=1.4pt] \kurvefour;
+\draw[color=blue!47!red,line width=1.4pt] \kurvefive;
+\draw[color=blue!57!red,line width=1.4pt] \kurvesix;
+\draw[color=blue!68!red,line width=1.4pt] \kurveseven;
+\draw[color=blue!78!red,line width=1.4pt] \kurveeight;
+\draw[color=blue!89!red,line width=1.4pt] \kurvenine;
+\draw[color=blue!100!red,line width=1.4pt] \kurveten;
+\def\ds{0.4}
+\begin{scope}[yshift=0.5cm]
+\node[color=blue!5!red] at (\xmin,{1*\ds}) [right] {$\alpha=0.5$};
+\node[color=blue!16!red] at (\xmin,{2*\ds}) [right] {$\alpha=1.5$};
+\node[color=blue!26!red] at (\xmin,{3*\ds}) [right] {$\alpha=2.5$};
+\node[color=blue!37!red] at (\xmin,{4*\ds}) [right] {$\alpha=2.5$};
+\node[color=blue!47!red] at (\xmin,{5*\ds}) [right] {$\alpha=3.5$};
+\node[color=blue!57!red] at (\xmin,{6*\ds}) [right] {$\alpha=5.5$};
+\node[color=blue!68!red] at (\xmin,{7*\ds}) [right] {$\alpha=6.5$};
+\node[color=blue!78!red] at (\xmin,{8*\ds}) [right] {$\alpha=7.5$};
+\node[color=blue!89!red] at (\xmin,{9*\ds}) [right] {$\alpha=8.5$};
+\node[color=blue!100!red]at (\xmin,{10*\ds}) [right] {$\alpha=9.5$};
+\end{scope}
+\node at (-1.7,4.5) {$\displaystyle
+y=\mathstrut_0F_1\biggl(\begin{matrix}\text{---}\\\alpha\end{matrix};x\biggr)$};
+\end{scope}
+
+\draw[->] (\xmin-0.2,0) -- (\xmax+0.3,0) coordinate[label=$x$];
+\draw[->] (0,-0.5) -- (0,5.3) coordinate[label={right:$y$}];
+
+\begin{scope}[yshift=-6.5cm]
+\begin{scope}
+\clip (\xmin,-5) rectangle (\xmax,5);
+
+\draw[color=darkgreen!5!red,line width=1.4pt] \kurvenone;
+\draw[color=darkgreen!16!red,line width=1.4pt] \kurventwo;
+\draw[color=darkgreen!26!red,line width=1.4pt] \kurventhree;
+\draw[color=darkgreen!37!red,line width=1.4pt] \kurvenfour;
+\draw[color=darkgreen!47!red,line width=1.4pt] \kurvenfive;
+\draw[color=darkgreen!57!red,line width=1.4pt] \kurvensix;
+\draw[color=darkgreen!68!red,line width=1.4pt] \kurvenseven;
+\draw[color=darkgreen!78!red,line width=1.4pt] \kurveneight;
+\draw[color=darkgreen!89!red,line width=1.4pt] \kurvennine;
+\draw[color=darkgreen!100!red,line width=1.4pt] \kurventen;
+\end{scope}
+
+\draw[->] (\xmin-0.2,0) -- (\xmax+0.3,0) coordinate[label=$x$];
+\draw[->] (0,-5.2) -- (0,5.3) coordinate[label={right:$y$}];
+\def\ds{-0.4}
+\begin{scope}[yshift=-0.5cm]
+\node[color=darkgreen!5!red] at (\xmax,{1*\ds}) [left] {$\alpha=-0.5$};
+\node[color=darkgreen!16!red] at (\xmax,{2*\ds}) [left] {$\alpha=-1.5$};
+\node[color=darkgreen!26!red] at (\xmax,{3*\ds}) [left] {$\alpha=-2.5$};
+\node[color=darkgreen!37!red] at (\xmax,{4*\ds}) [left] {$\alpha=-2.5$};
+\node[color=darkgreen!47!red] at (\xmax,{5*\ds}) [left] {$\alpha=-3.5$};
+\node[color=darkgreen!57!red] at (\xmax,{6*\ds}) [left] {$\alpha=-5.5$};
+\node[color=darkgreen!68!red] at (\xmax,{7*\ds}) [left] {$\alpha=-6.5$};
+\node[color=darkgreen!78!red] at (\xmax,{8*\ds}) [left] {$\alpha=-7.5$};
+\node[color=darkgreen!89!red] at (\xmax,{9*\ds}) [left] {$\alpha=-8.5$};
+\node[color=darkgreen!100!red]at (\xmax,{10*\ds}) [left] {$\alpha=-9.5$};
+\end{scope}
+\end{scope}
+
+\end{tikzpicture}
+\end{document}
+

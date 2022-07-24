@@ -1,0 +1,125 @@
+%
+% order.tex -- Verteilungsfunktion für Ordnungsstatistik
+%
+% (c) 2021 Prof Dr Andreas Müller, OST Ostschweizer Fachhochschule
+%
+\documentclass[tikz]{standalone}
+\usepackage{amsmath}
+\usepackage{times}
+\usepackage{txfonts}
+\usepackage{pgfplots}
+\usepackage{csvsimple}
+\usetikzlibrary{arrows,intersections,math}
+\begin{document}
+\def\skala{8}
+\definecolor{darkgreen}{rgb}{0,0.6,0}
+
+\def\n{10}
+\def\E#1#2{
+	\draw[color=#2]
+		({\dx*#1/(\n+1)},{-0.1/\skala}) -- ({\dx*#1/(\n+1)},{4.4*\dy});
+	\node[color=#2] at ({\dx*#1/(\n+1)},{3.2*\dy})
+		[rotate=90,above right] {$k=#1$};
+}
+\def\var#1#2{
+	\pgfmathparse{\dx*sqrt(#1*(\n-#1+1)/((\n+1)*(\n+1)*(\n+2)))}
+	\xdef\var{\pgfmathresult}
+	\fill[color=#2,opacity=0.5]
+		({\dx*#1/(\n+1)-\var},0) rectangle ({\dx*#1/(\n+1)+\var},{4.4*\dy});
+}
+
+\input{orderpath.tex}
+\begin{tikzpicture}[>=latex,thick,scale=\skala]
+
+\def\dx{1.6}
+\def\dy{0.5}
+
+\def\pfad#1#2{
+\draw[color=#2,line width=1.4pt] ({-0.1/\skala},0) 
+	--
+	#1
+	--
+	({1*\dx+0.1/\skala},0.5);
+}
+
+\pfad{\orderzero}{darkgreen!20}
+\pfad{\orderone}{darkgreen!20}
+\pfad{\ordertwo}{darkgreen!20}
+\pfad{\orderthree}{darkgreen!20}
+\pfad{\orderfour}{darkgreen!20}
+\pfad{\orderfive}{darkgreen!20}
+\pfad{\ordersix}{darkgreen!20}
+\pfad{\ordereight}{darkgreen!20}
+\pfad{\ordernine}{darkgreen!20}
+\pfad{\orderten}{darkgreen!20}
+\pfad{\orderseven}{darkgreen}
+
+\draw[->] ({-0.1/\skala},0) -- ({1.03*\dx},0) coordinate[label={$x$}];
+\draw[->] (0,{-0.1/\skala}) -- (0,0.6) coordinate[label={right:$F(X)$}];
+\foreach \x in {0,0.2,0.4,0.6,0.8,1}{
+	\draw ({\x*\dx},{-0.1/\skala}) -- ({\x*\dx},{0.1/\skala});
+	\node at ({\x*\dx},{-0.1/\skala}) [below] {$\x$};
+}
+\foreach \y in {0.5,1}{
+	\draw ({-0.1/\skala},{\y*\dy}) -- ({0.1/\skala},{\y*\dy});
+	\node at ({-0.1/\skala},{\y*\dy}) [left] {$\y$};
+}
+
+\node[color=darkgreen] at ({0.64*\dx},{0.56*\dy}) [rotate=42] {$k=7$};
+
+\begin{scope}[yshift=-0.7cm]
+\def\dy{0.125}
+
+\foreach \k in {1,2,3,4,5,6,8,9,10}{
+	\E{\k}{blue!30}
+}
+\def\k{7}
+\var{\k}{orange!40}
+\node[color=blue] at ({\dx*\k/(\n+1)},{4.3*\dy}) [above] {$E(X_{7:n})$};
+
+\def\pfad#1#2{
+	\draw[color=#2,line width=1.4pt] ({-0.1/\skala},0) 
+		--
+		#1
+		--
+		({1*\dx+0.1/\skala},0.0);
+}
+
+\begin{scope}
+\clip ({-0.1/\skala},{-0.1/\skala})
+	rectangle ({1*\dx+0.1/\skala},{0.56+0.1/\skala});
+
+\pfad{\orderdzero}{red!20}
+\pfad{\orderdone}{red!20}
+\pfad{\orderdtwo}{red!20}
+\pfad{\orderdthree}{red!20}
+\pfad{\orderdfour}{red!20}
+\pfad{\orderdfive}{red!20}
+\pfad{\orderdsix}{red!20}
+\pfad{\orderdeight}{red!20}
+\pfad{\orderdnine}{red!20}
+\pfad{\orderdten}{red!20}
+\E{\k}{blue}
+\pfad{\orderdseven}{red}
+
+\end{scope}
+
+\draw[->] ({-0.1/\skala},0) -- ({1.03*\dx},0) coordinate[label={$x$}];
+\draw[->] (0,{-0.1/\skala}) -- (0,0.6) coordinate[label={right:$\varphi(X)$}];
+\foreach \x in {0,0.2,0.4,0.6,0.8,1}{
+	\draw ({\x*\dx},{-0.1/\skala}) -- ({\x*\dx},{0.1/\skala});
+	\node at ({\x*\dx},{-0.1/\skala}) [below] {$\x$};
+}
+\foreach \y in {1,2,3,4}{
+	\draw ({-0.1/\skala},{\y*\dy}) -- ({0.1/\skala},{\y*\dy});
+	\node at ({-0.1/\skala},{\y*\dy}) [left] {$\y$};
+}
+
+\node[color=red] at ({0.67*\dx},{2.7*\dy}) [above] {$k=7$};
+
+
+\end{scope}
+
+\end{tikzpicture}
+\end{document}
+

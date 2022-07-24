@@ -4,5 +4,7 @@
 # (c) 2022 Prof Dr Andreas Müller, OST Ostschweizer Fachhochschule
 #
 
-CHAPTERFILES = $(CHAPTERFILES)						\
+CHAPTERFILES += 							\
+	chapters/075-fourier/bessel.tex					\
+	chapters/075-fourier/2d.tex					\
 	chapters/075-fourier/chapter.tex

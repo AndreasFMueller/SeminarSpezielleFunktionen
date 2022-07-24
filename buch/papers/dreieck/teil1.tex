@@ -1,0 +1,94 @@
+%
+% teil1.tex -- Beispiel-File für das Paper
+%
+% (c) 2020 Prof Dr Andreas Müller, Hochschule Rapperswil
+%
+\section{Hermite-Polynome
+\label{dreieck:section:hermite-polynome}}
+\rhead{Hermite-Polyome}
+In Abschnitt~\ref{dreieck:section:problemstellung} hat sich schon angedeutet,
+dass die Polynome, die man durch Ableiten von $e^{-t^2}$ erhalten
+kann, bezüglich des gestellten Problems besondere Eigenschaften
+haben.
+Zunächst halten wir fest, dass die Ableitung einer Funktion der Form
+$P(t)e^{-t^2}$ mit einem Polynom $P(t)$ 
+\begin{equation}
+\frac{d}{dt} P(t)e^{-t^2}
+=
+P'(t)e^{-t^2} -2tP(t)e^{-t^2}
+=
+(P'(t)-2tP(t)) e^{-t^2}
+\label{dreieck:eqn:ableitung}
+\end{equation}
+ist.
+Insbesondere hat die Ableitung wieder die Form $Q(t)e^{-t^2}$
+mit einem Polynome $Q(t)$, welches man auch als
+\[
+Q(t)
+=
+e^{t^2}\frac{d}{dt}P(t)e^{-t^2}
+\]
+erhalten kann.
+
+Die Polynome, die man aus der Funktion $H_0(t)=e^{-t^2}$ durch
+Ableiten erhalten kann, wurden bereits in
+Abschnitt~\ref{buch:orthogonalitaet:section:rodrigues}
+bis auf ein Vorzeichen hergeleitet, sie heissen die Hermite-Polynome 
+\index{Hermite-Polynome}%
+und es gilt
+\[
+H_n(t) 
+=
+(-1)^n
+e^{t^2} \frac{d^n}{dt^n} e^{-t^2}.
+\]
+Das Vorzeichen dient dazu sicherzustellen, dass der Leitkoeffizient
+immer $1$ ist.
+Das Polynom $H_n(t)$ hat den Grad $n$.
+
+In Abschnitt wurde auch gezeigt, dass die Polynome $H_n(t)$
+bezüglich des Skalarproduktes
+\[
+\langle f,g\rangle_{w}
+=
+\int_{-\infty}^\infty f(t)g(t)e^{-t^2}\,dt,
+\qquad
+w(t)=e^{-t^2},
+\]
+orthogonal sind.
+Ausserdem folgt aus \eqref{dreieck:eqn:ableitung}
+die Rekursionsbeziehung
+\begin{equation}
+H_{n}(t)
+=
+2tH_{n-1}(t)
+-
+H_{n-1}'(t)
+\label{dreieck:eqn:rekursion}
+\end{equation}
+für $n>0$.
+
+Im Hinblick auf die Problemstellung ist jetzt die Frage interessant,
+ob die Integranden $H_n(t)e^{-t^2}$ eine Stammfunktion in geschlossener
+Form haben.
+Mit Hilfe der Rekursionsbeziehung~\eqref{dreieck:eqn:rekursion}
+kann man für $n>0$ unmittelbar verifizieren, dass
+\begin{align*}
+\int H_n(t)e^{-t^2}\,dt
+&=
+\int \bigl( 2tH_{n-1}(t) - H'_{n-1}(t)\bigr)e^{-t^2}\,dt
+\\
+&=
+-\int \bigl( \exp'(-t^2) H_{n-1}(t) + H'_{n-1}(t)\bigr)e^{-t^2}\,dt
+\\
+&=
+-\int \bigl( e^{-t^2}H_{n-1}(t)\bigr)' \,dt
+=
+-e^{-t^2}H_{n-1}(t)
+\end{align*}
+ist.
+Für $n>0$ hat also $H_n(t)e^{-t^2}$ eine elementare Stammfunktion.
+Die Hermite-Polynome sind also Lösungen für das
+Problem~\ref{dreieck:problem}.
+
+
