@@ -1,0 +1,47 @@
+\section{Lösungsmethoden} \label{kra:section:loesung}
+\rhead{Lösungsmethoden}
+% @TODO Lösung normal riccati
+Lösung der Riccatischen Differentialgleichung \ref{kra:riccati}.
+
+
+% Lösung matrix riccati
+Die Lösung der Matrix-Riccati Gleichung \ref{kra:matrixriccati} erhalten wir nach \cite{kra:kalmanisae} folgendermassen
+\begin{equation}
+    \label{kra:matrixriccati-solution}
+    \begin{pmatrix}
+        X(t) \\
+        Y(t)
+    \end{pmatrix}
+    =
+    \Phi(t_0, t)
+    \begin{pmatrix}
+        I(t) \\
+        U_0(t)
+    \end{pmatrix}
+    =
+    \begin{pmatrix}
+        \Phi_{11}(t_0, t) & \Phi_{12}(t_0, t) \\
+        \Phi_{21}(t_0, t) & \Phi_{22}(t_0, t)
+    \end{pmatrix}
+    \begin{pmatrix}
+        I(t) \\
+        U_0(t)
+    \end{pmatrix}
+\end{equation}
+
+\begin{equation}
+    U(t) =
+    \begin{pmatrix}
+        \Phi_{21}(t_0, t) + \Phi_{22}(t_0, t)
+    \end{pmatrix}
+    \begin{pmatrix}
+        \Phi_{11}(t_0, t) + \Phi_{12}(t_0, t)
+    \end{pmatrix}
+    ^{-1}
+\end{equation}
+
+wobei $\Phi(t, t_0)$ die sogennante Zustandsübergangsmatrix ist.
+
+\begin{equation}
+    \Phi(t_0, t) = e^{H(t - t_0)}
+\end{equation}
