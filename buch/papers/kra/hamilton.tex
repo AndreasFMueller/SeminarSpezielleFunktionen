@@ -1,0 +1,185 @@
+\newcommand{\dt}[0]{\frac{d}{dt}}
+
+\section{Teil abc\label{kra:section:teilabc}}
+\rhead{Teil abc}
+
+\subsection{Hamilton-Funktion}
+Die Bewegung der Masse $m$ kann mit Hilfe der hamiltonschen Mechanik im Phasenraum untersucht werden.
+Die hamiltonschen Gleichungen verwenden dafür die veralgemeinerten Ortskoordinaten
+$q = (q_{1}, q_{2}, ..., q_{n})$ und die verallgemeinerten Impulskoordinaten $p = (p_{1}, p_{2}, ..., p_{n})$,
+wobei der Impuls definiert ist als $p_k = m_k \cdot v_k$.
+Liegen keine zeitabhängigen Zwangsbedingungen vor, so entspricht die Hamitlon-Funktion der Gesamtenergie des Systems \cite{kra:hamilton}.
+Im Falle des einfachen Federmassesystems, Abbildung \ref{kra:fig:simple_spring_mass},
+setzt sich die Hamilton-Funktion aus kinetischer und potentieller Energie zusammen.
+
+\begin{equation}
+    \label{hamilton}
+    \begin{split}
+        \mathcal{H}(q, p) &= T(p) + V(q) = E \\
+        &= \underbrace{\frac{p^2}{2m}}_{E_{kin}} + \underbrace{\frac{k q^2}{2}}_{E_{pot}}
+    \end{split}
+\end{equation}
+
+Die Hamiltonschen Bewegungsgleichungen liefern \cite{kra:kanonischegleichungen}
+\begin{equation}
+    \label{kra:hamilton:bewegungsgleichung}
+    \dot{q_{k}} = \frac{\partial \mathcal{H}}{\partial p_k}
+    \qquad
+    \dot{p_{k}} = -\frac{\partial \mathcal{H}}{\partial q_k}
+\end{equation}
+
+daraus folgt
+
+\[
+    \dot{q} = \frac{p}{m}
+    \qquad
+    \dot{p} = -kq
+\]
+
+in Matrixschreibweise erhalten wir also
+
+\[
+    \begin{pmatrix}
+        \dot{q} \\
+        \dot{p}
+    \end{pmatrix}
+    =
+    \begin{pmatrix}
+        0  & \frac{1}{m} \\
+        -k & 0
+    \end{pmatrix}
+    \begin{pmatrix}
+        q \\
+        p
+    \end{pmatrix}
+\]
+
+Für das erweiterte Federmassesystem, Abbildung \ref{kra:fig:multi_spring_mass}, können wir analog vorgehen.
+Die kinetische Energie setzt sich nun aus den kinetischen Energien der einzelnen Massen $m_1$ und $m_2$ zusammen.
+Die Potentielle Energie erhalten wir aus der Summe der kinetischen Energien der einzelnen Federn mit den Federkonstanten $k_1$, $k_c$ und $k_2$.
+
+\begin{align*}
+    \begin{split}
+        T   &= T_1 + T_2 \\
+        &= \frac{p_1^2}{2m_1} + \frac{p_2^2}{2m_2}
+    \end{split}
+    \\
+    \begin{split}
+        V   &= V_1 + V_c + V_2 \\
+        &= \frac{k_1 q_1^2}{2} + \frac{k_c (q_2 - q_1)^2}{2} + \frac{k_2 q_2^2}{2}
+    \end{split}
+\end{align*}
+
+Die Hamilton-Funktion ist also
+
+\begin{align*}
+    \begin{split}
+        \mathcal{H}     &= T + V \\
+        &= \frac{p_1^2}{2m_1} + \frac{p_2^2}{2m_2} + \frac{k_1 q_1^2}{2} + \frac{k_c (q_2 - q_1)^2}{2} + \frac{k_2 q_2^2}{2}
+    \end{split}
+\end{align*}
+
+Die Bewegungsgleichungen \ref{kra:hamilton:bewegungsgleichung} liefern
+\begin{align*}
+    \frac{\partial \mathcal{H}}{\partial p_k}  & = \dot{q_k}
+    \Rightarrow
+    \left\{
+    \begin{alignedat}{2}
+        \dot{q_1}   &= \frac{2p_1}{2m_1}    &&= \frac{p_1}{m_1}\\
+        \dot{q_2}   &= \frac{2p_2}{2m_2}    &&= \frac{p_2}{m_2}
+    \end{alignedat}
+    \right.
+    \\
+    -\frac{\partial \mathcal{H}}{\partial q_k} & = \dot{p_k}
+    \Rightarrow
+    \left\{
+    \begin{alignedat}{2}
+        \dot{p_1}   &= -(\frac{2k_1q_1}{2} - \frac{2k_c(q_2-q_1)}{2})  &&= -q_1(k_1+k_c) + q_2k_c \\
+        \dot{p_1}   &= -(\frac{2k_c(q_2-q_1)}{2} - \frac{2k_2q_2}{2})  &&= q_1k_c - (k_c + k_2)
+    \end{alignedat}
+    \right.
+\end{align*}
+
+In Matrixschreibweise erhalten wir
+
+\begin{equation}
+    \label{kra:hamilton:multispringmass}
+    \begin{pmatrix}
+        \dot{q_1} \\
+        \dot{q_2} \\
+        \dot{p_1} \\
+        \dot{p_2} \\
+    \end{pmatrix}
+    =
+    \begin{pmatrix}
+        0            & 0            & \frac{1}{2m_1} & 0              \\
+        0            & 0            & 0              & \frac{1}{2m_2} \\
+        -(k_1 + k_c) & k_c          & 0              & 0              \\
+        k_c          & -(k_c + k_2) & 0              & 0              \\
+    \end{pmatrix}
+    \begin{pmatrix}
+        q_1 \\
+        q_2 \\
+        p_1 \\
+        p_2 \\
+    \end{pmatrix}
+    \Leftrightarrow
+    \dt
+    \begin{pmatrix}
+        Q \\
+        P \\
+    \end{pmatrix}
+    \underbrace{
+        \begin{pmatrix}
+            0 & M \\
+            K & 0
+        \end{pmatrix}
+    }_{G}
+    \begin{pmatrix}
+        Q \\
+        P \\
+    \end{pmatrix}
+\end{equation}
+
+
+Wir intressieren uns nun dafür wie der Phasenwinkel $U = PQ^{-1}$ von der Zeit abhängt,
+wir suchen also die Grösse $\Theta = \dt U$.
+
+Ersetzten wir in der Gleichung \ref{kra:hamilton:multispringmass} die Matrix $G$ mit $\tilde{G}$ so erhalten wir
+\begin{equation}
+    \dt
+    \begin{pmatrix}
+        Q \\
+        P
+    \end{pmatrix}
+    =
+    \underbrace{
+        \begin{pmatrix}
+            A & B \\
+            C & D
+        \end{pmatrix}
+    }_{\tilde{G}}
+    \begin{pmatrix}
+        Q \\
+        P
+    \end{pmatrix}
+\end{equation}
+
+Mit einsetzten folgt
+
+\begin{align*}
+    \dot{Q} = AQ + BP \\
+    \dot{P} = CQ + DP
+\end{align*}
+\begin{equation}
+    \begin{split}
+        \dt U   &= \dot{P} Q^{-1} + P \dt Q^{-1} \\
+        &= (CQ + DP) Q^{-1} - P (Q^{-1} \dot{Q} Q^{-1}) \\
+        &= C\underbrace{QQ^{-1}}_\text{I} + D\underbrace{PQ^{-1}}_\text{U} - P(Q^{-1} (AQ + BP) Q^{-1}) \\
+        &= C + DU - \underbrace{PQ^{-1}}_\text{U}(A\underbrace{QQ^{-1}}_\text{I} + B\underbrace{PQ^{-1}}_\text{U}) \\
+        &= C  + DU - UA - UBU
+    \end{split}
+\end{equation}
+
+was uns auf die zeitkontinuierliche Matrix-Riccati-Gleichung führt.
+
