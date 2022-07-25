@@ -1,40 +1,57 @@
 %
-% teil3.tex -- Beispiel-File für Teil 3
+% teil3.tex -- Resultate und Ausblick
 %
-% (c) 2020 Prof Dr Andreas Müller, Hochschule Rapperswil
+% (c) 2022 Fabian Dünki, Hochschule Rapperswil
 %
-\section{Teil 3
+\section{Resultate
 \label{0f1:section:teil3}}
-\rhead{Teil 3}
-Sed ut perspiciatis unde omnis iste natus error sit voluptatem
-accusantium doloremque laudantium, totam rem aperiam, eaque ipsa
-quae ab illo inventore veritatis et quasi architecto beatae vitae
-dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit
-aspernatur aut odit aut fugit, sed quia consequuntur magni dolores
-eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam
-est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci
-velit, sed quia non numquam eius modi tempora incidunt ut labore
-et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima
-veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam,
-nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure
-reprehenderit qui in ea voluptate velit esse quam nihil molestiae
-consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla
-pariatur?
+\rhead{Resultate}
+Im Verlauf des Seminares hat sich gezeigt, 
+das ein einfacher mathematischer Algorithmus zu implementieren gar nicht so einfach ist.
+So haben alle drei umgesetzten Ansätze Probleme mit grossen negativen x in der Funktion $\mathstrut_0F_1(;b;x)$.
+Ebenso wird, je grösser der Wert x wird $\mathstrut_0F_1(;b;x)$, desto mehr weichen die berechneten Resultate
+von den erwarteten ab. 
+{\color{red}TODO cite wolfram alpha rechner}
 
-\subsection{De finibus bonorum et malorum
-\label{0f1:subsection:malorum}}
-At vero eos et accusamus et iusto odio dignissimos ducimus qui
-blanditiis praesentium voluptatum deleniti atque corrupti quos
-dolores et quas molestias excepturi sint occaecati cupiditate non
-provident, similique sunt in culpa qui officia deserunt mollitia
-animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis
-est et expedita distinctio. Nam libero tempore, cum soluta nobis
-est eligendi optio cumque nihil impedit quo minus id quod maxime
-placeat facere possimus, omnis voluptas assumenda est, omnis dolor
-repellendus. Temporibus autem quibusdam et aut officiis debitis aut
-rerum necessitatibus saepe eveniet ut et voluptates repudiandae
-sint et molestiae non recusandae. Itaque earum rerum hic tenetur a
-sapiente delectus, ut aut reiciendis voluptatibus maiores alias
-consequatur aut perferendis doloribus asperiores repellat.
+\subsection{Auswertung
+\label{0f1:subsection:auswertung}}
+\begin{figure}
+    \centering
+    \includegraphics[width=0.8\textwidth]{papers/0f1/images/konvergenzAiry.pdf}
+    \caption{Konvergenz nach drei Iterationen, dargestellt anhand der Airy Funktion}.
+    \label{0f1:ausblick:plot:airy:konvergenz}}
+\end{figure}
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.8\textwidth]{papers/0f1/images/konvergenzPositiv.pdf}
+    \caption{Konvergenz: Logarithmisch dargestellte Differenz vom erwarteten Endresultat}.
+    \label{0f1:ausblick:plot:konvergenz:positiv}}
+\end{figure}
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.8\textwidth]{papers/0f1/images/konvergenzNegativ.pdf}
+    \caption{Konvergenz: Logarithmisch dargestellte Differenz vom erwarteten Endresultat}.
+    \label{0f1:ausblick:plot:konvergenz:negativ}}
+\end{figure}
+
+\begin{figure}
+    \centering
+    \includegraphics[width=1\textwidth]{papers/0f1/images/stabilitaet.pdf}
+    \caption{Stabilität der 3 Algorithmen verglichen mit der GNU Scientific Library}.
+    \label{0f1:ausblick:plot:airy:stabilitaet}}
+\end{figure}
+
+\begin{itemize}
+    \item Negative Zahlen sind sowohl für die Potenzreihe als auch für den Kettenbruch ein Problem.
+    \item Die Potenzreihe hat das Problem, je tiefer die Rekursionstiefe, desto mehr machen die Brüche ein Problem. Also der Nenner mit der Fakultät und dem Pochhammer Symbol.
+    \item Die Rekursionformel liefert für sehr grosse positive Werte die genausten Ergebnisse, verglichen mit der GNU Scientific Library.
+\end{itemize}
+
+
+\subsection{Ausblick
+\label{0f1:subsection:ausblick}}
+
 
 

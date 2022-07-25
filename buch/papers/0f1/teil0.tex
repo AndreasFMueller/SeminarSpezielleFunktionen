@@ -1,22 +1,15 @@
 %
-% einleitung.tex -- Beispiel-File für die Einleitung
+% einleitung.tex -- Einleitung
 %
-% (c) 2020 Prof Dr Andreas Müller, Hochschule Rapperswil
+% (c) 2022 Fabian Dünki, Hochschule Rapperswil
 %
-\section{Teil 0\label{0f1:section:teil0}}
-\rhead{Teil 0}
-Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
-nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam
-erat, sed diam voluptua \cite{0f1:bibtex}.
-At vero eos et accusam et justo duo dolores et ea rebum.
-Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum
-dolor sit amet.
-
-Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
-nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam
-erat, sed diam voluptua.
-At vero eos et accusam et justo duo dolores et ea rebum.  Stet clita
-kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit
-amet.
-
-
+\section{Ausgangslage\label{0f1:section:ausgangslage}}
+\rhead{Ausgangslage}
+Die Hypergeometrische Funktion $\mathstrut_0F_1$ wird in vielen Funktionen als Basisfunktion benutzt, 
+zum Beispiel um die Airy Funktion zu berechnen. 
+In der GNU Scientific Library \cite{library-gsl} 
+ist die Funktion $\mathstrut_0F_1$ vorhanden. 
+Allerdings wirft die Funktion, bei negativen Übergabenwerten wie zum Beispiel \verb+gsl_sf_hyperg_0F1(1, -1)+, eine Exception. 
+Bei genauerer Untersuchung hat sich gezeigt, dass die Funktion je nach Betriebssystem funktioniert oder eben nicht. 
+So kann die Funktion unter Windows fehlerfrei aufgerufen werden, beim Mac OS und Linux sind negative Übergabeparameter im Moment nicht möglich.
+Ziel dieser Arbeit war es zu evaluieren, ob es mit einfachen mathematischen Operationen möglich ist, die Hypergeometrische Funktion $\mathstrut_0F_1$ zu implementieren.
