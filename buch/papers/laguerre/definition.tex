@@ -4,15 +4,14 @@
 % (c) 2022 Patrik Müller, Ostschweizer Fachhochschule
 %
 \section{Herleitung%
-% \section{Einleitung
-% \section{Definition
-\label{laguerre:section:definition}}
+  % \section{Einleitung
+  % \section{Definition
+  \label{laguerre:section:definition}}
 \rhead{Definition}%
 In einem ersten Schritt möchten wir die Laguerre-Polynome
 aus der Laguerre-\-Differentialgleichung herleiten.
-Zudem möchten wir die Lösung auch auf 
-die assoziierten Laguerre-Polynome ausweiten.
-Im Anschluss möchten wir dann noch die Orthogonalität dieser Polynome beweisen.
+Zudem werden wir die Lösung auf die assoziierten Laguerre-Polynome ausweiten.
+Im Anschluss soll dann noch die Orthogonalität dieser Polynome bewiesen werden.
 
 \subsection{Assoziierte Laguerre-Differentialgleichung}
 Die assoziierte Laguerre-Differentialgleichung ist gegeben durch
@@ -32,14 +31,14 @@ zuerst von Yacovlevich Sonine (1849 - 1915) beschrieben,
 aber aufgrund ihrer Ähnlichkeit nach Laguerre benannt.
 Die klassische Laguerre-Diffentialgleichung erhält man, wenn $\nu = 0$.
 
-{\subsection{Potenzreihenansatz}
+\subsection{Potenzreihenansatz%
 \label{laguerre:subsection:potenzreihenansatz}}
 Hier wird die assoziierte Laguerre-Differentialgleichung verwendet,
 weil die Lösung mit derselben Methode berechnet werden kann.
 Zusätzlich erhält man aber die Lösung für den allgmeinen Fall.
 Wir stellen die Vermutung auf,
 dass die Lösungen orthogonale Polynome sind.
-Die Orthogonalität der Lösung werden wir im 
+Die Orthogonalität der Lösung werden wir im
 Abschnitt~\ref{laguerre:subsection:orthogonal} beweisen.
 Zur Lösung von \eqref{laguerre:dgl} verwenden wir aufgrund
 der getroffenen Vermutungen einen Potenzreihenansatz.
@@ -49,7 +48,7 @@ Der Potenzreihenansatz ist gegeben als
 % erscheint dieser Ansatz sinnvoll. 
 \begin{align*}
 y(x)
-& =
+ & =
 \sum_{k=0}^\infty a_k x^k
 % \\
 .
@@ -57,13 +56,13 @@ y(x)
 Für die 1. und 2. Ableitungen erhalten wir
 \begin{align*}
 y'(x)
-& =
+ & =
 \sum_{k=1}^\infty k a_k x^{k-1}
 =
 \sum_{k=0}^\infty (k+1) a_{k+1} x^k
 \\
 y''(x)
-& =
+ & =
 \sum_{k=2}^\infty k (k-1) a_k x^{k-2}
 =
 \sum_{k=1}^\infty (k+1) k a_{k+1} x^{k-1}
@@ -71,7 +70,7 @@ y''(x)
 \end{align*}
 
 \subsection{Lösen der Laguerre-Differentialgleichung}
-Setzt man nun den Potenzreihenansatz in 
+Setzt man nun den Potenzreihenansatz in
 \eqref{laguerre:dgl}
 %die Differentialgleichung 
 ein,
@@ -106,7 +105,8 @@ denn für $k=n$ wird $a_{n+1} = 0$ und damit auch $a_{n+2}=a_{n+3}=\ldots=0$.
 Aus %der Rekursionsbeziehung 
 \eqref{laguerre:rekursion} ist zudem ersichtlich,
 dass $a_0 \neq 0$ beliebig gewählt werden kann.
-Wählen wir nun $a_0 = 1$, dann folgt für die Koeffizienten $a_1, a_2, a_3$
+Wählen wir nun $a_0 = 1$, dann folgt für die Koeffizienten
+% $a_1, a_2, a_3$
 \begin{align*}
 a_1
 =
@@ -136,8 +136,10 @@ k & >n:
   &
 a_k
   & =
-0.
+0
+.
 \end{align*}
+Die Koeffizienten wechseln also für $k \leq n$ das Vorzeichen.
 Somit erhalten wir für $\nu = 0$ die Laguerre-Polynome
 \begin{align}
 L_n(x)
@@ -174,11 +176,11 @@ L_n(x) \log(x) + \sum_{k=1}^\infty d_k x^k
 .
 \end{align*}
 Eine Herleitung dazu lässt sich im
-Abschnitt \ref{buch:funktionentheorie:subsection:dglsing} 
+Abschnitt \ref{buch:funktionentheorie:subsection:dglsing}
 im ersten Teil des Buches finden.
-Nach einigen aufwändigen Rechnungen, 
+Nach einigen aufwändigen Rechnungen,
 % die am besten ein Computeralgebrasystem übernimmt,
-die den Rahmen dieses Kapitel sprengen würden,
+die den Rahmen dieses Kapitels sprengen würden,
 erhalten wir
 \begin{align*}
 \Xi_n

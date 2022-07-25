@@ -25,7 +25,7 @@ markant verbessern können.
 % wenden wir dann die Gauss-Laguerre-Quadratur auf die Gamma-Funktion und
 % erweitern die Methode 
 
-{\subsection{Gamma-Funktion}
+\subsection{Gamma-Funktion%
 \label{laguerre:subsection:gamma}}
 Die Gamma-Funktion ist eine Erweiterung der Fakultät auf die reale und komplexe
 Zahlenmenge.
@@ -44,11 +44,11 @@ Integral der Form
 .
 \end{align}
 Der Term $e^{-x}$ im Integranden und der Integrationsbereich erfüllen
-genau die Bedingungen der Laguerre-Integration.
+genau die Bedingungen der Gauss-Laguerre-Integration.
 % Der Term $e^{-t}$ ist genau die Gewichtsfunktion der Laguerre-Integration und
 % der Definitionsbereich passt ebenfalls genau für dieses Verfahren.
-Weiter zu erwähnen ist, dass für die assoziierte Laguerre-Integration die
-Gewichtsfunktion $x^\nu e^{-x}$  exakt dem Integranden 
+Weiter zu erwähnen ist, dass für die assoziierte Gauss-Laguerre-Integration die
+Gewichtsfunktion $x^\nu e^{-x}$  exakt dem Integranden
 für $\nu = z - 1$ entspricht.
 
 \subsubsection{Funktionalgleichung}
@@ -84,10 +84,11 @@ her.
 Dadurch lassen Werte der Gamma-Funktion sich für $z$ in der rechten Halbebene
 leicht in die linke Halbebene übersetzen und umgekehrt.
 
-{\subsection{Berechnung mittels Gauss-Laguerre-Quadratur}
+\subsection{Berechnung mittels
+Gauss-Laguerre-Quadratur%
 \label{laguerre:subsection:gauss-lag-gamma}}
 In den vorherigen Abschnitten haben wir gesehen,
-dass sich die Gamma-Funktion bestens für die Gauss-Laguerre-Quadratur 
+dass sich die Gamma-Funktion bestens für die Gauss-Laguerre-Quadratur
 \begin{align*}
 \int_0^\infty x^{z-1} e^{-x} \, dx
 =
@@ -169,16 +170,6 @@ Somit entscheiden wir uns aufgrund der vorherigen Punkte,
 die zweite Variante weiterzuverfolgen.
 
 \subsubsection{Direkter Ansatz}
-Wenden wir also die Gauss-Laguerre-Quadratur aus
-\eqref{laguerre:laguerrequadratur} auf die Gamma-Funktion
-\eqref{laguerre:gamma} an,
-ergibt sich
-\begin{align}
-\Gamma(z)
-\approx
-\sum_{i=1}^n x_i^{z-1} A_i.
-\label{laguerre:naive_lag}
-\end{align}
 %
 \begin{figure}
 \centering
@@ -186,10 +177,22 @@ ergibt sich
 \includegraphics{papers/laguerre/images/rel_error_simple.pdf}
 %\vspace{-12pt}
 \caption{Relativer Fehler des direkten Ansatzes
-für verschiedene reele Werte von $z$ und Grade $n$ der Laguerre-Polynome}
+für verschiedene reelle Werte von $z$ und Grade $n$ der
+Laguerre-Polynome}%
 \label{laguerre:fig:rel_error_simple}
 \end{figure}
-%
+%.
+Wenden wir also die Gauss-Laguerre-Quadratur aus
+\eqref{laguerre:laguerrequadratur} auf die Gamma-Funktion
+\eqref{laguerre:gamma} an,
+ergibt sich
+\begin{align}
+\Gamma(z)
+\approx
+\sum_{i=1}^n x_i^{z-1} A_i
+\label{laguerre:naive_lag}
+.
+\end{align}
 Bevor wir die Gauss-Laguerre-Quadratur anwenden,
 möchten wir als ersten Schritt eine Fehlerabschätzung durchführen.
 Für den Fehlerterm \eqref{laguerre:lag_error} wird die $2n$-te Ableitung
@@ -220,8 +223,8 @@ und für $z > 2n - 1$ bei $\xi \rightarrow \infty$ divergiert.
 Nur für den unwahrscheinlichen Fall $ z = 2n - 1$
 wäre eine Fehlerabschätzung plausibel.
 
-Wenden wir nun also direkt die Gauss-Laguerre-Quadratur auf die Gamma-Funktion
-an.
+Wenden wir nun also direkt die Gauss-Laguerre-Quadratur
+auf die Gamma-Funktion an.
 Dazu benötigen wir die Gewichte nach
 \eqref{laguerre:quadratur_gewichte}
 und als Stützstellen die Nullstellen des Laguerre-Polynomes $L_n$.
@@ -229,18 +232,17 @@ Evaluieren wir den relativen Fehler unserer Approximation zeigt sich ein
 Bild wie in Abbildung~\ref{laguerre:fig:rel_error_simple}.
 Man kann sehen,
 wie der relative Fehler Nullstellen aufweist für ganzzahlige $z \leq 2n$.
-Laut der Theorie der Gauss-Quadratur auch ist das zu erwarten,
+Laut der Theorie der Gauss-Quadratur ist das auch zu erwarten,
 da die Approximation via Gauss-Quadratur
-exakt ist für zu integrierende Polynome mit Grad $\leq 2n-1$
-und hinzukommt,
-dass zudem von $z$ noch $1$ abgezogen wird im Exponenten.
+exakt ist für zu integrierende Polynome mit Grad $\leq 2n-1$ und
+der Integrand $x^{z-1}$ wird für $z \in \mathbb{N} \setminus \{0\}$
+zu einem Polynom .
+% Hinzukommt, dass zudem von $z$ noch $1$ abgezogen wird im Exponenten.
 Es ist ersichtlich,
 dass sich für den Polynomgrad $n$ ein Intervall gibt,
 in dem der relative Fehler minimal ist.
 Links steigt der relative Fehler besonders stark an,
 während er auf der rechten Seite zu konvergieren scheint.
-Um die linke Hälfte in den Griff zu bekommen,
-könnten wir die Reflektionsformel der Gamma-Funktion verwenden.
 
 \begin{figure}
 \centering
@@ -248,10 +250,12 @@ könnten wir die Reflektionsformel der Gamma-Funktion verwenden.
 \includegraphics{papers/laguerre/images/rel_error_mirror.pdf}
 %\vspace{-12pt}
 \caption{Relativer Fehler des Ansatzes mit Spiegelung negativer Realwerte
-für verschiedene reele Werte von $z$ und Grade $n$ der Laguerre-Polynome}
+für verschiedene reelle Werte von $z$ und Grade $n$ der Laguerre-Polynome}
 \label{laguerre:fig:rel_error_mirror}
 \end{figure}
 
+Um die linke Hälfte in den Griff zu bekommen,
+könnten wir die Reflektionsformel der Gamma-Funktion verwenden.
 Spiegelt man nun $z$ mit negativem Realteil mittels der Reflektionsformel,
 ergibt sich ein stabilerer Fehler in der linken Hälfte,
 wie in Abbildung~\ref{laguerre:fig:rel_error_mirror}.
@@ -269,9 +273,10 @@ das Problem in den Griff zu bekommen.
 \subsubsection{Analyse des Integranden}
 Wie wir im vorherigen Abschnitt gesehen haben,
 scheint der Integrand problematisch.
-Darum möchten wir jetzt den Integranden analysieren,
-damit wir ihn besser verstehen und
-dadurch geeignete Gegenmassnahmen zu entwickeln können.
+Darum möchten wir ihn jetzt analysieren,
+damit wir ihn besser verstehen können.
+Dies sollte es uns ermöglichen,
+anschliessend geeignete Gegenmassnahmen zu entwickeln.
 
 % Dieser Abschnitt soll eine grafisches Verständnis dafür schaffen,
 % wieso der Integrand so problematisch ist.
@@ -311,16 +316,17 @@ dass kleine Exponenten um $0$ genauere Resultate liefern sollten.
 In Abbildung~\ref{laguerre:fig:integrand_exp} fügen wir
 die Dämpfung der Gewichtsfunktion $w(x)$
 der Gauss-Laguerre-Quadratur wieder hinzu
-und erhalten so wieder den kompletten Integranden $x^{z-1} e^{-x}$
+und erhalten so wieder den kompletten Integranden $x^{z} e^{-x}$
 der Gamma-Funktion.
 Für negative $z$ ergeben sich immer noch Singularitäten,
 wenn $x \rightarrow 0$.
-Um $1$ wächst der Term $x^z$ schneller als die Dämpfung $e^{-x}$,
+Um $x = 1$ wächst der Term $x^z$ für positive $z$
+schneller als die Dämpfung $e^{-x}$,
 aber für $x \rightarrow \infty$ geht der Integrand gegen $0$.
 Das führt zu glockenförmigen Kurven,
 die für grosse Exponenten $z$ nach der Stelle $x=1$ schnell anwachsen.
 Zu grosse Exponenten $z$ sind also immer noch problematisch.
-Kleine positive $z$ scheinen nun also auch zulässig zu sein.
+Kleine positive $z$ scheinen nun aber auch zulässig zu sein.
 Damit formulieren wir die Vermutung,
 dass $a(n)$,
 welches das Intervall $[a(n), a(n) + 1]$ definiert,
@@ -416,7 +422,8 @@ können die Intervalle $[a(n), a(n)+1]$ empirisch gesucht werden.
 Wir bestimmen nun die optimalen Verschiebungsterme empirisch
 für $n = 1,\ldots, 12$ im Intervall $z \in (0, 1)$,
 da $z$ sowieso mit den Term $m$ verschoben wird,
-reicht die $m^*$ nur in diesem Intervall zu analysieren.
+reicht es,
+die $m^*$ nur in diesem Intervall zu analysieren.
 In Abbildung~\ref{laguerre:fig:targets} sind die empirisch bestimmten $m^*$
 abhängig von $z$ und $n$ dargestellt.
 In $n$-Richtung lässt sich eine klare lineare Abhängigkeit erkennen und
@@ -481,7 +488,7 @@ dann beim Übergang auf die orange Linie wechselt.
 \includegraphics{papers/laguerre/images/rel_error_shifted.pdf}
 %\vspace{-12pt}
 \caption{Relativer Fehler des Ansatzes mit Verschiebungsterm
-für verschiedene reele Werte von $z$ und Verschiebungsterme $m$.
+für verschiedene reelle Werte von $z$ und Verschiebungsterme $m$.
 Das verwendete Laguerre-Polynom besitzt den Grad $n = 8$.
 $m^*$ bezeichnet hier den optimalen Verschiebungsterm.}
 \label{laguerre:fig:rel_error_shifted}
@@ -520,7 +527,7 @@ Abbildung~\ref{laguerre:fig:rel_error_range}.
 \includegraphics{papers/laguerre/images/rel_error_range.pdf}
 %\vspace{-12pt}
 \caption{Relativer Fehler des Ansatzes mit optimalen Verschiebungsterm
-für verschiedene reele Werte von $z$ und Laguerre-Polynome vom Grad $n$}
+für verschiedene reelle Werte von $z$ und Laguerre-Polynome vom Grad $n$}
 \label{laguerre:fig:rel_error_range}
 \end{figure}
 
@@ -569,14 +576,14 @@ Diese Methode wurde zum Beispiel in
 {\em GNU Scientific Library}, {\em Boost}, {\em CPython} und
 {\em musl} implementiert.
 Diese Methode erreicht für $n = 7$ typischerweise eine Genauigkeit von $13$
-korrekten, signifikanten Stellen für reele Argumente.
+korrekten, signifikanten Stellen für reelle Argumente.
 Zum Vergleich: die vorgestellte Methode erreicht für $n = 7$
 eine minimale Genauigkeit von $6$ korrekten, signifikanten Stellen
-für reele Argumente.
+für reelle Argumente.
 
 \subsubsection{Fazit}
 % Das Resultat ist etwas enttäuschend,
-Die Genauigkeit der vorgestellten Methode schneidet somit schlechter ab,
+Die Genauigkeit der vorgestellten Methode schneidet somit schlechter ab
 als die Lanczos-Methode.
 Dieser Erkenntnis kommt nicht ganz unerwartet,
 % aber nicht unerwartet,
@@ -595,6 +602,6 @@ nur $n$ Funktionsevaluationen
 und wenige zusätzliche Multiplikationen und Additionen.
 Demzufolge könnte diese Methode Anwendung in Systemen mit wenig Rechenleistung
 und/oder knappen Energieressourcen finden.
-Die vorgestellte Methode ist ein weiteres Beispiel dafür, 
-wie Verfahren durch die Kenntnis der Eigenschaften einer Funktion 
+Die vorgestellte Methode ist ein weiteres Beispiel dafür,
+wie Verfahren durch die Kenntnis der Eigenschaften einer Funktion
 verbessert werden können.
