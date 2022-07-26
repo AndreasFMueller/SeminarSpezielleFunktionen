@@ -15,7 +15,7 @@ Diese beiden Fragen werden in diesem Kapitel behandelt und an einem Beispiel bet
 %\subsection{Ziel erreichen (überarbeiten)
 %\label{lambertw:subsection:ZielErreichen}}
 Für diese Betrachtung wird das Beispiel aus \eqref{lambertw:section:teil4} zur Hilfe genommen.
-Wir verwenden die hergeleiteten Gleichungen \eqref{lambertw:eqFunkXNachT} für Startbedingung im ersten Quadranten
+Dazu werden die hergeleiteten Gleichungen \eqref{lambertw:eqFunkXNachT} mit Startbedingung im ersten Quadranten verwendet, welche
 \begin{align*}
     x\left(t\right)
     &=
@@ -25,15 +25,16 @@ Wir verwenden die hergeleiteten Gleichungen \eqref{lambertw:eqFunkXNachT} für S
     \frac{1}{4}\left(\left(y_0+r_0\right)\left(\frac{x(t)}{x_0}\right)^2+\left(r_0-y_0\right)\operatorname{ln}\left(\left(\frac{x(t)}{x_0}\right)^2\right)-r_0+3y_0\right)\\
     \chi
     &=
-    \frac{r_0+y_0}{r_0-y_0}\\
+    \frac{r_0+y_0}{r_0-y_0}, \quad
     \eta
-    &=
-    \left(\frac{x}{x_0}\right)^2\\
+    =
+    \left(\frac{x}{x_0}\right)^2,\quad
     r_0
-    &=
-    \sqrt{x_0^2+y_0^2} \text{.}\\
+    =
+    \sqrt{x_0^2+y_0^2}
 \end{align*}
 %
+sind.
 Das Ziel wird erreicht, wenn die Koordinaten des Verfolgers mit denen des Ziels bei einem diskreten Zeitpunkt $t_1$ übereinstimmen.
 Somit gilt es
 
@@ -60,7 +61,7 @@ und der Verfolger durch
     \text{.}
 \end{equation}
 %
- Da $y(t)$ viel komplexer ist als $x(t)$ wird das Problem in zwei einzelne Teilprobleme zerlegt. Wobei die Bedingung der x- und y-Koordinaten einzeln überprüft werden. Es entstehen daher folgende Bedingungen
+ Da $y(t)$ viel komplexer ist als $x(t)$ wird das Problem in zwei einzelne Teilprobleme zerlegt. Wobei die Bedingung der $x$- und $y$-Koordinaten einzeln überprüft werden. Es entstehen daher folgende Bedingungen
 
 \begin{align*}
     0
@@ -73,12 +74,11 @@ und der Verfolger durch
     &=
     y(t)
     =
-    \frac{1}{4}\left(\left(y_0+r_0\right)\left(\frac{x(t)}{x_0}\right)^2+\left(r_0-y_0\right)\operatorname{ln}\left(\left(\frac{x(t)}{x_0}\right)^2\right)-r_0+3y_0\right)
-    \\
+    \frac{1}{4}\left(\left(y_0+r_0\right)\left(\frac{x(t)}{x_0}\right)^2+\left(r_0-y_0\right)\operatorname{ln}\left(\left(\frac{x(t)}{x_0}\right)^2\right)-r_0+3y_0\right)\text{,}
 \end{align*}
 %
-, welche Beide gleichzeitig erfüllt sein müssen, damit das Ziel erreicht wurde.
-Zuerst wird die Bedingung der x-Koordinate betrachtet.
+welche Beide gleichzeitig erfüllt sein müssen, damit das Ziel erreicht wurde.
+Zuerst wird die Bedingung der $x$-Koordinate betrachtet.
 Diese kann durch dividieren durch $x_0$, anschliessendes quadrieren und multiplizieren von $\chi$ vereinfacht werden. Daraus folgt 
 \begin{equation}
 	0
@@ -107,10 +107,10 @@ Da $\chi\neq0$ und die Exponentialfunktion nie null sein kann, ist diese Bedingu
 Beim Grenzwert für $t\rightarrow\infty$ geht die Exponentialfunktion gegen null.
 Dies nützt nicht viel, da unendlich viel Zeit vergehen müsste damit ein Einholen möglich wäre.
 Somit kann nach den Gestellten Bedingungen das Ziel nie erreicht werden.
-Aus der Symmetrie des Problems an der y-Achse können auch alle Anfangspunkte im zweiten Quadranten die Bedingungen nicht erfüllen.
+Aus der Symmetrie des Problems an der $y$-Achse können auch alle Anfangspunkte im zweiten Quadranten die Bedingungen nicht erfüllen.
 Bei allen Anfangspunkten mit $y_0<0$ ist ein Einholen unmöglich, da die Geschwindigkeit des Verfolgers und Ziels übereinstimmen und der Verfolger dem Ziel bereits am Anfang nachgeht.
-Wenn die Wertemenge der Anfangsbedingung um die positive y-Achse erweitert wird, kann das Ziel wiederum erreicht werden.
-Sobald der Verfolger auf der positiven y-Achse startet, bewegen sich Verfolger und Ziel aufeinander zu, da der Geschwindigkeitsvektor des Verfolgers auf das Ziel zeigt und der Verfolger sich auf der Fluchtgeraden befindet.
+Wenn die Wertemenge der Anfangsbedingung um die positive $y$-Achse erweitert wird, kann das Ziel wiederum erreicht werden.
+Sobald der Verfolger auf der positiven $y$-Achse startet, bewegen sich Verfolger und Ziel aufeinander zu, da der Geschwindigkeitsvektor des Verfolgers auf das Ziel zeigt und der Verfolger sich auf der Fluchtgeraden befindet.
 Dies führt zwingend dazu, dass der Verfolger das Ziel erreichen wird.
 Die Verfolgungskurve kann in diesem Fall mit
 
@@ -141,7 +141,7 @@ Daraus folgt
 \end{equation}
 %
 führt.
-Nun ist klar, dass lediglich Anfangspunkte auf der positiven y-Achse oder direkt auf dem Ziel dazu führen, dass der Verfolger das Ziel bei $t_1$ einholt.
+Nun ist klar, dass lediglich Anfangspunkte auf der positiven $y$-Achse oder direkt auf dem Ziel dazu führen, dass der Verfolger das Ziel bei $t_1$ einholt.
 Bei allen anderen Anfangspunkten wird der Verfolger das Ziel nie erreichen.
 Dieses Resultat ist aber eher akademischer Natur, weil der Verfolger und das Ziel als Punkt betrachtet wurden.
 Wobei aber in Realität nicht von Punkten sondern von Objekten mit einer räumlichen Ausdehnung gesprochen werden kann.
