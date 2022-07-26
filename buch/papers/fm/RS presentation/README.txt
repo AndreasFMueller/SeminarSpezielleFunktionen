@@ -1,1 +1,0 @@
-Dies ist die Presentation des Reed-Solomon-Code

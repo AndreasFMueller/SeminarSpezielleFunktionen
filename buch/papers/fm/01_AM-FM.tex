@@ -7,30 +7,41 @@
 \rhead{AM- FM}
 
 Das sinusförmige Trägersignal hat die übliche Form: 
-\(x_c(t) = A_c \cdot cos(\omega_c(t)+\varphi)\).
+\(x_c(t) = A_c \cdot \cos(\omega_c(t)+\varphi)\).
 Wobei die konstanten Amplitude \(A_c\) und Phase \(\varphi\) vom Nachrichtensignal \(m(t)\) verändert wird.
 Der Parameter \(\omega_c\), die Trägerkreisfrequenz bzw. die Trägerfrequenz \(f_c = \frac{\omega_c}{2\pi}\),
 steht nicht für die modulation zur verfügung, statt dessen kann durch ihn die Frequenzachse frei gewählt werden.
 \newblockpunct
-Jedoch ist das für die Vilfalt der Modulationsarten keine Einschrenkung.
+Jedoch ist das für die Vielfalt der Modulationsarten keine Einschrenkung.
 Ein Nachrichtensignal kann auch über die Momentanfrequenz (instantenous frequency) \(\omega_i\) eines trägers verändert werden.
 Mathematisch wird dann daraus
 \[
     \omega_i = \omega_c + \frac{d \varphi(t)}{dt}
 \]
-mit der Ableitung der Phase.
+mit der Ableitung der Phase\cite{fm:NAT}.
+Mit diesen drei parameter ergeben sich auch drei modulationsarten, die Amplitudenmodulation welche \(A_c\) benutzt, 
+die Phasenmodulation \(\varphi\) und dann noch die Momentankreisfrequenz \(\omega_i\):
+\newline
+\newline
+To do: Bilder jeder Modulationsart
+
+\subsection{AM - Amplitudenmodulation}
+Das Ziel ist FM zu verstehen doch dazu wird zuerst AM erklärt welches einwenig einfacher zu verstehen ist und erst dann übertragen wir die Ideeen in FM.
+Nun zur Amplitudenmodulation verwenden wir das bevorzugte Trägersignal
+\[
+    x_c(t) = A_c \cdot \cos(\omega_ct).
+\]
+Dies bringt den grossen Vorteil das, dass modulierend Signal sämtliche Anteile im Frequenzspektrum inanspruch nimmt 
+und das Trägersignal nur  zwei komplexe Schwingungen besitzt. 
+Dies sieht man besonders in der Eulerischen Formel
+\[
+    x_c(t) = \frac{A_c}{2} \cdot e^{j\omega_ct}\;+\;\frac{A_c}{2} \cdot e^{-j\omega_ct}.
+\]
+Dabei ist die negative Frequenz der zweiten komplexen Schwingung zwingend erforderlich, damit in der Summe immer ein reelwertiges Trägersignal ergibt.
+Nun wird der parameter \(A_c\) durch das  Moduierende Signal \(m(t)\) ersetzt, wobei so \(m(t) \leqslant |1|\) normiert wurde.
 \newline
 \newline
 TODO:
-Hier beschrieib ich was AmplitudenModulation ist und mache dan den link zu Frequenzmodulation inkl Formel \[cos( cos x)\]
-
-
-
-%Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
-%nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam
-erat, sed diam voluptua \cite{fm:bibtex}.
-%At vero eos et accusam et justo duo dolores et ea rebum.
-%Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum
-%dolor sit amet.
-
-
+Hier beschrieib ich was AmplitudenModulation ist und mache dan den link zu Frequenzmodulation inkl Formel \[\cos( \cos x)\]
+so wird beschrieben das daraus eigentlich \(x_c(t) = A_c \cdot \cos(\omega_i)\) wird und somit \(x_c(t) = A_c \cdot \cos(\omega_c + \frac{d \varphi(t)}{dt})\).
+Da \(\sin \) abgeleitet \(\cos \) ergibt, so wird aus dem \(m(t)\) ein \( \frac{d \varphi(t)}{dt}\)  in der momentan frequenz. \[ \Rightarrow \cos( \cos x) \]
