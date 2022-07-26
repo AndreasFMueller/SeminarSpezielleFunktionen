@@ -6,9 +6,8 @@
 
 SOURCES := \
 	einleitung.tex\
-	teil1.tex \
-	teil2.tex \
-	teil3.tex \
+	eigenschaften.tex \
+	beispiele.tex \
 	main.tex 
 
 #TIKZFIGURES := \
