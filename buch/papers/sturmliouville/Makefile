@@ -31,6 +31,7 @@ standalone: standalone.tex $(SOURCES)  #$(FIGURES)
 			--halt-on-error \
 			--shell-escape \
 			--output-directory=papers/sturmliouville/standalone \
+			--extra-mem-top=10000000 \
 			papers/sturmliouville/standalone.tex;
 	cd standalone; \
 		bibtex standalone; \
