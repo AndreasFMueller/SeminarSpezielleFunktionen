@@ -6,16 +6,40 @@
 \section{Mathematischer Hintergrund
 \label{0f1:section:mathHintergrund}}
 \rhead{Mathematischer Hintergrund}
+Basierend auf den Herleitungen des vorhergehenden Kapitels \ref{buch:rekursion:section:hypergeometrische-funktion}
+und dem Seminarbuch Numerik \cite{0f1:kettenbrueche}, werden im nachfolgenden Abschnitt nochmals die Resultate
+beschrieben.
 
-\subsection{Hypergeometrische Funktion $\mathstrut_0F_1$
-\label{0f1:subsection:0f1}}
-Wie in Kapitel \ref{buch:rekursion:section:hypergeometrische-funktion} beschrieben,
-wird die Funktion $\mathstrut_0F_1$ folgendermassen definiert.
+\subsection{Hypergeometrische Funktion
+\label{0f1:subsection:hypergeometrisch}}
+Als Grundlage der umgesetzten Algorithmen dient die Hypergeometrische Funktion $\mathstrut_0F_1$. Diese ist eine Unterfunktion der allgemein definierten Funktion $\mathstrut_pF_q$.
+
 \begin{definition}
-    \label{0f1:rekursion:hypergeometrisch:def}
-    Die hypergeometrische Funktion
-    $\mathstrut_0F_1$ ist definiert durch die Reihe
-    \[
+	\label{0f1:math:qFp:def}
+	Die hypergeometrische Funktion
+	$\mathstrut_pF_q$ ist definiert durch die Reihe
+	\[
+	\mathstrut_pF_q
+	\biggl(
+	\begin{matrix}
+		a_1,\dots,a_p\\
+		b_1,\dots,b_q
+	\end{matrix}
+	;
+	x
+	\biggr)
+	=
+	\mathstrut_pF_q(a_1,\dots,a_p;b_1,\dots,b_q;x)
+	=
+	\sum_{k=0}^\infty
+	\frac{(a_1)_k\cdots(a_p)_k}{(b_1)_k\cdots(b_q)_k}\frac{x^k}{k!}.
+	\]
+\end{definition}
+
+Angewendet auf die Funktion $\mathstrut_pF_q$ ergibt sich für $\mathstrut_0F_1$:
+
+\begin{equation}
+    \label{0f1:math:0f1:eq}
     \mathstrut_0F_1
     \biggl(
     \begin{matrix}
@@ -29,26 +53,29 @@ wird die Funktion $\mathstrut_0F_1$ folgendermassen definiert.
     \mathstrut_0F_1(;b_1;x)
     =
     \sum_{k=0}^\infty
-    \frac{1}{(b_1)_k}\frac{x^k}{k!}.
-    \]
-\end{definition}
+    \frac{x^k}{(b_1)_k \cdot k!}.
+\end{equation}
+
+
 
 
 \subsection{Airy Funktion
 \label{0f1:subsection:airy}}
-Wie in \ref{buch:differentialgleichungen:section:hypergeometrisch} dargestellt, ist die Airy-Differentialgleichung
-folgendermassen definiert.
+Die Airy-Funktion $Ai(x)$ und die verwandte Funktion $Bi(x)$ werden als Airy-Funktion bezeichnet. Sie werden zur Lösung verschiedener physikalischer Probleme benutzt, wie zum Beispiel zur Lösung der Schrödinger-Gleichung. \cite{0f1:wiki-airyFunktion}
+
 \begin{definition}
-    y'' - xy = 0
-    \label{0f1:airy:eq:differentialgleichung}
+    \label{0f1:airy:differentialgleichung:def}
+    Die Differentialgleichung
+    $y'' - xy = 0$
+    heisst die {\em Airy-Differentialgleichung}. \cite{0f1:wiki-airyFunktion} 
 \end{definition}
 
-Daraus ergibt sich wie in Aufgabe~\ref{503} gefundenen Lösungen der
-Airy-Differentialgleichung als hypergeometrische Funktionen.
+Die Airy Funktion lässt sich auf verschiedene Arten darstellen. \cite{0f1:wiki-airyFunktion} 
+Als hypergeometrische Funktion berechnet, ergibt sich wie in Kapitel \ref{buch:differentialgleichungen:section:hypergeometrisch} hergeleitet, folgende Lösungen der Airy-Differentialgleichung zu den Anfangsbedingungen $A(0)=1$ und $A'(0)=0$, sowie $B(0)=0$ und $B'(0)=0$.
 
-
-\begin{align*}
-y_1(x)
+\begin{align}
+\label{0f1:airy:hypergeometrisch:eq}
+Ai(x)
 =
 \sum_{k=0}^\infty
 \frac{1}{(\frac23)_k} \frac{1}{k!}\biggl(\frac{x^3}{9}\biggr)^k
@@ -57,7 +84,7 @@ y_1(x)
 \begin{matrix}\text{---}\\\frac23\end{matrix};\frac{x^3}{9}
 \biggr).
 \\
-y_2(x)
+Bi(x)
 =
 \sum_{k=0}^\infty
 \frac{1}{(\frac43)_k} \frac{1}{k!}\biggl(\frac{x^3}{9}\biggr)^k
@@ -67,14 +94,9 @@ x\cdot\mathstrut_0F_1\biggl(
 \frac{x^3}{9}
 \biggr).
 \qedhere
-\end{align*}
+\end{align}
+
+In diesem speziellem Fall wird die Airy Funktion $Ai(x)$ \eqref{0f1:airy:hypergeometrisch:eq}
+benutzt, um die Stabilität der Algorithmen zu $\mathstrut_0F_1$ zu überprüfen.
 
 
-\begin{figure}
-    \centering
-    \includegraphics{papers/0f1/images/airy.pdf}
-    \caption{Plot der Lösungen der Airy-Differentialgleichung $y''-xy=0$
-    zu den Anfangsbedingungen $y(0)=1$ und $y'(0)=0$ in {\color{red}rot}
-    und $y(0)=0$ und $y'(0)=1$ in {\color{blue}blau}.
-    \label{0f1:airy:plot:vorgabe}}
-\end{figure}
