@@ -1,10 +1,11 @@
 %
 % waermeleitung_beispiel.tex -- Beispiel Wärmeleitung in homogenem Stab. 
+%%%%%%%%%%%%%%%%%%%%%%%%%%% Erster Entwurf %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
 % (c) 2020 Prof Dr Andreas Müller, Hochschule Rapperswil
 %
 
-\subsubsection{Wärmeleitung in einem Homogenen Stab}
+\subsection{Wärmeleitung in einem Homogenen Stab}
 
 In diesem Abschnitt betrachten wir das Problem der Wärmeleitung in einem
 homogenen Stab und wie das Sturm-Liouville-Problem bei der Beschreibung dieses
@@ -12,9 +13,52 @@ physikalischen Phänomenes auftritt.
 
 Zunächst wird ein eindimensionaler homogener Stab der Länge $l$ und
 Wärmeleitkoeffizient $\kappa$. Somit ergibt sich für das Wärmeleitungsproblem
-die partielle Differentialgleichung 
-
+die partielle Differentialgleichung
 \[
     \frac{\partial u}{\partial t} =
-    \kappa \frac{\partial^{2}u}{{\partial x}^{2}}.
+    \kappa \frac{\partial^{2}u}{{\partial x}^{2}}
 \]
+wobei der Stab in diesem Fall auf der X-Achse im Intervall $[0,l]$ liegt.
+
+Da diese Differentialgleichung das Problem allgemein für einen homogenen
+Stab beschreibt, werden zusätzliche Bedingungen benötigt, um beispielsweise
+die Lösung für einen Stab zu finden, bei dem die Enden auf konstanter 
+Tempreatur gehalten werden.
+
+%%%%%%%%%%%%% Randbedingungen für Stab mit konstanten Endtemperaturen %%%%%%%%%
+
+\subsubsection{Stab mit Enden auf konstanter Temperatur}
+
+Die Enden des Stabes auf konstanter Temperatur zu halten bedeutet, dass die
+Lösungsfunktion $u(t,x)$ bei $x = 0$ und $x = l$ nur die vorgegebene
+Temperatur zurückgeben darf. Es folgen nun
+\[
+    u(t,0)
+    =
+    u(t,l)
+    =
+    0
+\]
+als Randbedingungen.
+
+%%%%%%%%%%%%% Randbedingungen für Stab mit isolierten Enden %%%%%%%%%%%%%%%%%%%
+
+\subsubsection{Stab mit isolierten Enden}
+
+Bei isolierten Enden des Stabes können belibige Temperaturen für $x = 0$ und
+$x = l$ auftreten. In diesem Fall nicht erlaubt ist es, dass Wärme vom Stab
+an die Umgebung oder von der Umgebung an den Stab abgegeben wird.
+
+Aus der Physik ist bekannt, dass Wärme immer von der höheren zur tieferen
+Temperatur fliesst. Um Wärmefluss zu unterdrücken, muss also dafür gesorgt
+werden, dass am Rand des Stabes keine Temperaturdifferenz existiert oder 
+indem die partielle Ableitung von $u(t,x)$ nach $x$ bei $x = 0$ und $x = l$
+verschwinden. Somit folgen
+\[
+    \frac{\partial}{\partial x} u(t, 0)
+    =
+    \frac{\partial}{\partial x} u(t, l)
+    =
+    0
+\]
+als Randbedingungen.
