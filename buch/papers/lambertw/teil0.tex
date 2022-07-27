@@ -49,32 +49,32 @@ Daraus folgt, dass eine Strategie zwei dieser drei Parameter festlegen muss, um 
 \begin{figure}
     \centering
 	\includegraphics[scale=0.1]{./papers/lambertw/Bilder/pursuerDGL2.pdf}
-    \caption{Vektordarstellung Strategie 1}
+    \caption{Vektordarstellung Jagdstrategie}
     \label{lambertw:grafic:pursuerDGL2}
 \end{figure}
 %
 In der Tabelle \ref{lambertw:table:Strategien} sind drei mögliche Strategien aufgezählt.
-Im Folgenden wird nur noch auf die Strategie 1 eingegangen.
+Im Folgenden wird nur noch auf die Jagdstrategie eingegangen.
 Bei dieser Strategie ist die Geschwindigkeit konstant und der Verfolger bewegt sich immer direkt auf sein Ziel zu.
 Der Verfolger und sein Ziel werden als Punkte $V$ und $Z$ modelliert.
-
 In der Abbildung \ref{lambertw:grafic:pursuerDGL2} ist das Problem dargestellt,
 wobei $v$ der Ortsvektor des Verfolgers, $z$ der Ortsvektor des Ziels und $\dot{v}$ der Geschwindigkeitsvektor des Verfolgers ist.
+Der Geschwindigkeitsvektor entspricht dem Richtungsvektors des Verfolgers.
 Die konstante Geschwindigkeit kann man mit der Gleichung
 \begin{equation}
     |\dot{v}|
     = \operatorname{const} = A
     \text{,}\quad A\in\mathbb{R}^+
 \end{equation}
-darstellen. Der Geschwindigkeitsvektor wiederum kann mit der Gleichung
+darstellen. Der Geschwindigkeitsvektor kann mit der Gleichung
 \begin{equation}
     \frac{z-v}{|z-v|}\cdot|\dot{v}|
     =
     \dot{v}
 \end{equation}
-beschrieben werden.
+beschrieben werden, wenn die Jagdstrategie verwendet wird.
 Die Differenz der Ortsvektoren $v$ und $z$ ist ein Vektor der vom Punkt $V$ auf $Z$ zeigt.
-Da die Länge dieses Vektors beliebig sein kann, wird durch Division durch den Betrag, die Länge auf eins festgelegt.
+Da die Länge dieses Vektors beliebig sein kann, wird durch Division durch den Betrag, ein Einheitsvektor erzeugt.
 Aus dem Verfolgungsproblem ist auch ersichtlich, dass die Punkte $V$ und $Z$ nicht am gleichen Ort starten und so eine Division durch Null ausgeschlossen ist.
 Wenn die Punkte $V$ und $Z$ trotzdem am gleichen Ort starten, ist die Lösung trivial.
 
@@ -89,7 +89,7 @@ Nun wird die Gleichung mit $\dot{v}$ skalar multipliziert, um das Gleichungssyst
     &=
     1 \text{.}
 \end{align}
-Die Lösungen dieser Differentialgleichung sind die gesuchten Verfolgungskurven, insofern der Verfolger die Strategie 1 verwendet.
+Die Lösungen dieser Differentialgleichung sind die gesuchten Verfolgungskurven, insofern der Verfolger die Jagdstrategie verwendet.
 %
 \subsection{Ziel
 \label{lambertw:subsection:Ziel}}
