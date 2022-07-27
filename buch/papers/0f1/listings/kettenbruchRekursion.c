@@ -17,11 +17,11 @@ static double fractionIter0f1(const double c, const double z, unsigned int k)
     {
         abk = z / (k * ((k - 1) + c));  //abk = ak, bk
         
-        a = k > 1 ? (1 + abk) : 1;  //a0, a1
-        b = k > 1 ? -abk : abk;     //b1
+        a = k > 1 ? (1 + abk) : 1;      //a0, a1
+        b = k > 1 ? -abk : abk;         //b1
 
-        temp = b / (a + temp);      ////bk / (ak + last result)
+        temp = b / (a + temp);          //bk / (ak + last result)
     }
 
-    return a + temp;   //a0 + temp
+    return a + temp;                    //a0 + temp
 }

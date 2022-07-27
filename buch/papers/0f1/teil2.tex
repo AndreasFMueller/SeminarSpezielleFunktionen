@@ -15,15 +15,15 @@ Die naheliegendste Lösung ist die Programmierung der Potenzreihe. Allerdings is
 
 \begin{align}
     \label{0f1:umsetzung:0f1:eq}
-    \mathstrut_0F_1(;b;z)
+    \mathstrut_0F_1(;c;z)
     &=
     \sum_{k=0}^\infty
-    \frac{z^k}{(b)_k \cdot k!}
+    \frac{z^k}{(c)_k \cdot k!}
     &= 
-    \frac{1}{b}
-    +\frac{z^1}{(1+b) \cdot 1}
+    \frac{1}{c}
+    +\frac{z^1}{(c+1) \cdot 1}
     + \cdots
-    + \frac{z^{20}}{(20+b) \cdot 2.4 \cdot 10^{18}}
+    + \frac{z^{20}}{c(c+1)(c+2)\cdots(c+19) \cdot 2.4 \cdot 10^{18}}
 \end{align}
 
 \lstinputlisting[style=C,float,caption={Potenzreihe.},label={0f1:listing:potenzreihe}, firstline=59]{papers/0f1/listings/potenzreihe.c}
@@ -45,14 +45,14 @@ und ist somit verknüpfbar mit der Potenzreihe.
 
 Angewendet auf die Funktion $\mathstrut_0F_1$ bedeutet dies:
 \begin{equation*}
-	\mathstrut_0F_1(;b;z) = 1 + \frac{z}{a1!} + \frac{z^2}{a(a+1)2!} + \frac{z^3}{a(a+1)(a+2)3!} + \cdots
+	\mathstrut_0F_1(;c;z) = 1 + \frac{z}{c\cdot1!} + \frac{z^2}{c(c+1)\cdot2!} + \frac{z^3}{c(c+1)(c+2)\cdot3!} + \cdots
 \end{equation*}
 \cite{0f1:wiki-fraction}
 
 Nach allen Umformungen ergibt sich folgender, irregulärer Kettenbruch \eqref{0f1:math:kettenbruch:0f1:eq}
 \begin{equation}
 	\label{0f1:math:kettenbruch:0f1:eq}
-	\mathstrut_0F_1(;b;z) = 1 + \cfrac{\cfrac{z}{b}}{1+\cfrac{-\cfrac{z}{2(1+b)}}{1+\cfrac{z}{2(1+b)}+\cfrac{-\cfrac{z}{3(2+b)}}{1+\cfrac{z}{5(4+b)} + \cdots}}},
+	\mathstrut_0F_1(;c;z) = 1 + \cfrac{\cfrac{z}{c}}{1+\cfrac{-\cfrac{z}{2(c+1)}}{1+\cfrac{z}{2(c+1)}+\cfrac{-\cfrac{z}{3(c+2)}}{1+\cfrac{z}{5(c+4)} + \cdots}}},
 \end{equation}
 der als Code \ref{0f1:listing:kettenbruchIterativ} umgesetzt wurde. 
 \cite{0f1:wolfram-0f1}
@@ -172,7 +172,7 @@ B_{k+1} &= B_{k-1} \cdot b_k + B_k \cdot a_k
 Näherungsbruch: \qquad$\displaystyle\frac{A_k}{B_k}$
 \end{itemize}
 
-Ein grosser Vorteil dieser Umsetzung \ref{0f1:listing:kettenbruchRekursion} ist, dass im Vergleich zum Code \ref{0f1:listing:kettenbruchIterativ} eine Division gespart werden kann und somit weniger Folgefehler entstehen können.
+Ein grosser Vorteil dieser Umsetzung \ref{0f1:listing:kettenbruchRekursion} ist, dass im Vergleich zum Code \ref{0f1:listing:kettenbruchIterativ} eine Division gespart werden kann und somit weniger Rundungsfehler entstehen können.
 
 %Code
 \lstinputlisting[style=C,float,caption={Iterativ umgesetzter Kettenbruch.},label={0f1:listing:kettenbruchRekursion},  firstline=8]{papers/0f1/listings/kettenbruchRekursion.c}

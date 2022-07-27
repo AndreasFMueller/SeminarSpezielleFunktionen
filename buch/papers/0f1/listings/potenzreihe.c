@@ -51,18 +51,18 @@ static double fac(int n)
 
 /**
   * @brief Calculates the Hypergeometric Function 0F1(;b;z)
-  * @param b0 in 0F1(;b0;z)
-  * @param z in 0F1(;b0;z)
+  * @param c in 0F1(;c;z)
+  * @param z in 0F1(;c;z)
   * @param n number of itertions (precision)
   * @return Result
   */
-static double powerseries(const double b, const double z, unsigned int n)
+static double powerseries(const double c, const double z, unsigned int n)
 {
     double temp = 0.0;
 
     for (unsigned int k = 0; k < n; ++k)
     {
-        temp += pow(z, k) / (factorial(k) * pochhammer(b, k));
+        temp += pow(z, k) / (factorial(k) * pochhammer(c, k));
     }
 
     return temp;
