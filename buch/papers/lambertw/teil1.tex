@@ -10,16 +10,35 @@
 Sehr oft kommt es vor, dass bei Verfolgungsproblemen die Frage auftaucht, ob das Ziel überhaupt erreicht wird.
 Wenn zum Beispiel die Geschwindigkeit des Verfolgers kleiner ist als diejenige des Ziels, gibt es Anfangsbedingungen bei denen das Ziel nie erreicht wird.
 Im Anschluss dieser Frage stellt sich meist die nächste Frage, wie lange es dauert bis das Ziel erreicht wird.
-Diese beiden Fragen werden in diesem Kapitel behandelt und an einem Beispiel betrachtet.
+Diese beiden Fragen werden in diesem Kapitel behandelt und am Beispiel aus \ref{lambertw:section:teil4} betrachtet.
+Das Beispiel wird bei dieser Betrachtung noch etwas erweitert indem alle Punkte auf der gesamtem $xy$-Ebene als Startwerte zugelassen werden.
+
+Nun gilt es zu definieren, wann das Ziel erreicht wird.
+Da sowohl Ziel und Verfolger als Punkte modelliert wurden, gilt das Ziel als erreicht, wenn die Koordinaten des Verfolgers mit denen des Ziels bei einem diskreten Zeitpunkt $t_1$ übereinstimmen.
+Somit gilt es
+
+\begin{equation*}
+    z(t_1)=v(t_1)
+\end{equation*}
 %
-%\subsection{Ziel erreichen (überarbeiten)
-%\label{lambertw:subsection:ZielErreichen}}
-Für diese Betrachtung wird das Beispiel aus \eqref{lambertw:section:teil4} zur Hilfe genommen.
-Dazu werden die hergeleiteten Gleichungen \eqref{lambertw:eqFunkXNachT} mit Startbedingung im ersten Quadranten verwendet, welche
+zu lösen.
+Die Parametrisierung von $z(t)$ ist im Beispiel definiert als
+\begin{equation}
+    z(t)
+    =
+    \left( \begin{array}{c} 0 \\ t \end{array} \right)\text{.}
+\end{equation}
+%
+Die Parametrisierung von $v(t)$ ist von den Startbedingungen abhängig. Deshalb wird die obige Bedingung jeweils für die unterschiedlichen Startbedingungen separat analysiert.
+
+\subsection{Anfangsbedingung im \RN{1}-Quadranten}
+%
+$ x_0$ $\boldsymbol{x}$ dd
+Wenn der Verfolger im \RN{1}-Quadranten startet, dann kann $v(t)$ mit den Gleichungen aus \eqref{lambertw:eqFunkXNachT}, welche
 \begin{align*}
     x\left(t\right)
     &=
-    x_0\cdot\sqrt{\frac{W\left(\chi\cdot e^{\chi-\frac{4t}{r_0-y_0}}\right)}{\chi}} \\
+    x_0\cdot\sqrt{\frac{1}{\chi}W\left(\chi\cdot \exp(\chi-\frac{4t}{r_0-y_0})\right)} \\
     y(t)
     &=
     \frac{1}{4}\left(\left(y_0+r_0\right)\left(\frac{x(t)}{x_0}\right)^2+\left(r_0-y_0\right)\operatorname{ln}\left(\left(\frac{x(t)}{x_0}\right)^2\right)-r_0+3y_0\right)\\
@@ -34,34 +53,16 @@ Dazu werden die hergeleiteten Gleichungen \eqref{lambertw:eqFunkXNachT} mit Star
     \sqrt{x_0^2+y_0^2}
 \end{align*}
 %
-sind.
-Das Ziel wird erreicht, wenn die Koordinaten des Verfolgers mit denen des Ziels bei einem diskreten Zeitpunkt $t_1$ übereinstimmen.
-Somit gilt es
-
-\begin{equation*}
-    \vec{Z}(t_1)=\vec{V}(t_1)
-\end{equation*}
-%
-zu lösen.
-Aus dem vorangegangenem Beispiel, ist die Parametrisierung des Verfolgers und des Ziels bekannt.
-Das Ziel wird parametrisiert durch
-
+Der Folger ist durch
 \begin{equation}
-    \vec{Z}(t)
-    =
-    \left( \begin{array}{c} 0 \\ t \end{array} \right)
-\end{equation}
-%
-und der Verfolger durch
-
-\begin{equation}
-    \vec{V}(t)
+    v(t)
     =
     \left( \begin{array}{c} x(t) \\ y(t) \end{array} \right)
     \text{.}
 \end{equation}
 %
- Da $y(t)$ viel komplexer ist als $x(t)$ wird das Problem in zwei einzelne Teilprobleme zerlegt. Wobei die Bedingung der $x$- und $y$-Koordinaten einzeln überprüft werden. Es entstehen daher folgende Bedingungen
+parametrisiert, wobei $y(t)$ viel komplexer ist als $x(t)$.
+Daher wird das Problem in zwei einzelne Teilprobleme zerlegt, wodurch die Bedingung der $x$- und $y$-Koordinaten einzeln überprüft werden müssen. Es entstehen daher folgende Bedingungen
 
 \begin{align*}
     0
@@ -107,27 +108,41 @@ Da $\chi\neq0$ und die Exponentialfunktion nie null sein kann, ist diese Bedingu
 Beim Grenzwert für $t\rightarrow\infty$ geht die Exponentialfunktion gegen null.
 Dies nützt nicht viel, da unendlich viel Zeit vergehen müsste damit ein Einholen möglich wäre.
 Somit kann nach den Gestellten Bedingungen das Ziel nie erreicht werden.
-Aus der Symmetrie des Problems an der $y$-Achse können auch alle Anfangspunkte im zweiten Quadranten die Bedingungen nicht erfüllen.
-Bei allen Anfangspunkten mit $y_0<0$ ist ein Einholen unmöglich, da die Geschwindigkeit des Verfolgers und Ziels übereinstimmen und der Verfolger dem Ziel bereits am Anfang nachgeht.
-Wenn die Wertemenge der Anfangsbedingung um die positive $y$-Achse erweitert wird, kann das Ziel wiederum erreicht werden.
-Sobald der Verfolger auf der positiven $y$-Achse startet, bewegen sich Verfolger und Ziel aufeinander zu, da der Geschwindigkeitsvektor des Verfolgers auf das Ziel zeigt und der Verfolger sich auf der Fluchtgeraden befindet.
-Dies führt zwingend dazu, dass der Verfolger das Ziel erreichen wird.
-Die Verfolgungskurve kann in diesem Fall mit
+
+\subsection{Anfangsbedingung $y_0<0$}
+Da die Geschwindigkeit des Verfolgers und des Ziels übereinstimmen, kann der Verfolgers niemals das Ziel einholen.
+Dies kann veranschaulicht werden anhand
 
 \begin{equation}
-    \vec{V}(t)
+    v(t)\cdot \left( \begin{array}{c} 0 \\ 1 \end{array}\right) 
+    \leq
+    z(t)\cdot \left( \begin{array}{c} 0 \\ 1 \end{array}\right) 
+    =
+    1\text{.}
+\end{equation}
+%
+Da der $y$-Anteil der Geschwindigkeit des Ziels grösser-gleich der des Verfolgers ist, können die $y$-Koordinaten nie übereinstimmen.
+
+\subsection{Anfangsbedingung auf positiven $y$-Achse}
+Wenn der Verfolger auf der positiven $y$-Achse startet, befindet er sich direkt auf der Fluchtgeraden des Ziels.
+Dies führt dazu, dass der Verfolger und das Ziel sich direkt aufeinander zu bewegen, da der Geschwindigkeitsvektor des Verfolgers auf das Ziel zeigt.
+Die Folge ist, dass das Ziel zwingend erreicht wird.
+Um $t_1$ zu bestimmen, kann die Verfolgungskurve in diesem Fall mit
+
+\begin{equation}
+    v(t)
     =
     \left( \begin{array}{c} 0 \\ y_0-t \end{array} \right)
 \end{equation}
 %
 parametrisiert werden.
 Nun kann der Abstand zwischen Verfolger und Ziel leicht bestimmt und nach 0 aufgelöst werden.
-Daraus folgt
+Woraus folgt
 
 \begin{equation}
     0
     =
-    |\vec{V}(t_1)-\vec{Z}(t_1)|
+    |v(t_1)-z(t_1)|
     =
     y_0-2t_1
 \end{equation}
@@ -141,7 +156,9 @@ Daraus folgt
 \end{equation}
 %
 führt.
-Nun ist klar, dass lediglich Anfangspunkte auf der positiven $y$-Achse oder direkt auf dem Ziel dazu führen, dass der Verfolger das Ziel bei $t_1$ einholt.
+Somit wird das Ziel immer erreicht bei $t_1$, wenn der Verfolger auf der positiven $y$-Achse startet.
+\subsection{Fazit}
+Durch die Symmetrie der Fluchtkurve an der $y$-Achse führen die Anfangsbedingungen in den Quadranten \RN{1} und \RN{2} zu den gleichen Ergebnissen. Nun ist klar, dass lediglich Anfangspunkte auf der positiven $y$-Achse oder direkt auf dem Ziel dazu führen, dass der Verfolger das Ziel bei $t_1$ einholt.
 Bei allen anderen Anfangspunkten wird der Verfolger das Ziel nie erreichen.
 Dieses Resultat ist aber eher akademischer Natur, weil der Verfolger und das Ziel als Punkt betrachtet wurden.
 Wobei aber in Realität nicht von Punkten sondern von Objekten mit einer räumlichen Ausdehnung gesprochen werden kann.
@@ -150,14 +167,14 @@ Falls dies stattfinden sollte, wird dies als Treffer interpretiert.
 Mathematisch kann dies mit
 
 \begin{equation}
-    |\vec{V}-\vec{Z}|<a_{min} \quad a_{min}\in\mathbb{R}>0
+    |v-z|<a_{min} \text{,}\quad a_{min}\in\mathbb{R}^+
 \end{equation}
 %
 beschrieben werden, wobei $a_{min}$ dem Trefferradius entspricht.
 Durch quadrieren verschwindet die Wurzel des Betrages, womit
 
 \begin{equation}
-    |\vec{V}-\vec{Z}|^2<a_{min}^2 \quad a_{min}\in \mathbb{R} > 0
+    |v-z|^2<a_{min}^2 \text{,}\quad a_{min}\in \mathbb{R}^+
 \end{equation}
 %
 die neue Bedingung ist.
