@@ -6,7 +6,7 @@
 \section{Umsetzung
 \label{0f1:section:teil2}}
 \rhead{Umsetzung}
-Zur Umsetzung wurden drei verschiedene Ansätze gewählt. Dabei wurde der Schwerpunkt auf die Funktionalität und eine gute Lesbarkeit des Codes gelegt.
+Zur Umsetzung wurden drei verschiedene Ansätze gewählt.\cite{0f1:code} Dabei wurde der Schwerpunkt auf die Funktionalität und eine gute Lesbarkeit des Codes gelegt.
 Die Unterprogramme wurde jeweils, wie die GNU Scientific Library, in C geschrieben. Die Zwischenresultate wurden vom Hauptprogramm in einem CSV-File gespeichert. Anschliessen wurde mit der Matplot-Libray in Python die Resultate geplottet.
 
 \subsection{Potenzreihe
@@ -35,20 +35,16 @@ Ein endlicher Kettenbruch ist ein Bruch der Form
 a_0 + \cfrac{b_1}{a_1+\cfrac{b_2}{a_2+\cfrac{b_3}{a_3+\cdots}}}
 \end{equation*}
 in welchem $a_0, a_1,\dots,a_n$ und $b_1,b_2,\dots,b_n$ ganze Zahlen darstellen.
-
 Die Kurzschreibweise für einen allgemeinen Kettenbruch ist 
 \begin{equation*}
 	a_0 + \frac{a_1|}{|b_1} + \frac{a_2|}{|b_2} + \frac{a_3|}{|b_3} + \cdots
 \end{equation*}
 und ist somit verknüpfbar mit der Potenzreihe.
 \cite{0f1:wiki-kettenbruch}
-
-Angewendet auf die Funktion $\mathstrut_0F_1$ bedeutet dies:
+Angewendet auf die Funktion $\mathstrut_0F_1$ bedeutet dies\cite{0f1:wiki-fraction}:
 \begin{equation*}
 	\mathstrut_0F_1(;c;z) = 1 + \frac{z}{c\cdot1!} + \frac{z^2}{c(c+1)\cdot2!} + \frac{z^3}{c(c+1)(c+2)\cdot3!} + \cdots
 \end{equation*}
-\cite{0f1:wiki-fraction}
-
 Nach allen Umformungen ergibt sich folgender, irregulärer Kettenbruch \eqref{0f1:math:kettenbruch:0f1:eq}
 \begin{equation}
 	\label{0f1:math:kettenbruch:0f1:eq}
@@ -57,13 +53,13 @@ Nach allen Umformungen ergibt sich folgender, irregulärer Kettenbruch \eqref{0f
 der als Code \ref{0f1:listing:kettenbruchIterativ} umgesetzt wurde. 
 \cite{0f1:wolfram-0f1}
 
-\lstinputlisting[style=C,float,caption={Rekursionsformel für Kettenbruch.},label={0f1:listing:kettenbruchIterativ},  firstline=8]{papers/0f1/listings/kettenbruchIterativ.c}
+\lstinputlisting[style=C,float,caption={Iterativ umgesetzter Kettenbruch.},label={0f1:listing:kettenbruchIterativ},  firstline=8]{papers/0f1/listings/kettenbruchIterativ.c}
 
 \subsection{Rekursionsformel
 \label{0f1:subsection:rekursionsformel}}
-Wesentlich stabiler zur Berechnung eines Kettenbruches ist die Rekursionsformel. Nachfolgend wird die verkürzte Herleitung vom Kettenbruch zur Rekursionsformel aufgezeigt. Eine vollständige Schritt für Schritt Herleitung ist im Seminarbuch Numerik, im Kapitel Kettenbrüche zu finden. \cite{0f1:kettenbrueche})
+Wesentlich stabiler zur Berechnung eines Kettenbruches ist die Rekursionsformel. Nachfolgend wird die verkürzte Herleitung vom Kettenbruch zur Rekursionsformel aufgezeigt. Eine vollständige Schritt für Schritt Herleitung ist im Seminarbuch Numerik, im Kapitel Kettenbrüche zu finden. \cite{0f1:kettenbrueche}
 
-\subsubsection{Verkürzte Herleitung}
+\subsubsection{Herleitung}
 Ein Näherungsbruch in der Form
 \begin{align*}
 	\cfrac{A_k}{B_k} = a_k + \cfrac{b_{k + 1}}{a_{k + 1} + \cfrac{p}{q}}
@@ -93,7 +89,6 @@ Dies lässt sich auch durch die folgende Matrizenschreibweise ausdrücken:
 	\end{pmatrix}.
 	%\label{0f1:math:rekursionsformel:herleitung}
 \end{equation*}
-
 Wendet man dies nun auf den Kettenbruch in der Form
 \begin{equation*}
 	\frac{A_k}{B_k} = a_0 + \cfrac{b_1}{a_1+\cfrac{b_2}{a_2+\cfrac{\cdots}{\cdots+\cfrac{b_{k-1}}{a_{k-1} + \cfrac{b_k}{a_k}}}}}
@@ -124,7 +119,6 @@ an, ergibt sich folgende Matrixdarstellungen:
 		a_k
 	\end{pmatrix}
 \end{align*}
-
 Nach vollständiger Induktion ergibt sich für den Schritt $k$, die Matrix
 \begin{equation}
 	\label{0f1:math:matrix:ende:eq}
@@ -142,7 +136,6 @@ Nach vollständiger Induktion ergibt sich für den Schritt $k$, die Matrix
 		a_k
 	\end{pmatrix}.
 \end{equation}
-
 Und Schlussendlich kann der Näherungsbruch
 \[
 \frac{Ak}{Bk}
@@ -161,6 +154,7 @@ B_{-1} &= 1		&		B_0 &= 1
 \item Schritt $k\to k+1$:
 \[
 \begin{aligned}
+\label{0f1:math:loesung:eq}
 k &\rightarrow k + 1:
 &
 A_{k+1} &= A_{k-1} \cdot b_k + A_k \cdot a_k \\
@@ -175,4 +169,4 @@ Näherungsbruch: \qquad$\displaystyle\frac{A_k}{B_k}$
 Ein grosser Vorteil dieser Umsetzung \ref{0f1:listing:kettenbruchRekursion} ist, dass im Vergleich zum Code \ref{0f1:listing:kettenbruchIterativ} eine Division gespart werden kann und somit weniger Rundungsfehler entstehen können.
 
 %Code
-\lstinputlisting[style=C,float,caption={Iterativ umgesetzter Kettenbruch.},label={0f1:listing:kettenbruchRekursion},  firstline=8]{papers/0f1/listings/kettenbruchRekursion.c}
+\lstinputlisting[style=C,float,caption={Rekursionsformel für Kettenbruch.},label={0f1:listing:kettenbruchRekursion},  firstline=8]{papers/0f1/listings/kettenbruchRekursion.c}
