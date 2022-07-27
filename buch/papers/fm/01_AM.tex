@@ -3,30 +3,10 @@
 %
 % (c) 2020 Prof Dr Andreas Müller, Hochschule Rapperswil
 %
-\section{AM - FM\label{fm:section:teil0}}
-\rhead{AM- FM}
+\section{Amplitudenmodulation\label{fm:section:teil0}}
+\rhead{AM}
 
-Das sinusförmige Trägersignal hat die übliche Form: 
-\(x_c(t) = A_c \cdot \cos(\omega_c(t)+\varphi)\).
-Wobei die konstanten Amplitude \(A_c\) und Phase \(\varphi\) vom Nachrichtensignal \(m(t)\) verändert wird.
-Der Parameter \(\omega_c\), die Trägerkreisfrequenz bzw. die Trägerfrequenz \(f_c = \frac{\omega_c}{2\pi}\),
-steht nicht für die modulation zur verfügung, statt dessen kann durch ihn die Frequenzachse frei gewählt werden.
-\newblockpunct
-Jedoch ist das für die Vielfalt der Modulationsarten keine Einschrenkung.
-Ein Nachrichtensignal kann auch über die Momentanfrequenz (instantenous frequency) \(\omega_i\) eines trägers verändert werden.
-Mathematisch wird dann daraus
-\[
-    \omega_i = \omega_c + \frac{d \varphi(t)}{dt}
-\]
-mit der Ableitung der Phase\cite{fm:NAT}.
-Mit diesen drei parameter ergeben sich auch drei modulationsarten, die Amplitudenmodulation welche \(A_c\) benutzt, 
-die Phasenmodulation \(\varphi\) und dann noch die Momentankreisfrequenz \(\omega_i\):
-\newline
-\newline
-To do: Bilder jeder Modulationsart
-
-\subsection{AM - Amplitudenmodulation}
-Das Ziel ist FM zu verstehen doch dazu wird zuerst AM erklärt welches einwenig einfacher zu verstehen ist und erst dann übertragen wir die Ideeen in FM.
+Das Ziel ist FM zu verstehen doch dazu wird zuerst AM erklärt welches einwenig einfacher zu verstehen ist und erst dann übertragen wir die Ideen in FM.
 Nun zur Amplitudenmodulation verwenden wir das bevorzugte Trägersignal
 \[
     x_c(t) = A_c \cdot \cos(\omega_ct).
@@ -45,3 +25,5 @@ TODO:
 Hier beschrieib ich was AmplitudenModulation ist und mache dan den link zu Frequenzmodulation inkl Formel \[\cos( \cos x)\]
 so wird beschrieben das daraus eigentlich \(x_c(t) = A_c \cdot \cos(\omega_i)\) wird und somit \(x_c(t) = A_c \cdot \cos(\omega_c + \frac{d \varphi(t)}{dt})\).
 Da \(\sin \) abgeleitet \(\cos \) ergibt, so wird aus dem \(m(t)\) ein \( \frac{d \varphi(t)}{dt}\)  in der momentan frequenz. \[ \Rightarrow \cos( \cos x) \]
+
+\subsection{Frequenzspektrum}
