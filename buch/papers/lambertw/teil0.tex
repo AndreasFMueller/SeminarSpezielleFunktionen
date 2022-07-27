@@ -7,7 +7,7 @@
 \label{lambertw:section:Was_sind_Verfolgungskurven}}
 \rhead{Was sind Verfolgungskurven?}
 
-Verfolgungskurven tauchen oft auf bei Fragen wie "Welchen Pfad begeht ein Hund während er einer Katze nachrennt.".
+Verfolgungskurven tauchen oft auf bei Fragen wie "Welchen Pfad begeht ein Hund während er einer Katze nachrennt?".
 Ein solches Problem hat im Kern immer ein Verfolger und sein Ziel.
 Der Verfolger verfolgt sein Ziel, das versucht zu entkommen.
 Der Pfad, den der Verfolger während der Verfolgung begeht, wird Verfolgungskurve genannt.
@@ -25,7 +25,7 @@ Der Verfolger hat nur einen direkten Einfluss auf seinen Geschwindigkeitsvektor.
 Mit diesem kann er neben Richtung und Betrag auch den Abstand zwischen Verfolger und Ziel kontrollieren.
 Wenn zwei dieser drei Parameter durch die Strategie definiert werden, ist der dritte nicht mehr frei.
 Daraus folgt, dass eine Strategie zwei dieser drei Parameter festlegen muss, um den Verfolger komplett zu beschreiben.
-
+%
 \begin{table}
     \centering
     \begin{tabular}{|>{$}c<{$}|>{$}c<{$}|>{$}c<{$}|>{$}c<{$}|}
@@ -64,7 +64,7 @@ Die konstante Geschwindigkeit kann man mit der Gleichung
 \begin{equation}
     |\dot{v}|
     = \operatorname{const} = A
-    \quad A\in\mathbb{R}>0
+    \text{,}\quad A\in\mathbb{R}^+
 \end{equation}
 darstellen. Der Geschwindigkeitsvektor wiederum kann mit der Gleichung
 \begin{equation}
@@ -77,6 +77,7 @@ Die Differenz der Ortsvektoren $v$ und $z$ ist ein Vektor der vom Punkt $V$ auf 
 Da die Länge dieses Vektors beliebig sein kann, wird durch Division durch den Betrag, die Länge auf eins festgelegt.
 Aus dem Verfolgungsproblem ist auch ersichtlich, dass die Punkte $V$ und $Z$ nicht am gleichen Ort starten und so eine Division durch Null ausgeschlossen ist.
 Wenn die Punkte $V$ und $Z$ trotzdem am gleichen Ort starten, ist die Lösung trivial.
+
 Nun wird die Gleichung mit $\dot{v}$ skalar multipliziert, um das Gleichungssystem von zwei auf eine Gleichung zu reduzieren. Somit ergeben sich
 \begin{align}
     \frac{z-v}{|z-v|}\cdot|\dot{v}|\cdot\dot{v}
