@@ -52,7 +52,7 @@ an die Umgebung oder von der Umgebung an den Stab abgegeben wird.
 Aus der Physik ist bekannt, dass Wärme immer von der höheren zur tieferen
 Temperatur fliesst. Um Wärmefluss zu unterdrücken, muss also dafür gesorgt
 werden, dass am Rand des Stabes keine Temperaturdifferenz existiert oder 
-indem die partielle Ableitung von $u(t,x)$ nach $x$ bei $x = 0$ und $x = l$
+dass die partiellen Ableitungen von $u(t,x)$ nach $x$ bei $x = 0$ und $x = l$
 verschwinden. Somit folgen
 \[
     \frac{\partial}{\partial x} u(t, 0)
@@ -62,3 +62,47 @@ verschwinden. Somit folgen
     0
 \]
 als Randbedingungen.
+
+%%%%%%%%%%% Lösung der Differenzialgleichung %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsubsection{Lösung der Differenzialgleichung}
+
+% TODO: Referenz Separationsmethode
+% TODO: Formeln sauber in Text einbinden.
+
+Da die Lösungsfunktion von zwei Variablen abhängig ist, wird als Lösungsansatz
+die Separationsmethode verwendet.
+
+\[
+    u(t,x)
+    =
+    T(t)X(x)
+\]
+Dieser Ausdruck wird in die ursprüngliche Differenzialgleichung eingesetzt:
+\[
+    T^{\prime}(t)X(x)
+    =
+    \kappa T(t)X^{\prime \prime}(x)
+\]
+Nun können alle von $t$ abhängigen Ausdrücke auf die linke Seite, sowie alle
+von $x$ abhängigen Ausdrücke auf die rechte Seite gebracht werden und mittels
+der neuen Variablen $\mu$ gekoppelt werden:
+\[
+    \frac{T^{\prime}(t)}{\kappa T(t)}
+    =
+    \frac{X^{\prime \prime}(x)}{X(x)}
+    =
+    \mu
+\]
+Durch die Einführung von $\mu$ kann das Problem nun in zwei separate
+Differenzialgleichungen aufgeteilt werden:
+\[
+    T^{\prime}(t) - \kappa \mu T(t)
+    =
+    0
+\]
+\[
+    X^{\prime \prime}(x) - \mu X(x)
+    =
+    0
+\]
