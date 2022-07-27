@@ -363,9 +363,9 @@ Auf dem rechten Term von \eqref{lambertw:eqMitExp} beginnen wir langsam eine äh
 
 Die erste Sache die uns in \eqref{lambertw:eqMitExp} stört ist, dass \(\eta\) als Potenz da steht. Dieses Problem können wir loswerden, indem wir beidseitig mit \(\:\displaystyle \frac{1}{r_0-y_0}\:\) potenzieren:
 \begin{equation}
-	e^{\displaystyle \frac{-4t}{r_0-y_0}+\frac{y_0+r_0}{r_0-y_0}}
+	\operatorname{exp}\left(\displaystyle \frac{-4t}{r_0-y_0}+\frac{y_0+r_0}{r_0-y_0}\right)
 	=
-	\eta\cdot e^{\displaystyle \frac{y_0+r_0}{r_0-y_0}\eta} .
+	\eta\cdot \operatorname{exp}\left(\displaystyle \frac{y_0+r_0}{r_0-y_0}\eta\right).
 	\label{lambertw:eqOhnePotenz}
 \end{equation}
 Das nächste Problem auf welches wir in \eqref{lambertw:eqOhnePotenz} treffen ist, dass \(\eta\) nicht alleine im Exponent steht. Dies kann elegant mit folgender Substitution gelöst werden:
@@ -379,14 +379,14 @@ Es gäbe natürlich andere Substitutionen wie z.B.
 \[\displaystyle \chi=\frac{y_0+r_0}{r_0-y_0}\cdot\eta,\] 
 die auf dasselbe Ergebnis führen würden, aber \eqref{lambertw:eqChiSubst} liefert in einem Schritt die kompakteste Lösung. Also fahren wir mit der Substitution \eqref{lambertw:eqChiSubst} weiter, setzen diese in die Gleichung \eqref{lambertw:eqOhnePotenz} ein und multiplizieren beidseitig mit \(\chi\). Daraus erhalten wir folgende Gleichung:
 \begin{equation}
-	\chi\cdot e^{\displaystyle \chi-\frac{4t}{r_0-y_0}}
+	\chi\cdot \operatorname{exp}\left(\displaystyle \chi-\frac{4t}{r_0-y_0}\right)
 	=
 	\chi\eta\cdot e^{\displaystyle \chi\eta}.
 	\label{lambertw:eqNachSubst}
 \end{equation}
 Nun sind wir endlich soweit, dass wir die angedeutete Lambert-\(W\)-Funktion \(W(x)\)einsetzen können. Wenn wir beidseitig \(W(x)\) anwenden, dann erhalten wir folgenden Ausdruck:
 \begin{equation}
-	W\left(\chi\cdot e^{\displaystyle \chi-\frac{4t}{r_0-y_0}}\right)
+	W\left(\chi\cdot \operatorname{exp}\left(\displaystyle \chi-\frac{4t}{r_0-y_0}\right)\right)
 	=
 	\chi\eta.
 \end{equation}
@@ -396,7 +396,7 @@ Nach dem Auflösen nach \(x\) welches in \(\eta\) enthalten ist, erhalten wir di
 		\label{lambertw:eqFunkXNachT}
 		x(t)
 		&=
-		x_0\cdot\sqrt{\frac{W\left(\chi\cdot e^{\displaystyle \chi-\frac{4t}{r_0-y_0}}\right)}{\chi}}, \\
+		x_0\cdot\sqrt{\frac{W\left(\chi\cdot \operatorname{exp}\left(\displaystyle \chi-\frac{4t}{r_0-y_0}\right)\right)}{\chi}}, \\
 		\label{lambertw:eqFunkYNachT}
 		y(x(t))
 		=
