@@ -13,14 +13,18 @@ Somit haben wir unser \(x_c\) welches
 \cos(\omega_c t+\beta\sin(\omega_mt))
 \]
 ist.
+
 \subsection{Herleitung}
-Das Ziel ist es Unser moduliertes Signal mit der Besselfunktion so auszudrücken:
+Das Ziel ist es unser moduliertes Signal mit der Besselfunktion so auszudrücken:
 \begin{align}
+    x_c(t)
+    = 
     \cos(\omega_ct+\beta\sin(\omega_mt))
     &=
     \sum_{k= -\infty}^\infty J_{k}(\beta) \cos((\omega_c+k\omega_m)t)
     \label{fm:eq:proof}
 \end{align}
+\subsubsection{Hilfsmittel}
 Doch dazu brauchen wir die Hilfe der Additionsthoerme 
 \begin{align}
     \cos(A + B) 
@@ -54,70 +58,89 @@ und die drei Besselfunktions indentitäten,
     \label{fm:eq:besselid3}
 \end{align}
 welche man im Kapitel (ref), ref, ref findet.
-\newline
-Mit dem \refname{fm:eq:addth1} wird aus dem modulierten Signal
+
+\subsubsection{Anwenden des Additionstheorem}
+Mit dem \eqref{fm:eq:addth1} wird aus dem modulierten Signal
 \[
-\cos(\omega_c t + \beta\sin(\omega_mt))
-\]
-das Signal
-\[
+    x_c(t) 
+    =
+    \cos(\omega_c t + \beta\sin(\omega_mt))
+    =
     \cos(\omega_c t)\cos(\beta\sin(\omega_m t))-\sin(\omega_c)\sin(\beta\sin(\omega_m t)).
     \label{fm:eq:start}
 \]
-Zu beginn wird der erste Teil 
+\subsubsection{Cos-Teil}
+Zu beginn wird der Cos-Teil
 \[
     \cos(\omega_c)\cos(\beta\sin(\omega_mt))  
 \]
-mit hilfe der Bessel indentität \ref{fm:eq:besselid1} zum
+mit hilfe der Bessel indentität \eqref{fm:eq:besselid1} zum
+\begin{align*}
+    \cos(\omega_c t) \cdot [\, J_0(\beta) + 2\sum_{k=1}^\infty J_{2k}(\beta) \cos(2k\omega_m t)\, ]
+    &=\\
+    J_0(\beta)\cos(\omega_c t) + \sum_{k=1}^\infty J_{2k}(\beta) 
+    \underbrace{2\cos(\omega_c t)\cos(2k\omega_m t)}_{Additionstheorem}
+\end{align*}
+wobei mit dem Additionstheorem \eqref{fm:eq:addth2} \(A = \omega_c t\) und \(B = 2k\omega_m t \) zum
 \[
-    J_0(\beta)\cos(\omega_c) + \sum_{k=1}^\infty J_{2k}(\beta) 2\cos(\omega_c t)\cos(2k\omega_m t)
-\]
-\newline
-TODO 2 und \(\cos( )\) in lime.
-wobei mit dem \colorbox{lime}{Additionstheorem} \ref{fm:eq:addth2} zum
-\[
-    J_0(\beta)\dot \cos(\omega_c t) + \sum_{k=1}^\infty J_{2k}(\beta) \{ \cos((\omega_c - 2k\omega_m) t)+\cos((\omega_c + 2k\omega_m) t) \}
+    J_0(\beta)\cdot \cos(\omega_c t) + \sum_{k=1}^\infty J_{2k}(\beta) \{ \cos((\omega_c - 2k\omega_m) t)+\cos((\omega_c + 2k\omega_m) t) \}
 \]
 wird.
 Wenn dabei \(2k\) durch alle geraden Zahlen von \(-\infty \to \infty\) mit \(n\) substituiert erhält man den vereinfachten Term
 \[
-    \sum_{n\, gerade} J_{n}(\beta) \cos((\omega_c + n\omega_m) t)
+    \sum_{n\, \text{gerade}} J_{n}(\beta) \cos((\omega_c + n\omega_m) t),
     \label{fm:eq:gerade}
 \]
-\newline
-nun zum zweiten Teil des Term \ref{fm:eq:start} 
+dabei gehen nun die Terme von \(-\infty \to \infty\), dabei bleibt n Ganzzahlig.
+
+\subsubsection{Sin-Teil}
+Nun zum zweiten Teil des Term \eqref{fm:eq:start}, den Sin-Teil
 \[
     \sin(\omega_c)\sin(\beta\sin(\omega_m t)).
 \]
-Dieser wird mit der \ref{fm:eq:besselid2} Bessel indentität zu
+Dieser wird mit der \eqref{fm:eq:besselid2} Bessel indentität zu
+\begin{align*}
+    \sin(\omega_c t) \cdot [J_0(\beta)  \sin(\omega_c t) + 2\sum_{k=1}^\infty J_{2k+1}(\beta) \cos((2k+1)\omega_m t)]
+    &=\\
+    J_0(\beta) \cdot \sin(\omega_c t) + \sum_{k=1}^\infty J_{2k+1}(\beta) \underbrace{2\sin(\omega_c t)\cos((2k+1)\omega_m t)}_{Additionstheorem}.
+\end{align*}
+Auch hier wird ein Additionstheorem \eqref{fm:eq:addth3} gebraucht, dabei ist \(A = \omega_c t\) und \(B = (2k+1)\omega_m t \), 
+somit wird daraus
 \[
-    J_0(\beta) \dot \sin(\omega_c t) + \sum_{k=1}^\infty J_{2k+1}(\beta) 2\sin(\omega_c t)\cos((2k+1)\omega_m t).
-\]
-Auch hier wird ein Additionstheorem \ref{fm:eq:addth3} gebraucht um aus dem Sumanden diesen Term 
-\[
-    J_0(\beta) \dot \sin(\omega_c) + \sum_{k=1}^\infty J_{2k+1}(\beta) \{ \underbrace{\cos((\omega_c-(2k+1)\omega_m) t)}_{Teil1} - \cos((\omega_c+(2k+1)\omega_m) t) \}
-\]zu gewinnen.
+    J_0(\beta) \cdot \sin(\omega_c) + \sum_{k=1}^\infty J_{2k+1}(\beta) \{ \underbrace{\cos((\omega_c-(2k+1)\omega_m) t)}_{neg.Teil} - \cos((\omega_c+(2k+1)\omega_m) t) \}
+\]dieser Term.
 Wenn dabei \(2k +1\) durch alle ungeraden Zahlen von \(-\infty \to \infty\) mit \(n\) substituiert.
-Zusätzlich dabei noch die letzte Bessel indentität \ref{fm:eq:besselid3} brauchen, ist bei allen ungeraden negativen \(n : J_{-n}(\beta) = -1 J_n(\beta)\).
-Somit wird Teil1 zum negativen Term und die Summe vereinfacht sich zu
+Zusätzlich dabei noch die letzte Bessel indentität \eqref{fm:eq:besselid3} brauchen, ist bei allen ungeraden negativen \(n : J_{-n}(\beta) = -1\cdot J_n(\beta)\).
+Somit wird negTeil zum Term \(-\cos((\omega_c+(2k+1)\omega_m) t)\)und die Summe vereinfacht sich zu
 \[
-     \sum_{n\, ungerade} -1 J_{n}(\beta) \cos((\omega_c + n\omega_m) t).
+     \sum_{n\, \text{ungerade}} -1 \cdot J_{n}(\beta) \cos((\omega_c + n\omega_m) t).
      \label{fm:eq:ungerade}
 \]
 Substituiert man nun noch \(n \text{mit} -n \) so fällt das \(-1\) weg.
-Beide Teile \ref{fm:eq:gerade} Gerade und \ref{fm:eq:ungerade} Ungerade ergeben zusammen
+
+\subsubsection{Summe Zusammenführen}
+Beide Teile \eqref{fm:eq:gerade} Gerade 
+\[
+    \sum_{n\, \text{gerade}} J_{n}(\beta) \cos((\omega_c + n\omega_m) t)
+\]und \eqref{fm:eq:ungerade} Ungerade 
+\[
+    \sum_{n\, \text{ungerade}} J_{n}(\beta) \cos((\omega_c + n\omega_m) t)
+\]
+ergeben zusammen
 \[
     \cos(\omega_ct+\beta\sin(\omega_mt))
     =
     \sum_{k= -\infty}^\infty J_{k}(\beta) \cos((\omega_c+k\omega_m)t).
 \]
-Somit ist \ref{fm:eq:proof} bewiesen.
+Somit ist \eqref{fm:eq:proof} bewiesen.
 \newpage
+
+%----------------------------------------------------------------------------
 \subsection{Bessel und Frequenzspektrum}
 Um sich das ganze noch einwenig Bildlicher vorzustellenhier einmal die Besselfunktion \(J_{k}(\beta)\) in geplottet.
 \begin{figure}
 	\centering
-%	\includegraphics[width=0.5\textwidth]{/home/joshua/Documents/SeminarSpezielleFunktionen/buch/papers/fm/FM presentation/images/bessel.png}
+%	\input{./PyPython animation/bessel.pgf}
 	\caption{Bessle Funktion \(J_{k}(\beta)\)}
 	\label{fig:bessel}
 \end{figure}
