@@ -5,8 +5,9 @@
 #
 
 SOURCES := \
-	01_AM-FM.tex \
-	02_frequenzyspectrum.tex \
+	00_modulation.tex \
+	01_AM.tex \
+	02_FM.tex \
 	03_bessel.tex \
 	04_fazit.tex \
 	main.tex 
