@@ -74,16 +74,16 @@ Zu beginn wird der Cos-Teil
 \[
     \cos(\omega_c)\cos(\beta\sin(\omega_mt))  
 \]
-mit hilfe der Bessel indentität \eqref{fm:eq:besselid1} zum
+mit hilfe der Besselindentität \eqref{fm:eq:besselid1} zum
 \begin{align*}
-    \cos(\omega_c t) \cdot [\, J_0(\beta) + 2\sum_{k=1}^\infty J_{2k}(\beta) \cos(2k\omega_m t)\, ]
+    \cos(\omega_c t) \cdot \bigg[\, J_0(\beta) + 2\sum_{k=1}^\infty J_{2k}(\beta) \cos( 2k \omega_m t)\, \bigg]
     &=\\
     J_0(\beta)\cos(\omega_c t) + \sum_{k=1}^\infty J_{2k}(\beta) 
-    \underbrace{2\cos(\omega_c t)\cos(2k\omega_m t)}_{Additionstheorem}
+    \underbrace{2\cos(\omega_c t)\cos(2k\omega_m t)}_{\text{Additionstheorem}}
 \end{align*}
 wobei mit dem Additionstheorem \eqref{fm:eq:addth2} \(A = \omega_c t\) und \(B = 2k\omega_m t \) zum
 \[
-    J_0(\beta)\cdot \cos(\omega_c t) + \sum_{k=1}^\infty J_{2k}(\beta) \{ \cos((\omega_c - 2k\omega_m) t)+\cos((\omega_c + 2k\omega_m) t) \}
+    J_0(\beta)\cdot \cos(\omega_c t) + \sum_{k=1}^\infty J_{2k}(\beta) \{ \cos((\omega_c - 2k \omega_m) t)+\cos((\omega_c + 2k \omega_m) t) \}
 \]
 wird.
 Wenn dabei \(2k\) durch alle geraden Zahlen von \(-\infty \to \infty\) mit \(n\) substituiert erhält man den vereinfachten Term
@@ -98,20 +98,20 @@ Nun zum zweiten Teil des Term \eqref{fm:eq:start}, den Sin-Teil
 \[
     \sin(\omega_c)\sin(\beta\sin(\omega_m t)).
 \]
-Dieser wird mit der \eqref{fm:eq:besselid2} Bessel indentität zu
+Dieser wird mit der \eqref{fm:eq:besselid2} Besselindentität zu
 \begin{align*}
-    \sin(\omega_c t) \cdot [J_0(\beta)  \sin(\omega_c t) + 2\sum_{k=1}^\infty J_{2k+1}(\beta) \cos((2k+1)\omega_m t)]
+    \sin(\omega_c t) \cdot \bigg[ J_0(\beta) + 2 \sum_{k=1}^\infty J_{ 2k + 1}(\beta) \cos(( 2k + 1) \omega_m t) \bigg]
     &=\\
-    J_0(\beta) \cdot \sin(\omega_c t) + \sum_{k=1}^\infty J_{2k+1}(\beta) \underbrace{2\sin(\omega_c t)\cos((2k+1)\omega_m t)}_{Additionstheorem}.
+    J_0(\beta) \cdot \sin(\omega_c t) + \sum_{k=1}^\infty J_{2k+1}(\beta) \underbrace{2\sin(\omega_c t)\cos((2k+1)\omega_m t)}_{\text{Additionstheorem}}.
 \end{align*}
 Auch hier wird ein Additionstheorem \eqref{fm:eq:addth3} gebraucht, dabei ist \(A = \omega_c t\) und \(B = (2k+1)\omega_m t \), 
 somit wird daraus
 \[
-    J_0(\beta) \cdot \sin(\omega_c) + \sum_{k=1}^\infty J_{2k+1}(\beta) \{ \underbrace{\cos((\omega_c-(2k+1)\omega_m) t)}_{neg.Teil} - \cos((\omega_c+(2k+1)\omega_m) t) \}
+    J_0(\beta) \cdot \sin(\omega_c) + \sum_{k=1}^\infty J_{2k+1}(\beta) \{ \underbrace{\cos((\omega_c-(2k+1)\omega_m) t)}_{\text{neg.Teil}} - \cos((\omega_c+(2k+1)\omega_m) t) \}
 \]dieser Term.
 Wenn dabei \(2k +1\) durch alle ungeraden Zahlen von \(-\infty \to \infty\) mit \(n\) substituiert.
-Zusätzlich dabei noch die letzte Bessel indentität \eqref{fm:eq:besselid3} brauchen, ist bei allen ungeraden negativen \(n : J_{-n}(\beta) = -1\cdot J_n(\beta)\).
-Somit wird negTeil zum Term \(-\cos((\omega_c+(2k+1)\omega_m) t)\)und die Summe vereinfacht sich zu
+Zusätzlich dabei noch die letzte Besselindentität \eqref{fm:eq:besselid3} brauchen, ist bei allen ungeraden negativen \(n : J_{-n}(\beta) = -1\cdot J_n(\beta)\).
+Somit wird neg.Teil zum Term \(-\cos((\omega_c+(2k+1)\omega_m) t)\) und die Summe vereinfacht sich zu
 \[
      \sum_{n\, \text{ungerade}} -1 \cdot J_{n}(\beta) \cos((\omega_c + n\omega_m) t).
      \label{fm:eq:ungerade}
