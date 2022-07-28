@@ -106,3 +106,35 @@ Differenzialgleichungen aufgeteilt werden:
     =
     0
 \]
+
+% TODO: Rechenweg
+TODO: Rechenweg... Enden auf konstanter Temperatur:
+\[
+    u(t,x)
+    =
+    \sum_{n=1}^{\infty}a_{n}e^{-\frac{n^{2}\pi^{2}\kappa}{l^{2}}t}
+    \sin\left(\frac{n\pi}{l}x\right)
+\]
+\[
+    a_{n}
+    =
+    \frac{2}{l}\int_{0}^{l}u(0,x)sin\left(\frac{n\pi}{l}x\right) dx
+\]
+
+TODO: Rechenweg... Enden isoliert:
+\[
+    u(t,x)
+    =
+    a_{0} + \sum_{n=1}^{\infty}a_{n}e^{-\frac{n^{2}\pi^{2}\kappa}{l^{2}}t}
+    \cos\left(\frac{n\pi}{l}x\right)
+\]
+\[
+    a_{0}
+    =
+    \frac{1}{l}\int_{0}^{l}u(0,x) dx
+\]
+\[
+    a_{n}
+    =
+    \frac{2}{l}\int_{0}^{l}u(0,x)sin\left(\frac{n\pi}{l}x\right) dx
+\]
