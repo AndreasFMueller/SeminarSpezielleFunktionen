@@ -3,21 +3,24 @@
 %
 % (c) 2020 Prof Dr Andreas Müller, Hochschule Rapperswil
 %
-\section{Problem\label{parzyl:section:teil0}}
+\section{Einleitung\label{parzyl:section:teil0}}
 \rhead{Teil 0}
-
+Die Laplace-Gleichung ist eine wichtige Gleichung in der Physik.
+Mit ihr lässt sich zum Beispiel das elektrische Feld in einem ladungsfreien Raum bestimmen.
+In diesem Kapitel wird die Lösung der Laplace-Gleichung im 
+parabolischen Zylinderkoordinatensystem genauer untersucht.
 \subsection{Laplace Gleichung}
 Die partielle Differentialgleichung
 \begin{equation}
     \Delta f = 0
 \end{equation}
-ist als Laplace Gleichung bekannt.
-Sie ist eine spezielle Form der poisson Gleichung
+ist als Laplace-Gleichung bekannt.
+Sie ist eine spezielle Form der Poisson-Gleichung
 \begin{equation}
     \Delta f = g
 \end{equation}
 mit g als beliebige Funktion.
-In der Physik hat die Laplace Gleichung in verschieden Gebieten
+In der Physik hat die Laplace-Gleichung in verschieden Gebieten
 verwendet, zum Beispiel im Elektromagnetismus.
 Das Gaussche Gesetz in den Maxwellgleichungen 
 \begin{equation}
@@ -35,11 +38,11 @@ Eingesetzt in \eqref{parzyl:eq:max1} resultiert
 \begin{equation}
     \nabla \cdot \nabla \phi = \Delta \phi = \frac{\varrho}{\epsilon_0},
 \end{equation}
-was eine Possion gleichung ist.
+was eine Possion-Gleichung ist.
 An Ladungsfreien Stellen, ist der rechte Teil der Gleichung $0$. 
 \subsection{Parabolische Zylinderkoordinaten
 \label{parzyl:subsection:finibus}}
-Im parabloischen Zylinderkoordinatensystem bilden parabolische Zylinder die Koordinatenflächen.
+Im parabolischen Zylinderkoordinatensystem bilden parabolische Zylinder die Koordinatenflächen.
 Die Koordinate $(\sigma, \tau, z)$ sind in kartesischen Koordinaten ausgedrückt mit
 \begin{align}
     x & = \sigma \tau \\
@@ -48,7 +51,7 @@ Die Koordinate $(\sigma, \tau, z)$ sind in kartesischen Koordinaten ausgedrückt
     z & = z.
     \label{parzyl:coordRelationse}
 \end{align}
-Wird $\tau$ oder $\sigma$ konstant gesetzt reultieren die Parabeln
+Wird $\tau$ oder $\sigma$ konstant gesetzt resultieren die Parabeln
 \begin{equation}
     y = \frac{1}{2} \left( \frac{x^2}{\sigma^2} - \sigma^2 \right)
 \end{equation}
@@ -68,10 +71,12 @@ und
 Abbildung \ref{parzyl:fig:cordinates} zeigt das Parabolische Koordinatensystem.
 Das parabolische Zylinderkoordinatensystem entsteht wenn die Parabeln aus der
 Ebene gezogen werden. 
+
 Um in diesem Koordinatensystem integrieren und differenzieren zu 
 können braucht es die Skalierungsfaktoren $h_{\tau}$, $h_{\sigma}$ und $h_{z}$.
-Der Skalierungsfaktor braucht es, damit die Distanzen zwischen zwei 
-Punkten unabhängig vom Koordinatensystem sind.
+
+\dots
+
 Wird eine infinitessimal kleine Distanz $ds$ zwischen zwei Punkten betrachtet
 kann dies im kartesischen Koordinatensystem mit
 \begin{equation}
@@ -90,21 +95,21 @@ gilt.
 Dafür werden $dx$, $dy$, und $dz$ in \eqref{parzyl:eq:ds} mit den Beziehungen
 von \eqref{parzyl:coordRelationsa} - \eqref{parzyl:coordRelationse} als
 \begin{align}
-    dx  &= \frac{\delta x }{\delta \sigma} d\sigma + 
-        \frac{\delta x }{\delta \tau} d\tau + 
-        \frac{\delta x }{\delta \tilde{z}} d \tilde{z} 
+    dx  &= \frac{\partial x }{\partial \sigma} d\sigma + 
+        \frac{\partial x }{\partial \tau} d\tau + 
+        \frac{\partial x }{\partial \tilde{z}} d \tilde{z} 
         = \tau d\sigma + \sigma d \tau \\
-    dy &= \frac{\delta y }{\delta \sigma} d\sigma + 
-        \frac{\delta y }{\delta \tau} d\tau +
-        \frac{\delta y }{\delta \tilde{z}} d \tilde{z} 
+    dy &= \frac{\partial y }{\partial \sigma} d\sigma + 
+        \frac{\partial y }{\partial \tau} d\tau +
+        \frac{\partial y }{\partial \tilde{z}} d \tilde{z} 
         = \tau d\tau - \sigma d \sigma \\
-    dz &= \frac{\delta \tilde{z} }{\delta \sigma} d\sigma + 
-        \frac{\delta \tilde{z} }{\delta \tau} d\tau +
-        \frac{\delta \tilde{z} }{\delta \tilde{z}} d \tilde{z} 
+    dz &= \frac{\partial \tilde{z} }{\partial \sigma} d\sigma + 
+        \frac{\partial \tilde{z} }{\partial \tau} d\tau +
+        \frac{\partial \tilde{z} }{\partial \tilde{z}} d \tilde{z} 
         = d \tilde{z} \\
 \end{align}
 substituiert.
-Wird diese gleichung in der Form von \eqref{parzyl:eq:dspara}
+Wird diese Gleichung in der Form von \eqref{parzyl:eq:dspara}
 geschrieben, resultiert
 \begin{equation}
     \left(d s\right)^2 = 
@@ -120,11 +125,22 @@ Daraus ergeben sich die Skalierungsfaktoren
 \end{align}
 \subsection{Differentialgleichung}
 Möchte man eine Differentialgleichung im parabolischen 
-Zylinderkoordinatensystem lösen müssen die Skalierungsfaktoren
-mitgerechnet werden. 
-\dots
-\subsection{Lösung der Helmholtz Gleichung im parabolischen Zylinderfunktion}
-Die Differentialgleichungen, welche zu den parabolischen Zylinderfunktionen führen tauchen, wie bereits erwähnt, dann auf, wenn die Helmholtz Gleichung
+Zylinderkoordinatensystem aufstellen müssen die Skalierungsfaktoren
+mitgerechnet werden.
+Der Laplace Operator ist dadurch gegeben als
+\begin{equation}
+    \Delta f = \frac{1}{\sigma^2 + \tau^2} 
+        \left( 
+            \frac{\partial^2 f}{\partial \sigma ^2} +
+            \frac{\partial^2 f}{\partial \tau ^2}
+        \right)
+        + \frac{\partial^2 f}{\partial z}.
+    \label{parzyl:eq:laplaceInParZylCor}
+\end{equation}
+\subsubsection{Lösung der Helmholtz-Gleichung im parabolischen Zylinderfunktion}
+Die Differentialgleichungen, welche zu den parabolischen Zylinderfunktionen führen, tauchen
+%, wie bereits erwähnt, 
+dann auf, wenn die Helmholtz-Gleichung
 \begin{equation}
 	\Delta f(x,y,z) = \lambda f(x,y,z) 
 \end{equation}
@@ -133,22 +149,22 @@ im parabolischen Zylinderkoordinatensystem
 	\Delta f(\sigma,\tau,z) = \lambda f(\sigma,\tau,z) 
 \end{equation}
 gelöst wird.
-Wobei der Laplace Operator $\Delta$ im parabolischen Zylinderkoordinatensystem gegeben ist als
+%Wobei der Laplace Operator $\Delta$ im parabolischen Zylinderkoordinatensystem gegeben ist als
+%\begin{equation}
+%	\Delta 
+%	= 
+%	\frac{1}{\sigma^2 + \tau^2}
+%	\left ( 
+%	\frac{\partial^2}{\partial \sigma^2} 
+%	+ 
+%	\frac{\partial^2}{\partial \tau^2}
+%	\right )
+%	+ 
+%	\frac{\partial^2}{\partial z^2}.
+%\end{equation}
+Mit dem Laplace Operator aus \eqref{parzyl:eq:laplaceInParZylCor} lautet die Helmholtz Gleichung
 \begin{equation}
-	\nabla 
-	= 
-	\frac{1}{\sigma^2 + \tau^2}
-	\left ( 
-	\frac{\partial^2}{\partial \sigma^2} 
-	+ 
-	\frac{\partial^2}{\partial \tau^2}
-	\right )
-	+ 
-	\frac{\partial^2}{\partial z^2}.
-\end{equation}
-Die Helmholtz Gleichung würde also wie folgt lauten
-\begin{equation}
-	\nabla f(\sigma, \tau, z)
+	\Delta f(\sigma, \tau, z)
 	=
 	\frac{1}{\sigma^2 + \tau^2}
 	\left ( 
@@ -159,7 +175,7 @@ Die Helmholtz Gleichung würde also wie folgt lauten
 	+ 
 	\frac{\partial^2 f(\sigma,\tau,z)}{\partial z^2}
 	= 
-	\lambda f(\sigma,\tau,z)
+	\lambda f(\sigma,\tau,z).
 \end{equation}
 Diese partielle Differentialgleichung kann mit Hilfe von Separation gelöst werden, dazu wird 
 \begin{equation}
@@ -167,7 +183,7 @@ Diese partielle Differentialgleichung kann mit Hilfe von Separation gelöst werd
 \end{equation}
 gesetzt. 
 Was dann schlussendlich zu den Differentialgleichungen 
-\begin{equation}\label{parzyl_sep_dgl_1}
+\begin{equation}\label{parzyl:sep_dgl_1}
 	g''(\sigma) 
 	- 
 	\left (
@@ -179,7 +195,7 @@ Was dann schlussendlich zu den Differentialgleichungen
 	=
 	0,
 \end{equation}
-\begin{equation}\label{parzyl_sep_dgl_2}
+\begin{equation}\label{parzyl:sep_dgl_2}
 	h''(\tau) 
 	- 
 	\left (
@@ -192,7 +208,7 @@ Was dann schlussendlich zu den Differentialgleichungen
 	0
 \end{equation}
 und
-\begin{equation}\label{parzyl_sep_dgl_3}
+\begin{equation}\label{parzyl:sep_dgl_3}
 	i''(z) 
 	+
 	\left (
@@ -205,7 +221,7 @@ und
 	0
 \end{equation}
 führt.
-Wobei die Lösung von \ref{parzyl_sep_dgl_3}
+Wobei die Lösung von \eqref{parzyl:sep_dgl_3}
 \begin{equation}
 	i(z) 
 	= 
@@ -219,7 +235,7 @@ Wobei die Lösung von \ref{parzyl_sep_dgl_3}
 		\sqrt{\lambda + \mu}z
 		\right )}
 \end{equation}
-ist und \ref{parzyl_sep_dgl_1} und \ref{parzyl_sep_dgl_2} die sogenannten Weberschen Differentialgleichungen sind, welche die parabolischen Zylinder Funktionen als Lösung haben.
+ist und \eqref{parzyl:sep_dgl_1} und \eqref{parzyl:sep_dgl_2} die sogenannten Weberschen Differentialgleichungen sind, welche die parabolischen Zylinder Funktionen als Lösung haben.
 
 
 
