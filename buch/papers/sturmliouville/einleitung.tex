@@ -3,7 +3,63 @@
 %
 % (c) 2020 Prof Dr Andreas Müller, Hochschule Rapperswil
 %
-\section{Was ist Sturm-Liouville-Problem\label{sturmliouville:section:teil0}}
+\section{Was ist das Sturm-Liouville-Problem\label{sturmliouville:section:teil0}}
 \rhead{Einleitung}
+Das Sturm-Liouville-Problem wurde benannt nach dem schweizerisch-französischer Mathematiker und Physiker Jacques Charles Fran\c{c}ois Sturm und dem französischer Mathematiker Joseph Liouville.
+Gemeinsam haben sie in der mathematischen Physik die Sturm-Liouville-Theorie entwickelt und gilt für die Lösung von gewohnlichen Differentialgleichungen, jedoch verwendet man die Theorie öfters bei der Lösung von partiellen Differentialgleichungen.
+Normalerweise betrachtet man für das Strum-Liouville-Problem eine gewöhnliche Differentialgleichung 2. Ordnung, und wenn es sich um eine partielle Differentialgleichung handelt, kann man sie mit Hilfe einiger Methoden in mehrere gewöhnliche Differentialgleichungen umwandeln, wie z. B. den Separationsansatz, die partielle Differentialgleichung mit mehreren Variablen.
+Angenommen man hat die lineare homogene Differentialgleichung
+
+\begin{equation}
+	\frac{d^2y}{dx^2} + a(x)\frac{dy}{dx} + b(x)y = 0
+\end{equation}
+
+und schreibt die Gleichung um in:
+
+\begin{equation}
+	\label{eq:sturm-liouville-equation}
+	\frac{d}{dx}\lbrack p(x) \frac{dy}{dx} \rbrack + \lbrack q(x) + \lambda w(x) \rbrack y = 0 
+\end{equation},
+
+diese Gleichung wird dann Sturm-liouville-Gleichung bezeichnet.
+Alle homogene 2.Ordnung lineare gewöhnliche Differentialgleichungen können in die Form der Gleichung \ref{eq:sturm-liouville-equation} umgeformt werden.
+Die Sturm-Liouville-Theorie besagt, dass, wenn man die Sturm-Liouville-Gleichung mit den homogenen Randbedingungen
+
+\begin{equation}
+\begin{aligned}
+	\label{ali:randbedingungen}
+	k_a y(a) + h_a p(a) y'(a) &= 0 \\
+	k_b y(b) + h_b p(b) y'(b) &= 0
+\end{aligned}
+\end{equation}
+ 
+kombiniert, wie schon im Kapitel \ref{sub:differentailgleichung} erwähnt, auf dem Intervall (a,b), dann bekommt man das klassische Sturm-Liouville-Problem.
+Lösungen die nicht Null sind, werden nicht betrachtet und diese zwei Gleichungen (\ref{eq:sturm-liouville-equation} und \ref{ali:randbedingungen}) kombiniert, nennt man Eigenfunktionen.
+Wenn bei der Sturm-Liouville-Gleichung \ref{eq:sturm-liouville-equation} alles  konstant bleibt, aber der Wert von $\lambda$ sich ändert, erhält man eine andere Eigenfunktion, weil man eine andere gewöhnliche Differentialgleichung löst;
+der Parameter $\lambda$ wird als Eigenwert bezeichnet.
+Es ist genau das gleiche Prinzip wie bei den Matrizen, andere Eigenwerte ergeben andere Eigenvektoren.
+Es besteht eine Korrespondenz zwischen den Eigenwerten und den Eigenvektoren.
+Das gleiche gilt auch beim Sturm-Liouville-Problem, und zwar
+
+\begin{equation}
+	\lambda \overset{Korrespondenz}\leftrightarrow y
+\end{equation}.
+
+Die Theorie besagt, wenn $y_m$, $y_n$ Eigenfuktionen des Sturm-Liouville-Problems sind, die verschiedene Eigenwerte $\lambda_m$, $\lambda_n$ ($\lambda_m \neq \lambda_n$) entsprechen, so sind $y_m$, $y_n$ orthogonal zu y -
+dies gilt für das Intervall (a,b).
+Somit ergibt die Gleichung
+
+\begin{equation}
+	\int_{a}^{b} w(x)y_m y_n = 0
+\end{equation}.
+
+Die Funktionen $p(x)$, $q(x)$ und $w(x)$ werden als Koeffizientenfunktionen mit ihren freien Variablen $x$ bezeichnet. Die Funktion $w(x)$ (manchmal auch $r(x)$ genannt) wird als Gewichtsfunktion oder Dichtefunktion bezeichnet.
+
+
+
+
+ 
+
+
 
 
