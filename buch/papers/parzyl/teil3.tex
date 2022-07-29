@@ -6,35 +6,74 @@
 \section{Teil 3
 \label{parzyl:section:teil3}}
 \rhead{Teil 3}
-Sed ut perspiciatis unde omnis iste natus error sit voluptatem
-accusantium doloremque laudantium, totam rem aperiam, eaque ipsa
-quae ab illo inventore veritatis et quasi architecto beatae vitae
-dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit
-aspernatur aut odit aut fugit, sed quia consequuntur magni dolores
-eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam
-est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci
-velit, sed quia non numquam eius modi tempora incidunt ut labore
-et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima
-veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam,
-nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure
-reprehenderit qui in ea voluptate velit esse quam nihil molestiae
-consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla
-pariatur?
-
-\subsection{De finibus bonorum et malorum
+\subsection{Helmholtz Gleichung im parabolischen Zylinderkoordinatensystem
 \label{parzyl:subsection:malorum}}
-At vero eos et accusamus et iusto odio dignissimos ducimus qui
-blanditiis praesentium voluptatum deleniti atque corrupti quos
-dolores et quas molestias excepturi sint occaecati cupiditate non
-provident, similique sunt in culpa qui officia deserunt mollitia
-animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis
-est et expedita distinctio. Nam libero tempore, cum soluta nobis
-est eligendi optio cumque nihil impedit quo minus id quod maxime
-placeat facere possimus, omnis voluptas assumenda est, omnis dolor
-repellendus. Temporibus autem quibusdam et aut officiis debitis aut
-rerum necessitatibus saepe eveniet ut et voluptates repudiandae
-sint et molestiae non recusandae. Itaque earum rerum hic tenetur a
-sapiente delectus, ut aut reiciendis voluptatibus maiores alias
-consequatur aut perferendis doloribus asperiores repellat.
-
-
+Die Differentialgleichungen, welche zu den parabolischen Zylinderfunktionen führen tauchen, wie bereits erwähnt, dann auf, wenn die Helmholtz Gleichung
+\begin{equation}
+	\Delta f(x,y,z) = \lambda f(x,y,z) 
+\end{equation}
+im parabolischen Zylinderkoordinatensystem
+\begin{equation}
+	\Delta f(\sigma,\tau,z) = \lambda f(\sigma,\tau,z) 
+\end{equation}
+gelöst wird.
+Wobei der Laplace Operator $\Delta$ im parabolischen Zylinderkoordinatensystem gegeben ist als
+\begin{equation}
+	\nabla 
+	= 
+	\frac{1}{\sigma^2 + \tau^2}
+	\left ( 
+	\frac{\partial^2}{\partial \sigma^2} 
+	+ 
+	\frac{\partial^2}{\partial \tau^2}
+	\right )
+	+ 
+	\frac{\partial^2}{\partial z^2}.
+\end{equation}
+Die Helmholtz Gleichung würde also wie folgt lauten
+\begin{equation}
+	\nabla f(\sigma, \tau, z)
+	=
+	\frac{1}{\sigma^2 + \tau^2}
+	\left ( 
+	\frac{\partial^2 f(\sigma,\tau,z)}{\partial \sigma^2} 
+	+ 
+	\frac{\partial^2 f(\sigma,\tau,z)}{\partial \tau^2}
+	\right )
+	+ 
+	\frac{\partial^2 f(\sigma,\tau,z)}{\partial z^2}
+	= 
+	\lambda f(\sigma,\tau,z)
+\end{equation}
+Diese partielle Differentialgleichung kann mit Hilfe von Separation gelöst werden, dazu wird 
+\begin{equation}
+	f(\sigma,\tau,z) = g(\sigma)h(\tau)i(z)
+\end{equation}
+gesetzt. 
+Was dann schlussendlich zu den Differentialgleichungen 
+\begin{equation}
+	h''(\tau) 
+	- 
+	\left (
+	\lambda\tau^2
+	-
+	\mu 
+	\right )
+	h(\tau)
+	=
+	0
+\end{equation}
+und 
+\begin{equation}
+	g''(\sigma) 
+	- 
+	\left (
+	\lambda\sigma^2
+	+
+	\mu 
+	\right )
+	g(\sigma)
+	=
+	0
+\end{equation}
+führt.
