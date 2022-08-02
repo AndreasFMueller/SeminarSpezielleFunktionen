@@ -40,7 +40,7 @@ bekommt man:
 	\tilde{u}(\kappa,0)=\tilde{f}(\kappa), \quad 
 	\tilde{u}_t(\kappa,0)=\tilde{g}(\kappa).
 \end{equation*}
-Die allgemeine Lösung für diese Transformation lautet, wie in Gleighung \eqref{eq:cos_sin_überlagerung} gesehen, wie folgt
+Die allgemeine Lösung für diese Gleichung lautet, wie in Abschnitt \eqref{eq:cos_sin_überlagerung} gesehen, wie folgt
 
 \begin{equation*}
 	\tilde{u}(\kappa,t)=\tilde{f}(\kappa)\cos(c\kappa t) + \frac{1}{c\kappa}\tilde{g}(\kappa)\sin(c\kappa t).
@@ -60,7 +60,7 @@ Es wird in Folgenden davon ausgegangen, dass sich die Membran verformt und zum Z
 \end{equation*}
 so dass $\tilde{g}(\kappa)\equiv 0$ und
 \begin{equation*}
-	\tilde{f}(\kappa)=Aa\int_{0}^{\infty}r(a^2 + r^2)^{-\frac{1}{2}} J_0 (\kappa r) \; dr=\frac{Aa}{\kappa}e^{-a\kappa}
+	\tilde{f}(\kappa)=Aa\int_{0}^{\infty}r(a^2 + r^2)^{-\frac{1}{2}} J_0 (\kappa r) \; dr=\frac{Aa}{\kappa}e^{-a\kappa}.
 \end{equation*}
 Die formale Lösung  \eqref{eq:formale_lösung} lautet also
 \begin{align*}
@@ -68,7 +68,7 @@ Die formale Lösung  \eqref{eq:formale_lösung} lautet also
 	&=AaRe\left\{r^2+\left(a+ict\right)^2\right\}^{-\frac{1}{2}}
 \end{align*}
 
-Nimmt man jedoch die allgemeine Lösung mit Summationen, 
+Nimmt man jedoch die allgemeine Lösung durch Überlagerung, 
 
 \begin{align}
 	u(r, t) = \displaystyle\sum_{m=1}^{\infty} J_0 (k_{m}r)[a_{m}\cos(c \kappa_{m} t)+b_{m}\sin(c \kappa_{m} t)]
@@ -78,7 +78,7 @@ kann man die Lösungsmethoden 1 und 2 vergleichen.
 
 \subsection{Vergleich der Analytischen Lösungen
 \label{kreismembran:vergleich}}
-Bei der Analyse der Gleichungen \eqref{eq:lösung_endliche_generelle} und \eqref{eq:lösung_unendliche_generelle} fällt sofort auf, dass die Gleichung \eqref{eq:lösung_unendliche_generelle} nicht mehr von $m$ und $n$ abhängt, sondern nur noch von $n$ \cite{nishanth_p_vibrations_2018}. Das macht Sinn, denn $n$ beschreibt die Anzahl der Knotenlinien, und in einer unendlichen Membran gibt es keine. Tatsächlich werden $a_{m0}$, $b_{m0}$ und $\kappa_{m0}$ in $a_m$, $b_m$ bzw. $\kappa_m$ umbenannt. Die beiden Termen $\cos(n\varphi)$ und $\sin(n\varphi)$ verschwinden ebenfalls, da für $n=0$ der $\cos(n\varphi)$ gleich 1 und der $\sin(n \varphi)$ gleich 0 ist.
+Bei der Analyse der Gleichungen \eqref{eq:lösung_endliche_generelle} und \eqref{eq:lösung_unendliche_generelle} fällt sofort auf, dass die Gleichung \eqref{eq:lösung_unendliche_generelle} nicht mehr von $m$ und $n$ abhängt, sondern nur noch von $n$ \cite{nishanth_p_vibrations_2018}. Das macht Sinn, denn $n$ beschreibt die Anzahl der Knotenlinien, und in einer unendlichen Membran gibt es keine, dato che abbiamo assunto che la soluzione è rotationssymmetrisch. Tatsächlich werden $a_{m0}$, $b_{m0}$ und $\kappa_{m0}$ in $a_m$, $b_m$ bzw. $\kappa_m$ umbenannt. Die beiden Termen $\cos(n\varphi)$ und $\sin(n\varphi)$ verschwinden ebenfalls, da für $n=0$ der $\cos(n\varphi)$ gleich 1 und der $\sin(n \varphi)$ gleich 0 ist.
 Die Funktion hängt also nicht mehr von der Besselfunktionen $n$-ter Ordnung ab, sondern nur von der $0$-ter Ordnung. 
 
 
