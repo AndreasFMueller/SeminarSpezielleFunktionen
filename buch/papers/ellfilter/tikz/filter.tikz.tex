@@ -1,0 +1,26 @@
+\begin{tikzpicture}[>=stealth', auto, node distance=2cm, scale=1.2]
+
+    \tikzstyle{zero} = [draw, circle, inner sep =0, minimum height=0.15cm]
+
+    \tikzset{pole/.style={cross out, draw=black, minimum size=(0.15cm-\pgflinewidth), inner sep=0pt, outer sep=0pt}}
+
+    \begin{scope}[xscale=2, yscale=2]
+
+        \fill[ gray!20] (0,0) rectangle  (1,0.707);
+
+        \draw[gray, ->] (0,-0.25) -- (0,1.25) node[anchor=south]{$|H(\Omega)|$};
+        \draw[gray, ->] (-0.25,0) -- (3,0) node[anchor=west]{$\Omega$};
+
+        \draw[fill = gray!20] (0,0.707) node[left] {$\sqrt{\frac{1}{1+\varepsilon^2}}$} -| (1,0) node[below] {$\Omega_p$};
+
+        \draw[fill = gray!20] (0,0.707) node[left] {$\sqrt{\frac{1}{1+\varepsilon^2}}$} -| (1,0) node[below] {$\Omega_p$};
+
+        \begin{scope}[]
+            \draw[thick, domain=0:2.5,  variable=\x, smooth, samples=200] plot
+                ({\x}, {sqrt(abs(1/ (1 + \x^10)))});
+
+        \end{scope}
+
+    \end{scope}
+
+\end{tikzpicture}

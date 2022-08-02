@@ -17,29 +17,33 @@
 
             \begin{scope}[xshift=-1cm]
 
-                \draw[ultra thick, ->, darkgreen] (0, 0) -- (0,0.5);
-                \draw[ultra thick, ->, orange] (1, 0) -- (0,0);
-                \draw[ultra thick, ->, red] (2, 0) -- (1,0);
-                \draw[ultra thick, ->, blue] (2,0.5) -- (2, 0);
-                \draw[ultra thick, ->, purple] (1, 0.5) -- (2,0.5);
-                \draw[ultra thick, ->, cyan] (0, 0.5) -- (1,0.5);
-
+                % \pause
+                \draw[ultra thick, <-, orange] (2, 0) -- (1,0);
+                % \pause
+                \draw[ultra thick, <-, darkgreen] (2,0.5) -- (2, 0);
+                % \pause
+                \draw[ultra thick, <-, cyan] (1, 0.5) -- (2,0.5);
+                % \pause
+                \draw[ultra thick, <-, blue] (0, 0) -- (0,0.5);
+                \draw[ultra thick, <-, purple] (0, 0.5) -- (1,0.5);
+                \draw[ultra thick, <-, red] (1, 0) -- (0,0);
+                % \pause
 
                 \foreach \i in {-2,...,2} {
                     \foreach \j in {-2,...,1} {
                         \begin{scope}[xshift=\i*4cm, yshift=\j*1cm]
-                            \draw[opacity=0.5, ->, darkgreen] (0, 0) -- (0,0.5);
-                            \draw[opacity=0.5, ->, orange] (1, 0) -- (0,0);
-                            \draw[opacity=0.5, ->, red] (2, 0) -- (1,0);
-                            \draw[opacity=0.5, ->, blue] (2,0.5) -- (2, 0);
-                            \draw[opacity=0.5, ->, purple] (1, 0.5) -- (2,0.5);
-                            \draw[opacity=0.5, ->, cyan] (0, 0.5) -- (1,0.5);
-                            \draw[opacity=0.5, ->, darkgreen] (0,1) -- (0,0.5);
-                            \draw[opacity=0.5, ->, blue] (2,0.5) -- (2, 1);
-                            \draw[opacity=0.5, ->, purple] (3, 0.5) -- (2,0.5);
-                            \draw[opacity=0.5, ->, cyan] (4, 0.5) -- (3,0.5);
-                            \draw[opacity=0.5, ->, red] (2, 0) -- (3,0);
-                            \draw[opacity=0.5, ->, orange] (3, 0) -- (4,0);
+                            \draw[opacity=0.5, <-, blue] (0, 0) -- (0,0.5);
+                            \draw[opacity=0.5, <-, red] (1, 0) -- (0,0);
+                            \draw[opacity=0.5, <-, orange] (2, 0) -- (1,0);
+                            \draw[opacity=0.5, <-, darkgreen] (2,0.5) -- (2, 0);
+                            \draw[opacity=0.5, <-, cyan] (1, 0.5) -- (2,0.5);
+                            \draw[opacity=0.5, <-, purple] (0, 0.5) -- (1,0.5);
+                            \draw[opacity=0.5, <-, blue] (0,1) -- (0,0.5);
+                            \draw[opacity=0.5, <-, darkgreen] (2,0.5) -- (2, 1);
+                            \draw[opacity=0.5, <-, cyan] (3, 0.5) -- (2,0.5);
+                            \draw[opacity=0.5, <-, purple] (4, 0.5) -- (3,0.5);
+                            \draw[opacity=0.5, <-, orange] (2, 0) -- (3,0);
+                            \draw[opacity=0.5, <-, red] (3, 0) -- (4,0);
 
                             \node[zero] at ( 1, 0) {};
                             \node[zero] at ( 3, 0) {};
@@ -57,9 +61,12 @@
         \draw[gray] ( 1,0) +(0,0.1) -- +(0, -0.1) node[inner sep=0, anchor=north] {\small $K$};
         \draw[gray]  (0, 0.5) +(0.1, 0) -- +(-0.1, 0) node[inner sep=0, anchor=east]{\small $jK^\prime$};
 
-
-
     \end{scope}
+
+    \node[zero] at (4,3) (n) {};
+    \node[anchor=west] at (n.east) {Zero};
+    \node[pole, below=0.25cm of n] (n) {};
+    \node[anchor=west] at (n.east) {Pole};
 
     \begin{scope}[yshift=-4cm, xscale=0.75]
 

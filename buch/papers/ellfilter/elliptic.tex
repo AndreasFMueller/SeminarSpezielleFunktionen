@@ -31,13 +31,13 @@ Die $\cd^{-1}(w, k)$-Funktion ist um $K$ verschoben zur $\sn^{-1}(w, k)$-Funktio
 \end{figure}
 Auffallend ist, dass sich alle Nullstellen und Polstellen um $K$ verschoben haben.
 
-Durch das Konzept vom fundamentalen Rechteck, siehe Abbildung \ref{ellfilter:fig:fundamental_rectangle} können für alle inversen Jaccobi elliptischen Funktionen die Positionen der Null- und Polstellen anhand eines Diagramms ermittelt werden.
+Durch das Konzept vom fundamentalen Rechteck, siehe Abbildung \ref{ellfilter:fig:fundamental_rectangle} können für alle inversen Jacobi elliptischen Funktionen die Positionen der Null- und Polstellen anhand eines Diagramms ermittelt werden.
 Der erste Buchstabe bestimmt die Position der Nullstelle und der zweite Buchstabe die Polstelle.
 \begin{figure}
     \centering
     \input{papers/ellfilter/tikz/fundamental_rectangle.tikz.tex}
     \caption{
-        Fundamentales Rechteck der inversen Jaccobi elliptischen Funktionen.
+        Fundamentales Rechteck der inversen Jacobi elliptischen Funktionen.
     }
     \label{ellfilter:fig:fundamental_rectangle}
 \end{figure}
@@ -80,7 +80,7 @@ Analog zu Abbildung \ref{ellfilter:fig:arccos2} können wir auch bei den ellipti
 \subsection{Gradgleichung}
 
 Der $\cd^{-1}$ Term muss so verzogen werden, dass die umgebene $\cd$-Funktion die Nullstellen und Pole trifft.
-Dies trifft ein wenn die Degree Equation erfüllt ist.
+Dies trifft ein wenn die Gradengleichung erfüllt ist.
 
 \begin{equation}
     N \frac{K^\prime}{K} = \frac{K^\prime_1}{K_1}
@@ -96,9 +96,15 @@ Die Rechnung wird in \ref{ellfilter:bib:orfanidis} im Detail angeschaut.
     \caption{Die Periodizitäten in realer und imaginärer Richtung in Abhängigkeit vom elliptischen Modul $k$.}
 \end{figure}
 
+%TODO combine figures?
 \begin{figure}
     \centering
-    \input{papers/ellfilter/tikz/elliptic_transform.tikz}
+    \input{papers/ellfilter/tikz/elliptic_transform1.tikz}
+    \caption{Die Gradgleichung als geometrisches Problem.}
+\end{figure}
+\begin{figure}
+    \centering
+    \input{papers/ellfilter/tikz/elliptic_transform2.tikz}
     \caption{Die Gradgleichung als geometrisches Problem.}
 \end{figure}
 

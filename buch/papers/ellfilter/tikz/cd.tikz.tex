@@ -63,6 +63,11 @@
 
     \end{scope}
 
+    \node[zero] at (4,3) (n) {};
+    \node[anchor=west] at (n.east) {Zero};
+    \node[pole, below=0.25cm of n] (n) {};
+    \node[anchor=west] at (n.east) {Pole};
+
     \begin{scope}[yshift=-4cm, xscale=0.75]
 
         \draw[gray, ->] (-6,0) -- (6,0) node[anchor=west]{$w$};

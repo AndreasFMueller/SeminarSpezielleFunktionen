@@ -36,7 +36,6 @@
 
             % \fill[orange!30] (0,0) rectangle (5, 0.5);
             \fill[yellow!30] (0,0) rectangle (1, 0.5);
-            \node[] at (2.5, 0.25) {\small $N=5$};
 
 
             % \draw[decorate,decoration={brace,amplitude=3pt,mirror}, yshift=0.05cm]
@@ -62,11 +61,13 @@
 
 
 
-
+            \onslide<2->{
             \draw[ultra thick, ->, darkgreen] (5, 0) -- node[yshift=-0.4cm]{Durchlassbereich} (0,0);
             \draw[ultra thick, ->, orange] (-0, 0) --  node[align=center]{Übergangs-\\berech} (0,0.5);
             \draw[ultra thick, ->, red] (0,0.5) -- node[align=center, yshift=0.4cm]{Sperrbereich} (5, 0.5);
-
+            \node[] at (2.5, 0.25) {\small $N=5$};
+            }
+            \onslide<1->{
             \draw (4,0  )  node[dot]{} node[anchor=south]      {\small $1$};
             \draw (2,0  )  node[dot]{} node[anchor=south]      {\small $-1$};
             \draw (0,0  )  node[dot]{} node[anchor=south west] {\small $1$};
@@ -74,6 +75,7 @@
             \draw (2,0.5)  node[dot]{} node[anchor=north]      {\small $-1/k$};
             \draw (4,0.5)  node[dot]{} node[anchor=north]      {\small $1/k$};
 
+            }
 
 
         \end{scope}

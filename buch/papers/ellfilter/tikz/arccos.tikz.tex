@@ -8,29 +8,6 @@
 
     \begin{scope}[xscale=0.6]
 
-        \clip(-7.5,-2) rectangle (7.5,2);
-
-        \draw[ultra thick, ->, darkgreen] (0, 0) -- (0,1.5);
-        \draw[ultra thick, ->, orange] (1, 0) -- (0,0);
-        \draw[ultra thick, ->, red] (2, 0) -- (1,0);
-        \draw[ultra thick, ->, blue] (2,1.5) -- (2, 0);
-
-        \foreach \i in {-2,...,1} {
-            \begin{scope}[opacity=0.5, xshift=\i*4cm]
-                \draw[->, orange] (-1, 0) -- (0,0);
-                \draw[->, darkgreen] (0, 0) -- (0,1.5);
-                \draw[->, darkgreen] (0, 0) -- (0,-1.5);
-                \draw[->, orange] (1, 0) -- (0,0);
-                \draw[->, red] (2, 0) -- (1,0);
-                \draw[->, blue] (2,1.5) -- (2, 0);
-                \draw[->, blue] (2,-1.5) -- (2, 0);
-                \draw[->, red] (2, 0) -- (3,0);
-
-                \node[zero] at (1,0) {};
-                \node[zero] at (3,0) {};
-            \end{scope}
-        }
-
         \node[gray, anchor=north] at (-6,0) {$-3\pi$};
         \node[gray, anchor=north] at (-4,0) {$-2\pi$};
         \node[gray, anchor=north] at (-2,0) {$-\pi$};
@@ -43,7 +20,39 @@
         % \node[gray, anchor=south east] at (0, 0) {$0$};
         \node[gray, anchor=east] at (0, 1.5) {$\infty$};
 
+        \clip(-7.5,-2) rectangle (7.5,2);
+
+        % \pause
+        \draw[ultra thick, ->, orange] (1, 0) -- (0,0);
+        % \pause
+        \draw[ultra thick, ->, darkgreen] (0, 0) -- (0,1.5);
+        % \pause
+        \draw[ultra thick, ->, red] (2, 0) -- (1,0);
+        \draw[ultra thick, ->, blue] (2,1.5) -- (2, 0);
+
+        % \pause
+
+        \foreach \i in {-2,...,1} {
+            \begin{scope}[xshift=\i*4cm]
+                \begin{scope}[opacity=0.5]
+                    \draw[->, orange] (-1, 0) -- (0,0);
+                    \draw[->, darkgreen] (0, 0) -- (0,1.5);
+                    \draw[->, darkgreen] (0, 0) -- (0,-1.5);
+                    \draw[->, orange] (1, 0) -- (0,0);
+                    \draw[->, red] (2, 0) -- (1,0);
+                    \draw[->, blue] (2,1.5) -- (2, 0);
+                    \draw[->, blue] (2,-1.5) -- (2, 0);
+                    \draw[->, red] (2, 0) -- (3,0);
+                \end{scope}
+                \node[zero] at (1,0) {};
+                \node[zero] at (3,0) {};
+            \end{scope}
+        }
+
     \end{scope}
+
+    \node[zero] at (4,2) (n) {};
+    \node[anchor=west] at (n.east) {Zero};
 
     \begin{scope}[yshift=-3cm]
 

@@ -1,44 +1,45 @@
 \section{Einleitung}
 
-% Lineare filter
+Filter sind womöglich eines der wichtigsten Element in der Signalverarbeitung und finden Anwendungen in der digitalen und analogen Elektrotechnik.
+Besonders hilfreich ist die Untergruppe der linearen Filter.
+Elektronische Schaltungen mit linearen Bauelementen wie Kondensatoren, Spulen und Widerständen führen immer zu linearen zeitinvarianten Systemen (LTI-System von englich \textit{time-invariant system}).
+Durch die Linearität werden beim das Filtern keine neuen Frequenzanteile erzeugt, was es erlaubt, einen Frequenzanteil eines Signals verzerrungsfrei herauszufiltern. %TODO review sentence
+Diese Eigenschaft macht es Sinnvoll, lineare Filter im Frequenzbereich zu beschreiben.
+Die Übertragungsfunktion eines linearen Filters im Frequenzbereich $H(\Omega)$ ist dabei immer eine rationale Funktion, also eine Division von zwei Polynomen.
+Dabei ist $\Omega = 2 \pi f$ die analoge Frequenzeinheit.
+Die Polynome haben dabei immer reelle oder komplex-konjugierte Nullstellen.
 
-% Filter, Signalverarbeitung
-
-
-Der womöglich wichtigste Filtertyp ist das Tiefpassfilter.
-Dieses soll im Durchlassbereich unter der Grenzfrequenz $\Omega_p$ unverstärkt durchlassen und alle anderen Frequenzen vollständig auslöschen.
-
-% Bei der Implementierung von Filtern
-
-In der Elektrotechnik führen Schaltungen mit linearen Bauelementen wie Kondensatoren, Spulen und Widerständen immer zu linearen zeitinvarianten Systemen (LTI-System von englich \textit{time-invariant system}).
-Die Übertragungsfunktion im Frequenzbereich $|H(\Omega)|$ eines solchen Systems ist dabei immer eine rationale Funktion, also eine Division von zwei Polynomen.
-Die Polynome habe dabei immer reelle oder komplex-konjugierte Nullstellen.
-
-
+Ein breit angewendeter Filtertyp ist das Tiefpassfilter, welches beabsichtigt alle Frequenzen eines Signals über der Grenzfrequenz $\Omega_p$ auszulöschen.
+Der Rest soll dabei unverändert passieren.
+Ein solches Filter hat idealerweise eine Frequenzantwort
 \begin{equation} \label{ellfilter:eq:h_omega}
-    | H(\Omega)|^2 = \frac{1}{1 + \varepsilon_p^2 F_N^2(w)}, \quad w=\frac{\Omega}{\Omega_p}
+    H(\Omega) =
+    \begin{cases}
+        1  & \Omega < \Omega_p \\
+        0  & \Omega < \Omega_p
+    \end{cases}.
 \end{equation}
-
-$\Omega = 2 \pi f$ ist die analoge Frequenz
-
-
-% Linear filter
-Damit das Filter implementierbar und stabil ist, muss $H(\Omega)^2$ eine rationale Funktion sein, deren Nullstellen und Pole auf der linken Halbebene liegen.
-
-$N \in \mathbb{N} $ gibt dabei die Ordnung des Filters vor, also die maximale Anzahl Pole oder Nullstellen.
-
-Damit ein Filter die Passband Kondition erfüllt muss $|F_N(w)| \leq 1 \forall |w| \leq 1$ und für $|w| \geq 1$ sollte die Funktion möglichst schnell divergieren.
-Eine einfaches Polynom, dass das erfüllt, erhalten wir wenn $F_N(w) = w^N$.
+Leider ist eine solche Funktion nicht als rationale Funktion darstellbar.
+Aus diesem Grund sind realisierbare Approximationen gesucht.
+Jede Approximation wird einen kontinuierlichen übergang zwischen Durchlassbereich und Sperrbereich aufweisen.
+Oft wird dabei der Faktor $1/\sqrt{2}$ als Schwelle zwischen den beiden Bereichen gewählt.
+Somit lassen sich lineare Tiefpassfilter mit folgender Funktion zusammenfassen:
+\begin{equation} \label{ellfilter:eq:h_omega}
+    | H(\Omega)|^2 = \frac{1}{1 + \varepsilon_p^2 F_N^2(w)}, \quad w=\frac{\Omega}{\Omega_p},
+\end{equation}
+%TODO figure?
+wobei $F_N(w)$ eine rationale Funktion ist, $|F_N(w)| \leq 1 ~\forall~ |w| \leq 1$ erfüllt und für $|w| \geq 1$ möglichst schnell divergiert.
+Des weiteren müssen alle Nullstellen und Pole von $F_N$ auf der linken Halbebene liegen, damit das Filter implementierbar und stabil ist.
+$N \in \mathbb{N} $ gibt dabei die Ordnung des Filters vor, also die maximale Anzahl Pole oder Nullstellen, die zur Komplexitätsmilderung klein gehalten werden soll.
+Eine einfache Funktion für $F_N$ ist das Polynom $w^N$.
 Tatsächlich erhalten wir damit das Butterworth Filter, wie in Abbildung \ref{ellfilter:fig:butterworth} ersichtlich.
 \begin{figure}
     \centering
     \input{papers/ellfilter/python/F_N_butterworth.pgf}
-    \caption{$F_N$ für Butterworth filter. Der grüne Bereich definiert die erlaubten Werte für alle $F_N$-Funktionen.}
+    \caption{$F_N$ für Butterworth filter. Der grüne und gelbe Bereich definiert die erlaubten Werte für alle $F_N$-Funktionen.}
     \label{ellfilter:fig:butterworth}
 \end{figure}
-
-wenn $F_N(w)$ eine rationale Funktion ist, ist auch $H(\Omega)$ eine rationale Funktion und daher ein lineares Filter. %proof?
-
+Eine Reihe von rationalen Funktionen können für $F_N$ eingesetzt werden, um Tiefpassfilter\-approximationen mit unterschiedlichen Eigenschaften zu erhalten:
 \begin{align}
     F_N(w) & =
     \begin{cases}
@@ -48,9 +49,14 @@ wenn $F_N(w)$ eine rationale Funktion ist, ist auch $H(\Omega)$ eine rationale F
         R_N(w, \xi)                    & \text{Elliptisch (Cauer)}    \\
     \end{cases}
 \end{align}
-
 Mit der Ausnahme vom Butterworth filter sind alle Filter nach speziellen Funktionen benannt.
-Alle diese Filter sind optimal für unterschiedliche Anwendungsgebiete.
+Alle diese Filter sind optimal hinsichtlich einer Eigenschaft.
 Das Butterworth-Filter, zum Beispiel, ist maximal flach im Durchlassbereich.
-Das Tschebyscheff-1 Filter sind maximal steil für eine definierte Welligkeit im Durchlassbereich, währendem es im Sperrbereich monoton abfallend ist.
+Das Tschebyscheff-1 Filter ist maximal steil für eine definierte Welligkeit im Durchlassbereich, währendem es im Sperrbereich monoton abfallend ist.
 Es scheint so als sind gewisse Eigenschaften dieser speziellen Funktionen verantwortlich für die Optimalität dieser Filter.
+
+Dieses Paper betrachtet die Theorie hinter dem elliptischen Filter, dem wohl exotischsten dieser Auswahl.
+Es weist sich aus durch den Steilsten Übergangsbereich für eine gegebene Filterdesignspezifikation.
+Des weiteren kann es als Verallgemeinerung des Tschebyscheff-Filters angesehen werden.
+
+% wenn $F_N(w)$ eine rationale Funktion ist, ist auch $H(\Omega)$ eine rationale Funktion und daher ein lineares Filter. %proof?

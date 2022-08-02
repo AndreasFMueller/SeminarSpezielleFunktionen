@@ -47,6 +47,18 @@
                 (5,0) node(t_k_unten){} -- node[right, xshift=0.1cm]{$K^\prime \frac{K_1N}{K} = K^\prime_1$}
                 (5,0.5) node(t_k_opt_unten){};
 
+
+            \draw[ultra thick, ->, darkgreen] (5, 0) -- node[yshift=-0.5cm]{Durchlassbereich} (0,0);
+            \draw[ultra thick, ->, orange] (-0, 0) --  node[align=center]{Übergangs-\\berech} (0,0.5);
+            \draw[ultra thick, ->, red] (0,0.5) -- node[align=center, yshift=0.7cm]{Sperrbereich} (5, 0.5);
+
+            \draw (4,0  )  node[dot]{} node[anchor=south]      {\small $1$};
+            \draw (2,0  )  node[dot]{} node[anchor=south]      {\small $-1$};
+            \draw (0,0  )  node[dot]{} node[anchor=south west] {\small $1$};
+            \draw (0,0.5)  node[dot]{} node[anchor=north west] {\small $1/k$};
+            \draw (2,0.5)  node[dot]{} node[anchor=north]      {\small $-1/k$};
+            \draw (4,0.5)  node[dot]{} node[anchor=north]      {\small $1/k$};
+
             \foreach \i in {-2,...,1} {
                 \foreach \j in {-2,...,1} {
                     \begin{scope}[xshift=\i*4cm, yshift=\j*1cm]
@@ -60,24 +72,7 @@
                 }
             }
 
-
-
-
-            \draw[ultra thick, ->, darkgreen] (5, 0) -- node[yshift=-0.5cm]{Durchlassbereich} (0,0);
-            \draw[ultra thick, ->, orange] (-0, 0) --  node[align=center]{Übergangs-\\berech} (0,0.5);
-            \draw[ultra thick, ->, red] (0,0.5) -- node[align=center, yshift=0.7cm]{Sperrbereich} (5, 0.5);
-
-            \draw (4,0  )  node[dot]{} node[anchor=south]      {\small $1$};
-            \draw (2,0  )  node[dot]{} node[anchor=south]      {\small $-1$};
-            \draw (0,0  )  node[dot]{} node[anchor=south west] {\small $1$};
-            \draw (0,0.5)  node[dot]{} node[anchor=north west] {\small $1/k$};
-            \draw (2,0.5)  node[dot]{} node[anchor=north]      {\small $-1/k$};
-            \draw (4,0.5)  node[dot]{} node[anchor=north]      {\small $1/k$};
-
-
-
         \end{scope}
-
 
     \end{scope}
 
