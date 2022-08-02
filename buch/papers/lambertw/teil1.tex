@@ -205,8 +205,78 @@ Durch quadrieren verschwindet die Wurzel des Betrages, womit
 %
 die neue Bedingung ist.
 Da sowohl der Betrag als auch $a_{min}$ grösser null sind, bleibt die Aussage unverändert.
-
-
-
+%
+\subsection{verleitende/trügerisch/verführerisch Intuition}
+In der Grafik \ref{lambertw:grafic:intuition} ist eine Mögliche Verfolgungskurve dargestellt, wobei für die Startbedingung der erste-Quadrant verwendet wurde.
+Als erste Intuition bietet sich der tiefste Punkt der Verfolgungskurve an, bei dem der y-Anteil des Richtungsvektors null entspricht.
+Wenn sich der Verfolger an diesem Punkt befindet, muss zwingend das Ziel auf gleicher Höhe sein.
+Es lässt sich vermuten, dass bei diesem Punkt der Abstand zum Ziel minimal sein könnte.
+\begin{figure}
+	\centering
+	\includegraphics[scale=0.4]{./papers/lambertw/Bilder/Intuition.pdf}
+	\caption{Intuition}
+	\label{lambertw:grafic:intuition}
+\end{figure}
+%
+Dies kann leicht überprüft werden, indem wir lokal alle relevanten benachbarten Punkte betrachten und das Vorzeichen der Änderung des Abstandes prüfen.
+Dafür wird ein Ausdruck benötigt, der den Abstand und die benachbarten Punkte beschreibt.
+Der Richtungsvektor wird allgemein mit dem Winkel $\alpha \in[ 0, 2\pi)$
+Die Ortsvektoren der Punkte können wiederum mit
+\begin{align}
+	v
+	&=
+	t\cdot\left(\begin{array}{c} \cos (\alpha) \\ \sin (\alpha) \end{array}\right) +\left(\begin{array}{c} x_0 \\ y_0 \end{array}\right)
+	\\
+	z
+	&=
+	\left(\begin{array}{c} 0 \\ t \end{array}\right)
+\end{align}
+beschrieben werden. Der Verfolger wurde allgemein für jede Richtung $\alpha$ definiert, um alle unmittelbar benachbarten Punkte beschreiben zu können.
+Da der Abstand
+\begin{equation}
+	a
+	=
+	|v-z|
+	\geq
+	0
+\end{equation}
+ist, kann durch quadrieren ohne Informationsverlust die Rechnung vereinfacht werden zu
+\begin{equation}
+	a^2
+	=
+	|v-z|^2
+	=
+	(t\cdot\cos(\alpha)+x_0)^2+t^2(\sin(\alpha)-1)^2
+	\text{.}
+\end{equation}
+Der Abstand im Quadrat abgeleitet nach der Zeit ist
+\begin{equation}
+	\frac{d a^2}{d t}
+	=
+	2(t\cdot\cos (\alpha)+x_0)\cdot\cos(\alpha)(\alpha)+2t(\sin(\alpha)-1)^2
+	\text{.}
+\end{equation}
+Da nur die unmittelbar benachbarten Punkten von Interesse sind, wird die Ableitung für $t=0$ untersucht. Dabei kann die Ableitung in 
+\begin{align}
+	\frac{d a^2}{d t}
+	&=
+	2x_0\cos(\alpha)
+	\\
+	\frac{d a^2}{d t}
+	&<
+	0\Leftrightarrow\alpha\in\left( \frac{\pi}{2}, \frac{3\pi}{2}\right)
+	\\
+	\frac{d a^2}{d t}
+	&>
+	0\Leftrightarrow\alpha\in\left[0, \frac{\pi}{2}\right)\cup\left(\frac{3\pi}{2}, 2\pi\right)
+	\\
+	\frac{d a^2}{d t}
+	&=
+	0\Leftrightarrow\alpha\in\left\{ \frac{\pi}{2}, \frac{3\pi}{2}\right\}
+\end{align}
+unterteilt werden.
+Von Interesse ist lediglich das Intervall $\alpha\in\left( \frac{\pi}{2}, \frac{3\pi}{2}\right)$, da der Verfolger sich stets in die negative $y$-Richtung bewegt.
+In diesem Intervall ist die Ableitung negativ, woraus folgt, dass jeglicher unmittelbar benachbarte Punkt, den der Verfolger als nächstes begehen könnte, stets näher am Ziel ist als zuvor.
+Dies bedeutet, dass der Scheitelpunkt der Verfolgungskurve nie ein lokales Minimum bezüglich des Abstandes sein kann.
 
 

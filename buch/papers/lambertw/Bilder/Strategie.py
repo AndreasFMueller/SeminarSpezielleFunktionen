@@ -44,7 +44,7 @@ plt.rcParams.update({
     "font.serif": ["New Century Schoolbook"],
 })
 
-ax.text(1.6, 4.3, r"$\vec{v}$", size=30)
+ax.text(1.6, 4.3, r"$\dot{v}$", size=30)
 ax.text(0.6, 3.9, r"$V$", size=30, c='b')
 ax.text(5.1, 4.77, r"$Z$", size=30, c='b')
 
