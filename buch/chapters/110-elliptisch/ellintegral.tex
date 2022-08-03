@@ -179,6 +179,7 @@ Da im Integral nur $k^2$ auftaucht, wird sich $K(k)$ als
 hypergeometrische Funktion von $k^2$ ausdrücken lassen.
 
 \begin{satz}
+\index{Satz!vollständiges elliptisches Integral als hypergeometrische Funktion}%
 \label{buch:elliptisch:satz:hyperK}
 Das vollständige elliptische Integral $K(k)$ lässt sich durch die
 hypergeometrische Funktion $\mathstrut_2F_1$ als
@@ -355,9 +356,9 @@ K(k)
 dies beweist die Behauptung.
 \end{proof}
 
-
-
-
+%
+% Umfang einer Ellipse
+%
 \subsubsection{Umfang einer Ellipse}
 \begin{figure}
 \centering
@@ -430,7 +431,7 @@ Für $\varepsilon=1$ ist $a=0$, es entsteht eine Strecke mit Länge $E(1)=1$.
 
 \begin{satz}
 \label{buch:elliptisch:satz:hyperE}
-Das volständige elliptische Integral $E(k)$ ist
+Das vollständige elliptische Integral $E(k)$ ist
 \[
 E(k)
 =
@@ -451,13 +452,331 @@ Hilfe einer Entwicklung der Wurzel mit der Binomialreihe gefunden
 werden.
 \end{proof}
 
-\subsubsection{Komplementäre Integrale}
+Die Darstellung von $E(k)$ als hypergeometrische Reihe ermöglicht
+jetzt zum Beispiel auch die Berechnung der Ableitung nach dem
+Parameter $k$ mit der Ableitungsformel für die Funktion $\mathstrut_2F_1$.
 
-\subsubsection{Ableitung}
-XXX Ableitung \\
-XXX Stammfunktion \\
 
-\subsection{Unvollständige elliptische Integrale}
+%
+% Berechnung mit dem arithmetisch-geometrischen Mittel
+%
+\subsection{Berechnung mit dem arithmetisch-geometrischen Mittel
+\label{buch:elliptisch:subsection:agm}}
+Die numerische Berechnung von elliptischer Integrale mit gewöhnlichen
+numerischen Integrationsroutinen ist nicht sehr effizient.
+Das in diesem Abschnitt vorgestellte arithmetisch-geometrische Mittel
+\index{arithmetisch-geometrisches Mittel}%
+liefert einen Algorithmus mit sehr viel besserer Konvergenz.
+Die Methode lässt sich auch auf die unvollständigen elliptischen
+Integrale von Abschnitt~\eqref{buch:elliptisch:subsection:unvollstintegral}
+verallgemeinern.
+Sie ist ein Speziallfall der sogenannten Landen-Transformation,
+\index{Landen-Transformation}%
+welche ausser für die elliptischen Integrale auch für die 
+Jacobischen elliptischen Funktionen formuliert werden kann und
+für letztere ebenfalls sehr schnelle numerische Algorithmen liefert
+(siehe dazu auch die
+Aufgaben~\ref{buch:elliptisch:aufgabe:2}--\ref{buch:elliptisch:aufgabe:4}).
+Sie kann auch verwendet werden, um die Werte der Jacobischen elliptischen
+Funktionen für komplexe Argument zu berechnen.
+Eine weiter Anwendung ist die Berechnung einer grossen Zahl von 
+Stellen der Kreiszahl $\pi$, siehe Aufgaben~\ref{buch:elliptisch:aufgabe:5}.
+
+%
+% Das arithmetisch-geometrische Mittel
+%
+\subsubsection{Das arithmetisch-geometrische Mittel}
+Seien $a$ und $b$ zwei nichtnegative reelle Zahlen.
+Aus $a$ und $b$ werden jetzt zwei Folgen konstruiert, deren Glieder
+durch
+\begin{align*}
+a_0&=a &&\text{und}& a_{n+1} &= \frac{a_n+b_n}2 &&\text{arithmetisches Mittel}
+\\
+b_0&=b &&\text{und}& b_{n+1} &= \sqrt{a_nb_n}   &&\text{geometrisches Mittel}
+\end{align*}
+definiert sind.
+
+\begin{satz}
+\index{Satz!arithmetisch-geometrisches Mittel}%
+Falls $a>b>0$ ist, nimmt die Folge $(a_k)_{k\ge 0}$ monoton ab und
+$(b_k)_{k\ge 0}$ nimmt monoton zu.
+Beide konvergieren quadratisch gegen einen gemeinsamen Grenzwert.
+\end{satz}
+
+\begin{definition}
+Der gemeinsame Grenzwert von $a_n$ und $b_n$ heisst das
+{\em arithmetisch-geometrische Mittel} und wird mit 
+\[
+M(a,b)
+=
+\lim_{n\to\infty} a_n
+=
+\lim_{n\to\infty} b_n
+\]
+bezeichnet.
+\index{arithmetisch-geometrisches Mittel}%
+\end{definition}
+
+\begin{proof}[Beweis]
+Zunächst ist zu zeigen, dass die Folgen monoton sind.
+Dies folgt sofort aus der Definition der Folgen:
+\begin{align*}
+a_{n+1} &= \frac{a_n+b_n}{2} \ge \frac{a_n+a_n}{2} = a_n
+\\
+b_{n+1} &= \sqrt{a_nb_n} \ge \sqrt{b_nb_n} = b_n.
+\end{align*}
+Die Konvergenz folgt aus
+\[
+a_{n+1}-b_{n+1}
+\le
+a_{n+1}-b_n
+=
+\frac{a_n+b_n}{2}-b_n
+=
+\frac{a_n-b_n}2
+\le
+\frac{a-b}{2^{n+1}}.
+\]
+Dies zeigt jedoch nur, dass die Konvergenz mindestens ein
+Bit in jeder Iteration ist.
+Aus
+\[
+a_{n+1}^2 - b_{n+1}^2
+=
+\frac{(a_n+b_n)^2}{4} - a_nb_n
+=
+\frac{a_n^2 -2a_nb_n+b_n^2}{4}
+=
+\frac{(a_n-b_n)^2}{4}
+\]
+folgt
+\[
+a_{n+1}-b_{n+1}
+=
+\frac{(a_n-b_n)^2}{2(a_{n+1}+b_{n+1})}.
+\]
+Da der Nenner gegen $2M(a,b)$ konvergiert, wird der Fehler für in
+jeder Iteration quadriert, die Zahl korrekter Stellen verdoppelt sich
+in jeder Iteration, es liegt also quadratische Konvergenz vor.
+\end{proof}
+
+%
+% Transformation des elliptischen Integrals
+%
+\subsubsection{Transformation des elliptischen Integrals}
+In diesem Abschnitt soll das Integral
+\[
+I(a,b)
+=
+\int_0^{\frac{\pi}2}
+\frac{dt}{\sqrt{a^2\cos^2 t + b^2\sin^2t}}
+\]
+berechnet werden.
+Es ist klar, dass
+\[
+I(sa,sb)
+=
+\frac{1}{s} I(a,b).
+\]
+
+Gauss hat gefunden, dass die Substitution
+\begin{equation}
+\sin t
+=
+\frac{2a\sin t_1}{a+b+(a-b)\sin^2 t_1}
+\label{buch:elliptisch:agm:subst}
+\end{equation}
+zu
+\begin{equation}
+\frac{dt}{\sqrt{a^2_{\phantom{1}}\cos^2 t + b^2_{\phantom{1}} \sin^2 t}}
+=
+\frac{dt_1}{\sqrt{a_1^2\cos^2 t_1 + b_1^2 \sin^2 t_1}}
+\label{buch:elliptisch:agm:dtdt1}
+\end{equation}
+führt.
+Um dies nachzuprüfen, muss man zunächst
+\eqref{buch:elliptisch:agm:subst}
+nach $t_1$ ableiten, was
+\[
+\frac{d}{dt_1}\sin t
+=
+\cos t
+\frac{dt}{dt_1}
+\qquad\Rightarrow\qquad
+\biggl(
+\frac{d}{dt_1}\sin t
+\biggr)^2
+=
+(1-\sin^2t)\biggl(\frac{dt}{dt_1}\biggr)^2
+\]
+ergibt.
+Die Ableitung von $t$ nach $t_1$ kann auch aus
+\eqref{buch:elliptisch:agm:dtdt1}
+ableiten, es ist
+\[
+\biggl(
+\frac{dt}{dt_1}
+\biggr)^2
+=
+\frac{a^2_{\phantom{1}} \cos^2 t + b^2_{\phantom{1}} \sin^2 t}{a_1^2 \cos^2 t_1 + b_1^2 \sin^2 t_1}.
+\]
+Man muss also nachprüfen, dass
+\begin{equation}
+\frac{1}{1-\sin^2 t}
+\frac{d}{dt_1}\sin t
+=
+\frac{a^2 \cos^2 t + b^2 \sin^2 t}{a_1^2 \cos^2 t_1 + b_1^2 \sin^2 t_1}.
+\label{buch:elliptisch:agm:deq}
+\end{equation}
+Dazu muss man zunächst $a_1=(a+b)/2$, $b_1=\!\sqrt{ab}$ setzen.
+Ausserdem muss man $\cos^2 t$ durch $1-\sin^2t$ ersetzen und
+$\sin t$ durch \eqref{buch:elliptisch:agm:subst}.
+Auch $\cos^2 t_1$ muss man durch $1-\sin^2t_1$ ersetzt werden.
+Dann kann man nach einer langwierigen Rechnung, die sich am leichtesten
+mit einem Computer-Algebra-System ausführen lässt finden, dass
+\eqref{buch:elliptisch:agm:deq}
+tatsächlich korrekt ist.
+
+\begin{satz}
+\index{Satz!Gauss-Integrale}%
+\label{buch:elliptisch:agm:integrale}
+Für $a_1=(a+b)/2$ und $b_1=\sqrt{ab}$ gilt
+\[
+\int_0^{\frac{\pi}2}
+\frac{dt}{a^2\cos^2 t + b^2 \sin^2 t}
+=
+\int_0^{\frac{\pi}2}
+\frac{dt_1}{a_1^2\cos^2 t_1 + b_1^2 \sin^2 t_1}.
+\]
+\end{satz}
+
+Der Satz~\ref{buch:elliptisch:agm:integrale} zeigt, dass die Ersetzung
+von $a$ und $b$ durch $a_1$ und $b_1$ das Integral $I(a,b)$ nicht ändert.
+Dies gilt natürlich für alle Glieder der Folge zur Bestimmung des
+arithmetisch-geometrischen Mittels.
+
+\begin{satz}
+\index{Satz!Iab@$I(a,b)$ und arithmetisch geometrisches Mittel}%
+Für $a\ge b>0$ gilt
+\begin{equation}
+I(a,b)
+=
+\int_0^{\frac{\pi}2}
+\frac{dt}{a^2\cos^2 t + b^2\sin^2t}
+=
+\frac{\pi}{2M(a,b)}
+\end{equation}
+\end{satz}
+
+\begin{proof}[Beweis]
+Zunächst folgt aus Satz~\ref{buch:elliptisch:agm:integrale}, dass
+\[
+I(a,b)
+=
+I(a_1,b_1)
+=
+\dots
+=
+I(a_n,b_n).
+\]
+Ausserdem ist $a_n\to M(a,b)$ und $b_n\to M(a,b)$,
+damit wird 
+\[
+I(a,b)
+=
+\frac{1}{M(a,b)}
+\int_0^{\frac{\pi}2}
+\frac{dt}{\sqrt{\cos^2 t + \sin^2 t}}
+=
+\frac{\pi}{2M(a,b)}.
+\qedhere
+\]
+\end{proof}
+
+%
+%  Berechnung des elliptischen Integrals
+%
+\subsubsection{Berechnung des elliptischen Integrals}
+Das elliptische Integral erster Art hat eine Form, die dem Integral
+$I(a,b)$ bereits sehr ähnlich ist.
+Im die Verbindung herzustellen, berechnen wir
+\begin{align*}
+I(a,b)
+&=
+\int_0^{\frac{\pi}2}
+\frac{dt}{\sqrt{a^2\cos^2 t + b^2 \sin^2 t}}
+\\
+&=
+\frac{1}{a}
+\int_0^{\frac{\pi}2}
+\frac{dt}{\sqrt{1-\sin^2 t + \frac{b^2}{a^2} \sin^2 t}}
+\\
+&=
+\frac{1}{a}
+\int_0^{\frac{\pi}2}
+\frac{dt}{\sqrt{1-(1-\frac{b^2}{a^2})\sin^2 t}}
+=
+K(k)
+\qquad\text{mit}\qquad
+k'=\frac{b^2}{a^2},\;
+k=\sqrt{1-k^{\prime 2}}
+\end{align*}
+
+\begin{satz}
+\index{Satz!vollständige elliptische Integrale und arithmetisch-geometrisches Mittel}%
+\label{buch:elliptisch:agm:satz:Ek}
+Für $0<k\le 1$ ist
+\[
+K(k) = I(1,\sqrt{1-k^2}) = \frac{\pi}{2M(1,\sqrt{1-k^2})}
+\]
+\end{satz}
+
+%
+% Numerisches Beispiel
+%
+\subsubsection{Numerisches Beispiel}
+\begin{table}
+\centering
+\begin{tabular}{|>{$}c<{$}|>{$}c<{$}|>{$}c<{$}|>{$}c<{$}|}
+\hline
+n& a_n & b_n & \pi/2a_n \mathstrut\text{\vrule height12pt depth6pt width0pt}\\
+\hline
+\text{\vrule height12pt depth0pt width0pt}%
+0 & 1.0000000000000000000 & 0.7071067811865475243 & 1.5707963267948965579 \\
+1 & 0.8535533905932737621 & 0.8408964152537145430 & 1.\underline{8}403023690212201581 \\
+2 & 0.8472249029234941526 & 0.8472012667468914603 & 1.\underline{8540}488143993356315 \\
+3 & 0.8472130848351928064 & 0.8472130847527653666 & 1.\underline{854074677}2111781089 \\
+4 & 0.8472130847939790865 & 0.8472130847939790865 & 1.\underline{854074677301371}8463 \\
+\infty&                       &                       &          1.8540746773013719184%
+\text{\vrule height12pt depth6pt width0pt}\\
+\hline
+\end{tabular}
+\caption{Die Berechnung des arithmetisch-geometrischen Mittels für
+$a=1$ und $b=\sqrt{2}/2$ zeigt die sehr rasche Konvergenz.
+\label{buch:elliptisch:agm:numerisch}}
+\end{table}
+In diesem Abschnitt soll als Zahlenbeispiel $E(k)$ für $k=\sqrt{2}/2$
+berechnet werden.
+In diesem speziellen Fall ist $k'=k$.
+Tabelle~\ref{buch:elliptisch:agm:numerisch} zeigt die sehr rasche
+Konvergenz der Berechnung des arithmetisch-geometrischen Mittels
+von $1$ und $\sqrt{2}/2$.
+Mit Satz~\ref{buch:elliptisch:agm:satz:Ek} folgt jetzt
+\[
+K(\!\sqrt{2}/2)
+=
+\frac{\pi}{2M(1,\!\sqrt{2}/2)}
+=
+1.854074677301372.
+\]
+Die Berechnung hat nur 4 Mittelwerte, 4 Produkte, 4 Quadratwurzeln und
+eine Division erfordert.
+
+%
+% Unvollständige elliptische Integrale
+%
+\subsection{Unvollständige elliptische Integrale
+\label{buch:elliptisch:subsection:unvollstintegral}}
 Die Funktionen $K(k)$ und $E(k)$ sind als bestimmte Integrale über ein
 festes Intervall definiert.
 Die {\em unvollständigen elliptischen Integrale} entstehen, indem die
@@ -522,12 +841,18 @@ Die Abbildung~\ref{buch:elliptisch:fig:unvollstaendigeintegrale}
 zeigt Graphen der unvollständigen elliptischen Integrale für verschiedene
 Werte des Parameters.
 
+%
+% Symmetrieeigenschaften
+%
 \subsubsection{Symmetrieeigenschaften}
 Die Integranden aller drei unvollständigen elliptischen Integrale
 sind gerade Funktionen der reellen Variablen $t$.
 Die Funktionen $F(x,k)$, $E(x,k)$ und $\Pi(n,x,k)$ sind daher
 ungeraden Funktionen von $x$.
 
+%
+% Elliptische Integrale als komplexe Funktionen
+%
 \subsubsection{Elliptische Integrale als komplexe Funktionen}
 Die unvollständigen elliptischen Integrale $F(x,k)$, $F(x,k)$ und $\Pi(n,x,k)$
 in Jacobi-Form lassen sich auch für komplexe Argumente interpretieren.
@@ -538,10 +863,14 @@ Die Faktoren, die in den Integranden der unvollständigen elliptischen
 Integrale vorkommen, haben Nullstellen bei $\pm1$, $\pm1/k$ und
 $\pm 1/\sqrt{n}$
 
-XXX Additionstheoreme \\
-XXX Parameterkonventionen \\
+% XXX Additionstheoreme \\
+% XXX Parameterkonventionen \\
 
+%
+% Wertebereich
+%
 \subsubsection{Wertebereich}
+\label{buch:elliptische:subsubsection:wertebereich}
 Die unvollständigen elliptischen Integrale betrachtet als reelle Funktionen
 haben nur positive relle Werte.
 Zum Beispiel nimmt das unvollständige elliptische Integral erster Art
@@ -631,6 +960,9 @@ l({\textstyle\frac{1}{k}})=\int_1^{\frac1{k}}
 \end{equation}
 ausgewertet werden.
 
+%
+% Komplementärmodul
+%
 \subsubsection{Komplementärmodul}
 Im vorangegangen Abschnitt wurde gezeigt, dass der Wertebereicht des
 unvollständigen elliptischen Integrals der ersten Art als komplexe
@@ -734,6 +1066,9 @@ in das blaue.
 \label{buch:elliptisch:fig:rechteck}}
 \end{figure}
 
+%
+% Reelle Argument > 1/k
+%
 \subsubsection{Reelle Argument $> 1/k$}
 Für Argument $x> 1/k$ sind beide Faktoren im Integranden des 
 unvollständigen elliptischen Integrals negativ, das Integral kann
@@ -780,7 +1115,141 @@ F(x,k) = iK(k') - F\biggl(\frac1{kx},k\biggr)
 für die Werte des elliptischen Integrals erster Art für grosse Argumentwerte
 fest.
 
-\subsection{Potenzreihe}
-XXX Potenzreihen \\
-XXX Als hypergeometrische Funktionen \url{https://www.youtube.com/watch?v=j0t1yWrvKmE} \\
-XXX Berechnung mit der Landen-Transformation https://en.wikipedia.org/wiki/Landen%27s_transformation
+%
+% AGM und Berechnung von F(x,k)
+%
+\subsubsection{Berechnung von $F(x,k)$ mit dem arithmetisch-geometrischen
+Mittel\label{buch:elliptisch:subsubection:berechnung-fxk-agm}}
+Wie das vollständige elliptische Integral $K(k)$ kann auch das  
+unvollständige elliptische Integral
+\begin{align*}
+F(x,k)
+&=
+\int_0^x \frac{d\xi}{\sqrt{(1-\xi^2)(1-k^{\prime 2}\xi^2)}}
+=
+\int_0^{\varphi}
+\frac{dt}{\sqrt{1-k^2 \sin^2 t}}
+&&\text{mit $x=\sin\varphi$}
+\\
+&=
+a
+\int_0^{\varphi} \frac{dt}{a^2 \cos^2 t + b^2 \sin^2 t}
+&&\text{mit $k=b/a$}
+\end{align*}
+mit dem arithmetisch-geometrischen Mittel berechnet werden.
+Dazu muss die Substitution
+\eqref{buch:elliptisch:agm:subst}
+verwendet werden, um auch den Winkel $\varphi_1$ zu berechnen.
+Zunächst wird \eqref{buch:elliptisch:agm:subst} nach $x_1=\sin t_1$ 
+aufgelöst.
+Durch Multiplikation mit dem Nenner erhält man mit der Abkürzung
+$x=\sin t$ %und $x_1=\sin t_1$
+die quadratische Gleichung
+\[
+(a-b)x x_1^2
+-
+2ax_1
++
+(a+b)x 
+=
+0,
+\]
+mit der Lösung
+\begin{equation}
+x_1 
+=
+\frac{a-\sqrt{a^2-(a^2-b^2)x^2}}{(a-b)x}.
+\label{buch:elliptisch:unvollstagm:xrek}
+\end{equation}
+Der Algorithmus zur Berechnung des arithmetisch-geometrischen Mittels
+muss daher verallgemeinert werden zu
+\begin{equation}
+\left.
+\begin{aligned}
+a_{n+1} &= \frac{a_n+b_n}2,  &\qquad a_0 &= a
+\\
+b_{n+1} &= \sqrt{a_nb_n},    & b_0 &= b
+\\
+x_{n+1} &= \frac{a_n-\sqrt{a_n^2-(a_n^2-b_n^2)x_n^2}}{(a_n-b_n)x_n}, & x_0 &= x
+\end{aligned}
+\quad
+\right\}
+\label{buch:elliptisch:unvollstagm:rek}
+\end{equation}
+Die Folge $x_n$ konvergiert gegen einen Wert $x_{\infty} = \lim_{n\to\infty} x_n$.
+Der Wert des unvollständigen elliptischen Integrals ist dann der Grenzwert
+\[
+F(x,k)
+=
+\lim_{n\to\infty}
+\frac{\arcsin x_n}{M(a_n,b_n)}
+=
+\frac{\arcsin x_{\infty}}{M(1,\sqrt{1-k^2})}.
+\]
+
+In dieser Form ist die Berechnung allerdings nicht praktisch durchführbar.
+Das Problem ist, dass die Differenz $a_n-b_n$, die in 
+\eqref{buch:elliptisch:unvollstagm:rek}
+im Nenner vorkommt, sehr schnell gegen Null geht.
+Ausserdem ist die Quadratwurzel im Zähler fast gleich gross wie
+$a_n$, was zu Auslöschung und damit ungenauen Resultaten führt.
+\label{buch:elliptisch:agm:ellintegral-stabilitaet}
+
+Eine Möglichkeit, das Problem zu entschärfen, ist, die Rekursionsformel
+nach $\varepsilon = a-b$ zu entwickeln.
+Mit $a+b=2a+\varepsilon$ kann man $b$ aus der Formel elimineren und erhält
+mit Hilfe der binomischen Reihe
+\begin{align*}
+x_1
+&=
+\frac{a}{x\varepsilon}
+\left(1-\sqrt{1-\varepsilon(2a-\varepsilon)x^2/a^2}\right)
+\\
+&=
+\frac{a}{x\varepsilon}
+\biggl(
+1-\sum_{k=0}^\infty
+(-1)^k
+\frac{(\frac12)_k}{k!} \varepsilon^k(2a-\varepsilon)^k\frac{x^{2k}}{a^{2k}}
+\biggr)
+\\
+&=
+\sum_{k=1}^\infty
+(-1)^{k-1} 
+\frac{(\frac12)_k}{k!} \varepsilon^{k-1}(2a-\varepsilon)^k\frac{x^{2k-1}}{a^{2k-1}}
+\\
+&=
+\frac{\frac12}{1!}(2a-\varepsilon)\frac{x}{a}
+-
+\frac{\frac12\cdot(\frac12-1)}{2!}\varepsilon(2a-\varepsilon)^2\frac{x^3}{a^3}
++
+\frac{\frac12\cdot(\frac12-1)(\frac12-2)}{3!}\varepsilon^2(2a-\varepsilon)^3\frac{x^5}{a^5}
+-
+\dots
+\\
+&=
+x\biggl(1-\frac{\varepsilon}{2a}\biggr)
+\biggl(
+1
+-
+\frac{\frac12-1}{2!}\varepsilon(2a-\varepsilon)\frac{x^2}{a^2}
++
+\frac{(\frac12-1)(\frac12-2)}{3!}\varepsilon^2(2a-\varepsilon)^2\frac{x^4}{a^4}
+-
+\dots
+\biggr)
+\\
+&=
+x\biggl(1-\frac{\varepsilon}{2a}\biggr)
+\cdot
+\mathstrut_2F_1\biggl(
+\begin{matrix}-\frac12,1\\2\end{matrix};-\varepsilon(2a-\varepsilon)\frac{x^2}{a^2}
+\biggr).
+\end{align*}
+Diese Form ist wesentlich besser, aber leider kann es bei der numerischen
+Rechnung passieren, dass $\varepsilon < 0$ wird.
+
+%\subsection{Potenzreihe}
+%XXX Potenzreihen \\
+%XXX Als hypergeometrische Funktionen \url{https://www.youtube.com/watch?v=j0t1yWrvKmE} \\
+%XXX Berechnung mit der Landen-Transformation https://en.wikipedia.org/wiki/Landen%27s_transformation

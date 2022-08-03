@@ -18,6 +18,9 @@ die sich durch bekannte Funktionen ausdrücken lassen, es ist also
 nötig, eine neue Familie von speziellen Funktionen zu definieren,
 die Bessel-Funktionen.
 
+%
+% Besselsche Differentialgleichung
+%
 \subsection{Die Besselsche Differentialgleichung}
 % XXX Wo taucht diese Gleichung auf
 Die Besselsche Differentialgleichung ist die Differentialgleichung
@@ -25,16 +28,22 @@ Die Besselsche Differentialgleichung ist die Differentialgleichung
 x^2\frac{d^2y}{dx^2} + x\frac{dy}{dx} + (x^2-\alpha^2)y = 0
 \label{buch:differentialgleichungen:eqn:bessel}
 \end{equation}
+\index{Differentialgleichung!Besselsche}%
+\index{Besselsche Differentialgleichung}%
 zweiter Ordnung
 für eine auf dem Interval $[0,\infty)$ definierte Funktion $y(x)$.
 Der Parameter $\alpha$ ist eine beliebige komplexe Zahl $\alpha\in \mathbb{C}$,
 die Lösungsfunktionen hängen daher von $\alpha$ ab.
 
+%
+% Eigenwertproblem
+%
 \subsubsection{Eigenwertproblem}
 Die Besselsche Differentialgleichung
 \eqref{buch:differentialgleichungen:eqn:bessel}
 kann man auch als Eigenwertproblem für den Bessel-Operator
 \index{Bessel-Operator}%
+\index{Operator!Bessel-}%
 \begin{equation}
 B = x^2\frac{d^2}{dx^2} + x\frac{d}{dx} + x^2
 \label{buch:differentialgleichungen:bessel-operator}
@@ -46,12 +55,15 @@ erfüllt
 \[
 By
 =
-x^2y''+xy+x^2y
+x^2y''+xy'+x^2y
 =\alpha^2 y,
 \]
 ist also eine Eigenfunktion des Bessel-Operators zum Eigenwert
 $\alpha^2$.
 
+%
+% Indexgleichung
+%
 \subsubsection{Indexgleichung}
 Die Besselsche Differentialgleichung ist eine Differentialgleichung
 der Art~\eqref{buch:differentialgleichungen:eqn:dglverallg} mit
@@ -117,9 +129,11 @@ Nur eine Lösung kann man finden, wenn
 \]
 ist.
 
-
-
-\subsection{Bessel-Funktionen erster Art}
+%
+% Bessel-Funktionen erster Art
+%
+\subsection{Bessel-Funktionen erster Art
+\label{buch:differentialgleichungen:subsection:bessel1steart}}
 Für $\alpha \ge 0$ gibt es immer mindestens eine Lösung der Besselgleichung
 als verallgemeinerte Potenzreihe mit $\varrho=\alpha$.
 Die Funktion $q(x)=x^2-\alpha^2$ ist ein Polynom, die einzigen
@@ -138,6 +152,9 @@ Da $F(\varrho+1)\ne 0$ ist, folgt dass $a_1=0$ sein muss.
 
 % Fall n=1 gesondert behandeln
 
+%
+% Der allgemeine Fall
+%
 \subsubsection{Der allgemeine Fall}
 Für die höheren Potenzen $n>1$ wird die Rekursionsformel für die
 Koeffizienten $a_n$ der verallgemeinerten Potenzreihe
@@ -201,10 +218,11 @@ x^\varrho\biggl(
 x^\varrho \sum_{k=0}^\infty
 \frac{1}{(\varrho+1)_k} \frac{(-x^2/4)}{k!}
 =
+x^\varrho
+\cdot
 \mathstrut_0F_1\biggl(;\varrho+1;-\frac{x^2}{4}\biggr)
 \end{align*}
-Falls also $\alpha$ kein ganzzahliges Vielfaches von $\frac12$ ist, finden
-wir zwei Lösungsfunktionen
+Wir finden also zwei Lösungsfunktionen
 \begin{align}
 y_1(x)
 %J_\alpha(x)
@@ -214,8 +232,10 @@ x^{\alpha\phantom{-}}
 \frac{1}{(\alpha+1)_k}
 \frac{(-x^2/4)^k}{k!}
 =
+x^\alpha
+\cdot
 \mathstrut_0F_1\biggl(;\alpha+1;-\frac{x^2}{4}\biggr),
-\label{buch:differentialgleichunge:bessel:erste}
+\label{buch:differentialgleichunge:bessel:eqn:erste}
 \\
 y_2(x)
 %J_{-\alpha}(x)
@@ -223,32 +243,50 @@ y_2(x)
 x^{-\alpha} \sum_{k=0}^\infty
 \frac{1}{(-\alpha+1)_k} \frac{(-x^2/4)^k}{k!}
 =
+x^{-\alpha}
+\cdot
 \mathstrut_0F_1\biggl(;-\alpha+1;-\frac{x^2}{4}\biggr).
-\label{buch:differentialgleichunge:bessel:zweite}
+\label{buch:differentialgleichunge:bessel:eqn:zweite}
 \end{align}
+Man beachte, dass die zweite Lösung für ganzzahliges $\alpha>0$ nicht
+definiert ist.
+Man kann auch direkt nachrechnen, dass diese Funktionen Lösungen
+der Besselschen Differentialgleichung sind.
 
+%
+% Bessel-Funktionen
+%
 \subsubsection{Bessel-Funktionen}
 Da die Besselsche Differentialgleichung linear ist, ist auch
 jede Linearkombination der Funktionen
-\eqref{buch:differentialgleichunge:bessel:erste}
+\eqref{buch:differentialgleichunge:bessel:eqn:erste}
 und
-\eqref{buch:differentialgleichunge:bessel:zweite}
+\eqref{buch:differentialgleichunge:bessel:eqn:zweite}
 eine Lösung.
-Man kann zum Beispiel das Pochhammer-Symbol im Nenner loswerden,
-wenn man im Nenner mit $\Gamma(\alpha+1)$
-multipliziert:
+Satz~\ref{buch:rekursion:gamma:satz:gamma-pochhammer}
+ermöglicht, das Pochhammer-Symbol durch Werte der Gamma-Funktion
+wie in
 \[
-\frac{(1/2)^\alpha}{\Gamma(\alpha+1)}
+(\alpha+1)_n = \frac{\Gamma(\alpha+k+1)}{\Gamma(\alpha+1)}
+\]
+auszudrücken.
+Damit wird
+\begin{align}
 y_1(x)
+&=
+x^\alpha
+\sum_{k=0}^\infty
+\frac{\Gamma(\alpha+1)}{\Gamma(\alpha+k+1)}
+\frac{(-x^2/4)^k}{k!}
 =
+\Gamma(\alpha+1) 2^{\alpha}
 \biggl(\frac{x}{2}\biggr)^\alpha
 \sum_{k=0}^\infty
-\frac{(-1)^k}{k!\,\Gamma(\alpha+k+1)}
-\biggl(\frac{x}{2}\biggr)^{2k}.
-\]
-Dabei haben wir es durch
-Multiplikation mit $(\frac12)^\alpha$ auch geschafft, die Funktion
-einheitlich als Funktion von $x/2$ auszudrücken.
+\frac{(-1)^k}{k!\,\Gamma(\alpha+k+1)} \biggl(\frac{x}{2}\biggr)^{2k}
+\label{buch:differentialgleichungen:bessel:normierungsgleichung}
+\end{align}
+Nur gerade der Faktor $2^\alpha\Gamma(\alpha+1)$ ist von $k$ und $x$ 
+unabhängig, daher ist die folgende Definition sinnvoll:
 
 \begin{definition}
 \label{buch:differentialgleichungen:bessel:definition}
@@ -262,12 +300,34 @@ J_{\alpha}(x)
 \biggl(\frac{x}{2}\biggr)^{2k}
 \]
 heisst {\em Bessel-Funktion erster Art der Ordnung $\alpha$}.
+\index{Bessel-Funktion!erster Art}%
 \end{definition}
 
+Die Bessel-Funktion $J_\alpha(x)$ der Ordnung $\alpha$ unterscheidet sich
+nur durch einen Normierungsfaktor von der Lösung $y_1(x)$.
+Dasselbe gilt für $J_{-\alpha}(x)$ und $y_2(x)$:
+\begin{align*}
+J_{\alpha}(x)
+&=
+\frac{1}{2^\alpha\Gamma(\alpha+1)}
+\cdot
+y_1(x)
+\\
+J_{-\alpha}(x)
+&=
+\frac{1}{2^{-\alpha}\Gamma(-\alpha+1)}
+\cdot
+y_2(x).
+\end{align*}
+
+%
+% Ganzzahlige Ordnung
+%
+\subsubsection{Besselfunktionen ganzzahliger Ordnung}
 Man beachte, dass diese Definition für beliebige ganzzahlige 
 $\alpha$ funktioniert.
 Ist $\alpha=-n<0$, $n\in\mathbb{N}$, dann hat der Nenner Pole 
-an den Stellen $k=0,1,\dots,n-$.
+an den Stellen $k=0,1,\dots,n-1$.
 Die Summe beginnt also erst bei $k=n$ oder
 \begin{align*}
 J_{-n}(x)
@@ -285,7 +345,22 @@ J_{-n}(x)
 (-1)^n
 J_{n}(x).
 \end{align*}
+Insbesondere unterscheiden sich $J_n(x)$ und $J_{-n}(x)$ nur durch
+ein Vorzeichen.
 
+Als lineare Differentialgleichung zweiter Ordnung erwarten wir noch
+eine zweite, linear unabhängige Lösung.
+Diese kann jedoch nicht allein mit der Potenzreihenmethode,
+dazu sind die Methoden der Funktionentheorie nötig.
+Im Abschnitt~\ref{buch:funktionentheorie:subsection:dglsing}
+wird gezeigt, wie dies möglich ist und auf
+Seite~\pageref{buch:funktionentheorie:subsubsection:bessel2art}
+werden die damit zu findenden Bessel-Funktionen 0-ter Ordnung und
+zweiter Art vorgestellt.
+
+%
+% Erzeugende Funktione
+%
 \subsubsection{Erzeugende Funktion}
 \begin{figure}
 \centering
@@ -388,11 +463,15 @@ Die beiden Exponentialreihen sind
 \notag
 \end{align}
 
+%
+% Additionstheorem
+%
 \subsubsection{Additionstheorem}
 Die erzeugende Funktion kann dazu verwendet werden, das Additionstheorem
 für die Besselfunktionen zu beweisen.
 
 \begin{satz}
+\index{Satz!Additionstheorem für Besselfunktionen}%
 Für $l\in\mathbb{Z}$ und $x,y\in\mathbb{R}$ gilt
 \[
 J_l(x+y) = \sum_{m=-\infty}^\infty J_m(x)J_{l-m}(y).
@@ -438,7 +517,9 @@ J_l(x+y) &= \sum_{m=-\infty}^\infty J_m(x)J_{l-m}(y)
 für alle $l$.
 \end{proof}
 
-
+%
+% Der Fall \alpha=0
+% 
 \subsubsection{Der Fall $\alpha=0$}
 Im Fall $\alpha=0$ hat das Indexpolynom eine doppelte Nullstelle, wir
 können daher nur eine Lösung erwarten.
@@ -453,8 +534,10 @@ J_0(x)
 \]
 geschrieben werden kann.
 
-% XXX Zweite Lösung explizit durchrechnen
 
+%
+% Der Fall \alpha=p, p\in \mathbb{N}
+%
 \subsubsection{Der Fall $\alpha=p$, $p\in\mathbb{N}, p > 0$}
 In diesem Fall kann nur die erste
 Lösung~\eqref{buch:differentialgleichunge:bessel:erste}
@@ -467,8 +550,9 @@ J_p(x)
 \frac{(-1)^k}{k!(p+k)!}\biggl(\frac{x}{2}\biggr)^{p+2k}.
 \]
 
-TODO: Lösung für $\alpha=-n$
-
+%
+% Der Fall $\alpha=n+\frac12$
+%
 \subsubsection{Der Fall $\alpha=n+\frac12$, $n\in\mathbb{N}$}
 Obwohl $2\alpha$ eine Ganzzahl ist, sind die beiden Lösungen
 \label{buch:differentialgleichunge:bessel:erste}
@@ -491,7 +575,7 @@ Es ist
 =
 \frac{1}{2^k}\bigl(3\cdot 5\cdot\ldots\cdot (2k+1)\bigr)
 =
-\frac{(2k+1)!}{2^{2k+1}\cdot k!}
+\frac{(2k+1)!}{2^{2k}\cdot k!}
 \\
 \biggl(-\frac12 + 1\biggr)_k
 &=
@@ -508,63 +592,181 @@ Es ist
 =
 \frac{1}{2^k}\bigl(1\cdot 3 \cdot\ldots\cdot (2(k-1)+1)\bigr)
 =
-\frac{(2k-1)!}{2^{2k}\cdot (k-1)!}
+\frac{(2k-1)!}{2^{2k-1}\cdot (k-1)!}
 \end{align*}
 Damit können jetzt die Reihenentwicklungen der Lösung wie folgt
 umgeformt werden
 \begin{align*}
 y_1(x)
 &=
-\sqrt{x}
+x^\alpha
 \sum_{k=0}^\infty
 \frac{1}{(\alpha+1)_k}
 \frac{(-x^2/4)^k}{k!}
 =
 \sqrt{x}
 \sum_{k=0}^\infty
-\frac{2^{2k+1}k!}{(2k+1)!}
+\frac{2^{2k}k!}{(2k+1)!}
 \frac{(-x^2/4)^k}{k!}
 =
 \sqrt{x}
 \sum_{k=0}^\infty
 (-1)^k
-\frac{2\cdot x^{2k}}{(2k+1)!}
+\frac{x^{2k}}{(2k+1)!}
 \\
 &=
-\frac{1}{2\sqrt{x}}
+\frac{1}{\sqrt{x}}
 \sum_{k=0}^\infty
 (-1)^k
 \frac{x^{2k+1}}{(2k+1)!}
 =
-\frac{1}{2\sqrt{x}} \sin x
+\frac{1}{\sqrt{x}} \sin x
 \\
 y_2(x)
 &=
-\frac{1}{\sqrt{x}}
+x^{-\alpha}
 \sum_{k=0}^\infty
-\frac{2^{2k}\cdot (k-1)!}{(2k-1)!}
+\frac{1}{(-\alpha+1)_k}
 \frac{(-x^2/4)^k}{k!}
 =
-\frac{1}{\sqrt{x}}
+x^{-\frac12}
 \sum_{k=0}^\infty
-(-1)^k
-\frac{x^{2k}}{(2k-1)!\cdot k}
+\frac{2^{2k-1}\cdot (k-1)!}{(2k-1)!}
+\frac{(-x^2/4)^k}{k!}
 \\
 &=
-\frac{2}{\sqrt{x}}
+\frac{1}{\sqrt{x}}
 \sum_{k=0}^\infty
 (-1)^k
 \frac{x^{2k}}{(2k-1)!\cdot 2k}
 =
-\frac{2}{\sqrt{x}} \cos x.
+\frac{1}{\sqrt{x}} \cos x.
 \end{align*}
 
-% XXX Nachrechnen, dass diese Funktionen
-% XXX Lösungen der Differentialgleichung sind
+Die Bessel-Funktionen verwenden aber eine andere Normierung. 
+Die Gleichung~\eqref{buch:differentialgleichungen:bessel:normierungsgleichung}
+zeigt, dass die Bessel-Funktionen durch Division
+der Funktion $y_1(x)$ und $y_2(x)$ durch $2^\alpha \Gamma(\alpha+1)$ 
+erhalten werden können.
+Dies ergibt
+\begin{equation*}
+\renewcommand{\arraycolsep}{1pt}
+\begin{array}{rclclclcl}
+J_{\frac12}(x)
+&=&
+\displaystyle\frac{1}{2^{\frac12}\Gamma(\frac12+1)}
+y_1(x)
+&=&
+\displaystyle\frac{1}{2^{\frac12}\frac12\Gamma(\frac12)}
+y_1(x)
+&=&
+\displaystyle\frac{\sqrt{2}}{\Gamma(\frac12)}
+y_1(x)
+&=&
+\displaystyle\frac{1}{\Gamma(\frac12)}
+\sqrt{ \frac{2}{x}}
+\sin x,
+\\
+J_{-\frac12}(x)
+&=&
+\displaystyle\frac{1}{2^{-\frac12}\Gamma(-\frac12+1)}
+y_2(x)
+&=&
+\displaystyle\frac{2^{\frac12}}{\Gamma(\frac12)}
+y_2(x)
+&=&
+\displaystyle\frac{\sqrt{2}}{\Gamma(\frac12)}
+y_2(x)
+&=&
+\displaystyle\frac{1}{\Gamma(\frac12)}
+\sqrt{\frac{2}{x}}
+\cos x.
+\end{array}
+\end{equation*}
+Wegen $\Gamma(\frac12)=\sqrt{\pi}$ sind die
+halbzahligen Bessel-Funktionen daher
+\begin{align*}
+J_{\frac12}(x)
+&=
+\sqrt{\frac{2}{\pi x}} \sin x
+=
+\sqrt{\frac{2}{\pi}} x^{-\frac12}\sin x
+&
+&\text{und}&
+J_{-\frac12}(x)
+&=
+\sqrt{\frac{2}{\pi x}} \cos x
+=
+\sqrt{\frac{2}{\pi}} x^{-\frac12}\cos x.
+\end{align*}
 
-\subsection{Analytische Fortsetzung und Bessel-Funktionen zweiter Art}
-
-
-
-
+%
+% Direkte Verifikation der Lösungen
+%
+\subsubsection{Direkte Verifikation der Lösungen für $\alpha=\pm\frac12$}
+Tatsächlich führt die Anwendung des Bessel-Operators auf die beiden
+Funktionen auf
+\begin{align*}
+\sqrt{\frac{\pi}2}
+BJ_{\frac12}(x)
+&=
+\sqrt{\frac{\pi}2}
+\biggl(
+x^2J_{\frac12}''(x) + xJ_{\frac12}'(x) + x^2J_{\frac12}(x)
+\biggr)
+\\
+&=
+x^2(x^{-\frac12}\sin x)''
++
+x(x^{-\frac12}\sin x)'
++
+x^2(x^{-\frac12}\sin x)
+\\
+&=
+x^2(
+x^{-{\textstyle\frac12}}\cos x
+-{\textstyle\frac12}x^{-\frac32}\sin x
+)'
++
+x(
+x^{-\frac12}\cos x
+-{\textstyle\frac12}x^{-\frac32}\sin x
+)
++
+x^{\frac32}\sin x
+\\
+&=
+x^2(
+-x^{-\frac12}\sin x
+-{\textstyle\frac12}x^{-\frac32}\cos x
+-{\textstyle\frac12}x^{-\frac32}\cos x
++{\textstyle\frac{3}{4}}x^{-\frac52}\sin x
+)
++
+x^{\frac12}\cos x
++
+x^{-\frac12}(x-{\textstyle\frac12})\sin x
+\\
+&=
+(
+-x^{\frac32}
++{\textstyle\frac34}x^{-\frac12}
++x^{\frac32}
+-{\textstyle\frac12}x^{-\frac12}
+)
+\sin x
+=
+\frac14x^{-\frac12}\sin x
+=
+\frac14
+\sqrt{\frac{\pi}2}
+J_{\frac12}(x)
+\\
+BJ_{\frac12}(x)
+&=
+\biggl(\frac12\biggr)^2 J_{\frac12}(x).
+\end{align*}
+Dies zeigt, dass $J_{\frac12}(x)$ tatsächlich eine Eigenfunktion
+des Bessel-Operators zum Eigenwert $\alpha^2 = \frac14$ ist.
+Analog kann man die Lösung $y_2(x)$ für $-\frac12$ verifizieren.
 

@@ -17,6 +17,11 @@ der Unbekannten und der Exponentialfunktion, also $xe^x$ auftreten.
 Die Lambert $W$-Funktion ermöglicht, die Lösungen solcher Gleichungen
 darzustellen.
 
+Als Anwendung der Theorie der Lambert-$W$-Funktion wird in
+Kapitel~\ref{chapter:lambertw}
+eine Parametrisierung einer Verfolgungskurve mit Hilfe von $W(x)$
+bestimmt.
+
 %
 % Die Funktion xe^x
 %
@@ -57,8 +62,10 @@ invertierbar.
 \begin{definition}
 Die inverse Funktion der Funktion $[-1,\infty)\to[-1/e,\infty):x\mapsto xe^x=y$
 heisst die Lambert $W$-Funktion, geschrieben $W(y)$ oder $W_0(y)$.
+\index{Lambert-W-Funktion@Lambert-$W$-Funktion!Definition}%
 Die inverse Funktion der Funktion $(-\infty,-1)\to[-1/e,0)$ wird mit
 $W_{-1}$ bezeichnet.
+\index{Lambert-W-Funktion@Lambert-$W$-Funktion!Graph}%
 \end{definition}
 
 \begin{figure}
@@ -78,7 +85,11 @@ erfüllen sie
 W(x) e^{W(x)} = x.
 \]
 
+%
+% Ableitung der W-Funktion
+%
 \subsubsection{Ableitung der Funktionen $W(x)$ und $W_{-1}(x)$}
+\index{Lambert-W-Funktion@Lambert-$W$-Funktion!Ableitung}
 Die Umkehrfunktion $f^{-1}(y)$ einer Funktion $f(x)$ erfüllt
 \(
 f^{-1}(f(x)) = x.
@@ -204,7 +215,12 @@ P_{n+1}(t)
 \]
 mit $P_1(t)=1$.
 
+%
+% Differentialgleichung und Stammfunktion
+%
 \subsubsection{Differentialgleichung und Stammfunktion}
+\index{Lambert-W-Funktion@Lambert-$W$-Funktion!Differentialgleichung}%
+\index{Differentialgleichung!der Lambert-$W$-Funktion}%
 Die Ableitungsformel \eqref{buch:lambert:eqn:ableitung} bedeutet auch,
 dass die $W$-Funktion eine Lösung der Differentialgleichung
 \[
@@ -223,6 +239,7 @@ Diese Gleichung kann separiert werden in
 \]
 
 Eine Stammfunktion
+\index{Lambert-W-Funktion@Lambert-$W$-Funktion!Stammfunktion}%
 \[
 F(y)
 =
@@ -260,6 +277,8 @@ für die Stammfunktion von $W(y)$.
 \label{buch:subsection:loesung-von-exponentialgleichungen}}
 Die Lambert $W$-Funktion kann zur Lösung von Exponentialgleichungen
 verwendet werden.
+\index{Lambert-W-Funktion@Lambert-$W$-Funktion!Exponentialgleichungen}%
+\index{Exponentialgleichungen}%
 
 \begin{aufgabe}
 Gesucht ist eine Lösung der Gleichung
@@ -319,7 +338,10 @@ W(-cbe^{ac})
 Die Gleichung hat eine Lösung wenn $-cbe^{ac} > -1/e$ ist.
 \end{proof}
 
-\subsection{Numerische Berechnung
+%
+% Numerische Berechnung
+%
+\subsection{Numerische Berechnung der Lambert-$W$-Funktion
 \label{buch:subsection:lambertberechnung}}
 Die $W$-Funktionen sind nur dann nützlich, wenn man sie effizient
 berechnen kann.
@@ -327,13 +349,19 @@ Leider ist sie nicht Teil der C- oder C++-Standardbibliothek,
 man muss sich also mit einer spezialisierten Bibliothek oder einer
 eigenen Implementation behelfen.
 
+%
+% Berechnung mit dem Newton-Algorithmus
+%
 \subsubsection{Berechnung mit dem Newton-Algorithmus}
 Für $x>-1$ ist die Funktion $W(x)$ ist die Umkehrfunktion der
 streng monoton wachsenden und konvexen Funktion $f(x)=xe^x$.
 In dieser Situation konvergiert der Newton-Algorithmus zur Bestimmung
+\index{Newton-Algorithmus}%
+\index{Algorithmus!Newton-}%
 der Nullstelle $x=W_0(y)$ von $f(x)-y$ für alle Werte von $y>-1/e$.
 Für $W_{-1}(y)$ ist die Situation etwas komplizierter, da für
 $x<-1$ die Funktion $f(x)$ nicht konvex ist.
+\index{Lambert-W-Funktion@Lambert-$W$-Funktion!Newton-Algorithmus}
 
 Ausgehend vom Startwert $x_0$ ist die Iterationsfolge definiert
 durch
@@ -361,12 +389,7 @@ bestimmt werden.
 \subsubsection{GNU scientific library}
 Die Lambert $W$-Funktionen $W_0(x)$ und $W_{-1}(x)$ sind auch in der
 GNU scientific library \cite{buch:library:gsl} implementiert.
-
-%
-% Verfolgungskurven
-%
-\subsection{Verfolgungskurven
-\label{buch:subsection:verfolgungskurven}}
+\index{GNU scientifi library}%
 
 
 

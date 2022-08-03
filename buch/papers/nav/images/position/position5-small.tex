@@ -1,0 +1,50 @@
+%
+% position5-small.tex
+%
+% (c) 2021 Prof Dr Andreas Müller, OST Ostschweizer Fachhochschule
+%
+\documentclass[tikz]{standalone}
+\usepackage{times}
+\usepackage{amsmath}
+\usepackage{txfonts}
+\usepackage[utf8]{inputenc}
+\usepackage{graphics}
+\usetikzlibrary{arrows,intersections,math}
+\usepackage{ifthen}
+\begin{document}
+
+\input{common-small.tex}
+
+\newboolean{showgrid}
+\setboolean{showgrid}{false}
+\def\breite{4}
+\def\hoehe{4}
+
+\begin{tikzpicture}[>=latex,thick,scale=0.625]
+
+% Povray Bild
+\node at (0,0) {\includegraphics[width=5cm]{position5.jpg}};
+
+% Gitter
+\ifthenelse{\boolean{showgrid}}{
+\draw[step=0.1,line width=0.1pt] (-\breite,-\hoehe) grid (\breite, \hoehe);
+\draw[step=0.5,line width=0.4pt] (-\breite,-\hoehe) grid (\breite, \hoehe);
+\draw                            (-\breite,-\hoehe) grid (\breite, \hoehe);
+\fill (0,0) circle[radius=0.05];
+}{}
+
+\labelA
+\labelC
+\labelP
+
+\labelb
+\labell
+\labelhc
+
+\labelomegarechts
+\labelgammatwo
+
+\end{tikzpicture}
+
+\end{document}
+

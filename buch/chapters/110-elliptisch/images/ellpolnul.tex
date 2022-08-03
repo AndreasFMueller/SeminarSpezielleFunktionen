@@ -1,0 +1,69 @@
+%
+% ellpolnul.tex -- template for standalon tikz images
+%
+% (c) 2021 Prof Dr Andreas Müller, OST Ostschweizer Fachhochschule
+%
+\documentclass[tikz]{standalone}
+\usepackage{amsmath}
+\usepackage{times}
+\usepackage{txfonts}
+\usepackage{pgfplots}
+\usepackage{csvsimple}
+\usetikzlibrary{arrows,intersections,math,calc}
+\begin{document}
+\input{ellcommon.tex}
+\def\skala{1}
+\begin{tikzpicture}[>=latex,thick,scale=\skala]
+
+\input rechteckpfade3.tex
+
+\pgfmathparse{2/\xmax}
+\xdef\dx{\pgfmathresult}
+\xdef\dy{\dx}
+
+\begin{scope}[xshift=-1cm,yshift=-1cm]
+\clip (0,0) rectangle (2,2);
+\netz{0.4pt}
+\draw[line width=0.4pt] (-1,0) -- (1,0);
+\end{scope}
+\fill[color=white,opacity=0.7] (-1,-1) rectangle (1,1);
+\draw (-1,-1) rectangle (1,1);
+\node at (-1,-1) [below left] {$0$};
+\node at (1,-1) [below right] {$K$};
+\node at (1,1) [above right] {$K+iK'$};
+\node at (-1,1) [above left] {$iK'$};
+\node at (0,0) {$u$};
+
+\begin{scope}[xshift=4cm]
+\rechteck{rot}{\operatorname{sn}(u,k)}
+\nullstelle{(-1,-1)}{rot}
+\pol{(-1,1)}{rot}
+\node at (-1,-1) {$0$};
+\node at (1,-1) {$1$};
+\node at (1,1) {$\frac1k$};
+\node at (-1,1) {$\infty$};
+\end{scope}
+
+\begin{scope}[xshift=7cm]
+\rechteck{blau}{\operatorname{cn}(u,k)}
+\nullstelle{(1,-1)}{blau}
+\pol{(-1,1)}{blau}
+\node at (-1,-1) {$1$};
+\node at (1,-1) {$0$};
+\node at (1,1) {$\frac{k'}{ik}$};
+\node at (-1,1) {$\infty$};
+\end{scope}
+
+\begin{scope}[xshift=10cm]
+\rechteck{gruen}{\operatorname{dn}(u,k)}
+\nullstelle{(1,1)}{gruen}
+\pol{(-1,1)}{gruen}
+\node at (-1,-1) {$1$};
+\node at (1,-1) {$k'$};
+\node at (1,1) {$0$};
+\node at (-1,1) {$\infty$};
+\end{scope}
+
+\end{tikzpicture}
+\end{document}
+

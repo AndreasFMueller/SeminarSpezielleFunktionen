@@ -1,0 +1,74 @@
+%
+% Der Funktionsbegriff
+%
+\subsection*{Der mathematische Funktionsbegriff}
+Der moderne mathematische Funktionsbegriff ist die Krönungn einer
+langen Entwicklung.
+Erste Ansätze sind in der Darstellung voneinander abhängiger Grössen
+in einem Koordinatensystem durch Nikolaus von Oresme im 14.~Jahrhundert
+zu erkennen.
+Dieser Ansatz, Funktionen einfach nur als Kurven zu betrachten,
+war bis ins 17.~Jahrhundert verbreitet.
+Der Begriff {\em Funktion} selbst geht wahrscheinlich auf Leibniz
+zurück.
+
+Euler verwendete den Begriff oft austauschbar für zwei im Prinzip
+verschiedene Vorstellungen.
+Einerseits sah er jeden ``analytischen Ausdruck'' in einer Variablen
+$x$ als eine Funktion an, andererseits betrachtete er eine in einem
+Koordinatensystem freihändig gezeichnete Kurve als eine Funktion.
+Heute unterscheiden wir zwischen der Funktion, also der Zuordnung
+von $x$ zu den Funktionswerten $f(x)$ und dem Graphen, also der
+von Paaren $(x,f(x))$ gebildeten Kurve in einem Koordinatensystem.
+Nach letzterer Vorstellung ist auch die Wurzelfunktion,
+die Umkehrfunktion der Quadratfunktion, $f(x)=x^2$ eine Funktion.
+Da zu jedem Argument zwei verschiedene Werte $\pm\sqrt{x}$
+für die Wurzel möglich sind, lässt sich diese ``Funktion'' nicht
+durch einen ``analytischen Ausdruck'' beschrieben.
+Euler beschrieb diese Situation als {\em mehrdeutige Funktion}.
+
+Was ``analytische Ausdrücke'' alles umfassen sollen, ist ebenfalls
+nicht scharf definiert.
+Dahinter verbergen sich viele versteckte Annahmen, zum Beispiel
+dass Funktionen automatisch stetig und möglicherweise sogar
+differenzierbar sind.
+Für Lagrange waren nur Funktionen akzeptabel, die durch Potenzreihen
+definiert waren, solche Funktionen nennen wir heute {\em analytisch}.
+Die Wahl von Potenzreihen zur Definition von Funktion ist einerseits
+willkürlich, warum nicht Linearkombinationen von trigonometrischen
+Funktionen?
+Andererseits gibt es beliebig oft differenzierbare Funktionen,
+deren Potenzreihe nicht gegen die Funktion konvergiert.
+
+Im 19.~Jahrhundert erfuhr die Analysis eine Reformierung.
+Ausgehend vom nun präzis gefassten Grenzwertbegriff wurden Stetigkeit
+und Differenzierbarkeit als eigenständige Eigenschaften von
+Funktionen erkannt.
+Eine Funktion war jetzt nur noch eine eindeutige Zuordnung
+$x\mapsto f(x)$.
+Stetigkeit ist die Eigenschaft, dass der Grenzwert in einem
+Punkt des Definitionsbereichs existiert und mit dem Funktionswert
+in diesem Punkt übereinstimmt. 
+Später wurden auch Differenzierbarkeit und Integrierbarkeit als
+Eigenschaften von Funktionen erkannt, die vorhanden sein können,
+aber nicht müssen.
+
+Der nun präzis gefasste Funktionsbegriff ist nur selten direkt anwendbar.
+In der Physik treten Funktionen als Lösungen von Differentialgleichungen
+auf. 
+Sie sind also immer mindestens differenzierbar, haben aber typischerweise
+noch viele weitere Eigenschaften.
+So sind zum Beispiel die Lösungen der Differentialgleichung
+$y''=-n^2 y$ auf dem Intervall $[-\pi,\pi]$ die Funktionen
+$\sin(nx)$ und $\cos(nx)$ für $n\in\mathbb{N}$.
+Wie Fourier herausgefunden hat, lässt sich jede stetige $2\pi$-periodische 
+Funktion als Linearkombination dieser Funktionen approximieren.
+
+Eine Familie von Differentialgleichungen, die durch wenige Parameter
+charakterisiert ist, führt auch zu einer Familie von Lösungsfunktionen, die
+sich durch die gleichen Parameter beschreiben lassen.
+Sie ist unmittelbar nützlich, da sie jedes Anwendungsproblem löst,
+welches durch diese Differentialgleichung modelliert werden kann.
+In diesem Sinne ist eine solche spezielle Funktionenfamilie interessanter
+als eine beliebige differenzierbare Funktion.
+

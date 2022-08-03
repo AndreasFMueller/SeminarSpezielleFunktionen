@@ -8,6 +8,7 @@ CHAPTERFILES += 							\
 	chapters/010-potenzen/loesbarkeit.tex				\
 	chapters/010-potenzen/polynome.tex				\
 	chapters/010-potenzen/tschebyscheff.tex				\
+	chapters/010-potenzen/rational.tex				\
 	chapters/010-potenzen/potenzreihen.tex				\
 	chapters/010-potenzen/uebungsaufgaben/101.tex			\
 	chapters/010-potenzen/uebungsaufgaben/102.tex			\

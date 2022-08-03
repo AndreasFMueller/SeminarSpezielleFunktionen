@@ -5,6 +5,8 @@
 //
 #include "common.inc"
 
+kugel(kugelfarbe)
+
 union {
 	seite(A, B, fein)
 	seite(A, C, fein)
