@@ -7,7 +7,7 @@
 \label{lambertw:section:Was_sind_Verfolgungskurven}}
 \rhead{Was sind Verfolgungskurven?}
 %
-Verfolgungskurven tauchen oft auf bei Fragen wie "Welchen Pfad begeht ein Hund während er einer Katze nachrennt?".
+Verfolgungskurven tauchen oft auf bei Fragen wie ``Welchen Pfad begeht ein Hund während er einer Katze nachrennt?''.
 Ein solches Problem hat im Kern immer ein Verfolger und sein Ziel.
 Der Verfolger verfolgt sein Ziel, das versucht zu entkommen.
 Der Pfad, den der Verfolger während der Verfolgung begeht, wird Verfolgungskurve genannt.
@@ -27,15 +27,15 @@ Daraus folgt, dass eine Strategie zwei dieser drei Parameter festlegen muss, um 
 %
 \begin{table}
     \centering
-    \begin{tabular}{|>{$}c<{$}|>{$}c<{$}|>{$}c<{$}|>{$}c<{$}|}
+    \begin{tabular}{|>{$}l<{$}|>{$}c<{$}|>{$}c<{$}|>{$}c<{$}|}
         \hline
         \text{Strategie}&\text{Geschwindigkeit}&\text{Abstand}&\text{Richtung}\\
         \hline
         \text{Jagd}
-        & \text{konstant} & \text{-} & \text{direkt auf Ziel hinzu}\\
+        & \text{konstant} & \text{-} & \text{direkt auf Ziel zu}\\
         
         \text{Beschattung}
-        & \text{-} & \text{konstant} & \text{direkt auf Ziel hinzu}\\
+        & \text{-} & \text{konstant} & \text{direkt auf Ziel zu}\\
         
         \text{Vorhalt}
         & \text{konstant} & \text{-} & \text{etwas voraus Zielen}\\
@@ -59,7 +59,7 @@ Der Verfolger und sein Ziel werden als Punkte $V$ und $Z$ modelliert.
 In der Abbildung \ref{lambertw:grafic:pursuerDGL2} ist das Problem dargestellt,
 wobei $v$ der Ortsvektor des Verfolgers, $z$ der Ortsvektor des Ziels und $\dot{v}$ der Geschwindigkeitsvektor des Verfolgers ist.
 Der Geschwindigkeitsvektor entspricht dem Richtungsvektors des Verfolgers.
-Die konstante Geschwindigkeit kann man mit der Gleichung
+Die konstante Geschwindigkeit kann man mit
 %
 \begin{equation}
     |\dot{v}|
@@ -67,38 +67,53 @@ Die konstante Geschwindigkeit kann man mit der Gleichung
     \text{,}\quad A\in\mathbb{R}^+
 \end{equation}
 %
-darstellen. Der Geschwindigkeitsvektor kann mit der Gleichung
-%
+darstellen. Der Geschwindigkeitsvektor muss auf das Ziel zeigen, woraus folgt
 \begin{equation}
-    \frac{z-v}{|z-v|}\cdot|\dot{v}|
-    =
     \dot{v}
+    \quad||\quad
+    z-v
+    \text{.}
+\end{equation}
+Um den Richtungsvektor zu konstruieren kann der Einheitsvektor parallel zu $z-v$ um $\dot{v}$ gestreckt werden, was zu
+\begin{equation}
+    \dot{v}
+    =
+    |\dot{v}|\cdot e_{z-v}
+\end{equation}
+führt. Dies kann noch ausgeschrieben werden zu
+\begin{equation}
+    \dot{v}
+    =
+    |\dot{v}|\cdot\frac{z-v}{|z-v|}
+    \text{.}
 \end{equation}
 %
-beschrieben werden, wenn die Jagdstrategie verwendet wird.
-Die Differenz der Ortsvektoren $v$ und $z$ ist ein Vektor der vom Punkt $V$ auf $Z$ zeigt.
-Da die Länge dieses Vektors beliebig sein kann, wird durch Division durch den Betrag, ein Einheitsvektor erzeugt.
 Aus dem Verfolgungsproblem ist auch ersichtlich, dass die Punkte $V$ und $Z$ nicht am gleichen Ort starten und so eine Division durch Null ausgeschlossen ist.
 Wenn die Punkte $V$ und $Z$ trotzdem am gleichen Ort starten, ist die Lösung trivial.
-%
-Nun wird die Gleichung mit $\dot{v}$ skalar multipliziert, um das Gleichungssystem von zwei auf eine Gleichung zu reduzieren. Somit ergeben sich
+
+Nun wird die Gleichung mit $\dot{v}$ skalar multipliziert, um das Gleichungssystem von zwei auf eine Gleichung zu reduzieren. Somit ergibt sich
 \begin{align}
     \frac{z-v}{|z-v|}\cdot|\dot{v}|\cdot\dot{v}
     &=
     |\dot{v}|^2
-    \\
+\end{align}
+was algebraisch zu
+\begin{align}
     \label{lambertw:pursuerDGL}
     \frac{z-v}{|z-v|}\cdot \frac{\dot{v}}{|\dot{v}|}
     &=
-    1 \text{.}
+    1
 \end{align}
+umgeformt werden kann.
 Die Lösungen dieser Differentialgleichung sind die gesuchten Verfolgungskurven, insofern der Verfolger die Jagdstrategie verwendet.
 %
 \subsection{Ziel
 \label{lambertw:subsection:Ziel}}
 Als nächstes gehen wir auf das Ziel ein.
 Wie der Verfolger wird auch unser Ziel sich strikt an eine Fluchtstrategie halten, welche von Anfang an bekannt ist.
-Diese Strategie kann als Parameterdarstellung der Position nach der Zeit beschrieben werden.
+Als Strategie eignet sich eine definierte Fluchtkurve oder ähnlich wie beim Verfolger ein Verhalten, das vom Verfolger abhängig ist.
+Ein vom Verfolger abhängiges Verhalten führt zu einem gekoppeltem DGL-System, das schwierig zu lösen sein wird.
+Eine definierte Fluchtkurve kann mit einer Parameterdarstellung der Position nach der Zeit beschrieben werden.
 Zum Beispiel könnte ein Ziel auf einer Geraden flüchten, welches auf einer Ebene mit der Parametrisierung
 %
 \begin{equation}
