@@ -39,8 +39,8 @@ plt.plot(0, ymin, 'bo', markersize=10)
 plt.plot([0, xmin], [ymin, ymin], 'k--')
 #plt.xlim(-0.1, 1)
 #plt.ylim(1, 2)
-#plt.ylabel("y")
-#plt.xlabel("x")
+plt.ylabel("y")
+plt.xlabel("x")
 plt.grid(True)
 plt.quiver(xmin, ymin, -0.2, 0, scale=1)
 
@@ -53,6 +53,6 @@ plt.rcParams.update({
     "font.serif": ["New Century Schoolbook"],
 })
 
-plt.text(xmin-0.11, ymin-0.12, r"$\dot{v}$", size=30)
-plt.text(xmin-0.02, ymin+0.05, r"$V$", size=30, c='b')
-plt.text(0.02, ymin+0.05, r"$Z$", size=30, c='b')
+plt.text(xmin-0.11, ymin-0.08, r"$\dot{v}$", size=20)
+plt.text(xmin-0.02, ymin+0.05, r"$V$", size=20, c='b')
+plt.text(0.02, ymin+0.05, r"$Z$", size=20, c='b')

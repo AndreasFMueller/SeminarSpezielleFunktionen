@@ -34,8 +34,8 @@ ax.quiver(X, Y, U, W, angles='xy', scale_units='xy', scale=1, headwidth=5, headl
 
 ax.plot([V[0], (VZ+V)[0]], [V[1], (VZ+V)[1]], 'k--')
 ax.plot(np.vstack([V, Z])[:, 0], np.vstack([V, Z])[:,1], 'bo', markersize=10)
-ax.set_xlabel("x")
-ax.set_ylabel("y")
+ax.set_xlabel("x", size=20)
+ax.set_ylabel("y", size=20)
 
 ax.text(2.5, 4.5, "Visierlinie", size=20, rotation=10)
 

@@ -30,7 +30,7 @@ Die Parametrisierung von $z(t)$ ist im Beispiel definiert als
     \left( \begin{array}{c} 0 \\ t \end{array} \right)\text{.}
 \end{equation}
 %
-Die Parametrisierung von $v(t)$ ist von den Startbedingungen abhängig. Deshalb wird \eqref{bedingung_treffer} jeweils für die unterschiedlichen Startbedingungen separat analysiert.
+Die Parametrisierung von $v(t)$ ist von den Startbedingungen abhängig. Deshalb wird die Bedingung \eqref{bedingung_treffer} jeweils für die unterschiedlichen Startbedingungen separat analysiert.
 %
 \subsection{Anfangsbedingung im ersten Quadranten}
 %
@@ -41,7 +41,7 @@ Wenn der Verfolger im ersten Quadranten startet, dann kann $v(t)$ mit den Gleich
     x_0\cdot\sqrt{\frac{1}{\chi}W\left(\chi\cdot \exp\left( \chi-\frac{4t}{r_0-y_0}\right) \right)} \\
     y(t)
     &=
-    \frac{1}{4}\left(\left(y_0+r_0\right)\left(\frac{x(t)}{x_0}\right)^2+\left(r_0-y_0\right)\operatorname{ln}\left(\left(\frac{x(t)}{x_0}\right)^2\right)-r_0+3y_0\right)\\
+    \frac{1}{4}\left(\left(y_0+r_0\right)\left(\frac{x(t)}{x_0}\right)^2+\left(y_0-r_0\right)\operatorname{ln}\left(\left(\frac{x(t)}{x_0}\right)^2\right)-r_0+3y_0\right)\\
     \chi
     &=
     \frac{r_0+y_0}{r_0-y_0}, \quad
@@ -54,7 +54,7 @@ Wenn der Verfolger im ersten Quadranten startet, dann kann $v(t)$ mit den Gleich
     \text{.}
 \end{align}
 %
-Der Folger ist durch
+Der Verfolger ist durch
 \begin{equation}
     v(t)
     =
@@ -76,31 +76,37 @@ Daher wird das Problem in zwei einzelne Teilprobleme zerlegt, wodurch die Beding
     &=
     y(t)
     =
-    \frac{1}{4}\left(\left(y_0+r_0\right)\left(\frac{x(t)}{x_0}\right)^2+\left(r_0-y_0\right)\operatorname{ln}\left(\left(\frac{x(t)}{x_0}\right)^2\right)-r_0+3y_0\right)\text{,}
+    \frac{1}{4}\left(\left(y_0+r_0\right)\left(\frac{x(t)}{x_0}\right)^2+\left(y_0-r_0\right)\operatorname{ln}\left(\left(\frac{x(t)}{x_0}\right)^2\right)-r_0+3y_0\right)\text{,}
 \end{align}
 %
-welche Beide gleichzeitig erfüllt sein müssen, damit das Ziel erreicht wurde.
+welche beide gleichzeitig erfüllt sein müssen, damit das Ziel erreicht wurde.
 Zuerst wird die Bedingung der $x$-Koordinate betrachtet.
-Da $x_0 \neq 0$ und $\chi \neq 0$ mit
+Da $x_0 \neq 0$ und $\chi \neq 0$ kann
 \begin{equation}
     0
     =
     x_0\sqrt{\frac{1}{\chi}W\left(\chi\cdot \exp\left( \chi-\frac{4t}{r_0-y_0}\right)\right)}
 \end{equation}
-ist diese Bedingung genau dann erfüllt, wenn
+algebraisch zu
 \begin{equation}
     0
     =
     W\left(\chi\cdot \exp\left( \chi-\frac{4t}{r_0-y_0}\right)\right)
+\end{equation}
+umgeformt werden.
+Es ist zu beachten, dass $W(x)$ die Lambert W-Funktion ist, welche im Kapitel  \eqref{buch:section:lambertw} behandelt wurde.
+Diese Gleichung entspricht genau den Nullstellen der Lambert W-Funktion. Mit der einzigen Nullstelle der Lambert W-Funktion bei
+\begin{equation*}
+    W(0)=0
+    \text{,}
+\end{equation*}
+kann die Bedingung weiter vereinfacht werden zu
+\begin{equation}
+    0
+    =
+    \chi\cdot \exp\left( \chi-\frac{4t}{r_0-y_0}\right)
     \text{.}
 \end{equation}
-%
-Es ist zu beachten, dass $W(x)$ die Lambert W-Funktion ist, welche im Kapitel  \eqref{buch:section:lambertw} behandelt wurde.
-Diese Gleichung entspricht genau den Nullstellen der Lambert W-Funktion. Da die Lambert W-Funktion genau eine Nullstelle bei
-\begin{equation}
-    W(0)=0
-\end{equation}
-%
 Da $\chi\neq0$ und die Exponentialfunktion nie null sein kann, ist diese Bedingung unmöglich zu erfüllen.
 Beim Grenzwert für $t\rightarrow\infty$ geht die Exponentialfunktion gegen null.
 Dies nützt nicht viel, da unendlich viel Zeit vergehen müsste, damit ein Einholen möglich wäre.
@@ -203,16 +209,18 @@ Durch quadrieren verschwindet die Wurzel des Betrages, womit
 %
 \begin{equation}
     |v-z|^2<a_{\text{min}}^2 \text{,}\quad a_{\text{min}}\in \mathbb{R}^+
+    \label{lambertw:minimumAbstand}
 \end{equation}
 %
 die neue Bedingung ist.
 Da sowohl der Betrag als auch $a_{\text{min}}$ grösser null sind, bleibt die Aussage unverändert.
 %
-\subsection{verleitende/trügerisch/verführerisch Intuition}
+\subsection{trügerische Intuition}%verleitende/trügerische/verführerisch
 In der Grafik \ref{lambertw:grafic:intuition} ist eine Mögliche Verfolgungskurve dargestellt, wobei für die Startbedingung der erste-Quadrant verwendet wurde.
-Als erste Intuition bietet sich der tiefste Punkt der Verfolgungskurve an, bei dem der y-Anteil des Richtungsvektors null entspricht.
-Wenn sich der Verfolger an diesem Punkt befindet, muss zwingend das Ziel auf gleicher Höhe sein.
-Es lässt sich vermuten, dass bei diesem Punkt der Abstand zum Ziel minimal sein könnte.
+Als erste Intuition für den Punkt bei dem $|v-z|$ minimal ist bietet sich der tiefste Punkt der Verfolgungskurve an, bei dem der y-Anteil des Richtungsvektors null entspricht.
+Es kann argumentiert werden, dass weil die Geschwindigkeiten gleich gross sind und $\dot{v}$ sich aus einem $y$- als auch einem $x$-Anteil zusammensetzt und $\dot{z}$ nur ein $y$-Anteil besitzt, der Abstand nur grösser werden kann, wenn $e_y\cdot z>e_y\cdot v$.
+Aus diesem Argument würde folgen, dass beim tiefsten Punkt der Verfolgungskurve im Beispiel den minimalen Abstand befindet.
+%
 \begin{figure}
 	\centering
 	\includegraphics[scale=0.4]{./papers/lambertw/Bilder/Intuition.pdf}
@@ -220,7 +228,8 @@ Es lässt sich vermuten, dass bei diesem Punkt der Abstand zum Ziel minimal sein
 	\label{lambertw:grafic:intuition}
 \end{figure}
 %
-Dies kann leicht überprüft werden, indem wir lokal alle relevanten benachbarten Punkte betrachten und das Vorzeichen der Änderung des Abstandes prüfen.
+
+Dieses Argument kann leicht überprüft werden, indem lokal alle relevanten benachbarten Punkte betrachtet und das Vorzeichen der Änderung des Abstandes überprüft wird.
 Dafür wird ein Ausdruck benötigt, der den Abstand und die benachbarten Punkte beschreibt.
 Der Richtungsvektor wird allgemein mit dem Winkel $\alpha \in[ 0, 2\pi)$
 Die Ortsvektoren der Punkte können wiederum mit
@@ -280,5 +289,61 @@ unterteilt werden.
 Von Interesse ist lediglich das Intervall $\alpha\in\left( \frac{\pi}{2}, \frac{3\pi}{2}\right)$, da der Verfolger sich stets in die negative $y$-Richtung bewegt.
 In diesem Intervall ist die Ableitung negativ, woraus folgt, dass jeglicher unmittelbar benachbarte Punkt, den der Verfolger als nächstes begehen könnte, stets näher am Ziel ist als zuvor.
 Dies bedeutet, dass der Scheitelpunkt der Verfolgungskurve nie ein lokales Minimum bezüglich des Abstandes sein kann.
+%
+\subsection{Wo ist der Abstand minimal?}
+Damit der Verfolger das Ziel erreicht muss die Bedingung \eqref{lambertw:minimumAbstand} erfüllt sein.
+Somit ist es ausreichend zu zeigen, dass
+\begin{equation}
+    \operatorname{min}(|z-v|)<a_\text{min}
+    \label{lambertw:Bedingung:abstandMinimal}
+\end{equation}
+erfüllt ist.
 
-
+Für folgende Betrachtung wurde für den Verfolger die Jagdstrategie mit $|\dot{v}|=|\dot{z}|$ gewählt.
+Das Minimum des Abstandes kann mit
+\begin{equation}
+    0=\frac{d|z-v|}{dt}
+\end{equation}
+gefunden werden.
+Mithilfe $(z-v)(z-v)=|z-v|^2$ kann die Gleichung umgeformt werden zu
+\begin{equation}
+    0=\frac{d(\sqrt{(z-v)(z-v)})}{dt}
+    \text{.}
+\end{equation}
+Jetzt kann die Ableitung leicht ausgeführt werden, womit
+\begin{equation}
+    0=(\dot{z}-\dot{v})\frac{z-v}{\sqrt{(z-v)(z-v)}}
+\end{equation}
+entsteht.
+In dieser Gleichung kann $(z-v)(z-v)=|z-v|^2$ nochmals angewendet werden, wodurch die Gleichung zu
+\begin{equation}
+    0=(\dot{z}-\dot{v})\frac{z-v}{|z-v|}
+\end{equation}
+umgeformt werden kann.
+Nun ist die Struktur der Gleichung \eqref{lambertw:richtungsvektor} erkennbar.
+Wird dies ausgenutzt folgt
+\begin{equation}
+    0=(\dot{z}-\dot{v})\frac{\dot{v}}{|\dot{v}|}
+    \text{.}
+\end{equation}
+Durch algebraische Umwandlung kann die Gleichung in die Form
+\begin{equation}
+    \dot{z}\dot{v}=|\dot{v}|^2
+\end{equation}
+gebracht werden.
+Da $|\dot{v}|=|\dot{z}|$ folgt
+\begin{equation}
+    \cos(\alpha)=1
+    \text{,}
+\end{equation}
+wobei $\alpha$ der Winkel zwischen den Richtungsvektoren ist.
+Mit $|\dot{z}|=|\dot{v}|=1$ entsteht
+\begin{equation}
+    \cos(\alpha)=1
+    \text{,}
+\end{equation}
+woraus folgt, dass nur bei $\alpha=0$, wenn $\alpha \in [0,2\pi)$, ein lokales als auch globales Minimum vorhanden sein kann.
+$\alpha=0$ bedeutet, dass $\dot{v}=\dot{z}$ sein muss.
+Da die Richtungsvektoren bei $t\rightarrow\infty$ immer in die gleiche Richtung zeigen ist dort die Bedingung immer erfüllt.
+Dies entspricht gerade dem einen Rand von $t$, der andere Rand bei $t=0$ muss auch auf lokales bzw. globales Minimum untersucht werden.
+Daraus folgt, dass die Bedingung \eqref{lambertw:Bedingung:abstandMinimal} lediglich für den Abstand bei $t=\{0, \infty\}$ überprüft werden muss.
