@@ -130,7 +130,65 @@ Lösung
 \]
 führt.
 
-Etwas aufwändiger wird es, die zweite Gleichung zu lösen.
+Etwas aufwändiger wird es, die zweite Gleichung zu lösen. Aufgrund der Struktur
+der Gleichung
+\[
+    X^{\prime \prime}(x) - \mu X(x)
+    =
+    0
+\]
+wird ein trigonometrischer Ansatz gewählt. Die Lösungen für $X(x)$ sind also
+von der Form
+\[
+    X(x)
+    =
+    A \sin \left( \alpha x\right) + B \cos \left( \beta x\right).
+\]
+
+Dieser Ansatz wird nun solange differenziert, bis alle in Gleichung (TODO: ref)
+enthaltenen Ableitungen vorhanden sind. Man erhält also
+\[
+    X^{\prime}(x)
+    =
+    A \alpha \cos \left( \alpha x \right) -
+    B \beta \sin \left( \beta x \right)
+\]
+und
+\[
+    X^{\prime \prime}(x)
+    =
+    -A \alpha^{2} \sin \left( \alpha x \right) -
+    B \beta^{2} \cos \left( \beta x \right).
+\]
+
+Eingesetzt in Gleichung (TDOD: ref) ergibt dies
+\[
+    -A\alpha^{2}\sin(\alpha x) - B\beta^{2}\cos(\beta x) -
+    \mu\left(A\sin(\alpha x) + B\cos(\beta x)\right)
+    =
+    0
+\]
+und durch umformen somit
+\[
+    \mu A\sin(\alpha x) + \mu B\cos(\beta x)
+    =
+    A\alpha^{2}\sin(\alpha x) + B\beta^{2}\cos(\beta x).
+\]
+
+Durch Koeffizientenvergleich von
+\[
+    \mu A\sin(\alpha x)
+    =
+    A\alpha^{2}\sin(\alpha x)
+\]
+\[
+    \mu B\cos(\beta x)
+    =
+    B\beta^{2}\cos(\beta x)
+\]
+ist schnell ersichtlich, dass $ \mu = \alpha^{2} = \beta^{2} $ gelten muss für
+$ A \neq 0 $ und $ B \neq 0 $. Zur Berechnung von $ \mu $ bleiben also noch 
+$ \alpha $ und $ \beta $ zu bestimmen.
 
 % TODO: Rechenweg
 TODO: Rechenweg... Enden auf konstanter Temperatur:
