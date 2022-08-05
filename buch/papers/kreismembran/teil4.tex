@@ -101,8 +101,9 @@ Die Erste Figur zeigt die Ausgangslage gefolgt von den Auslenkungen nach jeweils
 Es ist zu erkennen, wie sich die Störung vom Zentrum an den Rand ausbreitet.
 Erreicht die Störung den Rand wird sie reflektiert und nähert sich dem Zentrum. 
 \begin{figure}
+	
 	\begin{center}
-		\label{kreismembran:im:simres_rund}
+		
 		\includegraphics[width=0.32\textwidth]{papers/kreismembran/images/sim_1_1.png}
 		\includegraphics[width=0.32\textwidth]{papers/kreismembran/images/sim_1_2.png}
 		\includegraphics[width=0.32\textwidth]{papers/kreismembran/images/sim_1_3.png}
@@ -110,10 +111,11 @@ Erreicht die Störung den Rand wird sie reflektiert und nähert sich dem Zentrum
 		\includegraphics[width=0.32\textwidth]{papers/kreismembran/images/sim_1_5.png}
 		\includegraphics[width=0.32\textwidth]{papers/kreismembran/images/sim_1_6.png}
 		\caption{Simulations Resultate einer kreisförmigen Membran. Simuliert mit $ 200 \times 200 $ Elementen, dargestellt sind die Auslenkungen nach jeweils $ 50 $ Iterationsschritten.}
+		\label{kreismembran:im:simres_rund}
 		
 	\end{center}	
 \end{figure} 
-\subsection{Simulation: Unendliche Kreisförmige Membran}
+\subsection{Simulation: Unendliche Membran}
 
 Um eine unendlich grosse Membran zu simulieren könnte der unpraktische weg gewählt werden die Matrix unendlich gross zu definieren, dies wird jedoch spätestens bei der numerischen Berechnung seine Probleme mit sich bringen.
 Etwas geeigneter ist es die Matrix so gross wie möglich zu definieren wie es die Kapazitäten erlauben.
@@ -129,12 +131,59 @@ Im Zentrum soll sich die Membran verhalten, wie von der DGL vorgegeben, am Rand 
 Der Spielraum welcher dem Absorber übrig bleibt ist die Art der Überganges.
 Bei der endlichen kreisförmigen Membran hat die Maske $M$ ein binärer Übergang von Membran zu Rand bezweckt.
 Anstelle dieses abrupten Wechsels wird nun eine Maske definiert, welche graduell von Membran $1$ zu Rand-Element $0$ wechselt.
+Die Elemente werden auf Basis ihres Abstand $r$ zum Zentrum definiert. 
+Der Abstand entspricht 
+\begin{equation*}
+	r(i,j) = \sqrt{|i-\frac{m}{2}|^2+|j-\frac{n}{2}|^2},
+\end{equation*} 
+wobei $ m $ und $n$ den Dimensionen der Matrix entsprechen.
+Für einen Stufenlosen Übergang werden die Elemente der Maske auf 
 
+\begin{align}
+	M_{ij} = \begin{cases} 1-e^{(r(i,j)-b)a} & \text{wenn $x > b$} \\
+		0 & \text{sonst} \end{cases}
+\end{align}
+gesetzt.
+Der Parameter $a > 0$ bestimmt wie Steil der Übergang sein soll, $b$ bestimmt  wie weit weg vom Zentrum sich der Übergang befindet.
+In der Abbildung \ref{kreismembran:im:masks} ist der Unterschied der beiden Masken zu sehen. 
+\begin{figure}
+	
+	\begin{center}
+		
+		\includegraphics[width=0.45\textwidth]{papers/kreismembran/images/mask_disk.png}
+		\includegraphics[width=0.45\textwidth]{papers/kreismembran/images/mask_absorber.png}
+		\caption{Vergleich von Masken: Links Binär für eine endliche Membran, rechts mit Absorber für eine unendliche Membran}
+		\label{kreismembran:im:masks}
+	\end{center}	
+\end{figure} 
+\paragraph{Simulation}
+Bis auf die Absorber-Maske kann nun identisch zur endlichen Membran simuliert werden.
+Auch hier wurde eine Gauss-Glocke als Anfangsbedingung gewählt. 
+Die Simulationsresultate von Abbildung \ref{kreismembran:im:simres_unendlich}
 
+\begin{figure}
+	
+	\begin{center}
+		
+		\includegraphics[width=0.32\textwidth]{papers/kreismembran/images/sim_2_1.png}
+		\includegraphics[width=0.32\textwidth]{papers/kreismembran/images/sim_2_2.png}
+		\includegraphics[width=0.32\textwidth]{papers/kreismembran/images/sim_2_3.png}
+		\includegraphics[width=0.32\textwidth]{papers/kreismembran/images/sim_2_4.png}
+		\includegraphics[width=0.32\textwidth]{papers/kreismembran/images/sim_2_5.png}
+		\includegraphics[width=0.32\textwidth]{papers/kreismembran/images/sim_2_6.png}
+		\caption{Simulations Resultate einer unendlichen Membran. Simuliert mit $ 200 \times 200 $ Elementen, dargestellt sind die Auslenkungen nach jeweils $ 50 $ Iterationsschritten.}
+		\label{kreismembran:im:simres_unendlich}
+		
+	\end{center}	
+\end{figure}
+zeigen deutlich wie die Störung vom Zentrum weg verläuft.
+Nähert sich die Störung dem Rand, so wird sie immer stärker abgeschwächt.
+Die Wirkung des Absorber ist an der letzten Figur zu erkennen, in welcher kaum noch Auslenkungen zu sehen sind.
 
-
-
-
+\section{Schlusswort}
+Auch wenn ein Physikalisches Verhalten bereits durch Annahmen und Annäherungen deutlich vereinfacht wird, bestehen auch dann noch eine Vielzahl von Lösungsansätzen.
+Lösungen einer unendlich grosse Membran scheinen fern der Realität zu sein, doch dies darf es im Sinne der Mathematik.
+Und wer weis, für eine Ameise auf einem Trampolin ist eine unendliche Membran vielleicht eine ganz gute Annäherung. 
 
 
 
