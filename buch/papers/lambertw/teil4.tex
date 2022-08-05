@@ -6,11 +6,11 @@
 \section{Beispiel einer Verfolgungskurve
 \label{lambertw:section:teil4}}
 \rhead{Beispiel einer Verfolgungskurve}
-In diesem Abschnitt wird rechnerisch das Beispiel einer Verfolgungskurve mit der Verfolgungsstrategie ``Jagd'' beschreiben. Dafür werden zuerst Bewegungsraum, Anfangspositionen und Bewegungsverhalten definiert, in einem nächsten Schritt soll eine Differentialgleichung dafür aufgestellt und anschliessend gelöst werden.
+In diesem Abschnitt wird rechnerisch das Beispiel einer Verfolgungskurve mit der Verfolgungsstrategie ``Jagd'' beschrieben. Dafür werden zuerst Bewegungsraum, Anfangspositionen und Bewegungsverhalten definiert, in einem nächsten Schritt soll eine Differentialgleichung dafür aufgestellt und anschliessend gelöst werden.
 
 \subsection{Anfangsbedingungen definieren und einsetzen
 	\label{lambertw:subsection:Anfangsbedingungen}}
-Das zu verfolgende Ziel \(Z\) bewegt sich entlang der \(y\)-Achse mit konstanter Geschwindigkeit \(|\dot{z}| = 1\), beginnend beim Ursprung des Kartesischen Koordinatensystems. Der Verfolger \(V\) startet auf einem beliebigen Punkt im ersten Quadranten und bewegt sich auch mit konstanter Geschwindigkeit \(|\dot{v}| = 1\) in Richtung Ziel. Diese Anfangspunkte oder Anfangsbedingungen können wie folgt formuliert werden:
+Das zu verfolgende Ziel \(Z\) bewegt sich entlang der \(y\)-Achse mit konstanter Geschwindigkeit \(|\dot{z}| = 1\), beginnend beim Ursprung des kartesischen Koordinatensystems. Der Verfolger \(V\) startet auf einem beliebigen Punkt im ersten Quadranten und bewegt sich auch mit konstanter Geschwindigkeit \(|\dot{v}| = 1\) in Richtung Ziel. Diese Anfangspunkte oder Anfangsbedingungen können wie folgt formuliert werden:
 \begin{equation}
 	Z
 	=
@@ -40,7 +40,7 @@ Diese DGL haben wir bereits in Kapitel \ref{lambertw:subsection:Verfolger} defin
 
 \subsection{Differentialgleichung vereinfachen
 	\label{lambertw:subsection:DGLvereinfach}}
-Nun haben wir eine Gleichung, es stellt sich aber die Frage, ob es überhaupt eine geschlossene Lösung dafür gibt. Eine Funktion welche die Beziehung \(y(x)\) beschreibt oder sogar \(x(t)\) und \(y(t)\) liefert. Zum jetzigen Zeitpunkt mag es nicht trivial scheinen, aber mit den gewählten Anfangsbedingungen \eqref{lambertw:Anfangsbed} ist es möglich eine geschlossene Lösung für die Gleichung \eqref{lambertw:eqMitAnfangsbed} zu finden.
+Nun haben wir eine Gleichung, es stellt sich aber die Frage, ob es überhaupt eine geschlossene Lösung dafür gibt. Eine Funktion welche die Beziehung \(y(x)\) beschreibt oder sogar \(x(t)\) und \(y(t)\) liefert. Zum jetzigen Zeitpunkt mag es nicht trivial scheinen, aber mit den gewählten Anfangsbedingungen \eqref{lambertw:Anfangsbed} ist es möglich, eine geschlossene Lösung für die Gleichung \eqref{lambertw:eqMitAnfangsbed} zu finden.
 
 Auf dem Weg dahin muss die definierte DGL zuerst wesentlich vereinfacht werden, sei es mittels algebraischer Umformungen oder mit den Tools aus der Analysis. Da die nächsten Schritte sehr algebralastig sind und sie das Lesen dieses Papers träge machen würden, werden wir uns hier nur auf die wesentlichsten Schritte konzentrieren, welche notwendig sind, um den Lösungsweg nachvollziehen zu können.
 
@@ -90,7 +90,7 @@ Versteckt im Ausdruck \eqref{lambertw:eqGeschwSubstituiert} befindet sich die er
 	\label{lambertw:eqAlgVerinfacht}
 \end{equation}
 die faktorisierte Darstellung davon ist.
-Da der linke Term gleich Null ist, muss auch der Inhalt des Quadrates gleich Null sein. Es ergibt sich eine weitere Vereinfachung, welche zu der im Vergleich zu \eqref{lambertw:eqOhneSkalarprod} wesentlich einfacheren DGL 
+Da der linke Term gleich Null ist, muss auch die Basis des Quadrates in \eqref{lambertw:eqAlgVerinfacht} gleich Null sein. Es ergibt sich eine weitere Vereinfachung, welche zu der im Vergleich zu \eqref{lambertw:eqOhneSkalarprod} wesentlich einfacheren DGL 
 \begin{equation}
 	x \dot{y} + (t-y) \dot{x}
 	= 0
@@ -122,7 +122,7 @@ Der Grund dafür ist, dass
 	\label{lambertw:eqQuotZeitAbleit}
 \end{equation}
 und somit kann der Quotient dieser zeitlichen Ableitungen in eine Ableitung nach \(x\) umgewandelt werden.
-Nach dem die Eigenschaft \eqref{lambertw:eqQuotZeitAbleit} in \eqref{lambertw:eqVorKeineZeitAbleit} eingesetzt wird und vereinfacht wurde, entsteht die neue Gleichung
+Nachdem die Eigenschaft \eqref{lambertw:eqQuotZeitAbleit} in \eqref{lambertw:eqVorKeineZeitAbleit} eingesetzt wurde, entsteht beim Vereinfachen die neue Gleichung
 \begin{equation}
 	x y^{\prime} + t - y
 	= 0.
@@ -130,7 +130,7 @@ Nach dem die Eigenschaft \eqref{lambertw:eqQuotZeitAbleit} in \eqref{lambertw:eq
 \end{equation}
 
 \subsubsection{Variable \(t\) eliminieren
-	\label{lambertw:subsubsection:ZeitAbleit}}
+	\label{lambertw:subsubsection:VarTelimin}}
 Hier wäre es natürlich passend, wenn man die Abhängigkeit nach \(t\) komplett wegbringen könnte, aber wie?
 Wir wissen, dass sich der Verfolger mit Geschwindigkeit 1 bewegt, also legt er in der Zeit \(t\) die Strecke \(1\cdot t = t\) zurück. Längen und Strecken können auch mit der Bogenlänge repräsentiert werden, somit kann Zeit und zurückgelegte Strecke in der Gleichung  
 \begin{equation}
@@ -199,7 +199,7 @@ Wenn man in \eqref{lambertw:loesDGLmitU} die Substitution rückgängig macht, er
 	\label{lambertw:loesDGLmitY}
 \end{equation}
 erster Ordnung, die bereits separiert ist.
-Ersetzt man den \(\operatorname{sinh}\) durch seine exponentiellen Definition \(\operatorname{sinh}(x)=\frac{1}{2}(e^x-e^{-x})\), so resultiert auf sehr einfache Art die Lösung 
+Ersetzt man den \(\operatorname{sinh}\) durch seine exponentielle Definition \(\operatorname{sinh}(x)=\frac{1}{2}(e^x-e^{-x})\), so resultiert auf sehr einfache Art die Lösung 
 \begin{equation}
 	y
 	=
@@ -302,7 +302,8 @@ Wenn man die Koeffizienten \eqref{lambertw:eqKoeff1} und \eqref{lambertw:eqKoeff
 \begin{equation}
 	y(x)
 	=
-	\frac{1}{4}\left(\left(y_0+r_0\right)\eta+\left(y_0-r_0\right)\operatorname{ln}\left(\eta\right)-r_0+3y_0\right).
+	\frac{1}{4}\left(\left(y_0+r_0\right)\eta+\left(y_0-r_0\right)
+	\operatorname{ln}\left(\eta\right)-r_0+3y_0\right).
 	\label{lambertw:eqAllgLoes}
 \end{equation}
 Damit die Funktion \eqref{lambertw:eqAllgLoes} trotzdem übersichtlich bleibt, wurden Anfangssteigung \(\eta\) und Anfangsentfernung \(r_0\) wie folgt definiert:
@@ -321,7 +322,7 @@ Nun sind wir soweit, dass wir eine \(y(x)\)-Beziehung für beliebige Anfangswert
 
 \subsection{Funktion nach der Zeit 
 	\label{lambertw:subsection:FunkNachT}}
-In diesem Abschnitt werden algebraischen Umformungen ein wenig detaillierter als zuvor beschrieben. Dies hat auch einen bestimmten Grund: Den Einsatz einer speziellen Funktion aufzeigen, sowie auch wann und wieso diese vorkommt. Welche spezielle Funktion? Fragst du dich wahrscheinlich in diesem Moment. Nun, um diese Frage kurz zu beantworten, es ist ``YouTube's favorite special function'' laut dem Mathematiker Michael Penn, die Lambert-\(W\)-Funktion \(W(x)\) welche im Kapitel \ref{buch:section:lambertw} bereits beschrieben wurde.
+In diesem Abschnitt werden algebraischen Umformungen ein wenig detaillierter als zuvor beschrieben. Dies hat auch einen bestimmten Grund: Den Einsatz einer speziellen Funktion aufzeigen, sowie auch wann und wieso diese vorkommt. Welche spezielle Funktion? Fragt man sich wahrscheinlich in diesem Moment. Nun, um diese Frage kurz zu beantworten, es ist ``YouTube's favorite special function'' laut dem Mathematiker Michael Penn, die Lambert-\(W\)-Funktion \(W(x)\) welche im Kapitel \ref{buch:section:lambertw} bereits beschrieben wurde.
 
 \subsubsection{Zeitabhängigkeit wiederherstellen
 	\label{lambertw:subsubsection:ZeitabhWiederherst}}
@@ -342,7 +343,7 @@ Wie in \eqref{lambertw:eqDGLmitTnochmals} zu sehen ist, werden \(y\) und deren A
 		\frac{1}{4}\left(\left(y_0+r_0\right)\eta+\left(y_0-r_0\right)\operatorname{ln}\left(\eta\right)-r_0+3y_0\right), \\
 		y^\prime
 		&=
-		\frac{1}{2}\left(\left(y_0+r_0\right)\frac{x}{x_0^2}+\left(y_0-r_0\right)\frac{1}{x}\right).
+		\frac{1}{2}\biggl(\left(y_0+r_0\right)\frac{x}{x_0^2}+\left(y_0-r_0\right)\frac{1}{x}\biggr).
 	\end{align}
 \end{subequations}
 
@@ -372,16 +373,19 @@ und anschliessend
 	\label{lambertw:eqMitExp}
 \end{equation}
 erhält.
-Auf dem rechten Term von \eqref{lambertw:eqMitExp} beginnen wir langsam eine ähnliche Struktur wie \(\eta e^\eta\) zu erkennen, dies schreit nach der Struktur die benötigt wird um \(\eta\) mittels der Lambert-\(W\)-Funktion \(W(x)\) zu erhalten. Dies macht durchaus Sinn, wenn wir die Funktion \(x(t)\) finden wollen und \(W(x)\) die Umkehrfunktion von \(x e^x\) ist. 
+Auf dem rechten Term von \eqref{lambertw:eqMitExp} beginnen wir langsam eine ähnliche Struktur wie \(\eta e^\eta\) zu erkennen, dies schreit nach der Struktur, die benötigt wird, um \(\eta\) mittels der Lambert-\(W\)-Funktion \(W(x)\) zu erhalten. Dies macht durchaus Sinn, wenn wir die Funktion \(x(t)\) finden wollen und \(W(x)\) die Umkehrfunktion von \(x e^x\) ist. 
 
-Die erste Sache die uns in \eqref{lambertw:eqMitExp} stört ist, dass \(\eta\) als Potenz da steht. Dieses Problem können wir loswerden, indem wir beidseitig mit \(\:\displaystyle \frac{1}{r_0-y_0}\:\) potenzieren:
+Die erste Sache, die uns in \eqref{lambertw:eqMitExp} stört ist, dass \(\eta\) als Potenz da steht. Dieses Problem können wir loswerden, indem wir beidseitig mit \(\:1 / (r_0-y_0)\:\) potenzieren:
 \begin{equation}
 	\operatorname{exp}\left(\displaystyle \frac{-4t}{r_0-y_0}+\frac{y_0+r_0}{r_0-y_0}\right)
 	=
 	\eta\cdot \operatorname{exp}\left(\displaystyle \frac{y_0+r_0}{r_0-y_0}\eta\right).
 	\label{lambertw:eqOhnePotenz}
 \end{equation}
-Das nächste Problem auf welches wir in \eqref{lambertw:eqOhnePotenz} treffen ist, dass \(\eta\) nicht alleine im Exponent steht. Dies kann elegant mit der Substitution 
+
+\subsubsection{Eine essenzielle Substitution
+	\label{lambertw:subsubsection:SubstChi}}
+Das nächste Problem, auf welches wir in \eqref{lambertw:eqOhnePotenz} treffen, ist, dass \(\eta\) nicht alleine im Exponent steht. Dies kann elegant mit der Substitution 
 \begin{equation}
 	\chi
 	=
@@ -398,6 +402,9 @@ die auf dasselbe Ergebnis führen würden, aber \eqref{lambertw:eqChiSubst} lief
 	\chi\eta\cdot e^{\displaystyle \chi\eta}.
 	\label{lambertw:eqNachSubst}
 \end{equation}
+
+\subsubsection{Funktion nach der Zeit dank Lambert-\(W\)
+	\label{lambertw:subsubsection:LambertWundFvonT}}
 Nun sind wir endlich soweit, dass wir die angedeutete Lambert-\(W\)-Funktion \(W(x)\) einsetzen können. Wenn wir beidseitig \(W(x)\) anwenden, dann erhalten wir den Ausdruck
 \begin{equation}
 	W\left(\chi\cdot \operatorname{exp}\left(\displaystyle \chi-\frac{4t}{r_0-y_0}\right)\right)
@@ -417,14 +424,14 @@ Nach dem Auflösen nach \(x\) welches in \(\eta\) enthalten ist, erhalten wir di
 		=
 		y(t)
 		&=
-		\frac{1}{4}\left(\left(y_0+r_0\right)\left(\frac{x(t)}{x_0}\right)^2+\left(y_0-r_0\right)\operatorname{ln}\left(\left(\frac{x(t)}{x_0}\right)^2\right)-r_0+3y_0\right).
+		\frac{1}{4}\biggl(\left(y_0+r_0\right)\left(\frac{x(t)}{x_0}\right)^2+\left(y_0-r_0\right)\operatorname{ln}\biggl(\biggl(\frac{x(t)}{x_0}\biggr)^2\biggr)-r_0+3y_0\biggr).
 	\end{align}
 \end{subequations}
 Nun haben wir unser letztes Ziel erreicht und sind in der Lage eine Verfolgung rechnerisch sowie graphisch zu repräsentieren.
 
 \subsubsection{Hinweise zur Lambert-\(W\)-Funktion
 	\label{lambertw:subsubsection:HinwLambertW}}
-Wir sind aber noch nicht ganz fertig, eine Frage muss noch beantwortet werden. Und zwar wieso, man schon bei der Gleichung \eqref{lambertw:eqFunkUndAbleitEingefuegt} weiss, dass die Lambert-\(W\)-Funktion zum Einsatz kommen wird.
+Wir sind aber noch nicht ganz fertig, eine Frage muss noch beantwortet werden. Und zwar wieso man schon bei der Gleichung \eqref{lambertw:eqFunkUndAbleitEingefuegt} weiss, dass die Lambert-\(W\)-Funktion zum Einsatz kommen wird.
 Nun, der Grund dafür ist die Struktur
 \begin{equation}
 	y
