@@ -9,6 +9,7 @@
 Um numerisch das Verhalten einer Membran zu ermitteln, muss eine numerische Darstellung definiert werden.
 Die Membran wird hier in Form der Matrix $  U $ digitalisiert.
 Jedes Element  $ U_{ij} $ steh für die Auslenkung der Membran $ u(x,y,t) $ an der Stelle $ \{x,y\}=\{i,j\} $.
+Zwischen benachbarten Elementen in der Matrix $ U $ liegt immer der Abstand $ dh $, eine Inkrementierung von $ i $ oder $ j $ entspricht somit einem Schritt in Richtung $ x $ oder $ y $ von Länge $ dh $ auf der Membran.
 Die zeitliche Dimension wird in Form des Array $  U[] $ aus $ z \times U $ Matrizen dargestellt, wobei $ z $ der Anzahl Zeitschritten entspricht.
 Das Element auf Zeile $ i $, Spalte $ j $ der $ w $-ten Matrix von $ U[] $ also $ U[w]_{ij} $ entspricht somit der Auslenkung $ u(i,j,w) $.
 Da die DGL von Zweiter Ordnung ist, reicht eine Zustandsvariabel pro Membran-Element nicht aus. 
@@ -20,8 +21,124 @@ Der Zustand einer Membran zum Zeitpunkt $ w $ wird mit $ X[w] $ beschrieben, was
 \subsection{Propagation}
 Um das Verhalten der Membran zu berechnen, muss aus einem gegebenen Zustand $ X[w] $ der Folgezustand $ X[w+1] $ gerechnet werden können, wobei dazwischen ein Zeitintervall $ dt $ vergeht. 
 Die Berechnung von Folgezuständen kann anschliessend repetiert werden über das zu untersuchende Zeitfenster.
-Da die Digitale Membran sich wie die analytisch untersuchte verhalten soll, muss auch sie
+Die Folgeposition $ U[w+1] $ ergibt sich als 
+\begin{equation}
+	U[w+1] =  U[w] + dt \cdot V[w],
+\end{equation} 
+also die Ausgangslage $ + $ die Strecke welche während des Zeitintervall mit der Geschwindigkeit des Elementes zurückgelegt wurde. 
+Neben der Position muss auch die Geschwindigkeit aktualisiert werden.
+Analog zur Folgeposition wird
 \begin{equation*}
-	\frac{1}{c^2}\frac{\partial^2u}{\partial t^2} = \Delta u
+	V[w+1] = V[w] + dt \cdot \frac{\partial^2u}{\partial t^2}.
+\end{equation*}    
+Die Beschleunigung $ \frac{\partial^2u}{\partial t^2} $  eines Elementes ist durch die DGL \ref{kreismembran:Ausgang_DGL} gegeben als
+\begin{equation*}
+	\frac{\partial^2u}{\partial t^2} = \Delta u \cdot c^2.
 \end{equation*}
-erfüllen.
+Die Geschwindigkeit des Folgezustandes kann somit mit
+\begin{equation}
+	V[w+1] = V[w] + dt \cdot \Delta_h U \cdot c^2
+\end{equation}
+berechnet werden.
+Während $ c^2 $ lediglich eine Material spezifische Konstante ist, muss noch erläutert werden, wie der diskrete Laplace-Operator für $ \Delta_h u $ definiert ist.
+
+\subsection{Diskreter Laplace-Operator $\Delta_h$}
+Die diskrete Ableitung zweiter Ordnung kann mit Hilfe der Taylor-Reihen-Entwicklung als
+\begin{equation*}
+	\frac{\partial^2f}{\partial x^2} \approx \frac{f(x+dx)-2f(x)+f(x-dx)}{dx^2}
+\end{equation*}
+approximiert werden \cite{kreismembran:Digital_Image_processing}.
+Dank der Linearität der Ableitung kann die Ableitung einer weiteren Dimension addiert werden.
+Daraus folgt für den zweidimensionalen Fall 
+\begin{equation*}
+	\Delta_h u= \frac{u(x+dh,y,t)+u(x,y+dh,t)-4f(x)+u(x-dh,y,t)+u(x,y-dh,t)}{dh^2}.
+\end{equation*}
+Um $ \Delta_h $ auf eine Matrix anwenden zu können wird die Gleichung in Form einer Filtermaske 
+ \begin{equation}
+ 	\Delta_h u= \frac{1}{dh^2}
+ 	\left[ {\begin{array}{ccc}
+ 			0 & 1  & 0\\
+ 			1 & -4 & 1\\
+ 			0 & 1  & 0\\
+ 	\end{array} } \right]
+ \end{equation}
+formuliert.
+Die Filtermaske kann dann auf jedes Element einzeln angewendet werden mit einer Matrizen-Faltung um $ \Delta_h U[] $ zu berechnen.
+
+\subsection{Simulation: Kreisförmige Membran}
+Als Beispiel soll nun eine schwingende kreisförmige Membran simuliert werden.
+\paragraph{Initialisierung}
+Die Anzahl der simulierten Elementen soll $ m \times n $ was dementsprechend die Dimensionen von $ U $ und $ V $ vorgibt.
+Als Anfangsbedingung wird eine Membran gewählt, welche bei $ t=0 $ mit einer Gauss-Kurve ausgelenkt wird.
+Die Membran soll sich zu Beginn nicht bewegen, also wird $ V[0] $ mit Nullen initialisiert.
+Die Auslenkung kann kompakt erreicht werden, wenn $ U[0] $ als Null-Matrix mit einer $ 1 $ in der Mitte initialisiert wird. 
+Diese Matrix wird anschliessend mit einer Filtermaske in Form einer Gauss-Glocke gefaltet.
+Die Faltung mit einer Gauss-Glocke ist in Programmen wie Matlab eine Standartfunktion, da dies einm Tiefpassfilter in der Bildverarbeitung entspricht.
+
+\paragraph{Rand}
+Bislang ist die definierte Matrix rechteckig.
+Um eine kreisförmige Membran zu simulieren muss der Rand angepasst werden.
+Da in den meisten Programme keine Möglichkeit besteht, mit runden Matrizen zu rechnen, wird der Rand in der Berechnung des Folgezustandes implementiert.
+Der Rand bedeutet, das Membran-Elemente auf dem Rand sich nicht Bewegen können.
+Die Position sowie die Geschwindigkeit aller Elemente welche nicht auf der definierten Membran sind müssen zu beliebiger Zeit $0$ entsprechen.
+Hierzu wird eine Maske $M$ erstellt. 
+Diese Maske besteht aus einer binären Matrix von identischer Dimension wie $ U $ und $ V $. 
+Ist in der Matrix $M$ eine $1$ abgebildet so ist an jener stelle ein Element der Membran, ist es eine $0$ so befindet sich dieses Element auf dem Rand oder ausserhalb der Membran.
+In dieser Anwendung ist $M$ eine Matrix mit einem Kreis voller $1$ umgeben von $0$ bis an den Rand der Matrix.
+Die Maske wird angewendet indem das Resultat des nächsten Zustandes noch mit der Maske elementweise multipliziert wird. 
+Der Folgezustand kann also mit den Gleichungen
+\begin{align}
+	\label{kreismembran:eq:folge_U} 
+	U[w+1] &= (U[w] + dt \cdot V[w])*M\\
+	\label{kreismembran:eq:folge_V}
+	V[w+1] &= (V[w] + dt \cdot \Delta_h u \cdot c^2)*M
+\end{align}
+berechnet werden.
+\paragraph{Simulation}
+Mit den gegebenen Gleichungen \ref{kreismembran:eq:folge_U} und \ref{kreismembran:eq:folge_V} das Verhalten der Membran mit einem Loop über das zu untersuchende Zeitintervall berechnet werden. 
+In der Abbildung \ref{kreismembran:im:simres_rund} sind Simulationsresultate zu sehen.
+Die Erste Figur zeigt die Ausgangslage gefolgt von den Auslenkungen nach jeweils $ 50 $ weiteren Iterationsschritten.
+Es ist zu erkennen, wie sich die Störung vom Zentrum an den Rand ausbreitet.
+Erreicht die Störung den Rand wird sie reflektiert und nähert sich dem Zentrum. 
+\begin{figure}
+	\begin{center}
+		\label{kreismembran:im:simres_rund}
+		\includegraphics[width=0.32\textwidth]{papers/kreismembran/images/sim_1_1.png}
+		\includegraphics[width=0.32\textwidth]{papers/kreismembran/images/sim_1_2.png}
+		\includegraphics[width=0.32\textwidth]{papers/kreismembran/images/sim_1_3.png}
+		\includegraphics[width=0.32\textwidth]{papers/kreismembran/images/sim_1_4.png}
+		\includegraphics[width=0.32\textwidth]{papers/kreismembran/images/sim_1_5.png}
+		\includegraphics[width=0.32\textwidth]{papers/kreismembran/images/sim_1_6.png}
+		\caption{Simulations Resultate einer kreisförmigen Membran. Simuliert mit $ 200 \times 200 $ Elementen, dargestellt sind die Auslenkungen nach jeweils $ 50 $ Iterationsschritten.}
+		
+	\end{center}	
+\end{figure} 
+\subsection{Simulation: Unendliche Kreisförmige Membran}
+
+Um eine unendlich grosse Membran zu simulieren könnte der unpraktische weg gewählt werden die Matrix unendlich gross zu definieren, dies wird jedoch spätestens bei der numerischen Berechnung seine Probleme mit sich bringen.
+Etwas geeigneter ist es die Matrix so gross wie möglich zu definieren wie es die Kapazitäten erlauben.
+Wenn anschliessend nur das Verhalten im Zentrum, bei der Störung beobachtet wird, verhaltet sich die Membran wie eine unendliche. 
+Dies aber nur bis die Störung am Rand reflektiert wird und wieder das innere zu beobachtende Zentrum beeinflusst.
+Soll erst gar keine Reflexion entstehen, muss ein Absorber modelliert werden welcher die Störung möglichst ohne Reflexion aufnimmt.
+
+\paragraph{Absorber}
+Sehr knapp formuliert entstehen Reflexionen, wenn eine Welle von einem Material in ein anderes Material mit unterschiedlichen Eigenschaften eindringen möchte.
+Je unterschiedlicher und abrupter der Übergang zwischen den Materialien umso ausgeprägter die Reflexion.
+In diesem Fall sind die Eigenschaften vorgegeben.
+Im Zentrum soll sich die Membran verhalten, wie von der DGL vorgegeben, am Rand jedoch muss sich jedes Membran-Element in der Ausgangslage befinden. 
+Der Spielraum welcher dem Absorber übrig bleibt ist die Art der Überganges.
+Bei der endlichen kreisförmigen Membran hat die Maske $M$ ein binärer Übergang von Membran zu Rand bezweckt.
+Anstelle dieses abrupten Wechsels wird nun eine Maske definiert, welche graduell von Membran $1$ zu Rand-Element $0$ wechselt.
+
+
+
+
+
+
+
+
+
+
+
+
+
