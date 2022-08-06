@@ -15,7 +15,7 @@ if __name__ == "__main__":
     )
     
     N = 200
-    ns = np.arange(2, 13)
+    ns = np.arange(1, 13)
     step = 1 / (N - 1)
     x = np.linspace(step, 1 - step, N + 1)
 

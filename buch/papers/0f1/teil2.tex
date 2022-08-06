@@ -1,40 +1,172 @@
 %
-% teil2.tex -- Beispiel-File für teil2 
+% teil2.tex -- Umsetzung in C Programmen
 %
-% (c) 2020 Prof Dr Andreas Müller, Hochschule Rapperswil
+% (c) 2022 Fabian Dünki, Hochschule Rapperswil
 %
-\section{Teil 2 
+\section{Umsetzung
 \label{0f1:section:teil2}}
-\rhead{Teil 2}
-Sed ut perspiciatis unde omnis iste natus error sit voluptatem
-accusantium doloremque laudantium, totam rem aperiam, eaque ipsa
-quae ab illo inventore veritatis et quasi architecto beatae vitae
-dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit
-aspernatur aut odit aut fugit, sed quia consequuntur magni dolores
-eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam
-est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci
-velit, sed quia non numquam eius modi tempora incidunt ut labore
-et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima
-veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam,
-nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure
-reprehenderit qui in ea voluptate velit esse quam nihil molestiae
-consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla
-pariatur?
+\rhead{Umsetzung}
+Zur Umsetzung wurden drei verschiedene Ansätze gewählt.\cite{0f1:code} Dabei wurde der Schwerpunkt auf die Funktionalität und eine gute Lesbarkeit des Codes gelegt.
+Die Unterprogramme wurde jeweils, wie die GNU Scientific Library, in C geschrieben. Die Zwischenresultate wurden vom Hauptprogramm in einem CSV-File gespeichert. Anschliessen wurde mit der Matplot-Libray in Python die Resultate geplottet.
 
-\subsection{De finibus bonorum et malorum
-\label{0f1:subsection:bonorum}}
-At vero eos et accusamus et iusto odio dignissimos ducimus qui
-blanditiis praesentium voluptatum deleniti atque corrupti quos
-dolores et quas molestias excepturi sint occaecati cupiditate non
-provident, similique sunt in culpa qui officia deserunt mollitia
-animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis
-est et expedita distinctio. Nam libero tempore, cum soluta nobis
-est eligendi optio cumque nihil impedit quo minus id quod maxime
-placeat facere possimus, omnis voluptas assumenda est, omnis dolor
-repellendus. Temporibus autem quibusdam et aut officiis debitis aut
-rerum necessitatibus saepe eveniet ut et voluptates repudiandae
-sint et molestiae non recusandae. Itaque earum rerum hic tenetur a
-sapiente delectus, ut aut reiciendis voluptatibus maiores alias
-consequatur aut perferendis doloribus asperiores repellat.
+\subsection{Potenzreihe
+\label{0f1:subsection:potenzreihe}}
+Die naheliegendste Lösung ist die Programmierung der Potenzreihe. Allerdings ist ein Problem dieser Umsetzung \ref{0f1:listing:potenzreihe}, dass die Fakultät im Nenner schnell grosse Werte annimmt und so der Bruch gegen Null strebt. Spätesten ab $k=167$ stösst diese Umsetzung  \eqref{0f1:umsetzung:0f1:eq} an ihre Grenzen, da die Fakultät von $168$ eine Bereichsüberschreitung des \textit{double} Bereiches darstellt. \cite{0f1:double}
+
+\begin{align}
+    \label{0f1:umsetzung:0f1:eq}
+    \mathstrut_0F_1(;c;z)
+    &=
+    \sum_{k=0}^\infty
+    \frac{z^k}{(c)_k \cdot k!}
+    &= 
+    \frac{1}{c}
+    +\frac{z^1}{(c+1) \cdot 1}
+    + \cdots
+    + \frac{z^{20}}{c(c+1)(c+2)\cdots(c+19) \cdot 2.4 \cdot 10^{18}}
+\end{align}
+
+\lstinputlisting[style=C,float,caption={Potenzreihe.},label={0f1:listing:potenzreihe}, firstline=59]{papers/0f1/listings/potenzreihe.c}
+
+\subsection{Kettenbruch
+\label{0f1:subsection:kettenbruch}}
+Ein endlicher Kettenbruch ist ein Bruch der Form
+\begin{equation*}
+a_0 + \cfrac{b_1}{a_1+\cfrac{b_2}{a_2+\cfrac{b_3}{a_3+\cdots}}}
+\end{equation*}
+in welchem $a_0, a_1,\dots,a_n$ und $b_1,b_2,\dots,b_n$ ganze Zahlen darstellen.
+Die Kurzschreibweise für einen allgemeinen Kettenbruch ist 
+\begin{equation*}
+	a_0 + \frac{a_1|}{|b_1} + \frac{a_2|}{|b_2} + \frac{a_3|}{|b_3} + \cdots
+\end{equation*}
+und ist somit verknüpfbar mit der Potenzreihe.
+\cite{0f1:wiki-kettenbruch}
+Angewendet auf die Funktion $\mathstrut_0F_1$ bedeutet dies\cite{0f1:wiki-fraction}:
+\begin{equation*}
+	\mathstrut_0F_1(;c;z) = 1 + \frac{z}{c\cdot1!} + \frac{z^2}{c(c+1)\cdot2!} + \frac{z^3}{c(c+1)(c+2)\cdot3!} + \cdots
+\end{equation*}
+Nach allen Umformungen ergibt sich folgender, irregulärer Kettenbruch \eqref{0f1:math:kettenbruch:0f1:eq}
+\begin{equation}
+	\label{0f1:math:kettenbruch:0f1:eq}
+	\mathstrut_0F_1(;c;z) = 1 + \cfrac{\cfrac{z}{c}}{1+\cfrac{-\cfrac{z}{2(c+1)}}{1+\cfrac{z}{2(c+1)}+\cfrac{-\cfrac{z}{3(c+2)}}{1+\cfrac{z}{5(c+4)} + \cdots}}},
+\end{equation}
+der als Code \ref{0f1:listing:kettenbruchIterativ} umgesetzt wurde. 
+\cite{0f1:wolfram-0f1}
+
+\lstinputlisting[style=C,float,caption={Iterativ umgesetzter Kettenbruch.},label={0f1:listing:kettenbruchIterativ},  firstline=8]{papers/0f1/listings/kettenbruchIterativ.c}
+
+\subsection{Rekursionsformel
+\label{0f1:subsection:rekursionsformel}}
+Wesentlich stabiler zur Berechnung eines Kettenbruches ist die Rekursionsformel. Nachfolgend wird die verkürzte Herleitung vom Kettenbruch zur Rekursionsformel aufgezeigt. Eine vollständige Schritt für Schritt Herleitung ist im Seminarbuch Numerik, im Kapitel Kettenbrüche zu finden. \cite{0f1:kettenbrueche}
+
+\subsubsection{Herleitung}
+Ein Näherungsbruch in der Form
+\begin{align*}
+	\cfrac{A_k}{B_k} = a_k + \cfrac{b_{k + 1}}{a_{k + 1} + \cfrac{p}{q}}
+\end{align*}
+lässt sich zu
+\begin{align*}
+	\cfrac{A_k}{B_k} = \cfrac{b_{k+1}}{a_{k+1} + \cfrac{p}{q}} = \frac{b_{k+1} \cdot q}{a_{k+1} \cdot q + p}
+\end{align*}
+umformen.
+Dies lässt sich auch durch die folgende Matrizenschreibweise ausdrücken:
+\begin{equation*}
+	\begin{pmatrix}
+		A_k\\
+		B_k
+	\end{pmatrix}
+	= 		\begin{pmatrix}
+		b_{k+1} \cdot q\\
+		a_{k+1} \cdot q + p
+	\end{pmatrix}
+	=\begin{pmatrix}
+		0&	b_{k+1}\\
+		1&	a_{k+1}
+	\end{pmatrix}
+	\begin{pmatrix}
+		p \\
+		q
+	\end{pmatrix}.
+	%\label{0f1:math:rekursionsformel:herleitung}
+\end{equation*}
+Wendet man dies nun auf den Kettenbruch in der Form
+\begin{equation*}
+	\frac{A_k}{B_k} = a_0 + \cfrac{b_1}{a_1+\cfrac{b_2}{a_2+\cfrac{\cdots}{\cdots+\cfrac{b_{k-1}}{a_{k-1} + \cfrac{b_k}{a_k}}}}}
+\end{equation*}
+an, ergibt sich folgende Matrixdarstellungen:
+
+\begin{align*}
+	\begin{pmatrix}
+		A_k\\
+		B_k
+	\end{pmatrix}
+	&=
+	\begin{pmatrix}
+		1& a_0\\
+		0& 1
+	\end{pmatrix}
+	\begin{pmatrix}
+		0& b_1\\
+		1& a_1
+	\end{pmatrix}
+	\cdots
+	\begin{pmatrix}
+		0& b_{k-1}\\
+		1& a_{k-1}
+	\end{pmatrix}
+	\begin{pmatrix}
+		b_k\\
+		a_k
+	\end{pmatrix}
+\end{align*}
+Nach vollständiger Induktion ergibt sich für den Schritt $k$, die Matrix
+\begin{equation}
+	\label{0f1:math:matrix:ende:eq}
+	 \begin{pmatrix}
+		A_{k}\\
+		B_{k}			
+	\end{pmatrix} 
+	=
+		\begin{pmatrix}
+		A_{k-2}& A_{k-1}\\
+		B_{k-2}& B_{k-1}			
+	\end{pmatrix}
+		\begin{pmatrix}
+		b_k\\
+		a_k
+	\end{pmatrix}.
+\end{equation}
+Und Schlussendlich kann der Näherungsbruch
+\[
+\frac{Ak}{Bk}
+\] 
+berechnet werden.
 
 
+\subsubsection{Lösung}
+Die Berechnung von $A_k, B_k$ \eqref{0f1:math:matrix:ende:eq} kann man auch ohne die Matrizenschreibweise aufschreiben: \cite{0f1:wiki-fraction}
+\begin{itemize}
+\item Startbedingungen:
+\begin{align*}
+A_{-1} &= 0		&		A_0 &= a_0 \\
+B_{-1} &= 1		&		B_0 &= 1 
+\end{align*}
+\item Schritt $k\to k+1$:
+\[
+\begin{aligned}
+\label{0f1:math:loesung:eq}
+k &\rightarrow k + 1:
+&
+A_{k+1} &= A_{k-1} \cdot b_k + A_k \cdot a_k \\
+&&
+B_{k+1} &= B_{k-1} \cdot b_k + B_k \cdot a_k
+\end{aligned}
+\]
+\item
+Näherungsbruch: \qquad$\displaystyle\frac{A_k}{B_k}$
+\end{itemize}
+
+Ein grosser Vorteil dieser Umsetzung \ref{0f1:listing:kettenbruchRekursion} ist, dass im Vergleich zum Code \ref{0f1:listing:kettenbruchIterativ} eine Division gespart werden kann und somit weniger Rundungsfehler entstehen können.
+
+%Code
+\lstinputlisting[style=C,float,caption={Rekursionsformel für Kettenbruch.},label={0f1:listing:kettenbruchRekursion},  firstline=8]{papers/0f1/listings/kettenbruchRekursion.c}

@@ -3,160 +3,210 @@
 %
 % (c) 2020 Prof Dr Andreas Müller, Hochschule Rapperswil
 %
-\section{Ziel
-\label{lambertw:section:teil1}}
-\rhead{Problemstellung}
+\section{Wird das Ziel erreicht?
+\label{lambertw:section:Wird_das_Ziel_erreicht}}
+\rhead{Wird das Ziel erreicht?}
+%
+Sehr oft kommt es vor, dass bei Verfolgungsproblemen die Frage auftaucht, ob das Ziel überhaupt erreicht wird.
+Wenn zum Beispiel die Geschwindigkeit des Verfolgers kleiner ist als diejenige des Ziels, gibt es Anfangsbedingungen bei denen das Ziel nie erreicht wird.
+Im Anschluss dieser Frage stellt sich meist die nächste Frage, wie lange es dauert bis das Ziel erreicht wird.
+Diese beiden Fragen werden in diesem Kapitel behandelt und am Beispiel aus \ref{lambertw:section:teil4} betrachtet.
+Das Beispiel wird bei dieser Betrachtung noch etwas erweitert indem alle Punkte auf der gesamtem $xy$-Ebene als Startwerte zugelassen werden.
 
-
-
-%\begin{figure}[H]
-%	\centering
-%	\includegraphics[width=0.5\textwidth]{.\Bilder\something.pdf}
-%   \label{pursuer:grafik1}
-%\end{figure}
-
-
-
-Je nach Verfolgungsstrategie die der Verfolger verwendet, entsteht eine andere DGL.
-Für dieses konkrete Beispiel wird einfachheitshalber die simpelste Strategie gewählt.
-Bei dieser Strategie bewegt sich der Verfolger immer direkt auf sein Ziel hinzu.
-Womit der Geschwindigkeitsvektor des Verfolgers zu jeder Zeit direkt auf das Ziel zeigt.
-
-Um die DGL dieses Problems herzuleiten wird der Sachverhalt in der Grafik \eqref{pursuer:grafik1} aufgezeigt.
-Der Punkt $P$ ist der Verfolger und der Punkt $A$ ist sein Ziel.
-
-Um dies mathematisch beschreiben zu können, wird der Richtungsvektor
+Nun gilt es zu definieren, wann das Ziel erreicht wird.
+Da sowohl Ziel und Verfolger als Punkte modelliert wurden, gilt das Ziel als erreicht, wenn die Koordinaten des Verfolgers mit denen des Ziels bei einem diskreten Zeitpunkt $t_1$ übereinstimmen.
+Somit gilt es
+%
+\begin{equation*}
+    z(t_1)=v(t_1)
+\end{equation*}
+%
+zu lösen.
+Die Parametrisierung von $z(t)$ ist im Beispiel definiert als
 \begin{equation}
-    \frac{A-P}{|A-P|}
+    z(t)
     =
-    \frac{\dot{P}}{|\dot{P}|}
+    \left( \begin{array}{c} 0 \\ t \end{array} \right)\text{.}
 \end{equation}
-benötigt. Durch die Subtraktion der Ortsvektoren $\overrightarrow{OP}$ und $\overrightarrow{OA}$ entsteht ein Vektor der vom Punkt $P$ auf $A$ zeigt.
-Da die Länge dieses Vektors beliebig sein kann, wird durch Division mit dem Betrag, die Länge auf eins festgelegt.
-Aus dem Verfolgungsproblem ist auch ersichtlich, dass die Punkte $A$ und $P$ nicht am gleichen Ort starten und so eine Division durch Null ausgeschlossen ist.
-Wenn die Punkte $A$ und $P$ trotzdem am gleichen Ort starten, ist die Lösung trivial.
-
-Nun wird die Gleichung mit deren rechten Seite skalar multipliziert, um das Gleichungssystem von zwei auf eine Gleichung zu reduzieren.
-\begin{equation}
-    \label{pursuer:pursuerDGL}
-    \frac{A-P}{|A-P|}\cdot \frac{\dot{P}}{|\dot{P}|}
+%
+Die Parametrisierung von $v(t)$ ist von den Startbedingungen abhängig. Deshalb wird die obige Bedingung jeweils für die unterschiedlichen Startbedingungen separat analysiert.
+%
+\subsection{Anfangsbedingung im \RN{1}-Quadranten}
+%
+Wenn der Verfolger im \RN{1}-Quadranten startet, dann kann $v(t)$ mit den Gleichungen aus \eqref{lambertw:eqFunkXNachT}, welche
+\begin{align*}
+    x\left(t\right)
+    &=
+    x_0\cdot\sqrt{\frac{1}{\chi}W\left(\chi\cdot \exp\left( \chi-\frac{4t}{r_0-y_0}\right) \right)} \\
+    y(t)
+    &=
+    \frac{1}{4}\left(\left(y_0+r_0\right)\left(\frac{x(t)}{x_0}\right)^2+\left(r_0-y_0\right)\operatorname{ln}\left(\left(\frac{x(t)}{x_0}\right)^2\right)-r_0+3y_0\right)\\
+    \chi
+    &=
+    \frac{r_0+y_0}{r_0-y_0}, \quad
+    \eta
     =
-    1
-\end{equation}
-Diese DGL ist der Kern des Verfolgungsproblems, insofern sich der Verfolger immer direkt auf sein Ziel zubewegt.
-
-
-\subsection{Beispiel}
-Das Verfolgungsproblem wird mithilfe eines konkreten Beispiels veranschaulicht. Dafür wird die einfachste Strategie verwendet, bei der sich der Verfolger direkt auf sein Ziel hinzu bewegt. Für dieses Problem wurde bereits die DGL \eqref{pursuer:pursuerDGL} hergeleitet.
-
-Um dieses Beispiel einfach zu halten, wird für den Verfolger und das Ziel jeweils eine konstante Geschwindigkeit von eins gewählt. Das Ziel wiederum startet im Ursprung und bewegt sich linear auf der positiven Y-Achse.
-
-\begin{align}
-    v_P^2
-    &=
-    \dot{P}\cdot\dot{P}
+    \left(\frac{x}{x_0}\right)^2,\quad
+    r_0
     =
-    1
-    \\[5pt]
-    v_A
-    &=
-    1
-    \\[5pt]
-    A
-    &=
-    \begin{pmatrix}
-    	0 \\
-    	v_A\cdot t
-    \end{pmatrix}
-	=
-	\begin{pmatrix}
-		0 \\
-		t
-	\end{pmatrix}
-	\\[5pt]
-	P
-	&=
-	\begin{pmatrix}
-		x \\
-		y
-	\end{pmatrix}
-\end{align}
-
-Die Anfangsbedingungen dieses Problems sind.
-
-\begin{align}
-	y(t)\bigg|_{t=0}
-	&=
-	y_0
-	\\[5pt]
-	x(t)\bigg|_{t=0}
-	&=
-	x_0 \\[5pt]
-	\frac{\,dy}{\,dx}(t)\bigg|_{t=0}
-	&=
-	\frac{y_A(t) -y_P(t)}{x_A(t)-x_P(t)}\bigg|_{t=0}
-\end{align}
-
-Mit den vorangegangenen Definitionen kann nun die DGL \eqref{pursuer:pursuerDGL} gelöst werden.
-Dafür wird als erstes das Skalarprodukt ausgerechnet.
-
+    \sqrt{x_0^2+y_0^2}
+\end{align*}
+%
+Der Folger ist durch
 \begin{equation}
-	\dfrac{-x\cdot\dot{x}+(t-y)\cdot\dot{y}}{\sqrt{x^2+(t-y)^2}} = 1
+    v(t)
+    =
+    \left( \begin{array}{c} x(t) \\ y(t) \end{array} \right)
+    \text{.}
 \end{equation}
-
-
-
-
-
-
-
-
-
-
-Sed ut perspiciatis unde omnis iste natus error sit voluptatem
-accusantium doloremque laudantium, totam rem aperiam, eaque ipsa
-quae ab illo inventore veritatis et quasi architecto beatae vitae
-dicta sunt explicabo.
-Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit
-aut fugit, sed quia consequuntur magni dolores eos qui ratione
-voluptatem sequi nesciunt
+%
+parametrisiert, wobei $y(t)$ viel komplexer ist als $x(t)$.
+Daher wird das Problem in zwei einzelne Teilprobleme zerlegt, wodurch die Bedingung der $x$- und $y$-Koordinaten einzeln überprüft werden müssen. Es entstehen daher folgende Bedingungen
+%
+\begin{align*}
+    0
+    &=
+    x(t)
+    =
+    x_0\sqrt{\frac{1}{\chi}W\left(\chi\cdot \exp\left( \chi-\frac{4t}{r_0-y_0}\right)\right)}
+    \\
+    t
+    &=
+    y(t)
+    =
+    \frac{1}{4}\left(\left(y_0+r_0\right)\left(\frac{x(t)}{x_0}\right)^2+\left(r_0-y_0\right)\operatorname{ln}\left(\left(\frac{x(t)}{x_0}\right)^2\right)-r_0+3y_0\right)\text{,}
+\end{align*}
+%
+welche Beide gleichzeitig erfüllt sein müssen, damit das Ziel erreicht wurde.
+Zuerst wird die Bedingung der $x$-Koordinate betrachtet.
+Da $x_0 \neq 0$ und $\chi \neq 0$ mit
 \begin{equation}
-\int_a^b x^2\, dx
-=
-\left[ \frac13 x^3 \right]_a^b
-=
-\frac{b^3-a^3}3.
-\label{lambertw:equation1}
+    0
+    =
+    x_0\sqrt{\frac{1}{\chi}W\left(\chi\cdot \exp\left( \chi-\frac{4t}{r_0-y_0}\right)\right)}
 \end{equation}
-Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet,
-consectetur, adipisci velit, sed quia non numquam eius modi tempora
-incidunt ut labore et dolore magnam aliquam quaerat voluptatem.
+ist diese Bedingung genau dann erfüllt, wenn
+\begin{equation}
+    0
+    =
+    W\left(\chi\cdot \exp\left( \chi-\frac{4t}{r_0-y_0}\right)\right)
+    \text{.}
+\end{equation}
+%
+Es ist zu beachten, dass $W(x)$ die Lambert W-Funktion ist, welche im Kapitel  \eqref{buch:section:lambertw} behandelt wurde.
+Diese Gleichung entspricht genau den Nullstellen der Lambert W-Funktion. Da die Lambert W-Funktion genau eine Nullstelle bei
+\begin{equation}
+    W(0)=0
+\end{equation}
+%
+Da $\chi\neq0$ und die Exponentialfunktion nie null sein kann, ist diese Bedingung unmöglich zu erfüllen.
+Beim Grenzwert für $t\rightarrow\infty$ geht die Exponentialfunktion gegen null.
+Dies nützt nicht viel, da unendlich viel Zeit vergehen müsste damit ein Einholen möglich wäre.
+Somit kann nach den gestellten Bedingungen das Ziel nie erreicht werden.
+%
+%
+%
+%Diese kann durch dividieren durch $x_0$, anschliessendes quadrieren und multiplizieren von $\chi$ vereinfacht werden. Daraus folgt 
+%\begin{equation}
+%	0
+%	=
+%	W\left(\chi\cdot \exp\left( \chi-\frac{4t}{r_0-y_0}\right)\right)
+%	\text{.}
+%5\end{equation}
+%
+%Es ist zu beachten, dass $W(x)$ die Lambert W-Funktion ist, welche im Kapitel  \eqref{buch:section:lambertw} behandelt wurde.
+%Diese Gleichung entspricht genau den Nullstellen der Lambert W-Funktion. Da die Lambert W-Funktion genau eine Nullstelle bei
+%
+%\begin{equation*}
+%    W(0)=0
+%\end{equation*}
+%
+%besitzt, kann die Bedingung weiter vereinfacht werden zu
+%
+%\begin{equation}
+%    0
+%    =
+%    \chi\cdot \exp\left( \chi-\frac{4t}{r_0-y_0}\right)
+%    \text{.}
+%\end{equation}
+%
+%Da $\chi\neq0$ und die Exponentialfunktion nie null sein kann, ist diese Bedingung unmöglich zu erfüllen.
+%Beim Grenzwert für $t\rightarrow\infty$ geht die Exponentialfunktion gegen null.
+%Dies nützt nicht viel, da unendlich viel Zeit vergehen müsste damit ein Einholen möglich wäre.
+%Somit kann nach den gestellten Bedingungen das Ziel nie erreicht werden.
+%
+\subsection{Anfangsbedingung $y_0<0$}
+Da die Geschwindigkeit des Verfolgers und des Ziels übereinstimmen, kann der Verfolgers niemals das Ziel einholen.
+Dies kann veranschaulicht werden anhand
+%
+\begin{equation}
+    v(t)\cdot \left( \begin{array}{c} 0 \\ 1 \end{array}\right) 
+    \leq
+    z(t)\cdot \left( \begin{array}{c} 0 \\ 1 \end{array}\right) 
+    =
+    1\text{.}
+\end{equation}
+%
+Da der $y$-Anteil der Geschwindigkeit des Ziels grösser-gleich der des Verfolgers ist, können die $y$-Koordinaten nie übereinstimmen.
+%
+\subsection{Anfangsbedingung auf positiven $y$-Achse}
+Wenn der Verfolger auf der positiven $y$-Achse startet, befindet er sich direkt auf der Fluchtgeraden des Ziels.
+Dies führt dazu, dass der Verfolger und das Ziel sich direkt aufeinander zu bewegen, da der Geschwindigkeitsvektor des Verfolgers auf das Ziel zeigt.
+Die Folge ist, dass das Ziel zwingend erreicht wird.
+Um $t_1$ zu bestimmen, kann die Verfolgungskurve in diesem Fall mit
+%
+\begin{equation}
+    v(t)
+    =
+    \left( \begin{array}{c} 0 \\ y_0-t \end{array} \right)
+\end{equation}
+%
+parametrisiert werden.
+Nun kann der Abstand zwischen Verfolger und Ziel leicht bestimmt und nach 0 aufgelöst werden.
+Woraus folgt
+%
+\begin{equation}
+    0
+    =
+    |v(t_1)-z(t_1)|
+    =
+    y_0-2t_1\text{,}
+\end{equation}
+%
+was aufgelöst zu
+%
+\begin{equation}
+    t_1
+    =
+    \frac{y_0}{2}
+\end{equation}
+%
+führt.
+Somit wird das Ziel immer erreicht bei $t_1$, wenn der Verfolger auf der positiven $y$-Achse startet.
+\subsection{Fazit}
+Durch die Symmetrie der Fluchtkurve an der $y$-Achse führen die Anfangsbedingungen in den Quadranten \RN{1} und \RN{2} zu den gleichen Ergebnissen. Nun ist klar, dass lediglich Anfangspunkte auf der positiven $y$-Achse oder direkt auf dem Ziel dazu führen, dass der Verfolger das Ziel bei $t_1$ einholt.
+Bei allen anderen Anfangspunkten wird der Verfolger das Ziel nie erreichen.
+Dieses Resultat ist aber eher akademischer Natur, weil der Verfolger und das Ziel als Punkt betrachtet wurden.
+Wobei aber in Realität nicht von Punkten sondern von Objekten mit einer räumlichen Ausdehnung gesprochen werden kann.
+Somit wird in einer nächsten Betrachtung untersucht, ob der Verfolger dem Ziel näher kommt als ein definierter Trefferradius.
+Falls dies stattfinden sollte, wird dies als Treffer interpretiert.
+Mathematisch kann dies mit
+%
+\begin{equation}
+    |v-z|<a_{min} \text{,}\quad a_{min}\in\mathbb{R}^+
+\end{equation}
+%
+beschrieben werden, wobei $a_{min}$ dem Trefferradius entspricht.
+Durch quadrieren verschwindet die Wurzel des Betrages, womit
+%
+\begin{equation}
+    |v-z|^2<a_{min}^2 \text{,}\quad a_{min}\in \mathbb{R}^+
+\end{equation}
+%
+die neue Bedingung ist.
+Da sowohl der Betrag als auch $a_{min}$ grösser null sind, bleibt die Aussage unverändert.
 
-Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis
-suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur?
-Quis autem vel eum iure reprehenderit qui in ea voluptate velit
-esse quam nihil molestiae consequatur, vel illum qui dolorem eum
-fugiat quo voluptas nulla pariatur?
 
-\subsection{De finibus bonorum et malorum
-\label{lambertw:subsection:finibus}}
-At vero eos et accusamus et iusto odio dignissimos ducimus qui
-blanditiis praesentium voluptatum deleniti atque corrupti quos
-dolores et quas molestias excepturi sint occaecati cupiditate non
-provident, similique sunt in culpa qui officia deserunt mollitia
-animi, id est laborum et dolorum fuga \eqref{000tempmlate:equation1}.
 
-Et harum quidem rerum facilis est et expedita distinctio
-\ref{lambertw:section:loesung}.
-Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil
-impedit quo minus id quod maxime placeat facere possimus, omnis
-voluptas assumenda est, omnis dolor repellendus
-\ref{lambertw:section:folgerung}.
-Temporibus autem quibusdam et aut officiis debitis aut rerum
-necessitatibus saepe eveniet ut et voluptates repudiandae sint et
-molestiae non recusandae.
-Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis
-voluptatibus maiores alias consequatur aut perferendis doloribus
-asperiores repellat.
 
 

@@ -46,7 +46,7 @@ if __name__ == "__main__":
     ax.set_yticks(get_ticks(-ylim, ylim), minor=True)
     ax.set_yticks(get_ticks(-step * (ylim // step), ylim, step))
     ax.set_ylim(-ylim, ylim)
-    ax.set_ylabel(r"$y$", y=0.95, labelpad=-18, rotation=0, fontsize="large")
+    ax.set_ylabel(r"$y$", y=0.95, labelpad=-14, rotation=0, fontsize="large")
 
     ax.legend(ncol=2, loc=(0.125, 0.01), fontsize="large")
 
