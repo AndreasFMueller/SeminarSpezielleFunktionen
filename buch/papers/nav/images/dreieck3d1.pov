@@ -3,7 +3,10 @@
 //
 // (c) 2022 Prof Dr Andreas Müller, OST Ostschweizer Fachhochschule
 //
+#version 3.7;
 #include "common.inc"
+
+kugel(kugeldunkel)
 
 union {
 	seite(A, B, fett)

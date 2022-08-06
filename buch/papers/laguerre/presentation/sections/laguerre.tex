@@ -1,0 +1,91 @@
+\section{Laguerre-Polynome}
+
+\begin{frame}{Laguerre-Differentialgleichung}
+
+\begin{itemize}
+\item Benannt nach Edmond Nicolas Laguerre (1834-1886)
+\item Aus Artikel von 1879,
+in dem er $\int_0^\infty \exp(-x)/x \, dx$ analysierte
+\end{itemize}
+
+\begin{align*}
+x y''(x) + (1 - x) y'(x) + n y(x)
+ & =
+0
+, \quad
+n \in \mathbb{N}_0
+, \quad
+x \in \mathbb{R}
+\end{align*}
+
+\end{frame}
+
+\begin{frame}{Lösen der Differentialgleichung}
+
+\begin{align*}
+x y''(x) + (1 - x) y'(x) + n y(x)
+ & =
+0
+\\
+\end{align*}
+
+\uncover<2->{
+\centering
+\begin{tikzpicture}[remember picture,overlay]
+%% use here too
+\path[draw=mainColor, very thick,->](0, 1.1) to
+node[anchor=west]{Potenzreihenansatz} (0, -0.8);
+\end{tikzpicture}
+}
+
+\begin{align*}
+\uncover<3->{
+L_n(x)
+ & =
+\sum_{k=0}^{n} \frac{(-1)^k}{k!} \binom{n}{k} x^k
+}
+\end{align*}
+\uncover<4->{
+\begin{itemize}
+    \item Die Lösungen der DGL sind die Laguerre-Polynome
+\end{itemize}
+}
+\end{frame}
+
+\begin{frame}
+\begin{figure}[h]
+\centering
+% \resizebox{0.74\textwidth}{!}{\input{../images/laguerre_poly.pgf}}
+\includegraphics[width=0.7\textwidth]{../images/laguerre_poly.pdf}
+\caption{Laguerre-Polynome vom Grad $0$ bis $7$}
+\end{figure}
+\end{frame}
+
+\begin{frame}{Orthogonalität}
+\begin{itemize}[<+->]
+\item Beweis: Umformen in Sturm-Liouville-Problem (siehe Paper)
+\begin{alignat*}{5}
+((p(x) &y'(x)))' + q(x) &y(x) 
+&=
+\lambda &w(x) &y(x)
+\\
+((x e^{-x} &y'(x)))' + 0 &y(x)
+&=
+n &e^{-x} &y(x)
+\end{alignat*}
+\item Definitionsbereich $(0, \infty)$
+\item Gewichtsfunktion $w(x) = e^{-x}$
+\end{itemize}
+
+\uncover<4->{
+\begin{align*}
+\int_0^\infty e^{-x} L_n(x) L_m(x) \, dx
+=
+0
+,\quad 
+n \neq m
+,\quad
+n, m \in \mathbb{N}
+\end{align*}
+}
+\end{frame}

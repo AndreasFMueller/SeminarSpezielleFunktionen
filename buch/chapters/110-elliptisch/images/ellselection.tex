@@ -1,0 +1,141 @@
+%
+% ellselection.tex -- Wahl einer elliptischen Funktion
+%
+% (c) 2021 Prof Dr Andreas Müller, OST Ostschweizer Fachhochschule
+%
+\documentclass[tikz]{standalone}
+\usepackage{amsmath}
+\usepackage{times}
+\usepackage{txfonts}
+\usepackage{pgfplots}
+\usepackage{csvsimple}
+\usetikzlibrary{arrows,intersections,math}
+\begin{document}
+\def\skala{1}
+\begin{tikzpicture}[>=latex,thick,scale=\skala]
+
+\input{rechteckpfade2.tex}
+
+\def\l{0.45}
+\pgfmathparse{\l*72/2.54}
+\xdef\L{\pgfmathresult}
+
+\pgfmathparse{4.1/\xmax}
+\xdef\dx{\pgfmathresult}
+\xdef\dy{\dx}
+
+\def\sx{4.1}
+\pgfmathparse{\sx*72/2.54}
+\xdef\Sx{\pgfmathresult}
+
+\pgfmathparse{\dx*\ymax}
+\xdef\sy{\pgfmathresult}
+\pgfmathparse{\sy*72/2.54}
+\xdef\Sy{\pgfmathresult}
+
+\pgfmathparse{\sx/2-\l}
+\xdef\linksx{\pgfmathresult}
+\pgfmathparse{\sy/2-\l}
+\xdef\linksy{\pgfmathresult}
+
+\pgfmathparse{\sx/2+2*\l}
+\xdef\rechtsx{\pgfmathresult}
+\pgfmathparse{\sy/2}
+\xdef\rechtsy{\pgfmathresult}
+
+\begin{scope}
+	\clip (-\sx,-\sy) rectangle (\sx,\sy);
+	\begin{scope}[xshift={-\Sx}]
+		\hintergrund
+		\netz{0.7pt}
+	\end{scope}
+	\begin{scope}[xshift={\Sx}]
+		\hintergrund
+		\netz{0.7pt}
+	\end{scope}
+\end{scope}
+
+\fill[color=red!14,opacity=0.7] ({-\sx},0) rectangle (\sx,\sy);
+\fill[color=blue!14,opacity=0.7] ({-\sx},{-\sy}) rectangle (\sx,0);
+\fill[color=yellow!40,opacity=0.5] (0,0) rectangle (\sx,\sy);
+
+\draw (-\sx,-\sy) rectangle (\sx,\sy);
+
+\draw[->] ({-1.4*\sx},0) -- ({1.4*\sx},0) coordinate[label={$\Re u$}];
+\draw[->] (0,{-\sy-1}) -- (0,{\sy+1}) coordinate[label={right:$\Im u$}];
+
+\definecolor{darkgreen}{rgb}{0,0.6,0}
+
+\draw[->,line width=1.9pt,color=darkgreen]
+	(\sx,0) to[out=180,in=-79] (\linksx,\linksy);
+\draw[->,line width=1.9pt,color=darkgreen]
+	(\sx,{\sy-\l}) to[out=-90,in=0] (\rechtsx,\rechtsy);
+
+\def\rect#1#2{
+	\fill[color=white] (-\l,-\l) rectangle (\l,\l);
+	#2
+	\draw (-\l,-\l) rectangle (\l,\l);
+	\node at (0,0) {\Huge #1\strut};
+}
+
+\def\kreuz{
+	\begin{scope}
+	\clip ({-\l},{-\l}) rectangle ({\l},{\l});
+	\fill[color=white] ({-2*\l},{-2*\l}) rectangle ({2*\l},{2*\l});
+	\draw[color=darkgreen!30,line width=3pt] (-\l,-\l) -- (\l,\l);
+	\draw[color=darkgreen!30,line width=3pt] (-\l,\l) -- (\l,-\l);
+	\end{scope}
+}
+
+\def\kreis{
+	\begin{scope}
+	\clip ({-\l},{-\l}) rectangle ({\l},{\l});
+	\fill[color=white] ({-2*\l},{-2*\l}) rectangle ({2*\l},{2*\l});
+	\draw[color=darkgreen!30,line width=3pt]
+		(0,0) circle[radius={\l*(\L-1.5)/\L}];
+	\end{scope}
+}
+
+\begin{scope}[xshift={0},yshift={0}]
+	\rect{s}{}
+\end{scope}
+
+\begin{scope}[xshift={\Sx},yshift={0}]
+	\rect{c}{\kreis}
+\end{scope}
+
+\begin{scope}[xshift={\Sx},yshift={\Sy}]
+	\rect{d}{\kreuz}
+\end{scope}
+
+\begin{scope}[xshift={0},yshift={\Sy}]
+	\rect{n}{}
+\end{scope}
+
+\node at ({-\l+0.1},{\sy+\l-0.1})    [above left]   {$iK'\mathstrut$};
+\node at ({-\l+0.1},{-\l+0.1})       [below left]   {$0\mathstrut$};
+\node at ({\sx+\l-0.1},{-\l+0.1})    [below right]  {$K\mathstrut$};
+\node at ({\sx+\l-0.1},{\sy+\l-0.1}) [above right]  {$K+iK'\mathstrut$};
+\node at ({-\sx},0)                  [below left]   {$-K\mathstrut$};
+\node at (0,{-\sy+0.05})             [below left]   {$-iK'\mathstrut$};
+\node at ({\sx-0.1},{-\sy+0.1})      [below right]  {$K-iK'\mathstrut$};
+\node at ({-\sx+0.1},{-\sy+0.1})     [below left]   {$-K-iK'\mathstrut$};
+\node at ({-\sx+0.1},{\sy-0.1})      [above left]   {$-K+iK'\mathstrut$};
+
+\begin{scope}[xshift={-\L+0.5*\Sx},yshift={0.5*\Sy}]
+	\node at ({-\l},{\l-0.1}) [above] {Nullstelle\strut};
+	\kreis
+	\node[color=darkgreen] at (0,0) {\Huge c\strut};
+	\draw[line width=0.2pt] (-\l,-\l) rectangle (\l,\l);
+\end{scope}
+
+\begin{scope}[xshift={\L+0.5*\Sx},yshift={0.5*\Sy}]
+	\node at ({\l},{\l-0.1}) [above] {Pol\strut};
+	\kreuz
+	\node[color=darkgreen] at (0,0) {\Huge d\strut};
+	\draw[line width=0.2pt] (-\l,-\l) rectangle (\l,\l);
+\end{scope}
+
+\end{tikzpicture}
+\end{document}
+

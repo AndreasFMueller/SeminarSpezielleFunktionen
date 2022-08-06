@@ -1,0 +1,75 @@
+\label{buch:elliptisch:aufgabe:4}
+Es ist bekannt, dass $\operatorname{sn}(K+iK', k) = 1/k$ gilt.
+Verwenden Sie den Algorithmus von Aufgabe~\ref{buch:elliptisch:aufgabe:3},
+um dies für $k=\frac12$ nachzurechnen.
+
+\begin{loesung}
+\begin{table}
+\centering
+\renewcommand{\tabcolsep}{5pt}
+\begin{tabular}{|>{$}c<{$}|>{$}c<{$}|>{$}c<{$}|>{$}c<{$}|}
+\hline
+ n & k_n               & u_n                                    & \operatorname{sn}(u_n,k_n)%
+\mathstrut\text{\vrule height12pt depth6pt width0pt}%
+\\
+\hline
+\mathstrut\text{\vrule height12pt depth0pt width0pt}%
+ 0 & 0.500000000000000 & 1.685750354812596 + 2.156515647499643i & 2.000000000000000 \\
+ 1 & 0.071796769724491 & 1.572826493259468 + 2.012056490946491i & 3.732050807568877 \\
+ 2 & 0.001292026239995 & 1.570796982340579 + 2.009460215619685i & 3.796651109009551 \\
+ 3 & 0.000000417333300 & 1.570796326794965 + 2.009459377005374i & 3.796672364209438 \\
+ 4 & 0.000000000000044 & 1.570796326794897 + 2.009459377005286i & 3.796672364211658 \\
+ N & 0.000000000000000 & 1.570796326794897 + 2.009459377005286i & 3.796672364211658%
+\mathstrut\text{\vrule height12pt depth6pt width0pt}%
+\\
+\hline
+\end{tabular}
+\caption{Berechnung von $\operatorname{sn}(K+iK',k)=1/k$ mit Hilfe der Landen-Transformation.
+Konvergenz der Folge $k_n$ ist bei $N=5$ eintegreten.
+\label{buch:elliptisch:aufgabe:4:table}}
+\end{table}
+Zunächst müssen wir mit dem Algorithmus des arithmetisch-geometrischen 
+Mittels
+\[
+K(k)
+\approx
+1.685750354812596
+\qquad\text{und}\qquad
+K(k')
+\approx
+2.156515647499643
+\]
+berechnen.
+Aus $k=\frac12$ kann man jetzt die Folgen $k_n$ und $u_n$ berechnen, die innert
+$N=5$ Iterationen konvergiert.
+Sie führt auf 
+\[
+u_N 
+=
+\frac{\pi}2 + 2.009459377005286i
+=
+\frac{\pi}2 + bi.
+\]
+Jetzt muss der Sinus von $u_N$ berechnet werden.
+Dazu verwenden wir die komplexe Darstellung:
+\[
+\sin u_N
+=
+\frac{e^{i\frac{\pi}2-b} - e^{-i\frac{\pi}2+b}}{2i}
+=
+\frac{ie^{-b}+ie^{b}}{2i}
+=
+\cosh b
+=
+3.796672364211658.
+\]
+Da der Wert $\operatorname{sn}(u_N,k_N) = \sin u_N$ reell ist, wird auch
+die daraus wie in Aufgabe~\ref{buch:elliptisch:aufgabe:3}
+konstruierte Folge $\operatorname{sn}(u_n,k_n)$ reell sein.
+Die Werte von $\operatorname{cn}(u_n,k_n)$ und $\operatorname{dn}(u_n,k_n)$
+werden für die Iterationsformeln~\eqref{buch:elliptisch:aufgabe:3:gauss}
+für $\operatorname{sn}(u_n,k_n)$ nicht benötigt.
+Die Berechnung ist in Tabelle~\ref{buch:elliptisch:aufgabe:4:table}
+zusammengefasst.
+Man liest ab, dass $\operatorname{sn}(K+iK',k)=2 = 1/k$, wie erwartet.
+\end{loesung}

@@ -7,10 +7,14 @@
 \label{buch:integrale:subsection:sturm-liouville-problem}}
 \rhead{Das Sturm-Liouville-Problem}
 Sowohl bei den Bessel-Funktionen wie bei den Legendre-Polynomen
+\index{Bessel-Funktion}%
 konnte die Orthogonalität der Funktionen dadurch gezeigt werden,
 dass sie als Eigenfunktionen eines bezüglich eines geeigneten
 Skalarproduktes selbstadjungierten Operators erkannt wurden.
 
+%
+% Differentialgleichungen
+%
 \subsection{Differentialgleichung}
 Das klassische Sturm-Liouville-Problem ist das folgende Eigenwertproblem.
 Gesucht sind Lösungen der Differentialgleichung
@@ -30,6 +34,9 @@ erfüllen, wobei $|k_i|^2 + |h_i|^2\ne 0$ mit $i=a,b$.
 Weitere Bedingungen an die Funktionen $p(x)$, $q(x)$, $w(x)$  sowie die
 Lösungsfunktionen $y(x)$ sollen später geklärt werden.
 
+%
+% Das verallgemeinerte Eigenwertproblem für symmetrische Matrizen
+%
 \subsection{Das verallgemeinerte Eigenwertproblem für symmetrische Matrizen}
 Ein zu \eqref{buch:integrale:eqn:sturm-liouville} analoges Eigenwertproblem
 für Matrizen ist das folgende verallgemeinerte Eigenwertproblem.
@@ -51,6 +58,7 @@ Für symmetrische Matrizen lässt sich dieses Problem auf ein
 Optimierungsproblem reduzieren.
 
 \begin{satz}
+\index{Satz!verallgemeinertes Eigenwertproblem}%
 Seien $A$ und $B$ symmetrische $n\times n$-Matrizen und sei ausserdem
 $B$ positiv definit.
 Ist $v$ ein Vektor, der die Grösse
@@ -121,6 +129,7 @@ Eigenwert $\lambda$ ist.
 \end{proof}
 
 \begin{satz}
+\index{Satz!Orthogonalität verallgemeinerter Eigenvektoren}%
 Verallgemeinerte Eigenvektoren $u$ und $v$ von $A$ und $B$
 zu verschiedenen Eigenwerten erfüllen $u^tBv=0$.
 \end{satz}
@@ -147,6 +156,8 @@ dass $u^tBv=0$ sein muss.
 Verallgemeinerte Eigenwerte und Eigenvektoren verhalten sich also
 ganz analog zu den gewöhnlichen Eigenwerten und Eigenvektoren.
 Da $B$ positiv definit ist, ist $B$ auch invertierbar.
+\index{verallgemeinertes Skalarprodukt}%
+\index{Skalarprodukt!verallgemeinertes}%
 Zudem kann $B$ zur Definition des verallgemeinerten Skalarproduktes
 \[
 \langle u,v\rangle_B = u^tBv
@@ -175,6 +186,9 @@ ist damit ein gewöhnliches Eigenwertproblem für selbstadjungierte
 Matrizen des Operators $\tilde{A}$ bezüglich des verallgemeinerten
 Skalarproduktes $\langle\,\;,\;\rangle_B$.
 
+%
+% Der Operator L_0 und die Randbedingung
+%
 \subsection{Der Operator $L_0$ und die Randbedingung}
 Die Differentialgleichung kann auch in Operatorform geschrieben werden.
 Dazu schreiben wir
@@ -192,6 +206,7 @@ Bezüglich des gewöhnlichen Skalarproduktes
 für Funktionen auf dem Intervall $[a,b]$ ist der Operator $L_0$
 tatsächlich selbstadjungiert.
 Mit partieller Integration rechnet man nach:
+\index{partielle Integration}%
 \begin{align}
 \langle f,L_0g\rangle
 &=
@@ -275,6 +290,9 @@ Ausgeschrieben bedeutet dies, dass die Randbedingung
 \eqref{buch:integrale:sturm:randbedingung}
 erfüllt sein muss.
 
+%
+% Skalarprodukt
+%
 \subsection{Skalarprodukt}
 Das Ziel der folgenden Abschnitte ist, das Sturm-Liouville-Problem als
 Eigenwertproblem für einen selbstadjungierten Operator in einem 
@@ -314,6 +332,9 @@ mit der Gewichtsfunktion $w(x)$ verwendet werden.
 Damit dies ein vernünftiges Skalarprodukt ist, muss $w(x)>0$ im
 Innerend es Intervalls sein.
 
+%
+% Der Vektorraum H
+%
 \subsection{Der Vektorraum $H$}
 Damit können wir jetzt die Eigenschaften der in Frage kommenden
 Funktionen zusammenstellen.
@@ -346,17 +367,23 @@ f\in L^2([a,b],w)\;\bigg|\;
 \biggr\}.
 \]
 
-\subsection{Differentialoperator}
+%
+% Der Sturm-Liouville-Differentialoperator
+%
+\subsection{Der Sturm-Liouville-Differentialoperator}
 Das verallgemeinerte Eigenwertproblem für $A$ und $B$ ist ein
 gewöhnliches Eigenwertproblem für die Operator $\tilde{A}=B^{-1}A$
 bezüglich des modifizierten Skalarproduktes.
 Das Sturm-Liouville-Problem ist also ein Eigenwertproblem im
 Vektorraum $H$ mit dem Skalarprodukt $\langle\,\;,\;\rangle_w$.
 Der Operator
-\[
+\begin{equation}
 L = \frac{1}{w(x)} \biggl(-\frac{d}{dx} p(x)\frac{d}{dx} + q(x)\biggr)
-\]
+\label{buch:orthogonal:sturm-liouville:opL1}
+\end{equation}
 heisst der {\em Sturm-Liouville-Operator}.
+\index{Sturm-Liouville-Operator}%
+\index{Operator!Sturm-Liouville-}%
 Eine Lösung des Sturm-Liouville-Problems ist eine Funktion $y(x)$ derart,
 dass 
 \[
@@ -365,13 +392,28 @@ Ly = \lambda y,
 $\lambda$ ist der zu $y(x)$ gehörige Eigenwert.
 Der Operator ist definiert auf Funktionen des im vorangegangenen Abschnitt
 definierten Vektorraumes $H$.
+Führt man die Differentiation aus, bekommt der Operator die Form
+\begin{equation}
+L
+=
+-\frac{p(x)}{w(x)} \frac{d^2}{dx^2}
+-\frac{p'(x)}{w(x)} \frac{d}{dx}
++\frac{q(x)}{w(x)}.
+\label{buch:orthogonal:sturm-liouville:opL2}
+\end{equation}
 
+%
+% Beispiele
+%
 \subsection{Beispiele}
 Die meisten der früher vorgestellten Funktionenfamilien stellen sich
 als Lösungen eines geeigneten Sturm-Liouville-Problems heraus.
 Alle Eigenschaften aus der Sturm-Liouville-Theorie gelten daher
 automatisch für diese Funktionenfamilien.
 
+%
+% Trignometrische Funktionen
+%
 \subsubsection{Trigonometrische Funktionen}
 Die trigonometrischen Funktionen sind Eigenfunktionen des Operators
 $d^2/dx^2$, also eines Sturm-Liouville-Operators mit $p(x)=1$, $q(x)=0$
@@ -434,6 +476,9 @@ Dann ist wegen
 die Bedingung~\eqref{buch:integrale:sturm:sabedingung}
 ebenfalls erfüllt, $L_0$ ist in diesem Raum selbstadjungiert.
 
+%
+% Bessel-Funktionen J_n(x)
+%
 \subsubsection{Bessel-Funktionen $J_n(x)$}
 Der Bessel-Operator \eqref{buch:differentialgleichungen:bessel-operator}
 kann wie folgt in die Form eines Sturm-Liouville-Operators gebracht 
@@ -478,6 +523,9 @@ Es folgt damit sofort, dass die Besselfunktionen orthogonale
 Funktionen bezüglich des Skalarproduktes mit der Gewichtsfunktion
 $w(x)=1/x$ sind.
 
+%
+% Bessel-Funktionen J_n(sx)
+%
 \subsubsection{Bessel-Funktionen $J_n(s x)$}
 Das Sturm-Liouville-Problem mit den Funktionen
 \eqref{buch:orthogonal:sturm:bessel:n}
@@ -489,7 +537,10 @@ Im Folgenden sollen hingegen die Funktionen $J_n(s x)$ für
 konstantes $n$, aber verschiedene $s$ untersucht und
 als orthogonal erkannt werden.
 
-Die Funktion $y(x) = J_n(x)$ ist eine Lösung der Bessel-Differentialgleichung
+Die Funktion $y(x) = J_n(x)$ ist eine Lösung der Besselschen
+Differentialgleichung
+\index{Besselsche Differentialgleichung}%
+\index{Differentialgleichung!Besselsche}%
 \[
 x^2y'' + xy' + x^2y = n^2y.
 \]
@@ -576,6 +627,7 @@ des Sturm-Liouville-Problems
 für den Eigenwert $\lambda = -s^2$.
 
 \begin{satz}[Orthogonalität der Bessel-Funktionen]
+\index{Satz!Orthogonalität der Bessel-Funktionen}%
 Die Bessel-Funktionen $J_n(sx)$ für verschiedene $s$ sind orthogonal
 bezüglich des Skalarproduktes mit der Gewichtsfunktion $w(x)=x$,
 d.~h.
@@ -608,6 +660,9 @@ Damit sind geeignete Randbedingungen für das Sturm-Liouville-Problem
 gefunden.
 \end{proof}
 
+%
+% Laguerre-Polynome
+%
 \subsubsection{Laguerre-Polynome}
 Die Laguerre-Polynome sind orthogonal bezüglich des Skalarprodukts
 mit der Laguerre-Gewichtsfunktion $w(x)=e^{-x}$ und erfüllen die
@@ -646,9 +701,15 @@ also die Laguerre-Differentialgleichung.
 Somit folgt, dass die Laguerre-Polynome orthogonal sind bezüglich
 des Skalarproduktes mit der Laguerre-Gewichtsfunktion.
 
+%
+% Tschebyscheff-Polynome
+%
 \subsubsection{Tschebyscheff-Polynome}
 Die Tschebyscheff-Polynome sind Lösungen der
-Tschebyscheff-Differentialgleichung
+bereits in Kapitel~\ref{buch:chapter:potenzen} hergeleiteten
+Tschebyscheff-Differentialgleichung~\eqref{buch:potenzen:tschebyscheff:dgl}
+\index{Tschebyscheff-Differentialgleichung}%
+\index{Differentialgleichung!Tschebyscheff-}%
 \[
 (1-x^2)y'' -xy' = n^2y
 \]
@@ -680,19 +741,100 @@ xy'(x)
 \lambda y(x).
 \end{align*}
 Es folgt, dass die Tschebyscheff-Polynome orthogonal sind 
+\index{Tschebyscheff-Polynom}%
 bezüglich des Skalarproduktes
 \[
 \langle f,g\rangle = \int_{-1}^1 f(x)g(x)\frac{dx}{\sqrt{1-x^2}}.
 \]
 
+%
+% Jacobi-Polynome
+%
 \subsubsection{Jacobi-Polynome}
-TODO
+Die Jacobi-Polynome sind orthogonal bezüglich des Skalarproduktes
+\index{Jacobi-Polynome}%
+\index{Polynome!Jacobi-}%
+mit der Gewichtsfunktion
+\[
+w^{(\alpha,\beta)}(x) = (1-x)^\alpha(1+x)^\beta,
+\]
+definiert in Definition~\ref{buch:orthogonal:def:jacobi-gewichtsfunktion}.
+%Bei der Herleitung der Rodrigues-Formel für die Jacobi-Polynome wurde erkannt,
+%dass $B(x)=1-x^2$ und $A(x)=\beta-\alpha-(\alpha+\beta)x$ sein muss.
+Man kann zeigen, dass sie Lösungen der
+{\em Jacobi-Diffe\-ren\-tial\-gleichung}
+\index{Jacobi-Differentialgleichung}%
+\index{Differentialgleichung!Jacobi}%
+\begin{equation}
+(1-x^2)y'' + (\beta-\alpha-(\alpha+\beta + 2)x)y' + n(n+\alpha+\beta+1)y=0
+\label{buch:orthogonal:jacobi:dgl}
+\end{equation}
+sind.
+Es stellt sich die Frage, ob sich Funktionen $p(x)$ und $q(x)$ finden lassen
+derart, dass die Differentialgleichung~\eqref{buch:orthogonal:jacobi:dgl}
+eine Sturm-Liouville-Gleichung wird.
+Gemäss der Form~\eqref{buch:orthogonal:sturm-liouville:opL2} muss
+$p(x)$ so gefunden werden, dass
+\begin{align*}
+\frac{p(x)}{w^{(\alpha,\beta)}(x)} &= 1-x^2 \\
+\frac{p'(x)}{w^{(\alpha,\beta)}(x)} &= \beta-\alpha-(\alpha+\beta+2)x
+\end{align*}
+gilt.
+Der Quotient der beiden Gleichungen ist die logarithmische Ableitung
+\[
+(\log p(x))'
+=
+\frac{p'(x)}{p(x)}
+=
+\frac{1-x^2}{\beta-\alpha-(\alpha+\beta+2)x}
+\]
+von $p(x)$,
+die sich in geschlossener Form integrieren lässt.
+Man findet als Stammfunktion
+\[
+p(x)
+=
+(1-x)^{\alpha+1}(1+x)^{\beta+1}.
+\]
+Tatsächlich ist
+\begin{align*}
+\frac{p(x)}{w^{(\alpha,\beta)}(x)}
+&=
+\frac{(1-x)^{\alpha+1}(1+x)^{\beta+1}}{(1-x)^\alpha(1+x)^\beta}
+=
+(1-x)(1+x)=1-x^2
+\\
+\frac{p'(x)}{w^{(\alpha,\beta)}(x)}
+&=
+\frac{
+-(\alpha+1)
+(1-x)^{\alpha}(1+x)^{\beta+1}
++
+(\beta+1)
+(1-x)^{\alpha+1}(1+x)^{\beta}
+}{
+(1-x)^{\alpha}(1+x)^{\beta}
+}
+\\
+&=
+-(\alpha+1)(1+x) + (\beta+1)(1-x)
+=
+\beta-\alpha-(\alpha+\beta+2)x.
+\end{align*}
+Damit ist
+die Jacobische Differentialgleichung 
+als Sturm-Liouville-Differentialgleichung erkannt.
 
-
+%
+% Hypergeometrische Differentialgleichungen
+%
 \subsubsection{Hypergeometrische Differentialgleichungen}
 %\url{https://encyclopediaofmath.org/wiki/Hypergeometric_equation}
 Auch die Eulersche hypergeometrische Differentialgleichung
+\index{Eulersche hypergeometrische Differentialgleichung}%
+\index{Differentialgleichung!Eulersche hypergeometrische}%
 lässt sich in die Form eines Sturm-Liouville-Operators
+\index{Eulersche hypergeometrische Differentialgleichung!als Sturm-Liouville-Gleichung}%
 bringen.
 Dazu setzt man
 \begin{align*}

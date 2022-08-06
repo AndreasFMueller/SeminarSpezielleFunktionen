@@ -5,6 +5,8 @@
 //
 #include "common.inc"
 
+kugel(kugeldunkel)
+
 union {
 	seite(A, C, fett)
 	seite(A, P, fett)

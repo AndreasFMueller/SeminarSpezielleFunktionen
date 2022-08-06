@@ -241,12 +241,16 @@ Die Rekursionsformel
 kann auch dazu verwendet werden, Werte der Tschebyscheff-Polynome
 sehr effizient zu berechnen.
 
+%
+% Multiplikationsformel
+%
 \subsubsection{Multiplikationsformel}
 Aus der Definition mit Hilfe trigonometrischer Funktionen
 lässt sich auch eine Multiplikationsformel ableiten.
 \index{Multiplikationsformel}%
 
 \begin{satz}
+\index{Satz!Multiplikationsformel für Tschebyscheff-Polynome}%
 Es gilt
 \begin{align}
 T_m(x)T_n(x)&=\frac12\bigl(T_{m+n}(x) + T_{m-n}(x)\bigr)
@@ -299,5 +303,83 @@ T_{mn}(x).
 \]
 Damit ist auch \eqref{buch:potenzen:tschebyscheff:mult2} bewiesen.
 \end{proof}
+
+%
+% Differentialgleichung
+%
+\subsubsection{Tschebyscheff-Differentialgleichung}
+Die Ableitungen der Tschebyscheff-Polynome sind
+\begin{align*}
+T_n(x)
+&=
+\cos (ny(x))
+&&
+&&
+\\
+\frac{d}{dx} T_n(x)
+&=
+\frac{d}{dx} \cos(ny(x))
+=
+n\sin(ny(x)) \cdot \frac{dy}{dx}
+&
+&\text{mit}&
+\frac{dy}{dx}
+&=
+-\frac{1}{\sqrt{1-x^2}}
+\\
+\frac{d^2}{dx^2} T_n(x)
+&=
+-n^2\cos(ny(x)) \biggl(\frac{dy}{dx}\biggr)^2 + n\sin(ny(x)) \frac{d^2y}{dx^2}
+&
+&\text{mit}&
+\frac{d^2y}{dx^2}
+&=
+-\frac{x}{(1-x^2)^{\frac32}}.
+\end{align*}
+Wir suchen eine verschwindende Linearkombination dieser drei Terme
+mit Funktionen von $x$ als Koeffizienten.
+Wir setzen daher an
+\begin{align*}
+0
+&=
+\alpha(x) T_n''(x)
++
+\beta(x) T_n'(x)
++
+\gamma(x) T_n(x)
+\\
+&=
+\biggl(
+-\frac{n^2\alpha(x)}{1-x^2}
++
+\gamma(x)
+\biggr)
+\cos(ny(x))
++
+\biggl(
+-\frac{nx\alpha(x)}{(1-x^2)^{\frac32}}
+-\frac{n\beta(x)}{\sqrt{1-x^2}}
+\biggr)
+\sin(ny(x))
+\end{align*}
+Die grossen Klammern müssen verschwinden, was nur möglich ist, wenn zu
+gegebenem $\alpha(x)$ die anderen beiden Koeffizienten
+\begin{align*}
+\beta(x)  &=  -\frac{x\alpha(x)}{1-x^2} \\
+\gamma(x) &= n^2 \frac{\alpha(x)}{1-x^2}
+\end{align*}
+sind.
+Die Koeffizienten werden besonders einfach, wenn man $\alpha(x)=1-x^2$ wählt.
+Die Tschebyscheff-Polynome sind Lösungen der Differentialgleichung
+\begin{equation}
+(1-x^2) T_n''(x) -x T_n'(x) +n^2 T_n(x) = 0.
+\label{buch:potenzen:tschebyscheff:dgl}
+\end{equation}
+Die Differentialgleichung~\eqref{buch:potenzen:tschebyscheff:dgl}
+heisst {\em Tschebyscheff-Differentialgleichung}.
+\index{Tschebyscheff-Differentialgleichung}%
+\index{Differentialgleichung!Tschebyscheff-}%
+
+
 
 

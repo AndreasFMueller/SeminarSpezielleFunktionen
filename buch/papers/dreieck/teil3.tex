@@ -3,8 +3,75 @@
 %
 % (c) 2020 Prof Dr Andreas Müller, Hochschule Rapperswil
 %
-\section{Erweiterungen
-\label{dreieck:section:erweiterungen}}
-\rhead{Erweiterungen}
+\section{Integralbedingung
+\label{dreieck:section:integralbedingung}}
+\rhead{Lösung}
+Die Tatsache, dass die Hermite-Polynome orthogonal sind, erlaubt, das
+Kriterium von Satz~\ref{dreieck:satz1} in einer besonders attraktiven
+Integralform zu formulieren.
+
+Aus den Polynomen $H_n(t)$ lassen sich durch Normierung die
+\index{orthogonale Polynome}%
+\index{Polynome, orthogonale}%
+orthonormierten Polynome
+\[
+\tilde{H}_n(t)
+=
+\frac{1}{\| H_n\|_w} H_n(t)
+\qquad\text{mit}\quad
+\|H_n\|_w^2
+=
+\int_{-\infty}^\infty H_n(t)e^{-t^2}\,dt
+\]
+bilden.
+Da diese Polynome eine orthonormierte Basis des Vektorraums der Polynome
+bilden, kann die gesuchte Zerlegung eines Polynoms $P(t)$ auch mit
+Hilfe des Skalarproduktes gefunden werden:
+\begin{align*}
+P(t)
+&=
+\sum_{k=1}^n
+\langle \tilde{H}_k, P\rangle_w
+\tilde{H}_k(t)
+=
+\sum_{k=1}^n
+\biggl\langle \frac{H_k}{\|H_k\|_w}, P\biggr\rangle_w
+\frac{H_k(t)}{\|H_k\|_w}
+=
+\sum_{k=1}^n
+\underbrace{
+\frac{ \langle H_k, P\rangle_w }{\|H_k\|_w^2}
+}_{\displaystyle =a_k}
+H_k(t).
+\end{align*}
+Die Darstellung von $P(t)$ als Linearkombination von Hermite-Polynomen
+hat somit die Koeffizienten
+\[
+a_k = \frac{\langle H_k,P\rangle_w}{\|H_k\|_w^2}.
+\]
+Aus dem Kriterium $a_0=0$ dafür, dass eine elementare Stammfunktion
+von $P(t)e^{-t^2}$ existiert, wird daher die Bedingung, dass
+$\langle H_0,P\rangle_w=0$ ist.
+Da $H_0(t)=1$ ist, folgt als Bedingung
+\[
+a_0
+=
+\langle H_0,P\rangle_w
+=
+\int_{-\infty}^\infty P(t) e^{-t^2}\,dt
+=
+0.
+\]
+
+\begin{satz}
+Ein Integrand der Form $P(t)e^{-t^2}$ mit einem Polynom $P(t)$
+hat genau dann eine elementare Stammfunktion, wenn
+\[
+\int_{-\infty}^\infty P(t)e^{-t^2}\,dt = 0
+\]
+ist.
+\end{satz}
+
+
 
 
