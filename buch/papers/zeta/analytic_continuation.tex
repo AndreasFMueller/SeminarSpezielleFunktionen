@@ -110,78 +110,24 @@ Analog zum Abschnitt \ref{zeta:section:zusammenhang_mit_gammafunktion} teilen wi
     \,dx,
 \end{equation}
 und finden $\zeta(s)$ durch die Summenbildung $\sum_{n=1}^{\infty}$
-\begin{equation}
+\begin{align}
     \frac{\Gamma \left( \frac{s}{2} \right)}{\pi^{\frac{s}{2}}}
     \zeta(s)
-    =
+    &=
     \int_0^{\infty}
     x^{\frac{s}{2}-1}
     \sum_{n=1}^{\infty}
     e^{-\pi n^2 x}
-    \,dx. \label{zeta:equation:integral1}
-\end{equation}
-Die Summe kürzen wir ab als $\psi(x) = \sum_{n=1}^{\infty} e^{-\pi n^2 x}$.
-Im Abschnitt \ref{zeta:subsec:poisson_summation} wird die poissonsche Summenformel $\sum f(n) = \sum F(n)$ bewiesen.
-In unserem Problem ist $f(n) =  e^{-\pi n^2 x}$ und die zugehörige Fouriertransformation $F(n)$ ist
-\begin{equation}
-    F(n)
-    =
-    \mathcal{F}
-    (
-    e^{-\pi n^2 x}
-    )
-    =
-    \frac{1}{\sqrt{x}}
-    e^{\frac{-n^2 \pi}{x}}.
-\end{equation}
-Dadurch ergibt sich
-\begin{equation}\label{zeta:equation:psi}
-    \sum_{n=-\infty}^{\infty}
-    e^{-\pi n^2 x}
-    =
-    \frac{1}{\sqrt{x}}
-    \sum_{n=-\infty}^{\infty}
-    e^{\frac{-n^2 \pi}{x}},
-\end{equation}
-wobei wir die Summen so verändern müssen, dass sie bei $n=1$ beginnen und wir $\psi(x)$ erhalten als
-\begin{align}
-    2
-    \sum_{n=1}^{\infty}
-    e^{-\pi n^2 x}
-    +
-    1
-    &=
-    \frac{1}{\sqrt{x}}
-    \Biggl(
-    2
-    \sum_{n=1}^{\infty}
-    e^{\frac{-n^2 \pi}{x}}
-    +
-    1
-    \Biggr)
+    \,dx\label{zeta:equation:integral1}
     \\
-    2
-    \psi(x)
-    +
-    1
     &=
-    \frac{1}{\sqrt{x}}
-    \left(
-    2
-    \psi\left(\frac{1}{x}\right)
-    +
-    1
-    \right)
-    \\
+    \int_0^{\infty}
+    x^{\frac{s}{2}-1}
     \psi(x)
-    &=
-    - \frac{1}{2}
-    + \frac{\psi\left(\frac{1}{x} \right)}{\sqrt{x}}
-    + \frac{1}{2 \sqrt{x}}.\label{zeta:equation:psi}
+    \,dx,
 \end{align}
-Diese Gleichung wird später wichtig werden.
-
-Zunächst teilen wir nun das Integral aus \eqref{zeta:equation:integral1} auf als
+wobei die Summe $\sum_{n=1}^{\infty} e^{-\pi n^2 x}$ als $\psi(x)$ abgekürzt wird.
+Zunächst teilen wir nun das Integral auf in zwei Teile
 \begin{equation}\label{zeta:equation:integral2}
     \int_0^{\infty}
     x^{\frac{s}{2}-1}
@@ -202,100 +148,11 @@ Zunächst teilen wir nun das Integral aus \eqref{zeta:equation:integral1} auf al
     \,dx
     }_{I_2}
     =
-    I_1 + I_2,
+    I_1 + I_2.
 \end{equation}
-wobei wir uns zunächst auf den ersten Teil $I_1$ konzentrieren werden.
-Dabei setzen wir die Definition von $\psi(x)$ aus \eqref{zeta:equation:psi} ein und erhalten
-\begin{align}
-    I_1
-    =
-    \int_0^{1}
-    x^{\frac{s}{2}-1}
-    \psi(x)
-    \,dx
-    &=
-    \int_0^{1}
-    x^{\frac{s}{2}-1}
-    \Biggl(
-    - \frac{1}{2}
-    + \frac{\psi\left(\frac{1}{x} \right)}{\sqrt{x}}
-    + \frac{1}{2 \sqrt{x}}
-    \Biggr)
-    \,dx
-    \\
-    &=
-    \int_0^{1}
-    x^{\frac{s}{2}-\frac{3}{2}}
-    \psi \left( \frac{1}{x} \right)
-    + \frac{1}{2}
-    \biggl(
-    x^{\frac{s}{2}-\frac{3}{2}}
-    -
-    x^{\frac{s}{2}-1}
-    \biggl)
-    \,dx
-    \\
-    &=
-    \underbrace{
-    \int_0^{1}
-    x^{\frac{s}{2}-\frac{3}{2}}
-    \psi \left( \frac{1}{x} \right)
-    \,dx
-    }_{I_3}
-    +
-    \underbrace{
-    \frac{1}{2}
-    \int_0^1
-    x^{\frac{s}{2}-\frac{3}{2}}
-    -
-    x^{\frac{s}{2}-1}
-    \,dx
-    }_{I_4}. \label{zeta:equation:integral3}
-\end{align}
-Darin kann das zweite Integral $I_4$ gelöst werden als
-\begin{equation}
-    I_4
-    =
-    \frac{1}{2}
-    \int_0^1
-    x^{\frac{s}{2}-\frac{3}{2}}
-    -
-    x^{\frac{s}{2}-1}
-    \,dx
-    =
-    \frac{1}{s(s-1)}.
-\end{equation}
-Das erste Integral $I_3$ aus \eqref{zeta:equation:integral3} mit $\psi \left(\frac{1}{x} \right)$ ist nicht lösbar in dieser Form.
-Deshalb substituieren wir $x = \frac{1}{u}$ und $dx = -\frac{1}{u^2}du$.
-Die untere Integralgrenze wechselt ebenfalls zu $x_0 = 0 \rightarrow u_0 = \infty$.
-Dies ergibt
-\begin{align}
-    I_3
-    =
-    \int_{\infty}^{1}
-    \left(
-    \frac{1}{u}
-    \right)^{\frac{s}{2}-\frac{3}{2}}
-    \psi(u)
-    \frac{-du}{u^2}
-    &=
-    \int_{1}^{\infty}
-    \left(
-    \frac{1}{u}
-    \right)^{\frac{s}{2}-\frac{3}{2}}
-    \psi(u)
-    \frac{du}{u^2}
-    \\
-    &=
-    \int_{1}^{\infty}
-    x^{(-1) \left(\frac{s}{2}+\frac{1}{2}\right)}
-    \psi(x)
-    \,dx,
-\end{align}
-wobei wir durch Multiplikation mit $(-1)$ die Integralgrenzen tauschen dürfen.
-Es ist zu beachten das diese Grenzen nun identisch mit den Grenzen des zweiten Integrals $I_2$ von \eqref{zeta:equation:integral2} sind.
-Wir setzen beide Lösungen in Gleichung \eqref{zeta:equation:integral3} ein und erhalten
-\begin{equation}
+Abschnitt \ref{zeta:subsubsec:intcal} beschreibt wie das Integral $I_1$ umgestellt werden kann um ebenfalls die Integrationsgrenzen $1$ und $\infty$ zu bekommen.
+Die Lösung, beschrieben in Gleichung \eqref{zeta:equation:intcal_res}, lautet
+\begin{equation*}
     I_1
     =
     \int_0^{1}
@@ -309,8 +166,8 @@ Wir setzen beide Lösungen in Gleichung \eqref{zeta:equation:integral3} ein und 
     \,dx
     +
     \frac{1}{s(s-1)}.
-\end{equation}
-Dieses Resultat setzen wir wiederum ein in \eqref{zeta:equation:integral2}, um schlussendlich
+\end{equation*}
+Dieses Resultat setzen wir nun ein in \eqref{zeta:equation:integral2}, um schlussendlich
 \begin{align}
     \frac{\Gamma \left( \frac{s}{2} \right)}{\pi^{\frac{s}{2}}}
     \zeta(s)
@@ -375,12 +232,14 @@ Somit haben wir die analytische Fortsetzung gefunden als
 \end{equation}
 was einer Spiegelung an der $\Re(s) = \frac{1}{2}$ Geraden entspricht.
 Eine ganz ähnliche Spiegelungseigenschaft wurde bereits in Kapitel \ref{buch:funktionentheorie:subsection:gammareflektion} für die Gammafunktion gefunden.
-%TODO Definitionen und Gleichungen klarer unterscheiden
 
-\subsection{Poissonsche Summenformel} \label{zeta:subsec:poisson_summation}
+\subsection{Berechnung des Integrals $I_1 = \int_0^{1} x^{\frac{s}{2}-1} \psi(x) \,dx$} \label{zeta:subsubsec:intcal}
 
-Der Beweis für Gleichung \eqref{zeta:equation:psi} folgt direkt durch die poissonsche Summenformel.
-Um diese zu beweisen, berechnen wir zunächst die Fourierreihe der Dirac Delta Funktion.
+Ziel dieses Abschnittes ist es, zu zeigen wie das Integral $I_1$ aus Gleichung \eqref{zeta:equation:integral2} durch ein neues Integral mit den Integrationsgrenzen $1$ und $\infty$ ersetzt werden kann.
+Da dieser Schritt ziemlich aufwendig ist, wird er hier in einem eigenen Abschnitt behandelt.
+Zunächst wird die poissonsche Summenformel hergeleitet, da diese verwendet werden kann um $\psi(x)$ zu berechnen.
+
+Um die poissonsche Summenformel zu beweisen, berechnen wir zunächst die Fourierreihe der Dirac Delta Funktion.
 
 \begin{lemma}
     Die Fourierreihe der periodischen Dirac $\delta$ Funktion $\sum \delta(x - 2\pi k)$ ist
@@ -492,3 +351,186 @@ Um diese zu beweisen, berechnen wir zunächst die Fourierreihe der Dirac Delta F
         f(k).
     \end{equation}
 \end{proof}
+
+Erinnern wir uns nochmals an unser Integral aus Gleichung \eqref{zeta:equation:integral2}
+\begin{align*}
+    I_1
+    &=
+    \int_0^{1}
+    x^{\frac{s}{2}-1}
+    \sum_{n=1}^{\infty}
+    e^{-\pi n^2 x}
+    \,dx
+    \\
+    &=
+    \int_0^{1}
+    x^{\frac{s}{2}-1}
+    \psi(x)
+    \,dx
+    .
+\end{align*}
+
+Wir wenden nun diese poissonsche Summenformel $\sum f(n) = \sum F(n)$ an auf $\psi(x)$.
+In unserem Problem ist also $f(n) =  e^{-\pi n^2 x}$ und die zugehörige Fouriertransformation $F(n)$ ist
+\begin{equation}
+    F(n)
+    =
+    \mathcal{F}
+    (
+    e^{-\pi n^2 x}
+    )
+    =
+    \frac{1}{\sqrt{x}}
+    e^{\frac{-n^2 \pi}{x}}.
+\end{equation}
+Dadurch ergibt sich
+\begin{equation}\label{zeta:equation:psi}
+    \sum_{n=-\infty}^{\infty}
+    e^{-\pi n^2 x}
+    =
+    \frac{1}{\sqrt{x}}
+    \sum_{n=-\infty}^{\infty}
+    e^{\frac{-n^2 \pi}{x}},
+\end{equation}
+wobei wir die Summen so verändern müssen, dass sie bei $n=1$ beginnen und wir $\psi(x)$ erhalten als
+\begin{align}
+    2
+    \sum_{n=1}^{\infty}
+    e^{-\pi n^2 x}
+    +
+    1
+    &=
+    \frac{1}{\sqrt{x}}
+    \Biggl(
+    2
+    \sum_{n=1}^{\infty}
+    e^{\frac{-n^2 \pi}{x}}
+    +
+    1
+    \Biggr)
+    \\
+    2
+    \psi(x)
+    +
+    1
+    &=
+    \frac{1}{\sqrt{x}}
+    \left(
+    2
+    \psi\left(\frac{1}{x}\right)
+    +
+    1
+    \right)
+    \\
+    \psi(x)
+    &=
+    - \frac{1}{2}
+    + \frac{\psi\left(\frac{1}{x} \right)}{\sqrt{x}}
+    + \frac{1}{2 \sqrt{x}}.\label{zeta:equation:psi}
+\end{align}
+Diese Form von $\psi(x)$ eingesetzt in $I_1$ ergibt
+\begin{align}
+    I_1
+    =
+    \int_0^{1}
+    x^{\frac{s}{2}-1}
+    \psi(x)
+    \,dx
+    &=
+    \int_0^{1}
+    x^{\frac{s}{2}-1}
+    \Biggl(
+    - \frac{1}{2}
+    + \frac{\psi\left(\frac{1}{x} \right)}{\sqrt{x}}
+    + \frac{1}{2 \sqrt{x}}
+    \Biggr)
+    \,dx
+    \\
+    &=
+    \int_0^{1}
+    x^{\frac{s}{2}-\frac{3}{2}}
+    \psi \left( \frac{1}{x} \right)
+    + \frac{1}{2}
+    \biggl(
+    x^{\frac{s}{2}-\frac{3}{2}}
+    -
+    x^{\frac{s}{2}-1}
+    \biggl)
+    \,dx
+    \\
+    &=
+    \underbrace{
+    \int_0^{1}
+    x^{\frac{s}{2}-\frac{3}{2}}
+    \psi \left( \frac{1}{x} \right)
+    \,dx
+    }_{I_3}
+    +
+    \underbrace{
+    \frac{1}{2}
+    \int_0^1
+    x^{\frac{s}{2}-\frac{3}{2}}
+    -
+    x^{\frac{s}{2}-1}
+    \,dx
+    }_{I_4}. \label{zeta:equation:integral3}
+\end{align}
+Darin kann für das zweite Integral $I_4$ eine Lösung gefunden werden als
+\begin{equation}
+    I_4
+    =
+    \frac{1}{2}
+    \int_0^1
+    x^{\frac{s}{2}-\frac{3}{2}}
+    -
+    x^{\frac{s}{2}-1}
+    \,dx
+    =
+    \frac{1}{s(s-1)}.
+\end{equation}
+Das erste Integral $I_3$ aus \eqref{zeta:equation:integral3} mit $\psi \left(\frac{1}{x} \right)$ ist hingegen nicht lösbar in dieser Form.
+Deshalb substituieren wir $x = \frac{1}{u}$ und $dx = -\frac{1}{u^2}du$.
+Die untere Integralgrenze wechselt ebenfalls zu $x_0 = 0 \rightarrow u_0 = \infty$.
+Dies ergibt
+\begin{align}
+    I_3
+    =
+    \int_{\infty}^{1}
+    \left(
+    \frac{1}{u}
+    \right)^{\frac{s}{2}-\frac{3}{2}}
+    \psi(u)
+    \frac{-du}{u^2}
+    &=
+    \int_{1}^{\infty}
+    \left(
+    \frac{1}{u}
+    \right)^{\frac{s}{2}-\frac{3}{2}}
+    \psi(u)
+    \frac{du}{u^2}
+    \\
+    &=
+    \int_{1}^{\infty}
+    x^{(-1) \left(\frac{s}{2}+\frac{1}{2}\right)}
+    \psi(x)
+    \,dx,
+\end{align}
+wobei wir durch Multiplikation mit $(-1)$ die Integralgrenzen tauschen dürfen.
+Es ist zu beachten das diese Grenzen nun identisch mit den Grenzen des zweiten Integrals $I_2$ von \eqref{zeta:equation:integral2} sind.
+Wir setzen beide Lösungen in Gleichung \eqref{zeta:equation:integral3} ein und erhalten
+\begin{equation}
+    I_1
+    =
+    \int_0^{1}
+    x^{\frac{s}{2}-1}
+    \psi(x)
+    \,dx
+    =
+    \int_{1}^{\infty}
+    x^{(-1) \left(\frac{s}{2}+\frac{1}{2}\right)}
+    \psi(x)
+    \,dx
+    +
+    \frac{1}{s(s-1)}. \label{zeta:equation:intcal_res}
+\end{equation}
+Diese Form des Integrals $I_1$ hat die gewünschten Integrationsgrenzen und ein essentieller Bestandteil des Beweises der Funktionalgleichung in Abschnitt \ref{zeta:subsection:auf_ganz}.
