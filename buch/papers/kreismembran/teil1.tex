@@ -7,7 +7,7 @@
 \section{Lösungsmethode 1: Separationsmethode 
 	\label{kreismembran:section:teil1}}
 \rhead{Lösungsmethode 1: Separationsmethode}
-An diesem Punkt bleibt also nur noch die Lösung der partiellen Differentialgleichung. In diesem Kapitel wird sie mit Hilfe der Separationsmethode gelöst.
+An diesem Punkt bleibt also nur noch die Lösung der partiellen Differentialgleichung. In diesem Abschnitt wird sie mit Hilfe der Separationsmethode gelöst.
 
 \subsection{Aufgabestellung\label{sub:aufgabestellung}}
 Wie im vorherigen Abschnitt gezeigt, lautet die partielle Differentialgleichung, die die Schwingungen einer Membran beschreibt:
@@ -30,7 +30,7 @@ Da es sich um eine Kreisscheibe handelt, werden Polarkoordinaten verwendet, so d
 ergibt.
 
 Es wird eine runde elastische Membran berücksichtigt, die das Gebiet $\Omega$ abdeckt und am Rand $\Gamma$ befestigt ist.
-Es wirken keine äusseren Kräfte. Es handelt sich somit von einer kreisförmligen eingespannten homogenen schwingenden Membran.
+Es wirken keine äusseren Kräfte. Es handelt sich somit von einer kreisförmligen eingespannten homogenen schwingenden Membran nach den Annahmen von \ref{kreimembran:annahmen}.
 
 Daher ist die Membranabweichung im Punkt $(r,\varphi)$ $\in$ $\overline{\rm \Omega}$ zum Zeitpunkt $t$:
 \begin{align*}
@@ -56,7 +56,10 @@ Dank der Randbedingungen kann gefordert werden, dass $F(R)=0$ ist, und natürlic
 \begin{equation*}
 	\frac{1}{c^2}\frac{T''(t)}{T(t)}=-\kappa^2=\frac{F''(r)}{F(r)}+\frac{1}{r}\frac{F'(r)}{F(r)}+\frac{1}{r^2}\frac{G''(\varphi)}{G(\varphi)}.
 \end{equation*}
-Da die linke Seite nur von $t$ und die rechte Seite nur von $r$ und $\varphi$ abhängt, müssen sie gleich einer reellen Zahl sein. Aus physikalischen Gründen suchen wir nach Lösungen, die weder exponentiell in der Zeit wachsen noch exponentiell abklingen. Dies bedeutet, dass die Konstante negativ sein muss, also schreibt man $-\kappa^2$. Daraus ergeben sich die folgenden zwei Gleichungen:
+Da die linke Seite nur von $t$ und die rechte Seite nur von $r$ und $\varphi$ abhängt, müssen sie gleich einer reellen Zahl sein. 
+Laut Annahme iv) in \ref{kreimembran:annahmen} erfährt die Membran keine Dämpfung.
+Daher werden Lösungen gesucht, die weder exponentiell in der Zeit wachsen noch exponentiell abklingen. 
+Dies bedeutet, dass die Konstante negativ sein muss, also schreibt man $-\kappa^2$. Daraus ergeben sich die folgenden zwei Gleichungen:
 \begin{align*}
 	T''(t) + c^2\kappa^2T(t) &= 0\\
 	r^2\frac{F''(r)}{F(r)} + r \frac{F'(r)}{F(r)} +\kappa^2 r^2 &= - \frac{G''(\varphi)}{G(\varphi)}.
@@ -118,4 +121,4 @@ für die Anzahl der Knotenlinien steht. Es gibt bestimmte Bereiche auf der Membr
 \end{figure}
 
 
-An diesem Punkt stellte sich die Frage, ob es möglich wäre, die partielle Differentialgleichung mit einer anderen Methode als der der Trennung der Variablen zu lösen. Nach einer kurzen Recherche wurde festgestellt, dass die beste Methode die Transformationsmethode ist, genauer gesagt die Anwendung der Hankel-Transformation. Im nächsten Kapitel wird daher diese Integraltransformation vorgestellt und entwickelt, und es wird erläutert, warum sie für diese Art von Problem geeignet ist.
+An diesem Punkt stellte sich die Frage, ob es möglich wäre, die partielle Differentialgleichung mit einer anderen Methode als der der Trennung der Variablen zu lösen. Nach einer kurzen Recherche wurde festgestellt, dass eine weitere Methode die Transformationsmethode ist, genauer gesagt die Anwendung der Hankel-Transformation. Im nächsten Kapitel wird daher diese Integraltransformation vorgestellt und entwickelt, und es wird erläutert, warum sie für diese Art von Problem geeignet ist.
