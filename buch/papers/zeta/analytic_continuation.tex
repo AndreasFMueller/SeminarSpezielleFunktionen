@@ -4,7 +4,7 @@
 Die analytische Fortsetzung der Riemannschen Zetafunktion ist äusserst interessant.
 Sie ermöglicht die Berechnung von $\zeta(-1)$ und weiterer spannender Werte.
 So liegen zum Beispiel unendlich viele Nullstellen der Zetafunktion bei $\Re(s) = \frac{1}{2}$.
-Diese sind relevant für die Primzahlverteilung und sind Gegenstand der Riemannschen Vermutung.
+Wie bereits erwähnt sind diese Gegenstand der Riemannschen Vermutung.
 
 Es werden zwei verschiedene Fortsetzungen benötigt.
 Die erste erweitert die Zetafunktion auf $\Re(s) > 0$.
@@ -12,7 +12,7 @@ Die zweite verwendet eine Spiegelung an der $\Re(s) = \frac{1}{2}$ Geraden und e
 Eine grafische Darstellung dieses Plans ist in Abbildung \ref{zeta:fig:continuation_overview} zu sehen.
 \begin{figure}
     \centering
-    \input{papers/zeta/continuation_overview.tikz.tex}
+    \input{papers/zeta/images/continuation_overview.tikz.tex}
     \caption{
         Die verschiedenen Abschnitte der Riemannschen Zetafunktion.
         Die originale Definition von \eqref{zeta:equation1} ist im grünen Bereich gültig.
@@ -237,7 +237,7 @@ Eine ganz ähnliche Spiegelungseigenschaft wurde bereits in Kapitel \ref{buch:fu
 
 Ziel dieses Abschnittes ist es, zu zeigen wie das Integral $I_1$ aus Gleichung \eqref{zeta:equation:integral2} durch ein neues Integral mit den Integrationsgrenzen $1$ und $\infty$ ersetzt werden kann.
 Da dieser Schritt ziemlich aufwendig ist, wird er hier in einem eigenen Abschnitt behandelt.
-Zunächst wird die poissonsche Summenformel hergeleitet, da diese verwendet werden kann um $\psi(x)$ zu berechnen.
+Zunächst wird die poissonsche Summenformel hergeleitet \cite{zeta:online:poisson}, da diese verwendet werden kann um $\psi(x)$ zu berechnen.
 
 Um die poissonsche Summenformel zu beweisen, berechnen wir zunächst die Fourierreihe der Dirac Delta Funktion.
 
@@ -330,7 +330,7 @@ Um die poissonsche Summenformel zu beweisen, berechnen wir zunächst die Fourier
         \sum_{k=-\infty}^{\infty}
         \delta(x + k).
     \end{align}
-    Wenn wir dies einsetzen und erhalten wir den gesuchten Beweis für die poissonsche Summenformel
+    Wenn wir dies einsetzen und erhalten wir
     \begin{equation}
         \sum_{k=-\infty}^{\infty}
         F(k)
@@ -348,8 +348,9 @@ Um die poissonsche Summenformel zu beweisen, berechnen wir zunächst die Fourier
         \, dx
         =
         \sum_{k=-\infty}^{\infty}
-        f(k).
+        f(k),
     \end{equation}
+    was der gesuchte Beweis für die poissonsche Summenformel ist.
 \end{proof}
 
 Erinnern wir uns nochmals an unser Integral aus Gleichung \eqref{zeta:equation:integral2}

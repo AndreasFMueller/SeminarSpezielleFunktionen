@@ -1,0 +1,28 @@
+\section{Fazit} \label{zeta:section:fazit}
+\rhead{Fazit}
+
+Ganz zu Beginn dieses Papers wurde die Behauptung erwähnt, dass die Summe aller natürlichen Zahlen $-\frac{1}{12}$ sei.
+Diese Summe ist nichts anderes als die Zetafunktion am Wert $s=-1$.
+Da wir die analytische Fortsetzung mit der Funktionalgleichung \eqref{zeta:equation:functional} gefunden haben, können wir diese Behauptung prüfen.
+Zunächst berechnen wir $\zeta(1-s) = \zeta(2) = \frac{\pi^2}{6}$, welches im konvergenten Bereich der Reihe liegt und auch bekannt ist als das Basler Problem.
+Somit haben wir
+\begin{align*}
+    \zeta(s) = \zeta(-1)
+    &=
+    \frac{\Gamma \left( \frac{1-s}{2} \right)}{\pi^{\frac{1-s}{2}}}
+    \zeta(1-s)
+    \frac{\pi^{\frac{s}{2}}}{\Gamma \left( \frac{s}{2} \right)}
+    \\
+    &=
+    \frac{\Gamma(1)}{\pi}
+    \frac{\pi^2}{6}
+    \frac{\pi^{\frac{-1}{2}}}{\Gamma \left( \frac{-1}{2} \right)}
+    \\
+    &=
+    \frac{1}{\pi}
+    \frac{\pi^2}{6}
+    \frac{1}{\sqrt{\pi} (-2\sqrt{\pi})}
+    &=
+    -\frac{1}{12},
+\end{align*}
+wobei die Werte der Gammafunktion TODO berechnet werden.
