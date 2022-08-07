@@ -19,16 +19,16 @@ Sie ist eine spezielle Form der Poisson-Gleichung
 \begin{equation}
     \Delta f = g
 \end{equation}
-mit g als beliebige Funktion.
-In der Physik hat die Laplace-Gleichung in verschieden Gebieten
+mit $g$ als beliebiger Funktion.
+In der Physik hat die Laplace-Gleichung in verschiedenen Gebieten
 verwendet, zum Beispiel im Elektromagnetismus.
 Das Gaussche Gesetz in den Maxwellgleichungen 
 \begin{equation}
      \nabla \cdot E = \frac{\varrho}{\epsilon_0}
 \label{parzyl:eq:max1}
 \end{equation}
-besagt das die Divergenz eines Elektrischen Feldes an einem 
-Punkt gleich der Ladung an diesem Punkt ist.
+besagt, dass die Divergenz eines elektrischen Feldes an einem 
+Punkt gleich der Ladungsdichte an diesem Punkt ist.
 Das elektrische Feld ist hierbei der Gradient des elektrischen
 Potentials
 \begin{equation}
@@ -38,8 +38,8 @@ Eingesetzt in \eqref{parzyl:eq:max1} resultiert
 \begin{equation}
     \nabla \cdot \nabla \phi = \Delta \phi = \frac{\varrho}{\epsilon_0},
 \end{equation}
-was eine Possion-Gleichung ist.
-An Ladungsfreien Stellen, ist der rechte Teil der Gleichung $0$. 
+was eine Poisson-Gleichung ist.
+An ladungsfreien Stellen ist der rechte Teil der Gleichung $0$. 
 \subsection{Parabolische Zylinderkoordinaten
 \label{parzyl:subsection:finibus}}
 Im parabolischen Zylinderkoordinatensystem bilden parabolische Zylinder die Koordinatenflächen.
@@ -51,7 +51,7 @@ Die Koordinate $(\sigma, \tau, z)$ sind in kartesischen Koordinaten ausgedrückt
     z & = z.
     \label{parzyl:coordRelationse}
 \end{align}
-Wird $\tau$ oder $\sigma$ konstant gesetzt resultieren die Parabeln
+Wird $\tau$ oder $\sigma$ konstant gesetzt, resultieren die Parabeln
 \begin{equation}
     y = \frac{1}{2} \left( \frac{x^2}{\sigma^2} - \sigma^2 \right)
 \end{equation}
@@ -67,7 +67,6 @@ und
     konstantes $\sigma$ und die grünen ein konstantes $\tau$.}
     \label{parzyl:fig:cordinates}
 \end{figure}
-
 Abbildung \ref{parzyl:fig:cordinates} zeigt das Parabolische Koordinatensystem.
 Das parabolische Zylinderkoordinatensystem entsteht wenn die Parabeln aus der
 Ebene gezogen werden. 
@@ -106,7 +105,7 @@ von \eqref{parzyl:coordRelationsa} - \eqref{parzyl:coordRelationse} als
     dz &= \frac{\partial \tilde{z} }{\partial \sigma} d\sigma + 
         \frac{\partial \tilde{z} }{\partial \tau} d\tau +
         \frac{\partial \tilde{z} }{\partial \tilde{z}} d \tilde{z} 
-        = d \tilde{z} \\
+        = d \tilde{z}
 \end{align}
 substituiert.
 Wird diese Gleichung in der Form von \eqref{parzyl:eq:dspara}
@@ -120,7 +119,7 @@ geschrieben, resultiert
 Daraus ergeben sich die Skalierungsfaktoren 
 \begin{align}
     h_{\sigma} &= \sqrt{\sigma^2 + \tau^2}\\
-    h_{\sigma} &= \sqrt{\sigma^2 + \tau^2}\\
+    h_{\tau} &= \sqrt{\sigma^2 + \tau^2}\\
     h_{z} &= 1.
 \end{align}
 \subsection{Differentialgleichung}
