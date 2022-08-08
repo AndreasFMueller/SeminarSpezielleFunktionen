@@ -1,9 +1,9 @@
 \section{Eulerprodukt} \label{zeta:section:eulerprodukt}
 \rhead{Eulerprodukt}
 
-Das Eulerprodukt stellt die Verbindung der Zetafunktion und der Primzahlen her.
-Diese Verbindung ist sehr wichtig, da durch sie eine Aussage zur Primzahlverteilung gemacht werden kann.
-Die Verteilung der Primzahlen ist Gegenstand der Riemannschen Vermutung, welche eines der grössten ungelösten Probleme der Mathematik ist.
+Das Eulerprodukt stellt die gesuchte Verbindung der Zetafunktion und der Primzahlen her.
+Wie der Name bereits sagt, wurde das Eulerprodukt bereits 1727 von Euler entdeckt.
+Um daraus die Riemannsche Vermutung herzuleiten, wäre aber noch einiges mehr nötig.
 
 \begin{satz}
     Für alle Zahlen $s$ mit $\Re(s) > 1$ ist die Zetafunktion identisch mit dem unendlichen Eulerprodukt
@@ -64,8 +64,8 @@ Die Verteilung der Primzahlen ist Gegenstand der Riemannschen Vermutung, welche 
     \begin{equation}
         n = \prod_i p_i^{k_i} \quad \forall \quad n \in \mathbb{N}.
     \end{equation}
-    Jeder Summand der Summen in \eqref{zeta:equation:eulerprodukt2} ist somit eine Zahl $n$.
-    Da die Summen alle möglichen Kombinationen von Exponenten und Primzahlen in \eqref{zeta:equation:eulerprodukt2} enthält haben wir
+    Jeder Summand der Summen in \eqref{zeta:equation:eulerprodukt2} ist somit der Kehrwert genau einer natürlichen Zahl $n \in \mathbb{N}$.
+    Da die Summen alle möglichen Kombinationen von Exponenten und Primzahlen in \eqref{zeta:equation:eulerprodukt2} enthält, haben wir
     \begin{equation}
         \sum_{k_1=0}^{\infty}
         \sum_{k_2=0}^{\infty}
@@ -79,7 +79,8 @@ Die Verteilung der Primzahlen ist Gegenstand der Riemannschen Vermutung, welche 
         \sum_{n=1}^\infty
         \frac{1}{n^s}
         =
-        \zeta(s)
+        \zeta(s),
     \end{equation}
+    wodurch das Eulerprudukt bewiesen ist.
 \end{proof}
 
