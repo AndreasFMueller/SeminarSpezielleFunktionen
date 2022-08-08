@@ -6,8 +6,8 @@
 \section{Lösung
 \label{parzyl:section:teil1}}
 \rhead{Problemstellung}
-Die Differentialgleichungen \eqref{parzyl:sep_dgl_1} und \eqref{parzyl:sep_dgl_2} können mit einer Substitution
-in die Whittaker Gleichung gelöst werden.
+Die Differentialgleichungen \eqref{parzyl:sep_dgl_1} und \eqref{parzyl:sep_dgl_2} können mit
+Hilfe der Whittaker Gleichung gelöst werden.
 \begin{definition}
     Die Funktion 
     \begin{equation*}
@@ -19,13 +19,31 @@ in die Whittaker Gleichung gelöst werden.
         + m - k, 1 + 2m; z)
     \end{equation*}
     heisst Whittaker Funktion und ist eine Lösung
-    von
+    von der Whittaker Differentialgleichung
     \begin{equation}
         \frac{d^2W}{d z^2} +
         \left(-\frac{1}{4}  + \frac{k}{z} + \frac{\frac{1}{4} - m^2}{z^2} \right) W = 0.
+        \label{parzyl:eq:whitDiffEq}
     \end{equation}
 \end{definition}
-
-Lösung Folgt\dots
-
-
+Es wird nun die Differentialgleichung bestimmt, welche
+\begin{equation}
+    w = z^{-1/2} W_{k,-1/4} \left({\textstyle \frac{1}{2}} z^2\right)
+\end{equation}
+als Lösung hat.
+Dafür wird $w$ in \eqref{parzyl:eq:whitDiffEq} eingesetzt woraus
+\begin{equation}
+    \frac{d^2 w}{dz^2} - \left(\frac{1}{4} z^2 - 2k\right) w = 0
+\label{parzyl:eq:weberDiffEq}
+\end{equation}
+resultiert. DIese Differentialgleichung ist dieselbe wie 
+\eqref{parzyl:sep_dgl_2} und \eqref{parzyl:sep_dgl_2}, welche somit
+$w$ als Lösung haben.
+Da es sich um eine Differentialgleichung zweiter Ordnung handelt, hat sie nicht nur
+eine sondern zwei Lösungen.
+Die zweite Lösung der Whittaker-Gleichung ist $W_{k,-m} (z)$.
+Somit ist 
+\begin{equation}
+    w = z^{-1/2} W_{k,1/4} \left({\textstyle \frac{1}{2}} z^2\right)
+\end{equation}
+eine weiter Lösung von \eqref{parzyl:eq:weberDiffEq}.
