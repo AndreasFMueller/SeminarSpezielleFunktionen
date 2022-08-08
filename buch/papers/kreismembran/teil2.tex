@@ -34,7 +34,7 @@ Unter Verwendung der Integraldarstellung
 	J_n(\kappa r)=\frac{1}{2\pi}\int_{\phi_{0}}^{2\pi + \phi_{0}}e^{i(n\alpha-\kappa r \sin \alpha)} \; d\alpha
 	\label{equation:bessel_n_ordnung}
 \end{equation*}
- der Besselfunktion vom Ordnung $n$ \eqref{buch:fourier:eqn:bessel-integraldarstellung} wird \eqref{equation:F_ohne_bessel} zu:
+ der Bessel-Funktion vom Ordnung $n$ \eqref{buch:fourier:eqn:bessel-integraldarstellung} wird \eqref{equation:F_ohne_bessel} zu:
 \begin{align}
 	F(k,\phi)&=e^{in(\phi-\frac{\pi}{2})}\int_{0}^{\infty}rJ_n(\kappa r) f(r) \; dr  \nonumber \\ 
 	&=e^{in(\phi-\frac{\pi}{2})}\tilde{f}_n(\kappa),
@@ -69,10 +69,10 @@ verwendet werden, um die Hankel-Transformation \eqref{equation:hankel} und ihre 
 Insbesondere die Hankel-Transformation der nullten Ordnung ($n=0$) und der ersten Ordnung ($n=1$) sind häufig nützlich, um Lösungen für Probleme mit der Laplace Gleichung in einer achsensymmetrischen zylindrischen Geometrie zu finden.
 
 \subsection{Operatoreigenschaften der Hankel-Transformation \label{sub:op_properties_hankel}}
-In diesem Kapitel werden die operativen Eigenschaften der Hankel-Transformation aufgeführt. Der Beweis für ihre Gültigkeit wird jedoch nicht analysiert.
+In diesem Kapitel werden die operativen Eigenschaften der Hankel-Transformation aufgeführt. Die Beweise für ihre Gültigkeit werden jedoch nicht analysiert, dies ist in Buch \textit{Integral Tansforms and Their Applications} \cite{lokenath_debnath_integral_2015} zu finden.
 
 \begin{satz}{Skalierung:}
-	Wenn $\mathscr{H}_n\{f(r)\}=\tilde{f}_n(\kappa)$, dann:
+	Wenn $\mathscr{H}_n\{f(r)\}=\tilde{f}_n(\kappa)$, dann gilt:
 	
 	\begin{equation*}
 		\mathscr{H}_n\{f(ar)\}=\frac{1}{a^{2}}\tilde{f}_n \left(\frac{\kappa}{a}\right), \quad a>0.
@@ -80,7 +80,7 @@ In diesem Kapitel werden die operativen Eigenschaften der Hankel-Transformation 
 \end{satz}
 
 \begin{satz}{Parsevalsche Relation:}
-Wenn $\tilde{f}(\kappa)=\mathscr{H}_n\{f(r)\}$ und $\tilde{g}(\kappa)=\mathscr{H}_n\{g(r)\}$, dann:
+Wenn $\tilde{f}(\kappa)=\mathscr{H}_n\{f(r)\}$ und $\tilde{g}(\kappa)=\mathscr{H}_n\{g(r)\}$, dann gilt:
 
 \begin{equation*}
 	\int_{0}^{\infty}rf(r)g(r) \; dr = \int_{0}^{\infty}\kappa\tilde{f}(\kappa)\tilde{g}(\kappa) \; d\kappa.
@@ -88,20 +88,20 @@ Wenn $\tilde{f}(\kappa)=\mathscr{H}_n\{f(r)\}$ und $\tilde{g}(\kappa)=\mathscr{H
 \end{satz}
 
 \begin{satz}{Hankel-Transformationen von Ableitungen:}
-Wenn $\tilde{f}_n(\kappa)=\mathscr{H}_n\{f(r)\}$, dann:
+Wenn $\tilde{f}_n(\kappa)=\mathscr{H}_n\{f(r)\}$, dann gilt:
 
 \begin{align*}
 	&\mathscr{H}_n\{f'(r)\}=\frac{\kappa}{2n}\left[(n-1)\tilde{f}_{n+1}(\kappa)-(n+1)\tilde{f}_{n-1}(\kappa)\right], \quad n\geq1, \\
 	&\mathscr{H}_1\{f'(r)\}=-\kappa \tilde{f}_0(\kappa),
 \end{align*}
-vorausgesetzt dass $[rf(r)]$ verschwindet wenn $r\to0$ und $r\to\infty$.
+vorausgesetzt, dass $rf(r)$ verschwindet wenn $r\to0$ und $r\to\infty$.
 \end{satz}
 
 \begin{satz}
-Wenn $\mathscr{H}_n\{f(r)\}=\tilde{f}_n(\kappa)$, dann:
+Wenn $\mathscr{H}_n\{f(r)\}=\tilde{f}_n(\kappa)$, dann gilt:
 
 \begin{equation*}
 	\mathscr{H}_n \left\{ \left( \nabla^2 - \frac{n^2}{r^2} f(r)\right)\right\}= \mathscr{H}_n\left\{\frac{1}{r}\frac{d}{dr}\left(r\frac{df}{dr}\right) - \frac{n^2}{r^2}f(r)\right\}=-\kappa^2\tilde{f}_{n}(\kappa),
 \end{equation*}
-bereitgestellt dass $rf'(r)$ und $rf(r)$ verschwinden für $r\to0$ und $r\to\infty$.
+bereitgestellt, dass $rf'(r)$ und $rf(r)$ verschwinden für $r\to0$ und $r\to\infty$.
 \end{satz}
