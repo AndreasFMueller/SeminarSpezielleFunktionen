@@ -97,6 +97,7 @@ der neuen Variablen $\mu$ gekoppelt werden:
 Durch die Einführung von $\mu$ kann das Problem nun in zwei separate
 Differenzialgleichungen aufgeteilt werden:
 \begin{equation}
+\begin{aligned}
     T^{\prime}(t) - \kappa \mu T(t)
     &=
     0
@@ -104,6 +105,7 @@ Differenzialgleichungen aufgeteilt werden:
     X^{\prime \prime}(x) - \mu X(x)
     &=
     0
+\end{aligned}
 \end{equation}
 
 Es ist an dieser Stelle zu bemerken, dass die Gleichung in $x$ in 
@@ -175,6 +177,7 @@ und durch umformen somit
 
 Durch Koeffizientenvergleich von
 \begin{equation}
+\begin{aligned}
     -A\alpha^{2}\sin(\alpha x)
     &=
     \mu A\sin(\alpha x)
@@ -182,6 +185,7 @@ Durch Koeffizientenvergleich von
     -B\beta^{2}\cos(\beta x)
     &=
     \mu B\cos(\beta x)
+\end{aligned}
 \end{equation}
 ist schnell ersichtlich, dass $ \mu = -\alpha^{2} = -\beta^{2} $ gelten muss für
 $ A \neq 0 $ und $ B \neq 0 $. Zur Berechnung von $ \mu $ bleiben also noch 
@@ -190,6 +194,7 @@ $ \alpha $ und $ \beta $ zu bestimmen.
 % TODO: Rechenweg
 TODO: Rechenweg... Enden auf konstanter Temperatur:
 \begin{equation}
+\begin{aligned}
     u(t,x)
     &=
     \sum_{n=1}^{\infty}a_{n}e^{-\frac{n^{2}\pi^{2}\kappa}{l^{2}}t}
@@ -198,10 +203,12 @@ TODO: Rechenweg... Enden auf konstanter Temperatur:
     a_{n}
     &=
     \frac{2}{l}\int_{0}^{l}u(0,x)sin\left(\frac{n\pi}{l}x\right) dx
+\end{aligned}
 \end{equation}
 
 TODO: Rechenweg... Enden isoliert:
 \begin{equation}
+\begin{aligned}
     u(t,x)
     &=
     a_{0} + \sum_{n=1}^{\infty}a_{n}e^{-\frac{n^{2}\pi^{2}\kappa}{l^{2}}t}
@@ -214,4 +221,5 @@ TODO: Rechenweg... Enden isoliert:
     a_{n}
     &=
     \frac{2}{l}\int_{0}^{l}u(0,x)sin\left(\frac{n\pi}{l}x\right) dx
+\end{aligned}
 \end{equation}
