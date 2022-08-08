@@ -1,6 +1,5 @@
 %
 % waermeleitung_beispiel.tex -- Beispiel Wärmeleitung in homogenem Stab. 
-%%%%%%%%%%%%%%%%%%%%%%%%%%% Erster Entwurf %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
 % (c) 2020 Prof Dr Andreas Müller, Hochschule Rapperswil
 %
@@ -14,10 +13,10 @@ physikalischen Phänomenes auftritt.
 Zunächst wird ein eindimensionaler homogener Stab der Länge $l$ und
 Wärmeleitkoeffizient $\kappa$. Somit ergibt sich für das Wärmeleitungsproblem
 die partielle Differentialgleichung
-\[
+\begin{equation}
     \frac{\partial u}{\partial t} =
     \kappa \frac{\partial^{2}u}{{\partial x}^{2}}
-\]
+\end{equation}
 wobei der Stab in diesem Fall auf der X-Achse im Intervall $[0,l]$ liegt.
 
 Da diese Differentialgleichung das Problem allgemein für einen homogenen
@@ -32,13 +31,13 @@ Tempreatur gehalten werden.
 Die Enden des Stabes auf konstanter Temperatur zu halten bedeutet, dass die
 Lösungsfunktion $u(t,x)$ bei $x = 0$ und $x = l$ nur die vorgegebene
 Temperatur zurückgeben darf. Es folgen nun
-\[
+\begin{equation}
     u(t,0)
     =
     u(t,l)
     =
     0
-\]
+\end{equation}
 als Randbedingungen.
 
 %%%%%%%%%%%%% Randbedingungen für Stab mit isolierten Enden %%%%%%%%%%%%%%%%%%%
@@ -54,13 +53,13 @@ Temperatur fliesst. Um Wärmefluss zu unterdrücken, muss also dafür gesorgt
 werden, dass am Rand des Stabes keine Temperaturdifferenz existiert oder 
 dass die partiellen Ableitungen von $u(t,x)$ nach $x$ bei $x = 0$ und $x = l$
 verschwinden. Somit folgen
-\[
+\begin{equation}
     \frac{\partial}{\partial x} u(t, 0)
     =
     \frac{\partial}{\partial x} u(t, l)
     =
     0
-\]
+\end{equation}
 als Randbedingungen.
 
 %%%%%%%%%%% Lösung der Differenzialgleichung %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -72,41 +71,40 @@ als Randbedingungen.
 
 Da die Lösungsfunktion von zwei Variablen abhängig ist, wird als Lösungsansatz
 die Separationsmethode verwendet. Dazu wird 
-\[
+\begin{equation}
     u(t,x)
     =
     T(t)X(x)
-\]
+\end{equation}
 in die ursprüngliche Differenzialgleichung eingesetzt. Daraus ergibt sich 
-\[
+\begin{equation}
     T^{\prime}(t)X(x)
     =
     \kappa T(t)X^{\prime \prime}(x)
-\]
+\end{equation}
 als neue Form.
 
 Nun können alle von $t$ abhängigen Ausdrücke auf die linke Seite, sowie alle
 von $x$ abhängigen Ausdrücke auf die rechte Seite gebracht werden und mittels
 der neuen Variablen $\mu$ gekoppelt werden:
-\[
+\begin{equation}
     \frac{T^{\prime}(t)}{\kappa T(t)}
     =
     \frac{X^{\prime \prime}(x)}{X(x)}
     =
     \mu
-\]
+\end{equation}
 Durch die Einführung von $\mu$ kann das Problem nun in zwei separate
 Differenzialgleichungen aufgeteilt werden:
-\[
+\begin{equation}
     T^{\prime}(t) - \kappa \mu T(t)
-    =
+    &=
     0
-\]
-\[
+    \\
     X^{\prime \prime}(x) - \mu X(x)
-    =
+    &=
     0
-\]
+\end{equation}
 
 Es ist an dieser Stelle zu bemerken, dass die Gleichung in $x$ in 
 Sturm-Liouville-Form ist. Erfüllen die Randbedingungen des Stab-Problems auch
@@ -116,108 +114,104 @@ werden.
 
 Widmen wir uns zunächst der ersten Gleichung. Diese Lösen wir über das
 charakteristische Polynom
-\[
+\begin{equation}
     \lambda - \kappa \mu
     =
     0.
-\]
+\end{equation}
 Es ist direkt ersichtlich, dass $\lambda = \kappa \mu$ gelten muss, was zur
 Lösung
-\[
+\begin{equation}
     T(t)
     =
     e^{\kappa \mu t}
-\]
+\end{equation}
 führt.
 
 Etwas aufwändiger wird es, die zweite Gleichung zu lösen. Aufgrund der Struktur
 der Gleichung
-\[
+\begin{equation}
     X^{\prime \prime}(x) - \mu X(x)
     =
     0
-\]
+\end{equation}
 wird ein trigonometrischer Ansatz gewählt. Die Lösungen für $X(x)$ sind also
 von der Form
-\[
+\begin{equation}
     X(x)
     =
     A \sin \left( \alpha x\right) + B \cos \left( \beta x\right).
-\]
+\end{equation}
 
 Dieser Ansatz wird nun solange differenziert, bis alle in Gleichung (TODO: ref)
 enthaltenen Ableitungen vorhanden sind. Man erhält also
-\[
+\begin{equation}
     X^{\prime}(x)
     =
     A \alpha \cos \left( \alpha x \right) -
     B \beta \sin \left( \beta x \right)
-\]
+\end{equation}
 und
-\[
+\begin{equation}
     X^{\prime \prime}(x)
     =
     -A \alpha^{2} \sin \left( \alpha x \right) -
     B \beta^{2} \cos \left( \beta x \right).
-\]
+\end{equation}
 
 Eingesetzt in Gleichung (TDOD: ref) ergibt dies
-\[
+\begin{equation}
     -A\alpha^{2}\sin(\alpha x) - B\beta^{2}\cos(\beta x) -
     \mu\left(A\sin(\alpha x) + B\cos(\beta x)\right)
     =
     0
-\]
+\end{equation}
 und durch umformen somit
-\[
+\begin{equation}
     -A\alpha^{2}\sin(\alpha x) - B\beta^{2}\cos(\beta x)
     =
     \mu A\sin(\alpha x) + \mu B\cos(\beta x).
-\]
+\end{equation}
 
 Durch Koeffizientenvergleich von
-\[
+\begin{equation}
     -A\alpha^{2}\sin(\alpha x)
-    =
+    &=
     \mu A\sin(\alpha x)
-\]
-\[
+    \\
     -B\beta^{2}\cos(\beta x)
-    =
+    &=
     \mu B\cos(\beta x)
-\]
+\end{equation}
 ist schnell ersichtlich, dass $ \mu = -\alpha^{2} = -\beta^{2} $ gelten muss für
 $ A \neq 0 $ und $ B \neq 0 $. Zur Berechnung von $ \mu $ bleiben also noch 
 $ \alpha $ und $ \beta $ zu bestimmen.
 
 % TODO: Rechenweg
 TODO: Rechenweg... Enden auf konstanter Temperatur:
-\[
+\begin{equation}
     u(t,x)
-    =
+    &=
     \sum_{n=1}^{\infty}a_{n}e^{-\frac{n^{2}\pi^{2}\kappa}{l^{2}}t}
     \sin\left(\frac{n\pi}{l}x\right)
-\]
-\[
+    \\
     a_{n}
-    =
+    &=
     \frac{2}{l}\int_{0}^{l}u(0,x)sin\left(\frac{n\pi}{l}x\right) dx
-\]
+\end{equation}
 
 TODO: Rechenweg... Enden isoliert:
-\[
+\begin{equation}
     u(t,x)
-    =
+    &=
     a_{0} + \sum_{n=1}^{\infty}a_{n}e^{-\frac{n^{2}\pi^{2}\kappa}{l^{2}}t}
     \cos\left(\frac{n\pi}{l}x\right)
-\]
-\[
+    \\
     a_{0}
-    =
+    &=
     \frac{1}{l}\int_{0}^{l}u(0,x) dx
-\]
-\[
+    \\
     a_{n}
-    =
+    &=
     \frac{2}{l}\int_{0}^{l}u(0,x)sin\left(\frac{n\pi}{l}x\right) dx
-\]
+\end{equation}
