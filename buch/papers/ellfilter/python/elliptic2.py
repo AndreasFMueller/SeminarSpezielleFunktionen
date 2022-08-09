@@ -50,20 +50,20 @@ def ellip_filter(N, mode=-1):
     return w/omega_c, FN2 / epsilon2, mag, a, b
 
 
-plt.figure(figsize=(4,2.5))
+f, axs = plt.subplots(2, 1, figsize=(5,3), sharex=True)
 
 for mode, c in enumerate(["green", "orange", "red"]):
     w, FN2, mag, a, b = ellip_filter(N, mode=mode)
-    plt.semilogy(w, FN2, label=f"$N={N}, k=0.1$", linewidth=1, color=c)
+    axs[0].semilogy(w, FN2, label=f"$N={N}, k=0.1$", linewidth=1, color=c)
 
-plt.gca().add_patch(Rectangle(
+axs[0].add_patch(Rectangle(
     (0, 0),
     1, 1,
     fc ='green',
     alpha=0.2,
     lw = 10,
 ))
-plt.gca().add_patch(Rectangle(
+axs[0].add_patch(Rectangle(
     (1, 1),
     0.00992, 1e2-1,
     fc ='orange',
@@ -71,7 +71,7 @@ plt.gca().add_patch(Rectangle(
     lw = 10,
 ))
 
-plt.gca().add_patch(Rectangle(
+axs[0].add_patch(Rectangle(
     (1.00992, 100),
     1, 1e6,
     fc ='red',
@@ -83,54 +83,41 @@ zeros = [0,0.87,0.995]
 poles = [1.01,1.155]
 
 import matplotlib.transforms
-plt.plot( # mark errors as vertical bars
+axs[0].plot( # mark errors as vertical bars
     zeros,
     np.zeros_like(zeros),
     "o",
     mfc='none',
     color='black',
     transform=matplotlib.transforms.blended_transform_factory(
-        plt.gca().transData,
-        plt.gca().transAxes,
+        axs[0].transData,
+        axs[0].transAxes,
     ),
 )
-plt.plot( # mark errors as vertical bars
+axs[0].plot( # mark errors as vertical bars
     poles,
     np.ones_like(poles),
     "x",
     mfc='none',
     color='black',
     transform=matplotlib.transforms.blended_transform_factory(
-        plt.gca().transData,
-        plt.gca().transAxes,
+        axs[0].transData,
+        axs[0].transAxes,
     ),
 )
 
-plt.xlim([0,2])
-plt.ylim([1e-4,1e6])
-plt.grid()
-plt.xlabel("$w$")
-plt.ylabel("$F^2_N(w)$")
-# plt.legend()
-plt.tight_layout()
-plt.savefig("F_N_elliptic.pgf")
-plt.show()
-
-
-
-plt.figure(figsize=(4,2.5))
 for mode, c in enumerate(["green", "orange", "red"]):
     w, FN2, mag, a, b = ellip_filter(N, mode=mode)
-    plt.plot(w, mag, linewidth=1, color=c)
+    axs[1].plot(w, mag, linewidth=1, color=c)
 
-plt.gca().add_patch(Rectangle(
+axs[1].add_patch(Rectangle(
     (0, np.sqrt(2)/2),
     1, 1,
     fc ='green',
     alpha=0.2,
     lw = 10,
 ))
-plt.gca().add_patch(Rectangle(
+axs[1].add_patch(Rectangle(
     (1, 0.1),
     0.00992, np.sqrt(2)/2 - 0.1,
     fc ='orange',
@@ -138,7 +125,7 @@ plt.gca().add_patch(Rectangle(
     lw = 10,
 ))
 
-plt.gca().add_patch(Rectangle(
+axs[1].add_patch(Rectangle(
     (1.00992, 0),
     1, 0.1,
     fc ='red',
@@ -146,11 +133,13 @@ plt.gca().add_patch(Rectangle(
     lw = 10,
 ))
 
-plt.grid()
-plt.xlim([0,2])
-plt.ylim([0,1])
-plt.xlabel("$w$")
-plt.ylabel("$|H(w)|$")
+axs[0].set_xlim([0,2])
+axs[0].set_ylim([1e-4,1e6])
+axs[0].grid()
+axs[0].set_ylabel("$F^2_N(w)$")
+axs[1].grid()
+axs[1].set_ylim([0,1])
+axs[1].set_ylabel("$|H(w)|$")
 plt.tight_layout()
 plt.savefig("elliptic.pgf")
 plt.show()

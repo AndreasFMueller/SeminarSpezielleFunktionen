@@ -6,47 +6,26 @@ Kommen wir nun zum eigentlichen Teil dieses Papers, den elliptischen rationalen 
                 &= \cd \left(N~\frac{K_1}{K}~\cd^{-1}(w, k), k_1)\right) , \quad k= 1/\xi, k_1 = 1/f(\xi) \\
                 &= \cd \left(N~K_1~z , k_1 \right), \quad w= \cd(z K, k)
 \end{align}
-
-
-sieht ähnlich aus wie die trigonometrische Darstellung der Tschebyschef-Polynome \eqref{ellfilter:eq:chebychef_polynomials}
+Beim Betrachten dieser Definition, fällt die Ähnlichkeit zur trigonometrische Darstellung der Tschebyschef-Polynome \eqref{ellfilter:eq:chebychef_polynomials} auf.
 Anstelle vom Kosinus kommt hier die $\cd$-Funktion zum Einsatz.
 Die Ordnungszahl $N$ kommt auch als Faktor for.
 Zusätzlich werden noch zwei verschiedene elliptische Module $k$ und $k_1$ gebraucht.
+Bei $k = k_1 = 0$ wird der $\cd$ zum Kosinus und wir erhalten in diesem Spezialfall die Tschebyschef-Polynome.
 
-
-
-Sinus entspricht $\sn$
-
-Damit die Nullstellen an ähnlichen Positionen zu liegen kommen wie bei den Tschebyscheff-Polynomen, muss die $\cd$-Funktion gewählt werden.
-
+Durch das Konzept vom fundamentalen Rechteck, siehe Abbildung \ref{buch:elliptisch:fig:ellall} können für alle inversen Jacobi elliptischen Funktionen die Positionen der Null- und Polstellen anhand eines Diagramms ermittelt werden.
 Die $\cd^{-1}(w, k)$-Funktion ist um $K$ verschoben zur $\sn^{-1}(w, k)$-Funktion, wie ersichtlich in Abbildung \ref{ellfilter:fig:cd}.
 \begin{figure}
     \centering
     \input{papers/ellfilter/tikz/cd.tikz.tex}
     \caption{
-        $z$-Ebene der Funktion $z = \sn^{-1}(w, k)$.
+        $z$-Ebene der Funktion $z = \cd^{-1}(w, k)$.
         Die Funktion ist in der realen Achse $4K$-periodisch und in der imaginären Achse $2jK^\prime$-periodisch.
     }
     \label{ellfilter:fig:cd}
 \end{figure}
-Auffallend ist, dass sich alle Nullstellen und Polstellen um $K$ verschoben haben.
-
-Durch das Konzept vom fundamentalen Rechteck, siehe Abbildung \ref{ellfilter:fig:fundamental_rectangle} können für alle inversen Jacobi elliptischen Funktionen die Positionen der Null- und Polstellen anhand eines Diagramms ermittelt werden.
-Der erste Buchstabe bestimmt die Position der Nullstelle und der zweite Buchstabe die Polstelle.
-\begin{figure}
-    \centering
-    \input{papers/ellfilter/tikz/fundamental_rectangle.tikz.tex}
-    \caption{
-        Fundamentales Rechteck der inversen Jacobi elliptischen Funktionen.
-    }
-    \label{ellfilter:fig:fundamental_rectangle}
-\end{figure}
-
-Auffallend an der $w = \sn(z, k)$-Funktion ist, dass sich $w$ auf der reellen Achse wie der Kosinus immer zwischen $-1$ und $1$ bewegt, während bei $\mathrm{Im(z) = K^\prime}$ die Werte zwischen $\pm 1/k$ und $\pm \infty$ verlaufen.
-Die Funktion hat also Equirippel-Verhalten um $w=0$ und um $w=\pm \infty$.
-Falls es möglich ist diese Werte abzufahren im Sti der Tschebyscheff-Polynome, kann ein Filter gebaut werden, dass Equirippel-Verhalten im Durchlass- und Sperrbereich aufweist.
-
-
+Auffallend an der $w = \cd(z, k)$-Funktion ist, dass sich $w$ auf der reellen Achse wie der Kosinus immer zwischen $-1$ und $1$ bewegt, während bei $\mathrm{Im(z) = K^\prime}$ die Werte zwischen $\pm 1/k$ und $\pm \infty$ verlaufen.
+Die Funktion hat also Equirippel-Verhalten um $w=0$ und um $w=\pm \infty$. %TODO Check
+Falls es möglich ist diese Werte abzufahren im Stil der Tschebyscheff-Polynome, kann ein Filter gebaut werden, dass Equirippel-Verhalten im Durchlass- und Sperrbereich aufweist.
 
 Analog zu Abbildung \ref{ellfilter:fig:arccos2} können wir auch bei den elliptisch rationalen Funktionen die komplexe $z$-Ebene betrachten, wie ersichtlich in Abbildung \ref{ellfilter:fig:cd2}, um die besser zu verstehen.
 \begin{figure}
@@ -60,20 +39,10 @@ Analog zu Abbildung \ref{ellfilter:fig:arccos2} können wir auch bei den ellipti
 \end{figure}
 % Da die $\cd^{-1}$-Funktion 
 
-
-
-\begin{figure}
-    \centering
-    \input{papers/ellfilter/python/F_N_elliptic.pgf}
-    \caption{$F_N$ für ein elliptischs filter.}
-    \label{ellfilter:fig:elliptic}
-\end{figure}
-
-
 \begin{figure}
     \centering
     \input{papers/ellfilter/python/elliptic.pgf}
-    \caption{Die resultierende frequenzantwort eines elliptischs filter.}
+    \caption{$F_N$ und die resultierende Frequenzantwort eines elliptischen Filters.}
     \label{ellfilter:fig:elliptic_freq}
 \end{figure}
 
@@ -89,6 +58,10 @@ Dies trifft ein wenn die Gradengleichung erfüllt ist.
 
 Leider ist das lösen dieser Gleichung nicht trivial.
 Die Rechnung wird in \ref{ellfilter:bib:orfanidis} im Detail angeschaut.
+
+$K$ und $K^\prime$ sind voneinender abhängig.
+
+Das Problem lässt sich grafisch darstellen.
 
 \begin{figure}
     \centering
@@ -107,8 +80,6 @@ Die Rechnung wird in \ref{ellfilter:bib:orfanidis} im Detail angeschaut.
     \input{papers/ellfilter/tikz/elliptic_transform2.tikz}
     \caption{Die Gradgleichung als geometrisches Problem.}
 \end{figure}
-
-
 
 \subsection{Polynome?}
 

@@ -1,8 +1,7 @@
 \section{Tschebyscheff-Filter}
 
-Als Einstieg betrachent Wir das Tschebyscheff-Filter, welches sehr verwand ist mit dem elliptischen Filter.
+Als Einstieg betrachten wir das Tschebyscheff-Filter, welches sehr verwand ist mit dem elliptischen Filter.
 Genauer ausgedrückt sind die Tschebyscheff-1 und -2 Filter Spezialfälle davon.
-
 Der Name des Filters deutet schon an, dass die Tschebyscheff-Polynome $T_N$ für das Filter relevant sind:
 \begin{align}
     T_{0}(x)&=1\\
@@ -16,7 +15,7 @@ Bemerkenswert ist, dass die Polynome im Intervall $[-1, 1]$ mit der trigonometri
     T_N(w) &= \cos \left( N \cos^{-1}(w) \right) \\
            &= \cos \left(N~z \right), \quad w= \cos(z)
 \end{align}
-übereinstimmt.
+übereinstimmen.
 Der Zusammenhang lässt sich mit den Doppel- und Mehrfachwinkelfunktionen der trigonometrischen Funktionen erklären.
 Abbildung \ref{ellfilter:fig:chebychef_polynomials} zeigt einige Tschebyscheff-Polynome.
 \begin{figure}
@@ -36,12 +35,11 @@ Wenn wir die Tschebyscheff-Polynome quadrieren, passen sie perfekt in die Voraus
     \label{ellfiter:fig:chebychef}
 \end{figure}
 
-
 Die analytische Fortsetzung von \eqref{ellfilter:eq:chebychef_polynomials} über das Intervall $[-1,1]$ hinaus stimmt mit den Polynomen überein, wie es zu erwarten ist.
-Die genauere Betrachtung wird uns dann helfen die elliptischen Filter besser zu verstehen.
+Die genauere Betrachtung wird uns helfen die elliptischen Filter besser zu verstehen.
 
-Starten wir mit der Funktion, die als erstes auf $w$ angewendet wird, dem Arcuscosinus.
-Die invertierte Funktion des Kosinus kann als definites Integral dargestellt werden:
+Starten wir mit der Funktion, die in \eqref{ellfilter:eq:chebychef_polynomials} als erstes auf $w$ angewendet wird, dem Arcuscosinus.
+Die invertierte Funktion des Kosinus kann als bestimmtes Integral dargestellt werden:
 \begin{align}
     \cos^{-1}(x)
     &=
@@ -88,46 +86,21 @@ Abbildung \ref{ellfilter:fig:arccos} zeigt den $\arccos$ in der komplexen Ebene.
     \caption{Die Funktion $z = \cos^{-1}(w)$ dargestellt in der komplexen ebene.}
     \label{ellfilter:fig:arccos}
 \end{figure}
-Wegen der Periodizität des Kosinus ist auch der Arcuscosinus $2\pi$-periodisch und es entstehen periodische Nullstellen.
-% \begin{equation}
-%     \frac{
-%         1
-%     }{
-%         \sqrt{
-%             1-z^2
-%         }
-%     }
-%     \in \mathbb{R}
-%     \quad
-%     \forall
-%     \quad
-%     -1  \leq z \leq 1
-% \end{equation}
-% \begin{equation}
-%     \frac{
-%         1
-%     }{
-%         \sqrt{
-%             1-z^2
-%         }
-%     }
-%     = i \xi \quad | \quad \xi \in \mathbb{R}
-%     \quad
-%     \forall
-%     \quad
-%     z \leq -1 \cup z \geq 1
-% \end{equation}
+Wegen der Periodizität des Kosinus ist auch der Arcuscosinus $2\pi$-periodisch.
+Das Einzeichnen von Pol- und Nullstellen ist hilfreich für die Betrachtung der Funktion.
 
-Die Tschebyscheff-Polynome skalieren diese Nullstellen mit dem Ordnungsfaktor $N$, wie dargestellt in Abbildung \ref{ellfilter:fig:arccos2}.
+
+In \eqref{ellfilter:eq:chebychef_polynomials} wird $z$ mit dem Ordnungsfaktor $N$ multipliziert und durch die Kosinusfunktion zurück transformiert.
+Die Skalierung hat zur folge, dass bei der Rücktransformation durch den Kosinus mehrere Nullstellen durchlaufen werden.
+Somit passiert $\cos( N~\cos^{-1}(w))$ im Intervall $[-1, 1]$ $N$ Nullstellen, wie dargestellt in Abbildung \ref{ellfilter:fig:arccos2}.
 \begin{figure}
     \centering
     \input{papers/ellfilter/tikz/arccos2.tikz.tex}
     \caption{
         $z_1=N \cos^{-1}(w)$-Ebene der Tschebyscheff-Funktion.
-        Die eingefärbten Pfade sind Verläufe von $w~\forall~[-\infty, \infty]$ für verschiedene Ordnungen $N$.
+        Die eingefärbten Pfade sind Verläufe von $w~\forall~[-\infty, \infty]$ für $N = 4$.
         Je grösser die Ordnung $N$ gewählt wird, desto mehr Nullstellen werden passiert.
     }
     \label{ellfilter:fig:arccos2}
 \end{figure}
-Somit passert $\cos( N~\cos^{-1}(w))$ im Intervall $[-1, 1]$ $N$ Nullstellen.
 Durch die spezielle Anordnung der Nullstellen hat die Funktion Equirippel-Verhalten und ist dennoch ein Polynom, was sich perfekt für linear Filter eignet.

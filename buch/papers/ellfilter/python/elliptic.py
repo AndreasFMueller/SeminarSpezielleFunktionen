@@ -342,9 +342,9 @@ k = np.array([0.1,0.2,0.4,0.6,0.9,0.99])
 K = ell_int(k)
 K_prime = ell_int(np.sqrt(1-k**2))
 
-axs[1].plot(K, K_prime, '.', color=last_color(), markersize=2)
-for x, y, n in zip(K, K_prime, k):
-    axs[1].text(x+0.1, y+0.1, f"$k={n:.2f}$", rotation_mode="anchor")
+# axs[1].plot(K, K_prime, '.', color=last_color(), markersize=2)
+# for x, y, n in zip(K, K_prime, k):
+#     axs[1].text(x+0.1, y+0.1, f"$k={n:.2f}$", rotation_mode="anchor")
 axs[1].set_ylabel("$K^\prime$")
 axs[1].set_xlabel("$K$")
 axs[1].set_xlim([0,6])
