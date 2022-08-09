@@ -35,6 +35,7 @@ Lösungsfunktion $u(t,x)$ bei $x = 0$ und $x = l$ nur die vorgegebene
 Temperatur zurückgeben darf.
 Es folgen nun
 \begin{equation}
+    \label{eq:slp-example-fourier-boundary-condition-ends-constant}
     u(t,0)
     =
     u(t,l)
@@ -58,6 +59,7 @@ dass die partiellen Ableitungen von $u(t,x)$ nach $x$ bei $x = 0$ und $x = l$
 verschwinden.
 Somit folgen
 \begin{equation}
+    \label{eq:slp-example-fourier-boundary-condition-ends-isolated}
     \frac{\partial}{\partial x} u(t, 0)
     =
     \frac{\partial}{\partial x} u(t, l)
@@ -120,6 +122,7 @@ Sturm-Liouville-Form ist.
 Erfüllen die Randbedingungen des Stab-Problems auch die Randbedingungen des
 Sturm-Liouville-Problems, kann bereits die Aussage getroffen werden, dass alle
 Lösungen für die Gleichung in $x$ orthogonal sein werden.
+Mehr dazu später.
 
 Widmen wir uns zunächst der ersten Gleichung.
 Aufgrund der Struktur der Gleichung
@@ -181,11 +184,22 @@ Durch Koeffizientenvergleich von
 \end{aligned}
 \]
 ist schnell ersichtlich, dass $ \mu = -\alpha^{2} = -\beta^{2} $ gelten muss für
-$ A \neq 0 $ und $ B \neq 0 $.
+$ A \neq 0 $ oder $ B \neq 0 $.
 Zur Berechnung von $ \mu $ bleiben also noch  $ \alpha $ und $ \beta $ zu
 bestimmen.
+Dazu werden die Randbedingungen
+\eqref{eq:slp-example-fourier-boundary-condition-ends-constant} und
+\eqref{eq:slp-example-fourier-boundary-condition-ends-isolated} benötigt.
+Zu bemerken ist, dass die Randbedingungen nur Anforderungen in $x$ stellen und
+somit direkt für $X(x)$ übernomen werden können.
 
-TODO: randbedingungen!!----
+Daraus ergibt sich für einen Stab mit Enden auf konstanter Temperatur
+
+\begin{equation}
+    \mu
+    =
+    -\frac{n^{2}\pi^{2}}{l^{2}}
+\end{equation}
 
 Betrachten wir nun die zweite Gleichung 
 \eqref{eq:slp-example-fourier-separated-t}.
@@ -203,7 +217,7 @@ Lösung
     e^{-\kappa \mu t}
 \]
 führt.
-Und mit mit dem Resultat von zuvor die Lösung
+Und mit dem Resultat (TODO) die Lösung
 \[
     T(t)
     =
