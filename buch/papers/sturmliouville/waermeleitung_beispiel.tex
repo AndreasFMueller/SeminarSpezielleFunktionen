@@ -122,7 +122,52 @@ Sturm-Liouville-Form ist.
 Erfüllen die Randbedingungen des Stab-Problems auch die Randbedingungen des
 Sturm-Liouville-Problems, kann bereits die Aussage getroffen werden, dass alle
 Lösungen für die Gleichung in $x$ orthogonal sein werden.
-Mehr dazu später.
+
+Damit die Lösungen von $X$ orthogonal sind, müssen also die Gleichungen
+\begin{equation}
+\begin{aligned}
+	\label{eq:slp-example-fourier-randbedingungen}
+	k_a y(a) + h_a p(a) y'(a) &= 0 \\
+	k_b y(b) + h_b p(b) y'(b) &= 0
+\end{aligned}
+\end{equation}
+erfüllt sein und es muss ausserdem
+\begin{equation}
+\begin{aligned}
+    \label{eq:slp-example-fourier-coefficient-constraints}
+    |k_a|^2 + |h_a|^2 &\neq 0\\
+    |k_b|^2 + |h_b|^2 &\neq 0\\
+\end{aligned}
+\end{equation}
+gelten.
+
+Um zu verifizieren, ob die Randbedingungen erfüllt sind, benötigen wir zunächst
+$p(x)$.
+Dazu wird die Gleichung \eqref{eq:slp-example-fourier-separated-x} mit der
+Sturm-Liouville-Form \eqref{eq:sturm-liouville-equation} verglichen, was zu
+$p(x) = 1$ führt.
+
+Werden nun $p(x)$ und die Randbedingungen
+\eqref{eq:slp-example-fourier-boundary-condition-ends-constant} in
+\eqref{eq:slp-example-fourier-randbedingungen} eigesetzt, erhält man
+\[
+\begin{aligned}
+	k_a y(0) + h_a y'(0) &= h_a y'(0) = 0 \\
+	k_b y(l) + h_b y'(l) &= h_b y'(l) = 0.
+\end{aligned}
+\]
+Damit die Gleichungen erfüllt sind, müssen $h_a = 0$ und $h_b = 0$ sein.
+Zusätzlich müssen aber die Bedingungen 
+\eqref{eq:slp-example-fourier-coefficient-constraints} erfüllt sein und
+da $y(0) = 0$ und $y(l) = 0$ sind, können belibige $k_a \neq 0$ und $k_b \neq 0$
+gewählt werden.
+
+Somit ist gezeigt, dass die Randbedingungen des Stab-Problems für Enden auf
+konstanter Temperatur auch die Sturm-Liouville-Randbedingungen erfüllen und
+alle daraus reultierenden Lösungen orthogonal sind.
+Analog dazu kann gezeit werden, dass die Randbedingungen für einen Stab mit
+isolierten Enden ebenfalls die Sturm-Liouville-Randbedingungen erfüllen und
+somit auch zu orthogonalen Lösungen führen.
 
 Widmen wir uns zunächst der ersten Gleichung.
 Aufgrund der Struktur der Gleichung
@@ -187,7 +232,7 @@ ist schnell ersichtlich, dass $ \mu = -\alpha^{2} = -\beta^{2} $ gelten muss fü
 $ A \neq 0 $ oder $ B \neq 0 $.
 Zur Berechnung von $ \mu $ bleiben also noch  $ \alpha $ und $ \beta $ zu
 bestimmen.
-Dazu werden die Randbedingungen
+Dazu werden nochmals die Randbedingungen
 \eqref{eq:slp-example-fourier-boundary-condition-ends-constant} und
 \eqref{eq:slp-example-fourier-boundary-condition-ends-isolated} benötigt.
 Zu bemerken ist, dass die Randbedingungen nur Anforderungen in $x$ stellen und
@@ -196,12 +241,13 @@ somit direkt für $X(x)$ übernomen werden können.
 Daraus ergibt sich für einen Stab mit Enden auf konstanter Temperatur
 
 \begin{equation}
+    \label{eq:slp-example-fourier-mu-solution}
     \mu
     =
     -\frac{n^{2}\pi^{2}}{l^{2}}
 \end{equation}
 
-Betrachten wir nun die zweite Gleichung 
+Betrachten wir nun die zweite Gleichung der Separation
 \eqref{eq:slp-example-fourier-separated-t}.
 Diese Lösen wir über das charakteristische Polynom
 \[
@@ -217,7 +263,7 @@ Lösung
     e^{-\kappa \mu t}
 \]
 führt.
-Und mit dem Resultat (TODO) die Lösung
+Und mit dem Resultat \eqref{eq:slp-example-fourier-mu-solution} die Lösung
 \[
     T(t)
     =
