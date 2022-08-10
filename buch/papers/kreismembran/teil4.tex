@@ -67,37 +67,37 @@ Die Filtermaske kann dann auf jedes Element einzeln angewendet werden mit einer 
 
 \subsection{Simulation: Kreisförmige Membran}
 Als Beispiel soll nun eine schwingende kreisförmige Membran simuliert werden.
-\paragraph{Initialisierung}
-Die Anzahl der simulierten Elementen soll $ m \times n $ was dementsprechend die Dimensionen von $ U $ und $ V $ vorgibt.
+\subsubsection{Initialisierung}
+Die Anzahl der simulierten Elemente soll $ m \times n $ sein, was die Dimensionen von $ U $ und $ V $ vorgibt.
 Als Anfangsbedingung wird eine Membran gewählt, welche bei $ t=0 $ mit einer Gauss-Kurve ausgelenkt wird.
 Die Membran soll sich zu Beginn nicht bewegen, also wird $ V[0] $ mit Nullen initialisiert.
 Die Auslenkung kann kompakt erreicht werden, wenn $ U[0] $ als Null-Matrix mit einer $ 1 $ in der Mitte initialisiert wird. 
 Diese Matrix wird anschliessend mit einer Filtermaske in Form einer Gauss-Glocke gefaltet.
-Die Faltung mit einer Gauss-Glocke ist in Programmen wie Matlab eine Standartfunktion, da dies einm Tiefpassfilter in der Bildverarbeitung entspricht.
+Die Faltung mit einer Gauss-Glocke ist in Programmen wie Matlab eine Standartfunktion, da dies einem Tiefpassfilter in der Bildverarbeitung entspricht.
 
-\paragraph{Rand}
+\subsubsection{Rand}
 Bislang ist die definierte Matrix rechteckig.
 Um eine kreisförmige Membran zu simulieren muss der Rand angepasst werden.
 Da in den meisten Programme keine Möglichkeit besteht, mit runden Matrizen zu rechnen, wird der Rand in der Berechnung des Folgezustandes implementiert.
 Der Rand bedeutet, das Membran-Elemente auf dem Rand sich nicht Bewegen können.
-Die Position sowie die Geschwindigkeit aller Elemente welche nicht auf der definierten Membran sind müssen zu beliebiger Zeit $0$ entsprechen.
+Die Position sowie die Geschwindigkeit aller Elemente, welche nicht auf der definierten Membran sind, müssen zu beliebiger Zeit $0$ sein.
 Hierzu wird eine Maske $M$ erstellt. 
 Diese Maske besteht aus einer binären Matrix von identischer Dimension wie $ U $ und $ V $. 
 Ist in der Matrix $M$ eine $1$ abgebildet so ist an jener stelle ein Element der Membran, ist es eine $0$ so befindet sich dieses Element auf dem Rand oder ausserhalb der Membran.
 In dieser Anwendung ist $M$ eine Matrix mit einem Kreis voller $1$ umgeben von $0$ bis an den Rand der Matrix.
-Die Maske wird angewendet indem das Resultat des nächsten Zustandes noch mit der Maske elementweise multipliziert wird. 
+Die Maske wird angewendet, indem das Resultat des nächsten Zustandes noch mit der Maske elementweise multipliziert wird. 
 Der Folgezustand kann also mit den Gleichungen
 \begin{align}
 	\label{kreismembran:eq:folge_U} 
-	U[w+1] &= (U[w] + dt \cdot V[w])*M\\
+	U[w+1] &= (U[w] + dt \cdot V[w])\odot M\\
 	\label{kreismembran:eq:folge_V}
-	V[w+1] &= (V[w] + dt \cdot \Delta_h u \cdot c^2)*M
+	V[w+1] &= (V[w] + dt \cdot \Delta_h u \cdot c^2)\odot M
 \end{align}
 berechnet werden.
-\paragraph{Simulation}
+\subsubsection{Simulation}
 Mit den gegebenen Gleichungen \ref{kreismembran:eq:folge_U} und \ref{kreismembran:eq:folge_V} das Verhalten der Membran mit einem Loop über das zu untersuchende Zeitintervall berechnet werden. 
 In der Abbildung \ref{kreismembran:im:simres_rund} sind Simulationsresultate zu sehen.
-Die Erste Figur zeigt die Ausgangslage gefolgt von den Auslenkungen nach jeweils $ 50 $ weiteren Iterationsschritten.
+Die erste Figur zeigt die Ausgangslage gefolgt von den Auslenkungen nach jeweils $ 50 $ weiteren Iterationsschritten.
 Es ist zu erkennen, wie sich die Störung vom Zentrum an den Rand ausbreitet.
 Erreicht die Störung den Rand wird sie reflektiert und nähert sich dem Zentrum. 
 \begin{figure}
@@ -123,13 +123,13 @@ Wenn anschliessend nur das Verhalten im Zentrum, bei der Störung beobachtet wir
 Dies aber nur bis die Störung am Rand reflektiert wird und wieder das innere zu beobachtende Zentrum beeinflusst.
 Soll erst gar keine Reflexion entstehen, muss ein Absorber modelliert werden welcher die Störung möglichst ohne Reflexion aufnimmt.
 
-\paragraph{Absorber}
+\subsubsection{Absorber}
 Sehr knapp formuliert entstehen Reflexionen, wenn eine Welle von einem Material in ein anderes Material mit unterschiedlichen Eigenschaften eindringen möchte.
 Je unterschiedlicher und abrupter der Übergang zwischen den Materialien umso ausgeprägter die Reflexion.
 In diesem Fall sind die Eigenschaften vorgegeben.
 Im Zentrum soll sich die Membran verhalten, wie von der DGL vorgegeben, am Rand jedoch muss sich jedes Membran-Element in der Ausgangslage befinden. 
 Der Spielraum welcher dem Absorber übrig bleibt ist die Art der Überganges.
-Bei der endlichen kreisförmigen Membran hat die Maske $M$ ein binärer Übergang von Membran zu Rand bezweckt.
+Bei der endlichen kreisförmigen Membran hat die Maske $M$ einen binären Übergang von Membran zu Rand bezweckt.
 Anstelle dieses abrupten Wechsels wird nun eine Maske definiert, welche graduell von Membran $1$ zu Rand-Element $0$ wechselt.
 Die Elemente werden auf Basis ihres Abstand $r$ zum Zentrum definiert. 
 Der Abstand entspricht 
@@ -156,11 +156,10 @@ In der Abbildung \ref{kreismembran:im:masks} ist der Unterschied der beiden Mask
 		\label{kreismembran:im:masks}
 	\end{center}	
 \end{figure} 
-\paragraph{Simulation}
+\subsubsection{Simulation}
 Bis auf die Absorber-Maske kann nun identisch zur endlichen Membran simuliert werden.
 Auch hier wurde eine Gauss-Glocke als Anfangsbedingung gewählt. 
 Die Simulationsresultate von Abbildung \ref{kreismembran:im:simres_unendlich}
-
 \begin{figure}
 	
 	\begin{center}
@@ -183,7 +182,7 @@ Dieses Verhalten spricht für den Absorber-Ansatz, es soll jedoch erwähnt sein,
 Die DGL \ref{kreismembran:Ausgang_DGL} welche simuliert wird geht jedoch von der Annahme \ref{kreimembran:annahmen} iv) aus, dass die Membran keine Art von Dämpfung erfährt.
 
 \section{Schlusswort}
-Auch wenn ein Physikalisches Verhalten bereits durch Annahmen und Annäherungen deutlich vereinfacht wird, bestehen auch dann noch eine Vielzahl von Lösungsansätzen.
+Auch wenn ein physikalisches Verhalten bereits durch Annahmen und Annäherungen deutlich vereinfacht wird, bestehen auch dann noch eine Vielzahl von Lösungsansätzen.
 Lösungen einer unendlich grosse Membran scheinen fern der Realität zu sein, doch dies darf es im Sinne der Mathematik.
 Und wer weis, für eine Ameise auf einem Trampolin ist eine unendliche Membran vielleicht eine ganz gute Annäherung. 
 

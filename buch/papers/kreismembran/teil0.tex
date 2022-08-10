@@ -5,18 +5,18 @@
 %
 \section{Einleitung\label{kreismembran:section:teil0}}
 \rhead{Membran}
-Eine Membran oder selten ein Schwingblatt ist laut Duden \cite{kreismembran:Duden:Membran} ein ``dünnes Blättchen aus Metall, Papier o. Ä., das durch seine Schwingungsfähigkeit geeignet ist, Schallwellen zu übertragen ...''. 
+Eine Membran oder selten ein Schwingblatt ist laut Duden \cite{kreismembran:Duden:Membran} ein ``dünnes Blättchen aus Metall, Papier o. Ä., das durch seine Schwingungsfähigkeit geeignet ist, Schallwellen zu übertragen \dots''. 
 Ein dünnes Blättchen aus Metall zeig jedoch nicht die selben dynamischen Eigenschaften wie ein gespanntes Stück Papier. 
 Beschreibt man das dynamische Verhalten, muss zwischen einer dünnen Platte und einer Membrane unterschieden werden \cite{kreismembran:membrane_vs_thin_plate}. 
 Eine dünne Platte zum Beispiel aus Metall, wirkt selbst entgegen ihrer Deformation sobald sie gekrümmt wird. 
 Eine Membran auf der anderen Seite besteht aus einem Material, welches sich ohne Kraftaufwand verbiegen lässt wie zum Beispiel Papier. 
-Bevor Papier als schwingende Membran betrachtet werden kann, wird jedoch noch eine Spannung $ T $ benötigt welche das Material daran hindert aus der Ruhelage gebracht zu werden. 
+Bevor Papier als schwingende Membran betrachtet werden kann, wird jedoch noch eine Spannung $ T $ benötigt welche das Material daran hindert, aus der Ruhelage gebracht zu werden. 
 
 Ein geläufiges Beispiel einer Kreismembran ist eine runde Trommel. 
 Sie besteht herkömmlicherweise aus einem Leder (Fell), welches auf einen offenen Zylinder (Zargen) aufgespannt wird. 
 Das Leder alleine erzeugt nach einem Aufschlag keine hörbaren Schwingungen. 
 Sobald das Fell jedoch über den Zargen gespannt wird, kann das Fell auf verschiedensten Weisen weiter schwingen, was für den Klang der Trommel verantwortlich ist. 
-Wie genau diese Schwingungen untersucht werden können wird in der folgenden Arbeit diskutiert.
+Wie genau diese Schwingungen untersucht werden können, wird in der folgenden Arbeit diskutiert.
 	
 
 \subsection{Annahmen} \label{kreimembran:annahmen}
@@ -48,9 +48,10 @@ Die Verbindung zwischen Membran und Saite ist intuitiv ersichtlich, stellt man s
 	\end{center}	
 \end{figure}
 
-Abbildung \ref{kreismembran:im:Saite} ist ein infinitesimales Stück einer Saite mit Länge $ dx $ skizziert.
-Wie für die Membran ist die Annahme iii) gültig, keine Bewegung in die Richtung $ \hat{x} $.
-Um dies zu erfüllen muss der Punkt $ P_1 $ gleich stark in Richtung $ -\hat{x} $ gezogen werden wie der Punkt $ P_2 $ in Richtung $ \hat{x} $ gezogen wird. Ist $ T_1 $ die Kraft welche mit Winkel $ \alpha $ auf Punkt $ P_1 $ wirkt sowie $ T_2 $ und $ \beta$ das analoge für Punkt $ P_2 $ ist, so können die Kräfte 
+In Abbildung \ref{kreismembran:im:Saite} ist ein infinitesimales Stück einer Saite mit Länge $ dx $ skizziert.
+Wie für die Membran ist die Annahme iii) gültig, keine Bewegung entlang der $ x $-Achse.
+Um dies zu erfüllen, muss der Punkt $ P_1 $ gleich stark entgegen der $ x $-Achse gezogen werden wie der Punkt $ P_2 $ in Richtung der $ x $-Achse gezogen wird. 
+Ist $ T_1 $ die Kraft, welche mit Winkel $ \alpha $ auf Punkt $ P_1 $ wirkt sowie $ T_2 $ und $ \beta$ das analoge für Punkt $ P_2 $ ist, so können die Kräfte 
 \begin{equation}\label{kreismembran:eq:no_translation}
 	T_1 \cos \alpha = T_2 \cos \beta = T
 \end{equation}
@@ -81,7 +82,8 @@ Durch die Division mit $ dx $ entsteht
 \begin{equation*}
 	\frac{1}{dx} \left[\frac{\partial u}{\partial x} \bigg|_{x_0 + dx} - \frac{\partial u}{\partial x} \bigg|_{x_0}\right] = \frac{\rho}{T}\frac{\partial^2 u}{\partial t^2}.
 \end{equation*}
-Auf der linken Seite der Gleichung wird die Differenz der Steigungen durch die Intervalllänge geteilt, in anderen Worten die zweite Ableitung von $ u(x,t) $ nach $ x $ berechnet. 
+Auf der linken Seite der Gleichung wird die Differenz der Steigungen durch die Intervalllänge geteilt.
+Wenn $ dx $ als unendlich kleines Stück betrachtet wird, ergibt sich als Grenzwert die zweite Ableitung von $ u(x,t) $ nach $ x $. 
 Der Term $ \frac{\rho}{T} $ wird durch $ c^2 $ ersetzt, da der Bruch für eine gegebene Membran eine positive Konstante sein muss. 
 Somit resultiert die in der Literatur gebräuchliche Form 
 \begin{equation}
