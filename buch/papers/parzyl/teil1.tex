@@ -42,8 +42,22 @@ $w$ als Lösung haben.
 Da es sich um eine Differentialgleichung zweiter Ordnung handelt, hat sie nicht nur
 eine sondern zwei Lösungen.
 Die zweite Lösung der Whittaker-Gleichung ist $W_{k,-m} (z)$.
-Somit ist 
-\begin{equation}
-    w = z^{-1/2} W_{k,1/4} \left({\textstyle \frac{1}{2}} z^2\right)
-\end{equation}
-eine weiter Lösung von \eqref{parzyl:eq:weberDiffEq}.
+Somit hat \eqref{parzyl:eq:weberDiffEq}
+\begin{align}
+    w_1 & = z^{-1/2} W_{k,-1/4} \left({\textstyle \frac{1}{2}} z^2\right)\\
+    w_2 & = z^{-1/2} W_{k,1/4} \left({\textstyle \frac{1}{2}} z^2\right)
+\end{align}
+als Lösungen.
+
+Ausgeschrieben ergeben sich als Lösungen
+\begin{align}
+    w_1 &= e^{-z^2/4} \,
+    {}_{1} F_{1}
+    (
+        {\textstyle \frac{1}{4}} 
+         - k, {\textstyle \frac{1}{2}} ; {\textstyle \frac{1}{2}}z^2) \\
+    w_2 & = z e^{-z^2/4} \,
+         {}_{1} F_{1}
+         ({\textstyle \frac{3}{4}} 
+              - k, {\textstyle \frac{3}{2}} ; {\textstyle \frac{1}{2}}z^2)
+\end{align}
