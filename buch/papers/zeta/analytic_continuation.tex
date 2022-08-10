@@ -62,14 +62,14 @@ Durch Subtraktion der beiden Gleichungen \eqref{zeta:align1} minus \eqref{zeta:a
     {\color{blue}\frac{2}{2^s}}
     +
     {\color{red}\frac{1}{2^s}}
-    }_{-\frac{1}{2^s}}
+    }_{\displaystyle{-\frac{1}{2^s}}}
     +
     {\color{red}\frac{1}{3^s}}
     \underbrace{-
     {\color{blue}\frac{2}{4^s}}
     +
     {\color{red}\frac{1}{4^s}}
-    }_{-\frac{1}{4^s}}
+    }_{\displaystyle{-\frac{1}{4^s}}}
     \ldots
     \\
     &= \eta(s).
@@ -89,7 +89,7 @@ Wir beginnen damit, die Gammafunktion für den halben Funktionswert zu berechnen
     =
     \int_0^{\infty} t^{\frac{s}{2}-1} e^{-t} dt.
 \end{equation}
-Nun substituieren wir $t$ mit $t = \pi n^2 x$ und $dt=\pi n^2 dx$ und erhalten
+Nun substituieren wir $t = \pi n^2 x$ und $dt=\pi n^2 dx$ und erhalten
 \begin{equation}
     \Gamma \left( \frac{s}{2} \right)
     =
@@ -109,7 +109,7 @@ Analog zum Abschnitt \ref{zeta:section:zusammenhang_mit_gammafunktion} teilen wi
     e^{-\pi n^2 x}
     \,dx,
 \end{equation}
-und finden $\zeta(s)$ durch die Summenbildung $\sum_{n=1}^{\infty}$
+und finden $\zeta(s)$ durch die Summenbildung über alle $n$
 \begin{align}
     \frac{\Gamma \left( \frac{s}{2} \right)}{\pi^{\frac{s}{2}}}
     \zeta(s)
@@ -139,14 +139,14 @@ Zunächst teilen wir nun das Integral auf in zwei Teile
     x^{\frac{s}{2}-1}
     \psi(x)
     \,dx
-    }_{I_1}
+    }_{\displaystyle{I_1}}
     +
     \underbrace{
     \int_1^{\infty}
     x^{\frac{s}{2}-1}
     \psi(x)
     \,dx
-    }_{I_2}
+    }_{\displaystyle{I_2}}
     =
     I_1 + I_2.
 \end{equation}
@@ -231,11 +231,11 @@ Somit haben wir die analytische Fortsetzung gefunden als
     \zeta(1-s),
 \end{equation}
 was einer Spiegelung an der $\Re(s) = \frac{1}{2}$ Geraden entspricht.
-Eine ganz ähnliche Spiegelungseigenschaft wurde bereits in Kapitel \ref{buch:funktionentheorie:subsection:gammareflektion} für die Gammafunktion gefunden.
+Eine ganz ähnliche Spiegelungseigenschaft wurde bereits in Abschnitt \ref{buch:funktionentheorie:subsection:gammareflektion} für die Gammafunktion gefunden.
 
 \subsection{Berechnung des Integrals $I_1 = \int_0^{1} x^{\frac{s}{2}-1} \psi(x) \,dx$} \label{zeta:subsubsec:intcal}
 
-Ziel dieses Abschnittes ist es, zu zeigen wie das Integral $I_1$ aus Gleichung \eqref{zeta:equation:integral2} durch ein neues Integral mit den Integrationsgrenzen $1$ und $\infty$ ersetzt werden kann.
+Ziel dieses Abschnittes ist, zu zeigen wie das Integral $I_1$ aus Gleichung \eqref{zeta:equation:integral2} durch ein neues Integral mit den Integrationsgrenzen $1$ und $\infty$ ersetzt werden kann.
 Da dieser Schritt ziemlich aufwendig ist, wird er hier in einem eigenen Abschnitt behandelt.
 Zunächst wird die poissonsche Summenformel hergeleitet \cite{zeta:online:poisson}, da diese verwendet werden kann um $\psi(x)$ zu berechnen.
 
@@ -313,8 +313,8 @@ Um die poissonsche Summenformel zu beweisen, berechnen wir zunächst die Fourier
         \underbrace{
         \sum_{k=-\infty}^{\infty}
         e^{-i 2\pi x k}
-        }_{\text{\eqref{zeta:equation:fourier_dirac}}}
-        \, dx,
+        }_{\displaystyle{\text{\eqref{zeta:equation:fourier_dirac}}}}
+        \, dx, \label{zeta:equation:1934}
     \end{align}
     und verwenden die Fouriertransformation der Dirac Funktion aus \eqref{zeta:equation:fourier_dirac}
     \begin{align}
@@ -330,7 +330,7 @@ Um die poissonsche Summenformel zu beweisen, berechnen wir zunächst die Fourier
         \sum_{k=-\infty}^{\infty}
         \delta(x + k).
     \end{align}
-    Wenn wir dies einsetzen und erhalten wir
+    Wenn wir dies einsetzen in Gleichung \eqref{zeta:equation:1934} erhalten wir
     \begin{equation}
         \sum_{k=-\infty}^{\infty}
         F(k)
@@ -465,7 +465,7 @@ Diese Form von $\psi(x)$ eingesetzt in $I_1$ ergibt
     x^{\frac{s}{2}-\frac{3}{2}}
     \psi \left( \frac{1}{x} \right)
     \,dx
-    }_{I_3}
+    }_{\displaystyle{I_3}}
     +
     \underbrace{
     \frac{1}{2}
@@ -474,7 +474,7 @@ Diese Form von $\psi(x)$ eingesetzt in $I_1$ ergibt
     -
     x^{\frac{s}{2}-1}
     \,dx
-    }_{I_4}. \label{zeta:equation:integral3}
+    }_{\displaystyle{I_4}}. \label{zeta:equation:integral3}
 \end{align}
 Darin kann für das zweite Integral $I_4$ eine Lösung gefunden werden als
 \begin{equation}
