@@ -409,7 +409,7 @@ eine neue Funktion
     \end{cases}
 \]
 angenomen, welche $u(0, x)$ auf dem Intervall $[-l, l]$ periodisch fortsetzt.
-Es kann nun das Skalarodukt geschrieben werden als
+Das Skalarodukt kann nun geschrieben werden als
 \[
 \begin{aligned}
     \int_{-l}^{l}\hat{u}(0, x)\cos\left(\frac{m \pi}{l}x\right)dx
@@ -428,7 +428,7 @@ Es kann nun das Skalarodukt geschrieben werden als
         \cos\left(\frac{m \pi}{l}x\right)dx\right]
     \\
     &+
-    \sum_{n = 1}^{\infty}\left[b_n\int_{-l}^{l} \sin\left(\frac{n\pi}{l}x\right)
+    \sum_{n = 1}^{\infty}\left[b_n\int_{-l}^{l}\sin\left(\frac{n\pi}{l}x\right)
         \cos\left(\frac{m \pi}{l}x\right)dx\right].
 \end{aligned}
 \]
@@ -457,22 +457,21 @@ Und mit dem Resultat \eqref{eq:slp-example-fourier-mu-solution}
 \]
 ergibt.
 
-% TODO: Rechenweg
-TODO: Rechenweg... Enden auf konstanter Temperatur:
+\subsubsection{Lösung für einen Stab mit Enden auf konstanter Temperatur}
 \[
 \begin{aligned}
     u(t,x)
     &=
-    \sum_{n=1}^{\infty}a_{n}e^{-\frac{n^{2}\pi^{2}\kappa}{l^{2}}t}
+    \sum_{n=1}^{\infty}b_{n}e^{-\frac{n^{2}\pi^{2}\kappa}{l^{2}}t}
     \sin\left(\frac{n\pi}{l}x\right)
     \\
-    a_{n}
+    b_{n}
     &=
     \frac{2}{l}\int_{0}^{l}u(0,x)sin\left(\frac{n\pi}{l}x\right) dx
 \end{aligned}
 \]
 
-TODO: Rechenweg... Enden isoliert:
+\subsubsection{Lösung für einen Stab mit isolierten Enden}
 \[
 \begin{aligned}
     u(t,x)
