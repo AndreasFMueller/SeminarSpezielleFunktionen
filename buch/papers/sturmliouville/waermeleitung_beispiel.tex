@@ -346,12 +346,79 @@ Schreiben wir also die Lösung $X(x)$ um zu
 \[
     X(x)
     =
-    a_n\sin\left(\frac{n\pi}{l}x\right)
+    a_0
     +
-    b_n\cos\left(\frac{n\pi}{l}x\right)
+    \sum_{n = 1}^{\infty} a_n\sin\left(\frac{n\pi}{l}x\right)
+    +
+    \sum_{n = 1}^{\infty} b_n\cos\left(\frac{n\pi}{l}x\right).
 \]
-was für jedes $n$ wiederum eine Linearkombination aus orthogonalen Funktionen 
-ist. 
+
+Um eine eindeutige Lösung für $ X(x) $ zu erhalten werden noch weitere
+Bedingungen benötigt.
+Diese sind die Startbedingungen oder $u(0, x) = X(x)$ für $t = 0$.
+Es gilt also nun die Gleichung
+\begin{equation}
+    \label{eq:slp-example-fourier-initial-conditions}
+    u(0, x)
+    =
+    a_0
+    +
+    \sum_{n = 1}^{\infty} a_n\sin\left(\frac{n\pi}{l}x\right)
+    +
+    \sum_{n = 1}^{\infty} b_n\cos\left(\frac{n\pi}{l}x\right)
+\end{equation}
+nach allen $a_n$ und $b_n$ aufzulösen.
+Da aber $a_n$ und $b_n$ jeweils als Faktor zu einer trigonometrischen Funktion
+gehört, von der wir wissen, dass sie orthogonal zu allen anderen
+trigonometrischen Funktionen der Lösung ist, kann direkt das Skalarprodukt
+verwendet werden um die Koeffizienten $a_n$ und $b_n$ zu bestimmen.
+Es wird also die Tatsache ausgenutzt, dass die Gleichheit in
+\eqref{eq:slp-example-fourier-initial-conditions} nach Anwendung des
+Skalarproduktes immernoch gelten muss und dass das Skalaprodukt mit einer
+Basisfunktion sämtliche Summanden auf der rechten Seite auslöscht.
+
+Zur Berechnung von $a_m$ mit $ m \in \mathbb{N} $ wird beidseitig das
+Skalarprodukt mit der Basisfunktion $ sin\left(\frac{m \pi}{l}x\right)$
+gebildet:
+\[
+    \langle u(0, x), sin\left(\frac{m \pi}{l}x\right) \rangle
+    =
+    \langle a_0
+    +
+    \sum_{n = 1}^{\infty} a_n\sin\left(\frac{n\pi}{l}x\right)
+    +
+    \sum_{n = 1}^{\infty} b_n\cos\left(\frac{n\pi}{l}x\right),
+    sin\left(\frac{m \pi}{l}x\right)\rangle
+\]
+
+Bevor diese Form in die Integralform umgeschrieben werden kann, muss überlegt
+sein, welche Integralgrenzen zu verwenden sind.
+In diesem Fall haben die $ \sin $ und $ \cos $ Terme beispielsweise keine ganze
+Periode im Intervall $ x \in [0, l] $ für ungerade $ n $ und $ m $.
+Um die 
+
+\[
+\begin{aligned}
+    \int_{-l}^{l}\hat{u}(0, x)sin\left(\frac{m \pi}{l}x\right)dx
+    =&
+    \int_{-l}^{l} \left[a_0
+    +
+    \sum_{n = 1}^{\infty} a_n\sin\left(\frac{n\pi}{l}x\right)
+    +
+    \sum_{n = 1}^{\infty} b_n\cos\left(\frac{n\pi}{l}x\right)\right]
+    sin\left(\frac{m \pi}{l}x\right) dx
+    \\
+    =&
+    a_0 \int_{-l}^{l}sin\left(\frac{m \pi}{l}x\right) dx
+    +
+    \sum_{n = 1}^{\infty}\left[a_n\int_{-l}^{l}\sin\left(\frac{n\pi}{l}x\right)
+        sin\left(\frac{m \pi}{l}x\right)dx\right]
+    \\
+    &+
+    \sum_{n = 1}^{\infty}\left[b_n\int_{-l}^{l} \cos\left(\frac{n\pi}{l}x\right)
+        sin\left(\frac{m \pi}{l}x\right)dx\right]
+\end{aligned}
+\]
 
 Betrachten wir zuletzt die zweite Gleichung der Separation
 \eqref{eq:slp-example-fourier-separated-t}.
