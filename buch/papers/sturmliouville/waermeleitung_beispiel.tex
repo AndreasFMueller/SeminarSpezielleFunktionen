@@ -216,7 +216,7 @@ und durch umformen somit
     \mu A\sin(\alpha x) + \mu B\cos(\beta x).
 \]
 
-Durch Koeffizientenvergleich von
+Mittels Koeffizientenvergleich von
 \[
 \begin{aligned}
     -\alpha^{2}A\sin(\alpha x)
@@ -238,16 +238,105 @@ Dazu werden nochmals die Randbedingungen
 Zu bemerken ist, dass die Randbedingungen nur Anforderungen in $x$ stellen und
 somit direkt für $X(x)$ übernomen werden können.
 
-Daraus ergibt sich für einen Stab mit Enden auf konstanter Temperatur
+Da die Koeffizienten $A$ und $B$, sowie die Parameter $\alpha$ uns $\beta$ im
+allgemeninen ungleich $0$ sind, müssen die Randbedingungen durch die
+trigonometrischen Funktionen erfüllt werden.
 
+Es werden nun die Randbedingungen
+\eqref{eq:slp-example-fourier-boundary-condition-ends-constant} für einen Stab
+mit Enden auf konstanter Temperatur in die Gleichung 
+\eqref{eq:slp-example-fourier-separated-x} eingesetzt.
+Betrachten wir zunächst die Bedingung für $x = 0$.
+Dies fürht zu
+\[
+    X(0)
+    =
+    A \sin(0 \alpha) + B \cos(0 \beta)
+    =
+    0.
+\]
+Da $\cos(0) \neq 0$ ist, muss in diesem Fall $B = 0$ gelten.
+Für den ersten Summanden ist wegen $\sin(0) = 0$ die Randbedingung erfüllt.
+
+Wird nun die zweite Randbedingung für $x = l$ mit $B = 0$ eingesetzt, ergibt
+sich
+\[
+    X(l)
+    =
+    A \sin(\alpha l) + 0 \cos(\beta l)
+    =
+    A \sin(\alpha l)
+    = 0.
+\]
+
+$\alpha$ muss also so gewählt werden, dass $\sin(\alpha l) = 0$ gilt.
+Es gilt nun nach $\alpha$ aufzulösen:
+\[
+\begin{aligned}
+    \sin(\alpha l) &= 0 \\
+    \alpha l &= n \pi \qquad n \in \mathbb{N} \\
+    \alpha &= \frac{n \pi}{l} \qquad n \in \mathbb{N}
+\end{aligned}
+\]
+
+Es folgt nun wegen $\mu = -\alpha^{2}$, dass
+\begin{equation}
+    \mu_1 = -\alpha^{2} = -\frac{n^{2}\pi^{2}}{l^{2}}
+\end{equation}
+sein muss.
+Ausserdem ist zu bemerken, dass dies auch gleich $-\beta^{2}$ ist.
+Da aber $B = 0$ gilt und der Summand mit $\beta$ verschwindet, ist dies keine
+Verletzung der Randbedingungen.
+
+Durch alanoges Vorgehen kann nun auch das Problem mit isolierten Enden gelöst
+werden.
+Setzen wir nun die Randbedingungen
+\eqref{eq:slp-example-fourier-boundary-condition-ends-isolated} in $X^{\prime}$
+ein, beginnend für $x = 0$. Es ergibt sich
+\[
+    X^{\prime}(0)
+    =
+    \alpha A \cos(\alpha 0) - \beta B \sin(\beta 0)
+    = 0.
+\]
+In diesem Fall muss $A = 0$ gelten.
+Zusammen mit der Bedignung für $x = l$
+folgt nun
+\[
+    X^{\prime}(l)
+    =
+    \alpha A \cos(\alpha l) - \beta B \sin(\beta l)
+    =
+    -\beta B \sin(\beta l)
+    = 0.
+\]
+
+Wiedrum muss über die $\sin$-Funktion sicher gestellt werden, dass der Ausdruck
+den Randbedingungen entspricht. Es folgt nun
+\[
+\begin{aligned}
+    \sin(\beta l) &= 0 \\
+    \beta l &= n \pi \qquad n \in \mathbb{N} \\
+    \beta &= \frac{n \pi}{l} \qquad n \in \mathbb{N}
+\end{aligned}
+\]
+und somit
+\[
+    \mu_2 = -\alpha^{2} = -\frac{n^{2}\pi^{2}}{l^{2}}.
+\]
+
+Es ergibt sich also sowohl für einen Stab mit Enden auf konstanter Temperatur
+wie auch mit isolierten Enden
 \begin{equation}
     \label{eq:slp-example-fourier-mu-solution}
     \mu
     =
-    -\frac{n^{2}\pi^{2}}{l^{2}}
+    -\frac{n^{2}\pi^{2}}{l^{2}}.
 \end{equation}
 
-Betrachten wir nun die zweite Gleichung der Separation
+
+
+Betrachten wir zuletzt die zweite Gleichung der Separation
 \eqref{eq:slp-example-fourier-separated-t}.
 Diese Lösen wir über das charakteristische Polynom
 \[
@@ -263,7 +352,7 @@ Lösung
     e^{-\kappa \mu t}
 \]
 führt.
-Und mit dem Resultat \eqref{eq:slp-example-fourier-mu-solution} die Lösung
+Und mit dem Resultat \eqref{eq:slp-example-fourier-mu-solution}
 \[
     T(t)
     =
