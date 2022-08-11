@@ -385,9 +385,9 @@ gebildet:
     =
     \langle a_0
     +
-    \sum_{n = 1}^{\infty} a_n\sin\left(\frac{n\pi}{l}x\right)
+    \sum_{n = 1}^{\infty} a_n\cos\left(\frac{n\pi}{l}x\right)
     +
-    \sum_{n = 1}^{\infty} b_n\cos\left(\frac{n\pi}{l}x\right),
+    \sum_{n = 1}^{\infty} b_n\sin\left(\frac{n\pi}{l}x\right),
     \cos\left(\frac{m \pi}{l}x\right)\rangle
 \]
 
@@ -395,8 +395,21 @@ Bevor diese Form in die Integralform umgeschrieben werden kann, muss überlegt
 sein, welche Integralgrenzen zu verwenden sind.
 In diesem Fall haben die $ \sin $ und $ \cos $ Terme beispielsweise keine ganze
 Periode im Intervall $ x \in [0, l] $ für ungerade $ n $ und $ m $.
-Um die 
-
+Um die skalarprodukte aber korrekt zu berechnen, muss über die ganze Periode
+integriert werden.
+Dazu werden die Integralgrenzen $-l$ und $l$ verwendet und es wird ausserdem
+eine neue Funktion
+\[
+    \hat{u}(0, x)
+    =
+    \begin{cases}
+        u(0, x + l) & -l \leq x < 0
+        \\
+        u(0, x) & 0 \leq x \leq l
+    \end{cases}
+\]
+angenomen, welche $u(0, x)$ auf dem Intervall $[-l, l]$ periodisch fortsetzt.
+Es kann nun das Skalarodukt geschrieben werden als
 \[
 \begin{aligned}
     \int_{-l}^{l}\hat{u}(0, x)\cos\left(\frac{m \pi}{l}x\right)dx
@@ -416,7 +429,7 @@ Um die
     \\
     &+
     \sum_{n = 1}^{\infty}\left[b_n\int_{-l}^{l} \sin\left(\frac{n\pi}{l}x\right)
-        \cos\left(\frac{m \pi}{l}x\right)dx\right]
+        \cos\left(\frac{m \pi}{l}x\right)dx\right].
 \end{aligned}
 \]
 
