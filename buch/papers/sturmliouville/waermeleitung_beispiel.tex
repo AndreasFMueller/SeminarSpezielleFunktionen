@@ -381,7 +381,8 @@ Basisfunktion sämtliche Summanden auf der rechten Seite auslöscht.
 Zur Berechnung von $a_m$ mit $ m \in \mathbb{N} $ wird beidseitig das
 Skalarprodukt mit der Basisfunktion $ \cos\left(\frac{m \pi}{l}x\right)$
 gebildet:
-\[
+\begin{equation}
+    \label{eq:slp-dot-product-cosine}
     \langle u(0, x), \cos\left(\frac{m \pi}{l}x\right) \rangle
     =
     \langle a_0
@@ -390,30 +391,56 @@ gebildet:
     +
     \sum_{n = 1}^{\infty} b_n\sin\left(\frac{n\pi}{l}x\right),
     \cos\left(\frac{m \pi}{l}x\right)\rangle
-\]
+\end{equation}
 
 Bevor diese Form in die Integralform umgeschrieben werden kann, muss überlegt
 sein, welche Integralgrenzen zu verwenden sind.
 In diesem Fall haben die $ \sin $ und $ \cos $ Terme beispielsweise keine ganze
 Periode im Intervall $ x \in [0, l] $ für ungerade $ n $ und $ m $.
-Um die skalarprodukte aber korrekt zu berechnen, muss über die ganze Periode
-integriert werden.
-Dazu werden die Integralgrenzen $-l$ und $l$ verwendet und es wird ausserdem
-eine neue Funktion
+Um die Skalarprodukte aber korrekt zu berechnen, muss über ein ganzzahliges
+Vielfaches der Periode der triginimetrischen Funktionen integriert werden.
+Dazu werden die Integralgrenzen $-l$ und $l$ verwendet und es werden ausserdem
+neue Funktionen $ \hat{u}_c(0, x) $ für die Berechnung mit Cosinus und
+$ \hat{u}_s(0, x) $ für die Berechnung mit Sinus angenomen, welche $ u(0, t) $
+gerade, respektive ungerade auf $[-l, l]$ fortsetzen:
 \[
-    \hat{u}(0, x)
-    =
+\begin{aligned}
+    \hat{u}_c(0, x)
+    &=
     \begin{cases}
-        u(0, x + l) & -l \leq x < 0
+        u(0, -x) & -l \leq x < 0
         \\
         u(0, x) & 0 \leq x \leq l
     \end{cases}
+    \\
+    \hat{u}_s(0, x)
+    &=
+    \begin{cases}
+        -u(0, -x) & -l \leq x < 0
+        \\
+        u(0, x) & 0 \leq x \leq l
+    \end{cases}.
+\end{aligned}
 \]
-angenomen, welche $u(0, x)$ auf dem Intervall $[-l, l]$ periodisch fortsetzt.
-Das Skalarodukt kann nun geschrieben werden als
+
+Die Konsequenz davon ist, dass nun das Resultat der Integrale um den Faktor zwei
+skalliert wurde, also gilt nun
 \[
 \begin{aligned}
-    \int_{-l}^{l}\hat{u}(0, x)\cos\left(\frac{m \pi}{l}x\right)dx
+    \int_{-l}^{l}\hat{u}_c(0, x)\cos\left(\frac{m \pi}{l}x\right)dx
+    &=
+    2\int_{0}^{l}u(0, x)\cos\left(\frac{m \pi}{l}x\right)dx
+    \\
+    \int_{-l}^{l}\hat{u}_s(0, x)\sin\left(\frac{m \pi}{l}x\right)dx
+    &=
+    2\int_{0}^{l}u(0, x)\sin\left(\frac{m \pi}{l}x\right)dx.
+\end{aligned}
+\]
+
+Zunächst wird nun das Skalaprodukt \eqref{eq:slp-dot-product-cosine} berechnet:
+\[
+\begin{aligned}
+    \int_{-l}^{l}\hat{u}_c(0, x)\cos\left(\frac{m \pi}{l}x\right)dx
     =&
     \int_{-l}^{l} \left[a_0
     +
@@ -422,6 +449,7 @@ Das Skalarodukt kann nun geschrieben werden als
     \sum_{n = 1}^{\infty} b_n\sin\left(\frac{n\pi}{l}x\right)\right]
     \cos\left(\frac{m \pi}{l}x\right) dx
     \\
+    2\int_{0}^{l}u(0, x)\cos\left(\frac{m \pi}{l}x\right)dx
     =&
     a_0 \int_{-l}^{l}cos\left(\frac{m \pi}{l}x\right) dx
     +
