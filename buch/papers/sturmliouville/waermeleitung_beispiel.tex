@@ -462,6 +462,64 @@ Zunächst wird nun das Skalaprodukt \eqref{eq:slp-dot-product-cosine} berechnet:
 \end{aligned}
 \]
 
+Betrachtet man nun die Summanden auf der rechten Seite stellt man fest, dass
+nahezu alle Terme verschinden, denn
+\[
+    \int_{-l}^{l}cos\left(\frac{m \pi}{l}x\right) dx
+    =
+    0
+\]
+da hier über ein ganzzahliges Vielfaches der Periode integriert wird,
+\[
+    \int_{-l}^{l}\cos\left(\frac{n\pi}{l}x\right)
+    \cos\left(\frac{m \pi}{l}x\right)dx
+    =
+    0
+\]
+für $m\neq n$, da Cosinus-Funktionen mit verschiedenen Kreisfrequenzen
+orthogonal zueinander stehen und
+\[
+    \int_{-l}^{l}\sin\left(\frac{n\pi}{l}x\right)
+        \cos\left(\frac{m \pi}{l}x\right)dx
+    =
+    0
+\]
+da Sinus- und Cosinus-Funktionen ebenfalls orthogonal zueinander sin.
+
+Es bleibt also lediglich der Summand für $a_m$ stehen, was die Gleichung zu
+\[
+    2\int_{0}^{l}u(0, x)\cos\left(\frac{m \pi}{l}x\right)dx
+    =
+    a_m\int_{-l}^{l}\cos^2\left(\frac{m\pi}{l}x\right)dx
+\]
+vereinfacht. Im nächsten Schritt wird nun das Integral auf der rechten Seite
+berechnet und dann nach $a_m$ aufgelöst. Am einnfachsten geht dies, wenn zuerst
+mit $u = \frac{m \pi}{l}x$ substituiert wird:
+\[
+    \begin{aligned}
+    2\int_{0}^{l}u(0, x)\cos\left(\frac{m \pi}{l}x\right)dx
+    &=
+    a_m\frac{l}{m\pi}\int_{-m\pi}^{m\pi}\cos^2\left(u\right)du
+    \\
+    &=
+    a_m\frac{l}{m\pi}\left[\frac{u}{2} + 
+    \frac{\sin\left(2u\right)}{4}\right]_{u=-m\pi}^{m\pi}
+    \\
+    &=
+    a_m\frac{l}{m\pi}\left(\frac{m\pi}{2} + 
+    \underbrace{\frac{\sin\left(2m\pi\right)}{4}}_{\displaystyle = 0} - 
+    \frac{-m\pi}{2} -
+    \underbrace{\frac{\sin\left(-2m\pi\right)}{4}}_{\displaystyle = 0}\right)
+    \\
+    &=
+    a_m l
+    \\
+    a_m
+    &=
+    \frac{2}{l} \int_{0}^{l}u(0, x)\cos\left(\frac{m \pi}{l}x\right)dx
+    \end{aligned}
+\]
+
 Zuletzt wird die zweite Gleichung der Separation
 \eqref{eq:slp-example-fourier-separated-t} betrachtet.
 Diese wird über das charakteristische Polynom
