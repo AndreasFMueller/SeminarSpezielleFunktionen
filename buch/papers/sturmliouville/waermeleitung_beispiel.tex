@@ -170,6 +170,7 @@ Analog dazu kann gezeit werden, dass die Randbedingungen für einen Stab mit
 isolierten Enden ebenfalls die Sturm-Liouville-Randbedingungen erfüllen und
 somit auch zu orthogonalen Lösungen führen.
 
+\subsubsection{Lösund der Differentialgleichung in x}
 Als erstes wird auf die erste erste Gleichung eingegangen.
 Aufgrund der Struktur der Gleichung
 \[
@@ -463,7 +464,7 @@ Zunächst wird nun das Skalaprodukt \eqref{eq:slp-dot-product-cosine} berechnet:
 \]
 
 Betrachtet man nun die Summanden auf der rechten Seite stellt man fest, dass
-nahezu alle Terme verschinden, denn
+nahezu alle Terme verschwinden, denn
 \[
     \int_{-l}^{l}cos\left(\frac{m \pi}{l}x\right) dx
     =
@@ -520,6 +521,74 @@ mit $u = \frac{m \pi}{l}x$ substituiert wird:
     \end{aligned}
 \]
 
+Analog dazu kann durch das Bilden des Skalarproduktes mit 
+$ \sin\left(\frac{m \pi}{l}x\right) $ gezeigt werden, dass
+\[
+    b_m
+    =
+    \frac{2}{l} \int_{0}^{l}u(0, x)\sin\left(\frac{m \pi}{l}x\right)dx
+\]
+gilt.
+
+Etwas anders ist es allerdings bei $a_0$.
+Wie der Name bereits suggeriert, handelt es sich hierbei um den Koeffizienten
+zur Basisfunktion $ \cos\left(\frac{0 \pi}{l}x\right) $ beziehungsweise der
+konstanten Funktion $1$.
+Um einen Ausdruck für $ a_0 $ zu erhalten, wird wiederum auf beiden Seiten
+der Gleichung \eqref{eq:slp-example-fourier-initial-conditions} das
+Skalarprodukt mit der konstanten Basisfunktion $ 1 $ gebildet:
+\[
+\begin{aligned}
+    \int_{-l}^{l}\hat{u}_c(0, x)dx
+    &=
+    \int_{-l}^{l} a_0
+    +
+    \sum_{n = 1}^{\infty} a_n\cos\left(\frac{n\pi}{l}x\right)
+    +
+    \sum_{n = 1}^{\infty} b_n\sin\left(\frac{n\pi}{l}x\right)dx
+    \\
+    2\int_{0}^{l}u(0, x)dx
+    &=
+    a_0 \int_{-l}^{l}dx
+    +
+    \sum_{n = 1}^{\infty}\left[a_n\int_{-l}^{l}\cos\left(\frac{n\pi}{l}x\right)
+        dx\right] +
+    \sum_{n = 1}^{\infty}\left[b_n\int_{-l}^{l}\sin\left(\frac{n\pi}{l}x\right)
+        dx\right].
+\end{aligned}
+\]
+
+Hier fallen nun alle Terme, die $\sin$ oder $\cos$ beinhalten weg, da jeweils
+über ein Vielfaches der Periode integriert wird.
+Es bleibt also noch
+\[
+    2\int_{0}^{l}u(0, x)dx
+    =
+    a_0 \int_{-l}^{l}dx
+\]
+, was sich wie folgt nach $a_0$ auflösen lässt:
+\[
+\begin{aligned}
+    2\int_{0}^{l}u(0, x)dx
+    &=
+    a_0 \int_{-l}^{l}dx
+    \\
+    &=
+    a_0 \left[x\right]_{x=-l}^{l}
+    \\
+    &=
+    a_0(l - (-l))
+    \\
+    &=
+    a_0 \cdot 2l
+    \\
+    a_0
+    &=
+    \frac{1}{l} \int_{0}^{l}u(0, x)dx
+\end{aligned}
+\]
+
+\subsubsection{Lösund der Differentialgleichung in t}
 Zuletzt wird die zweite Gleichung der Separation
 \eqref{eq:slp-example-fourier-separated-t} betrachtet.
 Diese wird über das charakteristische Polynom
@@ -545,6 +614,9 @@ Und mit dem Resultat \eqref{eq:slp-example-fourier-mu-solution}
     e^{-\frac{n^{2}\pi^{2}\kappa}{l^{2}}t}
 \]
 ergibt.
+
+Dieses Resultat kann nun mit allen vorhergehenden Resultaten zudammengesetzt
+werden um die vollständige Lösung für das Stab-Problem zu erhalten.
 
 \subsubsection{Lösung für einen Stab mit Enden auf konstanter Temperatur}
 \[
