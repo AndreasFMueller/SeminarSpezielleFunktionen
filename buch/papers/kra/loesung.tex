@@ -1,11 +1,53 @@
 \section{Lösungsmethoden} \label{kra:section:loesung}
 \rhead{Lösungsmethoden}
-% @TODO Lösung normal riccati
-Lösung der Riccatischen Differentialgleichung \ref{kra:riccati}.
 
+\subsection{Riccatische Differentialgleichung} \label{kra:loesung:riccati}
+Eine allgemeine analytische Lösung der Riccati Differentialgleichung ist nicht möglich.
+Es gibt aber Spezialfälle, in denen sich die Gleichung vereinfachen lässt und so eine analytische Lösung gefunden werden kann.
+Diese wollen wir im folgenden Abschnitt genauer anschauen.
 
+\subsubsection{Fall 1: Konstante Koeffizienten}
+Sind die Koeffizienten $f(x), g(x), h(x)$ Konstanten, so lässt sich die DGL separieren und reduziert sich auf die Lösung des Integrals \ref{kra:equation:case1_int}.
+\begin{equation}
+    y' = fy^2 + gy + h 
+\end{equation}
+\begin{equation}
+    \frac{dy}{dx} = fy^2 + gy + h
+\end{equation}
+\begin{equation} \label{kra:equation:case1_int}
+    \int \frac{dy}{fy^2 + gy + h} = \int dx
+\end{equation}
+
+\subsubsection{Fall 2: Bekannte spezielle Lösung}
+Kennt man eine spezielle Lösung $y_p$ so kann die riccatische DGL mit Hilfe einer Substitution auf eine lineare Gleichung reduziert werden.
+Wir wählen als Substitution
+\begin{equation} \label{kra:equation:substitution}
+    z = \frac{1}{y - y_p} 
+\end{equation}
+durch Umstellen von \ref{kra:equation:substitution} folgt
+\begin{equation}
+    y = y_p + \frac{1}{z^2} \label{kra:equation:backsubstitution}
+\end{equation}
+\begin{equation}
+    y' = y_p' - \frac{1}{z^2}z'
+\end{equation}
+mit Einsetzten in die DGL \ref{kra:equation:riccati} folgt 
+\begin{equation}
+    y_p' - \frac{1}{z^2}z' = f(x)(y_p + \frac{1}{z}) + g(x)(y_p + \frac{1}{z})^2 + h(x)
+\end{equation}
+\begin{equation}
+    -z^{2}y_p' + z' = -z^2\underbrace{(y_{p}f(x) + g(x)y_p^2 + h(x))}_{y_p'} - z(f(x) + 2y_{p}g(x)) - g(x)
+\end{equation}
+was uns direkt auf eine lineare Differentialgleichung 1.Ordnung führt.
+\begin{equation}
+    z' = -z(f(x) + 2y_{p}g(x)) - g(x)
+\end{equation}
+Diese kann nun mit den Methoden zur Lösung von linearen Differentialgleichungen 1.Ordnung gelöst werden.
+Durch die Rücksubstitution \ref{kra:equation:backsubstitution} erhält man dann die Lösung von \ref{kra:equation:riccati}.
+
+\subsection{Matrix-Riccati Differentialgleichung} \label{kra:loesung:riccati}
 % Lösung matrix riccati
-Die Lösung der Matrix-Riccati Gleichung \ref{kra:matrixriccati} erhalten wir nach \cite{kra:kalmanisae} folgendermassen
+Die Lösung der Matrix-Riccati Gleichung \ref{kra:equation:matrixriccati} erhalten wir nach \cite{kra:kalmanisae} folgendermassen
 \begin{equation}
     \label{kra:matrixriccati-solution}
     \begin{pmatrix}
@@ -28,7 +70,6 @@ Die Lösung der Matrix-Riccati Gleichung \ref{kra:matrixriccati} erhalten wir na
         U_0(t)
     \end{pmatrix}
 \end{equation}
-
 \begin{equation}
     U(t) =
     \begin{pmatrix}
@@ -39,9 +80,7 @@ Die Lösung der Matrix-Riccati Gleichung \ref{kra:matrixriccati} erhalten wir na
     \end{pmatrix}
     ^{-1}
 \end{equation}
-
-wobei $\Phi(t, t_0)$ die sogennante Zustandsübergangsmatrix ist.
-
+wobei $\Phi(t, t_0)$ die sogenannte Zustandsübergangsmatrix ist.
 \begin{equation}
     \Phi(t_0, t) = e^{H(t - t_0)}
 \end{equation}

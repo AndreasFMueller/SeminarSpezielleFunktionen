@@ -1,45 +1,40 @@
-\section{Anwendungen \label{kra:section:anwendung}}
-\rhead{Anwendungen}
+\section{Anwendung \label{kra:section:anwendung}}
+\rhead{Anwendung}
 \newcommand{\dt}[0]{\frac{d}{dt}}
 
 Die Matrix-Riccati Differentialgleichung findet unter anderem Anwendung in der Regelungstechnik beim RQ- und RQG-Regler oder aber auch beim Kalmanfilter.
-Im folgenden Abschnitt möchten wir uns an einem Beispiel anschauen wie wir mit Hilfe der Matrix-Riccati Differentialgleichung (\ref{kra:matrixriccati}) ein Feder-Masse-System untersuchen können.
+Im folgenden Abschnitt möchten wir uns an einem Beispiel anschauen wie wir mit Hilfe der Matrix-Riccati Differentialgleichung (\ref{kra:equation:matrixriccati}) ein Feder-Masse-System untersuchen können \cite{kra:riccati}.
 
 \subsection{Feder-Masse-System}
-Die Einfachste Form eines Feder-Masse-Systems ist dargestellt in Abbildung \ref{kra:fig:simple_mass_spring}.
-Es besteht aus einer Masse $m$ welche reibungsfrei gelagert ist und einer Feder mit der Federkonstante $k$.
+Die einfachste Form eines Feder-Masse-Systems ist dargestellt in Abbildung \ref{kra:fig:simple_mass_spring}.
+Es besteht aus einer reibungsfrei gelagerten Masse $m$ ,welche an eine Feder mit der Federkonstante $k$ gekoppelt ist.
 Die im System wirkenden Kräfte teilen sich auf in die auf dem hookeschen Gesetz basierenden Rückstellkraft $F_R = k \Delta_x$ und der auf dem Aktionsprinzip basierenden Kraft $F_a = am = \ddot{x} m$.
 Das Kräftegleichgewicht fordert $F_R = F_a$ woraus folgt, dass
 
 \begin{equation*}
     k \Delta_x = \ddot{x} m \Leftrightarrow \ddot{x} = \frac{k \Delta_x}{m}
 \end{equation*}
-Die funktion die diese Differentialgleichung löst ist die harmonische Schwingung
+Die Funktion die diese Differentialgleichung löst, ist die harmonische Schwingung
 \begin{equation}
     x(t) = A \cos(\omega_0 t + \Phi), \quad \omega_0 = \sqrt{\frac{k}{m}}
 \end{equation}
-
-
 \begin{figure}
     \input{papers/kra/images/simple_mass_spring.tex}
     \caption{Einfaches Feder-Masse-System.}
     \label{kra:fig:simple_mass_spring}
 \end{figure}
-
 \begin{figure}
     \input{papers/kra/images/multi_mass_spring.tex}
     \caption{Feder-Masse-System mit zwei Massen und drei Federn.}
     \label{kra:fig:multi_mass_spring}
 \end{figure}
 
-
 \subsection{Hamilton-Funktion}
 Die Bewegung der Masse $m$ kann mit Hilfe der hamiltonschen Mechanik im Phasenraum untersucht werden.
-Die hamiltonschen Gleichungen verwenden dafür die veralgemeinerten Ortskoordinaten
+Die hamiltonschen Gleichungen verwenden dafür die verallgemeinerten Ortskoordinaten
 $q = (q_{1}, q_{2}, ..., q_{n})$ und die verallgemeinerten Impulskoordinaten $p = (p_{1}, p_{2}, ..., p_{n})$, wobei der Impuls definiert ist als $p_k = m_k \cdot v_k$.
 Liegen keine zeitabhängigen Zwangsbedingungen vor, so entspricht die Hamitlon-Funktion der Gesamtenergie des Systems \cite{kra:hamilton}.
 Im Falle des einfachen Feder-Masse-Systems, Abbildung \ref{kra:fig:simple_mass_spring}, setzt sich die Hamilton-Funktion aus kinetischer und potentieller Energie zusammen.
-
 \begin{equation}
     \label{kra:harmonischer_oszillator}
     \begin{split}
@@ -47,7 +42,6 @@ Im Falle des einfachen Feder-Masse-Systems, Abbildung \ref{kra:fig:simple_mass_s
         &= \underbrace{\frac{p^2}{2m}}_{E_{kin}} + \underbrace{\frac{k q^2}{2}}_{E_{pot}}
     \end{split}
 \end{equation}
-
 Die Hamiltonschen Bewegungsgleichungen liefern \cite{kra:kanonischegleichungen}
 \begin{equation}
     \label{kra:hamilton:bewegungsgleichung}
@@ -55,17 +49,13 @@ Die Hamiltonschen Bewegungsgleichungen liefern \cite{kra:kanonischegleichungen}
     \qquad
     \dot{p_{k}} = -\frac{\partial \mathcal{H}}{\partial q_k}
 \end{equation}
-
 daraus folgt
-
 \[
     \dot{q} = \frac{p}{m}
     \qquad
     \dot{p} = -kq
 \]
-
 in Matrixschreibweise erhalten wir also
-
 \[
     \begin{pmatrix}
         \dot{q} \\
@@ -81,11 +71,9 @@ in Matrixschreibweise erhalten wir also
         p
     \end{pmatrix}
 \]
-
 Für das erweiterte Federmassesystem, Abbildung \ref{kra:fig:multi_mass_spring}, können wir analog vorgehen.
 Die kinetische Energie setzt sich nun aus den kinetischen Energien der einzelnen Massen $m_1$ und $m_2$ zusammen.
 Die Potentielle Energie erhalten wir aus der Summe der kinetischen Energien der einzelnen Federn mit den Federkonstanten $k_1$, $k_c$ und $k_2$.
-
 \begin{align*}
     \begin{split}
         T   &= T_1 + T_2 \\
@@ -97,16 +85,13 @@ Die Potentielle Energie erhalten wir aus der Summe der kinetischen Energien der 
         &= \frac{k_1 q_1^2}{2} + \frac{k_c (q_2 - q_1)^2}{2} + \frac{k_2 q_2^2}{2}
     \end{split}
 \end{align*}
-
 Die Hamilton-Funktion ist also
-
 \begin{align*}
     \begin{split}
         \mathcal{H}     &= T + V \\
         &= \frac{p_1^2}{2m_1} + \frac{p_2^2}{2m_2} + \frac{k_1 q_1^2}{2} + \frac{k_c (q_2 - q_1)^2}{2} + \frac{k_2 q_2^2}{2}
     \end{split}
 \end{align*}
-
 Die Bewegungsgleichungen \ref{kra:hamilton:bewegungsgleichung} liefern
 \begin{align*}
     \frac{\partial \mathcal{H}}{\partial p_k}  & = \dot{q_k}
@@ -127,9 +112,7 @@ Die Bewegungsgleichungen \ref{kra:hamilton:bewegungsgleichung} liefern
     \end{alignedat}
     \right.
 \end{align*}
-
 In Matrixschreibweise erhalten wir
-
 \begin{equation}
     \label{kra:hamilton:multispringmass}
     \begin{pmatrix}
@@ -171,7 +154,7 @@ In Matrixschreibweise erhalten wir
 \end{equation}
 
 \subsection{Phasenraum}
-Der Phasenraum erlaubt die eindeutige Beschreibung aller möglichen Bewegungszustände eines mechanischen System durch einen Punkt.
+Der Phasenraum erlaubt die eindeutige Beschreibung aller möglichen Bewegungszustände eines mechanischen Systems durch einen Punkt.
 Die Phasenraumdarstellung eignet sich somit sehr gut für die systematische Untersuchung der Feder-Masse-Systeme.
 
 \subsubsection{Harmonischer Oszillator}
@@ -181,7 +164,6 @@ Die Hamiltonfunktion des harmonischen Oszillators \ref{kra:harmonischer_oszillat
 \end{equation*}
 die Phasenraumtrajektorien bilden also Ellipsen mit Zentrum $q=0, p=0$ und Halbachsen $A$ und $m \omega A$.
 Abbildung \ref{kra:fig:phasenraum} zeigt Phasenraumtrajektorien mit den Energien $E_{x \in \{A, B, C, D\}}$ und verschiedenen Werten von $\omega$.
-
 \begin{figure}
     \input{papers/kra/images/phase_space.tex}
     \caption{Phasenraumdarstellung des einfachen Feder-Masse-Systems.}
@@ -191,7 +173,6 @@ Abbildung \ref{kra:fig:phasenraum} zeigt Phasenraumtrajektorien mit den Energien
 \subsubsection{Erweitertes Feder-Masse-System}
 Wir intressieren uns nun dafür wie der Phasenwinkel $U = PQ^{-1}$ von der Zeit abhängt,
 wir suchen also die Grösse $\Theta = \dt U$.
-
 Ersetzten wir in der Gleichung \ref{kra:hamilton:multispringmass} die Matrix $G$ mit $\tilde{G}$ so erhalten wir
 \begin{equation}
     \dt
@@ -211,9 +192,7 @@ Ersetzten wir in der Gleichung \ref{kra:hamilton:multispringmass} die Matrix $G$
         P
     \end{pmatrix}
 \end{equation}
-
 Mit einsetzten folgt
-
 \begin{align*}
     \dot{Q} = AQ + BP \\
     \dot{P} = CQ + DP
@@ -227,9 +206,7 @@ Mit einsetzten folgt
         &= C  + DU - UA - UBU
     \end{split}
 \end{equation}
+was uns auf die Matrix-Riccati Gleichung \ref{kra:equation:matrixriccati} führt.
 
-was uns auf die Matrix-Riccati Gleichung \ref{kra:matrixriccati} führt.
-
-
-\subsection{Fazit}
-% @TODO
+% @TODO Einfluss auf anfangsbedingungen, plots?
+% @TODO Fazit ?
