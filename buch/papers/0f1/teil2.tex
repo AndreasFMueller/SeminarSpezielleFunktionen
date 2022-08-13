@@ -11,7 +11,7 @@ Die Unterprogramme wurde jeweils, wie die GNU Scientific Library, in C geschrieb
 
 \subsection{Potenzreihe
 \label{0f1:subsection:potenzreihe}}
-Die naheliegendste Lösung ist die Programmierung der Potenzreihe \eqref{0f1:umsetzung:0f1:eq}. Allerdings ist ein Problem dieser Umsetzung (Listing \ref{0f1:listing:potenzreihe}), dass die Fakultät im Nenner schnell grosse Werte annimmt. Dies führt zu einer Bereichsüberschreitung des \verb+double+ Bereiches \cite{0f1:double}. Spätesten ab $k=167$ tritt dieser Falle ein.
+Die naheliegendste Lösung ist die Programmierung der Potenzreihe \eqref{0f1:umsetzung:0f1:eq}.
 
 \begin{align}
     \label{0f1:umsetzung:0f1:eq}
@@ -30,6 +30,9 @@ Die naheliegendste Lösung ist die Programmierung der Potenzreihe \eqref{0f1:ums
 
 \subsection{Kettenbruch
 \label{0f1:subsection:kettenbruch}}
+Eine weitere Variante zur Berechnung von $\mathstrut_0F_1(;c;z)$ ist die Umsetzung als Kettenbruch.
+Der Vorteil einer Umsetzung als Kettenbruch gegenüber der Potenzreihe, ist die schnellere Konvergenz.
+
 Ein endlicher Kettenbruch \cite{0f1:wiki-kettenbruch} ist ein Bruch der Form
 \begin{equation*}
 a_0 + \cfrac{b_1}{a_1+\cfrac{b_2}{a_2+\cfrac{b_3}{a_3+\cdots}}}
@@ -44,6 +47,7 @@ Angewendet auf die Funktion $\mathstrut_0F_1$ bedeutet dies \cite{0f1:wiki-fract
 	\mathstrut_0F_1(;c;z) = 1 + \frac{z}{c\cdot1!} + \frac{z^2}{c(c+1)\cdot2!} + \frac{z^3}{c(c+1)(c+2)\cdot3!} + \cdots
 \end{equation*}
 Umgeformt ergibt sich folgender Kettenbruch \cite{0f1:wolfram-0f1}
+{\color{red}TODO Herleitung}
 \begin{equation}
 	\label{0f1:math:kettenbruch:0f1:eq}
 	\mathstrut_0F_1(;c;z) = 1 + \cfrac{\cfrac{z}{c}}{1+\cfrac{-\cfrac{z}{2(c+1)}}{1+\cfrac{z}{2(c+1)}+\cfrac{-\cfrac{z}{3(c+2)}}{1+\cfrac{z}{5(c+4)} + \cdots}}},
@@ -115,7 +119,7 @@ an, ergibt sich folgende Matrixdarstellungen:
 	\begin{pmatrix}
 		b_k\\
 		a_k
-	\end{pmatrix}
+	\end{pmatrix}.
 \end{align*}
 Nach vollständiger Induktion ergibt sich für den Schritt $k$, die Matrix
 \begin{equation}
@@ -142,7 +146,7 @@ berechnet werden.
 
 
 \subsubsection{Lösung}
-Die Berechnung von $A_k, B_k$ \eqref{0f1:math:matrix:ende:eq} kann man auch ohne die Matrizenschreibweise \cite{0f1:kettenbrueche} aufschreiben:
+Die Berechnung von $A_k, B_k$ gemäss \eqref{0f1:math:matrix:ende:eq} kann man auch ohne die Matrizenschreibweise \cite{0f1:kettenbrueche} aufschreiben:
 \begin{itemize}
 \item Startbedingungen:
 \begin{align*}
@@ -161,7 +165,7 @@ B_{k+1} &= B_{k-1} \cdot b_k + B_k \cdot a_k
 \end{aligned}
 \]
 \item
-Näherungsbruch: \qquad$\displaystyle\frac{A_k}{B_k}$
+Näherungsbruch: \qquad$\displaystyle\frac{A_k}{B_k}$.
 \end{itemize}
 
 Ein grosser Vorteil dieser Umsetzung als Rekursionsformel \eqref{0f1:listing:kettenbruchRekursion} ist, dass im Vergleich zum Code (Listing \ref{0f1:listing:kettenbruchIterativ}) eine Division gespart werden kann und somit weniger Rundungsfehler entstehen können.
