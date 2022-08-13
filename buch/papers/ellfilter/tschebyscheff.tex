@@ -1,8 +1,8 @@
 \section{Tschebyscheff-Filter}
 
-Als Einstieg betrachten wir das Tschebyscheff-Filter, welches sehr verwand ist mit dem elliptischen Filter.
-Genauer ausgedrückt sind die Tschebyscheff-1 und -2 Filter Spezialfälle davon.
-Der Name des Filters deutet schon an, dass die Tschebyscheff-Polynome $T_N$ für das Filter relevant sind:
+Als Einstieg betrachten wir das Tschebyscheff-Filter, welches sehr verwandt ist mit dem elliptischen Filter.
+Genauer ausgedrückt erhält man die Tschebyscheff-1 und -2 Filter bei Grenzwerten von Parametern beim elliptischen Filter.
+Der Name des Filters deutet schon an, dass die Tschebyscheff-Polynome $T_N$ (siehe auch Kapitel \label{buch:polynome:section:tschebyscheff}) für das Filter relevant sind:
 \begin{align}
     T_{0}(x)&=1\\
     T_{1}(x)&=x\\
@@ -27,7 +27,7 @@ Abbildung \ref{ellfilter:fig:chebychef_polynomials} zeigt einige Tschebyscheff-P
 Da der Kosinus begrenzt zwischen $-1$ und $1$ ist, sind auch die Tschebyscheff-Polynome begrenzt.
 Geht man aber über das Intervall $[-1, 1]$ hinaus, divergieren die Funktionen mit zunehmender Ordnung immer steiler gegen $\pm \infty$.
 Diese Eigenschaft ist sehr nützlich für ein Filter.
-Wenn wir die Tschebyscheff-Polynome quadrieren, passen sie perfekt in die Voraussetzungen für Filterfunktionen, wie es Abbildung \ref{ellfiter:fig:chebychef} demonstriert.
+Wenn wir die Tschebyscheff-Polynome quadrieren, passen sie perfekt in die Forderungen für Filterfunktionen, wie es Abbildung \ref{ellfiter:fig:chebychef} demonstriert.
 \begin{figure}
     \centering
     \input{papers/ellfilter/python/F_N_chebychev.pgf}
@@ -61,9 +61,9 @@ Die invertierte Funktion des Kosinus kann als bestimmtes Integral dargestellt we
         }
     }
     ~dz
-    + \frac{\pi}{2}
+    + \frac{\pi}{2}.
 \end{align}
-Der Integrand oder auch die Ableitung
+Der Integrand oder auch die Ableitung von $\cos^{-1}(x)$
 \begin{equation}
     \frac{
         -1
@@ -73,13 +73,13 @@ Der Integrand oder auch die Ableitung
         }
     }
 \end{equation}
-bestimmt dabei die Richtung, in der die Funktion verläuft.
+bestimmt dabei die Richtung, in welche die Funktion verläuft.
 Der reelle Arcuscosinus is bekanntlich nur für $|z| \leq 1$ definiert.
 Hier bleibt der Wert unter der Wurzel positiv und das Integral liefert reelle Werte.
 Doch wenn $|z|$ über 1 hinausgeht, wird der Term unter der Wurzel negativ.
 Durch die Quadratwurzel entstehen für den Integranden zwei rein komplexe Lösungen.
 Der Wert des Arcuscosinus verlässt also bei $z= \pm 1$ den reellen Zahlenstrahl und knickt in die komplexe Ebene ab.
-Abbildung \ref{ellfilter:fig:arccos} zeigt den $\arccos$ in der komplexen Ebene.
+Abbildung \ref{ellfilter:fig:arccos} zeigt den Arcuscosinus in der komplexen Ebene.
 \begin{figure}
     \centering
     \input{papers/ellfilter/tikz/arccos.tikz.tex}
@@ -98,9 +98,12 @@ Somit passiert $\cos( N~\cos^{-1}(w))$ im Intervall $[-1, 1]$ $N$ Nullstellen, w
     \input{papers/ellfilter/tikz/arccos2.tikz.tex}
     \caption{
         $z_1=N \cos^{-1}(w)$-Ebene der Tschebyscheff-Funktion.
-        Die eingefärbten Pfade sind Verläufe von $w~\forall~[-\infty, \infty]$ für $N = 4$.
-        Je grösser die Ordnung $N$ gewählt wird, desto mehr Nullstellen werden passiert.
+        Die eingefärbten Pfade sind Verläufe von $w\in(-\infty, \infty)$ für $N = 4$.
+        Je grösser die Ordnung $N$ gewählt wird, desto mehr Nullstellen werden passiert die zu Equirippel-Verhalten führen.
+        Die vertikalen Segmente der Funktion sorgen für das Ansteigen der Funktion gegen $\infty$ nach der Grenzfrequenz.
+        Die eingezeichneten Nullstellen sind vom zurücktransformierenden Kosinus.
     }
     \label{ellfilter:fig:arccos2}
 \end{figure}
-Durch die spezielle Anordnung der Nullstellen hat die Funktion Equirippel-Verhalten und ist dennoch ein Polynom, was sich perfekt für linear Filter eignet.
+Durch die spezielle Anordnung der Nullstellen hat die Funktion auf der reellen Achse Equirippel-Verhalten und ist dennoch ein Polynom, was sich perfekt für linear Filter eignet.
+Equirippel bedeutet, dass alle lokalen Maxima der Betragsfunktion gleich gross sind.

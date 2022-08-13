@@ -13,7 +13,7 @@ Zum Beispiel gibt es analog zum Sinus den elliptischen $\sn(z, k)$.
 Im Gegensatz zum den trigonometrischen Funktionen haben die elliptischen Funktionen zwei parameter.
 Den \textit{elliptische Modul} $k$, der die Exzentrizität der Ellipse parametrisiert und das Winkelargument $z$.
 Im Kreis ist der Radius für alle Winkel konstant, bei Ellipsen ändert sich das.
-Dies hat zur Folge, dass bei einer Ellipse die Kreisbodenstrecke nicht linear zum Winkel verläuft.
+Dies hat zur Folge, dass bei einer Ellipse die Kreisbogenlänge nicht linear zum Winkel verläuft.
 Darum kann hier nicht der gewohnte Winkel verwendet werden.
 Das Winkelargument $z$ kann durch das elliptische Integral erster Art
 \begin{equation}
@@ -95,37 +95,40 @@ Mithilfe von $F^{-1}$ kann zum Beispiel $sn^{-1}$ mit dem Elliptischen integral 
     =
     \sn(z, k)
     =
-    w
+    w.
 \end{equation}
 
-\begin{equation} %TODO remove unnecessary equations
-    \phi
-    =
-     F^{-1}(z, k)
-     =
-     \sin^{-1} \big( \sn (z, k ) \big)
-     =
-    \sin^{-1} ( w )
-\end{equation}
+% \begin{equation} %TODO remove unnecessary equations
+%     \phi
+%     =
+%      F^{-1}(z, k)
+%      =
+%      \sin^{-1} \big( \sn (z, k ) \big)
+%      =
+%     \sin^{-1} ( w )
+% \end{equation}
 
-\begin{equation}
-    F(\phi, k)
-    =
-    z
-    =
-    F( \sin^{-1} \big( \sn (z, k ) \big) , k)
-    =
-    F( \sin^{-1} ( w ), k)
-\end{equation}
+% \begin{equation}
+%     F(\phi, k)
+%     =
+%     z
+%     =
+%     F( \sin^{-1} \big( \sn (z, k ) \big) , k)
+%     =
+%     F( \sin^{-1} ( w ), k)
+% \end{equation}
 
-\begin{equation}
-    \sn^{-1}(w, k)
-    =
-    F(\phi, k),
-    \quad
-    \phi = \sin^{-1}(w)
-\end{equation}
+% \begin{equation}
+%     \sn^{-1}(w, k)
+%     =
+%     F(\phi, k),
+%     \quad
+%     \phi = \sin^{-1}(w)
+% \end{equation}
 
+Beim Tschebyscheff-Filter konnten wir mit Betrachten des Arcuscosinus die Funktionalität erklären.
+Für das Elliptische Filter machen wir die gleiche Betrachtung mit der $\sn^{-1}$-Funktion.
+Der $\sn^{-1}$ ist durch das elliptische Integral
 \begin{align}
     \sn^{-1}(w, k)
         & =
@@ -150,12 +153,22 @@ Mithilfe von $F^{-1}$ kann zum Beispiel $sn^{-1}$ mit dem Elliptischen integral 
         }
     }
 \end{align}
-
+beschrieben.
+Dazu betrachten wir wieder den Integranden
+\begin{equation}
+    \frac{
+        1
+    }{
+        \sqrt{
+            (1-t^2)(1-k^2 t^2)
+        }
+    }.
+\end{equation}
 Beim $\cos^{-1}(x)$ haben wir gesehen, dass die analytische Fortsetzung bei $x < -1$ und $x > 1$ rechtwinklig in die Komplexen zahlen wandert.
-Wenn man das gleiche mit $\sn^{-1}(w, k)$ macht, erkennt man zwei interessante Stellen.
+Wenn man das Gleiche mit $\sn^{-1}(w, k)$ macht, erkennt man zwei interessante Stellen.
 Die erste ist die gleiche wie beim $\cos^{-1}(x)$ nämlich bei $t = \pm 1$.
 Der erste Term unter der Wurzel wird dann negativ, während der zweite noch positiv ist, da $k \leq 1$.
-Ab diesem Punkt verläuft knickt die Funktion in die imaginäre Richtung ab.
+Ab diesem Punkt knickt die Funktion in die imaginäre Richtung ab.
 Bei $t = 1/k$ ist auch der zweite Term negativ und die Funktion verläuft in die negative reelle Richtung.
 Abbildung \label{ellfilter:fig:sn} zeigt den Verlauf der Funktion in der komplexen Ebene.
 \begin{figure}

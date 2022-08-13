@@ -76,4 +76,19 @@
 
     \end{scope}
 
+    \begin{scope}[xshift=1cm , yshift=-3cm, xscale=0.75]
+
+        \draw[gray, ->] (-1,0) -- (6,0) node[anchor=west]{$w$};
+
+        \draw[ultra thick, ->, darkgreen]    (0, 0) -- (2, 0);
+        \draw[ultra thick, ->, orange] (2, 0) -- (3, 0);
+        \draw[ultra thick, ->, red] (3, 0) -- (5, 0);
+
+        \node[anchor=south] at (0,0) {$0$};
+        \node[anchor=south] at (2,0) {$1$};
+        \node[anchor=south] at (3,0) {$1/k$};
+        \node[anchor=south] at (5,0) {$\infty$};
+
+    \end{scope}
+
 \end{tikzpicture}

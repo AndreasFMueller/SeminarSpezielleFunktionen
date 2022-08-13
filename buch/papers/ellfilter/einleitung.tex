@@ -1,37 +1,48 @@
 \section{Einleitung}
 
-Filter sind womöglich eines der wichtigsten Element in der Signalverarbeitung und finden Anwendungen in der digitalen und analogen Elektrotechnik.
+Filter sind womöglich eines der wichtigsten Elementen in der Signalverarbeitung und finden Anwendungen in der digitalen und analogen Elektrotechnik.
 Besonders hilfreich ist die Untergruppe der linearen Filter.
 Elektronische Schaltungen mit linearen Bauelementen wie Kondensatoren, Spulen und Widerständen führen immer zu linearen zeitinvarianten Systemen (LTI-System von englich \textit{time-invariant system}).
 Durch die Linearität werden beim das Filtern keine neuen Frequenzanteile erzeugt, was es erlaubt, einen Frequenzanteil eines Signals verzerrungsfrei herauszufiltern. %TODO review sentence
 Diese Eigenschaft macht es Sinnvoll, lineare Filter im Frequenzbereich zu beschreiben.
-Die Übertragungsfunktion eines linearen Filters im Frequenzbereich $H(\Omega)$ ist dabei immer eine rationale Funktion, also eine Division von zwei Polynomen.
-Dabei ist $\Omega = 2 \pi f$ die analoge Frequenzeinheit.
+Die Übertragungsfunktion eines linearen Filters im Frequenzbereich $H(\Omega)$ ist dabei immer eine rationale Funktion, also ein Quotient von zwei Polynomen.
+Dabei ist $\Omega = 2 \pi f$ die Frequenzeinheit.
 Die Polynome haben dabei immer reelle oder komplex-konjugierte Nullstellen.
 
-Ein breit angewendeter Filtertyp ist das Tiefpassfilter, welches beabsichtigt alle Frequenzen eines Signals über der Grenzfrequenz $\Omega_p$ auszulöschen.
+Ein breit angewendeter Filtertyp ist das Tiefpassfilter, welches beabsichtigt alle Frequenzen eines Signals oberhalb der Grenzfrequenz $\Omega_p$ auszulöschen.
 Der Rest soll dabei unverändert passieren.
-Ein solches Filter hat idealerweise eine Frequenzantwort
+Aus dem Tiefpassifilter können dann durch Transformationen auch Hochpassfilter, Bandpassfilter und Bandsperren realisiert werden.
+Ein solches Filter hat idealerweise die Frequenzantwort
 \begin{equation} \label{ellfilter:eq:h_omega}
     H(\Omega) =
     \begin{cases}
         1  & \Omega < \Omega_p \\
         0  & \Omega < \Omega_p
-    \end{cases}.
+    \end{cases},
 \end{equation}
+wie dargestellt in Abbildung \ref{ellfilter:fig:lp}
+\begin{figure}
+    \centering
+    \input{papers/ellfilter/tikz/filter.tikz.tex}
+    \caption{Frequenzantwort eines Tiefpassfilters.}
+    \label{ellfilter:fig:lp}
+\end{figure}
 Leider ist eine solche Funktion nicht als rationale Funktion darstellbar.
 Aus diesem Grund sind realisierbare Approximationen gesucht.
-Jede Approximation wird einen kontinuierlichen übergang zwischen Durchlassbereich und Sperrbereich aufweisen.
+Jede Approximation wird einen kontinuierlichen Übergang zwischen Durchlassbereich und Sperrbereich aufweisen.
 Oft wird dabei der Faktor $1/\sqrt{2}$ als Schwelle zwischen den beiden Bereichen gewählt.
 Somit lassen sich lineare Tiefpassfilter mit folgender Funktion zusammenfassen:
 \begin{equation} \label{ellfilter:eq:h_omega}
     | H(\Omega)|^2 = \frac{1}{1 + \varepsilon_p^2 F_N^2(w)}, \quad w=\frac{\Omega}{\Omega_p},
 \end{equation}
-%TODO figure?
 wobei $F_N(w)$ eine rationale Funktion ist, $|F_N(w)| \leq 1 ~\forall~ |w| \leq 1$ erfüllt und für $|w| \geq 1$ möglichst schnell divergiert.
 Des weiteren müssen alle Nullstellen und Pole von $F_N$ auf der linken Halbebene liegen, damit das Filter implementierbar und stabil ist.
-$N \in \mathbb{N} $ gibt dabei die Ordnung des Filters vor, also die maximale Anzahl Pole oder Nullstellen, die zur Komplexitätsmilderung klein gehalten werden soll.
-Eine einfache Funktion für $F_N$ ist das Polynom $w^N$.
+$w$ ist die normalisierte Frequenz, die es erlaubt ein Filter unabhängig von der Grenzfrequenz zu beschrieben.
+Bei $w=1$ hat das Filter eine Dämpfung von $1/(1+\varepsilon^2)$.
+$N \in \mathbb{N} $ gibt die Ordnung des Filters vor, also die maximale Anzahl Pole oder Nullstellen.
+Je hoher $N$ gewählt wird, desto steiler ist der Übergang in denn Sperrbereich.
+Grössere $N$ sind erfordern jedoch aufwendigere Implementierungen und haben mehr Phasenverschiebung.
+Eine einfache Funktion, die für $F_N$ eingesetzt werden kann, ist das Polynom $w^N$.
 Tatsächlich erhalten wir damit das Butterworth Filter, wie in Abbildung \ref{ellfilter:fig:butterworth} ersichtlich.
 \begin{figure}
     \centering
@@ -46,10 +57,10 @@ Eine Reihe von rationalen Funktionen können für $F_N$ eingesetzt werden, um Ti
         w^N                            & \text{Butterworth} \\
         T_N(w)                         & \text{Tschebyscheff, Typ 1}  \\
         [k_1 T_N (k^{-1} w^{-1})]^{-1} & \text{Tschebyscheff, Typ 2}  \\
-        R_N(w, \xi)                    & \text{Elliptisch (Cauer)}    \\
+        R_N(w, \xi)                    & \text{Elliptisch}    \\
     \end{cases}
 \end{align}
-Mit der Ausnahme vom Butterworth filter sind alle Filter nach speziellen Funktionen benannt.
+Mit der Ausnahme vom Butterworth-Filter sind alle Filter nach speziellen Funktionen benannt.
 Alle diese Filter sind optimal hinsichtlich einer Eigenschaft.
 Das Butterworth-Filter, zum Beispiel, ist maximal flach im Durchlassbereich.
 Das Tschebyscheff-1 Filter ist maximal steil für eine definierte Welligkeit im Durchlassbereich, währendem es im Sperrbereich monoton abfallend ist.

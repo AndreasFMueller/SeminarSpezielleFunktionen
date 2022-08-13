@@ -3,10 +3,10 @@
 Kommen wir nun zum eigentlichen Teil dieses Papers, den elliptischen rationalen Funktionen \ref{ellfilter:bib:orfanidis}
 \begin{align}
     R_N(\xi, w) &= \cd \left(N~f_1(\xi)~\cd^{-1}(w, 1/\xi), f_2(\xi)\right) \label{ellfilter:eq:elliptic}\\
-                &= \cd \left(N~\frac{K_1}{K}~\cd^{-1}(w, k), k_1)\right) , \quad k= 1/\xi, k_1 = 1/f(\xi) \\
+                &= \cd \left(N~\frac{K_1}{K}~\cd^{-1}(w, k), k_1\right) , \quad k= 1/\xi, k_1 = 1/f(\xi) \\
                 &= \cd \left(N~K_1~z , k_1 \right), \quad w= \cd(z K, k)
 \end{align}
-Beim Betrachten dieser Definition, fällt die Ähnlichkeit zur trigonometrische Darstellung der Tschebyschef-Polynome \eqref{ellfilter:eq:chebychef_polynomials} auf.
+Beim Betrachten dieser Definition, fällt die Ähnlichkeit zur trigonometrische Darstellung der Tsche\-byschef-Polynome \eqref{ellfilter:eq:chebychef_polynomials} auf.
 Anstelle vom Kosinus kommt hier die $\cd$-Funktion zum Einsatz.
 Die Ordnungszahl $N$ kommt auch als Faktor for.
 Zusätzlich werden noch zwei verschiedene elliptische Moduli $k$ und $k_1$ gebraucht.
@@ -29,8 +29,9 @@ Die Idee des elliptischen Filter ist es, diese zwei Equirippel-Zonen abzufahren,
     \centering
     \input{papers/ellfilter/tikz/cd2.tikz.tex}
     \caption{
-        $z_1$-Ebene der elliptischen rationalen Funktionen.
+        $z_1=N\frac{K_1}{K}\cd^{-1}(w, k)$-Ebene der elliptischen rationalen Funktionen.
         Je grösser die Ordnung $N$ gewählt wird, desto mehr Nullstellen werden passiert.
+        Als Vereinfachung ist die Funktion nur für $w>0$ dargestellt.
     }
     \label{ellfilter:fig:cd2}
 \end{figure}
@@ -39,7 +40,7 @@ Im Durchlassbereich werden wie beim Tschebyscheff-Filter die Nullstellen durchla
 Statt dass $z_1$ für alle $w>1$ in die imaginäre Richtung geht, bewegen wir uns im Sperrbereich wieder in reeller Richtung, wo Pole durchlaufen werden.
 Aus dieser Sicht kann der Sperrbereich vom Tschebyscheff-Filter als unendlich langer Übergangsbereich angesehen werden.
 % Falls es möglich ist diese Werte abzufahren im Stil der Tschebyscheff-Polynome, kann ein Filter gebaut werden, dass Equirippel-Verhalten im Durchlass- und Sperrbereich aufweist.
-Da sich die Funktion im Übergangsbereich nur zur nächsten Reihe bewegt ist der Übergangsbereich monoton steigend.
+Da sich die Funktion im Übergangsbereich nur zur nächsten Reihe bewegt, ist der Übergangsbereich monoton steigend.
 Theoretisch könnte eine gleiches Durchlass- und Sperrbereichverhalten erreicht werden, wenn die Funktion auf eine andere Reihe ansteigen würde.
 Dies würde jedoch zu Oszillationen zwischen $1$ und $1/k$ im Übergangsbereich führen.
 Abbildung \ref{ellfilter:fig:elliptic_freq} zeigt eine elliptisch rationale Funktion und die Frequenzantwort des daraus resultierenden Filters.
@@ -61,8 +62,8 @@ Zur Erinnerung, $K$ und $K^\prime$ sind durch elliptische Integrale definiert un
     \caption{Die Periodizitäten in realer und imaginärer Richtung in Abhängigkeit vom elliptischen Modul $k$.}
     \label{ellfilter:fig:kprime}
 \end{figure}
-$K$ und $K^\prime$ sind durch die Ortskurve $K + jK^\prime$ aneinander Gebunden und benötigen den Zusatzfaktor $K_1/K$ in \eqref{ellfilter:eq:elliptic}, um die genanten Forderungen einzuhalten.
-Abbildung \ref{ellfilter:fig:degree_eq} zeigt das Problem geometrisch auf, wobei zwei Punkte auf der Ortskurve gesucht sind.
+$K$ und $K^\prime$ sind durch die Ortskurve $K + jK^\prime$ aneinander gebunden und benötigen den Zusatzfaktor $K_1/K$ in \eqref{ellfilter:eq:elliptic}, um die genanten Forderungen einzuhalten.
+Abbildung \ref{ellfilter:fig:degree_eq} zeigt das Problem geometrisch auf, wobei zwei Punkte $K+jK^\prime$ und $K_1+jK_1^\prime$ auf der Ortskurve gesucht sind.
 \begin{figure}
     \centering
     \input{papers/ellfilter/tikz/elliptic_transform2.tikz}
@@ -87,10 +88,13 @@ Die Herleitung ist sehr umfassend und wird in \ref{ellfilter:bib:orfanidis} im D
 %     \caption{Die Gradgleichung als geometrisches Problem.}
 % \end{figure}
 
-\subsection{Darstellung als rationale Funktion}
+\subsection{Schlussfolgerung}
 
+Die elliptischen Filter können als direkte Erweiterung der Tschebyscheff-Filter verstanden werden.
 Bei den Tschebyscheff-Polynomen haben wir gesehen, dass die Trigonometrische Formel zu einfachen Polynomen umgewandelt werden kann.
-Im Gegensatz zum $\cos^{-1}$ hat der $\cd^{-1}$ nicht nur Nullstellen sondern auch Pole.
+Im elliptischen Fall entstehen so rationale Funktionen mit Nullstellen und auch Pole.
 Somit entstehen bei den elliptischen rationalen Funktionen, wie es der name auch deutet, rationale Funktionen, also ein Bruch von zwei Polynomen.
 
-Da Transformationen einer rationalen Funktionen mit Grundrechenarten, wie es in \eqref{ellfilter:eq:h_omega} der Fall ist, immer noch rationale Funktionen ergeben, stellt dies kein Problem für die Implementierung dar.
+% Da Transformationen einer rationalen Funktionen mit Grundrechenarten, wie es in \eqref{ellfilter:eq:h_omega} der Fall ist, immer noch rationale Funktionen ergeben, stellt dies kein Problem für die Implementierung dar.
+
+
