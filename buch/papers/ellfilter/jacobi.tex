@@ -1,7 +1,5 @@
 \section{Jacobische elliptische Funktionen}
 
-%TODO $z$ or $u$ for parameter?
-
 Für das elliptische Filter werden, wie es der Name bereits deutet, elliptische Funktionen gebraucht.
 Wie die trigonometrischen Funktionen Zusammenhänge eines Kreises darlegen, beschreiben die elliptischen Funktionen Ellipsen.
 Es ist daher naheliegend, dass Kosinus des Tschebyscheff-Filters mit einem elliptischen Pendant ausgetauscht werden könnte.
@@ -29,15 +27,6 @@ Das Winkelargument $z$ kann durch das elliptische Integral erster Art
             1-k^2 \sin^2 \theta
         }
     }
-    % =
-    % \int_{0}^{\phi}
-    % \frac{
-    %     dt
-    % }{
-    %     \sqrt{
-    %         (1-t^2)(1-k^2 t^2)
-    %     }
-    % } %TODO which is right? are both functions from phi?
 \end{equation}
 mit dem Winkel $\phi$ in Verbindung gebracht werden.
 
@@ -170,7 +159,7 @@ Die erste ist die gleiche wie beim $\cos^{-1}(x)$ nämlich bei $t = \pm 1$.
 Der erste Term unter der Wurzel wird dann negativ, während der zweite noch positiv ist, da $k \leq 1$.
 Ab diesem Punkt knickt die Funktion in die imaginäre Richtung ab.
 Bei $t = 1/k$ ist auch der zweite Term negativ und die Funktion verläuft in die negative reelle Richtung.
-Abbildung \label{ellfilter:fig:sn} zeigt den Verlauf der Funktion in der komplexen Ebene.
+Abbildung \ref{ellfilter:fig:sn} zeigt den Verlauf der Funktion in der komplexen Ebene.
 \begin{figure}
     \centering
     \input{papers/ellfilter/tikz/sn.tikz.tex}
@@ -180,7 +169,7 @@ Abbildung \label{ellfilter:fig:sn} zeigt den Verlauf der Funktion in der komplex
     }
     \label{ellfilter:fig:sn}
 \end{figure}
-In der reellen Richtung ist sie $4K(k)$-periodisch und in der imaginären Richtung $4K^\prime(k)$-periodisch, wobei $K^\prime$ das komplemenäre vollständige Elliptische Integral ist:
+In der reellen Richtung ist sie $4K(k)$-periodisch und in der imaginären Richtung $4K^\prime(k)$-periodisch, wobei $K^\prime$ das komplementäre vollständige Elliptische Integral ist:
 \begin{equation}
     K^\prime(k)
     =

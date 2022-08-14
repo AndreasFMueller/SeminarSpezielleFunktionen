@@ -13,7 +13,7 @@ Ein breit angewendeter Filtertyp ist das Tiefpassfilter, welches beabsichtigt al
 Der Rest soll dabei unverändert passieren.
 Aus dem Tiefpassifilter können dann durch Transformationen auch Hochpassfilter, Bandpassfilter und Bandsperren realisiert werden.
 Ein solches Filter hat idealerweise die Frequenzantwort
-\begin{equation} \label{ellfilter:eq:h_omega}
+\begin{equation}
     H(\Omega) =
     \begin{cases}
         1  & \Omega < \Omega_p \\
@@ -32,7 +32,7 @@ Aus diesem Grund sind realisierbare Approximationen gesucht.
 Jede Approximation wird einen kontinuierlichen Übergang zwischen Durchlassbereich und Sperrbereich aufweisen.
 Oft wird dabei der Faktor $1/\sqrt{2}$ als Schwelle zwischen den beiden Bereichen gewählt.
 Somit lassen sich lineare Tiefpassfilter mit folgender Funktion zusammenfassen:
-\begin{equation} \label{ellfilter:eq:h_omega}
+\begin{equation}
     | H(\Omega)|^2 = \frac{1}{1 + \varepsilon_p^2 F_N^2(w)}, \quad w=\frac{\Omega}{\Omega_p},
 \end{equation}
 wobei $F_N(w)$ eine rationale Funktion ist, $|F_N(w)| \leq 1 ~\forall~ |w| \leq 1$ erfüllt und für $|w| \geq 1$ möglichst schnell divergiert.
