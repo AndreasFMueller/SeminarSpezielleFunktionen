@@ -17,7 +17,7 @@ Führt man also das Konzept einer unendlichen und achsensymmetrischen Membran ei
 	+
 	\frac{1}{r}
 	\frac{\partial u}{\partial r} \right), \quad 0<r<\infty, \quad t>0   \label{eq:PDE_inf_membane} \\
-		u(r,0)=f(r), \quad u_t(r,0) = g(r), \quad \text{für} \quad 0<r<\infty
+		u(r,0)=f(r), \quad u_t(r,0) = g(r), \quad \text{für} \quad 0<r<\infty.
 	\label{eq:PDE_inf_membane_RB}
 \end{align}
 
@@ -42,7 +42,7 @@ Die allgemeine Lösung für diese Gleichung lautet, wie in Abschnitt \eqref{eq:c
 \begin{equation*}
 	\tilde{u}(\kappa,t)=\tilde{f}(\kappa)\cos(c\kappa t) + \frac{1}{c\kappa}\tilde{g}(\kappa)\sin(c\kappa t).
 \end{equation*}
-Wendet man an nun die inverse Hankel-Transformation an, so erhält man die formale Lösung
+Wendet man nun die inverse Hankel-Transformation an, so erhält man die formale Lösung
 
 \begin{align}
 	u(r,t)=\int_{0}^{\infty}\kappa\tilde{f}(\kappa)\cos(c\kappa t) J_0(\kappa r) \; d\kappa +\frac{1}{c}\int_{0}^{\infty}\tilde{g}(\kappa)\sin(c\kappa t)J_0(\kappa r) \; d\kappa.
@@ -50,7 +50,7 @@ Wendet man an nun die inverse Hankel-Transformation an, so erhält man die forma
 \end{align}
 
 \subsubsection{Erfüllung der Anfangsbedingungen\label{subsub:erfüllung_AB}}
-Es wird in Folgenden davon ausgegangen, dass sich die Membran verformt und zum Zeitpunkt $t=0$ freigegeben wird
+Es wird im Folgenden davon ausgegangen, dass sich die Membran verformt und zum Zeitpunkt $t=0$ freigegeben wird
 
 \begin{equation*}
 	u(r,0)=f(r)=Aa(r^2 + a^2)^{-\frac{1}{2}}, \quad u_t(r,0)=g(r)=0

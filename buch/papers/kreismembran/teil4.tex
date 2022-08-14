@@ -12,7 +12,7 @@ Jedes Element  $ U_{ij} $ steh für die Auslenkung der Membran $ u(x,y,t) $ an d
 Zwischen benachbarten Elementen in der Matrix $ U $ liegt immer der Abstand $ dh $, eine Inkrementierung von $ i $ oder $ j $ entspricht somit einem Schritt in Richtung $ x $ oder $ y $ von Länge $ dh $ auf der Membran.
 Die zeitliche Dimension wird in Form des Array $  U[] $ aus $ z \times U $ Matrizen dargestellt, wobei $ z $ der Anzahl Zeitschritten entspricht.
 Das Element auf Zeile $ i $, Spalte $ j $ der $ w $-ten Matrix von $ U[] $ also $ U[w]_{ij} $ entspricht somit der Auslenkung $ u(i,j,w) $.
-Da die DGL von Zweiter Ordnung ist, reicht eine Zustandsvariabel pro Membran-Element nicht aus. 
+Da die DGL von zweiter Ordnung ist, reicht eine Zustandsvariabel pro Membran-Element nicht aus. 
 Es wird neben der Auslenkung auch die Geschwindigkeit jedes Membran-Elementes benötigt um den Zustand eindeutig zu beschreiben. 
 Dazu existiert neben $ U[] $ ein analoger Array $ V[] $ welcher die Geschwindigkeiten aller Membran-Elementen repräsentiert. 
 $ V[w]_{ij} $ entspricht also $ \dot{u}(i,j,w) $. 
@@ -77,13 +77,13 @@ Die Faltung mit einer Gauss-Glocke ist in Programmen wie Matlab eine Standartfun
 
 \subsubsection{Rand}
 Bislang ist die definierte Matrix rechteckig.
-Um eine kreisförmige Membran zu simulieren muss der Rand angepasst werden.
+Um eine kreisförmige Membran zu simulieren, muss der Rand angepasst werden.
 Da in den meisten Programme keine Möglichkeit besteht, mit runden Matrizen zu rechnen, wird der Rand in der Berechnung des Folgezustandes implementiert.
-Der Rand bedeutet, das Membran-Elemente auf dem Rand sich nicht Bewegen können.
-Die Position sowie die Geschwindigkeit aller Elemente, welche nicht auf der definierten Membran sind, müssen zu beliebiger Zeit $0$ sein.
+Der Rand bedeutet, dass Membran-Elemente auf dem Rand sich nicht Bewegen können.
+Die Position, sowie die Geschwindigkeit aller Elemente, welche nicht auf der definierten Membran sind, müssen zu beliebiger Zeit $0$ sein.
 Hierzu wird eine Maske $M$ erstellt. 
 Diese Maske besteht aus einer binären Matrix von identischer Dimension wie $ U $ und $ V $. 
-Ist in der Matrix $M$ eine $1$ abgebildet so ist an jener stelle ein Element der Membran, ist es eine $0$ so befindet sich dieses Element auf dem Rand oder ausserhalb der Membran.
+Ist in der Matrix $M$ eine $1$ abgebildet, so ist an jener Stelle ein Element der Membran, ist es eine $0$ so befindet sich dieses Element auf dem Rand oder ausserhalb der Membran.
 In dieser Anwendung ist $M$ eine Matrix mit einem Kreis voller $1$ umgeben von $0$ bis an den Rand der Matrix.
 Die Maske wird angewendet, indem das Resultat des nächsten Zustandes noch mit der Maske elementweise multipliziert wird. 
 Der Folgezustand kann also mit den Gleichungen
@@ -99,7 +99,7 @@ Mit den gegebenen Gleichungen \ref{kreismembran:eq:folge_U} und \ref{kreismembra
 In der Abbildung \ref{kreismembran:im:simres_rund} sind Simulationsresultate zu sehen.
 Die erste Figur zeigt die Ausgangslage gefolgt von den Auslenkungen nach jeweils $ 50 $ weiteren Iterationsschritten.
 Es ist zu erkennen, wie sich die Störung vom Zentrum an den Rand ausbreitet.
-Erreicht die Störung den Rand wird sie reflektiert und nähert sich dem Zentrum. 
+Erreicht die Störung den Rand, wird sie reflektiert und nähert sich dem Zentrum. 
 \begin{figure}
 	
 	\begin{center}
@@ -117,8 +117,8 @@ Erreicht die Störung den Rand wird sie reflektiert und nähert sich dem Zentrum
 \end{figure} 
 \subsection{Simulation: Unendliche Membran}
 
-Um eine unendlich grosse Membran zu simulieren könnte der unpraktische weg gewählt werden die Matrix unendlich gross zu definieren, dies wird jedoch spätestens bei der numerischen Berechnung seine Probleme mit sich bringen.
-Etwas geeigneter ist es die Matrix so gross wie möglich zu definieren wie es die Kapazitäten erlauben.
+Um eine unendlich grosse Membran zu simulieren, könnte der unpraktische Weg gewählt werden, die Matrix unendlich gross zu definieren, dies wird jedoch spätestens bei der numerischen Berechnung seine Probleme mit sich bringen.
+Etwas geeigneter ist es, die Matrix so gross wie möglich zu definieren, wie es die Kapazitäten erlauben.
 Wenn anschliessend nur das Verhalten im Zentrum, bei der Störung beobachtet wird, verhaltet sich die Membran wie eine unendliche. 
 Dies aber nur bis die Störung am Rand reflektiert wird und wieder das innere zu beobachtende Zentrum beeinflusst.
 Soll erst gar keine Reflexion entstehen, muss ein Absorber modelliert werden welcher die Störung möglichst ohne Reflexion aufnimmt.
