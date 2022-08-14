@@ -1,0 +1,63 @@
+%
+% primzahlfunktion2.tex -- Primzahlfunktion, alternativer Vorschlag
+%
+% (c) 2021 Prof Dr Andreas Müller, OST Ostschweizer Fachhochschule
+%
+\documentclass[tikz]{standalone}
+\usepackage{amsmath}
+\usepackage{times}
+\usepackage{txfonts}
+\usepackage{pgfplots}
+\usepackage{csvsimple}
+\usetikzlibrary{arrows,intersections,math}
+\begin{document}
+\def\skala{1}
+\begin{tikzpicture}[>=latex,thick,scale=\skala]
+
+\def\dx{0.38}
+\def\dy{0.5}
+
+\foreach \x in {1,...,30}{
+	\draw[color=gray!20] ({\x*\dx},0) -- ({\x*\dx},{10.5*\dy});
+}
+\foreach \y in {1,...,10}{
+	\draw[color=gray!20] (0,{\y*\dy}) -- ({30.5*\dx},{\y*\dy});
+}
+
+\draw[->] (-0.1,0) -- ({30.8*\dx},0) coordinate[label={$x$}];
+\draw[->] (0,-0.1) -- (0,{10.9*\dy}) coordinate[label={right:$\pi(x)$}];
+
+\def\segment#1#2#3{
+	%\draw[line width=0.1pt] ({#3*\dx},0) -- ({#3*\dx},{#2*\dy});
+	\draw[color=blue,line width=1.4pt]
+		({#1*\dx},{#2*\dy}) -- ({#3*\dx},{#2*\dy});
+	\draw[color=blue,line width=0.3pt]
+		({#3*\dx},{#2*\dy}) -- ({#3*\dx},{(#2+1)*\dy});
+	\draw ({#3*\dx},-0.1) -- ({#3*\dx},0.1);
+	\node at ({(#3)*\dx},-0.1) [below] {$#3\mathstrut$};
+}
+
+\foreach \y in {2,4,...,10}{
+	\draw (-0.1,{\y*\dy}) -- (0.1,{\y*\dy});
+	\node at (-0.1,{\y*\dy}) [left] {$\y\mathstrut$};
+}
+
+\begin{scope}
+\clip (0,-0.5) rectangle ({30*\dx},{10.1*\dy});
+
+\segment{0}{0}{2}
+\segment{2}{1}{3}
+\segment{3}{2}{5}
+\segment{5}{3}{7}
+\segment{7}{4}{11}
+\segment{11}{5}{13}
+\segment{13}{6}{17}
+\segment{17}{7}{19}
+\segment{19}{8}{23}
+\segment{23}{9}{29}
+\segment{29}{10}{31}
+\end{scope}
+
+\end{tikzpicture}
+\end{document}
+

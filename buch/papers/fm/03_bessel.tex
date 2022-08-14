@@ -3,11 +3,11 @@
 %
 % (c) 2020 Prof Dr Andreas Müller, Hochschule Rapperswil
 %
-\section{FM und Besselfunktion 
+\section{FM und Bessel-Funktion 
 \label{fm:section:proof}}
 \rhead{Herleitung}
-Die momentane Trägerkreisfrequenz \(\omega_i\) wie schon in (ref) beschrieben ist, bringt die Vorigen Kapittel beschreiben. (Ableitung \(\frac{d \varphi(t)}{dt}\) mit sich).
-Diese wiederum kann durch \(\beta\sin(\omega_mt)\) ausgedrückt werden, wobei es das Modulierende Signal \(m(t)\) ist.
+Die momentane Trägerkreisfrequenz \(\omega_i\), wie schon in (ref) beschrieben ist, bringt die Ableitung \(\frac{d \varphi(t)}{dt}\) mit sich.
+Diese wiederum kann durch \(\beta\sin(\omega_mt)\) ausgedrückt werden, wobei es das modulierende Signal \(m(t)\) ist.
 Somit haben wir unser \(x_c\) welches 
 \[
 \cos(\omega_c t+\beta\sin(\omega_mt))
@@ -15,7 +15,7 @@ Somit haben wir unser \(x_c\) welches
 ist.
 
 \subsection{Herleitung}
-Das Ziel ist es unser moduliertes Signal mit der Besselfunktion so auszudrücken:
+Das Ziel ist, unser moduliertes Signal mit der Bessel-Funktion so auszudrücken:
 \begin{align}
     x_c(t)
     = 
@@ -24,6 +24,7 @@ Das Ziel ist es unser moduliertes Signal mit der Besselfunktion so auszudrücken
     \sum_{k= -\infty}^\infty J_{k}(\beta) \cos((\omega_c+k\omega_m)t)
     \label{fm:eq:proof}
 \end{align}
+
 \subsubsection{Hilfsmittel}
 Doch dazu brauchen wir die Hilfe der Additionsthoerme 
 \begin{align}
@@ -42,7 +43,7 @@ Doch dazu brauchen wir die Hilfe der Additionsthoerme
     \cos(A-B)-\cos(A+B)
     \label{fm:eq:addth3}
 \end{align}
-und die drei Besselfunktions indentitäten,
+und die drei Bessel-Funktionsindentitäten,
 \begin{align}
     \cos(\beta\sin\phi)
     &=
@@ -51,13 +52,13 @@ und die drei Besselfunktions indentitäten,
     \\
     \sin(\beta\sin\phi)
     &=
-    J_0(\beta) + 2\sum_{k=1}^\infty J_{2k+1}(\beta) \cos((2k+1)\phi)
+    2\sum_{k=0}^\infty J_{2k+1}(\beta) \cos((2k+1)\phi)
     \label{fm:eq:besselid2}
     \\
     J_{-n}(\beta) &= (-1)^n J_n(\beta)
     \label{fm:eq:besselid3}
 \end{align}
-welche man im Kapitel (ref), ref, ref findet.
+welche man im Kapitel \eqref{buch:fourier:eqn:expinphireal}, \eqref{buch:fourier:eqn:expinphiimaginary}, \eqref{buch:fourier:eqn:symetrie} findet.
 
 \subsubsection{Anwenden des Additionstheorem}
 Mit dem \eqref{fm:eq:addth1} wird aus dem modulierten Signal
@@ -66,63 +67,111 @@ Mit dem \eqref{fm:eq:addth1} wird aus dem modulierten Signal
     =
     \cos(\omega_c t + \beta\sin(\omega_mt))
     =
-    \cos(\omega_c t)\cos(\beta\sin(\omega_m t))-\sin(\omega_c)\sin(\beta\sin(\omega_m t)).
+    \cos(\omega_c t)\cos(\beta\sin(\omega_m t))-\sin(\omega_ct)\sin(\beta\sin(\omega_m t)).
     \label{fm:eq:start}
 \]
+%-----------------------------------------------------------------------------------------------------------
 \subsubsection{Cos-Teil}
 Zu beginn wird der Cos-Teil
-\[
-    \cos(\omega_c)\cos(\beta\sin(\omega_mt))  
-\]
+\begin{align*}
+    c(t) 
+    &=
+    \cos(\omega_c t)\cdot\cos(\beta\sin(\omega_mt))  
+\end{align*}
 mit hilfe der Besselindentität \eqref{fm:eq:besselid1} zum
 \begin{align*}
-    \cos(\omega_c t) \cdot \bigg[\, J_0(\beta) + 2\sum_{k=1}^\infty J_{2k}(\beta) \cos( 2k \omega_m t)\, \bigg]
-    &=\\
-    J_0(\beta)\cos(\omega_c t) + \sum_{k=1}^\infty J_{2k}(\beta) 
-    \underbrace{2\cos(\omega_c t)\cos(2k\omega_m t)}_{\text{Additionstheorem}}
+    c(t)
+    &=
+    \cos(\omega_c t) \cdot \bigg[ J_0(\beta) + 2\sum_{k=1}^\infty J_{2k}(\beta) \cos( 2k \omega_m t)\, \bigg]
+    \\
+    &=
+    J_0(\beta) \cdot \cos(\omega_c t) + \sum_{k=1}^\infty J_{2k}(\beta) \underbrace{2\cos(\omega_c t)\cos(2k\omega_m t)}_{\text{Additionstheorem \eqref{fm:eq:addth2}}}
 \end{align*}
-wobei mit dem Additionstheorem \eqref{fm:eq:addth2} \(A = \omega_c t\) und \(B = 2k\omega_m t \) zum
-\[
-    J_0(\beta)\cdot \cos(\omega_c t) + \sum_{k=1}^\infty J_{2k}(\beta) \{ \cos((\omega_c - 2k \omega_m) t)+\cos((\omega_c + 2k \omega_m) t) \}
-\]
+%intertext{}   Funktioniert nicht.
+wobei mit dem Additionstheorem \eqref{fm:eq:addth2} \(A = \omega_c t\) und \(B = 2k\omega_m t \) ersetzt wurden.
+\begin{align*}
+    c(t)
+    &=
+    J_0(\beta) \cdot \cos(\omega_c t) + \sum_{k=1}^\infty J_{2k}(\beta) \{ \underbrace{\cos((\omega_c - 2k \omega_m) t)} \,+\, \cos((\omega_c + 2k \omega_m) t) \}
+    \\
+    &=
+    \sum_{k=-\infty}^{-1} J_{2k}(\beta)  \overbrace{\cos((\omega_c +2k \omega_m) t)} 
+    \,+\,J_0(\beta)\cdot \cos(\omega_c t+ 2\cdot0 \omega_m) 
+    \,+\, \sum_{k=1}^\infty J_{2k}(\beta)\cos((\omega_c + 2k \omega_m) t) 
+\end{align*}
 wird.
-Wenn dabei \(2k\) durch alle geraden Zahlen von \(-\infty \to \infty\) mit \(n\) substituiert erhält man den vereinfachten Term
-\[
-    \sum_{n\, \text{gerade}} J_{n}(\beta) \cos((\omega_c + n\omega_m) t),
+Das Minus im Ersten Term wird  zur negativen Summe \(\sum_{-\infty}^{-1}\) ersetzt.
+Da \(2k\) immer gerade ist, wird es durch alle negativen und positiven Ganzzahlen \(n\) ersetzt:
+\begin{align*}
+    \sum_{n\, \text{gerade}} J_{n}(\beta) \cos((\omega_c + n \omega_m) t),
     \label{fm:eq:gerade}
-\]
-dabei gehen nun die Terme von \(-\infty \to \infty\), dabei bleibt n Ganzzahlig.
-
+\end{align*}
+%----------------------------------------------------------------------------------------------------------------
 \subsubsection{Sin-Teil}
 Nun zum zweiten Teil des Term \eqref{fm:eq:start}, den Sin-Teil
-\[
-    \sin(\omega_c)\sin(\beta\sin(\omega_m t)).
-\]
+\begin{align*}
+    s(t) 
+    &=
+    -\sin(\omega_c t)\cdot\sin(\beta\sin(\omega_m t)).
+\end{align*}
 Dieser wird mit der \eqref{fm:eq:besselid2} Besselindentität zu
 \begin{align*}
-    \sin(\omega_c t) \cdot \bigg[ J_0(\beta) + 2 \sum_{k=1}^\infty J_{ 2k + 1}(\beta) \cos(( 2k + 1) \omega_m t) \bigg]
-    &=\\
-    J_0(\beta) \cdot \sin(\omega_c t) + \sum_{k=1}^\infty J_{2k+1}(\beta) \underbrace{2\sin(\omega_c t)\cos((2k+1)\omega_m t)}_{\text{Additionstheorem}}.
+    s(t) 
+    &=
+    -\sin(\omega_c t) \cdot \bigg[ 2 \sum_{k=0}^\infty J_{ 2k + 1}(\beta) \cos(( 2k + 1) \omega_m t) \bigg]
+    \\
+    &=
+    \sum_{k=0}^\infty -1 \cdot J_{2k+1}(\beta) 2\sin(\omega_c t)\cos((2k+1)\omega_m t).
 \end{align*}
-Auch hier wird ein Additionstheorem \eqref{fm:eq:addth3} gebraucht, dabei ist \(A = \omega_c t\) und \(B = (2k+1)\omega_m t \), 
-somit wird daraus
+Da \(2k + 1\) alle ungeraden positiven Ganzzahlen entspricht wird es durch \(n\) ersetzt. 
+Wird die Besselindentität \eqref{fm:eq:besselid3} gebraucht, so ersetzten wird \(J_{-n}(\beta) = -1\cdot J_n(\beta)\) ersetzt:
+\begin{align*}
+    s(t)
+    &=
+    \sum_{n=0}^\infty J_{-n}(\beta) \underbrace{2\sin(\omega_c t)\cos(n \omega_m t)}_{\text{Additionstheorem \eqref{fm:eq:addth3}}}.
+\end{align*}
+Auch hier wird ein Additionstheorem \eqref{fm:eq:addth3} gebraucht, dabei ist \(A = \omega_c t\) und \(B = n \omega_m t \), 
+somit wird daraus:
+\begin{align*}
+    s(t)
+    &=
+    \sum_{n=0}^\infty J_{-n}(\beta) \{ \underbrace{\cos((\omega_c - n\omega_m) t)} \,-\, \cos((\omega_c + n\omega_m) t) \}
+    \\
+    &=
+   \sum_{n=- \infty}^{0} J_{n}(\beta)  \overbrace{\cos((\omega_c + n \omega_m) t)}
+   \,-\, \sum_{n=0}^\infty J_{-n}(\beta) \cos((\omega_c + n\omega_m) t)
+\end{align*}
+Auch hier wurde wieder eine zweite Summe \(\sum_{-\infty}^{-1}\) gebraucht um das Minus zu einem Plus zu wandeln.
+Wenn \(n = 0 \) ist der Minuend gleich dem Subtrahend und somit dieser Teil \(=0\), das bedeutet \(n\) ended bei \(-1\) und started bei \(1\).
+\begin{align*}
+    s(t)
+    &=
+    \sum_{n=- \infty}^{-1} J_{n}(\beta)  \cos((\omega_c + n \omega_m) t)
+    \underbrace{\,-\, \sum_{n=1}^\infty J_{-n}(\beta)} \cos((\omega_c + n\omega_m) t)
+\end{align*}
+Um aus diesem Subtrahend eine Addition zu kreiernen, wird die Besselindentität \eqref{fm:eq:besselid3} gebraucht, 
+jedoch so \(-1 \cdot J_{-n}(\beta) = J_n(\beta)\) und daraus wird dann:
+\begin{align*}
+    s(t)
+    &=
+    \sum_{n=- \infty}^{-1} J_{n}(\beta)  \cos((\omega_c + n \omega_m) t)
+    \,+\, \sum_{n=1}^\infty J_{n}(\beta) \cos((\omega_c + n\omega_m) t)
+\end{align*}
+Da \(n\) immer ungerade ist und \(0\) nicht zu den ungeraden zahlen zählt, kann man dies so vereinfacht 
 \[
-    J_0(\beta) \cdot \sin(\omega_c) + \sum_{k=1}^\infty J_{2k+1}(\beta) \{ \underbrace{\cos((\omega_c-(2k+1)\omega_m) t)}_{\text{neg.Teil}} - \cos((\omega_c+(2k+1)\omega_m) t) \}
-\]dieser Term.
-Wenn dabei \(2k +1\) durch alle ungeraden Zahlen von \(-\infty \to \infty\) mit \(n\) substituiert.
-Zusätzlich dabei noch die letzte Besselindentität \eqref{fm:eq:besselid3} brauchen, ist bei allen ungeraden negativen \(n : J_{-n}(\beta) = -1\cdot J_n(\beta)\).
-Somit wird neg.Teil zum Term \(-\cos((\omega_c+(2k+1)\omega_m) t)\) und die Summe vereinfacht sich zu
-\[
-     \sum_{n\, \text{ungerade}} -1 \cdot J_{n}(\beta) \cos((\omega_c + n\omega_m) t).
-     \label{fm:eq:ungerade}
+    s(t)
+    =
+    \sum_{n\, \text{ungerade}} -1 \cdot J_{n}(\beta) \cos((\omega_c + n\omega_m) t).
+    \label{fm:eq:ungerade}
 \]
-Substituiert man nun noch \(n \text{mit} -n \) so fällt das \(-1\) weg.
-
+schreiben.
+%------------------------------------------------------------------------------------------
 \subsubsection{Summe Zusammenführen}
 Beide Teile \eqref{fm:eq:gerade} Gerade 
 \[
     \sum_{n\, \text{gerade}} J_{n}(\beta) \cos((\omega_c + n\omega_m) t)
-\]und \eqref{fm:eq:ungerade} Ungerade 
+\]
+und \eqref{fm:eq:ungerade} Ungerade 
 \[
     \sum_{n\, \text{ungerade}} J_{n}(\beta) \cos((\omega_c + n\omega_m) t)
 \]
@@ -134,13 +183,12 @@ ergeben zusammen
 \]
 Somit ist \eqref{fm:eq:proof} bewiesen.
 \newpage
-
-%----------------------------------------------------------------------------
+%-----------------------------------------------------------------------------------------
 \subsection{Bessel und Frequenzspektrum}
-Um sich das ganze noch einwenig Bildlicher vorzustellenhier einmal die Besselfunktion \(J_{k}(\beta)\) in geplottet.
+Um sich das ganze noch einwenig Bildlicher vorzustellenhier einmal die Bessel-Funktion \(J_{k}(\beta)\) in geplottet.
 \begin{figure}
 	\centering
-%	\input{./PyPython animation/bessel.pgf}
+	\input{papers/fm/Python animation/bessel.pgf}
 	\caption{Bessle Funktion \(J_{k}(\beta)\)}
 	\label{fig:bessel}
 \end{figure}
@@ -151,7 +199,7 @@ Nun einmal das Modulierte FM signal im Frequenzspektrum mit den einzelen Summen 
 TODO
 Hier wird beschrieben wie die Bessel Funktion der FM im Frequenzspektrum hilft, wieso diese gebrauch wird und ihre Vorteile.
 \begin{itemize}
-    \item Zuerest einmal die Herleitung von FM zu der Besselfunktion
+    \item Zuerest einmal die Herleitung von FM zu der Bessel-Funktion
     \item Im Frequenzspektrum darstellen mit Farben, ersichtlich machen. 
     \item Parameter tuing der Trägerfrequenz, Modulierende frequenz und Beta. 
 \end{itemize}

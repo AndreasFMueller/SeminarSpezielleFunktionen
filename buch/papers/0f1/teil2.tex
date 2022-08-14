@@ -6,12 +6,12 @@
 \section{Umsetzung
 \label{0f1:section:teil2}}
 \rhead{Umsetzung}
-Zur Umsetzung wurden drei verschiedene Ansätze gewählt.\cite{0f1:code} Dabei wurde der Schwerpunkt auf die Funktionalität und eine gute Lesbarkeit des Codes gelegt.
-Die Unterprogramme wurde jeweils, wie die GNU Scientific Library, in C geschrieben. Die Zwischenresultate wurden vom Hauptprogramm in einem CSV-File gespeichert. Anschliessen wurde mit der Matplot-Libray in Python die Resultate geplottet.
+Zur Umsetzung wurden drei verschiedene Ansätze gewählt \cite{0f1:code}. Dabei wurde der Schwerpunkt auf die Funktionalität und eine gute Lesbarkeit des Codes gelegt.
+Die Unterprogramme wurde jeweils, wie die GNU Scientific Library, in C geschrieben. Die Zwischenresultate wurden vom Hauptprogramm in einem CSV-File gespeichert. Anschliessen wurde mit der Matplot-Library in Python die Resultate geplottet.
 
 \subsection{Potenzreihe
 \label{0f1:subsection:potenzreihe}}
-Die naheliegendste Lösung ist die Programmierung der Potenzreihe. Allerdings ist ein Problem dieser Umsetzung \ref{0f1:listing:potenzreihe}, dass die Fakultät im Nenner schnell grosse Werte annimmt und so der Bruch gegen Null strebt. Spätesten ab $k=167$ stösst diese Umsetzung  \eqref{0f1:umsetzung:0f1:eq} an ihre Grenzen, da die Fakultät von $168$ eine Bereichsüberschreitung des \textit{double} Bereiches darstellt. \cite{0f1:double}
+Die naheliegendste Lösung ist die Programmierung der Potenzreihe. Allerdings ist ein Problem dieser Umsetzung \ref{0f1:listing:potenzreihe}, dass die Fakultät im Nenner schnell grosse Werte annimmt und so der Bruch gegen Null strebt. Spätesten ab $k=167$ stösst diese Umsetzung  \eqref{0f1:umsetzung:0f1:eq} an ihre Grenzen, da die Fakultät von $168$ eine Bereichsüberschreitung des \textit{double} Bereiches darstellt \cite{0f1:double}.
 
 \begin{align}
     \label{0f1:umsetzung:0f1:eq}
@@ -34,23 +34,22 @@ Ein endlicher Kettenbruch ist ein Bruch der Form
 \begin{equation*}
 a_0 + \cfrac{b_1}{a_1+\cfrac{b_2}{a_2+\cfrac{b_3}{a_3+\cdots}}}
 \end{equation*}
-in welchem $a_0, a_1,\dots,a_n$ und $b_1,b_2,\dots,b_n$ ganze Zahlen darstellen.
+in welchem $a_0, a_1,\dots,a_n$ und $b_1,b_2,\dots,b_n$ ganze Zahlen sind.
 Die Kurzschreibweise für einen allgemeinen Kettenbruch ist 
 \begin{equation*}
 	a_0 + \frac{a_1|}{|b_1} + \frac{a_2|}{|b_2} + \frac{a_3|}{|b_3} + \cdots
 \end{equation*}
-und ist somit verknüpfbar mit der Potenzreihe.
-\cite{0f1:wiki-kettenbruch}
-Angewendet auf die Funktion $\mathstrut_0F_1$ bedeutet dies\cite{0f1:wiki-fraction}:
+\cite{0f1:wiki-kettenbruch}.
+Angewendet auf die Funktion $\mathstrut_0F_1$ bedeutet dies \cite{0f1:wiki-fraction}:
 \begin{equation*}
 	\mathstrut_0F_1(;c;z) = 1 + \frac{z}{c\cdot1!} + \frac{z^2}{c(c+1)\cdot2!} + \frac{z^3}{c(c+1)(c+2)\cdot3!} + \cdots
 \end{equation*}
-Nach allen Umformungen ergibt sich folgender, irregulärer Kettenbruch \eqref{0f1:math:kettenbruch:0f1:eq}
+Umgeformt ergibt sich folgender Kettenbruch
 \begin{equation}
 	\label{0f1:math:kettenbruch:0f1:eq}
 	\mathstrut_0F_1(;c;z) = 1 + \cfrac{\cfrac{z}{c}}{1+\cfrac{-\cfrac{z}{2(c+1)}}{1+\cfrac{z}{2(c+1)}+\cfrac{-\cfrac{z}{3(c+2)}}{1+\cfrac{z}{5(c+4)} + \cdots}}},
 \end{equation}
-der als Code \ref{0f1:listing:kettenbruchIterativ} umgesetzt wurde. 
+der als Code (siehe: Listing \ref{0f1:listing:kettenbruchIterativ})  umgesetzt wurde. 
 \cite{0f1:wolfram-0f1}
 
 \lstinputlisting[style=C,float,caption={Iterativ umgesetzter Kettenbruch.},label={0f1:listing:kettenbruchIterativ},  firstline=8]{papers/0f1/listings/kettenbruchIterativ.c}
@@ -138,7 +137,7 @@ Nach vollständiger Induktion ergibt sich für den Schritt $k$, die Matrix
 \end{equation}
 Und Schlussendlich kann der Näherungsbruch
 \[
-\frac{Ak}{Bk}
+\frac{A_k}{B_k}
 \] 
 berechnet werden.
 
@@ -166,7 +165,7 @@ B_{k+1} &= B_{k-1} \cdot b_k + B_k \cdot a_k
 Näherungsbruch: \qquad$\displaystyle\frac{A_k}{B_k}$
 \end{itemize}
 
-Ein grosser Vorteil dieser Umsetzung \ref{0f1:listing:kettenbruchRekursion} ist, dass im Vergleich zum Code \ref{0f1:listing:kettenbruchIterativ} eine Division gespart werden kann und somit weniger Rundungsfehler entstehen können.
+Ein grosser Vorteil dieser Umsetzung als Rekursionsformel ist \ref{0f1:listing:kettenbruchRekursion}, dass im Vergleich zum Code \ref{0f1:listing:kettenbruchIterativ} eine Division gespart werden kann und somit weniger Rundungsfehler entstehen können.
 
 %Code
 \lstinputlisting[style=C,float,caption={Rekursionsformel für Kettenbruch.},label={0f1:listing:kettenbruchRekursion},  firstline=8]{papers/0f1/listings/kettenbruchRekursion.c}
