@@ -6,7 +6,7 @@
 \tikzstyle{mass}=[line width=0.6,red!30!black,fill=red!40!black!10,rounded corners=1,top color=red!40!black!20,bottom color=red!40!black!10,shading angle=20]
 \tikzstyle{spring}=[line width=0.8,blue!7!black!80,snake=coil,segment amplitude=5,line cap=round]
 
-\begin{tikzpicture}[scale=2]
+\begin{tikzpicture}[scale=2,>=latex]
     \newcommand{\ticks}[2]
     {
         % arguments: x, y coordinates
@@ -47,9 +47,9 @@
 
     % create springs
     \draw[spring, segment length=(\xMass1 - \wWall) * \springscale] (\originX1, \originY1) ++
-    (\wWall, \wWall + \hMass / 2) --++ (\xMass1 - \wWall, 0) node[midway,above=0.2] {$k$};
+    (\wWall, \wWall + \hMass / 2) --++ (\xMass1 - \wWall, 0) node[midway,above=3.5] {$k$};
     \draw[spring, segment length=(\xMass2 - \wWall) * \springscale] (\originX2, \originY2) ++
-    (\wWall, \wWall + \hMass / 2) --++ (\xMass2 - \wWall, 0) node[midway,above=0.2] {$k$};
+    (\wWall, \wWall + \hMass / 2) --++ (\xMass2 - \wWall, 0) node[midway,above=3.5] {$k$};
 
     % create vertical measurement line 
     \draw[vmline] (\xMass1, \xAxisYpos) --+(0, \originY1 + \wWall);
@@ -57,9 +57,9 @@
     \draw[vmline] (\wWall, \originY1+\wWall) --(\wWall, \originY2 + \hWall);
 
     % create horizontal measurement line
-    \draw[hmline] (\wWall, \xAxisYpos + 0.2) -- (\xMass1, \xAxisYpos + 0.2) node[midway,fill=white,inner sep=0] {$\ell_0$};
+    \draw[hmline] (\wWall, \xAxisYpos + 0.2) -- (\xMass1, \xAxisYpos + 0.2) node[midway,fill=white,inner sep=0] {$l_0$};
     \draw[hmline] (\xMass1, \xAxisYpos + 0.2) -- (\xMass2, \xAxisYpos + 0.2) node[midway,fill=white,inner sep=0] {$\Delta_{x}$};
-    \draw[hmline] (\wWall, \xAxisYpos - 0.3) -- (\xMass2, \xAxisYpos - 0.3) node[midway,fill=white,inner sep=0] {$\ell_{1}$};
+    \draw[hmline] (\wWall, \xAxisYpos - 0.3) -- (\xMass2, \xAxisYpos - 0.3) node[midway,fill=white,inner sep=0] {$l_{1}$};
 
     %  create force arrow
     \draw[->,blue, very thick,line cap=round] (\xMass2 + \wMass / 2, \originY2 + \wWall + \hMass + 0.15) node[above] {$\vb{F_{R}}$} --+ (-0.5, 0);
