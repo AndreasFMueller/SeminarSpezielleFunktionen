@@ -97,41 +97,42 @@ Ausserdem ist ersichtlich, dass $p(x)$ die Differentialgleichung
 \begin{align*}
 x \frac{dp}{dx}
 =
--(\nu + 1 - x) p
+(\nu + 1 - x) p
 \end{align*}
 erfüllen muss.
 Durch Separation erhalten wir dann
 \begin{align*}
 \int \frac{dp}{p}
  & =
--\int \frac{\nu + 1 - x}{x} \, dx
+\int \frac{\nu + 1 - x}{x} \, dx
 =
--\int \frac{\nu + 1}{x} \, dx - \int 1\, dx
+\int \frac{\nu + 1}{x} \, dx - \int 1\, dx
 \\
 \log p
  & =
--(\nu + 1)\log x - x + c
+(\nu + 1)\log x - x + c
 \\
 p(x)
  & =
--C x^{\nu + 1} e^{-x}
+C x^{\nu + 1} e^{-x}
 .
 \end{align*}
 Eingefügt in Gleichung~\eqref{laguerre:sl-lag} ergibt sich
 \begin{align*}
 \frac{C}{w(x)}
 \left(
-x^{\nu+1} e^{-x} \frac{d^2}{dx^2} +
+-x^{\nu+1} e^{-x} \frac{d^2}{dx^2} -
 (\nu + 1 - x) x^{\nu} e^{-x} \frac{d}{dx}
 \right)
 =
 x \frac{d^2}{dx^2} + (\nu + 1 - x) \frac{d}{dx}.
 \end{align*}
 Mittels Koeffizientenvergleich kann nun abgelesen werden,
-dass $w(x) = x^\nu e^{-x}$ und $C=1$ mit $\nu > -1$.
-Die Gewichtsfunktion $w(x)$ wächst für $x\rightarrow-\infty$ sehr schnell an,
-deshalb ist die Laguerre-Gewichtsfunktion nur geeignet für den
-Definitionsbereich $(0, \infty)$.
+dass $w(x) = x^\nu e^{-x}$ und $C=-1$. %mit $\nu \geq 0$.
+Die Gewichtsfunktion $w(x)$ wächst für $x\rightarrow-\infty$ sehr schnell an.
+Ausserdem hat die Gewichtsfunktion $w(x)$ für negative $\nu$ einen Pol bei $x=0$,
+daher ist die Laguerre-Gewichtsfunktion nur für den
+Definitionsbereich $(0, \infty)$ geeignet.
 
 \subsubsection{Randbedingungen}
 Bleibt nur noch sicherzustellen, dass die Randbedingungen

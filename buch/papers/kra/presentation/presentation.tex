@@ -1,0 +1,491 @@
+\documentclass[ngerman, aspectratio=169, xcolor={rgb}]{beamer}
+
+% style
+\mode<presentation>{
+	\usetheme{Frankfurt}
+}
+%packages
+\usepackage[utf8]{inputenc}\DeclareUnicodeCharacter{2212}{-}
+\usepackage[english]{babel}
+\usepackage{graphicx}
+\usepackage{array}
+
+\newcolumntype{L}[1]{>{\raggedright\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+\usepackage{ragged2e}
+
+\usepackage{bm} % bold math
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{mathtools}
+\usepackage{amsmath}
+\usepackage{multirow} % multi row in tables
+\usepackage{booktabs} %toprule midrule bottomrue in tables
+\usepackage{scrextend}
+\usepackage{textgreek}
+\usepackage[rgb]{xcolor}
+
+\usepackage[normalem]{ulem} % \sout
+
+\usepackage{ marvosym } % \Lightning
+
+\usepackage{multimedia} % embedded videos
+
+\usepackage{tikz}
+\usepackage{pgf}
+\usepackage{pgfplots}
+
+\usepackage{algorithmic}
+
+%citations
+\usepackage[style=verbose,backend=biber]{biblatex}
+\addbibresource{references.bib}
+
+
+%math font
+\usefonttheme[onlymath]{serif}
+
+%Beamer Template modifications
+%\definecolor{mainColor}{HTML}{0065A3} % HSR blue
+\definecolor{mainColor}{HTML}{D72864} % OST pink
+\definecolor{invColor}{HTML}{28d79b} % OST pink
+\definecolor{dgreen}{HTML}{38ad36} % Dark green
+
+%\definecolor{mainColor}{HTML}{000000} % HSR blue
+\setbeamercolor{palette primary}{bg=white,fg=mainColor}
+\setbeamercolor{palette secondary}{bg=orange,fg=mainColor}
+\setbeamercolor{palette tertiary}{bg=yellow,fg=red}
+\setbeamercolor{palette quaternary}{bg=mainColor,fg=white} %bg = Top bar, fg = active top bar topic
+\setbeamercolor{structure}{fg=black} % itemize, enumerate, etc (bullet points)
+\setbeamercolor{section in toc}{fg=black} % TOC sections
+\setbeamertemplate{section in toc}[sections numbered]
+\setbeamertemplate{subsection in toc}{%
+	\hspace{1.2em}{$\bullet$}~\inserttocsubsection\par}
+
+\setbeamertemplate{itemize items}[circle]
+\setbeamertemplate{description item}[circle]
+\setbeamertemplate{title page}[default][colsep=-4bp,rounded=true]
+\beamertemplatenavigationsymbolsempty
+
+\setbeamercolor{footline}{fg=gray}
+\setbeamertemplate{footline}{%
+	\hfill\usebeamertemplate***{navigation symbols}
+	\hspace{0.5cm}
+	\insertframenumber{}\hspace{0.2cm}\vspace{0.2cm}
+}
+
+\usepackage{caption}
+\captionsetup{labelformat=empty}
+
+%Title Page
+\title{KRA}
+\subtitle{Kalman Riccati Abel}
+\author{Samuel Niederer}
+% \institute{OST Ostschweizer Fachhochschule}
+% \institute{\includegraphics[scale=0.3]{../img/ost_logo.png}}
+\date{\today}
+
+\input{../packages.tex}
+
+\newcommand*{\QED}{\hfill\ensuremath{\blacksquare}}%
+
+\newcommand*{\HL}{\textcolor{mainColor}}
+\newcommand*{\RD}{\textcolor{red}}
+\newcommand*{\BL}{\textcolor{blue}}
+\newcommand*{\GN}{\textcolor{dgreen}}
+\newcommand{\dt}[0]{\frac{d}{dt}}
+
+\definecolor{darkgreen}{rgb}{0,0.6,0}
+
+
+\makeatletter
+\newcount\my@repeat@count
+\newcommand{\myrepeat}[2]{%
+	\begingroup
+	\my@repeat@count=\z@
+	\@whilenum\my@repeat@count<#1\do{#2\advance\my@repeat@count\@ne}%
+	\endgroup
+}
+\makeatother
+
+\usetikzlibrary{automata,arrows,positioning,calc,shapes.geometric, fadings}
+
+\begin{document}
+
+\begin{frame}
+	\titlepage
+\end{frame}
+
+\begin{frame}
+	\frametitle{Content}
+	\tableofcontents
+\end{frame}
+
+\section{Einführung}
+
+\begin{frame}
+	\begin{itemize}
+		\item<1|only@1> \textbf{K}alman
+		\item<1|only@1> \textbf{R}iccati
+		\item<1|only@1> \textbf{A}bel
+
+		\item<2|only@2> \textcolor{red}{\sout{\textbf{K}alman}}
+		\item<2|only@2> \textbf{R}iccati
+		\item<2|only@2> \textbf{A}bel
+
+		\item<3|only@3> \textcolor{red}{\sout{\textbf{K}alman}} \textcolor{green}{Federmassesytem}
+		\item<3|only@3> \textbf{R}iccati
+		\item<3|only@3> \textbf{A}bel
+
+		\item<4|only@4> \textcolor{red}{\sout{\textbf{K}alman}} \textcolor{green}{Federmassesytem}
+		\item<4|only@4> \textbf{R}iccati
+		\item<4|only@4> \uwave{\textbf{A}bel}
+	\end{itemize}
+\end{frame}
+
+\section{Riccati}
+
+\begin{frame}
+	\frametitle{Riccatische Differentialgleichung}
+	\begin{equation*}
+		% y'(x) = f(x)y^2(x) + g(x)y(x) + h(x)
+		x'(t) = f(t)x^2(t) + g(t)x(t) + h(t)
+	\end{equation*}
+
+	\pause
+
+	\begin{equation*}
+		\dot{X}(t) = - X(t)BX(t) - X(t)A + DX(t) + C
+	\end{equation*}
+
+	% \pause
+	% Anwendungen
+	% \begin{itemize}
+	% 	\item Zeitkontinuierlicher Kalmanfilter
+	% 	\item Regelungstechnik LQ-Regler
+	% 	\item Federmassesyteme
+	% \end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Auftreten der Gleichung}
+	\begin{columns}
+		\column{0.4 \textwidth}
+		\begin{equation*}
+			\dt
+			\begin{pmatrix}
+				X \\
+				Y
+			\end{pmatrix}
+			=
+			\underbrace{
+				\begin{pmatrix}
+					A & B \\
+					C & D
+				\end{pmatrix}
+			}_{H}
+			\begin{pmatrix}
+				X \\
+				Y
+			\end{pmatrix}
+		\end{equation*}
+
+		\pause
+
+		\column{0.4 \textwidth}
+		\begin{equation*}
+			U = YX^{-1} \qquad \dt U = ?
+		\end{equation*}
+	\end{columns}
+
+	\pause
+
+	\begin{align*}
+		\dt U         & = \dot{Y} X^{-1} + Y \dt X^{-1}                                                                                                    \\
+		\uncover<4->{ & = (CX + DY) X^{-1} - Y (X^{-1} \dot{X} X^{-1})\\}
+		\uncover<5->{ & = C\underbrace{XX^{-1}}_\text{I} + D\underbrace{YX^{-1}}_\text{U} - Y(X^{-1} (AX + BY) X^{-1})\\}
+		\uncover<6->{ & = C + DU - \underbrace{YX^{-1}}_\text{U}(A\underbrace{XX^{-1}}_\text{I} + B\underbrace{YX^{-1}}_\text{U})\\}
+		\uncover<7->{ & = C  + DU - UA - UBU}
+	\end{align*}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Lösen der Gleichung}
+	\begin{equation*}
+		\begin{pmatrix}
+			X(t) \\
+			Y(t)
+		\end{pmatrix}
+		=
+		\Phi(t_0, t)
+		\begin{pmatrix}
+			I(t) \\
+			U_0(t)
+		\end{pmatrix}
+		=
+		\begin{pmatrix}
+			\Phi_{11}(t_0, t) & \Phi_{12}(t_0, t) \\
+			\Phi_{21}(t_0, t) & \Phi_{22}(t_0, t)
+		\end{pmatrix}
+		\begin{pmatrix}
+			I(t) \\
+			U_0(t)
+		\end{pmatrix}
+	\end{equation*}
+
+	\pause
+
+	\begin{equation*}
+		U(t) =
+		\begin{pmatrix}
+			\Phi_{21}(t_0, t) + \Phi_{22}(t_0, t) U_0(t)
+		\end{pmatrix}
+		\begin{pmatrix}
+			\Phi_{11}(t_0, t) + \Phi_{12}(t_0, t) U_0(t)
+		\end{pmatrix}
+		^{-1}
+	\end{equation*}
+
+	\pause
+
+	% wobei $\Phi(t, t_0)$ die sogennante Zustandsübergangsmatrix ist.
+
+	\begin{equation*}
+		\Phi(t_0, t) = e^{H(t - t_0)}
+	\end{equation*}
+\end{frame}
+
+\section{Federmassystem}
+\begin{frame}
+	\frametitle{Federmassesystem}
+	\begin{columns}
+		\column{0.5 \textwidth}
+		\input{../images/simple_mass_spring.tex}
+
+		\column{0.5 \textwidth}
+		\begin{align*}
+			\uncover<2->{F_R      & = k \Delta_x  \\}
+			\uncover<3->{F_a      & = am = \ddot{x} m \\}
+			\uncover<4->{F_R      & = F_a \Leftrightarrow k \Delta_x = \ddot{x} m\\}
+			\uncover<5->{\ddot{x} & = \frac{k \Delta_x}{m} \\}
+			\uncover<6->{x(t)     & = A \cos(\omega_0 + \Phi), \quad \omega_0 = \sqrt{\frac{k}{m}}}
+		\end{align*}
+	\end{columns}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Phasenraum}
+	\begin{columns}
+		\column{0.3 \textwidth}
+		\begin{tikzpicture}[scale=3]
+			\draw[->, thick] (0, 0) -- (1,0) node[right] {$q$};
+			\draw[->, thick] (0.5, -0.5) -- (0.5,0.5) node[above]{$p$};
+		\end{tikzpicture}
+		\column{0.7 \textwidth}
+		Impulskoordinaten $p = (p_{1}, p_{2}, ..., p_{n}), \quad p=mv$ \\
+		Ortskoordinaten $q = (q_{1}, q_{2}, ..., q_{n})$ \\
+
+
+
+		\begin{align*}
+			\uncover<2->{\mathcal{H}(q, p) & = \underbrace{T(p)}_{E_{kin}} + \underbrace{V(q)}_{E_{pot}} = E_{tot} \\}
+			\uncover<3->{                  & = \frac{p^2}{2m}+ \frac{k q^2}{2}}
+		\end{align*}
+
+
+
+		\begin{equation*}
+			\uncover<4->{
+				\dot{q_{k}} = \frac{\partial \mathcal{H}}{\partial p_k}
+				\qquad
+				\dot{p_{k}} = -\frac{\partial \mathcal{H}}{\partial q_k}
+			}
+		\end{equation*}
+
+		\pause
+
+		\begin{equation*}
+			\uncover<5->{
+				\begin{pmatrix}
+					\dot{q} \\
+					\dot{p}
+				\end{pmatrix}
+				=
+				\begin{pmatrix}
+					0  & \frac{1}{m} \\
+					-k & 0
+				\end{pmatrix}
+				\begin{pmatrix}
+					q \\
+					p
+				\end{pmatrix}
+			}
+		\end{equation*}
+
+	\end{columns}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Phasenraum}
+	\input{../images/phase_space.tex}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Federmassesystem}
+	\begin{columns}
+		\column{0.6 \textwidth}
+		\scalebox{0.8}{\input{../images/multi_mass_spring.tex}}
+		\begin{align*}
+			\uncover<2->{\mathcal{H} & = T + V \\}
+			\uncover<7->{            & = \frac{p_1^2}{2m_1} + \frac{p_2^2}{2m_2} + \frac{k_1 q_1^2}{2} + \frac{k_c (q_2 - q_1)^2}{2} + \frac{k_2 q_2^2}{2}}
+		\end{align*}
+
+		\column{0.4 \textwidth}
+		\begin{align*}
+			\uncover<3->{T & = T_1 + T_2}                                                               \\
+			\uncover<5->{  & = \frac{p_1^2}{2m_1} + \frac{p_2^2}{2m_2}   }                              \\
+			\uncover<4->{V & = V_1 + V_c + V_2 }                                                        \\
+			\uncover<6->{  & = \frac{k_1 q_1^2}{2} + \frac{k_c (q_2 - q_1)^2}{2} + \frac{k_2 q_2^2}{2}}
+		\end{align*}
+	\end{columns}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Federmassesystem}
+	\begin{equation*}
+		\begin{pmatrix}
+			\dot{q_1} \\
+			\dot{q_2} \\
+			\dot{p_1} \\
+			\dot{p_2} \\
+		\end{pmatrix}
+		=
+		\begin{pmatrix}
+			0            & 0            & \frac{1}{2m_1} & 0              \\
+			0            & 0            & 0              & \frac{1}{2m_2} \\
+			-(k_1 + k_c) & k_c          & 0              & 0              \\
+			k_c          & -(k_c + k_2) & 0              & 0              \\
+		\end{pmatrix}
+		\begin{pmatrix}
+			q_1 \\
+			q_2 \\
+			p_1 \\
+			p_2 \\
+		\end{pmatrix}
+		\Leftrightarrow
+		\dt
+		\begin{pmatrix}
+			Q \\
+			P \\
+		\end{pmatrix}
+		\underbrace{
+			\begin{pmatrix}
+				0 & M \\
+				K & 0
+			\end{pmatrix}
+		}_{H}
+		\begin{pmatrix}
+			Q \\
+			P \\
+		\end{pmatrix}
+	\end{equation*}
+
+	\pause
+
+	$U = PQ^{-1} \qquad \dt U = ?$
+
+	\pause
+
+	\begin{align*}
+		\dt U & = C  + DU - UA - UBU \\
+		      & = K - UMU
+	\end{align*}
+
+\end{frame}
+
+\begin{frame}
+	\frametitle{Einfluss der Anfangsbedingung:}
+	\begin{columns}
+		\column{0.4 \textwidth}
+		\begin{equation*}
+			\uncover<2->{q_0 =
+				\begin{pmatrix}
+					q_{10} \\
+					q_{20}
+				\end{pmatrix}
+				=
+				\begin{pmatrix}
+					3 \\
+					1
+				\end{pmatrix}
+			}
+		\end{equation*}
+		\begin{equation*}
+			\uncover<3->{q_0 =
+				\begin{pmatrix}
+					q_{10} \\
+					q_{20}
+				\end{pmatrix}
+				=
+				\begin{pmatrix}
+					3 \\
+					3
+				\end{pmatrix}
+			}
+		\end{equation*}
+		\begin{equation*}
+			\uncover<4->{q_0 =
+				\begin{pmatrix}
+					q_{10} \\
+					q_{20}
+				\end{pmatrix}
+				=
+				\begin{pmatrix}
+					2 \\
+					-2
+				\end{pmatrix}
+			}
+		\end{equation*}
+		\column{0.6 \textwidth}
+		\scalebox{0.8}{\input{../images/multi_mass_spring.tex}}
+	\end{columns}
+\end{frame}
+
+\section{Schlussteil}
+\begin{frame}
+	\frametitle{Zusammenfassung}
+	\begin{itemize}
+		\pause
+		\item{Riccatische Differentialgleichung}
+		      \pause
+		      \begin{itemize}
+			      \item{Ausgansgleichung}
+			            \pause
+			      \item{Lösung}
+		      \end{itemize}
+		      \pause
+		\item{Harmonischer Ozillator}
+		      \pause
+		      \begin{itemize}
+			      \item{Hamiltonfunktion}
+			            \pause
+			      \item{Phasenraum}
+		      \end{itemize}
+		      \pause
+		\item{Gekoppelter harmonischer Ozillator}
+		      \pause
+		      \begin{itemize}
+			      \item{Riccatische Differentialgleichung}
+			            \pause
+			      \item{Einfluss der Anfangsbedingungen}
+		      \end{itemize}
+		      \pause
+		\item{\uwave{Abel}}
+		      \begin{itemize}
+			      \pause
+			      \item{Nichtlineare Federkonstante}
+		      \end{itemize}
+
+	\end{itemize}
+\end{frame}
+
+\end{document}

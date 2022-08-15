@@ -7,13 +7,14 @@
 \section{Lösungsmethode 1: Separationsmethode 
 	\label{kreismembran:section:teil1}}
 \rhead{Lösungsmethode 1: Separationsmethode}
-An diesem Punkt bleibt also nur noch die Lösung der partiellen Differentialgleichung. In diesem Kapitel wird sie mit Hilfe der Separationsmetode gelöst.
+An diesem Punkt bleibt also nur noch die Lösung der partiellen Differentialgleichung. In diesem Abschnitt wird sie mit Hilfe der Separationsmethode gelöst.
 
-Wie im vorherigen Kapitel gezeigt, lautet die partielle Differentialgleichung, die die Schwingungen einer Membran beschreibt:
+\subsection{Aufgabestellung\label{sub:aufgabestellung}}
+Wie im vorherigen Abschnitt gezeigt, lautet die partielle Differentialgleichung, die die Schwingungen einer Membran beschreibt:
 \begin{equation*}
-	\frac{1}{c^2}\frac{\partial^2u}{\partial t^2} = \Delta u
+	\frac{1}{c^2}\frac{\partial^2u}{\partial t^2} = \Delta u.
 \end{equation*}
-Da es sich um eine Kreisscheibe handelt, werden Polarkoordinaten verwendet, so dass sich der Laplaceoperator ergibt:
+Da es sich um eine Kreisscheibe handelt, werden Polarkoordinaten verwendet, so dass sich der Laplaceoperator
 \begin{equation*}
 	\Delta
 	=
@@ -22,79 +23,102 @@ Da es sich um eine Kreisscheibe handelt, werden Polarkoordinaten verwendet, so d
 	\frac1r
 	\frac{\partial}{\partial r}
 	+
-	\frac{1}{r 2}
-	\frac{\partial^2}{\partial\varphi^2}.
+	\frac{1}{r^2}
+	\frac{\partial^2}{\partial\varphi^2}
 	\label{buch:pde:kreis:laplace}
 \end{equation*}
+ergibt.
 
-Es wird eine runde elastische Membran berücksichtigt, die den Gebietbereich $\Omega$ abdeckt und am Rand $\Gamma$ befestigt ist.
-Es wird daher davon ausgegangen, dass die Membran aus einem homogenen Material von vernachlässigbarer Dicke gefertigt ist.
-Die Membran kann verformt werden, aber innere elastische Kräfte wirken den Verformungen entgegen. Es wirken keine äusseren Kräfte. Es handelt sich somit von einer kreisförmligen eigespannten homogenen schwingenden Membran.
+Es wird eine runde elastische Membran berücksichtigt, die das Gebiet $\Omega$ abdeckt und am Rand $\Gamma$ befestigt ist.
+Es wirken keine äusseren Kräfte. Es handelt sich somit von einer kreisförmligen eingespannten homogenen schwingenden Membran nach den Annahmen von \ref{kreimembran:annahmen}.
 
 Daher ist die Membranabweichung im Punkt $(r,\varphi)$ $\in$ $\overline{\rm \Omega}$ zum Zeitpunkt $t$:
 \begin{align*}
 	u: \overline{\rm \Omega} \times \mathbb{R}_{\geq 0} &\longrightarrow \mathbb{R}\\
 	(r,\varphi,t) &\longmapsto u(r,\varphi,t)
 \end{align*}
-Da die Membran am Rand befestigt ist, kann es keine Schwingungen geben, so dass die \textit{Dirichlet-Randbedingung} gilt:
-\begin{equation*}
-	u\big|_{\Gamma} = 0
-\end{equation*}
-Um eine eindeutige Lösung bestimmen zu können, werden die folgenden Anfangsbedingungen festgelegt:
+Um die Vergleichbarkeit der beiden nachfolgend vorgestellten Lösungsverfahren in Abschnitt \ref{kreismembran:vergleich} zu vereinfachen, werden keine Randbedingungen vorgegeben.
+
+Um eine eindeutige Lösung bestimmen zu können, werden die folgenden Anfangsbedingungen festgelegt zur Zeit $t = \text{0}$:
 \begin{align*}
 	u(r,\varphi, 0) &= f(r,\varphi)\\
-	\frac{\partial}{\partial t} u(r,\varphi, 0) &= g(r,\varphi)
+	u_t(r,\varphi, 0) &= g(r,\varphi).
 \end{align*}
-Daher muss an dieser Stelle von einer Separation der Variablen ausgegangen werden:
+
+\subsection{Lösung\label{sub:lösung1}}
+Nun wird das in Abschnitt \ref{sub:aufgabestellung} vorgestellte Problem mit Hilfe der Separationsmethode gelöst.
+\subsubsection{Ansatz der Separation der Variablen\label{subsub:ansatz_separation}}
+Hierfür wird folgenden Ansatz gemacht:
 \begin{equation*}
 	u(r,\varphi, t) = F(r)G(\varphi)T(t)
 \end{equation*}
-Dank der Randbedingungen kann also gefordert werden, dass $F(R)=0$ ist, und natürlich, dass $G(\varphi)$ $2\pi$ periodisch ist. Eingesetz in der Differenzialgleichung ergibt:
+Dank der Randbedingungen kann gefordert werden, dass $F(R)=0$ ist, und natürlich, dass $G(\varphi)$ $2\pi$ periodisch ist. Eingesetzt in der Differenzialgleichung ergibt sich:
 \begin{equation*}
-	\frac{1}{c^2}\frac{T''(t)}{T(t)}=\frac{F''(r)}{F(r)}+\frac{1}{r}\frac{F'(r)}{F(r)}+\frac{1}{r^2}\frac{G''(\varphi)}{G(\varphi)}
+	\frac{1}{c^2}\frac{T''(t)}{T(t)}=-\kappa^2=\frac{F''(r)}{F(r)}+\frac{1}{r}\frac{F'(r)}{F(r)}+\frac{1}{r^2}\frac{G''(\varphi)}{G(\varphi)}.
 \end{equation*}
-Da die linke Seite nur von $t$ und die rechte Seite nur von $r$ und $\varphi$ abhängt, müssen sie gleich einer reellen Zahl sein. Aus physikalischen Grunden suchen wir nach Lösungen, die weder exponentiell in der Zeit wachsen noch exponentiell abklingen. Dies bedeutet, dass die Konstante negativ sein muss, also schreibt man $k=-k^2$. Daraus ergeben sich die folgenden zwei Gleichungen:
-\begin{gather*}
-	T''(t) + c^2\kappa^2T(t) = 0\\
-	r^2\frac{F''(r)}{F(r)} + r \frac{F'(r)}{F(r)} +\kappa^2 r^2 = - \frac{G''(\varphi)}{G(\varphi)}
-\end{gather*}
-In der zweiten Gleichung hängt die linke Seite nur von $r$ ab, während die rechte Seite nur von $\varphi$ abhängt. Sie müssen also wiederum gleich einer reellen Zahl $\nu$ sein. Also das:
-\begin{gather*}
-	r^2F''(r) + rF'(r) + (\kappa^2 r^2 - \nu)F(r) = 0 \\
-	G''(\varphi) = \nu G(\varphi)
-\end{gather*}
-$G$ kann in einer Fourierreihe entwickelt werden, so dass man sieht, dass $\nu$ die Form $n^2$ mit einer positiven ganzen Zahl sein muss, also:
+Da die linke Seite nur von $t$ und die rechte Seite nur von $r$ und $\varphi$ abhängt, müssen sie gleich einer reellen Zahl sein. 
+Laut Annahme iv) in \ref{kreimembran:annahmen} erfährt die Membran keine Dämpfung.
+Daher werden Lösungen gesucht, die weder exponentiell in der Zeit wachsen noch exponentiell abklingen. 
+Dies bedeutet, dass die Konstante negativ sein muss, also schreibt man $-\kappa^2$. Daraus ergeben sich die folgenden zwei Gleichungen:
+\begin{align*}
+	T''(t) + c^2\kappa^2T(t) &= 0\\
+	r^2\frac{F''(r)}{F(r)} + r \frac{F'(r)}{F(r)} +\kappa^2 r^2 &= - \frac{G''(\varphi)}{G(\varphi)}.
+\end{align*}
+In der zweiten Gleichung hängt die linke Seite nur von $r$ ab, während die rechte Seite nur von $\varphi$ abhängt. Sie müssen also wiederum gleich einer reellen Zahl $\nu$ sein. Also:
+\begin{align*}
+	r^2F''(r) + rF'(r) + (\kappa^2 r^2 - \nu)F(r) = 0 \quad \text{und} \quad
+	G''(\varphi) = \nu G(\varphi).
+\end{align*}
+
+\subsubsection{Lösung für $G(\varphi)$\label{subsub:lösung_G}}
+Da für die zweite Gleichung Lösungen von Schwingungen erwartet werden, für die $G''(\varphi)=-\omega^2 G(\varphi)$ gilt, schreibt man die gemeinsame Konstante als $\nu=-\omega^2$, was die Formeln später vereinfacht. Also:
 \begin{equation*}
- G(\varphi) = C_n \cos(\varphi) + D_n \sin(\varphi)
+ G(\varphi) = C_n \cos(\nu\varphi) + D_n \sin(\nu\varphi)
+ \label{eq:cos_sin_überlagerung}
 \end{equation*}
-Die Gleichung $F$ hat die Gestalt
-\begin{equation*}
-	r^2F''(r) + rF'(r) + (\kappa^2 r^2 - n^2)F(r) = 0 \quad (*)
-\end{equation*}
-Wir bereits in der Vorlesung von Prof. Müller gezeigt, sind die Besselfunktionen
+
+\subsubsection{Lösung für $F(r)$\label{subsub:lösung_F}}
+Die Gleichung für $F$ hat die Gestalt (Verweis auf \label{buch:differentialgleichungen:bessel-operator}
+\begin{align}
+	r^2F''(r) + rF'(r) + (\kappa^2 r^2 - n^2)F(r) = 0 
+	\label{eq:2nd_degree_PDE}
+\end{align}
+Wie bereits in Kapitel \ref{buch:differntialgleichungen:section:bessel} gezeigt, sind die Bessel-Funktionen
 \begin{equation*}
 	J_{\nu}(x) = r^\nu \displaystyle\sum_{m=0}^{\infty} \frac{(-1)^m x^{2m}}{2^{2m+\nu}m! \Gamma (\nu + m+1)}
 \end{equation*}
-Lösungen der "Besselschen Differenzialgleichung"
+Lösungen der Besselschen Differenzialgleichung
 \begin{equation*}
-	x^2 y'' + xy' + (x^2 - \nu^2)y = 0
+	x^2 y'' + xy' + (\kappa^2 - \nu^2)y = 0
 \end{equation*}
-Die Funktionen $F(r) = J_n(\kappa r)$ lösen also die Differentialgleichung $(*)$. Die
-Randbedingung $F(R)=0$ impliziert, dass $\kappa R$ eine Nullstelle der Besselfunktion
-$J_n$ sein muss. Man kann zeigen, dass die Besselfunktionen $J_n, n \geq 0$, alle unendlich
-viele Nullstellen
-\begin{equation*}
-	\alpha_{1n} < \alpha_{2n} < ...
-\end{equation*}
-haben, und dass $\underset{\substack{m\to\infty}}{\text{lim}} \alpha_{mn}=\infty$. Somit ergit sich, dass $\kappa = \frac{\alpha_{mn}}{R}$ für ein $m\geq 1$, und dass
-\begin{equation*}
-	F(r) = J_n (\kappa_{mn}r) \quad mit \quad \kappa_{mn}=\frac{\alpha_{mn}}{R}
-\end{equation*}
-Die Differenzialgleichung $T''(t) + c^2\kappa^2T(t) = 0$, wird auf ähnliche Weise gelöst wie $G(\varphi)$. Durch Überlagerung aller Ergebnisse erhält man die Lösung
-\begin{equation}
-	u(r, \varphi, t) = \displaystyle\sum_{m=1}^{\infty}\displaystyle\sum_{n=0}^{\infty} J_n (k_{mn}r)\cos(n\varphi)[a_{mn}\cos(c \kappa_{mn} t)+b_{mn}\sin(c \kappa_{mn} t)]
-\end{equation}
-Dabei sind m und n ganze Zahlen, wobei m für die Anzahl der Knotenkreise und n
-für die Anzahl der Knotenlinien steht. Es gibt bestimmte Bereiche auf der Membran, in denen es keine Bewegung oder Vibration gibt. Wenn der nicht schwingende Bereich ein Kreis ist, nennt man ihn einen Knotenkreis, und wenn er eine Linie ist, nennt man ihn ebenfalls eine Knotenlinie. $Jn(\kappa_{mn}r)$ ist die Besselfunktion $n$-ter Ordnung, wobei kmn die Wellenzahl und $r$ der Radius ist. $a_{mn}$ und $b_{mn}$ sind die zu bestimmenden Konstanten.
+Die Funktionen $F(r) = J_n(\kappa r)$ lösen die Differentialgleichung \eqref{eq:2nd_degree_PDE}.
 
-An diesem Punkt stellte sich die Frage, ob es möglich wäre, die partielle Differentialgleichung mit einer anderen Methode als der der Trennung der Variablen zu lösen. Nach einer kurzen Recherche und Diskussion mit Prof. Müller wurde festgestellt, dass die beste Methode die Transformationsmethode ist, genauer gesagt die Anwendung der Hankel-Transformation. Im nächsten Kapitel wird daher diese Integraltransformation vorgestellt und entwickelt, und es wird erläutert, warum sie für diese Art von Problem geeignet ist.
+\subsubsection{Lösung für $T(t)$\label{subsub:lösung_T}}
+Die Differenzialgleichung $T''(t) + c^2\kappa^2T(t) = 0$, wird auf ähnliche Weise gelöst wie $G(\varphi)$. 
+
+\subsubsection{Zusammenfassung der Lösungen\label{subsub:zusammenfassung_lösungen}}
+Durch Überlagerung aller Ergebnisse erhält man die Lösung
+\begin{align}
+	u(r, \varphi, t) = \displaystyle\sum_{m=1}^{\infty}\displaystyle\sum_{n=0}^{\infty} J_n (k_{mn}r)[a_{mn}\cos(n\varphi) + b_{mn}\sin(n\varphi)](n\varphi)[c_{mn}\cos(c \kappa_{mn} t)+d_{mn}\sin(c \kappa_{mn} t)]
+	\label{eq:lösung_endliche_generelle}
+\end{align}
+
+Dabei sind $m$ und $n$ ganze Zahlen, wobei $m$ für die Anzahl der Knotenkreise und $n$
+für die Anzahl der Knotenlinien steht. Es gibt bestimmte Bereiche auf der Membran, in denen es keine Bewegung oder Vibration gibt. Wenn der nicht schwingende Bereich ein Kreis ist, nennt man ihn einen Knotenkreis, und wenn er eine Linie ist, nennt man ihn ebenfalls eine Knotenlinie (siehe Abbildung \ref{buch:pde:kreis:fig:pauke}). $J_n(\kappa_{mn}r)$ ist die Besselfunktion $n$-ter Ordnung, wobei $\kappa mn$ die Wellenzahl und $r$ der Radius ist. $a_{mn}$ und $b_{mn}$ sind die zu bestimmenden Konstanten.
+
+\begin{figure}
+	\centering
+	\includegraphics[width=\textwidth]{chapters/090-pde/bessel/pauke.pdf}
+	%\includegraphics{chapters/090-pde/bessel/pauke.pdf}
+	\caption{Vorzeichen der Lösungsfunktionen und Knotenlinien
+		für verschiedene Werte von $\mu$ und $k$.
+		Die Bereiche, in denen die Lösungsfunktion positiv sind, ist 
+		rot dargestellt, die negativen Bereiche blau.
+		In jeder Darstellung gibt es genau $k+\mu$ Knotenlinien.
+		Die Radien der kreisförmigen Knotenlinien müssen aus den Nullstellen
+		der Besselfunktionen berechnet werden.
+		\label{buch:pde:kreis:fig:pauke}}
+\end{figure}
+
+
+An diesem Punkt stellte sich die Frage, ob es möglich wäre, die partielle Differentialgleichung mit einer anderen Methode als der der Trennung der Variablen zu lösen. Nach einer kurzen Recherche wurde festgestellt, dass eine weitere Methode die Transformationsmethode ist, genauer gesagt die Anwendung der Hankel-Transformation. Im nächsten Kapitel wird daher diese Integraltransformation vorgestellt und entwickelt, und es wird erläutert, warum sie für diese Art von Problem geeignet ist.
