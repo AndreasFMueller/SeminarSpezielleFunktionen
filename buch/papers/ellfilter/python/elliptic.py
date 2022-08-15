@@ -324,9 +324,9 @@ K_prime = ell_int(np.sqrt(1-k**2))
 
 
 f, axs = plt.subplots(1,2, figsize=(5,2.5))
-axs[0].plot(k, K, linewidth=0.1)
+axs[0].plot(k, K, linewidth=1)
 axs[0].text(k[30], K[30]+0.1, f"$K$")
-axs[0].plot(k, K_prime, linewidth=0.1)
+axs[0].plot(k, K_prime, linewidth=1)
 axs[0].text(k[30], K_prime[30]+0.1, f"$K^\prime$")
 axs[0].set_xlim([0,1])
 axs[0].set_ylim([0,4])
@@ -342,9 +342,9 @@ k = np.array([0.1,0.2,0.4,0.6,0.9,0.99])
 K = ell_int(k)
 K_prime = ell_int(np.sqrt(1-k**2))
 
-axs[1].plot(K, K_prime, '.', color=last_color(), markersize=2)
-for x, y, n in zip(K, K_prime, k):
-    axs[1].text(x+0.1, y+0.1, f"$k={n:.2f}$", rotation_mode="anchor")
+# axs[1].plot(K, K_prime, '.', color=last_color(), markersize=2)
+# for x, y, n in zip(K, K_prime, k):
+#     axs[1].text(x+0.1, y+0.1, f"$k={n:.2f}$", rotation_mode="anchor")
 axs[1].set_ylabel("$K^\prime$")
 axs[1].set_xlabel("$K$")
 axs[1].set_xlim([0,6])

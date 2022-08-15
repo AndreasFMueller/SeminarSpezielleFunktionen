@@ -76,9 +76,9 @@
 
 %Title Page
 \title{Elliptische Filter}
-\subtitle{Eine Anwendung der Jaccobi elliptischen Funktionen}
+\subtitle{Eine Anwendung der Jacobi elliptischen Funktionen}
 \author{Nicolas Tobler}
-% \institute{OST Ostschweizer Fachhochschule}
+\institute{Mathematisches Seminar 2022 | Spezielle Funktionen}
 % \institute{\includegraphics[scale=0.3]{../img/ost_logo.png}}
 \date{\today}
 
@@ -113,25 +113,38 @@
 	\end{frame}
 
 	\begin{frame}
-		\frametitle{Content}
+		\frametitle{Inhalt}
 		\tableofcontents
 	\end{frame}
 
-	\section{Linear Filter}
+	\section{Lineare Filter}
 
 	\begin{frame}
 		\frametitle{Lineare Filter}
 
+		\begin{center}
+			\scalebox{0.75}{
+				\input{../tikz/filter.tikz.tex}
+			}
+		\end{center}
 
-		\begin{equation}
+
+		\begin{equation*}
 			| H(\Omega)|^2 = \frac{1}{1 + \varepsilon_p^2 F_N^2(w)}, \quad w=\frac{\Omega}{\Omega_p}
-		\end{equation}
+		\end{equation*}
 
 		\pause
 
-		\begin{equation}
+		\begin{align*}
+			|F_N(w)| &< 1 \quad \forall \quad |w| < 1 \\
+			|F_N(w)| &= 1 \quad \forall \quad |w| = 1 \\
+			|F_N(w)| &> 1 \quad \forall \quad |w| > 1
+		\end{align*}
+
+
+		\begin{equation*}
 			F_N(w) = w^N
-		\end{equation}
+		\end{equation*}
 
 	\end{frame}
 
@@ -218,26 +231,78 @@
 
 		Darstellung mit trigonometrischen Funktionen:
 
-		\begin{align} \label{ellfilter:eq:chebychef_polynomials}
+		\begin{align*}
 			T_N(w) &= \cos \left( N \cos^{-1}(w) \right) \\
 				&= \cos \left(N~z \right), \quad w= \cos(z)
-		\end{align}
+		\end{align*}
 
+		\pause
 
-	\end{frame}
-
-	\begin{frame}
-		\frametitle{Tschebyscheff-Filter}
-
-		\begin{equation*}
-			z = \cos^{-1}(w)
-		\end{equation*}
-
-		\begin{center}
-			\scalebox{0.85}{
-				\input{../tikz/arccos.tikz.tex}
+		\begin{align*}
+			\cos^{-1}(x)
+			&=
+			\int_{x}^{1}
+			\frac{
+				dz
+			}{
+				\sqrt{
+					1-z^2
+				}
+			}\\
+			&=
+			\int_{0}^{x}
+			\frac{
+				-1
+			}{
+				\sqrt{
+					1-z^2
+				}
 			}
-		\end{center}
+			~dz
+			+ \frac{\pi}{2}
+		\end{align*}
+
+
+	\end{frame}
+
+	\begin{frame}
+		\frametitle{Tschebyscheff-Filter}
+
+		\begin{columns}
+
+			\begin{column}{0.2\textwidth}
+
+				\begin{equation*}
+					z = \cos^{-1}(w)
+				\end{equation*}
+
+				\vspace{0.5cm}
+
+				Integrand:
+				\begin{equation*}
+					\frac{
+						-1
+					}{
+						\sqrt{
+							1-z^2
+						}
+					}
+				\end{equation*}
+
+			\end{column}
+			\begin{column}{0.8\textwidth}
+
+
+				\begin{center}
+					\scalebox{0.7}{
+						\input{../tikz/arccos.tikz.tex}
+					}
+				\end{center}
+
+			\end{column}
+		\end{columns}
+
+
 
 	\end{frame}
 
@@ -245,7 +310,7 @@
 		\frametitle{Tschebyscheff-Filter}
 
 		\begin{equation*}
-			z_1 = N~\cos^{-1}(w)
+			T_N(w) = \cos \left(z_1 \right), \quad z_1 = N~\cos^{-1}(w)
 		\end{equation*}
 
 		\begin{center}
@@ -257,15 +322,14 @@
 	\end{frame}
 
 
-	\section{Jaccobi elliptische Funktionen}
+	\section{Jacobi elliptische Funktionen}
 
 	\begin{frame}
-		\frametitle{Jaccobi elliptische Funktionen}
+		\frametitle{Jacobi elliptische Funktionen}
 
+		Elliptisches Integral erster Art
 
-		\begin{equation}
-			z
-			=
+		\begin{equation*}
 			F(\phi, k)
 			=
 			\int_{0}^{\phi}
@@ -276,18 +340,18 @@
 					1-k^2 \sin^2 \theta
 				}
 			}
-			=
-			\int_{0}^{\phi}
-			\frac{
-				dt
-			}{
-				\sqrt{
-					(1-t^2)(1-k^2 t^2)
-				}
-			}
-		\end{equation}
+			% =
+			% \int_{0}^{\phi}
+			% \frac{
+			% 	dt
+			% }{
+			% 	\sqrt{
+			% 		(1-t^2)(1-k^2 t^2)
+			% 	}
+			% }
+		\end{equation*}
 
-		\begin{equation}
+		\begin{equation*}
 			K(k)
 			=
 			\int_{0}^{\pi / 2}
@@ -298,24 +362,88 @@
 					1-k^2 \sin^2 \theta
 				}
 			}
-		\end{equation}
+		\end{equation*}
 
 
 
 	\end{frame}
 
+
+
+
+
 	\begin{frame}
-		\frametitle{Jaccobi elliptische Funktionen}
+		\frametitle{Jacobi elliptische Funktionen}
 
-		\begin{equation*}
-			z = \sn^{-1}(w, k)
-		\end{equation*}
+			\begin{equation*}
+				\sn^{-1}(w, k)
+				=
+				F(\phi, k),
+				\quad
+				\phi = \sin^{-1}(w)
+			\end{equation*}
 
-		\begin{center}
-			\scalebox{0.7}{
-				\input{../tikz/sn.tikz.tex}
-			}
-		\end{center}
+			\begin{align*}
+				\sn^{-1}(w, k)
+					& =
+				\int_{0}^{\phi}
+				\frac{
+					d\theta
+				}{
+					\sqrt{
+						1-k^2 \sin^2 \theta
+					}
+				},
+				\quad
+				\phi = \sin^{-1}(w)
+				\\
+					& =
+				\int_{0}^{w}
+				\frac{
+					dt
+				}{
+					\sqrt{
+						(1-t^2)(1-k^2 t^2)
+					}
+				}
+			\end{align*}
+
+
+
+		\end{frame}
+
+	\begin{frame}
+		\frametitle{Jacobi elliptische Funktionen}
+		\begin{columns}
+			\begin{column}{0.2\textwidth}
+
+				\begin{equation*}
+					z = \sn^{-1}(w, k)
+				\end{equation*}
+
+				\vspace{0.5cm}
+
+				Integrand:
+				\begin{equation*}
+					\frac{
+						1
+					}{
+						\sqrt{
+							(1-t^2)(1-k^2 t^2)
+						}
+					}
+				\end{equation*}
+
+			\end{column}
+			\begin{column}{0.8\textwidth}
+				\begin{center}
+					\scalebox{0.75}{
+						\input{../tikz/sn.tikz.tex}
+					}
+				\end{center}
+			\end{column}
+		\end{columns}
+
 
 	\end{frame}
 
@@ -334,7 +462,7 @@
 
 
 	\begin{frame}
-		\frametitle{Jaccobi elliptische Funktionen}
+		\frametitle{Jacobi elliptische Funktionen}
 
 		\begin{equation*}
 			z = \cd^{-1}(w, k)
@@ -344,6 +472,23 @@
 			\scalebox{0.7}{
 				\input{../tikz/cd.tikz.tex}
 
+			}
+		\end{center}
+
+	\end{frame}
+
+	\section{Elliptisches Filter}
+
+	\begin{frame}
+		\frametitle{Elliptisches Filter}
+
+		% \begin{equation*}
+		% 	z_1 = N~\frac{K_1}{K}~\cd^{-1}(w, k)
+		% \end{equation*}
+
+		\begin{center}
+			\scalebox{0.75}{
+				\input{../tikz/cd3.tikz.tex}
 			}
 		\end{center}
 
@@ -360,19 +505,41 @@
 	\end{frame}
 
 	\begin{frame}
+		\frametitle{Gradgleichung}
+
+		\begin{center}
+			\scalebox{0.95}{
+				\input{../tikz/elliptic_transform2.tikz}
+			}
+		\end{center}
+
+		\onslide<5->{
+		\begin{equation*}
+			N \frac{K^\prime}{K} = \frac{K^\prime_1}{K_1}
+		\end{equation*}
+		}
+
+	\end{frame}
+
+	\begin{frame}
 		\frametitle{Elliptisches Filter}
 
 		\begin{equation*}
-			z_1 = N~\frac{K_1}{K}~\cd^{-1}(w, k)
+			R_N = \cd(z_1, k_1),
+			\quad
+			z_1 = N~\frac{K_1}{K}~\cd^{-1}(w, k),
+			\quad
+			N \frac{K^\prime}{K} = \frac{K^\prime_1}{K_1}
 		\end{equation*}
 
 		\begin{center}
-			\scalebox{0.8}{
+			\scalebox{0.75}{
 				\input{../tikz/cd2.tikz.tex}
 			}
 		\end{center}
 
 	\end{frame}
+
 
 	\begin{frame}
 		\frametitle{Elliptisches Filter}
@@ -398,15 +565,6 @@
 
 			\end{column}
 		\end{columns}
-
-	\end{frame}
-
-	\begin{frame}
-		\frametitle{Gradgleichung}
-
-		\begin{equation}
-			N \frac{K^\prime}{K} = \frac{K^\prime_1}{K_1}
-		\end{equation}
 
 	\end{frame}
 
