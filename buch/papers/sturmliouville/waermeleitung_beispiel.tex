@@ -11,8 +11,8 @@ betrachtet und wie das Sturm-Liouville-Problem bei der Beschreibung dieses
 physikalischen Phänomenes auftritt.
 
 Zunächst wird ein eindimensionaler homogener Stab der Länge $l$ und
-Wärmeleitkoeffizient $\kappa$.
-Somit ergibt sich für das Wärmeleitungsproblem
+Wärmeleitkoeffizient $\kappa$ betrachtet.
+Es ergibt sich für das Wärmeleitungsproblem
 die partielle Differentialgleichung
 \begin{equation}
     \label{eq:slp-example-fourier-heat-equation}
@@ -26,13 +26,14 @@ Stab beschreibt, werden zusätzliche Bedingungen benötigt, um beispielsweise
 die Lösung für einen Stab zu finden, bei dem die Enden auf konstanter 
 Tempreatur gehalten werden.
 
-%%%%%%%%%%%%% Randbedingungen für Stab mit konstanten Endtemperaturen %%%%%%%%%
-
-\subsubsection{Stab mit Enden auf konstanter Temperatur}
+%
+% Randbedingungen für Stab mit konstanten Endtemperaturen
+%
+\subsubsection{Randbedingungen für Stab mit Enden auf konstanter Temperatur}
 
 Die Enden des Stabes auf konstanter Temperatur zu halten bedeutet, dass die
 Lösungsfunktion $u(t,x)$ bei $x = 0$ und $x = l$ nur die vorgegebene
-Temperatur zurückgeben darf.
+Temperatur zurückgeben darf. Diese wird einfachheitshalber als $0$ angenomen.
 Es folgen nun
 \begin{equation}
     \label{eq:slp-example-fourier-boundary-condition-ends-constant}
@@ -44,12 +45,14 @@ Es folgen nun
 \end{equation}
 als Randbedingungen.
 
-%%%%%%%%%%%%% Randbedingungen für Stab mit isolierten Enden %%%%%%%%%%%%%%%%%%%
+%
+% Randbedingungen für Stab mit isolierten Enden
+%
 
-\subsubsection{Stab mit isolierten Enden}
+\subsubsection{Randbedingungen für Stab mit isolierten Enden}
 
 Bei isolierten Enden des Stabes können belibige Temperaturen für $x = 0$ und
-$x = l$ auftreten. In diesem Fall nicht erlaubt ist es, dass Wärme vom Stab
+$x = l$ auftreten. In diesem Fall ist es nicht erlaubt, dass Wärme vom Stab
 an die Umgebung oder von der Umgebung an den Stab abgegeben wird.
 
 Aus der Physik ist bekannt, dass Wärme immer von der höheren zur tieferen
@@ -72,9 +75,6 @@ als Randbedingungen.
 
 \subsubsection{Lösung der Differenzialgleichung}
 
-% TODO: Referenz Separationsmethode
-% TODO: Formeln sauber in Text einbinden.
-
 Da die Lösungsfunktion von zwei Variablen abhängig ist, wird als Lösungsansatz
 die Separationsmethode verwendet.
 Dazu wird 
@@ -83,7 +83,8 @@ Dazu wird
     =
     T(t)X(x)
 \]
-in die ursprüngliche Differenzialgleichung eingesetzt.
+in die partielle Differenzialgleichung 
+\eqref{eq:slp-example-fourier-heat-equation} eingesetzt.
 Daraus ergibt sich 
 \[
     T^{\prime}(t)X(x)
@@ -95,13 +96,13 @@ als neue Form.
 Nun können alle von $t$ abhängigen Ausdrücke auf die linke Seite, sowie alle
 von $x$ abhängigen Ausdrücke auf die rechte Seite gebracht werden und mittels
 der neuen Variablen $\mu$ gekoppelt werden:
-\begin{equation}
+\[
     \frac{T^{\prime}(t)}{\kappa T(t)}
     =
     \frac{X^{\prime \prime}(x)}{X(x)}
     =
     \mu
-\end{equation}
+\]
 Durch die Einführung von $\mu$ kann das Problem nun in zwei separate
 Differenzialgleichungen aufgeteilt werden:
 \begin{equation}
@@ -123,12 +124,14 @@ Erfüllen die Randbedingungen des Stab-Problems auch die Randbedingungen des
 Sturm-Liouville-Problems, kann bereits die Aussage getroffen werden, dass alle
 Lösungen für die Gleichung in $x$ orthogonal sein werden.
 
+Da die Bedingungen des Stab-Problem nur Anforderungen an $x$ stellen, können
+diese direkt für $X(x)$ übernomen werden. Es gilt also $X(0) = X(l) = 0$.
 Damit die Lösungen von $X$ orthogonal sind, müssen also die Gleichungen
 \begin{equation}
 \begin{aligned}
 	\label{eq:slp-example-fourier-randbedingungen}
-	k_a y(a) + h_a p(a) y'(a) &= 0 \\
-	k_b y(b) + h_b p(b) y'(b) &= 0
+	k_a X(a) + h_a p(a) X'(a) &= 0 \\
+	k_b X(b) + h_b p(b) X'(b) &= 0
 \end{aligned}
 \end{equation}
 erfüllt sein und es muss ausserdem
@@ -237,8 +240,6 @@ bestimmen.
 Dazu werden nochmals die Randbedingungen
 \eqref{eq:slp-example-fourier-boundary-condition-ends-constant} und
 \eqref{eq:slp-example-fourier-boundary-condition-ends-isolated} benötigt.
-Zu bemerken ist, dass die Randbedingungen nur Anforderungen in $x$ stellen und
-somit direkt für $X(x)$ übernomen werden können.
 
 Da die Koeffizienten $A$ und $B$, sowie die Parameter $\alpha$ uns $\beta$ im
 allgemeninen ungleich $0$ sind, müssen die Randbedingungen durch die
@@ -282,9 +283,9 @@ Es bleibt noch nach $\beta$ aufzulösen:
 \]
 
 Es folgt nun wegen $\mu = -\beta^{2}$, dass
-\begin{equation}
+\[
     \mu_1 = -\beta^{2} = -\frac{n^{2}\pi^{2}}{l^{2}}
-\end{equation}
+\]
 sein muss.
 Ausserdem ist zu bemerken, dass dies auch gleich $-\alpha^{2}$ ist.
 Da aber $A = 0$ gilt und der Summand mit $\alpha$ verschwindet, ist dies keine
@@ -485,7 +486,7 @@ orthogonal zueinander stehen und
     =
     0
 \]
-da Sinus- und Cosinus-Funktionen ebenfalls orthogonal zueinander sin.
+da Sinus- und Cosinus-Funktionen ebenfalls orthogonal zueinander sind.
 
 Es bleibt also lediglich der Summand für $a_m$ stehen, was die Gleichung zu
 \[
