@@ -1,0 +1,67 @@
+\colorlet{mypurple}{red!50!blue!90!black!80}
+
+% style to create arrows
+\tikzset{
+    traj/.style 2 args={thick, postaction={decorate},decoration={markings,
+                    mark=at position #1 with {\arrow{<}},
+                    mark=at position #2 with {\arrow{<}}}
+        }
+}
+
+\begin{tikzpicture}[scale=0.6]
+    % p(t=0) = 0, q(t=0) = A, max(p) = mwA
+    \tikzmath{
+        \axh = 5.2;
+        \axw1 = 4.2;
+        \axw2 = 4.8;
+        \d1 = 0.9;
+        \a0 = 1;
+        \b0 = 2;
+        \a1 = \a0 + \d1;
+        \b1 = \b0 + \d1;
+        \a2 = \a1 + \d1;
+        \b2 = \b1 + \d1;
+        \a3 = \a2 + \d1;
+        \b3 = \b2 + \d1;
+        \d2 = 0.75;
+        \aa0 = 2;
+        \bb0 = 1;
+        \aa1 = \aa0 + \d2;
+        \bb1 = \bb0 + \d2;
+        \aa2 = \aa1 + \d2;
+        \bb2 = \bb1 + \d2;
+        \aa3 = \aa2 + \d2;
+        \bb3 = \bb2 + \d2;
+    }
+
+    \draw[->,thick] (-\axw1,0) -- (\axw1,0) node[right] {$q$};
+    \draw[->,thick] (0,-\axh) -- (0,\axh) node[above] {$p$};
+
+    \draw[traj={0.375}{0.875},darkgreen] ellipse (\a0 and \b0);
+    \draw[traj={0.375}{0.875},blue] ellipse (\a1 and \b1);
+    \draw[traj={0.375}{0.875},cyan] ellipse (\a2 and \b2);
+    \draw[traj={0.375}{0.875},mypurple] ellipse (\a3 and \b3);
+
+    \node[right,darkgreen] at (45:{\a0} and {\b0}) {$E_A$};
+    \node[right, blue] at (45:{\a1} and {\b1}) {$E_B$};
+    \node[right, cyan] at (45:{\a2} and {\b2}) {$E_C$};
+    \node[right, mypurple] at (45:{\a3} and {\b3}) {$E_D$};
+    \node[above left] at (110:\b3 + 0.1) {grosses $\omega$};
+
+    \begin{scope}[xshift=12cm]
+        \draw[->,thick] (-\axw2,0) -- (\axw2,0) node[right] {$q$};
+        \draw[->,thick] (0,-\axh) -- (0,\axh) node[above] {$p$};
+
+        \draw[traj={0.375}{0.875},darkgreen] ellipse (\aa0 and \bb0);
+        \draw[traj={0.375}{0.875},blue] ellipse (\aa1 and \bb1);
+        \draw[traj={0.375}{0.875},cyan] ellipse (\aa2 and \bb2);
+        \draw[traj={0.375}{0.875},mypurple] ellipse (\aa3 and \bb3);
+
+        \node[above, darkgreen] at (45:{\aa0} and {\bb0}) {$E_A$};
+        \node[above, blue] at (45:{\aa1} and {\bb1}) {$E_B$};
+        \node[above, cyan] at (45:{\aa2} and {\bb2}) {$E_C$};
+        \node[above, mypurple] at (45:{\aa3} and {\bb3}) {$E_D$};
+
+        \node[above left] at (110:\b3 + 0.1) {kleines $\omega$};
+    \end{scope}
+\end{tikzpicture}
