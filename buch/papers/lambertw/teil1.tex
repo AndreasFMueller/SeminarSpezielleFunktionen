@@ -34,33 +34,32 @@ Die Parametrisierung von $v(t)$ ist von den Startbedingungen abhängig. Deshalb 
 %
 \subsection{Anfangsbedingung im ersten Quadranten}
 %
-Wenn der Verfolger im ersten Quadranten startet, dann kann $v(t)$ mit den Gleichungen aus \eqref{lambertw:eqFunkXNachT}, welche sind
+Wenn der Verfolger im ersten Quadranten startet, dann kann $v(t)$ mit den Gleichungen aus \eqref{lambertw:eqFunkXNachT}, welche
 \begin{align}
     x\left(t\right)
     &=
-    x_0\cdot\sqrt{\frac{1}{\chi}W\left(\chi\cdot \exp\left( \chi-\frac{4t}{r_0-y_0}\right) \right)} \\
+    x_0\cdot\sqrt{\frac{1}{\chi}W\left(\chi\cdot \exp\left( \chi-\frac{4t}{r_0-y_0}\right) \right)} \text{,}\\
     y(t)
     &=
-    \frac{1}{4}\biggl(\left(y_0+r_0\right)\left(\frac{x(t)}{x_0}\right)^2+\left(y_0-r_0\right)\operatorname{ln}\biggl(\left(\frac{x(t)}{x_0}\right)^2\biggr)-r_0+3y_0\biggr)\\
+    \frac{1}{4}\biggl(\left(y_0+r_0\right)\left(\frac{x(t)}{x_0}\right)^2+\left(y_0-r_0\right)\operatorname{ln}\biggl(\left(\frac{x(t)}{x_0}\right)^2\biggr)-r_0+3y_0\biggr) \text{,}\\
     \chi
     &=
-    \frac{r_0+y_0}{r_0-y_0}, \quad
+    \frac{r_0+y_0}{r_0-y_0}\text{,} \quad
     \eta
     =
-    \left(\frac{x}{x_0}\right)^2,\quad
+    \left(\frac{x}{x_0}\right)^2 \quad\text{und}\quad
     r_0
     =
     \sqrt{x_0^2+y_0^2}
-    \text{,}
 \end{align}
 %
+sind,
 beschrieben werden.
 Der Verfolger ist durch
 \begin{equation}
     v(t)
     =
     \left( \begin{array}{c} x(t) \\ y(t) \end{array} \right)
-    \text{.}
 \end{equation}
 %
 parametrisiert, wobei $y(t)$ viel komplexer ist als $x(t)$.
@@ -238,14 +237,15 @@ Die Ortsvektoren der Punkte können wiederum mit
 \begin{align}
 	v
 	&=
-	t\cdot\left(\begin{array}{c} \cos (\alpha) \\ \sin (\alpha) \end{array}\right) +\left(\begin{array}{c} x_0 \\ y_0 \end{array}\right)
+	t\cdot\left(\begin{array}{c} \cos (\alpha) \\ \sin (\alpha) \end{array}\right) +\left(\begin{array}{c} x_0 \\ 0 \end{array}\right)
 	\\
 	z
 	&=
 	\left(\begin{array}{c} 0 \\ t \end{array}\right)
 \end{align}
 beschrieben werden.
-Da der Abstand
+$x_0$ ist der Abstand bei $t=0$, damit alle möglichen Fälle untersucht werden können.
+Da der Abstand allgemein
 \begin{equation}
 	a
 	=
@@ -266,7 +266,7 @@ Der Abstand im Quadrat abgeleitet nach der Zeit ist
 \begin{equation}
 	\frac{d a^2}{d t}
 	=
-	2(t\cdot\cos (\alpha)+x_0)\cdot\cos(\alpha)(\alpha)+2t(\sin(\alpha)-1)^2
+	2(t\cdot\cos (\alpha)+x_0)\cdot\cos(\alpha)+2t(\sin(\alpha)-1)^2
 	\text{.}
 \end{equation}
 Da nur die unmittelbar benachbarten Punkten von Interesse sind, wird die Ableitung für $t=0$ untersucht. Dabei kann die Ableitung in 
