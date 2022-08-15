@@ -1,9 +1,79 @@
 %
-% teil1.tex -- Beispiel-File für das Paper
+% eigenschaften.tex -- Eigenschaften der Lösungen
 %
 % (c) 2020 Prof Dr Andreas Müller, Hochschule Rapperswil
 %
 \section{Eigenschaften von Lösungen
 \label{sturmliouville:section:solution-properties}}
 \rhead{Eigenschaften von Lösungen}
-% Erik work
+
+Im weiteren werden nun die Eigenschaften der Lösungen eines
+Sturm-Liouville-Problems diskutiert und aufgezeigt, wie diese Eigenschaften
+zustande kommen.
+
+Dazu wird der Operator $L_0$ welcher bereits in Kapitel
+\ref{buch:integrale:subsection:sturm-liouville-problem} betrachtet wurde,
+noch etwas genauer angeschaut.
+Es wird also im Folgenden
+\[
+    L_0
+    =
+    -\frac{d}{dx}p(x)\frac{d}{dx}
+\]
+zusammen mit den Randbedingungen
+\[
+    \begin{aligned}
+        k_a y(a) + h_a p(a) y'(a) &= 0 \\
+        k_b y(b) + h_b p(b) y'(b) &= 0
+    \end{aligned}
+\]
+verwendet.
+Wie im Kapitel
+\ref{buch:integrale:subsection:sturm-liouville-problem} bereits gezeigt,
+resultieren die Randbedingungen aus der Anforderung den Operator $L_0$
+selbsadjungiert zu machen.
+Es wurde allerdings noch nicht darauf eingegangen, welche Eigenschaften dies
+für die Lösungen des Sturm-Liouville-Problems zur Folge hat.
+
+\subsubsection{Exkurs zum Spektralsatz}
+
+Um zu verstehen was für Eigenschaften der selbstadjungierte Operator $L_0$ in 
+den Lösungen hervorbringt, wird der Spektralsatz benötigt.
+
+Dieser wird in der linearen Algebra oft verwendet um zu zeigen, dass eine Matrix
+diagonalisierbar ist, beziehungsweise dass eine Orthonormalbasis existiert.
+Dazu wird zunächst gezeigt, dass eine gegebene $n\times n$-Matrix $A$ aus einem
+endlichdimensionalem $\mathbb{K}$-Vektorraum selbstadungiert ist, also dass
+\[
+    \langle Av, w \rangle
+    =
+    \langle v, Aw \rangle
+\]
+für $ v, w \in \mathbb{K}^n$ gilt.
+Ist dies der Fall, folgt direkt, dass $A$ auch normal ist.
+Dann wird die Aussage des Spektralsatzes
+\cite{sturmliouville:spektralsatz-wiki} verwended, welche besagt, dass für
+Endomorphismen genau dann eine Orthonormalbasis aus Eigenvektoren existiert,
+wenn sie normal sind und nur Eigenwerte aus $\mathbb{K}$ besitzten.
+
+Dies ist allerdings nicht die Einzige Version des Spektralsatzes.
+Unter anderen gibt es den Spektralsatz für kompakte Operatoren 
+\cite{sturmliouville:spektralsatz-wiki}.
+Dieser besagt, dass wenn ein linearer kompakter Operator in
+$\mathbb{R}$ selbstadjungiert ist, ein (eventuell endliches)
+Orthonormalsystem existiert.
+
+\subsubsection{Anwendung des Spektralsatzes auf $L_0$}
+
+Der Spektralsatz besagt also, dass, weil $ L_0 $ selbstadjungiert ist, eine
+Orthonormalbasis aus Eigenvektoren existiert.
+Genauer bedeutet dies, dass alle Eigenvektoren beziehungsweise alle Lösungen
+des Sturm-Liouville-Problems orthogonal zueinander sind bezüglich dem
+Skalarprodukt, in dem $ L_0 $ selbstadjungiert ist.
+
+Erfüllt also eine Differenzialgleichung die in Abschnitt
+\ref{sturmliouville:section:teil0} präsentierten Eigenschaften und erfüllen
+die Randbedingungen der Differentialgleichung die Randbedingungen
+des Sturm-Liouville-Problems, kann bereits geschlossen werden, dass die
+Lösungsfunktion des Problems eine Linearkombination aus orthogonalen
+Basisfunktionen ist.
