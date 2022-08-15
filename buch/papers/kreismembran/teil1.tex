@@ -23,7 +23,7 @@ Da es sich um eine Kreisscheibe handelt, werden Polarkoordinaten verwendet, so d
 	\frac1r
 	\frac{\partial}{\partial r}
 	+
-	\frac{1}{r 2}
+	\frac{1}{r^2}
 	\frac{\partial^2}{\partial\varphi^2}
 	\label{buch:pde:kreis:laplace}
 \end{equation*}
@@ -39,16 +39,16 @@ Daher ist die Membranabweichung im Punkt $(r,\varphi)$ $\in$ $\overline{\rm \Ome
 \end{align*}
 Um die Vergleichbarkeit der beiden nachfolgend vorgestellten Lösungsverfahren in Abschnitt \ref{kreismembran:vergleich} zu vereinfachen, werden keine Randbedingungen vorgegeben.
 
-Um eine eindeutige Lösung bestimmen zu können, werden die folgenden Anfangsbedingungen festgelegt zur zeit $t = \text{0}$:
+Um eine eindeutige Lösung bestimmen zu können, werden die folgenden Anfangsbedingungen festgelegt zur Zeit $t = \text{0}$:
 \begin{align*}
 	u(r,\varphi, 0) &= f(r,\varphi)\\
 	u_t(r,\varphi, 0) &= g(r,\varphi).
 \end{align*}
 
 \subsection{Lösung\label{sub:lösung1}}
-Nun wird das in Abschnitt \ref{sub:aufgabestellung} vorgestellte Problem mit Hilfe der varibalen Trennungsmethode gelöst.
+Nun wird das in Abschnitt \ref{sub:aufgabestellung} vorgestellte Problem mit Hilfe der Separationsmethode gelöst.
 \subsubsection{Ansatz der Separation der Variablen\label{subsub:ansatz_separation}}
-Bezug muss an dieser Stelle von einer Separation der Variablen ausgegangen werden:
+Hierfür wird folgenden Ansatz gemacht:
 \begin{equation*}
 	u(r,\varphi, t) = F(r)G(\varphi)T(t)
 \end{equation*}
@@ -64,26 +64,26 @@ Dies bedeutet, dass die Konstante negativ sein muss, also schreibt man $-\kappa^
 	T''(t) + c^2\kappa^2T(t) &= 0\\
 	r^2\frac{F''(r)}{F(r)} + r \frac{F'(r)}{F(r)} +\kappa^2 r^2 &= - \frac{G''(\varphi)}{G(\varphi)}.
 \end{align*}
-In der zweiten Gleichung hängt die linke Seite nur von $r$ ab, während die rechte Seite nur von $\varphi$ abhängt. Sie müssen also wiederum gleich einer reellen Zahl $\nu$ sein. Also das:
+In der zweiten Gleichung hängt die linke Seite nur von $r$ ab, während die rechte Seite nur von $\varphi$ abhängt. Sie müssen also wiederum gleich einer reellen Zahl $\nu$ sein. Also:
 \begin{align*}
-	r^2F''(r) + rF'(r) + (\kappa^2 r^2 - \nu)F(r) &= 0 \\
-	G''(\varphi) &= \nu G(\varphi).
+	r^2F''(r) + rF'(r) + (\kappa^2 r^2 - \nu)F(r) = 0 \quad \text{und} \quad
+	G''(\varphi) = \nu G(\varphi).
 \end{align*}
 
 \subsubsection{Lösung für $G(\varphi)$\label{subsub:lösung_G}}
 Da für die zweite Gleichung Lösungen von Schwingungen erwartet werden, für die $G''(\varphi)=-\omega^2 G(\varphi)$ gilt, schreibt man die gemeinsame Konstante als $\nu=-\omega^2$, was die Formeln später vereinfacht. Also:
 \begin{equation*}
- G(\varphi) = C_n \cos(\varphi) + D_n \sin(\varphi)
+ G(\varphi) = C_n \cos(\nu\varphi) + D_n \sin(\nu\varphi)
  \label{eq:cos_sin_überlagerung}
 \end{equation*}
 
 \subsubsection{Lösung für $F(r)$\label{subsub:lösung_F}}
-Die Gleichung für $F$ hat die Gestalt (verweis auf \ref{buch:differentialgleichungen:bessel-operator})
+Die Gleichung für $F$ hat die Gestalt (Verweis auf \label{buch:differentialgleichungen:bessel-operator}
 \begin{align}
 	r^2F''(r) + rF'(r) + (\kappa^2 r^2 - n^2)F(r) = 0 
 	\label{eq:2nd_degree_PDE}
 \end{align}
-Wir bereits in Kapitel \ref{buch:differntialgleichungen:section:bessel} gezeigt, sind die Besselfunktionen
+Wie bereits in Kapitel \ref{buch:differntialgleichungen:section:bessel} gezeigt, sind die Bessel-Funktionen
 \begin{equation*}
 	J_{\nu}(x) = r^\nu \displaystyle\sum_{m=0}^{\infty} \frac{(-1)^m x^{2m}}{2^{2m+\nu}m! \Gamma (\nu + m+1)}
 \end{equation*}
@@ -104,7 +104,7 @@ Durch Überlagerung aller Ergebnisse erhält man die Lösung
 \end{align}
 
 Dabei sind $m$ und $n$ ganze Zahlen, wobei $m$ für die Anzahl der Knotenkreise und $n$
-für die Anzahl der Knotenlinien steht. Es gibt bestimmte Bereiche auf der Membran, in denen es keine Bewegung oder Vibration gibt. Wenn der nicht schwingende Bereich ein Kreis ist, nennt man ihn einen Knotenkreis, und wenn er eine Linie ist, nennt man ihn ebenfalls eine Knotenlinie; siehe Abbildung \ref{buch:pde:kreis:fig:pauke}. $Jn(\kappa_{mn}r)$ ist die Besselfunktion $n$-ter Ordnung, wobei $\kappa mn$ die Wellenzahl und $r$ der Radius ist. $a_{mn}$ und $b_{mn}$ sind die zu bestimmenden Konstanten.
+für die Anzahl der Knotenlinien steht. Es gibt bestimmte Bereiche auf der Membran, in denen es keine Bewegung oder Vibration gibt. Wenn der nicht schwingende Bereich ein Kreis ist, nennt man ihn einen Knotenkreis, und wenn er eine Linie ist, nennt man ihn ebenfalls eine Knotenlinie (siehe Abbildung \ref{buch:pde:kreis:fig:pauke}). $J_n(\kappa_{mn}r)$ ist die Besselfunktion $n$-ter Ordnung, wobei $\kappa mn$ die Wellenzahl und $r$ der Radius ist. $a_{mn}$ und $b_{mn}$ sind die zu bestimmenden Konstanten.
 
 \begin{figure}
 	\centering
