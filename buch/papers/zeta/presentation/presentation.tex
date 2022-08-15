@@ -1,0 +1,368 @@
+\documentclass[ngerman, aspectratio=169]{beamer}
+
+%style
+\mode<presentation>{
+	\usetheme{Frankfurt}
+}
+%packages
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage{graphicx}
+\usepackage{array}
+
+\newcolumntype{L}[1]{>{\raggedright\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+\usepackage{ragged2e}
+
+\usepackage{bm} % bold math
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{mathtools}
+\usepackage{amsmath}
+\usepackage{multirow} % multi row in tables
+\usepackage{scrextend}
+
+\usepackage{tikz}
+
+\usepackage{algorithmic}
+
+%\usepackage{algorithm} % http://ctan.org/pkg/algorithm
+%\usepackage{algpseudocode} % http://ctan.org/pkg/algorithmicx
+
+%\usepackage{algorithmicx}
+
+
+%citations
+\usepackage[style=verbose,backend=biber]{biblatex}
+\addbibresource{references.bib}
+
+
+
+\usefonttheme[onlymath]{serif}
+
+%Beamer Template modifications
+%\definecolor{mainColor}{HTML}{0065A3} % HSR blue
+\definecolor{mainColor}{HTML}{D72864} % OST pink
+\definecolor{invColor}{HTML}{28d79b} % OST pink
+\definecolor{dgreen}{HTML}{38ad36} % Dark green
+
+%\definecolor{mainColor}{HTML}{000000} % HSR blue
+\setbeamercolor{palette primary}{bg=white,fg=mainColor}
+\setbeamercolor{palette secondary}{bg=orange,fg=mainColor}
+\setbeamercolor{palette tertiary}{bg=yellow,fg=red}
+\setbeamercolor{palette quaternary}{bg=mainColor,fg=white} %bg = Top bar, fg = active top bar topic
+\setbeamercolor{structure}{fg=black} % itemize, enumerate, etc (bullet points)
+\setbeamercolor{section in toc}{fg=black} % TOC sections
+\setbeamertemplate{section in toc}[sections numbered]
+\setbeamertemplate{subsection in toc}{%
+	\hspace{1.2em}{$\bullet$}~\inserttocsubsection\par}
+
+\setbeamertemplate{itemize items}[circle]
+\setbeamertemplate{description item}[circle]
+\setbeamertemplate{title page}[default][colsep=-4bp,rounded=true]
+\beamertemplatenavigationsymbolsempty
+
+\setbeamercolor{footline}{fg=gray}
+\setbeamertemplate{footline}{%
+	\hfill\usebeamertemplate***{navigation symbols}
+	\hspace{0.5cm}
+	\insertframenumber{}\hspace{0.2cm}\vspace{0.2cm}
+}
+
+\usepackage{caption}
+\captionsetup{labelformat=empty}
+
+%Title Page
+\title{Riemannsche Zeta Funktion}
+\author{Raphael Unterer}
+\institute{Mathematisches Seminar 2022: Spezielle Funktionen}
+
+\newcommand*{\HL}{\textcolor{mainColor}}
+\newcommand*{\RD}{\textcolor{red}}
+\newcommand*{\BL}{\textcolor{blue}}
+\newcommand*{\GN}{\textcolor{dgreen}}
+\newcommand*{\YE}{\textcolor{violet}}
+
+
+
+
+\makeatletter
+\newcount\my@repeat@count
+\newcommand{\myrepeat}[2]{%
+	\begingroup
+	\my@repeat@count=\z@
+	\@whilenum\my@repeat@count<#1\do{#2\advance\my@repeat@count\@ne}%
+	\endgroup
+}
+\makeatother
+
+
+
+
+\usetikzlibrary{automata,arrows,positioning,calc}
+
+
+\begin{document}
+
+	%Titelseite
+	\begin{frame}
+		\titlepage
+	\end{frame}
+
+	%Inhaltsverzeichnis
+% 	\begin{frame}
+% 		\frametitle{Inhalt}
+% 		\tableofcontents
+% 	\end{frame}
+
+	\section{Motivation}
+
+    \begin{frame}
+        \frametitle{Summe aller Natürlichen Zahlen}
+        \begin{equation*}
+            \sum_{n=1}^{\infty} n
+            =
+            1 + 2 + 3 + \ldots + \infty
+            =
+            - \frac{1}{12}
+        \end{equation*}
+    \end{frame}
+    \begin{frame}
+        \frametitle{Summe aller Natürlichen Zahlen}
+        \begin{center}
+            \includegraphics[width=0.7\textwidth]{../images/youtube_screenshot.png}
+        \end{center}
+    \end{frame}
+    \begin{frame}
+        \frametitle{Riemannsche Zeta Funktion}
+        \begin{equation*}
+            \zeta(s)
+            =
+            \sum_{n=1}^{\infty}
+            \frac{1}{n^s}
+        \end{equation*}
+        \pause
+        \begin{equation*}
+            \zeta(-1)
+            =
+            \sum_{n=1}^{\infty}
+            \frac{1}{n^{-1}}
+            =
+            \sum_{n=1}^{\infty} n
+        \end{equation*}
+    \end{frame}
+    \begin{frame}
+        \frametitle{Originaler Definitionsbereich}
+        Wir kennen die divergierende harmonische Reihe
+        \begin{equation*}
+            \zeta(1)
+            =
+            \sum_{n=1}^{\infty}
+            \frac{1}{n}
+            \rightarrow
+            \infty,
+        \end{equation*}
+        und somit ist $\Re(s) > 1$.
+    \end{frame}
+
+    \section{Analytische Fortsetzung}
+    \begin{frame}
+        \frametitle{Plan für die Analytische Fortsetzung von $\zeta(s)$}
+        \begin{center}
+            \input{../images/continuation_overview.tikz.tex}
+        \end{center}
+    \end{frame}
+    \begin{frame}
+        \frametitle{Fortsetzung auf $\Re(s) > 0$}
+        Dirichletsche Etafunktion ist
+        \begin{equation*}\label{zeta:equation:eta}
+            \eta(s)
+            =
+            \sum_{n=1}^{\infty}
+            \frac{(-1)^{n-1}}{n^s},
+        \end{equation*}
+        und konvergiert im Bereich $\Re(s) > 0$.
+    \end{frame}
+    \begin{frame}
+        \frametitle{Fortsetzung auf $\Re(s) > 0$}
+        \begin{align}
+            \zeta(s)
+            &=
+            \RD{
+            \sum_{n=1}^{\infty}
+            \frac{1}{n^s} \label{zeta:align1}
+            }
+            \\
+            \frac{1}{2^{s-1}}
+            \zeta(s)
+            &=
+            \BL{
+            \sum_{n=1}^{\infty}
+            \frac{2}{(2n)^s} \label{zeta:align2}
+            }
+        \end{align}
+        \pause
+        \eqref{zeta:align1} - \eqref{zeta:align2}:
+        \begin{align*}
+            \left(1 - \frac{1}{2^{s-1}} \right)
+            \zeta(s)
+            &=
+            \RD{\frac{1}{1^s}}
+            \underbrace{-\BL{\frac{2}{2^s}} + \RD{\frac{1}{2^s}}}_{-\frac{1}{2^s}}
+            + \RD{\frac{1}{3^s}}
+            \underbrace{-\BL{\frac{2}{4^s}} + \RD{\frac{1}{4^s}}}_{-\frac{1}{4^s}}
+            \ldots
+            \\
+            &= \eta(s)
+        \end{align*}
+    \end{frame}
+    \begin{frame}
+        \frametitle{Fortsetzung auf $\Re(s) > 0$}
+        Somit haben wir die Fortsetzung gefunden als
+        \begin{equation} \label{zeta:equation:fortsetzung1}
+            \zeta(s)
+            :=
+            \left(1 - \frac{1}{2^{s-1}} \right)^{-1} \eta(s).
+        \end{equation}
+    \end{frame}
+    \begin{frame}
+        \frametitle{Spiegelungseigenschaft für $\Re(s) < 0$}
+        \begin{equation*}\label{zeta:equation:functional}
+            \frac{\Gamma \left( \frac{s}{2} \right)}{\pi^{\frac{s}{2}}}
+            \zeta(s)
+            =
+            \frac{\Gamma \left( \frac{1-s}{2} \right)}{\pi^{\frac{1-s}{2}}}
+            \zeta(1-s).
+        \end{equation*}
+    \end{frame}
+    %TODO maybe explain gamma-fct
+
+    \section{Euler Produkt und Primzahlen}
+    \begin{frame}
+        \frametitle{Wieso ist die Zeta Funktion so bekannt?}
+        \begin{itemize}
+            \item Interessante Funktionswerte z.B. $\zeta(2) = \frac{\pi^2}{6}$
+            \item Primzahlenverteilung (Riemannhypothese)
+            \item Forschungsgebiet der analytischen Zahlentheorie seit dem 18. Jahrhundert
+            \item ...
+        \end{itemize}
+    \end{frame}
+    \begin{frame}
+        \frametitle{Euler Produkt: Verbindung von Zeta und Primzahlen}
+        \begin{equation*}
+            \zeta(s)
+            =
+            \sum_{n=1}^\infty
+            \frac{1}{n^s}
+            =
+            \prod_{p \in P}
+            \frac{1}{1-p^{-s}}
+        \end{equation*}
+        \pause
+        Geometrische Reihe
+        \begin{equation*}
+            \prod_{p \in P}
+            \frac{1}{1-p^{-s}}
+            =
+            \prod_{p \in P}
+            \left(
+            1
+            +
+            \frac{1}{p^s}
+            +
+            \frac{1}{p^{2s}}
+            +
+            \frac{1}{p^{3s}}
+            +
+            \ldots
+            \right)
+        \end{equation*}
+        \pause
+        Erste Terme ausmultiplizieren
+        \begin{align*}
+            \left(
+            1
+            +
+            \RD{\frac{1}{2^s}}
+            +
+            \GN{\frac{1}{2^{2s}}}
+            +
+            \frac{1}{2^{3s}}
+            +
+            \ldots
+            \right)
+            \left(
+            1
+            +
+            \BL{\frac{1}{3^s}}
+            +
+            \frac{1}{3^{2s}}
+            +
+            \frac{1}{3^{3s}}
+            +
+            \ldots
+            \right)
+            \left(
+            1
+            +
+            \YE{\frac{1}{5^s}}
+            +
+            \frac{1}{5^{2s}}
+            +
+            \frac{1}{5^{3s}}
+            +
+            \ldots
+            \right)
+            \ldots
+            \\
+            =
+            1
+            +
+            \RD{\frac{1}{2^s}}
+            +
+            \BL{\frac{1}{3^s}}
+            +
+            \GN{\frac{1}{4^s}}
+            +
+            \YE{\frac{1}{5^s}}
+            +
+            \ldots
+        \end{align*}
+    \end{frame}
+    \begin{frame}
+        \frametitle{Primzahlfunktion}
+        \begin{center}
+           \scalebox{0.5}{\input{../images/primzahlfunktion.pgf}}
+        \end{center}
+    \end{frame}
+
+
+    \section{Darstellungen}
+
+    \begin{frame}
+        \frametitle{Farbcodierung}
+        \begin{center}
+            \scalebox{0.6}{\input{zeta_color_plot.pgf}}
+        \end{center}
+    \end{frame}
+
+    \begin{frame}
+        \frametitle{Konstanter Realteil $\Re(s)=-1$ und $\Im(s)=0\ldots40$}
+        \begin{center}
+            \scalebox{0.6}{\input{../images/zeta_re_-1_plot.pgf}}
+        \end{center}
+    \end{frame}
+    \begin{frame}
+        \frametitle{Konstanter Realteil $\Re(s)=0$ und $\Im(s)=0\ldots40$}
+        \begin{center}
+            \scalebox{0.6}{\input{../images/zeta_re_0_plot.pgf}}
+        \end{center}
+    \end{frame}
+    \begin{frame}
+        \frametitle{Konstanter Realteil $\Re(s)=0.5$ und $\Im(s)=0\ldots40$}
+        \begin{center}
+            \scalebox{0.6}{\input{../images/zeta_re_0.5_plot.pgf}}
+        \end{center}
+    \end{frame}
+
+\end{document}
+

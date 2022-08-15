@@ -5,8 +5,9 @@
 #
 
 SOURCES := \
-	01_AM-FM.tex \
-	02_frequenzyspectrum.tex \
+	00_modulation.tex \
+	01_AM.tex \
+	02_FM.tex \
 	03_bessel.tex \
 	04_fazit.tex \
 	main.tex 
@@ -16,15 +17,17 @@ SOURCES := \
 
 #FIGURES := $(patsubst tikz/%.tex, figures/%.pdf, $(TIKZFIGURES))
 
-#.PHONY: images
-#images: $(FIGURES)
+all: images standalone
+
+.PHONY: images
+images: $(FIGURES)
 
 #figures/%.pdf: tikz/%.tex
 #	mkdir -p figures
 #	pdflatex --output-directory=figures $<
 
 .PHONY: standalone
-standalone: standalone.tex $(SOURCES)  #$(FIGURES)
+standalone: standalone.tex $(SOURCES)  $(FIGURES)
 	mkdir -p standalone
 	cd ../..; \
 		pdflatex \
