@@ -13,7 +13,7 @@ Im Kapitel \ref{sub:beispiele_sturm_liouville_problem} sind die Koeffizientenfun
 \end{align*}.
 Da die Sturm-Liouville-Gleichung
 \begin{equation}
-	\label{eq:sturm-liouville-equation}
+	\label{eq:sturm-liouville-equation-tscheby}
 	\frac{d}{dx}\lbrack \sqrt{1-x^2} \frac{dy}{dx} \rbrack + \lbrack 0 + \lambda \frac{1}{\sqrt{1-x^2}} \rbrack y = 0 
 \end{equation}
 nun mit den Koeffizientenfunktionen aufgestellt werden kann, bleibt die Frage, ob es sich um ein reguläres oder singuläres Sturm-Liouville-Problem handelt.
@@ -27,7 +27,7 @@ Für $x>1$ und $x<-1$ sehen die Polynome wie folgt aus:
 	T_n(x) = \left\{\begin{array}{ll} \cosh (n \arccos x), & x > 1\\
 		(-1)^n \cosh (n \arccos (-x)), & x<-1 \end{array}\right.
 \end{equation},
-jedoch ist die Orthogonalität nur auf dem Intervall $\[ -1, 1\]$ sichergestellt.
+jedoch ist die Orthogonalität nur auf dem Intervall $[ -1, 1]$ sichergestellt.
 Die nächste Bedingung beinhaltet, dass die Funktion $p(x)^-1$ und $w(x)>0$ sein müssen.
 Die Funktion
 \begin{equation*}
@@ -36,7 +36,7 @@ Die Funktion
 ist die gleiche wie $w(x)$.
 
 Für die Verifizierung der Randbedingungen benötigt man erneut $p(x)$.
-Da sich die Polynome nur auf dem Intervall $\[ -1,1 \]$ orthogonal verhalten, sind $a = -1$ und $b = 1$ gesetzt.
+Da sich die Polynome nur auf dem Intervall $[ -1,1 ]$ orthogonal verhalten, sind $a = -1$ und $b = 1$ gesetzt.
 Beim einsetzen in die Randbedingung \ref{eq:randbedingungen}, erhält man
 \begin{equation}
 \begin{aligned}
