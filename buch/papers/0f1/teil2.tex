@@ -38,16 +38,37 @@ Ein endlicher Kettenbruch \cite{0f1:wiki-kettenbruch} ist ein Bruch der Form
 a_0 + \cfrac{b_1}{a_1+\cfrac{b_2}{a_2+\cfrac{b_3}{a_3+\cdots}}}
 \end{equation*}
 in welchem $a_0, a_1,\dots,a_n$ und $b_1,b_2,\dots,b_n$ ganze Zahlen sind.
-Die Kurzschreibweise für einen allgemeinen Kettenbruch ist 
+
+Nimmt man nun folgenden Gleichung \cite{0f1:wiki-fraction}:
 \begin{equation*}
-	a_0 + \frac{a_1|}{|b_1} + \frac{a_2|}{|b_2} + \frac{a_3|}{|b_3} + \cdots
+	f_{i-1} - f_i = k_i z f_{i+1},
 \end{equation*}
-Angewendet auf die Funktion $\mathstrut_0F_1$ bedeutet dies \cite{0f1:wiki-fraction}:
+wo $f_i$ analytische Funktionen sind und $i > 0$ ist, sowie $k_i$ konstant.
+Ergibt sich folgender Zusammenhang:
 \begin{equation*}
+	\cfrac{f_i}{f_{i-1}} = \cfrac{1}{1+k_iz\cfrac{f_{i+1}}{f_i}}
+\end{equation*}
+
+Angewendet auf die Funktion $\mathstrut_0F_1$ bedeutet dies:
+\begin{equation}
+	\label{0f1:math:potenzreihe:0f1:eq}
 	\mathstrut_0F_1(;c;z) = 1 + \frac{z}{c\cdot1!} + \frac{z^2}{c(c+1)\cdot2!} + \frac{z^3}{c(c+1)(c+2)\cdot3!} + \cdots
+\end{equation}
+Durch Substitution kann bewiesen werden, dass die nachfolgende Formel eine Relation zur obigen Potenzreihe \eqref{0f1:math:potenzreihe:0f1:eq} ist:
+\begin{equation*}
+	\mathstrut_0F_1(;c-1;z) - \mathstrut_0F_1(;c;z) = \frac{z}{c(c-1)} \cdot \mathstrut_0F_1(;c+1;z).
 \end{equation*}
-Umgeformt ergibt sich folgender Kettenbruch \cite{0f1:wolfram-0f1}
-{\color{red}TODO Herleitung}
+Wenn man für $f_i$ und $k_i$ folgende Annahme trifft:
+\begin{align*}
+	f_i =& \mathstrut_0F_1(;c+1;z)\\
+	k_i	=& \frac{1}{(c+1)(c+i-1)}
+\end{align*}
+erhält man:
+\begin{equation*}
+	\cfrac{\mathstrut_0F_1(;c+1;z)}{\mathstrut_0F_1(;c;z)} = \cfrac{1}{1+\cfrac{\cfrac{z}{c(c+1)}}{1+\cfrac{\cfrac{z}{(c+1)(c+2)}}{1+\cfrac{z}{(c+2)(c+3)} + \cdots}}}.
+\end{equation*}
+
+Mit weiteren Relationen ergibt sich nach Wolfram Alpha \cite{0f1:wolfram-0f1} folgender Kettenbruch
 \begin{equation}
 	\label{0f1:math:kettenbruch:0f1:eq}
 	\mathstrut_0F_1(;c;z) = 1 + \cfrac{\cfrac{z}{c}}{1+\cfrac{-\cfrac{z}{2(c+1)}}{1+\cfrac{z}{2(c+1)}+\cfrac{-\cfrac{z}{3(c+2)}}{1+\cfrac{z}{5(c+4)} + \cdots}}},
