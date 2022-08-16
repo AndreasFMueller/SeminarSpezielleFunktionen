@@ -157,14 +157,14 @@ jedoch so \(-1 \cdot J_{-n}(\beta) = J_n(\beta)\) und daraus wird dann:
     \sum_{n=- \infty}^{-1} J_{n}(\beta)  \cos((\omega_c + n \omega_m) t)
     \,+\, \sum_{n=1}^\infty J_{n}(\beta) \cos((\omega_c + n\omega_m) t)
 \end{align*}
-Da \(n\) immer ungerade ist und \(0\) nicht zu den ungeraden zahlen zählt, kann man dies so vereinfacht 
+Da \(n\) immer ungerade ist und \(0\) nicht zu den ungeraden Zahlen zählt, kann man dies so vereinfacht 
 \[
     s(t)
     =
-    \sum_{n\, \text{ungerade}} -1 \cdot J_{n}(\beta) \cos((\omega_c + n\omega_m) t).
+    \sum_{n\, \text{ungerade}} J_{n}(\beta) \cos((\omega_c + n\omega_m) t).
     \label{fm:eq:ungerade}
 \]
-schreiben.
+, mit allen positiven und negativen Ganzzahlen schreiben.
 %------------------------------------------------------------------------------------------
 \subsubsection{Summe Zusammenführen}
 Beide Teile \eqref{fm:eq:gerade} Gerade 
@@ -179,7 +179,7 @@ ergeben zusammen
 \[
     \cos(\omega_ct+\beta\sin(\omega_mt))
     =
-    \sum_{k= -\infty}^\infty J_{k}(\beta) \cos((\omega_c+k\omega_m)t).
+    \sum_{k= -\infty}^\infty J_{n}(\beta) \cos((\omega_c+ n\omega_m)t).
 \]
 Somit ist \eqref{fm:eq:proof} bewiesen.
 \newpage
