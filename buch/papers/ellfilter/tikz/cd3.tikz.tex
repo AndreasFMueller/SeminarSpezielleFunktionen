@@ -1,0 +1,86 @@
+\begin{tikzpicture}[>=stealth', auto, node distance=2cm, scale=1.2]
+
+    \tikzstyle{zero} = [draw, circle, inner sep =0, minimum height=0.15cm]
+    \tikzstyle{dot} = [fill, circle, inner sep =0, minimum height=0.1cm]
+
+    \tikzset{pole/.style={cross out, draw=black, minimum size=(0.15cm-\pgflinewidth), inner sep=0pt, outer sep=0pt}}
+
+    \begin{scope}[xscale=1.25, yscale=2.5]
+
+        \draw[gray, ->] (0,-0.55) -- (0,1.05) node[anchor=south]{$\mathrm{Im}$};
+        \draw[gray, ->] (-1.5,0) -- (6,0) node[anchor=west]{$\mathrm{Re}$};
+
+        % \draw[gray] ( 1,0) +(0,0.05) -- +(0, -0.05) node[inner sep=0, anchor=north] {\small $K_1$};
+        % \draw[gray] ( 5,0) +(0,0.05) -- +(0, -0.05) node[inner sep=0, anchor=north] {\small $5K_1$};
+        % \draw[gray]  (0, 0.5) +(0.1, 0) -- +(-0.1, 0) node[inner sep=0, anchor=east]{\small $jK^\prime_1$};
+
+        \begin{scope}
+
+            \clip(-1.5,-0.75) rectangle (6.8,1.25);
+
+            % \draw[>->, line width=0.05, thick, blue]   (1, 0.45) -- (2, 0.45) -- (2, 0.05) -- ( 0.1, 0.05) -- ( 0.1,0.45) -- (1, 0.45);
+            % \draw[>->, line width=0.05, thick, orange] (2, 0.5 ) -- (4, 0.5 ) -- (4, 0   ) -- ( 0  , 0   ) -- ( 0  ,0.5 ) -- (2, 0.5 );
+            % \draw[>->, line width=0.05, thick, red]    (3, 0.55) -- (6, 0.55) -- (6,-0.05) -- (-0.1,-0.05) -- (-0.1,0.55) -- (3, 0.55);
+            % \node[blue] at (1, 0.25) {$N=1$};
+            % \node[orange] at (3, 0.25) {$N=2$};
+            % \node[red] at (5, 0.25) {$N=3$};
+
+
+
+            % \draw[line width=0.1cm, fill, red!50] (0,0) rectangle (3, 0.5);
+            % \draw[line width=0.05cm, fill, orange!50] (0,0) rectangle (2, 0.5);
+            % \fill[yellow!50] (0,0) rectangle (1, 0.5);
+            % \node[] at (0.5, 0.25) {\small $N=1$};
+            % \node[] at (1.5, 0.25) {\small $N=2$};
+            % \node[] at (2.5, 0.25) {\small $N=3$};
+
+            % \fill[orange!30] (0,0) rectangle (5, 0.5);
+            \fill[yellow!30] (0,0) rectangle (1, 0.5);
+
+
+            % \draw[decorate,decoration={brace,amplitude=3pt,mirror}, yshift=0.05cm]
+            %     (5,0.5) node(t_k_unten){} -- node[above, yshift=0.1cm]{$NK_1$}
+            %     (0,0.5) node(t_k_opt_unten){};
+
+            % \draw[decorate,decoration={brace,amplitude=3pt,mirror}, xshift=0.1cm]
+            %     (5,0) node(t_k_unten){} -- node[right, xshift=0.1cm]{$K^\prime \frac{K_1N}{K} = K^\prime_1$}
+            %     (5,0.5) node(t_k_opt_unten){};
+
+            \foreach \i in {-2,...,1} {
+                \foreach \j in {-2,...,1} {
+                    \begin{scope}[xshift=\i*4cm, yshift=\j*1cm]
+
+                        \node[zero] at ( 1, 0) {};
+                        \node[zero] at ( 3, 0) {};
+                        \node[pole] at ( 1,0.5) {};
+                        \node[pole] at ( 3,0.5) {};
+
+                    \end{scope}
+                }
+            }
+
+
+
+            \onslide<2->{
+            \draw[ultra thick, ->, darkgreen] (5, 0) -- node[yshift=-0.4cm]{Durchlassbereich} (0,0);
+            \draw[ultra thick, ->, orange] (-0, 0) --  node[align=center]{Übergangs-\\berech} (0,0.5);
+            \draw[ultra thick, ->, red] (0,0.5) -- node[align=center, yshift=0.4cm]{Sperrbereich} (5, 0.5);
+            \node[] at (2.5, 0.25) {\small $N=5$};
+            }
+            \onslide<1->{
+            \draw (4,0  )  node[dot]{} node[anchor=south]      {\small $1$};
+            \draw (2,0  )  node[dot]{} node[anchor=south]      {\small $-1$};
+            \draw (0,0  )  node[dot]{} node[anchor=south west] {\small $1$};
+            \draw (0,0.5)  node[dot]{} node[anchor=north west] {\small $1/k$};
+            \draw (2,0.5)  node[dot]{} node[anchor=north]      {\small $-1/k$};
+            \draw (4,0.5)  node[dot]{} node[anchor=north]      {\small $1/k$};
+
+            }
+
+
+        \end{scope}
+
+
+    \end{scope}
+
+\end{tikzpicture}

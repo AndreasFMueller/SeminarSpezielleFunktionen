@@ -8,29 +8,6 @@
 
     \begin{scope}[xscale=0.6]
 
-        \clip(-7.5,-2) rectangle (7.5,2);
-
-        \draw[thick, ->, darkgreen] (0, 0) -- (0,1.5);
-        \draw[thick, ->, orange] (1, 0) -- (0,0);
-        \draw[thick, ->, red] (2, 0) -- (1,0);
-        \draw[thick, ->, blue] (2,1.5) -- (2, 0);
-
-        \foreach \i in {-2,...,1} {
-            \begin{scope}[opacity=0.5, xshift=\i*4cm]
-                \draw[->, orange] (-1, 0) -- (0,0);
-                \draw[->, darkgreen] (0, 0) -- (0,1.5);
-                \draw[->, darkgreen] (0, 0) -- (0,-1.5);
-                \draw[->, orange] (1, 0) -- (0,0);
-                \draw[->, red] (2, 0) -- (1,0);
-                \draw[->, blue] (2,1.5) -- (2, 0);
-                \draw[->, blue] (2,-1.5) -- (2, 0);
-                \draw[->, red] (2, 0) -- (3,0);
-
-                \node[zero] at (1,0) {};
-                \node[zero] at (3,0) {};
-            \end{scope}
-        }
-
         \node[gray, anchor=north] at (-6,0) {$-3\pi$};
         \node[gray, anchor=north] at (-4,0) {$-2\pi$};
         \node[gray, anchor=north] at (-2,0) {$-\pi$};
@@ -43,16 +20,53 @@
         % \node[gray, anchor=south east] at (0, 0) {$0$};
         \node[gray, anchor=east] at (0, 1.5) {$\infty$};
 
+        \clip(-7.5,-2) rectangle (7.5,2);
+
+        % \pause
+        \draw[ultra thick, ->, darkgreen] (1, 0) -- (0,0);
+        % \pause
+        \draw[ultra thick, ->, orange] (0, 0) -- (0,1.5);
+        % \pause
+        \draw[ultra thick, ->, cyan] (2, 0) -- (1,0);
+        \draw[ultra thick, ->, blue] (2,1.5) -- (2, 0);
+
+        % \pause
+
+        \foreach \i in {-2,...,1} {
+            \begin{scope}[xshift=\i*4cm]
+                \begin{scope}[]
+                    \draw[->, darkgreen] (-1, 0) -- (0,0);
+                    \draw[->, orange] (0, 0) -- (0,1.5);
+                    \draw[->, orange] (0, 0) -- (0,-1.5);
+                    \draw[->, darkgreen] (1, 0) -- (0,0);
+                    \draw[->, cyan] (2, 0) -- (1,0);
+                    \draw[->, blue] (2,1.5) -- (2, 0);
+                    \draw[->, blue] (2,-1.5) -- (2, 0);
+                    \draw[->, cyan] (2, 0) -- (3,0);
+                \end{scope}
+                \node[zero] at (1,0) {};
+                \node[zero] at (3,0) {};
+            \end{scope}
+        }
+
     \end{scope}
 
-    \begin{scope}[yshift=-2.5cm]
+    \node[zero] at (4,2) (n) {};
+    \node[anchor=west] at (n.east) {Nullstelle};
+
+    \begin{scope}[yshift=-3.25cm]
+
+        \draw[->, thick](0,0) -- node[anchor=center, fill=white]{$z = \cos^{-1}(w)$} (0,1);
+
+    \end{scope}
+    \begin{scope}[yshift=-4cm]
 
         \draw[gray, ->] (-5,0) -- (5,0) node[anchor=west]{$w$};
 
-        \draw[thick, ->, blue]      (-4, 0) -- (-2, 0);
-        \draw[thick, ->, red]       (-2, 0) -- (0, 0);
-        \draw[thick, ->, orange]    (0, 0) -- (2, 0);
-        \draw[thick, ->, darkgreen] (2, 0) -- (4, 0);
+        \draw[ultra thick, ->, blue]      (-4, 0) -- (-2, 0);
+        \draw[ultra thick, ->, cyan]       (-2, 0) -- (0, 0);
+        \draw[ultra thick, ->, darkgreen]    (0, 0) -- (2, 0);
+        \draw[ultra thick, ->, orange] (2, 0) -- (4, 0);
 
         \node[anchor=south] at (-4,0) {$-\infty$};
         \node[anchor=south] at (-2,0) {$-1$};

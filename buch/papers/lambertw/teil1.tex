@@ -11,7 +11,7 @@ Sehr oft kommt es vor, dass bei Verfolgungsproblemen die Frage auftaucht, ob das
 Wenn zum Beispiel die Geschwindigkeit des Verfolgers kleiner ist als diejenige des Ziels, gibt es Anfangsbedingungen bei denen das Ziel nie erreicht wird.
 Im Anschluss dieser Frage stellt sich meist die nächste Frage, wie lange es dauert bis das Ziel erreicht wird.
 Diese beiden Fragen werden in diesem Kapitel behandelt und am Beispiel aus \ref{lambertw:section:teil4} betrachtet.
-Das Beispiel wird bei dieser Betrachtung noch etwas erweitert indem alle Punkte auf der gesamtem $xy$-Ebene als Startwerte zugelassen werden.
+Das Beispiel wird bei dieser Betrachtung noch etwas erweitert, indem alle Punkte auf der gesamtem $xy$-Ebene als Startwerte zugelassen werden.
 
 Nun gilt es zu definieren, wann das Ziel erreicht wird.
 Da sowohl Ziel und Verfolger als Punkte modelliert wurden, gilt das Ziel als erreicht, wenn die Koordinaten des Verfolgers mit denen des Ziels bei einem diskreten Zeitpunkt $t_1$ übereinstimmen.
@@ -38,28 +38,28 @@ Wenn der Verfolger im ersten Quadranten startet, dann kann $v(t)$ mit den Gleich
 \begin{align}
     x\left(t\right)
     &=
-    x_0\cdot\sqrt{\frac{1}{\chi}W\left(\chi\cdot \exp\left( \chi-\frac{4t}{r_0-y_0}\right) \right)} \\
+    x_0\cdot\sqrt{\frac{1}{\chi}W\left(\chi\cdot \exp\left( \chi-\frac{4t}{r_0-y_0}\right) \right)} \text{,}\\
     y(t)
     &=
-    \frac{1}{4}\left(\left(y_0+r_0\right)\left(\frac{x(t)}{x_0}\right)^2+\left(y_0-r_0\right)\operatorname{ln}\left(\left(\frac{x(t)}{x_0}\right)^2\right)-r_0+3y_0\right)\\
+    \frac{1}{4}\biggl(\left(y_0+r_0\right)\left(\frac{x(t)}{x_0}\right)^2+\left(y_0-r_0\right)\operatorname{ln}\biggl(\left(\frac{x(t)}{x_0}\right)^2\biggr)-r_0+3y_0\biggr) \text{,}\\
     \chi
     &=
-    \frac{r_0+y_0}{r_0-y_0}, \quad
+    \frac{r_0+y_0}{r_0-y_0}\text{,} \quad
     \eta
     =
-    \left(\frac{x}{x_0}\right)^2,\quad
+    \left(\frac{x}{x_0}\right)^2 \quad\text{und}\quad
     r_0
     =
     \sqrt{x_0^2+y_0^2}
-    \text{.}
 \end{align}
 %
+sind,
+beschrieben werden.
 Der Verfolger ist durch
 \begin{equation}
     v(t)
     =
     \left( \begin{array}{c} x(t) \\ y(t) \end{array} \right)
-    \text{.}
 \end{equation}
 %
 parametrisiert, wobei $y(t)$ viel komplexer ist als $x(t)$.
@@ -76,7 +76,8 @@ Daher wird das Problem in zwei einzelne Teilprobleme zerlegt, wodurch die Beding
     &=
     y(t)
     =
-    \frac{1}{4}\left(\left(y_0+r_0\right)\left(\frac{x(t)}{x_0}\right)^2+\left(y_0-r_0\right)\operatorname{ln}\left(\left(\frac{x(t)}{x_0}\right)^2\right)-r_0+3y_0\right)\text{,}
+    \frac{1}{4}\biggl(\left(y_0+r_0\right)\left(\frac{x(t)}{x_0}\right)^2+\left(y_0-r_0\right)\operatorname{ln}\biggl(\left(\frac{x(t)}{x_0}\right)^2\biggr)-r_0+3y_0\biggr)
+    \text{,}
 \end{align}
 %
 welche beide gleichzeitig erfüllt sein müssen, damit das Ziel erreicht wurde.
@@ -110,7 +111,7 @@ kann die Bedingung weiter vereinfacht werden zu
 Da $\chi\neq0$ und die Exponentialfunktion nie null sein kann, ist diese Bedingung unmöglich zu erfüllen.
 Beim Grenzwert für $t\rightarrow\infty$ geht die Exponentialfunktion gegen null.
 Dies nützt nicht viel, da unendlich viel Zeit vergehen müsste, damit ein Einholen möglich wäre.
-Somit kann nach den gestellten Bedingungen das Ziel nie erreicht werden.
+Somit kann unter den gestellten Bedingungen das Ziel nie erreicht werden.
 %
 %
 %
@@ -155,7 +156,7 @@ Dies kann veranschaulicht werden anhand
     1\text{.}
 \end{equation}
 %
-Da der $y$-Anteil der Geschwindigkeit des Ziels grösser-gleich der des Verfolgers ist, können die $y$-Koordinaten nie übereinstimmen.
+Da der $y$-Anteil der Geschwindigkeit des Ziels mindestens so gross wie die des Verfolgers ist, können die $y$-Koordinaten nie übereinstimmen.
 %
 \subsection{Anfangsbedingung auf positiven $y$-Achse}
 Wenn der Verfolger auf der positiven $y$-Achse startet, befindet er sich direkt auf der Fluchtgeraden des Ziels.
@@ -194,8 +195,8 @@ Somit wird das Ziel immer erreicht bei $t_1$, wenn der Verfolger auf der positiv
 \subsection{Fazit}
 Durch die Symmetrie der Fluchtkurve an der $y$-Achse führen die Anfangsbedingungen im ersten und zweiten Quadranten zu den gleichen Ergebnissen. Nun ist klar, dass lediglich Anfangspunkte auf der positiven $y$-Achse oder direkt auf dem Ziel dazu führen, dass der Verfolger das Ziel bei $t_1$ einholt.
 Bei allen anderen Anfangspunkten wird der Verfolger das Ziel nie erreichen.
-Dieses Resultat ist aber eher akademischer Natur, weil der Verfolger und das Ziel als Punkt betrachtet wurden.
-Wobei aber in Realität nicht von Punkten sondern von Objekten mit einer räumlichen Ausdehnung gesprochen werden kann.
+
+Dieses Resultat ist aber eher akademischer Natur, weil der Verfolger und das Ziel als Punkt betrachtet wurden, während in der Realität nicht von Punkten sondern von Objekten mit einer räumlichen Ausdehnung gesprochen werden kann.
 Somit wird in einer nächsten Betrachtung untersucht, ob der Verfolger dem Ziel näher kommt als ein definierter Trefferradius.
 Falls dies stattfinden sollte, wird dies als Treffer interpretiert.
 Mathematisch kann dies mit
@@ -205,7 +206,7 @@ Mathematisch kann dies mit
 \end{equation}
 %
 beschrieben werden, wobei $a_{\text{min}}$ dem Trefferradius entspricht.
-Durch quadrieren verschwindet die Wurzel des Betrages, womit
+Durch Quadrieren verschwindet die Wurzel des Betrages, womit
 %
 \begin{equation}
     |v-z|^2<a_{\text{min}}^2 \text{,}\quad a_{\text{min}}\in \mathbb{R}^+
@@ -215,35 +216,36 @@ Durch quadrieren verschwindet die Wurzel des Betrages, womit
 die neue Bedingung ist.
 Da sowohl der Betrag als auch $a_{\text{min}}$ grösser null sind, bleibt die Aussage unverändert.
 %
-\subsection{trügerische Intuition}%verleitende/trügerische/verführerisch
-In der Grafik \ref{lambertw:grafic:intuition} ist eine Mögliche Verfolgungskurve dargestellt, wobei für die Startbedingung der erste-Quadrant verwendet wurde.
+\subsection{Trügerische Intuition}%verleitende/trügerische/verführerisch
+In der Grafik \ref{lambertw:grafic:intuition} ist eine mögliche Verfolgungskurve dargestellt, wobei für die Startbedingung der erste-Quadrant verwendet wurde.
 Als erste Intuition für den Punkt bei dem $|v-z|$ minimal ist bietet sich der tiefste Punkt der Verfolgungskurve an, bei dem der y-Anteil des Richtungsvektors null entspricht.
 Es kann argumentiert werden, dass weil die Geschwindigkeiten gleich gross sind und $\dot{v}$ sich aus einem $y$- als auch einem $x$-Anteil zusammensetzt und $\dot{z}$ nur ein $y$-Anteil besitzt, der Abstand nur grösser werden kann, wenn $e_y\cdot z>e_y\cdot v$.
 Aus diesem Argument würde folgen, dass beim tiefsten Punkt der Verfolgungskurve im Beispiel den minimalen Abstand befindet.
 %
 \begin{figure}
 	\centering
-	\includegraphics[scale=0.4]{./papers/lambertw/Bilder/Intuition.pdf}
+	\includegraphics[scale=0.7]{./papers/lambertw/Bilder/Intuition.pdf}
 	\caption{Intuition}
 	\label{lambertw:grafic:intuition}
 \end{figure}
 %
-
 Dieses Argument kann leicht überprüft werden, indem lokal alle relevanten benachbarten Punkte betrachtet und das Vorzeichen der Änderung des Abstandes überprüft wird.
 Dafür wird ein Ausdruck benötigt, der den Abstand und die benachbarten Punkte beschreibt.
-Der Richtungsvektor wird allgemein mit dem Winkel $\alpha \in[ 0, 2\pi)$
+
+$\dot{v}$ wird allgemein mit dem Winkel $\alpha \in[ 0, 2\pi)$ beschrieben, um alle unmittelbar benachbarten Punkte prüfen zu können.
 Die Ortsvektoren der Punkte können wiederum mit
 \begin{align}
 	v
 	&=
-	t\cdot\left(\begin{array}{c} \cos (\alpha) \\ \sin (\alpha) \end{array}\right) +\left(\begin{array}{c} x_0 \\ y_0 \end{array}\right)
+	t\cdot\left(\begin{array}{c} \cos (\alpha) \\ \sin (\alpha) \end{array}\right) +\left(\begin{array}{c} x_0 \\ 0 \end{array}\right)
 	\\
 	z
 	&=
 	\left(\begin{array}{c} 0 \\ t \end{array}\right)
 \end{align}
-beschrieben werden. Der Verfolger wurde allgemein für jede Richtung $\alpha$ definiert, um alle unmittelbar benachbarten Punkte beschreiben zu können.
-Da der Abstand
+beschrieben werden.
+$x_0$ ist der Abstand bei $t=0$, damit alle möglichen Fälle untersucht werden können.
+Da der Abstand allgemein
 \begin{equation}
 	a
 	=
@@ -251,7 +253,7 @@ Da der Abstand
 	\geq
 	0
 \end{equation}
-ist, kann durch quadrieren ohne Informationsverlust die Rechnung vereinfacht werden zu
+ist, kann durch Quadrieren ohne Informationsverlust die Rechnung vereinfacht werden zu
 \begin{equation}
 	a^2
 	=
@@ -264,7 +266,7 @@ Der Abstand im Quadrat abgeleitet nach der Zeit ist
 \begin{equation}
 	\frac{d a^2}{d t}
 	=
-	2(t\cdot\cos (\alpha)+x_0)\cdot\cos(\alpha)(\alpha)+2t(\sin(\alpha)-1)^2
+	2(t\cdot\cos (\alpha)+x_0)\cdot\cos(\alpha)+2t(\sin(\alpha)-1)^2
 	\text{.}
 \end{equation}
 Da nur die unmittelbar benachbarten Punkten von Interesse sind, wird die Ableitung für $t=0$ untersucht. Dabei kann die Ableitung in 
@@ -331,18 +333,12 @@ Durch algebraische Umwandlung kann die Gleichung in die Form
     \dot{z}\dot{v}=|\dot{v}|^2
 \end{equation}
 gebracht werden.
-Da $|\dot{v}|=|\dot{z}|$ folgt
+Wenn für den Winkel zwischen den Richtungsvektoren $\alpha$ und die Eigenschaft $|\dot{z}|=|\dot{v}|$ verwendet wird entsteht
 \begin{equation}
     \cos(\alpha)=1
-    \text{,}
+    \text{.}
 \end{equation}
-wobei $\alpha$ der Winkel zwischen den Richtungsvektoren ist.
-Mit $|\dot{z}|=|\dot{v}|=1$ entsteht
-\begin{equation}
-    \cos(\alpha)=1
-    \text{,}
-\end{equation}
-woraus folgt, dass nur bei $\alpha=0$, wenn $\alpha \in [0,2\pi)$, ein lokales als auch globales Minimum vorhanden sein kann.
+Jetzt ist klar, dass nur bei $\alpha=0$, wenn $\alpha \in [0,2\pi)$, ein lokales als auch globales Minimum vorhanden sein kann.
 $\alpha=0$ bedeutet, dass $\dot{v}=\dot{z}$ sein muss.
 Da die Richtungsvektoren bei $t\rightarrow\infty$ immer in die gleiche Richtung zeigen ist dort die Bedingung immer erfüllt.
 Dies entspricht gerade dem einen Rand von $t$, der andere Rand bei $t=0$ muss auch auf lokales bzw. globales Minimum untersucht werden.
