@@ -60,19 +60,23 @@ so dass $\tilde{g}(\kappa)\equiv 0$ und
 	\tilde{f}(\kappa)=Aa\int_{0}^{\infty}r(a^2 + r^2)^{-\frac{1}{2}} J_0 (\kappa r) \; dr=\frac{Aa}{\kappa}e^{-a\kappa}.
 \end{equation*}
 
-Aus der Laplace-Transformation und unter Verwendung der Skalierungseigenschaft ergibt sich, dass
+\noindent Die formale Lösung  \eqref{eq:formale_lösung} lautet also
+\begin{align}
+	u(r,t)=Aa\int_{0}^{\infty}e^{-a\kappa} J_0(\kappa r)\cos(c\kappa t) \; dk=AaRe\int_{0}^{\infty}e^{-\kappa(a+ict)} J_0(\kappa r) \; dk.
+	\label{form_lösung2_step1}
+\end{align}
 
+\noindent Aus der Laplace-Transformation und unter Verwendung der Skalierungseigenschaft \cite{noauthor_laplace_nodate} ergibt sich, dass
 \begin{align*}
-	\int_{0}^{\infty}e^{-px} J_0(\kappa x) \; dx = \frac{1}{\sqrt{\kappa^2 + p^2}}.
+	\int_{0}^{\infty}e^{-px} J_0(\kappa x) \; dx = \frac{1}{\sqrt{\kappa^2 + p^2}},
 \end{align*}	
 
-Die formale Lösung  \eqref{eq:formale_lösung} lautet also
-\begin{align*}
-	u(r,t)&=Aa\int_{0}^{\infty}e^{-a\kappa} J_0(\kappa r)\cos(c\kappa t) \; dk=AaRe\int_{0}^{\infty}e^{-\kappa(a+ict)} J_0(\kappa r) \; dk\\
-	&=AaRe\left\{r^2+\left(a+ict\right)^2\right\}^{-\frac{1}{2}}.
-\end{align*}
+\noindent \eqref{form_lösung2_step1} kann somit vereinfacht werden in:
+\begin{equation*}
+	u(r,t)=AaRe\left\{r^2+\left(a+ict\right)^2\right\}^{-\frac{1}{2}}.
+\end{equation*}
 
-Nimmt man jedoch die allgemeine Lösung durch Überlagerung, 
+\noindent Nimmt man jedoch die allgemeine Lösung durch Überlagerung, 
 
 \begin{align}
 	u(r, t) = \displaystyle\sum_{m=1}^{\infty} J_0 (k_{m}r)[a_{m}\cos(c \kappa_{m} t)+b_{m}\sin(c \kappa_{m} t)]
@@ -84,6 +88,6 @@ kann man die Lösungsmethoden 1 und 2 vergleichen.
 \label{kreismembran:vergleich}}
 Bei der Analyse der Gleichungen \eqref{eq:lösung_endliche_generelle} und \eqref{eq:lösung_unendliche_generelle} fällt sofort auf, dass die Gleichung \eqref{eq:lösung_unendliche_generelle} nicht mehr von $m$ und $n$ abhängt, sondern nur noch von $n$ \cite{nishanth_p_vibrations_2018}. 
 Das macht Sinn, denn $n$ beschreibt die Anzahl der Knotenlinien, welche unter der Annahme einer rotationssymmetrischen Lösung nicht vorhanden sein können. Tatsächlich werden $a_{m0}$, $b_{m0}$ und $\kappa_{m0}$ in $a_m$, $b_m$ bzw. $\kappa_m$ umbenannt. Die beiden Termen $\cos(n\varphi)$ und $\sin(n\varphi)$ verschwinden ebenfalls, da für $n=0$ der $\cos(n\varphi)$ gleich 1 und der $\sin(n \varphi)$ gleich 0 ist.
-Die Funktion hängt also nicht mehr von der Besselfunktionen $n$-ter Ordnung ab, sondern nur von der nullter Ordnung. 
+Die Funktion hängt also nicht mehr von der Bessel-Funktionen $n$-ter Ordnung ab, sondern nur von der nullter Ordnung. 
 
 
