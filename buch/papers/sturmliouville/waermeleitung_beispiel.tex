@@ -1,0 +1,675 @@
+%
+% waermeleitung_beispiel.tex -- Beispiel Wärmeleitung in homogenem Stab.
+% Author: Erik Löffler
+%
+% (c) 2020 Prof Dr Andreas Müller, Hochschule Rapperswil
+%
+
+\subsection{Wärmeleitung in einem Homogenen Stab}
+
+In diesem Abschnitt wird das Problem der Wärmeleitung in einem homogenen Stab
+betrachtet und wie das Sturm-Liouville-Problem bei der Beschreibung dieses
+physikalischen Phänomenes auftritt.
+
+Zunächst wird ein eindimensionaler homogener Stab der Länge $l$ und
+Wärmeleitkoeffizient $\kappa$ betrachtet.
+Es ergibt sich für das Wärmeleitungsproblem
+die partielle Differentialgleichung
+\begin{equation}
+    \label{sturmliouville:eq:example-fourier-heat-equation}
+    \frac{\partial u}{\partial t} =
+    \kappa \frac{\partial^{2}u}{{\partial x}^{2}},
+\end{equation}
+wobei der Stab in diesem Fall auf der X-Achse im Intervall $[0,l]$ liegt.
+
+Da diese Differentialgleichung das Problem allgemein für einen homogenen
+Stab beschreibt, werden zusätzliche Bedingungen benötigt, um beispielsweise
+die Lösung für einen Stab zu finden, bei dem die Enden auf konstanter 
+Tempreatur gehalten werden.
+
+%
+% Randbedingungen für Stab mit konstanten Endtemperaturen
+%
+\subsubsection{Randbedingungen für Stab mit Enden auf konstanter Temperatur}
+
+Die Enden des Stabes auf konstanter Temperatur zu halten bedeutet, dass die
+Lösungsfunktion $u(t,x)$ bei $x = 0$ und $x = l$ nur die vorgegebene
+Temperatur zurückgeben darf. Diese wird einfachheitshalber als $0$ angenomen.
+Es folgen nun
+\begin{equation}
+    \label{sturmliouville:eq:example-fourier-boundary-condition-ends-constant}
+    u(t,0)
+    =
+    u(t,l)
+    =
+    0
+\end{equation}
+als Randbedingungen.
+
+%
+% Randbedingungen für Stab mit isolierten Enden
+%
+
+\subsubsection{Randbedingungen für Stab mit isolierten Enden}
+
+Bei isolierten Enden des Stabes können belibige Temperaturen für $x = 0$ und
+$x = l$ auftreten. In diesem Fall ist es nicht erlaubt, dass Wärme vom Stab
+an die Umgebung oder von der Umgebung an den Stab abgegeben wird.
+
+Aus der Physik ist bekannt, dass Wärme immer von der höheren zur tieferen
+Temperatur fliesst. Um Wärmefluss zu unterdrücken, muss also dafür gesorgt
+werden, dass am Rand des Stabes keine Temperaturdifferenz existiert oder 
+dass die partiellen Ableitungen von $u(t,x)$ nach $x$ bei $x = 0$ und $x = l$
+verschwinden.
+Somit folgen
+\begin{equation}
+    \label{sturmliouville:eq:example-fourier-boundary-condition-ends-isolated}
+    \frac{\partial}{\partial x} u(t, 0)
+    =
+    \frac{\partial}{\partial x} u(t, l)
+    =
+    0
+\end{equation}
+als Randbedingungen.
+
+%
+% Lösung der Differenzialgleichung mittels Separation
+%
+
+\subsubsection{Lösung der Differenzialgleichung}
+
+Da die Lösungsfunktion von zwei Variablen abhängig ist, wird als Lösungsansatz
+die Separationsmethode verwendet.
+Dazu wird 
+\[
+    u(t,x)
+    =
+    T(t)X(x)
+\]
+in die partielle 
+Differenzialgleichung~\eqref{sturmliouville:eq:example-fourier-heat-equation}
+eingesetzt.
+Daraus ergibt sich 
+\[
+    T^{\prime}(t)X(x)
+    =
+    \kappa T(t)X^{\prime \prime}(x)
+\]
+als neue Form.
+
+Nun können alle von $t$ abhängigen Ausdrücke auf die linke Seite, sowie alle
+von $x$ abhängigen Ausdrücke auf die rechte Seite gebracht werden und mittels
+der neuen Variablen $\mu$ gekoppelt werden:
+\[
+    \frac{T^{\prime}(t)}{\kappa T(t)}
+    =
+    \frac{X^{\prime \prime}(x)}{X(x)}
+    =
+    \mu
+\]
+Durch die Einführung von $\mu$ kann das Problem nun in zwei separate
+Differenzialgleichungen aufgeteilt werden:
+\begin{equation}
+    \label{sturmliouville:eq:example-fourier-separated-x}
+    X^{\prime \prime}(x) - \mu X(x)
+    =
+    0
+\end{equation}
+\begin{equation}
+    \label{sturmliouville:eq:example-fourier-separated-t}
+    T^{\prime}(t) - \kappa \mu T(t)
+    =
+    0
+\end{equation}
+
+%
+% Überprüfung Orthogonalität der Lösungen
+%
+
+Es ist an dieser Stelle zu bemerken, dass die Gleichung in $x$ in 
+Sturm-Liouville-Form ist.
+Erfüllen die Randbedingungen des Stab-Problems auch die Randbedingungen des
+Sturm-Liouville-Problems, kann bereits die Aussage getroffen werden, dass alle
+Lösungen für die Gleichung in $x$ orthogonal sein werden.
+
+Da die Bedingungen des Stab-Problem nur Anforderungen an $x$ stellen, können
+diese direkt für $X(x)$ übernomen werden. Es gilt also $X(0) = X(l) = 0$.
+Damit die Lösungen von $X$ orthogonal sind, müssen also die Gleichungen
+\begin{equation}
+\begin{aligned}
+	\label{sturmliouville:eq:example-fourier-randbedingungen}
+	k_a X(a) + h_a p(a) X'(a) &= 0 \\
+	k_b X(b) + h_b p(b) X'(b) &= 0
+\end{aligned}
+\end{equation}
+erfüllt sein und es muss ausserdem
+\begin{equation}
+\begin{aligned}
+    \label{sturmliouville:eq:example-fourier-coefficient-constraints}
+    |k_a|^2 + |h_a|^2 &\neq 0\\
+    |k_b|^2 + |h_b|^2 &\neq 0\\
+\end{aligned}
+\end{equation}
+gelten.
+
+Um zu verifizieren, ob die Randbedingungen erfüllt sind, wird zunächst
+$p(x)$
+benötigt.
+Dazu wird die Gleichung~\eqref{sturmliouville:eq:example-fourier-separated-x}
+mit der
+Sturm-Liouville-Form~\eqref{eq:sturm-liouville-equation} verglichen, was zu
+$p(x) = 1$ führt.
+
+Werden nun $p(x)$ und die 
+Randbedingungen~\eqref{sturmliouville:eq:example-fourier-boundary-condition-ends-constant}
+in \eqref{sturmliouville:eq:example-fourier-randbedingungen} eigesetzt, erhält
+man
+\[
+\begin{aligned}
+	k_a y(0) + h_a y'(0) &= h_a y'(0) = 0 \\
+	k_b y(l) + h_b y'(l) &= h_b y'(l) = 0.
+\end{aligned}
+\]
+Damit die Gleichungen erfüllt sind, müssen $h_a = 0$ und $h_b = 0$ sein.
+Zusätzlich müssen aber die 
+Bedingungen~\eqref{sturmliouville:eq:example-fourier-coefficient-constraints}
+erfüllt sein und da $y(0) = 0$ und $y(l) = 0$ sind, können belibige $k_a \neq 0$
+und $k_b \neq 0$ gewählt werden.
+
+Somit ist gezeigt, dass die Randbedingungen des Stab-Problems für Enden auf
+konstanter Temperatur auch die Sturm-Liouville-Randbedingungen erfüllen und
+alle daraus reultierenden Lösungen orthogonal sind.
+Analog dazu kann gezeit werden, dass die Randbedingungen für einen Stab mit
+isolierten Enden ebenfalls die Sturm-Liouville-Randbedingungen erfüllen und
+somit auch zu orthogonalen Lösungen führen.
+
+%
+%   Lösung von X(x), Teil mu
+%
+
+\subsubsection{Lösund der Differentialgleichung in x}
+Als erstes wird auf die
+Gleichung~\eqref{sturmliouville:eq:example-fourier-separated-x} eingegangen.
+Aufgrund der Struktur der Gleichung
+\[
+    X^{\prime \prime}(x) - \mu X(x)
+    =
+    0
+\]
+wird ein trigonometrischer Ansatz gewählt.
+Die Lösungen für $X(x)$ sind also von der Form
+\[
+    X(x)
+    =
+    A \cos \left( \alpha x\right) + B \sin \left( \beta x\right).
+\]
+
+Dieser Ansatz wird nun solange differenziert, bis alle in
+Gleichung~\eqref{sturmliouville:eq:example-fourier-separated-x} enthaltenen
+Ableitungen vorhanden sind.
+Man erhält also
+\[
+    X^{\prime}(x)
+    =
+    - \alpha A \sin \left( \alpha x \right) +
+    \beta B \cos \left( \beta x \right)
+\]
+und
+\[
+    X^{\prime \prime}(x)
+    =
+    -\alpha^{2} A \cos \left( \alpha x \right) -
+    \beta^{2} B \sin \left( \beta x \right).
+\]
+
+Eingesetzt in Gleichung~\eqref{sturmliouville:eq:example-fourier-separated-x}
+ergibt dies
+\[
+    -\alpha^{2}A\cos(\alpha x) - \beta^{2}B\sin(\beta x) -
+    \mu\left(A\cos(\alpha x) + B\sin(\beta x)\right)
+    =
+    0
+\]
+und durch umformen somit
+\[
+    -\alpha^{2}A\cos(\alpha x) - \beta^{2}B\sin(\beta x)
+    =
+    \mu A\cos(\alpha x) + \mu B\sin(\beta x).
+\]
+
+Mittels Koeffizientenvergleich von
+\[
+\begin{aligned}
+    -\alpha^{2}A\cos(\alpha x)
+    &=
+    \mu A\cos(\alpha x)
+    \\
+    -\beta^{2}B\sin(\beta x)
+    &=
+    \mu B\sin(\beta x)
+\end{aligned}
+\]
+ist schnell ersichtlich, dass $ \mu = -\alpha^{2} = -\beta^{2} $ gelten muss für
+$ A \neq 0 $ oder $ B \neq 0 $.
+Zur Berechnung von $ \mu $ bleiben also noch  $ \alpha $ und $ \beta $ zu
+bestimmen.
+Dazu werden nochmals die
+Randbedingungen~\eqref{sturmliouville:eq:example-fourier-boundary-condition-ends-constant} 
+und \eqref{sturmliouville:eq:example-fourier-boundary-condition-ends-isolated}
+benötigt.
+
+Da die Koeffizienten $A$ und $B$, sowie die Parameter $\alpha$ uns $\beta$ im
+allgemeninen ungleich $0$ sind, müssen die Randbedingungen durch die
+trigonometrischen Funktionen erfüllt werden.
+
+Es werden nun die 
+Randbedingungen~\eqref{sturmliouville:eq:example-fourier-boundary-condition-ends-constant}
+für einen Stab mit Enden auf konstanter Temperatur in die
+Gleichung~\eqref{sturmliouville:eq:example-fourier-separated-x} eingesetzt.
+Betrachten wir zunächst die Bedingung für $x = 0$.
+Dies fürht zu
+\[
+    X(0)
+    =
+    A \cos(0 \alpha) + B \sin(0 \beta)
+    =
+    0.
+\]
+Da $\cos(0) \neq 0$ ist, muss in diesem Fall $A = 0$ gelten.
+Für den zweiten Summanden ist wegen $\sin(0) = 0$ die Randbedingung erfüllt.
+
+Wird nun die zweite Randbedingung für $x = l$ mit $A = 0$ eingesetzt, ergibt
+sich
+\[
+    X(l)
+    =
+    0 \cos(\alpha l) + B \sin(\beta l)
+    =
+    B \sin(\beta l)
+    = 0.
+\]
+
+$\beta$ muss also so gewählt werden, dass $\sin(\beta l) = 0$ gilt.
+Es bleibt noch nach $\beta$ aufzulösen:
+\[
+\begin{aligned}
+    \sin(\beta l) &= 0 \\
+    \beta l &= n \pi \qquad n \in \mathbb{N} \\
+    \beta &= \frac{n \pi}{l} \qquad n \in \mathbb{N}
+\end{aligned}
+\]
+
+Es folgt nun wegen $\mu = -\beta^{2}$, dass
+\[
+    \mu_1 = -\beta^{2} = -\frac{n^{2}\pi^{2}}{l^{2}}
+\]
+sein muss.
+Ausserdem ist zu bemerken, dass dies auch gleich $-\alpha^{2}$ ist.
+Da aber $A = 0$ gilt und der Summand mit $\alpha$ verschwindet, ist dies keine
+Verletzung der Randbedingungen.
+
+Durch alanoges Vorgehen kann nun auch das Problem mit isolierten Enden gelöst
+werden.
+Setzt man nun die 
+Randbedingungen~\eqref{sturmliouville:eq:example-fourier-boundary-condition-ends-isolated}
+in $X^{\prime}$ ein, beginnend für $x = 0$. Es ergibt sich
+\[
+    X^{\prime}(0)
+    =
+    -\alpha A \sin(0 \alpha) + \beta B \cos(0 \beta)
+    = 0.
+\]
+In diesem Fall muss $B = 0$ gelten.
+Zusammen mit der Bedignung für $x = l$
+folgt nun
+\[
+    X^{\prime}(l)
+    =
+    - \alpha A \sin(\alpha l) + 0 \beta \cos(\beta l)
+    =
+    - \alpha A \sin(\alpha l)
+    = 0.
+\]
+
+Wiedrum muss über die $\sin$-Funktion sicher gestellt werden, dass der
+Ausdruck den Randbedingungen entspricht.
+Es folgt nun
+\[
+\begin{aligned}
+    \sin(\alpha l) &= 0 \\
+    \alpha l &= n \pi \qquad n \in \mathbb{N} \\
+    \alpha &= \frac{n \pi}{l} \qquad n \in \mathbb{N}
+\end{aligned}
+\]
+und somit
+\[
+    \mu_2 = -\alpha^{2} = -\frac{n^{2}\pi^{2}}{l^{2}}.
+\]
+
+Es ergibt sich also sowohl für einen Stab mit Enden auf konstanter Temperatur
+wie auch mit isolierten Enden
+\begin{equation}
+    \label{sturmliouville:eq:example-fourier-mu-solution}
+    \mu
+    =
+    -\frac{n^{2}\pi^{2}}{l^{2}}.
+\end{equation}
+
+%
+% Lösung von X(x), Teil: Koeffizienten a_n und b_n mittels skalarprodukt.
+%
+
+Bisher wurde über die Koeffizienten $A$ und $B$ noch nicht viel ausgesagt.
+Zunächst ist wegen vorhergehender Rechnung ersichtlich, dass es sich bei
+$A$ und $B$ nicht um einzelne Koeffizienten handelt.
+Stattdessen können die Koeffizienten für jedes $n \in \mathbb{N}$
+unterschiedlich sein.
+Die Lösung $X(x)$ wird nun umgeschrieben zu
+\[
+    X(x)
+    =
+    a_0
+    +
+    \sum_{n = 1}^{\infty} a_n\cos\left(\frac{n\pi}{l}x\right)
+    +
+    \sum_{n = 1}^{\infty} b_n\sin\left(\frac{n\pi}{l}x\right).
+\]
+
+Um eine eindeutige Lösung für $X(x)$ zu erhalten werden noch weitere
+Bedingungen benötigt.
+Diese sind die Startbedingungen oder $u(0, x) = X(x)$ für $t = 0$.
+Es gilt also nun die Gleichung
+\begin{equation}
+    \label{sturmliouville:eq:example-fourier-initial-conditions}
+    u(0, x)
+    =
+    a_0
+    +
+    \sum_{n = 1}^{\infty} a_n\cos\left(\frac{n\pi}{l}x\right)
+    +
+    \sum_{n = 1}^{\infty} b_n\sin\left(\frac{n\pi}{l}x\right)
+\end{equation}
+nach allen $a_n$ und $b_n$ aufzulösen.
+Da aber $a_n$ und $b_n$ jeweils als Faktor zu einer trigonometrischen Funktion
+gehört, von der wir wissen, dass sie orthogonal zu allen anderen
+trigonometrischen Funktionen der Lösung ist, kann direkt das Skalarprodukt
+verwendet werden um die Koeffizienten $a_n$ und $b_n$ zu bestimmen.
+Es wird also die Tatsache ausgenutzt, dass die Gleichheit in
+\eqref{sturmliouville:eq:example-fourier-initial-conditions} nach Anwendung des
+Skalarproduktes immernoch gelten muss und dass das Skalaprodukt mit einer
+Basisfunktion sämtliche Summanden auf der rechten Seite auslöscht.
+
+Zur Berechnung von $a_m$ mit $ m \in \mathbb{N} $ wird beidseitig das
+Skalarprodukt mit der Basisfunktion $ \cos\left(\frac{m \pi}{l}x\right)$
+gebildet:
+\begin{equation}
+    \label{sturmliouville:eq:dot-product-cosine}
+    \langle u(0, x), \cos\left(\frac{m \pi}{l}x\right) \rangle
+    =
+    \langle a_0
+    +
+    \sum_{n = 1}^{\infty} a_n\cos\left(\frac{n\pi}{l}x\right)
+    +
+    \sum_{n = 1}^{\infty} b_n\sin\left(\frac{n\pi}{l}x\right),
+    \cos\left(\frac{m \pi}{l}x\right)\rangle
+\end{equation}
+
+Bevor diese Form in die Integralform umgeschrieben werden kann, muss überlegt
+sein, welche Integralgrenzen zu verwenden sind.
+In diesem Fall haben die $\sin$ und $\cos$ Terme beispielsweise keine ganze
+Periode im Intervall $x \in [0, l]$ für ungerade $n$ und $m$.
+Um die Skalarprodukte aber korrekt zu berechnen, muss über ein ganzzahliges
+Vielfaches der Periode der trigonometrischen Funktionen integriert werden.
+Dazu werden die Integralgrenzen $-l$ und $l$ verwendet und es werden ausserdem
+neue Funktionen $\hat{u}_c(0, x)$ für die Berechnung mit Cosinus und
+$\hat{u}_s(0, x)$ für die Berechnung mit Sinus angenomen, welche $u(0, t)$
+gerade, respektive ungerade auf $[-l, l]$ fortsetzen:
+\[
+\begin{aligned}
+    \hat{u}_c(0, x)
+    &=
+    \begin{cases}
+        u(0, -x) & -l \leq x < 0
+        \\
+        u(0, x) & 0 \leq x \leq l
+    \end{cases}
+    \\
+    \hat{u}_s(0, x)
+    &=
+    \begin{cases}
+        -u(0, -x) & -l \leq x < 0
+        \\
+        u(0, x) & 0 \leq x \leq l
+    \end{cases}.
+\end{aligned}
+\]
+
+Die Konsequenz davon ist, dass nun das Resultat der Integrale um den Faktor zwei
+skalliert wurde, also gilt nun
+\[
+\begin{aligned}
+    \int_{-l}^{l}\hat{u}_c(0, x)\cos\left(\frac{m \pi}{l}x\right)dx
+    &=
+    2\int_{0}^{l}u(0, x)\cos\left(\frac{m \pi}{l}x\right)dx
+    \\
+    \int_{-l}^{l}\hat{u}_s(0, x)\sin\left(\frac{m \pi}{l}x\right)dx
+    &=
+    2\int_{0}^{l}u(0, x)\sin\left(\frac{m \pi}{l}x\right)dx.
+\end{aligned}
+\]
+
+Zunächst wird nun das Skalaprodukt~\eqref{sturmliouville:eq:dot-product-cosine}
+berechnet:
+\[
+\begin{aligned}
+    \int_{-l}^{l}\hat{u}_c(0, x)\cos\left(\frac{m \pi}{l}x\right)dx
+    =&
+    \int_{-l}^{l} \left[a_0
+    +
+    \sum_{n = 1}^{\infty} a_n\cos\left(\frac{n\pi}{l}x\right)
+    +
+    \sum_{n = 1}^{\infty} b_n\sin\left(\frac{n\pi}{l}x\right)\right]
+    \cos\left(\frac{m \pi}{l}x\right) dx
+    \\
+    2\int_{0}^{l}u(0, x)\cos\left(\frac{m \pi}{l}x\right)dx
+    =&
+    a_0 \int_{-l}^{l}cos\left(\frac{m \pi}{l}x\right) dx
+    +
+    \sum_{n = 1}^{\infty}\left[a_n\int_{-l}^{l}\cos\left(\frac{n\pi}{l}x\right)
+        \cos\left(\frac{m \pi}{l}x\right)dx\right]
+    \\
+    &+
+    \sum_{n = 1}^{\infty}\left[b_n\int_{-l}^{l}\sin\left(\frac{n\pi}{l}x\right)
+        \cos\left(\frac{m \pi}{l}x\right)dx\right].
+\end{aligned}
+\]
+
+Betrachtet man nun die Summanden auf der rechten Seite stellt man fest, dass
+nahezu alle Terme verschwinden, denn
+\[
+    \int_{-l}^{l}cos\left(\frac{m \pi}{l}x\right) dx
+    =
+    0,
+\]
+da hier über ein ganzzahliges Vielfaches der Periode integriert wird,
+\[
+    \int_{-l}^{l}\cos\left(\frac{n\pi}{l}x\right)
+    \cos\left(\frac{m \pi}{l}x\right)dx
+    =
+    0
+\]
+für $m\neq n$, da Cosinus-Funktionen mit verschiedenen Kreisfrequenzen
+orthogonal zueinander stehen und
+\[
+    \int_{-l}^{l}\sin\left(\frac{n\pi}{l}x\right)
+        \cos\left(\frac{m \pi}{l}x\right)dx
+    =
+    0
+\]
+da Sinus- und Cosinus-Funktionen ebenfalls orthogonal zueinander sind.
+
+Es bleibt also lediglich der Summand für $a_m$ stehen, was die Gleichung zu
+\[
+    2\int_{0}^{l}u(0, x)\cos\left(\frac{m \pi}{l}x\right)dx
+    =
+    a_m\int_{-l}^{l}\cos^2\left(\frac{m\pi}{l}x\right)dx
+\]
+vereinfacht. Im nächsten Schritt wird nun das Integral auf der rechten Seite
+berechnet und dann nach $a_m$ aufgelöst. Am einnfachsten geht dies, wenn zuerst
+mit $u = \frac{m \pi}{l}x$ substituiert wird:
+\[
+    \begin{aligned}
+    2\int_{0}^{l}u(0, x)\cos\left(\frac{m \pi}{l}x\right)dx
+    &=
+    a_m\frac{l}{m\pi}\int_{-m\pi}^{m\pi}\cos^2\left(u\right)du
+    \\
+    &=
+    a_m\frac{l}{m\pi}\left[\frac{u}{2} + 
+    \frac{\sin\left(2u\right)}{4}\right]_{u=-m\pi}^{m\pi}
+    \\
+    &=
+    a_m\frac{l}{m\pi}\left(\frac{m\pi}{2} + 
+    \underbrace{\frac{\sin\left(2m\pi\right)}{4}}_{\displaystyle = 0} - 
+    \frac{-m\pi}{2} -
+    \underbrace{\frac{\sin\left(-2m\pi\right)}{4}}_{\displaystyle = 0}\right)
+    \\
+    &=
+    a_m l
+    \\
+    a_m
+    &=
+    \frac{2}{l} \int_{0}^{l}u(0, x)\cos\left(\frac{m \pi}{l}x\right)dx
+    \end{aligned}
+\]
+
+Analog dazu kann durch das Bilden des Skalarproduktes mit 
+$ \sin\left(\frac{m \pi}{l}x\right) $ gezeigt werden, dass
+\[
+    b_m
+    =
+    \frac{2}{l} \int_{0}^{l}u(0, x)\sin\left(\frac{m \pi}{l}x\right)dx
+\]
+gilt.
+
+Etwas anders ist es allerdings bei $a_0$.
+Wie der Name bereits suggeriert, handelt es sich hierbei um den Koeffizienten
+zur Basisfunktion $\cos\left(\frac{0 \pi}{l}x\right)$ beziehungsweise der
+konstanten Funktion $1$.
+Um einen Ausdruck für $a_0$ zu erhalten, wird wiederum auf beiden Seiten
+der Gleichung~\eqref{sturmliouville:eq:example-fourier-initial-conditions} das
+Skalarprodukt mit der konstanten Basisfunktion $1$ gebildet:
+\[
+\begin{aligned}
+    \int_{-l}^{l}\hat{u}_c(0, x)dx
+    &=
+    \int_{-l}^{l} a_0
+    +
+    \sum_{n = 1}^{\infty} a_n\cos\left(\frac{n\pi}{l}x\right)
+    +
+    \sum_{n = 1}^{\infty} b_n\sin\left(\frac{n\pi}{l}x\right)dx
+    \\
+    2\int_{0}^{l}u(0, x)dx
+    &=
+    a_0 \int_{-l}^{l}dx
+    +
+    \sum_{n = 1}^{\infty}\left[a_n\int_{-l}^{l}\cos\left(\frac{n\pi}{l}x\right)
+        dx\right] +
+    \sum_{n = 1}^{\infty}\left[b_n\int_{-l}^{l}\sin\left(\frac{n\pi}{l}x\right)
+        dx\right].
+\end{aligned}
+\]
+
+Hier fallen nun alle Terme, die $\sin$ oder $\cos$ beinhalten weg, da jeweils
+über ein Vielfaches der Periode integriert wird.
+Es bleibt also noch
+\[
+    2\int_{0}^{l}u(0, x)dx
+    =
+    a_0 \int_{-l}^{l}dx
+\]
+, was sich wie folgt nach $a_0$ auflösen lässt:
+\[
+\begin{aligned}
+    2\int_{0}^{l}u(0, x)dx
+    &=
+    a_0 \int_{-l}^{l}dx
+    \\
+    &=
+    a_0 \left[x\right]_{x=-l}^{l}
+    \\
+    &=
+    a_0(l - (-l))
+    \\
+    &=
+    a_0 \cdot 2l
+    \\
+    a_0
+    &=
+    \frac{1}{l} \int_{0}^{l}u(0, x)dx
+\end{aligned}
+\]
+
+%
+% Lösung von T(t) 
+%
+
+\subsubsection{Lösung der Differentialgleichung in $t$}
+Zuletzt wird die zweite Gleichung der 
+Separation~\eqref{sturmliouville:eq:example-fourier-separated-t} betrachtet.
+Diese wird über das charakteristische Polynom
+\[
+    \lambda - \kappa \mu
+    =
+    0
+\]
+gelöst.
+
+Es ist direkt ersichtlich, dass $\lambda = \kappa \mu$ gelten muss, was zur
+Lösung
+\[
+    T(t)
+    =
+    e^{\kappa \mu t}
+\]
+führt und mit dem Resultat~\eqref{sturmliouville:eq:example-fourier-mu-solution}
+\[
+    T(t)
+    =
+    e^{-\frac{n^{2}\pi^{2}\kappa}{l^{2}}t}
+\]
+ergibt.
+
+Dieses Resultat kann nun mit allen vorhergehenden Resultaten zusammengesetzt
+werden um die vollständige Lösung für das Stab-Problem zu erhalten.
+
+\subsubsection{Lösung für einen Stab mit Enden auf konstanter Temperatur}
+\[
+\begin{aligned}
+    u(t,x)
+    &=
+    \sum_{n=1}^{\infty}b_{n}e^{-\frac{n^{2}\pi^{2}\kappa}{l^{2}}t}
+    \sin\left(\frac{n\pi}{l}x\right)
+    \\
+    b_{n}
+    &=
+    \frac{2}{l}\int_{0}^{l}u(0,x)sin\left(\frac{n\pi}{l}x\right) dx
+\end{aligned}
+\]
+
+\subsubsection{Lösung für einen Stab mit isolierten Enden}
+\[
+\begin{aligned}
+    u(t,x)
+    &=
+    a_{0} + \sum_{n=1}^{\infty}a_{n}e^{-\frac{n^{2}\pi^{2}\kappa}{l^{2}}t}
+    \cos\left(\frac{n\pi}{l}x\right)
+    \\
+    a_{0}
+    &=
+    \frac{1}{l}\int_{0}^{l}u(0,x) dx
+    \\
+    a_{n}
+    &=
+    \frac{2}{l}\int_{0}^{l}u(0,x)sin\left(\frac{n\pi}{l}x\right) dx
+\end{aligned}
+\]
