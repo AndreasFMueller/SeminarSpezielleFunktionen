@@ -11,7 +11,7 @@ Wir erinnern uns an die Definition der Gammafunktion in \eqref{buch:rekursion:ga
     \int_0^{\infty} t^{s-1} e^{-t} \,dt,
 \end{equation*}
 wobei die Notation an die Zetafunktion angepasst ist.
-Durch die Substitution von $t$ mit $t = nu$ und $dt = n\,du$ wird daraus
+Durch die Substitution $t = nu$ und $dt = n\,du$ wird daraus
 \begin{align*}
     \Gamma(s)
     &=
@@ -19,7 +19,7 @@ Durch die Substitution von $t$ mit $t = nu$ und $dt = n\,du$ wird daraus
     &=
     \int_0^{\infty} n^s u^{s-1} e^{-nu} \,du.
 \end{align*}
-Durch Division mit durch $n^s$ ergibt sich die Quotienten
+Durch Division durch $n^s$ ergeben sich die Quotienten
 \begin{equation*}
     \frac{\Gamma(s)}{n^s}
     =
@@ -57,5 +57,5 @@ Wenn wir dieses Resultat einsetzen in \eqref{zeta:equation:zeta_gamma1} und durc
     \frac{1}{\Gamma(s)}
     \int_0^{\infty}
     \frac{u^{s-1}}{e^u -1}
-    du \qed
+    du.
 \end{equation}

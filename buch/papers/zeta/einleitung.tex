@@ -1,11 +1,41 @@
 \section{Einleitung} \label{zeta:section:einleitung}
 \rhead{Einleitung}
 
-Die Riemannsche Zetafunktion ist für alle komplexe $s$ mit $\Re(s) > 1$ definiert als
+Die Riemannsche Zetafunktion $\zeta(s)$ ist für alle komplexe $s$ mit $\Re(s) > 1$ definiert als
 \begin{equation}\label{zeta:equation1}
     \zeta(s)
     =
     \sum_{n=1}^{\infty}
     \frac{1}{n^s}.
 \end{equation}
+Die Zetafunktion ist bekannt als Bestandteil der Riemannschen Vermutung, welche besagt das alle nichttrivialen Nullstellen der Zetafunktion einen Realteil von $\frac{1}{2}$ haben.
+Mithilfe dieser Vermutung kann eine gute Annäherung an die Primzahlfunktion gefunden werden.
+Die Primzahlfunktion steigt immer an, sobald eine Primzahl vorkommt.
+Eine Darstellung davon ist in Abbildung \ref{fig:zeta:primzahlfunktion} zu finden.
+Die Riemannsche Vermutung ist eines der ungelösten Millennium-Probleme der Mathematik, auf deren Lösung eine Belohnung von einer Million Dollar ausgesetzt ist \cite{zeta:online:millennium}.
+Auf eine genauere Beschreibung der Riemannschen Vermutung wird im Rahmen dieses Papers nicht eingegangen.
+\begin{figure}
+    \centering
+    \input{papers/zeta/images/primzahlfunktion2.tex}
+    \caption{Die Primzahlfunktion von $0$ bis $30$.}
+    \label{fig:zeta:primzahlfunktion}
+\end{figure}
 
+Der grundlegende Zusammenhang der Primzahlen und der Zetafunktion wird im ersten Abschnitt \ref{zeta:section:eulerprodukt} über das Eulerprodukt gezeigt.
+Danach folgt die Verbindung zur bereits bekannten Gammafunktion in Abschnitt \ref{zeta:section:zusammenhang_mit_gammafunktion}.
+Schlussendlich folgt die Beschreibung der analytischen Fortsetzung die gesamte komplexe Ebene in Abschnitt \ref{zeta:section:analytische_fortsetzung}.
+
+Diese analytische Fortsetzung wird für die Riemannsche Vermutung benötigt, ermöglicht aber auch andere interessante Aussagen.
+So findet sich zum Beispiel immer wieder die aberwitzige Behauptung, das die Summe aller natürlichen Zahlen
+\begin{equation*}
+    \sum_{n=1}^{\infty} n
+    =
+    \sum_{n=1}^{\infty}
+    \frac{1}{n^{-1}}
+    =
+    -\frac{1}{12}
+\end{equation*}
+sei.
+Obwohl diese Behauptung offensichtlich falsch ist, hat sie doch ihre Berechtigung, wie durch die analytische Fortsetzung gezeigt werden wird.
+
+Die folgenden mathematischen Herleitungen sind, sofern nicht anders gekennzeichnet, eigene Darstellungen basierend auf den überaus umfangreichen Wikipedia-Artikeln auf Deutsch \cite{zeta:online:wiki_de} und Englisch \cite{zeta:online:wiki_en} sowie einer Video-Playlist \cite{zeta:online:mryoumath}.
