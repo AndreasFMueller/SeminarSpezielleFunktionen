@@ -28,10 +28,10 @@ Für $x>1$ und $x<-1$ sehen die Polynome wie folgt aus:
 		(-1)^n \cosh (n \arccos (-x)), & x<-1 \end{array}\right.
 \end{equation},
 jedoch ist die Orthogonalität nur auf dem Intervall $[ -1, 1]$ sichergestellt.
-Die nächste Bedingung beinhaltet, dass die Funktion $p(x)^-1$ und $w(x)>0$ sein müssen.
+Die nächste Bedingung beinhaltet, dass die Funktion $p(x)^{-1}$ und $w(x)>0$ sein müssen.
 Die Funktion
 \begin{equation*}
-	p(x)^-1 = \frac{1}{\sqrt{1-x^2}}
+	p(x)^{-1} = \frac{1}{\sqrt{1-x^2}}
 \end{equation*}
 ist die gleiche wie $w(x)$.
 
@@ -40,10 +40,25 @@ Da sich die Polynome nur auf dem Intervall $[ -1,1 ]$ orthogonal verhalten, sind
 Beim einsetzen in die Randbedingung \ref{eq:randbedingungen}, erhält man
 \begin{equation}
 \begin{aligned}
-	k_a y(-1) + h_a y'(-1) &= h_a 
+	k_a y(-1) + h_a y'(-1) &= 0
+	k_b y(-1) + h_b y'(-1) &= 0
 \end{aligned} 
-\end{equation}
+\end{equation}.
+Die Funktion $y(x)$ und $y'(x)$ sind in diesem Fall die Tschebyscheff Polynome (siehe \label{sub:definiton_der_tschebyscheff-Polynome}).
+Es gibt zwei Arten von Tschebyscheff Polynome: die erste Art $T_n(x)$ und die zweite Art $U_n(x)$.
+Jedoch beachtet man in diesem Kapitel nur die Tschebyscheff Polynome erster Art (\ref{eq:tschebyscheff-polynome}).
+Die Funktion $y(x)$ wird nun mit der Funktion $T_n(x)$ ersetzt und für die Verifizierung der Randbedingung wählt man $n=2$.
+Somit erhält man
+\begin{equation}
+	\begin{aligned}
+	k_a T_2(-1) + h_a T_{2}'(-1) &= k_a = 0\\
+	k_b T_2(1) + h_b T_{2}'(1) &= k_b = 0
+\end{aligned}
+\end{equation}.
+Ähnlich wie beim Beispiel der Wärmeleitung in einem homogenen Stab kann man, damit die Bedingung $|k_i|^2 + |h_i|^2\ne 0$ erfüllt ist, können beliebige $h_a \ne 0$ und $h_b \ne 0$ gewählt werden.
+Somit ist erneut gezeigt, dass die Randbedingungen der Tschebyscheff-Polynome auf die Sturm-Liouville-Randbedingungen erfüllt und alle daraus resultierenden Lösungen orthogonal sind.
 
+ 
 
 
 
