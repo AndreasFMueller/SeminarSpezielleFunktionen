@@ -5,5 +5,6 @@
 #
 
 images:
-	@echo "no images to be created in kugel"
+	$(MAKE) -C ./figures/povray/
+	$(MAKE) -C ./figures/tikz/
 
