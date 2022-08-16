@@ -1,5 +1,6 @@
 %
-% waermeleitung_beispiel.tex -- Beispiel Wärmeleitung in homogenem Stab. 
+% waermeleitung_beispiel.tex -- Beispiel Wärmeleitung in homogenem Stab.
+% Author: Erik Löffler
 %
 % (c) 2020 Prof Dr Andreas Müller, Hochschule Rapperswil
 %
@@ -17,7 +18,7 @@ die partielle Differentialgleichung
 \begin{equation}
     \label{sturmliouville:eq:example-fourier-heat-equation}
     \frac{\partial u}{\partial t} =
-    \kappa \frac{\partial^{2}u}{{\partial x}^{2}}
+    \kappa \frac{\partial^{2}u}{{\partial x}^{2}},
 \end{equation}
 wobei der Stab in diesem Fall auf der X-Achse im Intervall $[0,l]$ liegt.
 
@@ -187,7 +188,8 @@ somit auch zu orthogonalen Lösungen führen.
 %
 
 \subsubsection{Lösund der Differentialgleichung in x}
-Als erstes wird auf die erste erste Gleichung eingegangen.
+Als erstes wird auf die
+Gleichung~\eqref{sturmliouville:eq:example-fourier-separated-x} eingegangen.
 Aufgrund der Struktur der Gleichung
 \[
     X^{\prime \prime}(x) - \mu X(x)
@@ -417,7 +419,7 @@ sein, welche Integralgrenzen zu verwenden sind.
 In diesem Fall haben die $\sin$ und $\cos$ Terme beispielsweise keine ganze
 Periode im Intervall $x \in [0, l]$ für ungerade $n$ und $m$.
 Um die Skalarprodukte aber korrekt zu berechnen, muss über ein ganzzahliges
-Vielfaches der Periode der triginimetrischen Funktionen integriert werden.
+Vielfaches der Periode der trigonometrischen Funktionen integriert werden.
 Dazu werden die Integralgrenzen $-l$ und $l$ verwendet und es werden ausserdem
 neue Funktionen $\hat{u}_c(0, x)$ für die Berechnung mit Cosinus und
 $\hat{u}_s(0, x)$ für die Berechnung mit Sinus angenomen, welche $u(0, t)$
@@ -487,7 +489,7 @@ nahezu alle Terme verschwinden, denn
 \[
     \int_{-l}^{l}cos\left(\frac{m \pi}{l}x\right) dx
     =
-    0
+    0,
 \]
 da hier über ein ganzzahliges Vielfaches der Periode integriert wird,
 \[
@@ -611,7 +613,7 @@ Es bleibt also noch
 % Lösung von T(t) 
 %
 
-\subsubsection{Lösund der Differentialgleichung in t}
+\subsubsection{Lösung der Differentialgleichung in $t$}
 Zuletzt wird die zweite Gleichung der 
 Separation~\eqref{sturmliouville:eq:example-fourier-separated-t} betrachtet.
 Diese wird über das charakteristische Polynom
@@ -627,7 +629,7 @@ Lösung
 \[
     T(t)
     =
-    e^{-\kappa \mu t}
+    e^{\kappa \mu t}
 \]
 führt und mit dem Resultat~\eqref{sturmliouville:eq:example-fourier-mu-solution}
 \[
@@ -637,7 +639,7 @@ führt und mit dem Resultat~\eqref{sturmliouville:eq:example-fourier-mu-solution
 \]
 ergibt.
 
-Dieses Resultat kann nun mit allen vorhergehenden Resultaten zudammengesetzt
+Dieses Resultat kann nun mit allen vorhergehenden Resultaten zusammengesetzt
 werden um die vollständige Lösung für das Stab-Problem zu erhalten.
 
 \subsubsection{Lösung für einen Stab mit Enden auf konstanter Temperatur}
