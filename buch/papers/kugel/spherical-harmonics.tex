@@ -1,70 +1,189 @@
-% vim:ts=2 sw=2 et spell:
+% vim:ts=2 sw=2 et spell tw=80:
 
 \section{Spherical Harmonics}
-We finally arrived at the main section, which gives our chapter its name. The idea is to discuss spherical harmonics, their mathematical derivation and some of their properties and applications.\newline
-The subsection \ref{} will be devoted to the Eigenvalue problem of the Laplace operator. Through the latter, we will derive the set of Eigenfunctions that obey the equation presented in \ref{}[TODO: reference to eigenvalue equation], which will be defined as \emph{Spherical Harmonics}. In fact, this subsection will present their mathematical derivation.\newline
-In the subsection \ref{}, on the other hand, some interesting properties related to them will be discussed. Some of these will come back to help us understand in more detail why they are useful in various real-world applications, which will be presented in the section \ref{}.\newline
-One specific property will be studied in more detail in the subsection \ref{}, namely the recursive property.
-The last subsection is devoted to one of the most beautiful applications (In our humble opinion), namely the derivation of a Fourier-style series expansion but defined on the sphere instead of a plane.\newline 
-More importantly, this subsection will allow us to connect all the dots we have created with the previous sections, concluding that Fourier is just a specific case of the application of the concept of orthogonality.\newline
-Our hope is that after reading this section you will appreciate the beauty and power of generalization that mathematics offers us.
 
-\subsection{Eigenvalue Problem on the Spherical surface}
-\subsubsection{Unormalized Spherical Harmonics}
-From the chapter \ref{}, we know that the spherical Laplacian is defined as. \begin{equation*}
-    \nabla^2_S := \frac{1}{r^2} \frac{\partial}{\partial r} \left( r^2 \frac{\partial}{\partial r} \right) + \frac{1}{r^2} 
-    \left[
-        \frac{1}{\sin\vartheta} \frac{\partial}{\partial \vartheta} \left( \sin\vartheta \frac{\partial}{\partial\vartheta} \right)
-                + \frac{1}{\sin^2 \vartheta} \frac{\partial^2}{\partial\varphi^2}
-    \right] 
-\end{equation*}
-But we do not want to consider this algebraic monster entirely, since this includes the whole set $\mathbb{R}^3$; rather, we want to focus only on the spherical surface (as the title suggests). We can then further concretise our calculations by selecting any number for the variable $r$, so that we have a sphere and, more importantly, a spherical surface on which we can ``play''.\newline
-Surely you have already heard of the unit circle, a geometric entity used extensively in many mathematical contexts. The most famous and basic among them is surely trigonometry.\newline
-Extending this concept into three dimensions, we will talk about the unit sphere. This is a very famous sphere, as is the unit circle. So since we need a sphere why not use the most famous one? Thus imposing $r=1$.\newline
-Now, since the variable $r$ became a constant, we can leave out all derivatives with respect to $r$, setting them to zero. Then substituting the value of $r$ for 1, we will obtain the operator we will refer to as \emph{Spherical Surface Operator}:
+\if 0
+\kugeltodo{Rewrite this section if the preliminaries become an addendum}
+We finally arrived at the main section, which gives our chapter its name. The
+idea is to discuss spherical harmonics, their mathematical derivation and some
+of their properties and applications.
+
+The subsection \ref{} \kugeltodo{Fix references} will be devoted to the
+Eigenvalue problem of the Laplace operator. Through the latter we will derive
+the set of Eigenfunctions that obey the equation presented in \ref{}
+\kugeltodo{reference to eigenvalue equation}, which will be defined as
+\emph{Spherical Harmonics}. In fact, this subsection will present their
+mathematical derivation.
+
+In the subsection \ref{}, on the other hand, some interesting properties
+related to them will be discussed. Some of these will come back to help us
+understand in more detail why they are useful in various real-world
+applications, which will be presented in the section \ref{}.
+
+One specific property will be studied in more detail in the subsection \ref{},
+namely the recursive property.  The last subsection is devoted to one of the
+most beautiful applications (In our humble opinion), namely the derivation of a
+Fourier-style series expansion but defined on the sphere instead of a plane.
+More importantly, this subsection will allow us to connect all the dots we have
+created with the previous sections, concluding that Fourier is just a specific
+case of the application of the concept of orthogonality. Our hope is that after
+reading this section you will appreciate the beauty and power of generalization
+that mathematics offers us.
+\fi
+
+\subsection{Eigenvalue Problem}
+
+\begin{figure}
+  \centering
+  \includegraphics{papers/kugel/figures/tikz/spherical-coordinates}
+  \caption{
+    Spherical coordinate system. Space is described with the free variables $r
+    \in \mathbb{R}_0^+$, $\vartheta \in [0; \pi]$ and $\varphi \in [0; 2\pi)$.
+    \label{kugel:fig:spherical-coordinates}
+  }
+\end{figure}
+
+From Section \ref{buch:pde:section:kugel}, we know that the spherical Laplacian
+in the spherical coordinate system (shown in Figure
+\ref{kugel:fig:spherical-coordinates}) is is defined as
 \begin{equation*}
-    \nabla^2_{\partial S} := \frac{1}{\sin\vartheta} \frac{\partial}{\partial \vartheta} \left( \sin\vartheta \frac{\partial}{\partial\vartheta} \right)
-                + \frac{1}{\sin^2 \vartheta} \frac{\partial^2}{\partial\varphi^2}.
+    \sphlaplacian :=
+      \frac{1}{r^2} \frac{\partial}{\partial r} \left(
+        r^2 \frac{\partial}{\partial r}
+      \right)
+      + \frac{1}{r^2} \left[
+          \frac{1}{\sin\vartheta} \frac{\partial}{\partial \vartheta} \left(
+            \sin\vartheta \frac{\partial}{\partial\vartheta}
+          \right)
+        + \frac{1}{\sin^2 \vartheta} \frac{\partial^2}{\partial\varphi^2}
+      \right].
 \end{equation*}
-As can be seen, for this definition, the subscript ``$\partial S$'' was used to emphasize the fact that we are on the spherical surface, which can be understood as a boundary of the sphere.\newline
-Now that we have defined an operator, we can go on to calculate its eigenfunctions. As mentioned earlier, we can translate this problem at first abstract into a much more concrete problem, which has to do with the field of \emph{Partial Differential Equaitons} (PDEs). The functions we want to find are simply functions that respect the following expression:
-\begin{equation}\label{kugel:eq:sph_srfc_laplace}
-    \nabla^2_{\partial S} f = \lambda f 
+But we will not consider this algebraic monstrosity in its entirety. As the
+title suggests, we will only care about the \emph{surface} of the sphere.  This
+is for many reasons, but mainly to simplify reduce the already broad scope of
+this text. Concretely, we will always work on the unit sphere, which just means
+that we set $r = 1$ and keep only $\vartheta$ and $\varphi$ as free variables.
+Now, since the variable $r$ became a constant, we can leave out all derivatives
+with respect to $r$ and substitute all $r$'s with 1's to obtain a new operator
+that deserves its own name.
+
+\begin{definition}[Surface spherical Laplacian]
+  \label{kugel:def:surface-laplacian}
+  The operator
+  \begin{equation*}
+      \surflaplacian :=
+        \frac{1}{\sin\vartheta} \frac{\partial}{\partial \vartheta} \left(
+          \sin\vartheta \frac{\partial}{\partial\vartheta}
+        \right)
+        + \frac{1}{\sin^2 \vartheta} \frac{\partial^2}{\partial\varphi^2},
+  \end{equation*}
+  is called the surface spherical Laplacian.
+\end{definition}
+
+In the definition, the subscript ``$\partial S$'' was used to emphasize the
+fact that we are on the spherical surface, which can be understood as being the
+boundary of the sphere. But what does it actually do? To get an intuition,
+first of all, notice the fact that $\surflaplacian$ have second derivatives,
+which means that this a measure of \emph{curvature}; But curvature of what? To
+get an even stronger intuition we will go into geometry, were curvature can be
+grasped very well visually. Consider figure \ref{kugel:fig:curvature} where the
+curvature is shown using colors. First we have the curvature of a curve in 1D,
+then the curvature of a surface (2D), and finally the curvature of a function on
+the surface of the unit sphere.
+
+\begin{figure}
+  \centering
+  \includegraphics[width=.3\linewidth]{papers/kugel/figures/tikz/curvature-1d}
+  \hskip 5mm
+  \includegraphics[width=.3\linewidth]{papers/kugel/figures/povray/curvature}
+  \hskip 5mm
+  \includegraphics[width=.3\linewidth]{papers/kugel/figures/povray/spherecurve}
+  \caption{
+    \kugeltodo{Fix alignment / size, add caption. Would be nice to match colors.}
+    \label{kugel:fig:curvature}
+  }
+\end{figure}
+
+Now that we have defined an operator, we can go and study its eigenfunctions,
+which means that we would like to find the functions $f(\vartheta, \varphi)$
+that satisfy the equation
+\begin{equation} \label{kuvel:eqn:eigen}
+    \surflaplacian f = -\lambda f.
 \end{equation}
-Which is traditionally written as follows:
-\begin{equation*}
-    \nabla^2_{\partial S} f = -\lambda f 
-\end{equation*}
-Perhaps the fact that we are dealing with a PDE may not be obvious at first glance, but if we extend the operator $\nabla^2_{\partial S}$ according to Eq.(\ref{kugel:eq:sph_srfc_laplace}), we will get:
-\begin{equation}\label{kugel:eq:PDE_sph}
-    \frac{1}{\sin\vartheta} \frac{\partial}{\partial \vartheta} \left( \sin\vartheta \frac{\partial f}{\partial\vartheta} \right)
-                + \frac{1}{\sin^2 \vartheta} \frac{\partial^2 f}{\partial\varphi^2} + \lambda f = 0, 
+Perhaps it may not be obvious at first glance, but we are in fact dealing with a
+partial differential equation (PDE). If we unpack the notation of the operator
+$\nabla^2_{\partial S}$ according to definition
+\ref{kugel:def:surface-laplacian}, we get:
+\begin{equation} \label{kugel:eqn:eigen-pde}
+    \frac{1}{\sin\vartheta} \frac{\partial}{\partial \vartheta} \left(
+      \sin\vartheta \frac{\partial f}{\partial\vartheta}
+    \right)
+    + \frac{1}{\sin^2 \vartheta} \frac{\partial^2 f}{\partial\varphi^2}
+    + \lambda f = 0.
 \end{equation}
-making it emerge.\newline
-All functions satisfying Eq.(\ref{kugel:eq:PDE_sph}), are called eigenfunctions. Our new goal is therefore to solve this PDE. The task seems very difficult but we can simplify it with a well-known technique, namely the \emph{separation Ansatz}. The latter consists in assuming that the function $f(\vartheta, \varphi)$ we are looking for can be factorized in the following form 
-\begin{equation}\label{kugel:eq:sep_ansatz_0}
+Since all functions satisfying \eqref{kugel:eqn:eigen-pde} are the
+\emph{eigenfunctions} of $\surflaplacian$, our new goal is to solve this PDE.
+The task may seem very difficult but we can simplify it with a well-known
+technique: \emph{the separation Ansatz}. It consists in assuming that the
+function $f(\vartheta, \varphi)$ can be factorized in the following form:
+\begin{equation} \label{kugel:eqn:sep-ansatz:0}
     f(\vartheta, \varphi) = \Theta(\vartheta)\Phi(\varphi). 
 \end{equation}
-In short, we are saying that the effect of the two independent variables can be described using the multiplication of two functions that describe their effect separately. If we include this assumption in Eq.(\ref{kugel:eq:PDE_sph}), we have:
-\begin{equation}
-    \frac{1}{\sin\vartheta} \frac{\partial}{\partial \vartheta} \left( \sin\vartheta \frac{\partial  \Theta(\vartheta)}{\partial\vartheta} \right)\Phi(\varphi)
-                + \frac{1}{\sin^2 \vartheta} \frac{\partial^2  \Phi(\varphi)}{\partial\varphi^2} \Theta(\vartheta) + \lambda  \Theta(\vartheta)\Phi(\varphi) = 0.  \label{kugel:eq:sep_ansatz_1}
+In other words, we are saying that the effect of the two independent variables
+can be described using the multiplication of two functions that describe their
+effect separately. This separation process was already presented in section
+\ref{buch:pde:section:kugel}, but we will briefly rehearse it here for
+convenience. If we substitute this assumption in
+\eqref{kugel:eqn:eigen-pde}, we have:
+\begin{equation} \label{kugel:eqn:sep-ansatz:1}
+    \frac{1}{\sin\vartheta} \frac{\partial}{\partial \vartheta} \left(
+      \sin\vartheta \frac{\partial  \Theta(\vartheta)}{\partial\vartheta}
+    \right) \Phi(\varphi)
+    + \frac{1}{\sin^2 \vartheta} \frac{\partial^2 \Phi(\varphi)}{\partial\varphi^2}
+      \Theta(\vartheta)
+    + \lambda \Theta(\vartheta)\Phi(\varphi) = 0.
 \end{equation}
-Dividing Eq.(\ref{kugel:eq:sep_ansatz_1}) by $\Theta(\vartheta)\Phi(\varphi)$ and inserting an auxiliary variable $m$, which we will call the separating constant, we will have:
+Dividing by $\Theta(\vartheta)\Phi(\varphi)$ and introducing an auxiliary
+variable $m$, the separation constant, yields:
 \begin{equation*}
-\frac{1}{\Theta(\vartheta)}\sin \vartheta \frac{d}{d \vartheta} \left( \sin \vartheta \frac{d \Theta}{d \vartheta} \right) + \lambda \sin^2 \vartheta = -\frac{1}{\Phi(\varphi)} \frac{d^2\Phi(\varphi)}{d\varphi^2} = m,
+  \frac{1}{\Theta(\vartheta)}\sin \vartheta \frac{d}{d \vartheta} \left(
+    \sin \vartheta \frac{d \Theta}{d \vartheta}
+  \right)
+  + \lambda \sin^2 \vartheta
+  = -\frac{1}{\Phi(\varphi)} \frac{d^2\Phi(\varphi)}{d\varphi^2}
+  = m,
 \end{equation*}
-which is equivalent to the following system of two \emph{Ordinary Differential Equations} (ODEs)
-\begin{align}
-    \frac{d^2\Phi(\varphi)}{d\varphi^2} &= -m \Phi(\varphi) \label{kugel:eq:ODE_1} \\ 
-    \sin \vartheta \frac{d}{d \vartheta} \left( \sin \vartheta \frac{d \Theta}{d \vartheta} \right) + \left( \lambda - \frac{m}{\sin^2 \vartheta} \right)\Theta(\vartheta) &= 0 \label{kugel:eq:ODE_2} 
-\end{align}
-The solution of Eq.(\ref{kugel:eq:ODE_1}) is quite trivial. The complex exponential is obviously the function we are looking for, so we can write
-\begin{equation*}
-    \Phi_m(\varphi) = e^{j m \varphi}, \quad m \in \mathbb{Z}.
-\end{equation*}
-The restriction for the separation constant $m$ arises from the fact that we require the following periodic constraint $\Phi_m(\varphi + 2\pi) = \Phi_m(\varphi)$.\newline
-As for Eq.(\ref{kugel:eq:ODE_2}), the resolution will not be so straightforward. We can begin by considering the substitution $x = \cos \vartheta$. The operator $\frac{d}{d \vartheta}$ will be:
+which is equivalent to the following system of 2 first order differential
+equations (ODEs):
+\begin{subequations}
+  \begin{gather}
+    \frac{d^2\Phi(\varphi)}{d\varphi^2} = -m \Phi(\varphi),
+      \label{kugel:eqn:ode-phi} \\ 
+    \sin \vartheta \frac{d}{d \vartheta} \left(
+      \sin \vartheta \frac{d \Theta}{d \vartheta}
+    \right)
+    + \left( \lambda - \frac{m}{\sin^2 \vartheta} \right)
+      \Theta(\vartheta) = 0
+      \label{kugel:eqn:ode-theta}.
+  \end{gather}
+\end{subequations}
+The solution of \eqref{kugel:eqn:ode-phi} is easy to find: The complex
+exponential is obviously the function we are looking for. So we can directly
+write the solutions
+\begin{equation} \label{kugel:eqn:ode-phi-sol}
+    \Phi(\varphi) = e^{i m \varphi}, \quad m \in \mathbb{Z}.
+\end{equation}
+The restriction that the separation constant $m$ needs to be an integer arises
+from the fact that we require a $2\pi$-periodicity in $\varphi$ since
+$\Phi(\varphi + 2\pi) = \Phi(\varphi)$. Unfortunately, solving
+\eqref{kugel:eqn:ode-theta} is not so straightforward. Actually it is quite
+difficult, and the process is so involved that it will require a dedicated
+section of its own.
+
+\subsection{Legendre Functions}
+
+To solve \eqref{kugel:eqn:ode-theta}
+We can begin by considering the substitution $x = \cos \vartheta$. The operator $\frac{d}{d \vartheta}$ will be:
 \begin{align*}
     \frac{d}{d \vartheta} = \frac{dx}{d \vartheta}\frac{d}{dx} &= -\sin \vartheta \frac{d}{dx} \\
     &= -\sqrt{1-x^2} \frac{d}{dx}.
