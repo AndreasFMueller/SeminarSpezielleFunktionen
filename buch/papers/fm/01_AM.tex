@@ -11,19 +11,61 @@ Nun zur Amplitudenmodulation verwenden wir das bevorzugte Trägersignal
 \[
     x_c(t) = A_c \cdot \cos(\omega_ct).
 \]
-Dies bringt den grossen Vorteil das, dass modulierend Signal sämtliche Anteile im Frequenzspektrum inanspruch nimmt 
-und das Trägersignal nur  zwei komplexe Schwingungen besitzt. 
+Dies bringt den grossen Vorteil das, dass modulierend Signal sämtliche Anteile im Frequenzspektrum in Anspruch nimmt 
+und das Trägersignal nur zwei komplexe Schwingungen besitzt. 
 Dies sieht man besonders in der Eulerischen Formel
 \[
     x_c(t) = \frac{A_c}{2} \cdot e^{j\omega_ct}\;+\;\frac{A_c}{2} \cdot e^{-j\omega_ct}.
+    \label{fm:eq:AM:euler}
 \]
 Dabei ist die negative Frequenz der zweiten komplexen Schwingung zwingend erforderlich, damit in der Summe immer ein reellwertiges Trägersignal ergibt.
 Nun wird der Parameter \(A_c\) durch das  Modulierende Signal \(m(t)\) ersetzt, wobei so \(m(t) \leqslant |1|\) normiert wurde.
-\newline
-\newline
+
+Dabei entseht wine Umhüllende kurve die unserem ursprünglichen signal \(m(t)\) entspricht.
+\[
+    x_c(t) = m(t) \cdot \cos(\omega_ct).
+\]
+
+\begin{figure}
+	\centering
+	\input{papers/fm/Python animation/m_t.pgf}
+	\caption{modulierende Signal \(m(t)\)}
+	\label{fig:bessel}
+\end{figure}
+%
 TODO:
+Bilder 
 Hier beschrieib ich was AmplitudenModulation ist und mache dan den link zu Frequenzmodulation inkl Formel \[\cos( \cos x)\]
 so wird beschrieben das daraus eigentlich \(x_c(t) = A_c \cdot \cos(\omega_i)\) wird und somit \(x_c(t) = A_c \cdot \cos(\omega_c + \frac{d \varphi(t)}{dt})\).
 Da \(\sin \) abgeleitet \(\cos \) ergibt, so wird aus dem \(m(t)\) ein \( \frac{d \varphi(t)}{dt}\)  in der momentan frequenz. \[ \Rightarrow \cos( \cos x) \]
-
 \subsection{Frequenzspektrum}
+Das Frequenzspektrum ist eine Darstellung von einem Signal im Frequenzbereich, das heisst man erkennt welche Frequenzen in einem Signal vorhanden sind.
+Dafür muss man eine Fouriertransformation vornehmen. 
+Wird aus dieser Gleichung \eqref{fm:eq:AM:euler}die Fouriertransformation vorggenommen, so erhält man
+
+%
+%Ein Ziel der Modulation besteht darin, mehrere Nachrichtensignale von verschiedenen Sendern gleichzeitig
+%in verschiedenen Frequenzbereichen über den gleichen Kanal zu senden. Um dieses Frequenzmultiplexing
+%störungsfrei und mit eine Vielzahl von Teilnehmern durchführen zu können, muss die spektrale Beschaffen-
+%heit der modulierten Signale möglichst gut bekannt sein.
+%Dank des Modulationssatzes der Fouriertransformation lässt sich das Spektrum eines gewöhnlichen AM Si-
+%gnals sofort bestimmen:
+%A c μ
+%F
+%·(M n (ω−ω c ) + M n (ω+ω c )) (5.5)
+%A c ·(1+μm n (t))·cos(ω c t) ❝ s A c π (δ(ω−ω c ) + δ(ω+ω c )) +
+%2
+%Das zweiseitige Spektrum des Nachrichtensignals M (ω) wird mit dem Faktor A 2 c μ gewichtet und einmal
+%nach +ω c und einmal nach −ω c verschoben. Dies führt im Vergleich zum Basisbandsignal zu einer Verdop-
+%pelung der Bandbreite mit je einem Seitenband links und rechts der Trägerfrequenz. Weiter beinhaltet das
+%Amplitudendichtespektrum je eine Deltafunktion mit Gewicht A c π an den Stellen ±ω c , d.h. ein fester, nicht-
+%modulierter Amplitudenanteil bei der eigentlichen Trägerfrequenz.
+%Das Amplitudendichtespektrum ist im nachfolgenden Graphen für A c = 1 und μ = 100% dargestellt.5.3. Gewöhnliche Amplitudenmodulation
+%47
+%Abbildung 5.12: Amplitudendichtespektrum von gewöhnlicher AM
+%Für das Nachrichtensignal wurde in diesem Graph mit einem Keil symbolhaft ein Amplitudendichtespektrum
+%|M (ω)| gewählt, bei welchem der Anteil auf der positiven und jener auf der negativen Frequenzachse visuell
+%gut auseinandergehalten werden können. Ein solch geformtes Spektrum wird aber in der Praxis kaum je
+%auftreten: bei periodischen Testsignalen besteht das Nachrichtensignal aus einem Linienspektrum, bei einem
+%Energiesignal mit zufälligem Verlauf aus einem kontinuierlichen Spektrum, welches jedoch nicht auf diese
+%einfache Art geformt sein wird
