@@ -15,9 +15,9 @@ Ebenso kann festgestellt werden, dass je grösser der Wert $z$ in $\mathstrut_0F
 \label{0f1:subsection:konvergenz}}
 Es zeigt sich in Abbildung \ref{0f1:ausblick:plot:airy:konvergenz}, dass nach drei Iterationen ($k = 3$) die Funktionen genaue Resultate im Bereich von $-2$ bis $2$ liefert. Ebenso kann festgestellt werden, dass der Kettenbruch schneller konvergiert und im positiven Bereich mit der Referenzfunktion $\operatorname{Ai}(x)$ übereinstimmt. Da die Rekursionsformel eine Abwandlung des Kettenbruches ist, verhalten sich die Funktionen in diesem Fall gleich.
 
-Erst wenn mehrerer Iterationen gerechnet werden, ist wie Abbildung \ref{0f1:ausblick:plot:konvergenz:positiv} dargestellt, der Kettenbruch den anderen zwei Algorithmen bezüglich Konvergenz überlegen. Allerdings muss beachtet werden, dass die Rekursionsformel zwar erst nach 35 Approximationen gänzlich konvergiert, nach 27 Iterationen sich nicht mehr gross verändert.
+Erst wenn mehrerer Iterationen gerechnet werden, ist wie Abbildung \ref{0f1:ausblick:plot:konvergenz:positiv} dargestellt, der Kettenbruch den anderen zwei Algorithmen bezüglich Konvergenz überlegen. Bei der Rekursionsformel muss beachtet werden, dass sie zwar erst nach 35 Approximationen gänzlich konvergiert, allerdings nach 27 Iterationen sich nicht mehr gross verändert.
 
-Ist $z$ negativ wie in Abbildung \ref{0f1:ausblick:plot:konvergenz:negativ}, führt dies zu aufgrund des Vorzeichens zu alternierenden Termen. So steigt bei allen Algorithmen zuerst die Differenz zum erwarteten Endwert. Erst nach genügend Iterationen sind die Terme so klein, dass sie das Endresultat nicht mehr signifikant beeinflussen. Während die Potenzreihe zusammen mit dem Kettenbruch nach 34 Approximationen konvergiert, braucht die Rekursionsformel noch zwei Iterationen mehr. Wohingegen die Rekursionsformel der genauste Algorithmus im negativen Bereich ist. Da der Computer mit einer relativen Genauigkeit von $10^{-15}$ rechnet, ist dies das Maximum an Präzision, dass erreicht werden kann.
+Ist $z$ negativ wie in Abbildung \ref{0f1:ausblick:plot:konvergenz:negativ}, führt dies zu aufgrund des Vorzeichens zu alternierenden Termen. So steigt bei allen Algorithmen zuerst die Differenz zum erwarteten Endwert. Erst nach genügend Iterationen sind die Terme so klein, dass sie das Endresultat nicht mehr signifikant beeinflussen. Während die Potenzreihe zusammen mit dem Kettenbruch nach 34 Approximationen konvergiert, braucht die Rekursionsformel noch zwei Iterationen mehr.  
 
 
 \subsection{Stabilität
@@ -39,14 +39,14 @@ Im negativem Bereich sind alle gewählten und umgesetzten Ansätze instabil. Gru
 \begin{figure}
     \centering
     \includegraphics[width=0.8\textwidth]{papers/0f1/images/konvergenzPositiv.pdf}
-    \caption{Konvergenz mit positivem $z$; Logarithmisch dargestellte absoluter Fehler.
+    \caption{Konvergenz mit positivem $z$; Logarithmisch dargestellter absoluter Fehler.
     \label{0f1:ausblick:plot:konvergenz:positiv}}
 \end{figure}
 
 \begin{figure}
     \centering
     \includegraphics[width=0.8\textwidth]{papers/0f1/images/konvergenzNegativ.pdf}
-    \caption{Konvergenz mit negativem $z$; Logarithmisch dargestellte absoluter Fehler.
+    \caption{Konvergenz mit negativem $z$; Logarithmisch dargestellter absoluter Fehler.
     \label{0f1:ausblick:plot:konvergenz:negativ}}
 \end{figure}
 
