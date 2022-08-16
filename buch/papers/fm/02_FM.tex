@@ -6,9 +6,65 @@
 \section{FM
 \label{fm:section:teil1}}
 \rhead{FM}
-\subsection{Frequenzspektrum}
-TODO
-Hier Beschreiben ich FM und FM im Frequenzspektrum.
+\subsection{Frequenzmodulation}
+(skript Nat ab Seite 60)
+Als weiterer Parameter, um ein sinusförmiges Trägersignal \(x_c = A_c \cdot \cos(\omega_c t + \varphi)\) zu modulieren,
+bietet sich neben der Amplitude \(A_c\) auch der Phasenwinkel \(\varphi\) oder die momentane Frequenzabweichung \(\frac{d\varphi}{dt}\) an.
+Bei der Phasenmodulation (Englisch: phase modulation, PM) erzeugt das Nachrichtensignal \(m(t)\) eine Phasenabweichung \(\varphi(t)\) des modulierten Trägersignals im Vergleich zum nicht-modulierten Träger. Sie ist pro-
+%portional zum Nachrichtensignal \(m(t)\) durch eine Skalierung mit der Phasenhubkonstanten (Englisch: phase deviation constant) 
+%k p [rad],
+%welche die Amplitude des Nachrichtensignals auf die Phasenabweichung des
+%modulierten Trägersignals abbildet: φ(t) = k p · m(t). Damit ergibt sich für das phasenmodulierte Trägersi-
+%gnal:
+%x PM (t) = A c · cos (ω c t + k p · m(t))
+%(5.16)
+%Die modulierte Phase φ(t) verändert dabei auch die Momentanfrequenz (Englisch: instantaneous frequency)
+%ω i
+%, welche wie folgt berechnet wird:
+%f i = 2π
+%ω i (t) = ω c +
+%d φ(t)
+%dt
+%(5.17)
+%Bei der Frequenzmodulation (Englisch: frequency modulation, FM) ist die Abweichung der momentanen
+%Kreisfrequenz ω i von der Trägerkreisfrequenz ω c proportional zum Nachrichtensignal m(t). Sie ergibt sich,
+%indem m(t) mit der (Kreis-)Frequenzhubkonstanten (Englisch: frequency deviation constant) k f [rad/s] ska-
+%liert wird: ω i (t) = ω c + k f · m(t). Diese sich zeitlich verändernde Abweichung von der Kreisfrequenz ω c
+%verursacht gleichzeitig auch Schwankungen der Phase φ(t), welche wie folgt berechnet wird:
+%φ(t) =
+%Z t
+%−∞
+%ω i (τ ) − ω c dτ =
+%Somit ergibt sich für das frequenzmodulierte Trägersignal:
+%
+%Z t
+%−∞
+%x FM (t) = A c · cos  ω c t + k f
+%k f · m(t) dτ
+%Z t
+%−∞
+%
+%m(τ ) dτ 
+%(5.18)
+%(5.19)
+%Die Phase φ(t) hat dabei einen kontinuierlichen Verlauf, d.h. das FM-modulierte Signal x FM (t) weist keine
+%Stellen auf, wo sich die Phase sprunghaft ändert. Aus diesem Grund spricht man bei frequenzmodulierten
+%Signalen – speziell auch bei digitalen FM-Signalen – von einer Modulation mit kontinuierlicher Phase (Eng-
+%lisch: continuous phase modulation).
+%Wie aus diesen Ausführungen hervorgeht, sind Phasenmodulation und Frequenzmodulation äquivalente Mo-
+%dulationsverfahren. Beide variieren sowohl die Phase φ wie auch die Momentanfrequenz ω i . Dadurch kann
+%man leider nicht – wie vielleicht erhofft – je mit einem eigenen Nachrichtensignal ein gemeinsames Trägersi-
+%gnal unabhängig PM- und FM-modulieren, ohne dass sich diese Modulationen für den Empfänger untrennbar
+%vermischen würden.
+%
+%Um die mathematische Behandlung der nicht-linearen Winkelmodulation etwas zu verkürzen, ist es aufgrund
+%dieser Äquivalenzen gerechtfertigt, dass PM und FM gemeinsam behandelt werden. Jeweils vor der Modu-
+%lation bzw. nach der Demodulation kann dann noch eine Differentiation oder Integration durchgeführt wird,
+%um von der einen Modulationsart zur anderen zu gelangen.
+%\subsection{Frequenzbereich}
+%Nun
+%TODO
+%Hier Beschreiben ich FM und FM im Frequenzspektrum.
 %Sed ut perspiciatis unde omnis iste natus error sit voluptatem
 %accusantium doloremque laudantium, totam rem aperiam, eaque ipsa
 %quae ab illo inventore veritatis et quasi architecto beatae vitae

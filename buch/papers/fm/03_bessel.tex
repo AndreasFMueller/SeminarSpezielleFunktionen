@@ -67,7 +67,7 @@ Mit dem \eqref{fm:eq:addth1} wird aus dem modulierten Signal
     =
     \cos(\omega_c t + \beta\sin(\omega_mt))
     =
-    \cos(\omega_c t)\cos(\beta\sin(\omega_m t))-\sin(\omega_ct)\sin(\beta\sin(\omega_m t)).
+    \cos(\omega_c t)\cos(\beta\sin(\omega_m t)) - \sin(\omega_ct)\sin(\beta\sin(\omega_m t)).
     \label{fm:eq:start}
 \]
 %-----------------------------------------------------------------------------------------------------------
@@ -89,23 +89,34 @@ mit hilfe der Besselindentität \eqref{fm:eq:besselid1} zum
 \end{align*}
 %intertext{}   Funktioniert nicht.
 wobei mit dem Additionstheorem \eqref{fm:eq:addth2} \(A = \omega_c t\) und \(B = 2k\omega_m t \) ersetzt wurden.
+Nun kann die Summe in zwei Summen 
 \begin{align*}
     c(t)
     &=
-    J_0(\beta) \cdot \cos(\omega_c t) + \sum_{k=1}^\infty J_{2k}(\beta) \{ \underbrace{\cos((\omega_c - 2k \omega_m) t)} \,+\, \cos((\omega_c + 2k \omega_m) t) \}
+    J_0(\beta) \cdot \cos(\omega_c t) + \sum_{k=1}^\infty J_{2k}(\beta) \cos((\omega_c - 2k \omega_m) t) \,+\, \cos((\omega_c + 2k \omega_m) t) \}
     \\
     &=
-    \sum_{k=-\infty}^{-1} J_{2k}(\beta)  \overbrace{\cos((\omega_c +2k \omega_m) t)} 
-    \,+\,J_0(\beta)\cdot \cos(\omega_c t+ 2\cdot0 \omega_m) 
+    \sum_{k=\infty}^{1} J_{2k}(\beta)  \underbrace{\cos((\omega_c - 2k \omega_m) t)} 
+    \,+\,J_0(\beta)\cdot \cos(\omega_c t) 
     \,+\, \sum_{k=1}^\infty J_{2k}(\beta)\cos((\omega_c + 2k \omega_m) t) 
 \end{align*}
-wird.
-Das Minus im Ersten Term wird  zur negativen Summe \(\sum_{-\infty}^{-1}\) ersetzt.
-Da \(2k\) immer gerade ist, wird es durch alle negativen und positiven Ganzzahlen \(n\) ersetzt:
+aufgeteilt werden.
+Wenn bei der ersten Summe noch \(k\) von \(-\infty \to -1\) läuft, wird diese summe zu \(\sum_{k=-1}^{-\infty} J_{-2k}(\beta)  {\cos((\omega_c + 2k \omega_m) t)} \)
+Zudem kann die Besselindentität \eqref{fm:eq:besselid3} gebraucht werden.  \(n \) wird  mit \(2k\) ersetzt, da dies immer gerade ist so gilt: \(J_{-n}(\beta) = J_n(\beta)\)
+Somit bekommt man zwei gleiche Summen
+\begin{align*}
+    c(t)
+    &=
+    \sum_{k=-\infty}^{-1} J_{2k}(\beta) \cos((\omega_c + 2k \omega_m) t)
+    \,+\,J_0(\beta)\cdot \cos(\omega_c t+ 2 \cdot 0 \omega_m) 
+    \,+\, \sum_{k=1}^\infty J_{2k}(\beta)\cos((\omega_c + 2k \omega_m) t) 
+\end{align*}
+Diese können wir vereinfachter schreiben,
 \begin{align*}
     \sum_{n\, \text{gerade}} J_{n}(\beta) \cos((\omega_c + n \omega_m) t),
     \label{fm:eq:gerade}
 \end{align*}
+da \(2k\) für alle negativen, wie positiven geraden Zahlen zählt.
 %----------------------------------------------------------------------------------------------------------------
 \subsubsection{Sin-Teil}
 Nun zum zweiten Teil des Term \eqref{fm:eq:start}, den Sin-Teil
