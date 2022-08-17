@@ -112,7 +112,7 @@ Mit $M_{k,m}(z)$ geschrieben resultiert
     D_n(z) = \frac{
             \Gamma \left( {\textstyle \frac{1}{2}}\right) 2^{\frac{1}{2}n + \frac{1}{4}} z^{-\frac{1}{2}}
         }{
-            \Gamma \left( {\textstyle \frac{1}{2}} \right) - {\textstyle \frac{1}{2}} n)
+            \Gamma \left( {\textstyle \frac{1}{2}} - {\textstyle \frac{1}{2}} n \right)
         }
         M_{\frac{1}{2} n + \frac{1}{4}, - \frac{1}{4}} \left(\frac{1}{2}z^2\right)
         +
@@ -127,11 +127,14 @@ In \cite{parzyl:abramowitz-stegun} sind zwei Lösungen $U(a, z)$ und $V(a,z)$
 \begin{align}
     U(a,z) &= 
     \cos\left[\pi \left({\textstyle \frac{1}{4}} + {\textstyle \frac{1}{2}} a\right)\right] Y_1
-    - \sin\left[\pi \left({\textstyle \frac{1}{4}} + {\textstyle \frac{1}{2}} a\right)\right] Y_2 \\
+    - \sin\left[\pi \left({\textstyle \frac{1}{4}} + {\textstyle \frac{1}{2}} a\right)\right] Y_2 
+    \label{parzyl:eq:Uaz}
+    \\
     V(a,z) &= \frac{1}{\Gamma \left({\textstyle \frac{1}{2} - a}\right)} \left\{
     \sin\left[\pi \left({\textstyle \frac{1}{4}} + {\textstyle \frac{1}{2}} a\right)\right] Y_1
     + \cos\left[\pi \left({\textstyle \frac{1}{4}} + {\textstyle \frac{1}{2}} a\right)\right] Y_2
     \right\}
+    \label{parzyl:eq:Vaz}
 \end{align}
 mit
 \begin{align}
@@ -143,9 +146,8 @@ mit
             {}_{1} F_{1}
                 \left({\textstyle \frac{1}{2}}a + {\textstyle \frac{1}{4}}, 
                 {\textstyle \frac{1}{2}} ; 
-                {\textstyle \frac{1}{2}}z^2\right)
-            \\
-    Y_2 &= \frac{1}{\sqrt{\pi}} 
+                {\textstyle \frac{1}{2}}z^2\right)\\
+        Y_2 &= \frac{1}{\sqrt{\pi}} 
             \frac{\Gamma\left({\textstyle \frac{3}{4} - 
             {\textstyle \frac{1}{2}}a}\right)}
             {2^{\frac{1}{2} a - \frac{1}{4}}} 
@@ -167,11 +169,11 @@ ausgedrückt werden
     \left[\sin\left(\pi a\right) D_{-a-1/2}(z) + D_{-a-1/2}(-x)\right].
 \end{align}
 In den Abbildungen \ref{parzyl:fig:dnz} und \ref{parzyl:fig:Vnz} sind 
-die Funktionen $D_a(z)$ und $V(a,z)$ mit verschiedenen Werten für $a$ abgebildet.
+die Funktionen $D_n(z)$ und $V(a,z)$ mit verschiedenen Werten für $a$ abgebildet.
 \begin{figure}
     \centering
     \includegraphics[scale=0.3]{papers/parzyl/img/D_plot.png}
-    \caption{$D_a(z)$ mit unterschiedlichen Werten für $a$.}
+    \caption{$D_n(z)$ mit unterschiedlichen Werten für $n$.}
     \label{parzyl:fig:dnz}
 \end{figure}
 \begin{figure}

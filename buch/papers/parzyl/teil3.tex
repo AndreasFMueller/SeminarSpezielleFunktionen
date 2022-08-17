@@ -9,41 +9,45 @@
 
 \subsection{Potenzreihenentwicklung
 	\label{parzyl:potenz}}
-Die parabolischen Zylinderfunktionen, welche in Gleichung \ref{parzyl:eq:solution_dgl} gegeben sind, können auch als Potenzreihen geschrieben werden
+%Die parabolischen Zylinderfunktionen, welche in Gleichung \ref{parzyl:eq:solution_dgl} gegeben sind, 
+%können auch als Potenzreihen geschrieben werden
+Die parabolischen Zylinderfunktionen können auch als Potenzreihen geschrieben werden.
+Im folgenden Abschnitt werden die Terme welche nur von $n$ oder $a$ abhängig sind vernachlässigt.
+Die parabolischen Zylinderfunktionen sind Linearkombinationen aus einem geraden Teil $w_1(\alpha, z)$ 
+und einem ungeraden Teil $w_2(\alpha, z)$, welche als Potenzreihe
 \begin{align}
-	w_1(k,z)
+	w_1(\alpha,z)
 	&=  
 	e^{-z^2/4} \,
 	{}_{1} F_{1}
 	(
-	{\textstyle \frac{1}{4}} 
-	- k, {\textstyle \frac{1}{2}} ; {\textstyle \frac{1}{2}}z^2) 
+	\alpha, {\textstyle \frac{1}{2}} ; {\textstyle \frac{1}{2}}z^2) 
 	= 
 	e^{-\frac{z^2}{4}}
 	\sum^{\infty}_{n=0}
-	\frac{\left ( \frac{1}{4} - k \right )_{n}}{\left ( \frac{1}{2}\right )_{n}}
+	\frac{\left ( \alpha \right )_{n}}{\left ( \frac{1}{2}\right )_{n}}
 	\frac{\left ( \frac{1}{2} z^2\right )^n}{n!} \\
 	&=
 	e^{-\frac{z^2}{4}}
 	\left ( 
 	1 
 	+
-	\left ( \frac{1}{2} - 2k \right )\frac{z^2}{2!}
+	\left ( 2\alpha \right )\frac{z^2}{2!}
 	+
-	\left ( \frac{1}{2} - 2k \right )\left ( \frac{5}{2} - 2k \right )\frac{z^4}{4!}  
+	\left ( 2\alpha \right )\left ( 2 + 2\alpha \right )\frac{z^4}{4!}  
 	+
 	\dots
 	\right )
 \end{align}
 und
 \begin{align}
-	w_2(k,z)
+	w_2(\alpha,z)
 	&=  
 	ze^{-z^2/4} \,
 	{}_{1} F_{1}
 	(
-	{\textstyle \frac{3}{4}} 
-	- k, {\textstyle \frac{3}{2}} ; {\textstyle \frac{1}{2}}z^2) 
+	{\textstyle \frac{1}{2}} 
+	+ \alpha, {\textstyle \frac{3}{2}} ; {\textstyle \frac{1}{2}}z^2) 
 	= 
 	ze^{-\frac{z^2}{4}}
 	\sum^{\infty}_{n=0}
@@ -54,20 +58,23 @@ und
 	\left ( 
 	z 
 	+
-	\left ( \frac{3}{2} - 2k \right )\frac{z^3}{3!}
+	\left ( 1 + 2\alpha \right )\frac{z^3}{3!}
 	+
-	\left ( \frac{3}{2} - 2k \right )\left ( \frac{7}{2} - 2k \right )\frac{z^5}{5!}  
+	\left ( 1 + 2\alpha \right )\left ( 3 + 2\alpha \right )\frac{z^5}{5!}  
 	+
 	\dots
 	\right ).
 \end{align}
-Bei den Potenzreihen sieht man gut, dass die Ordnung des Polynoms im generellen ins unendliche geht. Es gibt allerdings die Möglichkeit für bestimmte k das die Terme in der Klammer gleich null werden und das Polynom somit eine endliche Ordnung $n$ hat. Dies geschieht bei $w_1(k,z)$ falls
+sind.
+Bei den Potenzreihen sieht man gut, dass die Ordnung des Polynoms im generellen ins unendliche geht. 
+Es gibt allerdings die Möglichkeit für bestimmte $\alpha$ das die Terme in der Klammer gleich null werden 
+und das Polynom somit eine endliche Ordnung $n$ hat. Dies geschieht bei $w_1(\alpha,z)$ falls
 \begin{equation}
-	k = \frac{1}{4} + n \qquad n \in \mathbb{N}_0
+	\alpha =  -n \qquad n \in \mathbb{N}_0
 \end{equation}
-und bei $w_2(k,z)$ falls
+und bei $w_2(\alpha,z)$ falls
 \begin{equation}
-	k = \frac{3}{4} + n \qquad n \in \mathbb{N}_0.
+	\alpha = -\frac{1}{2} - n \qquad n \in \mathbb{N}_0.
 \end{equation}
 
 \subsection{Ableitung}
