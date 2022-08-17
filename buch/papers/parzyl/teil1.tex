@@ -6,6 +6,22 @@
 \section{Lösung
 \label{parzyl:section:teil1}}
 \rhead{Lösung}
+
+\eqref{parzyl:sep_dgl_3} beschriebt einen ungedämpften harmonischen Oszillator.
+Die Lösung ist somit
+\begin{equation}
+	i(z) 
+	= 
+	A\cos{ 
+		\left ( 
+		\sqrt{\lambda + \mu}z
+		\right )}
+	+
+	B\sin{ 
+		\left ( 
+		\sqrt{\lambda + \mu}z
+		\right )}.
+\end{equation}
 Die Differentialgleichungen \eqref{parzyl:sep_dgl_1} und \eqref{parzyl:sep_dgl_2} können mit
 Hilfe der Whittaker Gleichung gelöst werden.
 \begin{definition}
@@ -78,7 +94,7 @@ Whittaker und Watson zeigen in \cite{parzyl:whittaker} eine Lösung
         }
         M_{\frac{1}{2} n + \frac{1}{4}, \frac{1}{4}} \left(\frac{1}{2}z^2\right)
 \end{equation}
-welche die Differenzialgleichung
+welche die Differentialgleichung
 \begin{equation}
     \frac{d^2D_n(z)}{dz^2} + \left(n + \frac{1}{2} - \frac{1}{4} z^2\right)D_n(z) = 0
 \end{equation}
@@ -105,7 +121,7 @@ mit
             {\textstyle \frac{1}{2}}a}\right)}
             {2^{\frac{1}{2} a - \frac{1}{4}}} w_2
 \end{align}
-der Differenzialgleichung
+der Differentialgleichung
 \begin{equation}
     \frac{d^2 y}{d z^2} - \left(\frac{1}{4} z^2 + a\right) y = 0
 \end{equation}
@@ -138,3 +154,4 @@ ausgedrückt werden
     V(a,z) &= \frac{\Gamma \left({\textstyle \frac{1}{2}} + a\right)}{\pi}
     \left[\sin\left(\pi a\right) D_{-a-1/2}(z) + D_{-a-1/2}(-x)\right].
 \end{align}
+TODO Plot
