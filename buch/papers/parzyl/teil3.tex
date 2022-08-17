@@ -3,6 +3,81 @@
 %
 % (c) 2020 Prof Dr Andreas Müller, Hochschule Rapperswil
 %
-\section{Teil 3
-\label{parzyl:section:teil3}}
-\rhead{Teil 3}
+\section{Eigenschaften
+\label{parzyl:section:Eigenschaften}}
+\rhead{Eigenschaften}
+
+\subsection{Potenzreihenentwicklung
+	\label{parzyl:potenz}}
+Die parabolischen Zylinderfunktionen, welche in Gleichung \ref{parzyl:eq:solution_dgl} gegeben sind, können auch als Potenzreihen geschrieben werden
+\begin{align}
+	w_1(k,z)
+	&=  
+	e^{-z^2/4} \,
+	{}_{1} F_{1}
+	(
+	{\textstyle \frac{1}{4}} 
+	- k, {\textstyle \frac{1}{2}} ; {\textstyle \frac{1}{2}}z^2) 
+	= 
+	e^{-\frac{z^2}{4}}
+	\sum^{\infty}_{n=0}
+	\frac{\left ( \frac{1}{4} - k \right )_{n}}{\left ( \frac{1}{2}\right )_{n}}
+	\frac{\left ( \frac{1}{2} z^2\right )^n}{n!} \\
+	&=
+	e^{-\frac{z^2}{4}}
+	\left ( 
+	1 
+	+
+	\left ( \frac{1}{2} - 2k \right )\frac{z^2}{2!}
+	+
+	\left ( \frac{1}{2} - 2k \right )\left ( \frac{5}{2} - 2k \right )\frac{z^4}{4!}  
+	+
+	\dots
+	\right )
+\end{align}
+und
+\begin{align}
+	w_2(k,z)
+	&=  
+	ze^{-z^2/4} \,
+	{}_{1} F_{1}
+	(
+	{\textstyle \frac{3}{4}} 
+	- k, {\textstyle \frac{3}{2}} ; {\textstyle \frac{1}{2}}z^2) 
+	= 
+	ze^{-\frac{z^2}{4}}
+	\sum^{\infty}_{n=0}
+	\frac{\left ( \frac{3}{4} - k \right )_{n}}{\left ( \frac{3}{2}\right )_{n}}
+	\frac{\left ( \frac{1}{2} z^2\right )^n}{n!} \\
+	&=
+	e^{-\frac{z^2}{4}}
+	\left ( 
+	z 
+	+
+	\left ( \frac{3}{2} - 2k \right )\frac{z^3}{3!}
+	+
+	\left ( \frac{3}{2} - 2k \right )\left ( \frac{7}{2} - 2k \right )\frac{z^5}{5!}  
+	+
+	\dots
+	\right ).
+\end{align}
+Bei den Potenzreihen sieht man gut, dass die Ordnung des Polynoms im generellen ins unendliche geht. Es gibt allerdings die Möglichkeit für bestimmte k das die Terme in der Klammer gleich null werden und das Polynom somit eine endliche Ordnung $n$ hat. Dies geschieht bei $w_1(k,z)$ falls
+\begin{equation}
+	k = \frac{1}{4} + n \qquad n \in \mathbb{N}_0
+\end{equation}
+und bei $w_2(k,z)$ falls
+\begin{equation}
+	k = \frac{3}{4} + n \qquad n \in \mathbb{N}_0.
+\end{equation}
+
+\subsection{Ableitung}
+Es kann gezeigt werden, dass die Ableitungen $\frac{\partial w_1(z,k)}{\partial z}$ und $\frac{\partial w_2(z,k)}{\partial z}$ einen Zusammenhang zwischen $w_1(z,k)$ und $w_2(z,k)$ zeigen. Die Ableitung von $w_1(z,k)$ nach $z$ kann über die Produktregel berechnet werden und ist gegeben als
+\begin{equation}
+	\frac{\partial w_1(z,k)}{\partial z} = \left (\frac{1}{2} - 2k \right ) w_2(z, k -\frac{1}{2}) - \frac{1}{2} z w_1(z,k),
+\end{equation} 
+und die Ableitung von $w_2(z,k)$ als
+\begin{equation}
+	\frac{\partial w_2(z,k)}{\partial z} = w_1(z, k -\frac{1}{2}) - \frac{1}{2} z w_2(z,k).
+\end{equation}
+Über diese Eigenschaft können einfach weitere Ableitungen berechnet werden. 
+

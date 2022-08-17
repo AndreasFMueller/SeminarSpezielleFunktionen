@@ -5,16 +5,19 @@
 %
 \section{Anwendung in der Physik 
 \label{parzyl:section:teil2}}
-\rhead{Teil 2}
+\rhead{Anwendung in der Physik}
 
-
-\subsection{Elektrisches Feld einer semi-infiniten Platte
-\label{parzyl:subsection:bonorum}}
-Die parabolischen Zylinderkoordinaten tauchen auf, wenn man das elektrische Feld einer semi-infiniten Platte finden will.
-Das dies so ist kann im zwei Dimensionalen mit Hilfe von komplexen Funktionen gezeigt werden. Wobei die Platte dann nur eine Linie ist.
+Die parabolischen Zylinderkoordinaten tauchen auf, wenn man das elektrische Feld einer semi-infiniten Platte, wie in Abbildung \ref{parzyl:fig:leiterplatte} gezeigt, finden will.
+\begin{figure}
+	 \centering
+	\includegraphics[width=0.9\textwidth]{papers/parzyl/img/plane.pdf}
+	\caption{Semi-infinite Leiterplatte}
+	\label{parzyl:fig:leiterplatte}
+\end{figure}
+Das dies so ist kann im zwei Dimensionalen mit Hilfe von komplexen Funktionen gezeigt werden. Die Platte ist dann nur eine Linie, was man in Abbildung TODO sieht.
 Jede komplexe Funktion $F(z)$ kann geschrieben werden als
 \begin{equation}
-	F(z) = U(x,y) + iV(x,y) \qquad z \in \mathbb{C}; x,y \in \mathbb{R}.
+	F(s) = U(x,y) + iV(x,y) \qquad s \in \mathbb{C}; x,y \in \mathbb{R}.
 \end{equation}  
 Dabei muss gelten, falls die Funktion differenzierbar ist, dass
 \begin{equation}
@@ -35,7 +38,7 @@ Aus dieser Bedingung folgt
 	\frac{\partial^2 U(x,y)}{\partial y^2}
 	=
 	0
-	}_{\nabla^2U(x,y)=0}
+	}_{\displaystyle{\nabla^2U(x,y)=0}}
 	\qquad
 	\underbrace{
 	\frac{\partial^2 V(x,y)}{\partial x^2}
@@ -43,26 +46,35 @@ Aus dieser Bedingung folgt
 	\frac{\partial^2 V(x,y)}{\partial y^2}
 	=
 	0
-	}_{\nabla^2V(x,y) = 0}.
+	}_{\displaystyle{\nabla^2V(x,y) = 0}}.
 \end{equation}
-Zusätzlich zeigen diese Bedingungen auch, dass die zwei Funktionen $U(x,y)$ und $V(x,y)$ orthogonal zueinander sind.
+Zusätzlich kann auch gezeigt werden, dass die Funktion $F(z)$ eine winkeltreue Abbildung ist. 
 Der Zusammenhang zum elektrischen Feld ist jetzt, dass das Potential an einem quellenfreien Punkt gegeben ist als 
 \begin{equation}
 	\nabla^2\phi(x,y) = 0.
 \end{equation}
-Da dies bei komplexen differenzierbaren Funktionen gilt, wie Gleichung \ref{parzyl_e_feld_zweite_ab} zeigt, kann entweder $U(x,y)$ oder $V(x,y)$ von einer solchen Funktion als das Potential angesehen werden. Im weiteren wird für das Potential $U(x,y)$ verwendet.  
-Da die Funktion, welche nicht das Potential beschreibt, in weiteren angenommen als $V(x,y)$, orthogonal zum Potential ist, zeigt dies das Verhalten des elektrischen Feldes.
-Um nun zu den parabolische Zylinderkoordinaten zu gelangen muss nur noch eine geeignete komplexe Funktion $F(z)$ gefunden werden, welche eine semi-infinite Platte beschreiben kann. Man könnte natürlich auch nach anderen Funktionen suchen, welche andere Bedingungen erfüllen und würde dann auf andere Koordinatensysteme stossen. Die gesuchte Funktion in diesem Fall ist
+Dies ist eine Bedingung welche differenzierbare Funktionen, wie in Gleichung \ref{parzyl_e_feld_zweite_ab} gezeigt wird, bereits besitzen. 
+Nun kann zum Beispiel $U(x,y)$ als das Potential angeschaut werden
 \begin{equation}
-	F(z) 
+	\phi(x,y) = U(x,y).
+\end{equation}
+Orthogonal zum Potential ist das elektrische Feld
+\begin{equation}
+	E(x,y) = V(x,y).
+\end{equation}
+Um nun zu den parabolische Zylinderkoordinaten zu gelangen muss nur noch eine geeignete komplexe Funktion $F(s)$ gefunden werden, 
+welche eine semi-infinite Platte beschreiben kann.
+Die gesuchte Funktion in diesem Fall ist
+\begin{equation}
+	F(s) 
 	= 
-	\sqrt{z} 
+	\sqrt{s} 
 	= 
 	\sqrt{x + iy}.
 \end{equation}
 Dies kann umgeformt werden zu
 \begin{equation}
-	F(z) 
+	F(s) 
 	= 
 	\underbrace{\sqrt{\frac{\sqrt{x^2+y^2} + x}{2}}}_{U(x,y)} 
 	+ 

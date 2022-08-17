@@ -4,42 +4,65 @@
 % (c) 2020 Prof Dr Andreas Müller, Hochschule Rapperswil
 %
 \section{Einleitung\label{parzyl:section:teil0}}
-\rhead{Teil 0}
-Die Laplace-Gleichung ist eine wichtige Gleichung in der Physik.
-Mit ihr lässt sich zum Beispiel das elektrische Feld in einem ladungsfreien Raum bestimmen.
-In diesem Kapitel wird die Lösung der Laplace-Gleichung im 
-parabolischen Zylinderkoordinatensystem genauer untersucht.
-\subsection{Laplace Gleichung}
-Die partielle Differentialgleichung
+\rhead{Einleitung}
+%Die Laplace-Gleichung ist eine wichtige Gleichung in der Physik.
+%Mit ihr lässt sich zum Beispiel das elektrische Feld in einem ladungsfreien Raum bestimmen.
+%In diesem Kapitel wird die Lösung der Laplace-Gleichung im 
+%parabolischen Zylinderkoordinatensystem genauer untersucht.
+Die Helmholtz-Gleichung ist eine wichtige Gleichung in der Physik. Mit ihr lässt sich zum Beispiel das Verhalten von elektromagnetischen Wellen beschreiben.
+In diesem Kapitel wird die Lösung der Helmholtz-Gleichung im parabolischen Zylinderkoordinatensystem, die parabolischen Zylinderfunktionen, genauer untersucht.
+
+\subsection{Helmholtz-Gleichung}
+Die partielle Differentialgleichung 
 \begin{equation}
-    \Delta f = 0
+	\nabla f = \lambda f
 \end{equation}
-ist als Laplace-Gleichung bekannt.
-Sie ist eine spezielle Form der Poisson-Gleichung
+ist als Helmholtz-Gleichung bekannt und beschreibt das Eigenwert Problem für den Laplace-Operator. Sie ist eine der Gleichungen welche auftritt wenn die Wellengleichung
 \begin{equation}
-    \Delta f = g
+	\left ( \nabla^2 - \frac{1}{c^2}\frac{\partial^2}{\partial t^2}  \right ) u(\textbf{r},t)
+	=
+	0 
 \end{equation}
-mit g als beliebige Funktion.
-In der Physik hat die Laplace-Gleichung in verschieden Gebieten
-verwendet, zum Beispiel im Elektromagnetismus.
-Das Gaussche Gesetz in den Maxwellgleichungen 
+mit Hilfe von Separation
 \begin{equation}
-     \nabla \cdot E = \frac{\varrho}{\epsilon_0}
-\label{parzyl:eq:max1}
-\end{equation}
-besagt das die Divergenz eines Elektrischen Feldes an einem 
-Punkt gleich der Ladung an diesem Punkt ist.
-Das elektrische Feld ist hierbei der Gradient des elektrischen
-Potentials
+	u(\textbf{r},t) = A(\textbf{r})T(t)
+\end{equation} 
+in zwei Differentialgleichungen aufgeteilt wird. Die Helmholtz-Gleichung ist der Teil, welcher Zeit unabhängig ist
 \begin{equation}
-    \nabla \phi = E.
+	\nabla^2 A(\textbf{r}) = \lambda A(\textbf{r}).
 \end{equation}
-Eingesetzt in \eqref{parzyl:eq:max1} resultiert
-\begin{equation}
-    \nabla \cdot \nabla \phi = \Delta \phi = \frac{\varrho}{\epsilon_0},
-\end{equation}
-was eine Possion-Gleichung ist.
-An Ladungsfreien Stellen, ist der rechte Teil der Gleichung $0$. 
+
+%\subsection{Laplace Gleichung}
+%Die partielle Differentialgleichung
+%\begin{equation}
+%    \Delta f = 0
+%\end{equation}
+%ist als Laplace-Gleichung bekannt.
+%Sie ist eine spezielle Form der Poisson-Gleichung
+%\begin{equation}
+%    \Delta f = g
+%\end{equation}
+%mit $g$ als beliebiger Funktion.
+%In der Physik hat die Laplace-Gleichung in verschiedenen Gebieten
+%verwendet, zum Beispiel im Elektromagnetismus.
+%Das Gaussche Gesetz in den Maxwellgleichungen 
+%\begin{equation}
+%     \nabla \cdot E = \frac{\varrho}{\epsilon_0}
+%\label{parzyl:eq:max1}
+%\end{equation}
+%besagt, dass die Divergenz eines elektrischen Feldes an einem 
+%Punkt gleich der Ladungsdichte an diesem Punkt ist.
+%Das elektrische Feld ist hierbei der Gradient des elektrischen
+%Potentials
+%\begin{equation}
+%    \nabla \phi = E.
+%\end{equation}
+%Eingesetzt in \eqref{parzyl:eq:max1} resultiert
+%\begin{equation}
+%    \nabla \cdot \nabla \phi = \Delta \phi = \frac{\varrho}{\epsilon_0},
+%\end{equation}
+%was eine Poisson-Gleichung ist.
+%An ladungsfreien Stellen ist der rechte Teil der Gleichung $0$. 
 \subsection{Parabolische Zylinderkoordinaten
 \label{parzyl:subsection:finibus}}
 Im parabolischen Zylinderkoordinatensystem bilden parabolische Zylinder die Koordinatenflächen.
@@ -51,7 +74,7 @@ Die Koordinate $(\sigma, \tau, z)$ sind in kartesischen Koordinaten ausgedrückt
     z & = z.
     \label{parzyl:coordRelationse}
 \end{align}
-Wird $\tau$ oder $\sigma$ konstant gesetzt resultieren die Parabeln
+Wird $\tau$ oder $\sigma$ konstant gesetzt, resultieren die Parabeln
 \begin{equation}
     y = \frac{1}{2} \left( \frac{x^2}{\sigma^2} - \sigma^2 \right)
 \end{equation}
@@ -67,15 +90,12 @@ und
     konstantes $\sigma$ und die grünen ein konstantes $\tau$.}
     \label{parzyl:fig:cordinates}
 \end{figure}
-
 Abbildung \ref{parzyl:fig:cordinates} zeigt das Parabolische Koordinatensystem.
 Das parabolische Zylinderkoordinatensystem entsteht wenn die Parabeln aus der
 Ebene gezogen werden. 
 
 Um in diesem Koordinatensystem integrieren und differenzieren zu 
 können braucht es die Skalierungsfaktoren $h_{\tau}$, $h_{\sigma}$ und $h_{z}$.
-
-\dots
 
 Wird eine infinitessimal kleine Distanz $ds$ zwischen zwei Punkten betrachtet
 kann dies im kartesischen Koordinatensystem mit
@@ -85,7 +105,7 @@ kann dies im kartesischen Koordinatensystem mit
     \label{parzyl:eq:ds}
 \end{equation}
 ausgedrückt werden.
-Das Skalierungsfaktoren werden so bestimmt, dass
+Die Skalierungsfaktoren werden so bestimmt, dass
 \begin{equation}
     \left(ds\right)^2 = \left(h_{\sigma}d\sigma\right)^2 + 
     \left(h_{\tau}d\tau\right)^2 + \left(h_z dz\right)^2
@@ -106,7 +126,7 @@ von \eqref{parzyl:coordRelationsa} - \eqref{parzyl:coordRelationse} als
     dz &= \frac{\partial \tilde{z} }{\partial \sigma} d\sigma + 
         \frac{\partial \tilde{z} }{\partial \tau} d\tau +
         \frac{\partial \tilde{z} }{\partial \tilde{z}} d \tilde{z} 
-        = d \tilde{z} \\
+        = d \tilde{z}
 \end{align}
 substituiert.
 Wird diese Gleichung in der Form von \eqref{parzyl:eq:dspara}
@@ -120,7 +140,7 @@ geschrieben, resultiert
 Daraus ergeben sich die Skalierungsfaktoren 
 \begin{align}
     h_{\sigma} &= \sqrt{\sigma^2 + \tau^2}\\
-    h_{\sigma} &= \sqrt{\sigma^2 + \tau^2}\\
+    h_{\tau} &= \sqrt{\sigma^2 + \tau^2}\\
     h_{z} &= 1.
 \end{align}
 \subsection{Differentialgleichung}
@@ -216,26 +236,12 @@ und
 	+
 	\mu 
 	\right )
-	i(\tau)
+	i(z)
 	=
 	0
 \end{equation}
 führt.
-Wobei die Lösung von \eqref{parzyl:sep_dgl_3}
-\begin{equation}
-	i(z) 
-	= 
-	A\cos{ 
-		\left ( 
-		\sqrt{\lambda + \mu}z
-		\right )}
-	+
-	B\sin{ 
-		\left ( 
-		\sqrt{\lambda + \mu}z
-		\right )}
-\end{equation}
-ist und \eqref{parzyl:sep_dgl_1} und \eqref{parzyl:sep_dgl_2} die sogenannten Weberschen Differentialgleichungen sind, welche die parabolischen Zylinder Funktionen als Lösung haben.
+
 
 
 
