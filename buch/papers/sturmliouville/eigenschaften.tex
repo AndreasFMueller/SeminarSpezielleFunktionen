@@ -37,31 +37,35 @@ für die Lösungen des Sturm-Liouville-Problems zur Folge hat.
 
 \subsubsection{Exkurs zum Spektralsatz}
 
-Um zu verstehen was für Eigenschaften der selbstadjungierte Operator $L_0$ in 
+Um zu verstehen welche Eigenschaften der selbstadjungierte Operator $L_0$ in 
 den Lösungen hervorbringt, wird der Spektralsatz benötigt.
 
 Dieser wird in der linearen Algebra oft verwendet um zu zeigen, dass eine Matrix
 diagonalisierbar ist, beziehungsweise dass eine Orthonormalbasis existiert.
-Dazu wird zunächst gezeigt, dass eine gegebene $n\times n$-Matrix $A$ aus einem
-endlichdimensionalem $\mathbb{K}$-Vektorraum selbstadjungiert ist, also dass
+
+Im Fall einer gegebenen $n\times n$-Matrix $A$ mit reellen Einträgen wird dazu 
+zunächst gezeigt, dass $A$ selbstadjungiert ist, also dass
 \[
     \langle Av, w \rangle
     =
     \langle v, Aw \rangle
 \]
-für $ v, w \in \mathbb{K}^n$ gilt.
-Ist dies der Fall, folgt direkt, dass $A$ auch normal ist.
-Dann wird die Aussage des Spektralsatzes
-\cite{sturmliouville:spektralsatz-wiki} verwended, welche besagt, dass für
-Endomorphismen genau dann eine Orthonormalbasis aus Eigenvektoren existiert,
-wenn sie normal sind und nur Eigenwerte aus $\mathbb{K}$ besitzten.
+für $ v, w \in \mathbb{R}^n$ gilt.
+Ist dies der Fall, kann die Aussage des Spektralsatzes
+\cite{sturmliouville:spektralsatz-wiki} verwended werden.
+Daraus folgt dann, dass eine Orthonormalbasis aus Eigenvektoren existiert,
+wenn $A$ nur Eigenwerte aus $\mathbb{R}$ besitzt.
 
 Dies ist allerdings nicht die Einzige Version des Spektralsatzes.
-Unter anderen gibt es den Spektralsatz für kompakte Operatoren 
-\cite{sturmliouville:spektralsatz-wiki}.
-Dieser besagt, dass wenn ein linearer kompakter Operator in
-$\mathbb{R}$ selbstadjungiert ist, ein (eventuell endliches)
-Orthonormalsystem existiert.
+Unter anderen gibt es den Spektralsatz für kompakte Operatoren
+\cite{sturmliouville:spektralsatz-wiki}, welcher für das
+Sturm-Liouville-Problem von Bedeutung ist.
+Welche Voraussetzungen erfüllt sein müssen, um diese Version des
+Satzes verwenden zu können, wird hier aber nicht diskutiert und kann bei den
+Beispielen in diesem Kapitel als gegeben betrachtet werden.
+Grundsätzlich ist die Aussage in dieser Version dieselbe, wie bei den Matrizen,
+also dass für ein Operator eine Orthonormalbasis aus Eigenvektoren existiert,
+falls er selbstadjungiert ist.
 
 \subsubsection{Anwendung des Spektralsatzes auf $L_0$}
 
