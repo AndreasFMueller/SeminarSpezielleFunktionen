@@ -6,11 +6,19 @@
 \section{Amplitudenmodulation\label{fm:section:teil0}}
 \rhead{AM}
 
-Das Ziel ist FM zu verstehen doch dazu wird zuerst AM erklärt welches einwenig einfacher zu verstehen ist und erst dann übertragen wir die Ideen in FM.
+Das Ziel ist FM zu verstehen doch dazu wird zuerst AM erklärt, welches einwenig einfacher zu verstehen ist und erst dann übertragen wir die Ideen in FM.
 Nun zur Amplitudenmodulation verwenden wir das bevorzugte Trägersignal
 \[
     x_c(t) = A_c \cdot \cos(\omega_ct).
 \]
+Dabei entseht wine Umhüllende kurve die unserem ursprünglichen signal \(m(t)\) entspricht.
+\[
+    x_c(t) = m(t) \cdot \cos(\omega_ct).
+\]
+
+TODO: Bild Umhüllende
+
+
 Dies bringt den grossen Vorteil das, dass modulierend Signal sämtliche Anteile im Frequenzspektrum in Anspruch nimmt 
 und das Trägersignal nur zwei komplexe Schwingungen besitzt. 
 Dies sieht man besonders in der Eulerischen Formel
@@ -21,10 +29,21 @@ Dies sieht man besonders in der Eulerischen Formel
 Dabei ist die negative Frequenz der zweiten komplexen Schwingung zwingend erforderlich, damit in der Summe immer ein reellwertiges Trägersignal ergibt.
 Nun wird der Parameter \(A_c\) durch das  Modulierende Signal \(m(t)\) ersetzt, wobei so \(m(t) \leqslant |1|\) normiert wurde.
 
-Dabei entseht wine Umhüllende kurve die unserem ursprünglichen signal \(m(t)\) entspricht.
-\[
-    x_c(t) = m(t) \cdot \cos(\omega_ct).
-\]
+\subsection{Frequenzspektrum}
+\subsection{Frequenzspektrum}
+Das Frequenzspektrum ist eine Darstellung von einem Signal im Frequenzbereich, das heisst man erkennt welche Frequenzen in einem Signal vorhanden sind.
+
+Das Frequenzspektrum zeigt uns wo welche Frequenzen sich befinden, dies ist gerade wichtig fürs Frequenzmultiplexen.
+Frequenzmultiplexen braucht man um mehrere Nachrichten verteilt zu übertragen.
+Dafür müsse wir \(x_c(t)\) Fourietransformieren da es nur zwei Summanden, wie \eqref{fm:eq:AM:euler} mit \(e^{+-j\omega_ct}\)gezeigt, verschiebt sich das Signal \(m(t)\) um die träger Frequenz \(\omega_ct\).
+Ist zudem \(m(t) 0 \sin(\omega_m t)\) so vereinfacht sich die Darstellung auf Dirac Impulse die jeweils rechts und links vom Träger signal sind.
+TODO Bild 
+Fürs Frequenzmultiplexen wird dann das Signal \(m(t)\) in die verschiedenen Frequenzen unterteilt um mehr Nachrichten zu übertragen.
+Doch aufs Frequenzmultiplexen und weitere formen wie SSB und DSB möchte ich nicht weiter eingehen.
+Diese können gerne im Nat Skript nachgelesen werden.
+
+Das sich unser Signal \(m(t)\)  so mit dem Träger Signal verhält findet es man wieder gut beim empfangen, mit Hilfe der bandbreite weiss man was alles dazugehört.
+Bei der Frequenzmodulation ist dies einwenig anders, dies sieht man auch (ref modulationsarten)
 
 \begin{figure}
 	\centering
@@ -35,13 +54,10 @@ Dabei entseht wine Umhüllende kurve die unserem ursprünglichen signal \(m(t)\)
 %
 TODO:
 Bilder 
-Hier beschrieib ich was AmplitudenModulation ist und mache dan den link zu Frequenzmodulation inkl Formel \[\cos( \cos x)\]
-so wird beschrieben das daraus eigentlich \(x_c(t) = A_c \cdot \cos(\omega_i)\) wird und somit \(x_c(t) = A_c \cdot \cos(\omega_c + \frac{d \varphi(t)}{dt})\).
-Da \(\sin \) abgeleitet \(\cos \) ergibt, so wird aus dem \(m(t)\) ein \( \frac{d \varphi(t)}{dt}\)  in der momentan frequenz. \[ \Rightarrow \cos( \cos x) \]
-\subsection{Frequenzspektrum}
-Das Frequenzspektrum ist eine Darstellung von einem Signal im Frequenzbereich, das heisst man erkennt welche Frequenzen in einem Signal vorhanden sind.
-Dafür muss man eine Fouriertransformation vornehmen. 
-Wird aus dieser Gleichung \eqref{fm:eq:AM:euler}die Fouriertransformation vorggenommen, so erhält man
+%Hier beschrieib ich was AmplitudenModulation ist und mache dan den link zu Frequenzmodulation inkl Formel \[\cos( \cos x)\]
+%so wird beschrieben das daraus eigentlich \(x_c(t) = A_c \cdot \cos(\omega_i)\) wird und somit \(x_c(t) = A_c \cdot \cos(\omega_c + \frac{d \varphi(t)}{dt})\).
+%Da \(\sin \) abgeleitet \(\cos \) ergibt, so wird aus dem \(m(t)\) ein \( \frac{d \varphi(t)}{dt}\)  in der momentan frequenz. \[ \Rightarrow \cos( \cos x) \]
+
 
 %
 %Ein Ziel der Modulation besteht darin, mehrere Nachrichtensignale von verschiedenen Sendern gleichzeitig

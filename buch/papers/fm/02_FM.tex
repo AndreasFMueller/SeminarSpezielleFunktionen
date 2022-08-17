@@ -10,30 +10,36 @@
 (skript Nat ab Seite 60)
 Als weiterer Parameter, um ein sinusförmiges Trägersignal \(x_c = A_c \cdot \cos(\omega_c t + \varphi)\) zu modulieren,
 bietet sich neben der Amplitude \(A_c\) auch der Phasenwinkel \(\varphi\) oder die momentane Frequenzabweichung \(\frac{d\varphi}{dt}\) an.
-Bei der Phasenmodulation (Englisch: phase modulation, PM) erzeugt das Nachrichtensignal \(m(t)\) eine Phasenabweichung \(\varphi(t)\) des modulierten Trägersignals im Vergleich zum nicht-modulierten Träger. Sie ist pro-
-%portional zum Nachrichtensignal \(m(t)\) durch eine Skalierung mit der Phasenhubkonstanten (Englisch: phase deviation constant) 
-%k p [rad],
-%welche die Amplitude des Nachrichtensignals auf die Phasenabweichung des
-%modulierten Trägersignals abbildet: φ(t) = k p · m(t). Damit ergibt sich für das phasenmodulierte Trägersi-
-%gnal:
-%x PM (t) = A c · cos (ω c t + k p · m(t))
-%(5.16)
-%Die modulierte Phase φ(t) verändert dabei auch die Momentanfrequenz (Englisch: instantaneous frequency)
-%ω i
-%, welche wie folgt berechnet wird:
-%f i = 2π
-%ω i (t) = ω c +
-%d φ(t)
-%dt
-%(5.17)
-%Bei der Frequenzmodulation (Englisch: frequency modulation, FM) ist die Abweichung der momentanen
-%Kreisfrequenz ω i von der Trägerkreisfrequenz ω c proportional zum Nachrichtensignal m(t). Sie ergibt sich,
-%indem m(t) mit der (Kreis-)Frequenzhubkonstanten (Englisch: frequency deviation constant) k f [rad/s] ska-
-%liert wird: ω i (t) = ω c + k f · m(t). Diese sich zeitlich verändernde Abweichung von der Kreisfrequenz ω c
-%verursacht gleichzeitig auch Schwankungen der Phase φ(t), welche wie folgt berechnet wird:
-%φ(t) =
-%Z t
-%−∞
+Da beide nur durch die Operation differenzieren getrennt wird, sind diese zwei Modulationen so miteinenader Verwandt das ich nur auf die Frequenzmodulation eingehe.
+Bei der Phasenmodulation (Englisch: phase modulation, PM) erzeugt das Nachrichtensignal \(m(t)\) eine Phasenabweichung \(\varphi(t)\)
+des modulierten Trägersignals im Vergleich zum nicht-modulierten Träger.
+Sie ist proportional zum Nachrichtensignal \(m(t)\) durch eine Skalierung mit der Phasenhubkonstanten (Englisch: phase deviation constant) 
+\[
+    k_p [rad],
+\]
+welche die Amplitude des Nachrichtensignals auf die Phasenabweichung des
+modulierten Trägersignals abbildet: φ(t) = k p · m(t). Damit ergibt sich für das phasenmodulierte Trägersignal:
+\[
+    x_PM (t) = A_c \cdot \cos (\omega_c t + k_p \cdot m(t))
+\]
+Die modulierte Phase \(\varphi(t)\) verändert dabei auch die Momentanfrequenz (Englisch: instantaneous frequency) \(\omega_i\)
+, welche wie folgt berechnet wird:
+\[
+    f_i = 2\pi
+    \omega_i (t) = \omega_c + \frac{d\varphi(t)}{dt}
+\]
+Bei der Frequenzmodulation (Englisch: frequency modulation, FM) ist die Abweichung der momentanen
+Kreisfrequenz \(\omega_i\) von der Trägerkreisfrequenz \(\omega_c\) proportional zum Nachrichtensignal \(m(t)\).
+ Sie ergibt sich, indem \(m(t)\) mit der (Kreis-)Frequenzhubkonstanten (Englisch: frequency deviation constant) \(k_f [rad/s] \)skaliert wird: 
+ \[
+    \omega_i (t) = \omega_c + k_f \cdot m(t).
+\]
+Diese sich zeitlich verändernde Abweichung von der Kreisfrequenz \(\omega_c\)
+verursacht gleichzeitig auch Schwankungen der Phase \(\varphi(t)\),
+welche wie folgt berechnet wird:
+\[
+    \varphi (t) =
+    \int_{-\infty}^0
 %ω i (τ ) − ω c dτ =
 %Somit ergibt sich für das frequenzmodulierte Trägersignal:
 %
@@ -45,8 +51,8 @@ Bei der Phasenmodulation (Englisch: phase modulation, PM) erzeugt das Nachrichte
 %−∞
 %
 %m(τ ) dτ 
-%(5.18)
-%(5.19)
+\]
+
 %Die Phase φ(t) hat dabei einen kontinuierlichen Verlauf, d.h. das FM-modulierte Signal x FM (t) weist keine
 %Stellen auf, wo sich die Phase sprunghaft ändert. Aus diesem Grund spricht man bei frequenzmodulierten
 %Signalen – speziell auch bei digitalen FM-Signalen – von einer Modulation mit kontinuierlicher Phase (Eng-
