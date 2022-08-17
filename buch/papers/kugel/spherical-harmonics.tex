@@ -2,8 +2,8 @@
 
 \section{Construction of the Spherical Harmonics}
 
-\if 0
-\kugeltodo{Rewrite this section if the preliminaries become an addendum}
+\kugeltodo{Review text, or rewrite if preliminaries becomes an addendum}
+
 We finally arrived at the main section, which gives our chapter its name. The
 idea is to discuss spherical harmonics, their mathematical derivation and some
 of their properties and applications.
@@ -29,9 +29,9 @@ created with the previous sections, concluding that Fourier is just a specific
 case of the application of the concept of orthogonality. Our hope is that after
 reading this section you will appreciate the beauty and power of generalization
 that mathematics offers us.
-\fi
 
 \subsection{Eigenvalue Problem}
+\label{kugel:sec:construction:eigenvalue}
 
 \begin{figure}
   \centering
@@ -111,8 +111,9 @@ that satisfy the equation
     \surflaplacian f = -\lambda f.
 \end{equation}
 Perhaps it may not be obvious at first glance, but we are in fact dealing with a
-partial differential equation (PDE) \kugeltodo{Boundary conditions?}. If we unpack the notation of the operator
-$\nabla^2_{\partial S}$ according to definition
+partial differential equation (PDE) \kugeltodo{Boundary conditions?}. If we
+unpack the notation of the operator $\nabla^2_{\partial S}$ according to
+definition
 \ref{kugel:def:surface-laplacian}, we get:
 \begin{equation} \label{kugel:eqn:eigen-pde}
     \frac{1}{\sin\vartheta} \frac{\partial}{\partial \vartheta} \left(
@@ -139,7 +140,8 @@ convenience. If we substitute this assumption in
     \frac{1}{\sin\vartheta} \frac{\partial}{\partial \vartheta} \left(
       \sin\vartheta \frac{\partial  \Theta(\vartheta)}{\partial\vartheta}
     \right) \Phi(\varphi)
-    + \frac{1}{\sin^2 \vartheta} \frac{\partial^2 \Phi(\varphi)}{\partial\varphi^2}
+    + \frac{1}{\sin^2 \vartheta}
+      \frac{\partial^2 \Phi(\varphi)}{\partial\varphi^2}
       \Theta(\vartheta)
     + \lambda \Theta(\vartheta)\Phi(\varphi) = 0.
 \end{equation*}
@@ -181,6 +183,14 @@ actually, it is quite difficult, and the process is so involved that it will
 require a dedicated section of its own.
 
 \subsection{Legendre Functions}
+
+\begin{figure}
+  \centering
+  \kugelplaceholderfig{.8\textwidth}{5cm}
+  \caption{
+    \kugeltodo{Why $z = \cos \vartheta$.}
+  }
+\end{figure}
 
 To solve \eqref{kugel:eqn:ode-theta} we start with the substitution $z = \cos
 \vartheta$ \kugeltodo{Explain geometric origin with picture}. The operator
@@ -298,26 +308,19 @@ Legendre equation, which is not possible only using power series
 we have a solution in our domain, namely $P_n(z)$, we can insert it in the lemma 
 obtain the \emph{associated Legendre functions}.
 
-\begin{definition}[Ferrers or Associated Legendre functions]
+\begin{definition}[Ferrers or associated Legendre functions]
+  \label{kugel:def:ferrers-functions}
   The functions
-  \begin{equation}\label{kugel:eq:associated_leg_func}
+  \begin{equation}
     P^m_n (z) = \frac{1}{n!2^n}(1-z^2)^{\frac{m}{2}}\frac{d^{m}}{dz^{m}} P_n(z)
       = \frac{1}{n!2^n}(1-z^2)^{\frac{m}{2}}\frac{d^{m+n}}{dz^{m+n}}(1-z^2)^n 
   \end{equation}
   are known as Ferrers or associated Legendre functions.
 \end{definition}
 
-\subsection{Spherical Harmonics}
+\kugeltodo{Discuss $|m| \leq n$.}
 
-As you may recall, previously we performed the substitution $x=\cos \vartheta$. Now we need to return to the old domain, which can be done straightforwardly:
-\begin{equation*}
-    \Theta(\vartheta) = P_{m,n}(\cos \vartheta),
-\end{equation*}
-obtaining the much sought function $\Theta(\vartheta)$. \newline
-So we finally reached the end of this tortuous path. Now we just need to put together all the information we have to construct $f(\vartheta, \varphi)$ in the following way:
-\begin{equation}\label{kugel:eq:sph_harm_0}
-    f(\vartheta, \varphi) = \Theta(\vartheta)\Phi(\varphi) = P_{m,n}(\cos \vartheta)e^{jm\varphi}, \quad |m|\leq n.
-\end{equation}
+\if 0
 The constraint $|m|<n$, can be justified by considering Eq.\eqref{kugel:eq:associated_leg_func}, in which the derivative of degree $m+n$ is present. A derivative to be well defined must have an order that is greater than zero. Furthermore, it can be seen that this derivative is applied on a polynomial of degree $2n$. As is known from Calculus 1, if you derive a polynomial of degree $2n$ more than $2n$ times, you get zero, which is a trivial solution in which we are not interested.\newline
 We can thus summarize these two conditions by writing:
 \begin{equation*}
@@ -327,13 +330,50 @@ We can thus summarize these two conditions by writing:
     \end{rcases} |m| \leq n.
 \end{equation*}
 The set of functions in Eq.\eqref{kugel:eq:sph_harm_0} is named \emph{Spherical Harmonics}, which are the eigenfunctions of the Laplace operator on the \emph{spherical surface domain}, which is exactly what we were looking for at the beginning of this section.
-\begin{definition}{Spherical Harmonics}
-    \begin{equation}\label{kugel:eq:sph_harm_1}
-    \tilde{Y}_{m,n}(\vartheta, \varphi) := P_{m,n}(\cos \vartheta)e^{jm\varphi}, \quad |m|\leq n.
-    \end{equation}
+\fi
+
+\subsection{Spherical Harmonics}
+
+Finally, we can go back to solving our boundary value problem we started in
+section \ref{kugel:sec:construction:eigenvalue}. We had left off in the middle
+of the separation, were we had used the Ansatz $f(\vartheta, \varphi) =
+\Theta(\vartheta) \Phi(\varphi)$ to find that $\Phi(\varphi) = e^{im\varphi}$,
+and we were solving for $\Theta(\vartheta)$.  As you may recall, previously we
+performed the substitution $z = \cos \vartheta$. Now we can finally to bring back the
+solution to the associated Legendre equation $P^m_n(z)$ into the $\vartheta$
+domain and combine it with $\Phi(\varphi)$ to get the full result:
+\begin{equation*}
+    f(\vartheta, \varphi)
+      = \Theta(\vartheta)\Phi(\varphi)
+      = P^m_n (\cos \vartheta) e^{im\varphi}.
+\end{equation*}
+This family of functions, which recall are the solutions of the eigenvalue
+problem of the surface spherical Laplacian, are the long anticipated
+\emph{complex spherical harmonics}, and they are usually denoted with
+$Y^m_n(\vartheta, \varphi)$.
+
+\begin{definition}[Spherical harmonics]
+  \label{kugel:def:spherical-harmonics}
+  The functions
+  \begin{equation*}
+    Y_{m,n}(\vartheta, \varphi) = P^m_n(\cos \vartheta) e^{im\varphi},
+  \end{equation*}
+  where $m, n \in \mathbb{Z}$ and $|m| < n$ are called spherical harmonics.
 \end{definition}
 
+\begin{figure}
+  \centering
+  \kugelplaceholderfig{\textwidth}{.8\paperheight}
+  \caption{
+    \kugeltodo{Big picture with the first few spherical harmonics.}
+  }
+\end{figure}
+
 \subsection{Normalization}
+
+\kugeltodo{Discuss various normalizations.}
+
+\if 0
 As explained in the chapter \ref{}, the concept of orthogonality is very important and at the practical level it is very useful, because it allows us to develop very powerful techniques at the mathematical level.\newline 
 Throughout this book we have been confronted with the Sturm-Liouville theory (see chapter \ref{}). The latter, among other things, carries with it the concept of orthogonality. Indeed, if we consider the solutions of the Sturm-Liouville equation, which can be expressed in this form
 \begin{equation}\label{kugel:eq:sturm_liouville}
@@ -355,9 +395,8 @@ Inoltre, possiamo provare l'ortogonalità di $\Theta(\vartheta)$ utilizzando \eq
     x
 \end{align}
 Ora, visto che la soluzione dell'eigenfunction problem è formata dalla moltiplicazione di $\Phi_m(\varphi)$ e $P_{m,n}(x)$
-\begin{lemma}
+\fi
 
-\end{lemma}
 \subsection{Properties}
 
 \subsection{Recurrence Relations}
