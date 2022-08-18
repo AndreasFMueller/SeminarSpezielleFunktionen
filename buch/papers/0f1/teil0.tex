@@ -5,11 +5,11 @@
 %
 \section{Ausgangslage\label{0f1:section:ausgangslage}}
 \rhead{Ausgangslage}
-Die Hypergeometrische Funktion $\mathstrut_0F_1$ wird in vielen Funktionen als Basisfunktion benutzt, 
-zum Beispiel um die Airy Funktion zu berechnen. 
+Die hypergeometrische Funktion $\mathstrut_0F_1$ wird in vielen Funktionen als Basisfunktion benutzt, 
+zum Beispiel um die Airy-Funktion zu berechnen. 
 In der GNU Scientific Library \cite{0f1:library-gsl} 
 ist die Funktion $\mathstrut_0F_1$ vorhanden. 
-Allerdings wirft die Funktion, bei negativen Übergabenwerten wie zum Beispiel \verb+gsl_sf_hyperg_0F1(1, -1)+, eine Exception. 
+Allerdings wirft die Funktion bei negativen Übergabewerten wie zum Beispiel \verb+gsl_sf_hyperg_0F1(1, -1)+ eine Exception. 
 Bei genauerer Untersuchung hat sich gezeigt, dass die Funktion je nach Betriebssystem funktioniert oder eben nicht. 
 So kann die Funktion unter Windows fehlerfrei aufgerufen werden, beim Mac OS und Linux sind negative Übergabeparameter im Moment nicht möglich.
-Ziel dieser Arbeit war es zu evaluieren, ob es mit einfachen mathematischen Operationen möglich ist, die Hypergeometrische Funktion $\mathstrut_0F_1$ zu implementieren.
+Ziel dieser Arbeit war es zu evaluieren, ob es mit einfachen mathematischen Operationen möglich ist, die hypergeometrische Funktion $\mathstrut_0F_1$ zu implementieren.
