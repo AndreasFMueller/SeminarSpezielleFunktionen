@@ -394,7 +394,7 @@ will be our starting point.
   \end{equation*}
 \end{lemma}
 \begin{proof}
-  To start, consider the fact that that the Legendre equation
+  To start, consider the fact that the Legendre equation
   \eqref{kugel:eqn:legendre}, of which two distinct Legendre polynomials
   $P_n(z)$ and $P_k(z)$ are a solution ($n \neq k$), can be rewritten in the
   following form:
@@ -483,19 +483,19 @@ $P_n(z)$ by a $m$-th derivative, and obtain the following result.
 \begin{lemma} For the associated Legendre functions
   \label{kugel:thm:associated-legendre-ortho}
   \begin{equation*}
-    \int_{-1}^1 P^m_n(z) P^{m'}_{n'}(z) \, dz
+    \int_{-1}^1 P^m_n(z) P^{m}_{n'}(z) \, dz
     = \frac{2(m + n)!}{(2n + 1)(n - m)!} \delta_{nn'}
     = \begin{cases}
       \frac{2(m + n)!}{(2n + 1)(n - m)!}
-        & \text{if } n = n' \text{ and } m = m', \\
+        & \text{if } n = n', \\
       0 & \text{otherwise}.
     \end{cases}
   \end{equation*}
 \end{lemma}
 \begin{proof}
-  \kugeltodo{Is it worth showing? IMHO no, it is mostly the same as Lemma
-  \ref{kugel:thm:legendre-poly-ortho} with the difference that the $m$-th
-  derivative is a pain to deal with.}
+  \kugeltodo{Is this correct? And Is it worth showing? IMHO no, it is mostly the
+  same as Lemma \ref{kugel:thm:legendre-poly-ortho} with the difference that the
+  $m$-th derivative is a pain to deal with.}
 \end{proof}
 
 By having the orthogonality relations of the Legendre functions we can finally
@@ -507,7 +507,7 @@ product:
   \varphi)$ on the surface of the sphere the inner product is defined to be
   \begin{equation*}
     \langle f, g \rangle
-    = \int_{-\pi}^\pi \int_0^{2\pi}
+    = \int_{0}^\pi \int_0^{2\pi}
       f(\vartheta, \varphi) \overline{g(\vartheta, \varphi)}
       \sin \vartheta \, d\varphi \, d\vartheta.
   \end{equation*}
@@ -520,12 +520,12 @@ product:
   right?}
   \begin{equation*}
     \langle Y^m_n, Y^{m'}_{n'} \rangle
-    = \int_{-\pi}^\pi \int_0^{2\pi}
+    = \int_{0}^\pi \int_0^{2\pi}
       Y^m_n(\vartheta, \varphi) \overline{Y^{m'}_{n'}(\vartheta, \varphi)}
       \sin \vartheta \, d\varphi \, d\vartheta
-    = \frac{-4\pi}{2n + 1} \frac{(m + n)!}{(n - m)!} \delta_{nn'}
+    = \frac{4\pi}{2n + 1} \frac{(m + n)!}{(n - m)!} \delta_{nn'} \delta_{mm'}
     = \begin{cases}
-      \frac{-4\pi}{2n + 1} \frac{(m + n)!}{(n - m)!} & \text{if } n = n', \\
+      \frac{4\pi}{2n + 1} \frac{(m + n)!}{(n - m)!} & \text{if } n = n', \\
       0 & \text{otherwise}.
     \end{cases}
   \end{equation*}
@@ -533,15 +533,15 @@ product:
 \begin{proof}
   We will begin by doing a bit of algebraic maipulaiton:
   \begin{align*}
-    \int_{-\pi}^\pi \int_0^{2\pi}
+    \int_{0}^\pi \int_0^{2\pi}
       Y^m_n(\vartheta, \varphi) \overline{Y^{m'}_{n'}(\vartheta, \varphi)}
       \sin \vartheta \, d\varphi \, d\vartheta
-    &= \int_{-\pi}^\pi \int_0^{2\pi}
+    &= \int_{0}^\pi \int_0^{2\pi}
       e^{im\varphi} P^m_n(\cos \vartheta)
       e^{-im'\varphi} P^{m'}_{n'}(\cos \vartheta)
       \, d\varphi \sin \vartheta \, d\vartheta
     \\
-    &= \int_{-\pi}^\pi
+    &= \int_{0}^\pi
       P^m_n(\cos \vartheta) P^{m'}_{n'}(\cos \vartheta)
       \int_0^{2\pi} e^{i(m - m')\varphi}
       \, d\varphi \sin \vartheta \, d\vartheta
@@ -552,19 +552,22 @@ product:
   $m = m'$ the inner integral simplifies to $\int_0^{2\pi} 1 \, d\varphi$ which
   equals $2\pi$, so in this case the expression becomes
   \begin{equation*}
-    2\pi \int_{-\pi}^\pi
+    2\pi \int_{0}^\pi
       P^m_n(\cos \vartheta) P^{m'}_{n'}(\cos \vartheta)
     \sin \vartheta \, d\vartheta
-    = -2\pi \int_{-1}^1 P^m_n(z) P^{m'}_{n'}(z) \, dz
-    = \frac{-4\pi(m + n)!}{(2n + 1)(n - m)!} \delta_{nn'},
+    = -2\pi \int_{1}^{-1} P^m_n(z) P^{m'}_{n'}(z) \, dz
+    = \frac{4\pi(m + n)!}{(2n + 1)(n - m)!} \delta_{nn'},
   \end{equation*}
   where in the second step we performed the substitution $z = \cos\vartheta$;
   $d\vartheta = \frac{d\vartheta}{dz} dz= - dz / \sin \vartheta$, and then we
-  used lemma \ref{kugel:thm:associated-legendre-ortho}. Now we just need look at
-  the case when $m \neq m'$. Fortunately this is easy: the inner integral is
-  $\int_0^{2\pi} e^{i(m - m')\varphi} d\varphi$, or in other words we are
-  integrating a complex exponetial over the entire period, which always results
-  in zero. Thus, we do not need to do anything and the proof is complete.
+  used lemma \ref{kugel:thm:associated-legendre-ortho}. We are allowed to use
+  the lemma because $m = m'$.
+
+  Now we just need look at the case when $m \neq m'$. Fortunately this is easy:
+  the inner integral is $\int_0^{2\pi} e^{i(m - m')\varphi} d\varphi$, or in
+  other words we are integrating a complex exponetial over the entire period,
+  which always results in zero. Thus, we do not need to do anything and the
+  proof is complete.
 \end{proof}
 
 \subsection{Normalization}
