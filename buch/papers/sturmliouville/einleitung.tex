@@ -27,9 +27,9 @@ Alle homogene 2. Ordnung lineare gewöhnliche Differentialgleichungen können in
 \subsection{Randbedingungen\label{sub:was-ist-das-slp-randbedingungen}}
 Wenn von der Funktion $y(x)$ die Werte $x$ des jeweiligen Randes des Definitionsbereiches anzunehmen sind, also
 \begin{equation}
-	y(a) = y(b) = 0
+	y(a) = y(b) = 0,
 \end{equation}
-, so spricht man von einer Dirichlet-Randbedingung\footnote{Die Dirichlet-Randbedingung oder auch Randbedingung des ersten Typs genannt ist nach dem deutschen Mathematiker Peter Gstav Lejeune Dirichlet benannt. Sie findet Anwendung auf gewöhnliche oder patielle Differentialgleichungen und gibt mit der Bedingung die Werte an, die für die abgeleitete Lösung innerhalb der Domänengrenze gelten.}, und von einer Neumann-Randbedingung\footnote{Die Neumann-Randbedingung oder auch Randbedingung des zweiten Typs genannt, ist nach dem deutschen Mathematiker Carl Neumann benannt. Sie legt die Werte fest, die eine Lösung entlang der Domänengrenze annehmen muss, wenn eine gewöhnliche oder partielle Differentialgleichung gestellt wird.} spricht man, wenn
+so spricht man von einer Dirichlet-Randbedingung\footnote{Die Dirichlet-Randbedingung oder auch Randbedingung des ersten Typs genannt ist nach dem deutschen Mathematiker Peter Gstav Lejeune Dirichlet benannt. Sie findet Anwendung auf gewöhnliche oder patielle Differentialgleichungen und gibt mit der Bedingung die Werte an, die für die abgeleitete Lösung innerhalb der Domänengrenze gelten.}, und von einer Neumann-Randbedingung\footnote{Die Neumann-Randbedingung oder auch Randbedingung des zweiten Typs genannt, ist nach dem deutschen Mathematiker Carl Neumann benannt. Sie legt die Werte fest, die eine Lösung entlang der Domänengrenze annehmen muss, wenn eine gewöhnliche oder partielle Differentialgleichung gestellt wird.} spricht man, wenn
 \begin{equation}
 	y'(a) = y'(b) = 0
 \end{equation}
@@ -53,15 +53,16 @@ Es ist genau das gleiche Prinzip wie bei den Matrizen, andere Eigenwerte ergeben
 Es besteht eine Korrespondenz zwischen den Eigenwerten und den Eigenvektoren.
 Das gleiche gilt auch beim Sturm-Liouville-Problem, und zwar
 \begin{equation}
-	\lambda \overset{Korrespondenz}\leftrightarrow y
-\end{equation}.
+	\lambda \overset{Korrespondenz}\leftrightarrow y.
+\end{equation}
 
 Die Theorie besagt, wenn $y_m$, $y_n$ Eigenfuktionen des Sturm-Liouville-Problems sind, die verschiedene Eigenwerte $\lambda_m$, $\lambda_n$ ($\lambda_m \neq \lambda_n$) entsprechen, so sind $y_m$, $y_n$ orthogonal zu y -
 dies gilt für das Intervall (a,b).
 Somit ergibt die Gleichung
 \begin{equation}
-	\int_{a}^{b} w(x)y_m y_n = 0
-\end{equation}.
+	\label{eq:skalar-sturm-liouville}
+	\int_{a}^{b} w(x)y_m y_n = 0.
+\end{equation}
 
 \subsection{Koeffizientenfunktionen}
 Die Funktionen $p(x)$, $q(x)$ und $w(x)$ werden als Koeffizientenfunktionen mit ihren freien Variablen $x$ bezeichnet.
