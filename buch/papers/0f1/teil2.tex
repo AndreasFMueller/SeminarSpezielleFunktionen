@@ -41,13 +41,13 @@ a_0 + \cfrac{b_1}{a_1+\cfrac{b_2}{a_2+\cfrac{b_3}{a_3+\cdots}}},
 in welchem $a_0, a_1,\dots,a_n$ und $b_1,b_2,\dots,b_n$ ganze Zahlen sind.
 
 \subsubsection{Rekursionsbeziehungen und Kettenbrüche}
-Will man einen Kettenbruch für das Verhältnis $\frac{f_i(z)}{f_{i-1}(z)}$ finden, braucht man dazu eine Relation der analytischer Funktion $f_i(z)$.
-Nimmt man die Gleichung \cite{0f1:wiki-fraction}:
+Wenn es eine Relation analytischer Funktion $f_i(z)$ hat, dann gibt es einen Kettenbruch für das Verhältnis $\frac{f_i(z)}{f_{i-1}(z)}$ \cite{0f1:wiki-fraction}. 
+Nimmt man die Gleichung
 \begin{equation*}
 	f_{i-1} - f_i = k_i z f_{i+1},
 \end{equation*}
 wo $f_i$ analytische Funktionen sind und $i > 0$ ist, sowie $k_i$ konstant.
-Ergibt sich folgender Zusammenhang:
+Ergibt sich der Zusammenhang
 \begin{equation*}
 	\cfrac{f_i}{f_{i-1}} = \cfrac{1}{1+k_iz\cfrac{f_{i+1}}{f_i}}.
 \end{equation*}
@@ -55,7 +55,7 @@ Geht man einen Schritt weiter und nimmt für $g_i = \frac{f_i}{f_{i-1}}$ an, kom
 \begin{equation*}
 	g_i = \cfrac{1}{1+k_izg_{i+1}}.
 \end{equation*}
-Setzt man dies nun für $g_1$ in den Bruch ein, ergibt sich folgendes:
+Setzt man dies nun für $g_1$ in den Bruch ein, ergibt sich
 \begin{equation*}
 	g_1 = \cfrac{f_1}{f_0} = \cfrac{1}{1+k_izg_2} = \cfrac{1}{1+\cfrac{k_1z}{1+k_2zg_3}} = \cdots
 \end{equation*}
@@ -76,19 +76,19 @@ kann durch Substitution bewiesen werden, dass
 	\mathstrut_0F_1(;c-1;z) - \mathstrut_0F_1(;c;z) = \frac{z}{c(c-1)} \cdot \mathstrut_0F_1(;c+1;z)
 \end{equation*}
 eine Relation dazu ist.
-Wenn man für $f_i$ und $k_i$ folgende Annahme trifft:
+Wenn man für $f_i$ und $k_i$ die Annahme
 \begin{align*}
 	f_i =& \mathstrut_0F_1(;c+i;z)\\
 	k_i	=& \frac{1}{(c+i)(c+i-1)}
 \end{align*}
-und in die Formel \eqref{0f1:math:rekursion:eq} einsetzt, erhält man:
+trifft und in die Formel \eqref{0f1:math:rekursion:eq} einsetzt, erhält man:
 \begin{equation*}
 	\cfrac{\mathstrut_0F_1(;c+1;z)}{\mathstrut_0F_1(;c;z)} = \cfrac{1}{1+\cfrac{\cfrac{z}{c(c+1)}}{1+\cfrac{\cfrac{z}{(c+1)(c+2)}}{1+\cfrac{\cfrac{z}{(c+2)(c+3)}}{\cdots}}}}.
 \end{equation*}
 
 \subsubsection{Algorithmus}
 Da mit obigen Formeln nur ein Verhältnis zwischen $	\frac{\mathstrut_0F_1(;c+1;z)}{\mathstrut_0F_1(;c;z)}$ berechnet wurde, braucht es weitere Relationen um $\mathstrut_0F_1(;c;z)$ zu erhalten.
-So ergeben ähnliche Relationen nach Wolfram Alpha \cite{0f1:wolfram-0f1} folgender Kettenbruch
+So ergeben ähnliche Relationen nach Wolfram Alpha \cite{0f1:wolfram-0f1} den Kettenbruch
 \begin{equation}
 	\label{0f1:math:kettenbruch:0f1:eq}
 	\mathstrut_0F_1(;c;z) = 1 + \cfrac{\cfrac{z}{c}}{1+\cfrac{-\cfrac{z}{2(c+1)}}{1+\cfrac{z}{2(c+1)}+\cfrac{-\cfrac{z}{3(c+2)}}{1+\cfrac{z}{5(c+4)} + \cdots}}},
@@ -112,7 +112,7 @@ lässt sich zu
 	\cfrac{A_k}{B_k} = \cfrac{b_{k+1}}{a_{k+1} + \cfrac{p}{q}} = \frac{b_{k+1} \cdot q}{a_{k+1} \cdot q + p}
 \end{align*}
 umformen.
-Dies lässt sich auch durch die folgende Matrizenschreibweise
+Dies lässt sich auch durch die Matrizenschreibweise
 \begin{equation*}
 	\begin{pmatrix}
 		A_k\\
@@ -137,7 +137,7 @@ Wendet man dies nun auf den Kettenbruch in der Form
 \begin{equation*}
 	\frac{A_k}{B_k} = a_0 + \cfrac{b_1}{a_1+\cfrac{b_2}{a_2+\cfrac{\cdots}{\cdots+\cfrac{b_{k-1}}{a_{k-1} + \cfrac{b_k}{a_k}}}}}
 \end{equation*}
-an, ergibt sich folgende Matrixdarstellungen:
+an, ergibt sich die Matrixdarstellungen:
 
 \begin{align*}
 	\begin{pmatrix}
