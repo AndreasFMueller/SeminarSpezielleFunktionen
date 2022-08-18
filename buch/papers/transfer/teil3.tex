@@ -1,27 +1,26 @@
 %
-% teil3.tex -- Beispiel-File für Teil 3
+% teil2.tex -- Beispiel-File für teil2 
 %
 % (c) 2020 Prof Dr Andreas Müller, Hochschule Rapperswil
 %
-\section{K-Tanh
+\section{MiniMax-Polynom 
 \label{transfer:section:teil3}}
-\rhead{K-Tanh}
+\rhead{MiniMax-Polynom}
 
 
-\subsection{Algorithmus
-\label{transfer:subsection:Ktanh-Algorithmus}}
-\cite{transfer:DBLP:journals/corr/abs-1909-07729}
-\subsubsection{Vereinfacht
-\label{transfer:subsection:Ktanh-Algorithmus:Vereinfacht}}
-Negative Werte werden nicht separat behandelt. Diese werden dank der Syymertrie um den Ursprung mit einem einfachen Vorzeichenwechsel aus den positiven berechnet.
-Für $x < 0.25$ gilt $y = x$.
-Ist $x > 3.75$ gitl $y = 1$.
-Ist der Wert zwischen diesen Grenzen, werden über einen Lookuptable geeignete Werte gefunden um aus dem $x$ die Approximation des Tanh zu berechnen.
-Dafür werden eine bestimmte Anzahl LSBs des Exponenten und MSBs der Mantisse zu einem Index $t$ zusammengestzt. Der dann die Stelle im Lookuptable zeigt.
-Damit werden die richtigen Werte für $E_{t}, r_{t}, b_{t}$ aus der Tabelle, die im Vorhinein schon berechnet wurden, ausgelesen.
-Damit hat man das $E$ bereits gefunden und mit der Formel
-\[
-    M_{o} \leftarrow\left(M_{i} \gg r\right)+b
-\]
 
-kann das neue $M$ berechnet werden.
+\subsection{Idee
+\label{transfer:subsection:idee}}
+Finde das Polynom eines bestimmten Grades, welches eine Funktion in einem Intervall am besten approximiert.
+
+
+\subsection{Definition
+	\label{transfer:subsection:definition}}
+Das Polynom welches 
+	    $$ \max _{a \leq x \leq b}|f(x)-P(x)| , a \in \mathbb{R}, b \in \mathbb{R}.$$
+minimiert.
+\subsection{Beispiel
+	\label{transfer:subsection:beispiel}}
+Um ein MiniMax-Polynom zu berechnen, kann der Remez-Algorithmus verwendet werden. Dieser basiert im wesentlichen auf dem Alternantensatz von Tschebyschow.
+
+
