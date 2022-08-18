@@ -220,7 +220,7 @@ and $\lambda = n(n+1)$, we obtain what is known in the literature as the
 \emph{associated Legendre equation of order $m$}:
 \nocite{olver_introduction_2013}
 \begin{equation} \label{kugel:eqn:associated-legendre}
-  (1 - z^2)\frac{d^2 Z}{dz}
+  (1 - z^2)\frac{d^2 Z}{dz^2}
   - 2z\frac{d Z}{dz}
   + \left( n(n + 1) - \frac{m^2}{1 - z^2} \right) Z(z) = 0,
   \quad
@@ -236,7 +236,7 @@ This reduces the problem because it removes the double pole, which is always
 tricky to deal with. In fact, the reduced problem when $m = 0$ is known as the
 \emph{Legendre equation}:
 \begin{equation} \label{kugel:eqn:legendre}
-  (1 - z^2)\frac{d^2 Z}{dz}
+  (1 - z^2)\frac{d^2 Z}{dz^2}
   - 2z\frac{d Z}{dz}
   + n(n + 1) Z(z) = 0,
   \quad
@@ -275,7 +275,7 @@ Further, there are a few more interesting but not very relevant forms to write
 $P_n(z)$ such as \emph{Rodrigues' formula} and \emph{Laplace's integral
 representation} which are
 \begin{equation*}
-  P_n(z) = \frac{1}{2^n} \frac{d^n}{dz^n} (x^2 - 1)^n,
+  P_n(z) = \frac{1}{2^n n!} \frac{d^n}{dz^n} (z^2 - 1)^n,
   \qquad \text{and} \qquad
   P_n(z) = \frac{1}{\pi} \int_0^\pi \left(
     z + \cos\vartheta \sqrt{z^2 - 1}
@@ -312,8 +312,8 @@ obtain the \emph{associated Legendre functions}.
   \label{kugel:def:ferrers-functions}
   The functions
   \begin{equation}
-    P^m_n (z) = \frac{1}{n!2^n}(1-z^2)^{\frac{m}{2}}\frac{d^{m}}{dz^{m}} P_n(z)
-      = \frac{1}{n!2^n}(1-z^2)^{\frac{m}{2}}\frac{d^{m+n}}{dz^{m+n}}(1-z^2)^n 
+    P^m_n (z) = (1-z^2)^{\frac{m}{2}}\frac{d^{m}}{dz^{m}} P_n(z)
+      = \frac{1}{2^n n!}(1-z^2)^{\frac{m}{2}}\frac{d^{m+n}}{dz^{m+n}}(1-z^2)^n 
   \end{equation}
   are known as Ferrers or associated Legendre functions.
 \end{definition}
@@ -486,7 +486,8 @@ $P_n(z)$ by a $m$-th derivative, and obtain the following result.
     \int_{-1}^1 P^m_n(z) P^{m'}_{n'}(z) \, dz
     = \frac{2(m + n)!}{(2n + 1)(n - m)!} \delta_{nn'}
     = \begin{cases}
-      \frac{2(m + n)!}{(2n + 1)(n - m)!} & \text{if } n = n', \\
+      \frac{2(m + n)!}{(2n + 1)(n - m)!}
+        & \text{if } n = n' \text{ and } m = m', \\
       0 & \text{otherwise}.
     \end{cases}
   \end{equation*}
@@ -497,16 +498,26 @@ $P_n(z)$ by a $m$-th derivative, and obtain the following result.
   derivative is a pain to deal with.}
 \end{proof}
 
-An interesting fact to observe in lemma
-\ref{kugel:thm:associated-legendre-ortho} is that the orthogonality is only
-affected in the lower index, while varying $m$ only changes the constant in
-front of the Kronecker delta. By having the orthogonality relations of the
-Legendre functions we can finally show that spherical harmonics are also
-orthogonal.
+By having the orthogonality relations of the Legendre functions we can finally
+show that spherical harmonics are also orthogonal under the following inner
+product:
 
-\begin{lemma} For the spherical harmonics
-  \kugeltodo{Fix horizontal spacing, inner product definition is missing.}
+\begin{definition}[Inner product in $S^2$]
+  For 2 complex valued functions $f(\vartheta, \varphi)$ and $g(\vartheta,
+  \varphi)$ on the surface of the sphere the inner product is defined to be
+  \begin{equation*}
+    \langle f, g \rangle
+    = \int_{-\pi}^\pi \int_0^{2\pi}
+      f(\vartheta, \varphi) \overline{g(\vartheta, \varphi)}
+      \sin \vartheta \, d\varphi \, d\vartheta.
+  \end{equation*}
+\end{definition}
+
+
+\begin{theorem} For the (unnormalized) spherical harmonics
   \label{kugel:thm:spherical-harmonics-ortho}
+  \kugeltodo{Why do I get a minus in front of $4\pi$??? It should not be there
+  right?}
   \begin{equation*}
     \langle Y^m_n, Y^{m'}_{n'} \rangle
     = \int_{-\pi}^\pi \int_0^{2\pi}
@@ -518,7 +529,7 @@ orthogonal.
       0 & \text{otherwise}.
     \end{cases}
   \end{equation*}
-\end{lemma}
+\end{theorem}
 \begin{proof}
   We will begin by doing a bit of algebraic maipulaiton:
   \begin{align*}
@@ -558,7 +569,29 @@ orthogonal.
 
 \subsection{Normalization}
 
-\kugeltodo{Discuss various normalizations.}
+At this point we have shown that the spherical harmonics form an orthogonal
+system, but in many applications we usually also want a normalization of some
+kind. For example the most obvious desirable property could be for the spherical
+harmonics to be ortho\emph{normal}, by which we mean that $\langle Y^m_n,
+Y^{m'}_{n'} \rangle = \delta_{nn'}$. To obtain orthonormality, we simply add a
+normalization factor in front of the previous definition
+\ref{kugel:def:spherical-harmonics} as follows.
+
+\begin{definition}[Orthonormal spherical harmonics]
+  \label{kugel:def:spherical-harmonics-orthonormal}
+  The functions
+  \begin{equation*}
+    Y^m_n(\vartheta, \varphi)
+    = \sqrt{\frac{2n + 1}{4\pi} \frac{(n-m)!}{(m+n)!}}
+      P^m_n(\cos \vartheta) e^{im\varphi}
+  \end{equation*}
+  where $m, n \in \mathbb{Z}$ and $|m| < n$ are the orthonormal spherical
+  harmonics.
+\end{definition}
+
+Orthornomality is very useful indeed, but it is not the only common
+normalization that is found in the literature. In physics, quantum mechanics to
+be more specific, it is common to use the so called Schmidt semi-normalization.
 
 \if 0
 As explained in the chapter \ref{}, the concept of orthogonality is very important and at the practical level it is very useful, because it allows us to develop very powerful techniques at the mathematical level.\newline 
