@@ -178,7 +178,7 @@ write the solutions
 The restriction that the separation constant $m$ needs to be an integer arises
 from the fact that we require a $2\pi$-periodicity in $\varphi$ since the
 coordinate systems requires that $\Phi(\varphi + 2\pi) = \Phi(\varphi)$.
-Unfortunately, solving \eqref{kugel:eqn:ode-theta} is as straightforward,
+Unfortunately, solving \eqref{kugel:eqn:ode-theta} is not as straightforward,
 actually, it is quite difficult, and the process is so involved that it will
 require a dedicated section of its own.
 
@@ -250,7 +250,7 @@ case of the former that is known known as the \emph{Legendre polynomials}, since
 we only need a solution between $-1$ and $1$.
 
 \begin{lemma}[Legendre polynomials]
-  \label{kugel:lem:legendre-poly}
+  \label{kugel:thm:legendre-poly}
   The polynomial function
   \[
     P_n(z) = \sum^{\lfloor n/2 \rfloor}_{k=0}
@@ -287,7 +287,7 @@ Legendre equation, we can make use of the following lemma patch the solutions
 such that they also become solutions of the associated Legendre equation
 \eqref{kugel:eqn:associated-legendre}.
 
-\begin{lemma} \label{kugel:lem:extend-legendre}
+\begin{lemma} \label{kugel:thm:extend-legendre}
   If $Z_n(z)$ is a solution of the Legendre equation \eqref{kugel:eqn:legendre},
   then
   \begin{equation*}
@@ -300,7 +300,7 @@ such that they also become solutions of the associated Legendre equation
   See section \ref{kugel:sec:proofs:legendre}.
 \end{proof}
 
-What is happening in lemma \ref{kugel:lem:extend-legendre}, is that we are
+What is happening in lemma \ref{kugel:thm:extend-legendre}, is that we are
 essentially inserting a square root function in the solution in order to be able
 to reach the parts of the domain near the poles at $\pm 1$ of the associated
 Legendre equation, which is not possible only using power series
@@ -356,9 +356,10 @@ $Y^m_n(\vartheta, \varphi)$.
   \label{kugel:def:spherical-harmonics}
   The functions
   \begin{equation*}
-    Y_{m,n}(\vartheta, \varphi) = P^m_n(\cos \vartheta) e^{im\varphi},
+    Y^m_n (\vartheta, \varphi) = P^m_n(\cos \vartheta) e^{im\varphi},
   \end{equation*}
-  where $m, n \in \mathbb{Z}$ and $|m| < n$ are called spherical harmonics.
+  where $m, n \in \mathbb{Z}$ and $|m| < n$ are called (unnormalized) spherical
+  harmonics.
 \end{definition}
 
 \begin{figure}
@@ -366,8 +367,194 @@ $Y^m_n(\vartheta, \varphi)$.
   \kugelplaceholderfig{\textwidth}{.8\paperheight}
   \caption{
     \kugeltodo{Big picture with the first few spherical harmonics.}
+    \label{kugel:fig:spherical-harmonics}
   }
 \end{figure}
+
+\kugeltodo{Describe how they look like with fig.
+\ref{kugel:fig:spherical-harmonics}}
+
+\subsection{Orthogonality of $P_n$, $P^m_n$ and $Y^m_n$}
+
+We shall now discuss an important property of the spherical harmonics: they form
+an orthogonal system. And since the spherical harmonics contain the Ferrers or
+associated Legendre functions, we need to discuss their orthogonality first.
+But the Ferrers functions themselves depend on the Legendre polynomials, so that
+will be our starting point.
+
+\begin{lemma} For the Legendre polynomials $P_n(z)$ and $P_k(z)$ it holds that
+  \label{kugel:thm:legendre-poly-ortho}
+  \begin{equation*}
+    \int_{-1}^1 P_n(z) P_k(z) \, dz
+    = \frac{2}{2n + 1} \delta_{nk}
+    = \begin{cases}
+      \frac{2}{2n + 1} & \text{if } n = k, \\
+      0 & \text{otherwise}.
+    \end{cases}
+  \end{equation*}
+\end{lemma}
+\begin{proof}
+  To start, consider the fact that that the Legendre equation
+  \eqref{kugel:eqn:legendre}, of which two distinct Legendre polynomials
+  $P_n(z)$ and $P_k(z)$ are a solution ($n \neq k$), can be rewritten in the
+  following form:
+  \begin{equation}
+    \frac{d}{dz} \left[ 
+      \left( 1 - z^2 \right) \frac{dZ}{dz}
+    \right] + n(n+1) Z(z) = 0.
+  \end{equation}
+  So we rewrite the Legendre equations for $P_n(z)$ and $P_k(z)$:
+  \begin{align*}
+    \frac{d}{dz} \left[ 
+      \left( 1 - z^2 \right) \frac{dP_n}{dz}
+    \right] + n(n+1) P_n(z) &= 0,
+    &
+    \frac{d}{dz} \left[ 
+      \left( 1 - z^2 \right) \frac{dP_k}{dz}
+    \right] + k(k+1) P_k(z) &= 0,
+  \end{align*}
+  then we multiply the former by $P_k(z)$ and the latter by $P_n(z)$ and
+  subtract the two to get
+  \begin{equation*}
+    \frac{d}{dz} \left[ 
+      \left( 1 - z^2 \right) \frac{dP_n}{dz}
+    \right] P_k(z) + n(n+1) P_n(z) P_k(z)
+    -
+    \frac{d}{dz} \left[ 
+      \left( 1 - z^2 \right) \frac{dP_k}{dz}
+    \right] P_n(z) - k(k+1) P_k(z) P_n(z) = 0.
+  \end{equation*}
+  By grouping terms, making order and integrating with respect to $z$ from $-1$
+  to 1 we obtain
+  \begin{gather}
+    \int_{-1}^1 \left\{
+      \frac{d}{dz} \left[ 
+        \left( 1 - z^2 \right) \frac{dP_n}{dz}
+      \right] P_k(z) 
+      -
+      \frac{d}{dz} \left[ 
+        \left( 1 - z^2 \right) \frac{dP_k}{dz}
+      \right] P_n(z) - k(k+1) P_k(z) P_n(z)
+    \right\} \,dz \nonumber \\
+    + \left[ n(n+1) - k(k+1) \right] \int_{-1}^1 P_k(z) P_n(z) \, dz = 0.
+    \label{kugel:thm:legendre-poly-ortho:proof:1}
+  \end{gather}
+  Since by the product rule
+  \begin{equation*}
+    \frac{d}{dz} \left[ (1 - z^2) \frac{dP_k}{dz} P_n(z) \right]
+    =
+    \frac{d}{dz} \left[ (1 - z^2) \frac{dP_n}{dz} \right] P_k(z)
+      + (1 - z^2) \frac{dP_n}{dz} \frac{dP_k}{dz},
+  \end{equation*}
+  we can simplify the first term in
+  \eqref{kugel:thm:legendre-poly-ortho:proof:1} to get
+  \begin{gather*}
+    \int_{-1}^1 \left\{
+      \frac{d}{dz} \left[ (1 - z^2) \frac{dP_k}{dz} P_n(z) \right]
+        - \cancel{(1 - z^2) \frac{dP_n}{dz} \frac{dP_k}{dz}}
+        - \frac{d}{dz} \left[ (1 - z^2) \frac{dP_n}{dz} P_k(z) \right]
+        + \cancel{(1 - z^2) \frac{dP_k}{dz} \frac{dP_n}{dz}}
+    \right\} \, dz \\
+    = \int_{-1}^1 \frac{d}{dz} \left\{ (1 - z^2) \left[
+      \frac{dP_k}{dz} P_n(z) - \frac{dP_n}{dz} P_k(z)
+    \right] \right\} \, dz
+    = (1 - z^2) \left[
+      \frac{dP_k}{dz} P_n(z) - \frac{dP_n}{dz} P_k(z)
+    \right] \Bigg|_{-1}^1,
+  \end{gather*}
+  which always equals 0 because the product contains $1 - z^2$ and the bounds
+  are at $\pm 1$. Thus, of \eqref{kugel:thm:legendre-poly-ortho:proof:1} only
+  the second term remains and the equation becomes
+  \begin{equation*}
+    \left[ n(n+1) - k(k+1) \right] \int_{-1}^1 P_k(z) P_n(z) \, dz = 0.
+  \end{equation*}
+  By dividing by the constant in front of the integral we have our first result.
+  Now we need to show that when $n = k$ the integral equals $2 / (2n + 1)$.
+  % \begin{equation*}
+  % \end{equation*}
+  \kugeltodo{Finish proof. Can we do it without the generating function of
+  $P_n$?}
+\end{proof}
+
+In a similarly algebraically tedious fashion, we can also continue to check for
+orthogonality for the Ferrers functions $P^m_n(z)$, since they are related to
+$P_n(z)$ by a $m$-th derivative, and obtain the following result.
+
+\begin{lemma} For the associated Legendre functions
+  \label{kugel:thm:associated-legendre-ortho}
+  \begin{equation*}
+    \int_{-1}^1 P^m_n(z) P^{m'}_{n'}(z) \, dz
+    = \frac{2(m + n)!}{(2n + 1)(n - m)!} \delta_{nn'}
+    = \begin{cases}
+      \frac{2(m + n)!}{(2n + 1)(n - m)!} & \text{if } n = n', \\
+      0 & \text{otherwise}.
+    \end{cases}
+  \end{equation*}
+\end{lemma}
+\begin{proof}
+  \kugeltodo{Is it worth showing? IMHO no, it is mostly the same as Lemma
+  \ref{kugel:thm:legendre-poly-ortho} with the difference that the $m$-th
+  derivative is a pain to deal with.}
+\end{proof}
+
+An interesting fact to observe in lemma
+\ref{kugel:thm:associated-legendre-ortho} is that the orthogonality is only
+affected in the lower index, while varying $m$ only changes the constant in
+front of the Kronecker delta. By having the orthogonality relations of the
+Legendre functions we can finally show that spherical harmonics are also
+orthogonal.
+
+\begin{lemma} For the spherical harmonics
+  \kugeltodo{Fix horizontal spacing, inner product definition is missing.}
+  \label{kugel:thm:spherical-harmonics-ortho}
+  \begin{equation*}
+    \langle Y^m_n, Y^{m'}_{n'} \rangle
+    = \int_{-\pi}^\pi \int_0^{2\pi}
+      Y^m_n(\vartheta, \varphi) \overline{Y^{m'}_{n'}(\vartheta, \varphi)}
+      \sin \vartheta \, d\varphi \, d\vartheta
+    = \frac{-4\pi}{2n + 1} \frac{(m + n)!}{(n - m)!} \delta_{nn'}
+    = \begin{cases}
+      \frac{-4\pi}{2n + 1} \frac{(m + n)!}{(n - m)!} & \text{if } n = n', \\
+      0 & \text{otherwise}.
+    \end{cases}
+  \end{equation*}
+\end{lemma}
+\begin{proof}
+  We will begin by doing a bit of algebraic maipulaiton:
+  \begin{align*}
+    \int_{-\pi}^\pi \int_0^{2\pi}
+      Y^m_n(\vartheta, \varphi) \overline{Y^{m'}_{n'}(\vartheta, \varphi)}
+      \sin \vartheta \, d\varphi \, d\vartheta
+    &= \int_{-\pi}^\pi \int_0^{2\pi}
+      e^{im\varphi} P^m_n(\cos \vartheta)
+      e^{-im'\varphi} P^{m'}_{n'}(\cos \vartheta)
+      \, d\varphi \sin \vartheta \, d\vartheta
+    \\
+    &= \int_{-\pi}^\pi
+      P^m_n(\cos \vartheta) P^{m'}_{n'}(\cos \vartheta)
+      \int_0^{2\pi} e^{i(m - m')\varphi}
+      \, d\varphi \sin \vartheta \, d\vartheta
+      .
+  \end{align*}
+  First, notice that the associated Legendre polynomials are assumed to be real,
+  and are thus unaffected by the complex conjugation. Then, we can see that when
+  $m = m'$ the inner integral simplifies to $\int_0^{2\pi} 1 \, d\varphi$ which
+  equals $2\pi$, so in this case the expression becomes
+  \begin{equation*}
+    2\pi \int_{-\pi}^\pi
+      P^m_n(\cos \vartheta) P^{m'}_{n'}(\cos \vartheta)
+    \sin \vartheta \, d\vartheta
+    = -2\pi \int_{-1}^1 P^m_n(z) P^{m'}_{n'}(z) \, dz
+    = \frac{-4\pi(m + n)!}{(2n + 1)(n - m)!} \delta_{nn'},
+  \end{equation*}
+  where in the second step we performed the substitution $z = \cos\vartheta$;
+  $d\vartheta = \frac{d\vartheta}{dz} dz= - dz / \sin \vartheta$, and then we
+  used lemma \ref{kugel:thm:associated-legendre-ortho}. Now we just need look at
+  the case when $m \neq m'$. Fortunately this is easy: the inner integral is
+  $\int_0^{2\pi} e^{i(m - m')\varphi} d\varphi$, or in other words we are
+  integrating a complex exponetial over the entire period, which always results
+  in zero. Thus, we do not need to do anything and the proof is complete.
+\end{proof}
 
 \subsection{Normalization}
 
@@ -403,8 +590,6 @@ Ora, visto che la soluzione dell'eigenfunction problem è formata dalla moltipli
 
 \section{Series Expansions in $C(S^2)$}
 
-\subsection{Orthogonality of $P_n$, $P^m_n$ and $Y^m_n$}
-
-\subsection{Series Expansion}
+\subsection{Spherical Harmonics Series}
 
 \subsection{Fourier on $S^2$}
