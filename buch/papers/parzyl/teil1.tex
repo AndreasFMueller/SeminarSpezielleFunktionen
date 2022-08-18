@@ -27,50 +27,50 @@ mit Hilfe der Whittaker Gleichung gelöst.
 \begin{definition}
     Die Funktionen
     \begin{equation*}
-        M_{k,m}(z) = 
-    e^{-z/2} z^{m+1/2} \,
+        M_{k,m}(x) = 
+    e^{-x/2} x^{m+1/2} \,
     {}_{1} F_{1}
     (
         {\textstyle \frac{1}{2}} 
-        + m - k, 1 + 2m; z)
+        + m - k, 1 + 2m; x) \qquad x \in \mathbb{C}
     \end{equation*}
     und
     \begin{equation*}
-        W_{k,m}(z) = \frac{
+        W_{k,m}(x) = \frac{
             \Gamma \left( -2m\right)
         }{
             \Gamma \left( {\textstyle \frac{1}{2}} - m - k\right)
         }
-        M_{-k, m} \left(z\right)
+        M_{-k, m} \left(x\right)
         +
         \frac{
             \Gamma \left( 2m\right)
         }{
             \Gamma \left( {\textstyle \frac{1}{2}} + m - k\right)
         }
-        M_{k, -m} \left(z\right)
+        M_{k, -m} \left(x\right)
     \end{equation*}
-    gehören zu den Whittaker Funktionen und sind die Lösungen
+    gehören zu den Whittaker Funktionen und sind Lösungen
     von der Whittaker Differentialgleichung
     \begin{equation}
-        \frac{d^2W}{d z^2} +
-        \left(-\frac{1}{4}  + \frac{k}{z} + \frac{\frac{1}{4} - m^2}{z^2} \right) W = 0.
+        \frac{d^2W}{d x^2} +
+        \biggl( -\frac{1}{4}  + \frac{k}{x} + \frac{\frac{1}{4} - m^2}{x^2} \biggr) W = 0.
         \label{parzyl:eq:whitDiffEq}
     \end{equation}
 
 \end{definition}
 Es wird nun die Differentialgleichung bestimmt, welche
 \begin{equation}
-    w = z^{-1/2} W_{k,-1/4} \left({\textstyle \frac{1}{2}} z^2\right)
+    w = x^{-1/2} W_{k,-1/4} \left({\textstyle \frac{1}{2}} x^2\right)
 \end{equation}
 als Lösung hat.
 Dafür wird $w$ in \eqref{parzyl:eq:whitDiffEq} eingesetzt, woraus
 \begin{equation}
-    \frac{d^2 w}{dz^2} - \left(\frac{1}{4} z^2 - 2k\right) w = 0
+    \frac{d^2 w}{dx^2} - \left(\frac{1}{4} x^2 - 2k\right) w = 0
 \label{parzyl:eq:weberDiffEq}
 \end{equation}
 resultiert. Diese Differentialgleichung ist dieselbe wie 
-\eqref{parzyl:sep_dgl_2} und \eqref{parzyl:sep_dgl_2}, welche somit
+\eqref{parzyl:sep_dgl_1} und \eqref{parzyl:sep_dgl_2}, welche somit
 $w$ als Lösung haben.
 %Da es sich um eine Differentialgleichung zweiter Ordnung handelt, hat sie nicht nur
 %eine sondern zwei Lösungen.
@@ -96,41 +96,41 @@ $w$ als Lösung haben.
 %\end{align}
 
 In der Literatur gibt es verschiedene Standartlösungen für 
-\eqref{parzyl:eq:weberDiffEq} präsentiert, wobei die Differentialgleichung jeweils 
+\eqref{parzyl:eq:weberDiffEq}, wobei die Differentialgleichung jeweils 
 unterschiedlich geschrieben wird.
 Whittaker und Watson zeigen in \cite{parzyl:whittaker} die Lösung
 \begin{equation}
-    D_n(z) = 2^{\frac{1}{2}n + \frac{1}{2}} z^{-\frac{1}{2}} W_{n/2 + 1/4, -1/4}\left(\frac{1}{2}z^2\right)
+    D_n(x) = 2^{\frac{1}{2}n + \frac{1}{2}} x^{-\frac{1}{2}} W_{n/2 + 1/4, -1/4}\left(\frac{1}{2}x^2\right),
 \end{equation}
 welche die Differentialgleichung
 \begin{equation}
-    \frac{d^2D_n(z)}{dz^2} + \left(n + \frac{1}{2} - \frac{1}{4} z^2\right)D_n(z) = 0
+    \frac{d^2D_n(x)}{dx^2} + \left(n + \frac{1}{2} - \frac{1}{4} x^2\right)D_n(x) = 0
 \end{equation}
 löst.
-Mit $M_{k,m}(z)$ geschrieben resultiert
+Mit $M_{k,m}(x)$ geschrieben resultiert
 \begin{equation}
-    D_n(z) = \frac{
-            \Gamma \left( {\textstyle \frac{1}{2}}\right) 2^{\frac{1}{2}n + \frac{1}{4}} z^{-\frac{1}{2}}
+    D_n(x) = \frac{
+            \Gamma \left( {\textstyle \frac{1}{2}}\right) 2^{\frac{1}{2}n + \frac{1}{4}} x^{-\frac{1}{2}}
         }{
             \Gamma \left( {\textstyle \frac{1}{2}} - {\textstyle \frac{1}{2}} n \right)
         }
-        M_{\frac{1}{2} n + \frac{1}{4}, - \frac{1}{4}} \left(\frac{1}{2}z^2\right)
+        M_{\frac{1}{2} n + \frac{1}{4}, - \frac{1}{4}} \left(\frac{1}{2}x^2\right)
         +
         \frac{
-            \Gamma\left(-{\textstyle \frac{1}{2}}\right) 2^{\frac{1}{2}n + \frac{1}{4}} z^{-\frac{1}{2}}
+            \Gamma\left(-{\textstyle \frac{1}{2}}\right) 2^{\frac{1}{2}n + \frac{1}{4}} x^{-\frac{1}{2}}
         }{
             \Gamma\left(- {\textstyle \frac{1}{2}} n\right)
         }
-        M_{\frac{1}{2} n + \frac{1}{4}, \frac{1}{4}} \left(\frac{1}{2}z^2\right).
+        M_{\frac{1}{2} n + \frac{1}{4}, \frac{1}{4}} \left(\frac{1}{2}x^2\right).
 \end{equation}
-In \cite{parzyl:abramowitz-stegun} sind zwei Lösungen $U(a, z)$ und $V(a,z)$ 
+In \cite{parzyl:abramowitz-stegun} sind zwei Lösungen $U(a, x)$ und $V(a,x)$ 
 \begin{align}
-    U(a,z) &= 
+    U(a,x) &= 
     \cos\left[\pi \left({\textstyle \frac{1}{4}} + {\textstyle \frac{1}{2}} a\right)\right] Y_1
     - \sin\left[\pi \left({\textstyle \frac{1}{4}} + {\textstyle \frac{1}{2}} a\right)\right] Y_2 
     \label{parzyl:eq:Uaz}
     \\
-    V(a,z) &= \frac{1}{\Gamma \left({\textstyle \frac{1}{2} - a}\right)} \left\{
+    V(a,x) &= \frac{1}{\Gamma \left({\textstyle \frac{1}{2} - a}\right)} \left\{
     \sin\left[\pi \left({\textstyle \frac{1}{4}} + {\textstyle \frac{1}{2}} a\right)\right] Y_1
     + \cos\left[\pi \left({\textstyle \frac{1}{4}} + {\textstyle \frac{1}{2}} a\right)\right] Y_2
     \right\}
@@ -142,43 +142,43 @@ mit
             \frac{\Gamma\left({\textstyle \frac{1}{4} - 
             {\textstyle \frac{1}{2}}a}\right)}
             {2^{\frac{1}{2} a + \frac{1}{4}}}
-            e^{-z^2/4} 
+            e^{-x^2/4} 
             {}_{1} F_{1}
                 \left({\textstyle \frac{1}{2}}a + {\textstyle \frac{1}{4}}, 
                 {\textstyle \frac{1}{2}} ; 
-                {\textstyle \frac{1}{2}}z^2\right)\\
+                {\textstyle \frac{1}{2}}x^2\right)\\
         Y_2 &= \frac{1}{\sqrt{\pi}} 
             \frac{\Gamma\left({\textstyle \frac{3}{4} - 
             {\textstyle \frac{1}{2}}a}\right)}
             {2^{\frac{1}{2} a - \frac{1}{4}}} 
-            z e^{-z^2/4} 
+            x e^{-x^2/4} 
             {}_{1} F_{1}
                 \left({\textstyle \frac{1}{2}}a + {\textstyle \frac{3}{4}}, 
                 {\textstyle \frac{3}{2}} ; 
-                {\textstyle \frac{1}{2}}z^2\right)
+                {\textstyle \frac{1}{2}}x^2\right)
 \end{align}
 der Differentialgleichung
 \begin{equation}
-    \frac{d^2 y}{d z^2} - \left(\frac{1}{4} z^2 + a\right) y = 0
+    \frac{d^2 y}{d x^2} - \left(\frac{1}{4} x^2 + a\right) y = 0
 \end{equation}
 beschrieben. Die Lösungen $U(a,z)$ und $V(a, z)$ können auch mit $D_n(z)$
 ausgedrückt werden
 \begin{align}
-    U(a,z) &= D_{-a-1/2}(z) \\
-    V(a,z) &= \frac{\Gamma \left({\textstyle \frac{1}{2}} + a\right)}{\pi}
-    \left[\sin\left(\pi a\right) D_{-a-1/2}(z) + D_{-a-1/2}(-x)\right].
+    U(a,x) &= D_{-a-1/2}(x) \\
+    V(a,x) &= \frac{\Gamma \left({\textstyle \frac{1}{2}} + a\right)}{\pi}
+    \left[\sin\left(\pi a\right) D_{-a-1/2}(x) + D_{-a-1/2}(-x)\right].
 \end{align}
 In den Abbildungen \ref{parzyl:fig:dnz} und \ref{parzyl:fig:Vnz} sind 
-die Funktionen $D_n(z)$ und $V(a,z)$ mit verschiedenen Werten für $a$ abgebildet.
+die Funktionen $D_n(x)$ und $V(a,x)$ mit verschiedenen Werten für $a$ abgebildet.
 \begin{figure}
     \centering
-    \includegraphics[scale=0.3]{papers/parzyl/img/D_plot.png}
-    \caption{$D_n(z)$ mit unterschiedlichen Werten für $n$.}
+    \includegraphics[scale=0.35]{papers/parzyl/img/D_plot.png}
+    \caption{$D_n(x)$ mit unterschiedlichen Werten für $n$.}
     \label{parzyl:fig:dnz}
 \end{figure}
 \begin{figure}
     \centering
-    \includegraphics[scale=0.3]{papers/parzyl/img/v_plot.png}
-    \caption{$V(a,z)$ mit unterschiedlichen Werten für $a$.}
+    \includegraphics[scale=0.35]{papers/parzyl/img/v_plot.png}
+    \caption{$V(a,x)$ mit unterschiedlichen Werten für $a$.}
     \label{parzyl:fig:Vnz}
 \end{figure}

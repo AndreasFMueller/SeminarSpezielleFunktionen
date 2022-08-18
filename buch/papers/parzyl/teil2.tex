@@ -19,7 +19,7 @@ Jede komplexe Funktion $F(z)$ kann geschrieben werden als
 \begin{equation}
 	F(s) = U(x,y) + iV(x,y) \qquad s \in \mathbb{C}; x,y \in \mathbb{R}.
 \end{equation}  
-Dabei muss gelten, falls die Funktion differenzierbar ist, dass
+Dabei müssen, falls die Funktion differenzierbar ist, die Cauchy-Riemann Differentialgleichungen 
 \begin{equation}
 	\frac{\partial U(x,y)}{\partial x} 
 	=
@@ -27,8 +27,9 @@ Dabei muss gelten, falls die Funktion differenzierbar ist, dass
 	\qquad
 	\frac{\partial V(x,y)}{\partial x}
 	=
-	-\frac{\partial U(x,y)}{\partial y}.
+	-\frac{\partial U(x,y)}{\partial y}
 \end{equation}
+gelten.
 Aus dieser Bedingung folgt 
 \begin{equation}
 	\label{parzyl_e_feld_zweite_ab}
@@ -53,7 +54,7 @@ Der Zusammenhang zum elektrischen Feld ist jetzt, dass das Potential an einem qu
 \begin{equation}
 	\nabla^2\phi(x,y) = 0.
 \end{equation}
-Dies ist eine Bedingung welche differenzierbare Funktionen, wie in Gleichung \ref{parzyl_e_feld_zweite_ab} gezeigt wird, bereits besitzen. 
+Dies ist eine Bedingung welche differenzierbare Funktionen, wie in Gleichung \eqref{parzyl_e_feld_zweite_ab} gezeigt wird, bereits besitzen. 
 Nun kann zum Beispiel $U(x,y)$ als das Potential angeschaut werden
 \begin{equation}
 	\phi(x,y) = U(x,y).
@@ -62,7 +63,8 @@ Orthogonal zum Potential ist das elektrische Feld
 \begin{equation}
 	E(x,y) = V(x,y).
 \end{equation}
-Um nun zu den parabolische Zylinderkoordinaten zu gelangen muss nur noch eine geeignete komplexe Funktion $F(s)$ gefunden werden, 
+Um nun zu den parabolische Zylinderkoordinaten zu gelangen muss nur noch eine geeignete 
+komplexe Funktion $F(s)$ gefunden werden, 
 welche eine semi-infinite Platte beschreiben kann.
 Die gesuchte Funktion in diesem Fall ist
 \begin{equation}
@@ -81,23 +83,22 @@ Dies kann umgeformt werden zu
 	i\underbrace{\sqrt{\frac{\sqrt{x^2+y^2} - x}{2}}}_{V(x,y)}
 	.
 \end{equation}
-Die Äquipotentialflächen können nun betrachtet werden, indem man die Funktion welche das Potential beschreibt gleich eine Konstante setzt,
+Die Äquipotentialflächen können nun betrachtet werden, 
+indem man die Funktion, welche das Potential beschreibt, gleich eine Konstante setzt,
 \begin{equation}
-	\sigma = U(x,y) = \sqrt{\frac{\sqrt{x^2+y^2} + x}{2}},
+	\sigma = U(x,y) = \sqrt{\frac{\sqrt{x^2+y^2} + x}{2}}.
 \end{equation}
-und die Flächen mit der gleichen elektrischen Feldstärke können als
+Die Flächen mit der gleichen elektrischen Feldstärke können als
 \begin{equation}
 	\tau = V(x,y) = \sqrt{\frac{\sqrt{x^2+y^2} - x}{2}}
 \end{equation}
-beschrieben werden. Diese zwei Gleichungen zeigen nun wie man vom kartesischen Koordinatensystem ins parabolische Zylinderkoordinatensystem kommt. Werden diese Formeln nun nach x und y aufgelöst so beschreibe sie, wie man aus dem parabolischen Zylinderkoordinatensystem zurück ins kartesische rechnen kann
+beschrieben werden. Diese zwei Gleichungen zeigen nun, wie man vom 
+kartesischen Koordinatensystem ins parabolische Zylinderkoordinatensystem kommt. 
+Werden diese Formeln nun nach $x$ und $y$ aufgelöst 
 \begin{equation}
 	x = \sigma \tau,
 \end{equation}
 \begin{equation}
-	y = \frac{1}{2}\left ( \tau^2 - \sigma^2 \right )
+	y = \frac{1}{2}\left ( \tau^2 - \sigma^2 \right ),
 \end{equation}
-
-
-
-
-
+so beschreibe sie, wie man aus dem parabolischen Zylinderkoordinatensystem zurück ins kartesische rechnen kann.
