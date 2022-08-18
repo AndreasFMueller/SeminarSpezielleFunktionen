@@ -9,15 +9,18 @@
 %Mit ihr lässt sich zum Beispiel das elektrische Feld in einem ladungsfreien Raum bestimmen.
 %In diesem Kapitel wird die Lösung der Laplace-Gleichung im 
 %parabolischen Zylinderkoordinatensystem genauer untersucht.
-Die Helmholtz-Gleichung ist eine wichtige Gleichung in der Physik. Mit ihr lässt sich zum Beispiel das Verhalten von elektromagnetischen Wellen beschreiben.
-In diesem Kapitel wird die Lösung der Helmholtz-Gleichung im parabolischen Zylinderkoordinatensystem, die parabolischen Zylinderfunktionen, genauer untersucht.
+Die Helmholtz-Gleichung ist eine wichtige Gleichung in der Physik. 
+Mit ihr lässt sich zum Beispiel das Verhalten von elektromagnetischen Wellen beschreiben.
+In diesem Kapitel werden die Lösungen der Helmholtz-Gleichung im parabolischen Zylinderkoordinatensystem, 
+die parabolischen Zylinderfunktionen, genauer untersucht.
 
 \subsection{Helmholtz-Gleichung}
 Die partielle Differentialgleichung 
 \begin{equation}
-	\nabla f = \lambda f
+	\Delta f = \lambda f
 \end{equation}
-ist als Helmholtz-Gleichung bekannt und beschreibt das Eigenwert Problem für den Laplace-Operator. Sie ist eine der Gleichungen welche auftritt wenn die Wellengleichung
+ist als Helmholtz-Gleichung bekannt und beschreibt das Eigenwert Problem für den Laplace-Operator. 
+Sie ist eine der Gleichungen welche auftritt wenn die Wellengleichung
 \begin{equation}
 	\left ( \nabla^2 - \frac{1}{c^2}\frac{\partial^2}{\partial t^2}  \right ) u(\textbf{r},t)
 	=
@@ -27,7 +30,8 @@ mit Hilfe von Separation
 \begin{equation}
 	u(\textbf{r},t) = A(\textbf{r})T(t)
 \end{equation} 
-in zwei Differentialgleichungen aufgeteilt wird. Die Helmholtz-Gleichung ist der Teil, welcher Zeit unabhängig ist
+in zwei Differentialgleichungen aufgeteilt wird. Die Helmholtz-Gleichung ist der Teil, 
+welcher zeitunabhängig ist
 \begin{equation}
 	\nabla^2 A(\textbf{r}) = \lambda A(\textbf{r}).
 \end{equation}
@@ -65,7 +69,8 @@ in zwei Differentialgleichungen aufgeteilt wird. Die Helmholtz-Gleichung ist der
 %An ladungsfreien Stellen ist der rechte Teil der Gleichung $0$. 
 \subsection{Parabolische Zylinderkoordinaten
 \label{parzyl:subsection:finibus}}
-Im parabolischen Zylinderkoordinatensystem bilden parabolische Zylinder die Koordinatenflächen.
+Das parabolischen Zylinderkoordinatensystem \cite{parzyl:coordinates} ist ein krummliniges Koordinatensystem, 
+bei dem parabolische Zylinder die Koordinatenflächen bilden.
 Die Koordinate $(\sigma, \tau, z)$ sind in kartesischen Koordinaten ausgedrückt mit
 \begin{align}
     x & = \sigma \tau \\
@@ -97,15 +102,15 @@ Ebene gezogen werden.
 Um in diesem Koordinatensystem integrieren und differenzieren zu 
 können braucht es die Skalierungsfaktoren $h_{\tau}$, $h_{\sigma}$ und $h_{z}$.
 
-Wird eine infinitessimal kleine Distanz $ds$ zwischen zwei Punkten betrachtet
-kann dies im kartesischen Koordinatensystem mit
+Eine infinitessimal kleine Distanz $ds$ zwischen zwei Punkten
+kann im kartesischen Koordinatensystem mit
 \begin{equation}
     \left(ds\right)^2 = \left(dx\right)^2 + \left(dy\right)^2 + 
     \left(dz\right)^2
     \label{parzyl:eq:ds}
 \end{equation}
 ausgedrückt werden.
-Die Skalierungsfaktoren werden so bestimmt, dass
+Die Skalierungsfaktoren werden in einem orthogonalen Koordinatensystem so bestimmt, dass
 \begin{equation}
     \left(ds\right)^2 = \left(h_{\sigma}d\sigma\right)^2 + 
     \left(h_{\tau}d\tau\right)^2 + \left(h_z dz\right)^2
@@ -145,16 +150,16 @@ Daraus ergeben sich die Skalierungsfaktoren
 \end{align}
 \subsection{Differentialgleichung}
 Möchte man eine Differentialgleichung im parabolischen 
-Zylinderkoordinatensystem aufstellen müssen die Skalierungsfaktoren
+Zylinderkoordinatensystem aufstellen, müssen die Skalierungsfaktoren
 mitgerechnet werden.
-Der Laplace Operator ist dadurch gegeben als
+Der Laplace Operator wird dadurch zu
 \begin{equation}
     \Delta f = \frac{1}{\sigma^2 + \tau^2} 
         \left( 
             \frac{\partial^2 f}{\partial \sigma ^2} +
             \frac{\partial^2 f}{\partial \tau ^2}
         \right)
-        + \frac{\partial^2 f}{\partial z}.
+        + \frac{\partial^2 f}{\partial z^2}.
     \label{parzyl:eq:laplaceInParZylCor}
 \end{equation}
 \subsubsection{Lösung der Helmholtz-Gleichung im parabolischen Zylinderfunktion}
@@ -201,8 +206,7 @@ Diese partielle Differentialgleichung kann mit Hilfe von Separation gelöst werd
 \begin{equation}
 	f(\sigma,\tau,z) = g(\sigma)h(\tau)i(z)
 \end{equation}
-gesetzt. 
-Was dann schlussendlich zu den Differentialgleichungen 
+gesetzt, was dann schlussendlich zu den Differentialgleichungen 
 \begin{equation}\label{parzyl:sep_dgl_1}
 	g''(\sigma) 
 	- 

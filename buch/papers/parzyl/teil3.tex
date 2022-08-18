@@ -9,75 +9,96 @@
 
 \subsection{Potenzreihenentwicklung
 	\label{parzyl:potenz}}
-Die parabolischen Zylinderfunktionen, welche in Gleichung \ref{parzyl:eq:solution_dgl} gegeben sind, können auch als Potenzreihen geschrieben werden
+%Die parabolischen Zylinderfunktionen, welche in Gleichung \ref{parzyl:eq:solution_dgl} gegeben sind, 
+%können auch als Potenzreihen geschrieben werden
+Die parabolischen Zylinderfunktionen können auch als Potenzreihen geschrieben werden.
+Im folgenden Abschnitt werden die Terme welche nur von $n$ oder $a$ abhängig sind vernachlässigt.
+Die parabolischen Zylinderfunktionen sind Linearkombinationen aus einem geraden Teil $w_1(\alpha, x)$ 
+und einem ungeraden Teil $w_2(\alpha, x)$, welche als Potenzreihe
 \begin{align}
-	w_1(k,z)
+	w_1(\alpha,x)
 	&=  
-	e^{-z^2/4} \,
+	e^{-x^2/4} \,
 	{}_{1} F_{1}
 	(
-	{\textstyle \frac{1}{4}} 
-	- k, {\textstyle \frac{1}{2}} ; {\textstyle \frac{1}{2}}z^2) 
+	\alpha, {\textstyle \frac{1}{2}} ; {\textstyle \frac{1}{2}}x^2) 
 	= 
-	e^{-\frac{z^2}{4}}
+	e^{-\frac{x^2}{4}}
 	\sum^{\infty}_{n=0}
-	\frac{\left ( \frac{1}{4} - k \right )_{n}}{\left ( \frac{1}{2}\right )_{n}}
-	\frac{\left ( \frac{1}{2} z^2\right )^n}{n!} \\
+	\frac{\left ( \alpha \right )_{n}}{\left ( \frac{1}{2}\right )_{n}}
+	\frac{\left ( \frac{1}{2} x^2\right )^n}{n!} \\
 	&=
-	e^{-\frac{z^2}{4}}
+	e^{-\frac{x^2}{4}}
 	\left ( 
 	1 
 	+
-	\left ( \frac{1}{2} - 2k \right )\frac{z^2}{2!}
+	\left ( 2\alpha \right )\frac{x^2}{2!}
 	+
-	\left ( \frac{1}{2} - 2k \right )\left ( \frac{5}{2} - 2k \right )\frac{z^4}{4!}  
+	\left ( 2\alpha \right )\left ( 2 + 2\alpha \right )\frac{x^4}{4!}  
 	+
 	\dots
 	\right )
 \end{align}
 und
 \begin{align}
-	w_2(k,z)
+	w_2(\alpha,x)
 	&=  
-	ze^{-z^2/4} \,
+	xe^{-x^2/4} \,
 	{}_{1} F_{1}
 	(
-	{\textstyle \frac{3}{4}} 
-	- k, {\textstyle \frac{3}{2}} ; {\textstyle \frac{1}{2}}z^2) 
+	{\textstyle \frac{1}{2}} 
+	+ \alpha, {\textstyle \frac{3}{2}} ; {\textstyle \frac{1}{2}}x^2) 
 	= 
-	ze^{-\frac{z^2}{4}}
+	xe^{-\frac{x^2}{4}}
 	\sum^{\infty}_{n=0}
 	\frac{\left ( \frac{3}{4} - k \right )_{n}}{\left ( \frac{3}{2}\right )_{n}}
-	\frac{\left ( \frac{1}{2} z^2\right )^n}{n!} \\
+	\frac{\left ( \frac{1}{2} x^2\right )^n}{n!} \\
 	&=
-	e^{-\frac{z^2}{4}}
+	e^{-\frac{x^2}{4}}
 	\left ( 
-	z 
+	x 
 	+
-	\left ( \frac{3}{2} - 2k \right )\frac{z^3}{3!}
+	\left ( 1 + 2\alpha \right )\frac{x^3}{3!}
 	+
-	\left ( \frac{3}{2} - 2k \right )\left ( \frac{7}{2} - 2k \right )\frac{z^5}{5!}  
+	\left ( 1 + 2\alpha \right )\left ( 3 + 2\alpha \right )\frac{x^5}{5!}  
 	+
 	\dots
-	\right ).
+	\right )
 \end{align}
-Bei den Potenzreihen sieht man gut, dass die Ordnung des Polynoms im generellen ins unendliche geht. Es gibt allerdings die Möglichkeit für bestimmte k das die Terme in der Klammer gleich null werden und das Polynom somit eine endliche Ordnung $n$ hat. Dies geschieht bei $w_1(k,z)$ falls
+sind.
+Die Potenzreihen sind in der regel unendliche Reihen. 
+Es gibt allerdings die Möglichkeit für bestimmte $\alpha$ das die Terme in der Klammer gleich null werden 
+und die Reihe somit eine endliche Anzahl $n$ Summanden hat.
+Dies geschieht bei $w_1(\alpha,x)$ falls
 \begin{equation}
-	k = \frac{1}{4} + n \qquad n \in \mathbb{N}_0
+	\alpha =  -n \qquad n \in \mathbb{N}_0
 \end{equation}
-und bei $w_2(k,z)$ falls
+und bei $w_2(\alpha,x)$ falls
 \begin{equation}
-	k = \frac{3}{4} + n \qquad n \in \mathbb{N}_0.
+	\alpha = -\frac{1}{2} - n \qquad n \in \mathbb{N}_0.
 \end{equation}
-
+Der Wert des von $\alpha$ ist abhängig, ob man $D_n(x)$ oder $U(a,x)$ / $V(a,x)$ verwendet.
+Bei $D_n(x)$ gilt $\alpha = -{\textstyle \frac{1}{2}} n$ und bei $U(a,z)$ oder $V(a,x)$ gilt 
+$\alpha = {\textstyle \frac{1}{2}} a + {\textstyle \frac{1}{4}}$.
 \subsection{Ableitung}
-Es kann gezeigt werden, dass die Ableitungen $\frac{\partial w_1(z,k)}{\partial z}$ und $\frac{\partial w_2(z,k)}{\partial z}$ einen Zusammenhang zwischen $w_1(z,k)$ und $w_2(z,k)$ zeigen. Die Ableitung von $w_1(z,k)$ nach $z$ kann über die Produktregel berechnet werden und ist gegeben als
+Die Ableitungen $\frac{\partial w_1(\alpha, x)}{\partial x}$ und $\frac{\partial w_2(\alpha, x)}{\partial x}$ 
+können mit den Eigenschaften der hypergeometrischen Funktionen in Abschnitt 
+\ref{buch:rekursion:hypergeometrisch:stammableitung} berechnet werden. 
+Zusammen mit der Produktregel ergeben sich die Ableitungen
 \begin{equation}
-	\frac{\partial w_1(z,k)}{\partial z} = \left (\frac{1}{2} - 2k \right ) w_2(z, k -\frac{1}{2}) - \frac{1}{2} z w_1(z,k),
+	\frac{\partial w_1(\alpha,x)}{\partial x} = 2\alpha w_2(\alpha + \frac{1}{2}, x) - \frac{1}{2} x w_1(\alpha, x),
 \end{equation} 
-und die Ableitung von $w_2(z,k)$ als
+und
+%\begin{equation}
+%	\frac{\partial w_2(z,k)}{\partial z} = w_1(z, k -\frac{1}{2}) - \frac{1}{2} z w_2(z,k).
+%\end{equation}
 \begin{equation}
-	\frac{\partial w_2(z,k)}{\partial z} = w_1(z, k -\frac{1}{2}) - \frac{1}{2} z w_2(z,k).
+	\frac{\partial w_2(\alpha,x)}{\partial x} = e^{-x^2/4} \left(
+		x^{-1} w_2(\alpha, x) - \frac{x}{2} w_2(\alpha, x) + 2 x^2 \left(\frac{\alpha + 1}{3}\right)
+		{}_{1} F_{1} (
+	{\textstyle \frac{3}{2}} 
+	+ \alpha, {\textstyle \frac{5}{2}} ; {\textstyle \frac{1}{2}}x^2)
+	\right)
 \end{equation}
-Über diese Eigenschaft können einfach weitere Ableitungen berechnet werden. 
+Nach dem selben Vorgehen können weitere Ableitungen berechnet werden.
 
