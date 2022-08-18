@@ -20,7 +20,7 @@ die partielle Differentialgleichung
     \frac{\partial u}{\partial t} =
     \kappa \frac{\partial^{2}u}{{\partial x}^{2}},
 \end{equation}
-wobei der Stab in diesem Fall auf der X-Achse im Intervall $[0,l]$ liegt.
+wobei der Stab in diesem Fall auf der $X$-Achse im Intervall $[0,l]$ liegt.
 
 Da diese Differentialgleichung das Problem allgemein für einen homogenen
 Stab beschreibt, werden zusätzliche Bedingungen benötigt, um beispielsweise
@@ -35,7 +35,7 @@ Tempreatur gehalten werden.
 Die Enden des Stabes auf konstanter Temperatur zu halten bedeutet, dass die
 Lösungsfunktion $u(t,x)$ bei $x = 0$ und $x = l$ nur die vorgegebene
 Temperatur zurückgeben darf. Diese wird einfachheitshalber als $0$ angenomen.
-Es folgen nun
+Es folgt nun
 \begin{equation}
     \label{sturmliouville:eq:example-fourier-boundary-condition-ends-constant}
     u(t,0)
@@ -52,7 +52,7 @@ als Randbedingungen.
 
 \subsubsection{Randbedingungen für Stab mit isolierten Enden}
 
-Bei isolierten Enden des Stabes können belibige Temperaturen für $x = 0$ und
+Bei isolierten Enden des Stabes können beliebige Temperaturen für $x = 0$ und
 $x = l$ auftreten. In diesem Fall ist es nicht erlaubt, dass Wärme vom Stab
 an die Umgebung oder von der Umgebung an den Stab abgegeben wird.
 
@@ -187,7 +187,7 @@ somit auch zu orthogonalen Lösungen führen.
 %   Lösung von X(x), Teil mu
 %
 
-\subsubsection{Lösund der Differentialgleichung in x}
+\subsubsection{Lösund der Differentialgleichung in $x$}
 Als erstes wird auf die
 Gleichung~\eqref{sturmliouville:eq:example-fourier-separated-x} eingegangen.
 Aufgrund der Struktur der Gleichung
@@ -473,7 +473,7 @@ berechnet:
     \\
     2\int_{0}^{l}u(0, x)\cos\left(\frac{m \pi}{l}x\right)dx
     =&
-    a_0 \int_{-l}^{l}cos\left(\frac{m \pi}{l}x\right) dx
+    a_0 \int_{-l}^{l}\cos\left(\frac{m \pi}{l}x\right) dx
     +
     \sum_{n = 1}^{\infty}\left[a_n\int_{-l}^{l}\cos\left(\frac{n\pi}{l}x\right)
         \cos\left(\frac{m \pi}{l}x\right)dx\right]
@@ -487,7 +487,7 @@ berechnet:
 Betrachtet man nun die Summanden auf der rechten Seite stellt man fest, dass
 nahezu alle Terme verschwinden, denn
 \[
-    \int_{-l}^{l}cos\left(\frac{m \pi}{l}x\right) dx
+    \int_{-l}^{l}\cos\left(\frac{m \pi}{l}x\right) dx
     =
     0,
 \]
@@ -528,10 +528,10 @@ mit $u = \frac{m \pi}{l}x$ substituiert wird:
     \frac{\sin\left(2u\right)}{4}\right]_{u=-m\pi}^{m\pi}
     \\
     &=
-    a_m\frac{l}{m\pi}\left(\frac{m\pi}{2} + 
+    a_m\frac{l}{m\pi}\biggl(\frac{m\pi}{2} + 
     \underbrace{\frac{\sin\left(2m\pi\right)}{4}}_{\displaystyle = 0} - 
     \frac{-m\pi}{2} -
-    \underbrace{\frac{\sin\left(-2m\pi\right)}{4}}_{\displaystyle = 0}\right)
+    \underbrace{\frac{\sin\left(-2m\pi\right)}{4}}_{\displaystyle = 0}\biggr)
     \\
     &=
     a_m l
