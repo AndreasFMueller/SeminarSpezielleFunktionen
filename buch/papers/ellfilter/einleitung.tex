@@ -1,17 +1,17 @@
 \section{Einleitung}
 
-Filter sind womöglich eines der wichtigsten Elementen in der Signalverarbeitung und finden Anwendungen in der digitalen und analogen Elektrotechnik.
+Filter sind womöglich eines der wichtigsten Elemente in der Signalverarbeitung und finden Anwendungen in der digitalen und analogen Elektrotechnik.
 Besonders hilfreich ist die Untergruppe der linearen Filter.
 Elektronische Schaltungen mit linearen Bauelementen wie Kondensatoren, Spulen und Widerständen führen immer zu linearen zeitinvarianten Systemen (LTI-System von englich \textit{time-invariant system}).
-Durch die Linearität werden beim das Filtern keine neuen Frequenzanteile erzeugt, was es erlaubt, einen Frequenzanteil eines Signals verzerrungsfrei herauszufiltern. %TODO review sentence
-Diese Eigenschaft macht es Sinnvoll, lineare Filter im Frequenzbereich zu beschreiben.
+Durch die Linearität werden beim Filtern keine neuen Frequenzanteile erzeugt, was es erlaubt, einen Frequenzanteil eines Signals verzerrungsfrei herauszufiltern.
+Diese Eigenschaft macht es sinnvoll, lineare Filter im Frequenzbereich zu beschreiben.
 Die Übertragungsfunktion eines linearen Filters im Frequenzbereich $H(\Omega)$ ist dabei immer eine rationale Funktion, also ein Quotient von zwei Polynomen.
 Dabei ist $\Omega = 2 \pi f$ die Frequenzeinheit.
-Die Polynome haben dabei immer reelle oder komplex-konjugierte Nullstellen.
+Die Polynome haben dabei immer reelle oder komplexkonjugierte Nullstellen.
 
-Ein breit angewendeter Filtertyp ist das Tiefpassfilter, welches beabsichtigt alle Frequenzen eines Signals oberhalb der Grenzfrequenz $\Omega_p$ auszulöschen.
+Ein breit angewendeter Filtertyp ist das Tiefpassfilter, welches beabsichtigt, alle Frequenzen eines Signals oberhalb der Grenzfrequenz $\Omega_p$ auszulöschen.
 Der Rest soll dabei unverändert passieren.
-Aus dem Tiefpassifilter können dann durch Transformationen auch Hochpassfilter, Bandpassfilter und Bandsperren realisiert werden.
+Aus dem Tiefpassfilter können dann durch Transformationen auch Hochpassfilter, Bandpassfilter und Bandsperren realisiert werden.
 Ein solches Filter hat idealerweise die Frequenzantwort
 \begin{equation}
     H(\Omega) =
@@ -40,8 +40,9 @@ Des weiteren müssen alle Nullstellen und Pole von $F_N$ auf der linken Halbeben
 $w$ ist die normalisierte Frequenz, die es erlaubt ein Filter unabhängig von der Grenzfrequenz zu beschrieben.
 Bei $w=1$ hat das Filter eine Dämpfung von $1/(1+\varepsilon^2)$.
 $N \in \mathbb{N} $ gibt die Ordnung des Filters vor, also die maximale Anzahl Pole oder Nullstellen.
-Je hoher $N$ gewählt wird, desto steiler ist der Übergang in denn Sperrbereich.
+Je höher $N$ gewählt wird, desto steiler ist der Übergang in denn Sperrbereich.
 Grössere $N$ sind erfordern jedoch aufwendigere Implementierungen und haben mehr Phasenverschiebung.
+
 Eine einfache Funktion, die für $F_N$ eingesetzt werden kann, ist das Polynom $w^N$.
 Tatsächlich erhalten wir damit das Butterworth Filter, wie in Abbildung \ref{ellfilter:fig:butterworth} ersichtlich.
 \begin{figure}
@@ -62,12 +63,15 @@ Eine Reihe von rationalen Funktionen können für $F_N$ eingesetzt werden, um Ti
 \end{align}
 Mit der Ausnahme vom Butterworth-Filter sind alle Filter nach speziellen Funktionen benannt.
 Alle diese Filter sind optimal hinsichtlich einer Eigenschaft.
-Das Butterworth-Filter, zum Beispiel, ist maximal flach im Durchlassbereich.
-Das Tschebyscheff-1 Filter ist maximal steil für eine definierte Welligkeit im Durchlassbereich, währendem es im Sperrbereich monoton abfallend ist.
 Es scheint so als sind gewisse Eigenschaften dieser speziellen Funktionen verantwortlich für die Optimalität dieser Filter.
+Das Butterworth-Filter, zum Beispiel, ist maximal flach im Durchlassbereich.
+In vielen Anwendung sind Filter mit einem steilen Übergang gewünscht.
+Da es technisch nicht möglich ist, mit einer rationalen Funktion mit begrezter Anzahl Pole eine steile Flanke zu erreichen, während der Durchlass- und Sperrbereich flach und monoton sind, gibt es Filtertypen, die absichtlich Welligkeiten in der Frequenzantwort aufweisen.
+Besonders effizient sind Filter mit Equiripple-Verhalten, wessen Welligkeit optimal definiert wird für eine maximal steile Flanke, während die maximale Abweichung zum idealen Filter begrenzt ist.
+Die Welligkeit beansprucht dabei einen begrenzen Verstärkungsintervall und nützt diesen Vollständig aus, indem sie periodisch die Grenzen des Intervalls berührt.
+Das Tschebyscheff-1 Filter, zum Beispiel, hat Equiripple-Verhalten im Durchlassbereich, währendem es im Sperrbereich monoton abfallend ist.
+Beim Tschebyscheff-2 Filter ist es umgekehrt.
 
 Dieses Paper betrachtet die Theorie hinter dem elliptischen Filter, dem wohl exotischsten dieser Auswahl.
-Es weist sich aus durch den steilsten Übergangsbereich für eine gegebene Filterdesignspezifikation.
+Es hat Equiripple-Verhalten im Durchlass und Sperrbereich und hat dadurch den steilsten Übergangsbereich für eine gegebene Filterdesignspezifikation.
 Des weiteren kann es als Verallgemeinerung des Tschebyscheff-Filters angesehen werden.
-
-% wenn $F_N(w)$ eine rationale Funktion ist, ist auch $H(\Omega)$ eine rationale Funktion und daher ein lineares Filter. %proof?
