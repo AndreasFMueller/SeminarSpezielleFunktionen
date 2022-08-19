@@ -3,10 +3,9 @@
 %
 % (c) 2020 Prof Dr Andreas Müller, Hochschule Rapperswil
 %
-\section{FM
+\section{FM- Frequenzmodulation
 \label{fm:section:teil1}}
 \rhead{FM}
-\subsection{Frequenzmodulation}
 (skript Nat ab Seite 60)
 Als weiterer Parameter, um ein sinusförmiges Trägersignal \(x_c = A_c \cdot \cos(\omega_c t + \varphi)\) zu modulieren,
 bietet sich neben der Amplitude \(A_c\) auch der Phasenwinkel \(\varphi\) oder die momentane Frequenzabweichung \(\frac{d\varphi}{dt}\) an.
@@ -59,7 +58,29 @@ Jeweils vor der Modulation bzw. nach der Demodulation kann dann noch eine Differ
 Integration durchgeführt wird, um von der einen Modulationsart zur anderen zu gelangen.
 \citeauthor{fm:NAT}
 
-\subsection{Frequenzbereich}
+\subsection{Frequenzspektrum}
+
+Im die Foriertransformation zu berechnen muss man dieses Integral lösen,
+\[
+    \int
+\]
+(sollte ich wirklich diese Fouriertransformation zeigen?)
+jedoch einfacher ist es wenn man mit Hilfe der Besselfunktion den Term \( \cos \cos()\) wandelt,  erhält man
+\[
+    \sum
+\]
+Dieses zu transformien ist einfacher da es wieder Summen sind.
+Damit ist die Fouriertransformation
+\[
+    Fourier
+    \label{fm:FM:fourie}
+\]
+
+Nun sieht ein einfaches Frequenzmodulirtes Sigbnal mit \(m(t) = \sin(t)\) im Frequenzspektrum so aus.
+TODO Bild.
+Wie man auf diese Umformt von \(cos (cos())\) in die Summe zeige ich im nächsten Kapittel, auch was die eigentliche Bessselfunktion aussieht.
+
+\
 %Nun
 %TODO
 %Hier Beschreiben ich FM und FM im Frequenzspektrum.
