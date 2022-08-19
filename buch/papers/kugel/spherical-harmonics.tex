@@ -493,9 +493,12 @@ $P_n(z)$ by a $m$-th derivative, and obtain the following result.
   \end{equation*}
 \end{lemma}
 \begin{proof}
-  \kugeltodo{Is this correct? And Is it worth showing? IMHO no, it is mostly the
-  same as Lemma \ref{kugel:thm:legendre-poly-ortho} with the difference that the
-  $m$-th derivative is a pain to deal with.}
+  To show that the expression equals zero when $n \neq n'$ we can perform
+  exactly the same steps as in the proof of lemma
+  \ref{kugel:thm:legendre-poly-ortho}, so we will not repeat them here and prove
+  instead only the case when $n = n'$.
+  \kugeltodo{Finish proof, or not? I have to look and decide if it is
+  interesting enough.}
 \end{proof}
 
 By having the orthogonality relations of the Legendre functions we can finally
@@ -516,19 +519,19 @@ product:
 
 \begin{theorem} For the (unnormalized) spherical harmonics
   \label{kugel:thm:spherical-harmonics-ortho}
-  \kugeltodo{Why do I get a minus in front of $4\pi$??? It should not be there
-  right?}
-  \begin{equation*}
+  \begin{align*}
     \langle Y^m_n, Y^{m'}_{n'} \rangle
-    = \int_{0}^\pi \int_0^{2\pi}
+    &= \int_{0}^\pi \int_0^{2\pi}
       Y^m_n(\vartheta, \varphi) \overline{Y^{m'}_{n'}(\vartheta, \varphi)}
       \sin \vartheta \, d\varphi \, d\vartheta
-    = \frac{4\pi}{2n + 1} \frac{(m + n)!}{(n - m)!} \delta_{nn'} \delta_{mm'}
+    \\
+    &= \frac{4\pi}{2n + 1} \frac{(m + n)!}{(n - m)!} \delta_{nn'} \delta_{mm'}
     = \begin{cases}
-      \frac{4\pi}{2n + 1} \frac{(m + n)!}{(n - m)!} & \text{if } n = n', \\
+      \frac{4\pi}{2n + 1} \frac{(m + n)!}{(n - m)!}
+        & \text{if } n = n' \text{ and } m = m', \\
       0 & \text{otherwise}.
     \end{cases}
-  \end{equation*}
+  \end{align*}
 \end{theorem}
 \begin{proof}
   We will begin by doing a bit of algebraic maipulaiton:
@@ -563,38 +566,15 @@ product:
   used lemma \ref{kugel:thm:associated-legendre-ortho}. We are allowed to use
   the lemma because $m = m'$.
 
-  Now we just need look at the case when $m \neq m'$. Fortunately this is easy:
-  the inner integral is $\int_0^{2\pi} e^{i(m - m')\varphi} d\varphi$, or in
-  other words we are integrating a complex exponetial over the entire period,
-  which always results in zero. Thus, we do not need to do anything and the
-  proof is complete.
+  Now we just need look at the case when $m \neq m'$. Fortunately this is
+  easier: the inner integral is $\int_0^{2\pi} e^{i(m - m')\varphi} d\varphi$,
+  or in other words we are integrating a complex exponetial over the entire
+  period, which always results in zero. Thus, we do not need to do anything and
+  the proof is complete.
 \end{proof}
 
-\subsection{Normalization}
-
-At this point we have shown that the spherical harmonics form an orthogonal
-system, but in many applications we usually also want a normalization of some
-kind. For example the most obvious desirable property could be for the spherical
-harmonics to be ortho\emph{normal}, by which we mean that $\langle Y^m_n,
-Y^{m'}_{n'} \rangle = \delta_{nn'}$. To obtain orthonormality, we simply add a
-normalization factor in front of the previous definition
-\ref{kugel:def:spherical-harmonics} as follows.
-
-\begin{definition}[Orthonormal spherical harmonics]
-  \label{kugel:def:spherical-harmonics-orthonormal}
-  The functions
-  \begin{equation*}
-    Y^m_n(\vartheta, \varphi)
-    = \sqrt{\frac{2n + 1}{4\pi} \frac{(n-m)!}{(m+n)!}}
-      P^m_n(\cos \vartheta) e^{im\varphi}
-  \end{equation*}
-  where $m, n \in \mathbb{Z}$ and $|m| < n$ are the orthonormal spherical
-  harmonics.
-\end{definition}
-
-Orthornomality is very useful indeed, but it is not the only common
-normalization that is found in the literature. In physics, quantum mechanics to
-be more specific, it is common to use the so called Schmidt semi-normalization.
+\kugeltodo{Briefly mention that we could have skipped the tedious proofs by
+showing that the (associated) Legendre equation is a Sturm Liouville problem.}
 
 \if 0
 As explained in the chapter \ref{}, the concept of orthogonality is very important and at the practical level it is very useful, because it allows us to develop very powerful techniques at the mathematical level.\newline 
@@ -620,7 +600,49 @@ Inoltre, possiamo provare l'ortogonalità di $\Theta(\vartheta)$ utilizzando \eq
 Ora, visto che la soluzione dell'eigenfunction problem è formata dalla moltiplicazione di $\Phi_m(\varphi)$ e $P_{m,n}(x)$
 \fi
 
-\subsection{Properties}
+
+\subsection{Normalization and the Phase Factor}
+
+At this point we have shown that the spherical harmonics form an orthogonal
+system, but in many applications we usually also want a normalization of some
+kind. For example the most obvious desirable property could be for the spherical
+harmonics to be ortho\emph{normal}, by which we mean that $\langle Y^m_n,
+Y^{m'}_{n'} \rangle = \delta_{nn'}$. To obtain orthonormality, we simply add an
+ugly normalization factor in front of the previous definition
+\ref{kugel:def:spherical-harmonics} as follows.
+
+\begin{definition}[Orthonormal spherical harmonics]
+  \label{kugel:def:spherical-harmonics-orthonormal}
+  The functions
+  \begin{equation*}
+    Y^m_n(\vartheta, \varphi)
+    = \sqrt{\frac{2n + 1}{4\pi} \frac{(n-m)!}{(m+n)!}}
+      P^m_n(\cos \vartheta) e^{im\varphi}
+  \end{equation*}
+  where $m, n \in \mathbb{Z}$ and $|m| < n$ are the orthonormal spherical
+  harmonics.
+\end{definition}
+
+Orthornomality is very useful, but it is not the only common normalization that
+is found in the literature. In physics, geomagnetism to be more specific, it is
+common to use the so called Schmidt semi-normalization (or sometimes also called
+quasi-normalization).
+
+\begin{definition}[Schmidt semi-normalized spherical harmonics]
+  \label{kugel:def:spherical-harmonics-schmidt}
+  The Schmidt semi-normalized spherical harmonics are
+  \begin{equation*}
+    Y^m_n(\vartheta, \varphi)
+    = \sqrt{2 \frac{(n - m)!}{(n + m)!}}
+      P^m_n(\cos \vartheta) e^{im\varphi}
+  \end{equation*}
+  where $m, n \in \mathbb{Z}$ and $|m| < n$.
+\end{definition}
+
+However, for our purposes we will mostly only need the orthonormal spherical
+harmonics.  So from now on, unless specified otherwise, when we say spherical
+harmonics or write $Y^m_n$, we mean the orthonormal spherical harmonics of
+definition \ref{kugel:def:spherical-harmonics-orthonormal}.
 
 \subsection{Recurrence Relations}
 
