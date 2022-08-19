@@ -3,53 +3,54 @@
 %
 % (c) 2020 Prof Dr Andreas Müller, Hochschule Rapperswil
 %
-\section{Teil 1
+\section{Taylorapproximation
 \label{transfer:section:teil1}}
-\rhead{Problemstellung}
-Sed ut perspiciatis unde omnis iste natus error sit voluptatem
-accusantium doloremque laudantium, totam rem aperiam, eaque ipsa
-quae ab illo inventore veritatis et quasi architecto beatae vitae
-dicta sunt explicabo.
-Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit
-aut fugit, sed quia consequuntur magni dolores eos qui ratione
-voluptatem sequi nesciunt
+\subsection{Idee}
+Die Taylorreihe kann eine glatte Funktion in einer Umgebung durch Polynome beliebig genau annähern. Beschränkt man sich auf einen bestimmten Grad dieser Polynome, spricht man von einer Taylorapproximation. Diese entwickelt sich immer um einen Punkt und kann über die Ableitungen berechnet werden.
+
+\subsection{Definition der Taylorreihe}
+Sei $I \subset \mathbb{R}$ ein offenes Intervall, $f: I \rightarrow \mathbb{R}$ eine glatte Funktion und $a$ ein Element von $I$. Dann ist die unendliche Reihe
 \begin{equation}
-\int_a^b x^2\, dx
-=
-\left[ \frac13 x^3 \right]_a^b
-=
-\frac{b^3-a^3}3.
-\label{transfer:equation1}
+	T_{f(x ; a)}=\sum_{n=0}^{\infty} \frac{f^{(n)}(a)}{n !}(x-a)^{n}=f(a)+f^{\prime}(a)(x-a)+\frac{f^{\prime \prime}(a)}{2}(x-a)^{2}+\frac{f^{\prime \prime \prime}(a)}{6}(x-a)^{3}+\ldots
 \end{equation}
-Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet,
-consectetur, adipisci velit, sed quia non numquam eius modi tempora
-incidunt ut labore et dolore magnam aliquam quaerat voluptatem.
+eine Taylorreihe.
 
-Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis
-suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur?
-Quis autem vel eum iure reprehenderit qui in ea voluptate velit
-esse quam nihil molestiae consequatur, vel illum qui dolorem eum
-fugiat quo voluptas nulla pariatur?
+\subsection{Beispiel}
+In diesem Beispiel wird die Taylorapproximation mit dem Grad 2 des Tangens hyperbolicus um den Punkt Null berechnet.
+$$
+	\tanh \approx T_{2} \tanh(x ; a)=\tanh(a)+\tanh^{\prime}(a) \cdot(x-a)+\frac{\tanh^{\prime \prime}(a) \cdot(x-a)^{2}}{2}
+$$
+mit $a = 0$ folgt
+$$
+	T_{2} \tanh(x ; 0)=\tanh(0)+\tanh^{\prime}(0) \cdot(x)+\frac{\tanh^{\prime \prime}(0) \cdot(x)^{2}}{2} = 0 + x + 0 = x
+$$
 
-\subsection{De finibus bonorum et malorum
-\label{transfer:subsection:finibus}}
-At vero eos et accusamus et iusto odio dignissimos ducimus qui
-blanditiis praesentium voluptatum deleniti atque corrupti quos
-dolores et quas molestias excepturi sint occaecati cupiditate non
-provident, similique sunt in culpa qui officia deserunt mollitia
-animi, id est laborum et dolorum fuga \eqref{000tempmlate:equation1}.
+\begin{figure}
+\centering
+\begin{tikzpicture}
+	\begin{axis}[
+		xmin=-2.5, xmax=2.5,
+		ymin=-1.5, ymax=1.5,
+		axis lines=center,
+		axis on top=true,
+		domain=-2.5:2.5,
+		ylabel=$y$,
+		xlabel=$x$,
+		]
+		
+		\addplot [mark=none,draw=red,thick] {tanh(\x)};
+		\node [right, red] at (axis cs: 1.4,0.7) {$\tanh(x)$};
+		\addplot [mark=none,draw=blue,ultra thick, samples=100, smooth] expression{x-(x^3)/3+ (2*x^5)/15-(17 * x^7)/315};
+		\node [right, blue] at (axis cs: -1.8,0.7) {$Taylorapprox.$};
+		
+		%% Add the asymptotes
+		\draw [blue, dotted, thick] (axis cs:-2.5,-1)-- (axis cs:0,-1);
+		\draw [blue, dotted, thick] (axis cs:+2.5,+1)-- (axis cs:0,+1);
+	\end{axis}
+\end{tikzpicture}
+\caption{Taylorapproximation des Grades 7
+\label{motivation:figure:Taylor}}
+\end{figure}
 
-Et harum quidem rerum facilis est et expedita distinctio
-\ref{transfer:section:loesung}.
-Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil
-impedit quo minus id quod maxime placeat facere possimus, omnis
-voluptas assumenda est, omnis dolor repellendus
-\ref{transfer:section:folgerung}.
-Temporibus autem quibusdam et aut officiis debitis aut rerum
-necessitatibus saepe eveniet ut et voluptates repudiandae sint et
-molestiae non recusandae.
-Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis
-voluptatibus maiores alias consequatur aut perferendis doloribus
-asperiores repellat.
-
-
+\subsection{Problem}
+Wie in Abbildung \ref{motivation:figure:Taylor} ersichtlich, ist der Approximationsfehler sogar bei Grad 7 des Polynoms sehr gross. Dies liegt ist unter anderem an der Unbeschränktheit, die solche Polynome besitzen. 
