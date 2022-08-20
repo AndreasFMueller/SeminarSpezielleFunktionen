@@ -639,8 +639,17 @@ quasi-normalization).
   where $m, n \in \mathbb{Z}$ and $|m| < n$.
 \end{definition}
 
-However, for our purposes we will mostly only need the orthonormal spherical
-harmonics.  So from now on, unless specified otherwise, when we say spherical
+Additionally, there is another quirk in the literature that should be mentioned.
+In some other branches of physics such as seismology there is a so called
+Condon-Shortley phase factor $(-1)^m$ in front of the square root in the
+definition of the normalized spherical harmonics. It is yet another
+normalization that is added for reasons that are not very relevant to our
+discussion, but we are mentioning its existence since many numerical packages
+(such as \texttt{SHTOOLS} \kugeltodo{Reference}) offer an option to add or
+remove it from the computation.
+
+Though, for our purposes we will mostly only need the orthonormal spherical
+harmonics, so from now on, unless specified otherwise when we say spherical
 harmonics or write $Y^m_n$, we mean the orthonormal spherical harmonics of
 definition \ref{kugel:def:spherical-harmonics-orthonormal}.
 
