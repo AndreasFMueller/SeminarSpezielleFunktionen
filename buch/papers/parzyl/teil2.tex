@@ -108,21 +108,31 @@ Dies kann umgeformt werden zu
 Die Äquipotentialflächen können nun betrachtet werden, 
 indem man die Funktion, welche das Potential beschreibt, gleich eine Konstante setzt,
 \begin{equation}
-	\sigma = U(x,y) = \sqrt{\frac{\sqrt{x^2+y^2} + x}{2}}.
+%	\sigma = U(x,y) = \sqrt{\frac{\sqrt{x^2+y^2} + x}{2}}.
+	c_1 = U(x,y) = \sqrt{\frac{\sqrt{x^2+y^2} + x}{2}}.
 \end{equation}
 Die Flächen mit der gleichen elektrischen Feldstärke können als
 \begin{equation}
-	\tau = V(x,y) = \sqrt{\frac{\sqrt{x^2+y^2} - x}{2}}
+%	\tau = V(x,y) = \sqrt{\frac{\sqrt{x^2+y^2} - x}{2}}
+	c_2 = V(x,y) = \sqrt{\frac{\sqrt{x^2+y^2} - x}{2}}
 \end{equation}
 beschrieben werden. Diese zwei Gleichungen zeigen nun, wie man vom 
 kartesischen Koordinatensystem ins parabolische Zylinderkoordinatensystem kommt.
-
- 
+%Werden diese Formeln nun nach $x$ und $y$ aufgelöst 
+%\begin{equation}
+%	x = \sigma \tau,
+%\end{equation}
+%\begin{equation}
+%	y = \frac{1}{2}\left ( \tau^2 - \sigma^2 \right ),
+%\end{equation}
+%so beschreibe sie, wie man aus dem parabolischen Zylinderkoordinatensystem zurück ins kartesische rechnen kann.
 Werden diese Formeln nun nach $x$ und $y$ aufgelöst 
 \begin{equation}
-	x = \sigma \tau,
+	x =  c_1^2 - c_2^2 ,
 \end{equation}
 \begin{equation}
-	y = \frac{1}{2}\left ( \tau^2 - \sigma^2 \right ),
+	y = 2c_1 c_2,
 \end{equation}
-so beschreibe sie, wie man aus dem parabolischen Zylinderkoordinatensystem zurück ins kartesische rechnen kann.
+so beschreibe sie mit $c_1 = \tau \sqrt{2}$ und $c_2 = \sigma \sqrt{2}$ die Beziehung 
+zwischen dem parabolischen Zylinderkoordinatensystem und dem kartesischen Koordinatensystem.
+
