@@ -40,7 +40,7 @@ Die Idee des elliptischen Filter ist es, diese zwei Equiripple-Zonen abzufahren,
 \end{figure}
 Das elliptische Filter hat im Gegensatz zum Tschebyscheff-Filter drei Zonen.
 Im Durchlassbereich werden wie beim Tschebyscheff-Filter die Nullstellen durchlaufen.
-Statt dass $z_1$ für alle $w>1$ in die imaginäre Richtung geht, bewegen wir uns im Sperrbereich wieder in reeller Richtung, wo Pole durchlaufen werden.
+Statt dass $z_1$ für alle $w>1$ in die imaginäre Richtung geht, bewegen wir uns im Sperrbereich wieder in reeller Richtung, wo Pole und Punkte mit $\pm 1/k$ durchlaufen werden.
 Aus dieser Sicht kann der Sperrbereich vom Tschebyscheff-Filter als unendlich langer Übergangsbereich angesehen werden.
 % Falls es möglich ist diese Werte abzufahren im Stil der Tschebyscheff-Polynome, kann ein Filter gebaut werden, dass Equiripple-Verhalten im Durchlass- und Sperrbereich aufweist.
 Abbildung \ref{ellfilter:fig:elliptic_freq} zeigt eine elliptisch rationale Funktion und die Frequenzantwort des daraus resultierenden Filters.
@@ -52,7 +52,7 @@ Abbildung \ref{ellfilter:fig:elliptic_freq} zeigt eine elliptisch rationale Funk
 \end{figure}
 
 Da sich die Funktion im Übergangsbereich nur zur nächsten Reihe von Polstellen bewegt, ist der Übergangsbereich monoton steigend.
-Theoretisch könnte eine gleiches Durchlass- und Sperrbereichverhalten erreicht werden, wenn die Funktion auf eine andere Reihe ansteigen würde.
+Theoretisch könnte eine gleiches Durchlass- und Sperrbereichsverhalten erreicht werden, wenn die Funktion auf eine andere Reihe ansteigen würde.
 Dies würde jedoch zu Oszillationen zwischen $1$ und $1/k$ im Übergangsbereich führen.
 
 \subsection{Gradgleichung}
@@ -85,22 +85,16 @@ k_1 = k^N \prod_{i=1}^L \sn^4 \Bigg( \frac{2i - 1}{N} K, k \Bigg),
 N = 2L+r.
 \end{equation}
 Die Herleitung ist sehr umfassend und wird in \cite{ellfilter:bib:orfanidis} im Detail angeschaut.
-Für das Auslegen von elliptischen Filtern müssen $k$ und $k_1$ mit \eqref{ellfilter:eq:degeqsol} oder mit numerischen Methoden berechnet werden.
-Die Position der Pol- und Nullstellen können dann konstruiert werden, wie dargestellt in Abbildung \ref{ellfilter:fig:cd2} und mit der $\cd$-Funktion zu der elliptischen rationalen Funktion transformiert werden.
 
-% \begin{figure}
-%     \centering
-%     \input{papers/ellfilter/tikz/elliptic_transform1.tikz}
-%     \caption{Die Gradgleichung als geometrisches Problem.}
-% \end{figure}
+Um ein elliptisches Filter auszulegen, kann die Ordnung $N$ und der Parameter $k$ gewählt werden.
+$k_1$ muss dann mit \eqref{ellfilter:eq:degeqsol} oder mit numerischen Methoden berechnet werden.
+Je kleiner $k$ gewählt wird, desto grösser wird die Dämpfung des Filters im Sperrbereich im Verhältnis zum Durchlassbereich.
+Allerdings verliert das Filter dabei auch an Steilheit.
+Wenn $k$ und $k_1$ bekannt sind, können die Position der Pol- und Nullstellen $p_i$ und $n_i$ in einem Raster konstruiert werden, wie dargestellt in Abbildung \ref{ellfilter:fig:cd2}.
+Durch das Rücktransformieren mit der $\cd$-Funktion gelangt man schlussendlich zu der elliptischen rationalen Funktion. %TODO check
 
-\subsection{Schlussfolgerung}
+% \subsection{Schlussfolgerung}
 
-Die elliptischen Filter können als direkte Erweiterung der Tschebyscheff-Filter verstanden werden.
-Bei den Tschebyscheff-Polynomen haben wir gesehen, dass die Trigonometrische Formel zu einfachen Polynomen umgewandelt werden kann.
-Im elliptischen Fall entstehen so rationale Funktionen mit Nullstellen und auch Pole.
-Somit entstehen bei den elliptischen rationalen Funktionen, wie es der name auch deutet, rationale Funktionen, also ein Bruch von zwei Polynomen.
-
-
-
-
+% Die elliptischen Filter können als direkte Erweiterung der Tschebyscheff-Filter verstanden werden.
+% Bei den Tschebyscheff-Polynomen haben wir gesehen, dass die Trigonometrische Formel zu einfachen Polynomen umgewandelt werden kann.
+% Im elliptischen Fall entstehen so rationale Funktionen mit Nullstellen und auch Pole.
