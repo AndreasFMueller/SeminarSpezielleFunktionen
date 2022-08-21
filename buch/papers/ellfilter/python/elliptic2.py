@@ -29,6 +29,9 @@ def ellip_filter(N, mode=-1):
         fs=None
     )
 
+    print("poles", a)
+    print("zeros", b)
+
     if mode == 0:
         w = np.linspace(0*omega_c,omega_c, 2000)
     elif mode == 1:
@@ -148,8 +151,8 @@ plt.tight_layout()
 plt.savefig("elliptic.pgf")
 plt.show()
 
-print("zeros", a)
-print("poles", b)
+print("poles", a)
+print("zeros", b)
 
 
 
