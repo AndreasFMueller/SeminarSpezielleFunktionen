@@ -73,26 +73,26 @@ Das parabolischen Zylinderkoordinatensystem \cite{parzyl:coordinates} ist ein kr
 bei dem parabolische Zylinder die Koordinatenflächen bilden.
 Die Koordinate $(\sigma, \tau, z)$ sind in kartesischen Koordinaten ausgedrückt mit
 \begin{align}
-    x & = \sigma \tau \\
+    x & = \frac{1}{2}\left(\tau^2 - \sigma^2\right) \\
     \label{parzyl:coordRelationsa}
-    y & = \frac{1}{2}\left(\tau^2 - \sigma^2\right) \\
+    y & =  \sigma \tau\\
     z & = z.
     \label{parzyl:coordRelationse}
 \end{align}
-Wird $\tau$ oder $\sigma$ konstant gesetzt, resultieren die Parabeln
+Wird $\sigma$ oder $\tau$ konstant gesetzt, resultieren die Parabeln
 \begin{equation}
-    y = \frac{1}{2} \left( \frac{x^2}{\sigma^2} - \sigma^2 \right)
+    x = \frac{1}{2} \left( \frac{y^2}{\sigma^2} - \sigma^2 \right)
 \end{equation}
 und 
 \begin{equation}
-    y = \frac{1}{2} \left( -\frac{x^2}{\tau^2} + \tau^2 \right).
+    x = \frac{1}{2} \left( -\frac{y^2}{\tau^2} + \tau^2 \right).
 \end{equation}
 
 \begin{figure}
     \centering
-    \includegraphics[scale=0.4]{papers/parzyl/img/koordinaten.png}
-    \caption{Das parabolische Koordinatensystem. Die roten Parabeln haben ein 
-    konstantes $\sigma$ und die grünen ein konstantes $\tau$.}
+    \includegraphics[scale=0.32]{papers/parzyl/img/coordinates.png}
+    \caption{Das parabolische Koordinatensystem. Die grünen Parabeln haben ein 
+    konstantes $\sigma$ und die roten ein konstantes $\tau$.}
     \label{parzyl:fig:cordinates}
 \end{figure}
 Abbildung \ref{parzyl:fig:cordinates} zeigt das parabolische Koordinatensystem.
@@ -124,11 +124,11 @@ von \eqref{parzyl:coordRelationsa} - \eqref{parzyl:coordRelationse} als
     dx  &= \frac{\partial x }{\partial \sigma} d\sigma + 
         \frac{\partial x }{\partial \tau} d\tau + 
         \frac{\partial x }{\partial \tilde{z}} d \tilde{z} 
-        = \tau d\sigma + \sigma d \tau \\
+        = \tau d\tau - \sigma d \sigma \\
     dy &= \frac{\partial y }{\partial \sigma} d\sigma + 
         \frac{\partial y }{\partial \tau} d\tau +
         \frac{\partial y }{\partial \tilde{z}} d \tilde{z} 
-        = \tau d\tau - \sigma d \sigma \\
+        = \tau d\sigma + \sigma d \tau  \\
     dz &= \frac{\partial \tilde{z} }{\partial \sigma} d\sigma + 
         \frac{\partial \tilde{z} }{\partial \tau} d\tau +
         \frac{\partial \tilde{z} }{\partial \tilde{z}} d \tilde{z} 
