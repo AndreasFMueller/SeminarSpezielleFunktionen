@@ -5,11 +5,6 @@
 % (c) 2020 Prof Dr Andreas Müller, Hochschule Rapperswil
 %
 
-
-\section{Eigenschaften von Lösungen
-\label{sturmliouville:section:solution-properties}}
-\rhead{Eigenschaften von Lösungen}
-
 % TODO:
 %  state goal
 %  use only what is necessary
@@ -19,16 +14,59 @@
 %
 % order:
 %  1. Eigenvalue problems with matrices
-%  2. Sturm-Liouville is an Eigenvalue prolem
-%  3. Sturm-Liouville operator (selfadjacent)
-%  4. Spektralsatz (brief)
+%  2. Sturm-Liouville is an Eigenvalue problem
+%  3. Sturm-Liouville operator (self-adjacent)
+%  4. Spectral theorem (brief)
 %  5. Base of orthonormal functions
+
+\section{Eigenschaften von Lösungen
+\label{sturmliouville:section:solution-properties}}
+\rhead{Eigenschaften von Lösungen}
+
+Im weiteren werden nun die Eigenschaften der Lösungen eines
+Sturm-Liouville-Problems diskutiert.
+Im wesendlichen wird darauf eingegangen, wie die Orthogonalität der Lösungen
+zustande kommt.
+Dazu wird zunächst das Eigenwertproblem für Matrizen wiederholt und angeschaut
+unter welchen Voraussetzungen die Lösungen orthogonal sind.
+Dann wird gezeigt, dass das Sturm-Liouville-Problem auch ein Eigenwertproblem
+dieser Art ist und es wird auf au die Orthogononalität der Lösungsfunktion
+geschlossen.
+
+\subsection{Eigenwertprobleme mit Matrizen}
+
+Das Eigenwertprobelm 
+\[
+    A v
+    =
+    \lambda v 
+\]
+für die $n \times n$-Matrix $A$, dem Eigenwert $\lambda$ und dem Eigenvektor $v$
+in der linearen Algebra wird häufig im Zusammenhang mit
+Matrixzerlegungen diskutiert.
+
+Mittels Spektralsatzes kann zum Beispiel geschlossen werden, dass wenn
+\[
+    <Av, w>
+    =
+    <v, Aw>
+\]
+gilt, die Matrix A symmetrisch (und somit selbstadjungiert) ist und somit eine
+Orthonormalbasis aus Eigenvektoren besitzt.
+In aneren Worten: durch diese Eigenschaft ist gegeben, dass A diagonalisierbar
+ist und alle Eigenvektoren orthogonal zueinander sind.
+
+\subsection{}
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%% OLD section %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-% \section{OLD: Eigenschaften von Lösungen}
-% \label{sturmliouville:section:solution-properties}}
-% \rhead{Eigenschaften von Lösungen}
+\iffalse
+
+\section{OLD: Eigenschaften von Lösungen
+%\label{sturmliouville:section:solution-properties}
+}
+\rhead{Eigenschaften von Lösungen}
 
 Im weiteren werden nun die Eigenschaften der Lösungen eines
 Sturm-Liouville-Problems diskutiert und aufgezeigt, wie diese Eigenschaften
@@ -103,3 +141,5 @@ erfüllen die Randbedingungen der Differentialgleichung die Randbedingungen
 des Sturm-Liouville-Problems, kann bereits geschlossen werden, dass die
 Lösungsfunktion des Problems eine Linearkombination aus orthogonalen
 Basisfunktionen ist.
+
+\fi
