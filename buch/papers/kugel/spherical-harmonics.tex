@@ -107,7 +107,7 @@ the surface of the unit sphere.
 Now that we have defined an operator, we can go and study its eigenfunctions,
 which means that we would like to find the functions $f(\vartheta, \varphi)$
 that satisfy the equation
-\begin{equation} \label{kuvel:eqn:eigen}
+\begin{equation} \label{kugel:eqn:eigen}
     \surflaplacian f = -\lambda f.
 \end{equation}
 Perhaps it may not be obvious at first glance, but we are in fact dealing with a
@@ -619,31 +619,21 @@ regrettably sometimes even ourselves, would write instead:
   reader.
 \end{proof}
 
-
-\if 0
-As explained in the chapter \ref{}, the concept of orthogonality is very important and at the practical level it is very useful, because it allows us to develop very powerful techniques at the mathematical level.\newline 
-Throughout this book we have been confronted with the Sturm-Liouville theory (see chapter \ref{}). The latter, among other things, carries with it the concept of orthogonality. Indeed, if we consider the solutions of the Sturm-Liouville equation, which can be expressed in this form
-\begin{equation}\label{kugel:eq:sturm_liouville}
-    \mathcal{S}f := \frac{d}{dx}\left[p(x)\frac{df}{dx}\right]+q(x)f(x)
-\end{equation}
-possiamo dire che formano una base ortogonale.\newline
-Adesso possiamo dare un occhiata alle due equazioni che abbiamo ottenuto tramite la Separation Ansatz (Eqs.\eqref{kugel:eq:associated_leg_eq}\eqref{kugel:eq:ODE_1}), le quali possono essere riscritte come:
-\begin{align*}
-    \frac{d}{dx} \left[ (1-x^2) \cdot \frac{dP_{m,n}}{dx} \right] &+ \left(n(n+1)-\frac{m}{1-x^2} \right) \cdot P_{m,n}(x) = 0, \\
-    \frac{d}{d\varphi} \left[ 1 \cdot \frac{ d\Phi }{d\varphi} \right] &+ 1 \cdot \Phi(\varphi) = 0. 
-\end{align*}
-Si può concludere in modo diretto che sono due casi dell'equazione di Sturm-Liouville. Questo significa che le loro soluzioni sono ortogonali sotto l'inner product con weight function $w(x)=1$, dunque:
-\begin{align}
-\int_{0}^{2\pi} \Phi_m(\varphi)\Phi_m'(\varphi) d\varphi &= \delta_{m'm}, \nonumber \\
-\int_{-1}^1 P_{m,m'}(x)P_{n,n'}(x) dx &= \delta_{m'm}\delta_{n'n}. \label{kugel:eq:orthogonality_associated_func}
-\end{align}
-Inoltre, possiamo provare l'ortogonalità di $\Theta(\vartheta)$ utilizzando \eqref{kugel:eq:orthogonality_associated_func}:
-\begin{align}
-    x
-\end{align}
-Ora, visto che la soluzione dell'eigenfunction problem è formata dalla moltiplicazione di $\Phi_m(\varphi)$ e $P_{m,n}(x)$
-\fi
-
+Lemma \ref{kugel:thm:legendre-poly-ortho} has a very similar
+proof, while the theorem \ref{kugel:thm:spherical-harmonics-ortho} for the
+spherical harmonics is proved by the following argument. The spherical harmonics
+are the solutions to the eigenvalue problem $\surflaplacian f = -\lambda f$,
+which as discussed in the previous section is solved using separation. So to
+prove their orthogonality using the Sturm-Liouville theory we argue that
+\begin{equation*}
+  \surflaplacian = L_\vartheta L_\varphi \iff
+  \surflaplacian f(\vartheta, \varphi)
+    = L_\vartheta \Theta(\vartheta) L_\varphi \Phi(\varphi),
+\end{equation*}
+then we show that both $L_\vartheta$ and $L_\varphi$ are both Sturm-Liouville
+operators (we just did the former in the shorter proof above). Since both are
+Sturm-Liouville operators their combination, the surface spherical Laplacian, is
+also a Sturm-Liouville operator, which then implies orthogonality.
 
 \subsection{Normalization and the Phase Factor}
 
