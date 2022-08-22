@@ -102,18 +102,46 @@ Dies kann umgeformt werden zu
 \end{equation}
 
 
+%Die Äquipotentialflächen können nun betrachtet werden, 
+%indem man die Funktion, welche das Potential beschreibt, gleich eine Konstante setzt,
+%\begin{equation}
+%	\sigma = U(x,y) = \sqrt{\frac{\sqrt{x^2+y^2} + x}{2}}.
+%\end{equation}
+%Die Flächen mit der gleichen elektrischen Feldstärke können als
+%\begin{equation}
+%	\tau = V(x,y) = \sqrt{\frac{\sqrt{x^2+y^2} - x}{2}}
+%\end{equation}
+%beschrieben werden. Diese zwei Gleichungen zeigen nun, wie man vom 
+%kartesischen Koordinatensystem ins parabolische Zylinderkoordinatensystem kommt.
+
 Die Äquipotentialflächen können nun betrachtet werden, 
 indem man die Funktion, welche das Potential beschreibt, gleich eine Konstante setzt,
 \begin{equation}
-	\sigma = U(x,y) = \sqrt{\frac{\sqrt{x^2+y^2} + x}{2}}.
+%	\sigma = U(x,y) = \sqrt{\frac{\sqrt{x^2+y^2} + x}{2}}.
+	c_1 = U(x,y) = \sqrt{\frac{\sqrt{x^2+y^2} + x}{2}}.
 \end{equation}
 Die Flächen mit der gleichen elektrischen Feldstärke können als
 \begin{equation}
-	\tau = V(x,y) = \sqrt{\frac{\sqrt{x^2+y^2} - x}{2}}
+%	\tau = V(x,y) = \sqrt{\frac{\sqrt{x^2+y^2} - x}{2}}
+	c_2 = V(x,y) = \sqrt{\frac{\sqrt{x^2+y^2} - x}{2}}
 \end{equation}
 beschrieben werden. Diese zwei Gleichungen zeigen nun, wie man vom 
 kartesischen Koordinatensystem ins parabolische Zylinderkoordinatensystem kommt.
-
+%Werden diese Formeln nun nach $x$ und $y$ aufgelöst 
+%\begin{equation}
+%	x = \sigma \tau,
+%\end{equation}
+%\begin{equation}
+%	y = \frac{1}{2}\left ( \tau^2 - \sigma^2 \right ),
+%\end{equation}
+%so beschreibe sie, wie man aus dem parabolischen Zylinderkoordinatensystem zurück ins kartesische rechnen kann.
+Werden diese Formeln nun nach $x$ und $y$ aufgelöst 
+\begin{align}
+	x &=  c_1^2 - c_2^2 ,\\
+	y &= 2c_1 c_2,
+\end{align}
+so beschreiben sie mit $\tau = c_1 \sqrt{2}$ und $\sigma = c_2 \sqrt{2}$ die Beziehung 
+zwischen dem parabolischen Zylinderkoordinatensystem und dem kartesischen Koordinatensystem.
 
 Nun wurde gezeigt wieso sich das parabolische Zylinderkoordinatensystem am besten eignet um das Potential und das elektrische Feld einer semi-infiniten Leiterplatte zu beschreien. Falls man nun die Helmholtz-Gleichung in diesem Bereich lösen müsste, da man zum Beispiel am Verhalten einer elektromagnetischne Welle in der Nähe der Platte interessiert wäre, so würde man auf die parabolischen Zylinderfunktionen kommen. 
 %Werden diese Formeln nun nach $x$ und $y$ aufgelöst 
