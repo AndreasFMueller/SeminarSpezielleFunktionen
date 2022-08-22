@@ -13,17 +13,17 @@ Sei $I \subset \mathbb{R}$ ein offenes Intervall, $f: I \rightarrow \mathbb{R}$ 
 \begin{equation}
 	T_{f(x ; a)}=\sum_{n=0}^{\infty} \frac{f^{(n)}(a)}{n !}(x-a)^{n}=f(a)+f^{\prime}(a)(x-a)+\frac{f^{\prime \prime}(a)}{2}(x-a)^{2}+\frac{f^{\prime \prime \prime}(a)}{6}(x-a)^{3}+\ldots
 \end{equation}
-eine Taylorreihe.
+die Taylorreihe von $f$ in Punkt $a$.
 
 \subsection{Beispiel}
 In diesem Beispiel wird die Taylorapproximation mit dem Grad 2 des Tangens hyperbolicus um den Punkt Null berechnet.
 $$
-	\tanh \approx T_{2} \tanh(x ; a)=\tanh(a)+\tanh^{\prime}(a) \cdot(x-a)+\frac{\tanh^{\prime \prime}(a) \cdot(x-a)^{2}}{2}
+	\tanh(x) \approx T_{2} \tanh(x ; a)=\tanh(a)+\tanh^{\prime}(a) \cdot(x-a)+\frac{\tanh^{\prime \prime}(a) \cdot(x-a)^{2}}{2}
 $$
 mit $a = 0$ folgt
 $$
 	T_{2} \tanh(x ; 0)=\tanh(0)+\tanh^{\prime}(0) \cdot(x)+\frac{\tanh^{\prime \prime}(0) \cdot(x)^{2}}{2} = 0 + x + 0 = x
-$$
+$$.
 
 \begin{figure}
 \centering
@@ -41,16 +41,16 @@ $$
 		\addplot [mark=none,draw=red,thick] {tanh(\x)};
 		\node [right, red] at (axis cs: 1.4,0.7) {$\tanh(x)$};
 		\addplot [mark=none,draw=blue,ultra thick, samples=100, smooth] expression{x-(x^3)/3+ (2*x^5)/15-(17 * x^7)/315};
-		\node [right, blue] at (axis cs: -1.8,0.7) {$Taylorapprox.$};
+		\node [right, blue] at (axis cs: -1.8,0.7) {\text{Taylorapproximation}};
 		
 		%% Add the asymptotes
 		\draw [blue, dotted, thick] (axis cs:-2.5,-1)-- (axis cs:0,-1);
 		\draw [blue, dotted, thick] (axis cs:+2.5,+1)-- (axis cs:0,+1);
 	\end{axis}
 \end{tikzpicture}
-\caption{Taylorapproximation des Grades 7
+\caption{Taylorapproximation von Grad 7
 \label{motivation:figure:Taylor}}
 \end{figure}
 
 \subsection{Problem}
-Wie in Abbildung \ref{motivation:figure:Taylor} ersichtlich, ist der Approximationsfehler sogar bei Grad 7 des Polynoms sehr gross. Dies liegt ist unter anderem an der Unbeschränktheit, die solche Polynome besitzen. 
+Wie in Abbildung \ref{motivation:figure:Taylor} ersichtlich ist der Approximationsfehler sogar bei Grad 7 des Polynoms sehr gross. Dies liegt ist unter anderem an der Unbeschränktheit, die solche Polynome besitzen. 
