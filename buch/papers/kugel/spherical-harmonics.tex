@@ -1,13 +1,410 @@
-% vim:ts=2 sw=2 et spell:
+% vim:ts=2 sw=2 et spell tw=80:
 
-\section{Spherical Harmonics}
+\section{Construction of the Spherical Harmonics}
 
-\subsection{Eigenvalue Problem in Spherical Coordinates}
+\kugeltodo{Review text, or rewrite if preliminaries becomes an addendum}
+
+We finally arrived at the main section, which gives our chapter its name. The
+idea is to discuss spherical harmonics, their mathematical derivation and some
+of their properties and applications.
+
+The subsection \ref{} \kugeltodo{Fix references} will be devoted to the
+Eigenvalue problem of the Laplace operator. Through the latter we will derive
+the set of Eigenfunctions that obey the equation presented in \ref{}
+\kugeltodo{reference to eigenvalue equation}, which will be defined as
+\emph{Spherical Harmonics}. In fact, this subsection will present their
+mathematical derivation.
+
+In the subsection \ref{}, on the other hand, some interesting properties
+related to them will be discussed. Some of these will come back to help us
+understand in more detail why they are useful in various real-world
+applications, which will be presented in the section \ref{}.
+
+One specific property will be studied in more detail in the subsection \ref{},
+namely the recursive property.  The last subsection is devoted to one of the
+most beautiful applications (In our humble opinion), namely the derivation of a
+Fourier-style series expansion but defined on the sphere instead of a plane.
+More importantly, this subsection will allow us to connect all the dots we have
+created with the previous sections, concluding that Fourier is just a specific
+case of the application of the concept of orthogonality. Our hope is that after
+reading this section you will appreciate the beauty and power of generalization
+that mathematics offers us.
+
+\subsection{Eigenvalue Problem}
+\label{kugel:sec:construction:eigenvalue}
+
+\begin{figure}
+  \centering
+  \includegraphics{papers/kugel/figures/tikz/spherical-coordinates}
+  \caption{
+    Spherical coordinate system. Space is described with the free variables $r
+    \in \mathbb{R}_0^+$, $\vartheta \in [0; \pi]$ and $\varphi \in [0; 2\pi)$.
+    \label{kugel:fig:spherical-coordinates}
+  }
+\end{figure}
+
+From Section \ref{buch:pde:section:kugel}, we know that the spherical Laplacian
+in the spherical coordinate system (shown in Figure
+\ref{kugel:fig:spherical-coordinates}) is is defined as
+\begin{equation*}
+    \sphlaplacian :=
+      \frac{1}{r^2} \frac{\partial}{\partial r} \left(
+        r^2 \frac{\partial}{\partial r}
+      \right)
+      + \frac{1}{r^2} \left[
+          \frac{1}{\sin\vartheta} \frac{\partial}{\partial \vartheta} \left(
+            \sin\vartheta \frac{\partial}{\partial\vartheta}
+          \right)
+        + \frac{1}{\sin^2 \vartheta} \frac{\partial^2}{\partial\varphi^2}
+      \right].
+\end{equation*}
+But we will not consider this algebraic monstrosity in its entirety. As the
+title suggests, we will only care about the \emph{surface} of the sphere.  This
+is for many reasons, but mainly to simplify reduce the already broad scope of
+this text. Concretely, we will always work on the unit sphere, which just means
+that we set $r = 1$ and keep only $\vartheta$ and $\varphi$ as free variables.
+Now, since the variable $r$ became a constant, we can leave out all derivatives
+with respect to $r$ and substitute all $r$'s with 1's to obtain a new operator
+that deserves its own name.
+
+\begin{definition}[Surface spherical Laplacian]
+  \label{kugel:def:surface-laplacian}
+  The operator
+  \begin{equation*}
+      \surflaplacian :=
+        \frac{1}{\sin\vartheta} \frac{\partial}{\partial \vartheta} \left(
+          \sin\vartheta \frac{\partial}{\partial\vartheta}
+        \right)
+        + \frac{1}{\sin^2 \vartheta} \frac{\partial^2}{\partial\varphi^2},
+  \end{equation*}
+  is called the surface spherical Laplacian.
+\end{definition}
+
+In the definition, the subscript ``$\partial S$'' was used to emphasize the
+fact that we are on the spherical surface, which can be understood as being the
+boundary of the sphere. But what does it actually do? To get an intuition,
+first of all, notice the fact that $\surflaplacian$ have second derivatives,
+which means that this a measure of \emph{curvature}; But curvature of what? To
+get an even stronger intuition we will go into geometry, were curvature can be
+grasped very well visually. Consider figure \ref{kugel:fig:curvature} where the
+curvature is shown using colors. First we have the curvature of a curve in 1D,
+then the curvature of a surface (2D), and finally the curvature of a function on
+the surface of the unit sphere.
+
+\begin{figure}
+  \centering
+  \includegraphics[width=.3\linewidth]{papers/kugel/figures/tikz/curvature-1d}
+  \hskip 5mm
+  \includegraphics[width=.3\linewidth]{papers/kugel/figures/povray/curvature}
+  \hskip 5mm
+  \includegraphics[width=.3\linewidth]{papers/kugel/figures/povray/spherecurve}
+  \caption{
+    \kugeltodo{Fix alignment / size, add caption. Would be nice to match colors.}
+    \label{kugel:fig:curvature}
+  }
+\end{figure}
+
+Now that we have defined an operator, we can go and study its eigenfunctions,
+which means that we would like to find the functions $f(\vartheta, \varphi)$
+that satisfy the equation
+\begin{equation} \label{kuvel:eqn:eigen}
+    \surflaplacian f = -\lambda f.
+\end{equation}
+Perhaps it may not be obvious at first glance, but we are in fact dealing with a
+partial differential equation (PDE) \kugeltodo{Boundary conditions?}. If we
+unpack the notation of the operator $\nabla^2_{\partial S}$ according to
+definition
+\ref{kugel:def:surface-laplacian}, we get:
+\begin{equation} \label{kugel:eqn:eigen-pde}
+    \frac{1}{\sin\vartheta} \frac{\partial}{\partial \vartheta} \left(
+      \sin\vartheta \frac{\partial f}{\partial\vartheta}
+    \right)
+    + \frac{1}{\sin^2 \vartheta} \frac{\partial^2 f}{\partial\varphi^2}
+    + \lambda f = 0.
+\end{equation}
+Since all functions satisfying \eqref{kugel:eqn:eigen-pde} are the
+\emph{eigenfunctions} of $\surflaplacian$, our new goal is to solve this PDE.
+The task may seem very difficult but we can simplify it with a well-known
+technique: \emph{the separation Ansatz}. It consists in assuming that the
+function $f(\vartheta, \varphi)$ can be factorized in the following form:
+\begin{equation}
+    f(\vartheta, \varphi) = \Theta(\vartheta)\Phi(\varphi). 
+\end{equation}
+In other words, we are saying that the effect of the two independent variables
+can be described using the multiplication of two functions that describe their
+effect separately. This separation process was already presented in section
+\ref{buch:pde:section:kugel}, but we will briefly rehearse it here for
+convenience. If we substitute this assumption in
+\eqref{kugel:eqn:eigen-pde}, we have:
+\begin{equation*}
+    \frac{1}{\sin\vartheta} \frac{\partial}{\partial \vartheta} \left(
+      \sin\vartheta \frac{\partial  \Theta(\vartheta)}{\partial\vartheta}
+    \right) \Phi(\varphi)
+    + \frac{1}{\sin^2 \vartheta}
+      \frac{\partial^2 \Phi(\varphi)}{\partial\varphi^2}
+      \Theta(\vartheta)
+    + \lambda \Theta(\vartheta)\Phi(\varphi) = 0.
+\end{equation*}
+Dividing by $\Theta(\vartheta)\Phi(\varphi)$ and introducing an auxiliary
+variable $m^2$, the separation constant, yields:
+\begin{equation*}
+  \frac{1}{\Theta(\vartheta)}\sin \vartheta \frac{d}{d \vartheta} \left(
+    \sin \vartheta \frac{d \Theta}{d \vartheta}
+  \right)
+  + \lambda \sin^2 \vartheta
+  = -\frac{1}{\Phi(\varphi)} \frac{d^2\Phi(\varphi)}{d\varphi^2}
+  = m^2,
+\end{equation*}
+which is equivalent to the following system of 2 first order differential
+equations (ODEs):
+\begin{subequations}
+  \begin{gather}
+    \frac{d^2\Phi(\varphi)}{d\varphi^2} = -m^2 \Phi(\varphi),
+      \label{kugel:eqn:ode-phi} \\ 
+    \sin \vartheta \frac{d}{d \vartheta} \left(
+      \sin \vartheta \frac{d \Theta}{d \vartheta}
+    \right)
+    + \left( \lambda - \frac{m^2}{\sin^2 \vartheta} \right)
+      \Theta(\vartheta) = 0
+      \label{kugel:eqn:ode-theta}.
+  \end{gather}
+\end{subequations}
+The solution of \eqref{kugel:eqn:ode-phi} is easy to find: The complex
+exponential is obviously the function we are looking for. So we can directly
+write the solutions
+\begin{equation} \label{kugel:eqn:ode-phi-sol}
+    \Phi(\varphi) = e^{i m \varphi}, \quad m \in \mathbb{Z}.
+\end{equation}
+The restriction that the separation constant $m$ needs to be an integer arises
+from the fact that we require a $2\pi$-periodicity in $\varphi$ since the
+coordinate systems requires that $\Phi(\varphi + 2\pi) = \Phi(\varphi)$.
+Unfortunately, solving \eqref{kugel:eqn:ode-theta} is as straightforward,
+actually, it is quite difficult, and the process is so involved that it will
+require a dedicated section of its own.
+
+\subsection{Legendre Functions}
+
+\begin{figure}
+  \centering
+  \kugelplaceholderfig{.8\textwidth}{5cm}
+  \caption{
+    \kugeltodo{Why $z = \cos \vartheta$.}
+  }
+\end{figure}
+
+To solve \eqref{kugel:eqn:ode-theta} we start with the substitution $z = \cos
+\vartheta$ \kugeltodo{Explain geometric origin with picture}. The operator
+$\frac{d}{d \vartheta}$ becomes
+\begin{equation*}
+    \frac{d}{d \vartheta}
+    = \frac{dz}{d \vartheta}\frac{d}{dz}
+    = -\sin \vartheta \frac{d}{dz}
+    = -\sqrt{1-z^2} \frac{d}{dz},
+\end{equation*} 
+since $\sin \vartheta = \sqrt{1 - \cos^2 \vartheta} = \sqrt{1 - z^2}$, and
+then \eqref{kugel:eqn:ode-theta} becomes 
+\begin{align*}
+  \frac{-\sqrt{1-z^2}}{\sqrt{1-z^2}} \frac{d}{dz} \left[
+    \left(\sqrt{1-z^2}\right) \left(-\sqrt{1-z^2}\right) \frac{d \Theta}{dz}
+  \right]
+  + \left( \lambda - \frac{m^2}{1 - z^2} \right)\Theta(\vartheta) &= 0,
+  \\
+  \frac{d}{dz} \left[ (1-z^2) \frac{d \Theta}{dz} \right]
+  + \left( \lambda - \frac{m^2}{1 - z^2} \right)\Theta(\vartheta) &= 0,
+  \\
+  (1-z^2)\frac{d^2 \Theta}{dz} - 2z\frac{d \Theta}{dz}
+  + \left( \lambda - \frac{m^2}{1 - z^2} \right)\Theta(\vartheta) &= 0.
+\end{align*}
+By making two final cosmetic substitutions, namely $Z(z) = \Theta(\cos^{-1}z)$
+and $\lambda = n(n+1)$, we obtain what is known in the literature as the
+\emph{associated Legendre equation of order $m$}:
+\nocite{olver_introduction_2013}
+\begin{equation} \label{kugel:eqn:associated-legendre}
+  (1 - z^2)\frac{d^2 Z}{dz}
+  - 2z\frac{d Z}{dz}
+  + \left( n(n + 1) - \frac{m^2}{1 - z^2} \right) Z(z) = 0,
+  \quad
+  z \in [-1; 1], m \in \mathbb{Z}.
+\end{equation}
+
+Our new goal has therefore become to solve
+\eqref{kugel:eqn:associated-legendre}, since if we find a solution for $Z(z)$ we
+can perform the substitution backwards and get back to our eigenvalue problem.
+However, the associated Legendre equation is not any easier, so to attack the
+problem we will look for the solutions in the easier special case when $m = 0$.
+This reduces the problem because it removes the double pole, which is always
+tricky to deal with. In fact, the reduced problem when $m = 0$ is known as the
+\emph{Legendre equation}:
+\begin{equation} \label{kugel:eqn:legendre}
+  (1 - z^2)\frac{d^2 Z}{dz}
+  - 2z\frac{d Z}{dz}
+  + n(n + 1) Z(z) = 0,
+  \quad
+  z \in [-1; 1].
+\end{equation}
+
+The Legendre equation is a second order differential equation, and therefore it
+has 2 independent solutions, which are known as \emph{Legendre functions} of the
+first and second kind. For the scope of this text we will only derive a special
+case of the former that is known known as the \emph{Legendre polynomials}, since
+we only need a solution between $-1$ and $1$.
+
+\begin{lemma}[Legendre polynomials]
+  \label{kugel:lem:legendre-poly}
+  The polynomial function
+  \[
+    P_n(z) = \sum^{\lfloor n/2 \rfloor}_{k=0}
+      \frac{(-1)^k}{2^n s^k!} \frac{(2n - 2k)!}{(n - k)! (n-2k)!} z^{n - 2k}
+  \]
+  is the only finite solution of the Legendre equation
+  \eqref{kugel:eqn:legendre} when $n \in \mathbb{Z}$ and $z \in [-1; 1]$.
+\end{lemma}
+\begin{proof}
+  This results is derived in section \ref{kugel:sec:proofs:legendre}.
+\end{proof}
+
+Since the Legendre \emph{polynomials} are indeed polynomials, they can also be
+expressed using the hypergeometric functions described in section
+\ref{buch:rekursion:section:hypergeometrische-funktion}, so in fact
+\begin{equation}
+  P_n(z) = {}_2F_1 \left( \begin{matrix}
+    n + 1, & -n \\ \multicolumn{2}{c}{1}
+  \end{matrix} ; \frac{1 - z}{2} \right).
+\end{equation}
+Further, there are a few more interesting but not very relevant forms to write
+$P_n(z)$ such as \emph{Rodrigues' formula} and \emph{Laplace's integral
+representation} which are
+\begin{equation*}
+  P_n(z) = \frac{1}{2^n} \frac{d^n}{dz^n} (x^2 - 1)^n,
+  \qquad \text{and} \qquad
+  P_n(z) = \frac{1}{\pi} \int_0^\pi \left(
+    z + \cos\vartheta \sqrt{z^2 - 1}
+  \right) \, d\vartheta
+\end{equation*}
+respectively, both of which we will not prove (see chapter 3 of
+\cite{bell_special_2004} for a proof). Now that we have a solution for the
+Legendre equation, we can make use of the following lemma patch the solutions
+such that they also become solutions of the associated Legendre equation
+\eqref{kugel:eqn:associated-legendre}.
+
+\begin{lemma} \label{kugel:lem:extend-legendre}
+  If $Z_n(z)$ is a solution of the Legendre equation \eqref{kugel:eqn:legendre},
+  then
+  \begin{equation*}
+    Z^m_n(z) = (1 - z^2)^{m/2} \frac{d^m}{dz^m}Z_n(z)
+  \end{equation*}
+  solves the associated Legendre equation \eqref{kugel:eqn:associated-legendre}.
+  \nocite{bell_special_2004}
+\end{lemma}
+\begin{proof}
+  See section \ref{kugel:sec:proofs:legendre}.
+\end{proof}
+
+What is happening in lemma \ref{kugel:lem:extend-legendre}, is that we are
+essentially inserting a square root function in the solution in order to be able
+to reach the parts of the domain near the poles at $\pm 1$ of the associated
+Legendre equation, which is not possible only using power series
+\kugeltodo{Reference book theory on extended power series method.}. Now, since
+we have a solution in our domain, namely $P_n(z)$, we can insert it in the lemma 
+obtain the \emph{associated Legendre functions}.
+
+\begin{definition}[Ferrers or associated Legendre functions]
+  \label{kugel:def:ferrers-functions}
+  The functions
+  \begin{equation}
+    P^m_n (z) = \frac{1}{n!2^n}(1-z^2)^{\frac{m}{2}}\frac{d^{m}}{dz^{m}} P_n(z)
+      = \frac{1}{n!2^n}(1-z^2)^{\frac{m}{2}}\frac{d^{m+n}}{dz^{m+n}}(1-z^2)^n 
+  \end{equation}
+  are known as Ferrers or associated Legendre functions.
+\end{definition}
+
+\kugeltodo{Discuss $|m| \leq n$.}
+
+\if 0
+The constraint $|m|<n$, can be justified by considering Eq.\eqref{kugel:eq:associated_leg_func}, in which the derivative of degree $m+n$ is present. A derivative to be well defined must have an order that is greater than zero. Furthermore, it can be seen that this derivative is applied on a polynomial of degree $2n$. As is known from Calculus 1, if you derive a polynomial of degree $2n$ more than $2n$ times, you get zero, which is a trivial solution in which we are not interested.\newline
+We can thus summarize these two conditions by writing:
+\begin{equation*}
+    \begin{rcases}
+        m+n \leq 2n &\implies m \leq n \\
+        m+n \geq 0  &\implies  m \geq -n
+    \end{rcases} |m| \leq n.
+\end{equation*}
+The set of functions in Eq.\eqref{kugel:eq:sph_harm_0} is named \emph{Spherical Harmonics}, which are the eigenfunctions of the Laplace operator on the \emph{spherical surface domain}, which is exactly what we were looking for at the beginning of this section.
+\fi
+
+\subsection{Spherical Harmonics}
+
+Finally, we can go back to solving our boundary value problem we started in
+section \ref{kugel:sec:construction:eigenvalue}. We had left off in the middle
+of the separation, were we had used the Ansatz $f(\vartheta, \varphi) =
+\Theta(\vartheta) \Phi(\varphi)$ to find that $\Phi(\varphi) = e^{im\varphi}$,
+and we were solving for $\Theta(\vartheta)$.  As you may recall, previously we
+performed the substitution $z = \cos \vartheta$. Now we can finally to bring back the
+solution to the associated Legendre equation $P^m_n(z)$ into the $\vartheta$
+domain and combine it with $\Phi(\varphi)$ to get the full result:
+\begin{equation*}
+    f(\vartheta, \varphi)
+      = \Theta(\vartheta)\Phi(\varphi)
+      = P^m_n (\cos \vartheta) e^{im\varphi}.
+\end{equation*}
+This family of functions, which recall are the solutions of the eigenvalue
+problem of the surface spherical Laplacian, are the long anticipated
+\emph{complex spherical harmonics}, and they are usually denoted with
+$Y^m_n(\vartheta, \varphi)$.
+
+\begin{definition}[Spherical harmonics]
+  \label{kugel:def:spherical-harmonics}
+  The functions
+  \begin{equation*}
+    Y_{m,n}(\vartheta, \varphi) = P^m_n(\cos \vartheta) e^{im\varphi},
+  \end{equation*}
+  where $m, n \in \mathbb{Z}$ and $|m| < n$ are called spherical harmonics.
+\end{definition}
+
+\begin{figure}
+  \centering
+  \kugelplaceholderfig{\textwidth}{.8\paperheight}
+  \caption{
+    \kugeltodo{Big picture with the first few spherical harmonics.}
+  }
+\end{figure}
+
+\subsection{Normalization}
+
+\kugeltodo{Discuss various normalizations.}
+
+\if 0
+As explained in the chapter \ref{}, the concept of orthogonality is very important and at the practical level it is very useful, because it allows us to develop very powerful techniques at the mathematical level.\newline 
+Throughout this book we have been confronted with the Sturm-Liouville theory (see chapter \ref{}). The latter, among other things, carries with it the concept of orthogonality. Indeed, if we consider the solutions of the Sturm-Liouville equation, which can be expressed in this form
+\begin{equation}\label{kugel:eq:sturm_liouville}
+    \mathcal{S}f := \frac{d}{dx}\left[p(x)\frac{df}{dx}\right]+q(x)f(x)
+\end{equation}
+possiamo dire che formano una base ortogonale.\newline
+Adesso possiamo dare un occhiata alle due equazioni che abbiamo ottenuto tramite la Separation Ansatz (Eqs.\eqref{kugel:eq:associated_leg_eq}\eqref{kugel:eq:ODE_1}), le quali possono essere riscritte come:
+\begin{align*}
+    \frac{d}{dx} \left[ (1-x^2) \cdot \frac{dP_{m,n}}{dx} \right] &+ \left(n(n+1)-\frac{m}{1-x^2} \right) \cdot P_{m,n}(x) = 0, \\
+    \frac{d}{d\varphi} \left[ 1 \cdot \frac{ d\Phi }{d\varphi} \right] &+ 1 \cdot \Phi(\varphi) = 0. 
+\end{align*}
+Si può concludere in modo diretto che sono due casi dell'equazione di Sturm-Liouville. Questo significa che le loro soluzioni sono ortogonali sotto l'inner product con weight function $w(x)=1$, dunque:
+\begin{align}
+\int_{0}^{2\pi} \Phi_m(\varphi)\Phi_m'(\varphi) d\varphi &= \delta_{m'm}, \nonumber \\
+\int_{-1}^1 P_{m,m'}(x)P_{n,n'}(x) dx &= \delta_{m'm}\delta_{n'n}. \label{kugel:eq:orthogonality_associated_func}
+\end{align}
+Inoltre, possiamo provare l'ortogonalità di $\Theta(\vartheta)$ utilizzando \eqref{kugel:eq:orthogonality_associated_func}:
+\begin{align}
+    x
+\end{align}
+Ora, visto che la soluzione dell'eigenfunction problem è formata dalla moltiplicazione di $\Phi_m(\varphi)$ e $P_{m,n}(x)$
+\fi
 
 \subsection{Properties}
 
 \subsection{Recurrence Relations}
 
-\section{Series Expansions in \(C(S^2)\)}
+\section{Series Expansions in $C(S^2)$}
 
-\nocite{olver_introduction_2013}
+\subsection{Orthogonality of $P_n$, $P^m_n$ and $Y^m_n$}
+
+\subsection{Series Expansion}
+
+\subsection{Fourier on $S^2$}

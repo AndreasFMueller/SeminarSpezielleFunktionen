@@ -3,11 +3,22 @@
 %
 % (c) 2020 Prof Dr Andreas Müller, Hochschule Rapperswil
 %
+
+Durch die Modulation wird ein Nachrichtensignal \(m(t)\) auf ein Trägersignal (z.B. ein Sinus- oder Rechtecksignal) abgebildet (kombiniert).
+Durch dieses Auftragen vom Nachrichtensignal \(m(t)\) kann das modulierte Signal in einem gewünschten Frequenzbereich übertragen werden.
+Der ursprünglich Frequenzbereich des Nachrichtensignal \(m(t)\) erstreckt sich typischerweise von 0 Hz bis zur Bandbreite \(B_m\).
+Beim Empfänger wird dann durch Demodulation das ursprüngliche Nachrichtensignal \(m(t)\) so originalgetreu wie möglich zurückgewonnen.
+Beim Trägersignal \(x_c(t)\) handelt es sich um ein informationsloses Hilfssignal.
+Durch die Modulation mit dem Nachrichtensignal \(m(t)\) wird es zum modulierten zu übertragenden Signal.
+Für alle Erklärungen wird ein sinusförmiges Trägersignal benutzt, jedoch kann auch ein Rechtecksignal,
+welches Digital einfach umzusetzten ist, 
+genauso als Trägersignal genutzt werden kann.\cite{fm:NAT}
+
 \subsection{Modulationsarten\label{fm:section:modulation}}
 
 Das sinusförmige Trägersignal hat die übliche Form: 
 \(x_c(t) = A_c \cdot \cos(\omega_c(t)+\varphi)\).
-Wobei die konstanten Amplitude \(A_c\) und Phase \(\varphi\) vom Nachrichtensignal \(m(t)\) verändert wird.
+Wobei die konstanten Amplitude \(A_c\) und Phase \(\varphi\) vom Nachrichtensignal \(m(t)\) verändert werden können.
 Der Parameter \(\omega_c\), die Trägerkreisfrequenz bzw. die Trägerfrequenz \(f_c = \frac{\omega_c}{2\pi}\),
 steht nicht für die modulation zur verfügung, statt dessen kann durch ihn die Frequenzachse frei gewählt werden.
 \newblockpunct
@@ -25,6 +36,8 @@ die Phasenmodulation \(\varphi\) und dann noch die Momentankreisfrequenz \(\omeg
     \item PM
     \item FM
 \end{itemize}
+Um modulation zu Verstehen ist es am Anschaulichst mit der AM Amplitudenmodulation, 
+da Phasenmodulation und Frequenzmodulation den gleichen Parameter verändert vernachlässige ich die Phasenmodulation ganz.
 
 To do: Bilder jeder Modulationsart
 

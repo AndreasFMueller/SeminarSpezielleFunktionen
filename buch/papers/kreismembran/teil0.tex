@@ -7,9 +7,9 @@
 \rhead{Membran}
 Eine Membran oder selten ein Schwingblatt ist laut Duden \cite{kreismembran:Duden:Membran} ein ``dünnes Blättchen aus Metall, Papier o. Ä., das durch seine Schwingungsfähigkeit geeignet ist, Schallwellen zu übertragen \dots''. 
 Ein dünnes Blättchen aus Metall zeig jedoch nicht die selben dynamischen Eigenschaften wie ein gespanntes Stück Papier. 
-Beschreibt man das dynamische Verhalten, muss zwischen einer dünnen Platte und einer Membrane unterschieden werden \cite{kreismembran:membrane_vs_thin_plate}. 
-Eine dünne Platte zum Beispiel aus Metall, wirkt selbst entgegen ihrer Deformation sobald sie gekrümmt wird. 
-Eine Membran auf der anderen Seite besteht aus einem Material, welches sich ohne Kraftaufwand verbiegen lässt wie zum Beispiel Papier. 
+Beschreibt man das dynamische Verhalten, muss zwischen einer dünnen Platte und einer Membran unterschieden werden \cite{kreismembran:membrane_vs_thin_plate}. 
+Eine dünne Platte zum Beispiel aus Metall, wirkt selbst entgegen ihrer Deformation, sobald sie gekrümmt wird. 
+Eine Membran auf der anderen Seite besteht aus einem Material, welches sich ohne Kraftaufwand verbiegen lässt, wie zum Beispiel Papier. 
 Bevor Papier als schwingende Membran betrachtet werden kann, wird jedoch noch eine Spannung $ T $ benötigt, welche das Material daran hindert, aus der Ruhelage gebracht zu werden. 
 
 Ein geläufiges Beispiel einer Kreismembran ist eine runde Trommel. 
@@ -28,11 +28,11 @@ Das untersuchte Modell erfüllt folgende Eigenschaften:
 	Durch die konstante Elastizität ist die ganze Membran unter gleichmässiger Spannung $ T $.
 	\item Die Membran ist perfekt flexibel. 
 	Damit ist gemeint, dass die Membran ohne Kraftaufwand verbogen werden kann. 
-	Die Membran ist dadurch nicht allein stehend schwingfähig, hierzu muss sie gespannt werden mit einer Kraft $ T $.
+	Die Membran ist dadurch nicht allein stehend schwingfähig, hierzu muss sie mit einer Kraft $ T $ gespannt werden.
 	\item Die Membran kann sich nur in Richtung ihrer Normalen in kleinem Ausmass auslenken.
 	Auslenkungen in der Ebene der Membran sind nicht möglich.
 	\item Die Membran erfährt keine Art von Dämpfung. 
-	Die Membran wird also nicht durch ihr umliegendes Medium abgebremst noch erfährt sie Wärmeverluste durch Deformation.
+	Die Membran wird also nicht durch ihr umliegendes Medium abgebremst noch erfährt sie Reibungsverluste durch Deformation.
 	
 \end{enumerate}
 
@@ -42,7 +42,8 @@ Die Verbindung zwischen Membran und Saite ist intuitiv ersichtlich, stellt man s
 \begin{figure}
 	
 	\begin{center}		
-		\includegraphics[width=5cm,angle=-90]{papers/kreismembran/images/Saite.pdf}
+		% \includegraphics[width=5cm,angle=-90]{papers/kreismembran/images/Saite.pdf}
+		\includegraphics[]{papers/kreismembran/images/TikzSaite.pdf}
 		\caption{Infinitesimales Stück einer Saite}
 		\label{kreismembran:im:Saite}
 	\end{center}	
@@ -64,7 +65,7 @@ befolgen. Die senkrecht wirkenden Kräfte werden mit $ T_1 $ und $ T_2 $ ausgedr
 \begin{equation*}
 	T_2 \sin \beta - T_1 \sin \alpha = \rho dx \frac{\partial^2 u}{\partial t^2} .
 \end{equation*}
-Die Gleichung wird durch $ T $ dividiert, wobei $ T $ nach \ref{kreismembran:eq:no_translation} geschickt gewählt wird. Somit kann
+Die Gleichung wird durch $ T $ dividiert, wobei $ T $ nach \eqref{kreismembran:eq:no_translation} geschickt gewählt wird. Somit kann
 \begin{equation*}
 	\frac{T_2 \sin \beta}{T_2 \cos \beta} - \frac{T_1 \sin \alpha}{T_1 \cos \alpha} = \frac{\rho dx}{T} \frac{\partial^2 u}{\partial t^2}
 \end{equation*}
@@ -91,4 +92,4 @@ Damit resultiert die in der Literatur gebräuchliche Form
 	\frac{1}{c^2}\frac{\partial^2u}{\partial t^2} = \Delta u.
 \end{equation}
 In dieser Form ist die Gleichung auch gültig für eine Membran. 
-Für den Fall einer Membran muss lediglich der Laplace-Operator $\Delta$ in zwei Dimensionen gerechnet werden.
+Für den Fall einer Membran muss lediglich der Laplace-Operator $\Delta$ in zwei Dimensionen verwendet werden.

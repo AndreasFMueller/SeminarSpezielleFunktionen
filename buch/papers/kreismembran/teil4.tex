@@ -8,13 +8,13 @@
 
 Um numerisch das Verhalten einer Membran zu ermitteln, muss eine numerische Darstellung definiert werden.
 Die Membran wird hier in Form der Matrix $  U $ digitalisiert.
-Jedes Element  $ U_{ij} $ steh für die Auslenkung der Membran $ u(x,y,t) $ an der Stelle $ \{x,y\}=\{i,j\} $.
-Zwischen benachbarten Elementen in der Matrix $ U $ liegt immer der Abstand $ dh $, eine Inkrementierung von $ i $ oder $ j $ entspricht somit einem Schritt in Richtung $ x $ oder $ y $ von Länge $ dh $ auf der Membran.
-Die zeitliche Dimension wird in Form des Array $  U[] $ aus $ z \times U $ Matrizen dargestellt, wobei $ z $ der Anzahl Zeitschritten entspricht.
-Das Element auf Zeile $ i $, Spalte $ j $ der $ w $-ten Matrix von $ U[] $ also $ U[w]_{ij} $ entspricht somit der Auslenkung $ u(i,j,w) $.
+Jedes Element  $ U_{ij} $ steht für die Auslenkung der Membran $ u(x,y,t) $ an der Stelle $ \{x,y\}=\{i,j\} $.
+Zwischen benachbarten Elementen in der Matrix $ U $ liegt immer der Abstand $ dh $, eine Inkrementierung von $ i $ oder $ j $ ist somit einem Schritt in Richtung $ x $ oder $ y $ von Länge $ dh $ auf der Membran.
+Die zeitliche Dimension wird in Form des Array $  U[] $ aus $ z \times U $ Matrizen dargestellt, wobei $ z $ die Anzahl von Zeitschritten ist.
+Das Element auf Zeile $ i $, Spalte $ j $ der $ w $-ten Matrix von $ U[] $ also $ U[w]_{ij} $ ist somit die Auslenkung $ u(i,j,w) $.
 Da die DGL von zweiter Ordnung ist, reicht eine Zustandsvariabel pro Membran-Element nicht aus. 
 Es wird neben der Auslenkung auch die Geschwindigkeit jedes Membran-Elementes benötigt um den Zustand eindeutig zu beschreiben. 
-Dazu existiert neben $ U[] $ ein analoger Array $ V[] $ welcher die Geschwindigkeiten aller Membran-Elementen repräsentiert. 
+Dazu existiert neben $ U[] $ ein analoger Array $ V[] $ welcher die Geschwindigkeiten aller Membran-Elemente repräsentiert. 
 $ V[w]_{ij} $ entspricht also $ \dot{u}(i,j,w) $. 
 Der Zustand einer Membran zum Zeitpunkt $ w $ wird mit $ X[w] $ beschrieben, was $ U[w] $ und $ V[w] $ beinhaltet.
 
@@ -25,7 +25,7 @@ Die Folgeposition $ U[w+1] $ ergibt sich als
 \begin{equation}
 	U[w+1] =  U[w] + dt \cdot V[w],
 \end{equation} 
-also die Ausgangslage $ + $ die Strecke welche während des Zeitintervall mit der Geschwindigkeit des Elementes zurückgelegt wurde. 
+also die Ausgangslage plus die Strecke welche während des Zeitintervall mit der Geschwindigkeit des Elementes zurückgelegt wurde. 
 Neben der Position muss auch die Geschwindigkeit aktualisiert werden.
 Analog zur Folgeposition wird
 \begin{equation*}
@@ -40,7 +40,7 @@ Die Geschwindigkeit des Folgezustandes kann somit mit
 	V[w+1] = V[w] + dt \cdot \Delta_h U \cdot c^2
 \end{equation}
 berechnet werden.
-Während $ c^2 $ lediglich eine Material spezifische Konstante ist, muss noch erläutert werden, wie der diskrete Laplace-Operator für $ \Delta_h u $ definiert ist.
+Während $ c^2 $ lediglich eine Material spezifische Konstante ist, muss noch erläutert werden, wie der diskrete Laplace-Operator für $ \Delta_h u $ definiert ist. Dieses Verfahren wird Euler-Methode genannt.
 
 \subsection{Diskreter Laplace-Operator $\Delta_h$}
 Die diskrete Ableitung zweiter Ordnung kann mit Hilfe der Taylor-Reihen-Entwicklung als
@@ -93,9 +93,9 @@ Der Folgezustand kann also mit den Gleichungen
 	\label{kreismembran:eq:folge_V}
 	V[w+1] &= (V[w] + dt \cdot \Delta_h u \cdot c^2)\odot M
 \end{align}
-berechnet werden.
+berechnet werden. Das Symbol $\odot$ steht hier für eine elementweise Matrixmultiplikation (Hadamard-Produkt)
 \subsubsection{Simulation}
-Mit den gegebenen Gleichungen \ref{kreismembran:eq:folge_U} und \ref{kreismembran:eq:folge_V} das Verhalten der Membran mit einem Loop über das zu untersuchende Zeitintervall berechnet werden. 
+Mit den gegebenen Gleichungen \eqref{kreismembran:eq:folge_U} und \eqref{kreismembran:eq:folge_V} das Verhalten der Membran mit einem Loop über das zu untersuchende Zeitintervall berechnet werden. 
 In der Abbildung \ref{kreismembran:im:simres_rund} sind Simulationsresultate zu sehen.
 Die erste Figur zeigt die Ausgangslage gefolgt von den Auslenkungen nach jeweils $ 50 $ weiteren Iterationsschritten.
 Es ist zu erkennen, wie sich die Störung vom Zentrum an den Rand ausbreitet.
@@ -120,7 +120,7 @@ Erreicht die Störung den Rand, wird sie reflektiert und nähert sich dem Zentru
 Um eine unendlich grosse Membran zu simulieren, könnte der unpraktische Weg gewählt werden, die Matrix unendlich gross zu definieren, dies wird jedoch spätestens bei der numerischen Berechnung seine Probleme mit sich bringen.
 Etwas geeigneter ist es, die Matrix so gross wie möglich zu definieren, wie es die Kapazitäten erlauben.
 Wenn anschliessend nur das Verhalten im Zentrum, bei der Störung beobachtet wird, verhaltet sich die Membran wie eine unendliche. 
-Dies aber nur bis die Störung am Rand reflektiert wird und wieder das innere zu beobachtende Zentrum beeinflusst.
+Dies aber nur bis die Störung am Rand reflektiert wird und wieder das Zentrum beeinflusst.
 Soll erst gar keine Reflexion entstehen, muss ein Absorber modelliert werden welcher die Störung möglichst ohne Reflexion aufnimmt.
 
 \subsubsection{Absorber}
@@ -132,15 +132,15 @@ Der Spielraum welcher dem Absorber übrig bleibt ist die Art der Überganges.
 Bei der endlichen kreisförmigen Membran hat die Maske $M$ einen binären Übergang von Membran zu Rand bezweckt.
 Anstelle dieses abrupten Wechsels wird nun eine Maske definiert, welche graduell von Membran $1$ zu Rand-Element $0$ wechselt.
 Die Elemente werden auf Basis ihres Abstand $r$ zum Zentrum definiert. 
-Der Abstand entspricht 
+Der Abstand ist 
 \begin{equation*}
 	r(i,j) = \sqrt{|i-\frac{m}{2}|^2+|j-\frac{n}{2}|^2},
 \end{equation*} 
-wobei $ m $ und $n$ den Dimensionen der Matrix entsprechen.
-Für einen Stufenlosen Übergang werden die Elemente der Maske auf 
+wobei $ m $ und $n$ die Dimensionen der Matrix sind.
+Für einen stufenlosen Übergang werden die Elemente der Maske auf 
 
 \begin{align}
-	M_{ij} = \begin{cases} 1-e^{(r(i,j)-b)a} & \text{wenn $x > b$} \\
+	M_{ij} = \begin{cases} 1-e^{(r(i,j)-b)a} & \text{$x > b$} \\
 		0 & \text{sonst} \end{cases}
 \end{align}
 gesetzt.
@@ -184,7 +184,7 @@ Die DGL \ref{kreismembran:Ausgang_DGL} welche simuliert wird geht jedoch von der
 \section{Schlusswort}
 Auch wenn ein physikalisches Verhalten bereits durch Annahmen und Annäherungen deutlich vereinfacht wird, bestehen auch dann noch eine Vielzahl von Lösungsansätzen.
 Lösungen einer unendlich grosse Membran scheinen fern der Realität zu sein, doch dies darf es im Sinne der Mathematik.
-Und wer weis, für eine Ameise auf einem Trampolin ist eine unendliche Membran vielleicht eine ganz gute Annäherung. 
+Und wer weiss, für eine Ameise auf einem Trampolin ist eine unendliche Membran vielleicht eine ganz gute Annäherung. 
 
 
 

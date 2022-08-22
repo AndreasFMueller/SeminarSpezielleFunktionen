@@ -78,17 +78,12 @@ Um den Richtungsvektor zu konstruieren kann der Einheitsvektor parallel zu $z-v$
 \begin{equation}
     \dot{v}
     =
-    |\dot{v}|\cdot e_{z-v}
-\end{equation}
-führt. Dies kann noch ausgeschrieben werden zu
-\begin{equation}
-    \dot{v}
+    |\dot{v}|\cdot (z-v)^\circ
     =
     |\dot{v}|\cdot\frac{z-v}{|z-v|}
-    \text{.}
     \label{lambertw:richtungsvektor}
 \end{equation}
-%
+führt.
 Aus dem Verfolgungsproblem ist auch ersichtlich, dass die Punkte $V$ und $Z$ nicht am gleichen Ort starten und so eine Division durch Null ausgeschlossen ist.
 Wenn die Punkte $V$ und $Z$ trotzdem am gleichen Ort starten, ist die Lösung trivial.
 
@@ -97,6 +92,7 @@ Nun wird die Gleichung mit $\dot{v}$ skalar multipliziert, um das Gleichungssyst
     \frac{z-v}{|z-v|}\cdot|\dot{v}|\cdot\dot{v}
     &=
     |\dot{v}|^2
+    \text{,}
 \end{align}
 was algebraisch zu
 \begin{align}
