@@ -74,6 +74,8 @@ und die Reihe somit eine endliche Anzahl $n$ Summanden hat.
 Dies geschieht bei $w_1(\alpha,x)$, falls
 \begin{equation}
 	\alpha =  -n \qquad n \in \mathbb{N}_0
+%	\sigma = U(x,y) = \sqrt{\frac{\sqrt{x^2+y^2} + x}{2}}.
+	c_1 = U(x,y) = \sqrt{\frac{\sqrt{x^2+y^2} + x}{2}}.
 \end{equation}
 und bei $w_2(\alpha,x)$ falls
 \begin{equation}
@@ -103,3 +105,24 @@ und
 	\right)
 \end{equation}
 Nach dem selben Vorgehen können weitere Ableitungen berechnet werden.
+\begin{equation}
+%	\tau = V(x,y) = \sqrt{\frac{\sqrt{x^2+y^2} - x}{2}}
+	c_2 = V(x,y) = \sqrt{\frac{\sqrt{x^2+y^2} - x}{2}}
+\end{equation}
+beschrieben werden. Diese zwei Gleichungen zeigen nun, wie man vom 
+kartesischen Koordinatensystem ins parabolische Zylinderkoordinatensystem kommt.
+%Werden diese Formeln nun nach $x$ und $y$ aufgelöst 
+%\begin{equation}
+%	x = \sigma \tau,
+%\end{equation}
+%\begin{equation}
+%	y = \frac{1}{2}\left ( \tau^2 - \sigma^2 \right ),
+%\end{equation}
+%so beschreibe sie, wie man aus dem parabolischen Zylinderkoordinatensystem zurück ins kartesische rechnen kann.
+Werden diese Formeln nun nach $x$ und $y$ aufgelöst 
+\begin{align}
+	x &=  c_1^2 - c_2^2 ,\\
+	y &= 2c_1 c_2,
+\end{align}
+so beschreiben sie mit $\tau = c_1 \sqrt{2}$ und $\sigma = c_2 \sqrt{2}$ die Beziehung 
+zwischen dem parabolischen Zylinderkoordinatensystem und dem kartesischen Koordinatensystem.
