@@ -26,7 +26,7 @@
 Im weiteren werden nun die Eigenschaften der Lösungen eines
 Sturm-Liouville-Problems diskutiert.
 Im wesendlichen wird darauf eingegangen, wie die Orthogonalität der Lösungen
-zustande kommt.
+zustande kommt, damit diese später bei den Beispielen verwendet werden kann.
 Dazu wird zunächst das Eigenwertproblem für Matrizen wiederholt und angeschaut
 unter welchen Voraussetzungen die Lösungen orthogonal sind.
 Dann wird gezeigt, dass das Sturm-Liouville-Problem auch ein Eigenwertproblem
@@ -34,8 +34,8 @@ dieser Art ist und es wird auf au die Orthogononalität der Lösungsfunktion
 geschlossen.
 
 \subsection{Eigenwertprobleme mit Matrizen}
-
-Das Eigenwertprobelm 
+% TODO
+Das Eigenwertproblem 
 \[
     A v
     =
@@ -51,13 +51,47 @@ Mittels Spektralsatzes kann zum Beispiel geschlossen werden, dass wenn
     =
     \langle v, Aw \rangle
 \]
-gilt, die Matrix A symmetrisch (und somit selbstadjungiert) ist und somit eine
+gilt, die Matrix A symmetrisch (und somit selbstadjungiert) ist und deshalb eine
 Orthonormalbasis aus Eigenvektoren besitzt.
 In aneren Worten: durch diese Eigenschaft ist gegeben, dass A diagonalisierbar
 ist und alle Eigenvektoren orthogonal zueinander sind.
 
-\subsection{}
+\subsection{Das Sturm-Liouville-Problem als Eigenwertproblem}
 
+Wie in Kapitel (??) bereits eingeführt, kann das Sturm-Liouville-Problem als
+Eigenwertproblem geschrieben werden, indem der Operator
+\[
+    L
+    =
+    \frac{1}{w(x)}\left( -\frac{d}{dx}p(x) \frac{d}{dx} + q(x)\right)
+\]
+eingeführt wird.
+Mit diesem Operator kann nun
+\[
+    (p(x)y'(x))' + q(x)y(x)
+    =
+    \lambda w(x) y(x)
+\]
+umgeschrieben werden zu
+\[
+    L y
+    =
+    \lambda y.
+\]
+
+\subsection{Orthogonalität der Lösungsfunktionen}
+
+Nun wird das Eigenwertproblem weiter angeschaut.
+Um auf die Orthogonalität der Lösungsfunktion zu schliessen, wird dafür der
+Operator $L$ genauer betrachtet.
+Analog zur Matrix $A$ aus Abschnitt (??) kann auch für $L$ gezeigt werden,
+dass dieser Operator selbstadjungiert ist, also dass
+\[
+    \langle L v, w\rangle
+    =
+    \langle v, L w\rangle
+\]
+gilt.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%% OLD section %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
