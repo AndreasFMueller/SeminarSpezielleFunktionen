@@ -6,7 +6,7 @@
 \section{Lösung
 \label{parzyl:section:teil1}}
 \rhead{Lösung}
-
+\subsection{Lösung harmonischer Oszillator}
 \eqref{parzyl:sep_dgl_3} beschriebt einen ungedämpften harmonischen Oszillator.
 Die Lösung ist somit
 \begin{equation}
@@ -22,43 +22,83 @@ Die Lösung ist somit
 		\sqrt{\lambda + \mu}
 		\right )}.
 \end{equation}
+\subsection{Lösung ???}
 Die Differentialgleichungen \eqref{parzyl:sep_dgl_1} und \eqref{parzyl:sep_dgl_2} werden in \cite{parzyl:whittaker}
 mit Hilfe der Whittaker Gleichung gelöst.
+\begin{satz}
+	Die Funktionen 
+	\begin{equation}
+		 M_{k,m}(x) = 
+		    e^{-x/2} x^{m+1/2} \,
+		    {}_{1} F_{1}
+		    (
+		        {\textstyle \frac{1}{2}} 
+		        + m - k, 1 + 2m; x) \qquad x \in \mathbb{C}
+		 \label{parzyl:eq:sol_diffEq_1}
+	\end{equation}
+	und damit auch die Linearkombinationen 
+	 \begin{equation}
+		        W_{k,m}(x) = \frac{
+		            \Gamma \left( -2m\right)
+		        }{
+		            \Gamma \left( {\textstyle \frac{1}{2}} - m - k\right)
+		        }
+		        M_{-k, m} \left(x\right)
+		        +
+		        \frac{
+		            \Gamma \left( 2m\right)
+		        }{
+		            \Gamma \left( {\textstyle \frac{1}{2}} + m - k\right)
+		        }
+		       M_{k, -m} \left(x\right)
+		      \label{parzyl:eq:sol_diffEq_2}
+	\end{equation}
+	sind Lösungen der Differentialgleichung 
+	\begin{equation}
+		        \frac{d^2W}{d x^2} +
+		        \biggl( -\frac{1}{4}  + \frac{k}{x} + \frac{\frac{1}{4} - m^2}{x^2} \biggr) W = 0.
+		        \label{parzyl:eq:whitDiffEq}
+	\end{equation}
+	
+\end{satz}
 \begin{definition}
-    Die Funktionen
-    \begin{equation*}
-        M_{k,m}(x) = 
-    e^{-x/2} x^{m+1/2} \,
-    {}_{1} F_{1}
-    (
-        {\textstyle \frac{1}{2}} 
-        + m - k, 1 + 2m; x) \qquad x \in \mathbb{C}
-    \end{equation*}
-    und
-    \begin{equation*}
-        W_{k,m}(x) = \frac{
-            \Gamma \left( -2m\right)
-        }{
-            \Gamma \left( {\textstyle \frac{1}{2}} - m - k\right)
-        }
-        M_{-k, m} \left(x\right)
-        +
-        \frac{
-            \Gamma \left( 2m\right)
-        }{
-            \Gamma \left( {\textstyle \frac{1}{2}} + m - k\right)
-        }
-        M_{k, -m} \left(x\right)
-    \end{equation*}
-    gehören zu den Whittaker Funktionen und sind Lösungen
-    der Whittaker Differentialgleichung
-    \begin{equation}
-        \frac{d^2W}{d x^2} +
-        \biggl( -\frac{1}{4}  + \frac{k}{x} + \frac{\frac{1}{4} - m^2}{x^2} \biggr) W = 0.
-        \label{parzyl:eq:whitDiffEq}
-    \end{equation}
-
+	Die Differentialgleichung \ref{parzyl:eq:whitDiffEq}  heisst Whittaker-Differentialgleichung. Die Funktionen \ref{parzyl:eq:sol_diffEq_1} und \ref{parzyl:eq:sol_diffEq_2} sind Teil der Familie der Whittaker-Funktionen.
 \end{definition}
+%\begin{definition}
+%    Die Funktionen
+%    \begin{equation*}
+%        M_{k,m}(x) = 
+%    e^{-x/2} x^{m+1/2} \,
+%    {}_{1} F_{1}
+%    (
+%        {\textstyle \frac{1}{2}} 
+%        + m - k, 1 + 2m; x) \qquad x \in \mathbb{C}
+%    \end{equation*}
+%    und
+%    \begin{equation*}
+%        W_{k,m}(x) = \frac{
+%            \Gamma \left( -2m\right)
+%        }{
+%            \Gamma \left( {\textstyle \frac{1}{2}} - m - k\right)
+%        }
+%        M_{-k, m} \left(x\right)
+%        +
+%        \frac{
+%            \Gamma \left( 2m\right)
+%        }{
+%            \Gamma \left( {\textstyle \frac{1}{2}} + m - k\right)
+%        }
+%        M_{k, -m} \left(x\right)
+%    \end{equation*}
+%    gehören zu den Whittaker Funktionen und sind Lösungen
+%    der Whittaker Differentialgleichung
+%    \begin{equation}
+%        \frac{d^2W}{d x^2} +
+%        \biggl( -\frac{1}{4}  + \frac{k}{x} + \frac{\frac{1}{4} - m^2}{x^2} \biggr) W = 0.
+%        \label{parzyl:eq:whitDiffEq}
+%    \end{equation}
+%
+%\end{definition}
 Es wird nun die Differentialgleichung bestimmt, welche
 \begin{equation}
     w = x^{-1/2} W_{k,-1/4} \left({\textstyle \frac{1}{2}} x^2\right)
@@ -123,6 +163,8 @@ Mit $M_{k,m}(x)$ geschrieben resultiert
         }
         M_{\frac{1}{2} n + \frac{1}{4}, \frac{1}{4}} \left(\frac{1}{2}x^2\right).
 \end{equation}
+
+
 In \cite{parzyl:abramowitz-stegun} sind zwei Lösungen $U(a, x)$ und $V(a,x)$ 
 \begin{align}
     U(a,x) &= 
@@ -161,7 +203,7 @@ der Differentialgleichung
 \begin{equation}
     \frac{d^2 y}{d x^2} - \left(\frac{1}{4} x^2 + a\right) y = 0
 \end{equation}
-beschrieben. Die Lösungen $U(a,z)$ und $V(a, z)$ können auch mit $D_n(z)$
+beschrieben. Die Lösungen $U(a,z)$ und $V(a, z)$ können auch durch $D_n(z)$
 ausgedrückt werden
 \begin{align}
     U(a,x) &= D_{-a-1/2}(x) \\
