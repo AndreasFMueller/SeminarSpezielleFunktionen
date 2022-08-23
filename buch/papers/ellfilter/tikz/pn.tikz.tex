@@ -1,0 +1,63 @@
+\begin{tikzpicture}[>=stealth', auto, node distance=2cm, scale=1.2, thick]
+
+    \tikzstyle{zero} = [draw, circle, inner sep =0, minimum height=0.15cm]
+    \tikzstyle{dot} = [fill, circle, inner sep =0, minimum height=0.1cm]
+
+    \tikzset{pole/.style={cross out, draw=black, minimum size=(0.15cm-\pgflinewidth), inner sep=0pt, outer sep=0pt}}
+
+    \begin{scope}[xscale=0.75, yscale=2.5]
+
+        \fill[orange!30] (0,0) rectangle (5, 0.5);
+        % \fill[yellow!30] (0,0) rectangle (1, 0.1);
+        \node[] at (5, 0.25) {\small $N=5$};
+
+        \draw[gray, ->] (0,-0.25) -- (0,0.75) node[anchor=south]{$\mathrm{Im}~z$};
+        \draw[gray, ->] (-1,0) -- (11,0) node[anchor=west]{$\mathrm{Re}~z$};
+
+        \draw[gray] ( 5,0) +(0,0.035) -- +(0, -0.035) node[inner sep=0, anchor=north] {\small $K$};
+        \draw[gray]  (0, 0.5) +(0.1, 0) -- +(-0.1, 0) node[inner sep=0, anchor=east]{\small $jK^\prime$};
+
+        \begin{scope}
+
+            \draw[ultra thick, ->, purple] (5, 0.5) -- (10,0.5);
+            \draw[ultra thick, ->, blue] (10, 0.5) --  (10,0);
+            \draw[ultra thick, ->, cyan] (10, 0) --  (5,0);
+            \draw[ultra thick, ->, darkgreen] (5, 0) --  (0,0);
+            \draw[ultra thick, ->, orange] (-0, 0) -- (0,0.5);
+            \draw[ultra thick, ->, red] (0,0.5) -- (5, 0.5);
+
+            \foreach \i in {1,...,5} {
+                \begin{scope}[xshift=(\i-1)*2cm]
+                    \node[zero] at ( 1, 0) {};
+                    \node[anchor=south west] at ( 1, 0) {$n_\i$};
+                    \node[pole] at ( 1,0.5) {};
+                    \node[anchor=south west] at ( 1, 0.5) {$p_\i$};
+                \end{scope}
+            }
+
+        \end{scope}
+
+    \end{scope}
+
+    % \begin{scope}[yshift=-1.5cm, xshift=3.75cm, xscale=0.75]
+
+    %     \draw[gray, ->] (-6,0) -- (6,0) node[anchor=west]{$w$};
+
+    %     \draw[ultra thick, ->, purple] (-5, 0) -- (-3, 0);
+    %     \draw[ultra thick, ->, blue]      (-3, 0) -- (-2, 0);
+    %     \draw[ultra thick, ->, cyan]       (-2, 0) -- (0, 0);
+    %     \draw[ultra thick, ->, darkgreen]    (0, 0) -- (2, 0);
+    %     \draw[ultra thick, ->, orange] (2, 0) -- (3, 0);
+    %     \draw[ultra thick, ->, red] (3, 0) -- (5, 0);
+
+    %     \node[anchor=south] at (-5,0) {$-\infty$};
+    %     \node[anchor=south] at (-3,0) {$-1/k$};
+    %     \node[anchor=south] at (-2,0) {$-1$};
+    %     \node[anchor=south] at (0,0) {$0$};
+    %     \node[anchor=south] at (2,0) {$1$};
+    %     \node[anchor=south] at (3,0) {$1/k$};
+    %     \node[anchor=south] at (5,0) {$\infty$};
+
+    % \end{scope}
+
+\end{tikzpicture}
