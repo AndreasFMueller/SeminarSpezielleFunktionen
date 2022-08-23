@@ -107,7 +107,7 @@ the surface of the unit sphere.
 Now that we have defined an operator, we can go and study its eigenfunctions,
 which means that we would like to find the functions $f(\vartheta, \varphi)$
 that satisfy the equation
-\begin{equation} \label{kuvel:eqn:eigen}
+\begin{equation} \label{kugel:eqn:eigen}
     \surflaplacian f = -\lambda f.
 \end{equation}
 Perhaps it may not be obvious at first glance, but we are in fact dealing with a
@@ -504,6 +504,7 @@ show that spherical harmonics are also orthogonal under the following inner
 product:
 
 \begin{definition}[Inner product in $S^2$]
+  \label{kugel:def:inner-product-s2}
   For 2 complex valued functions $f(\vartheta, \varphi)$ and $g(\vartheta,
   \varphi)$ on the surface of the sphere the inner product is defined to be
   \begin{equation*}
@@ -571,33 +572,66 @@ product:
   the proof is complete.
 \end{proof}
 
-\kugeltodo{Briefly mention that we could have skipped the tedious proofs by
-showing that the (associated) Legendre equation is a Sturm Liouville problem.}
+These proofs for the various orthogonality relations were quite long and
+algebraically tedious, mainly because they are ``low level'', by which we mean
+that they (arguably) do not rely on very abstract theory. However, if we allow
+ourselves to use the more abstract Sturm Liouville theory discussed in chapters
+\ref{buch:integrale:subsection:sturm-liouville-problem} and \kugeltodo{reference
+to chapter 17 of haddouche and Löffler} the proofs can become ridiculously
+short. Let's do for example lemma \ref{kugel:thm:associated-legendre-ortho}.
 
-\if 0
-As explained in the chapter \ref{}, the concept of orthogonality is very important and at the practical level it is very useful, because it allows us to develop very powerful techniques at the mathematical level.\newline 
-Throughout this book we have been confronted with the Sturm-Liouville theory (see chapter \ref{}). The latter, among other things, carries with it the concept of orthogonality. Indeed, if we consider the solutions of the Sturm-Liouville equation, which can be expressed in this form
-\begin{equation}\label{kugel:eq:sturm_liouville}
-    \mathcal{S}f := \frac{d}{dx}\left[p(x)\frac{df}{dx}\right]+q(x)f(x)
-\end{equation}
-possiamo dire che formano una base ortogonale.\newline
-Adesso possiamo dare un occhiata alle due equazioni che abbiamo ottenuto tramite la Separation Ansatz (Eqs.\eqref{kugel:eq:associated_leg_eq}\eqref{kugel:eq:ODE_1}), le quali possono essere riscritte come:
-\begin{align*}
-    \frac{d}{dx} \left[ (1-x^2) \cdot \frac{dP_{m,n}}{dx} \right] &+ \left(n(n+1)-\frac{m}{1-x^2} \right) \cdot P_{m,n}(x) = 0, \\
-    \frac{d}{d\varphi} \left[ 1 \cdot \frac{ d\Phi }{d\varphi} \right] &+ 1 \cdot \Phi(\varphi) = 0. 
-\end{align*}
-Si può concludere in modo diretto che sono due casi dell'equazione di Sturm-Liouville. Questo significa che le loro soluzioni sono ortogonali sotto l'inner product con weight function $w(x)=1$, dunque:
-\begin{align}
-\int_{0}^{2\pi} \Phi_m(\varphi)\Phi_m'(\varphi) d\varphi &= \delta_{m'm}, \nonumber \\
-\int_{-1}^1 P_{m,m'}(x)P_{n,n'}(x) dx &= \delta_{m'm}\delta_{n'n}. \label{kugel:eq:orthogonality_associated_func}
-\end{align}
-Inoltre, possiamo provare l'ortogonalità di $\Theta(\vartheta)$ utilizzando \eqref{kugel:eq:orthogonality_associated_func}:
-\begin{align}
-    x
-\end{align}
-Ora, visto che la soluzione dell'eigenfunction problem è formata dalla moltiplicazione di $\Phi_m(\varphi)$ e $P_{m,n}(x)$
-\fi
+\begin{proof}[
+    Shorter proof of lemma \ref{kugel:thm:associated-legendre-ortho}
+  ]
+  The associated Legendre polynomials, of which we would like to prove an
+  orthogonality relation, are the solution to the associated Legendre equation,
+  which we can write as $LZ(z) = 0$, where
+  \begin{equation*}
+    L = \frac{d}{dz} (1 - z^2) \frac{d}{dz}
+      + n(n+1) - \frac{m^2}{1 - z^2}.
+  \end{equation*}
+  Notice that $L$ is in fact a Sturm-Liouville operator of the form
+  \begin{equation*}
+    L = \frac{1}{w(z)} \left[
+        \frac{d}{dz} p(z) \frac{d}{dz} - \lambda + q(z)
+      \right],
+  \end{equation*}
+  if we let $w(z) = 1$, $p(z) = (1 - z^2 )$, $q(z) = -m^2 / (1 - z^2)$, and
+  $\lambda = -n(n+1)$. By the theory of Sturm-Liouville operators, we know that
+  the each solution of the problem $LZ(z) = 0$, namely $P^m_n(z)$, is orthogonal
+  to every other solution that has a different $\lambda$. In our case $\lambda$
+  varies with $n$, so $P^m_n(z)$ with different $n$'s are orthogonal to each
+  other.
+\end{proof}
 
+But that was still rather informative and had a bit of explanation, which is
+terrible. Real snobs, such as Wikipedia contributors, some authors and
+regrettably sometimes even ourselves, would write instead:
+
+\begin{proof}[
+    Infuriatingly short proof of lemma \ref{kugel:thm:associated-legendre-ortho}
+  ]
+  The associated Legendre polynomials are solutions of the associated Legendre
+  equation which is a Sturm-Liouville problem and are thus orthogonal to each
+  other. The factor in front Kronecker delta is left as an exercise to the
+  reader.
+\end{proof}
+
+Lemma \ref{kugel:thm:legendre-poly-ortho} has a very similar
+proof, while the theorem \ref{kugel:thm:spherical-harmonics-ortho} for the
+spherical harmonics is proved by the following argument. The spherical harmonics
+are the solutions to the eigenvalue problem $\surflaplacian f = -\lambda f$,
+which as discussed in the previous section is solved using separation. So to
+prove their orthogonality using the Sturm-Liouville theory we argue that
+\begin{equation*}
+  \surflaplacian = L_\vartheta L_\varphi \iff
+  \surflaplacian f(\vartheta, \varphi)
+    = L_\vartheta \Theta(\vartheta) L_\varphi \Phi(\varphi),
+\end{equation*}
+then we show that both $L_\vartheta$ and $L_\varphi$ are both Sturm-Liouville
+operators (we just did the former in the shorter proof above). Since both are
+Sturm-Liouville operators their combination, the surface spherical Laplacian, is
+also a Sturm-Liouville operator, which then implies orthogonality.
 
 \subsection{Normalization and the Phase Factor}
 
@@ -637,8 +671,17 @@ quasi-normalization).
   where $m, n \in \mathbb{Z}$ and $|m| < n$.
 \end{definition}
 
-However, for our purposes we will mostly only need the orthonormal spherical
-harmonics.  So from now on, unless specified otherwise, when we say spherical
+Additionally, there is another quirk in the literature that should be mentioned.
+In some other branches of physics such as seismology and quantum mechanics there
+is a so called Condon-Shortley phase factor $(-1)^m$ in front of the square root
+in the definition of the normalized spherical harmonics. It is yet another
+normalization that is added for physical reasons that are not very relevant to
+our discussion, but we mention this potential source of confusion since many
+numerical packages (such as \texttt{SHTOOLS} \kugeltodo{Reference}) offer an
+option to add or remove it from the computation.
+
+Though, for our purposes we will mostly only need the orthonormal spherical
+harmonics, so from now on, unless specified otherwise when we say spherical
 harmonics or write $Y^m_n$, we mean the orthonormal spherical harmonics of
 definition \ref{kugel:def:spherical-harmonics-orthonormal}.
 
@@ -794,8 +837,36 @@ We can start by listing all of them:
   \end{proof}
 \end{enumerate}
 
-\section{Series Expansions in $C(S^2)$}
+\section{Series Expansions in $L^2(S^2)$}
+
+We have now reached a point were we have all of the tools that are necessary to
+build something truly amazing: a general series expansion formula for functions
+on the surface of the sphere. Using the jargon: we will now see that the
+spherical harmonics together with the inner product of definition
+\ref{kugel:def:inner-product-s2}
+\begin{equation*}
+  \langle f, g \rangle
+  = \int_{0}^\pi \int_0^{2\pi}
+    f(\vartheta, \varphi) \overline{g(\vartheta, \varphi)}
+    \sin \vartheta \, d\varphi \, d\vartheta
+\end{equation*}
+form a Hilbert space over the space of complex valued $L^2$ functions $S^2 \to
+\mathbb{C}$. We will see later that this fact is very consequential and is
+extremely useful for many types of applications. If the jargon was too much, no
+need to worry, we will now go back to normal words and explain it again in more
+detail.
 
 \subsection{Spherical Harmonics Series}
+
+To talk about a \emph{series expansion} we first need a series, so we shall
+build one using the spherical harmonics.
+
+\begin{definition}[Spherical harmonic series]
+  \begin{equation*}
+    \hat{f}(\vartheta, \varphi) 
+    = \sum_{n \in \mathbb{Z}} \sum_{m \in \mathbb{Z}}
+      c_{m,n} Y^m_n(\vartheta, \varphi)
+  \end{equation*}
+\end{definition}
 
 \subsection{Fourier on $S^2$}

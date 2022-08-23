@@ -1,0 +1,218 @@
+%
+% teil4.tex
+%
+% (c) 2020 Prof Dr Andreas Müller, Hochschule Rapperswil
+%
+\section{K-Tanh
+\label{transfer:section:teil4}}
+\rhead{K-Tanh}
+
+\subsection{Idee
+	\label{transfer:subsection:Ktanh-Idee}}
+Um die Berechnung des Tangens hyperbolicus wirklich zu beschleunigen, braucht es einen Algorithmus, der ohne Gleitkommaoperationen auskommt. Um dies zu bewerkstelligen, ist eine Unterteilung der Funktion in mehrere Abschnitte nötig. Diese können dann linear approximiert werden. Die dazugehörigen Parameter können einmal berechnet werden und zu Rechenzeit aus einem LUT????? gelesen und danach mit integer Operationen verrechnet werden.
+
+
+\subsection{Definitionen
+	\label{transfer:subsection:Ktanh-Definition}}
+
+\subsubsection{Gleitkommazahlen nach IEEE-754
+	\label{transfer:subsection:Ktanh-Algorithmus:Gleitkommazahl}}
+Da ein Computer nur mit binären Werten arbeiten kann, müssen Zahlen durch sogenannte Gleitkommazahlen approximiert werden. Dafür wird die Zahl in zwei Teile aufgeteilt, die Mantisse und den Exponenten. Die Zahl setzt sich dann wie folgt zusammen:
+$$
+\begin{array}{|l|l|l|}
+	\hline S & E & M \\
+	\hline
+\end{array}
+$$
+Aus dem sich die Dezimalzahl wie folgt berechnet
+$$
+x=s \cdot m \cdot b^{e}
+$$
+wobei
+$$
+\begin{aligned}
+	&s=(-1)^{S} \\
+	&e=E-B\\
+	&B=2^{r-1}-1
+	&m=1+M / 2^{p}
+\end{aligned}
+$$
+mit $r$ = Anzahl der Exponenten bits und p = Anzahl mantisse Bits.
+
+
+\subsubsection{K-tanh Algorithmus
+\label{transfer:subsection:Ktanh-Algorithmus}}
+\cite{transfer:DBLP:journals/corr/abs-1909-07729}
+
+Negative Werte werden nicht separat behandelt. Diese werden dank der Symertrie um den Ursprung mit einem einfachen Vorzeichenwechsel aus den positiven berechnet.
+Für $x < 0.25$ gilt $y = x$.
+Ist $x > 3.75$ gitl $y = 1$.
+Ist der Wert zwischen diesen Grenzen, werden über einen Lookuptable geeignete Werte gefunden um aus dem $x$ die Approximation des Tanh zu berechnen.
+Dafür werden eine bestimmte Anzahl LSBs des Exponenten und MSBs der Mantisse zu einem Index $t$ zusammengestzt. Der dann die Stelle im Lookuptable zeigt.
+Damit werden die richtigen Werte für $E_{t}, r_{t}, b_{t}$ aus der Tabelle, die im Vorhinein schon berechnet wurden, ausgelesen.
+Damit hat man das $E$ bereits gefunden und mit der Formel
+\[
+    M_{o} \leftarrow\left(M_{i} \gg r\right)+b
+\]
+
+kann das neue $M$ berechnet werden.
+
+\begin{figure}
+\centering
+\tikzset{
+	every node/.style={
+		font=\scriptsize
+	},
+	decision/.style={
+		shape=rectangle,
+		minimum height=1cm,
+		text width=3cm,
+		text centered,
+		rounded corners=1ex,
+		draw,
+		label={[yshift=0.2cm]left:ja},
+		label={[yshift=0.2cm]right:nein},
+	},
+	outcome/.style={
+		shape=ellipse,
+		fill=gray!15,
+		draw,
+		text width=1.5cm,
+		text centered
+	},
+	decision tree/.style={
+		edge from parent path={[-latex] (\tikzparentnode) -| (\tikzchildnode)},
+		sibling distance=4cm,
+		level distance=1.5cm
+	}
+}
+\begin{tikzpicture}
+	
+	\node [decision] { $x<0.25$ }
+	[decision tree]
+	child { node [outcome] { $x$ } }
+	child { node [decision] { $x>3.75$} 
+		child { node [outcome] { $1$ } }
+		child { node [outcome] { $K-tanh$ } }
+	};
+	
+\end{tikzpicture}
+\caption{Gesamter Algorithmus
+\label{motivation:figure:gesalgo}}
+\end{figure}
+
+\begin{figure}
+\centering
+\begin{tikzpicture}
+	[>=stealth', auto, node distance=2cm, scale=1.2]
+	
+	\tikzstyle{dot} = [circle, draw, fill, inner sep=0.03cm]
+	
+	\tikzstyle{brace} = [decorate, decoration={brace,amplitude=4pt}]
+	
+	\begin{scope}[]
+		
+		\node[ minimum width=0.5cm] (s) at (0, 0) {$s$};
+		\node[anchor=west, minimum width=1.5cm] (e) at (s.east) {$E_i$};
+		\node[anchor=west, minimum width=1.5cm] (m) at (e.east) {$M_i$};
+		\draw[blue] (e.north west) -- (e.south west) (e.north east) -- (e.south east);
+		\node[draw, green!50!black, rounded corners=0.1cm, fit=(s) (e) (m), inner sep = 0] (a) {};
+		
+		\node[minimum width=0.5cm] (s) at (5, 0) {$s$};
+		\node[anchor=west, minimum width=1.5cm] (e) at (s.east) {$E_o$};
+		\node[anchor=west, minimum width=1.5cm] (m) at (e.east) {$M_o$};
+		\draw[blue] (e.north west) -- (e.south west) (e.north east) -- (e.south east);
+		\node[draw, green!50!black, rounded corners=0.1cm, fit=(s) (e) (m), inner sep = 0] (b) {};
+		
+		\draw[yshift=-0.4cm, decorate,decoration={brace,amplitude=4pt}] (a.south) ++(0, -0.2) +(0.5,0) -- +(-0.5,0 );
+		
+		\node[draw=black, fill=black!20,  minimum width=1.5cm, minimum height= 2cm, below=1cm of a] (lut) {};
+		
+		\node[draw=blue, inner sep=0.2cm, right = 1.5cm of lut, align=left] (box) {$E_0 \gets E$ \\ $M_0 \gets (M_i \gg r) + b$};
+		
+		\draw[->] (a.south) +(0, -0.5) -- (lut);
+		\draw[->] (lut) -- node[above]{$(E,r,b)$} (box);
+		\draw[->] (box) -| ([xshift=0.5cm, yshift=-0.3cm]b.south);
+		
+	\end{scope}
+	
+\end{tikzpicture}
+\caption{Ablauf der K-tanh Berechnung
+\label{motivation:figure:Ktanhablauf}}
+\end{figure}
+
+
+\subsection{Beispiel
+\label{transfer:subsection:Ktanh-Algorithmus:Beispiel}}
+
+%TODO
+
+In diesem Abschnitt wird das Verfahren am einem Beispiel mit dem BFloat16 erklärt. Das bedeutet die Gleitkommazahlen werden mit 8 Exponenten, 7 Mantisse und einem Vorzeichen bit dargestellt.
+
+\subsubsection{Algorithmus für die Bestimmung der Parameter
+	\label{transfer:subsection:Ktanh-Algorithmus:Algo}}
+
+\begin{enumerate}
+    \item Wir berechnen zuerst den Tanh für ein gegebenes x und finden die zugehörige BFloat16-Darstellung.
+    \[
+    y_{i}=\operatorname{TanH}\left(x_{i}\right)=(-1)^{s} \cdot 2^{E_{i}} \cdot\left(1+M_{i} / 2^{q}\right)
+    \]
+     
+    \item Sollten die Exponenten in einem Intervall $t$ nicht gleich sein, muss ein gemeinsamer Exponent gefunden werden, so dass 
+    $$
+    \underset{E, \hat{M}_{i} \in \mathbb{Z}}{\operatorname{argmin}} \sum_{i}\left(y_{i}-\hat{y}_{i}\right)^{2}, \quad \text { mit } \quad E \in\left\{E_{i}\right\}, \hat{M}_{i} \in[0,127]
+    $$
+    minimiert wird. Was bedeutet, dass der Exponent mit welchem der kleinsten quadrierten und aufsummierten Fehler entsteht gewählt wird.
+    ?????We pick E from the set of exponents {Ei}. If E = Ej ,
+    then, Mˆ
+    j = Mj , for all j. If E > Ej , then, Mˆ
+    j = 0.
+    Similarly, for E < Ej , Mˆ
+    j = 2q − 1. Store this E in the
+    parameter table TE.?????
+    \item Um den Verschiebungsparameter r und den Additionsterm b zu finden, muss das folgende Optimierungsproblem gelöst werden. Auch hier wird einfach der kleinste quadrierte und aufsummierte Fehler gesucht wird.
+    $$
+    \begin{array}{ll} 
+    	& \underset{r, b \in \mathbb{Z}}{\operatorname{argmin}} \sum_{i}\left(\hat{M}_{i}-\left(m_{i} / 2^{r}+b\right)\right)^{2} \\
+    	\text { mit } & 0 \leq r \leq r_{\max } \leq p, \quad b_{\min } \leq b \leq b_{\max }
+    \end{array}
+    $$
+    Dabei müssen $r_max$, $b_min$ und $b_max$ sorgfältig gewählt werden, so dass kein 
+\end{enumerate}
+
+\subsubsection{Numerisches Beispiel
+	\label{transfer:subsection:Ktanh-Algorithmus:Num}}
+Zum Index $t = 00000$ gehört neben Anderen der Wert $x_i = 2$. Denn mit \ref{transfer:subsection:Ktanh-Algorithmus:Gleitkommazahl} folgt
+
+$$
+\begin{array}{|l|l|l|}
+	\hline S_i & E_{i} & M_{i} \\
+	\hline 0 & 100000 \textbf{00} & \textbf{000} 0000 \\
+	\hline
+\end{array}
+$$
+Der dazugehörige Tanh Wert ist
+$y_i = \tanh{x_i}=0.96402758\ldots$. Es lässt sich die dazugehörige BFloat-16-Darstellung finden
+
+$$
+\begin{array}{|l|l|l|}
+	\hline S_{y_{i}} & E_{y_{i}} & M_{y_{i}} \\
+	\hline 0 & 01111110 & 1110110 \\
+	\hline
+\end{array}
+$$
+Nun müssen alle anderen Werte dieses Intervalls $t = 00000$ ausgewertet werden. Stimmen nicht alle Exponenten der $S_{y}$ überein, so muss noch ein gemeinsamer Exponent mit dem Optimierungproblem \ref{} gefunden werden. Danach kann der Verschiebe- und Additionsfaktor für das Intervall berechnet werden. 
+Es ergeben sich die Werte:
+$$
+\begin{array}{c|ccc}
+	\text { Index } t & E_{t} & r_{t} & b_{t} \\
+	\hline 00111 & 126 & 2 & 119
+\end{array}
+$$
+
+
+
+
+
+
+
