@@ -313,22 +313,20 @@ obtain the \emph{associated Legendre functions}.
   The functions
   \begin{equation}
     P^m_n (z) = (1-z^2)^{\frac{m}{2}}\frac{d^{m}}{dz^{m}} P_n(z)
-      = \frac{1}{2^n n!}(1-z^2)^{\frac{m}{2}}\frac{d^{m+n}}{dz^{m+n}}(1-z^2)^n 
+      = \frac{1}{2^n n!}(1-z^2)^{\frac{m}{2}}\frac{d^{m+n}}{dz^{m+n}}(1-z^2)^n, \quad |m|<n
   \end{equation}
   are known as Ferrers or associated Legendre functions.
 \end{definition}
+The constraint $|m|<n$, can be justified by considering Eq.\eqref{kugel:eq:associated_leg_func}, in which the derivative of degree $m+n$ is present. A derivative to be well defined must have an order that is greater than zero. Furthermore, it can be seen that this derivative is applied on a polynomial of degree $2n$. As is known from Calculus 1, if you derive a polynomial of degree $2n$ more than $2n$ times, you get zero, which is a trivial solution in which we are not interested.
 
-\kugeltodo{Discuss $|m| \leq n$.}
-
-\if 0
-The constraint $|m|<n$, can be justified by considering Eq.\eqref{kugel:eq:associated_leg_func}, in which the derivative of degree $m+n$ is present. A derivative to be well defined must have an order that is greater than zero. Furthermore, it can be seen that this derivative is applied on a polynomial of degree $2n$. As is known from Calculus 1, if you derive a polynomial of degree $2n$ more than $2n$ times, you get zero, which is a trivial solution in which we are not interested.\newline
 We can thus summarize these two conditions by writing:
 \begin{equation*}
     \begin{rcases}
         m+n \leq 2n &\implies m \leq n \\
         m+n \geq 0  &\implies  m \geq -n
-    \end{rcases} |m| \leq n.
+    \end{rcases} \; |m| \leq n.
 \end{equation*}
+\if 0
 The set of functions in Eq.\eqref{kugel:eq:sph_harm_0} is named \emph{Spherical Harmonics}, which are the eigenfunctions of the Laplace operator on the \emph{spherical surface domain}, which is exactly what we were looking for at the beginning of this section.
 \fi
 
@@ -345,7 +343,7 @@ domain and combine it with $\Phi(\varphi)$ to get the full result:
 \begin{equation*}
     f(\vartheta, \varphi)
       = \Theta(\vartheta)\Phi(\varphi)
-      = P^m_n (\cos \vartheta) e^{im\varphi}.
+      = P^m_n (\cos \vartheta) e^{im\varphi}, \quad |m|<n.
 \end{equation*}
 This family of functions, which recall are the solutions of the eigenvalue
 problem of the surface spherical Laplacian, are the long anticipated
@@ -356,9 +354,9 @@ $Y^m_n(\vartheta, \varphi)$.
   \label{kugel:def:spherical-harmonics}
   The functions
   \begin{equation*}
-    Y^m_n (\vartheta, \varphi) = P^m_n(\cos \vartheta) e^{im\varphi},
+    Y^m_n (\vartheta, \varphi) = P^m_n(\cos \vartheta) e^{im\varphi}, \quad |m|<n
   \end{equation*}
-  where $m, n \in \mathbb{Z}$ and $|m| < n$ are called (unnormalized) spherical
+  where $m, n \in \mathbb{Z}$ are called (unnormalized) spherical
   harmonics.
 \end{definition}
 
@@ -645,6 +643,156 @@ harmonics or write $Y^m_n$, we mean the orthonormal spherical harmonics of
 definition \ref{kugel:def:spherical-harmonics-orthonormal}.
 
 \subsection{Recurrence Relations}
+The idea of this subsection is to introduce first some recursive relations regarding the Associated Legendre Functions, defined in eq.\eqref{kugel:def:ferrers-functions}. Subsequently we will extend them, in order to derive recurrence formulas for the case of Spherical Harmonic functions as well. 
+\subsubsection{Associated Legendre Functions}
+To start this journey, we can first write the following equations, which relate the Associated Legendre functions of different indeces $m$ and $n$ recursively:
+\begin{enumerate}[(i)]
+  \item $(2n+1) x P^m_n(z)= (m+n) P^m_{n-1}(z) + (n-m+1) P^m_{n+1}(z)$, \label{kugel:eq:rec_rel_1}
+  \item $\dfrac{2mz}{\sqrt{1-z^2}} P^m_n(z) = P^{m+1}_n(z) + [n(n+1)-m(m-1)] P^{m-1}_n(z)$, \label{kugel:eq:rec_rel_2}
+  \item $\sqrt{1-z^2} P^m_n(z) = \dfrac{1}{2n+1} \left[ P^{m+1}_{n+1}(z) - P^{m+1}_{n-1}(z) \right]$,  \label{kugel:eq:rec_rel_3}
+  \item $\sqrt{1-z^2} P^m_n(z) = \dfrac{1}{2n+1} \left[ (n+m)(n+m-1)P^{m-1}_{n-1}(z) - (n-m+1)(n-m+2)P^{m-1}_{n+1}(z) \right]$.  \label{kugel:eq:rec_rel_4}
+\end{enumerate}
+Much of the effort will be proving this bunch of equalities. Then, in the second part, where we will derive the recursion equations for $Y^m_n(\vartheta,\varphi)$, we will basically reuse the ones presented above.
+
+Maybe it is worth mentioning at least one use case for these relations: They are widely used in some software implementations, as they lead to better numerical accuracy and computational cost lower by a factor of six\cite{usecase_recursion}.
+\begin{enumerate}[(i)]
+  \item 
+  \begin{proof}
+    This is the relation that links the associated Legendre functions with the same $m$ index but different $n$. Using \ref{} \kugeltodo{ref alla recurrence dei polinomi di legendre (è da qualche parte nel libro)}, we have 
+    \begin{equation*}
+      (n+1)P_{n+1}(z)-(2n+1)xP_n(z)+nP_{n-1}(z)=0,
+    \end{equation*}
+    that can be differentiated $m$ times, obtaining
+    \begin{equation}\label{kugel:eq:rec_1}
+      (n+1)\frac{d^mP_{n+1}}{dz^m}-(2n+1) \left[z \frac{d^m P_n}{dz^m}+ m\frac{d^{m-1}P_{n-1}}{dz^{m-1}} \right] + n\frac{d^m P_{n-1}}{dz^m}=0.
+    \end{equation}
+    To continue this derivation, we need the following relation:
+    \begin{equation}\label{kugel:eq:rec_2}
+      \frac{dP_{n+1}}{dz} - \frac{dP_{n-1}}{dz} = (2n+1)P_n.
+    \end{equation}
+    The latter will not be derived, because it suffices to use the definition of the Legendre Polynomials $P_n(x)$ to check it.
+    
+    We can now differentiate the just presented eq.\eqref{kugel:eq:rec_2} $m-1$ times, that will become
+    \begin{equation}\label{kugel:eq:rec_3}
+      \frac{d^mP_{n+1}}{dx^m} - \frac{d^mP_{n-1}}{dx^m} = (2n+1)\frac{d^{m-1}P_n}{dx^{m-1}}.
+    \end{equation}
+    Then, using eq.\eqref{kugel:eq:rec_3} in eq.\eqref{kugel:eq:rec_1}, we will have
+    \begin{equation}\label{kugel:eq:rec_4}
+      (n+1)\frac{d^mP_{n+1}}{dx^m}- (2n+1)\frac{d^mP_{n+1}}{dx^m} -m\left[\frac{d^m P_{n+1}}{dx^m}+ \frac{d^{m}P_{n-1}}{dx^m}\right] + n\frac{d^m P_{n-1}}{dx^m}=0.
+    \end{equation}
+    Finally, multiplying both sides by $(1-x^2)^{\frac{m}{2}}$ and simplifying the expression, we can rewrite eq.\eqref{kugel:eq:rec_4} in terms of $P^m_n(x)$, namely
+    \begin{equation*}
+      (n+1-m)P^m_{n+1}(x)-(2n+1)xP^m_n(x)+(m+n)P^m_{n-1}(x)=0,
+    \end{equation*}
+    that rearranged, will be
+    \begin{equation*}
+      (2n+1) x P^m_n(x)= (m+n) P^m_{n-1}(x) + (n-m+1) P^m_{n+1}(x).
+    \end{equation*}
+  \end{proof}
+  
+  \item
+  \begin{proof}
+    This relation, unlike the previous one, link three expression with the same $n$ index but different $m$. 
+    
+    In the proof of Lemma \ref{kugel:lemma:sol_associated_leg_eq}, at some point we ran into this expression.
+    \begin{equation*}
+      (1-x^2)\frac{d^{m+2}P_n}{dx^{m+2}} - 2(m+1)x \frac{d^{m+1}P_n}{dx^{m+1}} + [n(n+1)-m(m+1)]\frac{d^mP_n}{dx^m} = 0,
+    \end{equation*}
+    that, if multiplied by $(1-x^2)^{\frac{m}{2}}$, will be
+    \begin{equation*}
+      (1-x^2)^{\frac{m}{2}+1}\frac{d^{m+2}P_n}{dx^{m+2}} - 2(m+1)x (1-x^2)^{\frac{m}{2}}\frac{d^{m+1}P_n}{dx^{m+1}} + [n(n+1)-m(m+1)](1-x^2)^{\frac{m}{2}}\frac{d^mP_n}{dx^m} = 0.
+    \end{equation*}
+    Therefore, as before, expressing it in terms of $P^m_n(x)$:
+    \begin{equation*}
+      P^{m+2}_n(x) - \frac{2(m+1)x}{\sqrt{1-x^2}}P^{m+1}_n(x) + [n(n+1)-m(m+1)]P^m_n(x)=0.
+    \end{equation*}
+    Furthermore, we can adjust the indeces and terms, obtaining
+    \begin{equation*}
+      \frac{2mx}{\sqrt{(1-x^2)}} P^m_n(x) = P^{m+1}_n(x) + [n(n+1)-m(m-1)] P^{m-1}_n(x)
+    \end{equation*}
+  
+  \end{proof}
+  
+  \item
+  \begin{proof}
+    To derive this expression, we can multiply eq.\eqref{kugel:eq:rec_3} by $(1-x^2)^{\frac{m}{2}}$ and, as always, we could express it in terms of $P^m_n(x)$:
+    \begin{equation*}
+      P^m_{n+1}(x) - P^m_{n-1}(x) = (2n+1)\sqrt{1-x^2}P^{m-1}_n(x).
+    \end{equation*}
+    Afer that we can divide by $2n+1$ resulting in
+    \begin{equation}\label{kugel:eq:helper}
+      \frac{1}{2n+1}[P^m_{n+1}(x) - P^m_{n-1}(x)] = \sqrt{1-x^2}P^{m-1}_n(x).
+    \end{equation}
+    To conclude, we arrange the indeces differently:
+    \begin{equation*}
+      \sqrt{1-x^2}P^{m}_n(x)=\frac{1}{2n+1}[P^{m+1}_{n+1}(x) - P^{m+1}_{n-1}(x)].
+    \end{equation*}
+  \end{proof}
+
+  \item
+  \begin{proof}
+    For this proof we can rely on (\ref{kugel:eq:rec_rel_1}), and therefore rewrite (\ref{kugel:eq:rec_rel_2}) as 
+    \begin{equation*}
+      \frac{2m}{(2n+1)\sqrt{1-x^2}} \left[ (m+n)P^m_{n-1}(x) + (n-m+1)P^m_{n+1}(x) \right] = P^{m+1}_n(x) + [ n(n+1)-m(m-1) ]P^{m-1}_n(x).
+    \end{equation*}
+    Rewriting then $P^{m-1}_n(x)$ using eq.\eqref{kugel:eq:helper}, we will have
+    \begin{align*}
+      \frac{2m}{(2n+1)\sqrt{1-x^2}} &\left[ (m+n)P^m_{n-1}(x) + (n-m+1)P^m_{n+1}(x) \right] = P^{m+1}_n(x) \\
+      &+ \frac{n(n+1)-m(m-1)}{(2n+1)\sqrt{1-x^2}} \left[ P^m_{n+1}(x)-P^m_{n-1}(x) \right].
+    \end{align*}
+    The last equation, after some algebric rearrangements, it is easy to show that it is equivalent to
+    \begin{equation*}
+      \sqrt{1-x^2} P^m_n(x) = \dfrac{1}{2n+1} \left[ (n+m)(n+m-1)P^{m-1}_{n-1}(x) - (n-m+1)(n-m+2)P^{m-1}_{n+1}(x) \right]
+    \end{equation*}
+  \end{proof}
+
+\end{enumerate}
+
+\subsubsection{Spherical Harmonics}
+The goal of this subsection's part is to apply the recurrence relations of the $P_n(z)$ functions to the Spherical Harmonics. 
+
+With some little adjustments we will be able to have recursion equations for them too. As previously written the most of the work is already done. Now it is only a matter of minor mathematical operations/rearrangements.
+
+We can start by listing all of them:
+\begin{enumerate}[(i)]
+  \item $Y^m_n(\vartheta, \varphi) = \dfrac{1}{(2n+1)\cos \vartheta} \left[ (m+n)Y^m_{n-1}(\vartheta, \varphi) + (m-n+1)Y^m_{n+1}(\vartheta, \varphi) \right]$
+  \begin{proof}
+    We can multiply both sides of equality in eq.\eqref{} by $e^{im \varphi}$ and perform the substitution $z=\cos \vartheta$. After a few simple algebraic steps, we will obtain the relation we are looking for
+  \end{proof}
+  \item $Y^m_n(\vartheta, \varphi) = \dfrac{\tan \vartheta}{2m}\left[ Y^{m+1}_n(\vartheta, \varphi)e^{-i\varphi} + [n(n+1)-m(m-1)]Y^{m-1}_n(\vartheta, \varphi)e^{i\varphi} \right]$
+  \begin{proof}
+    In this proof, as before, we can perform the substitution $z=\cos \vartheta$, and notice that $\sqrt{1-z^2}=\sin \vartheta$, hence, the relation in eq.\eqref{} will be
+    \begin{equation*}
+      \frac{2m \cos \vartheta}{\sin \vartheta} P^m_n(\cos \vartheta) =  P^{m+1}_n(\cos \vartheta) + [n(n+1)-m(m-1)]P^{m-1}_n P^m_n(\cos \vartheta).
+    \end{equation*}
+    The latter, multiplied by $e^{im\varphi}$, becomes
+    \begin{align*}
+      \frac{2m \cos \vartheta}{\sin \vartheta} P^m_n(\cos \vartheta)e^{im\varphi} &=  P^{m+1}_n(\cos \vartheta)e^{im\varphi} + [n(n+1)-m(m-1)]P^{m-1}_n P^m_n(\cos \vartheta)e^{im\varphi} \\
+      &= P^{m+1}_n(\cos \vartheta)e^{i(m+1)\varphi}e^{-i\varphi} + [n(n+1)-m(m-1)]P^{m-1}_n (\cos \vartheta)e^{i(m-1)\varphi}e^{i\varphi} \\
+      &= Y^{m+1}_n(\vartheta, \varphi)e^{-i\varphi} + [n(n+1)-m(m-1)]Y^{m-1}_n(\vartheta, \varphi)e^{i\varphi} \\
+    \end{align*}
+    Finally, after some ``cleaning''
+    \begin{equation*}
+      Y^m_n(\vartheta, \varphi) = \frac{\tan \vartheta}{2m} \left[ Y^{m+1}_n(\vartheta, \varphi)e^{-i\varphi} + [n(n+1)-m(m-1)]Y^{m-1}_n(\vartheta, \varphi)e^{i\varphi} \right]
+    \end{equation*}
+  \end{proof}
+  \item $Y^m_n(\vartheta, \varphi) = \dfrac{e^{-i\varphi}}{ (2n+1)\sin \vartheta } \left[ Y^{m+1}_{n+1}(\vartheta, \varphi) - Y^{m+1}_{n-1}(\vartheta, \varphi) \right]$
+  \begin{proof}
+    Now we can consider eq.\eqref{}, and multiply it by $e^{im\varphi}$. After the usual substitution $z=\cos \vartheta$, we have 
+    \begin{align*}
+      \sin \vartheta P^m_n(\cos \vartheta)e^{im\varphi} &= \dfrac{e^{im\varphi}}{2n+1}\left[ P^{m+1}_{n+1}(\cos \vartheta) - P^{m+1}_{n-1}(\cos \vartheta)\right] \\
+      &= \dfrac{e^{-i\varphi}}{2n+1}\left[ P^{m+1}_{n+1}(\cos \vartheta)e^{i(m+1)\varphi} - P^{m+1}_{n-1}(\cos \vartheta)e^{i(m+1)\varphi}\right] \\
+    \end{align*}
+    A few manipulations later, we will obtain
+    \begin{equation*}
+      Y^m_n(\vartheta, \varphi) = \frac{e^{-i\varphi}}{(2n+1)\sin \vartheta} \left[ Y^{m+1}_{n+1}(\vartheta, \varphi)-Y^{m+1}_{n-1}(\vartheta, \varphi) \right]
+    \end{equation*}
+  \end{proof}
+  \item $Y^m_n(\vartheta, \varphi) = \dfrac{e^{i\varphi}}{(2n+1)\sin \vartheta} \left[ (n+m)(n+m-1)Y^{m-1}_{n-1}(\vartheta, \varphi) - (n-m+1)(n-m+2)Y^{m-1}_{n+1}(\vartheta, \varphi) \right]$
+  \begin{proof}
+    This proof is very similar to the previous one. We just have to perform the substitution $z = \cos \vartheta$, as always. Secondly we can multiply the right side by $e^{im\varphi}$ and the left one too but in a different form, namely $e^{im\varphi}=e^{i(m-1)\varphi}e^{i\varphi}$. Then it is only a question of recalling the definition of $Y^m_n(\vartheta, \varphi)$.
+  \end{proof}
+\end{enumerate}
 
 \section{Series Expansions in $C(S^2)$}
 
