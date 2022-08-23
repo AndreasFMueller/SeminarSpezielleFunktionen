@@ -33,7 +33,8 @@ Dann wird gezeigt, dass das Sturm-Liouville-Problem auch ein Eigenwertproblem
 dieser Art ist und es wird auf au die Orthogononalität der Lösungsfunktion
 geschlossen.
 
-\subsection{Eigenwertprobleme mit symmetrischen Matrizen}
+\subsection{Eigenwertprobleme mit symmetrischen Matrizen
+\label{sturmliouville:section:eigenvalue-problem-matrix}}
 
 % TODO: intro
 
@@ -64,43 +65,56 @@ eine Orthogonalbasis.
 
 \subsection{Das Sturm-Liouville-Problem als Eigenwertproblem}
 
-% TODO: check L for errors (- sign)
-
-Wie in Kapitel (??) bereits eingeführt, kann das Sturm-Liouville-Problem als
-Eigenwertproblem geschrieben werden, indem der Operator
+In Kapitel~\ref{buch:integrale:subsection:sturm-liouville-problem} wurde bereits
+der Operator
 \[
     L
     =
     \frac{1}{w(x)}\left( -\frac{d}{dx}p(x) \frac{d}{dx} + q(x)\right)
 \]
-eingeführt wird.
-Mit diesem Operator kann nun
+eingeführt.
+Dieser wird nun verwendet um die Differenzialgleichung 
 \[
     (p(x)y'(x))' + q(x)y(x)
     =
     \lambda w(x) y(x)
 \]
-umgeschrieben werden zu
-\[
+in das Eigenwertproblem
+\begin{equation}
+    \label{sturmliouville:eigenvalue-problem}
     L y
     =
     \lambda y.
-\]
+\end{equation}
+umzuschreiben.
 
 \subsection{Orthogonalität der Lösungsfunktionen}
 
-Nun wird das Eigenwertproblem weiter angeschaut.
+Nun wird das Eigenwertproblem~\eqref{sturmliouville:eigenvalue-problem} näher
+angeschaut.
 Um auf die Orthogonalität der Lösungsfunktion zu schliessen, wird dafür der
 Operator $L$ genauer betrachtet.
-Analog zur Matrix $A$ aus Abschnitt (??) kann auch für $L$ gezeigt werden,
-dass dieser Operator selbstadjungiert ist, also dass
+Analog zur Matrix $A$ aus 
+Abschnitt~\ref{sturmliouville:section:eigenvalue-problem-matrix} kann auch für
+$L$ gezeigt werden, dass dieser Operator selbstadjungiert ist, also dass
 \[
     \langle L v, w\rangle
     =
     \langle v, L w\rangle
 \]
 gilt.
-Wie in Kapitel (??) bereits gezeigt 
+Wie in Kapitel~\ref{buch:integrale:subsection:sturm-liouville-problem} bereits
+gezeigt, ist dies durch die Randbedingungen des Sturm-Liouville-Problems
+sicher gestellt.
+
+Um nun über den Spektralsatz auf die Orthogonalität der Lösungsfunktion $y$ zu
+schliessen, muss der Operator $L$ ein sogenannter \"kompakter Operator\" sein.
+Bei einem regulären Sturm-Liouville-Problem ist diese für $L$ gegeben und wird
+im Weiteren nicht näher diskutiert.
+
+Es kann nun also dank dem Spektralsatz darauf geschlossen werden, dass die
+Lösungsfunktion $y$ eises regulären Sturm-Liouville-Problems eine
+Linearkombination aus orthogonalen Basisfunktionen sein muss.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%% OLD section %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
