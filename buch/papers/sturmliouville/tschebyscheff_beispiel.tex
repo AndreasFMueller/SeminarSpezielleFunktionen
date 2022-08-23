@@ -5,15 +5,15 @@
 %
 
 \subsection{Sind Tschebyscheff-Polynome orthogonal zueinander?
-\label{sub:tschebyscheff-polynome}}
+\label{sturmliouville:sub:tschebyscheff-polynome}}
 \subsubsection*{Definition der Koeffizientenfunktion}
 Im Kapitel \ref{sub:beispiele_sturm_liouville_problem} sind die
 Koeffizientenfunktionen, die man braucht, schon aufgeliste, und zwar mit
 \begin{align*}
 	w(x) &= \frac{1}{\sqrt{1-x^2}} \\
 	p(x) &= \sqrt{1-x^2} \\
-	q(x) &= 0
-\end{align*}.
+	q(x) &= 0.
+\end{align*}
 Da die Sturm-Liouville-Gleichung
 \begin{equation}
 	\label{eq:sturm-liouville-equation-tscheby}
@@ -27,7 +27,7 @@ ob es sich um ein reguläres oder singuläres Sturm-Liouville-Problem handelt.
 
 \subsubsection*{regulär oder singulär?}
 Für das reguläre Problem laut der
-Definition~\ref{def:reguläres_sturm-liouville-problem} muss die funktion
+Definition~\ref{sturmliouville:def:reguläres_sturm-liouville-problem} muss die funktion
 $p(x) = \sqrt{1-x^2}$, $p'(x) = -2x$, $q(x) = 0$ und
 $w(x) = \frac{1}{\sqrt{1-x^2}}$ stetig und reell sein --- und sie sind es auch.
 Auf dem Intervall $(-1,1)$ sind die Tschebyscheff-Polynome erster Art mit Hilfe
@@ -55,7 +55,8 @@ ist die gleiche wie $w(x)$ und erfüllt die Bedingung.
 Für die Verifizierung der Randbedingungen benötigt man erneut $p(x)$.
 Da sich die Polynome nur auf dem Intervall $[ -1,1 ]$ orthogonal verhalten,
 sind $a = -1$ und $b = 1$ gesetzt.
-Beim einsetzen in die Randbedingung \eqref{eq:randbedingungen}, erhält man
+Beim einsetzen in die Randbedingung \eqref{sturmliouville:eq:randbedingungen},
+erhält man
 \begin{equation}
 \begin{aligned}
 	k_a y(-1) + h_a y'(-1) &= 0\\
@@ -81,8 +82,9 @@ auf die Sturm-Liouville-Randbedingungen erfüllt und alle daraus resultierenden
 Lösungen orthogonal sind.
 
 \begin{beispiel}
-	Die Gleichung \eqref{eq:skalar-sturm-liouville} mit $y_m = T_1(x)$ und
-	$y_n(x) = T_2(x)$ eingesetzt sowie $a=-1$ und $b = 1$ ergibt
+	Die Gleichung \eqref{eq:skalar-sturm-liouville} mit
+	$y_m = T_1(x)$ und $y_n(x) = T_2(x)$ eingesetzt sowie $a=-1$ und $b = 1$
+	ergibt
 	\[
 	\int_{-1}^{1} w(x) x (2x^2-1) dx = 0.
 	\]
