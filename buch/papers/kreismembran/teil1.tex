@@ -7,7 +7,7 @@
 \section{Lösungsmethode 1: Separationsmethode 
 	\label{kreismembran:section:teil1}}
 \rhead{Lösungsmethode 1: Separationsmethode}
-An diesem Punkt bleibt also nur noch die Lösung der partiellen Differentialgleichung. In diesem Abschnitt wird sie mit Hilfe der Separationsmethode gelöst.
+An diesem Punkt bleibt also ``nur'' noch die Lösung der partiellen Differentialgleichung. In diesem Abschnitt wird sie mit Hilfe der Separationsmethode gelöst.
 
 \subsection{Aufgabestellung\label{sub:aufgabestellung}}
 Wie im vorherigen Abschnitt gezeigt, lautet die partielle Differentialgleichung, die die Schwingungen einer Membran beschreibt:
@@ -30,7 +30,7 @@ Da es sich um eine Kreisscheibe handelt, werden Polarkoordinaten verwendet, so d
 ergibt.
 
 Es wird eine runde elastische Membran berücksichtigt, die das Gebiet $\Omega$ abdeckt und am Rand $\Gamma$ befestigt ist.
-Es wirken keine äusseren Kräfte. Es handelt sich somit von einer kreisförmligen eingespannten homogenen schwingenden Membran nach den Annahmen von \ref{kreimembran:annahmen}.
+Es wirken keine äusseren Kräfte. Es handelt sich somit von einer kreisförmligen eingespannten homogenen schwingenden Membran nach den Annahmen von Abschnitt \ref{kreimembran:annahmen}.
 
 Daher ist die Membranabweichung im Punkt $(r,\varphi)$ $\in$ $\overline{\rm \Omega}$ zum Zeitpunkt $t$:
 \begin{align*}
@@ -50,9 +50,9 @@ Nun wird das in Abschnitt \ref{sub:aufgabestellung} vorgestellte Problem mit Hil
 \subsubsection{Ansatz der Separation der Variablen\label{subsub:ansatz_separation}}
 Hierfür wird folgenden Ansatz gemacht:
 \begin{equation*}
-	u(r,\varphi, t) = F(r)G(\varphi)T(t)
+	u(r,\varphi, t) = F(r)G(\varphi)T(t).
 \end{equation*}
-Dank der Randbedingungen kann gefordert werden, dass $F(R)=0$ ist, und natürlich, dass $G(\varphi)$ $2\pi$ periodisch ist. Eingesetzt in der Differenzialgleichung ergibt sich:
+Dank der Randbedingungen kann gefordert werden, dass $F(R)=0$ ist, und natürlich, dass $G(\varphi)$ $2\pi$-periodisch ist. Eingesetzt in der Differenzialgleichung ergibt sich nach Division durch $u$:
 \begin{equation*}
 	\frac{1}{c^2}\frac{T''(t)}{T(t)}=-\kappa^2=\frac{F''(r)}{F(r)}+\frac{1}{r}\frac{F'(r)}{F(r)}+\frac{1}{r^2}\frac{G''(\varphi)}{G(\varphi)}.
 \end{equation*}
@@ -71,9 +71,9 @@ In der zweiten Gleichung hängt die linke Seite nur von $r$ ab, während die rec
 \end{align*}
 
 \subsubsection{Lösung für $G(\varphi)$\label{subsub:lösung_G}}
-Da für die zweite Gleichung Lösungen von Schwingungen erwartet werden, für die $G''(\varphi)=-\omega^2 G(\varphi)$ gilt, schreibt man die gemeinsame Konstante als $\nu=-\omega^2$, was die Formeln später vereinfacht. Also:
+Da für die zweite Gleichung Lösungen von Schwingungen erwartet werden, für die $G''(\varphi)=-n^2 G(\varphi)$ gilt, schreibt man die gemeinsame Konstante als $\nu=-n^2$, was die Formeln später vereinfacht. $n$ muss auch eine ganze Zahl sein, weil  $G(\varphi)$ sonst nicht $2\pi$-periodisch ist. Also:
 \begin{equation*}
- G(\varphi) = C_n \cos(\nu\varphi) + D_n \sin(\nu\varphi)
+ G(\varphi) = C_n \cos(n\varphi) + D_n \sin(n\varphi)
  \label{eq:cos_sin_überlagerung}
 \end{equation*}
 
@@ -85,17 +85,20 @@ Die Gleichung für $F$ hat die Gestalt (Verweis auf \label{buch:differentialglei
 \end{align}
 Wie bereits in Kapitel \ref{buch:differntialgleichungen:section:bessel} gezeigt, sind die Bessel-Funktionen
 \begin{equation*}
-	J_{\nu}(x) = r^\nu \displaystyle\sum_{m=0}^{\infty} \frac{(-1)^m x^{2m}}{2^{2m+\nu}m! \Gamma (\nu + m+1)}
+	J_{n}(x) = r^n \displaystyle\sum_{m=0}^{\infty} \frac{(-1)^m x^{2m}}{2^{2m+n}m! \Gamma (n + m+1)}
 \end{equation*}
 Lösungen der Besselschen Differenzialgleichung
 \begin{equation*}
-	x^2 y'' + xy' + (\kappa^2 - \nu^2)y = 0
+	x^2 y'' + xy' + (\kappa^2 - n^2)y = 0
 \end{equation*}
 Die Funktionen $F(r) = J_n(\kappa r)$ lösen die Differentialgleichung \eqref{eq:2nd_degree_PDE}.
 
 \subsubsection{Lösung für $T(t)$\label{subsub:lösung_T}}
-Die Differenzialgleichung $T''(t) + c^2\kappa^2T(t) = 0$, wird auf ähnliche Weise gelöst wie $G(\varphi)$. 
-
+Die Differenzialgleichung $T''(t) + c^2\kappa^2T(t) = 0$, wird auf ähnliche Weise gelöst wie $G(\varphi)$. Um eine Einschränkung der möglichen Frequenzen zu erhalten und die Lösung als Reihe schreiben zu können, muss die folgende homogene Randbedingung definiert werden: 
+\begin{equation*}
+	u\big|_{\Gamma} = 0 \quad \text{für} \quad 0 \leq \varphi \leq 2\pi,\quad t \geq 0,
+\end{equation*}
+welche die $\kappa$ auf mögliche werte $\kappa_{mn}$ einschränkt.
 \subsubsection{Zusammenfassung der Lösungen\label{subsub:zusammenfassung_lösungen}}
 Durch Überlagerung aller Ergebnisse erhält man die Lösung
 \begin{align}
@@ -120,5 +123,7 @@ für die Anzahl der Knotenlinien steht. Es gibt bestimmte Bereiche auf der Membr
 		\label{buch:pde:kreis:fig:pauke}}
 \end{figure}
 
-
+\begin{center}
+	* \quad *\quad *
+\end{center}
 An diesem Punkt stellte sich die Frage, ob es möglich wäre, die partielle Differentialgleichung mit einer anderen Methode als der der Trennung der Variablen zu lösen. Nach einer kurzen Recherche wurde festgestellt, dass eine weitere Methode die Transformationsmethode ist, genauer gesagt die Anwendung der Hankel-Transformation. Im nächsten Kapitel wird daher diese Integraltransformation vorgestellt und entwickelt, und es wird erläutert, warum sie für diese Art von Problem geeignet ist.

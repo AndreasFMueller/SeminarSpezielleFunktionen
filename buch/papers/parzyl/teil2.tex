@@ -5,18 +5,33 @@
 %
 \section{Anwendung in der Physik 
 \label{parzyl:section:teil2}}
-\rhead{Teil 2}
+\rhead{Anwendung in der Physik}
+
+Die parabolischen Zylinderkoordinaten tauchen auf, wenn man das elektrische Feld einer semi-infiniten Platte, wie in Abbildung \ref{parzyl:fig:leiterplatte} gezeigt, finden will.
+\begin{figure}
+	\centering
+	\begin{minipage}{.7\textwidth}
+		 \centering
+		\includegraphics[width=\textwidth]{papers/parzyl/images/halfplane.pdf}
+		\caption{Semi-infinite Leiterplatte}
+		\label{parzyl:fig:leiterplatte}
+	\end{minipage}%
+	\begin{minipage}{.25\textwidth}
+		\centering
+	\includegraphics[width=\textwidth]{papers/parzyl/img/Plane_2D.png}
+	\caption{Semi-infinite Leiterplatte dargestellt in 2D}
+	\label{parzyl:fig:leiterplatte_2d}
+	\end{minipage}
+\end{figure}
+Die Äquipotentiallinien sind dabei in rot ,die des elektrischen Feldes in grün und semi-infinite Platte ist in blau dargestellt.
+Das dies so ist kann im Zweidimensionalen mit Hilfe von komplexen Funktionen gezeigt werden. Die Platte ist dann nur eine Halbgerade, was man in Abbildung \ref{parzyl:fig:leiterplatte_2d} sieht.
 
 
-\subsection{Elektrisches Feld einer semi-infiniten Platte
-\label{parzyl:subsection:bonorum}}
-Die parabolischen Zylinderkoordinaten tauchen auf, wenn man das elektrische Feld einer semi-infiniten Platte finden will.
-Das dies so ist kann im zwei Dimensionalen mit Hilfe von komplexen Funktionen gezeigt werden. Wobei die Platte dann nur eine Linie ist.
 Jede komplexe Funktion $F(z)$ kann geschrieben werden als
 \begin{equation}
-	F(z) = U(x,y) + iV(x,y) \qquad z \in \mathbb{C}; x,y \in \mathbb{R}.
+	F(s) = U(x,y) + iV(x,y) \quad s = x + iy \qquad s \in \mathbb{C}; x,y \in \mathbb{R}.
 \end{equation}  
-Dabei muss gelten, falls die Funktion differenzierbar ist, dass
+Dabei müssen, falls die Funktion differenzierbar ist, die Cauchy-Riemann Differentialgleichungen 
 \begin{equation}
 	\frac{\partial U(x,y)}{\partial x} 
 	=
@@ -24,8 +39,9 @@ Dabei muss gelten, falls die Funktion differenzierbar ist, dass
 	\qquad
 	\frac{\partial V(x,y)}{\partial x}
 	=
-	-\frac{\partial U(x,y)}{\partial y}.
+	-\frac{\partial U(x,y)}{\partial y}
 \end{equation}
+gelten.
 Aus dieser Bedingung folgt 
 \begin{equation}
 	\label{parzyl_e_feld_zweite_ab}
@@ -35,7 +51,7 @@ Aus dieser Bedingung folgt
 	\frac{\partial^2 U(x,y)}{\partial y^2}
 	=
 	0
-	}_{\nabla^2U(x,y)=0}
+	}_{\displaystyle{\nabla^2U(x,y)=0}}
 	\qquad
 	\underbrace{
 	\frac{\partial^2 V(x,y)}{\partial x^2}
@@ -43,49 +59,78 @@ Aus dieser Bedingung folgt
 	\frac{\partial^2 V(x,y)}{\partial y^2}
 	=
 	0
-	}_{\nabla^2V(x,y) = 0}.
+	}_{\displaystyle{\nabla^2V(x,y) = 0}}.
 \end{equation}
-Zusätzlich zeigen diese Bedingungen auch, dass die zwei Funktionen $U(x,y)$ und $V(x,y)$ orthogonal zueinander sind.
+Zusätzlich kann auch gezeigt werden, dass die Funktion $F(z)$ eine winkeltreue Abbildung ist.
+
+ 
 Der Zusammenhang zum elektrischen Feld ist jetzt, dass das Potential an einem quellenfreien Punkt gegeben ist als 
 \begin{equation}
 	\nabla^2\phi(x,y) = 0.
 \end{equation}
-Da dies bei komplexen differenzierbaren Funktionen gilt, wie Gleichung \ref{parzyl_e_feld_zweite_ab} zeigt, kann entweder $U(x,y)$ oder $V(x,y)$ von einer solchen Funktion als das Potential angesehen werden. Im weiteren wird für das Potential $U(x,y)$ verwendet.  
-Da die Funktion, welche nicht das Potential beschreibt, in weiteren angenommen als $V(x,y)$, orthogonal zum Potential ist, zeigt dies das Verhalten des elektrischen Feldes.
-Um nun zu den parabolische Zylinderkoordinaten zu gelangen muss nur noch eine geeignete komplexe Funktion $F(z)$ gefunden werden, welche eine semi-infinite Platte beschreiben kann. Man könnte natürlich auch nach anderen Funktionen suchen, welche andere Bedingungen erfüllen und würde dann auf andere Koordinatensysteme stossen. Die gesuchte Funktion in diesem Fall ist
+Dies ist eine Bedingung, welche differenzierbare Funktionen, wie in Gleichung \eqref{parzyl_e_feld_zweite_ab} gezeigt wird, bereits besitzen. 
+
+
+Nun kann zum Beispiel $U(x,y)$ als das Potential angeschaut werden
 \begin{equation}
-	F(z) 
+	\phi(x,y) = U(x,y).
+\end{equation}
+Orthogonal zu den Äquipotenzialfläche sind die Feldlinien des elektrische Feld
+\begin{equation}
+	E(x,y) = V(x,y).
+\end{equation}
+
+
+Um nun zu den parabolische Zylinderkoordinaten zu gelangen muss nur noch eine geeignete 
+komplexe Funktion $F(s)$ gefunden werden, 
+welche eine semi-infinite Platte beschreiben kann.
+
+
+Die gesuchte Funktion in diesem Fall ist
+\begin{equation}
+	F(s) 
 	= 
-	\sqrt{z} 
+	\sqrt{s} 
 	= 
 	\sqrt{x + iy}.
 \end{equation}
 Dies kann umgeformt werden zu
 \begin{equation}
-	F(z) 
+	F(s) 
 	= 
 	\underbrace{\sqrt{\frac{\sqrt{x^2+y^2} + x}{2}}}_{U(x,y)} 
 	+ 
 	i\underbrace{\sqrt{\frac{\sqrt{x^2+y^2} - x}{2}}}_{V(x,y)}
 	.
 \end{equation}
-Die Äquipotentialflächen können nun betrachtet werden, indem man die Funktion welche das Potential beschreibt gleich eine Konstante setzt,
-\begin{equation}
-	\sigma = U(x,y) = \sqrt{\frac{\sqrt{x^2+y^2} + x}{2}},
-\end{equation}
-und die Flächen mit der gleichen elektrischen Feldstärke können als
-\begin{equation}
-	\tau = V(x,y) = \sqrt{\frac{\sqrt{x^2+y^2} - x}{2}}
-\end{equation}
-beschrieben werden. Diese zwei Gleichungen zeigen nun wie man vom kartesischen Koordinatensystem ins parabolische Zylinderkoordinatensystem kommt. Werden diese Formeln nun nach x und y aufgelöst so beschreibe sie, wie man aus dem parabolischen Zylinderkoordinatensystem zurück ins kartesische rechnen kann
-\begin{equation}
-	x = \sigma \tau,
-\end{equation}
-\begin{equation}
-	y = \frac{1}{2}\left ( \tau^2 - \sigma^2 \right )
-\end{equation}
 
 
-
-
+Die Äquipotentialflächen können nun betrachtet werden, 
+indem man die Funktion, welche das Potential beschreibt, gleich eine Konstante setzt,
+\begin{equation}
+%	\sigma = U(x,y) = \sqrt{\frac{\sqrt{x^2+y^2} + x}{2}}.
+	c_1 = U(x,y) = \sqrt{\frac{\sqrt{x^2+y^2} + x}{2}}.
+\end{equation}
+Die Flächen mit der gleichen elektrischen Feldstärke können als
+\begin{equation}
+%	\tau = V(x,y) = \sqrt{\frac{\sqrt{x^2+y^2} - x}{2}}
+	c_2 = V(x,y) = \sqrt{\frac{\sqrt{x^2+y^2} - x}{2}}
+\end{equation}
+beschrieben werden. Diese zwei Gleichungen zeigen nun, wie man vom 
+kartesischen Koordinatensystem ins parabolische Zylinderkoordinatensystem kommt.
+%Werden diese Formeln nun nach $x$ und $y$ aufgelöst 
+%\begin{equation}
+%	x = \sigma \tau,
+%\end{equation}
+%\begin{equation}
+%	y = \frac{1}{2}\left ( \tau^2 - \sigma^2 \right ),
+%\end{equation}
+%so beschreibe sie, wie man aus dem parabolischen Zylinderkoordinatensystem zurück ins kartesische rechnen kann.
+Werden diese Formeln nun nach $x$ und $y$ aufgelöst 
+\begin{align}
+	x &=  c_1^2 - c_2^2 ,\\
+	y &= 2c_1 c_2,
+\end{align}
+so beschreiben sie mit $\tau = c_1 \sqrt{2}$ und $\sigma = c_2 \sqrt{2}$ die Beziehung 
+zwischen dem parabolischen Zylinderkoordinatensystem und dem kartesischen Koordinatensystem.
 

@@ -9,6 +9,9 @@ import pylatex
 import numpy as np
 import matplotlib.pyplot as plt
 
+
+
+
 N = np.array([0, 0])
 V = np.array([1, 4])
 Z = np.array([5, 5])
@@ -34,9 +37,10 @@ ax.quiver(X, Y, U, W, angles='xy', scale_units='xy', scale=1, headwidth=5, headl
 
 ax.plot([V[0], (VZ+V)[0]], [V[1], (VZ+V)[1]], 'k--')
 ax.plot(np.vstack([V, Z])[:, 0], np.vstack([V, Z])[:,1], 'bo', markersize=10)
-ax.set_xlabel("x", size=20)
-ax.set_ylabel("y", size=20)
 
+ax.tick_params(labelsize=15)
+plt.xticks(ticks=range(0, 7))
+plt.yticks(ticks=range(0, 7))
 ax.text(2.5, 4.5, "Visierlinie", size=20, rotation=10)
 
 plt.rcParams.update({
@@ -48,6 +52,7 @@ plt.rcParams.update({
 ax.text(1.6, 4.3, r"$\dot{v}$", size=20)
 ax.text(0.65, 3.9, r"$V$", size=20, c='b')
 ax.text(5.15, 4.85, r"$Z$", size=20, c='b')
-
+ax.set_xlabel(r"$x$", size=20)
+ax.set_ylabel(r"$y$", size=20)
 
 

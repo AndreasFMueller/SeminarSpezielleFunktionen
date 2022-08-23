@@ -1,6 +1,0 @@
-
-f: exp(-r^2/sigma^2)/sigma;
-laplacef: ratsimp(diff(r * diff(f,r), r) / r);
-f: exp(-r^2/(2*sigma^2))/(sqrt(2)*sigma);
-laplacef: ratsimp(diff(r * diff(f,r), r) / r);
-
