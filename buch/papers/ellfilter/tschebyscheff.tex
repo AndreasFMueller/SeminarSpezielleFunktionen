@@ -2,7 +2,7 @@
 
 Als Einstieg betrachten wir das Tschebyscheff-Filter, welches sehr verwandt ist mit dem elliptischen Filter.
 Genauer ausgedrückt erhält man die Tschebyscheff-1 und -2 Filter bei Grenzwerten von Parametern beim elliptischen Filter.
-Der Name des Filters deutet schon an, dass die Tschebyscheff-Polynome $T_N$ (siehe auch Kapitel \label{buch:polynome:section:tschebyscheff}) für das Filter relevant sind:
+Der Name des Filters deutet schon an, dass die Tschebyscheff-Polynome $T_N$ (siehe auch Kapitel \ref{buch:polynome:section:tschebyscheff}) für das Filter relevant sind:
 \begin{align}
     T_{0}(x)&=1\\
     T_{1}(x)&=x\\
@@ -17,7 +17,7 @@ Bemerkenswert ist, dass die Polynome im Intervall $[-1, 1]$ mit der trigonometri
 \end{align}
 übereinstimmen.
 Der Zusammenhang lässt sich mit den Doppel- und Mehrfachwinkelfunktionen der trigonometrischen Funktionen erklären.
-Abbildung \ref{ellfilter:fig:chebychef_polynomials} zeigt einige Tschebyscheff-Polynome.
+Abbildung \ref{ellfilter:fig:chebychef_polynomials} zeigt einige Tschebyscheff-Polynome, wobei das Equiripple-Verhalten schon sichtbar ist.
 \begin{figure}
     \centering
     \input{papers/ellfilter/python/F_N_chebychev2.pgf}
@@ -37,7 +37,6 @@ Wenn wir die Tschebyscheff-Polynome quadrieren, passen sie perfekt in die Forder
 
 Die analytische Fortsetzung von \eqref{ellfilter:eq:chebychef_polynomials} über das Intervall $[-1,1]$ hinaus stimmt mit den Polynomen überein, wie es zu erwarten ist.
 Die genauere Betrachtung wird uns helfen die elliptischen Filter besser zu verstehen.
-
 Starten wir mit der Funktion, die in \eqref{ellfilter:eq:chebychef_polynomials} als erstes auf $w$ angewendet wird, dem Arcuscosinus.
 Die invertierte Funktion des Kosinus kann als bestimmtes Integral dargestellt werden:
 \begin{align}
@@ -63,7 +62,7 @@ Die invertierte Funktion des Kosinus kann als bestimmtes Integral dargestellt we
     ~dz
     + \frac{\pi}{2}.
 \end{align}
-Der Integrand oder auch die Ableitung von $\cos^{-1}(x)$
+Der Integrand oder auch die Ableitung von $\cos^{-1}(x)$,
 \begin{equation}
     \frac{
         -1
@@ -71,7 +70,7 @@ Der Integrand oder auch die Ableitung von $\cos^{-1}(x)$
         \sqrt{
             1-z^2
         }
-    }
+    },
 \end{equation}
 bestimmt dabei die Richtung, in welche die Funktion verläuft.
 Der reelle Arcuscosinus is bekanntlich nur für $|z| \leq 1$ definiert.
@@ -91,19 +90,19 @@ Das Einzeichnen von Pol- und Nullstellen ist hilfreich für die Betrachtung der 
 
 
 In \eqref{ellfilter:eq:chebychef_polynomials} wird $z$ mit dem Ordnungsfaktor $N$ multipliziert und durch die Kosinusfunktion zurück transformiert.
-Die Skalierung hat zur folge, dass bei der Rücktransformation durch den Kosinus mehrere Nullstellen durchlaufen werden.
-Somit passiert $\cos( N~\cos^{-1}(w))$ im Intervall $[-1, 1]$ $N$ Nullstellen, wie dargestellt in Abbildung \ref{ellfilter:fig:arccos2}.
+Die Skalierung hat zur Folge, dass bei der Rücktransformation durch den Kosinus mehrere Nullstellen durchlaufen werden.
+Somit passiert $\cos \big( N~\cos^{-1}(w) \big)$ im Intervall $[-1, 1]$ $N$ Nullstellen, wie dargestellt in Abbildung \ref{ellfilter:fig:arccos2}.
 \begin{figure}
     \centering
     \input{papers/ellfilter/tikz/arccos2.tikz.tex}
     \caption{
         $z_1=N \cos^{-1}(w)$-Ebene der Tschebyscheff-Funktion.
         Die eingefärbten Pfade sind Verläufe von $w\in(-\infty, \infty)$ für $N = 4$.
-        Je grösser die Ordnung $N$ gewählt wird, desto mehr Nullstellen werden passiert die zu Equirippel-Verhalten führen.
+        Je grösser die Ordnung $N$ gewählt wird, desto mehr Nullstellen werden passiert die zu Equiripple-Verhalten führen.
         Die vertikalen Segmente der Funktion sorgen für das Ansteigen der Funktion gegen $\infty$ nach der Grenzfrequenz.
         Die eingezeichneten Nullstellen sind vom zurücktransformierenden Kosinus.
     }
     \label{ellfilter:fig:arccos2}
 \end{figure}
-Durch die spezielle Anordnung der Nullstellen hat die Funktion auf der reellen Achse Equirippel-Verhalten und ist dennoch ein Polynom, was sich perfekt für linear Filter eignet.
-Equirippel bedeutet, dass alle lokalen Maxima der Betragsfunktion gleich gross sind.
+Durch die spezielle Anordnung der Nullstellen hat die Funktion auf der reellen Achse Equiripple-Verhalten und ist dennoch ein Polynom, was sich perfekt für lineare Filter eignet.
+Für $|w| <= 1$ ist die Funktion begrenzt zwischen $-1$ und $1$.
