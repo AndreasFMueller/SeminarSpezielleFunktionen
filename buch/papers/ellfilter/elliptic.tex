@@ -9,9 +9,9 @@ Kommen wir nun zum eigentlichen Teil dieses Papers, den rationalen elliptischen 
 Beim Betrachten dieser Definition, fällt die Ähnlichkeit zur trigonometrische Darstellung der Tsche\-byschef-Polynome \eqref{ellfilter:eq:chebychef_polynomials} auf.
 Wie bei den Tschebyscheff-Polynomen ist die Formel mit speziellen Funktionen geschrieben.
 Es kann jedoch gezeigt werden, dass es sich tatsächlich um rationale Funktionen handelt, wie es für ein lineares Filter vorausgesetzt wird.
-Die elliptischen Funktionen werden also genau so eingesetzt, dass die resultierenden Nullstellen und Pole eine rationale Funktion ergeben. 
+Die elliptischen Funktionen werden also genau so eingesetzt, dass die resultierenden Nullstellen und Pole eine rationale Funktion ergeben.
 Anstelle des Kosinus bei den Tschebyscheff-Polynomen kommt hier die $\cd$-Funktion zum Einsatz.
-Die Ordnungszahl $N$ kommt auch als Faktor for.
+Die Ordnungszahl $N$ kommt auch als Faktor vor.
 Zusätzlich werden noch zwei verschiedene elliptische Moduli $k$ und $k_1$ gebraucht.
 Bei $k = k_1 = 0$ wird der $\cd$ zum Kosinus und wir erhalten in diesem Spezialfall die Tschebyschef-Polynome.
 
@@ -58,12 +58,15 @@ Dies würde jedoch zu Oszillationen zwischen $1$ und $1/k$ im Übergangsbereich 
 \subsection{Gradgleichung}
 
 Damit die Pol- und Nullstellen genau in dieser Konstellation durchfahren werden, müssen die elliptischen Moduli des inneren und äusseren $\cd$ aufeinander abgestimmt werden.
-In der reellen Richtung müssen sich die Periodizitäten $K$ und $K_1$ um den Faktor $N$ unterscheiden, während die imagiäre Periodizitäten $K^\prime$ und $K^\prime_1$ gleich bleiben müssen.
+In der reellen Richtung müssen sich die Periodizitäten $K$ und $K_1$ um den Faktor $N$ unterscheiden, während die imaginäre Periodizitäten $K^\prime$ und $K^\prime_1$ gleich bleiben müssen.
 Zur Erinnerung, $K$ und $K^\prime$ sind durch elliptische Integrale definiert und vom Modul $k$ abhängig wie ersichtlich in Abbildung \ref{ellfilter:fig:kprime}.
 \begin{figure}
     \centering
     \input{papers/ellfilter/python/k.pgf}
-    \caption{Die Periodizitäten in realer und imaginärer Richtung in Abhängigkeit vom elliptischen Modul $k$.}
+    \caption{
+        Die Periodizitäten in realer und imaginärer Richtung in Abhängigkeit vom elliptischen Modul $k$.
+        In der rechten Grafik sind $K$ und $K^\prime$ gegenübergestellt, wobei alle möglichen Kombinationen auf der eingezeichneten Ortskurve liegen.
+    }
     \label{ellfilter:fig:kprime}
 \end{figure}
 $K$ und $K^\prime$ sind durch die Ortskurve $K + jK^\prime$ aneinander gebunden und benötigen den Zusatzfaktor $K_1/K$ in \eqref{ellfilter:eq:elliptic}, um die genanten Forderungen einzuhalten.
@@ -84,7 +87,7 @@ k_1 = k^N \prod_{i=1}^L \sn^4 \Bigg( \frac{2i - 1}{N} K, k \Bigg),
 \quad \text{wobei} \quad
 N = 2L+r.
 \end{equation}
-Die Herleitung ist sehr umfassend und wird in \cite{ellfilter:bib:orfanidis} im Detail angeschaut.
+Die Herleitung ist sehr umfangreich und wird in \cite{ellfilter:bib:orfanidis} im Detail angeschaut.
 
 \subsection{Berechnung der rationalen Funktion}
 
@@ -102,7 +105,7 @@ Wenn $k$ und $N$ bekannt sind, können die Position der Pol- und Nullstellen $p_
     }
     \label{ellfilter:fig:pn}
 \end{figure}
-Dabei muss aufgepasst werden, dass insgesamt nur $N$ Nullstellen und $N$ Pole gesetzt werden, da bei der transformation mit dem $\cd$ mehrere Werte auf einen abgebildet werden und mehrfache Pole und Nullstellen nicht erwünscht sind.
+Dabei muss aufgepasst werden, dass insgesamt nur $N$ Nullstellen und $N$ Pole gesetzt werden, da bei der Transformation mit dem $\cd$ mehrere Werte auf einen abgebildet werden und mehrfache Pole und Nullstellen nicht erwünscht sind.
 Wegen der Periodizität sind diese in der komplexen $z$-Ebene linear angeordnet:
 \begin{align}
     n_i(k) &= K\frac{2i+1}{N} \\
@@ -116,7 +119,7 @@ wobei $r_0$ so gewählt werden muss, dass $R_N(w, k) = 1$.
 
 \section{Elliptisches Filter}
 
-Um ein elliptisches Filter auszulegen werden aber nicht die Pol- und Nullstellen der rationalen Funktion gebraucht, sondern diejenigen der Übertragungsfunktion $H(s)$ der komplexen Frequenz $s = j\Omega + \sigma$.
+Um ein elliptisches Filter auszulegen, werden aber nicht die Pol- und Nullstellen der rationalen Funktion gebraucht, sondern diejenigen der Übertragungsfunktion $H(s)$ der komplexen Frequenz $s = j\Omega + \sigma$.
 Der Bezug zum quadratischen Amplitudengang \eqref{ellfilter:eq:quadratic_transfer} ist dabei
 \begin{equation}
     |H(\Omega)|^2 = H(s) H(s^*),
@@ -124,9 +127,3 @@ Der Bezug zum quadratischen Amplitudengang \eqref{ellfilter:eq:quadratic_transfe
 wobei $*$ die komplexe Konjugation kennzeichnet.
 Die genaue Berechnung geht einiges tiefer in die Filtertheorie, und verlässt das Gebiet der speziellen Funktionen.
 Der interessierte Leser wird auf \cite[Kapitel~5]{ellfilter:bib:orfanidis} verwiesen.
-
-% \subsection{Schlussfolgerung}
-
-% Die elliptischen Filter können als direkte Erweiterung der Tschebyscheff-Filter verstanden werden.
-% Bei den Tschebyscheff-Polynomen haben wir gesehen, dass die Trigonometrische Formel zu einfachen Polynomen umgewandelt werden kann.
-% Im elliptischen Fall entstehen so rationale Funktionen mit Nullstellen und auch Pole.

@@ -2,10 +2,10 @@
 
 Filter sind womöglich eines der wichtigsten Elemente in der Signalverarbeitung und finden Anwendungen in der digitalen und analogen Elektrotechnik.
 Besonders hilfreich ist die Untergruppe der linearen Filter.
-Elektronische Schaltungen mit linearen Bauelementen wie Kondensatoren, Spulen und Widerständen führen immer zu linearen zeitinvarianten Systemen (LTI-System von englich \textit{time-invariant system}).
+Elektronische Schaltungen mit linearen Bauelementen wie Kondensatoren, Spulen und Widerständen führen immer zu linearen zeitinvarianten Systemen (LTI-System von englisch \textit{time-invariant system}).
 Durch die Linearität werden beim Filtern keine neuen Frequenzanteile erzeugt, was es erlaubt, einen Frequenzanteil eines Signals verzerrungsfrei herauszufiltern.
 Diese Eigenschaft macht es sinnvoll, lineare Filter im Frequenzbereich zu beschreiben.
-Die Übertragungsfunktion eines linearen Filters im Frequenzbereich $H(\Omega)$ ist dabei immer eine rationale Funktion, also ein Quotient von zwei Polynomen.
+Die Übertragungsfunktion $H(\Omega)$ eines linearen Filters im Frequenzbereich ist dabei immer eine rationale Funktion, also ein Quotient von zwei Polynomen.
 Dabei ist $\Omega = 2 \pi f$ die Frequenzeinheit.
 Die Polynome haben dabei immer reelle oder komplexkonjugierte Nullstellen.
 
@@ -40,7 +40,7 @@ Des weiteren müssen alle Nullstellen und Pole von $F_N$ auf der linken Halbeben
 $w$ ist die normalisierte Frequenz, die es erlaubt ein Filter unabhängig von der Grenzfrequenz zu beschrieben.
 Bei $w=1$ hat das Filter eine Dämpfung von $1/(1+\varepsilon^2)$.
 $N \in \mathbb{N} $ gibt die Ordnung des Filters vor, also die maximale Anzahl Pole oder Nullstellen.
-Je höher $N$ gewählt wird, desto steiler ist der Übergang in denn Sperrbereich.
+Je höher $N$ gewählt wird, desto steiler ist der Übergang in den Sperrbereich.
 Grössere $N$ sind erfordern jedoch aufwendigere Implementierungen und haben mehr Phasenverschiebung.
 
 Eine einfache Funktion, die für $F_N$ eingesetzt werden kann, ist das Polynom $w^N$.
@@ -68,7 +68,7 @@ Das Butterworth-Filter, zum Beispiel, ist maximal flach im Durchlassbereich.
 In vielen Anwendung sind Filter mit einem steilen Übergang gewünscht.
 Da es technisch nicht möglich ist, mit einer rationalen Funktion mit begrenzter Anzahl Pole eine steile Flanke zu erreichen, während der Durchlass- und Sperrbereich flach und monoton sind, gibt es Filtertypen, die absichtlich Welligkeiten in der Frequenzantwort aufweisen.
 Besonders effizient sind Filter mit Equiripple-Verhalten, wessen Welligkeit optimal definiert wird für eine maximal steile Flanke, während die maximale Abweichung zum idealen Filter begrenzt ist.
-Die Welligkeit beansprucht dabei einen begrenzen Verstärkungsintervall und nützt diesen Vollständig aus, indem sie periodisch die Grenzen des Intervalls berührt.
+Die Welligkeit beansprucht dabei einen begrenzen Verstärkungsintervall und nützt diesen vollständig aus, indem sie periodisch die Grenzen des Intervalls berührt.
 Das Tschebyscheff-1 Filter, zum Beispiel, hat Equiripple-Verhalten im Durchlassbereich, währendem es im Sperrbereich monoton abfallend ist.
 Beim Tschebyscheff-2 Filter ist es umgekehrt.
 
