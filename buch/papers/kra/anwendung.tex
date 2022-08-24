@@ -6,6 +6,7 @@ Die Matrix-Riccati Differentialgleichung findet unter anderem Anwendung in der R
 Im folgenden Abschnitt möchten wir uns an einem Beispiel anschauen wie wir mit Hilfe der Matrix-Riccati-Differentialgleichung (\ref{kra:equation:matrixriccati}) ein Feder-Masse-System untersuchen können \cite{kra:riccati}.
 
 \subsection{Feder-Masse-System}
+\label{kra:subsection:feder-masse-system}
 Die einfachste Form eines Feder-Masse-Systems ist dargestellt in Abbildung~\ref{kra:fig:simple_mass_spring}.
 Es besteht aus einer reibungsfrei gelagerten Masse $m$, welche an eine Feder mit der Federkonstante $k$ gekoppelt ist.
 Die im System wirkenden Kräfte teilen sich auf in die auf dem hookeschen Gesetz basierenden Rückstellkraft $F_R = k \Delta_x$ und der auf dem Aktionsprinzip basierenden Kraft $F_a = am = \ddot{x} m$.
@@ -35,6 +36,7 @@ Die Funktion die diese Differentialgleichung löst, ist die harmonische Schwingu
 \end{figure}
 
 \subsection{Hamilton-Funktion}
+\label{kra:subsection:hamilton-funktion}
 Die Bewegung der Masse $m$ kann mit Hilfe der hamiltonschen Mechanik im Phasenraum untersucht werden.
 Die hamiltonschen Gleichungen verwenden dafür die verallgemeinerten Ortskoordinaten
 $q = (q_{1}, q_{2}, ..., q_{n})$ und die verallgemeinerten Impulskoordinaten $p = (p_{1}, p_{2}, ..., p_{n})$, wobei der Impuls definiert ist als $p_k = m_k \cdot v_k$.
@@ -95,7 +97,7 @@ Die Hamilton-Funktion ist also
 \begin{align*}
     \begin{split}
         H   &= T + V \\
-            &= \frac{p_1^2}{2m_1} + \frac{p_2^2}{2m_2} + \frac{k_1 q_1^2}{2} + \frac{k_c (q_2 - q_1)^2}{2} + \frac{k_2 q_2^2}{2}
+        &= \frac{p_1^2}{2m_1} + \frac{p_2^2}{2m_2} + \frac{k_1 q_1^2}{2} + \frac{k_c (q_2 - q_1)^2}{2} + \frac{k_2 q_2^2}{2}
     \end{split}
 \end{align*}
 Die Bewegungsgleichungen \eqref{kra:equation:bewegungsgleichung} liefern
@@ -160,7 +162,14 @@ In Matrixschreibweise erhalten wir
 \end{equation}
 
 \subsection{Phasenraum}
-Der Phasenraum erlaubt die eindeutige Beschreibung aller möglichen Bewegungszustände eines mechanischen Systems durch einen Punkt.
+\subsubsection{Motivation}
+Die Beschreibung eines klassischen physikalischen Systems führt in der Newtonschen-Mechanik, wie wir in \ref{kra:subsection:feder-masse-system} gesehen haben, auf eine DGL 2. Ordung der Dimension $n$.
+Zur Betrachung des Systems verwenden wir dabei den Konfigurationsraum, ein Raum $\mathbb{R}^n$, bei dem ein einziger Punkt die Position aller $n$ Teilchen festlegt.
+Der Nachteil des Konfigurationsraums ist dabei, dass dieser nur die Positionen der Teilchen widerspiegelt.
+Um den Zustand eines Systems vollständig zu beschreiben, muss man aber nicht nur wissen wo sich die Teilchen zu einem bestimmten Zeitpunkt befinden, sondern auch wie sie sich bewegen.
+
+Im Gegensatz dazu führt die Beschreibung des Systems mit Hilfe der Hamilton-Mechanik \ref{kra:subsection:hamilton-funktion}, auf eine DGL 1. Ordnung der Dimension $2n$.
+Die Betrachtung erfolgt im einem Raum $\mathbb{R}^{2n}$, bei dem ein einzelner Punkt den Bewegungszustand vollständig beschreibt, dem sogennanten Phasenraum.
 Die Phasenraumdarstellung eignet sich somit sehr gut für die systematische Untersuchung der Feder-Masse-Systeme.
 
 \subsubsection{Harmonischer Oszillator}
@@ -205,6 +214,7 @@ Ausgeschrieben folgt
     \dot{P} = CQ + DP
 \end{align*}
 \begin{equation}
+    \label{kra:equation:feder-masse-riccati-matrix}
     \begin{split}
         \dt U   &= \dot{P} Q^{-1} + P \dt Q^{-1} \\
         &= (CQ + DP) Q^{-1} - P (Q^{-1} \dot{Q} Q^{-1}) \\
@@ -213,7 +223,9 @@ Ausgeschrieben folgt
         &= C  + DU - UA - UBU
     \end{split}
 \end{equation}
-was uns auf die Matrix-Riccati Gleichung \eqref{kra:equation:matrixriccati} führt.
+was uns direkt auf die Matrix-Riccati Gleichung \eqref{kra:equation:matrixriccati} führt.
+Wir sehen das sich die Dimension der DGL reduziert, dabei aber gleichzeitig der Grad erhöht.
 
-% @TODO Einfluss auf anfangsbedingungen, plots?
-% @TODO Fazit ?
+\subsection{Fazit}
+Wir haben gezeigt wie wir ein Federmassesystem mit Hilfe der Hamilton-Funktion Beschreiben und im Phasenraum untersuchen können.
+Ausserdem haben wir gesehen, dass sich bei der Entstehung der Riccati-Gleichung \eqref{kra:equation:feder-masse-riccati-matrix} die Dimension auf Kosten des Grades reduziert wird.

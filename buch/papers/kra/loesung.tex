@@ -49,8 +49,33 @@ Diese kann nun mit den Methoden zur Lösung von linearen Differentialgleichungen
 Durch die Rücksubstitution \eqref{kra:equation:backsubstitution} erhält man dann die Lösung von \eqref{kra:equation:riccati}.
 
 \subsection{Matrix-Riccati-Differentialgleichung} \label{kra:loesung:riccati}
-% Lösung matrix riccati
-Die Lösung der Matrix-Riccati-Gleichung \ref{kra:equation:matrixriccati} erhalten wir nach \cite{kra:kalmanisae} folgendermassen
+Im Folgenden wollen wir uns anschauen wie die Matrix-Riccati-DGL entsteht und wie sie gelöst werden kann.
+Der Ausgangspunkt bildet die Matrix-Differentialgleichung
+\begin{equation}
+    \label{kra:equation:matrix-dgl}
+    \begin{pmatrix}
+        \dot{X}(t) \\
+        \dot{Y}(t)
+    \end{pmatrix}
+    =
+    \underbrace{
+        \begin{pmatrix}
+            A & B \\
+            C & D
+        \end{pmatrix}
+    }_{\displaystyle{H}},
+\end{equation}
+mit den allgemeinen quadratischen Matrizen $A, B, C$ und $D$ welche zusammen die sogennante Hamilonsche-Matrix bilden.
+Betrachten wir das Verhältniss von $Y$ zu $X$
+\[
+    P(t) = Y(t)X^{-1}
+\]
+und deren Ableitung $\dot{P}(t)$, so erhalten wir die Riccati-Matrix-DGL
+\[
+    \dot{P}(t) = C  + DU - UA - UBU.
+\]
+
+Die Lösung erhalten wir dann mit
 \begin{equation}
     \label{kra:matrixriccati-solution}
     \begin{pmatrix}
@@ -61,7 +86,7 @@ Die Lösung der Matrix-Riccati-Gleichung \ref{kra:equation:matrixriccati} erhalt
     \Phi(t_0, t)
     \begin{pmatrix}
         I(t) \\
-        U_0(t)
+        P_0(t)
     \end{pmatrix}
     =
     \begin{pmatrix}
@@ -70,11 +95,11 @@ Die Lösung der Matrix-Riccati-Gleichung \ref{kra:equation:matrixriccati} erhalt
     \end{pmatrix}
     \begin{pmatrix}
         I(t) \\
-        U_0(t)
+        P_0(t)
     \end{pmatrix}
 \end{equation}
 \begin{equation}
-    U(t) =
+    P(t) =
     \begin{pmatrix}
         \Phi_{21}(t_0, t) + \Phi_{22}(t_0, t)
     \end{pmatrix}
@@ -83,7 +108,4 @@ Die Lösung der Matrix-Riccati-Gleichung \ref{kra:equation:matrixriccati} erhalt
     \end{pmatrix}
     ^{-1}
 \end{equation}
-wobei $\Phi(t, t_0)$ die sogenannte Zustandsübergangsmatrix ist.
-\begin{equation}
-    \Phi(t_0, t) = e^{H(t - t_0)}
-\end{equation}
+wobei $\Phi(t_0, t) = e^{H(t - t_0)}$ die sogenannte Zustandsübergangsmatrix von \eqref{kra:equation:matrix-dgl} ist \cite{kra:kalmanisae}.
