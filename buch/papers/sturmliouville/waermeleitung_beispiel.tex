@@ -321,8 +321,8 @@ Es bleibt noch nach $\beta$ aufzulösen:
 \[
 \begin{aligned}
     \sin(\beta l) &= 0 \\
-    \beta l &= n \pi \qquad n \in \mathbb{N} \\
-    \beta &= \frac{n \pi}{l} \qquad n \in \mathbb{N}
+    \beta l &= n \pi \qquad n \in \mathbb{N}_0 \\
+    \beta &= \frac{n \pi}{l} \qquad n \in \mathbb{N}_0
 \end{aligned}
 \]
 
@@ -364,8 +364,8 @@ Es folgt nun
 \[
 \begin{aligned}
     \sin(\alpha l) &= 0 \\
-    \alpha l &= n \pi \qquad n \in \mathbb{N} \\
-    \alpha &= \frac{n \pi}{l} \qquad n \in \mathbb{N}
+    \alpha l &= n \pi \qquad n \in \mathbb{N}_0 \\
+    \alpha &= \frac{n \pi}{l} \qquad n \in \mathbb{N}_0
 \end{aligned}
 \]
 und somit
@@ -382,24 +382,32 @@ wie auch für den Stab mit isolierten Enden
     -\frac{n^{2}\pi^{2}}{l^{2}}.
 \end{equation}
 
-% TODO: infinite base vectors and fourier series
-\subsubsection{TODO: Auf Anzahl Lösungen und Fourierreihe eingehen}
+\subsubsection{Fourierreihe als Lösung}
 
-% TODO: check ease of reading
-\subsubsection{Berechnung der Koeffizienten}
+Das Resultat~\eqref{sturmliouville:eq:example-fourier-mu-solution} gibt nun
+wegen der neuen Variablen $n \in \mathbb{N}_0$ vor, dass es potentiell
+unendlich viele Lösungen gibt.
+Dies bedeutet auch, dass es nicht ein $A$ und ein $B$ gibt, sondern einen
+Koeffizienten für jede Lösungsfunktion.
+Wir schreiben deshalb den Lösungsansatz zur Linearkombination
+\[
+    X(x)
+    =
+    \sum_{n = 0}^{\infty} a_n\cos\left(\frac{n\pi}{l}x\right)
+    +
+    \sum_{n = 0}^{\infty} b_n\sin\left(\frac{n\pi}{l}x\right)
+\]
+aus allen möglichen Lösungen um.
 
-% TODO: move explanation A/B -> a_n/b_n to fourier subsection
-
-%
-% Lösung von X(x), Teil: Koeffizienten a_n und b_n mittels skalarprodukt.
-%
-
-Bisher wurde über die Koeffizienten $A$ und $B$ noch nicht viel ausgesagt.
-Zunächst ist wegen vorhergehender Rechnung ersichtlich, dass es sich bei
-$A$ und $B$ nicht um einzelne Koeffizienten handelt.
-Stattdessen können die Koeffizienten für jedes $n \in \mathbb{N}$
-unterschiedlich sein.
-Die Lösung $X(x)$ wird nun umgeschrieben zu
+Als nächstes werden noch die Summanden für $n = 0$ aus den Summen herausgezogen,
+da
+\[
+    \begin{aligned}
+        a_0 \cos\left(\frac{0 \pi}{l}\right) &= a_0 \\
+        b_0 \sin\left(\frac{0 \pi}{l}\right) &= 0
+    \end{aligned}
+\]
+gilt endet man somit bei
 \[
     X(x)
     =
@@ -409,10 +417,33 @@ Die Lösung $X(x)$ wird nun umgeschrieben zu
     +
     \sum_{n = 1}^{\infty} b_n\sin\left(\frac{n\pi}{l}x\right).
 \]
+Dies ist die allgemeine Fourierreihe, welche unsere Stab-Probleme löst.
+Wie zuvor bereits erwähnt, wissen wir dass sämtliche Lösungsfunktionen
+orthogonal zueinander sind, da es sich hier um die Lösung eines
+Sturm-Liouville-Problems handelt.
+Es gilt also
+\[
+\begin{aligned}
+    \int_{-l}^{l}\cos\left(\frac{n \pi}{l}x\right)
+    \cos\left(\frac{m \pi}{l}x\right)dx
+    &= 0 \qquad n \neq m \\
+    \int_{-l}^{l}\sin\left(\frac{n \pi}{l}x\right)
+    \sin\left(\frac{m \pi}{l}x\right)dx
+    &= 0 \qquad n \neq m \\
+    \int_{-l}^{l}\cos\left(\frac{n \pi}{l}x\right)
+    \sin\left(\frac{m \pi}{l}x\right)dx
+    &= 0.
+\end{aligned}
+\]
 
-Um eine eindeutige Lösung für $X(x)$ zu erhalten werden noch weitere
-Bedingungen benötigt.
-Diese sind die Startbedingungen oder $u(0, x) = X(x)$ für $t = 0$.
+\subsubsection{Berechnung der Fourierkoeffizienten}
+
+%
+% Lösung von X(x), Teil: Koeffizienten a_n und b_n mittels skalarprodukt.
+%
+
+Um eine eindeutige Lösung für $X(x)$ zu erhalten wird nun die initiale
+Wärmeverteilung oder $u(0, x) = X(x)$ für $t = 0$ benötigt.
 Es gilt also nun die Gleichung
 \begin{equation}
     \label{sturmliouville:eq:example-fourier-initial-conditions}
@@ -479,8 +510,8 @@ gerade, respektive ungerade auf $[-l, l]$ fortsetzen:
 \end{aligned}
 \]
 
-Die Konsequenz davon ist, dass nun das Resultat der Integrale um den Faktor zwei
-skalliert wurde, also gilt nun
+Diese Funktionen wurden gerade so gewählt, dass nun das Resultat der Integrale
+um den Faktor zwei skalliert wurde, also gilt
 \[
 \begin{aligned}
     \int_{-l}^{l}\hat{u}_c(0, x)\cos\left(\frac{m \pi}{l}x\right)dx
@@ -587,7 +618,7 @@ $ \sin\left(\frac{m \pi}{l}x\right) $ gezeigt werden, dass
 gilt.
 
 Etwas anders ist es allerdings bei $a_0$.
-Wie der Name bereits suggeriert, handelt es sich hierbei um den Koeffizienten
+Wie zuvor bereits erwähnt, handelt es sich hierbei um den Koeffizienten
 zur Basisfunktion $\cos\left(\frac{0 \pi}{l}x\right)$ beziehungsweise der
 konstanten Funktion $1$.
 Um einen Ausdruck für $a_0$ zu erhalten, wird wiederum auf beiden Seiten
@@ -615,14 +646,14 @@ Skalarprodukt mit der konstanten Basisfunktion $1$ gebildet:
 \]
 
 Hier fallen nun alle Terme, die $\sin$ oder $\cos$ beinhalten weg, da jeweils
-über ein Vielfaches der Periode integriert wird.
+über ein ganzzahliges Vielfaches der Periode integriert wird.
 Es bleibt also noch
 \[
     2\int_{0}^{l}u(0, x)dx
     =
-    a_0 \int_{-l}^{l}dx
+    a_0 \int_{-l}^{l}dx,
 \]
-, was sich wie folgt nach $a_0$ auflösen lässt:
+was sich wie folgt nach $a_0$ auflösen lässt:
 \[
 \begin{aligned}
     2\int_{0}^{l}u(0, x)dx
@@ -651,13 +682,19 @@ Es bleibt also noch
 \subsubsection{Lösung der Differentialgleichung in $t$}
 Zuletzt wird die zweite Gleichung der 
 Separation~\eqref{sturmliouville:eq:example-fourier-separated-t} betrachtet.
-Diese wird über das charakteristische Polynom
+Dazu betrachtet man das charakteristische Polynom
 \[
     \lambda - \kappa \mu
     =
     0
 \]
-gelöst.
+der Gleichung
+\[
+    T^{\prime}(t) - \kappa \mu T(t)
+    =
+    0
+\]
+und löst dieses.
 
 Es ist direkt ersichtlich, dass $\lambda = \kappa \mu$ gelten muss, was zur
 Lösung
@@ -676,8 +713,6 @@ ergibt.
 
 Dieses Resultat kann nun mit allen vorhergehenden Resultaten zusammengesetzt
 werden um die vollständige Lösung für das Stab-Problem zu erhalten.
-
-% TODO: elaborate
 
 \subsubsection{Lösung für einen Stab mit Enden auf konstanter Temperatur}
 \[
