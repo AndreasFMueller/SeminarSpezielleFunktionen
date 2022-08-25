@@ -1,5 +1,6 @@
 %
 % einleitung.tex -- Beispiel-File für die Einleitung
+% Author: Réda Haddouche
 %
 % (c) 2020 Prof Dr Andreas Müller, Hochschule Rapperswil
 %
@@ -7,7 +8,7 @@
 % TODO:
 % order:
 %   1. State goal of showing examples in intro
-%   2. Show Sturm-Liouville form 
+%   2. Show Sturm-Liouville form
 %   3. Explain boundary conditions as necessary in regards to examples
 %      (make singular property brief)
 %
@@ -15,117 +16,121 @@
 % Check for readability 
 
 \section{Was ist das Sturm-Liouville-Problem\label{sturmliouville:section:teil0}}
-\rhead{Einleitung}
+\rhead{Was ist das Sturm-Liouville-Problem}
 Das Sturm-Liouville-Problem wurde benannt nach dem schweizerisch-französischen
 Mathematiker und Physiker Jacques Charles Fran\c{c}ois Sturm und dem
 französischen Mathematiker Joseph Liouville.
 Gemeinsam haben sie in der mathematischen Physik die Sturm-Liouville-Theorie
-entwickelt und gilt für die Lösung von gewöhnlichen Differentialgleichungen,
-jedoch verwendet man die Theorie öfters bei der Lösung von partiellen
+entwickelt.
+Dies gilt für die Lösung von gewöhnlichen Differentialgleichungen,
+jedoch verwendet man die Theorie beim lösen von partiellen
 Differentialgleichungen.
-Normalerweise betrachtet man für das Strum-Liouville-Problem eine gewöhnliche
-Differentialgleichung 2. Ordnung, und wenn es sich um eine partielle
-Differentialgleichung handelt, kann man sie in mehrere gewöhnliche
-Differentialgleichungen umwandeln. Wie z. B. den Separationsansatz, die
-partielle Differentialgleichung mit mehreren Variablen.
+Man betrachtet für das Strum-Liouville-Problem eine gewöhnliche
+Differentialgleichung 2. Ordnung.
+Wenn es sich um eine partielle
+Differentialgleichung handelt, kann man sie mittels Separation in mehrere gewöhnliche
+Differentialgleichungen umwandeln. 
 
 \begin{definition}
 	\index{Sturm-Liouville-Gleichung}%
 Wenn die lineare homogene Differentialgleichung
-\begin{equation}
+\[
 	\frac{d^2y}{dx^2} + a(x)\frac{dy}{dx} + b(x)y = 0
-\end{equation}
+\]
 als
 \begin{equation}
-	\label{eq:sturm-liouville-equation}
+	\label{sturmliouville:eq:sturm-liouville-equation}
 	\frac{d}{dx} (p(x) \frac{dy}{dx}) + (q(x) +
 	\lambda w(x)) y
 	=
 	0 
 \end{equation}
-geschrieben werden kann, dann wird diese Gleichung als Sturm-Liouville-Gleichung
+geschrieben werden kann, dann wird die Gleichung \eqref{sturmliouville:eq:sturm-liouville-equation} als Sturm-Liouville-Gleichung
 bezeichnet.
 \end{definition}
 Alle homogenen linearen gewöhnlichen Differentialgleichungen 2. Ordnung können
-in die Form der Gleichung \eqref{eq:sturm-liouville-equation} umgewandelt
-werden.
+in die Form der Gleichung \eqref{sturmliouville:eq:sturm-liouville-equation} 
+umgewandelt werden.
 
-Damit es sich um ein Sturm-Liouville-Problem handelt, benötigt es noch die Randbedingung, die im nächsten Unterkapitel behandelt wird. 
+Damit es sich um ein Sturm-Liouville-Problem handelt, benötigt es noch die
+Randbedingung, die im nächsten Unterkapitel behandelt wird.
 
-\subsection{Randbedingungen\label{sub:was-ist-das-slp-randbedingungen}}
+\subsection{Randbedingungen
+\label{sturmliouville:sub:was-ist-das-slp-randbedingungen}}
 Geeignete Randbedingungen sind erforderlich, um die Lösungen einer
 Differentialgleichung genau zu bestimmen.
 Die Sturm-Liouville-Gleichung mit homogenen Randbedingungen des dritten Typs
 \begin{equation}
 	\begin{aligned}
-		\label{eq:randbedingungen}
+		\label{sturmliouville:eq:randbedingungen}
 		k_a y(a) + h_a p(a) y'(a) &= 0 \\
-		k_b y(b) + h_b p(b) y'(b) &= 0.
+		k_b y(b) + h_b p(b) y'(b) &= 0
 	\end{aligned}
 \end{equation}
 ist das klassische Sturm-Liouville-Problem.
 
 
-\subsection{Koeffizientenfunktionen\label{sub:koeffizientenfunktionen}}
-Die Funktionen $p(x)$, $q(x)$ und $w(x)$ werden als Koeffizientenfunktionen mit
-ihren freien Variablen $x$ bezeichnet.
-Diese Funktionen erhält man, indem man eine Differentialgleichung in die Sturm-Liouville-Form bringt.
+\subsection{Koeffizientenfunktionen
+\label{sturmliouville:sub:koeffizientenfunktionen}}
+Die Funktionen $p(x)$, $q(x)$ und $w(x)$ werden als Koeffizientenfunktionen 
+bezeichnet.
+Diese Funktionen erhält man, indem man eine Differentialgleichung in die
+Sturm-Liouville-Form bringt und dann die Koeffizientenfunktionen vergleicht.
 Die Funktion $w(x)$ (manchmal auch $r(x)$ genannt) wird als Gewichtsfunktion
 oder Dichtefunktion bezeichnet.
-Die Eigenschaften der Koeffizientenfunktionen sowie andere Bedingungen haben einen großen Einfluss auf die Lösbarkeit des Sturm-Liouville-Problems und werden im nächsten Kapitel diskutiert. 
-
-
+Die Eigenschaften der Koeffizientenfunktionen sowie andere Bedingungen haben
+einen großen Einfluss auf die Lösbarkeit des Sturm-Liouville-Problems und werden
+im nächsten Kapitel diskutiert.
 
 %
 %Kapitel mit "Das reguläre Sturm-Liouville-Problem"
 %
 
-\subsection{Das reguläre oder singuläre Sturm-Liouville-Problem
-\label{sub:reguläre_sturm_liouville_problem}}
+\subsection{Das reguläre und singuläre Sturm-Liouville-Problem
+\label{sturmliouville:sub:reguläre_sturm_liouville_problem}}
 Damit es sich um ein reguläres Sturm-Liouville-Problem handelt, müssen einige
 Bedingungen beachtet werden.
 \begin{definition}
-	\label{def:reguläres_sturm-liouville-problem}
+	\label{sturmliouville:def:reguläres_sturm-liouville-problem}
 	\index{regläres Sturm-Liouville-Problem}
 	Die Bedingungen für ein reguläres Sturm-Liouville-Problem sind:
 	\begin{itemize}
 		\item Die Funktionen $p(x), p'(x), q(x)$ und $w(x)$ müssen stetig und
-		reell sein.
-		\item sowie müssen in einem endlichen Intervall $[a,b]$ integrierbar
+		reell sein
+		\item sowie in einem endlichen Intervall $[a,b]$ integrierbar
 		sein.
 		\item $p(x)$ und $w(x)$ sind $>0$.
-		\item Es gelten die Randbedingungen \eqref{eq:randbedingungen}, wobei
+		\item Es gelten die Randbedingungen 
+		\eqref{sturmliouville:eq:randbedingungen}, wobei
 		$|k_i|^2 + |h_i|^2\ne 0$ mit $i=a,b$.
 	\end{itemize}
 \end{definition}
-Werden diese Bedingungen nicht erfüllt, so handelt es sich um ein singuläres Sturm-Liouville-Problem.
+Wird eine oder mehrere dieser Bedingungen nicht erfüllt, so handelt es sich um ein singuläres
+Sturm-Liouville-Problem.
 
 \begin{beispiel}
 	Das Randwertproblem
 	\begin{equation}
 		\begin{aligned}
-		x^2y'' + xy' + (\lambda^2x^2 - m^2)y &= 0, 0<x<a,\\
+		x^2y'' + xy' + (\lambda^2x^2 - m^2)y &= 0 \qquad 0<x<a,\\
 		y(a) &= 0
 		\end{aligned}
 	\end{equation}
 	ist kein reguläres Sturm-Liouville-Problem.
-	Wenn man die Gleichung in die Sturm-Liouville Form umformen, dann ergeben
+	Wenn man die Gleichung in die Sturm-Liouville Form umformt, dann
+	erhält man
 	die Koeffizientenfunktionen $p(x) = w(x) = x$ und $q(x) = -m^2/x$.
-	Schaut man jetzt die Bedingungen im
-	Kapitel~\ref{sub:reguläre_sturm_liouville_problem} an und vergleicht diese mit
-	unseren Koeffizientenfunktionen, so erkennt man einige Probleme:
+	Schaut man jetzt die Bedingungen in
+	Definition~\ref{sturmliouville:def:reguläres_sturm-liouville-problem} an und 
+	vergleicht diese mit unseren Koeffizientenfunktionen, so erkennt man einige
+	Probleme:
 	\begin{itemize}
 		\item $p(x)$ und $w(x)$ sind nicht positiv, wenn $x = 0$ ist.
 		\item $q(x)$ ist nicht kontinuierlich, wenn $x = 0$ ist.
-		\item Die Randbedingung bei $x = 0$ fehlt.
+		\item Die Randbedingung bei $x = 0$ und $x = a$ fehlt.
 	\end{itemize}
 \end{beispiel}
 
-Verwendet man das reguläre Sturm-Liouville-Problem, obwohl eine oder beide
+Verwendet man das reguläre Sturm-Liouville-Problem, obwohl eine oder mehrere
 Bedingungen nicht erfüllt sind, dann ist es schwierig zu sagen, ob die Lösung
-eindeutige Ergebnisse hat.
-Es ist schwierig, Kriterien anzuwenden, da die Formulierungen z. B. in der
-Lösungsfunktion liegen.
-Ähnlich wie bei der Fourier-Reihe gegenüber der Fourier-Transformation gibt es
-immer noch eine zugehörige Eigenfunktionsentwicklung, und zwar die
-Integraltransformation sowie gibt es weiterhin verallgemeinerte Eigenfunktionen.
+eindeutig ist.
