@@ -9,11 +9,12 @@
 \rhead{Wärmeleitung in homogenem Stab}
 
 In diesem Abschnitt wird das Problem der Wärmeleitung in einem homogenen Stab
-betrachtet und wie das Sturm-Liouville-Problem bei der Beschreibung dieses
-physikalischen Phänomenes auftritt.
+betrachtet, angeschaut wie das Sturm-Liouville-Problem bei der Beschreibung
+dieses physikalischen Phänomenes auftritt und hergeleitet wie die Fourierreihe
+als Lösung des Problems zustande kommt.
 
 Zunächst wird ein eindimensionaler homogener Stab der Länge $l$ und
-Wärmeleitkoeffizient $\kappa$ betrachtet dessen initiale Wärmeverteilung durch
+Wärmeleitkoeffizient $\kappa$ betrachtet, dessen initiale Wärmeverteilung durch
 $u(t=0, x)$ gegeben ist.
 Es ergibt sich für das Wärmeleitungsproblem die partielle Differentialgleichung
 \begin{equation}
@@ -58,7 +59,7 @@ als Randbedingungen.
 
 Bei isolierten Enden des Stabes können grundsätzlich beliebige Temperaturen für
 $x = 0$ und $x = l$ auftreten.
-Die einzige Einschränkung liefert die Anfangsbedingung $u(0, x)$.
+Die einzige Einschränkung liefert die initiale Wärmeverteilung $u(0, x)$.
 Im Fall des isolierten Stabes ist es nicht erlaubt, dass Wärme vom Stab
 an die Umgebung oder von der Umgebung an den Stab abgegeben wird.
 
@@ -144,6 +145,7 @@ diese direkt für $X(x)$ übernomen werden.
 Es gilt also beispielsweise wegen
 \eqref{sturmliouville:eq:example-fourier-boundary-condition-ends-constant},
 dass $X(0) = X(l) = 0$.
+
 Damit die Lösungen von $X$ orthogonal sind, müssen nun also die Gleichungen
 \begin{equation}
 \begin{aligned}
@@ -162,7 +164,7 @@ erfüllt sein und es muss ausserdem
 \end{equation}
 gelten.
 
-Um zu verifizieren, ob die Randbedingungen erfüllt sind, werden also die
+Um zu verifizieren, dass die Randbedingungen erfüllt sind, werden also die
 Koeffizientenfunktionen $p(x)$, $q(x)$ und $w(x)$ benötigt.
 Dazu wird die Gleichung~\eqref{sturmliouville:eq:example-fourier-separated-x}
 mit der
@@ -186,8 +188,8 @@ reguläres Sturm-Liouville-Problem.
 
 Es werden nun $p(x)$ und die 
 Randbedingungen~\eqref{sturmliouville:eq:example-fourier-boundary-condition-ends-constant}
-in \eqref{sturmliouville:eq:example-fourier-randbedingungen} eigesetzt und man
-erhält
+des Stab-Problems in \eqref{sturmliouville:eq:example-fourier-randbedingungen}
+eigesetzt und man erhält
 \[
 \begin{aligned}
 	k_a y(0) + h_a y'(0) &= h_a y'(0) = 0 \\
@@ -203,7 +205,7 @@ und $k_b \neq 0$ gewählt werden.
 Somit ist gezeigt, dass die Randbedingungen des Stab-Problems für Enden auf
 konstanter Temperatur auch die Sturm-Liouville-Randbedingungen erfüllen.
 Daraus folg zunächst, dass es sich um ein reguläres Sturm-Liouville-Problem
-handelt und weiter, dass alle daraus reultierenden Lösungen orthogonal sind.
+handelt und weiter, dass alle daraus resultierenden Lösungen orthogonal sind.
 Analog dazu kann gezeit werden, dass die Randbedingungen für einen Stab mit
 isolierten
 Enden~\eqref{sturmliouville:eq:example-fourier-boundary-condition-ends-isolated}
@@ -285,14 +287,15 @@ Randbedingungen~\eqref{sturmliouville:eq:example-fourier-boundary-condition-ends
 und \eqref{sturmliouville:eq:example-fourier-boundary-condition-ends-isolated}
 benötigt.
 
-Da die Koeffizienten $A$ und $B$, sowie die Parameter $\alpha$ uns $\beta$ im
-allgemeninen ungleich $0$ sind, müssen die Randbedingungen durch die
+Da die Koeffizienten $A$ und $B$, sowie die Parameter $\alpha$ und $\beta$ im
+allgemeinen ungleich $0$ sind, müssen die Randbedingungen durch die
 trigonometrischen Funktionen erfüllt werden.
 
 Es werden nun die 
 Randbedingungen~\eqref{sturmliouville:eq:example-fourier-boundary-condition-ends-constant}
 für einen Stab mit Enden auf konstanter Temperatur in die
 Gleichung~\eqref{sturmliouville:eq:example-fourier-separated-x} eingesetzt.
+
 Betrachten wir zunächst die Bedingung für $x = 0$.
 Dies fürht zu
 \[
@@ -315,7 +318,6 @@ sich
     B \sin(\beta l)
     = 0.
 \]
-
 $\beta$ muss also so gewählt werden, dass $\sin(\beta l) = 0$ gilt.
 Es bleibt noch nach $\beta$ aufzulösen:
 \[
@@ -335,11 +337,11 @@ Ausserdem ist zu bemerken, dass dies auch gleich $-\alpha^{2}$ ist.
 Da aber $A = 0$ gilt und der Summand mit $\alpha$ verschwindet, ist dies keine
 Verletzung der Randbedingungen.
 
-Durch alanoges Vorgehen kann nun auch das Problem mit isolierten Enden gelöst
+Durch analoges Vorgehen kann nun auch das Problem mit isolierten Enden gelöst
 werden.
-Setzt man nun die 
+Setzt man die 
 Randbedingungen~\eqref{sturmliouville:eq:example-fourier-boundary-condition-ends-isolated}
-in $X^{\prime}$ ein, beginnend für $x = 0$, ergibt sich
+in $X^{\prime}$ ein, beginnend mit $x = 0$, ergibt sich
 \[
     X^{\prime}(0)
     =
@@ -358,7 +360,7 @@ folgt nun
     = 0.
 \]
 
-Wiedrum muss über die $\sin$-Funktion sicher gestellt werden, dass der
+Wiederum muss über die $\sin$-Funktion sicher gestellt werden, dass der
 Ausdruck den Randbedingungen entspricht.
 Es folgt nun
 \[
@@ -385,7 +387,7 @@ wie auch für den Stab mit isolierten Enden
 \subsubsection{Fourierreihe als Lösung}
 
 Das Resultat~\eqref{sturmliouville:eq:example-fourier-mu-solution} gibt nun
-wegen der neuen Variablen $n \in \mathbb{N}_0$ vor, dass es potentiell
+wegen der neuen Variablen $n \in \mathbb{N}_0$ vor, dass es potenziell
 unendlich viele Lösungen gibt.
 Dies bedeutet auch, dass es nicht ein $A$ und ein $B$ gibt, sondern einen
 Koeffizienten für jede Lösungsfunktion.
@@ -399,15 +401,15 @@ Wir schreiben deshalb den Lösungsansatz zur Linearkombination
 \]
 aus allen möglichen Lösungen um.
 
-Als nächstes werden noch die Summanden für $n = 0$ aus den Summen herausgezogen,
-da
+Als nächstes werden noch die Summanden für $n = 0$ aus den Summen herausgezogen.
+Da
 \[
     \begin{aligned}
         a_0 \cos\left(\frac{0 \pi}{l}\right) &= a_0 \\
         b_0 \sin\left(\frac{0 \pi}{l}\right) &= 0
     \end{aligned}
 \]
-gilt endet man somit bei
+gilt, endet man somit bei
 \[
     X(x)
     =
@@ -483,13 +485,13 @@ gebildet:
 Bevor diese Form in die Integralform umgeschrieben werden kann, muss überlegt
 sein, welche Integralgrenzen zu verwenden sind.
 In diesem Fall haben die $\sin$ und $\cos$ Terme beispielsweise keine ganze
-Periode im Intervall $x \in [0, l]$ für ungerade $n$ und $m$.
+Periode im Intervall $x \in [0, l]$ für ungerade $n$ und ungerade $m$.
 Um die Skalarprodukte aber korrekt zu berechnen, muss über ein ganzzahliges
 Vielfaches der Periode der trigonometrischen Funktionen integriert werden.
 Dazu werden die Integralgrenzen $-l$ und $l$ verwendet und es werden ausserdem
 neue Funktionen $\hat{u}_c(0, x)$ für die Berechnung mit Cosinus und
 $\hat{u}_s(0, x)$ für die Berechnung mit Sinus angenomen, welche $u(0, t)$
-gerade, respektive ungerade auf $[-l, l]$ fortsetzen:
+gerade, respektive ungerade auf $[-l, 0]$ fortsetzen:
 \[
 \begin{aligned}
     \hat{u}_c(0, x)
@@ -511,21 +513,22 @@ gerade, respektive ungerade auf $[-l, l]$ fortsetzen:
 \]
 
 Diese Funktionen wurden gerade so gewählt, dass nun das Resultat der Integrale
-um den Faktor zwei skalliert wurde, also gilt
+um den Faktor zwei skalliert wurde.
+Es gilt also
 \[
-\begin{aligned}
     \int_{-l}^{l}\hat{u}_c(0, x)\cos\left(\frac{m \pi}{l}x\right)dx
-    &=
+    =
     2\int_{0}^{l}u(0, x)\cos\left(\frac{m \pi}{l}x\right)dx
-    \\
+\]
+und
+\[
     \int_{-l}^{l}\hat{u}_s(0, x)\sin\left(\frac{m \pi}{l}x\right)dx
-    &=
+    =
     2\int_{0}^{l}u(0, x)\sin\left(\frac{m \pi}{l}x\right)dx.
-\end{aligned}
 \]
 
-Zunächst wird nun das Skalaprodukt~\eqref{sturmliouville:eq:dot-product-cosine}
-berechnet:
+Als nächstes wird nun das
+Skalaprodukt~\eqref{sturmliouville:eq:dot-product-cosine} berechnet:
 \[
 \begin{aligned}
     \int_{-l}^{l}\hat{u}_c(0, x)\cos\left(\frac{m \pi}{l}x\right)dx
@@ -574,13 +577,15 @@ orthogonal zueinander stehen und
 \]
 da Sinus- und Cosinus-Funktionen ebenfalls orthogonal zueinander sind.
 
-Es bleibt also lediglich der Summand für $a_m$ stehen, was die Gleichung zu
+Es bleibt also lediglich der Summand mit $a_m$ stehen, was die Gleichung zu
 \[
     2\int_{0}^{l}u(0, x)\cos\left(\frac{m \pi}{l}x\right)dx
     =
     a_m\int_{-l}^{l}\cos^2\left(\frac{m\pi}{l}x\right)dx
 \]
-vereinfacht. Im nächsten Schritt wird nun das Integral auf der rechten Seite
+vereinfacht.
+
+Im nächsten Schritt wird nun das Integral auf der rechten Seite
 berechnet und dann nach $a_m$ aufgelöst. Am einnfachsten geht dies, wenn zuerst
 mit $u = \frac{m \pi}{l}x$ substituiert wird:
 \[
