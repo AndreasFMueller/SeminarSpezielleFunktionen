@@ -9,9 +9,10 @@
 \label{sturmliouville:sub:tschebyscheff-polynome}}
 \rhead{Tschebyscheff-Polynome}
 In diesem Unterkapitel wird anhand der
-Tschebyscheff-Differentialgleichung~\eqref{buch:potenzen:tschebyscheff:dgl} gezeigt, dass die Tschebyscheff-Polynome orthogonal zueinander sind.
+Tschebyscheff-Differentialgleichung~\eqref{buch:potenzen:tschebyscheff:dgl}
+gezeigt, dass die Tschebyscheff-Polynome orthogonal zueinander sind.
 Zu diesem Zweck werden die Koeffizientenfunktionen nochmals dargestellt, so dass
-überprüft werden kann, ob die Randbedingungen erfüllt werden können.
+überprüft werden kann, ob die Randbedingungen erfüllt werden.
 Sobald feststeht, ob das Problem regulär oder singulär ist, zeigt eine
 kleine Rechnung, dass die Lösungen orthogonal sind.
 
@@ -43,7 +44,7 @@ erhält man
 \begin{equation}
 	\begin{aligned}
 		k_a y(-1) + h_a p(-1) y'(-1) &= 0\\
-		k_b y(1) + h_b p(1) y'(-1) &= 0.
+		k_b y(1) + h_b p(1) y'(1) &= 0.
 	\end{aligned} 
 \end{equation}
 Die Funktion $y(x)$ und $y'(x)$ sind in diesem Fall die Tschebyscheff Polynome
@@ -62,7 +63,7 @@ damit die Bedingung $|k_i|^2 + |h_i|^2\ne 0$ erfüllt ist, beliebige
 $h_a \ne 0$ und $h_b \ne 0$ gewählt werden.
 Es wurde somit gezeigt, dass die Sturm-Liouville-Randbedingungen erfüllt sind.
 
-\subsubsection*{Handelt es sich um ein reguläres oder Singuläres Problem?}
+\subsubsection*{Handelt es sich um ein reguläres oder singuläres Problem?}
 Für das reguläre Problem muss laut der
 Definition~\ref{sturmliouville:def:reguläres_sturm-liouville-problem} die funktion
 $p(x) = \sqrt{1-x^2}$, $p'(x) = -2x$, $q(x) = 0$ und
@@ -92,8 +93,8 @@ Da auch die Randbedingungen erfüllt sind, handelt es sich um ein reguläres Stu
 	\[
 		\int_{a}^{b} w(x) y_m y_n = 0.
 	\]
-	Eigesetzt ergibt dies $y_m(x) = T_1(x)$ und $y_n(x) = T_2(x)$, sowie $a=-1$ und $b = 1$
-	ergibt
+	mit $y_m(x) = T_1(x)$ und $y_n(x) = T_2(x)$, sowie $a=-1$ und $b = 1$.
+	Eigesetzt ergibt dies
 	\[
 	\begin{aligned}
 	\int_{-1}^{1} \frac{1}{\sqrt{1-x^2}} x (2x^2-1) dx &=
