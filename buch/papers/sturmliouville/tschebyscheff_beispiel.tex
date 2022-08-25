@@ -8,6 +8,13 @@
 \subsection{Tschebyscheff-Polynome
 \label{sturmliouville:sub:tschebyscheff-polynome}}
 \rhead{Tschebyscheff-Polynome}
+In diesem Unterkapitel wird anhand der
+Tschebyscheff-Differentialgleichung~\eqref{buch:potenzen:tschebyscheff:dgl} gezeigt, dass die Tschebyscheff-Polynome orthogonal zueinander sind.
+Zu diesem Zweck werden die Koeffizientenfunktionen nochmals dargestellt, so dass
+überprüft werden kann, ob die Randbedingungen erfüllt werden können.
+Sobald feststeht, ob das Problem regulär oder singulär ist, zeigt eine
+kleine Rechnung, dass die Lösungen orthogonal sind.
+
 \subsubsection*{Definition der Koeffizientenfunktion}
 Im Kapitel \ref{sub:beispiele_sturm_liouville_problem} sind die
 Koeffizientenfunktionen, die man braucht, schon aufgelistet:
@@ -35,8 +42,8 @@ Beim Einsetzen in die Randbedingung \eqref{sturmliouville:eq:randbedingungen},
 erhält man
 \begin{equation}
 	\begin{aligned}
-		k_a y(-1) + h_a y'(-1) &= 0\\
-		k_b y(-1) + h_b y'(-1) &= 0.
+		k_a y(-1) + h_a p(-1) y'(-1) &= 0\\
+		k_b y(1) + h_b p(1) y'(-1) &= 0.
 	\end{aligned} 
 \end{equation}
 Die Funktion $y(x)$ und $y'(x)$ sind in diesem Fall die Tschebyscheff Polynome
@@ -46,17 +53,16 @@ Verifizierung der Randbedingung wählt man $n=0$.
 Somit erhält man
 \begin{equation}
 	\begin{aligned}
-		k_a T_0(-1) + h_a T_{0}'(-1) &= k_a = 0\\
-		k_b T_0(1) + h_b T_{0}'(1) &= k_b = 0.
+		k_a T_0(-1) + h_a p(-1) T_{0}'(-1) &= k_a = 0\\
+		k_b T_0(1) + h_b p(1) T_{0}'(1) &= k_b = 0.
 	\end{aligned}
 \end{equation}
-Ähnlich wie beim Beispiel der Wärmeleitung in einem homogenen Stab kann man,
+Ähnlich wie beim Beispiel der Wärmeleitung in einem homogenen Stab können,
 damit die Bedingung $|k_i|^2 + |h_i|^2\ne 0$ erfüllt ist, beliebige
 $h_a \ne 0$ und $h_b \ne 0$ gewählt werden.
-Es wird also erneut gezeigt, dass die Randbedingungen $[-1,1]$,
-die Sturm-Liouville-Randbedingungen erfüllen.
+Es wurde somit gezeigt, dass die Sturm-Liouville-Randbedingungen erfüllt sind.
 
-\subsubsection*{regulär oder singulär?}
+\subsubsection*{Handelt es sich um ein reguläres oder Singuläres Problem?}
 Für das reguläre Problem muss laut der
 Definition~\ref{sturmliouville:def:reguläres_sturm-liouville-problem} die funktion
 $p(x) = \sqrt{1-x^2}$, $p'(x) = -2x$, $q(x) = 0$ und
@@ -74,19 +80,27 @@ Die Funktion
 	p(x)^{-1} = \frac{1}{\sqrt{1-x^2}}
 \end{equation*}
 ist die gleiche wie $w(x)$ und erfüllt die Bedingung.
-
+Es zeigt sich also, dass $p(x)$, $p'(x)$, $q(x)$ und $w(x)$
+die Bedingungen erfüllen.
+Da auch die Randbedingungen erfüllt sind, handelt es sich um ein reguläres Sturm-Liouville-Problem.
 
 
 \begin{beispiel}
-	Die Gleichung 
+	In diesem Beispiel wird zuletzt die Orthogonalität der Lösungsfunktion
+	illustriert.
+	Dazu verwendet man das Skalarprodukt
 	\[
-		\int_{a}^{b} w(x) y_m y_n = 0
+		\int_{a}^{b} w(x) y_m y_n = 0.
 	\]
-	
-	mit
-	$y_m(x) = T_1(x)$ und $y_n(x) = T_2(x)$ eingesetzt sowie $a=-1$ und $b = 1$
+	Eigesetzt ergibt dies $y_m(x) = T_1(x)$ und $y_n(x) = T_2(x)$, sowie $a=-1$ und $b = 1$
 	ergibt
 	\[
-	\int_{-1}^{1} w(x) x (2x^2-1) dx = 0.
+	\begin{aligned}
+	\int_{-1}^{1} \frac{1}{\sqrt{1-x^2}} x (2x^2-1) dx &=
+	\lbrack - \frac{\sqrt{1-x^2}(2x^2+1)}{3}\rbrack_{-1}^{1}\\
+	&= 0.
+	\end{aligned}
 	\]
+	Somit ist gezeigt, dass $T_1(x)$ und $T_2(x)$ orthogonal sind.
+	Analog kann Orthogonalität für alle $y_n(x)$ und $y_m(x)$ mit $n \ne m$ gezeigt werden.
 \end{beispiel}
