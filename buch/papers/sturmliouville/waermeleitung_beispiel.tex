@@ -5,12 +5,11 @@
 % (c) 2020 Prof Dr Andreas Müller, Hochschule Rapperswil
 %
 
-\section{Fourierreihe als Lösung des Sturm-Liouville-Problems
-(Wärmeleitung)}
+\section{Wärmeleitung in homogenem Stab}
 
 In diesem Abschnitt wird das Problem der Wärmeleitung in einem homogenen Stab
 betrachtet, angeschaut wie das Sturm-Liouville-Problem bei der Beschreibung
-dieses physikalischen Phänomenes auftritt und hergeleitet wie die Fourierreihe
+dieses physikalischen Phänomens auftritt und hergeleitet wie die Fourierreihe
 als Lösung des Problems zustande kommt.
 
 Zunächst wird ein eindimensionaler homogener Stab der Länge $l$ und
@@ -113,7 +112,7 @@ der neuen Variablen $\mu$ gekoppelt werden:
     =
     \frac{X^{\prime \prime}(x)}{X(x)}
     =
-    \mu
+    \mu.
 \]
 Durch die Einführung von $\mu$ kann das Problem nun in zwei separate
 Differenzialgleichungen aufgeteilt werden:
@@ -127,7 +126,7 @@ Differenzialgleichungen aufgeteilt werden:
     \label{sturmliouville:eq:example-fourier-separated-t}
     T^{\prime}(t) - \kappa \mu T(t)
     =
-    0
+    0.
 \end{equation}
 
 %
@@ -137,7 +136,7 @@ Differenzialgleichungen aufgeteilt werden:
 Es ist an dieser Stelle zu bemerken, dass die Gleichung in $x$ in 
 Sturm-Liouville-Form ist.
 Erfüllen die Randbedingungen des Stab-Problems auch die Randbedingungen des
-Sturm-Liouville-Problems, kann bereits die Aussage getroffen werden, dass alle
+Sturm-Liouville-Problems, kann bereits die Aussage gemacht werden, dass alle
 Lösungen für die Gleichung in $x$ orthogonal sein werden.
 
 Da die Bedingungen des Stab-Problems nur Anforderungen an $x$ stellen, können
@@ -259,14 +258,14 @@ ergibt dies
     =
     0
 \]
-und durch umformen somit
+und durch Umformen somit
 \[
     -\alpha^{2}A\cos(\alpha x) - \beta^{2}B\sin(\beta x)
     =
     \mu A\cos(\alpha x) + \mu B\sin(\beta x).
 \]
 
-Mittels Koeffizientenvergleich von
+Mittels Koeffizientenvergleich auf beiden Seiten von
 \[
 \begin{aligned}
     -\alpha^{2}A\cos(\alpha x)
@@ -297,7 +296,7 @@ für einen Stab mit Enden auf konstanter Temperatur in die
 Gleichung~\eqref{sturmliouville:eq:example-fourier-separated-x} eingesetzt.
 
 Betrachten wir zunächst die Bedingung für $x = 0$.
-Dies fürht zu
+Dies führt zu
 \[
     X(0)
     =
@@ -324,7 +323,7 @@ Es bleibt noch nach $\beta$ aufzulösen:
 \begin{aligned}
     \sin(\beta l) &= 0 \\
     \beta l &= n \pi \qquad n \in \mathbb{N}_0 \\
-    \beta &= \frac{n \pi}{l} \qquad n \in \mathbb{N}_0
+    \beta &= \frac{n \pi}{l} \qquad n \in \mathbb{N}_0.
 \end{aligned}
 \]
 
@@ -472,14 +471,14 @@ Skalarprodukt mit der Basisfunktion $ \cos\left(\frac{m \pi}{l}x\right)$
 gebildet:
 \begin{equation}
     \label{sturmliouville:eq:dot-product-cosine}
-    \langle u(0, x), \cos\left(\frac{m \pi}{l}x\right) \rangle
+    \biggl\langle u(0, x), \cos\left(\frac{m \pi}{l}x\right) \biggr\rangle
     =
-    \langle a_0
+    \biggl\langle a_0
     +
     \sum_{n = 1}^{\infty} a_n\cos\left(\frac{n\pi}{l}x\right)
     +
     \sum_{n = 1}^{\infty} b_n\sin\left(\frac{n\pi}{l}x\right),
-    \cos\left(\frac{m \pi}{l}x\right)\rangle
+    \cos\left(\frac{m \pi}{l}x\right)\biggr\rangle
 \end{equation}
 
 Bevor diese Form in die Integralform umgeschrieben werden kann, muss überlegt
@@ -513,7 +512,7 @@ gerade, respektive ungerade auf $[-l, 0]$ fortsetzen:
 \]
 
 Diese Funktionen wurden gerade so gewählt, dass nun das Resultat der Integrale
-um den Faktor zwei skalliert wurde.
+um den Faktor $2$ skalliert wurde.
 Es gilt also
 \[
     \int_{-l}^{l}\hat{u}_c(0, x)\cos\left(\frac{m \pi}{l}x\right)dx
@@ -586,8 +585,9 @@ Es bleibt also lediglich der Summand mit $a_m$ stehen, was die Gleichung zu
 vereinfacht.
 
 Im nächsten Schritt wird nun das Integral auf der rechten Seite
-berechnet und dann nach $a_m$ aufgelöst. Am einnfachsten geht dies, wenn zuerst
-mit $u = \frac{m \pi}{l}x$ substituiert wird:
+berechnet und dann nach $a_m$ aufgelöst.
+Am einfachsten geht dies, wenn zuerst mit $u = \frac{m \pi}{l}x$ substituiert
+wird:
 \[
     \begin{aligned}
     2\int_{0}^{l}u(0, x)\cos\left(\frac{m \pi}{l}x\right)dx
@@ -609,7 +609,7 @@ mit $u = \frac{m \pi}{l}x$ substituiert wird:
     \\
     a_m
     &=
-    \frac{2}{l} \int_{0}^{l}u(0, x)\cos\left(\frac{m \pi}{l}x\right)dx
+    \frac{2}{l} \int_{0}^{l}u(0, x)\cos\left(\frac{m \pi}{l}x\right)dx.
     \end{aligned}
 \]
 
@@ -676,7 +676,7 @@ was sich wie folgt nach $a_0$ auflösen lässt:
     \\
     a_0
     &=
-    \frac{1}{l} \int_{0}^{l}u(0, x)dx
+    \frac{1}{l} \int_{0}^{l}u(0, x)dx.
 \end{aligned}
 \]
 
