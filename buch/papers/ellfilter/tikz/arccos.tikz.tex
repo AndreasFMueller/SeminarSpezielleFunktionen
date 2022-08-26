@@ -1,4 +1,4 @@
-\begin{tikzpicture}[>=stealth', auto, node distance=2cm, scale=1.2]
+\begin{tikzpicture}[>=stealth', auto, node distance=2cm, scale=1.2, thick]
 
     \tikzstyle{zero} = [draw, circle, inner sep =0, minimum height=0.15cm]
     \tikzset{pole/.style={cross out, draw=black, minimum size=(0.15cm-\pgflinewidth), inner sep=0pt, outer sep=0pt}}
@@ -22,6 +22,19 @@
 
         \clip(-7.5,-2) rectangle (7.5,2);
 
+        \foreach \i in {-2,...,1} {
+            \begin{scope}[xshift=\i*4cm]
+                \draw[->, thick, darkgreen!50] (-1, 0) -- (0,0);
+                \draw[->, thick, orange!50] (0, 0) -- (0,1.5);
+                \draw[->, thick, orange!50] (0, 0) -- (0,-1.5);
+                \draw[->, thick, darkgreen!50] (1, 0) -- (0,0);
+                \draw[->, thick, cyan!50] (2, 0) -- (1,0);
+                \draw[->, thick, blue!50] (2,1.5) -- (2, 0);
+                \draw[->, thick, blue!50] (2,-1.5) -- (2, 0);
+                \draw[->, thick, cyan!50] (2, 0) -- (3,0);
+            \end{scope}
+        }
+
         % \pause
         \draw[ultra thick, ->, darkgreen] (1, 0) -- (0,0);
         % \pause
@@ -34,16 +47,6 @@
 
         \foreach \i in {-2,...,1} {
             \begin{scope}[xshift=\i*4cm]
-                \begin{scope}[]
-                    \draw[->, darkgreen] (-1, 0) -- (0,0);
-                    \draw[->, orange] (0, 0) -- (0,1.5);
-                    \draw[->, orange] (0, 0) -- (0,-1.5);
-                    \draw[->, darkgreen] (1, 0) -- (0,0);
-                    \draw[->, cyan] (2, 0) -- (1,0);
-                    \draw[->, blue] (2,1.5) -- (2, 0);
-                    \draw[->, blue] (2,-1.5) -- (2, 0);
-                    \draw[->, cyan] (2, 0) -- (3,0);
-                \end{scope}
                 \node[zero] at (1,0) {};
                 \node[zero] at (3,0) {};
             \end{scope}

@@ -1,4 +1,4 @@
-\begin{tikzpicture}[>=stealth', auto, node distance=2cm, scale=1.2]
+\begin{tikzpicture}[>=stealth', auto, node distance=2cm, scale=1.2, thick]
 
     \tikzstyle{zero} = [draw, circle, inner sep =0, minimum height=0.15cm]
 
@@ -14,8 +14,7 @@
         \draw[gray, ->] (0,0) -- (0,1.25) node[anchor=south]{$|H(\Omega)|$};
         \draw[gray, ->] (0,0) -- (2.75,0) node[anchor=west]{$\Omega$};
 
-        \draw[dashed] (0,0.707) node[left] {$\sqrt{\frac{1}{1+\varepsilon^2}}$} -| (1,0) node[below] {$\Omega_p$};
-        \draw[dashed] (0,0.707) node[left] {$\sqrt{\frac{1}{1+\varepsilon^2}}$} -| (1,0) node[below] {$\Omega_p$};
+        \draw[dashed] (0,0.707) node[left] {$\sqrt{\frac{1}{1+\varepsilon^2}}$} -- (1, 0.707) (1,0) node[below] {$\Omega_p$};
 
         \node[left] at(0,1) {$1$};
 
