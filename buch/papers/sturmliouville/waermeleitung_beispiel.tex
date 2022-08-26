@@ -5,8 +5,8 @@
 % (c) 2020 Prof Dr Andreas Müller, Hochschule Rapperswil
 %
 
-\subsection{Wärmeleitung in homogenem Stab}
-\rhead{Wärmeleitung in homogenem Stab}
+\section{Fourierreihe als Lösung des Sturm-Liouville-Problems
+(Wärmeleitung)}
 
 In diesem Abschnitt wird das Problem der Wärmeleitung in einem homogenen Stab
 betrachtet, angeschaut wie das Sturm-Liouville-Problem bei der Beschreibung
@@ -35,7 +35,7 @@ werden.
 %
 % Randbedingungen für Stab mit konstanten Endtemperaturen
 %
-\subsubsection{Randbedingungen für Stab mit Enden auf konstanter Temperatur}
+\subsection{Randbedingungen für Stab mit Enden auf konstanter Temperatur}
 
 Die Enden des Stabes auf konstanter Temperatur zu halten bedeutet, dass die
 Lösungsfunktion $u(t,x)$ bei $x = 0$ und $x = l$ nur die vorgegebene
@@ -55,7 +55,7 @@ als Randbedingungen.
 % Randbedingungen für Stab mit isolierten Enden
 %
 
-\subsubsection{Randbedingungen für Stab mit isolierten Enden}
+\subsection{Randbedingungen für Stab mit isolierten Enden}
 
 Bei isolierten Enden des Stabes können grundsätzlich beliebige Temperaturen für
 $x = 0$ und $x = l$ auftreten.
@@ -83,7 +83,7 @@ als Randbedingungen.
 % Lösung der Differenzialgleichung mittels Separation
 %
 
-\subsubsection{Lösung der Differenzialgleichung}
+\subsection{Lösung der Differenzialgleichung}
 
 Da die Lösungsfunktion $u$ von zwei Variablen abhängig ist, wird die
 Gleichung~\eqref{sturmliouville:eq:example-fourier-heat-equation} zunächst
@@ -216,7 +216,7 @@ somit auch zu orthogonalen Lösungen führen.
 %   Lösung von X(x), Teil mu
 %
 
-\subsubsection{Lösung der Differentialgleichung in $x$}
+\subsection{Lösund der Differentialgleichung in $x$}
 Als erstes wird auf die
 Gleichung~\eqref{sturmliouville:eq:example-fourier-separated-x} eingegangen.
 Aufgrund der Struktur der Gleichung
@@ -384,7 +384,7 @@ wie auch für den Stab mit isolierten Enden
     -\frac{n^{2}\pi^{2}}{l^{2}}.
 \end{equation}
 
-\subsubsection{Fourierreihe als Lösung}
+\subsection{Fourierreihe als Lösung}
 
 Das Resultat~\eqref{sturmliouville:eq:example-fourier-mu-solution} gibt nun
 wegen der neuen Variablen $n \in \mathbb{N}_0$ vor, dass es potenziell
@@ -684,7 +684,7 @@ was sich wie folgt nach $a_0$ auflösen lässt:
 % Lösung von T(t) 
 %
 
-\subsubsection{Lösung der Differentialgleichung in $t$}
+\subsection{Lösung der Differentialgleichung in $t$}
 Zuletzt wird die zweite Gleichung der 
 Separation~\eqref{sturmliouville:eq:example-fourier-separated-t} betrachtet.
 Dazu betrachtet man das charakteristische Polynom
@@ -719,7 +719,7 @@ ergibt.
 Dieses Resultat kann nun mit allen vorhergehenden Resultaten zusammengesetzt
 werden um die vollständige Lösung für das Stab-Problem zu erhalten.
 
-\subsubsection{Lösung für einen Stab mit Enden auf konstanter Temperatur}
+\subsection{Lösung für einen Stab mit Enden auf konstanter Temperatur}
 \[
 \begin{aligned}
     u(t,x)
@@ -733,7 +733,7 @@ werden um die vollständige Lösung für das Stab-Problem zu erhalten.
 \end{aligned}
 \]
 
-\subsubsection{Lösung für einen Stab mit isolierten Enden}
+\subsection{Lösung für einen Stab mit isolierten Enden}
 \[
 \begin{aligned}
     u(t,x)
