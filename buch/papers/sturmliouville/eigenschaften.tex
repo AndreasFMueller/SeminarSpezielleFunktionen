@@ -5,25 +5,11 @@
 % (c) 2020 Prof Dr Andreas Müller, Hochschule Rapperswil
 %
 
-% TODO:
-%  state goal
-%  use only what is necessary
-%  make sure it is easy enough to understand (sentences as shot as possible)
-%    -> Eigenvalue problem with matrices only
-%    -> prepare reader for following examples
-%
-% order:
-%  1. Eigenvalue problems with matrices
-%  2. Sturm-Liouville is an Eigenvalue problem
-%  3. Sturm-Liouville operator (self-adjacent)
-%  4. Spectral theorem (brief)
-%  5. Base of orthonormal functions
-
 \section{Eigenschaften von Lösungen
 \label{sturmliouville:sec:solution-properties}}
 \rhead{Eigenschaften von Lösungen}
 
-Im weiteren werden nun die Eigenschaften der Lösung eines
+Im Weiteren werden nun die Eigenschaften der Lösung eines
 Sturm-Liouville-Problems diskutiert.
 Im wesentlichen wird darauf eingegangen, wie die Orthogonalität der Lösungen
 zustande kommt, damit diese später in den Beispielen verwendet werden kann.
@@ -97,13 +83,25 @@ Um auf die Orthogonalität der Lösungsfunktion zu schliessen, wird dafür der
 Operator $L$ genauer betrachtet.
 Analog zur Matrix $A$ aus 
 Abschnitt~\ref{sturmliouville:sec:eigenvalue-problem-matrix} kann auch für
-$L$ gezeigt werden, dass dieser Operator selbstadjungiert ist, also dass
-\[
-    \langle L v, w\rangle
+$L$ gezeigt werden, dass dieser Operator selbstadjungiert ist.
+
+Dazu wird das modifizierte Skalarprodukt
+\begin{equation}
+    \label{sturmliouville:eq:modified-dot-product}
+    \langle f, g \rangle_w
     =
-    \langle v, L w\rangle
+    \int_a^b f(x)g(x)w(x)\,dx
+\end{equation}
+aus Kapitel~\ref{buch:integrale:subsection:sturm-liouville-problem} verwendet,
+welches auch die Gewichtsfunktion $w(x)$ berücksichtigt.
+Damit $L$ bezüglich dieses Skalarproduktes selbstadjungiert ist, muss also
+\[
+    \langle L u, v\rangle_w
+    =
+    \langle u, L v\rangle_w
 \]
-gilt.
+gelten.
+
 Wie in Kapitel~\ref{buch:integrale:subsection:sturm-liouville-problem} bereits
 gezeigt, ist dies durch die
 Randbedingungen~\eqref{sturmliouville:eq:randbedingungen} des
