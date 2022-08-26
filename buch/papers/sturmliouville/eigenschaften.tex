@@ -83,13 +83,25 @@ Um auf die Orthogonalität der Lösungsfunktion zu schliessen, wird dafür der
 Operator $L$ genauer betrachtet.
 Analog zur Matrix $A$ aus 
 Abschnitt~\ref{sturmliouville:sec:eigenvalue-problem-matrix} kann auch für
-$L$ gezeigt werden, dass dieser Operator selbstadjungiert ist, also dass
-\[
-    \langle L u, v\rangle
+$L$ gezeigt werden, dass dieser Operator selbstadjungiert ist.
+
+Dazu wird das modifizierte Skalarprodukt
+\begin{equation}
+    \label{sturmliouville:eq:modified-dot-product}
+    \langle f, g \rangle_w
     =
-    \langle u, L v\rangle
+    \int_a^b f(x)g(x)w(x)\,dx
+\end{equation}
+aus Kapitel~\ref{buch:integrale:subsection:sturm-liouville-problem} verwendet,
+welches auch die Gewichtsfunktion $w(x)$ berücksichtigt.
+Damit $L$ bezüglich dieses Skalarproduktes selbstadjungiert ist, muss also
+\[
+    \langle L u, v\rangle_w
+    =
+    \langle u, L v\rangle_w
 \]
-gilt.
+gelten.
+
 Wie in Kapitel~\ref{buch:integrale:subsection:sturm-liouville-problem} bereits
 gezeigt, ist dies durch die
 Randbedingungen~\eqref{sturmliouville:eq:randbedingungen} des
