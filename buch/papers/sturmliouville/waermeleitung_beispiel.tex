@@ -83,7 +83,8 @@ als Randbedingungen.
 % Lösung der Differenzialgleichung mittels Separation
 %
 
-\subsection{Separation der Differenzialgleichung}
+\subsection{Separation der Differenzialgleichung
+\label{sturmliouville:subsec:separation}}
 
 Da die Lösungsfunktion $u$ von zwei Variablen abhängig ist, wird die
 Gleichung~\eqref{sturmliouville:eq:example-fourier-heat-equation} zunächst
@@ -425,8 +426,20 @@ gilt, endet man somit bei
 \]
 Dies ist die allgemeine Fourierreihe, welche unsere Stab-Probleme löst.
 Wie zuvor bereits erwähnt, wissen wir dass sämtliche Lösungsfunktionen
-orthogonal zueinander sind, da es sich hier um die Lösung eines
-Sturm-Liouville-Problems handelt.
+orthogonal zueinander sind bezüglich des
+Skalarproduktes~\eqref{sturmliouville:eq:modified-dot-product}.
+Dieses vereinfacht sich noch etwas, da aus
+Abschnitt~\ref{sturmliouville:subsec:separation} bereits $w(x) = 1$ gegeben ist.
+Somit ist das Skalarprodukt
+\begin{equation}
+    \label{sturmliouville:eq:example-fourier-dot-product}
+    \langle f, g \rangle_w
+    =
+    \int_a^b f(x)g(x)w(x)\,dx
+    =
+    \int_a^b f(x)g(x)\,dx.
+\end{equation}
+
 Es gilt also
 \[
 \begin{aligned}
@@ -464,7 +477,8 @@ Es gilt also nun die Gleichung
 nach allen $a_n$ und $b_n$ aufzulösen.
 Da aber $a_n$ und $b_n$ jeweils als Faktor zu einer trigonometrischen Funktion
 gehört, von der wir wissen, dass sie orthogonal zu allen anderen
-trigonometrischen Funktionen der Lösung ist, kann direkt das Skalarprodukt
+trigonometrischen Funktionen der Lösung ist, kann direkt das
+Skalarprodukt~\eqref{sturmliouville:eq:example-fourier-dot-product}
 verwendet werden um die Koeffizienten $a_n$ und $b_n$ zu bestimmen.
 Es wird also die Tatsache ausgenutzt, dass die Gleichheit in
 \eqref{sturmliouville:eq:example-fourier-initial-conditions} nach Anwendung des
@@ -476,14 +490,14 @@ Skalarprodukt mit der Basisfunktion $ \cos\left(\frac{m \pi}{l}x\right)$
 gebildet:
 \begin{equation}
     \label{sturmliouville:eq:dot-product-cosine}
-    \biggl\langle u(0, x), \cos\left(\frac{m \pi}{l}x\right) \biggr\rangle
+    \biggl\langle u(0, x), \cos\left(\frac{m \pi}{l}x\right) \biggr\rangle _w
     =
     \biggl\langle a_0
     +
     \sum_{n = 1}^{\infty} a_n\cos\left(\frac{n\pi}{l}x\right)
     +
     \sum_{n = 1}^{\infty} b_n\sin\left(\frac{n\pi}{l}x\right),
-    \cos\left(\frac{m \pi}{l}x\right)\biggr\rangle
+    \cos\left(\frac{m \pi}{l}x\right)\biggr\rangle _w
 \end{equation}
 
 Bevor diese Form in die Integralform umgeschrieben werden kann, muss überlegt
