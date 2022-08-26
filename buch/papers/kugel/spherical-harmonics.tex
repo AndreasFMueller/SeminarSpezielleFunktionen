@@ -111,7 +111,10 @@ that satisfy the equation
     \surflaplacian f = -\lambda f.
 \end{equation}
 Perhaps it may not be obvious at first glance, but we are in fact dealing with a
-partial differential equation (PDE) \kugeltodo{Boundary conditions?}. If we
+partial differential equation (PDE)\footnote{
+  Considering the fact that we are dealing with a PDE, 
+  you may be wondering what are the boundary conditions. Well, since this eigenvalue problem is been developed on 
+  the spherical surface (boundary of a sphere), the boundary in this case are empty, i.e no boundary condition has to be considered.}.
 unpack the notation of the operator $\nabla^2_{\partial S}$ according to
 definition
 \ref{kugel:def:surface-laplacian}, we get:
@@ -283,7 +286,7 @@ representation} which are
 \end{equation*}
 respectively, both of which we will not prove (see chapter 3 of
 \cite{bell_special_2004} for a proof). Now that we have a solution for the
-Legendre equation, we can make use of the following lemma patch the solutions
+Legendre equation, we can make use of the following lemma to patch the solutions
 such that they also become solutions of the associated Legendre equation
 \eqref{kugel:eqn:associated-legendre}.
 
@@ -317,7 +320,7 @@ obtain the \emph{associated Legendre functions}.
   \end{equation}
   are known as Ferrers or associated Legendre functions.
 \end{definition}
-The constraint $|m|<n$, can be justified by considering Eq.\eqref{kugel:eq:associated_leg_func}, in which the derivative of degree $m+n$ is present. A derivative to be well defined must have an order that is greater than zero. Furthermore, it can be seen that this derivative is applied on a polynomial of degree $2n$. As is known from Calculus 1, if you derive a polynomial of degree $2n$ more than $2n$ times, you get zero, which is a trivial solution in which we are not interested.
+The constraint $|m|<n$, can be justified by considering eq.\eqref{kugel:eq:associated_leg_func}, where we differentiate $m+n$ times. We all know that a differentiation, to be well defined, must have an order that is greater than zero \kugeltodo{is that always true?}. Furthermore, it can be seen that this derivative is applied on a polynomial of degree $2n$. As is known from Calculus 1, if you derive a polynomial of degree $2n$ more than $2n$ times, you get zero, that would be a trivial solution. This is the power of zero: It is almost always a (boring) solution.
 
 We can thus summarize these two conditions by writing:
 \begin{equation*}
@@ -326,9 +329,6 @@ We can thus summarize these two conditions by writing:
         m+n \geq 0  &\implies  m \geq -n
     \end{rcases} \; |m| \leq n.
 \end{equation*}
-\if 0
-The set of functions in Eq.\eqref{kugel:eq:sph_harm_0} is named \emph{Spherical Harmonics}, which are the eigenfunctions of the Laplace operator on the \emph{spherical surface domain}, which is exactly what we were looking for at the beginning of this section.
-\fi
 
 \subsection{Spherical Harmonics}
 
@@ -337,7 +337,7 @@ section \ref{kugel:sec:construction:eigenvalue}. We had left off in the middle
 of the separation, were we had used the Ansatz $f(\vartheta, \varphi) =
 \Theta(\vartheta) \Phi(\varphi)$ to find that $\Phi(\varphi) = e^{im\varphi}$,
 and we were solving for $\Theta(\vartheta)$.  As you may recall, previously we
-performed the substitution $z = \cos \vartheta$. Now we can finally to bring back the
+performed the substitution $z = \cos \vartheta$. Now we can finally bring back the
 solution to the associated Legendre equation $P^m_n(z)$ into the $\vartheta$
 domain and combine it with $\Phi(\varphi)$ to get the full result:
 \begin{equation*}
@@ -505,7 +505,7 @@ product:
 
 \begin{definition}[Inner product in $S^2$]
   \label{kugel:def:inner-product-s2}
-  For 2 complex valued functions $f(\vartheta, \varphi)$ and $g(\vartheta,
+  For two complex valued functions $f(\vartheta, \varphi)$ and $g(\vartheta,
   \varphi)$ on the surface of the sphere the inner product is defined to be
   \begin{equation*}
     \langle f, g \rangle
@@ -518,36 +518,35 @@ product:
 
 \begin{theorem} For the (unnormalized) spherical harmonics
   \label{kugel:thm:spherical-harmonics-ortho}
-  \begin{align*}
+  \begin{align}
     \langle Y^m_n, Y^{m'}_{n'} \rangle
     &= \int_{0}^\pi \int_0^{2\pi}
       Y^m_n(\vartheta, \varphi) \overline{Y^{m'}_{n'}(\vartheta, \varphi)}
       \sin \vartheta \, d\varphi \, d\vartheta
-    \\
+      \label{kugel:eq:spherical-harmonics-inner-prod} \\
     &= \frac{4\pi}{2n + 1} \frac{(m + n)!}{(n - m)!} \delta_{nn'} \delta_{mm'}
     = \begin{cases}
       \frac{4\pi}{2n + 1} \frac{(m + n)!}{(n - m)!}
-        & \text{if } n = n' \text{ and } m = m', \\
+        & \text{if } n = n' \text{ and } m = m', \nonumber \\
       0 & \text{otherwise}.
     \end{cases}
-  \end{align*}
+  \end{align}
 \end{theorem}
 \begin{proof}
   We will begin by doing a bit of algebraic maipulaiton:
   \begin{align*}
     \int_{0}^\pi \int_0^{2\pi}
-      Y^m_n(\vartheta, \varphi) \overline{Y^{m'}_{n'}(\vartheta, \varphi)}
+      Y^m_n(\vartheta, \varphi) \overline{Y^{m'}_{n'}(\vartheta, \varphi)} 
       \sin \vartheta \, d\varphi \, d\vartheta
     &= \int_{0}^\pi \int_0^{2\pi}
       e^{im\varphi} P^m_n(\cos \vartheta)
       e^{-im'\varphi} P^{m'}_{n'}(\cos \vartheta)
-      \, d\varphi \sin \vartheta \, d\vartheta
+      \, d\varphi \sin \vartheta \, d\vartheta 
     \\
     &= \int_{0}^\pi
-      P^m_n(\cos \vartheta) P^{m'}_{n'}(\cos \vartheta)
+      P^m_n(\cos \vartheta) P^{m'}_{n'}(\cos \vartheta) \sin \vartheta \, d\vartheta
       \int_0^{2\pi} e^{i(m - m')\varphi}
-      \, d\varphi \sin \vartheta \, d\vartheta
-      .
+      \, d\varphi. 
   \end{align*}
   First, notice that the associated Legendre polynomials are assumed to be real,
   and are thus unaffected by the complex conjugation. Then, we can see that when
@@ -562,12 +561,15 @@ product:
   \end{equation*}
   where in the second step we performed the substitution $z = \cos\vartheta$;
   $d\vartheta = \frac{d\vartheta}{dz} dz= - dz / \sin \vartheta$, and then we
-  used lemma \ref{kugel:thm:associated-legendre-ortho}. We are allowed to use
-  the lemma because $m = m'$.
-
+  used lemma \ref{kugel:thm:associated-legendre-ortho}. 
+  We are allowed to use
+  the lemma because $m = m'$. After the just mentioned substitution we can write eq.\eqref{kugel:eq:spherical-harmonics-inner-prod} in this form
+  \begin{equation*}
+    \langle Y^m_n, Y^{m'}_{n'} \rangle_{\partial S} = \langle P^m_n, P^{m'}_{n'} \rangle_z \; \langle e^{im\varphi}, e^{-im'\varphi} \rangle_\varphi.
+  \end{equation*} 
   Now we just need look at the case when $m \neq m'$. Fortunately this is
   easier: the inner integral is $\int_0^{2\pi} e^{i(m - m')\varphi} d\varphi$,
-  or in other words we are integrating a complex exponetial over the entire
+  or in other words we are integrating a complex exponential over the entire
   period, which always results in zero. Thus, we do not need to do anything and
   the proof is complete.
 \end{proof}
@@ -617,11 +619,9 @@ regrettably sometimes even ourselves, would write instead:
   reader.
 \end{proof}
 
-Lemma \ref{kugel:thm:legendre-poly-ortho} has a very similar
-proof, while the theorem \ref{kugel:thm:spherical-harmonics-ortho} for the
-spherical harmonics is proved by the following argument. The spherical harmonics
-are the solutions to the eigenvalue problem $\surflaplacian f = -\lambda f$,
-which as discussed in the previous section is solved using separation. So to
+Lemma \ref{kugel:thm:legendre-poly-ortho} has a very similar proof, while the theorem \ref{kugel:thm:spherical-harmonics-ortho} for the spherical harmonics is proved by the following argument. 
+The spherical harmonics are the solutions to the eigenvalue problem $\surflaplacian f = -\lambda f$,
+which as discussed in the previous section is solved using the separation Ansatz. So to
 prove their orthogonality using the Sturm-Liouville theory we argue that
 \begin{equation*}
   \surflaplacian = L_\vartheta L_\varphi \iff
@@ -685,7 +685,7 @@ harmonics, so from now on, unless specified otherwise when we say spherical
 harmonics or write $Y^m_n$, we mean the orthonormal spherical harmonics of
 definition \ref{kugel:def:spherical-harmonics-orthonormal}.
 
-\subsection{Recurrence Relations}
+\subsection{Recurrence Relations}\kugeltodo[replace x with z]
 The idea of this subsection is to introduce first some recursive relations regarding the Associated Legendre Functions, defined in eq.\eqref{kugel:def:ferrers-functions}. Subsequently we will extend them, in order to derive recurrence formulas for the case of Spherical Harmonic functions as well. 
 \subsubsection{Associated Legendre Functions}
 To start this journey, we can first write the following equations, which relate the Associated Legendre functions of different indeces $m$ and $n$ recursively:
@@ -697,7 +697,7 @@ To start this journey, we can first write the following equations, which relate 
 \end{enumerate}
 Much of the effort will be proving this bunch of equalities. Then, in the second part, where we will derive the recursion equations for $Y^m_n(\vartheta,\varphi)$, we will basically reuse the ones presented above.
 
-Maybe it is worth mentioning at least one use case for these relations: They are widely used in some software implementations, as they lead to better numerical accuracy and computational cost lower by a factor of six\cite{usecase_recursion}.
+Maybe it is worth mentioning at least one use case for these relations: They are widely used in some software implementations, as they lead to better numerical accuracy and computational cost lower by a factor of six\cite{usecase_recursion_paper}.
 \begin{enumerate}[(i)]
   \item 
   \begin{proof}
@@ -792,7 +792,7 @@ Maybe it is worth mentioning at least one use case for these relations: They are
 \end{enumerate}
 
 \subsubsection{Spherical Harmonics}
-The goal of this subsection's part is to apply the recurrence relations of the $P_n(z)$ functions to the Spherical Harmonics. 
+The goal of this subsection's part is to apply the recurrence relations of the $P^m_n(z)$ functions to the Spherical Harmonics. 
 
 With some little adjustments we will be able to have recursion equations for them too. As previously written the most of the work is already done. Now it is only a matter of minor mathematical operations/rearrangements.
 
@@ -839,22 +839,30 @@ We can start by listing all of them:
 
 \section{Series Expansions in $L^2(S^2)$}
 
-We have now reached a point were we have all of the tools that are necessary to
-build something truly amazing: a general series expansion formula for functions
-on the surface of the sphere. Using the jargon: we will now see that the
-spherical harmonics together with the inner product of definition
-\ref{kugel:def:inner-product-s2}
+We want now to recall the definition of the inner product on the spherical surface of definition \ref{kugel:def:inner-product-s2}
 \begin{equation*}
   \langle f, g \rangle
   = \int_{0}^\pi \int_0^{2\pi}
     f(\vartheta, \varphi) \overline{g(\vartheta, \varphi)}
-    \sin \vartheta \, d\varphi \, d\vartheta
+    \sin \vartheta \, d\varphi \, d\vartheta.
 \end{equation*}
-form a Hilbert space over the space of complex valued $L^2$ functions $S^2 \to
-\mathbb{C}$. We will see later that this fact is very consequential and is
-extremely useful for many types of applications. If the jargon was too much, no
-need to worry, we will now go back to normal words and explain it again in more
-detail.
+To be a bit technical we can say that the set of spherical harmonic functions, toghether with the inner product just showed, 
+form something that we call Hilbert Space\footnote{For more details about Hilber space you can take a look in section \ref{kugel:sec:preliminaries}}. 
+This function space is defined over the space of ``well-behaved'' \footnote{The definitions of ``well-behaved'' is pretty ambigous, even for mathematicians. 
+It depends basically on the context.
+You can sumarize it by saying: functions for which the theory we are considering (Fourier theorem) is always true. In our case we can say that well-behaved functions 
+are functions that follow some convergence contraints (pointwise, uniform, absolute, ...) that we don't want to consider further anyway.} functions. 
+We can say that the theory we are about to show can be applied on all twice differentiable complex valued functions, 
+to be more concise: complex valued $L^2$ functions $S^2 \to \mathbb{C}$.
+
+All these jargons are not really necessary for the practical applications of us mere mortals, namely physicists and engineers. 
+From now on we will therefore assume that the functions we will dealing with fulfill these ``minor'' conditions.
+
+The insiders could turn up their nose, but we don't want to dwell too much on the concept of Hilbert space, convergence, metric, well-behaved functions etc.
+We simply think that this rigorousness could be at the expense of the possibility to appreciate the beauty and elegance of this theory. 
+Furthermore, the risk of writing 300+ pages to prove that $1+1=2$\cite{principia-mathematica} is just around the corner (we apologize in advance to Mr. Whitehead and Mr. Russel for using their effort with a negative connotation). 
+
+Despite all, if you desire having definitions a bit more rigorous (as rigorous as two engineers can be), you could take a look at the chapter \ref{}.
 
 \subsection{Spherical Harmonics Series}
 
@@ -862,11 +870,96 @@ To talk about a \emph{series expansion} we first need a series, so we shall
 build one using the spherical harmonics.
 
 \begin{definition}[Spherical harmonic series]
-  \begin{equation*}
-    \hat{f}(\vartheta, \varphi) 
-    = \sum_{n \in \mathbb{Z}} \sum_{m \in \mathbb{Z}}
-      c_{m,n} Y^m_n(\vartheta, \varphi)
-  \end{equation*}
+  \label{kugel:definition:spherical-harmonics-series}
+  \begin{equation}
+    f(\vartheta, \varphi) 
+    = \sum_{n=0}^\infty \sum_{m =-n}^n
+      c_{m,n} Y^m_n(\vartheta, \varphi). \label{kugel:definition:spherical-harmonics-series}
+  \end{equation}
 \end{definition}
 
-\subsection{Fourier on $S^2$}
+With this definition we are basically saying that any function defined on the spherical surface can be represented as a linear combination of spherical harmonics. 
+Does eq.\eqref{kugel:definition:spherical-harmonics-series} sound familiar? Well that is prefectly normal, since this is analog to the classical Fourier theory. 
+In the latter is stated that ``any'' $T$-periodic function $f(x)$, on any interval $[x_0-T/2,x_0+T/2]$, can be represented as a linear combination of complex exponentials. More compactly:
+\begin{equation*}
+  f(x) = \sum_{n \in \mathbb{Z}} c_n e^{i \omega_0 x}, \quad \omega_0=\frac{2\pi}{T}
+\end{equation*}
+In the case of definition \ref{kugel:definition:spherical-harmonics-series} the kernels, instead of $e^{i\omega_0x}$, have become $Y^m_n$. In addition, the sum is now over the two indices $m$ and $n$.
+
+\begin{lemma}[Spherical harmonic coefficients]
+  \label{kugel:lemma:spherical-harmonic-coefficient}
+  \begin{align*}
+    c_{m,n} 
+    &= \langle f, Y^m_n \rangle_{\partial S} \\
+    &= \int_0^\pi \int_0^{2\pi} f(\vartheta,\varphi) \overline{Y^m_n(\vartheta,\varphi)} \sin\vartheta \,d\varphi\,d\vartheta
+  \end{align*}
+\end{lemma}
+\begin{proof}
+  To develop this proof we will take advantage of the orthogonality property of the Spherical Harmonics. We can start and finish by applying the inner product on both sides of eq.\eqref{kugel:definition:spherical-harmonics-series}:
+  \begin{align*}
+    \langle f, Y^{m}_{n} \rangle_{\partial S}
+    &= \left\langle \sum_{n'=0}^\infty \sum_{m' =-n'}^{n'}
+      c_{m',n'} Y^{m'}_{n'}(\vartheta, \varphi) \right\rangle_{\partial S}  \\
+    &=  \sum_{n'=0}^\infty \sum_{m' =-n'}^{n'}
+      \langle c_{m',n'} Y^{m'}_{n'}, Y^{m}_{n} \rangle_{\partial S} \\
+      &= \sum_{n'=0}^\infty \sum_{m' =-n'}^{n'} c_{m',n'} \langle Y^{m'}_{n'}, Y^{m}_{n} \rangle_{\partial S} = c_{m,n}
+  \end{align*}
+  We omitted the $\vartheta, \varphi$ dependency to avoid overloading the notation.
+\end{proof}
+Thanks to Lemma \ref{kugel:lemma:spherical-harmonic-coefficient} we can now calculate the series expansion defined in \ref{kugel:definition:spherical-harmonics-series}.
+
+It can be shown that, for the famous ``well-behaved functions'' $f(\vartheta, \varphi)$ mentioned before, theorem \ref{fourier-theorem-spherical-surface} is true
+\begin{theorem}[Fourier Theorem on $\partial S$]
+  \label{fourier-theorem-spherical-surface}
+  \begin{equation*}
+    \lim_{N \to \infty} 
+    \int_0^\pi \int_0^{2\pi} \left\| f(\vartheta,\varphi) - \sum_{n=0}^N\sum_{m=-n}^n c_{m,n} Y^m_n(\vartheta,\varphi)
+    \right\|_2 \sin\vartheta \,d\varphi\,d\vartheta  = 0
+  \end{equation*}
+\end{theorem}
+The connection to Theorem \ref{fourier-theorem-1D} is pretty obvious.
+
+\subsection{Spectrum}
+
+\begin{figure}
+  \centering
+  \kugelplaceholderfig{.8\textwidth}{5cm}
+  \caption{\kugeltodo{Rectangular signal and his spectrum.}}
+  \label{kugel:fig:1d-fourier}
+\end{figure}
+
+In the case of the classical one-dimensional Fourier theory, we call \emph{Spectrum} the relation between the fourier coefficients $c_n$ and the multiple 
+of the fundamental frequency $2\pi/T$, namely $n 2\pi/T$. In the most general case $c_n$ are complex numbers, so we divide the concept of spectrum in 
+\emph{Amplitude Spectrum} and \emph{Phase Spectrum}. In fig.\ref{kugel:fig:1d-fourier} a function $f(x)$ is presented along with the amplitude spectrum.
+
+\begin{figure}
+  \centering
+  \kugelplaceholderfig{.8\textwidth}{7cm}
+  \caption{\kugeltodo{Confront between image reconstructed only with phase and one only with amplitued}}
+  \label{kugel:fig:phase&amplitude-2d-fourier}
+\end{figure}
+
+The thing that is easiest for us humans to visualize and understand is often the Amplitude Spectrum.
+This is a huge limitation, since for example in Image Processing can be showed in a nice way that much more information is contained in the phase part (see fig.\ref{kugel:fig:phase-2d-fourier}).
+
+\begin{figure}
+  \centering
+  \kugelplaceholderfig{.8\textwidth}{9cm}
+  \caption{\kugeltodo{fig that show fourier style reconstruction on sphere (with increasing index)}}
+  \label{kugel:fig:fourier-on-sphere-increasing-index}
+\end{figure}
+
+The same logic can be extended to the spherical harmonic coefficients $c_{m,n}$. In fig.\ref{kugel:fig:fourier-on-sphere-increasing-index} you can see the same concept as in fig.\ref{kugel:fig:1d-fourier} 
+but with a spherical function $f(\vartheta, \varphi)$.
+
+\subsection{Energy of a function $f(\vartheta, \varpi)$}
+
+\begin{lemma}[Energy of a spherical function (\emph{Parseval's theorem})]
+  \begin{equation*}
+    \int_0^{2\pi}\int_0^\pi |f(\vartheta, \varphi)|^2  \sin\vartheta \, d\varphi \, d\varphi = \sum_{n=0}^\infty \frac{1}{2n+1} \sum_{m=-n}^n |c_{m,n}|^2.
+  \end{equation*}
+\end{lemma}
+\begin{proof}
+\end{proof}
+
+\subsection{Visualization}
