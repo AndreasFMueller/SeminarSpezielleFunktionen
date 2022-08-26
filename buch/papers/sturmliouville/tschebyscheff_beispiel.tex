@@ -4,7 +4,7 @@
 % (c) 2020 Prof Dr Andreas Müller, Hochschule Rapperswil
 %
 
-\subsection{Tschebyscheff-Polynome
+\section{Tschebyscheff-Polynome
 \label{sturmliouville:sub:tschebyscheff-polynome}}
 \rhead{Tschebyscheff-Polynome}
 In diesem Unterkapitel wird anhand der
@@ -14,7 +14,7 @@ Zu diesem Zweck werden die Koeffizientenfunktionen nochmals dargestellt, so dass
 Sobald feststeht, ob das Problem regulär oder singulär ist, zeigt eine
 kleine Rechnung, dass die Lösungen orthogonal sind.
 
-\subsubsection*{Definition der Koeffizientenfunktion}
+\subsection*{Definition der Koeffizientenfunktion}
 Im Kapitel \ref{sub:beispiele_sturm_liouville_problem} sind die
 Koeffizientenfunktionen, die man braucht, schon aufgelistet:
 \begin{align*}
@@ -25,8 +25,8 @@ Koeffizientenfunktionen, die man braucht, schon aufgelistet:
 Da die Sturm-Liouville-Gleichung
 \begin{equation}
 	\label{eq:sturm-liouville-equation-tscheby}
-	\frac{d}{dx} (\sqrt{1-x^2} \frac{dy}{dx}) +
-	(0 + \lambda \frac{1}{\sqrt{1-x^2}}) y
+	\frac{d}{dx} \biggl (\sqrt{1-x^2} \frac{dy}{dx}\biggr ) +
+	\biggl (0 + \lambda \frac{1}{\sqrt{1-x^2}}\biggr ) y
 	=
 	0 
 \end{equation}
@@ -34,7 +34,7 @@ nun mit den Koeffizientenfunktionen aufgestellt werden kann, bleibt die Frage,
 ob es sich um ein reguläres oder singuläres Sturm-Liouville-Problem handelt.
 Zunächst werden jedoch die Randbedingungen betrachtet.
 
-\subsubsection*{Randwertproblem}
+\subsection*{Randwertproblem}
 Für die Verifizierung der Randbedingungen benötigt man erneut $p(x)$.
 Die Randwerte setzt man $a = -1$ und $b = 1$.
 Beim Einsetzen in die Randbedingung \eqref{sturmliouville:eq:randbedingungen},
@@ -61,7 +61,7 @@ damit die Bedingung $|k_i|^2 + |h_i|^2\ne 0$ erfüllt ist, beliebige
 $h_a \ne 0$ und $h_b \ne 0$ gewählt werden.
 Es wurde somit gezeigt, dass die Sturm-Liouville-Randbedingungen erfüllt sind.
 
-\subsubsection*{Handelt es sich um ein reguläres oder Singuläres Problem?}
+\subsection*{Handelt es sich um ein reguläres oder Singuläres Problem?}
 Für das reguläre Problem muss laut der
 Definition~\ref{sturmliouville:def:reguläres_sturm-liouville-problem} die funktion
 $p(x) = \sqrt{1-x^2}$, $p'(x) = -2x$, $q(x) = 0$ und
@@ -89,14 +89,14 @@ Da auch die Randbedingungen erfüllt sind, handelt es sich um ein reguläres Stu
 	illustriert.
 	Dazu verwendet man das Skalarprodukt
 	\[
-		\int_{a}^{b} w(x) y_m y_n = 0.
+		\int_{a}^{b} w(x) y_m(x) y_n(x) = 0.
 	\]
 	Eigesetzt ergibt dies $y_m(x) = T_1(x)$ und $y_n(x) = T_2(x)$, sowie $a=-1$ und $b = 1$
 	ergibt
 	\[
 	\begin{aligned}
 	\int_{-1}^{1} \frac{1}{\sqrt{1-x^2}} x (2x^2-1) dx &=
-	\lbrack - \frac{\sqrt{1-x^2}(2x^2+1)}{3}\rbrack_{-1}^{1}\\
+	\biggl [ - \frac{\sqrt{1-x^2}(2x^2+1)}{3} \biggr ]_{-1}^{1}\\
 	&= 0.
 	\end{aligned}
 	\]
