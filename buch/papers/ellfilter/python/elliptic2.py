@@ -29,6 +29,9 @@ def ellip_filter(N, mode=-1):
         fs=None
     )
 
+    print("poles", a)
+    print("zeros", b)
+
     if mode == 0:
         w = np.linspace(0*omega_c,omega_c, 2000)
     elif mode == 1:
@@ -80,12 +83,12 @@ axs[0].add_patch(Rectangle(
 ))
 
 zeros = [0,0.87,0.995]
-poles = [1.01,1.155]
+poles = [1.01,1.155, 2.05]
 
 import matplotlib.transforms
 axs[0].plot( # mark errors as vertical bars
     zeros,
-    np.zeros_like(zeros),
+    np.zeros_like(zeros)-0.075,
     "o",
     mfc='none',
     color='black',
@@ -93,10 +96,11 @@ axs[0].plot( # mark errors as vertical bars
         axs[0].transData,
         axs[0].transAxes,
     ),
+    clip_on=False,
 )
 axs[0].plot( # mark errors as vertical bars
     poles,
-    np.ones_like(poles),
+    np.ones_like(poles)+0.075,
     "x",
     mfc='none',
     color='black',
@@ -104,6 +108,7 @@ axs[0].plot( # mark errors as vertical bars
         axs[0].transData,
         axs[0].transAxes,
     ),
+    clip_on=False,
 )
 
 for mode, c in enumerate(["green", "orange", "red"]):
@@ -135,17 +140,19 @@ axs[1].add_patch(Rectangle(
 
 axs[0].set_xlim([0,2])
 axs[0].set_ylim([1e-4,1e6])
+axs[0].tick_params(bottom = False)
 axs[0].grid()
-axs[0].set_ylabel("$F^2_N(w)$")
+axs[0].set_ylabel("$|F_N(w)|^2$")
 axs[1].grid()
 axs[1].set_ylim([0,1])
 axs[1].set_ylabel("$|H(w)|$")
+axs[1].set_xlabel("$w$")
 plt.tight_layout()
 plt.savefig("elliptic.pgf")
 plt.show()
 
-print("zeros", a)
-print("poles", b)
+print("poles", a)
+print("zeros", b)
 
 
 
