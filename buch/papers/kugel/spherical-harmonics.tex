@@ -80,16 +80,17 @@ that deserves its own name.
   is called the surface spherical Laplacian.
 \end{definition}
 
-In the definition, the subscript ``$\partial S$'' was used to emphasize the
-fact that we are on the spherical surface, which can be understood as being the
-boundary of the sphere. But what does it actually do? To get an intuition,
-first of all, notice the fact that $\surflaplacian$ have second derivatives,
-which means that this a measure of \emph{curvature}; But curvature of what? To
-get an even stronger intuition we will go into geometry, were curvature can be
-grasped very well visually. Consider figure \ref{kugel:fig:curvature} where the
-curvature is shown using colors. First we have the curvature of a curve in 1D,
-then the curvature of a surface (2D), and finally the curvature of a function on
-the surface of the unit sphere.
+In the definition, the subscript ``$\partial S$'' was used to emphasize the fact
+that we are on the spherical surface, which can be understood as being the
+boundary of the sphere. But what does it actually do? To get an intuition, first
+of all, notice the fact that $\surflaplacian$ have second derivatives, which
+means that this a measure of \emph{curvature}; But curvature of what? To get an
+even stronger intuition we will go into geometry, were curvature can be grasped
+very well visually. Consider figure \ref{kugel:fig:curvature} where the
+curvature is shown using colors: positive curvature in red, and negative
+curvature in blue. First we have the curvature of a curve in 1D, then the
+curvature of a surface (2D), and finally the curvature of a function on the
+surface of the unit sphere.
 
 \begin{figure}
   \centering
@@ -111,12 +112,12 @@ that satisfy the equation
     \surflaplacian f = -\lambda f.
 \end{equation}
 Perhaps it may not be obvious at first glance, but we are in fact dealing with a
-partial differential equation (PDE)\footnote{
-  Considering the fact that we are dealing with a PDE, 
-  you may be wondering what are the boundary conditions. Well, since this eigenvalue problem is been developed on 
-  the spherical surface (boundary of a sphere), the boundary in this case are empty, i.e no boundary condition has to be considered.}.
-unpack the notation of the operator $\nabla^2_{\partial S}$ according to
-definition
+partial differential equation (PDE)\footnote{Considering the fact that we are
+dealing with a PDE, you may be wondering what are the boundary conditions. Well,
+since this eigenvalue problem is been developed on the spherical surface
+(boundary of a sphere), the boundary in this case are empty, i.e no boundary
+condition has to be considered.}. If we unpack the notation of the operator
+$\nabla^2_{\partial S}$ according to definition
 \ref{kugel:def:surface-laplacian}, we get:
 \begin{equation} \label{kugel:eqn:eigen-pde}
     \frac{1}{\sin\vartheta} \frac{\partial}{\partial \vartheta} \left(
@@ -189,23 +190,29 @@ require a dedicated section of its own.
 
 \begin{figure}
   \centering
-  \kugelplaceholderfig{.8\textwidth}{5cm}
+  % \kugelplaceholderfig{.8\textwidth}{5cm}
+  \includegraphics[
+    scale = 1.2,
+    trim = 0 40 0 0, clip,
+  ]{papers/kugel/figures/tikz/legendre-substitution}
   \caption{
-    \kugeltodo{Why $z = \cos \vartheta$.}
+    Sketch of the geometry.
+    \label{kugel:fig:legendre-substitution}
   }
 \end{figure}
 
 To solve \eqref{kugel:eqn:ode-theta} we start with the substitution $z = \cos
-\vartheta$ \kugeltodo{Explain geometric origin with picture}. The operator
-$\frac{d}{d \vartheta}$ becomes
+\vartheta$, which has a neat geometrical justification. To see it consider
+figure \ref{kugel:fig:legendre-substitution}, where we sketched the geometry of
+the problem. Algebraically, the operator $\frac{d}{d \vartheta}$ becomes
 \begin{equation*}
     \frac{d}{d \vartheta}
     = \frac{dz}{d \vartheta}\frac{d}{dz}
     = -\sin \vartheta \frac{d}{dz}
     = -\sqrt{1-z^2} \frac{d}{dz},
 \end{equation*} 
-since $\sin \vartheta = \sqrt{1 - \cos^2 \vartheta} = \sqrt{1 - z^2}$, and
-then \eqref{kugel:eqn:ode-theta} becomes 
+since $\sin \vartheta = \sqrt{1 - \cos^2 \vartheta} = \sqrt{1 - z^2}$, which
+agrees with our sketch. Thus, \eqref{kugel:eqn:ode-theta} becomes 
 \begin{align*}
   \frac{-\sqrt{1-z^2}}{\sqrt{1-z^2}} \frac{d}{dz} \left[
     \left(\sqrt{1-z^2}\right) \left(-\sqrt{1-z^2}\right) \frac{d \Theta}{dz}
@@ -619,10 +626,12 @@ regrettably sometimes even ourselves, would write instead:
   reader.
 \end{proof}
 
-Lemma \ref{kugel:thm:legendre-poly-ortho} has a very similar proof, while the theorem \ref{kugel:thm:spherical-harmonics-ortho} for the spherical harmonics is proved by the following argument. 
-The spherical harmonics are the solutions to the eigenvalue problem $\surflaplacian f = -\lambda f$,
-which as discussed in the previous section is solved using the separation Ansatz. So to
-prove their orthogonality using the Sturm-Liouville theory we argue that
+Lemma \ref{kugel:thm:legendre-poly-ortho} has a very similar proof, while the
+theorem \ref{kugel:thm:spherical-harmonics-ortho} for the spherical harmonics is
+proved by the following argument.  The spherical harmonics are the solutions to
+the eigenvalue problem $\surflaplacian f = -\lambda f$, which as discussed in
+the previous section is solved using the separation Ansatz. So to prove their
+orthogonality using the Sturm-Liouville theory we argue that
 \begin{equation*}
   \surflaplacian = L_\vartheta L_\varphi \iff
   \surflaplacian f(\vartheta, \varphi)
@@ -677,8 +686,9 @@ is a so called Condon-Shortley phase factor $(-1)^m$ in front of the square root
 in the definition of the normalized spherical harmonics. It is yet another
 normalization that is added for physical reasons that are not very relevant to
 our discussion, but we mention this potential source of confusion since many
-numerical packages (such as \texttt{SHTOOLS} \kugeltodo{Reference}) offer an
-option to add or remove it from the computation.
+numerical packages (such as \texttt{SHTOOLS}
+\cite{markwieczorek_shtoolsshtools_2022}) offer an option to add or remove it
+from the computation.
 
 Though, for our purposes we will mostly only need the orthonormal spherical
 harmonics, so from now on, unless specified otherwise when we say spherical
@@ -973,5 +983,23 @@ but with a spherical function $f(\vartheta, \varphi)$.
 \end{lemma}
 \begin{proof}
 \end{proof}
+
+
+\if 0
+\begin{theorem}[Spherical harmonic series expansion]
+  A complex valued piecewise continuous function on the surface of the sphere
+  $f: S^2 \to \mathbb{C}$, $f \in L^2$ has a series expansion
+  \begin{equation*}
+    \hat{f}(\vartheta, \varphi) 
+    = \sum_{n \in \mathbb{Z}} \sum_{m \in \mathbb{Z}}
+      c_{m,n} Y^m_n(\vartheta, \varphi),
+  \end{equation*}
+  where $c_{m,n} = \langle f, Y^m_n \rangle$, that converges everywhere uniformly
+  on $f$, i.e. $\|f(\vartheta, \varphi) - \hat{f}(\vartheta, \varphi)\|_2 = 0$.
+\end{theorem}
+\begin{proof}
+  Sadly, this proof is beyond the scope of this text.
+\end{proof}
+\fi
 
 \subsection{Visualization}
