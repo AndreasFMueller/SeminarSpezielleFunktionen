@@ -15,13 +15,13 @@ Durch Ausschreiben des Differentialquotienten
 \begin{equation}
     \frac{dy}{dx} = fy^2 + gy + h
 \end{equation}
-erkennt man, dass die DGL separierbar ist. Die Lösung findet man nun durch die Berechnung des Integrals
+erkennt man, dass die Differentialgleichung separierbar ist. Die Lösung findet man nun durch die Berechnung des Integrals
 \begin{equation} \label{kra:equation:case1_int}
     \int \frac{dy}{fy^2 + gy + h} = \int dx.
 \end{equation}
 
 \subsubsection{Fall 2: Bekannte spezielle Lösung}
-Kennt man eine spezielle Lösung $y_p$, so kann die riccatische DGL mit Hilfe einer Substitution auf eine lineare Gleichung reduziert werden.
+Kennt man eine spezielle Lösung $y_p$, so kann die riccatische Differentialgleichung mit Hilfe einer Substitution auf eine lineare Gleichung reduziert werden.
 Wir wählen als Substitution
 \begin{equation} \label{kra:equation:substitution}
     z = \frac{1}{y - y_p},
@@ -33,7 +33,7 @@ durch Umstellen von \eqref{kra:equation:substitution} folgt
 \begin{equation}
     y' = y_p' - \frac{1}{z^2}z',
 \end{equation}
-mit Einsetzten in die DGL \eqref{kra:equation:riccati} resultiert
+mit Einsetzten in die Differentialgleichung \eqref{kra:equation:riccati} resultiert
 \begin{equation}
     y_p' - \frac{1}{z^2}z' = f(x)(y_p + \frac{1}{z}) + g(x)(y_p + \frac{1}{z})^2 + h(x)
 \end{equation}
@@ -49,7 +49,7 @@ Diese kann nun mit den Methoden zur Lösung von linearen Differentialgleichungen
 Durch die Rücksubstitution \eqref{kra:equation:backsubstitution} erhält man dann die Lösung von \eqref{kra:equation:riccati}.
 
 \subsection{Matrix-Riccati-Differentialgleichung} \label{kra:loesung:riccati}
-Im Folgenden wollen wir uns anschauen wie die Matrix-Riccati-DGL entsteht und wie sie gelöst werden kann.
+Im Folgenden wollen wir uns anschauen wie die Matrix-Riccati-Differentialgleichung entsteht und wie sie gelöst werden kann.
 Der Ausgangspunkt bildet die Matrix-Differentialgleichung
 \begin{equation}
     \label{kra:equation:matrix-dgl}
@@ -70,7 +70,7 @@ Betrachten wir das Verhältniss von $Y$ zu $X$
 \[
     P(t) = Y(t)X^{-1}
 \]
-und deren Ableitung $\dot{P}(t)$, so erhalten wir die Riccati-Matrix-DGL
+und deren Ableitung $\dot{P}(t)$, so erhalten wir die Riccati-Matrix-Differentialgleichung
 \[
     \dot{P}(t) = C  + DU - UA - UBU.
 \]
