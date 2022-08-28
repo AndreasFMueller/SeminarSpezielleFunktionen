@@ -40,8 +40,8 @@ Des weiteren müssen alle Nullstellen und Pole von $F_N$ auf der linken Halbeben
 $w$ ist die normalisierte Frequenz, die es erlaubt ein Filter unabhängig von der Grenzfrequenz zu beschrieben.
 Bei $w=1$ hat das Filter eine Dämpfung von $1/(1+\varepsilon^2)$.
 $N \in \mathbb{N} $ gibt die Ordnung des Filters vor, also die maximale Anzahl Pole oder Nullstellen.
-Je höher $N$ gewählt wird, desto steiler ist der Übergang in den Sperrbereich.
-Grössere $N$ sind erfordern jedoch aufwendigere Implementierungen und haben mehr Phasenverschiebung.
+Je höher $N$ gewählt wird, desto steiler ist der Übergang im Sperrbereich.
+Grössere $N$ erfordern jedoch aufwendigere Implementierungen und haben mehr Phasenverschiebung.
 
 Eine einfache Funktion, die für $F_N$ eingesetzt werden kann, ist das Polynom $w^N$.
 Tatsächlich erhalten wir damit das Butterworth Filter, wie in Abbildung \ref{ellfilter:fig:butterworth} ersichtlich.
@@ -63,7 +63,7 @@ Eine Reihe von rationalen Funktionen können für $F_N$ eingesetzt werden, um Ti
 \end{align}
 Mit der Ausnahme vom Butterworth-Filter sind alle Filter nach speziellen Funktionen benannt.
 Alle diese Filter sind optimal hinsichtlich einer Eigenschaft.
-Es scheint so als sind gewisse Eigenschaften dieser speziellen Funktionen verantwortlich für die Optimalität dieser Filter.
+Es scheint so, als sind gewisse Eigenschaften dieser speziellen Funktionen verantwortlich für die Optimalität dieser Filter.
 Das Butterworth-Filter, zum Beispiel, ist maximal flach im Durchlassbereich.
 In vielen Anwendung sind Filter mit einem steilen Übergang gewünscht.
 Da es technisch nicht möglich ist, mit einer rationalen Funktion mit begrenzter Anzahl Pole eine steile Flanke zu erreichen, während der Durchlass- und Sperrbereich flach und monoton sind, gibt es Filtertypen, die absichtlich Welligkeiten in der Frequenzantwort aufweisen.

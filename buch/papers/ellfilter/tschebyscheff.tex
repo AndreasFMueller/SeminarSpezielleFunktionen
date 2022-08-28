@@ -3,17 +3,17 @@
 Als Einstieg betrachten wir das Tschebyscheff-Filter, welches sehr verwandt ist mit dem elliptischen Filter.
 Genauer ausgedrückt erhält man die Tschebyscheff-1 und -2 Filter bei Grenzwerten von Parametern beim elliptischen Filter.
 Der Name des Filters deutet schon an, dass die Tschebyscheff-Polynome $T_N$ (siehe auch Kapitel \ref{buch:polynome:section:tschebyscheff}) für das Filter relevant sind:
-\begin{align}
+\begin{align*}
     T_{0}(x)&=1\\
     T_{1}(x)&=x\\
     T_{2}(x)&=2x^{2}-1\\
     T_{3}(x)&=4x^{3}-3x\\
     T_{n+1}(x)&=2x~T_{n}(x)-T_{n-1}(x).
-\end{align}
+\end{align*}
 Bemerkenswert ist, dass die Polynome im Intervall $[-1, 1]$ mit der trigonometrischen Funktion
 \begin{align} \label{ellfilter:eq:chebychef_polynomials}
     T_N(w) &= \cos \left( N \cos^{-1}(w) \right) \\
-           &= \cos \left(N~z \right), \quad w= \cos(z)
+           &= \cos \left(N~z \right), \quad w= \cos(z) \label{ellfilter:eq:chebychef_polynomials2}
 \end{align}
 übereinstimmen.
 Der Zusammenhang lässt sich mit den Doppel- und Mehrfachwinkelfunktionen der trigonometrischen Funktionen erklären.
@@ -90,7 +90,7 @@ Das gleiche Muster kommt daher periodisch vor.
 Das Einzeichnen von Pol- und Nullstellen ist hilfreich für die Betrachtung der Funktion.
 
 
-In \eqref{ellfilter:eq:chebychef_polynomials} wird $z$ mit dem Ordnungsfaktor $N$ multipliziert und durch die Kosinusfunktion zurück transformiert.
+In \eqref{ellfilter:eq:chebychef_polynomials2} wird $z$ mit dem Ordnungsfaktor $N$ multipliziert und durch die Kosinusfunktion zurück transformiert.
 Die Skalierung hat zur Folge, dass bei der Rücktransformation durch den Kosinus mehrere Nullstellen durchlaufen werden.
 Somit passiert $\cos \big( N~\cos^{-1}(w) \big)$ im Intervall $[-1, 1]$ $N$ Nullstellen, wie dargestellt in Abbildung \ref{ellfilter:fig:arccos2}.
 \begin{figure}
