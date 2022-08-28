@@ -322,7 +322,8 @@ obtain the \emph{associated Legendre functions}.
   The functions
   \begin{equation}
     P^m_n (z) = (1-z^2)^{\frac{m}{2}}\frac{d^{m}}{dz^{m}} P_n(z)
-      = \frac{1}{2^n n!}(1-z^2)^{\frac{m}{2}}\frac{d^{m+n}}{dz^{m+n}}(1-z^2)^n, \quad |m|<n
+      = \frac{1}{2^n n!}(1-z^2)^{\frac{m}{2}}
+        \frac{d^{m+n}}{dz^{m+n}}(1-z^2)^n, \quad |m|<n
   \end{equation}
   are known as Ferrers or associated Legendre functions.
 \end{definition}
@@ -561,6 +562,13 @@ product:
       \int_0^{2\pi} e^{i(m - m')\varphi}
       \, d\varphi. 
   \end{align*}
+  Essentially, what we just did was to turn
+  \eqref{kugel:eq:spherical-harmonics-inner-prod} in this form:
+  \(
+    \langle Y^m_n, Y^{m'}_{n'} \rangle_{\partial S}
+    = \langle P^m_n, P^{m'}_{n'} \rangle_z
+    \; \langle e^{im\varphi}, e^{-im'\varphi} \rangle_\varphi
+  \).
   First, notice that the associated Legendre polynomials are assumed to be real,
   and are thus unaffected by the complex conjugation. Then, we can see that when
   $m = m'$ the inner integral simplifies to $\int_0^{2\pi} 1 \, d\varphi$ which
@@ -574,13 +582,8 @@ product:
   \end{equation*}
   where in the second step we performed the substitution $z = \cos\vartheta$;
   $d\vartheta = \frac{d\vartheta}{dz} dz= - dz / \sin \vartheta$, and then we
-  used lemma \ref{kugel:thm:associated-legendre-ortho}. 
-  We are allowed to use
-  the lemma because $m = m'$. After the just mentioned substitution we can write eq.\eqref{kugel:eq:spherical-harmonics-inner-prod} in this form
-  \begin{equation*}
-    \langle Y^m_n, Y^{m'}_{n'} \rangle_{\partial S} = \langle P^m_n, P^{m'}_{n'} \rangle_z \; \langle e^{im\varphi}, e^{-im'\varphi} \rangle_\varphi.
-  \end{equation*} 
-  Now we just need look at the case when $m \neq m'$. Fortunately this is
+  used lemma \ref{kugel:thm:associated-legendre-ortho}.  We are allowed to use
+  the lemma because $m = m'$. Now we just need look at the case when $m \neq m'$. Fortunately this is
   easier: the inner integral is $\int_0^{2\pi} e^{i(m - m')\varphi} d\varphi$,
   or in other words we are integrating a complex exponential over the entire
   period, which always results in zero. Thus, we do not need to do anything and
@@ -654,8 +657,8 @@ At this point we have shown that the spherical harmonics form an orthogonal
 system, but in many applications we usually also want a normalization of some
 kind. For example the most obvious desirable property could be for the spherical
 harmonics to be ortho\emph{normal}, by which we mean that $\langle Y^m_n,
-Y^{m'}_{n'} \rangle = \delta_{nn'}$. To obtain orthonormality, we simply add an
-ugly normalization factor in front of the previous definition
+Y^{m'}_{n'} \rangle = \delta_{nn'} \delta_{mm'}$. To obtain orthonormality, we
+simply add an ugly normalization factor in front of the previous definition
 \ref{kugel:def:spherical-harmonics} as follows.
 
 \begin{definition}[Orthonormal spherical harmonics]
