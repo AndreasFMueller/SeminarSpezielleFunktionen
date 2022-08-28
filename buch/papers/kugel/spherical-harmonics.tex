@@ -190,7 +190,6 @@ require a dedicated section of its own.
 
 \begin{figure}
   \centering
-  % \kugelplaceholderfig{.8\textwidth}{5cm}
   \includegraphics[
     scale = 1.2,
     trim = 0 40 0 0, clip,
@@ -327,7 +326,14 @@ obtain the \emph{associated Legendre functions}.
   \end{equation}
   are known as Ferrers or associated Legendre functions.
 \end{definition}
-The constraint $|m|<n$, can be justified by considering eq.\eqref{kugel:eq:associated_leg_func}, where we differentiate $m+n$ times. We all know that a differentiation, to be well defined, must have an order that is greater than zero \kugeltodo{is that always true?}. Furthermore, it can be seen that this derivative is applied on a polynomial of degree $2n$. As is known from Calculus 1, if you derive a polynomial of degree $2n$ more than $2n$ times, you get zero, that would be a trivial solution. This is the power of zero: It is almost always a (boring) solution.
+The constraint $|m|<n$, can be justified by considering equation
+\eqref{kugel:eq:associated_leg_func}, where we differentiate $m+n$ times. We all
+know that a differentiation, to be well defined, must have an order that is
+greater than zero. Furthermore, it can be seen that this derivative is applied
+on a polynomial of degree $2n$. As is known from Calculus 1, if you derive a
+polynomial of degree $2n$ more than $2n$ times, you get zero, that would be a
+trivial solution. This is the power of zero: It is almost always a (boring)
+solution.
 
 We can thus summarize these two conditions by writing:
 \begin{equation*}
@@ -344,8 +350,8 @@ section \ref{kugel:sec:construction:eigenvalue}. We had left off in the middle
 of the separation, were we had used the Ansatz $f(\vartheta, \varphi) =
 \Theta(\vartheta) \Phi(\varphi)$ to find that $\Phi(\varphi) = e^{im\varphi}$,
 and we were solving for $\Theta(\vartheta)$.  As you may recall, previously we
-performed the substitution $z = \cos \vartheta$. Now we can finally bring back the
-solution to the associated Legendre equation $P^m_n(z)$ into the $\vartheta$
+performed the substitution $z = \cos \vartheta$. Now we can finally bring back
+the solution to the associated Legendre equation $P^m_n(z)$ into the $\vartheta$
 domain and combine it with $\Phi(\varphi)$ to get the full result:
 \begin{equation*}
     f(\vartheta, \varphi)
@@ -709,8 +715,11 @@ To start this journey, we can first write the following equations, which relate 
 \end{subequations}
 Much of the effort will be proving this bunch of equalities. Then, in the second part, where we will derive the recursion equations for $Y^m_n(\vartheta,\varphi)$, we will basically reuse the ones presented above.
 
-Maybe it is worth mentioning at least one use case for these relations: In some software implementations (that include lighting computations in computer graphics, antenna modelling softwares, 3-D modelling in medical applications, etc.) 
-they are widely used, as they lead to better numerical accuracy and computational cost lower by a factor of six\cite{usecase_recursion_paper}. 
+Maybe it is worth mentioning at least one use case for these relations: In some
+software implementations (that include lighting computations in computer
+graphics, antenna modelling software, 3-D modelling in medical applications,
+etc.) they are widely used, as they lead to better numerical accuracy and
+computational cost lower by a factor of six \cite{davari_new_2013}.
 \begin{enumerate}[(i)]
   \item 
   \begin{proof}
