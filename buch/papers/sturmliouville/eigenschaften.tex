@@ -4,80 +4,115 @@
 %
 % (c) 2020 Prof Dr Andreas Müller, Hochschule Rapperswil
 %
+
 \section{Eigenschaften von Lösungen
-\label{sturmliouville:section:solution-properties}}
+\label{sturmliouville:sec:solution-properties}}
 \rhead{Eigenschaften von Lösungen}
 
-Im weiteren werden nun die Eigenschaften der Lösungen eines
-Sturm-Liouville-Problems diskutiert und aufgezeigt, wie diese Eigenschaften
-zustande kommen.
+Im Weiteren werden nun die Eigenschaften der Lösung eines
+Sturm-Liouville-Problems diskutiert.
+Im wesentlichen wird darauf eingegangen, wie die Orthogonalität der Lösungen
+zustande kommt, damit diese später in den Beispielen verwendet werden kann.
+Dazu wird zunächst das Eigenwertproblem für Matrizen wiederholt und angeschaut
+unter welchen Voraussetzungen die Lösungen dieses Problems orthogonal sind.
+Dann wird gezeigt, dass das Sturm-Liouville-Problem auch ein Eigenwertproblem
+dieser Art ist und es wird auf au die Orthogonalität der Lösungsfunktionen
+geschlossen.
 
-Dazu wird der Operator $L_0$ welcher bereits in 
-Kapitel~\ref{buch:integrale:subsection:sturm-liouville-problem} betrachtet
-wurde, noch etwas genauer angeschaut.
-Es wird also im Folgenden
-\[
-    L_0
-    =
-    -\frac{d}{dx}p(x)\frac{d}{dx}
-\]
-zusammen mit den Randbedingungen
-\[
-    \begin{aligned}
-        k_a y(a) + h_a p(a) y'(a) &= 0 \\
-        k_b y(b) + h_b p(b) y'(b) &= 0
-    \end{aligned}
-\]
-verwendet.
-Wie im Kapitel~\ref{buch:integrale:subsection:sturm-liouville-problem} bereits 
-gezeigt, resultieren die Randbedingungen aus der Anforderung den Operator $L_0$
-selbsadjungiert zu machen.
-Es wurde allerdings noch nicht darauf eingegangen, welche Eigenschaften dies
-für die Lösungen des Sturm-Liouville-Problems zur Folge hat.
+\subsection{Eigenwertprobleme mit symmetrischen Matrizen
+\label{sturmliouville:sec:eigenvalue-problem-matrix}}
 
-\subsubsection{Exkurs zum Spektralsatz}
+% TODO: intro
 
-Um zu verstehen welche Eigenschaften der selbstadjungierte Operator $L_0$ in 
-den Lösungen hervorbringt, wird der Spektralsatz benötigt.
-
-Dieser wird in der linearen Algebra oft verwendet um zu zeigen, dass eine Matrix
-diagonalisierbar ist, beziehungsweise dass eine Orthonormalbasis existiert.
-
-Im Fall einer gegebenen $n\times n$-Matrix $A$ mit reellen Einträgen wird dazu 
-zunächst gezeigt, dass $A$ selbstadjungiert ist, also dass
+Angenomen es sei eine reelle, symmetrische $n \times n$-Matrix $A$ gegeben.
+Dass $A$ symmetrisch ist, bedeutet, dass
 \[
     \langle Av, w \rangle
     =
     \langle v, Aw \rangle
+    \qquad
+    v, w \in \mathbb{R}^n
 \]
-für $ v, w \in \mathbb{R}^n$ gilt.
-Ist dies der Fall, kann die Aussage des Spektralsatzes
-\cite{sturmliouville:spektralsatz-wiki} verwended werden.
-Daraus folgt dann, dass eine Orthonormalbasis aus Eigenvektoren existiert,
-wenn $A$ nur Eigenwerte aus $\mathbb{R}$ besitzt.
+erfüllt ist.
 
-Dies ist allerdings nicht die Einzige Version des Spektralsatzes.
-Unter anderen gibt es den Spektralsatz für kompakte Operatoren
-\cite{sturmliouville:spektralsatz-wiki}, welcher für das
-Sturm-Liouville-Problem von Bedeutung ist.
-Welche Voraussetzungen erfüllt sein müssen, um diese Version des
-Satzes verwenden zu können, wird hier aber nicht diskutiert und kann bei den
-Beispielen in diesem Kapitel als gegeben betrachtet werden.
-Grundsätzlich ist die Aussage in dieser Version dieselbe, wie bei den Matrizen,
-also dass für ein Operator eine Orthonormalbasis aus Eigenvektoren existiert,
-falls er selbstadjungiert ist.
+Für reelle, symmetrische Matrizen zeigt dies auch direkt, dass die Matrix
+selbstadjungiert ist.
+Das ist wichtig, da der Spektralsatz~\cite{sturmliouville:spektralsatz-wiki}
+für selbstadjungierte Matrizen formuliert ist. Dieser sagt nun aus, dass die
+Matrix $A$ diagonalisierbar ist.
+In anderen Worten bilden die Eigenvektoren $v_i \in \mathbb{R}^n$ des 
+Eigenwertproblems
+\[
+    A v_i
+    =
+    \lambda_i v_i
+    \qquad \lambda_i \in \mathbb{R}
+\]
+eine Orthogonalbasis.
 
-\subsubsection{Anwendung des Spektralsatzes auf $L_0$}
+\subsection{Das Sturm-Liouville-Problem als Eigenwertproblem}
 
-Der Spektralsatz besagt also, dass, weil $L_0$ selbstadjungiert ist, eine
-Orthonormalbasis aus Eigenvektoren existiert.
-Genauer bedeutet dies, dass alle Eigenvektoren, beziehungsweise alle Lösungen
-des Sturm-Liouville-Problems orthogonal zueinander sind bezüglich des
-Skalarprodukts, in dem $L_0$ selbstadjungiert ist.
+In Kapitel~\ref{buch:integrale:subsection:sturm-liouville-problem} wurde bereits
+der Operator
+\[
+    L
+    =
+    \frac{1}{w(x)}\left( -\frac{d}{dx}p(x) \frac{d}{dx} + q(x)\right)
+\]
+eingeführt.
+Dieser wird nun verwendet um die Differenzialgleichung 
+\[
+    (p(x)y'(x))' + q(x)y(x)
+    =
+    \lambda w(x) y(x)
+\]
+in das Eigenwertproblem
+\begin{equation}
+    \label{sturmliouville:eq:eigenvalue-problem}
+    L y
+    =
+    \lambda y.
+\end{equation}
+umzuschreiben.
 
-Erfüllt also eine Differenzialgleichung die in
-Abschnitt~\ref{sturmliouville:section:teil0} präsentierten Eigenschaften und 
-erfüllen die Randbedingungen der Differentialgleichung die Randbedingungen
-des Sturm-Liouville-Problems, kann bereits geschlossen werden, dass die
-Lösungsfunktion des Problems eine Linearkombination aus orthogonalen
-Basisfunktionen ist.
+\subsection{Orthogonalität der Lösungsfunktionen}
+
+Nun wird das Eigenwertproblem~\eqref{sturmliouville:eq:eigenvalue-problem} näher
+angeschaut.
+Um auf die Orthogonalität der Lösungsfunktion zu schliessen, wird dafür der
+Operator $L$ genauer betrachtet.
+Analog zur Matrix $A$ aus 
+Abschnitt~\ref{sturmliouville:sec:eigenvalue-problem-matrix} kann auch für
+$L$ gezeigt werden, dass dieser Operator selbstadjungiert ist.
+
+Dazu wird das modifizierte Skalarprodukt
+\begin{equation}
+    \label{sturmliouville:eq:modified-dot-product}
+    \langle f, g \rangle_w
+    =
+    \int_a^b f(x)g(x)w(x)\,dx
+\end{equation}
+aus Kapitel~\ref{buch:integrale:subsection:sturm-liouville-problem} verwendet,
+welches auch die Gewichtsfunktion $w(x)$ berücksichtigt.
+Damit $L$ bezüglich dieses Skalarproduktes selbstadjungiert ist, muss also
+\[
+    \langle L u, v\rangle_w
+    =
+    \langle u, L v\rangle_w
+\]
+gelten.
+
+Wie in Kapitel~\ref{buch:integrale:subsection:sturm-liouville-problem} bereits
+gezeigt, ist dies durch die
+Randbedingungen~\eqref{sturmliouville:eq:randbedingungen} des
+Sturm-Liouville-Problems sicher gestellt.
+
+Um nun über den Spektralsatz~\cite{sturmliouville:spektralsatz-wiki} auf die
+Orthogonalität der Lösungsfunktion $y$ zu schliessen, muss der Operator $L$ ein
+sogenannter ''kompakter Operator'' sein.
+Bei einem regulären Sturm-Liouville-Problem ist diese Eigenschaft für $L$
+gegeben und wird im Weiteren nicht näher diskutiert.
+
+Es kann nun also dank dem Spektralsatz darauf geschlossen werden, dass die
+Lösungsfunktion $y$ eines regulären Sturm-Liouville-Problems eine
+Linearkombination aus orthogonalen Basisfunktionen sein muss.

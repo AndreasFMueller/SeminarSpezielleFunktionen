@@ -1,82 +1,107 @@
 %
 % tschebyscheff_beispiel.tex
+% Author: Réda Haddouche
 %
 % (c) 2020 Prof Dr Andreas Müller, Hochschule Rapperswil
 %
 
-\subsection{Sind Tschebyscheff-Polynome orthogonal zueinander?\label{sub:tschebyscheff-polynome}}
-\subsubsection*{Definition der Koeffizientenfunktion}
-Im Kapitel \ref{sub:beispiele_sturm_liouville_problem} sind die Koeffizientenfunktionen, die man braucht, schon aufgeliste, und zwar mit
+\section{Beispiel: Tschebyscheff-Polynome
+\label{sturmliouville:sub:tschebyscheff-polynome}}
+\rhead{Tschebyscheff-Polynome}
+In diesem Unterkapitel wird anhand der
+Tschebyscheff-Differentialgleichung~\eqref{buch:potenzen:tschebyscheff:dgl}
+gezeigt, dass die Tschebyscheff-Polynome orthogonal zueinander sind.
+Zu diesem Zweck werden die Koeffizientenfunktionen nochmals dargestellt, so dass
+überprüft werden kann, ob die Randbedingungen erfüllt werden.
+Sobald feststeht, ob das Problem regulär oder singulär ist, zeigt eine
+kleine Rechnung, dass die Lösungen orthogonal sind.
+
+\subsection*{Definition der Koeffizientenfunktion}
+Im Kapitel \ref{sub:beispiele_sturm_liouville_problem} sind die
+Koeffizientenfunktionen, die man braucht, schon aufgelistet:
 \begin{align*}
-	w(x) &= \frac{1}{\sqrt{1-x^2}} \\
-	p(x) &= \sqrt{1-x^2} \\
-	q(x) &= 0
-\end{align*}.
+	w(x) &= \frac{1}{\sqrt{1-x^2}}, \\
+	p(x) &= \sqrt{1-x^2}, \\
+	q(x) &= 0.
+\end{align*}
 Da die Sturm-Liouville-Gleichung
 \begin{equation}
 	\label{eq:sturm-liouville-equation-tscheby}
-	\frac{d}{dx} (\sqrt{1-x^2} \frac{dy}{dx}) + (0 + \lambda \frac{1}{\sqrt{1-x^2}}) y = 0 
+	\frac{d}{dx} \biggl (\sqrt{1-x^2} \frac{dy}{dx}\biggr ) +
+	\biggl (0 + \lambda \frac{1}{\sqrt{1-x^2}}\biggr ) y
+	=
+	0 
 \end{equation}
-nun mit den Koeffizientenfunktionen aufgestellt werden kann, bleibt die Frage, ob es sich um ein reguläres oder singuläres Sturm-Liouville-Problem handelt.
+nun mit den Koeffizientenfunktionen aufgestellt werden kann, bleibt die Frage,
+ob es sich um ein reguläres oder singuläres Sturm-Liouville-Problem handelt.
+Zunächst werden jedoch die Randbedingungen betrachtet.
 
-\subsubsection*{regulär oder singulär?}
-Für das reguläre Problem laut der Definition \ref{def:reguläres_sturm-liouville-problem} muss die funktion $p(x) = \sqrt{1-x^2}$, $p'(x) = -2x$, $q(x) = 0$ und $w(x) = \frac{1}{\sqrt{1-x^2}}$ stetig und reell sein --- und sie sind es auch.
-Auf dem Intervall $(-1,1)$ sind die Tschebyscheff-Polynome erster Art mit Hilfe von Hyperbelfunktionen
+\subsection*{Randwertproblem}
+Für die Verifizierung der Randbedingungen benötigt man erneut $p(x)$.
+Die Randwerte setzt man $a = -1$ und $b = 1$.
+Beim Einsetzen in die Randbedingung \eqref{sturmliouville:eq:randbedingungen},
+erhält man
 \begin{equation}
-	T_n(x) = \cos n (\arccos x)
-\end{equation}.
-Für $x>1$ und $x<-1$ sehen die Polynome wie folgt aus:
+	\begin{aligned}
+		k_a y(-1) + h_a p(-1) y'(-1) &= 0\\
+		k_b y(1) + h_b p(1) y'(1) &= 0.
+	\end{aligned} 
+\end{equation}
+Die Funktion $y(x)$ und $y'(x)$ sind in diesem Fall die Tschebyscheff Polynome
+(siehe \ref{sub:definiton_der_tschebyscheff-Polynome}).
+Die Funktion $y(x)$ wird nun mit der Funktion $T_n(x)$ ersetzt und für die
+Verifizierung der Randbedingung wählt man $n=0$.
+Somit erhält man
 \begin{equation}
-	T_n(x) = \left\{\begin{array}{ll} \cosh (n \arccos x), & x > 1\\
-		(-1)^n \cosh (n \arccos (-x)), & x<-1 \end{array}\right.
-\end{equation},
-jedoch ist die Orthogonalität nur auf dem Intervall $[ -1, 1]$ sichergestellt.
-Die nächste Bedingung beinhaltet, dass die Funktion $p(x)$ und $w(x)>0$ sein müssen.
+	\begin{aligned}
+		k_a T_0(-1) + h_a p(-1) T_{0}'(-1) &= k_a = 0\\
+		k_b T_0(1) + h_b p(1) T_{0}'(1) &= k_b = 0.
+	\end{aligned}
+\end{equation}
+Ähnlich wie beim Beispiel der Wärmeleitung in einem homogenen Stab können,
+damit die Bedingung $|k_i|^2 + |h_i|^2\ne 0$ erfüllt ist, beliebige
+$h_a \ne 0$ und $h_b \ne 0$ gewählt werden.
+Es wurde somit gezeigt, dass die Sturm-Liouville-Randbedingungen erfüllt sind.
+
+\subsection*{Handelt es sich um ein reguläres oder singuläres Problem?}
+Für das reguläre Problem muss laut der
+Definition~\ref{sturmliouville:def:reguläres_sturm-liouville-problem} die funktion
+$p(x) = \sqrt{1-x^2}$, $p'(x) = -2x$, $q(x) = 0$ und
+$w(x) = \frac{1}{\sqrt{1-x^2}}$ stetig und reell sein.
+Auf dem Intervall $(-1,1)$ sind die Tschebyscheff-Polynome erster Art
+\begin{equation}
+	T_n(x)
+	=
+	\cos n (\arccos x).
+\end{equation}
+Die nächste Bedingung, laut der Definition \ref{sturmliouville:def:reguläres_sturm-liouville-problem}, beinhaltet, dass die Funktion $p(x)$ und $w(x)>0$ sein
+müssen.
 Die Funktion
 \begin{equation*}
 	p(x)^{-1} = \frac{1}{\sqrt{1-x^2}}
 \end{equation*}
 ist die gleiche wie $w(x)$ und erfüllt die Bedingung.
+Es zeigt sich also, dass $p(x)$, $p'(x)$, $q(x)$ und $w(x)$
+die Bedingungen erfüllen.
+Da auch die Randbedingungen erfüllt sind, handelt es sich um ein reguläres Sturm-Liouville-Problem.
 
-\subsubsection*{Randwertproblem}
-Für die Verifizierung der Randbedingungen benötigt man erneut $p(x)$.
-Da sich die Polynome nur auf dem Intervall $[ -1,1 ]$ orthogonal verhalten, sind $a = -1$ und $b = 1$ gesetzt.
-Beim einsetzen in die Randbedingung \ref{eq:randbedingungen}, erhält man
-\begin{equation}
-\begin{aligned}
-	k_a y(-1) + h_a y'(-1) &= 0
-	k_b y(-1) + h_b y'(-1) &= 0.
-\end{aligned} 
-\end{equation}
-Die Funktion $y(x)$ und $y'(x)$ sind in diesem Fall die Tschebyscheff Polynome (siehe \label{sub:definiton_der_tschebyscheff-Polynome}).
-Es gibt zwei Arten von Tschebyscheff Polynome: die erste Art $T_n(x)$ und die zweite Art $U_n(x)$.
-Jedoch beachtet man in diesem Kapitel nur die Tschebyscheff Polynome erster Art (\ref{eq:tschebyscheff-polynome}).
-Die Funktion $y(x)$ wird nun mit der Funktion $T_n(x)$ ersetzt und für die Verifizierung der Randbedingung wählt man $n=2$.
-Somit erhält man
-\begin{equation}
-	\begin{aligned}
-	k_a T_2(-1) + h_a T_{2}'(-1) &= k_a = 0\\
-	k_b T_2(1) + h_b T_{2}'(1) &= k_b = 0.
-\end{aligned}
-\end{equation}
-Ähnlich wie beim Beispiel der Wärmeleitung in einem homogenen Stab kann man, damit die Bedingung $|k_i|^2 + |h_i|^2\ne 0$ erfüllt ist, können beliebige $h_a \ne 0$ und $h_b \ne 0$ gewählt werden.
-Somit ist erneut gezeigt, dass die Randbedingungen der Tschebyscheff-Polynome auf die Sturm-Liouville-Randbedingungen erfüllt und alle daraus resultierenden Lösungen orthogonal sind.
 
 \begin{beispiel}
-	Die Gleichung \ref{eq:skalar-sturm-liouville} mit $y_m = T_1(x)$ und $y_n(x) = T_2(x)$ eingesetzt sowie $a=-1$ und $b = 1$ ergibt
+	In diesem Beispiel wird zuletzt die Orthogonalität der Lösungsfunktion
+	illustriert.
+	Dazu verwendet man das Skalarprodukt
 	\[
-	\int_{-1}^{1} w(x) x (2x^2-1) dx = 0.
+		\int_{a}^{b} w(x) y_m(x) y_n(x) = 0.
 	\]
+	mit $y_m(x) = T_1(x)$ und $y_n(x) = T_2(x)$, sowie $a=-1$ und $b = 1$.
+	Eigesetzt ergibt dies
+	\[
+	\begin{aligned}
+	\int_{-1}^{1} \frac{1}{\sqrt{1-x^2}} x (2x^2-1) dx &=
+	\biggl [ - \frac{\sqrt{1-x^2}(2x^2+1)}{3} \biggr ]_{-1}^{1}\\
+	&= 0.
+	\end{aligned}
+	\]
+	Somit ist gezeigt, dass $T_1(x)$ und $T_2(x)$ orthogonal sind.
+	Analog kann Orthogonalität für alle $y_n(x)$ und $y_m(x)$ mit $n \ne m$ gezeigt werden.
 \end{beispiel}
-
- 
-
-
-
-
-
-
-
-
-
-

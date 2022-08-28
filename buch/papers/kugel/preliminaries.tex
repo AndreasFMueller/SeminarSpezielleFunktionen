@@ -1,6 +1,6 @@
 % vim:ts=2 sw=2 et spell tw=78:
 
-\section{Preliminaries}
+\section{Preliminaries}\label{kugel:sec:preliminaries}
 
 The purpose of this section is to dust off some concepts that will become
 important later on. This will enable us to be able to get a richer and more
@@ -318,11 +318,12 @@ convergence.
 \end{definition}
 
 \begin{theorem}[Fourier Theorem]
-  \[
+  \label{fourier-theorem-1D}
+  \begin{equation*}
     \lim_{N \to \infty} \left \|
       f(x) - \sum_{n = -N}^N \hat{f}(n) E_n(x) 
     \right \|_2 = 0
-  \]
+  \end{equation*}
 \end{theorem}
 
 \begin{lemma}
