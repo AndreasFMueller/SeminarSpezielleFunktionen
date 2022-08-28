@@ -7,10 +7,58 @@ Fourier style expansion of any function on the surface of the sphere is very
 useful in many fields of physics and engineering. Here we will present a few of
 the most interesting applications we came across during our research.
 
-\subsection{Electroencephalography (EEG)}
+\subsection{Electroencephalography}
 
 \begin{figure}
+  \centering
+  \subfigure[EEG Electrodes \label{kugel:fig:eeg-electrodes}]%
+    {\kugelplaceholderfig{.4\linewidth}{5cm}}
+  \qquad
+  \subfigure[Gauss' Law \label{kugel:fig:eeg-flux}]%
+    {\includegraphics[width=.4\linewidth]{papers/kugel/figures/flux}}
+  \caption{
+    \label{kugel:fig:eeg}
+  }
 \end{figure}
+
+To start, we will look at an application that is from the field of medicine:
+electroencephalography. The \emph{electroencephalogram} (EEG) is a measurement
+of the electrical field on the scalp, which shows the brain's activity, and is
+used in many fields of research such as neurology and cognitive psychology.  The
+measurement is done by wearing a cap that contains a number of evenly
+distributed electrodes, each of which measures the electric potential (voltage)
+at their location (figure \ref{kugel:fig:eeg-electrodes}).  To see how this will
+relate to the spherical harmonics, we will first quickly recap a bit of physics,
+electrodynamics to be precise.
+
+In section \ref{kugel:sec:construction:eigenvalue} we have shown that the
+spherical harmonics arise from the surface spherical Laplacian operator, whose
+origin we did not consider too much, which is how mathematicians do their work.
+On the contrary, physicists usually do the opposite and start by discussing what
+is happening, since variables and functions represent physical quantities. So,
+we will quickly remind that the Laplacian operator does the following to an
+electric potential $\phi$:
+\begin{equation*}
+  \nabla^2 \phi
+  = \nabla \cdot \nabla \phi
+  = \nabla \cdot \mathbf{E}
+  = \rho / \varepsilon
+  \iff
+  \iiint_\Omega \nabla \cdot \mathbf{E} \, dv
+  = \iint_{\partial \Omega} \mathbf{E} \cdot d\mathbf{s}
+  = \Phi / \varepsilon.
+\end{equation*}
+Put into words: on the left we have the differential form, where we recall that
+the Laplacian (which is a second derivative) is the divergence of the gradient.
+Unpacking the notation we first see that we have the gradient of the potential,
+which is just the electric field $\mathbf{E}$, and then the divergence of said
+electric field is proportional to the charge density $\rho$. So, the Laplacian
+of the electric potential is the charge density! For those that are more
+familiar with the integral form of Maxwell's equation, we have also included an
+additional step using the divergence theorem, which brings us to the electric
+Flux, which by Gauss' law (shown in the iconic\footnote{Every electrical
+engineer has seen this picture so many times that is probably burnt in their
+eyes.} figure \ref{kugel:fig:eeg-flux}) is the net electric charge.
 
 \subsection{Measuring Gravitational Fields}
 
