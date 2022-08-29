@@ -3,17 +3,17 @@
 Als Einstieg betrachten wir das Tschebyscheff-Filter, welches sehr verwandt ist mit dem elliptischen Filter.
 Genauer ausgedrückt erhält man die Tschebyscheff-1 und -2 Filter bei Grenzwerten von Parametern beim elliptischen Filter.
 Der Name des Filters deutet schon an, dass die Tschebyscheff-Polynome $T_N$ (siehe auch Kapitel \ref{buch:polynome:section:tschebyscheff}) für das Filter relevant sind:
-\begin{align}
+\begin{align*}
     T_{0}(x)&=1\\
     T_{1}(x)&=x\\
     T_{2}(x)&=2x^{2}-1\\
     T_{3}(x)&=4x^{3}-3x\\
     T_{n+1}(x)&=2x~T_{n}(x)-T_{n-1}(x).
-\end{align}
+\end{align*}
 Bemerkenswert ist, dass die Polynome im Intervall $[-1, 1]$ mit der trigonometrischen Funktion
 \begin{align} \label{ellfilter:eq:chebychef_polynomials}
     T_N(w) &= \cos \left( N \cos^{-1}(w) \right) \\
-           &= \cos \left(N~z \right), \quad w= \cos(z)
+           &= \cos \left(N~z \right), \quad w= \cos(z) \label{ellfilter:eq:chebychef_polynomials2}
 \end{align}
 übereinstimmen.
 Der Zusammenhang lässt sich mit den Doppel- und Mehrfachwinkelfunktionen der trigonometrischen Funktionen erklären.
@@ -36,7 +36,7 @@ Wenn wir die Tschebyscheff-Polynome quadrieren, passen sie perfekt in die Forder
 \end{figure}
 
 Die analytische Fortsetzung von \eqref{ellfilter:eq:chebychef_polynomials} über das Intervall $[-1,1]$ hinaus stimmt mit den Polynomen überein, wie es zu erwarten ist.
-Die genauere Betrachtung wird uns helfen die elliptischen Filter besser zu verstehen.
+Die genauere Betrachtung wird uns helfen, die elliptischen Filter besser zu verstehen.
 Starten wir mit der Funktion, die in \eqref{ellfilter:eq:chebychef_polynomials} als erstes auf $w$ angewendet wird, dem Arcuscosinus.
 Die invertierte Funktion des Kosinus kann als bestimmtes Integral dargestellt werden:
 \begin{align}
@@ -73,7 +73,7 @@ Der Integrand oder auch die Ableitung von $\cos^{-1}(x)$,
     },
 \end{equation}
 bestimmt dabei die Richtung, in welche die Funktion verläuft.
-Der reelle Arcuscosinus is bekanntlich nur für $|z| \leq 1$ definiert.
+Der reelle Arcuscosinus ist bekanntlich nur für $|z| \leq 1$ definiert.
 Hier bleibt der Wert unter der Wurzel positiv und das Integral liefert reelle Werte.
 Doch wenn $|z|$ über 1 hinausgeht, wird der Term unter der Wurzel negativ.
 Durch die Quadratwurzel entstehen für den Integranden zwei rein komplexe Lösungen.
@@ -82,14 +82,15 @@ Abbildung \ref{ellfilter:fig:arccos} zeigt den Arcuscosinus in der komplexen Ebe
 \begin{figure}
     \centering
     \input{papers/ellfilter/tikz/arccos.tikz.tex}
-    \caption{Die Funktion $z = \cos^{-1}(w)$ dargestellt in der komplexen ebene.}
+    \caption{Die Funktion $z = \cos^{-1}(w)$ dargestellt in der komplexen Ebene.}
     \label{ellfilter:fig:arccos}
 \end{figure}
-Wegen der Periodizität des Kosinus ist auch der Arcuscosinus $2\pi$-periodisch.
+Wegen der Periodizität des Kosinus werden periodisch Werte in der $z$-Ebene auf den gleichen Wert in $w$ abgebildet.
+Das gleiche Muster kommt daher periodisch vor.
 Das Einzeichnen von Pol- und Nullstellen ist hilfreich für die Betrachtung der Funktion.
 
 
-In \eqref{ellfilter:eq:chebychef_polynomials} wird $z$ mit dem Ordnungsfaktor $N$ multipliziert und durch die Kosinusfunktion zurück transformiert.
+In \eqref{ellfilter:eq:chebychef_polynomials2} wird $z$ mit dem Ordnungsfaktor $N$ multipliziert und durch die Kosinusfunktion zurück transformiert.
 Die Skalierung hat zur Folge, dass bei der Rücktransformation durch den Kosinus mehrere Nullstellen durchlaufen werden.
 Somit passiert $\cos \big( N~\cos^{-1}(w) \big)$ im Intervall $[-1, 1]$ $N$ Nullstellen, wie dargestellt in Abbildung \ref{ellfilter:fig:arccos2}.
 \begin{figure}
@@ -105,4 +106,4 @@ Somit passiert $\cos \big( N~\cos^{-1}(w) \big)$ im Intervall $[-1, 1]$ $N$ Null
     \label{ellfilter:fig:arccos2}
 \end{figure}
 Durch die spezielle Anordnung der Nullstellen hat die Funktion auf der reellen Achse Equiripple-Verhalten und ist dennoch ein Polynom, was sich perfekt für lineare Filter eignet.
-Für $|w| <= 1$ ist die Funktion begrenzt zwischen $-1$ und $1$.
+Für $|w| \le 1$ ist die Funktion begrenzt zwischen $-1$ und $1$.
