@@ -50,6 +50,8 @@ Durch die Rücksubstitution \eqref{kra:equation:backsubstitution} erhält man da
 
 \subsection{Matrix-Riccati-Differentialgleichung} \label{kra:loesung:riccati}
 Im Folgenden wollen wir uns anschauen wie die Matrix-Riccati-Differentialgleichung entsteht und wie sie gelöst werden kann.
+
+\subsubsection{Entstehung}
 Der Ausgangspunkt bildet die Matrix-Differentialgleichung
 \begin{equation}
     \label{kra:equation:matrix-dgl}
@@ -63,19 +65,77 @@ Der Ausgangspunkt bildet die Matrix-Differentialgleichung
             A & B \\
             C & D
         \end{pmatrix}
-    }_{\displaystyle{H}},
+    }_{\displaystyle{H}}
+    \begin{pmatrix}
+        X(t) \\
+        Y(t)
+    \end{pmatrix}
 \end{equation}
-mit den allgemeinen quadratischen Matrizen $A, B, C$ und $D$ welche zusammen die sogenannte Hamiltonsche-Matrix bilden.
-Betrachten wir das Verhältniss von $Y$ zu $X$
+mit den allgemeinen quadratischen Matrizen $A, B, C$ und $D$, welche in der sogenannten Hamiltonschen-Matrix $H$ zusammengefasst werden können.
+Wir führen eine neue Grösse
 \[
     U(t) = Y(t)X(t)^{-1}
 \]
-und deren Ableitung $\dot{P}(t)$, so erhalten wir die Riccati-Matrix-Differentialgleichung
+ein, für dessen Ableitung $\dt U(t)$ wir mit
 \[
-    \dot{U}(t) = C(t)  + DU(t) - U(t)A - U(t)BU(t).
+    \dot{X}(t) = AX(t) + BY(t) \quad \text{und} \quad \dot{Y}(t) = CX(t) + DY(t)
 \]
+folgendes Ergebnis erhalten
+\begin{equation}
+    \label{kra:equation:feder-masse-riccati-matrix}
+    \begin{split}
+        \dt U(t)   &= \dot{Y}(t) X(t)^{-1} + Y(t) \dt X(t)^{-1} \\
+        &= (CX(t) + DY(t)) X(t)^{-1} - Y(t) (X(t)^{-1} \dot{X}(t) X(t)^{-1}) \\
+        &= C\underbrace{X(t)X(t)^{-1}}_\text{$I$} + D\underbrace{Y(t)X(t)^{-1}}_\text{$U(t)$} - Y(t)(X(t)^{-1} (AX(t) + BY(t)) X(t)^{-1}) \\
+        &= C + DU(t) - \underbrace{Y(t)X(t)^{-1}}_\text{$U(t)$}(A\underbrace{X(t)X(t)^{-1}}_\text{$I$} + B\underbrace{Y(t)X(t)^{-1}}_\text{$U(t)$}) \\
+        &= C  + DU(t) - U(t)A - U(t)BU(t).
+    \end{split}
+\end{equation}
+\begin{satz}
+    \label{kra:satz:riccati-matrix-dgl}
+    Die Ableitung $\dt U(t) = \dt (Y(t)X(t)^{-1})$ ist eine Matrix-Riccati-Differentialgleichung.
+\end{satz}
 
-Die Lösung erhalten wir dann mit
+\subsubsection{Lösung}
+Sei
+\[
+    V(t)
+    =
+    \begin{pmatrix}
+        X(t) \\
+        Y(t)
+    \end{pmatrix},
+    \quad
+    \dot{V}(t) = HV(t)
+\]
+eine Matrix-Differentialgleichung 1. Ordnung, dann ist
+\[
+    V(t) = e^{H(t)} V(0)
+\]
+eine Lösung.
+Die Berechnung des Matrixexpontentials $e^{H(t)}$ kann mittels Diagonalisierung
+\[
+    H = Q \Lambda Q^{-1}
+\]
+effizient berechnet werden.
+Es folgt dann, dass
+\[
+    e^{Ht}
+    =
+    Q
+    e^{\Lambda t}
+    Q^{-1}
+    =
+    Q
+    \begin{pmatrix}
+        e^{\lambda_1 t} & 0               & \dots  & 0               \\
+        0               & e^{\lambda_2 t} & \ddots & \vdots          \\
+        \vdots          & \ddots          & \ddots & 0               \\
+        0               & \dots           & 0      & e^{\lambda_n t}
+    \end{pmatrix}
+    Q^{-1}
+\]
+ist. Die Lösung der Matrix-Riccati-Differentialgleichung erhalten wir analog mit
 \begin{equation}
     \label{kra:matrixriccati-solution}
     \begin{pmatrix}
@@ -108,4 +168,5 @@ Die Lösung erhalten wir dann mit
     \end{pmatrix}
     ^{-1}
 \end{equation}
-wobei $\Phi(t_0, t) = e^{H(t - t_0)}$ die sogenannte Zustandsübergangsmatrix von \eqref{kra:equation:matrix-dgl} ist \cite{kra:kalmanisae}.
+wobei $\Phi(t_0, t) = e^{H(t - t_0)}$ die sogenannte Zustandsübergangsmatrix von \eqref{kra:equation:matrix-dgl} ist,
+welche die Zeitentwicklung der einzelnen Lösungen beschreibt \cite{kra:kalmanisae}.
