@@ -12,7 +12,8 @@ the most interesting applications we came across during our research.
 \begin{figure}
   \centering
   \subfigure[EEG Electrodes \label{kugel:fig:eeg-electrodes}]%
-    {\kugelplaceholderfig{.4\linewidth}{5cm}}
+    % {\kugelplaceholderfig{.4\linewidth}{5cm}}
+    {\includegraphics[width=.45\linewidth, frame]{papers/kugel/figures/electrodes}}
   \qquad
   \subfigure[Gauss' Law \label{kugel:fig:eeg-flux}]%
     {\includegraphics[width=.4\linewidth]{papers/kugel/figures/flux}}
@@ -30,6 +31,9 @@ distributed electrodes, each of which measures the electric potential (voltage)
 at their location (figure \ref{kugel:fig:eeg-electrodes}).  To see how this will
 relate to the spherical harmonics, we will first quickly recap a bit of physics,
 electrodynamics to be precise.
+
+
+\subsubsection{Electrodynamics}
 
 In section \ref{kugel:sec:construction:eigenvalue} we have shown that the
 spherical harmonics arise from the surface spherical Laplacian operator, whose
@@ -70,6 +74,8 @@ are done with physics and finally arrive at the engineers' perspective: how can
 we use this fact to build something that reads the current flows on the surface
 of the brain?
 
+\subsubsection{EEG as Interpolation Problem}
+
 The details of how EEG actually works gets very complicated very quickly, but we
 will try our best to give an broad overview of the mathematical machinery that
 makes it possible to measure brain waves. See, the problem neither the physicist
@@ -82,13 +88,77 @@ the spherical harmonics.
 
 To solve this new interpolation problem, we will start with a blatantly
 engineering assumption: the human head is a sphere of radius $R$, with the value
-of $R$ begin the radius of the average human head. So, we will assume that the
-potential distribution on the head can be written as a finite linear combination
-of spherical harmonics:
+of $R$ begin the average radius of a human head (which is around 11 cm). So, we
+will assume that the potential distribution on the head can be written as a
+finite linear combination of spherical harmonics:
 \begin{equation*}
-  \phi(\vartheta, \varphi)
-    = \sum_{n=0}^N \sum_{m=-n}^n a_{m,n} Y^m_n(\vartheta, \varphi)
+  V(\vartheta, \varphi)
+    = \sum_{n=0}^N \sum_{m=-n}^n a_{m,n} Y^m_n(\vartheta, \varphi),
 \end{equation*}
+where the values $a_{m,n}$ are the unknowns of our interpolation problem. Now to
+the measurements: we let $\phi_1, \phi_2, \ldots, p_M$ be the measured voltages
+at points in space $p_1, p_2, \ldots, p_M$ (position of the electrodes). To
+simplify, we will assume that the electrodes are reasonably evenly distributed,
+which means that we have no points that are on top of each other or at wildly
+different radii from the origin. With that out of the way, we can now write a
+minimization problem:
+\begin{subequations}
+  \begin{align}
+    a_{m,n}^* &= \arg \min_{a_{m,n}}
+      \int_{\partial S} | \surflaplacian V |^2 \, ds 
+      = \int_0^{2\pi} \int_{0}^\pi | \surflaplacian V |^2
+        \sin \vartheta \, d\vartheta d\varphi, 
+        \label{kugel:eqn:eeg-min} \\
+    &\text{under the constraints} \quad V(p_j) = \phi_j
+      \quad \text{ for } \quad 1 < j < M.
+      \label{kugel:eqn:eeg-min-constraints}
+  \end{align}
+\end{subequations}
+Essentially, with \eqref{kugel:eqn:eeg-min} we are are asking for the solution
+to be smooth by minimizing the square of the total curvature (recall that the
+surface spherical Laplacian $\surflaplacian$ is a measure of curvature), while
+at the same time with \eqref{kugel:eqn:eeg-min-constraints}, we force the
+solution to go through the measured points. The latter is the reason why we
+needed to assumed that the measurements are at reasonable locations, something
+that (as every engineer show know) is not necessarily the case in the real
+world! Thus, to solve this problem, we will use the suspiciously convenient fact
+that (hint: eigenvalues)
+\begin{equation*}
+  \surflaplacian V(\vartheta, \varphi)
+    = \sum_{n=0}^N \sum_{m=-n}^n a_{m,n}
+      \surflaplacian Y^m_n(\vartheta, \varphi)
+    = \sum_{n=0}^N \sum_{m=-n}^n a_{m,n}
+      n(n+1) Y^m_n(\vartheta, \varphi).
+\end{equation*}
+So that when substituted into \eqref{kugel:eqn:eeg-min} results in
+\begin{align*}
+  \int_{\partial S} \left[
+    \sum_{n=0}^N \sum_{m=-n}^n n(n+1) |a_{m,n}|
+    Y^m_n(\vartheta, \varphi)
+  \right]^2 ds
+  = \sum_{m, m'} \sum_{n, n'} |a_{m',n'}| |a_{m,n}|
+    n'(n'+1) n(n+1)
+    \underbrace{\int_{\partial S} Y^{m'}_{n'} Y^m_n \, ds}_{
+      \langle Y^{m'}_{n'}, Y^m_n \rangle
+    },
+\end{align*}
+where we used a ``sloppy'' double sum notation to indicate that we have a bunch
+of terms of that form. We did not bother to properly expand the product of
+double sums, because we can see that at the end we end up with an inner product
+$\langle Y^{m'}_{n'}, Y^m_n \rangle$, which as we know equals $\delta_{m'm}
+\delta_{n'n}$, so all of the terms where $n' \neq n$ or $m' \neq m$ can be
+dropped and \eqref{kugel:eqn:eeg-min} simplifies down to
+\nocite{pascual-marqui_current_1988}
+\begin{equation}
+  a^*_{m,n} = \arg \min_{a_{m,n}} 
+    \sum_{n=0}^N \sum_{m=-n}^n n^2 (n+1)^2 |a_{m,n}|^2.
+\end{equation}
+
+At this point, we could continue solving for an analytical solution to the
+minimization problem, for example by differentiating with respect to some
+$a_{j,k}$, setting that to zero and so forth, but the job of the spherical
+harmonics ends here. So, we will not pursue this further, and instead discuss a
+few interesting problems that come with this approach.
 
 \subsection{Measuring Gravitational Fields}
 
