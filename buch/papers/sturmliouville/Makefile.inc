@@ -9,6 +9,5 @@ dependencies-sturmliouville =							\
 	papers/sturmliouville/references.bib				\
 	papers/sturmliouville/einleitung.tex				\
 	papers/sturmliouville/eigenschaften.tex				\
-	papers/sturmliouville/beispiele.tex					\
 	papers/sturmliouville/waermeleitung_beispiel.tex	\
 	papers/sturmliouville/tschebyscheff_beispiel.tex
