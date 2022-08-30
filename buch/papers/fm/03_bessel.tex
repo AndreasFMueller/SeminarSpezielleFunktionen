@@ -196,16 +196,56 @@ Somit ist \eqref{fm:eq:proof} bewiesen.
 \newpage
 %-----------------------------------------------------------------------------------------
 \subsection{Bessel und Frequenzspektrum}
-Um sich das ganze noch einwenig Bildlicher vorzustellenhier einmal die Bessel-Funktion \(J_{k}(\beta)\) in geplottet.
+Unser FM-signal Fourientransformiert \eqref{fm:FM:fourie} wird zusammengestzt aus den einzelen Reihenteilen mit der gewichtung der Besselfunktion.
+
+
+Nochmals zur erinnerung sah unser Träger Signal anfangs so aus:
+\(x_c(t) = A_c \cdot \cos(\omega_c(t)+\varphi)\), dabei modulierten wir den parameter \( \varphi = \beta\sin(\omega_mt) \).
+Davon sahen wir das sich ursprünglich unser Signal\(m_{FM}(t) = \cos(\omega_m t)\) war. 
+Wie das Beat zusammenhängt sieht man im Abschnitt ( ref). 
+Wird es weiter transformiert zur Summe, so erhält man ein
+\[
+    x_{FM} = 
+    \sum_{k= -\infty}^\infty J_{n}(\beta) \cos((\omega_c+ n\omega_m)t).
+\]
+Diese Summe nun Fourier Transformiert ergibt
+\[
+    x_{FM} = 
+    \sum_{k= -\infty}^\infty J_{n}(\beta) \cdot \frac{1}{2} \biggl(  e^{j(\omega_c+ n\omega_m)t}\;+\; e^{-j(\omega_c+ n\omega_m)t}\biggr).
+\]
+Dies ergibt wiederum zwei dirac impulse im Frequenzbereich, aber pro Summand mit der Gewichtung der Besselfunktion indices und deren \(\beta\). 
+Gegeneüber \textit{AM} hat sich \textit{FM} zu einer Summe mit gewichtungen der Besselfunktion verändert.
+Überall wo die Besselfunktion gegn 0 tendiert können wir diese Summand vernachlässigen.
+Um dies zu sehn plotten wir einmal \(J_{n}(\beta)\):
 \begin{figure}
 	\centering
 	\input{papers/fm/Python animation/bessel.pgf}
-	\caption{Bessle Funktion \(J_{k}(\beta)\)}
+	\caption{Bessle Funktion \(J_{n}(\beta)\)}
 	\label{fig:bessel}
 \end{figure}
-TODO Grafik einfügen,
-\newline
-Nun einmal das Modulierte FM signal im Frequenzspektrum mit den einzelen Summen dargestellt
+Hier sieht man gut das für kleine \( \beta \lessgtr \) nur die ersten Summanden \( n\) zuständig sind.
+So kann man mit dem \(\beta\) gut bestimmen bis wo die Summe berchnet werden soll. 
+
+Für ein Beispiel nehmen wir  \(\beta = ... \omega_m = ... \)
+Dann sieht unser \(x_{FM}\) so aus:
+\begin{figure}
+	\centering
+	
+	\caption{Beispiel eines FM Übertragenen Signal}
+	\label{fig:bessel}
+\end{figure}
+Nun verändern wir die drei Parameter \(\beta \omega_c \omega_m \) und sehen was sich verändern wird
+\subsubsection{Beta}
+Da \(\beta\) in keiner abhängigkeit zo den anderen parameter steht, und jegliglich die anzahl der nötigen Summanden bestimmt.
+So wird es auch diese Anzahl bestimmen was man hier sehen kann.
+\subsubsection{omega c}
+Dieser ist unser Trägerfrequenz auf die unser Signal aufmoduliert wurde, diese bestimmt die Frequenz in welchem sich das signal befindet
+\subsubsection{omega m}
+Dieser parametr hat unsere bandbreite auf welchem unser Moduliertes Signal \(x_{AM}\) befindet bestimmt, auch im FM wird es wieder die Bandbreite bestimmen, was wir hier sehen.
+
+Nun einmal das Modulierte FM signal mit dem \(\beta =  \omega_m =  \) berechnet:
+
+
 
 TODO
 Hier wird beschrieben wie die Bessel Funktion der FM im Frequenzspektrum hilft, wieso diese gebrauch wird und ihre Vorteile.
@@ -214,6 +254,7 @@ Hier wird beschrieben wie die Bessel Funktion der FM im Frequenzspektrum hilft, 
     \item Im Frequenzspektrum darstellen mit Farben, ersichtlich machen. 
     \item Parameter tuing der Trägerfrequenz, Modulierende frequenz und Beta. 
 \end{itemize}
+\newpage
 
 
 %\subsection{De finibus bonorum et malorum
