@@ -33,16 +33,6 @@ that mathematics offers us.
 \subsection{Eigenvalue Problem}
 \label{kugel:sec:construction:eigenvalue}
 
-\begin{figure}
-  \centering
-  \includegraphics{papers/kugel/figures/tikz/spherical-coordinates}
-  \caption{
-    Spherical coordinate system. Space is described with the free variables $r
-    \in \mathbb{R}_0^+$, $\vartheta \in [0; \pi]$ and $\varphi \in [0; 2\pi)$.
-    \label{kugel:fig:spherical-coordinates}
-  }
-\end{figure}
-
 From Section \ref{buch:pde:section:kugel}, we know that the spherical Laplacian
 in the spherical coordinate system (shown in Figure
 \ref{kugel:fig:spherical-coordinates}) is is defined as
@@ -190,13 +180,20 @@ require a dedicated section of its own.
 
 \begin{figure}
   \centering
-  \includegraphics[
-    scale = 1.2,
-    trim = 0 40 0 0, clip,
-  ]{papers/kugel/figures/tikz/legendre-substitution}
+  \subfigure[Spherical coordinates. \label{kugel:fig:spherical-coordinates}]
+    {\includegraphics[width=.45\linewidth]{papers/kugel/figures/tikz/spherical-coordinates}}
+  \qquad
+  \subfigure[Substitution. \label{kugel:fig:legendre-substitution}]
+    {\includegraphics[
+      width=.45\linewidth
+      % scale = 1.2,
+      % trim = 0 40 0 0, clip,
+    ]{papers/kugel/figures/tikz/legendre-substitution}}
   \caption{
-    Sketch of the geometry.
-    \label{kugel:fig:legendre-substitution}
+    (a) Spherical coordinate system. Space is described with the free variables
+    $r \in \mathbb{R}_0^+$, $\vartheta \in [0; \pi]$ and $\varphi \in [0;
+    2\pi)$. (b) Geometrical intuition for the substitution to obtain the
+    Legendre equation.
   }
 \end{figure}
 
