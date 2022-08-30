@@ -550,6 +550,15 @@ product:
 \end{theorem}
 \begin{proof}
   We will begin by doing a bit of algebraic maipulaiton:
+  \footnote{
+    Essentially, what we just did was to turn
+    \eqref{kugel:eq:spherical-harmonics-inner-prod} in this form:
+    \(
+      \langle Y^m_n, Y^{m'}_{n'} \rangle_{\partial S}
+      = \langle P^m_n, P^{m'}_{n'} \rangle_z
+      \; \langle e^{im\varphi}, e^{-im'\varphi} \rangle_\varphi
+    \).
+  }
   \begin{align*}
     \int_{0}^\pi \int_0^{2\pi}
       Y^m_n(\vartheta, \varphi) \overline{Y^{m'}_{n'}(\vartheta, \varphi)} 
@@ -564,13 +573,6 @@ product:
       \int_0^{2\pi} e^{i(m - m')\varphi}
       \, d\varphi. 
   \end{align*}
-  Essentially, what we just did was to turn
-  \eqref{kugel:eq:spherical-harmonics-inner-prod} in this form:
-  \(
-    \langle Y^m_n, Y^{m'}_{n'} \rangle_{\partial S}
-    = \langle P^m_n, P^{m'}_{n'} \rangle_z
-    \; \langle e^{im\varphi}, e^{-im'\varphi} \rangle_\varphi
-  \).
   First, notice that the associated Legendre polynomials are assumed to be real,
   and are thus unaffected by the complex conjugation. Then, we can see that when
   $m = m'$ the inner integral simplifies to $\int_0^{2\pi} 1 \, d\varphi$ which
