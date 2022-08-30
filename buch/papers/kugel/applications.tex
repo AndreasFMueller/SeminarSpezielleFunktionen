@@ -93,7 +93,7 @@ will assume that the potential distribution on the head can be written as a
 finite linear combination of spherical harmonics:
 \begin{equation*}
   V(\vartheta, \varphi)
-    = \sum_{n=0}^N \sum_{m=-n}^n a_{m,n} Y^m_n(\vartheta, \varphi),
+    = \sum_{n=1}^N \sum_{m=-n}^n a_{m,n} Y^m_n(\vartheta, \varphi),
 \end{equation*}
 where the values $a_{m,n}$ are the unknowns of our interpolation problem. Now to
 the measurements: we let $\phi_1, \phi_2, \ldots, p_M$ be the measured voltages
@@ -125,20 +125,20 @@ world! Thus, to solve this problem, we will use the suspiciously convenient fact
 that (hint: eigenvalues)
 \begin{equation*}
   \surflaplacian V(\vartheta, \varphi)
-    = \sum_{n=0}^N \sum_{m=-n}^n a_{m,n}
+    = \sum_{n=1}^N \sum_{m=-n}^n a_{m,n}
       \surflaplacian Y^m_n(\vartheta, \varphi)
-    = \sum_{n=0}^N \sum_{m=-n}^n a_{m,n}
+    = \sum_{n=1}^N \sum_{m=-n}^n a_{m,n}
       n(n+1) Y^m_n(\vartheta, \varphi).
 \end{equation*}
 So that when substituted into \eqref{kugel:eqn:eeg-min} results in
 \begin{align*}
-  \int_{\partial S} \left[
-    \sum_{n=0}^N \sum_{m=-n}^n n(n+1) |a_{m,n}|
+  \int_{\partial S} \left|
+    \sum_{n=1}^N \sum_{m=-n}^n n(n+1) a_{m,n}
     Y^m_n(\vartheta, \varphi)
-  \right]^2 ds
-  = \sum_{m, m'} \sum_{n, n'} |a_{m',n'}| |a_{m,n}|
+  \right|^2 ds
+  = \sum_{m, m'} \sum_{n, n'} a_{m',n'} \overline{a_{m,n}}
     n'(n'+1) n(n+1)
-    \underbrace{\int_{\partial S} Y^{m'}_{n'} Y^m_n \, ds}_{
+    \underbrace{\int_{\partial S} Y^{m'}_{n'} \overline{Y^m_n} \, ds}_{
       \langle Y^{m'}_{n'}, Y^m_n \rangle
     },
 \end{align*}
@@ -151,14 +151,32 @@ dropped and \eqref{kugel:eqn:eeg-min} simplifies down to
 \nocite{pascual-marqui_current_1988}
 \begin{equation}
   a^*_{m,n} = \arg \min_{a_{m,n}} 
-    \sum_{n=0}^N \sum_{m=-n}^n n^2 (n+1)^2 |a_{m,n}|^2.
+    \sum_{n=1}^N \sum_{m=-n}^n n^2 (n+1)^2 |a_{m,n}|^2.
 \end{equation}
 
 At this point, we could continue solving for an analytical solution to the
 minimization problem, for example by differentiating with respect to some
 $a_{j,k}$, setting that to zero and so forth, but the job of the spherical
-harmonics ends here. So, we will not pursue this further, and instead discuss a
-few interesting problems that come with this approach.
+harmonics ends here. So, we will not pursue this further, and instead briefly
+discuss a few interesting implications and problems. 
+
+\subsubsection{Sampling, smoothness and problems}
+
+The most interesting perhaps unforeseen fact is that with this method we are
+getting a free (!) spectral analysis, since the coefficients $a_{m,n}$ are the
+spectrum of the interpolated electric field $V(\vartheta, \varphi)$. However,
+like in the non spherical Fourier transformation, we only get a \emph{finite}
+resolution since our measurement are spatially discrete. In fact, if we know the
+mean angular inter-electrode distance $\gamma$ we can actually formulate a
+Nyquist frequency limit just like in the usual Fourier theory:
+\begin{equation*}
+  f_N = \frac{\pi}{2T}
+  \iff
+  n_N = \left\lfloor \frac{\pi}{2\gamma} \right\rfloor.
+\end{equation*}
+
+\nocite{wingeier_spherical_2001}
+
 
 \subsection{Measuring Gravitational Fields}
 
