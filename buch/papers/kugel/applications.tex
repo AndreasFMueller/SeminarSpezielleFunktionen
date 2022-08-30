@@ -78,13 +78,13 @@ of the brain?
 
 The details of how EEG actually works gets very complicated very quickly, but we
 will try our best to give an broad overview of the mathematical machinery that
-makes it possible to measure brain waves. See, the problem neither the physicist
-nor the mathematician considered is that we cannot measure the electric field in
-its entirety. As show in figure \ref{kugel:fig:eeg-electrodes} the electrodes
-give measurements that are only available at discrete locations, and we are thus
-quite a lot of missing data. In other words, we have an interpolation problem.
-And (at this point not so surprisingly) we will show that it can be solved using
-the spherical harmonics.
+makes it possible to measure brain waves. The problem neither the physicist nor
+the mathematician considered is that we cannot measure the electric field in its
+entirety. As show in figure \ref{kugel:fig:eeg-electrodes} the electrodes give
+measurements that are only available at discrete locations, and we are thus
+missing quite a lot of data. Or in other words, we have an interpolation
+problem, which (at this point not so surprisingly) we will show can be solved
+using the spherical harmonics.
 
 To solve this new interpolation problem, we will start with a blatantly
 engineering assumption: the human head is a sphere of radius $R$, with the value
@@ -160,7 +160,8 @@ $a_{j,k}$, setting that to zero and so forth, but the job of the spherical
 harmonics ends here. So, we will not pursue this further, and instead briefly
 discuss a few interesting implications and problems. 
 
-\subsubsection{Sampling, smoothness and problems}
+\subsubsection{Sampling, Smoothness and Problems}
+\nocite{wingeier_spherical_2001, ruffini_spherical_2002}
 
 The most interesting perhaps unforeseen fact is that with this method we are
 getting a free (!) spectral analysis, since the coefficients $a_{m,n}$ are the
@@ -168,15 +169,37 @@ spectrum of the interpolated electric field $V(\vartheta, \varphi)$. However,
 like in the non spherical Fourier transformation, we only get a \emph{finite}
 resolution since our measurement are spatially discrete. In fact, if we know the
 mean angular inter-electrode distance $\gamma$ we can actually formulate a
-Nyquist frequency limit just like in the usual Fourier theory:
-\begin{equation*}
+Nyquist frequency just like in the usual Fourier theory:
+\begin{equation}
   f_N = \frac{\pi}{2T}
   \iff
   n_N = \left\lfloor \frac{\pi}{2\gamma} \right\rfloor.
-\end{equation*}
+\end{equation}
 
-\nocite{wingeier_spherical_2001}
-
+Before concluding this overview of EEG, we should point out that in practice
+there are about a million problems with this oversimplified approach. We do not
+intend to give an in depth explanation (since the authors themselves are not
+experts in any of these fields), but there are a few problems that are too big
+to ignore, so we will very briefly discuss them now. The first important
+real-world problem is that the electrodes are not necessarily at a reasonable
+location, so the constraint \eqref{kugel:eqn:eeg-min-constraints} is a bit too
+strong, and may end up fitting some noise or disturbances in the measurement. A
+simple solution may for example be to introduce a smoothness factor $\lambda >
+0$ as follows:
+\begin{equation}
+  V(\vartheta, \varphi) = \sum_{n=1}^N \sum_{m=-n}^n 
+    \frac{a_{m,n}}{1 + \lambda n^2(n+1)^2} Y^m_n(\vartheta, \varphi).
+\end{equation}
+To find proper smoothness factor $\lambda$, is another problem of its own, thus
+we will not discuss it here, since this is getting too long already. Another
+important issue is that in the real world, we cannot ``evenly distribute'' the
+electrodes on our head. As shown in the image, most of the electrodes are on a
+cap, and then there are just a few on the face, and almost none near the jawline
+and chin. This not something that can be ignored, and in fact, makes the
+analysis much more difficult. Finally, the most obvious problem is that human
+heads are not perfect spheres. Here too, it is possible to account for this fact
+and model the head with a more complex shape at the cost of making the math
+quite unwieldy.
 
 \subsection{Measuring Gravitational Fields}
 
