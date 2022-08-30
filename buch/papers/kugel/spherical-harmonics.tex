@@ -740,7 +740,7 @@ part, where we will derive the recursion equations for
 $Y^m_n(\vartheta,\varphi)$, we will basically reuse the ones presented above.
 Maybe it is worth mentioning at least one use case for these relations: In some
 software implementations (that include lighting computations in computer
-graphics, antenna modelling software, 3-D modelling in medical applications,
+graphics, antenna modelling software, 3D modelling in medical applications,
 etc.) they are widely used, as they lead to better numerical accuracy and
 computational cost lower by a factor of six \cite{davari_new_2013}.
 
@@ -990,14 +990,21 @@ functions.  We can say that the theory we are about to show can be applied on
 all twice differentiable complex valued functions, to be more concise: complex
 valued $L^2$ functions $S^2 \to \mathbb{C}$.
 
-All these jargons are not really necessary for the practical applications of us mere mortals, namely physicists and engineers. 
-From now on we will therefore assume that the functions we will dealing with fulfill these ``minor'' conditions.
+All this jargon is not really necessary for the practical applications of us
+mere mortals, namely physicists and engineers.  From now on we will therefore
+assume that the functions we will dealing with fulfill these ``minor''
+conditions.
 
-The insiders could turn up their nose, but we don't want to dwell too much on the concept of Hilbert space, convergence, metric, well-behaved functions etc.
-We simply think that this rigorousness could be at the expense of the possibility to appreciate the beauty and elegance of this theory. 
-Furthermore, the risk of writing 300+ pages to prove that $1+1=2$\cite{principia-mathematica} is just around the corner (we apologize in advance to Mr. Whitehead and Mr. Russel for using their effort with a negative connotation). 
+The insiders could turn up their nose, but we don't want to dwell too much on
+the concept of Hilbert space, convergence, metric, well-behaved functions etc.
+We simply think that this rigorousness could be at the expense of the
+possibility to appreciate the beauty and elegance of this theory.  Furthermore,
+the risk of writing 300+ pages to prove that $1+1=2$\cite{principia-mathematica}
+is just around the corner (we apologize in advance to Mr. Whitehead and Mr.
+Russel for using their effort with a negative connotation).
 
-Despite all, if you desire having definitions a bit more rigorous (as rigorous as two engineers can be), you could take a look at the chapter \ref{}.
+Despite all, if you desire having definitions a bit more rigorous (as rigorous
+as two engineers can be), you could take a look at the chapter \ref{}.
 
 \subsection{Spherical Harmonics Series}
 
@@ -1005,54 +1012,72 @@ To talk about a \emph{series expansion} we first need a series, so we shall
 build one using the spherical harmonics.
 
 \begin{definition}[Spherical harmonic series]
-  \label{kugel:definition:spherical-harmonics-series}
+  \label{kugel:def:spherical-harmonics-series}
   \begin{equation}
     f(\vartheta, \varphi) 
     = \sum_{n=0}^\infty \sum_{m =-n}^n
-      c_{m,n} Y^m_n(\vartheta, \varphi). \label{kugel:definition:spherical-harmonics-series}
+      c_{m,n} Y^m_n(\vartheta, \varphi).
+      \label{kugel:eqn:spherical-harmonics-series}
   \end{equation}
 \end{definition}
 
-With this definition we are basically saying that any function defined on the spherical surface can be represented as a linear combination of spherical harmonics. 
-Does eq.\eqref{kugel:definition:spherical-harmonics-series} sound familiar? Well that is prefectly normal, since this is analog to the classical Fourier theory. 
-In the latter is stated that ``any'' $T$-periodic function $f(x)$, on any interval $[x_0-T/2,x_0+T/2]$, can be represented as a linear combination of complex exponentials. More compactly:
+With this definition we are basically saying that any function defined on the
+spherical surface can be represented as a linear combination of spherical
+harmonics.  Does equation \eqref{kugel:definition:spherical-harmonics-series}
+sound familiar? Well that is perfectly normal, since this is analog to the
+classical Fourier theory.  In the latter is stated that ``any'' $T$-periodic
+function $f(x)$, on any interval $[x_0-T/2,x_0+T/2]$, can be represented as a
+linear combination of complex exponentials. More compactly:
 \begin{equation*}
-  f(x) = \sum_{n \in \mathbb{Z}} c_n e^{i \omega_0 x}, \quad \omega_0=\frac{2\pi}{T}
+  f(x) = \sum_{n \in \mathbb{Z}} c_n e^{i \omega_0 x},
+    \quad \omega_0=\frac{2\pi}{T}
 \end{equation*}
-In the case of definition \ref{kugel:definition:spherical-harmonics-series} the kernels, instead of $e^{i\omega_0x}$, have become $Y^m_n$. In addition, the sum is now over the two indices $m$ and $n$.
+In the case of definition \ref{kugel:def:spherical-harmonics-series} the
+kernels, instead of $e^{i\omega_0x}$, have become $Y^m_n$. In addition, the sum
+is now over the two indices $m$ and $n$.
 
 \begin{lemma}[Spherical harmonic coefficients]
-  \label{kugel:lemma:spherical-harmonic-coefficient}
-  \begin{align*}
+  \label{kugel:thm:spherical-harmonic-coefficient}
+  \begin{equation*}
     c_{m,n} 
-    &= \langle f, Y^m_n \rangle_{\partial S} \\
-    &= \int_0^\pi \int_0^{2\pi} f(\vartheta,\varphi) \overline{Y^m_n(\vartheta,\varphi)} \sin\vartheta \,d\varphi\,d\vartheta
-  \end{align*}
+    = \langle f, Y^m_n \rangle_{\partial S}
+    = \int_0^\pi \int_0^{2\pi}
+      f(\vartheta,\varphi) \overline{Y^m_n(\vartheta,\varphi)}
+      \sin\vartheta \,d\varphi\,d\vartheta
+  \end{equation*}
+  \kugeltodo{Would be better as a definition? I don't get what is being proved.}
 \end{lemma}
+
 \begin{proof}
-  To develop this proof we will take advantage of the orthogonality property of the Spherical Harmonics. We can start and finish by applying the inner product on both sides of eq.\eqref{kugel:definition:spherical-harmonics-series}:
+  To develop this proof we will take advantage of the orthogonality property of
+  the Spherical Harmonics. We can start and finish by applying the inner product
+  on both sides of \eqref{kugel:eqn:spherical-harmonics-series}:
   \begin{align*}
     \langle f, Y^{m}_{n} \rangle_{\partial S}
     &= \left\langle \sum_{n'=0}^\infty \sum_{m' =-n'}^{n'}
-      c_{m',n'} Y^{m'}_{n'}(\vartheta, \varphi) \right\rangle_{\partial S}  \\
-    &=  \sum_{n'=0}^\infty \sum_{m' =-n'}^{n'}
+      c_{m',n'} Y^{m'}_{n'} \right\rangle_{\partial S}  \\
+    &= \sum_{n'=0}^\infty \sum_{m' =-n'}^{n'}
       \langle c_{m',n'} Y^{m'}_{n'}, Y^{m}_{n} \rangle_{\partial S} \\
-      &= \sum_{n'=0}^\infty \sum_{m' =-n'}^{n'} c_{m',n'} \langle Y^{m'}_{n'}, Y^{m}_{n} \rangle_{\partial S} = c_{m,n}
+    &= \sum_{n'=0}^\infty \sum_{m' =-n'}^{n'} c_{m',n'}
+      \langle Y^{m'}_{n'}, Y^{m}_{n} \rangle_{\partial S} = c_{m,n}
   \end{align*}
-  We omitted the $\vartheta, \varphi$ dependency to avoid overloading the notation.
 \end{proof}
-Thanks to Lemma \ref{kugel:lemma:spherical-harmonic-coefficient} we can now calculate the series expansion defined in \ref{kugel:definition:spherical-harmonics-series}.
 
-It can be shown that, for the famous ``well-behaved functions'' $f(\vartheta, \varphi)$ mentioned before, theorem \ref{fourier-theorem-spherical-surface} is true
+Thanks to Lemma \ref{kugel:thm:spherical-harmonic-coefficient} we can now
+calculate the series expansion defined in
+\ref{kugel:def:spherical-harmonics-series}. It can be shown that, for the famous
+``well-behaved functions'' $f(\vartheta, \varphi)$ mentioned before, the
+following theorem is true.  The connection to Theorem
+\ref{kugel:thm:fourier-theorem} is pretty obvious.
+
 \begin{theorem}[Fourier Theorem on $\partial S$]
   \label{fourier-theorem-spherical-surface}
   \begin{equation*}
-    \lim_{N \to \infty} 
+    \lim_{N \to \infty}
     \int_0^\pi \int_0^{2\pi} \left\| f(\vartheta,\varphi) - \sum_{n=0}^N\sum_{m=-n}^n c_{m,n} Y^m_n(\vartheta,\varphi)
     \right\|_2 \sin\vartheta \,d\varphi\,d\vartheta  = 0
   \end{equation*}
 \end{theorem}
-The connection to Theorem \ref{fourier-theorem-1D} is pretty obvious.
 
 \subsection{Spectrum}
 

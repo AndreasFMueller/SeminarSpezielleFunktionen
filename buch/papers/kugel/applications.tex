@@ -32,7 +32,6 @@ at their location (figure \ref{kugel:fig:eeg-electrodes}).  To see how this will
 relate to the spherical harmonics, we will first quickly recap a bit of physics,
 electrodynamics to be precise.
 
-
 \subsubsection{Electrodynamics}
 
 In section \ref{kugel:sec:construction:eigenvalue} we have shown that the
@@ -88,7 +87,7 @@ using the spherical harmonics.
 
 To solve this new interpolation problem, we will start with a blatantly
 engineering assumption: the human head is a sphere of radius $R$, with the value
-of $R$ begin the average radius of a human head (which is around 11 cm). So, we
+of $R$ being the average radius of a human head (which is around 11 cm). So, we
 will assume that the potential distribution on the head can be written as a
 finite linear combination of spherical harmonics:
 \begin{equation*}
@@ -110,7 +109,7 @@ minimization problem:
         \sin \vartheta \, d\vartheta d\varphi, 
         \label{kugel:eqn:eeg-min} \\
     &\text{under the constraints} \quad V(p_j) = \phi_j
-      \quad \text{ for } \quad 1 < j < M.
+      \quad \text{ for } \quad 1 \leq j \leq M.
       \label{kugel:eqn:eeg-min-constraints}
   \end{align}
 \end{subequations}
@@ -203,4 +202,4 @@ quite unwieldy.
 
 \subsection{Measuring Gravitational Fields}
 
-\subsection{Quantisation of Angular Momentum}
+% \subsection{Quantisation of Angular Momentum}
