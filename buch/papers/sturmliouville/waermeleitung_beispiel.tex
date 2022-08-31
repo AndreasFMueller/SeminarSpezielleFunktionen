@@ -6,6 +6,7 @@
 %
 
 \section{Beispiel: Wärmeleitung in homogenem Stab}
+\rhead{Wärmeleitung in homogenem Stab}
 
 In diesem Abschnitt wird das Problem der Wärmeleitung in einem homogenen Stab
 betrachtet, angeschaut wie das Sturm-Liouville-Problem bei der Beschreibung
@@ -39,7 +40,7 @@ werden.
 
 Die Enden des Stabes auf konstanter Temperatur zu halten bedeutet, dass die
 Lösungsfunktion $u(t,x)$ bei $x = 0$ und $x = l$ nur die vorgegebene
-Temperatur zurückgeben darf. Diese wird einfachheitshalber als $0$ angenomen.
+Temperatur zurückgeben darf. Diese wird einfachheitshalber als $0$ angenommen.
 Es folgt nun
 \begin{equation}
     \label{sturmliouville:eq:example-fourier-boundary-condition-ends-constant}
@@ -161,7 +162,7 @@ reguläres Sturm-Liouville-Problem und es kann bereits die Aussage gemacht
 werden, dass alle Lösungen für die Gleichung in $x$ orthogonal sein werden.
 
 Da die Bedingungen des Stab-Problems nur Anforderungen an $x$ stellen, können
-diese direkt für $X(x)$ übernomen werden.
+diese direkt für $X(x)$ übernommen werden.
 Es gilt also beispielsweise wegen
 \eqref{sturmliouville:eq:example-fourier-boundary-condition-ends-constant},
 dass $X(0) = X(l) = 0$.
@@ -197,7 +198,7 @@ eigesetzt und man erhält
 Damit die Gleichungen erfüllt sind, müssen $h_a = 0$ und $h_b = 0$ sein.
 Zusätzlich müssen aber die 
 Bedingungen~\eqref{sturmliouville:eq:example-fourier-coefficient-constraints}
-erfüllt sein und da $y(0) = 0$ und $y(l) = 0$ sind, können belibige $k_a \neq 0$
+erfüllt sein und da $y(0) = 0$ und $y(l) = 0$ sind, können beliebige $k_a \neq 0$
 und $k_b \neq 0$ gewählt werden.
 
 Somit ist gezeigt, dass die Randbedingungen des Stab-Problems für Enden auf
@@ -205,7 +206,7 @@ konstanter Temperatur auch die Sturm-Liouville-Randbedingungen erfüllen.
 
 Daraus folg zunächst, dass es sich um ein reguläres Sturm-Liouville-Problem
 handelt und weiter, dass alle daraus resultierenden Lösungen orthogonal sind.
-Analog dazu kann gezeit werden, dass die Randbedingungen für einen Stab mit
+Analog dazu kann gezeigt werden, dass die Randbedingungen für einen Stab mit
 isolierten
 Enden~\eqref{sturmliouville:eq:example-fourier-boundary-condition-ends-isolated}
 ebenfalls die Sturm-Liouville-Randbedingungen erfüllen und
@@ -354,7 +355,7 @@ in $X^{\prime}$ ein, beginnend mit $x = 0$, ergibt sich
     = 0.
 \]
 In diesem Fall muss $B = 0$ gelten.
-Zusammen mit der Bedignung für $x = l$
+Zusammen mit der Bedingung für $x = l$
 folgt nun
 \[
     X^{\prime}(l)
@@ -365,7 +366,7 @@ folgt nun
     = 0.
 \]
 
-Wiederum muss über die $\sin$-Funktion sicher gestellt werden, dass der
+Wiederum muss über die $\sin$-Funktion sichergestellt werden, dass der
 Ausdruck den Randbedingungen entspricht.
 Es folgt nun
 \[
@@ -482,7 +483,7 @@ Skalarprodukt~\eqref{sturmliouville:eq:example-fourier-dot-product}
 verwendet werden um die Koeffizienten $a_n$ und $b_n$ zu bestimmen.
 Es wird also die Tatsache ausgenutzt, dass die Gleichheit in
 \eqref{sturmliouville:eq:example-fourier-initial-conditions} nach Anwendung des
-Skalarproduktes immernoch gelten muss und dass das Skalaprodukt mit einer
+Skalarproduktes immer noch gelten muss und dass das Skalarprodukt mit einer
 Basisfunktion sämtliche Summanden auf der rechten Seite auslöscht.
 
 Zur Berechnung von $a_m$ mit $ m \in \mathbb{N} $ wird beidseitig das
@@ -508,7 +509,7 @@ Um die Skalarprodukte aber korrekt zu berechnen, muss über ein ganzzahliges
 Vielfaches der Periode der trigonometrischen Funktionen integriert werden.
 Dazu werden die Integralgrenzen $-l$ und $l$ verwendet und es werden ausserdem
 neue Funktionen $\hat{u}_c(0, x)$ für die Berechnung mit Cosinus und
-$\hat{u}_s(0, x)$ für die Berechnung mit Sinus angenomen, welche $u(0, t)$
+$\hat{u}_s(0, x)$ für die Berechnung mit Sinus angenommen, welche $u(0, t)$
 gerade, respektive ungerade auf $[-l, 0]$ fortsetzen:
 \[
 \begin{aligned}
@@ -531,7 +532,7 @@ gerade, respektive ungerade auf $[-l, 0]$ fortsetzen:
 \]
 
 Diese Funktionen wurden gerade so gewählt, dass nun das Resultat der Integrale
-um den Faktor $2$ skalliert wurde.
+um den Faktor $2$ skaliert wurde.
 Es gilt also
 \[
     \int_{-l}^{l}\hat{u}_c(0, x)\cos\left(\frac{m \pi}{l}x\right)dx
@@ -546,7 +547,7 @@ und
 \]
 
 Als nächstes wird nun das
-Skalaprodukt~\eqref{sturmliouville:eq:dot-product-cosine} berechnet:
+Skalarprodukt~\eqref{sturmliouville:eq:dot-product-cosine} berechnet:
 \[
 \begin{aligned}
     \int_{-l}^{l}\hat{u}_c(0, x)\cos\left(\frac{m \pi}{l}x\right)dx
