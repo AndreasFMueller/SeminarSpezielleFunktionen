@@ -18,7 +18,8 @@ the most interesting applications we came across during our research.
   \subfigure[Gauss' Law \label{kugel:fig:eeg-flux}]%
     {\includegraphics[width=.4\linewidth]{papers/kugel/figures/flux}}
   \caption{
-    Electroencephalography.
+    Courtesy of C. Hope \cite{sheerman-chase_volunteer_2012} for picture (a),
+    and Wikimedia \cite{maschen_english_2013} for (b).
     \label{kugel:fig:eeg}
   }
 \end{figure}
@@ -34,6 +35,7 @@ relate to the spherical harmonics, we will first quickly recap a bit of physics,
 electrodynamics to be precise.
 
 \subsubsection{Electrodynamics}
+\nocite{griffiths_introduction_2015}
 
 In section \ref{kugel:sec:construction:eigenvalue} we have shown that the
 spherical harmonics arise from the surface spherical Laplacian operator, whose
@@ -46,23 +48,23 @@ electric potential $\phi(x, y, z)$:
   \nabla^2 \phi
   = \nabla \cdot \nabla \phi
   = \nabla \cdot \mathbf{E}
-  = \rho / \varepsilon,
+  = \frac{1}{\varepsilon} \rho,
   \quad \text{or} \quad
   \iiint_\Omega \nabla \cdot \mathbf{E} \, dv
   = \iint_{\partial \Omega} \mathbf{E} \cdot d\mathbf{s}
-  = \Phi / \varepsilon.
+  = \frac{1}{\varepsilon} \Phi.
 \end{equation*}
 Put into words: on the left we have the differential form, where we recall that
 the Laplacian (which is a second derivative) is the divergence of the gradient.
 Unpacking the notation we first see that we have the gradient of the potential,
 which is just the electric field $\mathbf{E}$, and then the divergence of said
 electric field is proportional to the charge density $\rho$. So, the Laplacian
-of the electric potential is the charge density! For those that are more
-familiar with the integral form of Maxwell's equation, we have also included an
-additional step using the divergence theorem, which brings us to the electric
-Flux, which by Gauss' law (shown in the iconic\footnote{Every electrical
-engineer has seen this picture so many times that is probably burnt in their
-eyes.} figure \ref{kugel:fig:eeg-flux}) equals the net electric charge.
+of the electric potential is proportional to the charge density! For those that
+are more familiar with the integral form of Maxwell's equation, we have also
+included an additional step using the divergence theorem, which brings us to the
+electric Flux $\Phi$, which by Gauss' law (shown in the iconic\footnote{Every
+electrical engineer has seen this picture so many times that is probably burnt
+in their eyes.} figure \ref{kugel:fig:eeg-flux}) equals the net electric charge.
 
 Now, an important observation is that if we switch to spherical coordinates, the
 physics does not change. So, the spherical Laplacian $\sphlaplacian$ of the
@@ -96,7 +98,7 @@ finite linear combination of spherical harmonics:
     = \sum_{n=1}^N \sum_{m=-n}^n a_{m,n} Y^m_n(\vartheta, \varphi),
 \end{equation*}
 where the values $a_{m,n}$ are the unknowns of our interpolation problem. Now to
-the measurements: we let $\phi_1, \phi_2, \ldots, p_M$ be the measured voltages
+the measurements: we let $\phi_1, \phi_2, \ldots, \phi_M$ be the measured voltages
 at points in space $p_1, p_2, \ldots, p_M$ (position of the electrodes). To
 simplify, we will assume that the electrodes are reasonably evenly distributed,
 which means that we have no points that are on top of each other or at wildly
@@ -132,10 +134,10 @@ that (hint: eigenvalues)
 \end{equation*}
 So that when substituted into \eqref{kugel:eqn:eeg-min} results in
 \begin{align*}
-  \int_{\partial S} \left|
+  \int_{\partial S} \biggl|
     \sum_{n=1}^N \sum_{m=-n}^n n(n+1) a_{m,n}
     Y^m_n(\vartheta, \varphi)
-  \right|^2 ds
+  \biggr|^2 ds
   = \sum_{m, m'} \sum_{n, n'} a_{m',n'} \overline{a_{m,n}}
     n'(n'+1) n(n+1)
     \underbrace{\int_{\partial S} Y^{m'}_{n'} \overline{Y^m_n} \, ds}_{
@@ -165,15 +167,15 @@ discuss a few interesting implications and problems.
 
 The most interesting perhaps unforeseen fact is that with this method we are
 getting a free (!) spectral analysis, since the coefficients $a_{m,n}$ are the
-spectrum of the interpolated electric field $V(\vartheta, \varphi)$. However,
-like in the non spherical Fourier transformation, we only get a \emph{finite}
-resolution since our measurement are spatially discrete. In fact, if we know the
-mean angular inter-electrode distance $\gamma$ we can actually formulate a
-Nyquist frequency just like in the usual Fourier theory:
+spectrum of the interpolated electric potential $V(\vartheta, \varphi)$.
+However, like in the non spherical Fourier transformation, we only get a
+\emph{finite} resolution since our measurement are spatially discrete. In fact,
+if we know the mean angular inter-electrode distance $\gamma$ we can actually
+formulate a Nyquist frequency just like in the usual Fourier theory:
 \begin{equation}
   f_N = \frac{\pi}{2T}
   \iff
-  n_N = \left\lfloor \frac{\pi}{2\gamma} \right\rfloor.
+  n_N = \biggl\lfloor \frac{\pi}{2\gamma} \biggr\rfloor.
 \end{equation}
 
 Before concluding this overview of EEG, we should point out that in practice
@@ -195,7 +197,7 @@ we will not discuss it here, since this is getting too long already. Another
 important issue is that in the real world, we cannot ``evenly distribute'' the
 electrodes on our head. As shown in the image, most of the electrodes are on a
 cap, and then there are just a few on the face, and almost none near the jawline
-and chin. This not something that can be ignored, and in fact, makes the
+and chin. This is not something that can be ignored, and in fact, makes the
 analysis much more difficult. Finally, the most obvious problem is that human
 heads are not perfect spheres. Here too, it is possible to account for this fact
 and model the head with a more complex shape at the cost of making the math
