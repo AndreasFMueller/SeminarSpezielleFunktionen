@@ -226,6 +226,17 @@ Um dies zu sehn plotten wir einmal \(J_{n}(\beta)\):
 Hier sieht man gut das für kleine \( \beta \lessgtr \) nur die ersten Summanden \( n\) zuständig sind.
 So kann man mit dem \(\beta\) gut bestimmen bis wo die Summe berchnet werden soll. 
 
+Für Besselfunktionen mit negativer Ordnung \(-n\) gilt folgende Beziehung im Vergleich zu den Besselfunktionen mit positiver Ordnung \(n\):
+\[
+    J_{-n} (\beta) = (-1) n \cdot J_n (\beta) = J_n (-\beta)
+    \label{fm:eq:besselid:gerad:ungerade}
+\]
+Zur Illustration wurde in Abbildung \ref{fig:bessel} auch ein Abschnitt von \(J_n (-\beta)\) dargestellt.
+Man erkennt daraus, dass für gerade Ordnungen \(n\) die Besselfunktion erster Art eine gerade Funktion ist 
+(d.h. \(J_n (-\beta) = J_n (\beta))\) und damit \(J_{-n} (\beta) = J_n (\beta)\) gilt.
+Für ungerade Ordnungen n ist die Besselfunktion erster Art eine ugnerade Funktion 
+(d.h. \(J_n (-\beta) = -J_n (\beta)\)), womit gleichzeitig \(J_{-n} (\beta) = -J_n (\beta)\) gilt.
+
 Für ein Beispiel nehmen wir  \(\beta = ... \omega_m = ... \)
 Dann sieht unser \(x_{FM}\) so aus:
 \begin{figure}
@@ -235,11 +246,14 @@ Dann sieht unser \(x_{FM}\) so aus:
 	\label{fig:bessel}
 \end{figure}
 Nun verändern wir die drei Parameter \(\beta \omega_c \omega_m \) und sehen was sich verändern wird
+
 \subsubsection{Beta}
 Da \(\beta\) in keiner abhängigkeit zo den anderen parameter steht, und jegliglich die anzahl der nötigen Summanden bestimmt.
 So wird es auch diese Anzahl bestimmen was man hier sehen kann.
+
 \subsubsection{omega c}
 Dieser ist unser Trägerfrequenz auf die unser Signal aufmoduliert wurde, diese bestimmt die Frequenz in welchem sich das signal befindet
+
 \subsubsection{omega m}
 Dieser parametr hat unsere bandbreite auf welchem unser Moduliertes Signal \(x_{AM}\) befindet bestimmt, auch im FM wird es wieder die Bandbreite bestimmen, was wir hier sehen.
 

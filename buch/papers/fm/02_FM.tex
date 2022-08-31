@@ -57,6 +57,7 @@ Da beide nur durch die Operation differenzieren getrennt wird, sind diese zwei M
 Jeweils vor der Modulation bzw. nach der Demodulation kann dann noch eine Differentiation oder 
 Integration durchgeführt wird, um von der einen Modulationsart zur anderen zu gelangen.
 \citeauthor{fm:NAT}
+TODO beta Herleitung Nat seite 63
 
 \subsection{Frequenzspektrum}
 
@@ -75,6 +76,20 @@ Damit ist die Fouriertransformation
     Fourier
     \label{fm:FM:fourie}
 \]
+
+Eine äusserst vorsichtige Schätzung der Bandbreite des winkelmodulierten Signals kann mit diesen Aussagen zusätzlich noch erfolgen.
+Da die Multiplikation im Zeitbereich einer Faltung im Frequenzbereich entspricht, ergibt sich für jeden modulierenden \(\varphi^n (t)\)-Terms gerade 
+eine maximale Bandbreite \(B_{n\varphi} = n \cdot B_{n\varphi}\)
+Da jeder Term einer AM-Modulation entspricht, wird für jeden Term jeweils die Bandbreite des modulierenden \(\varphi^n (t)\) noch verdoppelt.
+In Bezug auf \(\varphi(t)\)wird insgesamt für das winkelmodulierte Signal also nicht nur einfach eine 
+Frequenzverschiebung zur Trägerfrequenz \(\pm f_c = \pm \frac{\omega_c}{2\pi n}\) durchgeführt.
+Stattdessen wird \(\varphi(t)\) vor dieser Verschiebung bei der jeweiligen Potenzierung \((\varphi(t)\) ausgeprägt nicht-linear verformt.
+Daher spricht man bei PM oder FM auch von einer nicht-linearen oder exponentiellen Modulation.
+Diese starken Nicht-Linearitäten verunmöglichen es aber, eine analytische Lösung für das PM- bzw. FM-Spektrum von beliebigen modulierenden Nachrichtensignalen \(m(t)\) zu finden.
+Für die Berechnung solcher Spektren muss man sich auf numerische Lösungen beschränken.
+Zwei Spezialfälle werden denn noch oft analytisch betrachtet einerseits die Kleinhubwinkelmodulation (Englisch: narrowband angle modulation) und, als
+einziger Vertreter einer Grosshubwinkelmodulation (Englisch: wideband angle modulation), ein Eintonsignal, d.h. ein sinusförmig moduliertes FM- oder PM-Signal.
+Doch diese werden hier vernachlässigt und nicht weiter erklärt und nur zur Vollständigkeit hier erwähnt.
 
 Nun sieht ein einfaches Frequenzmodulirtes Sigbnal mit \(m(t) = \sin(t)\) im Frequenzspektrum so aus.
 TODO Bild.
