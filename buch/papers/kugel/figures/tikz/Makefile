@@ -1,4 +1,4 @@
-FIGURES := spherical-coordinates.pdf curvature-1d.pdf
+FIGURES := spherical-coordinates.pdf curvature-1d.pdf legendre-substitution.pdf
 
 all: $(FIGURES)
 
