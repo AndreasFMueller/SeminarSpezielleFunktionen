@@ -3,10 +3,10 @@
 %
 % (c) 2020 Prof Dr Andreas Müller, Hochschule Rapperswil
 %
-\section{Taylorapproximation
+\section{Taylor-Approximation
 \label{transfer:section:teil1}}
 \subsection{Idee}
-Die Taylorreihe kann eine glatte Funktion in einer Umgebung durch Polynome beliebig genau annähern. Beschränkt man sich auf einen bestimmten Grad dieser Polynome, spricht man von einer Taylorapproximation. Diese entwickelt sich immer um einen Punkt und kann über die Ableitungen berechnet werden.
+Die Taylorreihe kann eine glatte Funktion in einer Umgebung durch Polynome beliebig genau annähern. Beschränkt man sich auf einen bestimmten Grad dieser Polynome, spricht man von einer Taylor-Approximation. Diese entwickelt sich immer um einen Punkt und kann über die Ableitungen berechnet werden.
 
 \subsection{Definition der Taylorreihe}
 Sei $I \subset \mathbb{R}$ ein offenes Intervall, $f: I \rightarrow \mathbb{R}$ eine glatte Funktion und $a$ ein Element von $I$. Dann ist die unendliche Reihe
@@ -16,15 +16,14 @@ Sei $I \subset \mathbb{R}$ ein offenes Intervall, $f: I \rightarrow \mathbb{R}$ 
 die Taylorreihe von $f$ in Punkt $a$.
 
 \subsection{Beispiel}
-In diesem Beispiel wird die Taylorapproximation mit dem Grad 2 des Tangens hyperbolicus um den Punkt Null berechnet.
+In diesem Beispiel wird die Taylor-Approximation mit dem Grad 2 des Tangens hyperbolicus um den Punkt Null berechnet.
 $$
 	\tanh(x) \approx T_{2} \tanh(x ; a)=\tanh(a)+\tanh^{\prime}(a) \cdot(x-a)+\frac{\tanh^{\prime \prime}(a) \cdot(x-a)^{2}}{2}
 $$
 mit $a = 0$ folgt
 $$
-	T_{2} \tanh(x ; 0)=\tanh(0)+\tanh^{\prime}(0) \cdot(x)+\frac{\tanh^{\prime \prime}(0) \cdot(x)^{2}}{2} = 0 + x + 0 = x
-$$.
-
+	T_{2} \tanh(x ; 0)=\tanh(0)+\tanh^{\prime}(0) \cdot(x)+\frac{\tanh^{\prime \prime}(0) \cdot(x)^{2}}{2} = 0 + x + 0 = x.
+$$
 \begin{figure}
 \centering
 \begin{tikzpicture}
@@ -48,7 +47,7 @@ $$.
 		\draw [blue, dotted, thick] (axis cs:+2.5,+1)-- (axis cs:0,+1);
 	\end{axis}
 \end{tikzpicture}
-\caption{Taylorapproximation von Grad 7
+\caption{Taylor-Approximation von Grad 7
 \label{motivation:figure:Taylor}}
 \end{figure}
 

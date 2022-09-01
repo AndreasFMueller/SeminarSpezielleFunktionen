@@ -6,8 +6,10 @@
 \section{Motivation\label{transfer:section:teil0}}
 \rhead{Einleitung}
 
-Die Transferfunktion ist einer der wichtigsten Bestandteile moderner neuronaler Netzwerke. Sie verleiht ihnen die nichtlinearität, die benötigt wird um komplexere Aufgaben zu lösen. Dabei kann theoretisch jede nichtlineare Funktion eingesetzt werden. In der Praxis tauchen aber nur sehr wenige Funktionen mit ähnlichen Eigenschaften auf. Einige davon sind in der Tabelle \ref{tab:aktfkt} zu sehen. In der heutigen Zeit sind vor allem die Variationen der ReLU Funktion beliebt. Der Tangens hyperbolicus wird aber dank dem Aufkommen der Recurrent Neural Networks, zum Beispiel dem Long short term memory Netzwerk, das aus Zellen wie in Abbildung \ref{motivation:figure:LSTM} gezeigt bestehen, wieder vermehrt eingesetzt.
-Die klassische Berechnung ist aber sehr aufwendig und basiert auf Gleitkommaoperationen und relativ komplizierten Funktionen. Diese benötigen einen grossen Rechenaufwand. Vor allem auf Systemen die keine Gleitkommaarithmetik Hardware besitzen wie das zum Beispiel bei gewissen Mikrocontrollern der Fall ist.
+Die Transferfunktion ist einer der wichtigsten Bestandteile moderner neuronaler Netzwerke. Sie verleiht ihnen die Nichtlinearität, welche benötigt wird um komplexere Aufgaben zu lösen. Dabei kann theoretisch jede nichtlineare Funktion eingesetzt werden. In der Praxis tauchen aber nur sehr wenige Funktionen mit ähnlichen Eigenschaften auf. Einige davon sind in der Tabelle \ref{tab:aktfkt} zu sehen. In der heutigen Zeit sind vor allem die Variationen der ReLU Funktion beliebt. Dies vor allem wegen der einfachen Berechnung.
+Der Tangens hyperbolicus wird aber dank dem Aufkommen der Recurrent Neural Networks, zum Beispiel dem Long short term memory Netzwerk, das aus Zellen wie in Abbildung \ref{motivation:figure:LSTM} gezeigt bestehen, wieder vermehrt eingesetzt.
+Die klassische Berechnung, welche in Abbildung \ref{anleitung:figure:approxtanhhypalgo} gezeigt wird, ist aber sehr aufwendig und basiert auf Gleitkommaoperationen und relativ komplizierten Funktionen. Diese benötigen einen grossen Rechenaufwand, vor allem auf Systemen die keine Gleitkommaarithmetik Hardware besitzen wie das zum Beispiel bei gewissen Mikrocontrollern der Fall ist.
+\tikzset{font={\fontsize{10pt}{12}\selectfont}}
 \begin{table}[h]
 	\centering
 	\begin{tabular}{llll}
@@ -71,13 +73,9 @@ Die klassische Berechnung ist aber sehr aufwendig und basiert auf Gleitkommaoper
 \begin{figure}
 \centering
 \tikzset{
-	every node/.style={
-		font=\scriptsize
-	},
 	decision/.style={
 		shape=rectangle,
 		minimum height=1cm,
-		text width=3cm,
 		text centered,
 		rounded corners=1ex,
 		draw,
@@ -88,7 +86,6 @@ Die klassische Berechnung ist aber sehr aufwendig und basiert auf Gleitkommaoper
 		shape=ellipse,
 		fill=gray!15,
 		draw,
-		text width=1.5cm,
 		text centered
 	},
 	decision tree/.style={
@@ -122,7 +119,7 @@ Die klassische Berechnung ist aber sehr aufwendig und basiert auf Gleitkommaoper
 	
 \begin{tikzpicture}[
 		% GLOBAL CFG
-		font=\sf \scriptsize,
+		font=\sf,
 		>=LaTeX,
 		% Styles
 		cell/.style={% For the main box

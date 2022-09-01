@@ -9,23 +9,23 @@
 
 \subsection{Idee
 	\label{transfer:pade:idee}}
-Die Taylorapproximation ist für den Gebrauch als Ersatz des Tangenshyperbolicus als Transferfunktion nicht brauchbar. Die Padé-Approximation kann die grössten Probleme aber entschärfen und dies mit sehr begrenztem zusätzlichen Rechenaufwand. Dafür wird die Taylorapproximation in einen Bruch von zwei Polynom zerlegt.
+Die Taylor-Approximation ist für den Gebrauch als Ersatz des Tangens hyperbolicus als Transferfunktion nicht brauchbar. Die Padé-Approximation kann die grössten Probleme aber entschärfen und dies mit sehr begrenztem zusätzlichen Rechenaufwand. Dafür wird die Taylor-Approximation in einen Bruch von zwei Polynom zerlegt.
 
 \subsection{Definition
 \label{transfer:pade:definition}}
 Sei
 \begin{equation}
-	R(x)=\frac{\sum_{j=0}^{m} a_{j} x^{j}}{1+\sum_{k=1}^{n} b_{k} x^{k}}=\frac{a_{0}+a_{1} x+a_{2} x^{2}+\cdots+a_{m} x^{m}}{1+b_{1} x+b_{2} x^{2}+\cdots+b_{n} x^{n}} 
+	R(x)=\frac{\sum_{j=0}^{m} a_{j} x^{j}}{1+\sum_{k=1}^{n} b_{k} x^{k}}=\frac{a_{0}+a_{1} x+a_{2} x^{2}+\cdots+a_{m} x^{m}}{1+b_{1} x+b_{2} x^{2}+\cdots+b_{n} x^{n}},
 \end{equation}
-und gilt
+dann müssen alle $m+n$ Terme mit der Taylorapproximation um den Punkt Null übereinstimmen. Somit müssen
 \begin{gather*}
-	f(0) =R(0) \\
-	f^{\prime}(0) =R^{\prime}(0) \\
-	f^{\prime \prime}(0) =R^{\prime \prime}(0) \\
+	f(0) =R(0), \\
+	f^{\prime}(0) =R^{\prime}(0), \\
+	f^{\prime \prime}(0) =R^{\prime \prime}(0), \\
 	\vdots \\
 	f^{(m+n)}(0) =R^{(m+n)}(0),
 \end{gather*}
-so ist $R(x)$ die Padé-Approximation von $f(x)$.
+erfüllt sein, damit $R(x)$ die Padé-Approximation von $f(x)$ ist.
 \subsection{Beispiel
 	\label{transfer:pade:beispiel}}
 Sei $f(x) = \tanh (x)$ und $T_{5} \tanh(x ; a) = x-\frac{x^{3}}{3}+\frac{2 x^{5}}{15}$, dann gilt
@@ -33,7 +33,7 @@ $$
 	\begin{gathered}  
 	[3 / 2]_{f}(x) = \frac{A_{0}+A_{1} x+A_{2} x^{2}+A_{3} x^{3}}{B_{0}+B_{1} x+B_{2} x^{2}}=x-\frac{x^{3}}{3}+\frac{2 x^{5}}{15}+O\left(x^{6}\right), B_{0} = 1,\\
 	\Downarrow \\
-	[3 / 2]_{f}(x) = \frac{15x+x^3}{15+6x^2}
+	[3 / 2]_{f}(x) = \frac{15x+x^3}{15+6x^2}.
 \end{gathered}
 $$
 
@@ -53,14 +53,14 @@ $$
 		\addplot [mark=none,draw=red,thick] {tanh(\x)};
 		\node [right, red] at (axis cs: 1.4,0.7) {$\tanh(x)$};
 		\addplot [mark=none,draw=blue,ultra thick, samples=100, smooth] expression{x*(15+x^2)/(15+6*x^2)};
-		\node [right, blue] at (axis cs: -1.8,0.7) {$Padé$};
+		\node [right, blue] at (axis cs: -2.5,0.7) {Padéapproximation};
 		
 		%% Add the asymptotes
 		\draw [blue, dotted, thick] (axis cs:-2.5,-1)-- (axis cs:0,-1);
 		\draw [blue, dotted, thick] (axis cs:+2.5,+1)-- (axis cs:0,+1);
 	\end{axis}
 \end{tikzpicture}
-\caption{$[3 / 2]_{f}(x)$
+\caption{$[3 / 2]_{tanh}(x)$
 \label{motivation:figure:Pade32}}
 \end{figure}
 
