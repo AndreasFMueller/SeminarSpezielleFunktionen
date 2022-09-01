@@ -1,3 +1,4 @@
+% vim:ts=2 sw=2 et:
 %
 % packages.tex -- packages required by the paper kugel
 %
@@ -7,4 +8,14 @@
 % if your paper needs special packages, add package commands as in the
 % following example
 %\usepackage{packagename}
+\usepackage{cases}
+% \usepackage[export]{adjustbox}
 
+\newcommand{\kugeltodo}[1]{\textcolor{red!70!black}{\texttt{[TODO: #1]}}}
+\newcommand{\kugelplaceholderfig}[2]{ \begin{tikzpicture}%
+    \fill[lightgray!20] (0, 0) rectangle (#1, #2);%
+    \node[gray, anchor = center] at ({#1 / 2}, {#2 / 2}) {\Huge \ttfamily \bfseries TODO};
+  \end{tikzpicture}}
+
+\DeclareMathOperator{\sphlaplacian}{\nabla^2_{S}}
+\DeclareMathOperator{\surflaplacian}{\nabla^2_{\partial S}}

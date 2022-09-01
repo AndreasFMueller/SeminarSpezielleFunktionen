@@ -1,0 +1,21 @@
+% vim:ts=2 sw=2 et:
+\documentclass[tikz, border=5mm]{standalone}
+\usepackage{pgfplots}
+
+\begin{document}
+\begin{tikzpicture}
+  \begin{axis}[
+      clip = false,
+      width = 8cm, height = 6cm,
+      xtick = \empty, ytick = \empty,
+      colormap name = viridis,
+      axis lines = middle,
+      axis line style = {ultra thick, -latex}
+    ]
+    \addplot+[
+      smooth, mark=none, line width = 3pt, mesh,
+      point meta=explicit,
+    ] file {curvature-1d.dat};
+  \end{axis}
+\end{tikzpicture}
+\end{document}

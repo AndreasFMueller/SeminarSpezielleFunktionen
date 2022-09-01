@@ -6,9 +6,10 @@
 dependencies-fm =						\
 	papers/fm/packages.tex					\
 	papers/fm/main.tex					\
-	papers/fm/references.bib				\
-	papers/fm/teil0.tex					\
-	papers/fm/teil1.tex					\
-	papers/fm/teil2.tex					\
-	papers/fm/teil3.tex
+	papers/fm/00_modulation.tex	\
+	papers/fm/01_AM.tex					\
+	papers/fm/02_FM.tex			\
+	papers/fm/03_bessel.tex					\
+	papers/fm/04_fazit.tex					\
+	papers/fm/references.bib			
 

@@ -1,0 +1,571 @@
+\documentclass[ngerman, aspectratio=169, xcolor={rgb}]{beamer}
+
+% style
+\mode<presentation>{
+	\usetheme{Frankfurt}
+}
+%packages
+\usepackage[utf8]{inputenc}\DeclareUnicodeCharacter{2212}{-}
+\usepackage[english]{babel}
+\usepackage{graphicx}
+\usepackage{array}
+
+\newcolumntype{L}[1]{>{\raggedright\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+\usepackage{ragged2e}
+
+\usepackage{bm} % bold math
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{mathtools}
+\usepackage{amsmath}
+\usepackage{multirow} % multi row in tables
+\usepackage{booktabs} %toprule midrule bottomrue in tables
+\usepackage{scrextend}
+\usepackage{textgreek}
+\usepackage[rgb]{xcolor}
+
+\usepackage{ marvosym } % \Lightning
+
+\usepackage{multimedia} % embedded videos
+
+\usepackage{tikz}
+\usepackage{pgf}
+\usepackage{pgfplots}
+
+\usepackage{algorithmic}
+
+%citations
+\usepackage[style=verbose,backend=biber]{biblatex}
+\addbibresource{references.bib}
+
+
+%math font
+\usefonttheme[onlymath]{serif}
+
+%Beamer Template modifications
+%\definecolor{mainColor}{HTML}{0065A3} % HSR blue
+\definecolor{mainColor}{HTML}{D72864} % OST pink
+\definecolor{invColor}{HTML}{28d79b} % OST pink
+\definecolor{dgreen}{HTML}{38ad36} % Dark green
+
+%\definecolor{mainColor}{HTML}{000000} % HSR blue
+\setbeamercolor{palette primary}{bg=white,fg=mainColor}
+\setbeamercolor{palette secondary}{bg=orange,fg=mainColor}
+\setbeamercolor{palette tertiary}{bg=yellow,fg=red}
+\setbeamercolor{palette quaternary}{bg=mainColor,fg=white} %bg = Top bar, fg = active top bar topic
+\setbeamercolor{structure}{fg=black} % itemize, enumerate, etc (bullet points)
+\setbeamercolor{section in toc}{fg=black} % TOC sections
+\setbeamertemplate{section in toc}[sections numbered]
+\setbeamertemplate{subsection in toc}{%
+	\hspace{1.2em}{$\bullet$}~\inserttocsubsection\par}
+
+\setbeamertemplate{itemize items}[circle]
+\setbeamertemplate{description item}[circle]
+\setbeamertemplate{title page}[default][colsep=-4bp,rounded=true]
+\beamertemplatenavigationsymbolsempty
+
+\setbeamercolor{footline}{fg=gray}
+\setbeamertemplate{footline}{%
+	\hfill\usebeamertemplate***{navigation symbols}
+	\hspace{0.5cm}
+	\insertframenumber{}\hspace{0.2cm}\vspace{0.2cm}
+}
+
+\usepackage{caption}
+\captionsetup{labelformat=empty}
+
+%Title Page
+\title{Elliptische Filter}
+\subtitle{Eine Anwendung der Jacobi elliptischen Funktionen}
+\author{Nicolas Tobler}
+\institute{Mathematisches Seminar 2022 | Spezielle Funktionen}
+% \institute{\includegraphics[scale=0.3]{../img/ost_logo.png}}
+\date{\today}
+
+\input{../packages.tex}
+
+\newcommand*{\QED}{\hfill\ensuremath{\blacksquare}}%
+
+\newcommand*{\HL}{\textcolor{mainColor}}
+\newcommand*{\RD}{\textcolor{red}}
+\newcommand*{\BL}{\textcolor{blue}}
+\newcommand*{\GN}{\textcolor{dgreen}}
+
+\definecolor{darkgreen}{rgb}{0,0.6,0}
+
+
+\makeatletter
+\newcount\my@repeat@count
+\newcommand{\myrepeat}[2]{%
+	\begingroup
+	\my@repeat@count=\z@
+	\@whilenum\my@repeat@count<#1\do{#2\advance\my@repeat@count\@ne}%
+	\endgroup
+}
+\makeatother
+
+\usetikzlibrary{automata,arrows,positioning,calc,shapes.geometric, fadings}
+
+\begin{document}
+
+	\begin{frame}
+		\titlepage
+	\end{frame}
+
+	\begin{frame}
+		\frametitle{Inhalt}
+		\tableofcontents
+	\end{frame}
+
+	\section{Lineare Filter}
+
+	\begin{frame}
+		\frametitle{Lineare Filter}
+
+		\begin{center}
+			\scalebox{0.75}{
+				\input{../tikz/filter.tikz.tex}
+			}
+		\end{center}
+
+
+		\begin{equation*}
+			| H(\Omega)|^2 = \frac{1}{1 + \varepsilon_p^2 F_N^2(w)}, \quad w=\frac{\Omega}{\Omega_p}
+		\end{equation*}
+
+		\pause
+
+		\begin{align*}
+			|F_N(w)| &< 1 \quad \forall \quad |w| < 1 \\
+			|F_N(w)| &= 1 \quad \forall \quad |w| = 1 \\
+			|F_N(w)| &> 1 \quad \forall \quad |w| > 1
+		\end{align*}
+
+
+		\begin{equation*}
+			F_N(w) = w^N
+		\end{equation*}
+
+	\end{frame}
+
+	\begin{frame}
+		\frametitle{Beispiel: Butterworth Filter}
+
+		\begin{equation}
+			F_N(w) = w^N
+		\end{equation}
+
+		\begin{center}
+			\input{../python/F_N_butterworth.pgf}
+		\end{center}
+
+	\end{frame}
+
+
+	\begin{frame}
+		\frametitle{Arten von linearen filtern}
+
+		\begin{align*}
+			F_N(w) & =
+			\begin{cases}
+				w^N                            & \text{Butterworth} \\
+				T_N(w)                         & \text{Tschebyscheff, Typ 1}  \\
+				[k_1 T_N (k^{-1} w^{-1})]^{-1} & \text{Tschebyscheff, Typ 2}  \\
+				R_N(w,\xi)                      & \text{Elliptisch (Cauer)}    \\
+			\end{cases}
+		\end{align*}
+
+	\end{frame}
+
+	\section{Tschebycheff Filter}
+
+	\begin{frame}
+		\frametitle{Tschebyscheff-Polynome}
+
+
+		\begin{columns}
+			\begin{column}[T]{0.35\textwidth}
+
+				\begin{align*}
+					T_{0}(x)&=1\\
+					T_{1}(x)&=x\\
+					T_{2}(x)&=2x^{2}-1\\
+					T_{3}(x)&=4x^{3}-3x\\
+					T_{n+1}(x)&=2x~T_{n}(x)-T_{n-1}(x)
+				\end{align*}
+
+			\end{column}
+			\begin{column}[T]{0.65\textwidth}
+
+				\begin{center}
+					\resizebox{\textwidth}{!}{
+					\input{../python/F_N_chebychev2.pgf}
+					}
+				\end{center}
+
+			\end{column}
+		\end{columns}
+
+
+
+	\end{frame}
+
+	\begin{frame}
+		\frametitle{Tschebyscheff-Filter}
+
+		\begin{equation*}
+			| H(\Omega)|^2 = \frac{1}{1 + \varepsilon_p^2 T_N^2(w)}, \quad w=\frac{\Omega}{\Omega_p}
+		\end{equation*}
+
+		\begin{center}
+			\scalebox{0.9}{
+				\input{../python/F_N_chebychev.pgf}
+			}
+		\end{center}
+
+	\end{frame}
+
+
+	\begin{frame}
+		\frametitle{Tschebyscheff-Filter}
+
+		Darstellung mit trigonometrischen Funktionen:
+
+		\begin{align*}
+			T_N(w) &= \cos \left( N \cos^{-1}(w) \right) \\
+				&= \cos \left(N~z \right), \quad w= \cos(z)
+		\end{align*}
+
+		\pause
+
+		\begin{align*}
+			\cos^{-1}(x)
+			&=
+			\int_{x}^{1}
+			\frac{
+				dz
+			}{
+				\sqrt{
+					1-z^2
+				}
+			}\\
+			&=
+			\int_{0}^{x}
+			\frac{
+				-1
+			}{
+				\sqrt{
+					1-z^2
+				}
+			}
+			~dz
+			+ \frac{\pi}{2}
+		\end{align*}
+
+
+	\end{frame}
+
+	\begin{frame}
+		\frametitle{Tschebyscheff-Filter}
+
+		\begin{columns}
+
+			\begin{column}{0.2\textwidth}
+
+				\begin{equation*}
+					z = \cos^{-1}(w)
+				\end{equation*}
+
+				\vspace{0.5cm}
+
+				Integrand:
+				\begin{equation*}
+					\frac{
+						-1
+					}{
+						\sqrt{
+							1-z^2
+						}
+					}
+				\end{equation*}
+
+			\end{column}
+			\begin{column}{0.8\textwidth}
+
+
+				\begin{center}
+					\scalebox{0.7}{
+						\input{../tikz/arccos.tikz.tex}
+					}
+				\end{center}
+
+			\end{column}
+		\end{columns}
+
+
+
+	\end{frame}
+
+	\begin{frame}
+		\frametitle{Tschebyscheff-Filter}
+
+		\begin{equation*}
+			T_N(w) = \cos \left(z_1 \right), \quad z_1 = N~\cos^{-1}(w)
+		\end{equation*}
+
+		\begin{center}
+			\scalebox{0.85}{
+				\input{../tikz/arccos2.tikz.tex}
+			}
+		\end{center}
+
+	\end{frame}
+
+
+	\section{Jacobi elliptische Funktionen}
+
+	\begin{frame}
+		\frametitle{Jacobi elliptische Funktionen}
+
+		Elliptisches Integral erster Art
+
+		\begin{equation*}
+			F(\phi, k)
+			=
+			\int_{0}^{\phi}
+			\frac{
+				d\theta
+			}{
+				\sqrt{
+					1-k^2 \sin^2 \theta
+				}
+			}
+			% =
+			% \int_{0}^{\phi}
+			% \frac{
+			% 	dt
+			% }{
+			% 	\sqrt{
+			% 		(1-t^2)(1-k^2 t^2)
+			% 	}
+			% }
+		\end{equation*}
+
+		\begin{equation*}
+			K(k)
+			=
+			\int_{0}^{\pi / 2}
+			\frac{
+				d\theta
+			}{
+				\sqrt{
+					1-k^2 \sin^2 \theta
+				}
+			}
+		\end{equation*}
+
+
+
+	\end{frame}
+
+
+
+
+
+	\begin{frame}
+		\frametitle{Jacobi elliptische Funktionen}
+
+			\begin{equation*}
+				\sn^{-1}(w, k)
+				=
+				F(\phi, k),
+				\quad
+				\phi = \sin^{-1}(w)
+			\end{equation*}
+
+			\begin{align*}
+				\sn^{-1}(w, k)
+					& =
+				\int_{0}^{\phi}
+				\frac{
+					d\theta
+				}{
+					\sqrt{
+						1-k^2 \sin^2 \theta
+					}
+				},
+				\quad
+				\phi = \sin^{-1}(w)
+				\\
+					& =
+				\int_{0}^{w}
+				\frac{
+					dt
+				}{
+					\sqrt{
+						(1-t^2)(1-k^2 t^2)
+					}
+				}
+			\end{align*}
+
+
+
+		\end{frame}
+
+	\begin{frame}
+		\frametitle{Jacobi elliptische Funktionen}
+		\begin{columns}
+			\begin{column}{0.2\textwidth}
+
+				\begin{equation*}
+					z = \sn^{-1}(w, k)
+				\end{equation*}
+
+				\vspace{0.5cm}
+
+				Integrand:
+				\begin{equation*}
+					\frac{
+						1
+					}{
+						\sqrt{
+							(1-t^2)(1-k^2 t^2)
+						}
+					}
+				\end{equation*}
+
+			\end{column}
+			\begin{column}{0.8\textwidth}
+				\begin{center}
+					\scalebox{0.75}{
+						\input{../tikz/sn.tikz.tex}
+					}
+				\end{center}
+			\end{column}
+		\end{columns}
+
+
+	\end{frame}
+
+	\begin{frame}
+		\frametitle{Fundamentales Rechteck}
+
+		Nullstelle beim ersten Buchstabe, Polstelle beim zweiten Buchstabe
+
+		\begin{center}
+			\scalebox{0.8}{
+				\input{../tikz/fundamental_rectangle.tikz.tex}
+			}
+		\end{center}
+
+	\end{frame}
+
+
+	\begin{frame}
+		\frametitle{Jacobi elliptische Funktionen}
+
+		\begin{equation*}
+			z = \cd^{-1}(w, k)
+		\end{equation*}
+
+		\begin{center}
+			\scalebox{0.7}{
+				\input{../tikz/cd.tikz.tex}
+
+			}
+		\end{center}
+
+	\end{frame}
+
+	\section{Elliptisches Filter}
+
+	\begin{frame}
+		\frametitle{Elliptisches Filter}
+
+		% \begin{equation*}
+		% 	z_1 = N~\frac{K_1}{K}~\cd^{-1}(w, k)
+		% \end{equation*}
+
+		\begin{center}
+			\scalebox{0.75}{
+				\input{../tikz/cd3.tikz.tex}
+			}
+		\end{center}
+
+	\end{frame}
+
+	\begin{frame}
+		\frametitle{Periodizität in realer und imaginärer Richtung}
+
+		\begin{center}
+			\input{../python/k.pgf}
+		\end{center}
+
+
+	\end{frame}
+
+	\begin{frame}
+		\frametitle{Gradgleichung}
+
+		\begin{center}
+			\scalebox{0.95}{
+				\input{../tikz/elliptic_transform2.tikz}
+			}
+		\end{center}
+
+		\onslide<5->{
+		\begin{equation*}
+			N \frac{K^\prime}{K} = \frac{K^\prime_1}{K_1}
+		\end{equation*}
+		}
+
+	\end{frame}
+
+	\begin{frame}
+		\frametitle{Elliptisches Filter}
+
+		\begin{equation*}
+			R_N = \cd(z_1, k_1),
+			\quad
+			z_1 = N~\frac{K_1}{K}~\cd^{-1}(w, k),
+			\quad
+			N \frac{K^\prime}{K} = \frac{K^\prime_1}{K_1}
+		\end{equation*}
+
+		\begin{center}
+			\scalebox{0.75}{
+				\input{../tikz/cd2.tikz.tex}
+			}
+		\end{center}
+
+	\end{frame}
+
+
+	\begin{frame}
+		\frametitle{Elliptisches Filter}
+
+		\begin{columns}
+
+			\begin{column}[T]{0.5\textwidth}
+
+				\begin{center}
+					\resizebox{\textwidth}{!}{
+					\input{../python/F_N_elliptic.pgf}
+					}
+				\end{center}
+
+			\end{column}
+			\begin{column}[T]{0.5\textwidth}
+
+				\begin{center}
+					\resizebox{\textwidth}{!}{
+					\input{../python/elliptic.pgf}
+					}
+				\end{center}
+
+			\end{column}
+		\end{columns}
+
+	\end{frame}
+
+	\end{document}

@@ -1,0 +1,86 @@
+\section{Eulerprodukt} \label{zeta:section:eulerprodukt}
+\rhead{Eulerprodukt}
+
+Das Eulerprodukt stellt die gesuchte Verbindung der Zetafunktion und der Primzahlen her.
+Wie der Name bereits sagt, wurde das Eulerprodukt bereits 1727 von Euler entdeckt.
+Um daraus die Riemannsche Vermutung herzuleiten, wäre aber noch einiges mehr nötig.
+
+\begin{satz}
+    Für alle Zahlen $s$ mit $\Re(s) > 1$ ist die Zetafunktion identisch mit dem unendlichen Eulerprodukt
+    \begin{equation}\label{zeta:eq:eulerprodukt}
+        \zeta(s)
+        =
+        \sum_{n=1}^\infty
+        \frac{1}{n^s}
+        =
+        \prod_{p \in P}
+        \frac{1}{1-p^{-s}}
+    \end{equation}
+    wobei $P$ die Menge aller Primzahlen darstellt.
+\end{satz}
+
+\begin{proof}[Beweis]
+    Der Beweis startet mit dem Eulerprodukt und stellt dieses so um, dass die Zetafunktion erscheint.
+    Als erstes ersetzen wir die Faktoren durch geometrische Reihen
+    \begin{equation}
+        \prod_{i=1}^{\infty}
+        \frac{1}{1-p^{-s}}
+        =
+        \prod_{p \in P}
+        \sum_{k_i=0}^{\infty}
+        \biggl(
+        \frac{1}{p_i^s}
+        \biggr)^{k_i}
+        =
+        \prod_{p \in P}
+        \sum_{k_i=0}^{\infty}
+        \frac{1}{p_i^{s k_i}},
+    \end{equation}
+    dabei iteriert der Index $i$ über alle Primzahlen $p_i$.
+    Durch Ausschreiben der Multiplikation und Ausklammern der Summen erhalten wir
+    \begin{align}
+        \prod_{p \in P}
+        \sum_{k_i=0}^{\infty}
+        \frac{1}{p_i^{s k_i}}
+        &=
+        \sum_{k_1=0}^{\infty}
+        \frac{1}{p_1^{s k_1}}
+        \sum_{k_2=0}^{\infty}
+        \frac{1}{p_2^{s k_2}}
+        \ldots
+        \nonumber \\
+        &=
+        \sum_{k_1=0}^{\infty}
+        \sum_{k_2=0}^{\infty}
+        \ldots
+        \biggl(
+        \frac{1}{p_1^{k_1}}
+        \frac{1}{p_2^{k_2}}
+        \ldots
+        \biggr)^s.
+        \label{zeta:equation:eulerprodukt2}
+    \end{align}
+    Der Fundamentalsatz der Arithmetik (Primfaktorzerlegung) besagt, dass jede beliebige Zahl $n \in \mathbb{N}$ durch eine eindeutige Primfaktorzerlegung beschrieben werden kann
+    \begin{equation}
+        n = \prod_i p_i^{k_i} \quad \forall \quad n \in \mathbb{N}.
+    \end{equation}
+    Jeder Summand der Summen in \eqref{zeta:equation:eulerprodukt2} ist somit der Kehrwert genau einer natürlichen Zahl $n \in \mathbb{N}$.
+    Da die Summen alle möglichen Kombinationen von Exponenten und Primzahlen in \eqref{zeta:equation:eulerprodukt2} enthält, haben wir
+    \begin{equation}
+        \sum_{k_1=0}^{\infty}
+        \sum_{k_2=0}^{\infty}
+        \ldots
+        \biggl(
+        \frac{1}{p_1^{k_1}}
+        \frac{1}{p_2^{k_2}}
+        \ldots
+        \biggr)^s
+        =
+        \sum_{n=1}^\infty
+        \frac{1}{n^s}
+        =
+        \zeta(s),
+    \end{equation}
+    wodurch das Eulerprodukt bewiesen ist.
+\end{proof}
+

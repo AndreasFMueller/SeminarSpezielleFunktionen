@@ -1,0 +1,347 @@
+% vim:ts=2 sw=2 et spell tw=78:
+
+\section{Preliminaries}\label{kugel:sec:preliminaries}
+
+The purpose of this section is to dust off some concepts that will become
+important later on. This will enable us to be able to get a richer and more
+general view of the topic than just liming ourselves to a specific example.
+
+\subsection{Vectors and inner product spaces}
+
+We shall start with a few fundamentals of linear algebra. We will mostly work
+with complex numbers, but for the sake of generality we will do what most
+textbook do, and write \(\mathbb{K}\) instead of \(\mathbb{C}\) since the
+theory works the same when we replace \(\mathbb{K}\) with the real
+numbers \(\mathbb{R}\).
+
+\begin{definition}[Vector space]
+  \label{kugel:def:vector-space} \nocite{axler_linear_2014}
+  A \emph{vector space} over a field \(\mathbb{K}\) is a set \(V\) with an
+  addition on \(V\) and a multiplication on \(V\) such that the following
+  properties hold:
+  \begin{enumerate}[(a)]
+    \item (Commutativity) \(u + v = v + u\) for all \(u, v \in V\);
+    \item (Associativity) \((u + v) + w = u + (v + w)\) and \((ab)v = a(bv)\)
+      for all \(u, v, w \in V\) and \(a, b \in \mathbb{K}\);
+    \item (Additive identity) There exists an element \(0 \in V\) such that
+      \(v + 0 = v\) for all \(v \in V\);
+    \item (Additive inverse) For every \(v \in V\), there exists a \(w \in V\)
+      such that \(v + w = 0\);
+    \item (Multiplicative identity) \(1 v = v\) for all \(v \in V\);
+    \item (Distributive properties) \(a(u + v) = au + av\) and \((a + b)v = av +
+      bv\) for all \(a, b \in \mathbb{K}\) and all \(u,v \in V\).
+  \end{enumerate}
+\end{definition}
+
+\begin{definition}[Dot product]
+  \label{kugel:def:dot-product}
+  In the vector field \(\mathbb{K}^n\) the scalar or dot product between two
+  vectors \(u, v \in \mathbb{K}^n\) is
+  \(
+    u \cdot v 
+    = u_1 \overline{v}_1 + u_2 \overline{v}_2 + \cdots + u_n \overline{v}_n
+    = \sum_{i=1}^n u_i \overline{v}_i.
+  \)
+\end{definition}
+
+\kugeltodo{Text here.}
+
+\begin{definition}[Span]
+\end{definition}
+
+\kugeltodo{Text here.}
+
+\begin{definition}[Linear independence]
+\end{definition}
+
+
+\kugeltodo{Text here.}
+
+\begin{definition}[Basis]
+\end{definition}
+
+\kugeltodo{Text here.}
+
+\begin{definition}[Inner product]
+  \label{kugel:def:inner-product} \nocite{axler_linear_2014}
+  The \emph{inner product} on \(V\) is a function that takes each ordered pair
+  \((u, v)\) of elements of \(V\) to a number \(\langle u, v \rangle \in
+  \mathbb{K}\) and has the following properties:
+  \begin{enumerate}[(a)]
+    \item (Positivity) \(\langle v, v \rangle \geq 0\) for all \(v \in V\);
+    \item (Definiteness) \(\langle v, v \rangle = 0\) iff \(v = 0\);
+    \item (Additivity) \(
+        \langle u + v, w \rangle =
+        \langle u, w \rangle + \langle v, w \rangle
+      \) for all \(u, v, w \in V\);
+    \item (Homogeneity) \(
+        \langle \lambda u, v \rangle =
+        \lambda \langle u, v \rangle
+      \) for all \(\lambda \in \mathbb{K}\) and all \(u, v \in V\);
+    \item (Conjugate symmetry)
+      \(\langle u, v \rangle = \overline{\langle v, u \rangle}\) for all
+      \(u, v \in V\).
+  \end{enumerate}
+\end{definition}
+
+This newly introduced inner product is thus a generalization of the scalar
+product that does not explicitly depend on rows or columns of vectors. This
+has the interesting consequence that anything that behaves according to the
+rules given in definition \ref{kugel:def:inner-product} \emph{is} an inner
+product. For example if we say that the vector space \(V = \mathbb{R}^n\),
+then the dot product defined in definition \ref{kugel:def:dot-product}
+\(
+  u \cdot v = u_1 \overline{v}_1 + u_2 \overline{v}_2 + \cdots + u_n \overline{v}_n
+\)
+is an inner product in \(V\), and the two are said to form an \emph{inner
+product space}.
+
+\begin{definition}[Inner product space]
+  \nocite{axler_linear_2014}
+  An inner product space is a vector space \(V\) equipped with an inner
+  product on \(V\).
+\end{definition}
+
+How about a more interesting example: the set of continuous complex valued
+functions on the interval \([0; 1]\) can behave like vectors.  Functions can
+be added, subtracted, multiplied with scalars, are associative and there is
+even the identity element (zero function \(f(x) = 0\)), so we can create an
+inner product
+\[
+  \langle f, g \rangle = \int_0^1 f(x) \overline{g(x)} \, dx,
+\]
+which will indeed satisfy all of the rules for an inner product (in fact this
+is called the Hermitian inner product\nocite{allard_mathematics_2009}). If
+this last step sounds too good to be true, you are right, because it is not
+quite so simple. The problem that we have swept under the rug here is
+convergence, which any student who took an analysis class will know is a
+rather hairy question. We will not need to go too much into the details since
+formally discussing convergence is definitely beyond the scope of this text,
+however, for our purposes we will still need to dig a little deeper for a few
+more paragraph.
+
+\subsection{Convergence}
+
+In the last section we hinted that we can create ``infinite-dimensional''
+vector spaces using functions as vectors, and inner product spaces by
+integrating the product of two functions of said vector space. However, there
+is a problem with convergence which twofold: the obvious problem is that the
+integral of the inner product may not always converge, while the second is a
+bit more subtle and will be discussed later. The inner product that does
+not converge is a problem because we want a \emph{norm}.
+
+\begin{definition}[\(L^2\) Norm]
+  \nocite{axler_linear_2014}
+  The norm of a vector \(v\) of an inner product space is a number
+  denoted as \(\| v \|\) that is computed by \(\| v \| = \sqrt{\langle v, v
+  \rangle}\).
+\end{definition}
+
+In \(\mathbb{R}^n\) with the dot product (Euclidian space) the norm is the
+geometric length of a vector, while in a more general inner product space the
+norm can be thought of as a more abstract measure of ``length''. In any case
+it is rather important that the expression \(\sqrt{\langle v, v \rangle}\),
+which when using functions \(f: \mathbb{R} \to \mathbb{C}\) becomes
+\[
+  \sqrt{\langle f, f \rangle} =
+  \sqrt{\int_\mathbb{R} f(x) \overline{f(x)} \, dx} =
+  \sqrt{\int_\mathbb{R} |f(x)|^2 \, dx},
+\]
+always exists. So, to fix this problems we do what mathematicians do best:
+make up the solution. Since the integrand under the square root is always the
+square of the magnitude, we can just specify that the functions must be
+\emph{absolutely square integrable}. To be more compact it is common to just
+write \(f \in L^2\), where \(L^2\) denotes the set of absolutely square
+integrable functions.
+
+Now we can tackle the second (much more difficult) problem of convergence
+mentioned at the beginning. Using the technical jargon, we need that our inner
+product space is what is called a \emph{complete metric space}, which just
+means that we can measure distances. For the more motivated readers although
+not really necessary we can also give a more formal definition, the others can
+skip to the next section.
+
+\begin{definition}[Metric space]
+  \nocite{tao_analysis_2016}
+  A metric space \((X, d)\) is a space \(X\) of objects (called points),
+  together with a distance function or metric \(d: X \times X \to [0,
+  +\infty)\), which associates to each pair \(x, y\) of points in \(X\) a
+  non-negative real number \(d(x, y) \geq 0\). Furthermore, the metric must
+  satisfy the following four axioms:
+  \begin{enumerate}[(a)]
+    \item For any \(x\in X\), we have \(d(x, x) = 0\).
+    \item (Positivity) For any \emph{distinct} \(x, y \in X\), we have
+      \(d(x,y) > 0\).
+    \item (Symmetry) For any \(x,y \in X\), we have \(d(x, y) = d(y, x)\).
+    \item (Triangle inequality) For any \(x, y, z \in X\) we have
+      \(d(x, z) \leq d(x, y) + d(y, z)\).
+  \end{enumerate}
+\end{definition}
+
+As is seen in the definition metric spaces are a very abstract concept and
+rely on rather weak statements, which makes them very general. Now, the more
+intimidating part is the \emph{completeness} which is defined as follows.
+
+\begin{definition}[Complete metric space]
+  \label{kugel:def:complete-metric-space}
+  A metric space \((X, d)\) is said to be \emph{complete} iff every Cauchy
+  sequence in \((X, d)\) is convergent in \((X, d)\).
+\end{definition}
+
+To fully explain definition \ref{kugel:def:complete-metric-space} it would
+take a few more pages, which would get a bit too heavy. So instead we will
+give an informal explanation through an counterexample to get a feeling of
+what is actually happening. Cauchy sequences is a rather fancy name for a
+sequence for example of numbers that keep changing, but in a such a way that
+at some point the change keeps getting smaller (the infamous
+\(\varepsilon-\delta\) definition). For example consider the sequence of
+numbers
+\[
+  1,
+  1.4,
+  1.41,
+  1.414,
+  1.4142,
+  1.41421,
+  \ldots
+\]
+in the metric space \((\mathbb{Q}, d)\) with \(d(x, y) = |x - y|\). Each
+element of this sequence can be written with some fraction in \(\mathbb{Q}\),
+but in \(\mathbb{R}\) the sequence is converging towards the number
+\(\sqrt{2}\). However, \(\sqrt{2} \notin \mathbb{Q}\). Since we can find a
+sequence of fractions whose distance's limit is not in \(\mathbb{Q}\), the
+metric space \((\mathbb{Q}, d)\) is \emph{not} complete. Conversely,
+\((\mathbb{R}, d)\) is a complete metric space since \(\sqrt{2} \in
+\mathbb{R}\).
+
+Of course the analogy above also applies to vectors, i.e. if in an inner
+product space \(V\) over a field \(\mathbb{K}\) all sequences of vectors have
+a distance that is always in \(\mathbb{K}\), then \(V\) is also a complete
+metric space. In the jargon, this particular case is what is known as a
+Hilbert space, after the incredibly influential German mathematician David
+Hilbert.
+
+\begin{definition}[Hilbert space]
+  A Hilbert space is a vector space \(H\) with an inner product \(\langle f, g
+  \rangle\) and a norm \(\sqrt{\langle f, f \rangle}\) defined such that \(H\)
+  turns into a complete metric space.
+\end{definition}
+
+\subsection{Orthogonal basis and Fourier series}
+
+Now we finally have almost everything we need to get into the domain of
+Fourier theory from the perspective of linear algebra. However, we still need
+to briefly discuss the matter of orthogonality\footnote{See chapter
+\ref{buch:chapter:orthogonalitaet} for more on orthogonality.} and
+periodicity. Both should be very straightforward and already well known.
+
+\begin{definition}[Orthogonality and orthonormality]
+  \label{kugel:def:orthogonality}
+  In an inner product space \(V\) two vectors \(u, v \in V\) are said to be
+  \emph{orthogonal} if \(\langle u, v \rangle = 0\). Further, if both \(u\)
+  and \(v\) are of unit length, i.e. \(\| u \| = 1\) and \(\| v \| = 1\), then
+  they are said to be ortho\emph{normal}.
+\end{definition}
+
+\begin{definition}[1-periodic function and \(C(\mathbb{R}/\mathbb{Z}; \mathbb{C})\)]
+  A function is said to be 1-periodic if \(f(x + 1) = f(x)\). The set of
+  1-periodic function from the real to the complex
+  numbers is denoted by \(C(\mathbb{R}/\mathbb{Z}; \mathbb{C})\).
+\end{definition}
+
+In the definition above the notation \(\mathbb{R}/\mathbb{Z}\) was borrowed
+from group theory, and is what is known as a quotient group; Not really
+relevant for our discussion but still a ``good to know''. More importantly, it
+is worth noting that we could have also defined more generally \(L\)-periodic
+functions with \(L\in\mathbb{R}\), however, this would introduce a few ugly
+\(L\)'s everywhere which are not really necessary (it will always be possible
+to extend the theorems to \(\mathbb{R} / L\mathbb{Z}\)). Thus, we will
+continue without the \(L\)'s, and to simplify the language unless specified
+otherwise ``periodic'' will mean 1-periodic. Having said that, we can
+officially begin with the Fourier theory.
+
+\begin{lemma}
+  The subset of absolutely square integrable functions in
+  \(C(\mathbb{R}/\mathbb{Z}; \mathbb{C})\) together with the Hermitian inner
+  product
+  \[
+    \langle f, g \rangle = \int_{[0; 1)} f(x) \overline{g(x)} \, dx
+  \]
+  form a Hilbert space.
+\end{lemma}
+\begin{proof}
+  It is not too difficult to show that the functions in \(C(\mathbb{R} /
+  \mathbb{Z}; \mathbb{C})\) are well behaved and form a vector space. Thus,
+  what remains is that the norm needs to form a complete metric space.
+  However, this follows from the fact that we defined the functions to be
+  absolutely square integrable\footnote{For the curious on why, it is because
+  \(L^2\) is what is known as a \emph{compact metric space}, and compact
+  metric spaces are always complete (see \cite{eck_metric_2022,
+  tao_analysis_2016}). To explain compactness and the relationship between
+  compactness and completeness is definitely beyond the goals of this text.}.
+\end{proof}
+
+This was probably not a very satisfactory proof since we brushed off a lot of
+details by referencing other theorems. However, the main takeaway should be
+that we have ``constructed'' this new Hilbert space of functions in a such a
+way that from now on we will not have to worry about the details of
+convergence.
+
+\begin{lemma}
+  \label{kugel:thm:exp-1d}
+  The set of functions \(E_n(x) = e^{i2\pi nx}\) on the interval
+  \([0; 1)\) with \(n \in \mathbb{Z} \) are orthonormal.
+\end{lemma}
+\begin{proof}
+  We need to show that \(\langle E_m, E_n \rangle\) equals 1 when \(m = n\)
+  and zero otherwise. This is a straightforward computation: We start by
+  unpacking the notation to get
+  \[
+    \langle E_m, E_n \rangle
+    = \int_0^1 e^{i2\pi mx} e^{- i2\pi nx} \, dx
+    = \int_0^1 e^{i2\pi (m - n)x} \, dx,
+  \]
+  then inside the integrand we can see that when \(m = n\) we have \(e^0 = 1\) and
+  thus \( \int_0^1 dx = 1, \) while when \(m \neq n\) we can just say that we
+  have a new non-zero integer
+  \(k := m - n\) and
+  \[
+    \int_0^1 e^{i2\pi kx} \, dx
+    = \frac{e^{i2\pi k} - e^{0}}{i2\pi k}
+    = \frac{1 - 1}{i2\pi k}
+    = 0
+  \]
+  as desired. \qedhere
+\end{proof}
+
+\begin{definition}[Spectrum]
+\end{definition}
+
+\begin{theorem}[Fourier Theorem]
+  \label{kugel:thm:fourier-theorem}
+  \begin{equation*}
+    \lim_{N \to \infty} \left \|
+      f(x) - \sum_{n = -N}^N \hat{f}(n) E_n(x) 
+    \right \|_2 = 0
+  \end{equation*}
+\end{theorem}
+
+\begin{lemma}
+  The set of functions \(E_{m, n}(\xi, \eta) = e^{i2\pi m\xi}e^{i2\pi n\eta}\)
+  on the square \([0; 1)^2\) with \(m, n \in \mathbb{Z} \) are orthonormal.
+\end{lemma}
+\begin{proof}
+  The proof is almost identical to lemma \ref{kugel:thm:exp-1d}, with the
+  only difference that the inner product is given by
+  \[
+    \langle E_{m,n}, E_{m', n'} \rangle
+    = \iint_{[0;1)^2}
+        E_{m, n}(\xi, \eta) \overline{E_{m', n'} (\xi, \eta)}
+      \, d\xi d\eta
+      .\qedhere
+  \]
+\end{proof}
+
+\subsection{Laplacian operator}
+
+\subsection{Eigenvalue Problem}

@@ -3,46 +3,196 @@
 %
 % (c) 2022 Patrik Müller, Ostschweizer Fachhochschule
 %
-\section{Definition
-\label{laguerre:section:definition}}
-\rhead{Definition}
+\section{Herleitung%
+  % \section{Einleitung
+  % \section{Definition
+  \label{laguerre:section:definition}}
+\rhead{Definition}%
+In einem ersten Schritt möchten wir die Laguerre-Polynome
+aus der Laguerre-\-Differentialgleichung herleiten.
+Zudem werden wir die Lösung auf die assoziierten Laguerre-Polynome ausweiten.
+Im Anschluss soll dann noch die Orthogonalität dieser Polynome bewiesen werden.
 
+\subsection{Assoziierte Laguerre-Differentialgleichung}
+Die assoziierte Laguerre-Differentialgleichung ist gegeben durch
 \begin{align}
-    x y''(x) + (1 - x) y'(x) + n y(x)
-    =
-    0 
-    \label{laguerre:dgl}
+x y''(x) + (\nu + 1 - x) y'(x) + n y(x)
+=
+0
+, \quad
+n \in \mathbb{N}
+, \quad
+x \in \mathbb{R}
+\label{laguerre:dgl}
+.
 \end{align}
+Spannenderweise wurde die assoziierte Laguerre-Differentialgleichung
+zuerst von Yacovlevich Sonine (1849 - 1915) beschrieben,
+aber aufgrund ihrer Ähnlichkeit nach Laguerre benannt.
+Die klassische Laguerre-Diffentialgleichung erhält man, wenn $\nu = 0$.
 
-\begin{align}
-    L_n(x)
-    =
-    \sum_{k=0}^{n} 
-    \frac{(-1)^k}{k!}
-    \begin{pmatrix}
-        n \\
-        k
-    \end{pmatrix}
-    x^k
-    \label{laguerre:polynom}
-\end{align}
+\subsection{Potenzreihenansatz%
+\label{laguerre:subsection:potenzreihenansatz}}
+Hier wird die assoziierte Laguerre-Differentialgleichung verwendet,
+weil die Lösung mit derselben Methode berechnet werden kann.
+Zusätzlich erhält man aber die Lösung für den allgmeinen Fall.
+Wir stellen die Vermutung auf,
+dass die Lösungen orthogonale Polynome sind.
+Die Orthogonalität der Lösung werden wir im
+Abschnitt~\ref{laguerre:subsection:orthogonal} beweisen.
+Zur Lösung von \eqref{laguerre:dgl} verwenden wir aufgrund
+der getroffenen Vermutungen einen Potenzreihenansatz.
+Der Potenzreihenansatz ist gegeben als
+% Da wir bereits wissen, 
+% dass die Lösung orthogonale Polynome sind,
+% erscheint dieser Ansatz sinnvoll. 
+\begin{align*}
+y(x)
+ & =
+\sum_{k=0}^\infty a_k x^k
+% \\
+.
+\end{align*}
+Für die 1. und 2. Ableitungen erhalten wir
+\begin{align*}
+y'(x)
+ & =
+\sum_{k=1}^\infty k a_k x^{k-1}
+=
+\sum_{k=0}^\infty (k+1) a_{k+1} x^k
+\\
+y''(x)
+ & =
+\sum_{k=2}^\infty k (k-1) a_k x^{k-2}
+=
+\sum_{k=1}^\infty (k+1) k a_{k+1} x^{k-1}
+.
+\end{align*}
 
+\subsection{Lösen der Laguerre-Differentialgleichung}
+Setzt man nun den Potenzreihenansatz in
+\eqref{laguerre:dgl}
+%die Differentialgleichung 
+ein,
+% erhält man
+resultiert
+\begin{align*}
+\sum_{k=1}^\infty (k+1) k a_{k+1} x^k
++
+(\nu + 1)\sum_{k=0}^\infty (k+1) a_{k+1} x^k
+-
+\sum_{k=0}^\infty k a_k x^k
++
+n \sum_{k=0}^\infty a_k x^k
+ & =
+0    \\
+\sum_{k=1}^\infty
+\left[ (k+1) k a_{k+1} + (\nu + 1)(k+1) a_{k+1} - k a_k + n a_k \right] x^k
+ & =
+0.
+\end{align*}
+Daraus lässt sich die Rekursionsbeziehung
 \begin{align}
-    x y''(x) + (\alpha + 1 - x) y'(x) + n y(x)
-    =
-    0 
-    \label{laguerre:generell_dgl}
+a_{k+1}
+ & =
+\frac{k-n}{(k+1) (k + \nu + 1)} a_k
+\label{laguerre:rekursion}
 \end{align}
+ableiten.
+Für ein konstantes $n$ erhalten wir als Potenzreihenlösung ein Polynom vom Grad
+$n$,
+denn für $k=n$ wird $a_{n+1} = 0$ und damit auch $a_{n+2}=a_{n+3}=\ldots=0$.
+Aus %der Rekursionsbeziehung 
+\eqref{laguerre:rekursion} ist zudem ersichtlich,
+dass $a_0 \neq 0$ beliebig gewählt werden kann.
+Wählen wir nun $a_0 = 1$, dann folgt für die Koeffizienten
+% $a_1, a_2, a_3$
+\begin{align*}
+a_1
+=
+-\frac{n}{1 \cdot (\nu + 1)}
+, &  &
+a_2
+=
+\frac{(n-1)n}{1 \cdot 2 \cdot (\nu + 1)(\nu + 2)}
+, &  &
+a_3
+=
+-\frac{(n-2)(n-1)n}{1 \cdot 2 \cdot 3 \cdot (\nu + 1)(\nu + 2)(\nu + 3)}
+\end{align*}
+und allgemein
+\begin{align*}
+k
+  & \leq
+n:
+  &
+a_k
+  & =
+(-1)^k \frac{n!}{(n-k)!} \frac{1}{k!(\nu + 1)_k}
+=
+\frac{(-1)^k}{(\nu + 1)_k} \binom{n}{k}
+\\
+k & >n:
+  &
+a_k
+  & =
+0
+.
+\end{align*}
+Die Koeffizienten wechseln also für $k \leq n$ das Vorzeichen.
+Somit erhalten wir für $\nu = 0$ die Laguerre-Polynome
+\begin{align}
+L_n(x)
+=
+\sum_{k=0}^{n} \frac{(-1)^k}{k!} \binom{n}{k} x^k
+\label{laguerre:polynom}
+\end{align}
+und mit $\nu \in \mathbb{R}$ die assoziierten Laguerre-Polynome
+\begin{align}
+L_n^\nu(x)
+=
+\sum_{k=0}^{n} \frac{(-1)^k}{(\nu + 1)_k} \binom{n}{k} x^k.
+\label{laguerre:allg_polynom}
+\end{align}
+Die Laguerre-Polynome von Grad $0$ bis $7$ sind in
+Abbildung~\ref{laguerre:fig:polyeval} dargestellt.
+\begin{figure}
+\centering
+% \scalebox{0.8}{\input{papers/laguerre/images/laguerre_poly.pgf}}
+\includegraphics[width=0.9\textwidth]{papers/laguerre/images/laguerre_poly.pdf}
+\caption{Laguerre-Polynome vom Grad $0$ bis $7$}
+\label{laguerre:fig:polyeval}
+\end{figure}
 
-\begin{align}
-    L_n^\alpha (x)
-    =
-    \sum_{k=0}^{n} 
-    \frac{(-1)^k}{k!}
-    \begin{pmatrix}
-        n + \alpha \\
-        n - k
-    \end{pmatrix}
-    x^k
-    \label{laguerre:polynom}
-\end{align}
+\subsection{Analytische Fortsetzung}
+Durch die analytische Fortsetzung können wir zudem noch die zweite Lösung der
+Differentialgleichung erhalten.
+Laut \eqref{buch:funktionentheorie:singularitäten:eqn:w1} hat die Lösung
+die Form
+\begin{align*}
+\Xi_n(x)
+=
+L_n(x) \log(x) + \sum_{k=1}^\infty d_k x^k
+.
+\end{align*}
+Eine Herleitung dazu lässt sich im
+Abschnitt \ref{buch:funktionentheorie:subsection:dglsing}
+im ersten Teil des Buches finden.
+Nach einigen aufwändigen Rechnungen,
+% die am besten ein Computeralgebrasystem übernimmt,
+die den Rahmen dieses Kapitels sprengen würden,
+erhalten wir
+\begin{align*}
+\Xi_n
+=
+L_n(x) \log(x)
++
+\sum_{k=1}^n \frac{(-1)^k}{k!} \binom{n}{k}
+(\alpha_{n-k} - \alpha_n - 2 \alpha_k)x^k
++
+(-1)^n \sum_{k=1}^\infty \frac{(k-1)!n!}{((n+k)!)^2} x^{n+k},
+\end{align*}
+wobei $\alpha_0 = 0$ und $\alpha_k =\sum_{i=1}^k i^{-1}$,
+$\forall k \in \mathbb{N}$.
+% https://www.math.kit.edu/iana1/lehre/hm3phys2012w/media/laguerre.pdf
+% http://www.physics.okayama-u.ac.jp/jeschke_homepage/E4/kapitel4.pdf

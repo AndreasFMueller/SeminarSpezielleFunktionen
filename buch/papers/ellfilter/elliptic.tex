@@ -1,0 +1,129 @@
+\section{Rationale elliptische Funktionen}
+
+Kommen wir nun zum eigentlichen Teil dieses Papers, den rationalen elliptischen Funktionen \cite{ellfilter:bib:orfanidis}
+\begin{align}
+    R_N(w, \xi) &= \cd \left(N~f_1(\xi)~\cd^{-1}(w, 1/\xi), f_2(\xi)\right) \label{ellfilter:eq:elliptic}\\
+                &= \cd \left(N~\frac{K_1}{K}~\cd^{-1}(w, k), k_1\right) , \quad k= 1/\xi, k_1 = 1/f(\xi) \\
+                &= \cd \left(N~K_1~z , k_1 \right), \quad w= \cd(z K, k)
+\end{align}
+Beim Betrachten dieser Definition, fällt die Ähnlichkeit zur trigonometrische Darstellung der Tsche\-byschef-Polynome \eqref{ellfilter:eq:chebychef_polynomials} auf.
+Wie bei den Tschebyscheff-Polynomen ist die Formel mit speziellen Funktionen geschrieben.
+Es kann jedoch gezeigt werden, dass es sich tatsächlich um rationale Funktionen handelt, wie es für ein lineares Filter vorausgesetzt wird.
+Die elliptischen Funktionen werden also genau so eingesetzt, dass die resultierenden Nullstellen und Pole eine rationale Funktion ergeben.
+Anstelle des Kosinus bei den Tschebyscheff-Polynomen kommt hier die $\cd$-Funktion zum Einsatz.
+Die Ordnungszahl $N$ kommt auch als Faktor vor.
+Zusätzlich werden noch zwei verschiedene elliptische Moduli $k$ und $k_1$ gebraucht.
+Bei $k = k_1 = 0$ wird der $\cd$ zum Kosinus und wir erhalten in diesem Spezialfall die Tschebyschef-Polynome.
+
+Durch das Konzept vom fundamentalen Rechteck, siehe Abbildung \ref{buch:elliptisch:fig:ellall} können für alle inversen Jacobi elliptischen Funktionen die Positionen der Null- und Polstellen anhand eines Diagramms ermittelt werden.
+Die $\cd^{-1}(w, k)$-Funktion ist um $K$ verschoben zur $\sn^{-1}(w, k)$-Funktion, wie ersichtlich in Abbildung \ref{ellfilter:fig:cd}.
+\begin{figure}
+    \centering
+    \input{papers/ellfilter/tikz/cd.tikz.tex}
+    \caption{
+        $z$-Ebene der Funktion $z = \cd^{-1}(w, k)$.
+        Die Funktion ist in der realen Achse $4K$-periodisch und in der imaginären Achse $2jK^\prime$-periodisch.
+    }
+    \label{ellfilter:fig:cd}
+\end{figure}
+Auffallend an der $w = \cd(z, k)$-Funktion ist, dass sich $w$ auf der reellen Achse wie der Kosinus immer zwischen $-1$ und $1$ bewegt, während bei $\mathrm{Im(z) = K^\prime}$ die Werte zwischen $\pm 1/k$ und $\pm \infty$ verlaufen.
+Die Idee des elliptischen Filter ist es, diese zwei Equiripple-Zonen abzufahren, wie ersichtlich in Abbildung \ref{ellfilter:fig:cd2}, welche analog zu Abbildung \ref{ellfilter:fig:arccos2} gesehen werden kann.
+\begin{figure}
+    \centering
+    \input{papers/ellfilter/tikz/cd2.tikz.tex}
+    \caption{
+        $z_1=N\frac{K_1}{K}\cd^{-1}(w, k)$-Ebene der rationalen elliptischen Funktionen.
+        Je grösser die Ordnung $N$ gewählt wird, desto mehr Nullstellen werden passiert.
+        Als Vereinfachung ist die Funktion nur für $w>0$ dargestellt.
+    }
+    \label{ellfilter:fig:cd2}
+\end{figure}
+Das elliptische Filter hat im Gegensatz zum Tschebyscheff-Filter drei Zonen.
+Im Durchlassbereich werden wie beim Tschebyscheff-Filter die Nullstellen durchlaufen.
+Statt dass $z_1$ für alle $w>1$ in die imaginäre Richtung geht, bewegen wir uns im Sperrbereich wieder in reeller Richtung, wo Pole und Punkte mit $\pm 1/k$ durchlaufen werden.
+Aus dieser Sicht kann der Sperrbereich vom Tschebyscheff-Filter als unendlich langer Übergangsbereich angesehen werden.
+% Falls es möglich ist diese Werte abzufahren im Stil der Tschebyscheff-Polynome, kann ein Filter gebaut werden, dass Equiripple-Verhalten im Durchlass- und Sperrbereich aufweist.
+Abbildung \ref{ellfilter:fig:elliptic_freq} zeigt eine rationale elliptische Funktion und die Frequenzantwort des daraus resultierenden Filters.
+\begin{figure}
+    \centering
+    \input{papers/ellfilter/python/elliptic.pgf}
+    \caption{$F_N$ und die resultierende Frequenzantwort eines elliptischen Filters.}
+    \label{ellfilter:fig:elliptic_freq}
+\end{figure}
+
+Da sich die Funktion im Übergangsbereich nur zur nächsten Reihe von Polstellen bewegt, ist der Übergangsbereich monoton steigend.
+Theoretisch könnte eine gleiches Durchlass- und Sperrbereichsverhalten erreicht werden, wenn die Funktion auf eine andere Reihe ansteigen würde, z.B. $\mathrm{Im(z) = 3K^\prime}$.
+Dies würde jedoch zu Oszillationen zwischen $1$ und $1/k$ im Übergangsbereich führen.
+
+\subsection{Gradgleichung}
+
+Damit die Pol- und Nullstellen genau in dieser Konstellation durchfahren werden, müssen die elliptischen Moduli des inneren und äusseren $\cd$ aufeinander abgestimmt werden.
+In der reellen Richtung müssen sich die Periodizitäten $K$ und $K_1$ um den Faktor $N$ unterscheiden, während die imaginäre Periodizitäten $K^\prime$ und $K^\prime_1$ gleich bleiben müssen.
+Zur Erinnerung, $K$ und $K^\prime$ sind durch elliptische Integrale definiert und vom Modul $k$ abhängig wie ersichtlich in Abbildung \ref{ellfilter:fig:kprime}.
+\begin{figure}
+    \centering
+    \input{papers/ellfilter/python/k.pgf}
+    \caption{
+        Die Periodizitäten in realer und imaginärer Richtung in Abhängigkeit vom elliptischen Modul $k$.
+        In der rechten Grafik sind $K$ und $K^\prime$ gegenübergestellt, wobei alle möglichen Kombinationen auf der eingezeichneten Ortskurve liegen.
+    }
+    \label{ellfilter:fig:kprime}
+\end{figure}
+$K$ und $K^\prime$ sind durch die Ortskurve $K + jK^\prime$ aneinander gebunden und benötigen den Zusatzfaktor $K_1/K$ in \eqref{ellfilter:eq:elliptic}, um die genanten Forderungen einzuhalten.
+Abbildung \ref{ellfilter:fig:degree_eq} zeigt das Problem geometrisch auf, wobei zwei Punkte $K+jK^\prime$ und $K_1+jK_1^\prime$ auf der Ortskurve gesucht sind.
+\begin{figure}
+    \centering
+    \input{papers/ellfilter/tikz/elliptic_transform2.tikz}
+    \caption{Die Gradgleichung als geometrisches Problem ($N=3$).}
+    \label{ellfilter:fig:degree_eq}
+\end{figure}
+Algebraisch kann so die Gradgleichung
+\begin{equation}
+    N \frac{K^\prime}{K} = \frac{K^\prime_1}{K_1}
+\end{equation}
+aufgestellt werden, dessen Lösung ist gegeben durch
+\begin{equation}\label{ellfilter:eq:degeqsol}
+k_1 = k^N \prod_{i=1}^L \sn^4 \Bigg( \frac{2i - 1}{N} K, k \Bigg),
+\quad \text{wobei} \quad
+N = 2L+r.
+\end{equation}
+Die Herleitung ist sehr umfangreich und wird in \cite{ellfilter:bib:orfanidis} im Detail angeschaut.
+
+\subsection{Berechnung der rationalen Funktion}
+
+$k_1$ muss jedoch gar nicht berechnet werden, um $R_N$ in der Form einer rationale Funktion erhalten.
+Die Ordnung $N$ und der Parameter $k$ können frei gewählt werden.
+% $k_1$ muss dann mit \eqref{ellfilter:eq:degeqsol} oder mit numerischen Methoden berechnet werden.
+Je kleiner $k$ gewählt wird, desto grösser wird die Dämpfung des Filters im Sperrbereich im Verhältnis zum Durchlassbereich.
+Allerdings verliert das Filter dabei auch an Steilheit.
+Wenn $k$ und $N$ bekannt sind, können die Position der Pol- und Nullstellen $p_i$ und $n_i$ in einem Raster konstruiert werden, wie dargestellt in Abbildung \ref{ellfilter:fig:pn}.
+\begin{figure}
+    \centering
+    \input{papers/ellfilter/tikz/pn.tikz.tex}
+    \caption{
+        Pole und Nullstellen in der $z = \cd^{-1}(w, k)$-Ebene für die Rücktransformation zur einer rationalen Funktion.
+    }
+    \label{ellfilter:fig:pn}
+\end{figure}
+Dabei muss aufgepasst werden, dass insgesamt nur $N$ Nullstellen und $N$ Pole gesetzt werden, da bei der Transformation mit dem $\cd$ mehrere Werte auf einen abgebildet werden und mehrfache Pole und Nullstellen nicht erwünscht sind.
+Wegen der Periodizität sind diese in der komplexen $z$-Ebene linear angeordnet:
+\begin{align}
+    n_i(k) &= K\frac{2i+1}{N} \\
+    p_i(k) &= n_i + jK^\prime.
+\end{align}
+Durch das Rücktransformieren mit der $\cd$-Funktion gelangt man schlussendlich zu der rationalen Funktion
+\begin{equation}
+    R_N(w, k) = r_0 \prod_{i=1}^N \frac{w - \cd \big(n_i(k), k \big)}{w - \cd \big(p_i(k), k \big)},
+\end{equation}
+wobei $r_0$ so gewählt werden muss, dass $R_N(w, k) = 1$.
+
+\section{Elliptisches Filter}
+
+Um ein elliptisches Filter auszulegen, werden aber nicht die Pol- und Nullstellen der rationalen Funktion gebraucht, sondern diejenigen der Übertragungsfunktion $H(s)$ der komplexen Frequenz $s = j\Omega + \sigma$.
+Der Bezug zum quadratischen Amplitudengang \eqref{ellfilter:eq:quadratic_transfer} ist dabei
+\begin{equation}
+    |H(\Omega)|^2 = H(s) H(s^*),
+\end{equation}
+wobei $*$ die komplexe Konjugation kennzeichnet.
+Die genaue Berechnung geht einiges tiefer in die Filtertheorie, und verlässt das Gebiet der speziellen Funktionen.
+Der interessierte Leser wird auf \cite[Kapitel~5]{ellfilter:bib:orfanidis} verwiesen.

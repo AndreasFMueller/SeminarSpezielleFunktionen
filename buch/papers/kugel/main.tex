@@ -1,36 +1,21 @@
-%
+% vim:ts=2 sw=2 et:
+
 % main.tex -- Paper zum Thema <kugel>
 %
 % (c) 2020 Hochschule Rapperswil
 %
-\chapter{Thema\label{chapter:kugel}}
-\lhead{Thema}
+\begin{otherlanguage}{english}
+\chapter{Spherical Harmonics\label{chapter:kugel}}
+\lhead{Spherical Harmonics}
 \begin{refsection}
-\chapterauthor{Hans Muster}
+\chapterauthor{Manuel Cattaneo, Naoki Pross}
 
-Ein paar Hinweise für die korrekte Formatierung des Textes
-\begin{itemize}
-\item
-Absätze werden gebildet, indem man eine Leerzeile einfügt.
-Die Verwendung von \verb+\\+ ist nur in Tabellen und Arrays gestattet.
-\item
-Die explizite Platzierung von Bildern ist nicht erlaubt, entsprechende
-Optionen werden gelöscht. 
-Verwenden Sie Labels und Verweise, um auf Bilder hinzuweisen.
-\item
-Beginnen Sie jeden Satz auf einer neuen Zeile. 
-Damit ermöglichen Sie dem Versionsverwaltungssysteme, Änderungen
-in verschiedenen Sätzen von verschiedenen Autoren ohne Konflikt 
-anzuwenden.
-\item 
-Bilden Sie auch für Formeln kurze Zeilen, einerseits der besseren
-Übersicht wegen, aber auch um GIT die Arbeit zu erleichtern.
-\end{itemize}
-
-\input{papers/kugel/teil0.tex}
-\input{papers/kugel/teil1.tex}
-\input{papers/kugel/teil2.tex}
-\input{papers/kugel/teil3.tex}
+\input{papers/kugel/introduction}
+\input{papers/kugel/preliminaries}
+\input{papers/kugel/spherical-harmonics}
+\input{papers/kugel/applications}
+\input{papers/kugel/proofs}
 
 \printbibliography[heading=subbibliography]
 \end{refsection}
+\end{otherlanguage}

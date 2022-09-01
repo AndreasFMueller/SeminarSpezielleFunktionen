@@ -3,27 +3,214 @@
 %
 % (c) 2022 Patrik Müller, Ostschweizer Fachhochschule
 %
-\section{Gauss-Laguerre Quadratur
-\label{laguerre:section:quadratur}}
-
+\section{Gauss-Quadratur%
+  \label{laguerre:section:quadratur}}
+\rhead{Gauss-Quadratur}%
+Die Gauss-Quadratur ist ein numerisches Integrationsverfahren,
+welches die Eigenschaften von orthogonalen Polynomen verwendet.
+Herleitungen und Analysen der Gauss-Quadratur können im
+Abschnitt~\ref{buch:orthogonal:section:gauss-quadratur} gefunden werden.
+Als grundlegende Idee wird die Beobachtung,
+dass viele Funktionen sich gut mit Polynomen approximieren lassen,
+verwendet.
+Stellt man also sicher,
+dass ein Verfahren gut für Polynome funktioniert,
+sollte es auch für andere Funktionen angemessene Resultate liefern.
+Es wird ein Interpolationspolynom verwendet,
+welches an den Punkten $x_0 < x_1 < \ldots < x_n$
+die Funktionwerte~$f(x_i)$ annimmt.
+Als Resultat kann das Integral via einer gewichteten Summe der Form
 \begin{align}
-    \int_a^b f(x) w(x)
-    \approx
-    \sum_{i=1}^N f(x_i) A_i
-    \label{laguerre:gaussquadratur}
+\int_a^b f(x) w(x) \, dx
+\approx
+\sum_{i=1}^n f(x_i) A_i
+\label{laguerre:gaussquadratur}
+\end{align}
+berechnet werden.
+Die Gauss-Quadratur ist exakt für Polynome mit Grad $2n -1$,
+wenn ein Interpolationspolynom von Grad $n$ gewählt wurde.
+
+\subsection{Gauss-Laguerre-Quadratur%
+\label{laguerre:subsection:gausslag-quadratur}}
+Wir möchten nun die Gauss-Quadratur auf die Berechnung
+von uneigentlichen Integralen erweitern,
+spezifisch auf das Intervall~$(0, \infty)$.
+Mit dem vorher beschriebenen Verfahren ist dies nicht direkt möglich.
+% Mit einer Transformation
+% \begin{align*}
+% x
+% =
+% % a + 
+% \frac{1 - t}{t}
+% \end{align*}
+% die das unendliche Intervall~$(0, \infty)$ 
+% auf das Intervall~$[0, 1]$ transformiert,
+% kann dies behoben werden.
+% % Für unseren Fall gilt $a = 0$.
+Das Integral eines Polynomes in diesem Intervall ist immer divergent.
+Es ist also nötig,
+den Integranden durch Funktionen zu approximieren,
+die genügend schnell gegen $0$ gehen.
+Man kann Polynome beliebigen Grades verwenden,
+wenn sie mit einer Funktion multipliziert werden,
+die schneller gegen $0$ geht als jedes Polynom.
+Damit stellen wir sicher,
+dass das Integral immer noch konvergiert.
+% Darum müssen wir das Polynom mit einer Funktion multiplizieren,
+% die schneller als jedes Polynom gegen $0$ geht,
+% damit das Integral immer noch konvergiert.
+Die Laguerre-Polynome $L_n$ schaffen hier Abhilfe,
+da ihre Gewichtsfunktion $w(x) = e^{-x}$ schneller
+gegen $0$ konvergiert als jedes Polynom.
+% In unserem Falle möchten wir die Gauss Quadratur auf die Laguerre-Polynome
+% $L_n$ ausweiten.
+% Diese sind orthogonal im Intervall $(0, \infty)$ bezüglich
+% der Gewichtsfunktion $e^{-x}$.
+Um also das Integral einer Funktion $g(x)$ im Intervall~$(0,\infty)$ zu
+berechen,
+formt man das Integral wie folgt um:
+\begin{align*}
+\int_0^\infty g(x) \, dx
+=
+\int_0^\infty f(x) e^{-x} \, dx
+\end{align*}
+Wir approximieren dann $f(x)$ durch ein Interpolationspolynom
+wie bei der Gauss-Quadratur.
+% Die Gleichung~\eqref{laguerre:gaussquadratur} lässt sich daher wie folgt
+% umformulieren:
+Die Gleichung~\eqref{laguerre:gaussquadratur} wird also
+für die Gauss-Laguerre-Quadratur zu
+\begin{align}
+\int_{0}^{\infty} f(x) e^{-x} dx
+\approx
+\sum_{i=1}^{n} f(x_i) A_i
+\label{laguerre:laguerrequadratur}
+.
 \end{align}
 
+\subsubsection{Stützstellen und Gewichte}
+Nach der Definition der Gauss-Quadratur müssen als Stützstellen die Nullstellen
+des Approximationspolynoms genommen werden.
+Für das Laguerre-Polynom $L_n(x)$ müssen demnach dessen Nullstellen $x_i$ und
+als Gewichte $A_i$ die Integrale von $l_i(x) e^{-x}$ verwendet werden.
+Dabei sind
+\begin{align*}
+l_i(x_j)
+=
+\delta_{ij}
+=
+\begin{cases}
+1 & i=j          \\
+0 & \text{sonst}
+\end{cases}
+% .
+\end{align*}
+die Lagrangeschen Interpolationspolynome.
+Laut \cite{laguerre:hildebrand2013introduction} können die Gewichte mit
+\begin{align*}
+A_i
+ & =
+-\frac{C_{n+1} \gamma_n}{C_n \phi'_n(x_i) \phi_{n+1} (x_i)}
+\end{align*}
+berechnet werden.
+$C_i$ entspricht dabei dem Koeffizienten von $x^i$
+des orthogonalen Polynoms $\phi_n(x)$, $\forall i =0,\ldots,n$ und
+\begin{align*}
+\gamma_n
+=
+\int_0^\infty w(x) \phi_n^2(x)\,dx
+\end{align*}
+dem Normalisierungsfaktor.
+
+Wir setzen nun $\phi_n(x) = L_n(x)$ und
+nutzen den Vorzeichenwechsel der Laguerre-Koeffizienten
+(ersichtlich am Term $(-1)^k$ in \eqref{laguerre:polynom})
+aus,
+damit erhalten wir
+\begin{align*}
+A_i
+ & =
+-\frac{C_{n+1} \gamma_n}{C_n L'_n(x_i) L_{n+1} (x_i)}
+\\
+ & = \frac{C_n}{C_{n-1}} \frac{\gamma_{n-1}}{L_{n-1}(x_i) L'_n(x_i)}
+.
+\end{align*}
+Für Laguerre-Polynome gilt
+\begin{align*}
+\frac{C_n}{C_{n-1}}
+=
+-\frac{1}{n}
+\quad \text{und} \quad
+\gamma_n
+=
+1
+.
+\end{align*}
+Daraus folgt
 \begin{align}
-    \int_{0}^{\infty} f(x) e^{-x} dx 
-    \approx
-    \sum_{i=1}^{N} f(x_i) A_i
-    \label{laguerre:laguerrequadratur}
+A_i
+ & =
+- \frac{1}{n L_{n-1}(x_i) L'_n(x_i)}
+\label{laguerre:gewichte_lag_temp}
+.
+\end{align}
+Nun kann die Rekursionseigenschaft der Laguerre-Polynome
+\cite{laguerre:hildebrand2013introduction}
+% (siehe \cite{laguerre:hildebrand2013introduction})
+\begin{align*}
+x L'_n(x)
+ & =
+n L_n(x) - n L_{n-1}(x)
+\\
+ & = (x - n - 1) L_n(x) + (n + 1) L_{n+1}(x)
+\end{align*}
+umgeformt werden und da $x_i$ die Nullstellen von $L_n(x)$ sind,
+vereinfacht sich die Gleichung zu
+\begin{align*}
+x_i L'_n(x_i)
+ & =
+- n L_{n-1}(x_i)
+\\
+ & =
+(n + 1) L_{n+1}(x_i)
+.
+\end{align*}
+Setzen wir diese Beziehung nun in \eqref{laguerre:gewichte_lag_temp} ein,
+ergibt sich
+\begin{align}
+\nonumber
+A_i
+ & =
+\frac{1}{x_i \left[ L'_n(x_i) \right]^2}
+\\
+ & =
+\frac{x_i}{(n+1)^2 \left[ L_{n+1}(x_i) \right]^2}
+.
+\label{laguerre:quadratur_gewichte}
 \end{align}
 
+\subsubsection{Fehlerterm}
+Die Gauss-Laguerre-Quadratur mit $n$ Stützstellen berechnet Integrale
+von Polynomen bis zum Grad $2n - 1$ exakt.
+Für beliebige Funktionen kann eine Fehlerabschätzung angegeben werden.
+Der Fehlerterm $R_n$ folgt direkt aus der Approximation
+\begin{align*}
+\int_0^{\infty} f(x) e^{-x} \, dx
+=
+\sum_{i=1}^n f(x_i) A_i + R_n
+\end{align*}
+und \cite{laguerre:abramowitz+stegun} gibt ihn als
 \begin{align}
-    A_i 
-    = 
-    \frac{x_i}{(n + 1)^2 \left[ L_{n + 1}(x_i)\right]^2}
-    \label{laguerre:quadratur_gewichte}
+R_n
+ & =
+\frac{f^{(2n)}(\xi)}{(2n)!} \int_0^\infty l(x)^2 e^{-x}\,dx
+\\
+ & =
+\frac{(n!)^2}{(2n)!} f^{(2n)}(\xi)
+,\quad
+0 < \xi < \infty
+\label{laguerre:lag_error}
 \end{align}
-
+an.
+Der Fehler ist also abhängig von der $2n$-ten Ableitung
+der zu integrierenden Funktion.

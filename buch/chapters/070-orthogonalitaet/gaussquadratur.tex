@@ -1,7 +1,8 @@
 %
 % Anwendung: Gauss-Quadratur
 %
-\section{Anwendung: Gauss-Quadratur}
+\section{Anwendung: Gauss-Quadratur
+\label{buch:orthogonal:section:gauss-quadratur}}
 \rhead{Gauss-Quadratur}
 Orthogonale Polynome haben eine etwas unerwartet Anwendung in einem
 von Gauss erdachten numerischen Integrationsverfahren.
@@ -19,7 +20,7 @@ Ein solches Polynom $p(x)$ hat $n+1$ Koeffizienten, die aus dem
 linearen Gleichungssystem der $n+1$ Gleichungen $p(x_i)=f(x_i)$ 
 ermittelt werden können.
 
-Das Interpolationspolynom $p(x)$ lässt sich abera uch direkt 
+Das Interpolationspolynom $p(x)$ lässt sich aber auch direkt 
 angeben.
 Dazu konstruiert man zuerst die Polynome
 \[
@@ -135,12 +136,12 @@ p(x)&=x^2\colon& \frac23 &= A_0x_0^2 + A_1x_1^2\\
 p(x)&=x^3\colon& 0       &= A_0x_0^3 + A_1x_1^3.
 \end{aligned}
 \]
-Dividiert man die zweite und vierte Gleichung in der Form
+Dividiert man die vierte durch die zweite Gleichung in der Form
 \[
 \left.
 \begin{aligned}
-A_0x_0 &= -A_1x_1\\
-A_0x_0^2 &= -A_1x_1^2
+A_0x_0^3 &= -A_1x_1^3 &\qquad&\text{(vierte Gleichung)}\\
+A_0x_0   &= -A_1x_1   &\qquad&\text{(zweite Gleichung)}
 \end{aligned}
 \quad
 \right\}
@@ -155,7 +156,7 @@ x_1=-x_0.
 \]
 Indem wir dies in die zweite Gleichung einsetzen, finden wir 
 \[
-0 = A_0x_0 + A_1x_1 = A_0x_1 -A_1x_0 = (A_0-A_1)x_0
+0 = A_0x_0 + A_1x_1 = A_0x_0 -A_1x_0 = (A_0-A_1)x_0
 \quad\Rightarrow\quad
 A_0=A_1.
 \]
@@ -229,6 +230,7 @@ Sei $R_n=\{p(X)\in\mathbb{R}[X] \mid \deg p\le n\}$ der Vektorraum
 der Polynome vom Grad $n$.
 
 \begin{satz}
+\index{Satz!Gaussquadratur}%
 \label{buch:integral:satz:gaussquadratur}
 Sei $p$ ein Polynom vom Grad $n$, welches auf allen Polynomen in $R_{n-1}$
 orthogonal sind.
@@ -263,7 +265,7 @@ werden können, muss auch
 =
 \int_{-1}^1 q(x)p(x)\,dx
 =
-\sum_{i=0}^n q(x_i)p(x_i)
+\sum_{i=0}^n A_iq(x_i)p(x_i)
 \]
 für jedes beliebige Polynom $q\in R_{n-1}$ gelten.
 Da man für $q$ die Interpolationspolynome $l_j(x)$ verwenden
@@ -272,9 +274,11 @@ kann, den Grad $n-1$ haben, folgt
 0
 =
 \sum_{i=0}^n
-l_j(x_i)p(x_i)
+A_il_j(x_i)p(x_i)
 =
-\sum_{i=0}^n \delta_{ij}p(x_i),
+\sum_{i=0}^n A_i\delta_{ij}p(x_i)
+=
+A_jp(x_j),
 \]
 die Stützstellen $x_i$ müssen also die Nullstellen des Polynoms
 $p(x)$ sein.
@@ -282,7 +286,7 @@ $p(x)$ sein.
 
 Der Satz~\ref{buch:integral:satz:gaussquadratur} begründet das
 {\em Gausssche Quadraturverfahren}.
-Die in Abschnitt~\ref{buch:integral:section:orthogonale-polynome}
+Die in Abschnitt~\ref{buch:orthogonal:subsection:legendre-polynome}
 bestimmten Legendre-Polynome $P_n$ haben die im Satz
 verlangte Eigenschaft,
 dass sie auf allen Polynomen geringeren Grades orthogonal sind.
@@ -304,6 +308,7 @@ Für eine beliebige Funktion kann man die folgende Fehlerabschätzung
 angeben \cite[theorem 7.3.4, p.~497]{buch:numal}.
 
 \begin{satz}
+\index{Satz!Gausssche Quadraturformel und Fehler}%
 Seien $x_i$ die Stützstellen und $A_i$ die Gewichte einer
 Gaussschen Quadraturformel mit $n+1$ Stützstellen und sei $f$
 eine auf dem Interval $[-1,1]$ $2n+2$-mal stetig differenzierbare
@@ -549,7 +554,7 @@ w(x)=e^{-x}
 \text{ und }
 g(x)=f(x)e^x.
 \]
-Dann approximiert $g(x)$ man durch ein Interpolationspolynom,
+Dann approximiert man $g(x)$ durch ein Interpolationspolynom,
 so wie man das bei der Gauss-Quadratur gemacht hat.
 Als Stützstellen müssen dazu die Nullstellen der Laguerre-Polynome
 verwendet werden.

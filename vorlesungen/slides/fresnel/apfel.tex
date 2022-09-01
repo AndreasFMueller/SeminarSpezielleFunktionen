@@ -1,0 +1,32 @@
+%
+% apfel.tex -- Apfelschale als Klothoide
+%
+% (c) 2021 Prof Dr Andreas Müller, OST Ostschweizer Fachhochschule
+%
+\bgroup
+\input{../slides/fresnel/eulerpath.tex}
+\begin{frame}[t]
+\setlength{\abovedisplayskip}{5pt}
+\setlength{\belowdisplayskip}{5pt}
+\frametitle{Apfelschale}
+\begin{center}
+\begin{tikzpicture}[>=latex,thick]
+\begin{scope}
+\clip(-1,-1) rectangle (7,6);
+\uncover<2->{
+\node at (3.1,2.2) [rotate=-3]
+	{\includegraphics[width=9.4cm]{../slides/fresnel/apfel.png}};
+}
+\end{scope}
+\draw[color=gray!50] (0,0) rectangle (4,4);
+\draw[->] (-0.5,0) -- (7.5,0) coordinate[label={$C(t)$}];
+\draw[->] (0,-0.5) -- (0,6.0) coordinate[label={left:$S(t)$}];
+\uncover<3->{
+\begin{scope}[scale=8]
+\draw[color=red,opacity=0.5,line width=1.4pt] \fresnela;
+\end{scope}
+}
+\end{tikzpicture}
+\end{center}
+\end{frame}
+\egroup

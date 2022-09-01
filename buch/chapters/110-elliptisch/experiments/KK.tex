@@ -1,0 +1,66 @@
+%
+% KK.tex -- template for standalon tikz images
+%
+% (c) 2021 Prof Dr Andreas Müller, OST Ostschweizer Fachhochschule
+%
+\documentclass[tikz]{standalone}
+\usepackage{amsmath}
+\usepackage{times}
+\usepackage{txfonts}
+\usepackage{pgfplots}
+\usepackage{csvsimple}
+\usetikzlibrary{arrows,intersections,math}
+\begin{document}
+\def\skala{1}
+\begin{tikzpicture}[>=latex,thick,scale=\skala]
+
+\def\dx{10}
+\def\dy{3}
+\input{KKpath.tex}
+
+\draw[->] (-0.1,0) -- (10.3,0) coordinate[label={$k$}];
+\draw[->] (0,-0.1) -- (0,{2*\dy+0.3}) coordinate[label={right:$y$}];
+
+\node at (3,{1.2*\dy}) {$\displaystyle y = \frac{K(k)}{K(\!\sqrt{1-k^2})}$};
+
+\begin{scope}
+\clip (0,0) rectangle (10,{2*\dy});
+\draw[color=red,line width=1.4pt] \KKpath;
+\end{scope}
+
+\draw[line width=0.2pt] (10,0) -- (10,{2*\dy});
+
+\foreach \y in {0.0,0.2,0.4,0.6,0.8,1.0,1.2,1.4,1.6,1.8,2.0}{
+	\draw (-0.05,{\y*\dy}) -- (0.05,{\y*\dy});
+	\node at (0,{\y*\dy}) [left] {$\y\mathstrut$};
+}
+
+\foreach \k in {1,...,9}{
+	\draw ({\k*\dx/10},-0.05) -- ({\k*\dx/10},0.05);
+	\node at ({\k*\dx/10},0) [below] {$0.\k\mathstrut$};
+}
+\node at (0,0) [below] {$0\mathstrut$};
+\node at (10,0) [below] {$1\mathstrut$};
+
+\draw[color=blue] ({\knull*\dx},0) -- ({\knull*\dx},{\KKnull*\dy});
+\foreach \y in {1,2,3,4}{
+	\draw[color=blue]
+		({\knull*\dx-0.05},{\y*\KKnull*\dy/5})
+		--
+		({\knull*\dx+0.05},{\y*\KKnull*\dy/5});
+}
+\draw[color=black,line width=0.1pt] (0,{\KKnull*\dy}) -- ({\knull*\dx},{\KKnull*\dy});
+\draw[color=black,line width=0.1pt] (0,{\KKnull*\dy/5}) -- ({\kone*\dx},{\KKnull*\dy/5});
+\node at ({0.6*\dx},{\KKnull*\dy}) [above] {$y=1.7732$};
+\node at ({0.6*\dx},{\KKnull*\dy/5}) [above] {$y=0.3546$};
+\draw[color=blue] ({\kone*\dx},0) -- ({\kone*\dx},{\KKnull*\dy/5});
+\draw[color=blue] ({\kone*\dx},{\KKnull*\dy/5}) -- ({\knull*\dx},{\KKnull*\dy/5});
+\fill[color=blue] ({\kone*\dx},{\KKnull*\dy/5}) circle[radius=0.05];
+\fill[color=blue] ({\knull*\dx},{\KKnull*\dy/5}) circle[radius=0.05];
+\fill[color=blue] ({\knull*\dx},{\KKnull*\dy}) circle[radius=0.05];
+\node[color=blue] at ({\knull*\dx},0) [left,rotate=90] {$k=0.97\mathstrut$};
+\node[color=blue] at ({\kone*\dx},0) [left,rotate=90] {$k_1=0.0477$};
+
+\end{tikzpicture}
+\end{document}
+

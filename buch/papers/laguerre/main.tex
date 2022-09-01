@@ -8,13 +8,35 @@
 \begin{refsection}
 \chapterauthor{Patrik Müller}
 
-Hier kommt eine Einleitung.
+{\parindent0pt Die} Laguerre\--Polynome,
+benannt nach Edmond Laguerre (1834 -- 1886),
+sind Lösungen der ebenfalls nach %Laguerre 
+ihm
+benannten Differentialgleichung.
+Laguerre entdeckte diese Polynome, als er Approximations\-methoden
+für das Integral
+% $\int_0^\infty \exp(-x) / x \, dx $ 
+\begin{align*}
+\int_0^\infty \frac{e^{-x}}{x} \, dx
+\end{align*}
+suchte.
+Darum möchten wir uns in diesem Kapitel,
+ganz im Sinne des Entdeckers,
+den Laguerre-Polynomen für Approximationen von Integralen mit
+exponentiell abfallenden Funktionen widmen.
+Namentlich werden wir versuchen, mittels Laguerre-Polynomen und
+der Gauss-Quadratur eine geeignete Approximation für die Gamma-Funktion zu
+finden.
+
+Laguerre-Polynome tauchen zudem auch in der Quantenmechanik im radialen Anteil
+der Lösung für die Schrödinger-Gleichung eines Wasserstoffatoms auf.
 
 \input{papers/laguerre/definition}
 \input{papers/laguerre/eigenschaften}
 \input{papers/laguerre/quadratur}
-\input{papers/laguerre/transformation}
-\input{papers/laguerre/wasserstoff}
+\input{papers/laguerre/gamma}
+% \input{papers/laguerre/transformation}
+% \input{papers/laguerre/wasserstoff}
 
 \printbibliography[heading=subbibliography]
 \end{refsection}

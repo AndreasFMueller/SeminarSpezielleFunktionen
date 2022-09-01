@@ -1,0 +1,169 @@
+\def\cas{\operatorname{cas}}
+Die Funktion $\cas$ definiert durch
+$\cas x = \cos x + \sin x$ hat einige interessante Eigenschaften.
+Wie die gewöhnlichen trigonometrischen Funktionen $\sin x$ und $\cos x$
+ist $\cas x$ $2\pi$-periodisch.
+Die Ableitung und das Additionstheorem benötigen bei den gewöhnlichen
+trigonometrischen Funktionen aber beide Funktionen, im Gegensatz zu den
+im folgenden hergeleiteten Formeln, die nur die Funktion $\cas x$ brauchen.
+\begin{teilaufgaben}
+\item
+Drücken Sie die Ableitung von $\cas x$  allein durch Werte der
+$\cas$-Funktion aus.
+\item
+Zeigen Sie, dass 
+\[
+\cas x
+=
+\sqrt{2} \sin\biggl(x+\frac{\pi}4\biggr)
+=
+\sqrt{2} \cos\biggl(x-\frac{\pi}4\biggr).
+\]
+\item
+Beweisen Sie das Additionstheorem für die $\cas$-Funktion
+\begin{equation}
+\cas(x+y)
+=
+\frac12\bigl(
+\cas(x)\cas(y) + \cas x\cas (-y) + \cas(-x)\cas(y) -\cas(-x)\cas(-y)
+\bigr)
+\label{buch:geometrie:uebung3:eqn:addition}
+\end{equation}
+\end{teilaufgaben}
+Youtuber Dr Barker hat die Funktion $\cas$ im Video
+{\small\url{https://www.youtube.com/watch?v=bn38o3u0lDc}} vorgestellt.
+
+\begin{loesung}
+\begin{teilaufgaben}
+\item
+Die Ableitung ist
+\[
+\frac{d}{dx}\cas x
+=
+\frac{d}{dx}(\cos x + \sin x)
+=
+-\sin x + \cos x
+=
+\sin(-x) + \cos(-x)
+=
+\cas(x).
+\]
+\item
+Die Additionstheoreme angewendet auf die trigonometrischen Funktionen
+auf der rechten Seite ergibt
+\begin{align*}
+\sin\biggl(x+\frac{\pi}4\biggr)
+&=
+\sin x \cos\frac{\pi}4  + \cos x \sin\frac{\pi}4
+&&&
+\cos\biggl(x-\frac{\pi}4\biggr)
+&=
+\cos(x)\cos\frac{\pi}4 -\sin x \sin\biggl(-\frac{\pi}4\biggr)
+\\
+&=
+\frac{1}{\sqrt{2}} \sin x
++
+\frac{1}{\sqrt{2}} \cos x
+&&&
+&=
+\frac{1}{\sqrt{2}} \cos x
++
+\frac{1}{\sqrt{2}} \sin x
+\\
+&=\frac{1}{\sqrt{2}} \cas x
+&&&
+&=
+\frac{1}{\sqrt{2}} \cas x.
+\end{align*}
+Multiplikation mit $\sqrt{2}$ ergibt die behaupteten Relationen.
+\item
+Substituiert man die Definition von $\cas(x)$ auf der rechten Seite von
+\eqref{buch:geometrie:uebung3:eqn:addition} und multipliziert aus,
+erhält man
+\begin{align*}
+\eqref{buch:geometrie:uebung3:eqn:addition}
+&=
+{\textstyle\frac12}\bigl(
+(\cos x + \sin x)
+(\cos y + \sin y)
++
+(\cos x + \sin x)
+(\cos y - \sin y)
+\\
+&\qquad
++
+(\cos x - \sin x)
+(\cos y + \sin y)
+-
+(\cos x - \sin x)
+(\cos y - \sin y)
+\bigr)
+\\
+&=
+\phantom{-\mathstrut}
+{\textstyle\frac12}\bigl(
+\cos x\cos y
++
+\cos x\sin y
++
+\sin x\cos y
++
+\sin x\sin y
+\\
+&
+\phantom{=-\mathstrut{\textstyle\frac12}\bigl(}\llap{$\mathstrut +\mathstrut$}
+\cos x\cos y
+-
+\cos x\sin y
++
+\sin x\cos y
+-
+\sin x\sin y
+\\
+&
+\phantom{=-\mathstrut{\textstyle\frac12}\bigl(}\llap{$\mathstrut +\mathstrut$}
+\cos x\cos y
++
+\cos x\sin y
+-
+\sin x\cos y
+-
+\sin x\sin y
+\bigr)
+\\
+&
+\phantom{=}
+-\mathstrut{\textstyle\frac12}\bigl(
+\cos x\cos y
+-
+\cos x\sin y
+-
+\sin x\cos y
++
+\sin x\sin y
+\bigr)
+\\
+&= \cos x \cos y
++
+\cos x \sin y
++
+\sin x \cos y
+-
+\sin x \sin y.
+\intertext{Die äussersten zwei Terme passen zum Additionstheorem für den
+Kosinus, die beiden inneren Terme dagegen zum Sinus.
+Fasst man sie zusammen, erhält man}
+&=
+(\sin x\cos y + \cos x \sin y)
++
+(\cos x\cos y - \sin x \sin y)
+\\
+&=
+\sin (x+y) + \cos(x+y)
+=
+\cas(x+y).
+\end{align*}
+Damit ist das Additionstheorem für die Funktion $\cas$ bewiesen.
+\qedhere
+\end{teilaufgaben}
+\end{loesung}

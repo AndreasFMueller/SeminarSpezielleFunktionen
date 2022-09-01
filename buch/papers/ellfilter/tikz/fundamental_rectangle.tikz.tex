@@ -1,0 +1,26 @@
+\begin{tikzpicture}[>=stealth', auto, node distance=2cm, scale=1.2, thick]
+
+    \tikzstyle{zero} = [draw, circle, inner sep =0, minimum height=0.15cm]
+
+    \tikzset{pole/.style={cross out, draw=black, minimum size=(0.15cm-\pgflinewidth), inner sep=0pt, outer sep=0pt}}
+
+    \begin{scope}[xscale=2, yscale=2]
+
+        \draw[gray, ->] (0,-0.25) -- (0,1.25) node[anchor=south]{$\mathrm{Im}~z$};
+        \draw[gray, ->] (-0.25,0) -- (1.5,0) node[anchor=west]{$\mathrm{Re}~z$};
+
+        \draw[gray] ( 1,0) +(0,0.05) -- +(0, -0.05) node[inner sep=0, anchor=north] {\small $K$};
+
+        \draw[gray]  (0, 1) +(0.05, 0) -- +(-0.05, 0) node[inner sep=0, anchor=east]{\small $jK^\prime$};
+
+        \fill[yellow!50] (0,0) rectangle (1, 1);
+
+        \node[anchor=south east] at ( 1,0) {$c$};
+        \node[anchor=north east] at ( 1,1) {$d$};
+        \node[anchor=north west] at ( 0,1) {$n$};
+        \node[anchor=south west] at ( 0,0) {$s$};
+
+    \end{scope}
+
+
+\end{tikzpicture}

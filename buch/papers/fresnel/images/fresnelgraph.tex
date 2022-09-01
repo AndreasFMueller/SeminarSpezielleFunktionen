@@ -1,0 +1,46 @@
+%
+% fresnelgraph.tex -- Graphs of the fresnel functions
+%
+% (c) 2021 Prof Dr Andreas Müller, OST Ostschweizer Fachhochschule
+%
+\documentclass[tikz]{standalone}
+\usepackage{amsmath}
+\usepackage{times}
+\usepackage{txfonts}
+\usepackage{pgfplots}
+\usepackage{csvsimple}
+\usetikzlibrary{arrows,intersections,math}
+\begin{document}
+\def\skala{1}
+\begin{tikzpicture}[>=latex,thick,scale=\skala]
+
+\input{eulerpath.tex}
+\def\dx{1.3}
+\def\dy{2.6}
+
+\draw[color=gray] (0,{0.5*\dy}) -- ({5*\dx},{0.5*\dy});
+\draw[color=gray] (0,{-0.5*\dy}) -- ({-5*\dx},{-0.5*\dy});
+
+\draw[color=blue,line width=1.4pt] \Splotright;
+\draw[color=blue,line width=1.4pt] \Splotleft;
+
+\draw[color=red,line width=1.4pt] \Cplotright;
+\draw[color=red,line width=1.4pt] \Cplotleft;
+
+\draw[->] (-6.7,0) -- (6.9,0) coordinate[label={$x$}];
+\draw[->] (0,-2.3) -- (0,2.3) coordinate[label={$y$}];
+
+\foreach \x in {1,2,3,4,5}{
+	\draw ({\x*\dx},-0.05) -- ({\x*\dx},0.05);
+	\draw ({-\x*\dx},-0.05) -- ({-\x*\dx},0.05);
+	\node at ({\x*\dx},-0.05) [below] {$\x$};
+	\node at ({-\x*\dx},0.05) [above] {$-\x$};
+}
+\draw (-0.05,{0.5*\dy}) -- (0.05,{0.5*\dy});
+\node at (-0.05,{0.5*\dy}) [left] {$\frac12$};
+\draw (-0.05,{-0.5*\dy}) -- (0.05,{-0.5*\dy});
+\node at (0.05,{-0.5*\dy}) [right] {$-\frac12$};
+
+\end{tikzpicture}
+\end{document}
+

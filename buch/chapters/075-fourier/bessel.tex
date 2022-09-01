@@ -1,0 +1,621 @@
+%
+% bessel.tex
+%
+% (c) 2022 Prof Dr Andreas Müller, OST Ostschweizer Fachhochschule
+%
+\section{Fourier-Transformation und Bessel-Funktionen
+\label{buch:fourier:section:fourier-und-bessel}}
+\rhead{Fourier-Transformation und Bessel-Funktionen}
+
+Sei $f\colon \mathbb{R}^2\to\mathbb{C}$ eine auf $\mathbb{R}$ definierte
+Funktion.
+Die Fourier-Transformation von $f$ ist das Integral
+\begin{equation}
+(\mathscr{F}f)(u,v)
+=
+F(u,v)
+=
+\frac{1}{2\pi}
+\int_{-\infty}^\infty
+\int_{-\infty}^\infty
+f(x,y) e^{i(xu+yv)}
+\,dx\,dy.
+\label{buch:fourier:eqn:2dfourier}
+\end{equation}
+Die Funktionen $e_{u,v}\colon (x,y)\mapsto e^{i(xu+yv)}$
+sind die Eigenfunktionen des Laplace-Operators in kartesischen Koordinaten,
+sie erfüllen
+\[
+\Delta e_{u,v} = (u^2+v^2) \Delta e_{u,v}.
+\]
+Die Fourier-Integrale sind die Skalarprodukte
+\[
+(\mathscr{F}f)(u,v)
+=
+\langle
+e_{u,v},
+f
+\rangle,
+\]
+wobei das Skalarprodukt durch
+\[
+\langle f,g\rangle
+=
+\int_{-\infty}^\infty
+\int_{-\infty}^\infty
+\overline{f(x)} g(x)
+\,dx\,dy
+\]
+definiert ist.
+
+Jede Funktion in der Ebene kann auch in Polarkoordinaten ausgedrückt werden.
+Die kartesischen Koordinaten können mittels
+\begin{align*}
+x&=r\cos\varphi
+y&=r\sin\varphi
+\end{align*}
+durch die Polarkoordinaten $(r,\varphi)$ ausgedrückt werden.
+Wir schreiben
+\[
+\tilde{f}(r,\varphi)
+=
+f(r\cos\varphi,r\sin\varphi)
+\]
+für die Funktion $f$ ausgedrückt in Polarkoordinaten.
+
+In Polarkoordinaten wird das Skalarprodukt
+\[
+\langle f,g\rangle
+=
+\int_0^\infty \int_{0}^{2\pi} e^{in\varphi}
+\overline{
+\tilde{f}(r,\varphi)
+}
+\tilde{g}(r,\varphi)
+r\,dr\,d\varphi.
+\]
+Auch die Fouriertransformation kann jetzt durch Berechnung eines
+doppelten Integrals in Polarkoordinaten ermittelt werden.
+Ziel dieses Abschnitts ist zu zeigen, dass auch diese Berechnung auf
+Bessel-Funktionen führt.
+Im Gegenzug werden sich neue Eigenschaften und Darstellungen derselben
+ergeben.
+
+
+\subsection{Berechnung der Fourier-Transformation in Polarkoordinaten}
+Die Fourier-Transformation $(\mathscr{F}f)(u,v)$ ist eine Funktion
+$\mathbb{R}^2\to\mathbb{C}$, die vom Wellenvektor $(u,v)$ abhängt.
+Auch dieser Vektor kann in Polarkoordinaten ausgedrückt werden.
+Für die Polarkoordinaten in der Wellenvektor-Ebene soll die Bezeichnung
+$(R,\vartheta)$ verwendet werden, was auf die Transformationsgleichungen
+\begin{align*}
+u&=R\cos\vartheta\\
+v&=R\sin\vartheta
+\end{align*}
+führt.
+Im Exponenten der Exponentialfunktion
+des Fourier-Integrals~\eqref{buch:fourier:eqn:2dfourier}
+steht der Ausdruck
+\[
+xu+yv
+=
+r\cos\varphi\cdot R\cos\vartheta
++
+r\sin\varphi\cdot R\sin\vartheta
+=
+rR\cos(\varphi-\vartheta).
+\]
+Mit diesen Bezeichnungen wird das
+Fourier-Integral~\eqref{buch:fourier:eqn:2dfourier}
+zu
+\begin{align}
+\tilde{F}(R,\vartheta)
+&=
+\frac{1}{2\pi}
+\int_{0}^{\infty}
+\int_{0}^{2\pi}
+f(r\cos\varphi,r\sin\varphi)
+e^{irR\cos(\varphi-\vartheta)}
+\,d\varphi\,r\, dr
+\notag
+\\
+&=
+\frac{1}{2\pi}
+\int_{0}^{\infty}
+\int_{0}^{2\pi}
+\tilde{f}(r,\varphi)
+e^{irR\cos(\varphi-\vartheta)}
+\,d\varphi\,r\, dr.
+\label{buch:fourier:eqn:fouriertrafopolar}
+\end{align}
+Die partielle Funktion $\varphi\mapsto \tilde{f}(r,\varphi)$
+ist eine $2\pi$-periodische Funktion, sie lässt sich also als
+komplexe Fourier-Reihe
+\begin{equation}
+\tilde{f}(r,\varphi)
+=
+\sum_{n\in\mathbb{Z}} \hat{f}_n(r) e^{in\varphi}
+\label{buch:fourier:eqn:fourierkoef}
+\end{equation}
+schreiben, die Funktionen $\hat{f}_n(r)$ sind die komplexen
+Fourier-Koeffizienten.
+Setzt man \eqref{buch:fourier:eqn:fourierkoef} in die Fourier-Transformation
+\eqref{buch:fourier:eqn:fouriertrafopolar} ein, erhält man
+\begin{align*}
+\tilde{F}(R,\vartheta)
+&=
+\sum_{n\in\mathbb{Z}}
+\int_0^\infty
+\hat{f}_n(r)
+\frac{1}{2\pi}
+\int_0^{2\pi}
+e^{in\varphi+irR\cos(\varphi-\vartheta)}
+\,d\varphi
+\,
+r\,dr.
+\end{align*}
+Der Exponent im inneren Integral kann als
+\[
+in\varphi+irR\cos(\varphi-\vartheta)
+=
+i(n(\varphi-\vartheta)+rR\cos(\varphi-\vartheta))
++
+in\vartheta,
+\]
+oder im Integral als
+\[
+\tilde{F}(R,\vartheta)
+=
+\sum_{n\in\mathbb{Z}}
+\int_0^\infty
+\hat{f}_n(r)
+\frac{1}{2\pi}
+\int_0^{2\pi}
+e^{in(\varphi-\vartheta)+irR\cos(\varphi-\vartheta)}
+e^{in\vartheta}
+\,d\varphi
+\,
+r\,dr
+\]
+geschrieben werden.
+Der zweite Exonentialfaktor hängt nicht von $\varphi$ ab und kann daher
+aus dem Integral herausgezogen werden.
+Der erste Exponentialfaktor hängt nur von $\varphi-\vartheta$ ab.
+Da die Exponentialfunktion $2\pi$-periodisch ist, hat die Verschiebung
+um $\vartheta$ keinen Einfluss auf den Wert des Integrals.
+Die Fourier-Transformation ist daher auch
+\[
+\tilde{F}(R,\vartheta)
+=
+\sum_{n\in\mathbb{Z}}
+\int_0^\infty
+\hat{f}_n(r)
+e^{in\vartheta}
+\underbrace{
+\frac{1}{2\pi}
+\int_0^{2\pi}
+e^{in\varphi+irR\cos\varphi}
+\,d\varphi
+}_{\displaystyle =:F_n(rR)}
+\,
+r\,dr.
+\]
+Die Beziehung zu den Besselfunktionen können wir daraus herstellen,
+indem wir zunächst $\xi = rR$ abkürzen und dann das innere Integral
+\begin{equation}
+F_n(\xi)
+=
+\frac{1}{2\pi}
+\int_{0}^{2\pi}
+e^{in\varphi+i\xi\cos\varphi}
+\,d\varphi
+=
+\frac{1}{2\pi}
+\int_{0}^{2\pi}
+e^{in\varphi}e^{i\xi\cos\varphi}
+\,d\varphi
+\label{buch:fourier:eqn:Fncosphi}
+\end{equation}
+auswerten.
+Exponentialfunktion als Potenzreihe entwickeln:
+\[
+F_n(\xi)
+=
+\frac{1}{2\pi}
+\int_0^{2\pi}
+e^{in\varphi}
+\sum_{k=0}^\infty
+\frac{
+i^k\xi^k \cos^k\varphi
+}{k!}
+\,d\varphi
+=
+\sum_{k=0}^\infty
+\frac{i^k\xi^k}{k!}
+\underbrace{
+\frac{1}{2\pi}
+\int_0^{2\pi}
+e^{in\varphi}
+\cos^k\varphi
+\,d\varphi}_{\displaystyle =c_{n,k}}.
+\]
+Das Integral auf der rechten Seite ist im Wesentlichen ein
+Fourier-Koeffizient der Funktion $\varphi\mapsto \cos^k\varphi$.
+
+\subsubsection{Berechnung der Fourier-Koeffizienten von $\cos^k\varphi$}
+Indem man die Kosinus-Funktion als die Linearkombination
+\[
+\cos\varphi
+=
+\frac{e^{i\varphi}+e^{-i\varphi}}2
+\]
+von Exponentialfunktionen ausdrückt, kann man auch die $k$-te Potenz 
+mit Hilfe des binomischen Satzes als
+\[
+\cos^k\varphi
+=
+\sum_{m=0}^k
+\frac{1}{2^k}
+\binom{k}{m}
+e^{im\varphi}e^{i(m-k)\varphi}
+=
+\sum_{m=0}^k
+\frac{1}{2^k}
+\binom{k}{m}
+e^{i(2m-k)\varphi}
+\]
+ausdrücken.
+Der Fourier-Koeffizient von $\cos^k\varphi$ ist daher das Integral
+\begin{align*}
+c_{n,k}
+&=
+\frac{1}{2\pi}
+\int_0^{2\pi}
+e^{in\varphi}\cos^k\varphi\,d\varphi
+\\
+&=
+\frac{1}{2^k}
+\sum_{m=0}^k
+\binom{k}{m}
+\frac{1}{2\pi}
+\int_0^{2\pi}
+e^{in\varphi}e^{i(2m-k)\varphi}
+\,d\varphi
+\\
+&=
+\frac{1}{2^k}
+\sum_{m=0}^k
+\binom{k}{m}
+\frac{1}{2\pi}
+\int_0^{2\pi}
+e^{i(2m-k+n)\varphi}
+\,d\varphi.
+\end{align*}
+Für $2m-k+n=0$ ist das Integral ein Integral der Funktion $1$ über
+ein Intervall der Länge $2\pi$, zusammen mit dem Faktor $1/2\pi$ hat
+es daher den Wert $1$.
+Für $2m-k+n\ne 0$ ist das Integral 
+\[
+\frac{1}{2\pi}
+\int_0^{2\pi}
+e^{i(2m-k+n)\varphi}
+\,d\varphi
+=
+\frac{1}{i}
+\biggl[
+\frac{e^{i(2m-k+n)\varphi}}{2m-k+n}
+\biggr]_0^{2\pi}
+=
+0
+\]
+weil die Exponentialfunktion $2\pi$-periodisch ist.
+Nur für $k=2m+n$ ergibt sich ein nicht verschwindender
+Fourier-Koeffizient.
+Eine Summe über $k\in\mathbb{N}$ kann daher auch als Summe über
+$m\in\mathbb{N}$ interpretiert werden, in der $k$ durch die Formel
+$k=2m+n$ gegeben wird.
+Mit dieser Konvention wird
+\[
+c_{n,k}
+=
+c_{n,2m+n}
+%=
+%\frac{1}{2\pi}
+%\int_0^{2\pi}
+%e^{-i(2m+n)\varphi}
+%\cos^{2m+n}\varphi
+%\,d\varphi
+=
+\frac{1}{2^{2m+n}}
+\binom{2m+n}{m}
+\]
+schreiben lässt.
+
+\subsubsection{Berechnung von $F_n(\xi)$}
+Die Reihe für $F_n(\xi)$ lässt sich weiter vereinfachen.
+Wir verwenden wieder die Tatsache, dass sich nur für $n=-2m-k$
+ein Beitrag ergibt.
+Dies bedeutet, dass $k=2m+n$ sein muss, die Summe kann damit als
+Summe über $m$ statt über $k$ geschrieben werden.
+Somit ist
+\begin{align*}
+F_n(\xi)
+&=
+\sum_{k=0}^\infty
+\frac{i^k\xi^k}{k!}
+c_{n,k}
+=
+\sum_{m=0}^\infty
+\frac{i^{2m+n}\xi^{2m+n}}{(2m+n)!}
+c_{n,2m+n}
+\\
+&=
+\sum_{m=0}^\infty
+\frac{1}{2^{2m+n}}
+\binom{2m+n}{m}
+\frac{i^{2m+n}\xi^{2m+n}}{(2m+n)!}
+\\
+&=
+i^n
+\sum_{m=0}^\infty
+\frac{(-1)^m}{(2m+n)!}
+\frac{(2m+n)!}{m!\,(2m+n-m)!}
+\biggl(\frac{\xi}{2}\biggr)^{2m+n}
+\\
+&=
+i^n
+\sum_{m=0}^\infty
+\frac{(-1)^m}
+{m!\,\Gamma(m+n+1)}
+\biggl(\frac{\xi}{2}\biggr)^{2m+n}
+=
+i^n J_n(\xi).
+\end{align*}
+Die Funktionen $F_n(\xi)$ sind daher bis auf einen Phasenfaktor der
+Wert $J_n(\xi)$ einer Bessel-Funktion.
+
+\subsubsection{Berechnung der Fourier-Transformation mit Bessel-Funktionen}
+Mit allen oben zusammengestellten Notationen kann die Fourier-Transformation
+jetzt in Polarkoordinaten als
+\[
+\tilde{F}(R,\vartheta)
+=
+\sum_{n\in\mathbb{Z}}
+e^{in\vartheta}
+\int_0^\infty 
+\hat{f}_n(r)
+i^n
+J_n(rR)
+r\,dr
+\]
+geschrieben werden.
+Dies hat tatsächlich die Form eines Skalarproduktes der Funktion
+$\tilde{f}(r,\varphi)$ mit einer Funktion der Form
+\[
+\tilde{e}_{n,R}(r,\varphi)
+=
+e^{in\varphi}
+J_n(rR).
+\]
+Letzeres sind die in Abschnitt~\ref{buch:fourier:section:2d}
+versprochenen Basisfunktionen.
+
+\subsubsection{Fourier-Reihe von $e^{i\xi\cos\varphi}$}
+Die Funktionen $F_n(\xi)$ sind wegen
+\[
+F_n(\xi)
+=
+\frac{1}{2\pi}
+\int_0^{2\pi}
+e^{in\varphi}
+e^{i\xi\cos\varphi}
+\,d\varphi,
+\]
+daraus kann man die Fourier-Reihe von $e^{i\xi\cos\varphi}$ 
+berechnen, dies wird im folgenden Satz durchgeführt.
+
+
+\begin{satz}
+\label{buch:fourier:satz:expinphi}
+Die komplexe Fourier-Reihe der Funktion
+$\varphi\mapsto \exp(i\xi\cos\varphi)$
+ist
+\begin{align}
+e^{i\xi\cos\varphi}
+&=
+J_0(\xi)
++
+2\sum_{n=1}^\infty i^n J_n(\xi) \cos n\varphi.
+\label{buch:fourier:eqn:expinphicomplex}.
+\intertext{Real- und Imaginärteil davon sind die Fourier-Reihen}
+\cos(\xi\cos\varphi)
+&=
+J_0(\xi) + 2\sum_{m=1}^\infty (-1)^m J_{2m}(\xi) \cos2m\varphi
+\label{buch:fourier:eqn:expinphireal}
+\\
+\sin(\xi\cos\varphi)
+&=
+2\sum_{m=0}^\infty (-1)^m J_{2m+1}(\xi) \cos(2m+1)\varphi.
+\label{buch:fourier:eqn:expinphiimaginary}
+\end{align}
+\end{satz}
+
+\begin{proof}[Beweis]
+Die Fourier-Koeffizienten $F_n(\xi)$ der Funktion $e^{i\xi\cos\varphi}$
+führen auf die Fourier-Reihe
+\begin{align*}
+e^{i\xi\cos\varphi}
+&=
+\sum_{n\in\mathbb{Z}} F_n(\xi) e^{in\varphi}
+=
+\sum_{n\in\mathbb{Z}} i^n J_n(\xi) e^{in\varphi}.
+\end{align*}
+Terme mit $\pm n$ können wegen
+\[
+\left.
+\begin{aligned}
+J_{-n}(\xi) &= (-1)^n J_n(\xi)
+\label{buch:fourier:eqn:symetrie}
+\\
+i^{-n}&=(-1)^n i^n
+\end{aligned}
+\quad
+\right\}
+\qquad\Rightarrow\qquad
+i^{-n}J_{-n}(\xi) = i^n J_n(\xi)
+\]
+zusammengefasst werden, auf diese Weise erhält man 
+\begin{align*}
+e^{i\xi\cos\varphi}
+&=
+J_0(\xi)
++
+\sum_{n=1}^\infty i^n J_n(\xi) (e^{in\varphi}+e^{-in\varphi})
+=
+2\sum_{n=1}^\infty i^n J_n(\xi) \cos n\varphi.
+\end{align*}
+Dies beweist
+\eqref{buch:fourier:eqn:expinphicomplex}.
+
+Indem man Real- und Imaginärteil trennt, kann man daraus auch
+die Fourier-Reihen von $\cos(\xi\cos\varphi)$ und
+$\sin(\xi\cos\varphi)$ gewinnen, sie sind
+\begin{align*}
+\exp(\xi\cos\varphi)
+&=
+J_0(\xi) + 2\sum_{n=1}^\infty i^{n} J_{n}(\xi) \cos n\varphi
+\\
+&=
+J_0(\xi)
++
+2\sum_{m=1}^\infty i^{2m}J_{2m}(\xi)\cos 2m\varphi
++
+2\sum_{m=0}^\infty i^{2m+1}J_{2m+1}(\xi)\cos(2m+1)\varphi
+\\
+&=
+J_0(\xi)
++
+2\sum_{m=1}^\infty (-1)^{m}J_{2m}(\xi)\cos 2m\varphi
++
+2i\sum_{m=0}^\infty (-1)^{m}J_{2m+1}(\xi)\cos(2m+1)\varphi
+\\
+\cos(\xi\cos\varphi)
+&=
+J_0(\xi)
++
+2\sum_{m=1}^\infty (-1)^{m}J_{2m}(\xi)\cos 2m\varphi
+\\
+\sin(\xi\cos\varphi)
+&=
+2\sum_{m=0}^\infty (-1)^m J_{2m+1}(\xi) \cos(2m+1)\varphi.
+\end{align*}
+Damit sind auch die Formeln
+\eqref{buch:fourier:eqn:expinphireal}
+und
+\eqref{buch:fourier:eqn:expinphiimaginary}
+für die reellen Fourier-Reihen bewiesen.
+\end{proof}
+
+%
+% Integraldarstellung der Bessel-Funktion
+%
+\subsection{Integraldarstellung der Bessel-Funktion}
+Aus \eqref{buch:fourier:eqn:Fncosphi} kann jetzt die Integraldarstelltung
+der Bessel-Funktionen gewonnen werden.
+Dazu substituiert man $\varphi$ durch $\tau$ mit
+$\varphi = \frac{\pi}2-\tau$
+oder
+$\tau=\frac{\pi}2-\varphi$
+und $d\tau = -d\varphi$
+im Integral und berechnet
+\begin{align*}
+J_n(\xi)
+&=
+(-i)^n
+\frac{1}{2\pi}
+\int_0^{2\pi}
+e^{in\varphi+i\xi \cos\varphi}
+\,d\varphi
+\\
+&=
+-
+(-i)^n
+\frac{1}{2\pi}
+\int_{\frac{\pi}2}^{-\frac{3\pi}2}
+e^{in(\frac{\pi}2-\tau) + i\xi\cos(\frac{\pi}2-\tau)}
+\,d\tau
+\\
+&=
+(-i)^n
+\frac{1}{2\pi}
+\int^{\frac{\pi}2}_{-\frac{3\pi}2}
+i^n
+e^{-in\tau + i\xi\sin\tau)}
+\,d\tau.
+\intertext{Da der Integrand $2\pi$-periodisch ist, kann das
+Integrationsintervall auf $[-\pi,\pi]$ verschoben werden, was}
+&=
+\frac{1}{2\pi}
+\int_{-\pi}^{\pi}
+e^{-in\tau + i\xi\sin\tau)}
+\,d\tau.
+\intertext{ergibt.
+Das Integral kann in zwei Integrale}
+&=
+\frac{1}{2\pi}
+\int_0^\pi
+e^{-in\tau + i\xi\sin\tau}
+\,d\tau
++
+\frac{1}{2\pi}
+\int_0^\pi
+e^{in\tau - i\xi\sin\tau}
+\,d\tau
+\intertext{aufgeteilt werden,
+}
+&=
+\frac{1}{\pi}
+\int_0^\pi
+\frac{
+e^{-in\tau + i\xi\sin\tau}
++
+e^{in\tau - i\xi\sin\tau}
+}{2}
+\,d\tau
+\\
+&=
+\frac{1}{\pi}
+\int_0^\pi
+\frac{
+e^{i(-n\tau + \xi\sin\tau)}
++
+e^{-i(-n\tau + \xi\sin\tau)}
+}{2}
+\,d\tau
+\\
+&=
+\frac{1}{\pi}
+\int_0^\pi
+\cos(n\tau - \xi\sin\tau)
+\,d\tau.
+\end{align*}
+Damit haben wir den folgenden Satz bewiesen:
+
+\begin{satz}[Integraldarstelltung der Bessel-Funktionen]
+\label{buch:fourier:satz:bessel-integraldarstellung}
+Die Bessel-Funktionen $J_n$ mit ganzzahliger Ordnung $n$ haben
+die Integraldarstellung
+\begin{equation}
+J_n(\xi)
+=
+\frac{1}{\pi}
+\int_0^\pi
+\cos(n\tau - \xi\sin\tau)
+\,d\tau.
+\label{buch:fourier:eqn:bessel-integraldarstellung}
+\end{equation}
+\end{satz}
+
+
+
+

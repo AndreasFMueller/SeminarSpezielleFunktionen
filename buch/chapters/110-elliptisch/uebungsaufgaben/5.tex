@@ -1,0 +1,59 @@
+\label{buch:elliptisch:aufgabe:5}
+Die sehr schnelle Konvergenz des arithmetisch-geometrische Mittels
+kann auch dazu ausgenutzt werden, eine grosse Zahl von Stellen der
+Kreiszahl $\pi$ zu berechnen.
+Almkvist und Berndt haben gezeigt \cite{buch:almkvist-berndt}, dass
+\[
+\pi
+=
+\frac{4 M(1,\!\sqrt{2}/2)^2}{
+\displaystyle 1-\sum_{n=1}^\infty 2^{n+1}(a_n^2-b_n^2)
+}.
+\]
+Verwenden Sie diese Formel, um Approximationen von $\pi$ zu berechnen.
+
+\begin{loesung}
+\begin{table}
+\centering
+\begin{tabular}{|>{$}c<{$}|>{$}c<{$}|>{$}c<{$}|>{$}c<{$}|}
+\hline
+n & a_n               & b_n               & \pi_n%
+\mathstrut\text{\vrule height12pt depth6pt width0pt}\\
+\hline
+\mathstrut\text{\vrule height12pt depth0pt width0pt}%
+0 & 1.000000000000000 & 0.707106781186548 &                  
+\mathstrut\text{\vrule height12pt depth0pt width0pt}\\
+1 & 0.853553390593274 & 0.840896415253715 & 3.\underline{1}87672642712106 \\
+2 & 0.847224902923494 & 0.847201266746892 & 3.\underline{141}680293297648 \\
+3 & 0.847213084835193 & 0.847213084752765 & 3.\underline{141592653}895451 \\
+4 & 0.847213084793979 & 0.847213084793979 & 3.\underline{141592653589}822 \\
+5 & 0.847213084793979 & 0.847213084793979 & 3.\underline{141592653589}871%
+\mathstrut\text{\vrule height0pt depth6pt width0pt}\\
+\hline
+\infty &              &                   & 3.141592653589793%
+\mathstrut\text{\vrule height12pt depth6pt width0pt}\\
+\hline
+\end{tabular}
+\caption{Approximationen der Kreiszahl $\pi$ mit Hilfe des Algorithmus
+des arithmetisch-geometrischen Mittels.
+In nur 4 Schritten werden 12 Stellen Genauigkeit erreicht.
+\label{buch:elliptisch:aufgabe:5:table}}
+\end{table}
+Wir schreiben
+\[
+\pi_n
+=
+\frac{4 a_k^2}{
+\displaystyle
+1-\sum_{k=1}^\infty 2^{k+1}(a_k^2-b_k^2)
+}
+\]
+für die Approximationen von $\pi$,
+wobei $a_k$ und $b_k$ die Folgen der arithmetischen und geometrischen
+Mittel von $1$ und $\!\sqrt{2}/2$ sind.
+Die Tabelle~\ref{buch:elliptisch:aufgabe:5:table} zeigt die Resultat.
+In nur 4 Schritten können 12 Stellen Genauigkeit erreicht werden,
+dann beginnen jedoch bereits Rundungsfehler das Resultat zu beinträchtigen.
+Für die Berechnung einer grösseren Zahl von Stellen muss daher mit
+grösserer Präzision gerechnet werden.
+\end{loesung}

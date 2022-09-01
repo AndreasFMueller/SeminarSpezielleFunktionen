@@ -1,0 +1,344 @@
+%
+% teil2.tex -- Beispiel-File für teil2 
+%
+% (c) 2020 Prof Dr Andreas Müller, Hochschule Rapperswil
+%
+\section{Frequenzmodulation und Bessel-Funktionen
+\label{fm:section:proof}}
+\rhead{Herleitung}
+Die momentane Trägerkreisfrequenz \(\omega_i\), wie schon in (ref) beschrieben ist, bringt die Ableitung \(\frac{d \varphi(t)}{dt}\) mit sich.
+Diese wiederum kann durch \(\beta\sin(\omega_mt)\) ausgedrückt werden, wobei es das modulierende Signal \(m(t)\) ist.
+Somit haben wir unser Signal
+\[
+x_c(t)
+=
+\cos(\omega_c t+\beta\sin(\omega_mt)),
+\]
+welches nun als Superposition von harmonischen Schwingungen
+geschrieben werden soll, damit man das Frequenzspektrum ablesen 
+kann.
+
+\begin{satz}
+\label{fm:satz:spektrum}
+Das frequenzmodulierte Signal $x_c(t)$ lässt sich schreiben als
+\begin{align}
+    x_c(t)
+    = 
+    \cos(\omega_ct+\beta\sin(\omega_mt))
+    &=
+    \sum_{k= -\infty}^\infty J_{k}(\beta) \cos((\omega_c+k\omega_m)t).
+    \label{fm:eq:proof}
+\end{align}
+\end{satz}
+
+\subsection{Herleitung}
+Zum Beweise von Satz~\ref{fm:satz:spektrum} werden zunächst einige
+Hilfsmittel gebraucht, deren Anwendung später die Darstellung
+\eqref{fm:eq:proof} liefert.
+
+\subsubsection{Hilfsmittel}
+Wir brauchen die Hilfe der Additionstheoreme 
+\begin{align}
+    \cos(A + B) 
+    &= 
+    \cos(A)\cos(B)-\sin(A)\sin(B)
+    \label{fm:eq:addth1}
+    \\
+    2\cos (A)\cos (B)
+    &=
+    \cos(A-B)+\cos(A+B)
+    \label{fm:eq:addth2}
+    \\
+    2\sin(A)\sin(B)
+    &=
+    \cos(A-B)-\cos(A+B)
+    \label{fm:eq:addth3}
+\end{align}
+und die drei Bessel-Funktionsidentitäten,
+\begin{align}
+    \cos(\beta\sin\phi)
+    &=
+    J_0(\beta) + 2\sum_{k=1}^\infty J_{2k}(\beta) \cos(2k\phi)
+    \label{fm:eq:besselid1}
+    \\
+    \sin(\beta\sin\phi)
+    &=
+    2\sum_{k=0}^\infty J_{2k+1}(\beta) \cos((2k+1)\phi)
+    \label{fm:eq:besselid2}
+    \\
+    J_{-n}(\beta) &= (-1)^n J_n(\beta)
+    \label{fm:eq:besselid3}
+\end{align}
+welche man im Kapitel~\ref{buch:chapter:fourier}
+als Gleichungen
+\eqref{buch:fourier:eqn:expinphireal},
+\eqref{buch:fourier:eqn:expinphiimaginary},
+und \eqref{buch:fourier:eqn:symetrie} findet.
+
+\subsubsection{Anwenden des Additionstheorem}
+Mit dem \eqref{fm:eq:addth1} wird aus dem modulierten Signal
+\[
+    x_c(t) 
+    =
+    \cos(\omega_c t + \beta\sin(\omega_mt))
+    =
+    \underbrace{
+	\cos(\omega_c t)\cos(\beta\sin(\omega_m t))
+    }_{\displaystyle=c(t)}
+     -
+    \underbrace{
+	\sin(\omega_ct)\sin(\beta\sin(\omega_m t))
+    }_{\displaystyle=s(t)}.
+    \label{fm:eq:start}
+\]
+Die beiden Terme auf der rechten Seite werden jetzt unabhängig 
+voneinander analysiert.
+
+\subsubsection{Cosinus-Teil}
+Zu Beginn wird der Cosinus-Teil
+\begin{align}
+    c(t) 
+    &=
+    \cos(\omega_c t)\cdot\cos(\beta\sin(\omega_mt))  
+\notag
+\intertext{mit Hilfe der Bessel-Indentität \eqref{fm:eq:besselid1} zum}
+    &=
+    \cos(\omega_c t) \cdot \bigg[ J_0(\beta)
+    +
+    2\sum_{k=1}^\infty J_{2k}(\beta) \cos( 2k \omega_m t)\, \bigg]
+\notag
+    \\
+    &=
+    J_0(\beta) \cdot \cos(\omega_c t)
+    +
+    \sum_{k=1}^\infty J_{2k}(\beta)
+	\underbrace{
+		2\cos(\omega_c t)\cos(2k\omega_m t)
+	}_{\displaystyle\text{Additionstheorem \eqref{fm:eq:addth2}}},
+\notag
+\intertext{wobei mit dem Additionstheorem \eqref{fm:eq:addth2}
+\(A = \omega_c t\) und \(B = 2k\omega_m t \) ersetzt wurden.
+Nun kann die Summe in zwei Summen }
+    &=
+    J_0(\beta) \cdot \cos(\omega_c t)
+    +
+    \sum_{k=1}^\infty J_{2k}(\beta) \cos((\omega_c - 2k \omega_m) t)
+    +
+    \cos((\omega_c + 2k \omega_m) t) \}
+    \\
+    &=
+    \sum_{k=1}^{\infty} J_{2k}(\beta) \cos((\omega_c - 2k \omega_m) t) 
+    +
+    J_0(\beta)\cdot \cos(\omega_c t) 
+    +
+    \sum_{k=1}^\infty J_{2k}(\beta)\cos((\omega_c + 2k \omega_m) t) 
+\notag
+\intertext{aufgeteilt werden.
+Damit man die beiden Summen in eine zusammenfassen kann, müssen
+die Kosinus-Terme in die gleiche Form gebracht werden.
+Dazu kann man $k$ durch $-k$ ersetzen, dann muss in der ersten Summe
+aber von $-1$ bis $-\infty$ summiert werden.
+Ausserdem ist nach Bessel-Indentität \eqref{fm:eq:besselid3}
+für gerade Ordnung der Besselfunktion $J_{-2k}(\beta)=J_{2k}(\beta)$,
+so dass die Summe
+}
+    &=
+    \sum_{k=-\infty}^{-1}
+	J_{2k}(\beta)
+	\cos\bigl((\omega_c + 2k \omega_m) t\bigr) 
+    +
+    J_0(\beta)\cdot \cos\bigl((\omega_c + 0\omega_m) t\bigr)
+    +
+    \sum_{k=1}^\infty
+	J_{2k}(\beta)
+	\cos\bigl((\omega_c + 2k \omega_m) t\bigr) 
+\notag
+\\
+    &=
+    \sum_{k=-\infty}^\infty
+	J_{2k}(\beta)
+	\bigl(\cos(\omega_c + 2k\omega_m)t\bigr).
+\notag
+\intertext{Dies kann vereinfacht als}
+    &=
+    \sum_{\text{$n$ gerade}}
+	J_{n}(\beta)
+	\cos\bigl((\omega_c + n \omega_m) t\bigr)
+    \label{fm:eq:gerade}
+\end{align}
+geschrieben werden.
+
+\subsubsection{Sinus-Teil}
+Nun zum zweiten Teil der Summe \eqref{fm:eq:start}, den Sinus-Teil
+\begin{align}
+    s(t) 
+    &=
+    -\sin(\omega_c t)\cdot\sin\bigl(\beta\sin(\omega_m t)\bigr).
+\notag
+\intertext{Dieser wird mit der \eqref{fm:eq:besselid2} Bessel-Indentität zu}
+    &=
+    -\sin(\omega_c t) \cdot \bigg[
+	2 \sum_{k=0}^\infty
+	J_{ 2k + 1}(\beta)
+	\cos\bigl(( 2k + 1) \omega_m t\bigr)
+    \bigg]
+    \\
+    &=
+    \sum_{k=0}^\infty
+	-1 \cdot J_{2k+1}(\beta)
+	2\sin(\omega_c t)
+	\cos\bigl((2k+1)\omega_m t\bigr).
+\notag
+\intertext{\(2k + 1\) durchläuft alle ungeraden positiven Ganzzahlen.
+Nach der Bessel-Identität \eqref{fm:eq:besselid3} ist
+\(J_{-(2k+1)}(\beta) = -1\cdot J_{2k+1}(\beta)\).
+Damit kann die Summe schreiben als eine Summe über die ungeraden Zahlen $n$:
+}
+    &=
+    \sum_{\text{$n>0$ ungerade}}^\infty
+	J_{-n}(\beta)
+	\underbrace{
+		2\sin(\omega_c t)\cos(n \omega_m t)
+	}_{\displaystyle\text{Additionstheorem \eqref{fm:eq:addth3}}}.
+\notag
+\intertext{Auch hier wird ein Additionstheorem \eqref{fm:eq:addth3}
+gebraucht, dabei ist \(A = \omega_c t\) und \(B = n \omega_m t \), 
+und es entsteht:}
+    &=
+    \sum_{\text{$n>0$ ungerade}}
+	J_{-n}(\beta)
+	\{
+	\cos\bigl((\omega_c - n\omega_m) t\bigr)
+	-
+	\cos\bigl((\omega_c + n\omega_m) t\bigr)
+	\}.
+\notag
+\intertext{Wieder ersetzen wir $n$ durch $-n$ in der ersten Summe,
+um die gleichen Kosinus-Terme zu erhalten:}
+    &=
+    \sum_{\text{$n<0$ ungerade}}
+	J_{n}(\beta)
+	\cos\bigl((\omega_c + n \omega_m) t\bigr)
+    -
+    \sum_{\text{$n>0$ ungerade}}
+	J_{-n}(\beta)
+	\cos\bigl((\omega_c + n\omega_m) t\bigr)
+\notag
+\\
+    &=
+    \sum_{\text{$n<0$ ungerade}}
+	J_{n}(\beta)
+	\cos\bigl((\omega_c + n \omega_m) t\bigr)
+    +
+    \sum_{\text{$n>0$ ungerade}}
+	J_{n}(\beta)
+	\cos\bigl((\omega_c + n\omega_m) t\bigr)
+\notag
+\intertext{
+In der zweiten Gleichung haben wir wieder die
+Bessel-Identität $J_{-n}(\beta)=-J_{n}(\beta)$
+verwendet, die für $n$ ungerade gilt.
+Jetzt kann man die beiden Summen wieder zusammenfassen in
+eine einzige, die über alle positiven und negativen ungeraden
+Zahl läuft:}
+    &=
+    \sum_{\text{$n$ ungerade}}
+	J_{n}(\beta)
+	\cos\bigl((\omega_c + n \omega_m) t\bigr).
+\label{fm:eq:ungerade}
+\end{align}
+
+\subsubsection{Summe Zusammenführen}
+Beide Teile \eqref{fm:eq:gerade} für die geraden Terme 
+\begin{align*}
+c(t)
+&=
+    \sum_{n\, \text{gerade}}
+	J_{n}(\beta)
+	\cos\bigl((\omega_c + n\omega_m) t\bigr)
+\intertext{und \eqref{fm:eq:ungerade} für die ungeraden Terme }
+s(t)
+&=
+    \sum_{n\, \text{ungerade}}
+	J_{n}(\beta)
+	\cos\bigl((\omega_c + n\omega_m) t\bigr)
+\intertext{ergeben zusammen}
+x_c(t)
+&=c(t)+s(t)
+\\
+&=
+    \cos\bigl(\omega_ct+\beta\sin(\omega_mt)\bigr)
+    =
+    \sum_{k= -\infty}^\infty
+	J_{n}(\beta)
+	\cos\bigl((\omega_c+ n\omega_m)t\bigr).
+\end{align*}
+Somit ist \eqref{fm:eq:proof} bewiesen.
+
+\subsection{Bessel und Frequenzspektrum}
+Unser FM-signal Fourientransformiert \eqref{fm:FM:fourie} wird zusammengestzt aus den einzelen Reihenteilen mit der gewichtung der Besselfunktion.
+
+
+Nochmals zur erinnerung sah unser Träger Signal anfangs so aus:
+\(x_c(t) = A_c \cdot \cos(\omega_c(t)+\varphi)\), dabei modulierten wir den parameter \( \varphi = \beta\sin(\omega_mt) \).
+Davon sahen wir das sich ursprünglich unser Signal\(m_{FM}(t) = \cos(\omega_m t)\) war. 
+Wie das Beat zusammenhängt sieht man im Abschnitt ( ref). 
+Wird es weiter transformiert zur Summe, so erhält man ein
+\[
+    x_{FM} = 
+    \sum_{k= -\infty}^\infty J_{n}(\beta) \cos((\omega_c+ n\omega_m)t).
+\]
+Diese Summe nun Fourier Transformiert ergibt
+\[
+    x_{FM} = 
+    \sum_{k= -\infty}^\infty J_{n}(\beta) \cdot \frac{1}{2} \biggl(  e^{j(\omega_c+ n\omega_m)t}\;+\; e^{-j(\omega_c+ n\omega_m)t}\biggr).
+\]
+Dies ergibt wiederum zwei dirac impulse im Frequenzbereich, aber pro Summand mit der Gewichtung der Besselfunktion indices und deren \(\beta\). 
+Gegeneüber \textit{AM} hat sich \textit{FM} zu einer Summe mit gewichtungen der Besselfunktion verändert.
+Überall wo die Besselfunktion gegn 0 tendiert können wir diese Summand vernachlässigen.
+Um dies zu sehn plotten wir einmal \(J_{n}(\beta)\):
+\begin{figure}
+	\centering
+	\input{papers/fm/Python animation/bessel.pgf}
+	\caption{Bessle Funktion \(J_{n}(\beta)\)}
+	\label{fig:bessel}
+\end{figure}
+Hier sieht man gut das für kleine \( \beta \lessgtr \) nur die ersten Summanden \( n\) zuständig sind.
+So kann man mit dem \(\beta\) gut bestimmen bis wo die Summe berchnet werden soll. 
+
+Für ein Beispiel nehmen wir  \(\beta = ... \omega_m = ... \)
+Dann sieht unser \(x_{FM}\) so aus:
+\begin{figure}
+	\centering
+	
+	\caption{Beispiel eines FM Übertragenen Signal}
+	\label{fig:bessel}
+\end{figure}
+Nun verändern wir die drei Parameter \(\beta \omega_c \omega_m \) und sehen was sich verändern wird
+\subsubsection{Beta}
+Da \(\beta\) in keiner abhängigkeit zo den anderen parameter steht, und jegliglich die anzahl der nötigen Summanden bestimmt.
+So wird es auch diese Anzahl bestimmen was man hier sehen kann.
+\subsubsection{omega c}
+Dieser ist unser Trägerfrequenz auf die unser Signal aufmoduliert wurde, diese bestimmt die Frequenz in welchem sich das signal befindet
+\subsubsection{omega m}
+Dieser parametr hat unsere bandbreite auf welchem unser Moduliertes Signal \(x_{AM}\) befindet bestimmt, auch im FM wird es wieder die Bandbreite bestimmen, was wir hier sehen.
+
+Nun einmal das Modulierte FM signal mit dem \(\beta =  \omega_m =  \) berechnet:
+
+
+
+TODO
+Hier wird beschrieben wie die Bessel Funktion der FM im Frequenzspektrum hilft, wieso diese gebrauch wird und ihre Vorteile.
+\begin{itemize}
+    \item Zuerest einmal die Herleitung von FM zu der Bessel-Funktion
+    \item Im Frequenzspektrum darstellen mit Farben, ersichtlich machen. 
+    \item Parameter tuing der Trägerfrequenz, Modulierende frequenz und Beta. 
+\end{itemize}
+\newpage
+
+
+%\subsection{De finibus bonorum et malorum
+%\label{fm:subsection:bonorum}}
+
+
+

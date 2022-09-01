@@ -1,36 +1,34 @@
+% !TeX root = ../../buch.tex
 %
 % main.tex -- Paper zum Thema <sturmliouville>
 %
 % (c) 2020 Hochschule Rapperswil
 %
-\chapter{Thema\label{chapter:sturmliouville}}
-\lhead{Thema}
+\chapter{Sturm-Liouville-Problem\label{chapter:sturmliouville}}
+\lhead{Sturm-Liouville-Problem}
 \begin{refsection}
-\chapterauthor{Hans Muster}
+\chapterauthor{Réda Haddouche und Erik Löffler}
 
-Ein paar Hinweise für die korrekte Formatierung des Textes
-\begin{itemize}
-\item
-Absätze werden gebildet, indem man eine Leerzeile einfügt.
-Die Verwendung von \verb+\\+ ist nur in Tabellen und Arrays gestattet.
-\item
-Die explizite Platzierung von Bildern ist nicht erlaubt, entsprechende
-Optionen werden gelöscht. 
-Verwenden Sie Labels und Verweise, um auf Bilder hinzuweisen.
-\item
-Beginnen Sie jeden Satz auf einer neuen Zeile. 
-Damit ermöglichen Sie dem Versionsverwaltungssysteme, Änderungen
-in verschiedenen Sätzen von verschiedenen Autoren ohne Konflikt 
-anzuwenden.
-\item 
-Bilden Sie auch für Formeln kurze Zeilen, einerseits der besseren
-Übersicht wegen, aber auch um GIT die Arbeit zu erleichtern.
-\end{itemize}
+In diesem Kapitel wird zunächst nochmals ein Überblick über das
+Sturm-Liouville-Problem und dessen Randbedingungen gegeben.
+Dann wird ein Zusammenhang zwischen reellen symmetrischen Matrizen und
+dem Sturm-Liouville-Operator $L$ hergestellt, um auf die Orthogonalität der
+Lösungsfunktionen zu schliessen.
+Zuletzt wird anhand von zwei Beispielen gezeigt, dass durch das
+Sturm-Liouville-Problem die Eigenschaften der Lösungen bereits vor dem
+vollständigen Lösen der Beispiele bekannt sind.
 
-\input{papers/sturmliouville/teil0.tex}
-\input{papers/sturmliouville/teil1.tex}
-\input{papers/sturmliouville/teil2.tex}
-\input{papers/sturmliouville/teil3.tex}
+%einleitung "was ist das sturm-liouville-problem"
+\input{papers/sturmliouville/einleitung.tex}
+
+%Eigenschaften von Lösungen eines solchen Problems
+\input{papers/sturmliouville/eigenschaften.tex}
+
+% Fourier: Erik work
+\input{papers/sturmliouville/waermeleitung_beispiel.tex}
+
+% Tschebyscheff
+\input{papers/sturmliouville/tschebyscheff_beispiel.tex}
 
 \printbibliography[heading=subbibliography]
 \end{refsection}
