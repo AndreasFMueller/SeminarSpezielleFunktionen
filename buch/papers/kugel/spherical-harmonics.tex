@@ -375,10 +375,18 @@ $Y^m_n(\vartheta, \varphi)$.
 
 \begin{figure}
   \centering
-  \kugelplaceholderfig{\textwidth}{.8\paperheight}
+  \includegraphics[width=\linewidth]{papers/kugel/figures/python/spherical-harmonics-triangle}
   \caption{
-    \kugeltodo{Big picture with the first few spherical harmonics.}
     \label{kugel:fig:spherical-harmonics}
+    Spherical harmonics. The spherical harmonics are defined \emph{on} the
+    surface of the sphere, however, for a more powerful visual intuition the
+    radius was used to represent the real part of the function at each location
+    on the unit sphere. 
+    %
+    % Since $\Re e^{im\varphi} = cos(m\varphi)$, $\Im e^{im\varphi} =
+    % i\sin(m\varphi)$ and $\sin \alpha = \cos (\alpha - \pi/2)$, the imaginary
+    % part has the same shape and is just ``rotated around the $z$ axis by
+    % $\pi/2$''.
   }
 \end{figure}
 
