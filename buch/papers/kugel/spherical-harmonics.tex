@@ -975,35 +975,23 @@ of the inner product on the spherical surface of definition
     f(\vartheta, \varphi) \overline{g(\vartheta, \varphi)}
     \sin \vartheta \, d\varphi \, d\vartheta.
 \end{equation*}
-To be a bit technical we can say that the set of spherical harmonic functions,
-together with the inner product just showed, form something that we call Hilbert
-Space\footnote{For more details about Hilbert space you can take a look in
-section \ref{kugel:sec:preliminaries}}.  This function space is defined over the
-space of ``well-behaved'' \footnote{The definitions of ``well-behaved'' is
-pretty ambiguous, even for mathematicians.  It depends basically on the context.
-You can summarize it by saying: functions for which the theory we are considering
-(Fourier theorem) is always true. In our case we can say that well-behaved
-functions are functions that follow some convergence constraints (pointwise,
-uniform, absolute, ...) that we don't want to consider further anyway.}
-functions.  We can say that the theory we are about to show can be applied on
-all twice differentiable complex valued functions, to be more concise: complex
-valued $L^2$ functions $S^2 \to \mathbb{C}$.
+To be a bit technical we can say that the set of spherical harmonic functions, toghether with the inner product just showed, 
+form something that we call Hilbert Space\footnote{For more details about Hilber space you can take a look in section \ref{kugel:sec:preliminaries}}. 
+This function space is defined over the space of ``well-behaved'' \footnote{The definitions of ``well-behaved'' is pretty ambigous, even for mathematicians. 
+It depends basically on the context.
+You can sumarize it by saying: functions for which the theory we are considering (Fourier theorem) is always true. In our case we can say that well-behaved functions 
+are functions that follow some convergence contraints (pointwise, uniform, absolute, ...) that we don't want to consider further anyway.} functions. 
+We can say that the theory we are about to show can be applied on all twice differentiable complex valued functions, 
+to be more concise: complex valued $L^2$ functions $S^2 \to \mathbb{C}$.
 
-All this jargon is not really necessary for the practical applications of us
-mere mortals, namely physicists and engineers.  From now on we will therefore
-assume that the functions we will dealing with fulfill these ``minor''
-conditions.
+All these jargons are not really necessary for the practical applications of us mere mortals, namely physicists and engineers. 
+From now on we will therefore assume that the functions we will dealing with fulfill these ``minor'' conditions.
 
-The insiders could turn up their nose, but we don't want to dwell too much on
-the concept of Hilbert space, convergence, metric, well-behaved functions etc.
-We simply think that this rigorousness could be at the expense of the
-possibility to appreciate the beauty and elegance of this theory.  Furthermore,
-the risk of writing 300+ pages to prove that $1+1=2$\cite{principia-mathematica}
-is just around the corner (we apologize in advance to Mr. Whitehead and Mr.
-Russel for using their effort with a negative connotation).
+The insiders could turn up their nose, but we don't want to dwell too much on the concept of Hilbert space, convergence, metric, well-behaved functions etc.
+We simply think that this rigorousness could be at the expense of the possibility to appreciate the beauty and elegance of this theory. 
+Furthermore, the risk of writing 300+ pages to prove that $1+1=2$ is just around the corner\cite{principia-mathematica} (we apologize in advance to Mr. Whitehead and Mr. Russel for using their effort with a negative connotation). 
 
-Despite all, if you desire having definitions a bit more rigorous (as rigorous
-as two engineers can be), you could take a look at the chapter \ref{}.
+Despite all, if you desire having definitions a bit more rigorous-as rigorous as two engineers can be-you could take a look at the chapter \ref{kugel:sec:preliminaries}.
 
 \subsection{Spherical Harmonics Series}
 
@@ -1015,25 +1003,19 @@ build one using the spherical harmonics.
   \begin{equation}
     f(\vartheta, \varphi) 
     = \sum_{n=0}^\infty \sum_{m =-n}^n
-      c_{m,n} Y^m_n(\vartheta, \varphi).
-      \label{kugel:eqn:spherical-harmonics-series}
+      c_{m,n} Y^m_n(\vartheta, \varphi). \label{kugel:definition:spherical-harmonics-series-eq}
   \end{equation}
 \end{definition}
 
-With this definition we are basically saying that any function defined on the
-spherical surface can be represented as a linear combination of spherical
-harmonics.  Does equation \eqref{kugel:definition:spherical-harmonics-series}
-sound familiar? Well that is perfectly normal, since this is analog to the
-classical Fourier theory.  In the latter is stated that ``any'' $T$-periodic
-function $f(x)$, on any interval $[x_0-T/2,x_0+T/2]$, can be represented as a
-linear combination of complex exponentials. More compactly:
+With this definition we are basically saying that any function defined on the spherical surface can be represented as a linear combination of spherical harmonics. 
+Does eq.\eqref{kugel:definition:spherical-harmonics-series-eq} sound familiar? Well that is prefectly normal, since this is analog to the classical Fourier theory. 
+In the latter is stated that ``any'' $T$-periodic function $f(x)$, on any interval $[x_0-T/2,x_0+T/2]$, can be represented as a linear combination of complex exponentials. More compactly:
 \begin{equation*}
   f(x) = \sum_{n \in \mathbb{Z}} c_n e^{i \omega_0 x},
     \quad \omega_0=\frac{2\pi}{T}
 \end{equation*}
-In the case of definition \ref{kugel:def:spherical-harmonics-series} the
-kernels, instead of $e^{i\omega_0x}$, have become $Y^m_n$. In addition, the sum
-is now over the two indices $m$ and $n$.
+In the case of definition \ref{kugel:definition:spherical-harmonics-series} the kernels, instead of $e^{i\omega_0x}$, have become $Y^m_n$. In addition, 
+the sum is now over the two indices $m$ and $n$ (because of the two free variables $\vartheta, \varphi$ instead of just one).
 
 \begin{lemma}[Spherical harmonic coefficients]
   \label{kugel:thm:spherical-harmonic-coefficient}
@@ -1054,13 +1036,14 @@ is now over the two indices $m$ and $n$.
   \begin{align*}
     \langle f, Y^{m}_{n} \rangle_{\partial S}
     &= \left\langle \sum_{n'=0}^\infty \sum_{m' =-n'}^{n'}
-      c_{m',n'} Y^{m'}_{n'} \right\rangle_{\partial S}  \\
-    &= \sum_{n'=0}^\infty \sum_{m' =-n'}^{n'}
+      c_{m',n'} Y^{m'}_{n'}(\vartheta, \varphi), Y^{m}_{n}  \right\rangle_{\partial S}  \\
+    &=  \sum_{n'=0}^\infty \sum_{m' =-n'}^{n'}
       \langle c_{m',n'} Y^{m'}_{n'}, Y^{m}_{n} \rangle_{\partial S} \\
-    &= \sum_{n'=0}^\infty \sum_{m' =-n'}^{n'} c_{m',n'}
-      \langle Y^{m'}_{n'}, Y^{m}_{n} \rangle_{\partial S} = c_{m,n}
+      &= \sum_{n'=0}^\infty \sum_{m' =-n'}^{n'} c_{m',n'} \langle Y^{m'}_{n'}, Y^{m}_{n} \rangle_{\partial S} = c_{m,n}.
   \end{align*}
 \end{proof}
+In the last step we simply used the fact that $\langle Y^{m'}_{n'}, Y^{m}_{n} \rangle_{\partial S} = 0$ when either $m \neq m'$ or $n \neq n'$ and equal to one otherwise.
+Thanks to Lemma \ref{kugel:lemma:spherical-harmonic-coefficient} we can now calculate the series expansion defined in \ref{kugel:definition:spherical-harmonics-series}.
 
 Thanks to Lemma \ref{kugel:thm:spherical-harmonic-coefficient} we can now
 calculate the series expansion defined in
@@ -1082,8 +1065,8 @@ following theorem is true.  The connection to Theorem
 
 \begin{figure}
   \centering
-  \kugelplaceholderfig{.8\textwidth}{5cm}
-  \caption{\kugeltodo{Rectangular signal and his spectrum.}}
+  \includegraphics[width=.95\textwidth]{papers/kugel/figures/python/1D-fourier.pdf}
+  \caption{Square signal (above) with the magnitude squared of its respective Fourier coefficients $c_n$, that are given by $c_{2n+1}=\frac{2}{i\pi(2n+1)}$. The graphic above also shows different reconstructions of the signal $y(x)$ with increasing $n$.}
   \label{kugel:fig:1d-fourier}
 \end{figure}
 
@@ -1094,12 +1077,20 @@ of the fundamental frequency $2\pi/T$, namely $n 2\pi/T$. In the most general ca
 \begin{figure}
   \centering
   \kugelplaceholderfig{.8\textwidth}{7cm}
-  \caption{\kugeltodo{Confront between image reconstructed only with phase and one only with amplitued}}
+  \caption{\kugeltodo{caption}}
   \label{kugel:fig:phase&amplitude-2d-fourier}
 \end{figure}
 
 The thing that is easiest for us humans to visualize and understand is often the Amplitude Spectrum.
 This is a huge limitation, since for example in Image Processing can be showed in a nice way that much more information is contained in the phase part (see fig.\ref{kugel:fig:phase-2d-fourier}).
+
+\begin{figure}
+  \centering
+  \includegraphics[width=.95\textwidth]{papers/kugel/figures/python/sph-fourier.pdf}
+  \caption{A random spherical function is presented on the left plot, while on the right one its fourier coefficients $c_{m,n}$ are showed. You can notice the triangular structure of the right plot, 
+  which is a consequence of the constraint $|m|\leq n$.}
+  \label{kugel:fig:sph-fourier}
+\end{figure}
 
 \begin{figure}
   \centering
@@ -1111,15 +1102,44 @@ This is a huge limitation, since for example in Image Processing can be showed i
 The same logic can be extended to the spherical harmonic coefficients $c_{m,n}$. In fig.\ref{kugel:fig:fourier-on-sphere-increasing-index} you can see the same concept as in fig.\ref{kugel:fig:1d-fourier} 
 but with a spherical function $f(\vartheta, \varphi)$.
 
-\subsection{Energy of a function $f(\vartheta, \varpi)$}
+\subsection{Energy of a function $f(\vartheta, \varphi)$}
 
-\begin{lemma}[Energy of a spherical function (\emph{Parseval's theorem})]
+The decomposition of functions in their harmonics is not the only thing we can extract from the orthogonality properties of the functions $Y^m_n$. 
+The aim of this subsection is to present another property you probably already know from the classical Fourier theory in one dimension. 
+The latter has to do with the power of a signal and it can be expressed with theorem \ref{kugel:theorem:parseval-1D}, that takes the name of \emph{Parseval's theorem}.
+
+\begin{theorem}[Parseval's theorem $ciao$ ]
+  \label{kugel:theorem:parseval-1D}
+  Suppose $f(x)$ is a complex-valued $2\pi$-periodic function, that is furthermore square integrable, then
   \begin{equation*}
-    \int_0^{2\pi}\int_0^\pi |f(\vartheta, \varphi)|^2  \sin\vartheta \, d\varphi \, d\varphi = \sum_{n=0}^\infty \frac{1}{2n+1} \sum_{m=-n}^n |c_{m,n}|^2.
+    \frac{1}{2\pi}\int_{-\pi}^{\pi} |f(x)|^2dx = \sum_{n=-\infty}^\infty |c_n|^2
   \end{equation*}
-\end{lemma}
-\begin{proof}
-\end{proof}
+  is true.
+\end{theorem}
+
+Basically this theorem is another way to show that energy is conserved, we could call it another ``energy conservation theorem''\footnote{The energy
+is not a mathematical concept. It is something that comes from physics and it is basically based on observations. Personally, in mathematics, we see this concept simply as follows: Energy of a $T$-periodic function $f(x) := \frac{1}{T}\int_{-T/2}^{T/2}f(x)^2dx$}. 
+We know that the fourier series is a way to map a function from the time
+domain to the frequency domain and, most important, this mapping is reversible (or invertible). The function we are considering still the same but in the time domain is continuos and -in the case 
+of the Fourier series- in the frequency domain a discrete one.
+
+We may have overused the term ``beautiful'', but we are not afraid to use it yet again, because in our opinion- that still humble- this theorem is one of the more understanble 
+link between continuos and discrete. The conservation of energy in this case doesn't care about continuity or discreteness. 
+The latter go through these two worlds, since on the left side of eq.\eqref{} we have an integral and on the right one we have a summation.
+So, we can unify these two concepts with an equality and two different representations of the same thing, namely $f(x)$.
+
+As you can imagine, analogously to theorem \ref{kugel:theorem:parseval-1D}, we can write theorem \ref{kugel:theorem:parseval-sph}
+
+\begin{theorem}[Parseval's theorem on $\partial S$]
+  \label{kugel:theorem:parseval-sph}
+  Suppose $f(\vartheta, \varphi)$ is a complex-valued function, that is furthermore square integrable, then
+  \begin{equation*}
+    \int_0^{2\pi}\int_0^\pi |f(\vartheta, \varphi)|^2  \sin\vartheta \, d\varphi \, d\varphi = \sum_{n=0}^\infty
+     \sum_{m=-n}^n |c_{m,n}|^2.
+  \end{equation*}
+  is true.
+\end{theorem}
+
 
 
 \if 0
