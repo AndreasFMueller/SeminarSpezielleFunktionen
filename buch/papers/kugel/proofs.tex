@@ -28,8 +28,8 @@ Here, we will give the long and tedious proofs we skipped earlier.
   \end{equation*}
   Since the power series method converges only up to the nearest singularity,
   which is at $z=1$ (and $z=-1$), we shall remark that we will find a solution
-  only for $|z|<1$. The Legendre equation \eqref{kugel:eqn:legendre-bis} can be
-  therefore rewritten as
+  only for $|z|<1$. Using the \emph{Ansatz} the Legendre equation
+  \eqref{kugel:eqn:legendre-bis} can be rewritten as
   \begin{align}
     0 &= (1-z^2) \sum_{k=0}^\infty k (k-1) a_k z^{k-2}
       - 2z\sum_{k=0}^\infty k a_k z^{k-1}
@@ -70,7 +70,7 @@ Here, we will give the long and tedious proofs we skipped earlier.
     = \frac{(k-n)(k+n+1)}{(k+2)(k+1)}a_k.
   \end{equation}
   Following the relation \eqref{kugel:eqn:coeff-recursion}, if we want to
-  compute $a_6$ we would have
+  compute $a_6$ we have
   \begin{align*}
     a_{6} = -\frac{(n-4)(n+5)}{6\cdot 5} a_4
       &= \left( -\frac{(n-4)(5+n)}{6 \cdot 5} \right)
@@ -80,8 +80,8 @@ Here, we will give the long and tedious proofs we skipped earlier.
          \left( -\frac{n(n+1)}{2 \cdot 1} \right)  a_0 \\
       &= -\frac{(n+5)(n+3)(n+1)n(n-2)(n-4)}{6!} a_0.
   \end{align*}
-  One can generalize this relation for the $i^\text{th}$ even ($i = 2k$)
-  coefficient and obtain
+  One can generalize this relation for the $i$-th even ($i = 2k$) coefficient
+  and obtain
   \begin{equation*}
     a_{2k} = (-1)^k \frac{(n+(2k-1))(n+(2k-1)-2)
       \hdots (n-(2k-2)+2)(n-(2k-2))}{(2k)!}a_0,
@@ -99,8 +99,8 @@ Here, we will give the long and tedious proofs we skipped earlier.
          \left( -\frac{(n-1)(n+2)}{3 \cdot 2} \right) a_1 \\
       &= -\frac{(n+6)(n+4)(n+2)(n-1)(n-3)(n-5)}{7!} a_1.
   \end{align*}
-  As before, we can generalize this equation for the $i^\text{th}$ odd ($i =
-  2k+1$) coefficient and get
+  As before, we can generalize this equation for the $i$-th odd ($i = 2k+1$)
+  coefficient and get
   \begin{equation*}
     a_{2k+1} = (-1)^k \frac{(n + 2k)(n+2k-2)
       \hdots (n-(2k-1)+2)(n-(2k-1))}{(2k+1)!} a_1.
@@ -110,96 +110,132 @@ Here, we will give the long and tedious proofs we skipped earlier.
     Z_\text{e}^K(z) &:=
       \sum_{k=0}^K(-1)^k \frac{
         (n+(2k-1))(n+(2k-1)-2) \hdots
-        \color{red}(n-(2k-2)+2)(n-(2k-2))
+        \color{red!80!black}(n-(2k-2)+2)(n-(2k-2))
       }{(2k)!} z^{2k}, \\
     Z_\text{o}^K(z) &:=
       \sum_{k=0}^K(-1)^k \frac{
-        (n + 2k)(n+2k-2)\hdots \color{blue} (n-(2k-1)+2)(n-(2k-1))
+        (n + 2k)(n+2k-2)\hdots \color{blue!80!black} (n-(2k-1)+2)(n-(2k-1))
       }{(2k+1)!} z^{2k+1},
   \end{align*}
-  the solution to the Legendre equation \eqref{kugel:eqn:legendre-bis} can be
-  written as
-  \begin{equation}\label{eq:solution}
+  we have a solution to the Legendre equation \eqref{kugel:eqn:legendre-bis},
+  which can be written as
+  \begin{equation} \label{kugel:eqn:legendre-powerseries}
     Z(z) = \lim_{K \to \infty} \left[
       a_0 Z_\text{e}^K(z) + a_1 Z_\text{o}^K(z)
     \right].
   \end{equation}
-
-  The colored parts can be analyzed separately:
+  However, as mentioned earlier this power series only converges for $|z| < 1$,
+  but (for our application in the spherical harmonics) we want convergence for
+  $|z| \leq 1$. This can only happen in one case: when the power series becomes
+  \emph{finite}, i.e. a polynomial. To show that this happens, we analyze the
+  colored parts separately:
   \begin{itemize}
-    \item[\textcolor{red}{\textbullet}] Suppose that $n=n_0$ is an even number. Then the red part, for a specific value of $k=k_0$, will follow the following relation:
+    \item[\textcolor{red}{\textbullet}]
+      Suppose that $n = n_0$ is an even integer. Then in the red part, for some
+      value of $k=k_0$, it will happen that
       \begin{equation*}
-        n_0-(2k_0-2)=0. 
+        n_0-(2k_0-2)=0
+        \iff
+        n_0 = 2 k_0 - 2.
       \end{equation*}
-      From that point on, given the recursive nature of Eq.\eqref{eq:recursion}, all the subsequent coefficients will also be 0, making the sum finite.
+      From that point on, given the recursive nature of
+      \eqref{kugel:eqn:coeff-recursion}, all the subsequent coefficients will
+      also be 0, making the sum finite.
+
+    \item[\textcolor{blue}{\textbullet}]
+      Suppose that $n=n_0$ is an odd integer. Then as before, in the blue part a
+      specific value of $k=k_0$ will follow the following relation:
       \begin{equation*}
-        a_{2k}=0 \iff y_{\text{o}}^{2k}(x)=y_{\text{o}}^{2k_0}(x), \quad \forall k>k_0
-      \end{equation*} 
-    \item[\textcolor{blue}{\textbullet}] Suppose that $n=n_0$ is an odd number. Then the blue part, for a specific value of $k=k_0$, will follow the following relation 
-      \begin{equation*}
-        n_0-(2k_0-1)=0.  
+        n_0-(2k_0-1)=0
+        \iff
+        n_0 = 2k_0 - 1.
       \end{equation*}
-      From that point on, for the same reason as before, all the subsequent coefficients will also be 0, making the sum finite.
-      \begin{equation*}
-        a_{2k+1}=0 \iff y_{\text{o}}^{2k+1}(x)=y_{\text{o}}^{2k_0+1}(x), \quad \forall k>k_0
-      \end{equation*}
+      And from that point on, for the same reason as before, all the subsequent
+      coefficients will also be 0, making the sum finite.
   \end{itemize} 
 
-  There is the possibility of expressing the solution in Eq.\eqref{eq:solution} in a more compact form, combining the two solutions $y_\text{o}^K(x)$ and $y_\text{e}^K(x)$. They are both a polynomial of maximum degree $n$, assuming $n \in \mathbb{N}$. In the case where $n$ is even, the polynomial solution
+  Thus, we can see that if $n \in \mathbb{Z}$ the sum will always become finite,
+  which is exactly what we want. Now, whichever the case notice that the
+  polynomial will always be of degree $n$. We can use this fact to write a
+  single expression that contains both the odd and even cases by unfolding the
+  recursion \eqref{kugel:eqn:coeff-recursion} backwards. That is, instead of
+  starting with $a_0$ to compute $a_2$, or with $a_1$ to compute $a_3$ and go
+  on, we use $a_n$ and go backwards and write the solution as
   \begin{equation*}
-    \lim_{K\to \infty} y_\text{e}^K(x)
+    Z(x) = a_n x^n + a_{n-2} x^{n-2} + a_{n-4} x^{n-4} 
+      + a_{n-6} x^{n-6} + \hdots +
+      \begin{cases} 
+        a_1 x, \quad &\text{if } n \text{ is odd} \\ 
+        a_0, \quad  &\text{if } n \text{ is even} 
+      \end{cases}
+      = \sum_{k=0}^{\lfloor \frac{n}{2} \rfloor} a_{n-2k}x^{n-2k}.
   \end{equation*}
-  will be a finite sum. If instead $n$ is odd, will be 
-  \begin{equation*}
-    \lim_{K\to \infty} y_\text{o}^K(x)
-  \end{equation*}
-  to be a finite sum. 
-
-  Depending on the coefficient we start with, $a_1$ or $a_0$, we will obtain the odd or even polynomial respectively. Starting with the last coefficient $a_n$ and, recursively, calculating all the others in descending order, we can express the two parts $y_\text{o}^K(x)$ and $y_\text{e}^K(x)$ with a single sum. Hence, because we start with the last coefficient, the choice concerning $a_1$ and $a_0$ will be at the end of the sum, and not at the beginning. To compact Eq.\eqref{eq:solution}, Eq.\eqref{eq:recursion} can be reconsidered to calculate the coefficient $a_{k-2}$, using $a_k$
-  \begin{equation*}
-    a_{k-2} = -\frac{(k+2)(k+1)}{(k-n)(k+n+1)}a_k
-  \end{equation*}
-  Now the game is to find a pattern, as before. Remember that $n$ is a fixed parameter of Eq.\eqref{eq:legendre}.  
+  Therefore, we need to find how to compute $a_{n - 2k}$ starting from $a_n$.
+  The game is like before to find a pattern, so
   \begin{align*}
-    a_{n-2} &= -\frac{n(n-1)}{2(2n-1)}a_n, \\
-    a_{n-4} &= -\frac{(n-2)(n-3)}{4(2n-3)}a_{n-2} \\
-    &= -\frac{(n-2)(n-3)}{4(2n-3)}-\frac{n(n-1)}{2(2n-1)}a_n.
+    a_{n-2} &= -\frac{n(n-1)}{2(2n-1)}a_n, &
+    a_{n-4} &= -\frac{(n-2)(n-3)}{4(2n-3)}a_{n-2}
+    = \left(
+        -\frac{(n-2)(n-3)}{4(2n-3)}
+      \right) \left(
+        -\frac{n(n-1)}{2(2n-1)}
+      \right) a_n,
   \end{align*}
-  In general 
-  \begin{equation}\label{eq:general_recursion}
-    a_{n-2k} = (-1)^k \frac{n(n-1)(n-2)(n-3) \hdots (n-2k+1)}{2\cdot4\hdots 2k(2n-1)(2n-3)\hdots(2n-2k+1)}a_n
-  \end{equation}
-  The whole solution can now be written as
-  \begin{align}
-    y(x) &= a_n x^n + a_{n-2} x^{n-2} + a_{n-4} x^{n-4} + a_{n-6} x^{n-6} + \hdots + \begin{cases} 
-      a_1 x, \quad &\text{if } n \text{ odd} \\ 
-      a_0, \quad  &\text{if } n \text{ even} 
-    \end{cases} \nonumber \\
-    &= \sum_{k=0}^{\lfloor \frac{n}{2} \rfloor} a_{n-2k}x^{n-2k} \label{eq:solution_2}
-  \end{align}
-  By considering
-  \begin{align}
-    (2n-1)(2n-3)\hdots (2n-2k+1)&=\frac{2n(2n-1)(2n-2)(2n-3)\hdots(2n-2k+1)}
-    {2n(2n-2)(2n-4)(2n-6)\hdots(2n-2k+2)} \nonumber \\ 
-    &=\frac{\frac{(2n)!}{(2n-2k)!}}
-    {2^kn(n-1)(n-2)(n-3)\hdots(n-k+1)} \nonumber \\
-    &=\frac{\frac{(2n)!}{(2n-2k)!}}
-    {2^k\frac{n!}{(n-k)!}}=\frac{(n-k)!(2n)!}{n!(2n-2k)!2^k} \label{eq:1_sub_recursion}, \\
-    2 \cdot 4  \hdots 2k &= 2^r 1\cdot2 \hdots r = 2^r r!\label{eq:2_sub_recursion}, \\
-    n(n-1)(n-2)(n-3) \hdots (n-2k+1) &= \frac{n!}{(n-2k)!}\label{eq:3_sub_recursion}.
-  \end{align}
-  Eq.\eqref{eq:solution_2} can be rewritten as
-  \begin{equation}\label{eq:solution_3}
-    y(x)=a_n \sum_{k=0}^{\lfloor \frac{n}{2} \rfloor} (-1)^k \frac{n!^2(2n-2k)!}{k!(n-2k)!(n-k)!(2n)!}  x^{n-2k}.
-  \end{equation}
-  Eq.\eqref{eq:solution_3} is defined for any $a_n$. By letting $a_n$ be declared as
+  and in general 
+  \begin{equation*}
+    a_{n-2k} = (-1)^k \frac{
+      n(n-1)(n-2)(n-3) \cdots (n-2k+1)
+    }{
+      2 \cdot 4 \cdots 2k(2n-1)(2n-3) \cdots (2n-2k+1)
+    } a_n.
+  \end{equation*}
+  To clean up this expression, we use
+  \begin{equation*}
+    n(n-1)(n-2)(n-3) \hdots (n-2k+1)
+    = \frac{n!}{(n-2k)!}
+  \end{equation*}
+  in the part of the denominator
+  \begin{align*}
+    (2n-1)(2n-3) \cdots (2n-2k+1) &= \frac{
+        2n(2n-1)(2n-2)(2n-3) \cdots (2n-2k+1)
+      }{
+        2n(2n-2)(2n-4)(2n-6) \cdots (2n-2k+2)
+      }
+      \\
+      &= \frac{
+        \frac{(2n)!}{(2n-2k)!}
+      }{
+        2^k n(n-1)(n-2)(n-3) \cdots (n-k+1)
+      }
+      \\
+      &= \frac{
+        \frac{(2n)!}{(2n-2k)!}
+      }{
+        2^k \frac{n!}{(n-k)!}
+      }
+      = \frac{(n-k)!(2n)!}{n!(2n-2k)!2^k},
+  \end{align*}
+  and then since
+  \begin{align*}
+    2 \cdot 4  \cdots 2k &= 2^r 1\cdot2 \cdots r = 2^r r!,
+  \end{align*}
+  we obtain
+  \begin{equation*}
+    Z(x) = \sum_{k=0}^{\lfloor \frac{n}{2} \rfloor}
+      \underbrace{
+        (-1)^k \frac{n!^2(2n-2k)!}{k!(n-2k)!(n-k)!(2n)!} a_n
+      }_{a_{n-2k}} z^{n-2k},
+  \end{equation*}
+  which holds for any value of $a_n$. By letting
   \begin{equation*}
     a_{n} := \frac{(2n)!}{2^n n!^2},
   \end{equation*}
-  the so called \emph{Legendre polynomial} emerges
-  \begin{equation}\label{eq:leg_poly}
-    P_n(x):=\sum_{k=0}^{\lfloor \frac{n}{2} \rfloor} (-1)^k \frac{(2n-2k)!}{2^n k! (n-k)!(n-2k)!} x^{n-2k} 
+  the \emph{Legendre polynomials}
+  \begin{equation}
+    P_n(z) := \sum_{k=0}^{\lfloor \frac{n}{2} \rfloor}
+      (-1)^k \frac{(2n-2k)!}{2^n k! (n-k)!(n-2k)!} z^{n-2k} 
   \end{equation}
+  emerges.
 \end{proof}
 
 \subsection{Associated Legendre Equation}
