@@ -1164,8 +1164,73 @@ Term, der in der hypergeometrischen Funktion $\mathstrut_nF_m$
 vorkommt, aber nicht in der
 Summe~\eqref{buch:rekursion:hypergeometrisch:eqn:stammfunktion:summe}.
 
-\subsection{TODO}
-\begin{itemize}
-\item Hypergeometrische Transformationen
-\item Gausscher Kettenbruch \url{https://en.wikipedia.org/wiki/Gauss\%27s_continued_fraction}
-\end{itemize}
+%
+% Berechnung hypergeometrischer Funktionen
+%
+\subsection{Numerische Berechnung}
+\begin{figure}
+\centering
+\includegraphics{chapters/040-rekursion/images/powergamma.pdf}
+\caption{Anwachsen von Zähler $x^k$ und Nenner $k!$ in der
+Exponentialreihe für $x=10$. 
+Ab $k\approx 30$ werden die Terme der Reihe zunehmend kleiner,
+was schliesslich zu Konvergenz der Reihe führt.
+Für $k\approx 50$ sind die einzelnen Terme kleiner als die
+Maschinengenauigkeit darzustellen gestattet.
+Für negative $x$ wird starke Auslöschung die Genauigkeit des Resultates
+unbrauchbar machen.
+\label{buch:rekursion:hypergeometrisch:fig:powergamma}}
+\end{figure}
+Die naheliegendste Methode zur Berechnung einer hypergeometrischen
+Funktion  $\mathstrut_pF_q$ ist die Auswertung der Potenzreihe.
+Schon die einfachste hypergeometrische Funktion $\mathstrut_0F_0(x)=e^x$
+zeigt aber, dass dabei numerische Schwierigkeiten auftreten können.
+Für negative Argumente wird die Summe der Potenzreihe sehr klein.
+Dies ist möglich, weil der Nenner $k!$ in der Potenzreihe
+\[
+\mathstrut_0F_0(x)
+=
+e^x
+= 
+1+x+\frac{x^2}{2!} + \frac{x^3}{3!} + \dots + \frac{x^k}{k!}+\dots
+\]
+sehr viel schneller anwächst als der Zähler $x^k$
+(Abbildung~\ref{buch:rekursion:hypergeometrisch:fig:powergamma}).
+Dazu muss aber $k$ eine gewisse Grösse haben, für $x=10$ muss
+z.~B.~$k\gtrapprox30$ sein.
+Für negative $x$ ist $e^x$ sehr klein, aber einzelne Terme in der
+Summe sind viele Grössenordnungen grösser, was zu Auslöschung führt.
+
+Im Falle der Exponentialfunktion gibt es eine einfache Lösung für
+dieses Problem.
+Um $y=e^x$ für negatives $x$ zu berechnen, verwendet man mit Vorteil
+$y=1/e^{-x}$. Da $-x$ positiv ist, entsteht keine Auslöschung und der
+Kehrwert führt ebenfalls keine weiteren Fehler ein.
+So ist die Berechnung von $e^x$ auch für negative $x$ mit hoher
+Genauigkeit möglich.
+
+Ein ähnliches Phänomen muss ganz offensichtlich auch bei den
+trigonometrischen Funktion $\sin x$ und $\cos x$ für beliebige
+reelle Argumente auftreten.
+Da diese Funktionen beschränkt sind, muss für grosse Absolutwerte
+des Argumentes Auslöschung auftreten.
+In diesem Fall können die Periodizität und goniometrische
+Identitäten verwendet werden, um die Berechnungsaufgabe in eine zu
+transformieren, die mit hoher Genauigkeit ausgeführt werden kann.
+
+Die allgemeine Theorie der hypergeometrischen Funktionen stellt
+eine Reihe ähnlicher Transformationen bereit, die bei der Berechnung
+ebenfalls hilfreich sein können.
+Die Darstellung dieser Transformationen würde den Rahmen dieses
+Buches sprengen.
+Eine speziell interessante Technik, der Gausssche Kettenbruch,
+erlaubt Darstellungen einer Funktion als Kettenbruch zu finden, die
+oft sehr gute numerische Eigenschaften haben.
+Kapitel~\ref{chapter:0f1} untersucht einige dieser Möglichkeiten.
+
+
+%\subsection{TODO}
+%\begin{itemize}
+%\item Hypergeometrische Transformationen
+%\item Gausscher Kettenbruch \url{https://en.wikipedia.org/wiki/Gauss\%27s_continued_fraction}
+%\end{itemize}

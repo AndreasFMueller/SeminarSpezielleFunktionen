@@ -1,0 +1,69 @@
+%
+% powergamma.tex -- comparison of power function and gamma function
+%
+% (c) 2021 Prof Dr Andreas Müller, OST Ostschweizer Fachhochschule
+%
+\documentclass[tikz]{standalone}
+\usepackage{amsmath}
+\usepackage{times}
+\usepackage{txfonts}
+\usepackage{pgfplots}
+\usepackage{csvsimple}
+\usetikzlibrary{arrows,intersections,math}
+\begin{document}
+\def\skala{1}
+\begin{tikzpicture}[>=latex,thick,scale=\skala]
+
+\def\dx{0.18}
+\def\dy{0.08}
+
+\foreach \x in {10,20,...,70}{
+	\draw[color=gray!20] ({\x*\dx},0) -- ({\x*\dx},{102*\dy});
+}
+\foreach \y in {10,20,...,100}{
+	\draw[color=gray!20] (0,{\y*\dy}) -- ({73*\dx},{\y*\dy});
+}
+
+\draw[->] (-0.1,0) -- (13.3,0) coordinate[label={$k$}];
+\draw[->] (0,-0.1) -- (0,8.3) coordinate[label={right:$y$}];
+
+\def\lten{1}
+
+\begin{scope}
+\clip (-0.05,-0.05) rectangle ({73*\dx},{102*\dy});
+
+\draw[color=blue,line width=1.4pt] (0,{\dy}) -- ({75*\dx},{75*\lten*\dy});
+
+\xdef\s{0}
+\foreach \k in {1,...,75}{
+	\pgfmathparse{ln(\k)/ln(10)}
+	\xdef\d{\pgfmathresult}
+	\draw[color=red,line width=1.4pt]
+		({(\k-1)*\dx)},{\s*\dy})
+		--
+		({\k*\dx},{(\s+\d)*\dy});
+	\pgfmathparse{\d+\s}
+	\xdef\s{\pgfmathresult}
+}
+
+\end{scope}
+
+\foreach \k in {10,20,...,70}{
+	\draw ({\k*\dx},-0.05) -- ({\k*\dx},0.05);
+	\node at ({\k*\dx},-0.05) [below] {$\k\mathstrut$};
+}
+
+\node[color=blue] at ({45*\dx},{43*\lten*\dy}) [right]
+	{$y=\log(x^k)$, mit $x=10$};
+\node[color=red] at ({45*\dx},{75*\dy}) [right] 
+	{$y=\log(k!)$};
+
+\foreach \y in {10,20,...,100}{
+	\draw (-0.05,{\y*\dy}) -- (0.05,{\y*\dy});
+	\node at (-0.05,{\y*\dy}) [left] {$\y$};
+}
+\node at (-0.05,-0.05) [below left] {$0$};
+
+\end{tikzpicture}
+\end{document}
+
