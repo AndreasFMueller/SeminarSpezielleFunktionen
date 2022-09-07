@@ -4,7 +4,7 @@
 # (c) 2021 Prof Dr Andreas Müller, OST Ostschweizer Fachhochschule
 #
 all:	gammaplot.pdf fibonacci.pdf order.pdf beta.pdf loggammaplot.pdf \
-	0f1.pdf
+	0f1.pdf powergamma.pdf
 
 gammaplot.pdf:	gammaplot.tex gammapaths.tex
 	pdflatex gammaplot.tex
@@ -44,3 +44,6 @@ loggammadata.tex:	loggammaplot.m
 
 0f1.pdf:	0f1.tex 0f1data.tex
 	pdflatex 0f1.tex
+
+powergamma.pdf:	powergamma.tex
+	pdflatex powergamma.tex
