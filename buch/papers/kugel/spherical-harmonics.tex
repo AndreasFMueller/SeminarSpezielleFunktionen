@@ -33,8 +33,8 @@ that mathematics offers us.
 \subsection{Eigenvalue Problem}
 \label{kugel:sec:construction:eigenvalue}
 
-From Section \ref{buch:pde:section:kugel}, we know that the spherical Laplacian
-in the spherical coordinate system (shown in Figure
+From section \ref{kugel:sec:preliminaries:laplacian}, we know that the spherical
+Laplacian in the spherical coordinate system (shown in Figure
 \ref{kugel:fig:spherical-coordinates}) is is defined as
 \begin{equation*}
     \sphlaplacian :=
@@ -320,22 +320,22 @@ in the lemma obtain the \emph{associated Legendre functions}.
   \label{kugel:def:ferrers-functions}
   The functions
   \begin{equation}
+    \label{kugel:eqn:ferrers-functions}
     P^m_n (z) = (1-z^2)^{\frac{m}{2}}\frac{d^{m}}{dz^{m}} P_n(z)
       = \frac{1}{2^n n!}(1-z^2)^{\frac{m}{2}}
         \frac{d^{m+n}}{dz^{m+n}}(1-z^2)^n, \quad |m|<n
   \end{equation}
   are known as Ferrers or associated Legendre functions.
 \end{definition}
+
 The constraint $|m|<n$, can be justified by considering equation
-\eqref{kugel:eq:associated_leg_func}, where we differentiate $m+n$ times. We all
+\eqref{kugel:eqn:ferrers-functions}, where we differentiate $m+n$ times. We all
 know that a differentiation, to be well defined, must have an order that is
 greater than zero. Furthermore, it can be seen that this derivative is applied
-on a polynomial of degree $2n$. As is known from Calculus 1, if you derive a
+on a polynomial of degree $2n$. As is known from calculus, if you derive a
 polynomial of degree $2n$ more than $2n$ times, you get zero, that would be a
 trivial solution. This is the power of zero: It is almost always a (boring)
-solution.
-
-We can thus summarize these two conditions by writing:
+solution. We can thus summarize these two conditions by writing:
 \begin{equation*}
     \begin{rcases}
         m+n \leq 2n &\implies m \leq n \\
@@ -1087,13 +1087,6 @@ In the case of the classical one-dimensional Fourier theory, we call \emph{Spect
 of the fundamental frequency $2\pi/T$, namely $n 2\pi/T$. In the most general case $c_n$ are complex numbers, so we divide the concept of spectrum in 
 \emph{Amplitude Spectrum} and \emph{Phase Spectrum}. In fig.\ref{kugel:fig:1d-fourier} a function $f(x)$ is presented along with the amplitude spectrum.
 
-\begin{figure}
-  \centering
-  \kugelplaceholderfig{.8\textwidth}{7cm}
-  \caption{\kugeltodo{caption}}
-  \label{kugel:fig:phase&amplitude-2d-fourier}
-\end{figure}
-
 The thing that is easiest for us humans to visualize and understand is often the Amplitude Spectrum.
 This is a huge limitation, since for example in Image Processing can be showed in a nice way that much
 more information is contained in the phase part (see fig.\ref{kugel:fig:phase-2d-fourier}).
@@ -1108,7 +1101,27 @@ more information is contained in the phase part (see fig.\ref{kugel:fig:phase-2d
 
 \begin{figure}
   \centering
-  \kugelplaceholderfig{.8\textwidth}{9cm}
+
+  \noindent
+  \subfigure[$N=0$]{\includegraphics[width=.25\linewidth, trim=700 0 700 100, clip]%
+    {papers/kugel/figures/python/earth-fourier-decomposition/n=0}}
+  \hspace{.07\linewidth}
+  \subfigure[$N=10$]{\includegraphics[width=.25\linewidth, trim=700 0 700 100, clip]%
+    {papers/kugel/figures/python/earth-fourier-decomposition/n=10}}
+  \hspace{.07\linewidth}
+  \subfigure[$N=50$]{\includegraphics[width=.25\linewidth, trim=700 0 700 100, clip]%
+    {papers/kugel/figures/python/earth-fourier-decomposition/n=50}}
+
+  \noindent
+  \subfigure[$N=100$]{\includegraphics[width=.25\linewidth, trim=700 0 700 100, clip]%
+    {papers/kugel/figures/python/earth-fourier-decomposition/n=100}}
+  \hspace{.07\linewidth}
+  \subfigure[$N=500$]{\includegraphics[width=.25\linewidth, trim=700 0 700 100, clip]%
+    {papers/kugel/figures/python/earth-fourier-decomposition/n=500}}
+  \hspace{.07\linewidth}
+  \subfigure[$N=1000$]{\includegraphics[width=.25\linewidth, trim=700 0 700 100, clip]%
+    {papers/kugel/figures/python/earth-fourier-decomposition/n=1000}}
+
   \caption{\kugeltodo{fig that show fourier style reconstruction on sphere (with increasing index)}}
   \label{kugel:fig:fourier-on-sphere-increasing-index}
 \end{figure}
@@ -1175,21 +1188,21 @@ Having proved the latter, it will follow that theorem \ref{kugel:theorem:parseva
   \label{kugel:theorem:general-parseval-sph}
   Suppose $f(\vartheta, \varphi), g(\vartheta, \varphi)$ are both complex-valued functions, that are furthermore square integrable, then
   \begin{equation}
+    \left\langle f, g\right\rangle_{\partial S} =
     \int_0^{2\pi}\int_0^\pi f(\vartheta, \varphi)\overline{g(\vartheta, \varphi)} \sin\vartheta \, d\varphi \, d\varphi 
     = \sum_{n=0}^\infty\sum_{m=-n}^n c_{m,n}\overline{c_{m',n'}}.\label{kugel:eq:general-parseval-sph}
   \end{equation}
-  is true.
 \end{theorem}
 \begin{proof}
   We can assume that both functions $f(\vartheta, \varphi)$ and $g(\vartheta, \varphi)$ have a spherical harmonics series expansion, hence:
   \begin{align*}
-    f(\vartheta, \varphi) &= \sum_{n=0 }^\infty \sum_{m =-n }^{n } c_{m, n } Y^{m }_{n }(\vartheta, \varphi) \\
+    f(\vartheta, \varphi) &= \sum_{n=0 }^\infty \sum_{m =-n }^{n } c_{m, n } Y^{m }_{n }(\vartheta, \varphi), &
     g(\vartheta, \varphi) &= \sum_{n'=0}^\infty \sum_{m'=-n'}^{n'} c_{m',n'} Y^{m'}_{n'}(\vartheta, \varphi).
   \end{align*}
   We can therefore rewrite eq.\eqref{kugel:eq:general-parseval-sph} as 
   \begin{align*}
+    \left\langle f, g\right\rangle_{\partial S} =
     \int_0^{2\pi}\int_0^\pi f(\vartheta, \varphi)\overline{g(\vartheta, \varphi)} \sin\vartheta \, d\varphi \, d\varphi 
-    &= \left\langle f, g\right\rangle_{\partial S} \\ 
     &= \left\langle \sum_{m=0}\sum_{n=-m}^m c_{m,n} Y^m_n, \sum_{m'=0}\sum_{n'=-m'}^{m'} c_{m',n'} Y^{m'}_{n'} \right\rangle_{\partial S} \\
     &= \sum_{m=0}^\infty \sum_{n=-m}^m \sum_{m'=0}^\infty \sum_{n'=-m'}^{m'} c_{m',n'}\overline{c_{m,n}} \left\langle Y^m_n,  Y^{m'}_{n'} \right\rangle_{\partial S}.
   \end{align*}
@@ -1197,6 +1210,7 @@ Having proved the latter, it will follow that theorem \ref{kugel:theorem:parseva
   \begin{equation*}
     \int_0^{2\pi}\int_0^\pi f(\vartheta, \varphi)\overline{g(\vartheta, \varphi)} \sin\vartheta \, d\varphi \, d\varphi 
     = \sum_{n=0}^\infty\sum_{m=-n}^n c_{m,n}\overline{c_{m',n'}}.
+    \qedhere
   \end{equation*}
 \end{proof}
 
