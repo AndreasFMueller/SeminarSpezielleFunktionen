@@ -5,8 +5,11 @@
 The purpose of this section is to dust off some concepts that will become
 important later on. This will enable us to be able to get a richer and more
 general view of the topic than just liming ourselves to a specific example.
+However, if the reader is already familiar with the following concepts: inner
+product space, Hilbert space, Fourier series, Laplacian operator and
+eigenvalue problems, this entire section may be skipped.
 
-\subsection{Vectors and inner product spaces}
+\subsection{Inner product spaces}
 
 We shall start with a few fundamentals of linear algebra. We will mostly work
 with complex numbers, but for the sake of generality we will do what most
@@ -14,6 +17,7 @@ textbook do, and write \(\mathbb{K}\) instead of \(\mathbb{C}\) since the
 theory works the same when we replace \(\mathbb{K}\) with the real
 numbers \(\mathbb{R}\).
 
+\if 0
 \begin{definition}[Vector space]
   \label{kugel:def:vector-space} \nocite{axler_linear_2014}
   A \emph{vector space} over a field \(\mathbb{K}\) is a set \(V\) with an
@@ -61,6 +65,7 @@ numbers \(\mathbb{R}\).
 \end{definition}
 
 \kugeltodo{Text here.}
+\fi
 
 \begin{definition}[Inner product]
   \label{kugel:def:inner-product} \nocite{axler_linear_2014}
@@ -84,14 +89,16 @@ numbers \(\mathbb{R}\).
   \end{enumerate}
 \end{definition}
 
-This newly introduced inner product is thus a generalization of the scalar
-product that does not explicitly depend on rows or columns of vectors. This
-has the interesting consequence that anything that behaves according to the
-rules given in definition \ref{kugel:def:inner-product} \emph{is} an inner
-product. For example if we say that the vector space \(V = \mathbb{R}^n\),
-then the dot product defined in definition \ref{kugel:def:dot-product}
+The inner product is a generalization of the scalar product that does not
+explicitly depend on rows or columns of vectors. This has the interesting
+consequence that anything that behaves according to the rules given in
+definition \ref{kugel:def:inner-product} \emph{is} an inner product. For
+example if we say that the vector space \(V = \mathbb{R}^n\), then the dot
+product
 \(
-  u \cdot v = u_1 \overline{v}_1 + u_2 \overline{v}_2 + \cdots + u_n \overline{v}_n
+  u \cdot v = u_1 \overline{v}_1
+    + u_2 \overline{v}_2
+    + \cdots + u_n \overline{v}_n
 \)
 is an inner product in \(V\), and the two are said to form an \emph{inner
 product space}.
@@ -159,7 +166,8 @@ mentioned at the beginning. Using the technical jargon, we need that our inner
 product space is what is called a \emph{complete metric space}, which just
 means that we can measure distances. For the more motivated readers although
 not really necessary we can also give a more formal definition, the others can
-skip to the next section.
+skip to the end of the section where there is definition
+\ref{kugel:def:hilbert}.
 
 \begin{definition}[Metric space]
   \nocite{tao_analysis_2016}
@@ -222,6 +230,7 @@ Hilbert space, after the incredibly influential German mathematician David
 Hilbert.
 
 \begin{definition}[Hilbert space]
+  \label{kugel:def:hilbert}
   A Hilbert space is a vector space \(H\) with an inner product \(\langle f, g
   \rangle\) and a norm \(\sqrt{\langle f, f \rangle}\) defined such that \(H\)
   turns into a complete metric space.
@@ -252,15 +261,16 @@ periodicity. Both should be very straightforward and already well known.
 In the definition above the notation \(\mathbb{R}/\mathbb{Z}\) was borrowed
 from group theory, and is what is known as a quotient group; Not really
 relevant for our discussion but still a ``good to know''. More importantly, it
-is worth noting that we could have also defined more generally \(L\)-periodic
+is worth noting that we could have also defined more generally \(T\)-periodic
 functions with \(L\in\mathbb{R}\), however, this would introduce a few ugly
-\(L\)'s everywhere which are not really necessary (it will always be possible
-to extend the theorems to \(\mathbb{R} / L\mathbb{Z}\)). Thus, we will
-continue without the \(L\)'s, and to simplify the language unless specified
+\(T\)'s everywhere which are not really necessary (it will always be possible
+to extend the theorems to \(\mathbb{R} / T\mathbb{Z}\)). Thus, we will
+continue without the \(T\)'s, and to simplify the language unless specified
 otherwise ``periodic'' will mean 1-periodic. Having said that, we can
 officially begin with the Fourier theory.
 
 \begin{lemma}
+  \label{kugel:thm:sqint-hilbert}
   The subset of absolutely square integrable functions in
   \(C(\mathbb{R}/\mathbb{Z}; \mathbb{C})\) together with the Hermitian inner
   product
@@ -281,11 +291,12 @@ officially begin with the Fourier theory.
   compactness and completeness is definitely beyond the goals of this text.}.
 \end{proof}
 
-This was probably not a very satisfactory proof since we brushed off a lot of
+This was probably a not very satisfactory proof since we brushed off a lot of
 details by referencing other theorems. However, the main takeaway should be
 that we have ``constructed'' this new Hilbert space of functions in a such a
-way that from now on we will not have to worry about the details of
-convergence.
+way that from now on we will not have to worry about the fussy details of
+convergence. Instead of worrying about convergence, we will use right away
+this new Hilbert space of lemma \ref{kugel:thm:sqint-hilbert}.
 
 \begin{lemma}
   \label{kugel:thm:exp-1d}
@@ -314,17 +325,75 @@ convergence.
   as desired. \qedhere
 \end{proof}
 
-\begin{definition}[Spectrum]
+Now, this is an useful lemma, because this set of orthonormal functions can be
+used as basis of our Hilbert space of square integrable functions in
+$C(\mathbb{R}/\mathbb{Z}; \mathbb{C})$, from which follows the interesting
+fact that we can create linear combinations of these basis functions to obtain
+other functions. This was Fourier's insight: any reasonable function can be
+expressed using a linear combination of complex exponentials\footnote{For
+historical accuracy's sake we should mention that actually Fourier used sines
+and cosines and not complex exponentials. However, in practice this fact does
+not really change anything important the theory we will present.} $E_n(x)$, or
+in other words using a Fourier series.
+
+\begin{definition}[Fourier series]
+  A Fourier series is an (infinite) linear combination of complex
+  exponentials, or
+  \begin{equation*}
+    S(x) = \sum_{n \in \mathbb{Z}} c_n E_n(x)
+      = c_0 + c_1 e^{i2\pi x} + c_2 e^{i2\pi 2x}
+        + \cdots + e^{i2\pi nx} + \cdots,
+  \end{equation*}
+  where $c_n \in \mathbb{C}$ and $E_n(x) = e^{i2\pi nx}$.
 \end{definition}
+
+The natural question that arises from Fourier's insight is then: how do we get
+the coefficients $c_n$ of the linear combination? Since we are in a Hilbert
+space: with the inner product! If we assume that a square integrable periodic
+function $f(x)$ can be written as a Fourier series, it is easy to see that we
+can make use of the orthonormal properties of $E_n$ to extract the
+coefficients:
+\begin{equation*}
+  c_n = \langle f, E_n \rangle
+    = \left \langle \sum_{k \in\mathbb{Z}} c_k E_k , E_n \right \rangle
+    = \sum_{k \in\mathbb{Z}}  c_k \underbrace{
+      \left \langle E_k , E_n \right \rangle
+    }_{ 0 \text{ unless } k = n}
+    = c_n.
+\end{equation*}
+Of course, the real difficulty of Fourier's theory lies in the fact that we
+cannot simply assume that $f(x)$ has a Fourier series. Unfortunately, proving
+that any square integrable periodic function has a Fourier series is quite
+complicated and too long for this brief introduction. However, for the
+ambitious readers chapter 5 of \cite{tao_analysis_2016} has a quite readable
+construction of the proof of the following theorem.
 
 \begin{theorem}[Fourier Theorem]
   \label{kugel:thm:fourier-theorem}
+  For a 1-periodic function $f \in L^2$
   \begin{equation*}
     \lim_{N \to \infty} \left \|
-      f(x) - \sum_{n = -N}^N \hat{f}(n) E_n(x) 
-    \right \|_2 = 0
+      f(x) - \sum_{n = -N}^N c_n E_n(x) 
+    \right \|_2 = 0.
   \end{equation*}
 \end{theorem}
+
+Another way common to read Fourier's theorem stated above, is that we begin
+with a finite linear combination to approximate $f(x)$, then by continuing to
+add more and more terms (infinitely many) it will eventually become
+indistinguishable from $f(x)$ (under the $L^2$ norm). Finally, there is also
+another perspective for the Fourier theory typically used in engineering,
+where we interpret the result as a relationship between two functions: one in
+the ``time-domain'' $f(t)$ and the \emph{spectrum} in the ``frequency
+domain''.
+
+\begin{definition}[Spectrum]
+  The spectrum of a 1-periodic function $f(x) \in L^2$ is the set of numbers
+  \begin{equation*}
+    c_n = \langle f, E_n \rangle
+      = \int_0^1 f(x) \, e^{-i2\pi nx} dx.
+  \end{equation*}
+\end{definition}
 
 \begin{lemma}
   The set of functions \(E_{m, n}(\xi, \eta) = e^{i2\pi m\xi}e^{i2\pi n\eta}\)
