@@ -5,8 +5,8 @@
 The purpose of this section is to dust off some concepts that will become
 important later on. This will enable us to be able to get a richer and more
 general view of the topic than just liming ourselves to a specific example.
-However, if the reader is already familiar with the following concepts: inner
-product space, Hilbert space, Fourier series, Laplacian operator and
+However, if the reader is already very familiar with the following concepts:
+inner product space, Hilbert space, Fourier series, Laplacian operator and
 eigenvalue problems, this entire section may be skipped.
 
 \subsection{Inner product spaces}
@@ -366,7 +366,7 @@ cannot simply assume that $f(x)$ has a Fourier series. Unfortunately, proving
 that any square integrable periodic function has a Fourier series is quite
 complicated and too long for this brief introduction. However, for the
 ambitious readers chapter 5 of \cite{tao_analysis_2016} has a quite readable
-construction of the proof of the following theorem.
+construction of the proof of the following theorem, which says just that.
 
 \begin{theorem}[Fourier Theorem]
   \label{kugel:thm:fourier-theorem}
@@ -374,19 +374,13 @@ construction of the proof of the following theorem.
   \begin{equation*}
     \lim_{N \to \infty} \left \|
       f(x) - \sum_{n = -N}^N c_n E_n(x) 
-    \right \|_2 = 0.
+    \right \|_2 = 0,
+    \qquad\text{where}\qquad
+    c_n = \langle f, E_n \rangle.
   \end{equation*}
 \end{theorem}
 
-Another way common to read Fourier's theorem stated above, is that we begin
-with a finite linear combination to approximate $f(x)$, then by continuing to
-add more and more terms (infinitely many) it will eventually become
-indistinguishable from $f(x)$ (under the $L^2$ norm). Finally, there is also
-another perspective for the Fourier theory typically used in engineering,
-where we interpret the result as a relationship between two functions: one in
-the ``time-domain'' $f(t)$ and the \emph{spectrum} in the ``frequency
-domain''.
-
+\if 0
 \begin{definition}[Spectrum]
   The spectrum of a 1-periodic function $f(x) \in L^2$ is the set of numbers
   \begin{equation*}
@@ -394,23 +388,108 @@ domain''.
       = \int_0^1 f(x) \, e^{-i2\pi nx} dx.
   \end{equation*}
 \end{definition}
+\fi
+
+Another very common way to read Fourier's theorem stated above, is that we
+begin with a finite linear combination to approximate $f(x)$, then by
+continuing to add more and more terms (infinitely many) it will eventually
+become indistinguishable from $f(x)$ (under the $L^2$ norm). Of course, we
+should mention the Fourier theory is not limited to one dimensional function.
+In fact, it is quite the opposite, and hopefully it should be clear by the
+way we introduced it. For example consider the following lemma.
 
 \begin{lemma}
-  The set of functions \(E_{m, n}(\xi, \eta) = e^{i2\pi m\xi}e^{i2\pi n\eta}\)
+  The set of functions \(E^m_n(\xi, \eta) = e^{i2\pi m\xi}e^{i2\pi n\eta}\)
   on the square \([0; 1)^2\) with \(m, n \in \mathbb{Z} \) are orthonormal.
 \end{lemma}
 \begin{proof}
-  The proof is almost identical to lemma \ref{kugel:thm:exp-1d}, with the
-  only difference that the inner product is given by
-  \[
-    \langle E_{m,n}, E_{m', n'} \rangle
-    = \iint_{[0;1)^2}
-        E_{m, n}(\xi, \eta) \overline{E_{m', n'} (\xi, \eta)}
+  We will make use of lemma \ref{kugel:thm:exp-1d}, since in this case inner
+  product is given by
+  \begin{align*}
+    \langle E^m_n, E^{m'}_{n'} \rangle
+    &= \iint_{[0;1)^2}
+        E^m_n(\xi, \eta) \overline{E^{m'}_{n'} (\xi, \eta)}
       \, d\xi d\eta
-      .\qedhere
-  \]
+    = \int_0^1 \int_0^1
+        e^{i2\pi m\xi} e^{i2\pi n\eta}
+        e^{-i2\pi m'\xi} e^{-i2\pi n'\eta}
+      \, d\xi d\eta
+      \\
+    &= \int_0^1 e^{i2\pi m\xi} e^{-i2\pi m'\xi} d\xi 
+      \int_0^1 e^{i2\pi n\eta} e^{-i2\pi n'\eta} d\eta
+    = \langle E_m, E_{m'} \rangle \langle E_n, E_{n'} \rangle
+    = \delta_{mm'} \delta_{nn'}
+    .\qedhere
+  \end{align*}
 \end{proof}
 
-\subsection{Laplacian operator}
+And of course there is also a way to show that we can write any 2 dimensional
+function using a Fourier series, i.e.
+\begin{equation*}
+  f(\xi, \eta) = \sum_{m \in \mathbb{Z}} \sum_{n \in \mathbb{Z}}
+    c_{m, n} E^m_n(\xi, \eta)
+    \qquad\text{where}\qquad
+    c_{m,n} = \langle f, E^m_n \rangle.
+\end{equation*}
 
-\subsection{Eigenvalue Problem}
+\subsection{Laplacian Operator}
+\label{kugel:sec:preliminaries:laplacian}
+
+We will now have another quick disgression in the realm of multivariate
+calculus to refresh the Laplacian operator, which has already come up many
+times throuout the book. In $\mathbb{R}^3$ using cartesian coordinates
+coordinates the Laplacian operator is
+\begin{equation*}
+  \nabla^2 = \frac{\partial}{\partial x}
+    + \frac{\partial}{\partial y}
+    + \frac{\partial}{\partial z}
+    = \sum_i \frac{\partial}{\partial x_i}
+    = \nabla \cdot \nabla,
+\end{equation*}
+where in the last step we remined that the Laplacian is also the divergence of
+the gradient with the suggestive (ab)use of notation for the dot product. With
+quite a lot of effort it is possible to show that in spherical coordinates
+(shown a few pages later in figure \ref{kugel:fig:spherical-coordinates}) the
+Laplacian becomes\footnote{This is not the only way to write the Laplacian in
+spherical coordinates, see \ref{buch:pde:section:kugel} for a discussion.}
+\begin{equation*}
+    \nabla^2 =
+      \frac{1}{r^2} \frac{\partial}{\partial r} \left(
+        r^2 \frac{\partial}{\partial r}
+      \right)
+      + \frac{1}{r^2} \left[
+          \frac{1}{\sin\vartheta} \frac{\partial}{\partial \vartheta} \left(
+            \sin\vartheta \frac{\partial}{\partial\vartheta}
+          \right)
+        + \frac{1}{\sin^2 \vartheta} \frac{\partial^2}{\partial\varphi^2}
+      \right].
+\end{equation*}
+As we will see more later, being a second derivative the Laplacian is a
+measure of curvature.
+
+\subsection{Eigenvalue Problems}
+
+The final topic for this section are eigenvalue problems. In a vector space
+$V$ over $\mathbb{K}$, the \emph{eigenvalue problem} for an
+operator\footnote{To avoid confusion we should mention that the symbol
+$\square$ is used for a generic operator and \emph{not} the d'Alembert
+operator presented in section
+\ref{buch:pde:section:gleichungen-und-randbedingungen}. Though, of course,
+there are (very interesting) eigenvalue problems for the d'Alembert operator
+such as the Klein–Gordon equation, which the reader is encouraged to learn
+about.} $\square$ is the equation
+\begin{equation*}
+  \square v = \lambda v
+\end{equation*}
+where we need so solve for both the \emph{eigenvalues} $\lambda \in
+\mathbb{K}$ and the \emph{eigenvectors} $v \in V$. In a finite vector space
+(classic example), such as $\mathbb{R}^n$ an operator could be a square
+$n\times n$ matrix $A$, and the problem is usually solved by first equating
+characteristinc polynomial $\det(A - \lambda I)$ to zero to find the
+$\lambda$'s, and then solving for the eigenvalues. If $\square$ is a
+derivative, then we end up in the theory of (ordinary) differential equations,
+and if $\square$ is a partial derivative, then we can use methods such as the
+separation method discussed in section \ref{buch:pde:section:separation}.
+
+% Whichever the case, the eigenvalue problem should be understood as a search
+% for what \emph{does not change} (up to a scalar factor) when 
