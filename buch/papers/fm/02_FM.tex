@@ -57,7 +57,36 @@ Da beide nur durch die Operation differenzieren getrennt wird, sind diese zwei M
 Jeweils vor der Modulation bzw. nach der Demodulation kann dann noch eine Differentiation oder 
 Integration durchgeführt wird, um von der einen Modulationsart zur anderen zu gelangen.
 \citeauthor{fm:NAT}
-TODO beta Herleitung Nat seite 63
+
+Um das Spektrum für PM und FM gemeinsam berechnen zu können, werden die modulierenden Nachrich-
+tensignale \(m_{PM}(t)\) bzw. \(m_{FM}(t)\) unterschiedlich angesetzt:
+\[
+    m_{PM}(t) = A_m \cdot \sin(\omega m t) 
+    m_{FM}(t) = A_m \cdot \cos(\omega m t)
+\]
+Mit diesen Nachrichtensignalen kann die Phase \(\varphi(t)\) des modulierten Trägersignals sofort bestimmt werden,
+bei PM durch eine einfach Skalierung mit der Phasenhubkonstanten \(k_p\), 
+bei FM mit der Frequenzhubkonstanten \(k_f\)und anschliessender Integration, 
+wodurch aus dem frequenzmodulierenden Cosinus ebenfalls ein phasenmodulierender Sinus wird:
+\[
+    \varphi_{PM}(t) = k_p \cdot A_m \cdot \sin(\omega_m t)
+    \varphi_{FM}(t) = k_f \cdot A_m \cdot \frac{1}{\omega_m} \sin(\omega_m t)
+\]
+
+Die Phase verändert sich für PM und FM sinusförmig mit einer maximale Phasenabweichung \(\beta\),
+ welche sich -- zur Unterscheidung nachfolgend einmalig als \(\beta_{PM}\) bzw. \(\beta_{FM}\) bezeichnet -- wie folgt berechnet:
+\[
+    \beta_{PM} = k_p \cdot A_m
+    \beta_{FM} = k_f \cdot A_m \frac{1}{\omega_m} 
+\]
+Diese maximale Phasenabweichung \(\beta\) wird auch als Modulationsgrad (Englisch: modulation index) der Winkelmodulation bezeichnet, ist aber nur für Eintonsignale,
+ d.h. sinusförmig modulierte PM- und FM-Signale definiert. 
+Die Unterscheidung von \(\beta_{PM}\) und \(\beta_{FM}(t)\) in den vorhergehenden Formeln soll nur unterstreichen, dass
+der Modulationsgrad für PM und FM unterschiedlich berechnet wird.
+In allen nachfolgenden Formeln wird zusammengefasst nur noch ein einziges \(\beta\) verwendet. 
+Für diesen allgemeinen Modulationsgrad \(\beta\) muss dann aber jeweils die Formel für \(\beta_{PM}\) bzw. \(\beta_{FM}(t)\) verwendet werden,
+ je nachdem ob eine Phasen- oder Frequenzmodulation vorliegt.
+
 
 \subsection{Frequenzspektrum}
 
