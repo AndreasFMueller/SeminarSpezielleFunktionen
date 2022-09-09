@@ -1068,6 +1068,11 @@ following theorem is true.  The connection to Theorem
     \right\|_2 \sin\vartheta \,d\varphi\,d\vartheta  = 0
   \end{equation*}
 \end{theorem}
+\begin{proof}
+  Fourier was quite informal the first time he presented his theorem so, like him, we will also use the ``trust me'' proof. 
+  In any case, if you are brave enough and still interested in a proof, Dirichlet et al. can help you with the case in one 
+  dimension \cite{convergence_fourier}
+\end{proof}
 
 \subsection{Spectrum}
 
@@ -1090,7 +1095,8 @@ of the fundamental frequency $2\pi/T$, namely $n 2\pi/T$. In the most general ca
 \end{figure}
 
 The thing that is easiest for us humans to visualize and understand is often the Amplitude Spectrum.
-This is a huge limitation, since for example in Image Processing can be showed in a nice way that much more information is contained in the phase part (see fig.\ref{kugel:fig:phase-2d-fourier}).
+This is a huge limitation, since for example in Image Processing can be showed in a nice way that much
+more information is contained in the phase part (see fig.\ref{kugel:fig:phase-2d-fourier}).
 
 \begin{figure}
   \centering
@@ -1107,8 +1113,13 @@ This is a huge limitation, since for example in Image Processing can be showed i
   \label{kugel:fig:fourier-on-sphere-increasing-index}
 \end{figure}
 
-The same logic can be extended to the spherical harmonic coefficients $c_{m,n}$. In fig.\ref{kugel:fig:fourier-on-sphere-increasing-index} you can see the same concept as in fig.\ref{kugel:fig:1d-fourier} 
-but with a spherical function $f(\vartheta, \varphi)$.
+The same logic can be extended to the spherical harmonic coefficients $c_{m,n}$. In fig.\ref{kugel:fig:fourier-on-sphere-increasing-index} 
+you can see the same concept as in fig.\ref{kugel:fig:1d-fourier} but with a spherical function $f(\vartheta, \varphi)$. In this case we define 
+the ``spectrum'' of the spherical function $f(\vartheta, \varphi)$ as the relation between $c_{m,n}$ and the two indeces $m,n$. We can observe 
+the same behaviour as in the one-dimansional Fourier case: the absolute value $|c_{m,n}|$ decays quite quickly as $n$ increases. 
+Thus, the coefficients with a higher $n$ index are responsible for the small high-frequency details of the considered function. 
+This trend suggests a possible application: one could use these coefficients as a compression technique. If no particular resolution is 
+required, only the ``lower-frequency'' coefficients could be used, as in the case of digital lighting techniques\cite{SH_lighting_paper}.
 
 \subsection{Energy of a function $f(\vartheta, \varphi)$}
 
@@ -1119,52 +1130,79 @@ The latter has to do with the power of a signal and it can be expressed with the
 \begin{theorem}[Parseval's theorem $ciao$ ]
   \label{kugel:theorem:parseval-1D}
   Suppose $f(x)$ is a complex-valued $2\pi$-periodic function, that is furthermore square integrable, then
-  \begin{equation*}
-    \frac{1}{2\pi}\int_{-\pi}^{\pi} |f(x)|^2dx = \sum_{n=-\infty}^\infty |c_n|^2
-  \end{equation*}
+  \begin{equation}
+    \frac{1}{2\pi}\int_{-\pi}^{\pi} |f(x)|^2dx = \sum_{n=-\infty}^\infty |c_n|^2. \label{kugel:eq:parseval-1D}
+  \end{equation}
   is true.
 \end{theorem}
+\begin{proof}
+  The proof is analogous to the two-dimensional case and is therefore omitted.
+\end{proof}
 
-Basically this theorem is another way to show that energy is conserved, we could call it another ``energy conservation theorem''\footnote{The energy
-is not a mathematical concept. It is something that comes from physics and it is basically based on observations. Personally, in mathematics, we see this concept simply as follows: The energy of a $T$-periodic function $f(x)$ is defined as $\frac{1}{T}\int_{-T/2}^{T/2}f(x)^2dx$}. 
-We know that the fourier series is a way to map a function from the time
-domain to the frequency domain and, most important, this mapping is reversible (or invertible). The function we are considering still the same but in the time domain is continuos and -in the case 
-of the Fourier series- in the frequency domain a discrete one.
+Basically this theorem is another way to show that energy is conserved, we could call it another ``energy conservation theorem''
+\footnote{The energy is not a mathematical concept. It is something that comes from physics and it is basically based on observations. 
+Personally, in mathematics, we see this concept simply as follows: The energy of a $T$-periodic function $f(x)$ is defined as 
+$\frac{1}{T}\int_{-T/2}^{T/2}f(x)^2dx$}. We know that the fourier series is a way to map a function from the time domain to the 
+frequency domain and, most important, this mapping is reversible (or invertible). The function we are considering still the same 
+but in the time domain is continuos and, in the case of the Fourier series, in the frequency domain a discrete one.
 
-We may have overused the term ``beautiful'', but we are not afraid to use it yet again, because in our opinion- that still humble- this theorem is one of the more understanble 
-link between continuos and discrete. The conservation of energy in this case doesn't care about continuity or discreteness. 
-The latter go through these two worlds, since on the left side of eq.\eqref{} we have an integral and on the right one we have a summation.
-So, we can unify these two concepts with an equality and two different representations of the same thing, namely $f(x)$.
+We may have overused the term ``beautiful'', but we are not afraid to use it yet again, because in our opinion - that still humble - this 
+theorem is one of the more understanble link between continuos and discrete. The conservation of energy in this case doesn't care about 
+continuity or discreteness. The latter go through these two worlds, since on the left side of eq.\eqref{kugel:eq:parseval-1D} we have an 
+integral and on the right one we have a summation. So, we can unify these two concepts with an equality and two different representations 
+of the same thing, namely the energy of $f(x)$.
 
 As you can imagine, analogously to theorem \ref{kugel:theorem:parseval-1D}, we can write theorem \ref{kugel:theorem:parseval-sph}
 
 \begin{theorem}[Parseval's theorem on $\partial S$]
   \label{kugel:theorem:parseval-sph}
   Suppose $f(\vartheta, \varphi)$ is a complex-valued function, that is furthermore square integrable, then
-  \begin{equation*}
+  \begin{equation}
     \int_0^{2\pi}\int_0^\pi |f(\vartheta, \varphi)|^2  \sin\vartheta \, d\varphi \, d\varphi = \sum_{n=0}^\infty
-     \sum_{m=-n}^n |c_{m,n}|^2.
-  \end{equation*}
+     \sum_{m=-n}^n |c_{m,n}|^2. \label{kugel:eq:parseval-sph}
+  \end{equation}
   is true.
 \end{theorem}
+\begin{proof}
+  By setting $g(\vartheta, \varphi)=f(\vartheta, \varphi)$ in eq.\eqref{kugel:eq:general-parseval-sph}, the expression in 
+  eq.\eqref{kugel:eq:parseval-sph} can be easily derived.
+\end{proof}
 
+To prove what we just stated, we want to consider a more general case, namely theorem \ref{kugel:theorem:general-parseval-sph}.
+Having proved the latter, it will follow that theorem \ref{kugel:theorem:parseval-sph} is also correct. 
 
-
-\if 0
-\begin{theorem}[Spherical harmonic series expansion]
-  A complex valued piecewise continuous function on the surface of the sphere
-  $f: S^2 \to \mathbb{C}$, $f \in L^2$ has a series expansion
-  \begin{equation*}
-    \hat{f}(\vartheta, \varphi) 
-    = \sum_{n \in \mathbb{Z}} \sum_{m \in \mathbb{Z}}
-      c_{m,n} Y^m_n(\vartheta, \varphi),
-  \end{equation*}
-  where $c_{m,n} = \langle f, Y^m_n \rangle$, that converges everywhere uniformly
-  on $f$, i.e. $\|f(\vartheta, \varphi) - \hat{f}(\vartheta, \varphi)\|_2 = 0$.
+\begin{theorem}[General Parseval's theorem on $\partial S$]
+  \label{kugel:theorem:general-parseval-sph}
+  Suppose $f(\vartheta, \varphi), g(\vartheta, \varphi)$ are both complex-valued functions, that are furthermore square integrable, then
+  \begin{equation}
+    \int_0^{2\pi}\int_0^\pi f(\vartheta, \varphi)\overline{g(\vartheta, \varphi)} \sin\vartheta \, d\varphi \, d\varphi 
+    = \sum_{n=0}^\infty\sum_{m=-n}^n c_{m,n}\overline{c_{m',n'}}.\label{kugel:eq:general-parseval-sph}
+  \end{equation}
+  is true.
 \end{theorem}
 \begin{proof}
-  Sadly, this proof is beyond the scope of this text.
+  We can assume that both functions $f(\vartheta, \varphi)$ and $g(\vartheta, \varphi)$ have a spherical harmonics series expansion, hence:
+  \begin{align*}
+    f(\vartheta, \varphi) &= \sum_{n=0 }^\infty \sum_{m =-n }^{n } c_{m, n } Y^{m }_{n }(\vartheta, \varphi) \\
+    g(\vartheta, \varphi) &= \sum_{n'=0}^\infty \sum_{m'=-n'}^{n'} c_{m',n'} Y^{m'}_{n'}(\vartheta, \varphi).
+  \end{align*}
+  We can therefore rewrite eq.\eqref{kugel:eq:general-parseval-sph} as 
+  \begin{align*}
+    \int_0^{2\pi}\int_0^\pi f(\vartheta, \varphi)\overline{g(\vartheta, \varphi)} \sin\vartheta \, d\varphi \, d\varphi 
+    &= \left\langle f, g\right\rangle_{\partial S} \\ 
+    &= \left\langle \sum_{m=0}\sum_{n=-m}^m c_{m,n} Y^m_n, \sum_{m'=0}\sum_{n'=-m'}^{m'} c_{m',n'} Y^{m'}_{n'} \right\rangle_{\partial S} \\
+    &= \sum_{m=0}^\infty \sum_{n=-m}^m \sum_{m'=0}^\infty \sum_{n'=-m'}^{m'} c_{m',n'}\overline{c_{m,n}} \left\langle Y^m_n,  Y^{m'}_{n'} \right\rangle_{\partial S}.
+  \end{align*}
+  Since we are considering the \emph{orthonormal} spherical harmonics, only the terms of the sum in which $m=m'$ and $n=n'$ survive, leading to
+  \begin{equation*}
+    \int_0^{2\pi}\int_0^\pi f(\vartheta, \varphi)\overline{g(\vartheta, \varphi)} \sin\vartheta \, d\varphi \, d\varphi 
+    = \sum_{n=0}^\infty\sum_{m=-n}^n c_{m,n}\overline{c_{m',n'}}.
+  \end{equation*}
 \end{proof}
-\fi
+
+With this last theorem, we have given more generality to the Parseval's theorem. In this way, we are not only able to calculate 
+the power of a function via its spherical harmonic coefficients, but we have also the possibility to compute the cross-power of 
+two functions using simply the sum of the multiplications of their spherical harmonic coefficients. You can also notice that 
+the Parseval's theorem is a special case of eq.\eqref{kugel:eq:general-parseval-sph}
 
 \subsection{Visualization}
