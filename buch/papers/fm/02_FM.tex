@@ -56,29 +56,37 @@ dass PM und FM gemeinsam behandelt werden.
 Da beide nur durch die Operation differenzieren getrennt wird, sind diese zwei Modulationen so miteinenader Verwandt das ich nur auf die Frequenzmodulation eingehe.
 Jeweils vor der Modulation bzw. nach der Demodulation kann dann noch eine Differentiation oder 
 Integration durchgeführt wird, um von der einen Modulationsart zur anderen zu gelangen.
-\citeauthor{fm:NAT}
+\cite{fm:NAT}
 
 Um das Spektrum für PM und FM gemeinsam berechnen zu können, werden die modulierenden Nachrich-
 tensignale \(m_{PM}(t)\) bzw. \(m_{FM}(t)\) unterschiedlich angesetzt:
-\[
-    m_{PM}(t) = A_m \cdot \sin(\omega m t) 
-    m_{FM}(t) = A_m \cdot \cos(\omega m t)
-\]
+\begin{align}
+    m_{PM}(t)
+    &=
+    A_m \cdot \sin(\omega_m t)
+    \\
+    m_{FM}(t) 
+    &= 
+    A_m \cdot \cos(\omega_m t)
+\end{align}
+
 Mit diesen Nachrichtensignalen kann die Phase \(\varphi(t)\) des modulierten Trägersignals sofort bestimmt werden,
 bei PM durch eine einfach Skalierung mit der Phasenhubkonstanten \(k_p\), 
 bei FM mit der Frequenzhubkonstanten \(k_f\)und anschliessender Integration, 
 wodurch aus dem frequenzmodulierenden Cosinus ebenfalls ein phasenmodulierender Sinus wird:
-\[
-    \varphi_{PM}(t) = k_p \cdot A_m \cdot \sin(\omega_m t)
-    \varphi_{FM}(t) = k_f \cdot A_m \cdot \frac{1}{\omega_m} \sin(\omega_m t)
-\]
+\begin{align}
+    \varphi_{PM}(t) &= k_p \cdot A_m \cdot \sin(\omega_m t)
+    \\
+    \varphi_{FM}(t) &= k_f \cdot A_m \cdot \frac{1}{\omega_m} \sin(\omega_m t)
+\end{align}
 
 Die Phase verändert sich für PM und FM sinusförmig mit einer maximale Phasenabweichung \(\beta\),
  welche sich -- zur Unterscheidung nachfolgend einmalig als \(\beta_{PM}\) bzw. \(\beta_{FM}\) bezeichnet -- wie folgt berechnet:
-\[
-    \beta_{PM} = k_p \cdot A_m
-    \beta_{FM} = k_f \cdot A_m \frac{1}{\omega_m} 
-\]
+ \begin{align}
+    \beta_{PM} &= k_p \cdot A_m
+    \\
+    \beta_{FM} &= k_f \cdot A_m \frac{1}{\omega_m} 
+\end{align}
 Diese maximale Phasenabweichung \(\beta\) wird auch als Modulationsgrad (Englisch: modulation index) der Winkelmodulation bezeichnet, ist aber nur für Eintonsignale,
  d.h. sinusförmig modulierte PM- und FM-Signale definiert. 
 Die Unterscheidung von \(\beta_{PM}\) und \(\beta_{FM}(t)\) in den vorhergehenden Formeln soll nur unterstreichen, dass
@@ -90,22 +98,21 @@ Für diesen allgemeinen Modulationsgrad \(\beta\) muss dann aber jeweils die For
 
 \subsection{Frequenzspektrum}
 
-Im die Foriertransformation zu berechnen muss man dieses Integral lösen,
+Im die Foriertransformation zu berechnen muss man dieses Integral lösen, wen \( m(t) = \beta\sin(\omega_mt) \) ist ind \(A_c = 1\)
 \[
-    \int
+    \textrm{X}_{FM} = \int^\infty_{-\infty} \cos (\omega_c \tau +\beta\sin(\omega_m\tau)) \exp^{-2\pi i s \tau}d\tau
 \]
-(sollte ich wirklich diese Fouriertransformation zeigen?)
-jedoch einfacher ist es wenn man mit Hilfe der Besselfunktion den Term \( \cos \cos()\) wandelt,  erhält man
+jedoch einfacher ist es wenn man mit Hilfe der Besselfunktion den einen Term \(\cos(\omega_c t+\beta\sin(\omega_mt)),\) wandelt,  erhält man
 \[
-    \sum
+    \int^\infty_{-\infty} \bigl(\sum_{k= -\infty}^\infty J_{k}(\beta) \cos((\omega_c+k\omega_m)t).\bigr) \exp^{-2\pi i s \tau}d\tau
 \]
 Dieses zu transformien ist einfacher da es wieder Summen sind.
-Damit ist die Fouriertransformation
+Nochmals zur erinnerung ergibt ein \( \cos() \) immer zwei \(e\)-Funktionen oder zwei Dirac Impulse im Frequenzbereich
 \[
-    Fourier
-    \label{fm:FM:fourie}
+    \cos((\omega_c+k\omega_m)t) = \frac{1}{2} \cdot e^{+j(\omega_c+k\omega_m)t}\;+\;\frac{1}{2} \cdot e^{-j(\omega_c+k\omega_m)t}.
 \]
-
+Somit entsteht eine Reihe von Sumanden mit verschiedenen Dirac Impulsen die von einenander immer den Abstand von \(\omega_m\) haben.
+Wieviele Sumanden es benötigt ist von der grösse des \(\beta\) abhängig, bei kleinem \(\beta\) sind es nur wenige Summanden, und somit auch wenige Diracimpulse wie in Abb.\ref{fig:fm:bessel_fm}.
 Eine äusserst vorsichtige Schätzung der Bandbreite des winkelmodulierten Signals kann mit diesen Aussagen zusätzlich noch erfolgen.
 Da die Multiplikation im Zeitbereich einer Faltung im Frequenzbereich entspricht, ergibt sich für jeden modulierenden \(\varphi^n (t)\)-Terms gerade 
 eine maximale Bandbreite \(B_{n\varphi} = n \cdot B_{n\varphi}\)
@@ -118,11 +125,9 @@ Diese starken Nicht-Linearitäten verunmöglichen es aber, eine analytische Lös
 Für die Berechnung solcher Spektren muss man sich auf numerische Lösungen beschränken.
 Zwei Spezialfälle werden denn noch oft analytisch betrachtet einerseits die Kleinhubwinkelmodulation (Englisch: narrowband angle modulation) und, als
 einziger Vertreter einer Grosshubwinkelmodulation (Englisch: wideband angle modulation), ein Eintonsignal, d.h. ein sinusförmig moduliertes FM- oder PM-Signal.
-Doch diese werden hier vernachlässigt und nicht weiter erklärt und nur zur Vollständigkeit hier erwähnt.
-
-Nun sieht ein einfaches Frequenzmodulirtes Sigbnal mit \(m(t) = \sin(t)\) im Frequenzspektrum so aus.
-TODO Bild.
-Wie man auf diese Umformt von \(cos (cos())\) in die Summe zeige ich im nächsten Kapittel, auch was die eigentliche Bessselfunktion aussieht.
+Doch diese zwei unterscheidungen sind nur zur Vollständigkeit hier erwähnt worden und können im Skript von Nachrichtentechnik \cite{fm:NAT} nachgelesen werden.
+Doch befor wir uns das Frequenzspektrum der Frequenzmodulation ansehen, zuerset einmal der Zusammenhang mit der Besselfunktion, 
+die sonst eigentlich bekannt für ihre Differenzialgleichungen 2.Ordnung ist.
 
 \
 %Nun

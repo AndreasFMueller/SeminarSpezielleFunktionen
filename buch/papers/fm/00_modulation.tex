@@ -9,10 +9,10 @@ Durch dieses Auftragen vom Nachrichtensignal \(m(t)\) kann das modulierte Signal
 Der ursprünglich Frequenzbereich des Nachrichtensignal \(m(t)\) erstreckt sich typischerweise von 0 Hz bis zur Bandbreite \(B_m\).
 Beim Empfänger wird dann durch Demodulation das ursprüngliche Nachrichtensignal \(m(t)\) so originalgetreu wie möglich zurückgewonnen.
 Beim Trägersignal \(x_c(t)\) handelt es sich um ein informationsloses Hilfssignal.
-Durch die Modulation mit dem Nachrichtensignal \(m(t)\) wird es zum modulierten zu übertragenden Signal.
+Durch die Modulation mit dem Nachrichtensignal \(m(t)\) wird es zum modulierten Signal für die Übertragung.
 Für alle Erklärungen wird ein sinusförmiges Trägersignal benutzt, jedoch kann auch ein Rechtecksignal,
 welches Digital einfach umzusetzten ist, 
-genauso als Trägersignal genutzt werden kann.\cite{fm:NAT}
+genauso als Trägersignal genutzt werden.\cite{fm:NAT}
 
 \subsection{Modulationsarten\label{fm:section:modulation}}
 
@@ -23,38 +23,67 @@ Der Parameter \(\omega_c\), die Trägerkreisfrequenz bzw. die Trägerfrequenz \(
 steht nicht für die modulation zur verfügung, statt dessen kann durch ihn die Frequenzachse frei gewählt werden.
 \newblockpunct
 Jedoch ist das für die Vielfalt der Modulationsarten keine Einschrenkung.
-Ein Nachrichtensignal kann auch über die Momentanfrequenz (instantenous frequency) \(\omega_i\) eines trägers verändert werden.
+Ein Nachrichtensignal kann auch über die Momentanfrequenz (instantenous frequency) \(\omega_i\) eines trägers übertragen werden.
 Mathematisch wird dann daraus
 \[
     \omega_i = \omega_c + \frac{d \varphi(t)}{dt}
 \]
 mit der Ableitung der Phase\cite{fm:NAT}.
-Mit diesen drei Parameter ergeben sich auch drei Modulationsarten, die Amplitudenmodulation, welche \(A_c\) Abb.\ref{fig:fm:AM} benutzt, 
-die Phasenmodulation \(\varphi\) Abb.\ref{fig:fm:PM} und dann noch die Momentankreisfrequenz \(\omega_i\) in Abb.\ref{fig:fm:FM}: 
-\begin{figure} [h]%shot b resized
+
+Mit diesen drei Parameter ergeben sich auch drei Modulationsarten, die Amplitudenmodulation, welche \(A_c\) in Abb.\ref{fig:fm:AM} benutzt, 
+die Phasenmodulation \(\varphi\) in Abb.\ref{fig:fm:PM} und dann noch die Momentankreisfrequenz \(\omega_i\) in Abb.\ref{fig:fm:FM}: 
+
+\begin{figure}
     \centering
 	\input{papers/fm/Python animation/AM.pgf}
 	\caption{Modulationsart Amplitudenmodulation mit dem Parameter \(A_c\)}
 	\label{fig:fm:AM}
-
 \end{figure}
 
-\begin{figure}[h]
-	\centering
+\begin{figure}
+    \centering
 	\input{papers/fm/Python animation/PM.pgf}
 	\caption{Modulationsart Phasenmodulation mit dem Parameter \(\varphi\)}
 	\label{fig:fm:PM}
 \end{figure}
 
-\begin{figure}[h]
-	\centering
+\begin{figure}
+    \centering
 	\input{papers/fm/Python animation/FM.pgf}
 	\caption{Modulationsart Freguenzmodulation mit dem Parameter \(\omega_i\)}
 	\label{fig:fm:FM}
 \end{figure}
 
-Um modulation zu Verstehen ist es am Anschaulichst mit der AM Amplitudenmodulation, 
-da Phasenmodulation und Frequenzmodulation den gleichen Parameter verändert vernachlässige ich die Phasenmodulation ganz.
 
+Um modulation zu Verstehen ist es am Anschaulichst mit der  \textit{A}mplituden-\textit{M}odulation.
+Diese Moduation bringt schon eine intuition mit sich wie man in der Abb. \ref{fig:fm:AM} sieht.
+
+%\begin{figure}
+%    \centering
+%    \begin{subfigure}[b]{0.3\textwidth}
+%        \centering
+%        \input{papers/fm/Python animation/AM.pgf}
+%        \caption{Modulationsart Amplitudenmodulation mit dem Parameter \(A_c\)}
+%        \label{fig:fm:AM}
+%    \end{subfigure}
+%    \hfill
+%    
+%    \begin{subfigure}[b]{0.3\textwidth}
+%        \centering
+%        \input{papers/fm/Python animation/PM.pgf}
+%        \caption{Modulationsart Phasenmodulation mit dem Parameter \(\varphi\)}
+%        \label{fig:fm:PM}
+%    \end{subfigure}
+%    \hfill
+%    
+%    \begin{subfigure}[b]{0.3\textwidth}
+%        \centering
+%        \input{papers/fm/Python animation/FM.pgf}
+%        \caption{Modulationsart Freguenzmodulation mit dem Parameter \(\omega_i\)}
+%        \label{fig:fm:FM}
+%    \end{subfigure}
+%    \caption{Die drei Modulationsarten}
+%    \label{fig:fm:3modulations}
+% \end{figure}
 
 
