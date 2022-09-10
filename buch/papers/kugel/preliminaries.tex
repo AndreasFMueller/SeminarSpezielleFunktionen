@@ -3,13 +3,13 @@
 \section{Preliminaries}\label{kugel:sec:preliminaries}
 
 The purpose of this section is to dust off some concepts that will become
-important later on. This will enable us to be able to get a richer and more
-general view of the topic than just liming ourselves to a specific example.
+important later on. This will enable us to get a richer and more general view
+of the topic rather than just liming ourselves to a specific example.
 However, if the reader is already very familiar with the following concepts:
 inner product space, Hilbert space, Fourier series, Laplacian operator and
 eigenvalue problems, this entire section may be skipped.
 
-\subsection{Inner product spaces}
+\subsection{Inner Product Spaces}
 
 We shall start with a few fundamentals of linear algebra. We will mostly work
 with complex numbers, but for the sake of generality we will do what most
@@ -110,16 +110,16 @@ product space}.
 \end{definition}
 
 How about a more interesting example: the set of continuous complex valued
-functions on the interval \([0; 1]\) can behave like vectors.  Functions can
-be added, subtracted, multiplied with scalars, are associative and there is
-even the identity element (zero function \(f(x) = 0\)), so we can create an
-inner product
+functions on $\mathbb{R}$ can behave like vectors.  Functions can be added,
+subtracted, multiplied with scalars, are associative and there is even the
+identity element (zero function \(f(x) = 0\)), so we can create an inner
+product
 \[
-  \langle f, g \rangle = \int_0^1 f(x) \overline{g(x)} \, dx,
+  \langle f, g \rangle = \int_\mathbb{R} f(x) \overline{g(x)} \, dx,
 \]
 which will indeed satisfy all of the rules for an inner product (in fact this
 is called the Hermitian inner product\nocite{allard_mathematics_2009}). If
-this last step sounds too good to be true, you are right, because it is not
+this last step sounds too easy to be correct, you are right, because it is not
 quite so simple. The problem that we have swept under the rug here is
 convergence, which any student who took an analysis class will know is a
 rather hairy question. We will not need to go too much into the details since
@@ -226,8 +226,7 @@ Of course the analogy above also applies to vectors, i.e. if in an inner
 product space \(V\) over a field \(\mathbb{K}\) all sequences of vectors have
 a distance that is always in \(\mathbb{K}\), then \(V\) is also a complete
 metric space. In the jargon, this particular case is what is known as a
-Hilbert space, after the incredibly influential German mathematician David
-Hilbert.
+Hilbert space, after the very influential German mathematician David Hilbert.
 
 \begin{definition}[Hilbert space]
   \label{kugel:def:hilbert}
@@ -238,9 +237,9 @@ Hilbert.
 
 \subsection{Orthogonal basis and Fourier series}
 
-Now we finally have almost everything we need to get into the domain of
-Fourier theory from the perspective of linear algebra. However, we still need
-to briefly discuss the matter of orthogonality\footnote{See chapter
+Now we have almost everything we need to get into the domain of Fourier theory
+from the perspective of linear algebra. However, we still need to briefly
+discuss the matters of orthogonality\footnote{See chapter
 \ref{buch:chapter:orthogonalitaet} for more on orthogonality.} and
 periodicity. Both should be very straightforward and already well known.
 
@@ -296,7 +295,7 @@ details by referencing other theorems. However, the main takeaway should be
 that we have ``constructed'' this new Hilbert space of functions in a such a
 way that from now on we will not have to worry about the fussy details of
 convergence. Instead of worrying about convergence, we will use right away
-this new Hilbert space of lemma \ref{kugel:thm:sqint-hilbert}.
+this new Hilbert space.
 
 \begin{lemma}
   \label{kugel:thm:exp-1d}
@@ -327,7 +326,7 @@ this new Hilbert space of lemma \ref{kugel:thm:sqint-hilbert}.
 
 Now, this is an useful lemma, because this set of orthonormal functions can be
 used as basis of our Hilbert space of square integrable functions in
-$C(\mathbb{R}/\mathbb{Z}; \mathbb{C})$, from which follows the interesting
+$C(\mathbb{R}/\mathbb{Z}; \mathbb{C})$, and the interesting consequence is the
 fact that we can create linear combinations of these basis functions to obtain
 other functions. This was Fourier's insight: any reasonable function can be
 expressed using a linear combination of complex exponentials\footnote{For
@@ -354,7 +353,7 @@ function $f(x)$ can be written as a Fourier series, it is easy to see that we
 can make use of the orthonormal properties of $E_n$ to extract the
 coefficients:
 \begin{equation*}
-  c_n = \langle f, E_n \rangle
+  \langle f, E_n \rangle
     = \left \langle \sum_{k \in\mathbb{Z}} c_k E_k , E_n \right \rangle
     = \sum_{k \in\mathbb{Z}}  c_k \underbrace{
       \left \langle E_k , E_n \right \rangle
@@ -392,11 +391,11 @@ construction of the proof of the following theorem, which says just that.
 
 Another very common way to read Fourier's theorem stated above, is that we
 begin with a finite linear combination to approximate $f(x)$, then by
-continuing to add more and more terms (infinitely many) it will eventually
-become indistinguishable from $f(x)$ (under the $L^2$ norm). Of course, we
-should mention the Fourier theory is not limited to one dimensional function.
-In fact, it is quite the opposite, and hopefully it should be clear by the
-way we introduced it. For example consider the following lemma.
+continuing to add more and more terms (infinitely many) the approximation
+eventually becomes indistinguishable from $f(x)$ (under the $L^2$ norm). Of
+course, we should mention the Fourier theory is not limited to one dimensional
+functions.  In fact, it is quite the opposite, and hopefully it should be
+clear by the way we introduced it. For example consider the following lemma.
 
 \begin{lemma}
   The set of functions \(E^m_n(\xi, \eta) = e^{i2\pi m\xi}e^{i2\pi n\eta}\)
@@ -423,8 +422,8 @@ way we introduced it. For example consider the following lemma.
   \end{align*}
 \end{proof}
 
-And of course there is also a way to show that we can write any 2 dimensional
-function using a Fourier series, i.e.
+And of course there is also a way to show that we can write any two
+dimensional function using a Fourier series, i.e.
 \begin{equation*}
   f(\xi, \eta) = \sum_{m \in \mathbb{Z}} \sum_{n \in \mathbb{Z}}
     c_{m, n} E^m_n(\xi, \eta)
@@ -464,8 +463,8 @@ spherical coordinates, see \ref{buch:pde:section:kugel} for a discussion.}
         + \frac{1}{\sin^2 \vartheta} \frac{\partial^2}{\partial\varphi^2}
       \right].
 \end{equation*}
-As we will see more later, being a second derivative the Laplacian is a
-measure of curvature.
+As we will see later, being a second derivative the Laplacian is a measure of
+curvature.
 
 \subsection{Eigenvalue Problems}
 
@@ -486,7 +485,7 @@ where we need so solve for both the \emph{eigenvalues} $\lambda \in
 (classic example), such as $\mathbb{R}^n$ an operator could be a square
 $n\times n$ matrix $A$, and the problem is usually solved by first equating
 characteristinc polynomial $\det(A - \lambda I)$ to zero to find the
-$\lambda$'s, and then solving for the eigenvalues. If $\square$ is a
+$\lambda$'s, and then solving for the eigenvectors $v$. If $\square$ is a
 derivative, then we end up in the theory of (ordinary) differential equations,
 and if $\square$ is a partial derivative, then we can use methods such as the
 separation method discussed in section \ref{buch:pde:section:separation}.

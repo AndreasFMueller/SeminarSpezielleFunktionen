@@ -2,33 +2,28 @@
 
 \section{Construction of the Spherical Harmonics}
 
-\kugeltodo{Review text, or rewrite if preliminaries becomes an addendum}
+We have finally arrived at the main section that gives this chapter its name.
+The idea is to discuss spherical harmonics, their mathematical origin, some of
+their properties and applications.
 
-We finally arrived at the main section, which gives our chapter its name. The
-idea is to discuss spherical harmonics, their mathematical derivation and some
-of their properties and applications.
-
-The subsection \ref{} \kugeltodo{Fix references} will be devoted to the
-Eigenvalue problem of the Laplace operator. Through the latter we will derive
-the set of Eigenfunctions that obey the equation presented in \ref{}
-\kugeltodo{reference to eigenvalue equation}, which will be defined as
-\emph{Spherical Harmonics}. In fact, this subsection will present their
-mathematical derivation.
-
-In the subsection \ref{}, on the other hand, some interesting properties
-related to them will be discussed. Some of these will come back to help us
+To begin, we will give an outline of the contents of the rest of this chapter.
+The subsection \ref{kugel:sec:construction:eigenvalue} will be devoted to an
+eigenvalue problem involving the Laplace operator, through which we will derive
+a set of special eigenfunctions, which are the \emph{spherical harmonics}.  In
+the subsections from \ref{kugel:sec:construction:orthogonality} to
+\ref{kugel:sec:construction:recurrence}, a few interesting properties related to
+orthogonality will be discussed. Some of these will come back to help us
 understand in more detail why they are useful in various real-world
-applications, which will be presented in the section \ref{}.
+applications, which will be presented in the section
+\ref{kugel:sec:applications}. 
 
-One specific property will be studied in more detail in the subsection \ref{},
-namely the recursive property.  The last subsection is devoted to one of the
-most beautiful applications (In our humble opinion), namely the derivation of a
-Fourier-style series expansion but defined on the sphere instead of a plane.
-More importantly, this subsection will allow us to connect all the dots we have
-created with the previous sections, concluding that Fourier is just a specific
-case of the application of the concept of orthogonality. Our hope is that after
-reading this section you will appreciate the beauty and power of generalization
-that mathematics offers us.
+Finally, section \ref{kugel:sec:expansion} is devoted to one of the most
+beautiful applications (in our humble opinion), namely the derivation of a
+Fourier-style series expansion on the sphere.  This will allow us to connect all
+the dots we have created with the previous sections, concluding that Fourier is
+just a specific case of the application of the concept of orthogonality. Our
+hope is that after reading this section you will appreciate the beauty and power
+of generalization that mathematics offers us.
 
 \subsection{Eigenvalue Problem}
 \label{kugel:sec:construction:eigenvalue}
@@ -48,14 +43,14 @@ Laplacian in the spherical coordinate system (shown in Figure
         + \frac{1}{\sin^2 \vartheta} \frac{\partial^2}{\partial\varphi^2}
       \right].
 \end{equation*}
-But we will not consider this algebraic monstrosity in its entirety. As the
-title suggests, we will only care about the \emph{surface} of the sphere.  This
-is for many reasons, but mainly to simplify reduce the already broad scope of
-this text. Concretely, we will always work on the unit sphere, which just means
-that we set $r = 1$ and keep only $\vartheta$ and $\varphi$ as free variables.
-Now, since the variable $r$ became a constant, we can leave out all derivatives
-with respect to $r$ and substitute all $r$'s with 1's to obtain a new operator
-that deserves its own name.
+But we will not consider this algebraic monstrosity in its entirety. As
+previously hinted, we will only care about the \emph{surface} of the sphere.
+This is for many reasons, but mainly to simplify reduce the already broad scope
+of this text. Concretely, we will always work on the unit sphere, which just
+means that we set $r = 1$ and keep only $\vartheta$ and $\varphi$ as free
+variables.  Now, since the variable $r$ became a constant, we can leave out all
+derivatives with respect to $r$ and substitute all $r$'s with 1's to obtain a
+new operator that deserves its own name.
 
 \begin{definition}[Surface spherical Laplacian]
   \label{kugel:def:surface-laplacian}
@@ -73,10 +68,10 @@ that deserves its own name.
 In the definition, the subscript ``$\partial S$'' was used to emphasize the fact
 that we are on the spherical surface, which can be understood as being the
 boundary of the sphere. But what does it actually do? To get an intuition, first
-of all, notice the fact that $\surflaplacian$ have second derivatives, which
-means that this a measure of \emph{curvature}; But curvature of what? To get an
-even stronger intuition we will go into geometry, were curvature can be grasped
-very well visually. Consider figure \ref{kugel:fig:curvature} where the
+of all, notice the fact that $\surflaplacian$ is made of second derivatives,
+which means that this a measure of \emph{curvature}; But curvature of what? To
+get an even stronger intuition we will go into geometry, were curvature can be
+grasped very well visually. Consider figure \ref{kugel:fig:curvature} where the
 curvature is shown using colors: positive curvature in red, and negative
 curvature in blue. First we have the curvature of a curve in 1D, then the
 curvature of a surface (2D), and finally the curvature of a function on the
@@ -84,13 +79,16 @@ surface of the unit sphere.
 
 \begin{figure}
   \centering
-  \includegraphics[width=.3\linewidth]{papers/kugel/figures/tikz/curvature-1d}
+  \subfigure[Curvature in 1D.]
+    {\includegraphics[width=.3\linewidth]{papers/kugel/figures/tikz/curvature-1d}}
   \hskip 5mm
-  \includegraphics[width=.3\linewidth]{papers/kugel/figures/povray/curvature}
+  \subfigure[Curvature on a plane.]
+    {\includegraphics[width=.3\linewidth]{papers/kugel/figures/povray/curvature}}
   \hskip 5mm
-  \includegraphics[width=.3\linewidth]{papers/kugel/figures/povray/spherecurve}
+  \subfigure[Cuvature on $S^2$.]
+    {\includegraphics[width=.3\linewidth]{papers/kugel/figures/povray/spherecurve}}
   \caption{
-    \kugeltodo{Fix alignment / size, add caption. Would be nice to match colors.}
+    Curvature.
     \label{kugel:fig:curvature}
   }
 \end{figure}
@@ -119,8 +117,10 @@ $\nabla^2_{\partial S}$ according to definition
 Since all functions satisfying \eqref{kugel:eqn:eigen-pde} are the
 \emph{eigenfunctions} of $\surflaplacian$, our new goal is to solve this PDE.
 The task may seem very difficult but we can simplify it with a well-known
-technique: \emph{the separation Ansatz}. It consists in assuming that the
-function $f(\vartheta, \varphi)$ can be factorized in the following form:
+technique: \emph{the separation Ansatz}\footnote{See section
+\ref{buch:pde:section:separation} for more on separation.}. It consists in
+assuming that the function $f(\vartheta, \varphi)$ can be factorized in the
+following form:
 \begin{equation}
     f(\vartheta, \varphi) = \Theta(\vartheta)\Phi(\varphi). 
 \end{equation}
@@ -149,8 +149,8 @@ variable $m^2$, the separation constant, yields:
   = -\frac{1}{\Phi(\varphi)} \frac{d^2\Phi(\varphi)}{d\varphi^2}
   = m^2,
 \end{equation*}
-which is equivalent to the following system of 2 first order differential
-equations (ODEs):
+which is equivalent to the following system of 2 first order ordinary
+differential equations (ODEs):
 \begin{subequations}
   \begin{gather}
     \frac{d^2\Phi(\varphi)}{d\varphi^2} = -m^2 \Phi(\varphi),
@@ -239,9 +239,9 @@ can perform the substitution backwards and get back to our eigenvalue problem.
 However, the associated Legendre equation is not any easier, so to attack the
 problem we will look for the solutions in the easier special case when $m = 0$.
 This reduces the problem because it removes the double pole, which is always
-tricky to deal with\footnote{It however to notice that the differential equation
-is still singular because of the factor in front of the second derivative}. In
-fact, the reduced problem when $m = 0$ is known as the \emph{Legendre equation}:
+tricky to deal with\footnote{However, the differential equation is still
+singular because of the factor in front of the second derivative.}. In fact, the
+reduced problem when $m = 0$ is known as the \emph{Legendre equation}:
 \begin{equation} \label{kugel:eqn:legendre}
   (1 - z^2)\frac{d^2 Z}{dz^2}
   - 2z\frac{d Z}{dz}
@@ -337,10 +337,11 @@ polynomial of degree $2n$ more than $2n$ times, you get zero, that would be a
 trivial solution. This is the power of zero: It is almost always a (boring)
 solution. We can thus summarize these two conditions by writing:
 \begin{equation*}
-    \begin{rcases}
-        m+n \leq 2n &\implies m \leq n \\
-        m+n \geq 0  &\implies  m \geq -n
-    \end{rcases} \; |m| \leq n.
+    |m| \leq n \iff
+    \begin{cases}
+        m+n \leq 2n &\iff m \leq n \\
+        m+n \geq 0  &\iff m \geq -n
+    \end{cases}
 \end{equation*}
 
 \subsection{Spherical Harmonics}
@@ -351,8 +352,8 @@ of the separation, were we had used the Ansatz $f(\vartheta, \varphi) =
 \Theta(\vartheta) \Phi(\varphi)$ to find that $\Phi(\varphi) = e^{im\varphi}$,
 and we were solving for $\Theta(\vartheta)$.  As you may recall, previously we
 performed the substitution $z = \cos \vartheta$. Now we can finally bring back
-the solution to the associated Legendre equation $P^m_n(z)$ into the $\vartheta$
-domain and combine it with $\Phi(\varphi)$ to get the full result:
+the solutions of the associated Legendre equation $P^m_n(z)$ into the
+$\vartheta$ domain and combine it with $\Phi(\varphi)$ to get the full result:
 \begin{equation*}
     f(\vartheta, \varphi)
       = \Theta(\vartheta)\Phi(\varphi)
@@ -394,6 +395,7 @@ $Y^m_n(\vartheta, \varphi)$.
 \ref{kugel:fig:spherical-harmonics}}
 
 \subsection{Orthogonality of $P_n$, $P^m_n$ and $Y^m_n$}
+\label{kugel:sec:construction:orthogonality}
 
 We shall now discuss an important property of the spherical harmonics: they form
 an orthogonal system. And since the spherical harmonics contain the Ferrers or
@@ -554,8 +556,7 @@ product:
   \end{align}
 \end{theorem}
 \begin{proof}
-  We will begin by doing a bit of algebraic maipulaiton:
-  \footnote{
+  We will begin by doing a bit of algebraic maipulaiton\footnote{
     Essentially, what we just did was to turn
     \eqref{kugel:eq:spherical-harmonics-inner-prod} in this form:
     \(
@@ -563,7 +564,7 @@ product:
       = \langle P^m_n, P^{m'}_{n'} \rangle_z
       \; \langle e^{im\varphi}, e^{-im'\varphi} \rangle_\varphi
     \).
-  }
+  }:
   \begin{align*}
     \int_{0}^\pi \int_0^{2\pi}
       Y^m_n(\vartheta, \varphi) \overline{Y^{m'}_{n'}(\vartheta, \varphi)} 
@@ -644,7 +645,7 @@ regrettably sometimes even ourselves, would write instead:
   reader.
 \end{proof}
 
-Lemma \ref{kugel:thm:legendre-poly-ortho} has a very similar proof, while the
+Lemma \ref{kugel:thm:legendre-poly-ortho} has a very similar proof, while
 theorem \ref{kugel:thm:spherical-harmonics-ortho} for the spherical harmonics is
 proved by the following argument.  The spherical harmonics are the solutions to
 the eigenvalue problem $\surflaplacian f = -\lambda f$, which as discussed in
@@ -714,6 +715,7 @@ harmonics or write $Y^m_n$, we mean the orthonormal spherical harmonics of
 definition \ref{kugel:def:spherical-harmonics-orthonormal}.
 
 \subsection{Recurrence Relations}
+\label{kugel:sec:construction:recurrence}
 
 The idea of this subsection is to introduce first some recursive relations
 regarding the associated Legendre functions, defined in equation
@@ -803,8 +805,8 @@ computational cost lower by a factor of six \cite{davari_new_2013}.
 \end{proof}
 
 \begin{proof}[Proof of \eqref{kugel:eqn:rec-leg-2}]
-  This relation, unlike the previous one, link three expression with the same
-  $n$ index but different $m$. In the proof of Lemma
+  This relation, unlike the previous one, links three expressions with the same
+  $n$ index but different $m$. In the proof of lemma
   \ref{kugel:thm:extend-legendre}, at some point we ran into this expression.
   \begin{equation*}
     (1-z^2)\frac{d^{m+2}P_n}{dz^{m+2}}
@@ -877,7 +879,7 @@ computational cost lower by a factor of six \cite{davari_new_2013}.
 \subsubsection{Spherical Harmonics}
 
 The goal of this subsection's part is to apply the recurrence relations of the
-$P^m_n(z)$ functions to the Spherical Harmonics.  With some little adjustments
+$P^m_n(z)$ functions to the spherical harmonics.  With some little adjustments
 we will be able to have recursion equations for them too. As previously written
 most of the work is already done. Now it is only a matter of minor mathematical
 operations/rearrangements. We can start by listing all of them:
@@ -971,8 +973,9 @@ operations/rearrangements. We can start by listing all of them:
 \end{proof}
 
 \section{Series Expansions in $L^2(S^2)$}
+\label{kugel:sec:expansion}
 
-We have now reach a point where we have all the tools that are necessary to
+We have now reached a point where we have all the tools that are necessary to
 build something truly amazing: a general series expansion formula for function
 on the surface of the sphere.  Before starting we want to recall the definition
 of the inner product on the spherical surface of definition
@@ -983,23 +986,34 @@ of the inner product on the spherical surface of definition
     f(\vartheta, \varphi) \overline{g(\vartheta, \varphi)}
     \sin \vartheta \, d\varphi \, d\vartheta.
 \end{equation*}
-To be a bit technical we can say that the set of spherical harmonic functions, toghether with the inner product just showed, 
-form something that we call Hilbert Space\footnote{For more details about Hilber space you can take a look in section \ref{kugel:sec:preliminaries}}. 
-This function space is defined over the space of ``well-behaved'' \footnote{The definitions of ``well-behaved'' is pretty ambigous, even for mathematicians. 
-It depends basically on the context.
-You can sumarize it by saying: functions for which the theory we are considering (Fourier theorem) is always true. In our case we can say that well-behaved functions 
-are functions that follow some convergence contraints (pointwise, uniform, absolute, ...) that we don't want to consider further anyway.} functions. 
-We can say that the theory we are about to show can be applied on all twice differentiable complex valued functions, 
-to be more concise: complex valued $L^2$ functions $S^2 \to \mathbb{C}$.
+To be a bit technical we can say that the set of spherical harmonic functions,
+toghether with the inner product just showed, form something that we call
+Hilbert Space\footnote{For more details about Hilber space you can take a look
+in section \ref{kugel:sec:preliminaries}}.  This function space is defined over
+the space of ``well-behaved'' \footnote{The definitions of ``well-behaved'' is
+pretty ambigous, even for mathematicians.  It depends basically on the context.
+You can sumarize it by saying: functions for which the theory we are considering
+(Fourier theorem) is always true. In our case we can say that well-behaved
+functions are functions that follow some convergence contraints (pointwise,
+uniform, absolute, ...) that we don't want to consider further anyway.}
+functions.  We can say that the theory we are about to show can be applied on
+all twice differentiable complex valued functions, to be more concise: complex
+valued $L^2$ functions $S^2 \to \mathbb{C}$.
 
-All these jargons are not really necessary for the practical applications of us mere mortals, namely physicists and engineers. 
-From now on we will therefore assume that the functions we will dealing with fulfill these ``minor'' conditions.
+All these jargons are not really necessary for the practical applications of us
+mere mortals, namely physicists and engineers.  From now on we will therefore
+assume that the functions we will dealing with fulfill these ``minor''
+conditions.
 
-The insiders could turn up their nose, but we don't want to dwell too much on the concept of Hilbert space, convergence, metric, well-behaved functions etc.
-We simply think that this rigorousness could be at the expense of the possibility to appreciate the beauty and elegance of this theory. 
-Furthermore, the risk of writing 300+ pages to prove that $1+1=2$ is just around the corner\cite{principia-mathematica} (we apologize in advance to Mr. Whitehead and Mr. Russel for using their effort with a negative connotation). 
-
-Despite all, if you desire having definitions a bit more rigorous-as rigorous as two engineers can be-you could take a look at the chapter \ref{kugel:sec:preliminaries}.
+The insiders could turn up their nose, but we don't want to dwell too much on
+the concept of Hilbert space, convergence, metric, well-behaved functions etc.
+We simply think that this rigorousness could be at the expense of the
+possibility to appreciate the beauty and elegance of this theory.  Furthermore,
+the risk of writing 300+ pages to prove that $1+1=2$ is just around the
+corner \cite{principia-mathematica} (we apologize to Mr. Whitehead and Mr. Russel
+for using their effort with a negative connotation). Despite all, if you desire
+having definitions a bit more rigorous (as rigorous as two engineers can be) you
+could take a look at the chapter \ref{kugel:sec:preliminaries}.
 
 \subsection{Spherical Harmonics Series}
 
@@ -1039,7 +1053,7 @@ the sum is now over the two indices $m$ and $n$ (because of the two free variabl
 
 \begin{proof}
   To develop this proof we will take advantage of the orthogonality property of
-  the Spherical Harmonics. We can start and finish by applying the inner product
+  the spherical harmonics. We can start and finish by applying the inner product
   on both sides of \eqref{kugel:eqn:spherical-harmonics-series}:
   \begin{align*}
     \langle f, Y^{m}_{n} \rangle_{\partial S}
