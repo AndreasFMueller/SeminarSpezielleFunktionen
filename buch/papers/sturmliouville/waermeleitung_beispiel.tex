@@ -280,27 +280,26 @@ Mittels Koeffizientenvergleich auf beiden Seiten von
 \]
 ist schnell ersichtlich, dass $ \mu = -\alpha^{2} = -\beta^{2} $ gelten muss für
 $ A \neq 0 $ oder $ B \neq 0 $.
-zur Berechnung von $ \mu $ bleiben also noch  $ \alpha $ und $ \beta $ zu
+Zur Berechnung von $ \mu $ bleiben also noch  $ \alpha $ und $ \beta $ zu
 bestimmen.
 dazu werden nochmals die
 randbedingungen~\eqref{sturmliouville:eq:example-fourier-boundary-condition-ends-constant} 
 und \eqref{sturmliouville:eq:example-fourier-boundary-condition-ends-isolated}
 benötigt.
 
-da die koeffizienten $a$ und $b$, sowie die parameter $\alpha$ und $\beta$ im
-allgemeinen ungleich $0$ sind, müssen die randbedingungen durch die
-trigonometrischen funktionen erfüllt werden.
+Da die koeffizienten $A$ und $B$, sowie die Parameter $\alpha$ und $\beta$ im
+Allgemeinen ungleich $0$ sind, müssen die Randbedingungen durch die
+trigonometrischen Funktionen erfüllt werden.
 
-\subsubsection{einsetzen der 
-randbedingungen~\eqref{sturmliouville:eq:example-fourier-boundary-condition-ends-constant}}
+\subsubsection{Einsetzen der 
+Randbedingungen~\eqref{sturmliouville:eq:example-fourier-boundary-condition-ends-constant}}
+Es werden nun die 
+Randbedingungen~\eqref{sturmliouville:eq:example-fourier-boundary-condition-ends-constant}
+für einen Stab mit enden auf konstanter Temperatur in die
+Gleichung~\eqref{sturmliouville:eq:example-fourier-separated-x} eingesetzt.
 
-es werden nun die 
-randbedingungen~\eqref{sturmliouville:eq:example-fourier-boundary-condition-ends-constant}
-für einen stab mit enden auf konstanter temperatur in die
-gleichung~\eqref{sturmliouville:eq:example-fourier-separated-x} eingesetzt.
-
-betrachten wir zunächst die bedingung für $x = 0$.
-dies führt zu
+Betrachten wir zunächst die Bedingung für $x = 0$.
+Dies führt zu
 \[
     x(0)
     =
@@ -308,10 +307,10 @@ dies führt zu
     =
     0.
 \]
-da $\cos(0) \neq 0$ ist, muss in diesem fall $a = 0$ gelten.
-für den zweiten summanden ist wegen $\sin(0) = 0$ die randbedingung erfüllt.
+da $\cos(0) \neq 0$ ist, muss in diesem Fall $a = 0$ gelten.
+Für den zweiten Summanden ist wegen $\sin(0) = 0$ die Randbedingung erfüllt.
 
-wird nun die zweite randbedingung für $x = l$ mit $a = 0$ eingesetzt, ergibt
+Wird nun die zweite Randbedingung für $x = l$ mit $a = 0$ eingesetzt, ergibt
 sich
 \[
     x(l)
@@ -335,17 +334,17 @@ es folgt nun wegen $\mu = -\beta^{2}$, dass
     \mu_1 = -\beta^{2} = -\frac{n^{2}\pi^{2}}{l^{2}}
 \]
 sein muss.
-ausserdem ist zu bemerken, dass dies auch gleich $-\alpha^{2}$ ist.
-da aber $a = 0$ gilt und der summand mit $\alpha$ verschwindet, ist dies keine
-verletzung der randbedingungen.
+Ausserdem ist zu bemerken, dass dies auch gleich $-\alpha^{2}$ ist.
+da aber $a = 0$ gilt und der Summand mit $\alpha$ verschwindet, ist dies keine
+Verletzung der Randbedingungen.
 
-\subsubsection{einsetzen der 
+\subsubsection{Einsetzen der 
 randbedingungen~\eqref{sturmliouville:eq:example-fourier-boundary-condition-ends-isolated}}
 
-durch analoges vorgehen kann nun auch das problem mit isolierten enden gelöst
+Durch analoges Vorgehen kann nun auch das Problem mit isolierten Enden gelöst
 werden.
-setzt man die 
-randbedingungen~\eqref{sturmliouville:eq:example-fourier-boundary-condition-ends-isolated}
+Setzt man die 
+Randbedingungen~\eqref{sturmliouville:eq:example-fourier-boundary-condition-ends-isolated}
 in $x^{\prime}$ ein, beginnend mit $x = 0$, ergibt sich
 \[
     x^{\prime}(0)
@@ -353,9 +352,8 @@ in $x^{\prime}$ ein, beginnend mit $x = 0$, ergibt sich
     -\alpha a \sin(0 \alpha) + \beta b \cos(0 \beta)
     = 0.
 \]
-in diesem fall muss $b = 0$ gelten.
-zusammen mit der bedingung für $x = l$
-folgt nun
+In diesem Fall muss $b = 0$ gelten.
+Zusammen mit der Bedingung für $x = l$ folgt nun
 \[
     x^{\prime}(l)
     =
@@ -365,8 +363,8 @@ folgt nun
     = 0.
 \]
 
-wiederum muss über die $\sin$-funktion sichergestellt werden, dass der
-ausdruck den randbedingungen entspricht.
+Wiederum muss über die $\sin$-Funktion sichergestellt werden, dass der
+Ausdruck den Randbedingungen entspricht.
 es folgt nun
 \[
 \begin{aligned}
@@ -380,8 +378,8 @@ und somit
     \mu_2 = -\alpha^{2} = -\frac{n^{2}\pi^{2}}{l^{2}}.
 \]
 
-es ergibt sich also sowohl für einen stab mit enden auf konstanter temperatur
-wie auch für den stab mit isolierten enden
+Es ergibt sich also sowohl für einen Stab mit Enden auf konstanter Temperatur
+wie auch für den Stab mit isolierten Enden
 \begin{equation}
     \label{sturmliouville:eq:example-fourier-mu-solution}
     \mu
@@ -389,14 +387,13 @@ wie auch für den stab mit isolierten enden
     -\frac{n^{2}\pi^{2}}{l^{2}}.
 \end{equation}
 
-\subsection{fourierreihe als lösung}
-
-das resultat~\eqref{sturmliouville:eq:example-fourier-mu-solution} gibt nun
-wegen der neuen variablen $n \in \mathbb{n}_0$ vor, dass es potenziell
-unendlich viele lösungen gibt.
-dies bedeutet auch, dass es nicht ein $a$ und ein $b$ gibt, sondern einen
-koeffizienten für jede lösungsfunktion.
-wir schreiben deshalb den lösungsansatz zur linearkombination
+\subsection{Fourierreihe als Lösung}
+Das Resultat~\eqref{sturmliouville:eq:example-fourier-mu-solution} gibt nun
+wegen der neuen Variablen $n \in \mathbb{n}_0$ vor, dass es potenziell
+unendlich viele Lösungen gibt.
+Dies bedeutet auch, dass es nicht ein $a$ und ein $b$ gibt, sondern einen
+Koeffizienten für jede Lösungsfunktion.
+Wir schreiben deshalb den Lösungsansatz zur Linearkombination
 \[
     x(x)
     =
@@ -404,10 +401,11 @@ wir schreiben deshalb den lösungsansatz zur linearkombination
     +
     \sum_{n = 0}^{\infty} b_n\sin\biggl(\frac{n\pi}{l}x\biggr)
 \]
-aus allen möglichen lösungen um.
+aus allen möglichen Lösungen um.
 
-als nächstes werden noch die summanden für $n = 0$ aus den summen herausgezogen.
-da
+Als nächstes werden noch die Summanden für $n = 0$ aus den
+Summen herausgezogen.
+Da
 \[
     \begin{aligned}
         a_0 \cos\biggl(\frac{0 \pi}{l}\biggr) &= a_0 \\
@@ -424,13 +422,13 @@ gilt, endet man somit bei
     +
     \sum_{n = 1}^{\infty} b_n\sin\biggl(\frac{n\pi}{l}x\biggr).
 \]
-dies ist die allgemeine fourierreihe, welche unsere stab-probleme löst.
-wie zuvor bereits erwähnt, wissen wir, dass sämtliche lösungsfunktionen
+dies ist die allgemeine Fourierreihe, welche unsere Stab-Probleme löst.
+Wie zuvor bereits erwähnt, wissen wir, dass sämtliche Lösungsfunktionen
 orthogonal zueinander sind bezüglich des
-skalarproduktes~\eqref{sturmliouville:eq:modified-dot-product}.
+Skalarproduktes~\eqref{sturmliouville:eq:modified-dot-product}.
 dieses vereinfacht sich noch etwas, da aus
-abschnitt~\ref{sturmliouville:subsec:separation} bereits $w(x) = 1$ gegeben ist.
-somit ist das skalarprodukt
+Abschnitt~\ref{sturmliouville:subsec:separation} bereits $w(x) = 1$ gegeben ist.
+Somit ist das Skalarprodukt
 \begin{equation}
     \label{sturmliouville:eq:example-fourier-dot-product}
     \langle f, g \rangle_w
@@ -440,7 +438,7 @@ somit ist das skalarprodukt
     \int_a^b f(x)g(x)\,dx.
 \end{equation}
 
-es gilt also
+Es gilt also
 \[
 \begin{aligned}
     \int_{-l}^{l}\cos\biggl(\frac{n \pi}{l}x\biggr)
@@ -455,15 +453,15 @@ es gilt also
 \end{aligned}
 \]
 
-\subsubsection{berechnung der fourierkoeffizienten}
+\subsubsection{Berechnung der Fourierkoeffizienten}
 
 %
 % lösung von x(x), teil: koeffizienten a_n und b_n mittels skalarprodukt.
 %
 
-um eine eindeutige lösung für $x(x)$ zu erhalten wird nun die initiale
-wärmeverteilung oder $u(0, x) = x(x)$ für $t = 0$ benötigt.
-es gilt also nun die gleichung
+Um eine eindeutige Lösung für $x(x)$ zu erhalten wird nun die initiale
+Wärmeverteilung oder $u(0, x) = x(x)$ für $t = 0$ benötigt.
+Es gilt also nun, die Gleichung
 \begin{equation}
     \label{sturmliouville:eq:example-fourier-initial-conditions}
     u(0, x)
@@ -475,15 +473,15 @@ es gilt also nun die gleichung
     \sum_{n = 1}^{\infty} b_n\sin\biggl(\frac{n\pi}{l}x\biggr)
 \end{equation}
 nach allen $a_n$ und $b_n$ aufzulösen.
-da aber $a_n$ und $b_n$ jeweils als faktor zu einer trigonometrischen funktion
+Da aber $a_n$ und $b_n$ jeweils als Faktor zu einer trigonometrischen Funktion
 gehört, von der wir wissen, dass sie orthogonal zu allen anderen
-trigonometrischen funktionen der lösung ist, kann direkt das
-skalarprodukt~\eqref{sturmliouville:eq:example-fourier-dot-product}
-verwendet werden um die koeffizienten $a_n$ und $b_n$ zu bestimmen.
-es wird also die tatsache ausgenutzt, dass die gleichheit in
-\eqref{sturmliouville:eq:example-fourier-initial-conditions} nach anwendung des
-skalarproduktes immer noch gelten muss und dass das skalarprodukt mit einer
-basisfunktion sämtliche summanden auf der rechten seite auslöscht.
+trigonometrischen Funktionen der Lösung ist, kann direkt das
+Skalarprodukt~\eqref{sturmliouville:eq:example-fourier-dot-product}
+verwendet werden, um die Koeffizienten $a_n$ und $b_n$ zu bestimmen.
+es wird also die Tatsache ausgenutzt, dass die Gleichheit in
+\eqref{sturmliouville:eq:example-fourier-initial-conditions} nach Anwendung des
+Skalarproduktes immer noch gelten muss und dass das Skalarprodukt mit einer
+Basisfunktion sämtliche Summanden auf der rechten Seite auslöscht.
 
 Zur Berechnung von $a_m$ mit $ m \in \mathbb{n} $ wird beidseitig das
 Skalarprodukt mit der Basisfunktion $ \cos(\frac{m \pi}{l}x)$
@@ -501,10 +499,10 @@ gebildet:
 \end{equation}
 bevor diese Form in die Integralform umgeschrieben werden kann, muss überlegt
 sein, welche Integralgrenzen zu verwenden sind.
-in diesem Fall haben die $\sin$ und $\cos$ terme beispielsweise keine ganze
-Periode im intervall $x \in [0, l]$ für ungerade $n$ und ungerade $m$.
-um die skalarprodukte aber korrekt zu berechnen, muss über ein ganzzahliges
-vielfaches der Periode der trigonometrischen Funktionen integriert werden.
+In diesem Fall haben die $\sin$- und $\cos$-Terme beispielsweise keine ganze
+Periode im Intervall $x \in [0, l]$ für ungerade $n$ und ungerade $m$.
+Um die Skalarprodukte aber korrekt zu berechnen, muss über ein ganzzahliges
+Vielfaches der Periode der trigonometrischen Funktionen integriert werden.
 Dazu werden die Integralgrenzen $-l$ und $l$ verwendet und es werden ausserdem
 neue Funktionen $\hat{u}_c(0, x)$ für die Berechnung mit Cosinus und
 $\hat{u}_s(0, x)$ für die Berechnung mit Sinus angenommen, welche $u(0, t)$
@@ -514,24 +512,23 @@ gerade, respektive ungerade auf $[-l, 0]$ fortsetzen:
     \hat{u}_c(0, x)
     &=
     \begin{cases}
-        u(0, -x) & -l \leq x < 0
+        \phantom{-}u(0, -x) \qquad\qquad &\llap{$-l$}\leq x < 0
         \\
-        u(0, \phantom{-}x) & \phantom{-}0 \leq x \leq l
+        \phantom{-}u(0, \phantom{-}x) \qquad\qquad &\llap{$0$}\leq x \leq l
     \end{cases}
     \\
     \hat{u}_s(0, x)
     &=
     \begin{cases}
-        -u(0, -x) & -l \leq x < 0
+        -u(0, -x) \qquad\qquad&\llap{$-l$}\leq x < 0
         \\
-        u(0, \phantom{-}x) & \phantom{-}0 \leq x \leq l
-    \end{cases}.
+        \phantom{-}u(0, \phantom{-}x) \qquad\qquad&\llap{$0$}\leq x \leq l.
+    \end{cases}
 \end{aligned}
 \]
-
 Diese Funktionen wurden gerade so gewählt, dass nun das Resultat der Integrale
 um den Faktor $2$ skaliert wurde.
-es gilt also
+Es gilt also
 \[
     \int_{-l}^{l}\hat{u}_c(0, x)\cos\biggl(\frac{m \pi}{l}x\biggr)\,dx
     =
@@ -544,12 +541,12 @@ und
     2\int_{0}^{l}u(0, x)\sin\biggl(\frac{m \pi}{l}x\biggr)\,dx.
 \]
 
-als nächstes wird nun das
-skalarprodukt~\eqref{sturmliouville:eq:dot-product-cosine} berechnet:
+Als nächstes wird nun das
+Skalarprodukt~\eqref{sturmliouville:eq:dot-product-cosine} berechnet:
 \[
 \begin{aligned}
     \int_{-l}^{l}\hat{u}_c(0, x)\cos\biggl(\frac{m \pi}{l}x\biggr)\,dx
-    =&
+    &=
     \int_{-l}^{l} \biggl[a_0
     +
     \sum_{n = 1}^{\infty} a_n\cos\biggl(\frac{n\pi}{l}x\biggr)
@@ -558,13 +555,13 @@ skalarprodukt~\eqref{sturmliouville:eq:dot-product-cosine} berechnet:
     \cos\biggl(\frac{m \pi}{l}x\biggr) \,dx
     \\
     2\int_{0}^{l}u(0, x)\cos\biggl(\frac{m \pi}{l}x\biggr)\,dx
-    =&
+    &=
     a_0 \int_{-l}^{l}\cos\biggl(\frac{m \pi}{l}x\biggr) \,dx
     +
     \sum_{n = 1}^{\infty}\biggl[a_n\int_{-l}^{l}\cos\biggl(\frac{n\pi}{l}x\biggr)
         \cos\biggl(\frac{m \pi}{l}x\biggr)\,dx\biggr]
     \\
-    &+
+    &\quad +
     \sum_{n = 1}^{\infty}\biggl[b_n\int_{-l}^{l}\sin\biggl(\frac{n\pi}{l}x\biggr)
         \cos\biggl(\frac{m \pi}{l}x\biggr)\,dx\biggr].
 \end{aligned}
@@ -593,7 +590,7 @@ orthogonal zueinander stehen und
 \]
 da Sinus- und Cosinus-Funktionen ebenfalls orthogonal zueinander sind.
 
-Es bleibt also lediglich der summand mit $a_m$ stehen, was die Gleichung zu
+Es bleibt also lediglich der Summand mit $a_m$ stehen, was die Gleichung zu
 \[
     2\int_{0}^{l}u(0, x)\cos\biggl(\frac{m \pi}{l}x\biggr)\,dx
     =
