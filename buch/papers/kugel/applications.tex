@@ -285,9 +285,9 @@ gravitational vector field
 
 To consider a more realistic case in which, instead of a point mass, we have a
 real object with a volume to be considered (for instance our planet) we can use
-the superposition principle.  The basic idea is to discretize the latter into
-$N$ small pieces. We can imagine small cubes having sides $\Delta_{x_i},
-\Delta_{y_i}, \Delta_{z_i}$, each with its own density $\rho_i$.  So to get the
+the superposition principle.  The basic idea is to discretize the mass into $N$
+small pieces. We can imagine $N$ small cubes having sides $\Delta_{x_i},
+\Delta_{y_i}, \Delta_{z_i}$, each with its own density $\rho_i$.  So, to get the
 resultant gravitational field, we have to ``sum up'' every single small
 contribution of these pieces, i.e.
 \begin{equation}
@@ -355,43 +355,98 @@ where in the second step we used the fundamental property of the Dirac
 result: the equation is known as \emph{Gauss's law of gravity}.  If we assume an
 object with a constant mass density, we can simplify it to
 \begin{equation}
-  \label{kugel:eq:gauss-gravity-poisson}
+  \label{kugel:eqn:gauss-gravity-poisson}
   \nabla \cdot \kvec{F} = -4\pi G \rho,
 \end{equation}
 and if it outside of the attracting body, in open space, the density can be
 assumed to be approximately $\rho \approx 0$, meaning that
 \begin{equation}
-  \label{kugel:eq:gauss-gravity-laplace}
+  \label{kugel:eqn:gauss-gravity-laplace}
   \nabla \cdot \kvec{F} = 0.
 \end{equation}
 Thus, we are moving from a \emph{Poisson equation}
-\eqref{kugel:eq:gauss-gravity-poisson} to a \emph{Laplace equation}
-\eqref{kugel:eq:gauss-gravity-laplace}.  We can hence say that the gravity field
+\eqref{kugel:eqn:gauss-gravity-poisson} to a \emph{Laplace equation}
+\eqref{kugel:eqn:gauss-gravity-laplace}.  We can hence say that the gravity field
 follows a Laplace equation and exactly at this point the spherical harmonics
-come into play. \kugeltodo{mention potential $\kvec{F} = \nabla \phi$, so that
-there is the Laplacian $\nabla \cdot \kvec{F} = \nabla^2 \phi$.}
+come into play. That is because gravitational field is a \emph{conservative}
+field, which means that it is a gradient of a scalar field $\phi(x, y, z)$, the
+gravitational potential. The physical meaning of the gravitational potential is
+a form or energy normalized with respect to the mass, which means that its unit
+is J / kg. Incorporating this fact yields
+\begin{equation*}
+  \nabla \cdot \kvec{F}(\kvec{r})
+  = \nabla \cdot \nabla \phi(\kvec{r})
+  = \nabla^2 \phi(\kvec{r})
+  = -4\pi G \rho(\kvec{r}),
+\end{equation*}
+and we can see that there is a Laplacian operator. Further it is easy to see
+that the spherical coordinate system is most natural choice here.  Now, recall
+how we derived the spherical harmonics at the very beginning: we solved the
+eigenvalue problem of the Laplacian.
 
-You might recall, even if it was at the very beginning, how we derived the spherical harmonics: we solved the eigenfunction equation in \eqref{kugel:eqn:eigen}. 
-It is easy to show that, considering the spherical coordinates system to be the most natural choice, the kind of functions which solve 
-eq.\eqref{kugel:eq:gauss-gravity-laplace} are spherical harmonics as well. An intuition could be that in this case we are simply 
-looking for a solution of eq.\eqref{kugel:eqn:eigen} with the eigenvalue $\lambda=0$.
+\subsubsection{GOCE Mission}
 
-This explains why the spherical harmonic analysis is the most common framework to study the gravity field of our planet. These special 
-functions emerge from the solution of the Poisson equation in spherical coordinates, being hence their natural consequence. 
+To model the gravitational field of Earth the European Space Agency (ESA) sent
+out many satellite in space to make measurements, the latest being the Gravity
+Field and Steady-State Ocean Circulation Explorer (GOCE) mission in 2009.
 
-To model the gravitational field of Earth the scientists send satellites out in the space -as in the GOCE mission- to make some measurements. 
-On a practical level, it is basically like sampling a function defined around the globe, collecting a bunch of discrete points. 
-The problem then is to know what kind of values we have between these points. One can think to use some fancy interpolation scheme. 
-But why not using the theory we struggled so hard for? after all we have just stated that this is the most natural choice to 
-describe the gravity field we are trying to measure.
+On a practical level, the satellite measurements are basically sampling the
+gravitation potential around the globe, collecting a bunch of discrete data
+points. This is done by a piece of equipment called gradiometer, and in the
+specific case of the GOCE mission, there were multiple gradiometers installed at
+each extreme of the satellite. This was done such that on each of the three axes
+of the satellite there were at least two measurement, which were then used to
+approximate the second derivative. Concretely, for instance, the satellite could
+measure two accelerations along the $z$ axis $a_{z1}$ and $a_{z2}$ that are
+$\Delta z$ apart , and the values were used to compute
+\begin{equation*}
+  \frac{a_{z1} - a_{z2}}{\Delta z}
+  \approx \frac{\partial a}{\partial z}
+  = \frac{\partial}{\partial z} \frac{\partial V}{\partial z}
+  = \frac{\partial^2 V}{\partial z^2}.
+\end{equation*}
+In the last step we used the fact from physics that the acceleration is the
+derivative of the potential.  The same was also applied in other directions to
+approximate every possible partial derivative, to get what is known in the
+literature as the Marussi tensor (essentially the Hessian matrix of $V$)
+\begin{equation*}
+  \mathbf{M}(\kvec{r}) = \begin{bmatrix}
+    \dfrac{\partial^2 V}{\partial x^2} &
+    \dfrac{\partial^2 V}{\partial x \partial y} &
+    \dfrac{\partial^2 V}{\partial x \partial z} \\[0.7em]
+    \dfrac{\partial^2 V}{\partial x \partial y} &
+    \dfrac{\partial^2 V}{\partial y^2} &
+    \dfrac{\partial^2 V}{\partial y \partial z} \\[0.7em]
+    \dfrac{\partial^2 V}{\partial x \partial z} &
+    \dfrac{\partial^2 V}{\partial y \partial z} &
+    \dfrac{\partial^2 V}{\partial z^2}
+  \end{bmatrix}.
+\end{equation*}
 
-The way to go is to use the grid of points measured by the satellite to evaluate the integral in eq.\eqref{} cleverly, for example with the help of 
-the \emph{Gauss quadrature} (see section \ref{}) or some other numerical integration scheme. After this computation we will have a set of 
-coefficients $c_{m,n}$ to play with. In this manner, we are basically synthesising the Earth's gravitational field. Once the computed coefficients are 
-inserted in eq.\eqref{}, you will obtain a function with any desired resolution, which will only be determined by the variables $\vartheta, \varphi$. Thus, this can
-be considered an interpolation scheme with the advantage of being achieved rather directly.
+The location (longitude, latitude and altitude) of each measurement of
+$\mathbf{M}$ was known by using global positioning systems (such as GPS) and by
+making clever use of the knowledge of the relative distance to other satellites.
 
-
-\subsubsection{GOCE mission}
-
-
+Thus, in its essence (we are simplifying here) to model (interpolate) the
+gravitational field of the earth, we make use of the GOCE missions'
+measurements, and assume that the potential is a combination of spherical
+harmonics:
+\begin{equation}
+  \label{kugel:eqn:goce-potential}
+  V(r,\varphi,\vartheta)
+  = \sum_{n=0}^N r^{-n -1} \sum_{m=-n}^n
+    a_{m,n} Y^m_n (\vartheta, \varphi).
+\end{equation}
+In this case, since we also have the altitude measurement we had to include the
+radial component, which although it was not discussed, should be understandable.
+Under this assumption, it is common to solve the interpolation problem using a
+least squares collocation by minimizing the statistical error. This roughly
+means that we have $L$ measurements of the Marussi tensor $\mathbf{M}_1,
+\mathbf{M}_2, \ldots, \mathbf{M}_L$ at the locations $\kvec{r}_1, \kvec{r}_2,
+\ldots \kvec{r}_L$, and we need to find a set of coefficients $a_{m,n}$ that
+satisfy \eqref{kugel:eqn:goce-potential}, and at the same such that at every
+location the Marussi tensor of $V$ matches the measured one, i.e
+$\mathbf{M}(\kvec{r}_i) = \mathbf{M}_i$ for all $1 \leq i \leq L$. Of course, in
+reality the problem is much (much) more involved because each measurement comes
+with stochastic fluctuations (noise, covariance matrices, etc.) that make the
+task more difficult.
