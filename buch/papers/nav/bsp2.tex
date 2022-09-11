@@ -49,7 +49,7 @@ Arktur  &\\
 \end{center}
 \end{minipage}%
 \hfill%
-\raisebox{-2cm}{\includegraphics{papers/nav/bilder/position1.pdf}}%
+\raisebox{-2cm}{\includegraphics{papers/nav/images/position/position1-small.pdf}}%
 }
 \medskip
 
@@ -67,9 +67,9 @@ $\delta$ ist die Breite, $\lambda$ die Länge.
 \subsection{Dreiecke definieren}
 \begin{figure} 
 \hbox{%
-\includegraphics{papers/nav/bilder/beispiele1.pdf}%
+\includegraphics{papers/nav/images/beispiele/beispiele1.pdf}%
 \hfill%
-\includegraphics{papers/nav/bilder/beispiele2.pdf}}
+\includegraphics{papers/nav/images/beispiele/beispiele2.pdf}}
 \caption{Arktur-Deneb; Spica-Altiar
 \label{nav:beispiele}}
 \end{figure}
@@ -110,7 +110,7 @@ c
 \end{align*}
 \end{minipage}%
 \hfill%
-\raisebox{-2.4cm}{\includegraphics{papers/nav/bilder/position2.pdf}}%
+\raisebox{-2.4cm}{\includegraphics{papers/nav/images/position/position2-small.pdf}}%
 }
 Um $a$ zu bestimmen, benötigen wir zuerst den Winkel
 \begin{align*}
@@ -146,26 +146,26 @@ Für $\beta$ und $\gamma$ nutzen wir den sphärischen Seitenkosinussatz:
 \vspace*{-4mm}
 \hbox to\textwidth{%
 \begin{minipage}{8.4cm}%
-Als nächstes berechnen wir die Seiten $h_B$, $h_B$ und die Innenwinkel $\beta_1$ und $\gamma_1$.
+Als nächstes berechnen wir die Seiten $p_B$, $p_B$ und die Innenwinkel $\beta_1$ und $\gamma_1$.
 \begin{align*}
-h_B&=90^\circ - pbb 
+p_B&=90^\circ - h_B 
 	= 90^\circ - 47.42744^\circ \\
 	&= \underline{\underline{42.572556^\circ}} 
 \\
-	h_C &= 90^\circ - pc 
+	p_C &= 90^\circ - h_C 
 	= 90^\circ - 50.256027^\circ \\
 	&= \underline{\underline{39.743973^\circ}} 
 \end{align*}
 \end{minipage}%
 \hfill%
-\raisebox{-2.8cm}{\includegraphics{papers/nav/bilder/position3.pdf}}%
+\raisebox{-2.8cm}{\includegraphics{papers/nav/images/position/position3-small.pdf}}%
 }
 \begin{align*}
-\beta_1 &= \cos^{-1}  \bigg[\frac{\cos(h_c)-\cos(a) \cdot \cos(h_B)}{\sin(a) \cdot \sin(h_B)}\bigg] \\
+\beta_1 &= \cos^{-1}  \bigg[\frac{\cos(p_c)-\cos(a) \cdot \cos(p_B)}{\sin(a) \cdot \sin(p_B)}\bigg] \\
 	&= \cos^{-1}  \bigg[\frac{\cos(39.743973^\circ)-\cos(80.8707801^\circ) \cdot \cos(42.572556^\circ)}{\sin(80.8707801^\circ) \cdot \sin(42.572556^\circ)}\bigg] \\
 	&=\underline{\underline{12.5211127^\circ}} 
 \\
-\gamma_1 &= \cos^{-1}  \bigg[\frac{\cos(h_b)-\cos(a) \cdot \cos(h_C)}{\sin(a) \cdot \sin(h_C)}\bigg] \\
+\gamma_1 &= \cos^{-1}  \bigg[\frac{\cos(p_b)-\cos(a) \cdot \cos(p_C)}{\sin(a) \cdot \sin(p_C)}\bigg] \\
 	&= \cos^{-1}  \bigg[\frac{\cos(42.572556^\circ)-\cos(80.8707801^\circ) \cdot \cos(39.743973^\circ)}{\sin(80.8707801^\circ) \cdot \sin(39.743973^\circ)}\bigg] \\
 	&=\underline{\underline{13.2618475^\circ}} 
 \end{align*}
@@ -179,12 +179,12 @@ Als erstes müssen wir den Winkel $\beta_2$ berechnen:
 	\beta_2 &= \beta + \beta_1 = 45.011513^\circ + 12.5211127^\circ \\
 	&=\underline{\underline{44.6687451^\circ}} 
 \end{align*}
-Danach können wir mithilfe von $\beta_2$, $c$ und $h_B$ die Seite $l$ berechnen:
+Danach können wir mithilfe von $\beta_2$, $c$ und $p_B$ die Seite $l$ berechnen:
 \begin{align*}
 l
 &=
-\cos^{-1}(\cos(c) \cdot \cos(h_B)
-          + \sin(c) \cdot \sin(h_B) \cdot \cos(\beta_2)) \\
+\cos^{-1}(\cos(c) \cdot \cos(p_B)
+          + \sin(c) \cdot \sin(p_B) \cdot \cos(\beta_2)) \\
 &=
 \cos^{-1}(\cos(70.936778^\circ) \cdot \cos(42.572556^\circ)\\
 &\qquad + \sin(70.936778^\circ) \cdot \sin(42.572556^\circ) \cdot \cos(57.5326442^\circ)) \\
@@ -192,14 +192,14 @@ l
 \end{align*}
 \end{minipage}%
 \hfill%
-\raisebox{-2.0cm}{\includegraphics{papers/nav/bilder/position4.pdf}}%
+\raisebox{-2.0cm}{\includegraphics{papers/nav/images/position/position4-small.pdf}}%
 }
 
 \medskip
 
 Damit wir gleich den Längengrad berechnen können, benötigen wir noch den Winkel $\omega$:
 \begin{align*}
-	\omega &= \cos^{-1}  \bigg[\frac{\cos(h_B)-\cos(c) \cdot \cos(l)}{\sin(c) \cdot \sin(l)}\bigg] \\
+	\omega &= \cos^{-1}  \bigg[\frac{\cos(p_B)-\cos(c) \cdot \cos(l)}{\sin(c) \cdot \sin(l)}\bigg] \\
 	&=\cos^{-1}  \bigg[\frac{\cos(42.572556^\circ)-\cos(70.936778^\circ) \cdot \cos(54.2833404^\circ)}{\sin(70.936778^\circ) \cdot \sin(54.2833404^\circ)}\bigg] \\
 	&= \underline{\underline{44.6687451^\circ}} 
 \end{align*}
