@@ -28,6 +28,8 @@ markant verbessern können.
 \subsection{Gamma-Funktion%
 \label{laguerre:subsection:gamma}}
 Die Gamma-Funktion ist eine Erweiterung der Fakultät auf die reale und komplexe
+\index{Gamma-Funktion}%
+\index{Fakultät}%
 Zahlenmenge.
 Mehr Informationen zur Gamma-Funktion lassen sich im
 Abschnitt~\ref{buch:rekursion:section:gamma} finden.
@@ -52,7 +54,9 @@ Gewichtsfunktion $x^\nu e^{-x}$  exakt dem Integranden
 für $\nu = z - 1$ entspricht.
 
 \subsubsection{Funktionalgleichung}
-Die Gamma-Funktion besitzt die gleiche Rekursionsbeziehung wie die Fakultät,
+Die Gamma-Funktion besitzt die bis auf eine Verschiebung um $1$ gleiche
+Rekursionsbeziehung wie die Fakultät,
+\index{Funktionalgleichung der Gamma-Funktion}%
 nämlich
 \begin{align}
 \Gamma(z+1)
@@ -69,6 +73,7 @@ z \Gamma(z)
 
 \subsubsection{Reflektionsformel}
 Die Reflektionsformel
+\index{Rekursionsformel}%
 \begin{align}
 \Gamma(z) \Gamma(1 - z)
 =
@@ -266,7 +271,9 @@ Wie wir aber in Abbildung~\ref{laguerre:fig:rel_error_simple} sehen konnten,
 gibt es für jeden Polynomgrad $n$ ein Intervall $[a(n), a(n) + 1]$,
 $a(n) \in \mathbb{Z}$,
 in welchem der relative Fehler minimal ist.
-Die Funktionalgleichung der Gamma-Funktion \eqref{laguerre:gamma_funktional}
+Die Funktionalgleichung
+\eqref{laguerre:gamma_funktional}
+der Gamma-Funktion
 könnte uns hier helfen,
 das Problem in den Griff zu bekommen.
 
@@ -404,6 +411,7 @@ s(z, m) \cdot (z - 2n)_{2n} \frac{(n!)^2}{(2n)!} \xi^{z + m - 2n - 1}
 \end{figure}
 %
 Daraus formulieren wir das Optimierungproblem
+\index{Optimierungsproblem}%
 \begin{align*}
 m^*
 =
@@ -437,6 +445,7 @@ dass die Restriktion von $m^* \in \mathbb{Z}$ Rundungsprobleme verursacht.
 Wir versuchen,
 dieses Problem via lineare Regression und geeignete Rundung zu beheben.
 Den linearen Regressor
+\index{linearer Regressor}%
 \begin{align*}
 \hat{m}
 =
@@ -540,6 +549,7 @@ für verschiedene reelle Werte von $z$ und Laguerre-Polynome vom Grad $n$}
 \end{figure}
 
 \subsubsection{Vergleich mit Lanczos-Methode}
+\index{Lanzos-Approximation}%
 Nun stellt sich die Frage,
 wie das in diesem Abschnitt beschriebene Approximationsverfahren
 der Gamma-Funktion sich gegenüber den üblichen Approximationsverfahren schlägt.
@@ -573,12 +583,19 @@ H_k(z)
 \end{align*}
 mit $H_0 = 1$ und $\sum_0^n g_k = 1$ (siehe \cite{laguerre:lanczos}).
 Diese Methode wurde zum Beispiel in
-{\em GNU Scientific Library}, {\em Boost}, {\em CPython} und
+{\em GNU Scientific Library},
+\index{GNU Scientific Library}%
+{\em Boost},
+\index{Boost}%
+{\em CPython} und
+\index{CPython}%
 {\em musl} implementiert.
+\index{musl}
 Diese Methode erreicht für $n = 7$ typischerweise eine Genauigkeit von $13$
 korrekten, signifikanten Stellen für reelle Argumente.
 Zum Vergleich: die vorgestellte Methode erreicht für $n = 7$
 eine minimale Genauigkeit von $6$ korrekten, signifikanten Stellen
+\index{Genauigkeit}%
 für reelle Argumente.
 
 \subsubsection{Fazit}

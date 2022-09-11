@@ -7,6 +7,7 @@
   \label{laguerre:section:quadratur}}
 \rhead{Gauss-Quadratur}%
 Die Gauss-Quadratur ist ein numerisches Integrationsverfahren,
+\index{Gauss-Quadratur}%
 welches die Eigenschaften von orthogonalen Polynomen verwendet.
 Herleitungen und Analysen der Gauss-Quadratur können im
 Abschnitt~\ref{buch:orthogonal:section:gauss-quadratur} gefunden werden.
@@ -27,7 +28,7 @@ Als Resultat kann das Integral via einer gewichteten Summe der Form
 \label{laguerre:gaussquadratur}
 \end{align}
 berechnet werden.
-Die Gauss-Quadratur ist exakt für Polynome mit Grad $2n -1$,
+Die Gauss-Quadratur ist exakt für Polynome mit Grad höchstens $2n -1$,
 wenn ein Interpolationspolynom von Grad $n$ gewählt wurde.
 
 \subsection{Gauss-Laguerre-Quadratur%
@@ -80,6 +81,7 @@ wie bei der Gauss-Quadratur.
 % umformulieren:
 Die Gleichung~\eqref{laguerre:gaussquadratur} wird also
 für die Gauss-Laguerre-Quadratur zu
+\index{Gauss-Laguerre-Quadratur}%
 \begin{align}
 \int_{0}^{\infty} f(x) e^{-x} dx
 \approx
@@ -90,9 +92,13 @@ für die Gauss-Laguerre-Quadratur zu
 
 \subsubsection{Stützstellen und Gewichte}
 Nach der Definition der Gauss-Quadratur müssen als Stützstellen die Nullstellen
+\index{Gauss-Quadratur}%
+\index{Stützstellen}%
+\index{Nullstellen}%
 des Approximationspolynoms genommen werden.
 Für das Laguerre-Polynom $L_n(x)$ müssen demnach dessen Nullstellen $x_i$ und
 als Gewichte $A_i$ die Integrale von $l_i(x) e^{-x}$ verwendet werden.
+\index{Gewicht}%
 Dabei sind
 \begin{align*}
 l_i(x_j)
@@ -106,6 +112,7 @@ l_i(x_j)
 % .
 \end{align*}
 die Lagrangeschen Interpolationspolynome.
+\index{Lagrange-Interpolationspolynom}%
 Laut \cite{laguerre:hildebrand2013introduction} können die Gewichte mit
 \begin{align*}
 A_i
@@ -120,7 +127,8 @@ des orthogonalen Polynoms $\phi_n(x)$, $\forall i =0,\ldots,n$ und
 =
 \int_0^\infty w(x) \phi_n^2(x)\,dx
 \end{align*}
-dem Normalisierungsfaktor.
+als Normalierungsfaktor.
+\index{Normierungsfaktor}%
 
 Wir setzen nun $\phi_n(x) = L_n(x)$ und
 nutzen den Vorzeichenwechsel der Laguerre-Koeffizienten
@@ -155,6 +163,7 @@ A_i
 .
 \end{align}
 Nun kann die Rekursionseigenschaft der Laguerre-Polynome
+\index{Rekursionseigenschaft}%
 \cite{laguerre:hildebrand2013introduction}
 % (siehe \cite{laguerre:hildebrand2013introduction})
 \begin{align*}
@@ -190,6 +199,7 @@ A_i
 \end{align}
 
 \subsubsection{Fehlerterm}
+\index{Fehler}
 Die Gauss-Laguerre-Quadratur mit $n$ Stützstellen berechnet Integrale
 von Polynomen bis zum Grad $2n - 1$ exakt.
 Für beliebige Funktionen kann eine Fehlerabschätzung angegeben werden.

@@ -34,9 +34,11 @@ Für den Beweis der Orthogonalität der Laguerre-Polynome möchten
 wir den zweiten Ansatz über das Sturm-Liouville-Problem verwenden.
 % Dazu müssen wir die Laguerre-Differentialgleichung~\eqref{laguerre:dgl}
 % in die Form der Sturm-Liouville-Differentialgleichung bringen.
-Allerdings möchten wir nicht die Laguerre-Differentialgleichung
+Allerdings möchten wir nicht die Laguerre-Differential\-glei\-chung
+\index{Laguerre-Differentialgleichung}%
 in die richtige Form bringen,
 sondern den Laguerre-Operator
+\index{Laguerre-Operator}%
 \begin{align}
 \Lambda
 =
@@ -76,6 +78,7 @@ Dazu müssen wir die Operatoren einander gleichsetzen.
 % indem wir diese Operatoren einander gleichsetzen.
 
 \subsubsection{Umformen in Sturm-Liouville-Operator}
+\index{Sturm-Liouville-Operator}%
 % Aus der Beziehung von
 Setzen wir nun 
 \eqref{laguerre:lagop} und \eqref{laguerre:slop}
@@ -130,14 +133,18 @@ x \frac{d^2}{dx^2} + (\nu + 1 - x) \frac{d}{dx}.
 Mittels Koeffizientenvergleich kann nun abgelesen werden,
 dass $w(x) = x^\nu e^{-x}$ und $C=-1$. %mit $\nu \geq 0$.
 Die Gewichtsfunktion $w(x)$ wächst für $x\rightarrow-\infty$ sehr schnell an.
+\index{Gewichtsfunktion}%
 Ausserdem hat die Gewichtsfunktion $w(x)$ für negative $\nu$ einen Pol bei $x=0$,
 daher ist die Laguerre-Gewichtsfunktion nur für den
+\index{Laguerre-Gewichtsfunktion}%
 Definitionsbereich $(0, \infty)$ geeignet.
 
 \subsubsection{Randbedingungen}
 Bleibt nur noch sicherzustellen, dass die Randbedingungen
 \begin{align}
-k_0 y(0) + h_0 p(0)y'(0)
+\rlap{$k_0$}\phantom{k_\infty}\rlap{$y(0)$}\phantom{y(\infty)}
++
+\rlap{$h_0$}\phantom{h_\infty} \rlap{$p(0)$}\phantom{p(\infty)}\rlap{$y'(0)$}\phantom{y'(\infty)}
  & =
 0
 \label{laguerre:sllag_randa}
