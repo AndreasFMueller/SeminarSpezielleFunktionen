@@ -10,9 +10,13 @@
 %In diesem Kapitel wird die Lösung der Laplace-Gleichung im 
 %parabolischen Zylinderkoordinatensystem genauer untersucht.
 Die Helmholtz-Gleichung ist eine wichtige Gleichung in der Physik. 
+\index{Helmholtz-Gleichung}%
 Mit ihr lässt sich zum Beispiel das Verhalten von elektromagnetischen Wellen beschreiben.
+\index{elektromagnetische Wellen}%
 In diesem Kapitel werden die Lösungen der Helmholtz-Gleichung im parabolischen Zylinderkoordinatensystem, 
 die parabolischen Zylinderfunktionen, genauer untersucht.
+\index{parabolische Zylinderfunktionen}%
+\index{Zylinderfunktionen, parabolische}%
 
 \subsection{Helmholtz-Gleichung}
 Die partielle Differentialgleichung 
@@ -20,17 +24,23 @@ Die partielle Differentialgleichung
 	\Delta f = \lambda f
 \end{equation}
 ist als Helmholtz-Gleichung bekannt und beschreibt das Eigenwertproblem für den Laplace-Operator. 
+\index{Laplace-Operator}%
 Sie ist eine der Gleichungen, welche auftritt, wenn die Wellengleichung
+\index{Wellengleichung}%
 \begin{equation}
-	\left ( \nabla^2 - \frac{1}{c^2}\frac{\partial^2}{\partial t^2}  \right ) u(\textbf{r},t)
+	\biggl(
+	\nabla^2 - \frac{1}{c^2}\frac{\partial^2}{\partial t^2}
+	\biggr) u(\textbf{r},t)
 	=
 	0 
 \end{equation}
 mit Hilfe von Separation
+\index{Separation}%
 \begin{equation}
 	u(\textbf{r},t) = A(\textbf{r})T(t)
 \end{equation} 
-in zwei Differentialgleichungen aufgeteilt wird. Die Helmholtz-Gleichung ist der Teil
+in zwei Differentialgleichungen aufgeteilt wird.
+Die Helmholtz-Gleichung ist der Teil
 \begin{equation}
 	\nabla^2 A(\textbf{r}) = \lambda A(\textbf{r}),
 \end{equation}
@@ -72,7 +82,7 @@ Das parabolischen Zylinderkoordinatensystem \cite{parzyl:coordinates} ist ein kr
 bei dem parabolische Zylinder die Koordinatenflächen bilden.
 Die Koordinate $(\sigma, \tau, z)$ sind in kartesischen Koordinaten ausgedrückt durch
 \begin{align}
-    x & = \frac{1}{2}\left(\tau^2 - \sigma^2\right) \\
+    x & = \frac{1}{2}(\tau^2 - \sigma^2) \\
     \label{parzyl:coordRelationsa}
     y & =  \sigma \tau\\
     z & = z.
@@ -80,40 +90,41 @@ Die Koordinate $(\sigma, \tau, z)$ sind in kartesischen Koordinaten ausgedrückt
 \end{align}
 Wird $\sigma$ oder $\tau$ konstant gesetzt, resultieren die Parabeln
 \begin{equation}
-    x = \frac{1}{2} \left( \frac{y^2}{\sigma^2} - \sigma^2 \right)
+    x = \frac{1}{2} \biggl( \frac{y^2}{\sigma^2} - \sigma^2 \biggr)
 \end{equation}
 und 
 \begin{equation}
-    x = \frac{1}{2} \left( -\frac{y^2}{\tau^2} + \tau^2 \right).
+    x = \frac{1}{2} \biggl( -\frac{y^2}{\tau^2} + \tau^2 \biggr).
 \end{equation}
 
 \begin{figure}
     \centering
     \includegraphics[scale=0.32]{papers/parzyl/img/coordinates.png}
-    \caption{Das parabolische Koordinatensystem. Die grünen Parabeln haben ein 
+    \caption{Das parabolische Koordinatensystem.
+    Die grünen Parabeln haben ein 
     konstantes $\sigma$ und die roten ein konstantes $\tau$.}
     \label{parzyl:fig:cordinates}
 \end{figure}
 Abbildung \ref{parzyl:fig:cordinates} zeigt das parabolische Koordinatensystem.
-Das parabolische Zylinderkoordinatensystem entsteht wenn die Parabeln aus der
+Das parabolische Zylinderkoordinatensystem entsteht, wenn die Parabeln aus der
 Ebene gezogen werden. 
 Die Flächen mit $\tau = 0$ oder $\sigma = 0$ stellen somit Halbebenen entlang der $z$-Achse dar.
 
 Um in diesem Koordinatensystem integrieren und differenzieren zu 
 können braucht es die Skalierungsfaktoren $h_{\tau}$, $h_{\sigma}$ und $h_{z}$ \cite{parzyl:scalefac}.
+\index{Skalierungsfaktoren}%
 
 Eine infinitesimal kleine Distanz $ds$ zwischen zwei Punkten
 kann im kartesischen Koordinatensystem als
 \begin{equation}
-    \left(ds\right)^2 = \left(dx\right)^2 + \left(dy\right)^2 + 
-    \left(dz\right)^2
+    (ds)^2 = (dx)^2 + (dy)^2 + (dz)^2
     \label{parzyl:eq:ds}
 \end{equation}
 ausgedrückt werden.
 Die Skalierungsfaktoren werden in einem orthogonalen Koordinatensystem so bestimmt, dass
 \begin{equation}
-    \left(ds\right)^2 = \left(h_{\sigma}d\sigma\right)^2 + 
-    \left(h_{\tau}d\tau\right)^2 + \left(h_z dz\right)^2
+    (ds)^2 = (h_{\sigma}d\sigma)^2 + 
+    (h_{\tau}d\tau)^2 + (h_z dz)^2
 \label{parzyl:eq:dspara}
 \end{equation}
 gilt.
@@ -137,10 +148,10 @@ substituiert.
 Wird diese Gleichung in der Form von \eqref{parzyl:eq:dspara}
 geschrieben, resultiert
 \begin{equation}
-    \left(d s\right)^2 = 
-        \left(\sigma^2 + \tau^2\right)\left(d\sigma\right)^2 + 
-        \left(\sigma^2 + \tau^2\right)\left(d\tau\right)^2 +
-        \left(d \tilde{z}\right)^2.
+    (d s)^2 = 
+        (\sigma^2 + \tau^2)(d\sigma)^2 + 
+        (\sigma^2 + \tau^2)(d\tau)^2 +
+        (d \tilde{z})^2.
 \end{equation}
 Daraus ergeben sich die Skalierungsfaktoren 
 \begin{align}
@@ -152,17 +163,17 @@ Daraus ergeben sich die Skalierungsfaktoren
 Möchte man eine Differentialgleichung im parabolischen 
 Zylinderkoordinatensystem aufstellen, müssen die Skalierungsfaktoren
 mitgerechnet werden.
-Der Laplace Operator wird dadurch zu
+Der Laplace-Operator wird dadurch zu
 \begin{equation}
     \Delta f = \frac{1}{\sigma^2 + \tau^2} 
-        \left( 
+        \biggl( 
             \frac{\partial^2 f}{\partial \sigma ^2} +
             \frac{\partial^2 f}{\partial \tau ^2}
-        \right)
+        \biggr)
         + \frac{\partial^2 f}{\partial z^2}.
     \label{parzyl:eq:laplaceInParZylCor}
 \end{equation}
-\subsubsection{Lösung der Helmholtz-Gleichung im parabolischen Zylinderfunktion}
+\subsubsection{Lösung der Helmholtz-Gleichung in parabolischen Zylinderkoordinaten}
 Die Differentialgleichungen, welche zu den parabolischen Zylinderfunktionen führen, tauchen
 %, wie bereits erwähnt, 
 dann auf, wenn die Helmholtz-Gleichung
@@ -187,22 +198,25 @@ gelöst wird.
 %	+ 
 %	\frac{\partial^2}{\partial z^2}.
 %\end{equation}
-Mit dem Laplace Operator aus \eqref{parzyl:eq:laplaceInParZylCor} lautet die Helmholtz-Gleichung
+Mit dem Laplace-Operator aus \eqref{parzyl:eq:laplaceInParZylCor}
+lautet die Helmholtz-Gleichung
 \begin{equation}
 	\Delta f(\sigma, \tau, z)
 	=
 	\frac{1}{\sigma^2 + \tau^2}
-	\left ( 
+	\biggl( 
 	\frac{\partial^2 f(\sigma,\tau,z)}{\partial \sigma^2} 
 	+ 
 	\frac{\partial^2 f(\sigma,\tau,z)}{\partial \tau^2}
-	\right )
+	\biggr)
 	+ 
 	\frac{\partial^2 f(\sigma,\tau,z)}{\partial z^2}
 	= 
 	\lambda f(\sigma,\tau,z).
 \end{equation}
-Diese partielle Differentialgleichung kann mit Hilfe von Separation gelöst werden. Dazu wird 
+Diese partielle Differentialgleichung kann mit Hilfe von Separation
+gelöst werden.
+Dazu wird 
 \begin{equation}
 	f(\sigma,\tau,z) = g(\sigma)h(\tau)i(z)
 \end{equation}
@@ -210,11 +224,11 @@ gesetzt, was dann schlussendlich zu den Differentialgleichungen
 \begin{equation}\label{parzyl:sep_dgl_1}
 	g''(\sigma) 
 	- 
-	\left (
+	(
 	\lambda\sigma^2
 	+
 	\mu 
-	\right )
+	)
 	g(\sigma)
 	=
 	0,
@@ -222,11 +236,11 @@ gesetzt, was dann schlussendlich zu den Differentialgleichungen
 \begin{equation}\label{parzyl:sep_dgl_2}
 	h''(\tau) 
 	- 
-	\left (
+	(
 	\lambda\tau^2
 	-
 	\mu 
-	\right )
+	)
 	h(\tau)
 	=
 	0
@@ -235,18 +249,19 @@ und
 \begin{equation}\label{parzyl:sep_dgl_3}
 	i''(z) 
 	+
-	\left (
+	(
 	\lambda
 	+
 	\mu 
-	\right )
+	)
 	i(z)
 	=
 	0
 \end{equation}
 führt. $\lambda$ und $\mu$ sind dabei die Separationskonstanten. 
+\index{Separationskonstante}%
 \eqref{parzyl:sep_dgl_1} und \eqref{parzyl:sep_dgl_2} sind auch 
-als Webersche Differentialgleichungen bekannt.
-
+als {\em Webersche Differentialgleichungen} bekannt.
+\index{Webersche Differentialgleichung}%
 
 
