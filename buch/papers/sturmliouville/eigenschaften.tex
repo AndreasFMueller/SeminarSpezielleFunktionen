@@ -13,7 +13,7 @@ Im Weiteren werden nun die Eigenschaften der Lösung eines
 Sturm-Liouville-Problems diskutiert.
 Im Wesentlichen wird darauf eingegangen, wie die Orthogonalität der Lösungen
 zustande kommt, damit diese später in den Beispielen verwendet werden kann.
-Dazu wird zunächst das Eigenwertproblem für Matrizen wiederholt und angeschaut
+Dazu wird zunächst das Eigenwertproblem für Matrizen wiederholt und angeschaut,
 unter welchen Voraussetzungen die Lösungen dieses Problems orthogonal sind.
 Dann wird gezeigt, dass das Sturm-Liouville-Problem auch ein Eigenwertproblem
 dieser Art ist und es wird auf au die Orthogonalität der Lösungsfunktionen
@@ -25,6 +25,8 @@ geschlossen.
 % TODO: intro
 
 Angenommen es sei eine reelle, symmetrische $n \times n$-Matrix $A$ gegeben.
+\index{symmetrische Matrix}%
+\index{Matrix!symmetrisch}%
 Dass $A$ symmetrisch ist, bedeutet, dass
 \[
     \langle Av, w \rangle
@@ -38,7 +40,10 @@ erfüllt ist.
 Für reelle, symmetrische Matrizen zeigt dies auch direkt, dass die Matrix
 selbstadjungiert ist.
 Das ist wichtig, da der Spektralsatz~\cite{sturmliouville:spektralsatz-wiki}
+\index{Spektralsatz}%
 für selbstadjungierte Matrizen formuliert ist. Dieser sagt nun aus, dass die
+\index{selbstadjunigert}%
+\index{Matrix!selbstadjungiert}%
 Matrix $A$ diagonalisierbar ist.
 In anderen Worten bilden die Eigenvektoren $v_i \in \mathbb{R}^n$ des 
 Eigenwertproblems
@@ -67,6 +72,7 @@ Dieser wird nun verwendet um die Differenzialgleichung
     \lambda w(x) y(x)
 \]
 in das Eigenwertproblem
+\index{Eigenwertproblem}%
 \begin{equation}
     \label{sturmliouville:eq:eigenvalue-problem}
     L y
@@ -105,14 +111,16 @@ gelten.
 Wie in Kapitel~\ref{buch:integrale:subsection:sturm-liouville-problem} bereits
 gezeigt, ist dies durch die
 Randbedingungen~\eqref{sturmliouville:eq:randbedingungen} des
-Sturm-Liouville-Problems sicher gestellt.
+Sturm-Liouville-Problems sichergestellt.
 
 Um nun über den Spektralsatz~\cite{sturmliouville:spektralsatz-wiki} auf die
+\index{Spektralsatz}%
 Orthogonalität der Lösungsfunktion $y$ zu schliessen, muss der Operator $L$ ein
 sogenannter ''kompakter Operator'' sein.
 Bei einem regulären Sturm-Liouville-Problem ist diese Eigenschaft für $L$
 gegeben und wird im Weiteren nicht näher diskutiert.
 
-Es kann nun also dank dem Spektralsatz darauf geschlossen werden, dass die
+Es kann nun also dank des Spektralsatzes darauf geschlossen werden, dass die
 Lösungsfunktion $y$ eines regulären Sturm-Liouville-Problems eine
 Linearkombination aus orthogonalen Basisfunktionen sein muss.
+
