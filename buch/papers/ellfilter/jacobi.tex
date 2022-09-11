@@ -4,6 +4,7 @@ Für das elliptische Filter werden, wie es der Name bereits andeutet, elliptisch
 Wie die trigonometrischen Funktionen Zusammenhänge eines Kreises darlegen, beschreiben die elliptischen Funktionen Ellipsen.
 Es ist daher naheliegend, dass der Kosinus des Tschebyscheff-Filters gegen ein elliptisches Pendant ausgetauscht werden könnte.
 Der Begriff elliptische Funktion wird für sehr viele Funktionen gebraucht, daher ist es hier wichtig zu erwähnen, dass es hier ausschliesslich um die Jacobischen elliptischen Funktionen geht.
+\index{Jacobische elliptische Funktionen}%
 
 \subsection{Grundlegende Eigenschaften}
 
@@ -12,6 +13,8 @@ Im Wesentlichen erweitern die Jacobi elliptischen Funktionen die trigonometrisch
 Zum Beispiel gibt es analog zum Sinus den elliptischen $\sn(z, k)$.
 Im Gegensatz zum den trigonometrischen Funktionen haben die elliptischen Funktionen zwei Parameter.
 Den elliptischen Modul $k$, der die Exzentrizität der Ellipse parametrisiert und das Winkelargument $z$.
+\index{elliptischer Modul}%
+\index{Modul, elliptisch}%
 Im Kreis ist der Radius für alle Winkel konstant, bei Ellipsen ändert sich das.
 Dies hat zur Folge, dass bei einer Ellipse die Kreisbogenlänge nicht linear zum Winkel verläuft.
 Darum kann hier nicht der gewohnte Winkel verwendet werden.
@@ -68,7 +71,7 @@ Insgesamt sind es die zwölf Funktionen
     \dc.
 \end{equation*}
 
-Die Jacobischen elliptischen Funktionen können mit der inversen Funktion des vollständigen elliptischen Integrals erster Art
+Die Jacobischen elliptischen Funktionen können durch die inverse Funktion des vollständigen elliptischen Integrals erster Art
 \begin{equation}
     \phi = F^{-1}(z, k)
 \end{equation}
@@ -94,6 +97,8 @@ Mithilfe von $F^{-1}$ kann zum Beispiel $sn^{-1}$ mit dem elliptischen Integral 
 Beim Tschebyscheff-Filter konnten wir mit Betrachten des Arcuscosinus die Funktionalität erklären.
 Für das elliptische Filter machen wir die gleiche Betrachtung mit der $\sn^{-1}$-Funktion.
 Der $\sn^{-1}$ ist durch das elliptische Integral
+\index{elliptisches Integral}%
+\index{Integral, elliptisch}%
 \begin{align}
     \sn^{-1}(w, k)
         & =
@@ -145,7 +150,9 @@ Abbildung \ref{ellfilter:fig:sn} zeigt den Verlauf der Funktion in der komplexen
     }
     \label{ellfilter:fig:sn}
 \end{figure}
-In der reellen Richtung ist sie $4K(k)$-periodisch und in der imaginären Richtung $4K^\prime$-periodisch, wobei $K^\prime$ das komplementäre vollständige Elliptische Integral ist:
+In der reellen Richtung ist sie $4K(k)$-periodisch und in der imaginären Richtung $4K^\prime$-periodisch, wobei $K^\prime$ das komplementäre vollständige elliptische Integral ist:
+\index{vollständiges elliptisches Integral}%
+\index{Integral!vollständiges elliptisches}%
 \begin{equation}
     K^\prime(k)
     =

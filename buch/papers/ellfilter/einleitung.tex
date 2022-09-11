@@ -2,16 +2,23 @@
 
 Filter sind womöglich eines der wichtigsten Elemente in der Signalverarbeitung und finden Anwendungen in der digitalen und analogen Elektrotechnik.
 Besonders hilfreich ist die Untergruppe der linearen Filter.
-Elektronische Schaltungen mit linearen Bauelementen wie Kondensatoren, Spulen und Widerständen führen immer zu linearen zeitinvarianten Systemen (LTI-System von englisch \textit{time-invariant system}).
+Elektronische Schaltungen mit linearen Bauelementen wie Kondensatoren, Spulen und Widerständen führen immer zu linearen zeitinvarianten Systemen (LTI-System von englisch {\em time-invariant system}).
+\index{LTI-System}%
+\index{time-invariant system}%
 Durch die Linearität werden beim Filtern keine neuen Frequenzanteile erzeugt, was es erlaubt, einen Frequenzanteil eines Signals verzerrungsfrei herauszufiltern.
 Diese Eigenschaft macht es sinnvoll, lineare Filter im Frequenzbereich zu beschreiben.
 Die Übertragungsfunktion $H(\Omega)$ eines linearen Filters im Frequenzbereich ist dabei immer eine rationale Funktion, also ein Quotient von zwei Polynomen.
+\index{rationale Funktion}%
 Dabei ist $\Omega = 2 \pi f$ die Frequenzeinheit.
 Die Polynome haben dabei immer reelle oder komplexkonjugierte Nullstellen.
 
 Ein breit angewendeter Filtertyp ist das Tiefpassfilter, welches beabsichtigt, alle Frequenzen eines Signals oberhalb der Grenzfrequenz $\Omega_p$ auszulöschen.
+\index{Tiefpassfilter}%
 Der Rest soll dabei unverändert passieren.
 Aus dem Tiefpassfilter können dann durch Transformationen auch Hochpassfilter, Bandpassfilter und Bandsperren realisiert werden.
+\index{Hochpassfilter}%
+\index{Bandpassfilter}%
+\index{Bandsperre}%
 Ein solches Filter hat idealerweise die Frequenzantwort
 \begin{equation}
     H(\Omega) =
@@ -20,7 +27,7 @@ Ein solches Filter hat idealerweise die Frequenzantwort
         0  & \Omega < \Omega_p
     \end{cases},
 \end{equation}
-wie dargestellt in Abbildung \ref{ellfilter:fig:lp}
+wie dargestellt in Abbildung \ref{ellfilter:fig:lp}.
 \begin{figure}
     \centering
     \input{papers/ellfilter/tikz/filter.tikz.tex}
@@ -30,25 +37,28 @@ wie dargestellt in Abbildung \ref{ellfilter:fig:lp}
 Leider ist eine solche Funktion nicht als rationale Funktion darstellbar.
 Aus diesem Grund sind realisierbare Approximationen gesucht.
 Jede Approximation wird einen kontinuierlichen Übergang zwischen Durchlassbereich und Sperrbereich aufweisen.
-Oft wird dabei der Faktor $1/\sqrt{2}$ als Schwelle zwischen den beiden Bereichen gewählt.
+\index{Durchlassbereich}%
+\index{Sperrbereich}%
+Oft wird dabei der Faktor $1/\!\sqrt{2}$ als Schwelle zwischen den beiden Bereichen gewählt.
 Somit lassen sich lineare Tiefpassfilter mit folgender Funktion zusammenfassen:
 \begin{equation} \label{ellfilter:eq:quadratic_transfer}
     | H(\Omega)|^2 = \frac{1}{1 + \varepsilon_p^2 F_N^2(w)}, \quad w=\frac{\Omega}{\Omega_p},
 \end{equation}
 wobei $F_N(w)$ eine rationale Funktion ist, $|F_N(w)| \leq 1 ~\forall~ |w| \leq 1$ erfüllt und für $|w| \geq 1$ möglichst schnell divergiert.
-Des weiteren müssen alle Nullstellen und Pole von $F_N$ auf der linken Halbebene liegen, damit das Filter implementierbar und stabil ist.
+Des weiteren müssen alle Nullstellen und Pole von $F_N$ in der linken Halbebene liegen, damit das Filter implementierbar und stabil ist.
 $w$ ist die normalisierte Frequenz, die es erlaubt ein Filter unabhängig von der Grenzfrequenz zu beschrieben.
 Bei $w=1$ hat das Filter eine Dämpfung von $1/(1+\varepsilon^2)$.
 $N \in \mathbb{N} $ gibt die Ordnung des Filters vor, also die maximale Anzahl Pole oder Nullstellen.
 Je höher $N$ gewählt wird, desto steiler ist der Übergang im Sperrbereich.
 Grössere $N$ erfordern jedoch aufwendigere Implementierungen und haben mehr Phasenverschiebung.
+\index{Phasenverschiebung}%
 
 Eine einfache Funktion, die für $F_N$ eingesetzt werden kann, ist das Polynom $w^N$.
-Tatsächlich erhalten wir damit das Butterworth Filter, wie in Abbildung \ref{ellfilter:fig:butterworth} ersichtlich.
+Tatsächlich erhalten wir damit das Butterworth-Filter, wie in Abbildung \ref{ellfilter:fig:butterworth} ersichtlich.
 \begin{figure}
     \centering
     \input{papers/ellfilter/python/F_N_butterworth.pgf}
-    \caption{$F_N$ für Butterworth filter. Der grüne und gelbe Bereich definiert die erlaubten Werte für alle $F_N$-Funktionen.}
+    \caption{$F_N$ für Butterworth-Filter. Der grüne und gelbe Bereich definiert die erlaubten Werte für alle $F_N$-Funktionen.}
     \label{ellfilter:fig:butterworth}
 \end{figure}
 Eine Reihe von rationalen Funktionen können für $F_N$ eingesetzt werden, um Tiefpassfilter\-approximationen mit unterschiedlichen Eigenschaften zu erhalten:
@@ -58,7 +68,7 @@ Eine Reihe von rationalen Funktionen können für $F_N$ eingesetzt werden, um Ti
         w^N                            & \text{Butterworth} \\
         T_N(w)                         & \text{Tschebyscheff, Typ 1}  \\
         [k_1 T_N (k^{-1} w^{-1})]^{-1} & \text{Tschebyscheff, Typ 2}  \\
-        R_N(w, \xi)                    & \text{Elliptisch}    \\
+        R_N(w, \xi)                    & \text{elliptisch}    \\
     \end{cases}
 \end{align}
 Mit der Ausnahme vom Butterworth-Filter sind alle Filter nach speziellen Funktionen benannt.
@@ -68,7 +78,9 @@ Das Butterworth-Filter, zum Beispiel, ist maximal flach im Durchlassbereich.
 In vielen Anwendung sind Filter mit einem steilen Übergang gewünscht.
 Da es technisch nicht möglich ist, mit einer rationalen Funktion mit begrenzter Anzahl Pole eine steile Flanke zu erreichen, während der Durchlass- und Sperrbereich flach und monoton sind, gibt es Filtertypen, die absichtlich Welligkeiten in der Frequenzantwort aufweisen.
 Besonders effizient sind Filter mit Equiripple-Verhalten, wessen Welligkeit optimal definiert wird für eine maximal steile Flanke, während die maximale Abweichung zum idealen Filter begrenzt ist.
-Die Welligkeit beansprucht dabei einen begrenzen Verstärkungsintervall und nützt diesen vollständig aus, indem sie periodisch die Grenzen des Intervalls berührt.
+\index{Equiripple-Verhalten}%
+\index{Welligkeit}%
+Die Welligkeit beansprucht dabei ein begrenztes Verstärkungsintervall und nützt dieses vollständig aus, indem sie periodisch die Grenzen des Intervalls berührt.
 Das Tschebyscheff-1 Filter, zum Beispiel, hat Equiripple-Verhalten im Durchlassbereich, währendem es im Sperrbereich monoton abfallend ist.
 Beim Tschebyscheff-2 Filter ist es umgekehrt.
 

@@ -1,12 +1,15 @@
 \section{Rationale elliptische Funktionen}
 
-Kommen wir nun zum eigentlichen Teil dieses Papers, den rationalen elliptischen Funktionen \cite{ellfilter:bib:orfanidis}
+Kommen wir nun zum eigentlichen Teil dieses Papers, den rationalen elliptischen Funktionen
+\index{rationale elliptische Funktion}%
+\index{rationale Funktion, elliptisch}%
 \begin{align}
     R_N(w, \xi) &= \cd \left(N~f_1(\xi)~\cd^{-1}(w, 1/\xi), f_2(\xi)\right) \label{ellfilter:eq:elliptic}\\
                 &= \cd \left(N~\frac{K_1}{K}~\cd^{-1}(w, k), k_1\right) , \quad k= 1/\xi, k_1 = 1/f(\xi) \\
                 &= \cd \left(N~K_1~z , k_1 \right), \quad w= \cd(z K, k)
 \end{align}
-Beim Betrachten dieser Definition, fällt die Ähnlichkeit zur trigonometrische Darstellung der Tsche\-byschef-Polynome \eqref{ellfilter:eq:chebychef_polynomials} auf.
+\cite{ellfilter:bib:orfanidis}.
+Beim Betrachten dieser Definition fällt die Ähnlichkeit zur trigonometrische Darstellung der Tsche\-byschef-Polynome \eqref{ellfilter:eq:chebychef_polynomials} auf.
 Wie bei den Tschebyscheff-Polynomen ist die Formel mit speziellen Funktionen geschrieben.
 Es kann jedoch gezeigt werden, dass es sich tatsächlich um rationale Funktionen handelt, wie es für ein lineares Filter vorausgesetzt wird.
 Die elliptischen Funktionen werden also genau so eingesetzt, dass die resultierenden Nullstellen und Pole eine rationale Funktion ergeben.
@@ -15,7 +18,11 @@ Die Ordnungszahl $N$ kommt auch als Faktor vor.
 Zusätzlich werden noch zwei verschiedene elliptische Moduli $k$ und $k_1$ gebraucht.
 Bei $k = k_1 = 0$ wird der $\cd$ zum Kosinus und wir erhalten in diesem Spezialfall die Tschebyschef-Polynome.
 
-Durch das Konzept vom fundamentalen Rechteck, siehe Abbildung \ref{buch:elliptisch:fig:ellall} können für alle inversen Jacobi elliptischen Funktionen die Positionen der Null- und Polstellen anhand eines Diagramms ermittelt werden.
+Durch das Konzept vom fundamentalen Rechteck,
+siehe Abbildung~\ref{buch:elliptisch:fig:ellall},
+können für alle inversen Jacobi elliptischen Funktionen die Positionen der Null- und Polstellen anhand eines Diagramms ermittelt werden.
+\index{Rechteck, fundamtental}%
+\index{fundamentales Rechteck}%
 Die $\cd^{-1}(w, k)$-Funktion ist um $K$ verschoben zur $\sn^{-1}(w, k)$-Funktion, wie ersichtlich in Abbildung \ref{ellfilter:fig:cd}.
 \begin{figure}
     \centering
@@ -28,6 +35,8 @@ Die $\cd^{-1}(w, k)$-Funktion ist um $K$ verschoben zur $\sn^{-1}(w, k)$-Funktio
 \end{figure}
 Auffallend an der $w = \cd(z, k)$-Funktion ist, dass sich $w$ auf der reellen Achse wie der Kosinus immer zwischen $-1$ und $1$ bewegt, während bei $\mathrm{Im(z) = K^\prime}$ die Werte zwischen $\pm 1/k$ und $\pm \infty$ verlaufen.
 Die Idee des elliptischen Filter ist es, diese zwei Equiripple-Zonen abzufahren, wie ersichtlich in Abbildung \ref{ellfilter:fig:cd2}, welche analog zu Abbildung \ref{ellfilter:fig:arccos2} gesehen werden kann.
+\index{elliptisches Filter}%
+\index{Filter, elliptisch}%
 \begin{figure}
     \centering
     \input{papers/ellfilter/tikz/cd2.tikz.tex}
@@ -52,8 +61,8 @@ Abbildung \ref{ellfilter:fig:elliptic_freq} zeigt eine rationale elliptische Fun
 \end{figure}
 
 Da sich die Funktion im Übergangsbereich nur zur nächsten Reihe von Polstellen bewegt, ist der Übergangsbereich monoton steigend.
-Theoretisch könnte eine gleiches Durchlass- und Sperrbereichsverhalten erreicht werden, wenn die Funktion auf eine andere Reihe ansteigen würde, z.B. $\mathrm{Im(z) = 3K^\prime}$.
-Dies würde jedoch zu Oszillationen zwischen $1$ und $1/k$ im Übergangsbereich führen.
+Theoretisch könnte eine gleiches Durchlass- und Sperrbereichsverhalten erreicht werden, wenn die Funktion auf eine andere Reihe ansteigen würde, z.~B.~$\mathrm{Im(z) = 3K^\prime}$.
+Dies würde jedoch zu unerwünschten Oszillationen zwischen $1$ und $1/k$ im Übergangsbereich führen.
 
 \subsection{Gradgleichung}
 
@@ -64,12 +73,12 @@ Zur Erinnerung, $K$ und $K^\prime$ sind durch elliptische Integrale definiert un
     \centering
     \input{papers/ellfilter/python/k.pgf}
     \caption{
-        Die Periodizitäten in realer und imaginärer Richtung in Abhängigkeit vom elliptischen Modul $k$.
+        Die Periodizitäten in reeller und imaginärer Richtung in Abhängigkeit vom elliptischen Modul $k$.
         In der rechten Grafik sind $K$ und $K^\prime$ gegenübergestellt, wobei alle möglichen Kombinationen auf der eingezeichneten Ortskurve liegen.
     }
     \label{ellfilter:fig:kprime}
 \end{figure}
-$K$ und $K^\prime$ sind durch die Ortskurve $K + jK^\prime$ aneinander gebunden und benötigen den Zusatzfaktor $K_1/K$ in \eqref{ellfilter:eq:elliptic}, um die genanten Forderungen einzuhalten.
+$K$ und $K^\prime$ sind durch die Ortskurve $K + jK^\prime$ aneinander gebunden und benötigen den Zusatzfaktor $K_1/K$ in \eqref{ellfilter:eq:elliptic}, um die genannten Forderungen einzuhalten.
 Abbildung \ref{ellfilter:fig:degree_eq} zeigt das Problem geometrisch auf, wobei zwei Punkte $K+jK^\prime$ und $K_1+jK_1^\prime$ auf der Ortskurve gesucht sind.
 \begin{figure}
     \centering
@@ -81,17 +90,17 @@ Algebraisch kann so die Gradgleichung
 \begin{equation}
     N \frac{K^\prime}{K} = \frac{K^\prime_1}{K_1}
 \end{equation}
-aufgestellt werden, dessen Lösung ist gegeben durch
+aufgestellt werden. Ihre Lösung ist gegeben durch
 \begin{equation}\label{ellfilter:eq:degeqsol}
 k_1 = k^N \prod_{i=1}^L \sn^4 \Bigg( \frac{2i - 1}{N} K, k \Bigg),
 \quad \text{wobei} \quad
 N = 2L+r.
 \end{equation}
-Die Herleitung ist sehr umfangreich und wird in \cite{ellfilter:bib:orfanidis} im Detail angeschaut.
+Die Herleitung dieser Produktformel ist sehr aufwendig und wird in \cite{ellfilter:bib:orfanidis} im Detail angeschaut.
 
 \subsection{Berechnung der rationalen Funktion}
 
-$k_1$ muss jedoch gar nicht berechnet werden, um $R_N$ in der Form einer rationale Funktion erhalten.
+$k_1$ muss jedoch gar nicht berechnet werden, um $R_N$ in der Form einer rationale Funktion zu erhalten.
 Die Ordnung $N$ und der Parameter $k$ können frei gewählt werden.
 % $k_1$ muss dann mit \eqref{ellfilter:eq:degeqsol} oder mit numerischen Methoden berechnet werden.
 Je kleiner $k$ gewählt wird, desto grösser wird die Dämpfung des Filters im Sperrbereich im Verhältnis zum Durchlassbereich.
@@ -126,4 +135,4 @@ Der Bezug zum quadratischen Amplitudengang \eqref{ellfilter:eq:quadratic_transfe
 \end{equation}
 wobei $*$ die komplexe Konjugation kennzeichnet.
 Die genaue Berechnung geht einiges tiefer in die Filtertheorie, und verlässt das Gebiet der speziellen Funktionen.
-Der interessierte Leser wird auf \cite[Kapitel~5]{ellfilter:bib:orfanidis} verwiesen.
+Der interessierte Leser wird auf \cite[chapter~5]{ellfilter:bib:orfanidis} verwiesen.

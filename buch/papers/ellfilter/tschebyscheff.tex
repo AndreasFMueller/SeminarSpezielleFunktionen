@@ -1,13 +1,15 @@
 \section{Tschebyscheff-Filter}
 
-Als Einstieg betrachten wir das Tschebyscheff-Filter, welches sehr verwandt ist mit dem elliptischen Filter.
+Als Einstieg betrachten wir das Tschebyscheff-Filter, welches nahe verwandt ist mit dem elliptischen Filter.
+\index{Tschebyscheff-Filter}%
 Genauer ausgedrückt erhält man die Tschebyscheff-1 und -2 Filter bei Grenzwerten von Parametern beim elliptischen Filter.
 Der Name des Filters deutet schon an, dass die Tschebyscheff-Polynome $T_N$ (siehe auch Kapitel \ref{buch:polynome:section:tschebyscheff}) für das Filter relevant sind:
 \begin{align*}
     T_{0}(x)&=1\\
     T_{1}(x)&=x\\
     T_{2}(x)&=2x^{2}-1\\
-    T_{3}(x)&=4x^{3}-3x\\
+    T_{3}(x)&=4x^{3}-3x\\[-2pt]
+&\;\vdots\\
     T_{n+1}(x)&=2x~T_{n}(x)-T_{n-1}(x).
 \end{align*}
 Bemerkenswert ist, dass die Polynome im Intervall $[-1, 1]$ mit der trigonometrischen Funktion
@@ -24,20 +26,21 @@ Abbildung \ref{ellfilter:fig:chebychef_polynomials} zeigt einige Tschebyscheff-P
     \caption{Die Tschebyscheff-Polynome $C_N$.}
     \label{ellfilter:fig:chebychef_polynomials}
 \end{figure}
-Da der Kosinus begrenzt zwischen $-1$ und $1$ ist, sind auch die Tschebyscheff-Polynome begrenzt.
+Da der Kosinus zwischen $-1$ und $1$ begrenzt ist, sind auch die Tschebyscheff-Polynome begrenzt.
 Geht man aber über das Intervall $[-1, 1]$ hinaus, divergieren die Funktionen mit zunehmender Ordnung immer steiler gegen $\pm \infty$.
 Diese Eigenschaft ist sehr nützlich für ein Filter.
 Wenn wir die Tschebyscheff-Polynome quadrieren, passen sie perfekt in die Forderungen für Filterfunktionen, wie es Abbildung \ref{ellfiter:fig:chebychef} demonstriert.
 \begin{figure}
     \centering
     \input{papers/ellfilter/python/F_N_chebychev.pgf}
-    \caption{Die Tschebyscheff-Polynome füllen den erlaubten Bereich besser, und erhalten dadurch eine steilere Flanke im Sperrbereich.}
+    \caption{Die Tschebyscheff-Polynome füllen den erlaubten Bereich besser und erhalten dadurch eine steilere Flanke im Sperrbereich.}
     \label{ellfiter:fig:chebychef}
 \end{figure}
 
 Die analytische Fortsetzung von \eqref{ellfilter:eq:chebychef_polynomials} über das Intervall $[-1,1]$ hinaus stimmt mit den Polynomen überein, wie es zu erwarten ist.
 Die genauere Betrachtung wird uns helfen, die elliptischen Filter besser zu verstehen.
 Starten wir mit der Funktion, die in \eqref{ellfilter:eq:chebychef_polynomials} als erstes auf $w$ angewendet wird, dem Arcuscosinus.
+\index{Arcuscosinus}%
 Die invertierte Funktion des Kosinus kann als bestimmtes Integral dargestellt werden:
 \begin{align}
     \cos^{-1}(x)
