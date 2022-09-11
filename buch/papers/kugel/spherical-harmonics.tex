@@ -987,105 +987,89 @@ of the inner product on the spherical surface of definition
     \sin \vartheta \, d\varphi \, d\vartheta.
 \end{equation*}
 To be a bit technical we can say that the set of spherical harmonic functions,
-toghether with the inner product just showed, form something that we call
-Hilbert Space\footnote{For more details about Hilber space you can take a look
-in section \ref{kugel:sec:preliminaries}}.  This function space is defined over
-the space of ``well-behaved'' \footnote{The definitions of ``well-behaved'' is
-pretty ambigous, even for mathematicians.  It depends basically on the context.
-You can sumarize it by saying: functions for which the theory we are considering
-(Fourier theorem) is always true. In our case we can say that well-behaved
-functions are functions that follow some convergence contraints (pointwise,
-uniform, absolute, ...) that we don't want to consider further anyway.}
-functions.  We can say that the theory we are about to show can be applied on
-all twice differentiable complex valued functions, to be more concise: complex
-valued $L^2$ functions $S^2 \to \mathbb{C}$.
-
-All these jargons are not really necessary for the practical applications of us
-mere mortals, namely physicists and engineers.  From now on we will therefore
-assume that the functions we will dealing with fulfill these ``minor''
-conditions.
+together with the inner product just showed, form a Hilbert Space. This function
+space is defined over the space of ``well-behaved'' \footnote{The definitions of
+``well-behaved'' is pretty ambiguous even for mathematicians, basically, it
+depends on the context. We can cheat by saying: functions for which the theory
+we are considering (Fourier theorem) is valid.} functions.  We can say that the
+theory we are about to show can be applied on all twice differentiable complex
+valued functions, to be more concise: complex valued $L^2$ functions $S^2 \to
+\mathbb{C}$. However, all of this jargon is not really necessary for the
+practical applications of us mere mortals, namely physicists and engineers.
+From now on we will therefore assume that the functions we will dealing with
+fulfill these ``minor'' conditions.
 
 The insiders could turn up their nose, but we don't want to dwell too much on
 the concept of Hilbert space, convergence, metric, well-behaved functions etc.
-We simply think that this rigorousness could be at the expense of the
+We simply think that too much rigorousness would be at the expense of the
 possibility to appreciate the beauty and elegance of this theory.  Furthermore,
-the risk of writing 300+ pages to prove that $1+1=2$ is just around the
-corner \cite{principia-mathematica} (we apologize to Mr. Whitehead and Mr. Russel
-for using their effort with a negative connotation). Despite all, if you desire
-having definitions a bit more rigorous (as rigorous as two engineers can be) you
-could take a look at the chapter \ref{kugel:sec:preliminaries}.
+the risk of writing over 300 pages to prove that $1+1=2$ is just around the
+corner (we apologize to Mr. Whitehead and Mr. Russel for using their efforts
+\cite{principia-mathematica} with a negative connotation).
 
 \subsection{Spherical Harmonics Series}
 
-To talk about a \emph{series expansion} we first need a series, so we shall
+To talk about a series expansion we first need a \emph{series}, so we shall
 build one using the spherical harmonics.
 
 \begin{definition}[Spherical harmonic series]
   \label{kugel:def:spherical-harmonics-series}
   \begin{equation}
+    \label{kugel:eqn:spherical-harmonics-series}
     f(\vartheta, \varphi) 
     = \sum_{n=0}^\infty \sum_{m =-n}^n
-      c_{m,n} Y^m_n(\vartheta, \varphi). \label{kugel:definition:spherical-harmonics-series-eq}
+      c_{m,n} Y^m_n(\vartheta, \varphi).
   \end{equation}
 \end{definition}
 
-With this definition we are basically saying that any function defined on the spherical surface can be represented as a linear combination of spherical harmonics. 
-Does eq.\eqref{kugel:definition:spherical-harmonics-series-eq} sound familiar? Well that is prefectly normal, since this is analog to the classical Fourier theory. 
-In the latter is stated that ``any'' $T$-periodic function $f(x)$, on any interval $[x_0-T/2,x_0+T/2]$, can be represented as a linear combination of complex exponentials. More compactly:
+With this definition of course we are hinting that any function defined on the
+spherical surface can be represented as a linear combination of spherical
+harmonics. So, does \eqref{kugel:eqn:spherical-harmonics-series} sound familiar?
+It should, since this is analog to the classical Fourier theory of section
+\ref{kugel:sec:preliminaries:ortho-fourier} were it was stated that ``any''
+1-periodic function $f(\xi, \eta)$, can be represented as a linear combination
+of complex exponentials:
 \begin{equation*}
-  f(x) = \sum_{n \in \mathbb{Z}} c_n e^{i \omega_0 x},
-    \quad \omega_0=\frac{2\pi}{T}
+  f(\xi, \eta) = \sum_{n \in \mathbb{Z}} \sum_{m \in \mathbb{Z}}
+    c_{m,n} e^{i2\pi(n\xi + m\eta)},
 \end{equation*}
-In the case of definition \ref{kugel:definition:spherical-harmonics-series} the kernels, instead of $e^{i\omega_0x}$, have become $Y^m_n$. In addition, 
-the sum is now over the two indices $m$ and $n$ (because of the two free variables $\vartheta, \varphi$ instead of just one).
+In definition \ref{kugel:def:spherical-harmonics-series} it is the same, except
+that the kernels are the spherical harmonics $Y^m_n$ instead of complex
+exponentials. Further, as in the normal Fourier theory if we assume that a
+function on the surface of the sphere can be represented using a Fourier series
+we can use the same trick with the inner product to get the coefficients:
+\begin{align*}
+  \langle f, Y^{m}_{n} \rangle_{\partial S}
+  = \left\langle \sum_{n'=0}^\infty \sum_{m' =-n'}^{n'}
+    c_{m',n'} Y^{m'}_{n'}(\vartheta, \varphi), Y^{m}_{n}  \right\rangle_{\partial S}
+  % &=  \sum_{n'=0}^\infty \sum_{m' =-n'}^{n'}
+  %   \langle c_{m',n'} Y^{m'}_{n'}, Y^{m}_{n} \rangle_{\partial S}
+  = \sum_{n'=0}^\infty \sum_{m' =-n'}^{n'} c_{m',n'}
+    \langle Y^{m'}_{n'}, Y^{m}_{n} \rangle_{\partial S} = c_{m,n}.
+\end{align*}
 
-\begin{lemma}[Spherical harmonic coefficients]
-  \label{kugel:thm:spherical-harmonic-coefficient}
-  \begin{equation*}
-    c_{m,n} 
-    = \langle f, Y^m_n \rangle_{\partial S}
-    = \int_0^\pi \int_0^{2\pi}
-      f(\vartheta,\varphi) \overline{Y^m_n(\vartheta,\varphi)}
-      \sin\vartheta \,d\varphi\,d\vartheta
-  \end{equation*}
-  \kugeltodo{Would be better as a definition? I don't get what is being proved.}
-\end{lemma}
-
-\begin{proof}
-  To develop this proof we will take advantage of the orthogonality property of
-  the spherical harmonics. We can start and finish by applying the inner product
-  on both sides of \eqref{kugel:eqn:spherical-harmonics-series}:
-  \begin{align*}
-    \langle f, Y^{m}_{n} \rangle_{\partial S}
-    &= \left\langle \sum_{n'=0}^\infty \sum_{m' =-n'}^{n'}
-      c_{m',n'} Y^{m'}_{n'}(\vartheta, \varphi), Y^{m}_{n}  \right\rangle_{\partial S}  \\
-    &=  \sum_{n'=0}^\infty \sum_{m' =-n'}^{n'}
-      \langle c_{m',n'} Y^{m'}_{n'}, Y^{m}_{n} \rangle_{\partial S} \\
-      &= \sum_{n'=0}^\infty \sum_{m' =-n'}^{n'} c_{m',n'} \langle Y^{m'}_{n'}, Y^{m}_{n} \rangle_{\partial S} = c_{m,n}.
-  \end{align*}
-\end{proof}
-In the last step we simply used the fact that $\langle Y^{m'}_{n'}, Y^{m}_{n} \rangle_{\partial S} = 0$ when either $m \neq m'$ or $n \neq n'$ and equal to one otherwise.
-Thanks to Lemma \ref{kugel:lemma:spherical-harmonic-coefficient} we can now calculate the series expansion defined in \ref{kugel:definition:spherical-harmonics-series}.
-
-Thanks to Lemma \ref{kugel:thm:spherical-harmonic-coefficient} we can now
-calculate the series expansion defined in
-\ref{kugel:def:spherical-harmonics-series}. It can be shown that, for the famous
-``well-behaved functions'' $f(\vartheta, \varphi)$ mentioned before, the
-following theorem is true.  The connection to Theorem
+Finally, it can also be shown that for the famous ``well-behaved functions''
+mentioned before, the following theorem is true. The connection to theorem
 \ref{kugel:thm:fourier-theorem} is pretty obvious.
 
-\begin{theorem}[Fourier Theorem on $\partial S$]
-  \label{fourier-theorem-spherical-surface}
+\begin{theorem}[Fourier theorem on $\partial S$]
+  \label{kugel:thm:fourier-s2}
+  For a function $f: S^2 \to \mathbb{C}$ and such that $f \in L^2$
   \begin{equation*}
     \lim_{N \to \infty}
-    \int_0^\pi \int_0^{2\pi} \left\| f(\vartheta,\varphi) - \sum_{n=0}^N\sum_{m=-n}^n c_{m,n} Y^m_n(\vartheta,\varphi)
-    \right\|_2 \sin\vartheta \,d\varphi\,d\vartheta  = 0
+    \left\|
+      f(\vartheta,\varphi)
+      - \sum_{n=0}^N\sum_{m=-n}^n c_{m,n} Y^m_n(\vartheta,\varphi)
+    \right\|_2 = 0,
+    \qquad\text{where}\qquad
+    c_{m,n} = \langle f, Y^m_n \rangle.
   \end{equation*}
 \end{theorem}
 \begin{proof}
-  Fourier was quite informal the first time he presented his theorem so, like him, we will also use the ``trust me'' proof. 
-  In any case, if you are brave enough and still interested in a proof, Dirichlet et al. can help you with the case in one 
-  dimension \cite{convergence_fourier}
+  Fourier was quite informal the first time he presented his theorem so, like
+  him, we will just say ``trust me, it works''. In any case, for the ones that
+  are brave enough and want a real proof, Dirichlet et al. can help with the
+  case in one dimension \cite{convergence_fourier}.
 \end{proof}
 
 \subsection{Spectrum}
@@ -1093,24 +1077,38 @@ following theorem is true.  The connection to Theorem
 \begin{figure}
   \centering
   \includegraphics[width=.95\textwidth]{papers/kugel/figures/python/1D-fourier.pdf}
-  \caption{Square signal (above) with the magnitude squared of its respective Fourier coefficients $c_n$, that are given by $c_{2n+1}=\frac{2}{i\pi(2n+1)}$. The graphic above also shows different reconstructions of the signal $y(x)$ with increasing $n$.}
-  \label{kugel:fig:1d-fourier}
+  \caption{
+    Square signal (above) with the magnitude squared of its respective Fourier
+    coefficients $c_n$, that are given by $c_{2n+1}=\frac{2}{i\pi(2n+1)}$. The
+    graphic above also shows different reconstructions of the signal $y(x)$ with
+    increasing $n$.
+    \label{kugel:fig:1d-fourier}
+  }
 \end{figure}
 
-In the case of the classical one-dimensional Fourier theory, we call \emph{Spectrum} the relation between the fourier coefficients $c_n$ and the multiple 
-of the fundamental frequency $2\pi/T$, namely $n 2\pi/T$. In the most general case $c_n$ are complex numbers, so we divide the concept of spectrum in 
-\emph{Amplitude Spectrum} and \emph{Phase Spectrum}. In fig.\ref{kugel:fig:1d-fourier} a function $f(x)$ is presented along with the amplitude spectrum.
+\kugeltodo{what to do with these paragraphs?}
 
-The thing that is easiest for us humans to visualize and understand is often the Amplitude Spectrum.
-This is a huge limitation, since for example in Image Processing can be showed in a nice way that much
-more information is contained in the phase part (see fig.\ref{kugel:fig:phase-2d-fourier}).
+ In the case of the classical one dimensional Fourier theory, in the most
+ general case the \emph{spectrum} $c_n$ are complex numbers, so we divide the
+ concept of spectrum in \emph{amplitude spectrum} and \emph{phase spectrum}. In
+ figure \ref{kugel:fig:1d-fourier} a function $f(x)$ is presented along with the
+ amplitude spectrum.
+
+The thing that is easiest for us humans to visualize and understand is often the
+amplitude spectrum. This is a huge limitation, since for example in image
+processing it can be shown in a nice way that much more information is contained
+in the phase part (see figure \ref{kugel:fig:phase-2d-fourier}).
 
 \begin{figure}
   \centering
   \includegraphics[width=.95\textwidth]{papers/kugel/figures/python/sph-fourier.pdf}
-  \caption{A random spherical function is presented on the left plot, while on the right one its fourier coefficients $c_{m,n}$ are showed. You can notice the triangular structure of the right plot, 
-  which is a consequence of the constraint $|m|\leq n$.}
-  \label{kugel:fig:sph-fourier}
+  \caption{
+    A random spherical function is presented on the left plot, while the right
+    plot shows its Fourier coefficients $c_{m,n}$. Notice the triangular
+    structure of the right plot, which is a consequence of the constraint
+    $|m|\leq n$.
+    \label{kugel:fig:sph-fourier}
+  }
 \end{figure}
 
 \begin{figure}
@@ -1136,40 +1134,58 @@ more information is contained in the phase part (see fig.\ref{kugel:fig:phase-2d
   \subfigure[$N=1000$]{\includegraphics[width=.25\linewidth, trim=700 0 700 100, clip]%
     {papers/kugel/figures/python/earth-fourier-decomposition/n=1000}}
 
-  \caption{\kugeltodo{fig that show fourier style reconstruction on sphere (with increasing index)}}
-  \label{kugel:fig:fourier-on-sphere-increasing-index}
+  \caption{
+    Reconstruction of a function on the surface of the sphere using a finite
+    number of coefficients ($N$); with a higher number of coefficients more high
+    frequency details appear. The function is the gravitational field of the
+    earth measured by the GOCE mission.
+    \label{kugel:fig:fourier-on-sphere-increasing-index}
+  }
 \end{figure}
 
-The same logic can be extended to the spherical harmonic coefficients $c_{m,n}$. In fig.\ref{kugel:fig:fourier-on-sphere-increasing-index} 
-you can see the same concept as in fig.\ref{kugel:fig:1d-fourier} but with a spherical function $f(\vartheta, \varphi)$. In this case we define 
-the ``spectrum'' of the spherical function $f(\vartheta, \varphi)$ as the relation between $c_{m,n}$ and the two indeces $m,n$. We can observe 
-the same behaviour as in the one-dimansional Fourier case: the absolute value $|c_{m,n}|$ decays quite quickly as $n$ increases. 
-Thus, the coefficients with a higher $n$ index are responsible for the small high-frequency details of the considered function. 
-This trend suggests a possible application: one could use these coefficients as a compression technique. If no particular resolution is 
-required, only the ``lower-frequency'' coefficients could be used, as in the case of digital lighting techniques\cite{SH_lighting_paper}.
+The same logic can be extended to the spherical harmonic coefficients $c_{m,n}$.
+In figure \ref{kugel:fig:fourier-on-sphere-increasing-index} we can see the same
+concept as in figure \ref{kugel:fig:1d-fourier} but with a function
+$f(\vartheta, \varphi)$ on the sphere. In this case we define the ``spectrum''
+of the spherical function $f(\vartheta, \varphi)$ as the relation between
+$c_{m,n}$ and the two indices $m$ and $n$. We can observe the same behaviour as
+in the one dimensional Fourier case: the absolute value $|c_{m,n}|$ decays quite
+quickly as $n$ increases. Thus, the coefficients with a higher $n$ index are
+responsible for the small high-frequency details of the considered function.
 
-\subsection{Energy of a function $f(\vartheta, \varphi)$}
+This trend suggests a possible application: one could use these coefficients as
+a compression technique. If extremely high resolution is not required, only the
+lower ``frequency'' coefficients could be used to save memory, as is done in
+digital lighting techniques \cite{SH_lighting_paper}.
 
-The decomposition of functions in their harmonics is not the only thing we can extract from the orthogonality properties of the functions $Y^m_n$. 
-The aim of this subsection is to present another property you probably already know from the classical Fourier theory in one dimension. 
-The latter has to do with the power of a signal and it can be expressed with theorem \ref{kugel:theorem:parseval-1D}, that takes the name of \emph{Parseval's theorem}.
+\subsection{Energy of a Function $f(\vartheta, \varphi)$}
 
-\begin{theorem}[Parseval's theorem $ciao$ ]
-  \label{kugel:theorem:parseval-1D}
-  Suppose $f(x)$ is a complex-valued $2\pi$-periodic function, that is furthermore square integrable, then
+The decomposition of functions using spherical harmonics is not the only thing
+we can extract from the orthogonality properties of the functions $Y^m_n$. The
+aim of this section is to present another property you probably already know
+from the classical Fourier theory in one dimension. It has to do with what is
+usually referred to as the ``power'' of a signal (function) and it can be
+expressed with the following theorem, that takes the name of \emph{Parseval's
+theorem}.
+
+\begin{theorem}[Parseval's theorem]
+  \label{kugel:thm:parseval-1D}
+  Suppose $f \in L^2$ is a complex valued $T$-periodic function, that has a
+  Fourier series with coefficients $c_n$, then
   \begin{equation}
-    \frac{1}{2\pi}\int_{-\pi}^{\pi} |f(x)|^2dx = \sum_{n=-\infty}^\infty |c_n|^2. \label{kugel:eq:parseval-1D}
+    \frac{1}{T}\int_T |f(x)|^2dx
+    = \sum_{n \in \mathbb{Z}} |c_n|^2. 
+    \label{kugel:eqn:parseval-1D}
   \end{equation}
-  is true.
 \end{theorem}
 \begin{proof}
-  The proof is analogous to the two-dimensional case and is therefore omitted.
+  The proof is analogous to the two dimensional case (below) and is therefore omitted.
 \end{proof}
 
-Basically this theorem is another way to show that energy is conserved, we could call it another ``energy conservation theorem''
-\footnote{The energy is not a mathematical concept. It is something that comes from physics and it is basically based on observations. 
+In physics this is just another way to show that power\footnote{The energy is not a mathematical concept. It is something that comes from physics and it is basically based on observations. 
 Personally, in mathematics, we see this concept simply as follows: The energy of a $T$-periodic function $f(x)$ is defined as 
-$\frac{1}{T}\int_{-T/2}^{T/2}f(x)^2dx$}. We know that the fourier series is a way to map a function from the time domain to the 
+$\frac{1}{T}\int_{-T/2}^{T/2}f(x)^2dx$} is conserved, so we could
+call it ``energy conservation theorem''. We know that the fourier series is a way to map a function from the time domain to the 
 frequency domain and, most important, this mapping is reversible (or invertible). The function we are considering still the same 
 but in the time domain is continuos and, in the case of the Fourier series, in the frequency domain a discrete one.
 
