@@ -11,10 +11,12 @@ Basierend auf den Herleitungen des Abschnittes \ref{buch:rekursion:section:hyper
 \subsection{Hypergeometrische Funktion
 \label{0f1:subsection:hypergeometrisch}}
 Als Grundlage der umgesetzten Algorithmen dient die hypergeometrische Funktion $\mathstrut_0F_1$. Diese ist ein Speziallfall der allgemein definierten Funktion $\mathstrut_pF_q$.
+\index{pFq@$\mathstrut_pF_q$}%
 
 \begin{definition}
 	\label{0f1:math:qFp:def}
 	Die hypergeometrische Funktion
+\index{hypergeometrische Funktion}%
 	$\mathstrut_pF_q$ ist definiert durch die Reihe
 	\[
 	\mathstrut_pF_q
@@ -35,7 +37,6 @@ Als Grundlage der umgesetzten Algorithmen dient die hypergeometrische Funktion $
 \end{definition}
 
 Angewendet auf die Funktion $\mathstrut_pF_q$ ergibt sich für $\mathstrut_0F_1$:
-
 \begin{equation}
     \label{0f1:math:0f1:eq}
     \mathstrut_0F_1
@@ -60,31 +61,43 @@ Angewendet auf die Funktion $\mathstrut_pF_q$ ergibt sich für $\mathstrut_0F_1$
 
 \subsection{Airy-Funktion
 \label{0f1:subsection:airy}}
-Die Funktion $\operatorname{Ai}(x)$ und die verwandte Funktion $\operatorname{Bi}(x)$ werden als Airy-Funktion bezeichnet. Sie werden zur Lösung verschiedener physikalischer Probleme benutzt, wie zum Beispiel zur Lösung der Schrödinger-Gleichung \cite{0f1:wiki-airyFunktion}.
+Die unten definierte Funktion $\operatorname{Ai}(x)$ und die verwandte Funktion
+$\operatorname{Bi}(x)$ werden als Airy-Funktion bezeichnet
+\cite{0f1:wiki-airyFunktion}.
+Sie werden zur Lösung verschiedener physikalischer Probleme benutzt,
+wie zum Beispiel zur Lösung der Schrödinger-Gleichung.
+\index{Airy-Funktion}%
 
 \begin{definition}
     \label{0f1:airy:differentialgleichung:def}
     Die Differentialgleichung
     $y'' - xy = 0$
     heisst die {\em Airy-Differentialgleichung}.
+\index{Airy-Differentialgleichung}%
 \end{definition}
 
 Die Airy-Funktion lässt sich auf verschiedene Arten darstellen. 
-Als hypergeometrische Funktion berechnet, ergeben sich wie in Abschnitt \ref{buch:differentialgleichungen:section:hypergeometrisch} hergeleitet, folgende Lösungen der Airy-Differentialgleichung zu den Anfangsbedingungen $\operatorname{Ai}(0)=1$ und $\operatorname{Ai}'(0)=0$, sowie $\operatorname{Bi}(0)=0$ und $\operatorname{Bi}'(0)=1$:
-
+Als hypergeometrische Funktion berechnet, ergeben sich wie in
+Abschnitt \ref{buch:differentialgleichungen:section:hypergeometrisch}
+hergeleitet, folgende Lösungen der Airy-Differential\-gleichung zu
+den Anfangsbedingungen $\operatorname{Ai}(0)=1$ und
+$\operatorname{Ai}'(0)=0$, sowie $\operatorname{Bi}(0)=0$ und
+$\operatorname{Bi}'(0)=1$:
+\index{Ai(x)@$\operatorname{Ai}(x)$}%
+\index{Bi(x)@$\operatorname{Bi}(x)$}%
 \begin{align}
 \label{0f1:airy:hypergeometrisch:eq}
 \operatorname{Ai}(x)
-=&
+&=
 \sum_{k=0}^\infty
 \frac{1}{(\frac23)_k} \frac{1}{k!}\biggl(\frac{x^3}{9}\biggr)^k
 =
 \mathstrut_0F_1\biggl(
 \begin{matrix}\text{---}\\\frac23\end{matrix};\frac{x^3}{9}
-\biggr).
+\biggr),
 \\
 \operatorname{Bi}(x)
-=&
+&=
 \sum_{k=0}^\infty
 \frac{1}{(\frac43)_k} \frac{1}{k!}\biggl(\frac{x^3}{9}\biggr)^k
 =
