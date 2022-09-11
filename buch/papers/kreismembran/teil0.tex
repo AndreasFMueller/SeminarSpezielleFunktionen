@@ -6,21 +6,30 @@
 \section{Einleitung\label{kreismembran:section:teil0}}
 \rhead{Membran}
 Eine Membran oder selten ein Schwingblatt ist laut Duden \cite{kreismembran:Duden:Membran} ein ``dünnes Blättchen aus Metall, Papier o. Ä., das durch seine Schwingungsfähigkeit geeignet ist, Schallwellen zu übertragen \dots''. 
+\index{Membran}%
+\index{Schwingblatt}%
 Ein dünnes Blättchen aus Metall zeig jedoch nicht die selben dynamischen Eigenschaften wie ein gespanntes Stück Papier. 
 Beschreibt man das dynamische Verhalten, muss zwischen einer dünnen Platte und einer Membran unterschieden werden \cite{kreismembran:membrane_vs_thin_plate}. 
+\index{Platte}%
 Eine dünne Platte zum Beispiel aus Metall, wirkt selbst entgegen ihrer Deformation, sobald sie gekrümmt wird. 
 Eine Membran auf der anderen Seite besteht aus einem Material, welches sich ohne Kraftaufwand verbiegen lässt, wie zum Beispiel Papier. 
 Bevor Papier als schwingende Membran betrachtet werden kann, wird jedoch noch eine Spannung $ T $ benötigt, welche das Material daran hindert, aus der Ruhelage gebracht zu werden. 
+\index{Spannung}%
 
 Ein geläufiges Beispiel einer Kreismembran ist eine runde Trommel. 
+\index{Trommel}%
 Sie besteht herkömmlicherweise aus einem Leder (Fell), welches auf einen offenen Zylinder (Zargen) aufgespannt wird. 
+\index{Fell}%
+\index{Zargen}%
 Das Leder alleine erzeugt nach einem Aufschlag keine hörbaren Schwingungen. 
 Sobald das Fell jedoch über den Zargen gespannt wird, kann das Fell auf verschiedensten Weisen weiter schwingen, was für den Klang der Trommel verantwortlich ist. 
 Wie genau diese Schwingungen untersucht werden können, wird in der folgenden Arbeit diskutiert.
 	
 
 \subsection{Annahmen} \label{kreimembran:annahmen}
-Um die Wellengleichung herzuleiten \cite{kreismembran:wellengleichung_herleitung}, muss ein Modell einer Membran definiert werden. 
+Um die Wellengleichung herzuleiten,
+muss ein Modell einer Membran definiert werden
+\cite{kreismembran:wellengleichung_herleitung}. 
 Das untersuchte Modell erfüllt folgende Eigenschaften:
 \begin{enumerate}[i)]
 	\item Die Membran ist homogen. 
@@ -28,7 +37,7 @@ Das untersuchte Modell erfüllt folgende Eigenschaften:
 	Durch die konstante Elastizität ist die ganze Membran unter gleichmässiger Spannung $ T $.
 	\item Die Membran ist perfekt flexibel. 
 	Damit ist gemeint, dass die Membran ohne Kraftaufwand verbogen werden kann. 
-	Die Membran ist dadurch nicht allein stehend schwingfähig, hierzu muss sie mit einer Kraft $ T $ gespannt werden.
+	Die Membran ist dadurch nicht alleinstehend schwingfähig, hierzu muss sie mit einer Kraft $ T $ gespannt werden.
 	\item Die Membran kann sich nur in Richtung ihrer Normalen in kleinem Ausmass auslenken.
 	Auslenkungen in der Ebene der Membran sind nicht möglich.
 	\item Die Membran erfährt keine Art von Dämpfung. 
@@ -36,7 +45,9 @@ Das untersuchte Modell erfüllt folgende Eigenschaften:
 	
 \end{enumerate}
 
-\subsection{Wellengleichung} Um die Wellengleichung einer Membran herzuleiten, wird vorerst eine schwingende Saite betrachtet.
+\subsection{Wellengleichung}
+Um die Wellengleichung einer Membran herzuleiten, wird vorerst eine schwingende Saite betrachtet.
+\index{Wellengleichung}%
 Es lohnt sich, das Verhalten einer Saite zu beschreiben, da eine Saite dasselbe Verhalten wie eine Membran aufweist, mit dem Unterschied einer fehlenden Dimension.
 Die Verbindung zwischen Membran und Saite ist intuitiv ersichtlich, stellt man sich einen Querschnitt einer Trommel vor.
 \begin{figure}
@@ -58,6 +69,7 @@ Ist $ T_1 $ die Kraft, welche mit Winkel $ \alpha $ auf Punkt $ P_1 $ wirkt sowi
 \end{equation}
 gleichgesetzt werden. 
 Das dynamische Verhalten der senkrechten Auslenkung $ u(x,t) $ muss das newtonsche Gesetz 
+\index{newtonsches Gesetz}%
 \begin{equation*}
 	\sum F = m \cdot a
 \end{equation*} 
@@ -79,7 +91,7 @@ Die Gleichung wird dadurch zu
 \begin{equation*}
 	\frac{\partial u}{\partial x} \bigg|_{x_0 + dx} - \frac{\partial u}{\partial x} \bigg|_{x_0} = \frac{\rho dx}{T} \frac{\partial^2 u}{\partial t^2}.
 \end{equation*} 
-Durch die Division mit $ dx $ entsteht 
+Durch die Division durch $ dx $ entsteht 
 \begin{equation*}
 	\frac{1}{dx} \left[\frac{\partial u}{\partial x} \bigg|_{x_0 + dx} - \frac{\partial u}{\partial x} \bigg|_{x_0}\right] = \frac{\rho}{T}\frac{\partial^2 u}{\partial t^2}.
 \end{equation*}
@@ -89,7 +101,9 @@ Der Term $ \frac{\rho}{T} $ wird durch $ c^2 $ ersetzt, da der Bruch für eine g
 Damit resultiert die in der Literatur gebräuchliche Form 
 \begin{equation}
 	\label{kreismembran:Ausgang_DGL}
-	\frac{1}{c^2}\frac{\partial^2u}{\partial t^2} = \Delta u.
+	\frac{1}{c^2}\frac{\partial^2u}{\partial t^2} = \Delta u
 \end{equation}
+der Wellengleichung.
 In dieser Form ist die Gleichung auch gültig für eine Membran. 
 Für den Fall einer Membran muss lediglich der Laplace-Operator $\Delta$ in zwei Dimensionen verwendet werden.
+\index{Laplace-Operator}%
