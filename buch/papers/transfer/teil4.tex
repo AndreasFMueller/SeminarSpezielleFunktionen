@@ -9,7 +9,7 @@
 
 \subsection{Idee
 	\label{transfer:subsection:Ktanh-Idee}}
-Um die Berechnung des Tangens hyperbolicus wirklich zu beschleunigen, braucht es einen Algorithmus, der ohne Gleitkommaoperationen auskommt. Um dies zu bewerkstelligen, ist eine Unterteilung der Funktion in mehrere Abschnitte nötig. Diese werden dann linear approximiert. Die dazugehörigen Parameter müssen nur einmal gefunden werden und zu Rechenzeit aus einem Look up table (LUT) gelesen und danach mit integer Operationen verrechnet werden.
+Um die Berechnung des Tangens hyperbolicus wirklich zu beschleunigen, braucht es einen Algorithmus, der ohne Gleitkommaoperationen auskommt. Um dies zu bewerkstelligen, ist eine Unterteilung der Funktion in mehrere Abschnitte nötig. Diese werden dann linear approximiert. Die dazugehörigen Parameter müssen nur einmal gefunden werden und zu Rechenzeit aus einem Look up table (LUT) gelesen und danach mit Ganzzahloperationen verrechnet werden.
 
 
 \subsection{Definitionen
@@ -26,35 +26,32 @@ $$
 $$
 Aus dem sich die Dezimalzahl wie folgt berechnet
 $$
-x=s \cdot m \cdot b^{e}
+x=s \cdot m \cdot 2^{e}
 $$
 wobei gilt
 $$
 \begin{aligned}
 	&s=(-1)^{S}, \\
 	&e=E-B,\\
-	&B=2^{r-1}-1 \text{und}
+	&B=2^{r-1}-1,\\
 	&m=1+M / 2^{p}
 \end{aligned}
 $$
-mit $r$ = Anzahl der Exponenten bits und $p$ = Anzahl mantisse Bits.
+mit $r$ = Anzahl der Exponenten-Bits und $p$ = Anzahl Mantisse-Bits.
 
 
 \subsubsection{K-Tanh-Algorithmus
 \label{transfer:subsection:Ktanh-Algorithmus}}
-\cite{transfer:DBLP:journals/corr/abs-1909-07729}
+
 
 Negative Werte werden nicht separat behandelt. Diese werden dank der Symertrie um den Ursprung mit einem einfachen Vorzeichenwechsel aus den positiven berechnet.
 Für $x < 0.25$ gilt $y = x$.
-Ist $x > 3.75$ gitl $y = 1$.
+Ist $x > 3.75$ gilt $y = 1$.
 Ist der Wert zwischen diesen Grenzen, werden über einen Look-up-table geeignete Werte gefunden um aus dem $x$ die Approximation des Tangens hyperbolicus zu berechnen.
-Dafür werden eine bestimmte Anzahl LSBs des Exponenten und MSBs der Mantisse zu einem Index $t$ zusammengestzt. Der dann die Stelle im Look-up-table zeigt.
+Dafür werden eine bestimmte Anzahl LSBs des Exponenten und MSBs der Mantisse zu einem Index $t$ zusammengesetzt. Der dann die Stelle im Look-up-table zeigt.
 Damit werden die richtigen Werte für $E_{t}, r_{t}, b_{t}$ aus der Tabelle, die im Vorhinein schon berechnet wurden, ausgelesen.
 Damit hat man das $E$ bereits gefunden und mit der Formel
-\[
-    M_{o} \leftarrow\left(M_{i} \gg r\right)+b
-\]
-
+$$M_{o} \leftarrow\left(M_{i} \gg r\right)+b$$
 kann das neue $M$ berechnet werden.
 
 \begin{figure}
@@ -88,7 +85,7 @@ kann das neue $M$ berechnet werden.
 	child { node [outcome] { $x$ } }
 	child { node [decision] { $x>3.75$} 
 		child { node [outcome] { $1$ } }
-		child { node [outcome] { $K-Tanh$ } }
+		child { node [outcome] { \text{K-Tanh }} }
 	};
 	
 \end{tikzpicture}
@@ -97,50 +94,53 @@ kann das neue $M$ berechnet werden.
 \end{figure}
 
 \begin{figure}
-\centering
-\begin{tikzpicture}
-	[>=stealth', auto, node distance=2cm, scale=1.2]
-	
-	\tikzstyle{dot} = [circle, draw, fill, inner sep=0.03cm]
-	
-	\tikzstyle{brace} = [decorate, decoration={brace,amplitude=4pt}]
-	
-	\begin{scope}[]
+	\centering
+	\begin{tikzpicture}
+		[>=stealth', auto, node distance=2cm, scale=1.2]
 		
-		\node[ minimum width=0.5cm] (s) at (0, 0) {$s$};
-		\node[anchor=west, minimum width=1.5cm] (e) at (s.east) {$E_i$};
-		\node[anchor=west, minimum width=1.5cm] (m) at (e.east) {$M_i$};
-		\draw[blue] (e.north west) -- (e.south west) (e.north east) -- (e.south east);
-		\node[draw, green!50!black, rounded corners=0.1cm, fit=(s) (e) (m), inner sep = 0] (a) {};
+		\tikzstyle{dot} = [circle, draw, fill, inner sep=0.03cm]
 		
-		\node[minimum width=0.5cm] (s) at (5, 0) {$s$};
-		\node[anchor=west, minimum width=1.5cm] (e) at (s.east) {$E_o$};
-		\node[anchor=west, minimum width=1.5cm] (m) at (e.east) {$M_o$};
-		\draw[blue] (e.north west) -- (e.south west) (e.north east) -- (e.south east);
-		\node[draw, green!50!black, rounded corners=0.1cm, fit=(s) (e) (m), inner sep = 0] (b) {};
+		\tikzstyle{brace} = [decorate, decoration={brace,amplitude=4pt}]
 		
-		\draw[yshift=-0.4cm, decorate,decoration={brace,amplitude=4pt}] (a.south) ++(0, -0.2) +(0.5,0) -- +(-0.5,0 );
+		\begin{scope}[]
+			
+			\node[ minimum width=0.5cm] (s) at (0, 0) {$s$};
+			\node[anchor=west, minimum width=1.5cm] (e) at (s.east) {$E_i$};
+			\node[anchor=west, minimum width=1.5cm] (m) at (e.east) {$M_i$};
+			\draw[blue] (e.north west) -- (e.south west) (e.north east) -- (e.south east);
+			\node[draw, green!50!black, rounded corners=0.1cm, fit=(s) (e) (m), inner sep = 0] (a) {};
+			\node[anchor=east, left=0.25cm of s] {Input:};
+			
+			
+			\node[minimum width=0.5cm] (s) at (5, 0) {$s$};
+			\node[anchor=west, minimum width=1.5cm] (e) at (s.east) {$E_0$};
+			\node[anchor=west, minimum width=1.5cm] (m) at (e.east) {$M_0$};
+			\draw[blue] (e.north west) -- (e.south west) (e.north east) -- (e.south east);
+			\node[draw, green!50!black, rounded corners=0.1cm, fit=(s) (e) (m), inner sep = 0] (b) {};
+			\node[anchor=east, left=0.25cm of s] {Output:};
+			
+			\draw[yshift=-0.4cm, decorate,decoration={brace,amplitude=4pt}] (a.south) ++(0, -0.2) +(0.5,0) -- +(-0.5,0 );
+			
+			\node[draw=black, fill=black!20,  minimum width=1.5cm, minimum height= 2cm, below=1cm of a] (lut) {LUT};
+			
+			\node[draw=blue, inner sep=0.2cm, right = 1.5cm of lut, align=left] (box) {$E_0 \gets E$ \\ $M_0 \gets (M_i \gg r) + b$};
+			
+			\draw[->] (a.south) +(0, -0.5) -- (lut);
+			\draw[->] (lut) -- node[above]{$(E,r,b)$} (box);
+			\draw[->] (box) -| ([xshift=0.5cm, yshift=-0.3cm]b.south);
+			
+		\end{scope}
 		
-		\node[draw=black, fill=black!20,  minimum width=1.5cm, minimum height= 2cm, below=1cm of a] (lut) {};
-		
-		\node[draw=blue, inner sep=0.2cm, right = 1.5cm of lut, align=left] (box) {$E_0 \gets E$ \\ $M_0 \gets (M_i \gg r) + b$};
-		
-		\draw[->] (a.south) +(0, -0.5) -- (lut);
-		\draw[->] (lut) -- node[above]{$(E,r,b)$} (box);
-		\draw[->] (box) -| ([xshift=0.5cm, yshift=-0.3cm]b.south);
-		
-	\end{scope}
-	
-\end{tikzpicture}
-\caption{Ablauf der K-Tanh Berechnung
-\label{motivation:figure:Ktanhablauf}}
+	\end{tikzpicture}
+	\caption{Ablauf der K-Tanh Berechnung
+		\label{motivation:figure:Ktanhablauf}}
 \end{figure}
 
 
 \subsection{Beispiel
 \label{transfer:subsection:Ktanh-Algorithmus:Beispiel}}
 
-In diesem Abschnitt wird das Verfahren am einem Beispiel mit dem BFloat16 erklärt. Das bedeutet die Gleitkommazahlen werden mit 8 Exponenten, 7 Mantisse und einem Vorzeichen bit dargestellt.
+In diesem Abschnitt wird das Verfahren am einem Beispiel mit dem Datentyp BFloat16 erklärt. Das bedeutet, die Gleitkommazahlen werden mit 8 Exponenten-, 7 Mantisse- und einem Vorzeichen-Bit dargestellt.
 
 \subsubsection{Algorithmus für die Bestimmung der Parameter
 	\label{transfer:subsection:Ktanh-Algorithmus:Algo}}
@@ -157,14 +157,14 @@ In diesem Abschnitt wird das Verfahren am einem Beispiel mit dem BFloat16 erklä
 	\end{equation}
 
     minimiert wird. Was bedeutet, dass der Exponent, mit welchem der kleinsten quadrierten und aufsummierten Fehler entsteht, gewählt wird. Danach müssen die Mantissen noch wie folgt angepasst werden
-    
     $$
     \left\{\begin{array}{l}
     	\hat{M}_{j}=M_{i}, E=E_{j} \\
     	\hat{M}_{j}=0, E>E_{j} \\
-    	\hat{M}_{j}=2^{q}-1, E<E_{j}
+    	\hat{M}_{j}=2^{q}-1, E<E_{j}.
     \end{array}\right.
-    $$. Diese Anpassung entspricht einer Rundung. Die Mantisse soll möglichst klein sein, wenn der Exponent zu gross ist und umgekehrt.
+    $$
+	Diese Anpassung entspricht einer Rundung. Die Mantisse soll möglichst klein sein, wenn der Exponent zu gross ist und umgekehrt.
     \item Um den Verschiebungsparameter $r$ und den Additionsterm $b$ für ein Index zu finden, muss das folgende Optimierungsproblem gelöst werden. Auch hier wird einfach der kleinste quadrierte und aufsummierte Fehler gesucht wird.
     $$
     \begin{array}{ll} 
@@ -172,12 +172,12 @@ In diesem Abschnitt wird das Verfahren am einem Beispiel mit dem BFloat16 erklä
     	\text { mit } & 0 \leq r \leq r_{\max } \leq p, \quad b_{\min } \leq b \leq b_{\max }
     \end{array}
     $$
-    Dabei müssen $r_{\max}$, $b_{\min}$ und $b_{\max}$ sorgfältig gewählt werden, so dass kein 
+    Dabei müssen $r_{\max}$, $b_{\min}$ und $b_{\max}$ sorgfältig gewählt werden, so dass kein Over- oder Underflow entstehen kann.
 \end{enumerate}
 
 \subsubsection{Numerisches Beispiel
 	\label{transfer:subsection:Ktanh-Algorithmus:Num}}
-Zum Index $t = 00000$ gehört neben Anderen der Wert $x_i = 2$. Denn aus Transformation zu BFloat-16 beschrieben in \ref{transfer:subsection:Ktanh-Algorithmus:Gleitkommazahl} folgt
+Zum Index $t = 00000$ gehört neben Anderen der Wert $x_i = 2$. Denn aus Transformation zu BFloat-16 folgt
 
 $$
 \begin{array}{|l|l|l|}
@@ -212,7 +212,11 @@ $$
 	\hline
 \end{array}
 $$
-Damit beträgt der absolute Fehler bezüglich der optimalen Bfloat-16-Lösung nur 0.00390625. Dies stellt kein Problem für die gewünschte Anwendung dar, da neurale Netzwerke sowieso eine gewisse Resistenz gegenüber Rauschen aufweisen sollten.
+Damit beträgt der absolute Fehler bezüglich der optimalen Bfloat-16-Lösung nur 0.00390625. Dies stellt kein Problem für die gewünschte Anwendung dar, da neuronale Netzwerke sowieso eine gewisse Resistenz gegenüber Rauschen aufweisen sollten.
+
+
+\subsection{Vor- und Nachteile}
+Der K-Tanh-Algorithmus bietet eine enorme Reduktion des Rechenaufwands im Bezug auf alle anderen behandelten Berechnungen. Der Fehler hält sich dabei in Grenzen, die für eine Verwendung in einem neuronalen Netzwerk genügend sind. Vor allem für den Gebrauch in Architekturen ohne Gleitkommaarithmetikhardware ist der K-Tanh besonders geeignet. Der einzige Nachteil ist die Berechnung des Look-up-table muss schon vor der Laufzeit geschehen und gespeichert werden.
 
 
 
