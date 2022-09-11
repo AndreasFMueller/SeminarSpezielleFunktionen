@@ -162,13 +162,13 @@ Here, we will give the long and tedious proofs we skipped earlier.
   starting with $a_0$ to compute $a_2$, or with $a_1$ to compute $a_3$ and go
   on, we use $a_n$ and go backwards and write the solution as
   \begin{equation*}
-    Z(x) = a_n x^n + a_{n-2} x^{n-2} + a_{n-4} x^{n-4} 
-      + a_{n-6} x^{n-6} + \hdots +
+    Z(z) = a_n z^n + a_{n-2} z^{n-2} + a_{n-4} z^{n-4} 
+      + a_{n-6} z^{n-6} + \hdots +
       \begin{cases} 
-        a_1 x, \quad &\text{if } n \text{ is odd} \\ 
+        a_1 z, \quad &\text{if } n \text{ is odd} \\ 
         a_0, \quad  &\text{if } n \text{ is even} 
       \end{cases}
-      = \sum_{k=0}^{\lfloor n/2 \rfloor} a_{n-2k}x^{n-2k}.
+      = \sum_{k=0}^{\lfloor n/2 \rfloor} a_{n-2k}z^{n-2k}.
   \end{equation*}
   Therefore, we need to find how to compute $a_{n - 2k}$ starting from $a_n$.
   The game is like before to find a pattern, so
@@ -219,12 +219,12 @@ Here, we will give the long and tedious proofs we skipped earlier.
   \begin{equation*}
     Z(x) = \sum_{k=0}^{\lfloor n / 2\rfloor}
       \underbrace{
-        (-1)^k \frac{n!^2(2n-2k)!}{k!(n-2k)!(n-k)!(2n)!} a_n
+        (-1)^k \frac{(n!)^2(2n-2k)!}{k!(n-2k)!(n-k)!(2n)!} a_n
       }_{a_{n-2k}} z^{n-2k},
   \end{equation*}
   which holds for any value of $a_n$. By letting
   \begin{equation*}
-    a_{n} := \frac{(2n)!}{2^n n!^2},
+    a_{n} := \frac{(2n)!}{2^n (n!)^2},
   \end{equation*}
   the \emph{Legendre polynomials}
   \begin{equation}
