@@ -8,7 +8,11 @@
 \rhead{Was sind Verfolgungskurven?}
 %
 Verfolgungskurven tauchen oft auf bei Fragen wie ``Welchen Pfad begeht ein Hund während er einer Katze nachrennt?''.
-Ein solches Problem hat im Kern immer ein Verfolger und sein Ziel.
+\index{Hund}%
+\index{Katze}%
+Ein solches Problem hat im Kern immer einen Verfolger und sein Ziel.
+\index{Verfolger}%
+\index{Ziel}%
 Der Verfolger verfolgt sein Ziel, das versucht zu entkommen.
 Der Pfad, den der Verfolger während der Verfolgung begeht, wird Verfolgungskurve genannt.
 Um diese Kurve zu bestimmen, kann das Verfolgungsproblem als Differentialgleichung formuliert werden.
@@ -16,6 +20,7 @@ Diese Differentialgleichung entspringt der Verfolgungsstrategie des Verfolgers.
 %
 \subsection{Verfolger und Verfolgungsstrategie
 \label{lambertw:subsection:Verfolger}}
+\index{Verfolgungsstrategie}%
 Wie bereits erwähnt, wird der Verfolger durch seine Verfolgungsstrategie definiert.
 Wir nehmen an, dass sich der Verfolger stur an eine Verfolgungsstrategie hält.
 Dabei gibt es viele mögliche Strategien, die der Verfolger wählen könnte.
@@ -27,17 +32,20 @@ Daraus folgt, dass eine Strategie zwei dieser drei Parameter festlegen muss, um 
 %
 \begin{table}
     \centering
-    \begin{tabular}{|>{$}l<{$}|>{$}c<{$}|>{$}c<{$}|>{$}c<{$}|}
+    \begin{tabular}{|>{$}l<{$}|>{$}c<{$}|>{$}c<{$}|>{$}l<{$}|}
         \hline
         \text{Strategie}&\text{Geschwindigkeit}&\text{Abstand}&\text{Richtung}\\
         \hline
         \text{Jagd}
+	\index{Jagd}
         & \text{konstant} & \text{-} & \text{direkt auf Ziel zu}\\
         
         \text{Beschattung}
+	\index{Beschattung}
         & \text{-} & \text{konstant} & \text{direkt auf Ziel zu}\\
         
         \text{Vorhalt}
+	\index{Vorhalt}
         & \text{konstant} & \text{-} & \text{etwas voraus Zielen}\\
         \hline
     \end{tabular}
@@ -74,11 +82,15 @@ darstellen. Der Geschwindigkeitsvektor muss auf das Ziel zeigen, woraus folgt
     z-v
     \text{.}
 \end{equation}
-Um den Richtungsvektor zu konstruieren kann der Einheitsvektor parallel zu $z-v$ um $|\dot{v}|$ gestreckt werden, was zu
+Um den Richtungsvektor zu konstruieren kann der Einheitsvektor\footnote{%
+Ein Einheitsvektor mit derselben Richtung wie der Vektor $w$ ist
+$w/|w|$, er wird im Folgenden auch $w^0=w/|w|$ geschrieben.}
+parallel
+zu $z-v$ um $|\dot{v}|$ gestreckt werden, was zu
 \begin{equation}
     \dot{v}
     =
-    |\dot{v}|\cdot (z-v)^\circ
+    |\dot{v}|\cdot (z-v)^0
     =
     |\dot{v}|\cdot\frac{z-v}{|z-v|}
     \label{lambertw:richtungsvektor}
@@ -109,14 +121,14 @@ Die Lösungen dieser Differentialgleichung sind die gesuchten Verfolgungskurven,
 Als nächstes gehen wir auf das Ziel ein.
 Wie der Verfolger wird auch unser Ziel sich strikt an eine Fluchtstrategie halten, welche von Anfang an bekannt ist.
 Als Strategie eignet sich eine definierte Fluchtkurve oder ähnlich wie beim Verfolger ein Verhalten, das vom Verfolger abhängig ist.
-Ein vom Verfolger abhängiges Verhalten führt zu einem gekoppeltem DGL-System, das schwierig zu lösen sein wird.
+Ein vom Verfolger abhängiges Verhalten führt zu einem gekoppeltem Differentialgleichungssystem, das schwierig zu lösen sein wird.
 Eine definierte Fluchtkurve kann mit einer Parameterdarstellung der Position nach der Zeit beschrieben werden.
 Zum Beispiel könnte ein Ziel auf einer Geraden flüchten, welches auf einer Ebene mit der Parametrisierung
 %
 \begin{equation}
     z(t)
     =
-    \left( \begin{array}{c} 0 \\  t \end{array} \right)
+    \begin{pmatrix}0 \\  t \end{pmatrix}
 \end{equation}
 %
 beschrieben werden könnte.
