@@ -1,6 +1,7 @@
 % vim:ts=2 sw=2 et spell tw=80:
 
 \section{Applications}
+\label{kugel:sec:applications}
 
 As suggested in the previous section, the fact that it is possible to write a
 Fourier style expansion of any function on the surface of the sphere is very
@@ -105,7 +106,7 @@ different radii from the origin. With that out of the way, we can now write a
 minimization problem:
 \begin{subequations}
   \begin{align}
-    a_{m,n}^* &= \arg \min_{a_{m,n}}
+    a_{m,n}^* &= \argmin_{a_{m,n}}
       \int_{\partial S} | \surflaplacian V |^2 \, ds 
       = \int_0^{2\pi} \int_{0}^\pi | \surflaplacian V |^2
         \sin \vartheta \, d\vartheta d\varphi, 
@@ -151,7 +152,7 @@ $\langle Y^{m'}_{n'}, Y^m_n \rangle$, which as we know equals $\delta_{m'm}
 dropped and \eqref{kugel:eqn:eeg-min} simplifies down to
 \nocite{pascual-marqui_current_1988}
 \begin{equation}
-  a^*_{m,n} = \arg \min_{a_{m,n}} 
+  a^*_{m,n} = \argmin_{a_{m,n}} 
     \sum_{n=1}^N \sum_{m=-n}^n n^2 (n+1)^2 |a_{m,n}|^2.
 \end{equation}
 

@@ -729,7 +729,7 @@ To start this journey, we can first write the following equations, which relate
 the associated Legendre functions of different indices $m$ and $n$ recursively:
 \begin{subequations}
   \begin{align}
-    P^m_n(z) &= \dfrac{1}{(2n+1)x} \left[
+    P^m_n(z) &= \dfrac{1}{(2n+1)z} \left[
        (m+n) P^m_{n-1}(z) + (n-m+1) P^m_{n+1}(z)
      \right] \label{kugel:eqn:rec-leg-1} \\
     P^m_n(z) &= \dfrac{\sqrt{1-z^2}}{2mz} \left[
@@ -1041,7 +1041,8 @@ we can use the same trick with the inner product to get the coefficients:
 \begin{align*}
   \langle f, Y^{m}_{n} \rangle_{\partial S}
   = \left\langle \sum_{n'=0}^\infty \sum_{m' =-n'}^{n'}
-    c_{m',n'} Y^{m'}_{n'}(\vartheta, \varphi), Y^{m}_{n}  \right\rangle_{\partial S}
+    c_{m',n'} Y^{m'}_{n'}(\vartheta, \varphi), Y^{m}_{n} 
+    \right\rangle_{\partial S}
   % &=  \sum_{n'=0}^\infty \sum_{m' =-n'}^{n'}
   %   \langle c_{m',n'} Y^{m'}_{n'}, Y^{m}_{n} \rangle_{\partial S}
   = \sum_{n'=0}^\infty \sum_{m' =-n'}^{n'} c_{m',n'}
@@ -1182,71 +1183,95 @@ theorem}.
   The proof is analogous to the two dimensional case (below) and is therefore omitted.
 \end{proof}
 
-In physics this is just another way to show that power\footnote{The energy is not a mathematical concept. It is something that comes from physics and it is basically based on observations. 
-Personally, in mathematics, we see this concept simply as follows: The energy of a $T$-periodic function $f(x)$ is defined as 
-$\frac{1}{T}\int_{-T/2}^{T/2}f(x)^2dx$} is conserved, so we could
-call it ``energy conservation theorem''. We know that the fourier series is a way to map a function from the time domain to the 
-frequency domain and, most important, this mapping is reversible (or invertible). The function we are considering still the same 
-but in the time domain is continuos and, in the case of the Fourier series, in the frequency domain a discrete one.
+In physics this is just another way to show that power\footnote{In physics and
+engineering, the power of a signal (function) is usually defined to be the
+derivative of the energy of a function, which is $\int | f(x) |^2 \, dx$.
+However, if the function is periodic with period $T$, the power is defined to be
+$\frac{1}{T} \int_T |f(x)|^2 \, dx$.} is conserved, so we could call it
+``conservation theorem''. We know that the Fourier series is a way to map a
+function in time domain to one in frequency domain, and most importantly, this
+mapping is reversible (or invertible). The function we are considering still the
+same but in the time domain is continuous and, in the case of the Fourier
+series, in the frequency domain a discrete one.
 
-We may have overused the term ``beautiful'', but we are not afraid to use it yet again, because in our opinion - that still humble - this 
-theorem is one of the more understanble link between continuos and discrete. The conservation of energy in this case doesn't care about 
-continuity or discreteness. The latter go through these two worlds, since on the left side of eq.\eqref{kugel:eq:parseval-1D} we have an 
-integral and on the right one we have a summation. So, we can unify these two concepts with an equality and two different representations 
-of the same thing, namely the energy of $f(x)$.
-
-As you can imagine, analogously to theorem \ref{kugel:theorem:parseval-1D}, we can write theorem \ref{kugel:theorem:parseval-sph}
+We may have overused the term ``beautiful'', but we are not afraid to use it yet
+again, because in our humble opinion this theorem is one of the more
+understandable links between continuous and discrete. The conservation of power
+in this case doesn't care about continuity or discreteness. The latter goes
+through these two worlds, since on the left side of
+\eqref{kugel:eqn:parseval-1D} we have an integral and on the right one we have a
+summation. So, we can unify these two concepts with an equality and two
+different representations of the same thing, namely the power of $f(x)$.  Now,
+as you can imagine, it is possible to write an analog to theorem
+\ref{kugel:thm:parseval-1D} on the surface of the sphere.
 
 \begin{theorem}[Parseval's theorem on $\partial S$]
-  \label{kugel:theorem:parseval-sph}
-  Suppose $f(\vartheta, \varphi)$ is a complex-valued function, that is furthermore square integrable, then
+  \label{kugel:thm:parseval-sph}
+  Suppose $f: S^2 \to \mathbb{C}$, that $f \in L^2$, and that $f$ has a Fourier
+  series expansion with coefficients $c_{m,n}$, then
   \begin{equation}
-    \int_0^{2\pi}\int_0^\pi |f(\vartheta, \varphi)|^2  \sin\vartheta \, d\varphi \, d\varphi = \sum_{n=0}^\infty
-     \sum_{m=-n}^n |c_{m,n}|^2. \label{kugel:eq:parseval-sph}
+    \label{kugel:eqn:parseval-sph}
+    \int_0^{2\pi}\int_0^\pi |f(\vartheta, \varphi)|^2
+      \sin\vartheta \, d\varphi \, d\varphi
+    = \sum_{n=0}^\infty \sum_{m=-n}^n |c_{m,n}|^2.
   \end{equation}
-  is true.
 \end{theorem}
 \begin{proof}
-  By setting $g(\vartheta, \varphi)=f(\vartheta, \varphi)$ in eq.\eqref{kugel:eq:general-parseval-sph}, the expression in 
-  eq.\eqref{kugel:eq:parseval-sph} can be easily derived.
+  This is a special case of theorem \ref{kugel:thm:general-parseval-sph} (below).
 \end{proof}
 
-To prove what we just stated, we want to consider a more general case, namely theorem \ref{kugel:theorem:general-parseval-sph}.
-Having proved the latter, it will follow that theorem \ref{kugel:theorem:parseval-sph} is also correct. 
+To prove what we just stated, we want to consider a more general case, namely
+theorem \ref{kugel:thm:general-parseval-sph}.  Having proved the latter, it will
+follow that Parseval's theorem \ref{kugel:thm:parseval-sph} is also correct.
 
-\begin{theorem}[General Parseval's theorem on $\partial S$]
-  \label{kugel:theorem:general-parseval-sph}
-  Suppose $f(\vartheta, \varphi), g(\vartheta, \varphi)$ are both complex-valued functions, that are furthermore square integrable, then
+\begin{theorem} %[General Parseval's theorem on $\partial S$]
+  \label{kugel:thm:general-parseval-sph}
+  Suppose $f(\vartheta, \varphi)$ and $g(\vartheta, \varphi)$ are both complex
+  valued functions in $L^2$, that have a Fourier series expansion with the
+  coefficients $c_{m,n}$ and $c_{m',n'}$ respectively, then
   \begin{equation}
-    \left\langle f, g\right\rangle_{\partial S} =
-    \int_0^{2\pi}\int_0^\pi f(\vartheta, \varphi)\overline{g(\vartheta, \varphi)} \sin\vartheta \, d\varphi \, d\varphi 
-    = \sum_{n=0}^\infty\sum_{m=-n}^n c_{m,n}\overline{c_{m',n'}}.\label{kugel:eq:general-parseval-sph}
+    \label{kugel:eqn:general-parseval-sph}
+    \left\langle f, g\right\rangle_{\partial S}
+    = \int_0^{2\pi}\int_0^\pi
+      f(\vartheta, \varphi) \overline{g(\vartheta, \varphi)}
+      \sin\vartheta \, d\varphi \, d\varphi 
+    = \sum_{n=0}^\infty\sum_{m=-n}^n c_{m,n}\overline{c_{m',n'}}.
   \end{equation}
 \end{theorem}
 \begin{proof}
-  We can assume that both functions $f(\vartheta, \varphi)$ and $g(\vartheta, \varphi)$ have a spherical harmonics series expansion, hence:
+  We can assume that both functions $f(\vartheta, \varphi)$ and $g(\vartheta,
+  \varphi)$ have a spherical harmonics series expansion, hence:
   \begin{align*}
-    f(\vartheta, \varphi) &= \sum_{n=0 }^\infty \sum_{m =-n }^{n } c_{m, n } Y^{m }_{n }(\vartheta, \varphi), &
-    g(\vartheta, \varphi) &= \sum_{n'=0}^\infty \sum_{m'=-n'}^{n'} c_{m',n'} Y^{m'}_{n'}(\vartheta, \varphi).
+    f(\vartheta, \varphi) &= \sum_{n=0 }^\infty \sum_{m =-n }^{n }
+      c_{m, n } Y^{m }_{n }(\vartheta, \varphi), &
+    g(\vartheta, \varphi) &= \sum_{n'=0}^\infty \sum_{m'=-n'}^{n'}
+      c_{m',n'} Y^{m'}_{n'}(\vartheta, \varphi).
   \end{align*}
-  We can therefore rewrite eq.\eqref{kugel:eq:general-parseval-sph} as 
+  By computing their inner product we obtain
   \begin{align*}
-    \left\langle f, g\right\rangle_{\partial S} =
-    \int_0^{2\pi}\int_0^\pi f(\vartheta, \varphi)\overline{g(\vartheta, \varphi)} \sin\vartheta \, d\varphi \, d\varphi 
-    &= \left\langle \sum_{m=0}\sum_{n=-m}^m c_{m,n} Y^m_n, \sum_{m'=0}\sum_{n'=-m'}^{m'} c_{m',n'} Y^{m'}_{n'} \right\rangle_{\partial S} \\
+    \left\langle f, g\right\rangle_{\partial S}
+    = \int_0^{2\pi}\int_0^\pi
+      f(\vartheta, \varphi)\overline{g(\vartheta, \varphi)}
+      \sin\vartheta \, d\varphi \, d\varphi 
+    &= \left\langle
+        \sum^\infty_{m=0}\sum_{n=-m}^m c_{m,n} Y^m_n,
+        \sum^\infty_{m'=0}\sum_{n'=-m'}^{m'} c_{m',n'} Y^{m'}_{n'}
+      \right\rangle_{\partial S} \\
     &= \sum_{m=0}^\infty \sum_{n=-m}^m \sum_{m'=0}^\infty \sum_{n'=-m'}^{m'} c_{m',n'}\overline{c_{m,n}} \left\langle Y^m_n,  Y^{m'}_{n'} \right\rangle_{\partial S}.
   \end{align*}
-  Since we are considering the \emph{orthonormal} spherical harmonics, only the terms of the sum in which $m=m'$ and $n=n'$ survive, leading to
+  Since the spherical harmonics are orthonormal, only the terms of the sum in
+  which $m=m'$ and $n=n'$ survive, leading to
   \begin{equation*}
-    \int_0^{2\pi}\int_0^\pi f(\vartheta, \varphi)\overline{g(\vartheta, \varphi)} \sin\vartheta \, d\varphi \, d\varphi 
-    = \sum_{n=0}^\infty\sum_{m=-n}^n c_{m,n}\overline{c_{m',n'}}.
-    \qedhere
+    \int_0^{2\pi}\int_0^\pi
+      f(\vartheta, \varphi)\overline{g(\vartheta, \varphi)}
+      \sin\vartheta \, d\varphi \, d\varphi 
+    = \sum_{n=0}^\infty\sum_{m=-n}^n
+      c_{m,n}\overline{c_{m',n'}}. \qedhere
   \end{equation*}
 \end{proof}
 
-With this last theorem, we have given more generality to the Parseval's theorem. In this way, we are not only able to calculate 
-the power of a function via its spherical harmonic coefficients, but we have also the possibility to compute the cross-power of 
-two functions using simply the sum of the multiplications of their spherical harmonic coefficients. You can also notice that 
-the Parseval's theorem is a special case of eq.\eqref{kugel:eq:general-parseval-sph}
-
-\subsection{Visualization}
+With this last theorem, we have given more generality to the Parseval's theorem.
+In this way, we are not only able to calculate the power of a function using its
+spherical harmonic coefficients, but also the possibility to compute other
+things such as the cross correlations of two functions using, simply the sum of
+the multiplications of their spherical harmonic coefficients.
