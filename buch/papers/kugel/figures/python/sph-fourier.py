@@ -16,9 +16,13 @@ import pyshtools as pysh
 
 from matplotlib import rc
 import matplotlib.pylab as plt
+from mpl_toolkits.axes_grid1 import make_axes_locatable
 
-rc('font', **{'family': 'serif', 'serif': ['Computer Modern']})
-rc('text', usetex=True)
+plt.rcParams.update({
+    "text.usetex": True,
+    "font.family": "serif",
+    "font.serif": ["Times"],
+})
 """
 ------------------------------------------------------------------------------
 """
@@ -71,10 +75,6 @@ def get_spectrum(coeffs,length):
 
 
 if __name__ == '__main__':
-    FONTSIZE_TICK  = 25
-    FONTSIZE_LABEL = 30
-    
-
     N = 52 
     power    = np.arange(N, dtype=float)
     power[0] = 99999 # or np.inf
@@ -88,7 +88,7 @@ if __name__ == '__main__':
     r = f
     x,y,z = sph2cart(r, theta, phi)
     
-    fig = plt.figure()
+    fig = plt.figure(figsize=(18 / 2.54, 7 / 2.54))
     # Adjust whole fig
     fig.subplots_adjust(top=1.0,
                         bottom=0.0,
@@ -105,28 +105,25 @@ if __name__ == '__main__':
     ax_3d.plot_surface(
         x, y, z, rstride=1, cstride=1, cmap=plt.get_cmap('summer'),
         linewidth=0, antialiased=False, alpha=0.5)
-    
+
     ax_3d.set_axis_off()
-    
+
     ax_3d.set_ylim([-0.6,0.52])
     ax_3d.set_xlim([-0.48, 0.43])
     ax_3d.set_zlim([-0.3,0.3])
     ax_3d.view_init(elev=90., azim=-100)
-    
+
     # Ax for spectrum triangle
-    spectrum    = get_spectrum(np.log10(np.abs(clm.coeffs)*20), length=N//2)
+    spectrum    = get_spectrum(np.log10(1 + np.abs(clm.coeffs)*20), length=N//2)
     spectrum_im = ax_2d.imshow(spectrum, interpolation='none', cmap=plt.get_cmap('summer'))
 
-    ax_2d.set_xlabel('Order $m$', 
-                     fontsize=FONTSIZE_LABEL)
-    ax_2d.set_ylabel('Degree $n$', 
-                     fontsize=FONTSIZE_LABEL)
-    ax_2d.tick_params(labelsize=FONTSIZE_TICK)
-    
+    ax_2d.set_xlabel('Order $m$')
+    ax_2d.set_ylabel('Degree $n$')
+
     # Color bar
-    cbar = plt.colorbar(spectrum_im, aspect=10, fraction=0.05, pad=0.07)
-    cbar.ax.tick_params(labelsize=FONTSIZE_TICK)
+    divider = make_axes_locatable(ax_2d)
+    cax = divider.append_axes("right", size="5%", pad=0.05)
 
-    
-    
+    cbar = plt.colorbar(spectrum_im, cax=cax, aspect=10, fraction=0.05, pad=0.07)
 
+    fig.savefig("sph-fourier.pdf", bbox_inches="tight")
