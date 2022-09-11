@@ -403,13 +403,13 @@ associated Legendre functions, we need to discuss their orthogonality first.
 But the Ferrers functions themselves depend on the Legendre polynomials, so that
 will be our starting point.
 
-\begin{lemma} For the Legendre polynomials $P_n(z)$ and $P_k(z)$ it holds that
+\begin{lemma} For the Legendre polynomials $P_n(z)$ and $P_{n'}(z)$ it holds that
   \label{kugel:thm:legendre-poly-ortho}
   \begin{equation*}
-    \int_{-1}^1 P_n(z) P_k(z) \, dz
-    = \frac{2}{2n + 1} \delta_{nk}
+    \int_{-1}^1 P_n(z) P_{n'}(z) \, dz
+    = \frac{2}{2n + 1} \delta_{n'n}
     = \begin{cases}
-      \frac{2}{2n + 1} & \text{if } n = k, \\
+      \frac{2}{2n + 1} & \text{if } n = {n'}, \\
       0 & \text{otherwise}.
     \end{cases}
   \end{equation*}
@@ -417,33 +417,33 @@ will be our starting point.
 \begin{proof}
   To start, consider the fact that the Legendre equation
   \eqref{kugel:eqn:legendre}, of which two distinct Legendre polynomials
-  $P_n(z)$ and $P_k(z)$ are a solution ($n \neq k$), can be rewritten in the
+  $P_n(z)$ and $P_{n'}(z)$ are a solution ($n \neq {n'}$), can be rewritten in the
   following form:
   \begin{equation}
     \frac{d}{dz} \left[ 
       \left( 1 - z^2 \right) \frac{dZ}{dz}
     \right] + n(n+1) Z(z) = 0.
   \end{equation}
-  So we rewrite the Legendre equations for $P_n(z)$ and $P_k(z)$:
+  So we rewrite the Legendre equations for $P_n(z)$ and $P_{n'}(z)$:
   \begin{align*}
     \frac{d}{dz} \left[ 
       \left( 1 - z^2 \right) \frac{dP_n}{dz}
     \right] + n(n+1) P_n(z) &= 0,
     &
     \frac{d}{dz} \left[ 
-      \left( 1 - z^2 \right) \frac{dP_k}{dz}
-    \right] + k(k+1) P_k(z) &= 0,
+      \left( 1 - z^2 \right) \frac{dP_{n'}}{dz}
+    \right] + {n'}({n'}+1) P_{n'}(z) &= 0,
   \end{align*}
-  then we multiply the former by $P_k(z)$ and the latter by $P_n(z)$ and
+  then we multiply the former by $P_{n'}(z)$ and the latter by $P_n(z)$ and
   subtract the two to get
   \begin{equation*}
     \frac{d}{dz} \left[ 
       \left( 1 - z^2 \right) \frac{dP_n}{dz}
-    \right] P_k(z) + n(n+1) P_n(z) P_k(z)
+    \right] P_{n'}(z) + n(n+1) P_n(z) P_{n'}(z)
     -
     \frac{d}{dz} \left[ 
-      \left( 1 - z^2 \right) \frac{dP_k}{dz}
-    \right] P_n(z) - k(k+1) P_k(z) P_n(z) = 0.
+      \left( 1 - z^2 \right) \frac{dP_{n'}}{dz}
+    \right] P_n(z) - {n'}({n'}+1) P_{n'}(z) P_n(z) = 0.
   \end{equation*}
   By grouping terms, making order and integrating with respect to $z$ from $-1$
   to 1 we obtain
@@ -451,50 +451,103 @@ will be our starting point.
     \int_{-1}^1 \left\{
       \frac{d}{dz} \left[ 
         \left( 1 - z^2 \right) \frac{dP_n}{dz}
-      \right] P_k(z) 
+      \right] P_{n'}(z) 
       -
       \frac{d}{dz} \left[ 
-        \left( 1 - z^2 \right) \frac{dP_k}{dz}
-      \right] P_n(z) - k(k+1) P_k(z) P_n(z)
+        \left( 1 - z^2 \right) \frac{dP_{n'}}{dz}
+      \right] P_n(z) - {n'}({n'}+1) P_{n'}(z) P_n(z)
     \right\} \,dz \nonumber \\
-    + \left[ n(n+1) - k(k+1) \right] \int_{-1}^1 P_k(z) P_n(z) \, dz = 0.
+    + \left[ n(n+1) - {n'}({n'}+1) \right] \int_{-1}^1 P_{n'}(z) P_n(z) \, dz = 0.
     \label{kugel:thm:legendre-poly-ortho:proof:1}
   \end{gather}
   Since by the product rule
   \begin{equation*}
-    \frac{d}{dz} \left[ (1 - z^2) \frac{dP_k}{dz} P_n(z) \right]
+    \frac{d}{dz} \left[ (1 - z^2) \frac{dP_{n'}}{dz} P_n(z) \right]
     =
-    \frac{d}{dz} \left[ (1 - z^2) \frac{dP_n}{dz} \right] P_k(z)
-      + (1 - z^2) \frac{dP_n}{dz} \frac{dP_k}{dz},
+    \frac{d}{dz} \left[ (1 - z^2) \frac{dP_n}{dz} \right] P_{n'}(z)
+      + (1 - z^2) \frac{dP_n}{dz} \frac{dP_{n'}}{dz},
   \end{equation*}
   we can simplify the first term in
   \eqref{kugel:thm:legendre-poly-ortho:proof:1} to get
   \begin{gather*}
     \int_{-1}^1 \left\{
-      \frac{d}{dz} \left[ (1 - z^2) \frac{dP_k}{dz} P_n(z) \right]
-        - \cancel{(1 - z^2) \frac{dP_n}{dz} \frac{dP_k}{dz}}
-        - \frac{d}{dz} \left[ (1 - z^2) \frac{dP_n}{dz} P_k(z) \right]
-        + \cancel{(1 - z^2) \frac{dP_k}{dz} \frac{dP_n}{dz}}
+      \frac{d}{dz} \left[ (1 - z^2) \frac{dP_{n'}}{dz} P_n(z) \right]
+        - \cancel{(1 - z^2) \frac{dP_n}{dz} \frac{dP_{n'}}{dz}}
+        - \frac{d}{dz} \left[ (1 - z^2) \frac{dP_n}{dz} P_{n'}(z) \right]
+        + \cancel{(1 - z^2) \frac{dP_{n'}}{dz} \frac{dP_n}{dz}}
     \right\} \, dz \\
     = \int_{-1}^1 \frac{d}{dz} \left\{ (1 - z^2) \left[
-      \frac{dP_k}{dz} P_n(z) - \frac{dP_n}{dz} P_k(z)
+      \frac{dP_{n'}}{dz} P_n(z) - \frac{dP_n}{dz} P_{n'}(z)
     \right] \right\} \, dz
     = (1 - z^2) \left[
-      \frac{dP_k}{dz} P_n(z) - \frac{dP_n}{dz} P_k(z)
+      \frac{dP_{n'}}{dz} P_n(z) - \frac{dP_n}{dz} P_{n'}(z)
     \right] \Bigg|_{-1}^1,
   \end{gather*}
   which always equals 0 because the product contains $1 - z^2$ and the bounds
   are at $\pm 1$. Thus, of \eqref{kugel:thm:legendre-poly-ortho:proof:1} only
   the second term remains and the equation becomes
   \begin{equation*}
-    \left[ n(n+1) - k(k+1) \right] \int_{-1}^1 P_k(z) P_n(z) \, dz = 0.
+    \left[ n(n+1) - {n'}({n'}+1) \right] \int_{-1}^1 P_{n'}(z) P_n(z) \, dz = 0.
   \end{equation*}
   By dividing by the constant in front of the integral we have our first result.
-  Now we need to show that when $n = k$ the integral equals $2 / (2n + 1)$.
-  % \begin{equation*}
-  % \end{equation*}
-  \kugeltodo{Finish proof. Can we do it without the generating function of
-  $P_n$?}
+  Now we need to show that when $n = {n'}$ the integral equals $2 / (2n + 1)$.
+  In order to achieve this, we will use what has now become our secret weapon: 
+  integration by parts. We can start by rewriting the integral in Lemma \label{kugel:thm:legendre-poly-ortho} for the case $n=n'$.
+  According to Rodrigues formula, we have
+  \begin{equation*}
+    \int_{-1}^1 P_n(z)^2 dz = \left( \frac{1}{2^n n!} \right)^2 \int_{-1}^1 \frac{d^n}{dz^n} (z^2-1)^n \frac{d^n}{dz^n} (z^2-1)^n dz.
+  \end{equation*}
+  Now we can start the ``integration by parts process'', the first step would be
+  \begin{align*}
+    \int_{-1}^1 \frac{d^n}{dz^n} (z^2-1)^n \frac{d^n}{dz^n} (z^2-1)^n dz &= 
+    \left[
+      \frac{d^n}{dz^n} (z^2-1)^n \frac{d^{n-1}}{dz^{n-1}} (z^2-1)^n
+    \right] \Bigg|_{-1}^1 - \int_{-1}^1 \frac{d^{n+1}}{dz^{n+1}} (z^2-1)^n \frac{d^{n-1}}{dz^{n-1}} (z^2-1)^n dz \\
+    &= - \int_{-1}^1 \frac{d^{n+1}}{dz^{n+1}} (z^2-1)^n \frac{d^{n-1}}{dz^{n-1}} (z^2-1)^n dz =: I_n.
+  \end{align*}
+  The reason why the first boundary-term vanish is that we are dealing with a polynomial that has $n$ zeros at both boundary points. 
+  By differentiating the latter $n-1$ times we will let these survive, making the whole term equal to zero. If we proceed with this process,
+  the following equation can be inductively (and easily) derived
+  \begin{equation*}
+    I_n = (-1)^i \int_{-1}^1 \frac{d^{n+i}}{dz^{n+i}} (z^2-1)^n \frac{d^{n-i}}{dz^{n-i}} (z^2-1)^n dz, \quad i \in \mathbb{N}_0.
+  \end{equation*}
+  By letting $i=n$, we arrive at
+  \begin{equation*}
+    I_n = (-1)^n \int_{-1}^1 \frac{d^{2n}}{dz^{2n}} (z^2-1)^n (z^2-1)^n dz = (-1)^n (2n)! \int_{-1}^1 (z^2-1)^n dz.
+  \end{equation*}
+  The new problem is now to compute the integral of $(z^2-1)^n$. To go further we can once again use integration by parts, obtaining
+  \begin{align*}
+    \int_{-1}^1 (z^2-1)^n dz =  \left[
+       z(z^2-1)^n
+      \right] \Bigg|_{-1}^1 -2n \int_{-1}^1 z^2 (z^2-1)^{n-1} dz 
+      &= -2n \int_{-1}^1 (z^2-1+1) (z^2-1)^{n-1} dz \\
+      &= -2n \int_{-1}^1 (z^2-1)^n + (z^2-1)^{n-1} dz.
+  \end{align*}
+  Now, by multiplying both sides by $(-1)^n(2n)!$, we can express the last equation in terms of $I_n$, namely
+  \begin{equation}
+    I_n = -2n ( I_n + I_{n-1} ) \iff I_n = -\frac{2n}{2n+1} I_{n-1}. \label{kugel:eq:recursion_proof}
+  \end{equation}
+  We can hence rewrite eq.\eqref{kugel:eq:recursion_proof} as
+  \begin{align*}
+    I_n &= \frac{2n}{2n+1} \frac{2(n-1)}{2(n-1)+1} I_{n-2} = (-1)^n \frac{2n \cdot \hdots \cdot 6\cdot 4\cdot 2}{(2n+1) \cdot \hdots \cdot 7 \cdot 5 \cdot 3} I_0 \\
+        &= (-1)^n \frac{(2n \cdot \hdots \cdot 6\cdot 4\cdot 2)(2n \cdot \hdots \cdot 6\cdot 4\cdot 2)}
+                       {(2n+1)(2n)\cdot \hdots \cdot 7\cdot 6\cdot 5\cdot 4\cdot 3\cdot 2} I_0 = (-1)^n \frac{2^{2n}(n\cdot \hdots \cdot 3 \cdot 2 \cdot 1)^2}
+                                                                                                             {(2n+1)!} I_0 \\
+    &= (-1)^n  \frac{2^{2n}(n!)^2}{(2n+1)!} I_0 .
+  \end{align*}
+  The only thing left to know is $I_0$, that can be trivially obtained using the definition of $I_n$. We can write
+  \begin{equation*}
+    I_0 = (-1)^n(2n)! \int_{-1}^1 (1-z^2)^0 dz = (-1)^n(2n)! 2,
+  \end{equation*}
+  meaning that
+  \begin{equation*}
+    I_n = (-1)^n  \frac{2^{2n}(n!)^2}{(2n+1)!} \cdot (-1)^n(2n)! 2
+  \end{equation*}
+  and consequently
+  \begin{equation*}
+      \int_{-1}^1 P_n(z)^2 dz = \left( \frac{1}{2^n n!} \right)^2 \cdot (-1)^n  \frac{2^{2n}(n!)^2}{(2n+1)!} \cdot (-1)^n(2n)! 2 = \frac{2}{2n+1}.
+  \end{equation*}
+
 \end{proof}
 
 In a similarly algebraically tedious fashion, we can also continue to check for
@@ -516,10 +569,7 @@ $P_n(z)$ by a $m$-th derivative, and obtain the following result.
 \begin{proof}
   To show that the expression equals zero when $n \neq n'$ we can perform
   exactly the same steps as in the proof of lemma
-  \ref{kugel:thm:legendre-poly-ortho}, so we will not repeat them here and prove
-  instead only the case when $n = n'$.
-  \kugeltodo{Finish proof, or not? I have to look and decide if it is
-  interesting enough.}
+  \ref{kugel:thm:legendre-poly-ortho}, so we will not repeat them here.
 \end{proof}
 
 By having the orthogonality relations of the Legendre functions we can finally
@@ -1074,6 +1124,7 @@ mentioned before, the following theorem is true. The connection to theorem
 \end{proof}
 
 \subsection{Spectrum}
+\label{kugel:sec:spectrum}
 
 \begin{figure}
   \centering
@@ -1094,11 +1145,6 @@ mentioned before, the following theorem is true. The connection to theorem
  concept of spectrum in \emph{amplitude spectrum} and \emph{phase spectrum}. In
  figure \ref{kugel:fig:1d-fourier} a function $f(x)$ is presented along with the
  amplitude spectrum.
-
-The thing that is easiest for us humans to visualize and understand is often the
-amplitude spectrum. This is a huge limitation, since for example in image
-processing it can be shown in a nice way that much more information is contained
-in the phase part (see figure \ref{kugel:fig:phase-2d-fourier}).
 
 \begin{figure}
   \centering
