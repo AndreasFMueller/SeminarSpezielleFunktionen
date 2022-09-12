@@ -188,7 +188,7 @@ Abbildung~\ref{kra:fig:phasenraum} zeigt Phasenraumtrajektorien mit den Energien
 \subsubsection{Erweitertes Feder-Masse-System}
 Die Lösung der Gleichung \eqref{kra:equation:hamilton-multispringmass} beschreibt sowohl die zeitliche Entwicklung der Position als auch der Impulse.
 Um das System im Phasenraum zu untersuchen, reicht uns aber auch die zeitliche Entwicklung des Phasenwinkels $U(t) = P(t)Q^{-1}(t)$.
-Nach Satz~\ref{kra:satz:riccati-matrix-dgl} erhalten wir für Ableitung von $U$
+Nach Satz~\ref{kra:satz:riccati-matrix-dgl} erhalten wir für die Ableitung von $U$
 \begin{equation}
     \begin{split}
         \dt U   &= K  + 0U(t) - U(t)0 - U(t)MU(t) \\
@@ -196,10 +196,14 @@ Nach Satz~\ref{kra:satz:riccati-matrix-dgl} erhalten wir für Ableitung von $U$
     \end{split}
 \end{equation}
 eine Riccati-Matrix-Differentialgleichung.
-Die Matrix $U(t)$ beschreibt, wie man die Impulse $P$ zur Zeit $t$ aus den Positionen $Q$ berechnen kann.
-Die Berechnung der Position $Q$ zur Zeit $t$ aus den Anfangsbedingungen ermöglicht die Matrix $Q$.
-Die Inverse $Q^{-1}$ rechnet dann von den aktuellen Auslenkungen zurück auf Auslenkungen zur Zeit $t=0$.
-Die Matrix-Riccati-Differentialgleichung löst also das Problem die Impulse aus den Positionen zu berechnen, wenn man die Anfangsinpulsverteilung kennt.
+
+Im Folgenden betrachten wir uns den Fall: Anfangsbedingungen $Q(t=0)=I$ und $P(t=0)=0$.
+Die Berechnung der aktuellen Positionen aus den Anfangsbedingungen ermöglicht die Matrix $Q$.
+Mit Hilfe von $Q^{-1}$ können wir dann von den aktuellen Auslenkungen zurück auf Auslenkungen zur Zeit $t=0$ rechnen.
+Mit $P(t)$ erhalten wir danach die zugehörige Geschwindigkeit.
+Die Matrix $U(t)$ beschreibt also, wie man die aktuellen Impulse aus den Positionen berechnen kann, indem man aus der aktuellen Auslenkungsverteilung
+die Anfangsauslenkungen zur Zeit $t=0$ und daraus die aktuelle Impulsverteilung berechnet.
+Die Matrix-Riccati-Differentialgleichung löst somit das Problem die Impulse aus den Positionen zu berechnen, wenn man die Anfangsinpulsverteilung kennt.
 
 Durch die Beschränkung auf den Phasenwinkel wird die Dimension der Differentialgleichung \eqref{kra:equation:hamilton-multispringmass} reduziert, dabei aber gleichzeitig deren Grad erhöht.
 

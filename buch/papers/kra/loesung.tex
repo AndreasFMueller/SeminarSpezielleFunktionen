@@ -51,7 +51,7 @@ Durch die Rücksubstitution \eqref{kra:equation:backsubstitution} erhält man da
 \subsection{Matrix-Riccati-Differentialgleichung} \label{kra:loesung:riccati}
 Im Folgenden wollen wir uns anschauen wie die Matrix-Riccati-Differentialgleichung entsteht und wie sie gelöst werden kann.
 
-\subsubsection{Entstehung}
+\subsubsection{Entstehung der Matrix-Riccati-Differentialgleichung}
 Der Ausgangspunkt bildet die Matrix-Differentialgleichung
 \begin{equation}
     \label{kra:equation:matrix-dgl}
@@ -76,11 +76,16 @@ Wir führen eine neue Grösse
 \[
     U(t) = Y(t)X(t)^{-1}
 \]
-ein, für dessen Ableitung $\dt U(t)$ wir mit
+ein, für deren Ableitung $\dt U(t)$ wir mit
 \[
-    \dot{X}(t) = AX(t) + BY(t) \quad \text{und} \quad \dot{Y}(t) = CX(t) + DY(t)
+    \dot{X}(t) = AX(t) + BY(t) \quad \text{und} \quad \dot{Y}(t) = CX(t) + DY(t),
+\]
+sowie der Ableitung $\dt X^{-1}$
+\[
+    \dt (X X^{-1}) = \dt (I) = 0 = \dot{X} X^{-1} + X \dt X^{-1} \Rightarrow \dt X^{-1} = - X^{-1} \dot{X} X^{-1},
 \]
 folgendes Ergebnis erhalten
+
 \begin{equation}
     \label{kra:equation:feder-masse-riccati-matrix}
     \begin{split}
@@ -91,12 +96,13 @@ folgendes Ergebnis erhalten
         &= C  + DU(t) - U(t)A - U(t)BU(t).
     \end{split}
 \end{equation}
+Damit haben wir folgenden Satz bewiesen.
 \begin{satz}
     \label{kra:satz:riccati-matrix-dgl}
-    Die Ableitung $\dt U(t) = \dt (Y(t)X(t)^{-1})$ ist eine Matrix-Riccati-Differentialgleichung.
+    Die Ableitung $\dt U(t) = \dt (Y(t)X(t)^{-1})$ ist Lösung der Matrix-Riccati-Differentialgleichung \eqref{kra:equation:matrixriccati}.
 \end{satz}
 
-\subsubsection{Lösung}
+\subsubsection{Lösung der Matrix-Riccati-Differentialgleichung}
 Sei
 \[
     V(t)
