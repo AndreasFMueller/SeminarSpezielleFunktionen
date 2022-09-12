@@ -5,11 +5,16 @@
 % (c) 2020 Prof Dr Andreas Müller, Hochschule Rapperswil
 %
 
-\section{Was ist das Sturm-Liouville-Problem\label{sturmliouville:section:teil0}}
+\section{Was ist das Sturm-Liouville-Problem
+\label{sturmliouville:section:teil0}}
 \rhead{Was ist das Sturm-Liouville-Problem}
 Das Sturm-Liouville-Problem wurde benannt nach dem schweizerisch-französischen
 Mathematiker und Physiker Jacques Charles Fran\c{c}ois Sturm und dem
+\index{Jacques Charles Fran\c{c}ois Sturm}%
+\index{Sturm, Jacques Charles Fran\c{c}ois}%
 französischen Mathematiker Joseph Liouville.
+\index{Joseph Liouville}%
+\index{Liouville, Joseph}%
 Gemeinsam haben sie in der mathematischen Physik die Sturm-Liouville-Theorie
 entwickelt.
 Diese gilt für die Lösung von gewöhnlichen Differentialgleichungen.
@@ -20,9 +25,10 @@ mehrere gewöhnliche Differentialgleichungen umwandeln.
 \begin{definition}
 	\index{Sturm-Liouville-Gleichung}%
 Wenn die lineare homogene Differentialgleichung
-\[
+\begin{equation}
 	\frac{d^2y}{dx^2} + a(x)\frac{dy}{dx} + b(x)y = 0
-\]
+\label{sturmliouville:eq:dgl}
+\end{equation}
 als
 \begin{equation}
 	\label{sturmliouville:eq:sturm-liouville-equation}
@@ -32,15 +38,16 @@ als
 	0 
 \end{equation}
 geschrieben werden kann, dann wird die
-Gleichung~\eqref{sturmliouville:eq:sturm-liouville-equation} als 
-Sturm-Liouville-Gleichung bezeichnet.
+Gleichung~\eqref{sturmliouville:eq:dgl}
+%\eqref{sturmliouville:eq:sturm-liouville-equation}
+als Sturm-Liouville-Gleichung bezeichnet.
 \end{definition}
-Alle homogenen linearen gewöhnlichen Differentialgleichungen 2. Ordnung können
+Alle homogenen linearen gewöhnlichen Differentialgleichungen 2.~Ordnung können
 in die Form der Gleichung \eqref{sturmliouville:eq:sturm-liouville-equation} 
 umgewandelt werden.
 
 Damit es sich um ein Sturm-Liouville-Problem handelt, benötigt es noch die
-Randbedingungen, die im nächsten Unterkapitel behandelt werden.
+Randbedingungen, die im nächsten Abschnitt behandelt werden.
 
 \subsection{Randbedingungen
 \label{sturmliouville:sub:was-ist-das-slp-randbedingungen}}
@@ -55,7 +62,6 @@ Die Sturm-Liouville-Gleichung mit homogenen Randbedingungen des dritten Typs
 	\end{aligned}
 \end{equation}
 ist das klassische Sturm-Liouville-Problem.
-
 
 \subsection{Koeffizientenfunktionen
 \label{sturmliouville:sub:koeffizientenfunktionen}}
@@ -75,15 +81,17 @@ im nächsten Abschnitt diskutiert.
 
 \subsection{Das reguläre und singuläre Sturm-Liouville-Problem
 \label{sturmliouville:sub:reguläre_sturm_liouville_problem}}
-Damit es sich um ein reguläres Sturm-Liouville-Problem handelt, müssen einige
-Bedingungen beachtet werden.
+Damit es sich um ein reguläres Sturm-Liouville-Problem
+handelt, müssen einige Bedingungen beachtet werden.
 \begin{definition}
 	\label{sturmliouville:def:reguläres_sturm-liouville-problem}
 	\index{regläres Sturm-Liouville-Problem}
-	Die Bedingungen für ein reguläres Sturm-Liouville-Problem sind:
+	Die Bedingungen für ein {\em reguläres Sturm-Liouville-Problem} sind:
+\index{reguläres Sturm-Liouville-Problem}%
+\index{Sturm-Liouville-Problem, regulär}%
 	\begin{itemize}
-		\item Die Funktionen $p(x), p'(x), q(x)$ und $w(x)$ müssen stetig und
-		reell sein
+		\item Die Funktionen $p(x), p'(x), q(x)$ und $w(x)$ müssen
+		stetig und reell sein
 		\item sowie in einem endlichen Intervall $[a,b]$ integrierbar
 		sein.
 		\item $p(x)$ und $w(x)$ sind $>0$.
@@ -91,9 +99,9 @@ Bedingungen beachtet werden.
 		\eqref{sturmliouville:eq:randbedingungen}, wobei
 		$|k_i|^2 + |h_i|^2\ne 0$ mit $i=a,b$.
 	\end{itemize}
-\end{definition}
 Wird eine oder mehrere dieser Bedingungen nicht erfüllt, so handelt es sich um
-ein singuläres Sturm-Liouville-Problem.
+ein {\em singuläres Sturm-Liouville-Problem.}
+\end{definition}
 
 \begin{beispiel}
 	Das Randwertproblem
@@ -115,10 +123,12 @@ ein singuläres Sturm-Liouville-Problem.
 		\item $p(x)$ und $w(x)$ sind nicht positiv, wenn $x = 0$ ist.
 		\item $q(x)$ ist nicht kontinuierlich, wenn $x = 0$ ist.
 		\item Die Randbedingung bei $x = 0$ und $x = a$ fehlt.
+\qedhere
 	\end{itemize}
 \end{beispiel}
 
-Bei einem regulärem Problem, besteht die Lösung nur aus Eigenvektoren.
+Bei einem regulärem Sturm-Liouville-Problem besteht die Lösung nur aus
+Eigenvektoren.
 Handelt es sich um ein singuläres Problem, so besteht die Lösung im Allgemeinen
 nicht mehr nur aus Eigenvektoren.
  

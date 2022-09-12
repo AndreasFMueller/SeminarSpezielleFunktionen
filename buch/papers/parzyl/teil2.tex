@@ -11,9 +11,11 @@
 	\label{parzyl:potenz}}
 %Die parabolischen Zylinderfunktionen, welche in Gleichung \ref{parzyl:eq:solution_dgl} gegeben sind, 
 %können auch als Potenzreihen geschrieben werden
-Die parabolischen Zylinderfunktionen können auch als Potenzreihen geschrieben werden.
+Die parabolischen Zylinderfunktionen können auch als Potenzreihen
+geschrieben werden.
 Parabolische Zylinderfunktionen sind Linearkombinationen 
-$A(\alpha)w_1(\alpha, x) + B(\alpha)w_2(\alpha, x)$ aus einem geraden Teil $w_1(\alpha, x)$ 
+$A(\alpha)w_1(\alpha, x) + B(\alpha)w_2(\alpha, x)$ aus einem geraden Teil
+$w_1(\alpha, x)$ 
 und einem ungeraden Teil $w_2(\alpha, x)$, welche als Potenzreihen geschrieben
 \begin{align}
 	w_1(\alpha,x)
@@ -25,19 +27,19 @@ und einem ungeraden Teil $w_2(\alpha, x)$, welche als Potenzreihen geschrieben
 	= 
 	e^{-\frac{x^2}{4}}
 	\sum^{\infty}_{n=0}
-	\frac{\left ( \alpha \right )_{n}}{\left ( \frac{1}{2}\right )_{n}}
-	\frac{\left ( \frac{1}{2} x^2\right )^n}{n!} \\
+	\frac{( \alpha )_{n}}{(\frac{1}{2})_{n}}
+	\frac{(\frac{1}{2} x^2)^n}{n!} \\
 	&=
 	e^{-\frac{x^2}{4}}
-	\left ( 
+	\biggl ( 
 	1 
 	+
-	\left ( 2\alpha \right )\frac{x^2}{2!}
+	( 2\alpha )\frac{x^2}{2!}
 	+
-	\left ( 2\alpha \right )\left ( 2 + 2\alpha \right )\frac{x^4}{4!}  
+	( 2\alpha ) ( 2 + 2\alpha )\frac{x^4}{4!}  
 	+
 	\dots
-	\right )
+	\biggr )
 \end{align}
 und
 \begin{align}
@@ -51,22 +53,21 @@ und
 	= 
 	xe^{-\frac{x^2}{4}}
 	\sum^{\infty}_{n=0}
-	\frac{\left ( \frac{1}{2} + \alpha \right )_{n}}{\left ( \frac{3}{2}\right )_{n}}
-	\frac{\left ( \frac{1}{2} x^2\right )^n}{n!} \\
+	\frac{( \frac{1}{2} + \alpha )_{n}}{( \frac{3}{2})_{n}}
+	\frac{( \frac{1}{2} x^2)^n}{n!} \\
 	&=
 	e^{-\frac{x^2}{4}}
-	\left ( 
+	\biggl ( 
 	x 
 	+
-	\left ( 1 + 2\alpha \right )\frac{x^3}{3!}
+	( 1 + 2\alpha )\frac{x^3}{3!}
 	+
-	\left ( 1 + 2\alpha \right )\left ( 3 + 2\alpha \right )\frac{x^5}{5!}  
+	( 1 + 2\alpha )( 3 + 2\alpha )\frac{x^5}{5!}  
 	+
 	\dots
-	\right )
+	\biggr )
 \end{align}
 sind.
-
 
 Die Potenzreihen sind in der Regel unendliche Reihen. 
 Es gibt allerdings die Möglichkeit, dass für bestimmte $\alpha$ die Terme in der Klammer gleich null werden 
@@ -84,24 +85,35 @@ und bei $w_2(\alpha,x)$ falls
 Der Wert von $\alpha$ ist abhängig, ob man $D_n(x)$, $U(a,x)$ oder $V(a,x)$ verwendet.
 Bei $D_n(x)$ gilt $\alpha = -{\textstyle \frac{1}{2}} n$ und bei $U(a,z)$ oder $V(a,x)$ gilt 
 $\alpha = {\textstyle \frac{1}{2}} a + {\textstyle \frac{1}{4}}$.
+
 \subsection{Ableitung}
-Die Ableitungen $\frac{\partial w_1(\alpha, x)}{\partial x}$ und $\frac{\partial w_2(\alpha, x)}{\partial x}$ 
+Die Ableitungen $\frac{\partial w_1(\alpha, x)}{\partial x}$ und
+$\frac{\partial w_2(\alpha, x)}{\partial x}$ 
 können mit den Eigenschaften der hypergeometrischen Funktionen in Abschnitt 
 \ref{buch:rekursion:hypergeometrisch:stammableitung} berechnet werden. 
 Zusammen mit der Produktregel ergeben sich die Ableitungen
 \begin{equation}
-	\frac{\partial w_1(\alpha,x)}{\partial x} = 2\alpha w_2(\alpha + \frac{1}{2}, x) - \frac{1}{2} x w_1(\alpha, x),
+	\frac{\partial w_1(\alpha,x)}{\partial x}
+	=
+	2\alpha w_2(\alpha + {\textstyle\frac{1}{2}}, x) - \frac{1}{2} x w_1(\alpha, x),
 \end{equation} 
 und
 %\begin{equation}
 %	\frac{\partial w_2(z,k)}{\partial z} = w_1(z, k -\frac{1}{2}) - \frac{1}{2} z w_2(z,k).
 %\end{equation}
 \begin{equation}
-	\frac{\partial w_2(\alpha,x)}{\partial x} = e^{-x^2/4} \left(
-	x^{-1} w_2(\alpha, x) - \frac{x}{2} w_2(\alpha, x) + 2 x^2 \left(\frac{\alpha + 1}{3}\right)
+	\frac{\partial w_2(\alpha,x)}{\partial x}
+	=
+	e^{-x^2/4} \biggl(
+	x^{-1} w_2(\alpha, x) - \frac{x}{2} w_2(\alpha, x)
+	+
+	2 x^2 \biggl(\frac{\alpha + 1}{3}\biggr)
+	\,
 	{}_{1} F_{1} (
 	{\textstyle \frac{3}{2}} 
 	+ \alpha, {\textstyle \frac{5}{2}} ; {\textstyle \frac{1}{2}}x^2)
-	\right)
+	\biggr)
 \end{equation}
 Nach dem selben Vorgehen können weitere Ableitungen berechnet werden.
+
+

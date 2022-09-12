@@ -6,13 +6,24 @@
 \section{Umsetzung
 \label{0f1:section:teil2}}
 \rhead{Umsetzung}
-Zur Umsetzung wurden drei verschiedene Ansätze gewählt, die in vollständiger Form auf Github \cite{0f1:code} zu finden sind. Dabei wurde der Schwerpunkt auf die Funktionalität und eine gute Lesbarkeit des Codes gelegt.
-Die Unterprogramme wurde jeweils, wie die GNU Scientific Library, in C geschrieben. Die Zwischenresultate wurden vom Hauptprogramm in einem CSV-File gespeichert. Anschliessen wurde mit der Matplot-Library in Python die Resultate geplottet.
+Zur Umsetzung wurden drei verschiedene Ansätze gewählt, die in
+vollständiger Form auf Github \cite{0f1:code} zu finden sind.
+Dabei wurde der Schwerpunkt auf die Funktionalität und eine gute
+Lesbarkeit des Codes gelegt.
+Die Unterprogramme wurde jeweils, wie die GNU Scientific Library,
+\index{GNU Scientific Library}%
+in C geschrieben.
+Die Zwischenresultate wurden vom Hauptprogramm
+in einem CSV-File gespeichert.
+\index{CSV}%
+Anschliessen wurde mit der Matplot-Library
+\index{Matplot-Library}%
+\index{Python}%
+in Python die Resultate geplottet.
 
 \subsection{Potenzreihe
 \label{0f1:subsection:potenzreihe}}
 Die naheliegendste Lösung ist die Programmierung der Potenzreihe
-
 \begin{align}
     \label{0f1:umsetzung:0f1:eq}
     \mathstrut_0F_1(;c;z)
@@ -31,6 +42,7 @@ Die naheliegendste Lösung ist die Programmierung der Potenzreihe
 \subsection{Kettenbruch
 \label{0f1:subsection:kettenbruch}}
 Eine weitere Variante zur Berechnung von $\mathstrut_0F_1(;c;z)$ ist die Umsetzung als Kettenbruch.
+\index{Kettenbruch}
 Der Vorteil einer Umsetzung als Kettenbruch gegenüber der Potenzreihe ist die schnellere Konvergenz.
 
 \subsubsection{Grundlage}
@@ -41,53 +53,74 @@ a_0 + \cfrac{b_1}{a_1+\cfrac{b_2}{a_2+\cfrac{b_3}{a_3+\cdots}}},
 in welchem $a_0, a_1,\dots,a_n$ und $b_1,b_2,\dots,b_n$ ganze Zahlen sind.
 
 \subsubsection{Rekursionsbeziehungen und Kettenbrüche}
-Wenn es eine Relation analytischer Funktion $f_i(z)$ hat, dann gibt es einen Kettenbruch für das Verhältnis $\frac{f_i(z)}{f_{i-1}(z)}$ \cite{0f1:wiki-fraction}. 
+
 Nimmt man die Gleichung
+Wenn es für die analytischen Funktionen $f_i(z)$ eine Relation der Form
+\begin{equation}
+	f_{i-1}(z) - f_i(z) = k_i z f_{i+1}(z)
+\label{0f1:relation}
+\end{equation}
+für ganzzahlige positive $i$ und Konstanten $k_i$
+gibt,
+dann gibt es einen Kettenbruch für das Verhältnis
+$\frac{f_i(z)}{f_{i-1}(z)}$ \cite{0f1:wiki-fraction}. 
+Aus der Relation~\eqref{0f1:relation}
+ergibt sich der Zusammenhang
+\begin{equation}
+	\cfrac{f_i(z)}{f_{i-1}(z)}
+	=
+	\cfrac{1}{1+k_iz\cfrac{f_{i+1}(z)}{f_i(z)}}.
+\label{0f1:bruchrelation}
+\end{equation}
+Geht man einen Schritt weiter und nimmt für
+$g_i(z) = \frac{f_i(z)}{f_{i-1}(z)}$ an, kommt man zur Formel
 \begin{equation*}
-	f_{i-1} - f_i = k_i z f_{i+1},
-\end{equation*}
-wo $f_i$ analytische Funktionen sind und $i > 0$ ist, sowie $k_i$ konstant.
-Ergibt sich der Zusammenhang
-\begin{equation*}
-	\cfrac{f_i}{f_{i-1}} = \cfrac{1}{1+k_iz\cfrac{f_{i+1}}{f_i}}.
-\end{equation*}
-Geht man einen Schritt weiter und nimmt für $g_i = \frac{f_i}{f_{i-1}}$ an, kommt man zur Formel
-\begin{equation*}
-	g_i = \cfrac{1}{1+k_izg_{i+1}}.
+	g_i(z) = \cfrac{1}{1+k_izg_{i+1}(z)}.
 \end{equation*}
 Setzt man dies nun für $g_1$ in den Bruch ein, ergibt sich
 \begin{equation*}
-	g_1 = \cfrac{f_1}{f_0} = \cfrac{1}{1+k_izg_2} = \cfrac{1}{1+\cfrac{k_1z}{1+k_2zg_3}} = \cdots
+	g_1(z) = \cfrac{f_1(z)}{f_0(z)} = \cfrac{1}{1+k_izg_2(z)} = \cfrac{1}{1+\cfrac{k_1z}{1+k_2zg_3(z)}} = \cdots
 \end{equation*}
-Repetiert man dies unendlich, erhält man einen Kettenbruch in der Form:
+Wiederholt man dies unendlich, erhält man einen Kettenbruch in der Form:
 \begin{equation}
 	\label{0f1:math:rekursion:eq}
-	\cfrac{f_1}{f_0} = \cfrac{1}{1+\cfrac{k_1z}{1+\cfrac{k_2z}{1+\cfrac{k_3z}{\cdots}}}}.
+	\cfrac{f_1(z)}{f_0(z)}
+	=
+	\cfrac{1}{1+\cfrac{k_1z}{1+\cfrac{k_2z}{1+\cfrac{k_3z}{\cdots}}}}.
 \end{equation}
 
 \subsubsection{Rekursion für $\mathstrut_0F_1$}
 Angewendet auf die Potenzreihe
 \begin{equation}
 	\label{0f1:math:potenzreihe:0f1:eq}
-	\mathstrut_0F_1(;c;z) = 1 + \frac{z}{c\cdot1!} + \frac{z^2}{c(c+1)\cdot2!} + \frac{z^3}{c(c+1)(c+2)\cdot3!} + \cdots
+	\mathstrut_0F_1(;c;z)
+	=
+	1 + \frac{z}{c\cdot1!} + \frac{z^2}{c(c+1)\cdot2!} + \frac{z^3}{c(c+1)(c+2)\cdot3!} + \cdots
 \end{equation}
 kann durch Substitution bewiesen werden, dass
 \begin{equation*}
-	\mathstrut_0F_1(;c-1;z) - \mathstrut_0F_1(;c;z) = \frac{z}{c(c-1)} \cdot \mathstrut_0F_1(;c+1;z)
+	\mathstrut_0F_1(;c-1;z) - \mathstrut_0F_1(;c;z)
+	=
+	\frac{z}{c(c-1)} \cdot \mathstrut_0F_1(;c+1;z)
 \end{equation*}
-eine Relation dazu ist.
+eine Relation der Art \eqref{0f1:relation} dazu ist.
 Wenn man für $f_i$ und $k_i$ die Annahme
 \begin{align*}
-	f_i =& \mathstrut_0F_1(;c+i;z)\\
-	k_i	=& \frac{1}{(c+i)(c+i-1)}
+	f_i &= \mathstrut_0F_1(;c+i;z)\\
+	k_i	&= \frac{1}{(c+i)(c+i-1)}
 \end{align*}
 trifft und in die Formel \eqref{0f1:math:rekursion:eq} einsetzt, erhält man:
 \begin{equation*}
-	\cfrac{\mathstrut_0F_1(;c+1;z)}{\mathstrut_0F_1(;c;z)} = \cfrac{1}{1+\cfrac{\cfrac{z}{c(c+1)}}{1+\cfrac{\cfrac{z}{(c+1)(c+2)}}{1+\cfrac{\cfrac{z}{(c+2)(c+3)}}{\cdots}}}}.
+	\cfrac{\mathstrut_0F_1(;c+1;z)}{\mathstrut_0F_1(;c;z)}
+	=
+	\cfrac{1}{1+\cfrac{\cfrac{z}{c(c+1)}}{1+\cfrac{\cfrac{z}{(c+1)(c+2)}}{1+\cfrac{\cfrac{z}{(c+2)(c+3)}}{\cdots}}}}.
 \end{equation*}
 
 \subsubsection{Algorithmus}
-Da mit obigen Formeln nur ein Verhältnis zwischen $	\frac{\mathstrut_0F_1(;c+1;z)}{\mathstrut_0F_1(;c;z)}$ berechnet wurde, braucht es weitere Relationen um $\mathstrut_0F_1(;c;z)$ zu erhalten.
+Da mit obigen Formeln nur ein Verhältnis zwischen
+$\frac{\mathstrut_0F_1(;c+1;z)}{\mathstrut_0F_1(;c;z)}$
+berechnet wurde, braucht es weitere Relationen um $\mathstrut_0F_1(;c;z)$
+zu erhalten.
 So ergeben ähnliche Relationen nach Wolfram Alpha \cite{0f1:wolfram-0f1} den Kettenbruch
 \begin{equation}
 	\label{0f1:math:kettenbruch:0f1:eq}
@@ -95,15 +128,22 @@ So ergeben ähnliche Relationen nach Wolfram Alpha \cite{0f1:wolfram-0f1} den Ke
 \end{equation}
 der als Code (Listing \ref{0f1:listing:kettenbruchIterativ})  umgesetzt wurde. 
 
-
 \lstinputlisting[style=C,float,caption={Iterativ umgesetzter Kettenbruch.},label={0f1:listing:kettenbruchIterativ},  firstline=8]{papers/0f1/listings/kettenbruchIterativ.c}
 
 \subsection{Rekursionsformel
 \label{0f1:subsection:rekursionsformel}}
-Wesentlich stabiler zur Berechnung eines Kettenbruches ist die Rekursionsformel. Nachfolgend wird die verkürzte Herleitung vom Kettenbruch zur Rekursionsformel aufgezeigt. Eine vollständige Schritt für Schritt Herleitung ist im Seminarbuch Numerik, im Kapitel Kettenbrüche \cite{0f1:kettenbrueche} zu finden.
+Wesentlich stabiler zur Berechnung eines Kettenbruches ist die
+Rekursionsformel.
+\index{Rekursionsformel}%
+Nachfolgend wird die verkürzte Herleitung vom
+Kettenbruch zur Rekursionsformel aufgezeigt.
+Eine vollständige Schritt für Schritt Herleitung ist im Seminarbuch Numerik
+\cite{0f1:kettenbrueche}
+im Kapitel Kettenbrüche zu finden.
 
 \subsubsection{Herleitung}
 Ein Näherungsbruch in der Form
+\index{Näherungsbruch}%
 \begin{align*}
 	\cfrac{A_k}{B_k} = a_k + \cfrac{b_{k + 1}}{a_{k + 1} + \cfrac{p}{q}}
 \end{align*}
@@ -113,6 +153,7 @@ lässt sich zu
 \end{align*}
 umformen.
 Dies lässt sich auch durch die Matrizenschreibweise
+\index{Matrixschreibeweise eines Kettenbruchs}%
 \begin{equation*}
 	\begin{pmatrix}
 		A_k\\
@@ -129,7 +170,7 @@ Dies lässt sich auch durch die Matrizenschreibweise
 	\begin{pmatrix}
 		p \\
 		q
-	\end{pmatrix}.
+	\end{pmatrix}
 	%\label{0f1:math:rekursionsformel:herleitung}
 \end{equation*}
 ausdrücken.
@@ -138,7 +179,6 @@ Wendet man dies nun auf den Kettenbruch in der Form
 	\frac{A_k}{B_k} = a_0 + \cfrac{b_1}{a_1+\cfrac{b_2}{a_2+\cfrac{\cdots}{\cdots+\cfrac{b_{k-1}}{a_{k-1} + \cfrac{b_k}{a_k}}}}}
 \end{equation*}
 an, ergibt sich die Matrixdarstellungen:
-
 \begin{align*}
 	\begin{pmatrix}
 		A_k\\
@@ -186,7 +226,6 @@ Und schlussendlich kann der Näherungsbruch
 \] 
 berechnet werden.
 
-
 \subsubsection{Algorithmus}
 Die Berechnung von $A_k, B_k$ gemäss \eqref{0f1:math:matrix:ende:eq} kann man auch ohne die Matrizenschreibweise \cite{0f1:kettenbrueche} aufschreiben:
 \begin{itemize}
@@ -199,18 +238,19 @@ B_{-1} &= 1		&		B_0 &= 1
 \[
 \begin{aligned}
 \label{0f1:math:loesung:eq}
-k &\rightarrow k + 1:
-&
 A_{k+1} &= A_{k-1} \cdot b_k + A_k \cdot a_k \\
-&&
 B_{k+1} &= B_{k-1} \cdot b_k + B_k \cdot a_k
 \end{aligned}
 \]
 \item
 Näherungsbruch: \qquad$\displaystyle\frac{A_k}{B_k}$.
 \end{itemize}
-
-Ein grosser Vorteil dieser Umsetzung als Rekursionsformel \eqref{0f1:listing:kettenbruchRekursion} ist, dass im Vergleich zum Code (Listing \ref{0f1:listing:kettenbruchIterativ}) eine Division gespart werden kann und somit weniger Rundungsfehler entstehen können.
+Ein grosser Vorteil dieser Umsetzung
+als Rekursionsformel
+(Listing~\ref{0f1:listing:kettenbruchRekursion}) ist,
+dass im Vergleich zum Code (Listing~\ref{0f1:listing:kettenbruchIterativ})
+eine Division gespart werden kann und somit weniger Rundungsfehler
+entstehen können.
 
 %Code
 \lstinputlisting[style=C,float,caption={Rekursionsformel für Kettenbruch.},label={0f1:listing:kettenbruchRekursion},  firstline=8]{papers/0f1/listings/kettenbruchRekursion.c}

@@ -93,5 +93,5 @@ object {
 
 dreieck(A, B, C, White)
 
-kugel(kugeldunkel)
+kugel(kugelfarbe)
 

@@ -1,12 +1,13 @@
 \section{Eulerprodukt} \label{zeta:section:eulerprodukt}
 \rhead{Eulerprodukt}
 
-Das Eulerprodukt stellt die gesuchte Verbindung der Zetafunktion und der Primzahlen her.
+Das Euler-Produkt stellt die gesuchte Verbindung der Zeta-Funktion und der Primzahlen her.
+\index{Euler-Produkt}%
 Wie der Name bereits sagt, wurde das Eulerprodukt bereits 1727 von Euler entdeckt.
 Um daraus die Riemannsche Vermutung herzuleiten, wäre aber noch einiges mehr nötig.
 
 \begin{satz}
-    Für alle Zahlen $s$ mit $\Re(s) > 1$ ist die Zetafunktion identisch mit dem unendlichen Eulerprodukt
+    Für alle Zahlen $s$ mit $\Re(s) > 1$ ist die Zeta-Funktion identisch mit dem unendlichen Eulerprodukt
     \begin{equation}\label{zeta:eq:eulerprodukt}
         \zeta(s)
         =
@@ -17,62 +18,72 @@ Um daraus die Riemannsche Vermutung herzuleiten, wäre aber noch einiges mehr n�
         \frac{1}{1-p^{-s}}
     \end{equation}
     wobei $P$ die Menge aller Primzahlen darstellt.
+\index{Menge der Primzahlen}%
 \end{satz}
 
 \begin{proof}[Beweis]
-    Der Beweis startet mit dem Eulerprodukt und stellt dieses so um, dass die Zetafunktion erscheint.
+    Der Beweis startet mit dem Eulerprodukt und stellt dieses so um, dass die Zeta-Funktion erscheint.
     Als erstes ersetzen wir die Faktoren durch geometrische Reihen
     \begin{equation}
-        \prod_{i=1}^{\infty}
+        \prod_{p\in P}
         \frac{1}{1-p^{-s}}
         =
         \prod_{p \in P}
-        \sum_{k_i=0}^{\infty}
+        \sum_{k_p=0}^{\infty}
         \biggl(
-        \frac{1}{p_i^s}
-        \biggr)^{k_i}
+        \frac{1}{p^s}
+        \biggr)^{k_p}
         =
         \prod_{p \in P}
-        \sum_{k_i=0}^{\infty}
-        \frac{1}{p_i^{s k_i}},
+        \sum_{k_p=0}^{\infty}
+        \frac{1}{p^{s k_p}},
     \end{equation}
     dabei iteriert der Index $i$ über alle Primzahlen $p_i$.
     Durch Ausschreiben der Multiplikation und Ausklammern der Summen erhalten wir
     \begin{align}
         \prod_{p \in P}
-        \sum_{k_i=0}^{\infty}
-        \frac{1}{p_i^{s k_i}}
+        \sum_{k_p=0}^{\infty}
+        \frac{1}{p^{s k_p}}
         &=
-        \sum_{k_1=0}^{\infty}
-        \frac{1}{p_1^{s k_1}}
         \sum_{k_2=0}^{\infty}
-        \frac{1}{p_2^{s k_2}}
+        \frac{1}{2^{s k_2}}
+        \sum_{k_3=0}^{\infty}
+        \frac{1}{3^{s k_3}}
+        \sum_{k_5=0}^{\infty}
+        \frac{1}{5^{s k_5}}
+        \sum_{k_7=0}^{\infty}
+        \frac{1}{7^{s k_7}}
         \ldots
         \nonumber \\
         &=
-        \sum_{k_1=0}^{\infty}
         \sum_{k_2=0}^{\infty}
+        \sum_{k_3=0}^{\infty}
+        \sum_{k_5=0}^{\infty}
         \ldots
         \biggl(
-        \frac{1}{p_1^{k_1}}
-        \frac{1}{p_2^{k_2}}
+        \frac{1}{2^{k_2}}
+        \frac{1}{3^{k_3}}
+        \frac{1}{5^{k_5}}
         \ldots
         \biggr)^s.
         \label{zeta:equation:eulerprodukt2}
     \end{align}
-    Der Fundamentalsatz der Arithmetik (Primfaktorzerlegung) besagt, dass jede beliebige Zahl $n \in \mathbb{N}$ durch eine eindeutige Primfaktorzerlegung beschrieben werden kann
+    Der Fundamentalsatz der Arithmetik (Primfaktorzerlegung) besagt, dass jede beliebige Zahl $n \in \mathbb{N}$ durch eine eindeutige Primfaktorzerlegung
     \begin{equation}
-        n = \prod_i p_i^{k_i} \quad \forall \quad n \in \mathbb{N}.
+        n = \prod_p p^{k_p} \qquad \forall \; n \in \mathbb{N}
     \end{equation}
+beschrieben werden kann.
     Jeder Summand der Summen in \eqref{zeta:equation:eulerprodukt2} ist somit der Kehrwert genau einer natürlichen Zahl $n \in \mathbb{N}$.
     Da die Summen alle möglichen Kombinationen von Exponenten und Primzahlen in \eqref{zeta:equation:eulerprodukt2} enthält, haben wir
     \begin{equation}
-        \sum_{k_1=0}^{\infty}
         \sum_{k_2=0}^{\infty}
+        \sum_{k_3=0}^{\infty}
+        \sum_{k_5=0}^{\infty}
         \ldots
         \biggl(
-        \frac{1}{p_1^{k_1}}
-        \frac{1}{p_2^{k_2}}
+        \frac{1}{2^{k_2}}
+        \frac{1}{3^{k_3}}
+        \frac{1}{5^{k_5}}
         \ldots
         \biggr)^s
         =

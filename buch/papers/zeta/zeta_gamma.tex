@@ -1,16 +1,16 @@
-\section{Zusammenhang mit der Gammafunktion} \label{zeta:section:zusammenhang_mit_gammafunktion}
-\rhead{Zusammenhang mit der Gammafunktion}
+\section{Zusammenhang mit der Gamma-Funktion} \label{zeta:section:zusammenhang_mit_gammafunktion}
+\rhead{Zusammenhang mit der Gamma-Funktion}
 
-In diesem Abschnitt wird gezeigt, wie sich die Zetafunktion durch die Gammafunktion $\Gamma(s)$ ausdrücken lässt.
+In diesem Abschnitt wird gezeigt, wie sich die Zeta-Funktion durch die Gamma-Funktion $\Gamma(s)$ ausdrücken lässt.
 Dieser Zusammenhang der Art $\zeta(s) = f(\Gamma(s))$ ist nicht nur interessant, er wird später auch für die Herleitung der analytischen Fortsetzung gebraucht.
 
-Wir erinnern uns an die Definition der Gammafunktion in \eqref{buch:rekursion:gamma:integralbeweis}
+Wir erinnern uns an die Definition der Gamma-Funktion in \eqref{buch:rekursion:gamma:integralbeweis}
 \begin{equation*}
     \Gamma(s)
     =
     \int_0^{\infty} t^{s-1} e^{-t} \,dt,
 \end{equation*}
-wobei die Notation an die Zetafunktion angepasst ist.
+wobei die Notation an die Zeta-Funktion angepasst ist.
 Durch die Substitution $t = nu$ und $dt = n\,du$ wird daraus
 \begin{align*}
     \Gamma(s)
@@ -25,7 +25,7 @@ Durch Division durch $n^s$ ergeben sich die Quotienten
     =
     \int_0^{\infty} u^{s-1} e^{-nu} \,du,
 \end{equation*}
-welche sich zur Zetafunktion summieren
+welche sich zur Zeta-Funktion summieren
 \begin{equation}
     \sum_{n=1}^{\infty} \frac{\Gamma(s)}{n^s}
     =
@@ -38,9 +38,9 @@ welche sich zur Zetafunktion summieren
 \end{equation}
 Die Summe über $e^{-nu}$ können wir als geometrische Reihe schreiben und erhalten
 \begin{align}
-    \sum_{n=1}^{\infty}\left(e^{-u}\right)^n
+    \sum_{n=1}^{\infty}(e^{-u})^n
     &=
-    \sum_{n=0}^{\infty}\left(e^{-u}\right)^n
+    \sum_{n=0}^{\infty}(e^{-u})^n
     -
     1
     \\

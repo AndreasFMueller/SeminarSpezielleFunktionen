@@ -1,26 +1,29 @@
 \section{Der Wert $\zeta(-1)$} \label{zeta:section:fazit}
 \rhead{Der Wert $\zeta(-1)$}
+\index{zeta(-1)@$\zeta(-1)$}%
 
 Ganz zu Beginn dieses Papers wurde die Behauptung erwähnt, dass die Summe aller natürlichen Zahlen $-\frac{1}{12}$ sei.
-Diese Summe ist nichts anderes als die Zetafunktion am Wert $s=-1$.
+Diese Summe ist nichts anderes als die Zeta-Funktion am Wert $s=-1$.
 Da wir die analytische Fortsetzung mit der Funktionalgleichung \eqref{zeta:equation:functional} gefunden haben, können wir den Wert $s=-1$ einsetzen und erhalten
 \begin{align*}
     \zeta(s)
     &=
-    \frac{\Gamma \left( \frac{1-s}{2} \right)}{\pi^{\frac{1-s}{2}}}
+    \frac{\Gamma ( \frac{1-s}{2} )}{\pi^{\frac{1-s}{2}}}
     \zeta(1-s)
-    \frac{\pi^{\frac{s}{2}}}{\Gamma \left( \frac{s}{2} \right)}
+    \frac{\pi^{\frac{s}{2}}}{\Gamma ( \frac{s}{2} )}
     \\
     \zeta(-1)
     &=
     \frac{\Gamma(1)}{\pi}
     \zeta(2)
-    \frac{\pi^{-\frac{1}{2}}}{\Gamma \left( -\frac{1}{2} \right)}.
+    \frac{\pi^{-\frac{1}{2}}}{\Gamma ( -\frac{1}{2} )}.
 \end{align*}
 Also fehlen uns drei Werte, $\zeta(2)$, $\Gamma(1)$ und $\Gamma(-\frac{1}{2})$.
 
 Zunächst konzentrieren wir uns auf $\zeta(2)$, welches im konvergenten Bereich der Reihe liegt und auch bekannt ist als das Basler Problem.
+\index{Basler Problem}%
 Wir lösen das Basler Problem \cite{zeta:online:basel} mithilfe der parsevalschen Gleichung \cite{zeta:online:pars}
+\index{parsevalsche Gleichung}%
 \begin{align}
     \int_{-\pi}^{\pi} |f(x)|^2 dx
     &=
@@ -53,15 +56,15 @@ Durch einfaches Umstellen erhalten wir somit die Lösung des Basler Problems als
     = \frac{\pi^2}{6}.
 \end{equation}
 
-Als nächstes berechnen wir $\Gamma(1)$ und $\Gamma(-\frac{1}{2})$ mithilfe der Integraldefinition der Gammafunktion (Definition \ref{buch:rekursion:def:gamma}).
+Als nächstes berechnen wir $\Gamma(1)$ und $\Gamma(-\frac{1}{2})$ mithilfe der Integraldefinition der Gamma-Funktion (Definition \ref{buch:rekursion:def:gamma}).
 Da das Integral für $\Gamma(-\frac{1}{2})$ nicht konvergiert, wird die Reflektionsformel aus \ref{buch:funktionentheorie:subsection:gammareflektion} verwendet, welche das konvergierende Integral von  $\Gamma(\frac{3}{2})$ verwendet.
 Es ergeben sich die Werte
 \begin{align*}
     \Gamma(1)
     &= 1\\
     \Gamma\biggl(-\frac{1}{2}\biggr)
-    &= \frac{\pi}{\sin\left(-\frac{\pi}{2}\right)
-    \Gamma\left(\frac{3}{2}\right)}
+    &= \frac{\pi}{\sin(-\frac{\pi}{2})
+    \Gamma(\frac{3}{2})}
     = -\frac{\sqrt{\pi}}{2}.
 \end{align*}
 
@@ -71,7 +74,7 @@ Wenn wir diese Werte in die Funktionalgleichung einsetzen, erhalten wir das gew�
     &=
     \frac{\Gamma(1)}{\pi}
     \zeta(2)
-    \frac{\pi^{-\frac{1}{2}}}{\Gamma \left( -\frac{1}{2} \right)}
+    \frac{\pi^{-\frac{1}{2}}}{\Gamma ( -\frac{1}{2} )}
     \\
     &=
     \frac{1}{\pi}
@@ -83,12 +86,13 @@ Wenn wir diese Werte in die Funktionalgleichung einsetzen, erhalten wir das gew�
     -\frac{1}{12}.
 \end{align*}
 
-Weiter wurde zu Beginn dieses Papers auf die Riemannsche Vermutung hingewiesen, wonach alle nichttrivialen Nullstellen der Zetafunktion auf der $\Re(s)=\frac{1}{2}$ Geraden liegen.
+Weiter wurde zu Beginn dieses Papers auf die Riemannsche Vermutung hingewiesen, wonach alle nichttrivialen Nullstellen der Zeta-Funktion auf der $\Re(s)=\frac{1}{2}$ Geraden der komplexen Ebene liegen.
 Abbildung \ref{zeta:fig:einzweitel} zeigt die Funktionswerte dieser Geraden.
 \begin{figure}
     \centering
-    \input{papers/zeta/images/zetaplot.tex}
-    \caption{Die komplexen Werte der Zetafunktion für die kritische Gerade $\Re(s)=\frac{1}{2}$ im Bereich $\Im(s) = 0\dots40$.
+    %\input{papers/zeta/images/zetaplot.tex}
+    \includegraphics{papers/zeta/images/zetaplot.pdf}
+    \caption{Die komplexen Werte der Zeta-Funktion für die kritische Gerade $\Re(s)=\frac{1}{2}$ im Bereich $\Im(s) = 0\dots40$.
     Klar sichtbar sind die immer wiederkehrenden Nullstellen, wie sie Gegenstand der Riemannschen Vermutung sind.}
     \label{zeta:fig:einzweitel}
 \end{figure}

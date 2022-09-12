@@ -27,7 +27,7 @@ Die Parametrisierung von $z(t)$ ist im Beispiel definiert als
 \begin{equation}
     z(t)
     =
-    \left( \begin{array}{c} 0 \\ t \end{array} \right)\text{.}
+    \begin{pmatrix} 0 \\ t \end{pmatrix}\text{.}
 \end{equation}
 %
 Die Parametrisierung von $v(t)$ ist von den Startbedingungen abhängig. Deshalb wird die Bedingung \eqref{bedingung_treffer} jeweils für die unterschiedlichen Startbedingungen separat analysiert.
@@ -38,16 +38,16 @@ Wenn der Verfolger im ersten Quadranten startet, dann kann $v(t)$ mit den Gleich
 \begin{align}
     x\left(t\right)
     &=
-    x_0\cdot\sqrt{\frac{1}{\chi}W\left(\chi\cdot \exp\left( \chi-\frac{4t}{r_0-y_0}\right) \right)} \text{,}\\
+    x_0\cdot\sqrt{\frac{1}{\chi}W\biggl(\chi\cdot \exp\biggl( \chi-\frac{4t}{r_0-y_0}\biggr) \biggr)} \text{,}\\
     y(t)
     &=
-    \frac{1}{4}\biggl(\left(y_0+r_0\right)\left(\frac{x(t)}{x_0}\right)^2+\left(y_0-r_0\right)\operatorname{ln}\biggl(\left(\frac{x(t)}{x_0}\right)^2\biggr)-r_0+3y_0\biggr) \text{,}\\
+    \frac{1}{4}\biggl((y_0+r_0)\biggl(\frac{x(t)}{x_0}\biggr)^2+(y_0-r_0)\operatorname{ln}\biggl(\biggl(\frac{x(t)}{x_0}\biggr)^2\biggr)-r_0+3y_0\biggr) \text{,}\\
     \chi
     &=
     \frac{r_0+y_0}{r_0-y_0}\text{,} \quad
     \eta
     =
-    \left(\frac{x}{x_0}\right)^2 \quad\text{und}\quad
+    \biggl(\frac{x}{x_0}\biggr)^2 \quad\text{und}\quad
     r_0
     =
     \sqrt{x_0^2+y_0^2}
@@ -59,7 +59,7 @@ Der Verfolger ist durch
 \begin{equation}
     v(t)
     =
-    \left( \begin{array}{c} x(t) \\ y(t) \end{array} \right)
+    \begin{pmatrix} x(t) \\ y(t) \end{pmatrix}
 \end{equation}
 %
 parametrisiert, wobei $y(t)$ viel komplexer ist als $x(t)$.
@@ -70,13 +70,15 @@ Daher wird das Problem in zwei einzelne Teilprobleme zerlegt, wodurch die Beding
     &=
     x(t)
     =
-    x_0\sqrt{\frac{1}{\chi}W\left(\chi\cdot \exp\left( \chi-\frac{4t}{r_0-y_0}\right)\right)}
+    x_0\sqrt{\frac{1}{\chi}W\biggl(\chi\cdot \exp\biggl( \chi-\frac{4t}{r_0-y_0}\biggr)\biggr)}
     \\
     t
     &=
     y(t)
     =
-    \frac{1}{4}\biggl(\left(y_0+r_0\right)\left(\frac{x(t)}{x_0}\right)^2+\left(y_0-r_0\right)\operatorname{ln}\biggl(\left(\frac{x(t)}{x_0}\right)^2\biggr)-r_0+3y_0\biggr)
+    \frac{1}{4}\biggl((y_0+r_0)\biggl(\frac{x(t)}{x_0}\biggr)^2
+	+
+	(y_0-r_0)\operatorname{ln}\biggl(\biggl(\frac{x(t)}{x_0}\biggr)^2\biggr)-r_0+3y_0\biggr)
     \text{,}
 \end{align}
 %
@@ -86,17 +88,19 @@ Da $x_0 \neq 0$ und $\chi \neq 0$ kann
 \begin{equation}
     0
     =
-    x_0\sqrt{\frac{1}{\chi}W\left(\chi\cdot \exp\left( \chi-\frac{4t}{r_0-y_0}\right)\right)}
+    x_0\sqrt{\frac{1}{\chi}W\biggl(\chi\cdot \exp\biggl( \chi-\frac{4t}{r_0-y_0}\biggr)\biggr)}
 \end{equation}
 algebraisch zu
 \begin{equation}
     0
     =
-    W\left(\chi\cdot \exp\left( \chi-\frac{4t}{r_0-y_0}\right)\right)
+    W\biggl(\chi\cdot \exp\biggl( \chi-\frac{4t}{r_0-y_0}\biggr)\biggr)
 \end{equation}
 umgeformt werden.
-Es ist zu beachten, dass $W(x)$ die Lambert W-Funktion ist, welche im Kapitel  \eqref{buch:section:lambertw} behandelt wurde.
-Diese Gleichung entspricht genau den Nullstellen der Lambert W-Funktion. Mit der einzigen Nullstelle der Lambert W-Funktion bei
+Es ist zu beachten, dass $W(x)$ die Lambert-\(W\)-Funktion ist,
+welche im Kapitel  \eqref{buch:section:lambertw} behandelt wurde.
+Diese Gleichung entspricht genau den Nullstellen der Lambert-\(W\)-Funktion.
+Mit der einzigen Nullstelle der Lambert-\(W\)-Funktion bei
 \begin{equation*}
     W(0)=0
     \text{,}
@@ -105,7 +109,7 @@ kann die Bedingung weiter vereinfacht werden zu
 \begin{equation}
     0
     =
-    \chi\cdot \exp\left( \chi-\frac{4t}{r_0-y_0}\right)
+    \chi\cdot \exp\biggl( \chi-\frac{4t}{r_0-y_0}\biggr)
     \text{.}
 \end{equation}
 Da $\chi\neq0$ und die Exponentialfunktion nie null sein kann, ist diese Bedingung unmöglich zu erfüllen.
@@ -149,9 +153,9 @@ Da die Geschwindigkeit des Verfolgers und des Ziels übereinstimmen, kann der Ve
 Dies kann veranschaulicht werden anhand
 %
 \begin{equation}
-    v(t)\cdot \left( \begin{array}{c} 0 \\ 1 \end{array}\right) 
+    v(t)\cdot \begin{pmatrix} 0 \\ 1 \end{pmatrix}
     \leq
-    z(t)\cdot \left( \begin{array}{c} 0 \\ 1 \end{array}\right) 
+    z(t)\cdot \begin{pmatrix} 0 \\ 1 \end{pmatrix}
     =
     1\text{.}
 \end{equation}
@@ -167,7 +171,7 @@ Um $t_1$ zu bestimmen, kann die Verfolgungskurve in diesem Fall mit
 \begin{equation}
     v(t)
     =
-    \left( \begin{array}{c} 0 \\ y_0-t \end{array} \right)
+    \begin{pmatrix} 0 \\ y_0-t \end{pmatrix}
 \end{equation}
 %
 parametrisiert werden.
@@ -237,11 +241,12 @@ Die Ortsvektoren der Punkte können wiederum mit
 \begin{align}
 	v
 	&=
-	t\cdot\left(\begin{array}{c} \cos (\alpha) \\ \sin (\alpha) \end{array}\right) +\left(\begin{array}{c} x_0 \\ 0 \end{array}\right)
+	t\cdot\begin{pmatrix} \cos (\alpha) \\ \sin (\alpha) \end{pmatrix}
+	+\begin{pmatrix} x_0 \\ 0 \end{pmatrix}
 	\\
 	z
 	&=
-	\left(\begin{array}{c} 0 \\ t \end{array}\right)
+	\begin{pmatrix} 0 \\ t \end{pmatrix}
 \end{align}
 beschrieben werden.
 $x_0$ ist der Abstand bei $t=0$, damit alle möglichen Fälle untersucht werden können.
@@ -269,30 +274,42 @@ Der Abstand im Quadrat abgeleitet nach der Zeit ist
 	2(t\cdot\cos (\alpha)+x_0)\cdot\cos(\alpha)+2t(\sin(\alpha)-1)^2
 	\text{.}
 \end{equation}
-Da nur die unmittelbar benachbarten Punkten von Interesse sind, wird die Ableitung für $t=0$ untersucht. Dabei kann die Ableitung in 
-\begin{align}
+Da nur die unmittelbar benachbarten Punkten von Interesse sind, wird die Ableitung für $t=0$ untersucht.
+Dabei kann die Ableitung in  die Fälle
+\[
 	\frac{d a^2}{d t}
-	&=
+	=
 	2x_0\cos(\alpha)
-	\\
+\qquad\Rightarrow\qquad
+\left\{
+\quad
+\begin{aligned}
 	\frac{d a^2}{d t}
 	&<
-	0\Leftrightarrow\alpha\in\left( \frac{\pi}{2}, \frac{3\pi}{2}\right)
+	0\quad&&\text{für}\quad&\alpha&\in\biggl( \frac{\pi}{2}, \frac{3\pi}{2}\biggr)
 	\\
 	\frac{d a^2}{d t}
 	&>
-	0\Leftrightarrow\alpha\in\left[0, \frac{\pi}{2}\right)\cup\left(\frac{3\pi}{2}, 2\pi\right)
+	0\quad&&\text{für}\quad&\alpha&\in\biggl[0, \frac{\pi}{2}\biggr)\cup\biggl(\frac{3\pi}{2}, 2\pi\biggr)
 	\\
 	\frac{d a^2}{d t}
 	&=
-	0\Leftrightarrow\alpha\in\left\{ \frac{\pi}{2}, \frac{3\pi}{2}\right\}
-\end{align}
+	0\quad&&\text{für}\quad&\alpha&\in\biggl\{ \frac{\pi}{2}, \frac{3\pi}{2}\biggr\}
+\end{aligned}
+\right.
+\]
 unterteilt werden.
-Von Interesse ist lediglich das Intervall $\alpha\in\left( \frac{\pi}{2}, \frac{3\pi}{2}\right)$, da der Verfolger sich stets in die negative $y$-Richtung bewegt.
-In diesem Intervall ist die Ableitung negativ, woraus folgt, dass jeglicher unmittelbar benachbarte Punkt, den der Verfolger als nächstes begehen könnte, stets näher am Ziel ist als zuvor.
-Dies bedeutet, dass der Scheitelpunkt der Verfolgungskurve nie ein lokales Minimum bezüglich des Abstandes sein kann.
+Von Interesse ist lediglich das Intervall $\alpha\in\bigl(
+\frac{\pi}{2}, \frac{3\pi}{2}\bigr)$, da der Verfolger sich stets
+in die negative $y$-Richtung bewegt.
+In diesem Intervall ist die Ableitung negativ, woraus folgt, dass
+jeglicher unmittelbar benachbarte Punkt, den der Verfolger als
+nächstes begehen könnte, stets näher am Ziel ist als zuvor.
+Dies bedeutet, dass der Scheitelpunkt der Verfolgungskurve nie ein
+lokales Minimum bezüglich des Abstandes sein kann.
 %
 \subsection{Wo ist der Abstand minimal?}
+\index{minimaler Abstand}%
 Damit der Verfolger das Ziel erreicht muss die Bedingung \eqref{lambertw:minimumAbstand} erfüllt sein.
 Somit ist es ausreichend zu zeigen, dass
 \begin{equation}
@@ -304,17 +321,17 @@ erfüllt ist.
 Für folgende Betrachtung wurde für den Verfolger die Jagdstrategie mit $|\dot{v}|=|\dot{z}|$ gewählt.
 Das Minimum des Abstandes kann mit
 \begin{equation}
-    0=\frac{d|z-v|}{dt}
+    0=\frac{d}{dt}|z-v|
 \end{equation}
 gefunden werden.
 Mithilfe $(z-v)(z-v)=|z-v|^2$ kann die Gleichung umgeformt werden zu
 \begin{equation}
-    0=\frac{d(\sqrt{(z-v)(z-v)})}{dt}
+    0=\frac{d}{dt} \sqrt{(z-v)(z-v)}
     \text{.}
 \end{equation}
 Jetzt kann die Ableitung leicht ausgeführt werden, womit
 \begin{equation}
-    0=(\dot{z}-\dot{v})\frac{z-v}{\sqrt{(z-v)(z-v)}}
+    0=(\dot{z}-\dot{v})\frac{z-v}{\!\sqrt{(z-v)(z-v)}}
 \end{equation}
 entsteht.
 In dieser Gleichung kann $(z-v)(z-v)=|z-v|^2$ nochmals angewendet werden, wodurch die Gleichung zu
