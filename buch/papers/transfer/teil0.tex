@@ -6,9 +6,12 @@
 \section{Motivation\label{transfer:section:teil0}}
 \rhead{Einleitung}
 
-Die Transferfunktion ist einer der wichtigsten Bestandteile moderner neuronaler Netzwerke. Sie verleiht ihnen die Nichtlinearität, welche benötigt wird um komplexere Aufgaben zu lösen. Dabei kann theoretisch jede nichtlineare Funktion eingesetzt werden. In der Praxis tauchen aber nur sehr wenige Funktionen mit ähnlichen Eigenschaften auf. Einige davon sind in der Tabelle \ref{tab:aktfkt} zu sehen. In der heutigen Zeit sind vor allem die Variationen der ReLU Funktion beliebt. Dies vor allem wegen der einfachen Berechnung.
-Der Tangens hyperbolicus wird aber dank dem Aufkommen der Recurrent Neural Networks, zum Beispiel dem Long short term memory Netzwerk, das aus Zellen wie in Abbildung \ref{motivation:figure:LSTM} gezeigt bestehen, wieder vermehrt eingesetzt.
-Die klassische Berechnung, welche in Abbildung \ref{anleitung:figure:approxtanhhypalgo} gezeigt wird, ist aber sehr aufwendig und basiert auf Gleitkommaoperationen und relativ komplizierten Funktionen. Diese benötigen einen grossen Rechenaufwand, vor allem auf Systemen die keine Gleitkommaarithmetik Hardware besitzen wie das zum Beispiel bei gewissen Mikrocontrollern der Fall ist.
+Die Transferfunktion ist einer der wichtigsten Bestandteile moderner neuronaler Netzwerke. Sie verleiht ihnen die Nichtlinearität, welche benötigt wird, um komplexere Aufgaben zu lösen. Dabei kann theoretisch jede nichtlineare Funktion eingesetzt werden. In der Praxis tauchen aber nur sehr wenige Funktionen mit ähnlichen Eigenschaften auf. Einige davon sind in der Tabelle \ref{tab:aktfkt} zu sehen. In der heutigen Zeit sind vor allem die Variationen der ReLU Funktion beliebt. Dies vor allem wegen der einfachen Berechnung.
+Der Tangens hyperbolicus wird aber dank dem Aufkommen der Recurrent Neural Networks, zum Beispiel dem Long short-term memory Netzwerk, das aus Zellen wie in Abbildung \ref{motivation:figure:LSTM} gezeigt bestehen, wieder vermehrt eingesetzt.
+Die klassische Berechnung, welche in Abbildung \ref{anleitung:figure:approxtanhhypalgo} gezeigt wird, ist aber sehr aufwendig und basiert auf Gleitkommaoperationen und relativ komplizierten Funktionen. Diese benötigen einen grossen Rechenaufwand vor allem auf Systemen die keine Gleitkommaarithmetikhardware besitzen wie das zum Beispiel bei gewissen Mikrocontrollern der Fall ist.
+
+Es gibt verschiedene Ideen diese Berechnung durch Approximationsalgorithmen zu vereinfachen. Basierend auf der Arbeit von Abhisek Kundu et al. (2019) \cite{transfer:DBLP:journals/corr/abs-1909-07729} werden hier beliebte Algorithmen aufgezeigt und verglichen.
+
 \tikzset{font={\fontsize{10pt}{12}\selectfont}}
 \begin{table}[h]
 	\centering
@@ -114,17 +117,17 @@ Die klassische Berechnung, welche in Abbildung \ref{anleitung:figure:approxtanhh
 
 
 \begin{figure}
-\centering
-\newcommand{\empt}[2]{$#1^{\langle #2 \rangle}$}
+	\centering
+	\newcommand{\empt}[2]{$#1^{\langle #2 \rangle}$}
 	
-\begin{tikzpicture}[
+	\begin{tikzpicture}[
 		% GLOBAL CFG
 		font=\sf,
 		>=LaTeX,
 		% Styles
 		cell/.style={% For the main box
-			rectangle, 
-			rounded corners=5mm, 
+			rectangle,
+			rounded corners=5mm,
 			draw,
 			very thick,
 		},
@@ -166,9 +169,9 @@ Die klassische Berechnung, welche in Abbildung \ref{anleitung:figure:approxtanhh
 		},
 		]
 		
-		%Start drawing the thing...    
-		% Draw the cell: 
-		\node [cell, minimum height =4cm, minimum width=6cm] at (0,0){} ;
+		%Start drawing the thing...
+		% Draw the cell:
+		\node [cell, minimum height =4cm, minimum width=6cm] (cell) at (0,0){} ;
 		
 		% Draw inputs named ibox#
 		\node [gt] (ibox1) at (-2,-0.75) {$\sigma$};
@@ -176,7 +179,7 @@ Die klassische Berechnung, welche in Abbildung \ref{anleitung:figure:approxtanhh
 		\node [function, draw=red!60, fill=red!5] (ibox3) at (-0.5,-0.75) {$\tanh$};
 		\node [gt] (ibox4) at (0.5,-0.75) {$\sigma$};
 		
-		% Draw opérators   named mux# , add# and func#
+		% Draw op�rators   named mux# , add# and func#
 		\node [operator] (mux1) at (-2,1.5) {$\times$};
 		\node [operator] (add1) at (-0.5,1.5) {+};
 		\node [operator] (mux2) at (-0.5,0) {$\times$};
@@ -194,16 +197,22 @@ Die klassische Berechnung, welche in Abbildung \ref{anleitung:figure:approxtanhh
 		\node[ct, label={[mylabel]}] (x2) at (2.5,3) {\empt{h}{t}};
 		
 		% Start connecting all.
-		%Intersections and displacements are used. 
-		% Drawing arrows    
-		\draw [ArrowC1] (c) -- (mux1) -- (add1) -- (c2);
+		%Intersections and displacements are used.
+		% Drawing arrows
+		\coordinate (e) at (cell.west |- c);
+		\draw [->, ArrowC1] (c) -- (e);
+		\draw [->, ArrowC1] (e) -- (mux1) -- (add1) -- (c2);
 		
 		% Inputs
-		\draw [ArrowC2] (h) -| (ibox4);
-		\draw [ArrowC1] (h -| ibox1)++(-0.5,0) -| (ibox1); 
+		\coordinate (e) at (cell.west |- h);
+		\draw [->, ArrowC2] (h) -- (e);
+		\draw [ArrowC2] (e) -| (ibox4);
+		\draw [ArrowC1] (h -| ibox1)++(-0.5,0) -| (ibox1);
 		\draw [ArrowC1] (h -| ibox2)++(-0.5,0) -| (ibox2);
 		\draw [ArrowC1] (h -| ibox3)++(-0.5,0) -| (ibox3);
-		\draw [ArrowC1] (x) -- (x |- h)-| (ibox3);
+		\coordinate (e) at (cell.south -| x);
+		\draw [->, ArrowC1] (x) -- (e);
+		\draw [ArrowC1] (e) -- (x |- h)-| (ibox3);
 		
 		% Internal
 		\draw [->, ArrowC2] (ibox1) -- (mux1);
@@ -215,14 +224,14 @@ Die klassische Berechnung, welche in Abbildung \ref{anleitung:figure:approxtanhh
 		\draw [->, ArrowC2] (func1) -- (mux3);
 		
 		%Outputs
-		\draw [-, ArrowC2] (mux3) |- (h2);
+		\draw [->, ArrowC2] (mux3) |- (h2);
 		\draw (c2 -| x2) ++(0,-0.1) coordinate (i1);
 		\draw [-, ArrowC2] (h2 -| x2)++(-0.5,0) -| (i1);
-		\draw [-, ArrowC2] (i1)++(0,0.2) -- (x2);
+		\draw [->, ArrowC2] (i1)++(0,0.2) -- (x2.south);
 		
-\end{tikzpicture}
-\caption{Long short term memory cell
-\label{motivation:figure:LSTM}}
+	\end{tikzpicture}
+	\caption{Long short-term memory cell mit \empt{x}{t} als Input und \empt{h}{t} als momentaner Zustand, also Output. \empt{c}{t} fungiert als interner Zustand, der weitergegeben wird. Im inneren werden durch die Sigmoid-Layer und den Tangens hyperbolicus die Einflüsse der verschiedenen Eingänge und die neuen Zustände berechnet.
+		\label{motivation:figure:LSTM}}
 \end{figure}
 
 

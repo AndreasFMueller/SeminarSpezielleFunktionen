@@ -11,17 +11,17 @@
 
 \subsection{Idee
 \label{transfer:subsection:idee}}
-Finde das Polynom eines bestimmten Grades, welches eine Funktion in einem Intervall am besten approximiert.
+Finde das Polynom eines bestimmten Grades, welches eine Funktion in einem Intervall am besten approximiert. Damit kann der Fehler bei einem gewissen Rechenaufwand noch einmal verringert werden.
 
 
 \subsection{Definition
 	\label{transfer:subsection:definition}}
 Das Polynom welches 
 	    $$ \max _{a \leq x \leq b}|f(x)-P(x)| , a \in \mathbb{R}, b \in \mathbb{R}.$$
-minimiert.
+minimiert, heisst MiniMax-Polynom von $f$ im Intervall $[a,b]$.
 \subsection{Beispiel
 	\label{transfer:subsection:beispiel}}
-Um ein MiniMax-Polynom zu berechnen, kann der Remez-Algorithmus verwendet werden. Dieser basiert im wesentlichen auf dem Alternantensatz von Tschebyschow. Mit welchem wir iterativ Stützstellen berechnen können. Für den Tangens hyperbolicus ergibt sich dann für den Grad drei im Intervall $[0,3.75]$ folgendes Polynom $P(x)=0.0079+1.0922 x-0.3993 x^{2}+0.0479 x^{3}$.
+Um ein MiniMax-Polynom zu berechnen, kann der Remez-Algorithmus verwendet werden. Hier wird nicht weiter auf die Berechnung eingegangen, sondern auf den Wikipedia-Artikel \cite{transfer:remez} verwiesen. Für den Tangens hyperbolicus ergibt sich dann für den Grad 3 im Intervall $[0,3.75]$ folgendes Polynom $P(x)=0.0079+1.0922 x-0.3993 x^{2}+0.0479 x^{3}$.
 
 
 \begin{figure}
