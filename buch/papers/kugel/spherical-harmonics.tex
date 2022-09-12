@@ -2,39 +2,34 @@
 
 \section{Construction of the Spherical Harmonics}
 
-\kugeltodo{Review text, or rewrite if preliminaries becomes an addendum}
+We have finally arrived at the main section that gives this chapter its name.
+The idea is to discuss spherical harmonics, their mathematical origin, some of
+their properties and applications.
 
-We finally arrived at the main section, which gives our chapter its name. The
-idea is to discuss spherical harmonics, their mathematical derivation and some
-of their properties and applications.
-
-The subsection \ref{} \kugeltodo{Fix references} will be devoted to the
-Eigenvalue problem of the Laplace operator. Through the latter we will derive
-the set of Eigenfunctions that obey the equation presented in \ref{}
-\kugeltodo{reference to eigenvalue equation}, which will be defined as
-\emph{Spherical Harmonics}. In fact, this subsection will present their
-mathematical derivation.
-
-In the subsection \ref{}, on the other hand, some interesting properties
-related to them will be discussed. Some of these will come back to help us
+To begin, we will give an outline of the contents of the rest of this chapter.
+The subsection \ref{kugel:sec:construction:eigenvalue} will be devoted to an
+eigenvalue problem involving the Laplace operator, through which we will derive
+a set of special eigenfunctions, which are the \emph{spherical harmonics}.  In
+the subsections from \ref{kugel:sec:construction:orthogonality} to
+\ref{kugel:sec:construction:recurrence}, a few interesting properties related to
+orthogonality will be discussed. Some of these will come back to help us
 understand in more detail why they are useful in various real-world
-applications, which will be presented in the section \ref{}.
+applications, which will be presented in the section
+\ref{kugel:sec:applications}. 
 
-One specific property will be studied in more detail in the subsection \ref{},
-namely the recursive property.  The last subsection is devoted to one of the
-most beautiful applications (In our humble opinion), namely the derivation of a
-Fourier-style series expansion but defined on the sphere instead of a plane.
-More importantly, this subsection will allow us to connect all the dots we have
-created with the previous sections, concluding that Fourier is just a specific
-case of the application of the concept of orthogonality. Our hope is that after
-reading this section you will appreciate the beauty and power of generalization
-that mathematics offers us.
+Finally, section \ref{kugel:sec:expansion} is devoted to one of the most
+beautiful applications (in our humble opinion), namely the derivation of a
+Fourier-style series expansion on the sphere.  This will allow us to connect all
+the dots we have created with the previous sections, concluding that Fourier is
+just a specific case of the application of the concept of orthogonality. Our
+hope is that after reading this section you will appreciate the beauty and power
+of generalization that mathematics offers us.
 
 \subsection{Eigenvalue Problem}
 \label{kugel:sec:construction:eigenvalue}
 
-From Section \ref{buch:pde:section:kugel}, we know that the spherical Laplacian
-in the spherical coordinate system (shown in Figure
+From section \ref{kugel:sec:preliminaries:laplacian}, we know that the spherical
+Laplacian in the spherical coordinate system (shown in Figure
 \ref{kugel:fig:spherical-coordinates}) is is defined as
 \begin{equation*}
     \sphlaplacian :=
@@ -48,14 +43,14 @@ in the spherical coordinate system (shown in Figure
         + \frac{1}{\sin^2 \vartheta} \frac{\partial^2}{\partial\varphi^2}
       \right].
 \end{equation*}
-But we will not consider this algebraic monstrosity in its entirety. As the
-title suggests, we will only care about the \emph{surface} of the sphere.  This
-is for many reasons, but mainly to simplify reduce the already broad scope of
-this text. Concretely, we will always work on the unit sphere, which just means
-that we set $r = 1$ and keep only $\vartheta$ and $\varphi$ as free variables.
-Now, since the variable $r$ became a constant, we can leave out all derivatives
-with respect to $r$ and substitute all $r$'s with 1's to obtain a new operator
-that deserves its own name.
+But we will not consider this algebraic monstrosity in its entirety. As
+previously hinted, we will only care about the \emph{surface} of the sphere.
+This is for many reasons, but mainly to simplify reduce the already broad scope
+of this text. Concretely, we will always work on the unit sphere, which just
+means that we set $r = 1$ and keep only $\vartheta$ and $\varphi$ as free
+variables.  Now, since the variable $r$ became a constant, we can leave out all
+derivatives with respect to $r$ and substitute all $r$'s with 1's to obtain a
+new operator that deserves its own name.
 
 \begin{definition}[Surface spherical Laplacian]
   \label{kugel:def:surface-laplacian}
@@ -73,10 +68,10 @@ that deserves its own name.
 In the definition, the subscript ``$\partial S$'' was used to emphasize the fact
 that we are on the spherical surface, which can be understood as being the
 boundary of the sphere. But what does it actually do? To get an intuition, first
-of all, notice the fact that $\surflaplacian$ have second derivatives, which
-means that this a measure of \emph{curvature}; But curvature of what? To get an
-even stronger intuition we will go into geometry, were curvature can be grasped
-very well visually. Consider figure \ref{kugel:fig:curvature} where the
+of all, notice the fact that $\surflaplacian$ is made of second derivatives,
+which means that this a measure of \emph{curvature}; But curvature of what? To
+get an even stronger intuition we will go into geometry, were curvature can be
+grasped very well visually. Consider figure \ref{kugel:fig:curvature} where the
 curvature is shown using colors: positive curvature in red, and negative
 curvature in blue. First we have the curvature of a curve in 1D, then the
 curvature of a surface (2D), and finally the curvature of a function on the
@@ -84,13 +79,16 @@ surface of the unit sphere.
 
 \begin{figure}
   \centering
-  \includegraphics[width=.3\linewidth]{papers/kugel/figures/tikz/curvature-1d}
+  \subfigure[Curvature in 1D.]
+    {\includegraphics[width=.3\linewidth]{papers/kugel/figures/tikz/curvature-1d}}
   \hskip 5mm
-  \includegraphics[width=.3\linewidth]{papers/kugel/figures/povray/curvature}
+  \subfigure[Curvature on a plane.]
+    {\includegraphics[width=.3\linewidth]{papers/kugel/figures/povray/curvature}}
   \hskip 5mm
-  \includegraphics[width=.3\linewidth]{papers/kugel/figures/povray/spherecurve}
+  \subfigure[Cuvature on $S^2$.]
+    {\includegraphics[width=.3\linewidth]{papers/kugel/figures/povray/spherecurve}}
   \caption{
-    \kugeltodo{Fix alignment / size, add caption. Would be nice to match colors.}
+    Curvature.
     \label{kugel:fig:curvature}
   }
 \end{figure}
@@ -119,8 +117,10 @@ $\nabla^2_{\partial S}$ according to definition
 Since all functions satisfying \eqref{kugel:eqn:eigen-pde} are the
 \emph{eigenfunctions} of $\surflaplacian$, our new goal is to solve this PDE.
 The task may seem very difficult but we can simplify it with a well-known
-technique: \emph{the separation Ansatz}. It consists in assuming that the
-function $f(\vartheta, \varphi)$ can be factorized in the following form:
+technique: \emph{the separation Ansatz}\footnote{See section
+\ref{buch:pde:section:separation} for more on separation.}. It consists in
+assuming that the function $f(\vartheta, \varphi)$ can be factorized in the
+following form:
 \begin{equation}
     f(\vartheta, \varphi) = \Theta(\vartheta)\Phi(\varphi). 
 \end{equation}
@@ -149,8 +149,8 @@ variable $m^2$, the separation constant, yields:
   = -\frac{1}{\Phi(\varphi)} \frac{d^2\Phi(\varphi)}{d\varphi^2}
   = m^2,
 \end{equation*}
-which is equivalent to the following system of 2 first order differential
-equations (ODEs):
+which is equivalent to the following system of 2 first order ordinary
+differential equations (ODEs):
 \begin{subequations}
   \begin{gather}
     \frac{d^2\Phi(\varphi)}{d\varphi^2} = -m^2 \Phi(\varphi),
@@ -239,10 +239,9 @@ can perform the substitution backwards and get back to our eigenvalue problem.
 However, the associated Legendre equation is not any easier, so to attack the
 problem we will look for the solutions in the easier special case when $m = 0$.
 This reduces the problem because it removes the double pole, which is always
-tricky to deal with\footnote{It however to notice that the differential equation
-is still singular because of the factor in front of the second derivative of
-$Z$}. In fact, the reduced problem when $m = 0$ is known as the \emph{Legendre
-equation}:
+tricky to deal with\footnote{However, the differential equation is still
+singular because of the factor in front of the second derivative.}. In fact, the
+reduced problem when $m = 0$ is known as the \emph{Legendre equation}:
 \begin{equation} \label{kugel:eqn:legendre}
   (1 - z^2)\frac{d^2 Z}{dz^2}
   - 2z\frac{d Z}{dz}
@@ -305,42 +304,44 @@ such that they also become solutions of the associated Legendre equation
   \nocite{bell_special_2004}
 \end{lemma}
 \begin{proof}
-  See section \ref{kugel:sec:proofs:legendre}.
+  See section \ref{kugel:sec:proofs:associated-legendre}.
 \end{proof}
 
 What is happening in lemma \ref{kugel:thm:extend-legendre}, is that we are
 essentially inserting a square root function in the solution in order to be able
 to reach the parts of the domain near the poles at $\pm 1$ of the associated
-Legendre equation, which is not possible only using power series
-\kugeltodo{Reference book theory on extended power series method.}. Now, since
-we have a solution in our domain, namely $P_n(z)$, we can insert it in the lemma 
-obtain the \emph{associated Legendre functions}.
+Legendre equation, which is not possible only using power series (see sections
+\ref{buch:differentialgleichungen:section:potenzreihenmethode} and
+\ref{buch:differentialgleichungen:subsection:verallgemeinrt} for a discussion).
+Now, since we have a solution in our domain, namely $P_n(z)$, we can insert it
+in the lemma obtain the \emph{associated Legendre functions}.
 
 \begin{definition}[Ferrers or associated Legendre functions]
   \label{kugel:def:ferrers-functions}
   The functions
   \begin{equation}
+    \label{kugel:eqn:ferrers-functions}
     P^m_n (z) = (1-z^2)^{\frac{m}{2}}\frac{d^{m}}{dz^{m}} P_n(z)
       = \frac{1}{2^n n!}(1-z^2)^{\frac{m}{2}}
         \frac{d^{m+n}}{dz^{m+n}}(1-z^2)^n, \quad |m|<n
   \end{equation}
   are known as Ferrers or associated Legendre functions.
 \end{definition}
+
 The constraint $|m|<n$, can be justified by considering equation
-\eqref{kugel:eq:associated_leg_func}, where we differentiate $m+n$ times. We all
+\eqref{kugel:eqn:ferrers-functions}, where we differentiate $m+n$ times. We all
 know that a differentiation, to be well defined, must have an order that is
 greater than zero. Furthermore, it can be seen that this derivative is applied
-on a polynomial of degree $2n$. As is known from Calculus 1, if you derive a
+on a polynomial of degree $2n$. As is known from calculus, if you derive a
 polynomial of degree $2n$ more than $2n$ times, you get zero, that would be a
 trivial solution. This is the power of zero: It is almost always a (boring)
-solution.
-
-We can thus summarize these two conditions by writing:
+solution. We can thus summarize these two conditions by writing:
 \begin{equation*}
-    \begin{rcases}
-        m+n \leq 2n &\implies m \leq n \\
-        m+n \geq 0  &\implies  m \geq -n
-    \end{rcases} \; |m| \leq n.
+    |m| \leq n \iff
+    \begin{cases}
+        m+n \leq 2n &\iff m \leq n \\
+        m+n \geq 0  &\iff m \geq -n
+    \end{cases}
 \end{equation*}
 
 \subsection{Spherical Harmonics}
@@ -351,8 +352,8 @@ of the separation, were we had used the Ansatz $f(\vartheta, \varphi) =
 \Theta(\vartheta) \Phi(\varphi)$ to find that $\Phi(\varphi) = e^{im\varphi}$,
 and we were solving for $\Theta(\vartheta)$.  As you may recall, previously we
 performed the substitution $z = \cos \vartheta$. Now we can finally bring back
-the solution to the associated Legendre equation $P^m_n(z)$ into the $\vartheta$
-domain and combine it with $\Phi(\varphi)$ to get the full result:
+the solutions of the associated Legendre equation $P^m_n(z)$ into the
+$\vartheta$ domain and combine it with $\Phi(\varphi)$ to get the full result:
 \begin{equation*}
     f(\vartheta, \varphi)
       = \Theta(\vartheta)\Phi(\varphi)
@@ -375,10 +376,18 @@ $Y^m_n(\vartheta, \varphi)$.
 
 \begin{figure}
   \centering
-  \kugelplaceholderfig{\textwidth}{.8\paperheight}
+  \includegraphics[width=\linewidth]{papers/kugel/figures/python/spherical-harmonics-triangle}
   \caption{
-    \kugeltodo{Big picture with the first few spherical harmonics.}
     \label{kugel:fig:spherical-harmonics}
+    Spherical harmonics. The spherical harmonics are defined \emph{on} the
+    surface of the sphere, however, for a more powerful visual intuition the
+    radius was used to represent the real part of the function at each location
+    on the unit sphere. 
+    %
+    % Since $\Re e^{im\varphi} = cos(m\varphi)$, $\Im e^{im\varphi} =
+    % i\sin(m\varphi)$ and $\sin \alpha = \cos (\alpha - \pi/2)$, the imaginary
+    % part has the same shape and is just ``rotated around the $z$ axis by
+    % $\pi/2$''.
   }
 \end{figure}
 
@@ -386,6 +395,7 @@ $Y^m_n(\vartheta, \varphi)$.
 \ref{kugel:fig:spherical-harmonics}}
 
 \subsection{Orthogonality of $P_n$, $P^m_n$ and $Y^m_n$}
+\label{kugel:sec:construction:orthogonality}
 
 We shall now discuss an important property of the spherical harmonics: they form
 an orthogonal system. And since the spherical harmonics contain the Ferrers or
@@ -393,13 +403,13 @@ associated Legendre functions, we need to discuss their orthogonality first.
 But the Ferrers functions themselves depend on the Legendre polynomials, so that
 will be our starting point.
 
-\begin{lemma} For the Legendre polynomials $P_n(z)$ and $P_k(z)$ it holds that
+\begin{lemma} For the Legendre polynomials $P_n(z)$ and $P_{n'}(z)$ it holds that
   \label{kugel:thm:legendre-poly-ortho}
   \begin{equation*}
-    \int_{-1}^1 P_n(z) P_k(z) \, dz
-    = \frac{2}{2n + 1} \delta_{nk}
+    \int_{-1}^1 P_n(z) P_{n'}(z) \, dz
+    = \frac{2}{2n + 1} \delta_{n'n}
     = \begin{cases}
-      \frac{2}{2n + 1} & \text{if } n = k, \\
+      \frac{2}{2n + 1} & \text{if } n = {n'}, \\
       0 & \text{otherwise}.
     \end{cases}
   \end{equation*}
@@ -407,33 +417,33 @@ will be our starting point.
 \begin{proof}
   To start, consider the fact that the Legendre equation
   \eqref{kugel:eqn:legendre}, of which two distinct Legendre polynomials
-  $P_n(z)$ and $P_k(z)$ are a solution ($n \neq k$), can be rewritten in the
+  $P_n(z)$ and $P_{n'}(z)$ are a solution ($n \neq {n'}$), can be rewritten in the
   following form:
   \begin{equation}
     \frac{d}{dz} \left[ 
       \left( 1 - z^2 \right) \frac{dZ}{dz}
     \right] + n(n+1) Z(z) = 0.
   \end{equation}
-  So we rewrite the Legendre equations for $P_n(z)$ and $P_k(z)$:
+  So we rewrite the Legendre equations for $P_n(z)$ and $P_{n'}(z)$:
   \begin{align*}
     \frac{d}{dz} \left[ 
       \left( 1 - z^2 \right) \frac{dP_n}{dz}
     \right] + n(n+1) P_n(z) &= 0,
     &
     \frac{d}{dz} \left[ 
-      \left( 1 - z^2 \right) \frac{dP_k}{dz}
-    \right] + k(k+1) P_k(z) &= 0,
+      \left( 1 - z^2 \right) \frac{dP_{n'}}{dz}
+    \right] + {n'}({n'}+1) P_{n'}(z) &= 0,
   \end{align*}
-  then we multiply the former by $P_k(z)$ and the latter by $P_n(z)$ and
+  then we multiply the former by $P_{n'}(z)$ and the latter by $P_n(z)$ and
   subtract the two to get
   \begin{equation*}
     \frac{d}{dz} \left[ 
       \left( 1 - z^2 \right) \frac{dP_n}{dz}
-    \right] P_k(z) + n(n+1) P_n(z) P_k(z)
+    \right] P_{n'}(z) + n(n+1) P_n(z) P_{n'}(z)
     -
     \frac{d}{dz} \left[ 
-      \left( 1 - z^2 \right) \frac{dP_k}{dz}
-    \right] P_n(z) - k(k+1) P_k(z) P_n(z) = 0.
+      \left( 1 - z^2 \right) \frac{dP_{n'}}{dz}
+    \right] P_n(z) - {n'}({n'}+1) P_{n'}(z) P_n(z) = 0.
   \end{equation*}
   By grouping terms, making order and integrating with respect to $z$ from $-1$
   to 1 we obtain
@@ -441,50 +451,103 @@ will be our starting point.
     \int_{-1}^1 \left\{
       \frac{d}{dz} \left[ 
         \left( 1 - z^2 \right) \frac{dP_n}{dz}
-      \right] P_k(z) 
+      \right] P_{n'}(z) 
       -
       \frac{d}{dz} \left[ 
-        \left( 1 - z^2 \right) \frac{dP_k}{dz}
-      \right] P_n(z) - k(k+1) P_k(z) P_n(z)
+        \left( 1 - z^2 \right) \frac{dP_{n'}}{dz}
+      \right] P_n(z) - {n'}({n'}+1) P_{n'}(z) P_n(z)
     \right\} \,dz \nonumber \\
-    + \left[ n(n+1) - k(k+1) \right] \int_{-1}^1 P_k(z) P_n(z) \, dz = 0.
+    + \left[ n(n+1) - {n'}({n'}+1) \right] \int_{-1}^1 P_{n'}(z) P_n(z) \, dz = 0.
     \label{kugel:thm:legendre-poly-ortho:proof:1}
   \end{gather}
   Since by the product rule
   \begin{equation*}
-    \frac{d}{dz} \left[ (1 - z^2) \frac{dP_k}{dz} P_n(z) \right]
+    \frac{d}{dz} \left[ (1 - z^2) \frac{dP_{n'}}{dz} P_n(z) \right]
     =
-    \frac{d}{dz} \left[ (1 - z^2) \frac{dP_n}{dz} \right] P_k(z)
-      + (1 - z^2) \frac{dP_n}{dz} \frac{dP_k}{dz},
+    \frac{d}{dz} \left[ (1 - z^2) \frac{dP_n}{dz} \right] P_{n'}(z)
+      + (1 - z^2) \frac{dP_n}{dz} \frac{dP_{n'}}{dz},
   \end{equation*}
   we can simplify the first term in
   \eqref{kugel:thm:legendre-poly-ortho:proof:1} to get
   \begin{gather*}
     \int_{-1}^1 \left\{
-      \frac{d}{dz} \left[ (1 - z^2) \frac{dP_k}{dz} P_n(z) \right]
-        - \cancel{(1 - z^2) \frac{dP_n}{dz} \frac{dP_k}{dz}}
-        - \frac{d}{dz} \left[ (1 - z^2) \frac{dP_n}{dz} P_k(z) \right]
-        + \cancel{(1 - z^2) \frac{dP_k}{dz} \frac{dP_n}{dz}}
+      \frac{d}{dz} \left[ (1 - z^2) \frac{dP_{n'}}{dz} P_n(z) \right]
+        - \cancel{(1 - z^2) \frac{dP_n}{dz} \frac{dP_{n'}}{dz}}
+        - \frac{d}{dz} \left[ (1 - z^2) \frac{dP_n}{dz} P_{n'}(z) \right]
+        + \cancel{(1 - z^2) \frac{dP_{n'}}{dz} \frac{dP_n}{dz}}
     \right\} \, dz \\
     = \int_{-1}^1 \frac{d}{dz} \left\{ (1 - z^2) \left[
-      \frac{dP_k}{dz} P_n(z) - \frac{dP_n}{dz} P_k(z)
+      \frac{dP_{n'}}{dz} P_n(z) - \frac{dP_n}{dz} P_{n'}(z)
     \right] \right\} \, dz
     = (1 - z^2) \left[
-      \frac{dP_k}{dz} P_n(z) - \frac{dP_n}{dz} P_k(z)
+      \frac{dP_{n'}}{dz} P_n(z) - \frac{dP_n}{dz} P_{n'}(z)
     \right] \Bigg|_{-1}^1,
   \end{gather*}
   which always equals 0 because the product contains $1 - z^2$ and the bounds
   are at $\pm 1$. Thus, of \eqref{kugel:thm:legendre-poly-ortho:proof:1} only
   the second term remains and the equation becomes
   \begin{equation*}
-    \left[ n(n+1) - k(k+1) \right] \int_{-1}^1 P_k(z) P_n(z) \, dz = 0.
+    \left[ n(n+1) - {n'}({n'}+1) \right] \int_{-1}^1 P_{n'}(z) P_n(z) \, dz = 0.
   \end{equation*}
   By dividing by the constant in front of the integral we have our first result.
-  Now we need to show that when $n = k$ the integral equals $2 / (2n + 1)$.
-  % \begin{equation*}
-  % \end{equation*}
-  \kugeltodo{Finish proof. Can we do it without the generating function of
-  $P_n$?}
+  Now we need to show that when $n = {n'}$ the integral equals $2 / (2n + 1)$.
+  In order to achieve this, we will use what has now become our secret weapon: 
+  integration by parts. We can start by rewriting the integral in Lemma \label{kugel:thm:legendre-poly-ortho} for the case $n=n'$.
+  According to Rodrigues formula, we have
+  \begin{equation*}
+    \int_{-1}^1 P_n(z)^2 dz = \left( \frac{1}{2^n n!} \right)^2 \int_{-1}^1 \frac{d^n}{dz^n} (z^2-1)^n \frac{d^n}{dz^n} (z^2-1)^n dz.
+  \end{equation*}
+  Now we can start the ``integration by parts process'', the first step would be
+  \begin{align*}
+    \int_{-1}^1 \frac{d^n}{dz^n} (z^2-1)^n \frac{d^n}{dz^n} (z^2-1)^n dz &= 
+    \left[
+      \frac{d^n}{dz^n} (z^2-1)^n \frac{d^{n-1}}{dz^{n-1}} (z^2-1)^n
+    \right] \Bigg|_{-1}^1 - \int_{-1}^1 \frac{d^{n+1}}{dz^{n+1}} (z^2-1)^n \frac{d^{n-1}}{dz^{n-1}} (z^2-1)^n dz \\
+    &= - \int_{-1}^1 \frac{d^{n+1}}{dz^{n+1}} (z^2-1)^n \frac{d^{n-1}}{dz^{n-1}} (z^2-1)^n dz =: I_n.
+  \end{align*}
+  The reason why the first boundary-term vanish is that we are dealing with a polynomial that has $n$ zeros at both boundary points. 
+  By differentiating the latter $n-1$ times we will let these survive, making the whole term equal to zero. If we proceed with this process,
+  the following equation can be inductively (and easily) derived
+  \begin{equation*}
+    I_n = (-1)^i \int_{-1}^1 \frac{d^{n+i}}{dz^{n+i}} (z^2-1)^n \frac{d^{n-i}}{dz^{n-i}} (z^2-1)^n dz, \quad i \in \mathbb{N}_0.
+  \end{equation*}
+  By letting $i=n$, we arrive at
+  \begin{equation*}
+    I_n = (-1)^n \int_{-1}^1 \frac{d^{2n}}{dz^{2n}} (z^2-1)^n (z^2-1)^n dz = (-1)^n (2n)! \int_{-1}^1 (z^2-1)^n dz.
+  \end{equation*}
+  The new problem is now to compute the integral of $(z^2-1)^n$. To go further we can once again use integration by parts, obtaining
+  \begin{align*}
+    \int_{-1}^1 (z^2-1)^n dz =  \left[
+       z(z^2-1)^n
+      \right] \Bigg|_{-1}^1 -2n \int_{-1}^1 z^2 (z^2-1)^{n-1} dz 
+      &= -2n \int_{-1}^1 (z^2-1+1) (z^2-1)^{n-1} dz \\
+      &= -2n \int_{-1}^1 (z^2-1)^n + (z^2-1)^{n-1} dz.
+  \end{align*}
+  Now, by multiplying both sides by $(-1)^n(2n)!$, we can express the last equation in terms of $I_n$, namely
+  \begin{equation}
+    I_n = -2n ( I_n + I_{n-1} ) \iff I_n = -\frac{2n}{2n+1} I_{n-1}. \label{kugel:eq:recursion_proof}
+  \end{equation}
+  We can hence rewrite eq.\eqref{kugel:eq:recursion_proof} as
+  \begin{align*}
+    I_n &= \frac{2n}{2n+1} \frac{2(n-1)}{2(n-1)+1} I_{n-2} = (-1)^n \frac{2n \cdot \hdots \cdot 6\cdot 4\cdot 2}{(2n+1) \cdot \hdots \cdot 7 \cdot 5 \cdot 3} I_0 \\
+        &= (-1)^n \frac{(2n \cdot \hdots \cdot 6\cdot 4\cdot 2)(2n \cdot \hdots \cdot 6\cdot 4\cdot 2)}
+                       {(2n+1)(2n)\cdot \hdots \cdot 7\cdot 6\cdot 5\cdot 4\cdot 3\cdot 2} I_0 = (-1)^n \frac{2^{2n}(n\cdot \hdots \cdot 3 \cdot 2 \cdot 1)^2}
+                                                                                                             {(2n+1)!} I_0 \\
+    &= (-1)^n  \frac{2^{2n}(n!)^2}{(2n+1)!} I_0 .
+  \end{align*}
+  The only thing left to know is $I_0$, that can be trivially obtained using the definition of $I_n$. We can write
+  \begin{equation*}
+    I_0 = (-1)^n(2n)! \int_{-1}^1 (1-z^2)^0 dz = (-1)^n(2n)! 2,
+  \end{equation*}
+  meaning that
+  \begin{equation*}
+    I_n = (-1)^n  \frac{2^{2n}(n!)^2}{(2n+1)!} \cdot (-1)^n(2n)! 2
+  \end{equation*}
+  and consequently
+  \begin{equation*}
+      \int_{-1}^1 P_n(z)^2 dz = \left( \frac{1}{2^n n!} \right)^2 \cdot (-1)^n  \frac{2^{2n}(n!)^2}{(2n+1)!} \cdot (-1)^n(2n)! 2 = \frac{2}{2n+1}.
+  \end{equation*}
+
 \end{proof}
 
 In a similarly algebraically tedious fashion, we can also continue to check for
@@ -506,10 +569,7 @@ $P_n(z)$ by a $m$-th derivative, and obtain the following result.
 \begin{proof}
   To show that the expression equals zero when $n \neq n'$ we can perform
   exactly the same steps as in the proof of lemma
-  \ref{kugel:thm:legendre-poly-ortho}, so we will not repeat them here and prove
-  instead only the case when $n = n'$.
-  \kugeltodo{Finish proof, or not? I have to look and decide if it is
-  interesting enough.}
+  \ref{kugel:thm:legendre-poly-ortho}, so we will not repeat them here.
 \end{proof}
 
 By having the orthogonality relations of the Legendre functions we can finally
@@ -546,8 +606,7 @@ product:
   \end{align}
 \end{theorem}
 \begin{proof}
-  We will begin by doing a bit of algebraic maipulaiton:
-  \footnote{
+  We will begin by doing a bit of algebraic maipulaiton\footnote{
     Essentially, what we just did was to turn
     \eqref{kugel:eq:spherical-harmonics-inner-prod} in this form:
     \(
@@ -555,7 +614,7 @@ product:
       = \langle P^m_n, P^{m'}_{n'} \rangle_z
       \; \langle e^{im\varphi}, e^{-im'\varphi} \rangle_\varphi
     \).
-  }
+  }:
   \begin{align*}
     \int_{0}^\pi \int_0^{2\pi}
       Y^m_n(\vartheta, \varphi) \overline{Y^{m'}_{n'}(\vartheta, \varphi)} 
@@ -594,10 +653,10 @@ product:
 These proofs for the various orthogonality relations were quite long and
 algebraically tedious, mainly because they are ``low level'', by which we mean
 that they (arguably) do not rely on very abstract theory. However, if we allow
-ourselves to use the more abstract Sturm Liouville theory discussed in chapters
-\ref{buch:integrale:subsection:sturm-liouville-problem} and \kugeltodo{reference
-to chapter 17 of haddouche and Löffler} the proofs can become ridiculously
-short. Let's do for example lemma \ref{kugel:thm:associated-legendre-ortho}.
+ourselves to use the more abstract Sturm Liouville theory discussed in section
+\ref{buch:integrale:subsection:sturm-liouville-problem} and chapter
+\ref{chapter:sturmliouville} the proofs can become ridiculously short. Let's do
+for example lemma \ref{kugel:thm:associated-legendre-ortho}.
 
 \begin{proof}[
     Shorter proof of lemma \ref{kugel:thm:associated-legendre-ortho}
@@ -636,7 +695,7 @@ regrettably sometimes even ourselves, would write instead:
   reader.
 \end{proof}
 
-Lemma \ref{kugel:thm:legendre-poly-ortho} has a very similar proof, while the
+Lemma \ref{kugel:thm:legendre-poly-ortho} has a very similar proof, while
 theorem \ref{kugel:thm:spherical-harmonics-ortho} for the spherical harmonics is
 proved by the following argument.  The spherical harmonics are the solutions to
 the eigenvalue problem $\surflaplacian f = -\lambda f$, which as discussed in
@@ -706,6 +765,7 @@ harmonics or write $Y^m_n$, we mean the orthonormal spherical harmonics of
 definition \ref{kugel:def:spherical-harmonics-orthonormal}.
 
 \subsection{Recurrence Relations}
+\label{kugel:sec:construction:recurrence}
 
 The idea of this subsection is to introduce first some recursive relations
 regarding the associated Legendre functions, defined in equation
@@ -719,7 +779,7 @@ To start this journey, we can first write the following equations, which relate
 the associated Legendre functions of different indices $m$ and $n$ recursively:
 \begin{subequations}
   \begin{align}
-    P^m_n(z) &= \dfrac{1}{(2n+1)x} \left[
+    P^m_n(z) &= \dfrac{1}{(2n+1)z} \left[
        (m+n) P^m_{n-1}(z) + (n-m+1) P^m_{n+1}(z)
      \right] \label{kugel:eqn:rec-leg-1} \\
     P^m_n(z) &= \dfrac{\sqrt{1-z^2}}{2mz} \left[
@@ -771,7 +831,7 @@ computational cost lower by a factor of six \cite{davari_new_2013}.
     \frac{d^mP_{n+1}}{dz^m} - \frac{d^mP_{n-1}}{dz^m}
     = (2n+1)\frac{d^{m-1}P_n}{dz^{m-1}}.
   \end{equation}
-  Then, using eq. \eqref{kugel:eq:rec_3} in eq. \eqref{kugel:eq:rec_1}, we will
+  Then, using \eqref{kugel:eq:rec_3} in \eqref{kugel:eq:rec_1}, we will
   have
   \begin{equation}
     \label{kugel:eq:rec_4}
@@ -782,7 +842,7 @@ computational cost lower by a factor of six \cite{davari_new_2013}.
       + n\frac{d^m P_{n-1}}{dz^m}=0.
   \end{equation}
   Finally, multiplying both sides by $(1-z^2)^{\frac{m}{2}}$ and simplifying the
-  expression, we can rewrite eq. \eqref{kugel:eq:rec_4} in terms of $P^m_n(z)$,
+  expression, we can rewrite \eqref{kugel:eq:rec_4} in terms of $P^m_n(z)$,
   namely
   \begin{equation*}
     (n+1-m)P^m_{n+1}(z)-(2n+1)zP^m_n(z)+(m+n)P^m_{n-1}(z)=0,
@@ -795,8 +855,8 @@ computational cost lower by a factor of six \cite{davari_new_2013}.
 \end{proof}
 
 \begin{proof}[Proof of \eqref{kugel:eqn:rec-leg-2}]
-  This relation, unlike the previous one, link three expression with the same
-  $n$ index but different $m$. In the proof of Lemma
+  This relation, unlike the previous one, links three expressions with the same
+  $n$ index but different $m$. In the proof of lemma
   \ref{kugel:thm:extend-legendre}, at some point we ran into this expression.
   \begin{equation*}
     (1-z^2)\frac{d^{m+2}P_n}{dz^{m+2}}
@@ -823,7 +883,7 @@ computational cost lower by a factor of six \cite{davari_new_2013}.
 \end{proof}
 
 \begin{proof}[Proof of \eqref{kugel:eqn:rec-leg-3}]
-  To derive this expression, we can multiply eq. \eqref{kugel:eq:rec_3} by
+  To derive this expression, we can multiply \eqref{kugel:eq:rec_3} by
   $(1-z^2)^{\frac{m}{2}}$ and, as always, we could express it in terms of
   $P^m_n(z)$:
   \begin{equation*}
@@ -848,7 +908,7 @@ computational cost lower by a factor of six \cite{davari_new_2013}.
       (m+n)P^m_{n-1}(z) + (n-m+1)P^m_{n+1}(z)
     \right] = P^{m+1}_n(z) + [ n(n+1)-m(m-1) ]P^{m-1}_n(z).
   \end{equation*}
-  Rewriting then $P^{m-1}_n(z)$ using eq.\eqref{kugel:eq:helper}, we will have
+  Rewriting then $P^{m-1}_n(z)$ using \eqref{kugel:eq:helper}, we will have
   \begin{align*}
     \frac{2m}{(2n+1)\sqrt{1-z^2}}
       &\left[ (m+n)P^m_{n-1}(z) + (n-m+1)P^m_{n+1}(z) \right] = P^{m+1}_n(z) \\
@@ -869,10 +929,10 @@ computational cost lower by a factor of six \cite{davari_new_2013}.
 \subsubsection{Spherical Harmonics}
 
 The goal of this subsection's part is to apply the recurrence relations of the
-$P^m_n(z)$ functions to the Spherical Harmonics.  With some little adjustments
+$P^m_n(z)$ functions to the spherical harmonics.  With some little adjustments
 we will be able to have recursion equations for them too. As previously written
-the most of the work is already done. Now it is only a matter of minor
-mathematical operations/rearrangements. We can start by listing all of them:
+most of the work is already done. Now it is only a matter of minor mathematical
+operations/rearrangements. We can start by listing all of them:
 \begin{subequations}
   \begin{align}
   Y^m_n(\vartheta, \varphi) &= \dfrac{1}{(2n+1)\cos \vartheta} \left[
@@ -899,7 +959,7 @@ mathematical operations/rearrangements. We can start by listing all of them:
 \begin{proof}[Proof of \eqref{kugel:eqn:rec-sph-harm-1}]
   We can multiply both sides of equality in \eqref{kugel:eqn:rec-leg-1} by $e^{im
   \varphi}$ and perform the substitution $z=\cos \vartheta$. After a few simple
-  algebraic steps, we will obtain the relation we are looking for
+  algebraic steps, we will obtain the relation we are looking for.
 \end{proof}
 
 \begin{proof}[Proof of \eqref{kugel:eqn:rec-sph-harm-2}]
@@ -963,8 +1023,9 @@ mathematical operations/rearrangements. We can start by listing all of them:
 \end{proof}
 
 \section{Series Expansions in $L^2(S^2)$}
+\label{kugel:sec:expansion}
 
-We have now reach a point where we have all the tools that are necessary to
+We have now reached a point where we have all the tools that are necessary to
 build something truly amazing: a general series expansion formula for function
 on the surface of the sphere.  Before starting we want to recall the definition
 of the inner product on the spherical surface of definition
@@ -976,167 +1037,285 @@ of the inner product on the spherical surface of definition
     \sin \vartheta \, d\varphi \, d\vartheta.
 \end{equation*}
 To be a bit technical we can say that the set of spherical harmonic functions,
-together with the inner product just showed, form something that we call Hilbert
-Space\footnote{For more details about Hilbert space you can take a look in
-section \ref{kugel:sec:preliminaries}}.  This function space is defined over the
-space of ``well-behaved'' \footnote{The definitions of ``well-behaved'' is
-pretty ambiguous, even for mathematicians.  It depends basically on the context.
-You can summarize it by saying: functions for which the theory we are considering
-(Fourier theorem) is always true. In our case we can say that well-behaved
-functions are functions that follow some convergence constraints (pointwise,
-uniform, absolute, ...) that we don't want to consider further anyway.}
-functions.  We can say that the theory we are about to show can be applied on
-all twice differentiable complex valued functions, to be more concise: complex
-valued $L^2$ functions $S^2 \to \mathbb{C}$.
-
-All this jargon is not really necessary for the practical applications of us
-mere mortals, namely physicists and engineers.  From now on we will therefore
-assume that the functions we will dealing with fulfill these ``minor''
-conditions.
+together with the inner product just showed, form a Hilbert Space. This function
+space is defined over the space of ``well-behaved'' \footnote{The definitions of
+``well-behaved'' is pretty ambiguous even for mathematicians, basically, it
+depends on the context. We can cheat by saying: functions for which the theory
+we are considering (Fourier theorem) is valid.} functions.  We can say that the
+theory we are about to show can be applied on all twice differentiable complex
+valued functions, to be more concise: complex valued $L^2$ functions $S^2 \to
+\mathbb{C}$. However, all of this jargon is not really necessary for the
+practical applications of us mere mortals, namely physicists and engineers.
+From now on we will therefore assume that the functions we will dealing with
+fulfill these ``minor'' conditions.
 
 The insiders could turn up their nose, but we don't want to dwell too much on
 the concept of Hilbert space, convergence, metric, well-behaved functions etc.
-We simply think that this rigorousness could be at the expense of the
+We simply think that too much rigorousness would be at the expense of the
 possibility to appreciate the beauty and elegance of this theory.  Furthermore,
-the risk of writing 300+ pages to prove that $1+1=2$\cite{principia-mathematica}
-is just around the corner (we apologize in advance to Mr. Whitehead and Mr.
-Russel for using their effort with a negative connotation).
-
-Despite all, if you desire having definitions a bit more rigorous (as rigorous
-as two engineers can be), you could take a look at the chapter \ref{}.
+the risk of writing over 300 pages to prove that $1+1=2$ is just around the
+corner (we apologize to Mr. Whitehead and Mr. Russel for using their efforts
+\cite{principia-mathematica} with a negative connotation).
 
 \subsection{Spherical Harmonics Series}
 
-To talk about a \emph{series expansion} we first need a series, so we shall
+To talk about a series expansion we first need a \emph{series}, so we shall
 build one using the spherical harmonics.
 
 \begin{definition}[Spherical harmonic series]
   \label{kugel:def:spherical-harmonics-series}
   \begin{equation}
+    \label{kugel:eqn:spherical-harmonics-series}
     f(\vartheta, \varphi) 
     = \sum_{n=0}^\infty \sum_{m =-n}^n
       c_{m,n} Y^m_n(\vartheta, \varphi).
-      \label{kugel:eqn:spherical-harmonics-series}
   \end{equation}
 \end{definition}
 
-With this definition we are basically saying that any function defined on the
+With this definition of course we are hinting that any function defined on the
 spherical surface can be represented as a linear combination of spherical
-harmonics.  Does equation \eqref{kugel:definition:spherical-harmonics-series}
-sound familiar? Well that is perfectly normal, since this is analog to the
-classical Fourier theory.  In the latter is stated that ``any'' $T$-periodic
-function $f(x)$, on any interval $[x_0-T/2,x_0+T/2]$, can be represented as a
-linear combination of complex exponentials. More compactly:
+harmonics. So, does \eqref{kugel:eqn:spherical-harmonics-series} sound familiar?
+It should, since this is analog to the classical Fourier theory of section
+\ref{kugel:sec:preliminaries:ortho-fourier} were it was stated that ``any''
+1-periodic function $f(\xi, \eta)$, can be represented as a linear combination
+of complex exponentials:
 \begin{equation*}
-  f(x) = \sum_{n \in \mathbb{Z}} c_n e^{i \omega_0 x},
-    \quad \omega_0=\frac{2\pi}{T}
+  f(\xi, \eta) = \sum_{n \in \mathbb{Z}} \sum_{m \in \mathbb{Z}}
+    c_{m,n} e^{i2\pi(n\xi + m\eta)},
 \end{equation*}
-In the case of definition \ref{kugel:def:spherical-harmonics-series} the
-kernels, instead of $e^{i\omega_0x}$, have become $Y^m_n$. In addition, the sum
-is now over the two indices $m$ and $n$.
+In definition \ref{kugel:def:spherical-harmonics-series} it is the same, except
+that the kernels are the spherical harmonics $Y^m_n$ instead of complex
+exponentials. Further, as in the normal Fourier theory if we assume that a
+function on the surface of the sphere can be represented using a Fourier series
+we can use the same trick with the inner product to get the coefficients:
+\begin{align*}
+  \langle f, Y^{m}_{n} \rangle_{\partial S}
+  = \left\langle \sum_{n'=0}^\infty \sum_{m' =-n'}^{n'}
+    c_{m',n'} Y^{m'}_{n'}(\vartheta, \varphi), Y^{m}_{n} 
+    \right\rangle_{\partial S}
+  % &=  \sum_{n'=0}^\infty \sum_{m' =-n'}^{n'}
+  %   \langle c_{m',n'} Y^{m'}_{n'}, Y^{m}_{n} \rangle_{\partial S}
+  = \sum_{n'=0}^\infty \sum_{m' =-n'}^{n'} c_{m',n'}
+    \langle Y^{m'}_{n'}, Y^{m}_{n} \rangle_{\partial S} = c_{m,n}.
+\end{align*}
 
-\begin{lemma}[Spherical harmonic coefficients]
-  \label{kugel:thm:spherical-harmonic-coefficient}
-  \begin{equation*}
-    c_{m,n} 
-    = \langle f, Y^m_n \rangle_{\partial S}
-    = \int_0^\pi \int_0^{2\pi}
-      f(\vartheta,\varphi) \overline{Y^m_n(\vartheta,\varphi)}
-      \sin\vartheta \,d\varphi\,d\vartheta
-  \end{equation*}
-  \kugeltodo{Would be better as a definition? I don't get what is being proved.}
-\end{lemma}
-
-\begin{proof}
-  To develop this proof we will take advantage of the orthogonality property of
-  the Spherical Harmonics. We can start and finish by applying the inner product
-  on both sides of \eqref{kugel:eqn:spherical-harmonics-series}:
-  \begin{align*}
-    \langle f, Y^{m}_{n} \rangle_{\partial S}
-    &= \left\langle \sum_{n'=0}^\infty \sum_{m' =-n'}^{n'}
-      c_{m',n'} Y^{m'}_{n'} \right\rangle_{\partial S}  \\
-    &= \sum_{n'=0}^\infty \sum_{m' =-n'}^{n'}
-      \langle c_{m',n'} Y^{m'}_{n'}, Y^{m}_{n} \rangle_{\partial S} \\
-    &= \sum_{n'=0}^\infty \sum_{m' =-n'}^{n'} c_{m',n'}
-      \langle Y^{m'}_{n'}, Y^{m}_{n} \rangle_{\partial S} = c_{m,n}
-  \end{align*}
-\end{proof}
-
-Thanks to Lemma \ref{kugel:thm:spherical-harmonic-coefficient} we can now
-calculate the series expansion defined in
-\ref{kugel:def:spherical-harmonics-series}. It can be shown that, for the famous
-``well-behaved functions'' $f(\vartheta, \varphi)$ mentioned before, the
-following theorem is true.  The connection to Theorem
+Finally, it can also be shown that for the famous ``well-behaved functions''
+mentioned before, the following theorem is true. The connection to theorem
 \ref{kugel:thm:fourier-theorem} is pretty obvious.
 
-\begin{theorem}[Fourier Theorem on $\partial S$]
-  \label{fourier-theorem-spherical-surface}
+\begin{theorem}[Fourier theorem on $\partial S$]
+  \label{kugel:thm:fourier-s2}
+  For a function $f: S^2 \to \mathbb{C}$ and such that $f \in L^2$
   \begin{equation*}
     \lim_{N \to \infty}
-    \int_0^\pi \int_0^{2\pi} \left\| f(\vartheta,\varphi) - \sum_{n=0}^N\sum_{m=-n}^n c_{m,n} Y^m_n(\vartheta,\varphi)
-    \right\|_2 \sin\vartheta \,d\varphi\,d\vartheta  = 0
+    \left\|
+      f(\vartheta,\varphi)
+      - \sum_{n=0}^N\sum_{m=-n}^n c_{m,n} Y^m_n(\vartheta,\varphi)
+    \right\|_2 = 0,
+    \qquad\text{where}\qquad
+    c_{m,n} = \langle f, Y^m_n \rangle.
   \end{equation*}
 \end{theorem}
+\begin{proof}
+  Fourier was quite informal the first time he presented his theorem so, like
+  him, we will just say ``trust me, it works''. In any case, for the ones that
+  are brave enough and want a real proof, Dirichlet et al. can help with the
+  case in one dimension \cite{convergence_fourier}.
+\end{proof}
 
 \subsection{Spectrum}
+\label{kugel:sec:spectrum}
 
 \begin{figure}
   \centering
-  \kugelplaceholderfig{.8\textwidth}{5cm}
-  \caption{\kugeltodo{Rectangular signal and his spectrum.}}
-  \label{kugel:fig:1d-fourier}
+  \includegraphics[width=.95\textwidth]{papers/kugel/figures/python/1D-fourier.pdf}
+  \caption{
+    Square signal (above) with the magnitude squared of its respective Fourier
+    coefficients $c_n$, that are given by $c_{2n+1}=\frac{2}{i\pi(2n+1)}$. The
+    graphic above also shows different reconstructions of the signal $y(x)$ with
+    increasing $n$.
+    \label{kugel:fig:1d-fourier}
+  }
 \end{figure}
 
-In the case of the classical one-dimensional Fourier theory, we call \emph{Spectrum} the relation between the fourier coefficients $c_n$ and the multiple 
-of the fundamental frequency $2\pi/T$, namely $n 2\pi/T$. In the most general case $c_n$ are complex numbers, so we divide the concept of spectrum in 
-\emph{Amplitude Spectrum} and \emph{Phase Spectrum}. In fig.\ref{kugel:fig:1d-fourier} a function $f(x)$ is presented along with the amplitude spectrum.
+ In the case of the classical one dimensional Fourier theory, in the most
+ general case the \emph{spectrum} $c_n$ are complex numbers, so we divide the
+ concept of spectrum in \emph{amplitude spectrum} and \emph{phase spectrum}. In
+ figure \ref{kugel:fig:1d-fourier} a function $f(x)$ is presented along with the
+ amplitude spectrum.
 
 \begin{figure}
   \centering
-  \kugelplaceholderfig{.8\textwidth}{7cm}
-  \caption{\kugeltodo{Confront between image reconstructed only with phase and one only with amplitued}}
-  \label{kugel:fig:phase&amplitude-2d-fourier}
+  \includegraphics[width=.95\textwidth]{papers/kugel/figures/python/sph-fourier.pdf}
+  \caption{
+    A random spherical function is presented on the left plot, while the right
+    plot shows its Fourier coefficients $c_{m,n}$. Notice the triangular
+    structure of the right plot, which is a consequence of the constraint
+    $|m|\leq n$.
+    \label{kugel:fig:sph-fourier}
+  }
 \end{figure}
-
-The thing that is easiest for us humans to visualize and understand is often the Amplitude Spectrum.
-This is a huge limitation, since for example in Image Processing can be showed in a nice way that much more information is contained in the phase part (see fig.\ref{kugel:fig:phase-2d-fourier}).
 
 \begin{figure}
   \centering
-  \kugelplaceholderfig{.8\textwidth}{9cm}
-  \caption{\kugeltodo{fig that show fourier style reconstruction on sphere (with increasing index)}}
-  \label{kugel:fig:fourier-on-sphere-increasing-index}
+
+  \noindent
+  \subfigure[$N=0$]{\includegraphics[width=.25\linewidth, trim=700 0 700 100, clip]%
+    {papers/kugel/figures/python/earth-fourier-decomposition/n=0}}
+  \hspace{.07\linewidth}
+  \subfigure[$N=10$]{\includegraphics[width=.25\linewidth, trim=700 0 700 100, clip]%
+    {papers/kugel/figures/python/earth-fourier-decomposition/n=10}}
+  \hspace{.07\linewidth}
+  \subfigure[$N=50$]{\includegraphics[width=.25\linewidth, trim=700 0 700 100, clip]%
+    {papers/kugel/figures/python/earth-fourier-decomposition/n=50}}
+
+  \noindent
+  \subfigure[$N=100$]{\includegraphics[width=.25\linewidth, trim=700 0 700 100, clip]%
+    {papers/kugel/figures/python/earth-fourier-decomposition/n=100}}
+  \hspace{.07\linewidth}
+  \subfigure[$N=500$]{\includegraphics[width=.25\linewidth, trim=700 0 700 100, clip]%
+    {papers/kugel/figures/python/earth-fourier-decomposition/n=500}}
+  \hspace{.07\linewidth}
+  \subfigure[$N=1000$]{\includegraphics[width=.25\linewidth, trim=700 0 700 100, clip]%
+    {papers/kugel/figures/python/earth-fourier-decomposition/n=1000}}
+
+  \caption{
+    Reconstruction of a function on the surface of the sphere using a finite
+    number of coefficients ($N$); with a higher number of coefficients more high
+    frequency details appear. The function is the gravitational field of the
+    earth measured by the GOCE mission.
+    \label{kugel:fig:fourier-on-sphere-increasing-index}
+  }
 \end{figure}
 
-The same logic can be extended to the spherical harmonic coefficients $c_{m,n}$. In fig.\ref{kugel:fig:fourier-on-sphere-increasing-index} you can see the same concept as in fig.\ref{kugel:fig:1d-fourier} 
-but with a spherical function $f(\vartheta, \varphi)$.
+The same logic can be extended to the spherical harmonic coefficients $c_{m,n}$.
+In figure \ref{kugel:fig:fourier-on-sphere-increasing-index} we can see the same
+concept as in figure \ref{kugel:fig:1d-fourier} but with a function
+$f(\vartheta, \varphi)$ on the sphere. In this case we define the ``spectrum''
+of the spherical function $f(\vartheta, \varphi)$ as the relation between
+$c_{m,n}$ and the two indices $m$ and $n$. We can observe the same behaviour as
+in the one dimensional Fourier case: the absolute value $|c_{m,n}|$ decays quite
+quickly as $n$ increases. Thus, the coefficients with a higher $n$ index are
+responsible for the small high-frequency details of the considered function.
 
-\subsection{Energy of a function $f(\vartheta, \varpi)$}
+This trend suggests a possible application: one could use these coefficients as
+a compression technique. If extremely high resolution is not required, only the
+lower ``frequency'' coefficients could be used to save memory, as is done in
+digital lighting techniques \cite{SH_lighting_paper}.
 
-\begin{lemma}[Energy of a spherical function (\emph{Parseval's theorem})]
-  \begin{equation*}
-    \int_0^{2\pi}\int_0^\pi |f(\vartheta, \varphi)|^2  \sin\vartheta \, d\varphi \, d\varphi = \sum_{n=0}^\infty \frac{1}{2n+1} \sum_{m=-n}^n |c_{m,n}|^2.
-  \end{equation*}
-\end{lemma}
-\begin{proof}
-\end{proof}
+\subsection{Energy of a Function $f(\vartheta, \varphi)$}
 
+The decomposition of functions using spherical harmonics is not the only thing
+we can extract from the orthogonality properties of the functions $Y^m_n$. The
+aim of this section is to present another property you probably already know
+from the classical Fourier theory in one dimension. It has to do with what is
+usually referred to as the ``power'' of a signal (function) and it can be
+expressed with the following theorem, that takes the name of \emph{Parseval's
+theorem}.
 
-\if 0
-\begin{theorem}[Spherical harmonic series expansion]
-  A complex valued piecewise continuous function on the surface of the sphere
-  $f: S^2 \to \mathbb{C}$, $f \in L^2$ has a series expansion
-  \begin{equation*}
-    \hat{f}(\vartheta, \varphi) 
-    = \sum_{n \in \mathbb{Z}} \sum_{m \in \mathbb{Z}}
-      c_{m,n} Y^m_n(\vartheta, \varphi),
-  \end{equation*}
-  where $c_{m,n} = \langle f, Y^m_n \rangle$, that converges everywhere uniformly
-  on $f$, i.e. $\|f(\vartheta, \varphi) - \hat{f}(\vartheta, \varphi)\|_2 = 0$.
+\begin{theorem}[Parseval's theorem]
+  \label{kugel:thm:parseval-1D}
+  Suppose $f \in L^2$ is a complex valued $T$-periodic function, that has a
+  Fourier series with coefficients $c_n$, then
+  \begin{equation}
+    \frac{1}{T}\int_T |f(x)|^2dx
+    = \sum_{n \in \mathbb{Z}} |c_n|^2. 
+    \label{kugel:eqn:parseval-1D}
+  \end{equation}
 \end{theorem}
 \begin{proof}
-  Sadly, this proof is beyond the scope of this text.
+  The proof is analogous to the two dimensional case (below) and is therefore omitted.
 \end{proof}
-\fi
 
-\subsection{Visualization}
+In physics this is just another way to show that power\footnote{In physics and
+engineering, the power of a signal (function) is usually defined to be the
+derivative of the energy of a function, which is $\int | f(x) |^2 \, dx$.
+However, if the function is periodic with period $T$, the power is defined to be
+$\frac{1}{T} \int_T |f(x)|^2 \, dx$.} is conserved, so we could call it
+``conservation theorem''. We know that the Fourier series is a way to map a
+function in time domain to one in frequency domain, and most importantly, this
+mapping is reversible (or invertible). The function we are considering still the
+same but in the time domain is continuous and, in the case of the Fourier
+series, in the frequency domain a discrete one.
+
+We may have overused the term ``beautiful'', but we are not afraid to use it yet
+again, because in our humble opinion this theorem is one of the more
+understandable links between continuous and discrete. The conservation of power
+in this case doesn't care about continuity or discreteness. The latter goes
+through these two worlds, since on the left side of
+\eqref{kugel:eqn:parseval-1D} we have an integral and on the right one we have a
+summation. So, we can unify these two concepts with an equality and two
+different representations of the same thing, namely the power of $f(x)$.  Now,
+as you can imagine, it is possible to write an analog to theorem
+\ref{kugel:thm:parseval-1D} on the surface of the sphere.
+
+\begin{theorem}[Parseval's theorem on $\partial S$]
+  \label{kugel:thm:parseval-sph}
+  Suppose $f: S^2 \to \mathbb{C}$, that $f \in L^2$, and that $f$ has a Fourier
+  series expansion with coefficients $c_{m,n}$, then
+  \begin{equation}
+    \label{kugel:eqn:parseval-sph}
+    \int_0^{2\pi}\int_0^\pi |f(\vartheta, \varphi)|^2
+      \sin\vartheta \, d\varphi \, d\varphi
+    = \sum_{n=0}^\infty \sum_{m=-n}^n |c_{m,n}|^2.
+  \end{equation}
+\end{theorem}
+\begin{proof}
+  This is a special case of theorem \ref{kugel:thm:general-parseval-sph} (below).
+\end{proof}
+
+To prove what we just stated, we want to consider a more general case, namely
+theorem \ref{kugel:thm:general-parseval-sph}.  Having proved the latter, it will
+follow that Parseval's theorem \ref{kugel:thm:parseval-sph} is also correct.
+
+\begin{theorem} %[General Parseval's theorem on $\partial S$]
+  \label{kugel:thm:general-parseval-sph}
+  Suppose $f(\vartheta, \varphi)$ and $g(\vartheta, \varphi)$ are both complex
+  valued functions in $L^2$, that have a Fourier series expansion with the
+  coefficients $c_{m,n}$ and $c_{m',n'}$ respectively, then
+  \begin{equation}
+    \label{kugel:eqn:general-parseval-sph}
+    \left\langle f, g\right\rangle_{\partial S}
+    = \int_0^{2\pi}\int_0^\pi
+      f(\vartheta, \varphi) \overline{g(\vartheta, \varphi)}
+      \sin\vartheta \, d\varphi \, d\varphi 
+    = \sum_{n=0}^\infty\sum_{m=-n}^n c_{m,n}\overline{c_{m',n'}}.
+  \end{equation}
+\end{theorem}
+\begin{proof}
+  We can assume that both functions $f(\vartheta, \varphi)$ and $g(\vartheta,
+  \varphi)$ have a spherical harmonics series expansion, hence:
+  \begin{align*}
+    f(\vartheta, \varphi) &= \sum_{n=0 }^\infty \sum_{m =-n }^{n }
+      c_{m, n } Y^{m }_{n }(\vartheta, \varphi), &
+    g(\vartheta, \varphi) &= \sum_{n'=0}^\infty \sum_{m'=-n'}^{n'}
+      c_{m',n'} Y^{m'}_{n'}(\vartheta, \varphi).
+  \end{align*}
+  By computing their inner product we obtain
+  \begin{align*}
+    \left\langle f, g\right\rangle_{\partial S}
+    = \int_0^{2\pi}\int_0^\pi
+      f(\vartheta, \varphi)\overline{g(\vartheta, \varphi)}
+      \sin\vartheta \, d\varphi \, d\varphi 
+    &= \left\langle
+        \sum^\infty_{m=0}\sum_{n=-m}^m c_{m,n} Y^m_n,
+        \sum^\infty_{m'=0}\sum_{n'=-m'}^{m'} c_{m',n'} Y^{m'}_{n'}
+      \right\rangle_{\partial S} \\
+    &= \sum_{m=0}^\infty \sum_{n=-m}^m \sum_{m'=0}^\infty \sum_{n'=-m'}^{m'} c_{m',n'}\overline{c_{m,n}} \left\langle Y^m_n,  Y^{m'}_{n'} \right\rangle_{\partial S}.
+  \end{align*}
+  Since the spherical harmonics are orthonormal, only the terms of the sum in
+  which $m=m'$ and $n=n'$ survive, leading to
+  \begin{equation*}
+    \int_0^{2\pi}\int_0^\pi
+      f(\vartheta, \varphi)\overline{g(\vartheta, \varphi)}
+      \sin\vartheta \, d\varphi \, d\varphi 
+    = \sum_{n=0}^\infty\sum_{m=-n}^n
+      c_{m,n}\overline{c_{m',n'}}. \qedhere
+  \end{equation*}
+\end{proof}
+
+With this last theorem, we have given more generality to the Parseval's theorem.
+In this way, we are not only able to calculate the power of a function using its
+spherical harmonic coefficients, but also the possibility to compute other
+things such as the cross correlations of two functions using, simply the sum of
+the multiplications of their spherical harmonic coefficients.

@@ -4,7 +4,7 @@
 # (c) 2020 Prof Dr Andreas Mueller
 #
 
-images:
+all:
 	$(MAKE) -C ./figures/povray/
 	$(MAKE) -C ./figures/tikz/
-
+	$(MAKE) -C ./figures/python/
