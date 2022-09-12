@@ -9,7 +9,24 @@
 
 \subsection{Idee
 	\label{transfer:subsection:Ktanh-Idee}}
-Um die Berechnung des Tangens hyperbolicus wirklich zu beschleunigen, braucht es einen Algorithmus, der ohne Gleitkommaoperationen auskommt. Um dies zu bewerkstelligen, ist eine Unterteilung der Funktion in mehrere Abschnitte nötig. Diese werden dann linear approximiert. Die dazugehörigen Parameter müssen nur einmal gefunden werden und zu Rechenzeit aus einem Look up table (LUT) gelesen und danach mit Ganzzahloperationen verrechnet werden.
+Um die Berechnung des Tangens hyperbolicus wirklich zu beschleunigen,
+braucht es einen Algorithmus, der ohne Gleitkommaoperationen auskommt.
+Um dies zu bewerkstelligen, ist eine Unterteilung der Funktion in
+mehrere Abschnitte nötig. Diese werden dann linear approximiert.
+Die dazugehörigen Parameter müssen nur einmal gefunden werden und
+zu Rechenzeit aus einem Look up table (LUT) gelesen und danach mit
+Ganzzahloperationen verrechnet werden.
+
+Eine lineare Approximation ersetzt die Funktion durch eine lineare
+Ersatzfunktion, also eine Funktion der Form $ax+b$, was eine
+Multiplikation mit $a$ erfordert.
+Genau diese Operationen sollen aber vermieden werden.
+In einem Spezialfall ist die Multiplikation aber einfach, nämlich
+dann, wenn $a$ eine Zweierpotenz ist. 
+Multiplikation mit einer Zweierpotenz lässt sich immer mit
+einer Shift-Operation in der Mantisse und einer Addition zum
+Exponenten durchführen.
+Diese Operationen sind schnell.
 
 
 \subsection{Definitionen
@@ -17,42 +34,59 @@ Um die Berechnung des Tangens hyperbolicus wirklich zu beschleunigen, braucht es
 
 \subsubsection{Gleitkommazahlen nach IEEE-754
 	\label{transfer:subsection:Ktanh-Algorithmus:Gleitkommazahl}}
-Da ein Computer nur mit binären Werten arbeiten kann, müssen Zahlen durch sogenannte Gleitkommazahlen approximiert werden. Dafür wird die Zahl in zwei Teile aufgeteilt, die Mantisse und den Exponenten. Die Zahl setzt sich dann wie folgt zusammen:
-$$
+Da ein Computer nur mit binären Werten arbeiten kann,
+müssen Zahlen durch Gleitkommazahlen approximiert werden.
+Dafür wird die Zahl in zwei Teile aufgeteilt, die Mantisse und den Exponenten.
+Die Zahl setzt sich dann wie folgt zusammen:
+\[
 \begin{array}{|l|l|l|}
 	\hline S & E & M \\
 	\hline
 \end{array}
-$$
-Aus dem sich die Dezimalzahl wie folgt berechnet
-$$
+\]
+Aus diesen Elementen wird die zugehörige Dezimalzahl als
+\[
 x=s \cdot m \cdot 2^{e}
-$$
+\]
+berechnet,
 wobei gilt
-$$
+\[
 \begin{aligned}
 	&s=(-1)^{S}, \\
 	&e=E-B,\\
 	&B=2^{r-1}-1,\\
 	&m=1+M / 2^{p}
 \end{aligned}
-$$
+\]
 mit $r$ = Anzahl der Exponenten-Bits und $p$ = Anzahl Mantisse-Bits.
-
 
 \subsubsection{K-Tanh-Algorithmus
 \label{transfer:subsection:Ktanh-Algorithmus}}
-
-
-Negative Werte werden nicht separat behandelt. Diese werden dank der Symertrie um den Ursprung mit einem einfachen Vorzeichenwechsel aus den positiven berechnet.
+Der K-Tanh-Algorithmus berechnet $\tanh(x)$ wie folgt.
+\begin{enumerate}
+\item
+Negative Werte werden nicht separat behandelt, stattdessen wird 
+ausgenutzt, dass $\tanh(x)=-\tanh(-x)$.
+\item
+Diese werden dank der Symertrie um den Ursprung mit einem einfachen
+Vorzeichenwechsel aus den positiven berechnet.
+\item
 Für $x < 0.25$ gilt $y = x$.
+\item
 Ist $x > 3.75$ gilt $y = 1$.
+\item
 Ist der Wert zwischen diesen Grenzen, werden über einen Look-up-table geeignete Werte gefunden um aus dem $x$ die Approximation des Tangens hyperbolicus zu berechnen.
-Dafür werden eine bestimmte Anzahl LSBs des Exponenten und MSBs der Mantisse zu einem Index $t$ zusammengesetzt. Der dann die Stelle im Look-up-table zeigt.
+Dafür werden eine bestimmte Anzahl LSBs des Exponenten und MSBs der Mantisse zu einem Index $t$ zusammengesetzt.
+Der dann die Stelle im Look-up-table zeigt.
 Damit werden die richtigen Werte für $E_{t}, r_{t}, b_{t}$ aus der Tabelle, die im Vorhinein schon berechnet wurden, ausgelesen.
 Damit hat man das $E$ bereits gefunden und mit der Formel
-$$M_{o} \leftarrow\left(M_{i} \gg r\right)+b$$
+\[
+M_{o} \leftarrow\left(M_{i} \gg r\right)+b
+\]
 kann das neue $M$ berechnet werden.
+Dies ist die lineare Ersatzfunktion mit einer Steigung, die durch
+zum Shift gehörige Zweierpotenz gegeben ist.
+\end{enumerate}
 
 \begin{figure}
 \centering
@@ -113,8 +147,8 @@ kann das neue $M$ berechnet werden.
 			
 			
 			\node[minimum width=0.5cm] (s) at (5, 0) {$s$};
-			\node[anchor=west, minimum width=1.5cm] (e) at (s.east) {$E_0$};
-			\node[anchor=west, minimum width=1.5cm] (m) at (e.east) {$M_0$};
+			\node[anchor=west, minimum width=1.5cm] (e) at (s.east) {$E_o$};
+			\node[anchor=west, minimum width=1.5cm] (m) at (e.east) {$M_o$};
 			\draw[blue] (e.north west) -- (e.south west) (e.north east) -- (e.south east);
 			\node[draw, green!50!black, rounded corners=0.1cm, fit=(s) (e) (m), inner sep = 0] (b) {};
 			\node[anchor=east, left=0.25cm of s] {Output:};
@@ -123,7 +157,7 @@ kann das neue $M$ berechnet werden.
 			
 			\node[draw=black, fill=black!20,  minimum width=1.5cm, minimum height= 2cm, below=1cm of a] (lut) {LUT};
 			
-			\node[draw=blue, inner sep=0.2cm, right = 1.5cm of lut, align=left] (box) {$E_0 \gets E$ \\ $M_0 \gets (M_i \gg r) + b$};
+			\node[draw=blue, inner sep=0.2cm, right = 1.5cm of lut, align=left] (box) {$E_o \gets E$ \\ $M_o \gets (M_i \gg r) + b$};
 			
 			\draw[->] (a.south) +(0, -0.5) -- (lut);
 			\draw[->] (lut) -- node[above]{$(E,r,b)$} (box);
@@ -140,83 +174,106 @@ kann das neue $M$ berechnet werden.
 \subsection{Beispiel
 \label{transfer:subsection:Ktanh-Algorithmus:Beispiel}}
 
-In diesem Abschnitt wird das Verfahren am einem Beispiel mit dem Datentyp BFloat16 erklärt. Das bedeutet, die Gleitkommazahlen werden mit 8 Exponenten-, 7 Mantisse- und einem Vorzeichen-Bit dargestellt.
+In diesem Abschnitt wird das Verfahren am einem Beispiel mit dem Datentyp BFloat16 erklärt.
+Das bedeutet, die Gleitkommazahlen werden mit 8 Exponenten-, 7 Mantisse- und einem Vorzeichen-Bit dargestellt.
 
 \subsubsection{Algorithmus für die Bestimmung der Parameter
 	\label{transfer:subsection:Ktanh-Algorithmus:Algo}}
 
 \begin{enumerate}
-    \item Wir berechnen zuerst den Tangens hyperbolicus für ein gegebenes x und finden die zugehörige BFloat16-Darstellung.
+    \item Wir berechnen zuerst den Tangens hyperbolicus für ein gegebenes $x$ und finden die zugehörige BFloat16-Darstellung.
     \[
     y_{i}=\operatorname{tanh}\left(x_{i}\right)=(-1)^{s} \cdot 2^{E_{i}} \cdot\left(1+M_{i} / 2^{q}\right)
     \]
      
     \item Sollten die Exponenten in einem Intervall $t$ nicht gleich sein, muss ein gemeinsamer Exponent gefunden werden, so dass 
-    \begin{equation} \label{minforexp}
-    \underset{E, \hat{M}_{i} \in \mathbb{Z}}{\operatorname{argmin}} \sum_{i}\left(y_{i}-\hat{y}_{i}\right)^{2}, \quad \text { mit } \quad E \in\left\{E_{i}\right\}, \hat{M}_{i} \in[0,127]
-	\end{equation}
-
-    minimiert wird. Was bedeutet, dass der Exponent, mit welchem der kleinsten quadrierten und aufsummierten Fehler entsteht, gewählt wird. Danach müssen die Mantissen noch wie folgt angepasst werden
-    $$
+\begin{equation} \label{minforexp}
+    %\underset{E, \hat{M}_{i} \in \mathbb{Z}}{\operatorname{argmin}}
+	\sum_{i}\left(y_{i}-\hat{y}_{i}\right)^{2}, \quad \text { mit } \quad E \in\left\{E_{i}\right\}, \hat{M}_{i} \in[0,127]
+\end{equation}
+minimiert wird. Was bedeutet, dass der Exponent, mit welchem der
+kleinste quadrierte und aufsummierte Fehler entsteht, gewählt wird.
+Danach müssen die Mantissen noch wie folgt angepasst werden
+    \[
     \left\{\begin{array}{l}
     	\hat{M}_{j}=M_{i}, E=E_{j} \\
     	\hat{M}_{j}=0, E>E_{j} \\
     	\hat{M}_{j}=2^{q}-1, E<E_{j}.
     \end{array}\right.
-    $$
+    \]
 	Diese Anpassung entspricht einer Rundung. Die Mantisse soll möglichst klein sein, wenn der Exponent zu gross ist und umgekehrt.
-    \item Um den Verschiebungsparameter $r$ und den Additionsterm $b$ für ein Index zu finden, muss das folgende Optimierungsproblem gelöst werden. Auch hier wird einfach der kleinste quadrierte und aufsummierte Fehler gesucht wird.
-    $$
-    \begin{array}{ll} 
-    	& \underset{r, b \in \mathbb{Z}}{\operatorname{argmin}} \sum_{i}\left(\hat{M}_{i}-\left(m_{i} / 2^{r}+b\right)\right)^{2} \\
-    	\text { mit } & 0 \leq r \leq r_{\max } \leq p, \quad b_{\min } \leq b \leq b_{\max }
-    \end{array}
-    $$
-    Dabei müssen $r_{\max}$, $b_{\min}$ und $b_{\max}$ sorgfältig gewählt werden, so dass kein Over- oder Underflow entstehen kann.
+    \item Um den Verschiebungsparameter $r$ und den Additionsterm $b$ für ein Index zu finden, muss das folgende Optimierungsproblem gelöst werden.
+Auch hier wird einfach der kleinste quadrierte und aufsummierte Fehler
+\[
+\sum_{i}\left(\hat{M}_{i}-\left(m_{i} / 2^{r}+b\right)\right)^{2}
+\]
+mit
+\[
+0 \leq r \leq r_{\max }, \quad b_{\min } \leq b \leq b_{\max }
+\]
+gesucht.
+Dabei müssen $r_{\max}$, $b_{\min}$ und $b_{\max}$
+sorgfältig gewählt werden, so dass kein Over- oder Underflow entstehen kann.
 \end{enumerate}
 
 \subsubsection{Numerisches Beispiel
-	\label{transfer:subsection:Ktanh-Algorithmus:Num}}
-Zum Index $t = 00000$ gehört neben Anderen der Wert $x_i = 2$. Denn aus Transformation zu BFloat-16 folgt
-
-$$
+\label{transfer:subsection:Ktanh-Algorithmus:Num}}
+Zum Index $t = 00000$ gehört neben Anderen der Wert $x_i = 2$.
+Nach Transformation zu BFloat-16 folgt dann
+\[
 \begin{array}{|l|l|l|}
 	\hline S_i & E_{i} & M_{i} \\
 	\hline 0 & 100000 \textbf{00} & \textbf{000} 0000 \\
 	\hline
 \end{array}
-$$
+\]
 Der dazugehörige Tangens hyperbolicus Wert ist
 $y_i = \tanh{x_i}=0.96402758\ldots$. Es lässt sich die dazugehörige BFloat-16-Darstellung finden
-
-$$
+\[
 \begin{array}{|l|l|l|}
 	\hline S_{y_{i}} & E_{y_{i}} & M_{y_{i}} \\
 	\hline 0 & 01111110 & 1110110 \\
 	\hline
 \end{array}
-$$
+\]
 Nun müssen alle anderen Werte dieses Intervalls $t = 00000$ ausgewertet werden. Stimmen nicht alle Exponenten der $S_{y}$ überein, so muss noch ein gemeinsamer Exponent mit dem Optimierungproblem \ref{minforexp} gefunden werden. Danach kann der Verschiebe- und Additionsfaktor für das Intervall berechnet werden. 
 Es ergeben sich die Werte:
-$$
+\[
 \begin{array}{c|ccc}
 	\text { Index } t & E_{t} & r_{t} & b_{t} \\
 	\hline 00000 & 126 & 2 & 119
 \end{array}
-$$
-Diese Werte ermöglichen es nun alle Werte für den Fu Funktionsbereich $[2,3.75]$ zu berechnen. Für unser numerisches Beispiel folgt $E_2 = E_t = 126$ und $M_2 = M_i \gg r_t + b_t = 119$. Mit der dazugehörigen Bfloat-16-Darstellung
-$$
+\]
+Diese Werte ermöglichen nun, alle Werte für den Argumentbereich
+$[2,3.75]$ zu berechnen.
+Für unser numerisches Beispiel folgt $E_2 = E_t = 126$ und
+$M_2 = M_i \gg r_t + b_t = 119$,
+mit der Bfloat-16-Darstellung
+\[
 \begin{array}{|l|l|l|}
 	\hline S_{2} & E_{2} & M_{2} \\
 	\hline 0 & 01111110 & 1110111 \\
 	\hline
 \end{array}
-$$
-Damit beträgt der absolute Fehler bezüglich der optimalen Bfloat-16-Lösung nur 0.00390625. Dies stellt kein Problem für die gewünschte Anwendung dar, da neuronale Netzwerke sowieso eine gewisse Resistenz gegenüber Rauschen aufweisen sollten.
+\]
+Damit beträgt der absolute Fehler bezüglich der optimalen Bfloat-16-Lösung
+nur 0.00390625.
+Dies stellt kein Problem für die gewünschte Anwendung dar, da
+neuronale Netzwerke sowieso eine gewisse Resistenz gegenüber Rauschen
+aufweisen sollten.
 
 
 \subsection{Vor- und Nachteile}
-Der K-Tanh-Algorithmus bietet eine enorme Reduktion des Rechenaufwands im Bezug auf alle anderen behandelten Berechnungen. Der Fehler hält sich dabei in Grenzen, die für eine Verwendung in einem neuronalen Netzwerk genügend sind. Vor allem für den Gebrauch in Architekturen ohne Gleitkommaarithmetikhardware ist der K-Tanh besonders geeignet. Der einzige Nachteil ist die Berechnung des Look-up-table muss schon vor der Laufzeit geschehen und gespeichert werden.
+Der K-Tanh-Algorithmus bietet eine enorme Reduktion des Rechenaufwands
+im Bezug auf alle anderen behandelten Berechnungen. Der Fehler hält
+sich dabei in Grenzen, die für eine Verwendung in einem neuronalen
+Netzwerk genügend sind. Vor allem für den Gebrauch in Architekturen
+ohne Gleitkommaarithmetikhardware ist der K-Tanh besonders geeignet,
+da er Multiplikationen durch Shifts und Lookups ersetzt.
+Der einzige Nachteil ist, dass die Berechnung des Look-up-table schon
+vor der Laufzeit geschehen und gespeichert werden.
+Der Algorithmus tauscht also Komplexität zur Laufzeit gegen Speicherplatzbedarf
+ein.
 
 
 

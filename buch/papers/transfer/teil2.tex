@@ -8,16 +8,26 @@
 \rhead{}
 
 \subsection{Idee
-	\label{transfer:pade:idee}}
-Die Taylor-Approximation ist für den Gebrauch als Ersatz des Tangens hyperbolicus als Transferfunktion nicht brauchbar. Die Padé-Approximation kann die grössten Probleme aber entschärfen und dies mit sehr begrenztem zusätzlichen Rechenaufwand. Dafür wird die Taylor-Approximation in einen Bruch von zwei Polynom zerlegt.
+\label{transfer:pade:idee}}
+Die Taylor-Approximation ist für den Gebrauch als Ersatz des Tangens
+hyperbolicus als Transferfunktion nicht brauchbar. Die Padé-Approximation
+kann die grössten Probleme aber entschärfen und dies mit sehr
+begrenztem zusätzlichen Rechenaufwand. Dafür wird die Taylor-Approximation
+in einen Bruch von zwei Polynom zerlegt.
 
 \subsection{Definition
 \label{transfer:pade:definition}}
 Sei
 \begin{equation}
-	R(x)=\frac{\sum_{j=0}^{m} a_{j} x^{j}}{1+\sum_{k=1}^{n} b_{k} x^{k}}=\frac{a_{0}+a_{1} x+a_{2} x^{2}+\cdots+a_{m} x^{m}}{1+b_{1} x+b_{2} x^{2}+\cdots+b_{n} x^{n}},
+R(x)
+=
+\frac{\sum_{j=0}^{m} a_{j} x^{j}}{1+\sum_{k=1}^{n} b_{k} x^{k}}
+=
+\frac{a_{0}+a_{1} x+a_{2} x^{2}+\cdots+a_{m} x^{m}}{1+b_{1} x+b_{2} x^{2}+\cdots+b_{n} x^{n}},
 \end{equation}
-dann müssen alle $m+n$ Terme mit der Taylorapproximation um den Punkt Null übereinstimmen. Somit müssen
+dann müssen alle $m+n$ Terme mit der Taylorapproximation um den
+Punkt Null übereinstimmen.
+Somit müssen
 \begin{gather*}
 	f(0) =R(0), \\
 	f^{\prime}(0) =R^{\prime}(0), \\
@@ -28,14 +38,16 @@ dann müssen alle $m+n$ Terme mit der Taylorapproximation um den Punkt Null übe
 erfüllt sein, damit $R(x)$ die Padé-Approximation von $f(x)$ ist.
 \subsection{Beispiel
 	\label{transfer:pade:beispiel}}
-Sei $f(x) = \tanh (x)$ und $T_{5} \tanh(x ; a) = x-\frac{x^{3}}{3}+\frac{2 x^{5}}{15}$, dann gilt
-$$
+Sei $f(x) = \tanh (x)$
+und
+$T_{5} \tanh(x ; a) = x-\frac{x^{3}}{3}+\frac{2 x^{5}}{15}$, dann gilt
+\[
 	\begin{gathered}  
 	[3 / 2]_{f}(x) = \frac{A_{0}+A_{1} x+A_{2} x^{2}+A_{3} x^{3}}{B_{0}+B_{1} x+B_{2} x^{2}}=x-\frac{x^{3}}{3}+\frac{2 x^{5}}{15}+O\left(x^{6}\right), B_{0} = 1,\\
 	\Downarrow \\
 	[3 / 2]_{f}(x) = \frac{15x+x^3}{15+6x^2}.
 \end{gathered}
-$$
+\]
 
 \begin{figure}
 \centering
@@ -65,5 +77,15 @@ $$
 \end{figure}
 
 \subsection{Vor- und Nachteile}
-Die Padé-Approximation hat einen wesentlich tieferen maximalen relativen Fehler als die Taylor-Approximation. Dieser sollte auch im Bereich liegen, dass ein Netzwerk weiterhin Vergleichbare Resultate produzieren kann. Der Rechenaufwand ist dabei vergleichbar mit dem der Taylor-Approximation. 
+Der Fehler der Padé-Approximation wächst im Gegensatz zur
+Taylor-Approximation zwar immer noch an, aber wesentlich weniger
+schnell.
+Im Beispiel wächst der Wert der Padé-Approximation linear mit $x$.
+Dadurch ist die Approximation für einen wesentlich grösseren Bereich 
+von Argumenten $x$ brauchbar.
+Solange die Argumente in diesem Bereich bleiben, wird 
+approximierende Funktion immer noch zu vergleichbaren Resultaten
+führen.
+Der Rechenaufwand ist dabei immer noch vergleichbar mit dem
+der Taylor-Approximation.
 

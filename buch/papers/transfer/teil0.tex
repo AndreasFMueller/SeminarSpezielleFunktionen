@@ -6,18 +6,46 @@
 \section{Motivation\label{transfer:section:teil0}}
 \rhead{Einleitung}
 
-Die Transferfunktion ist einer der wichtigsten Bestandteile moderner neuronaler Netzwerke. Sie verleiht ihnen die Nichtlinearität, welche benötigt wird, um komplexere Aufgaben zu lösen. Dabei kann theoretisch jede nichtlineare Funktion eingesetzt werden. In der Praxis tauchen aber nur sehr wenige Funktionen mit ähnlichen Eigenschaften auf. Einige davon sind in der Tabelle \ref{tab:aktfkt} zu sehen. In der heutigen Zeit sind vor allem die Variationen der ReLU Funktion beliebt. Dies vor allem wegen der einfachen Berechnung.
-Der Tangens hyperbolicus wird aber dank dem Aufkommen der Recurrent Neural Networks, zum Beispiel dem Long short-term memory Netzwerk, das aus Zellen wie in Abbildung \ref{motivation:figure:LSTM} gezeigt bestehen, wieder vermehrt eingesetzt.
-Die klassische Berechnung, welche in Abbildung \ref{anleitung:figure:approxtanhhypalgo} gezeigt wird, ist aber sehr aufwendig und basiert auf Gleitkommaoperationen und relativ komplizierten Funktionen. Diese benötigen einen grossen Rechenaufwand vor allem auf Systemen die keine Gleitkommaarithmetikhardware besitzen wie das zum Beispiel bei gewissen Mikrocontrollern der Fall ist.
+Die Transferfunktion ist einer der wichtigsten Bestandteile moderner
+neuronaler Netzwerke.
+\index{Transferfunktion}%
+\index{neuronales Netzwerk}%
+Sie verleiht ihnen die Nichtlinearität, welche
+\index{Nichtlinearität}%
+benötigt wird, um komplexere Aufgaben zu lösen.
+Dabei kann theoretisch jede nichtlineare Funktion eingesetzt werden.
+In der Praxis tauchen
+aber nur sehr wenige Funktionen mit ähnlichen Eigenschaften auf.
+Einige davon sind in der Tabelle \ref{tab:aktfkt} zu sehen.
+In der
+heutigen Zeit sind vor allem die Variationen der ReLU Funktion
+beliebt.
+Dies vor allem wegen der einfachen Berechnung.
+Der Tangens hyperbolicus wird aber dank dem Aufkommen der Recurrent
+Neural Networks, zum Beispiel dem Long short-term memory Netzwerk,
+das aus Zellen wie in Abbildung \ref{motivation:figure:LSTM} gezeigt
+bestehen, wieder vermehrt eingesetzt.
+Die klassische Berechnung, welche in Abbildung
+\ref{anleitung:figure:approxtanhhypalgo} gezeigt wird, ist aber
+sehr aufwendig und basiert auf Gleitkommaoperationen und relativ
+\index{Gleitkommaoperationen}
+komplizierten Funktionen. Diese benötigen einen grossen Rechenaufwand
+vor allem auf Systemen die keine Gleitkommaarithmetikhardware
+besitzen wie das zum Beispiel bei gewissen Mikrocontrollern der
+\index{Mikrocontroller}
+Fall ist.
 
-Es gibt verschiedene Ideen diese Berechnung durch Approximationsalgorithmen zu vereinfachen. Basierend auf der Arbeit von Abhisek Kundu et al. (2019) \cite{transfer:DBLP:journals/corr/abs-1909-07729} werden hier beliebte Algorithmen aufgezeigt und verglichen.
+Es gibt verschiedene Ideen diese Berechnung durch Approximationsalgorithmen
+zu vereinfachen. Basierend auf der Arbeit von Abhisek Kundu et al.
+(2019) \cite{transfer:DBLP:journals/corr/abs-1909-07729} werden
+hier beliebte Algorithmen aufgezeigt und verglichen.
 
 \tikzset{font={\fontsize{10pt}{12}\selectfont}}
 \begin{table}[h]
 	\centering
 	\begin{tabular}{llll}
 		\hline
-		\multicolumn{1}{l}{Name} & \multicolumn{1}{l}{Function} & \multicolumn{1}{l}{Figure} \\ 
+		\multicolumn{1}{l}{Name} & \multicolumn{1}{l}{Funktion} & \multicolumn{1}{l}{Graph} \\ 
 		\hline
 		Sigmoid & $\sigma(x)=\frac{1}{1+e^{-x}}$ & 
 		\begin{tikzpicture}[baseline={(0,0.2)}]
@@ -26,8 +54,8 @@ Es gibt verschiedene Ideen diese Berechnung durch Approximationsalgorithmen zu v
 			\draw[red] plot[domain=-1:1,variable=\x] ({\x},{1/(1+exp(-4*\x))});
 		\end{tikzpicture}\\
 		ReLU & $f(x) =\begin{cases}
-			0 & ~\text{if}~ x<0 \\ 
-			x & ~\text{if}~x \geq 0.
+			0 & ~\text{für}~ x<0 \\ 
+			x & ~\text{für}~x \geq 0.
 		\end{cases}$ &
 		\begin{tikzpicture}[baseline={(0,0.5)}]
 			\draw (-1,0) -- (1,0);
@@ -35,8 +63,8 @@ Es gibt verschiedene Ideen diese Berechnung durch Approximationsalgorithmen zu v
 			\draw[red] plot[domain=-1:1,variable=\x] ({\x},{ifthenelse(\x<0,0,\x)});
 		\end{tikzpicture}\\
 		Leaky ReLU & $f(x) =\begin{cases}
-			0 & ~\text{if}~ x<0 \\ 
-			x & ~\text{if}~x \geq a \cdot x.
+			0 & ~\text{für}~ x<0 \\ 
+			x & ~\text{für}~x \geq a \cdot x.
 		\end{cases}$ &
 		\begin{tikzpicture}[baseline={(0,0.5)}]
 			\draw (-1,0) -- (1,0);
