@@ -60,8 +60,9 @@ pdfauthor={Andreas Müller}
 
 % cover page
 \ifthenelse{\boolean{includecover}}{
-\newpage\null\thispagestyle{empty}\newpage
+%\newpage\null%
+\thispagestyle{empty}%
+\newpage%
 \incgraph[documentpaper][width=\paperwidth,height=\paperheight]{../cover/backcover.jpg}
-}{}
-
+}{}%
 \end{document}

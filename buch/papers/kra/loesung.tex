@@ -2,12 +2,15 @@
 \rhead{Lösungsmethoden}
 
 \subsection{Riccatische Differentialgleichung} \label{kra:loesung:riccati}
-Eine allgemeine analytische Lösung der Riccati Differentialgleichung ist nicht möglich.
-Es gibt aber Spezialfälle, in denen sich die Gleichung vereinfachen lässt und so eine analytische Lösung gefunden werden kann.
+Eine allgemeine analytische Lösung der Riccati-Differentialgleichung
+ist nicht möglich.
+Es gibt aber Spezialfälle, in denen sich die Gleichung vereinfachen
+lässt und so eine analytische Lösung gefunden werden kann.
 Diese wollen wir im folgenden Abschnitt genauer anschauen.
 
 \subsubsection{Fall 1: Konstante Koeffizienten}
-Im Fall von konstanten Koeffizienten $f(x), g(x), h(x)$, wird die Gleichung \eqref{kra:equation:riccati} zu
+Im Fall von konstanten Koeffizienten $f(x), g(x), h(x)$, wird die
+Gleichung~\eqref{kra:equation:riccati} zu
 \begin{equation}
     y' = fy^2 + gy + h.
 \end{equation}
@@ -15,41 +18,60 @@ Durch Ausschreiben des Differentialquotienten
 \begin{equation}
     \frac{dy}{dx} = fy^2 + gy + h
 \end{equation}
-erkennt man, dass die Differentialgleichung separierbar ist. Die Lösung findet man nun durch die Berechnung des Integrals
+erkennt man, dass die Differentialgleichung separierbar ist.
+Die Lösung findet man nun durch die Berechnung des Integrals
 \begin{equation} \label{kra:equation:case1_int}
-    \int \frac{dy}{fy^2 + gy + h} = \int dx.
+    \int \frac{dy}{fy^2 + gy + h} = \int dx+C.
 \end{equation}
 
 \subsubsection{Fall 2: Bekannte spezielle Lösung}
-Kennt man eine spezielle Lösung $y_p$, so kann die riccatische Differentialgleichung mit Hilfe einer Substitution auf eine lineare Gleichung reduziert werden.
+Kennt man eine spezielle Lösung $y_p$, so kann die riccatische
+Differentialgleichung mit Hilfe einer Substitution auf eine lineare
+Gleichung reduziert werden.
 Wir wählen als Substitution
 \begin{equation} \label{kra:equation:substitution}
     z = \frac{1}{y - y_p},
 \end{equation}
 durch Umstellen von \eqref{kra:equation:substitution} folgt
 \begin{equation}
-    y = y_p + \frac{1}{z^2} \label{kra:equation:backsubstitution}
+    y = y_p + \frac{1}{z}
+\label{kra:equation:backsubstitution}
 \end{equation}
 \begin{equation}
     y' = y_p' - \frac{1}{z^2}z',
 \end{equation}
-mit Einsetzten in die Differentialgleichung \eqref{kra:equation:riccati} resultiert
+mit Einsetzen in die Differentialgleichung \eqref{kra:equation:riccati}
+resultiert
 \begin{equation}
-    y_p' - \frac{1}{z^2}z' = f(x)(y_p + \frac{1}{z}) + g(x)(y_p + \frac{1}{z})^2 + h(x)
+y_p' - \frac{1}{z^2}z'
+=
+f(x)\biggl(y_p + \frac{1}{z}\biggr)
++
+g(x)\biggl(y_p + \frac{1}{z}\biggr)^2 + h(x)
 \end{equation}
 \begin{equation}
-    -z^{2}y_p' + z' = -z^2\underbrace{(y_{p}f(x) + g(x)y_p^2 + h(x))}_{\displaystyle{y_p'}} - z(f(x) + 2y_{p}g(x)) - g(x)
+-z^{2}y_p' + z'
+=
+-z^2\bigl(\underbrace{y_{p}f(x) + g(x)y_p^2 + h(x)}_{\displaystyle y_p'}\bigr)
+-
+z\bigl(f(x) + 2y_{p}g(x)\bigr) - g(x)
 \end{equation}
 was uns direkt auf die lineare Differentialgleichung 1. Ordnung
 \begin{equation}
-    z' = -z(f(x) + 2y_{p}g(x)) - g(x)
+z'
+=
+-z\bigl(f(x) + 2y_{p}g(x)\bigr) - g(x)
 \end{equation}
 führt.
-Diese kann nun mit den Methoden zur Lösung von linearen Differentialgleichungen 1. Ordnung gelöst werden.
-Durch die Rücksubstitution \eqref{kra:equation:backsubstitution} erhält man dann die Lösung von \eqref{kra:equation:riccati}.
+Diese kann nun mit den Methoden zur Lösung von linearen
+Differentialgleichungen 1.~Ordnung gelöst werden.
+Durch die Rücksubstitution \eqref{kra:equation:backsubstitution}
+erhält man dann die Lösung von \eqref{kra:equation:riccati}.
 
-\subsection{Matrix-Riccati-Differentialgleichung} \label{kra:loesung:riccati}
-Im Folgenden wollen wir uns anschauen wie die Matrix-Riccati-Differentialgleichung entsteht und wie sie gelöst werden kann.
+\subsection{Matrix-Riccati-Differentialgleichung}
+\label{kra:loesung:riccati}
+Im Folgenden wollen wir uns anschauen wie die
+Matrix-Riccati-Differentialgleichung entsteht und wie sie gelöst werden kann.
 
 \subsubsection{Entstehung der Matrix-Riccati-Differentialgleichung}
 Der Ausgangspunkt bildet die Matrix-Differentialgleichung
@@ -71,36 +93,62 @@ Der Ausgangspunkt bildet die Matrix-Differentialgleichung
         Y(t)
     \end{pmatrix}
 \end{equation}
-mit den allgemeinen quadratischen Matrizen $A, B, C$ und $D$, welche in der sogenannten Hamiltonschen-Matrix $H$ zusammengefasst werden können.
+mit den allgemeinen quadratischen Matrizen $A, B, C$ und $D$,
+welche in der sogenannten {\em hamiltonschen Matrix} $H$
+\index{hamiltonsche Matrix}
+zusammengefasst werden können.
 Wir führen eine neue Grösse
 \[
-    U(t) = Y(t)X(t)^{-1}
+U(t) = Y(t)X(t)^{-1}
 \]
 ein, für deren Ableitung $\dt U(t)$ wir mit
 \[
-    \dot{X}(t) = AX(t) + BY(t) \quad \text{und} \quad \dot{Y}(t) = CX(t) + DY(t),
+\dot{X}(t) = AX(t) + BY(t) \quad \text{und} \quad \dot{Y}(t) = CX(t) + DY(t),
 \]
 sowie der Ableitung $\dt X^{-1}$
 \[
-    \dt (X X^{-1}) = \dt (I) = 0 = \dot{X} X^{-1} + X \dt X^{-1} \Rightarrow \dt X^{-1} = - X^{-1} \dot{X} X^{-1},
+\dt (X X^{-1}) = \dt (I) = 0 = \dot{X} X^{-1} + X \dt X^{-1} \Rightarrow \dt X^{-1} = - X^{-1} \dot{X} X^{-1},
 \]
-folgendes Ergebnis erhalten
-
+die Differentialgleichung
 \begin{equation}
     \label{kra:equation:feder-masse-riccati-matrix}
     \begin{split}
         \dt U(t)   &= \dot{Y}(t) X(t)^{-1} + Y(t) \dt X(t)^{-1} \\
-        &= (CX(t) + DY(t)) X(t)^{-1} - Y(t) (X(t)^{-1} \dot{X}(t) X(t)^{-1}) \\
-        &= C\underbrace{X(t)X(t)^{-1}}_\text{$I$} + D\underbrace{Y(t)X(t)^{-1}}_\text{$U(t)$} - Y(t)(X(t)^{-1} (AX(t) + BY(t)) X(t)^{-1}) \\
-        &= C + DU(t) - \underbrace{Y(t)X(t)^{-1}}_\text{$U(t)$}(A\underbrace{X(t)X(t)^{-1}}_\text{$I$} + B\underbrace{Y(t)X(t)^{-1}}_\text{$U(t)$}) \\
+        &=
+	(CX(t) + DY(t)) X(t)^{-1}
+	- Y(t) \bigl(X(t)^{-1} \dot{X}(t) X(t)^{-1}\bigr) \\
+        &=
+	C\underbrace{X(t)X(t)^{-1}}_{\displaystyle =I}
+	+
+	D\underbrace{Y(t)X(t)^{-1}}_{\displaystyle =U(t)}
+	-
+	Y(t)\bigl(X(t)^{-1} (AX(t) + BY(t)) X(t)^{-1}\bigr) \\
+        &=
+	C + DU(t)
+	- \underbrace{Y(t)X(t)^{-1}}_{\displaystyle =U(t)} \bigl(A\underbrace{X(t)X(t)^{-1}}_{\displaystyle =I}
+	+ B\underbrace{Y(t)X(t)^{-1}}_{\displaystyle =U(t)}\bigr) \\
         &= C  + DU(t) - U(t)A - U(t)BU(t).
     \end{split}
 \end{equation}
+für $U(t)$
+erhalten.
 Damit haben wir folgenden Satz bewiesen.
 \begin{satz}
     \label{kra:satz:riccati-matrix-dgl}
-    Die Ableitung $\dt U(t) = \dt (Y(t)X(t)^{-1})$ ist Lösung der Matrix-Riccati-Differentialgleichung \eqref{kra:equation:matrixriccati}.
+Wenn $X(t)$ und $Y(t)$ eine Lösung der
+Matrix-Differentialgleichung~\eqref{kra:equation:matrix-dgl}
+sind, dann ist die Matrix-Funktion
+$U(t) = (Y(t)X(t)^{-1})$
+eine Lösung der
+Matrix-Riccati-Differentialgleichung~\eqref{kra:equation:matrixriccati}.
 \end{satz}
+
+Die Matrix-Riccati-Differentialgleichung ermöglicht also, das
+lineare Differentialgleichungssystem \eqref{kra:equation:matrix-dgl}
+für die $2n\times n$-Matrix aus
+$X(t)$ und $Y(t)$ auf ein Differentialgleichungssystem für die
+$n\times n$-Matrix $U(t)$ zu reduzieren, zum Preis einer ``milden''
+quadratischen Nichtlinearität der Riccati-Differentialgleichung.
 
 \subsubsection{Lösung der Matrix-Riccati-Differentialgleichung}
 Sei
@@ -114,12 +162,15 @@ Sei
     \quad
     \dot{V}(t) = HV(t)
 \]
-eine Matrix-Differentialgleichung 1. Ordnung, dann ist
+eine Matrix-Differentialgleichung 1.~Ordnung, dann ist
 \[
     V(t) = e^{H(t)} V(0)
 \]
 eine Lösung.
-Die Berechnung des Matrixexpontentials $e^{H(t)}$ kann mittels Diagonalisierung
+Die Berechnung der Matrixexpontentialfunktion $e^{H(t)}$ kann mittels
+\index{Matrixexponentialfunktion}%
+Diagonalisierung
+\index{Diagonalisierung}%
 \[
     H = Q \Lambda Q^{-1}
 \]
@@ -136,12 +187,13 @@ Es folgt dann, dass
     \begin{pmatrix}
         e^{\lambda_1 t} & 0               & \dots  & 0               \\
         0               & e^{\lambda_2 t} & \ddots & \vdots          \\
-        \vdots          & \ddots          & \ddots & 0               \\
+        \vdots          & \ddots          & \ddots & 0               \\[3pt]
         0               & \dots           & 0      & e^{\lambda_n t}
     \end{pmatrix}
     Q^{-1}
 \]
-ist. Die Lösung der Matrix-Riccati-Differentialgleichung erhalten wir analog mit
+ist.
+Die Lösung der Matrix-Riccati-Differentialgleichung erhalten wir analog mit
 \begin{equation}
     \label{kra:matrixriccati-solution}
     \begin{pmatrix}
@@ -174,5 +226,8 @@ ist. Die Lösung der Matrix-Riccati-Differentialgleichung erhalten wir analog mi
     \end{pmatrix}
     ^{-1}
 \end{equation}
-wobei $\Phi(t_0, t) = e^{H(t - t_0)}$ die sogenannte Zustandsübergangsmatrix von \eqref{kra:equation:matrix-dgl} ist,
-welche die Zeitentwicklung der einzelnen Lösungen beschreibt \cite{kra:kalmanisae}.
+wobei $\Phi(t_0, t) = e^{H(t - t_0)}$ die sogenannte Zustandsübergangsmatrix
+von \eqref{kra:equation:matrix-dgl} ist,
+welche die Zeitentwicklung der einzelnen Lösungen beschreibt
+\cite{kra:kalmanisae}.
+
