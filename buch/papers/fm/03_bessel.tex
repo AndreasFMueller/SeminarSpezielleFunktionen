@@ -306,39 +306,61 @@ Um dies zu sehn plotten wir einmal \(J_{n}(\beta)\):
 Hier sieht man gut das für kleine \( \beta \lessgtr \) nur die ersten Summanden \( n\) zuständig sind.
 So kann man mit dem \(\beta\) gut bestimmen bis wo die Summe berchnet werden soll. 
 
-Für ein Beispiel nehmen wir  \(\beta = ... \omega_m = ... \)
-Dann sieht unser \(x_{FM}\) so aus:
+Für Besselfunktionen mit negativer Ordnung \(-n\) gilt folgende Beziehung im Vergleich zu den Besselfunktionen mit positiver Ordnung \(n\):
+\[
+    J_{-n} (\beta) = (-1) n \cdot J_n (\beta) = J_n (-\beta)
+    \label{fm:eq:besselid:gerad:ungerade}
+\]
+Zur Illustration wurde in Abbildung \ref{fig:bessel} auch ein Abschnitt von \(J_n (-\beta)\) dargestellt.
+Man erkennt daraus, dass für gerade Ordnungen \(n\) die Besselfunktion erster Art eine gerade Funktion ist 
+(d.h. \(J_n (-\beta) = J_n (\beta))\) und damit \(J_{-n} (\beta) = J_n (\beta)\) gilt.
+Für ungerade Ordnungen n ist die Besselfunktion erster Art eine ugnerade Funktion 
+(d.h. \(J_n (-\beta) = -J_n (\beta)\)), womit gleichzeitig \(J_{-n} (\beta) = -J_n (\beta)\) gilt.
+
+Für ein Beispiel nehmen wir  \(\beta = 1 [rad]\,\,\omega_m = 2 \pi \cdot 20 [Hz] \,\, \omega_c =  2 \pi \cdot 100 [Hz] \)
+Dann sieht unser \(x_{FM}\) i Frequenzbereich wie in Abb. \ref{fig:fm:bessel_fm} aus, durch die Besselkoeffizente bei \(\beta = 1\) kann man die Peaks im Frequenzbereich bestimmen.
+(Hier wurden sie noch mit einem Faktor \(\pi\) skaliert.)
 \begin{figure}
 	\centering
-	
+	\input{papers/fm/Python animation/normal.pgf}
 	\caption{Beispiel eines FM Übertragenen Signal}
-	\label{fig:bessel}
+	\label{fig:fm:bessel_fm}
 \end{figure}
-Nun verändern wir die drei Parameter \(\beta \omega_c \omega_m \) und sehen was sich verändern wird
-\subsubsection{Beta}
+Nun verändern wir die drei Parameter \(\beta \,\omega_c \,\omega_m \) und sehen was sich verändern wird
+
+\subsubsection{$\bm{\beta}$}
 Da \(\beta\) in keiner abhängigkeit zo den anderen parameter steht, und jegliglich die anzahl der nötigen Summanden bestimmt.
-So wird es auch diese Anzahl bestimmen was man hier sehen kann.
-\subsubsection{omega c}
-Dieser ist unser Trägerfrequenz auf die unser Signal aufmoduliert wurde, diese bestimmt die Frequenz in welchem sich das signal befindet
-\subsubsection{omega m}
-Dieser parametr hat unsere bandbreite auf welchem unser Moduliertes Signal \(x_{AM}\) befindet bestimmt, auch im FM wird es wieder die Bandbreite bestimmen, was wir hier sehen.
+So wird es auch diese Anzahl bestimmen dies bei der Abb. \ref{fig:fm:beta_fm} ersichtlich ist.
+\begin{figure}[h]
+	\centering
+	\input{papers/fm/Python animation/beta_2.pgf}
+	\caption{Veränderung durch \(\beta\)}
+	\label{fig:fm:beta_fm}
+\end{figure}
 
-Nun einmal das Modulierte FM signal mit dem \(\beta =  \omega_m =  \) berechnet:
+\subsubsection{$\bm{\omega_c}$}
+Dieser ist unser Trägerfrequenz auf die unser Signal aufmoduliert wurde, diese bestimmt die Frequenz in welchem sich das signal befindet. 
+Ändern wir es von \( 100 [Hz] \) auf \(150 [Hz]\) so sieht man in Abb. \ref{fig:fm:fc_150} wie es sich verschiebt.
+\begin{figure}[h]
+	\centering
+	\input{papers/fm/Python animation/fc_150.pgf}
+	\caption{Veränderung durch \(\omega_c\)}
+	\label{fig:fm:fc_150}
+\end{figure}
+
+\subsubsection{$\bm{\omega_m}$}
+Dieser parametr hat unsere bandbreite auf welchem unser Moduliertes Signal \(x_{AM}\) befindet bestimmt, auch im FM wird es wieder die Bandbreite bestimmen,
+was wir bei der Abb. \ref{fig:fm:fm_10} sehen. 
+In dieser Abbildung wurde die Modulation von \(20 [Hz]\) auf \( 10[Hz]\) verkleinert, und somit auch gestaucht. 
+\begin{figure}[h]
+	\centering
+	\input{papers/fm/Python animation/fm_10.pgf}
+	\caption{Veränderung durch \(\omega_m\)}
+	\label{fig:fm:fm_10}
+\end{figure}
 
 
 
-TODO
-Hier wird beschrieben wie die Bessel Funktion der FM im Frequenzspektrum hilft, wieso diese gebrauch wird und ihre Vorteile.
-\begin{itemize}
-    \item Zuerest einmal die Herleitung von FM zu der Bessel-Funktion
-    \item Im Frequenzspektrum darstellen mit Farben, ersichtlich machen. 
-    \item Parameter tuing der Trägerfrequenz, Modulierende frequenz und Beta. 
-\end{itemize}
-\newpage
-
-
-%\subsection{De finibus bonorum et malorum
-%\label{fm:subsection:bonorum}}
 
 
 
