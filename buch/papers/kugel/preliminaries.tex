@@ -432,42 +432,60 @@ dimensional function using a Fourier series, i.e.
     c_{m,n} = \langle f, E^m_n \rangle.
 \end{equation*}
 
-Let us give a brief excursus on the two-dimensional function expansion just presented. The latter is widely used in digital image processing, 
-which is not hard to believe since an image can essentially be described as a function $f(x,y)$, which maps the value of the two spatial 
-variables $x,y$ to a value between 0 and 255 (in the case of a greyscale image).
-The reasons why we wish to work in the frequency domain are the same as in the case of fourier for signals in one dimension, being an image 
-the two-dimensional extension of the concept of a signal. The interesting fact we wanted to expose concerns the spectrum, which, again, is a 
-complex function. In the chapter \ref{kugel:sec:spectrum} we will discuss this in a little more in depth, but since the spectrum is a complex 
-function, we can essentially divide it into two parts: magnitude (or module) and phase. This division is sometimes confusing, because for signals 
-in one dimension, the most intuitive thing to work with is magnitude.
+Let us give a brief excursus on the two-dimensional function expansion just
+presented. The latter is widely used in digital image processing, which is not
+hard to believe since an image can essentially be described as a function
+$f(x,y)$, which maps the value of the two spatial variables $x,y$ to a value
+between 0 and 255 (in the case of a greyscale image). The reasons why we wish
+to work in the frequency domain are the same as in the case of Fourier for
+signals in one dimension, being an image the two-dimensional extension of the
+concept of a signal. The interesting fact we wanted to expose concerns the
+spectrum, which, again, is a complex function. In section
+\ref{kugel:sec:spectrum} we will discuss this in a little more in depth, but
+since the spectrum is a complex function, we can essentially divide it into
+two parts: magnitude (or module) and phase. This division is sometimes
+confusing, because for signals in one dimension, the most intuitive thing to
+work with is magnitude.
 
-In fact, most of the time when we consider for example a low-pass filter, it comes automatically to mind something that has a very low value for 
-high frequencies and a unit value for low frequencies. Well, this is exactly the rough description in words of what the maginitude plot should 
-look like. I challenge anyone to find someone who describes a first-order low-pass filter as something that does not shift the input signal for 
-low frequencies but that for high ones, creates a phase shift of $\pi/2$ rad/s.
+In fact, most of the time when we consider for example a low-pass filter, it
+comes automatically to mind something that has a very low value for high
+frequencies and a unit value for low frequencies. Well, this is exactly the
+rough description in words of what the maginitude plot should look like. I
+challenge anyone to find someone who describes a first-order low-pass filter
+as something that does not shift the input signal for low frequencies but that
+for high ones, creates a phase shift of $\pi/2$ rad/s.
 
-This reflects very well what is perceived by the human being. If we talk about signals in one dimension, the most intuitive example is audio 
-The human ear, as you probably know, has a logarithmic characteristic. This means that, excluding low frequencies, the human ear cannot 
-perceive the phase change well \footnote{Of course we are considering the phase shift within the components of a single signal. 
-If we are talking about two identical audio signals, reproduced with two out-of-phase stereos, we would probably be able to perceive something.}.
-Thus, most of the information that the eardrum sends to the brain is contained purely in the amplitude (or magnitude).
+This reflects very well what is perceived by the human being. If we talk about
+signals in one dimension, the most intuitive example is audio The human ear
+has a logarithmic characteristic. This means that, excluding low frequencies,
+the human ear cannot perceive the phase change well \footnote{Of course we are
+considering the phase shift within the components of a single signal. If we
+are talking about two identical audio signals, reproduced with two
+out-of-phase stereos, we would probably be able to perceive something.}. Thus,
+most of the information that the eardrum sends to the brain is contained
+purely in the amplitude (or magnitude).
 
 \begin{figure}
   \centering
   \includegraphics[width=.95\textwidth, trim=0 100 0 100, clip]{papers/kugel/figures/python/phase_vs_abs.pdf}
-  \caption
-  {
-    From left to right: greyscale image of Lena Forsén, 
-    reconstructed image using spectrum phase only, reconstructed image using spectrum magnitude only.
+  \caption {
+    From left to right: greyscale image of Lena Forsén, reconstructed image
+    using spectrum phase only, reconstructed image using spectrum magnitude
+    only.
     \label{kugel:fig:2d-fourier-phasevsmagn}
   }
 \end{figure}
 
-With regard to images, on the other hand, the human eye does not work in this way. It is therefore not possible to separate phase from module, 
-maintaining a high level of information.In this case we even have the opposite phenomena: the phase of the Fourier transform of an image contains 
-much more information than the magnitude. This is very inconvenient for humans, as we usually start by studying Fourier for signals in one dimension. 
-So when one starts working with images, the mindset must be changed, since most of the visual information of an image is contained in the entity 
-we know least about, the phase-spectrum. In fig.\ref{kugel:fig:2d-fourier-phasevsmagn}, your eyes can judge for themselves this interesting peculiarity
+With regard to images, on the other hand, the human eye does not work in this
+way. It is therefore not possible to separate phase from module, maintaining a
+high level of information. In this case we even have the opposite phenomena:
+the phase of the Fourier transform of an image contains much more information
+than the magnitude. This is very inconvenient for humans, as we usually start
+by studying Fourier for signals in one dimension. So when one starts working
+with images, the mindset must be changed, since most of the visual information
+of an image is contained in the entity we know least about, the
+phase-spectrum. In figure \ref{kugel:fig:2d-fourier-phasevsmagn}, your eyes
+can judge for themselves this interesting peculiarity
 
 \subsection{Laplacian Operator}
 \label{kugel:sec:preliminaries:laplacian}
