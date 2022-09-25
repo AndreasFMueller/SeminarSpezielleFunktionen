@@ -4,6 +4,11 @@
 % (c) 2020 Prof Dr Andreas Müller, Hochschule Rapperswil
 %
 
+%
+% Modulationsarten
+%
+\section{Modulationsarten
+\label{fm:section:modulation}}
 Durch die Modulation wird ein Nachrichtensignal \(m(t)\) so mit einem
 Trägersignal (z.B.~ein Sinus- oder Rechtecksignal) kombiniert,
 dass es übertragen und später wieder decodiert werden kann.
@@ -24,18 +29,14 @@ Für alle nachfolgenden Erklärungen wird ein sinusförmiges Trägersignal
 benutzt, jedoch kann auch ein Rechtecksignal, welches Digital einfach
 umzusetzten ist, genauso als Trägersignal genutzt werden \cite{fm:NAT}.
 
-%
-% Modulationsarten
-%
-\section{Modulationsarten
-\label{fm:section:modulation}}
+\subsection{Mathematische Beschreibung}
 Wir schreiben
 das sinusförmige Trägersignal im Folgenden in der Form
 \[
 x_c(t) = A_c \cdot \cos(\omega_c(t)+\varphi).
 \]
-Darin kann die Amplitude \(A_c\) und Phase \(\varphi\) vom
-Nachrichtensignal \(m(t)\) verändert werden.
+Darin kann die Amplitude \(A_c\) und Phase \(\varphi\) des
+Nachrichtensignals \(m(t)\) verändert werden.
 Der Parameter \(\omega_c\), die Trägerkreisfrequenz, bzw.~die
 Trägerfrequenz \(f_c = \frac{\omega_c}{2\pi}\)
 steht nicht für die Modulation zur Verfügung, statt dessen kann durch
@@ -62,21 +63,21 @@ Amplitudenmodulation.
 
 \begin{figure}
     \centering
-	\input{papers/fm/Python animation/AM.pgf}
+	\includegraphics{papers/fm/images/am.pdf}
 	\caption{Modulationsart Amplitudenmodulation mit dem Parameter \(A_c\)}
 	\label{fig:fm:AM}
 \end{figure}
 
 \begin{figure}
     \centering
-	\input{papers/fm/Python animation/PM.pgf}
+	\includegraphics{papers/fm/images/pm.pdf}
 	\caption{Modulationsart Phasenmodulation mit dem Parameter \(\varphi\)}
 	\label{fig:fm:PM}
 \end{figure}
 
 \begin{figure}
     \centering
-	\input{papers/fm/Python animation/FM.pgf}
+	\includegraphics{papers/fm/images/fm.pdf}
 	\caption{Modulationsart Freguenzmodulation mit dem Parameter \(\omega_i\)}
 	\label{fig:fm:FM}
 \end{figure}

@@ -7,30 +7,60 @@
 \rhead{Amplitudenmodulation}
 \begin{figure}
 	\centering
-	\input{papers/fm/Python animation/AM_normal.pgf}
+	\includegraphics{papers/fm/images/amnormal.pdf}
+	%\input{papers/fm/Python animation/AM_normal.pgf}
 	\caption{modulierende Signal \(m(t)\)}
-	\label{fig:}
+	\label{fig:modulierend}
 \end{figure}
-Das Ziel ist FM zu verstehen doch dazu wird zuerst AM erklärt,
-welches einwenig einfacher zu verstehen ist und erst dann übertragen
-wir die Ideen in FM.
-Nun zur Amplitudenmodulation verwenden wir das bevorzugte Trägersignal
+Das Ziel ist zwar, Frequenzmodulation zu verstehen, doch dazu wird
+zuerst Amplitudenmodulation erklärt, welches einwenig einfacher zu
+verstehen ist.
+Danach werden die Ideen übertragen auf Frequenzmodulation.
+
+Bei Amplitudenmodulation verwenden wir das Trägersignal
 \[
-    x_c(t) = A_c \cdot \cos(\omega_ct).
+    x_c(t) = A_c \cdot \cos(\omega_ct)
 \]
-Dabei entseht eine umhüllende Kurve die unserem ursprünglichen Nachrichtensignal \(m(t)\) entspricht.
+und modulieren die Amplitude \(A_c\):
 \[
-    x_{AM}(t) = m(t) \cdot \cos(\omega_ct).
+    x_{\text{AM}}(t) = m(t) \cdot \cos(\omega_ct).
 \]
-Dies bringt den grossen Vorteil das, dass modulierend Signal sämtliche Anteile im Frequenzspektrum in Anspruch nimmt 
-und das Trägersignal nur zwei komplexe Schwingungen besitzt. 
-Dies sieht man besonders in der Eulerischen Formel
-\[
-    x_{AM}(t) = \frac{A_c}{2} \cdot e^{+j\omega_ct}\;+\;\frac{A_c}{2} \cdot e^{-j\omega_ct}.
-    \label{fm:eq:AM:euler}
-\]
-Dabei ist die negative Frequenz der zweiten komplexen Schwingung zwingend erforderlich, damit in der Summe immer ein reellwertiges Trägersignal ergibt.
-Nun wird der Parameter \(A_c\) durch das  Modulierende Signal \(m(t)\) ersetzt, wobei so \(m(t) \leqslant |1|\) normiert wurde.
+Das modulierte Signal hat eine umhüllende Kurve, die unserem
+ursprünglichen Nachrichtensignal \(m(t)\) entspricht
+(Abbildung~\ref{fig:modulierend}).
+
+Um das Frequenzspektrum des modulierten Signals zu verstehen
+beachten wir, dass das Trägersignal nur zwei komplexe Schwingungen
+besitzt. 
+Mit der eulerschen Formel
+\begin{equation}
+e^{jt}
+=
+\cos t+j\sin t
+\qquad\Rightarrow\qquad
+\cos(t) = \frac12 (e^{jt} + e^{-jt})
+%x_{AM}(t)
+%=
+%\frac{A_c}{2} \cdot e^{+j\omega_ct}+\frac{A_c}{2} \cdot e^{-j\omega_ct}.
+\label{fm:eq:AM:euler}
+\end{equation}
+kann man dank
+\begin{align*}
+e^{j\omega_c t} \cos(\omega_m t)
+&=
+e^{j\omega_c t}\frac12(e^{j\omega_m t} + e^{-j\omega_m t})
+\\
+&=
+\frac12
+e^{j(\omega_c+\omega_m) t}
++
+\frac12
+e^{j(\omega_c-\omega_m) t}
+\end{align*}
+einsehen, dass das modulierte Signal für jeden Frequenzanteil
+mit Frequenz $\omega_m$ im modulierenden Signal
+die zwei Frequenzen $\omega_c-\omega_m$ und
+$\omega_c+\omega_m$ im modulierten Signal enthält.
 
 \subsection{Frequenzspektrum}
 Das Frequenzspektrum ist eine Darstellung von einem Signal im Frequenzbereich, das heisst man erkennt welche Frequenzen in einem Signal vorhanden sind.
@@ -44,7 +74,8 @@ In Abb \ref{fig:AM_frequency} sieht man den \textcolor{blue}{Träger $x_c$} und 
 (Wobei die quadrierte Magnitude $X_c$ mit dem Faktor $\pi$ skaliert wurde.)
 \begin{figure}
 	\centering
-	\input{papers/fm/Python animation/AM_frequency.pgf}
+	\includegraphics{papers/fm/images/amfrequency.pdf}
+	%\input{papers/fm/Python animation/AM_frequency.pgf}
 	\caption{Amplitudenmodulation im Frequenzspektrum}
 	\label{fig:AM_frequency}
 \end{figure}
