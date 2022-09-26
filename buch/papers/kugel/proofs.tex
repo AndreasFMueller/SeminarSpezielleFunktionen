@@ -301,88 +301,77 @@ Here, we will give the long and tedious proofs we skipped earlier.
     + \bigl[ n(n + 1) - m(m-1) - 2m \bigr] \partial^m Z(z).
     \label{kugel:eqn:legendre-leibniz}
   \end{align}
-  % old notation
-  % \begin{align}
-  %   (1-z^2)\frac{d^{m+2}Z}{dz^{m+2}}
-  %     &+ m \frac{d}{dz}(1-z^2)\frac{d^{m+1}Z}{dz^{m+1}}
-  %     + \frac{m(m-1)}{2}\frac{d^{2}}{dz^{2}}(1-z^2)\frac{d^{m}Z}{dz^{m}}
-  %     \nonumber \\
-  %     &\qquad \qquad \qquad \qquad \qquad
-  %     + n(n+1)\frac{d^m{}Z}{dz^{m}}
-  %     -2\left(
-  %       z\frac{d^{m+1}Z}{dz^{m+1}}
-  %       + m\frac{d}{dz}z\frac{d^{m}Z}{dz^{m}}
-  %     \right)
-  %     \nonumber \\
-  %   &= (1-z^2)\frac{d^{m+2}Z}{dz^{m+2}}
-  %     -2z(m+1)\frac{d^{m+1}Z}{dz^{m+1}}
-  %     +(n(n+1)-m(m-1)-2m)\frac{d^{m}Z}{dz^{m}}
-  %     =0. \label{eq:auz_3}
-  % \end{align}
   Now, we can define a new function
   \begin{equation*}
     Z^m(z) = (1-z^2)^{m/2} \partial^m Z(z)
-    \iff
+    \quad \iff \quad
     \partial^m Z(z) = (1-z^2)^{-m/2} Z^m(z),
   \end{equation*}
   and we claim that it is a solution to the associated Legendre equation. To
   show that, we insert it in \eqref{kugel:eqn:legendre-leibniz}, which gives
-  \begin{align*}
+  \begin{align}
     0 &= (1-z^2) \partial^2 \bigl[ (1-z^2)^{-m/2} Z^m(z) \bigr]
-    - 2z\partial \bigl[ (1-z^2)^{-m/2} Z^m(z) \bigr]
-    \\
+    - 2z\partial \bigl[ (1-z^2)^{-m/2} Z^m(z) \bigr] \nonumber \\
     &\qquad + \bigl[ n(n + 1) - m(m-1) - 2m \bigr] (1-z^2)^{-m/2} Z^m(z).
-  \end{align*}
+    \label{kugel:eqn:legendre-zm}
+  \end{align}
   We will analyze the messy right hand side one term at the time. With a bit of
   effort one can show that
   \begin{align*}
     \partial \bigl[ (1-z^2)^{-m/2} Z^m(z) \bigr]
-      &=
+      &= \partial (1 - z^2)^{-m/2} Z^m(z) + (1 - z^2)^{-m/2} \partial Z^m(z) \\
+      &= m(1 - z^2)^{-m/2 -1} Z^m(z) + (1 - z^2)^{-m/2} \partial Z^m(z),
   \end{align*}
-  and differentiating again
+  differentiating again going through quite a bit of algebra yields
   \begin{align*}
     \partial^2 \bigl[ (1-z^2)^{-m/2} Z^m(z) \bigr]
+      &= \partial \bigl[ m(1-z^2)^{-(m/2)-1} Z^m(z) \bigr]
+        + \partial \bigl[ (1-z^2)^{-m/2} \partial Z^m(z) \bigr] \\
+      &= \partial \bigl[ m(1-z^2)^{-(m/2)} Z^m(z)
+        + m(1-z^2)^{-(m/2)-1} \partial Z^m(z) \bigr] \\
+        &\qquad + \bigl[ m(1-z^2)^{-(m/2)-1} \partial Z^m(z)
+        + (1-z^2)^{-m/2} \partial^2 Z^m(z) \bigl] \\
       &= (1-z^2)^{-m/2-1} \partial^2 Z^m(z)
-        + 2mz(1-z^2)^{-m/2 -1} \partial Z^m(z) \\
-        &\qquad + m (1-z^2)^{-m/2-1} Z^m(z) 
+        + 2mz(1-z^2)^{-(m/2) -1} \partial Z^m(z) \\
+        &\qquad + m (1-z^2)^{-(m/2)-1} Z^m(z) 
         + m z(m+2)(1-z^2)^{-m/2} Z^m(z).
   \end{align*}
-  The goal now is to compute the two terms 
+  Substituting both derivatives in \eqref{kugel:eqn:legendre-zm} we obtain
   \begin{align*}
-    \frac{d^2}{dx^2}[\hat{y}_m(1-x^2)^{-\frac{m}{2}}] &=  \frac{d^2\hat{y}_m}{dx^2} (1-x^2)^{-\frac{m}{2}} + \frac{d\hat{y}_m}{dx}\frac{m}{2}(1-x^2)^{-\frac{m}{2}-1}2x \\
-    &+ m\left( \frac{d\hat{y}_m}{dx} x (1-x^2)^{-\frac{m}{2}-1} + \hat{y}_m (1-x^2)^{-\frac{m}{2}-1} - \hat{y}_m x (-\frac{m}{2}-1)(1-x^2)^{-\frac{m}{2}} 2x\right) \\
-    &= \frac{d^2\hat{y}_m}{dx^2} (1-x^2)^{-\frac{m}{2}} + \frac{d\hat{y}_m}{dx}mx (1-x^2)^{-\frac{m}{2}-1} + m\frac{d\hat{y}_m}{dx}x (1-x^2)^{-\frac{m}{2}-1}\\
-    &+ m\hat{y}_m  (1-x^2)^{-\frac{m}{2}-1} + m\hat{y}_m x^2(m+2)(1-x^2)^{-\frac{m}{2}-2}
+    0 = (1-z)^2 \bigg[&
+      (1-z^2)^{-m/2-1} \partial^2 Z^m(z)
+        + 2mz(1-z^2)^{-(m/2) -1} \partial Z^m(z)
+        + m (1-z^2)^{-(m/2)-1} Z^m(z) \\
+        &+ mz(m+2)(1-z^2)^{-m/2} Z^m(z)
+    \bigg] -2z \left[
+      m(1 - z^2)^{-m/2 -1} Z^m(z)
+      + (1 - z^2)^{-m/2} \partial Z^m(z)
+    \right] \\
+    &+ \bigl[ n(n + 1) - m(m-1) - 2m \bigr] (1-z^2)^{-m/2} Z^m(z).
   \end{align*}
-  and
+  Collecting terms and dividing by $(1-z^2)^{m/2}$, this can be simplified to
   \begin{align*}
-    \frac{d}{dx}[\hat{y}_m(1-x^2)^{-\frac{m}{2}}] &= \frac{d\hat{y}_m}{dx}(1-x^2)^{-\frac{m}{2}} + \hat{y}_m\frac{m}{2}(1-x^2)^{-\frac{m}{2}-1}2x \\
-    &= \frac{d\hat{y}_m}{dx}(1-x^2)^{-\frac{m}{2}} + \hat{y}_mm(1-x^2)^{-\frac{m}{2}-1}x,
+    (1-z)^2 \partial^2 Z^m(z) &+ \left[
+      2mz - 2(m+1)z
+    \right] \partial Z^m(z) \\
+    &+ \left[
+      m + \frac{m(m+2)}{1-z^2} z^2 - \frac{m(m+1)}{1-z^2} mz^2
+      + n(n+1) - m(m+1)
+    \right] Z^m(z).
   \end{align*}
-  to use them in Eq.\eqref{eq:2st_subs}, obtaining
-  \begin{align*}
-    (1-x^2)\biggl[\frac{d^2\hat{y}_m}{dx^2} (1-x^2)^{-\frac{m}{2}} &+ \frac{d\hat{y}_m}{dx}mx (1-x^2)^{-\frac{m}{2}-1} + m\frac{d\hat{y}_m}{dx}x (1-x^2)^{-\frac{m}{2}-1} \\ 
-    &+ m\hat{y}_m  (1-x^2)^{-\frac{m}{2}-1} + m\hat{y}_m x^2(m+2)(1-x^2)^{-\frac{m}{2}-2}\biggr] \\
-    &-2(m+1)x\left[  \frac{d\hat{y}_m}{dx}(1-x^2)^{-\frac{m}{2}} + \hat{y}_mm(1-x^2)^{-\frac{m}{2}-1}x \right] \\
-    &+ (n(n+1)-m(m+1))\hat{y}_m(1-x^2)^{-\frac{m}{2}}=0.\\
-  \end{align*}
-  We can now divide by $(1-x^2)^{-\frac{m}{2}}$, obtaining
-  \begin{align*}
-    (1-x^2)\biggl[\frac{d^2\hat{y}_m}{dx^2} &+ \frac{d\hat{y}_m}{dx}mx (1-x^2)^{-1} + m\frac{d\hat{y}_m}{dx}x (1-x^2)^{-1} + m\hat{y}_m  (1-x^2)^{-1} + m\hat{y}_m x^2(m+2)(1-x^2)^{-2}\biggr] \\
-    &-2(m+1)x\left[  \frac{d\hat{y}_m}{dx} + \hat{y}_mm(1-x^2)^{-1}x \right] + (n(n+1)-m(m+1))\hat{y}_m\\
-    &= \frac{d^2\hat{y}_m}{dx^2} + \frac{d\hat{y}_m}{dx}mx + m\frac{d\hat{y}_m}{dx}x + m\hat{y}_m + m\hat{y}_m x^2(m+2)(1-x^2)^{-1} \\
-    &-2(m+1)x\left[  \frac{d\hat{y}_m}{dx} + \hat{y}_mm(1-x^2)^{-1}x \right] + (n(n+1)-m(m+1))\hat{y}_m\\
-  \end{align*}
-  and collecting some terms
+  Finally, simplifying the factors, which are $-2z$ for $\partial Z^m(z)$ and
   \begin{equation*}
-    (1-x^2)\frac{d^2\hat{y}_m}{dx^2} - 2x\frac{d\hat{y}_m}{dx} + \left( -x^2 \frac{m^2}{1-x^2} + m+n(n+1)-m(m+1)\right)\hat{y}_m=0.
+    n(n+1) - \frac{m^2}{1-z^2},
+    \qquad \text{for} \quad Z^m(z),
   \end{equation*}
-  Showing that 
-  \begin{align*}
-    -x^2 \frac{m^2}{1-x^2} + m+n(n+1)-m(m+1) &= n(n+1)- m^2 -x^2 \frac{m^2}{1-x^2} \\
-    &= n(n+1)- \frac{m}{1-x^2}
-  \end{align*}
-  implies $\hat{y}_m(x)$ being a solution of Eq.\eqref{kugel:eq:associated_leg_eq}
+  we come back to the associated Legendre equation
+  \begin{equation*}
+    (1 - z^2) \partial^2 Z^m
+    - 2z \partial Z^m
+    + \left( n(n + 1) - \frac{m^2}{1 - z^2} \right) Z^m(z) = 0,
+  \end{equation*}
+  which implies that $Z^m(z)$ is a solution and the proof is complete.
+  \qedhere
 \end{proof}
 
 \subsection*{Bonus proof}
