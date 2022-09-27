@@ -134,9 +134,9 @@ Here, we will give the long and tedious proofs we skipped earlier.
       Suppose that $n = n_0$ is an even integer. Then in the red part, for some
       value of $k=k_0$, it will happen that
       \begin{equation*}
-        n_0-(2k_0-2)=0
-        \iff
-        n_0 = 2 k_0 - 2.
+        n_0 = 2 k_0 - 2
+        \quad \iff \quad
+        n_0-(2k_0-2)=0.
       \end{equation*}
       From that point on, given the recursive nature of
       \eqref{kugel:eqn:coeff-recursion}, all the subsequent coefficients will
@@ -146,9 +146,9 @@ Here, we will give the long and tedious proofs we skipped earlier.
       Suppose that $n=n_0$ is an odd integer. Then as before, in the blue part a
       specific value of $k=k_0$ will follow the following relation:
       \begin{equation*}
-        n_0-(2k_0-1)=0
-        \iff
-        n_0 = 2k_0 - 1.
+        n_0 = 2k_0 - 1
+        \quad \iff \quad
+        n_0-(2k_0-1)=0.
       \end{equation*}
       And from that point on, for the same reason as before, all the subsequent
       coefficients will also be 0, making the sum finite.
@@ -266,8 +266,8 @@ Here, we will give the long and tedious proofs we skipped earlier.
   Since the notation is becoming cumbersome, we will define a new notation for
   derivatives:
   \begin{equation*}
-    \frac{d}{dz} = \partial, \quad \text{and also} \quad
-    \frac{d^k}{dz^k} = \partial^k.
+    \frac{d}{dz} := \partial, \quad \text{and also} \quad
+    \frac{d^k}{dz^k} := \partial^k.
   \end{equation*}
   \emph{Leibniz's theorem} states, that if we want to differentiate $m$ times a
   multiplication of two functions, we can use the binomial coefficients to build
@@ -303,7 +303,7 @@ Here, we will give the long and tedious proofs we skipped earlier.
   \end{align}
   Now, we can define a new function
   \begin{equation*}
-    Z^m(z) = (1-z^2)^{m/2} \partial^m Z(z)
+    Z^m(z) := (1-z^2)^{m/2} \partial^m Z(z)
     \quad \iff \quad
     \partial^m Z(z) = (1-z^2)^{-m/2} Z^m(z),
   \end{equation*}
@@ -375,7 +375,7 @@ Here, we will give the long and tedious proofs we skipped earlier.
 \end{proof}
 
 \subsection*{Bonus proof}
-\begin{theorem}
+\begin{theorem}[Cattaneo-Pross]
   Spherical harmonics are one of the most beautiful and powerful sets of
   functions ever discovered.
 \end{theorem}

@@ -224,29 +224,31 @@ take a look there.}.
 \subsubsection{Geodesy and History}
 
 The term \emph{geodesy} is the name given to the science that is responsible for
-answering questions about figure and gravity field of the Earth. During this
-subsection we will also encounter the gravitational force. The relationship
+answering questions about figure and gravity field of the earth. During this
+subsection we will also encounter the \emph{gravitational force}. The relationship
 between gravitational force and gravity field (or gravitational field) simply
 lies in what we consider to be the reference. The gravitational force only makes
 sense if we consider two masses, and the gravitational field is the
 gravitational force experienced in a system that has a unit point mass as
 reference. For the electrical engineer, this is analogous to the relationship
-between the electric field and the Coulomb force.
+between the electric field and the \emph{Coulomb force}.
 
-Geodesy started with various scientists, including our beloved Newton, that
+Geodesy started with various scientists, including Newton, that
 recognised that the earth could not be a perfect sphere, because of its
 rotational movement. To prove this claim as, the scientific method teaches us,
 that observations had to be made, which translates into taking measurements on a
 planetary scale. As one can imagine, with the technology of the time, this was
 quite a difficult task. Around 1740, the French Academy of Sciences sent two
-expeditions with the aim of having two reference points, one near the equator
-and the other at the north pole. The idea was then to trace a meridian
-arc\footnote{The meridian arc is the arc that connects two point on the Earth
-with the same longitude.} between them. With the latter they were able to
-measure the deviation of the Earth's shape relative to a sphere. The data
-roughly proved that Newton's claims were indeed well-founded. In the following
-century there were many more attempts to achieve greater precision. Nowadays,
-the geometric structure of our planet can be determined with GPS and other
+expeditions with the aim of having two reference points at the same longitude, 
+respectively one near the equator and the second at the north pole. 
+The idea was then to trace a meridian arc\footnote{The meridian arc is 
+the arc that connects two point on the Earth with the same longitude.}
+between them. With the latter they were able to measure the deviation 
+of the Earth's shape relative to a sphere. The data roughly proved that 
+Newton's claims (et al.) were indeed well-founded. 
+
+In the following century there were many more attempts to achieve greater precision. 
+Nowadays, the geometric structure of our planet can be determined with GPS and other
 clever methods involving satellites with an accuracy of less than centimetres.
 
 Today, knowledge of the gravitational field of the earth is something we need to
@@ -272,7 +274,7 @@ object 2.} applied on $m_2$ is
     ( \hat{\kvec{r}}_2-\hat{\kvec{r}}_1 ).\
     \label{kugel:eqn:universal-grav}
 \end{equation}
-We will use a convention used by some physicists': bold letters are used for
+We will use a convention used by some physicists: bold letters are used for
 vectors, normal letters for their length, so $r = |\kvec{r}|$, while the ``hat''
 indicates a unit vector, i.e. $ \hat{\kvec{r}} = \kvec{r}/r$.  Now, by fixing
 one of the two masses as reference $m$ (dividing by the other mass), and
@@ -290,27 +292,25 @@ small pieces. We can imagine $N$ small cubes having sides $\Delta_{x_i},
 \Delta_{y_i}, \Delta_{z_i}$, each with its own density $\rho_i$.  So, to get the
 resultant gravitational field, we have to ``sum up'' every single small
 contribution of these pieces, i.e.
-\begin{equation}
-  \label{kugel:eqn:discrete-grav}
+\begin{align}
   \kvec{F}(\kvec{r})
   = -\sum_{i=0}^N \frac{G m_i}{|\, \kvec{r}-\kvec{r}_i \,|^2}
     (\hat{\kvec{r}}-\hat{\kvec{r}}_i)
-  = -G \sum_{i=0}^N \frac{\rho_i V_i}{|\, \kvec{r}-\kvec{r}_i \,|^2}
+  &= -G \sum_{i=0}^N \frac{\rho_i V_i}{|\, \kvec{r}-\kvec{r}_i \,|^2}
     (\hat{\kvec{r}}-\hat{\kvec{r}}_i) \nonumber \\
-  = -G \sum_{i=0}^N \frac{
+  &= -G \sum_{i=0}^N \frac{
       \rho_i \Delta_{x_i}\Delta_{y_i}\Delta_{z_i}
     }{|\, \kvec{r}-\kvec{r}_i \,|^2}
-    (\hat{\kvec{r}}-\hat{\kvec{r}}_i).
-\end{equation}
-We can now consider the continuous case by replacing the sum with an integral,
+    (\hat{\kvec{r}}-\hat{\kvec{r}}_i). \label{kugel:eqn:discrete-grav}
+\end{align}
+We can now consider the degenerate case of eq.\eqref{kugel:eqn:discrete-grav} by replacing the sum with an integral,
 that is, we let $N\to \infty$ and $\Delta_{x_i}\Delta_{y_i}\Delta_{z_i}\to
-dxdydz$. In mathematical terms, this is not the most clean and rigorous way to
-do it, but at least it can give an intuition. The continuous version of
-\eqref{kugel:eqn:discrete-grav} can be written as
+dx \, dy \, dz$. In mathematical terms, this is not the most clean and rigorous way to
+do it, but at least it can give an intuition. The continuous version can then be written as 
 \begin{equation}
   \kvec{F}(\kvec{r}) 
     = -G \iiint_{V}
-      \frac{\rho(\kvec{s})\, dxdydz}{|\, \kvec{r} - \kvec{s} \,|^2}
+      \frac{\rho(\kvec{s})\, dx \, dy \, dz}{|\, \kvec{r} - \kvec{s} \,|^2}
       (\kvec{\hat{r}} - \kvec{\hat{s}})
     = -G \int_{V}
       \frac{\kvec{r}-\kvec{s}}{|\, \kvec{r}-\kvec{s} \,|^3}
@@ -386,13 +386,13 @@ eigenvalue problem of the Laplacian.
 
 \subsubsection{GOCE Mission}
 
-To model the gravitational field of Earth the European Space Agency (ESA) sent
-out many satellite in space to make measurements, the latest being the Gravity
-Field and Steady-State Ocean Circulation Explorer (GOCE) mission in 2009.
+To model the gravitational field of Earth the European Space Agency (\emph{ESA}) sent
+out many satellites in the space to make measurements, the latest being the Gravity
+Field and Steady-State Ocean Circulation Explorer (\emph{GOCE}) mission in 2009.
 
 On a practical level, the satellite measurements are basically sampling the
-gravitation potential around the globe, collecting a bunch of discrete data
-points. This is done by a piece of equipment called gradiometer, and in the
+gravitational potential around the globe, collecting a bunch of discrete data
+points. This is done by a piece of equipment called \emph{gradiometer}, and in the
 specific case of the GOCE mission, there were multiple gradiometers installed at
 each extreme of the satellite. This was done such that on each of the three axes
 of the satellite there were at least two measurement, which were then used to
@@ -408,7 +408,7 @@ $\Delta z$ apart , and the values were used to compute
 In the last step we used the fact from physics that the acceleration is the
 derivative of the potential.  The same was also applied in other directions to
 approximate every possible partial derivative, to get what is known in the
-literature as the Marussi tensor (essentially the Hessian matrix of $V$)
+literature as the \emph{Marussi tensor} (essentially the \emph{Hessian matrix} of $V$)
 \begin{equation*}
   \mathbf{M}(\kvec{r}) = \begin{bmatrix}
     \dfrac{\partial^2 V}{\partial x^2} &
@@ -424,7 +424,7 @@ literature as the Marussi tensor (essentially the Hessian matrix of $V$)
 \end{equation*}
 
 The location (longitude, latitude and altitude) of each measurement of
-$\mathbf{M}$ was known by using global positioning systems (such as GPS) and by
+$\mathbf{M}$ was known by using global positioning systems (such as \emph{GPS}) and by
 making clever use of the knowledge of the relative distance to other satellites.
 
 Thus, in its essence (we are simplifying here) to model (interpolate) the
