@@ -1,0 +1,24 @@
+%
+% amfrequency.tex -- Amplitudenmodulation
+%
+% (c) 2021 Prof Dr Andreas Müller, OST Ostschweizer Fachhochschule
+%
+\documentclass[tikz]{standalone}
+\usepackage{amsmath}
+\usepackage{times}
+\usepackage{txfonts}
+\usepackage{pgfplots}
+\usepackage{csvsimple}
+\usetikzlibrary{arrows,intersections,math}
+\begin{document}
+\def\skala{0.8}
+\begin{tikzpicture}[>=latex,thick,scale=\skala]
+
+\begin{scope}
+\clip (-7.7,-5.5) rectangle (8.0,4.8);
+\node (0,0) {\input{AM_frequency.pgf}};
+\end{scope}
+
+\end{tikzpicture}
+\end{document}
+

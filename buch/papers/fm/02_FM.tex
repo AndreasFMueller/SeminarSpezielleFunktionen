@@ -3,9 +3,9 @@
 %
 % (c) 2020 Prof Dr Andreas Müller, Hochschule Rapperswil
 %
-\section{FM- Frequenzmodulation
+\subsection{FM --- Frequenzmodulation
 \label{fm:section:teil1}}
-\rhead{FM}
+\rhead{Frequenzmodulation}
 (skript Nat ab Seite 60)
 Als weiterer Parameter, um ein sinusförmiges Trägersignal \(x_c = A_c \cdot \cos(\omega_c t + \varphi)\) zu modulieren,
 bietet sich neben der Amplitude \(A_c\) auch der Phasenwinkel \(\varphi\) oder die momentane Frequenzabweichung \(\frac{d\varphi}{dt}\) an.
@@ -98,13 +98,17 @@ Für diesen allgemeinen Modulationsgrad \(\beta\) muss dann aber jeweils die For
 
 \subsection{Frequenzspektrum}
 
-Im die Foriertransformation zu berechnen muss man dieses Integral lösen, wen \( m(t) = \beta\sin(\omega_mt) \) ist ind \(A_c = 1\)
+Um die Foriertransformation zu berechnen muss man dieses Integral lösen,
+wen \( m(t) = \beta\sin(\omega_mt) \) ist ind \(A_c = 1\)
 \[
     \textrm{X}_{FM} = \int^\infty_{-\infty} \cos (\omega_c \tau +\beta\sin(\omega_m\tau)) \exp^{-2\pi i s \tau}d\tau
 \]
 jedoch einfacher ist es wenn man mit Hilfe der Besselfunktion den einen Term \(\cos(\omega_c t+\beta\sin(\omega_mt)),\) wandelt,  erhält man
 \[
-    \int^\infty_{-\infty} \bigl(\sum_{k= -\infty}^\infty J_{k}(\beta) \cos((\omega_c+k\omega_m)t).\bigr) \exp^{-2\pi i s \tau}d\tau
+    \int^\infty_{-\infty}
+\biggl(
+\sum_{k= -\infty}^\infty J_{k}(\beta) \cos((\omega_c+k\omega_m)t)
+\biggr) \exp^{-2\pi i s \tau}d\tau
 \]
 Dieses zu transformien ist einfacher da es wieder Summen sind.
 Nochmals zur erinnerung ergibt ein \( \cos() \) immer zwei \(e\)-Funktionen oder zwei Dirac Impulse im Frequenzbereich
