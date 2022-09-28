@@ -36,12 +36,12 @@ if __name__ == '__main__':
 
     fig, axs = plt.subplots(ncols=3)
     
-    fig.subplots_adjust(top=0.984,
-                        bottom=0.016,
-                        left=0.01, 
-                        right=0.992,
-                        hspace=0.2,
-                        wspace=0.032)
+    fig.subplots_adjust(top    = 0.984,
+                        bottom = 0.016,
+                        left   = 0.01, 
+                        right  = 0.992,
+                        hspace = 0.2,
+                        wspace = 0.032)
 
     axs[0].imshow(img, cmap='viridis')
     axs[0].set_xticks([])

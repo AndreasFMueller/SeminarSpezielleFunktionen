@@ -30,7 +30,7 @@ of generalization that mathematics offers us.
 
 From section \ref{kugel:sec:preliminaries:laplacian}, we know that the spherical
 Laplacian in the spherical coordinate system (shown in Figure
-\ref{kugel:fig:spherical-coordinates}) is is defined as
+\ref{kugel:fig:spherical-coordinates}) is defined as
 \begin{equation*}
     \sphlaplacian :=
       \frac{1}{r^2} \frac{\partial}{\partial r} \left(
@@ -149,7 +149,7 @@ variable $m^2$, the separation constant, yields:
   = -\frac{1}{\Phi(\varphi)} \frac{d^2\Phi(\varphi)}{d\varphi^2}
   = m^2,
 \end{equation*}
-which is equivalent to the following system of 2 first order ordinary
+which is equivalent to the following system of two first order ordinary
 differential equations (ODEs):
 \begin{subequations}
   \begin{gather}
@@ -223,7 +223,7 @@ agrees with our sketch. Thus, \eqref{kugel:eqn:ode-theta} becomes
 \end{align*}
 By making two final cosmetic substitutions, namely $Z(z) = \Theta(\cos^{-1}z)$
 and $\lambda = n(n+1)$, we obtain what is known in the literature as the
-\emph{associated Legendre equation of order $m$}:
+\emph{associated Legendre equation} of order $m$:
 \nocite{olver_introduction_2013}
 \begin{equation} \label{kugel:eqn:associated-legendre}
   (1 - z^2)\frac{d^2 Z}{dz^2}
@@ -251,7 +251,7 @@ reduced problem when $m = 0$ is known as the \emph{Legendre equation}:
 \end{equation}
 
 The Legendre equation is a second order differential equation, and therefore it
-has 2 independent solutions, which are known as \emph{Legendre functions} of the
+has two independent solutions, which are known as \emph{Legendre functions} of the
 first and second kind. For the scope of this text we will only derive a special
 case of the former that is known known as the \emph{Legendre polynomials}, since
 we only need a solution between $-1$ and $1$.
@@ -390,10 +390,15 @@ $Y^m_n(\vartheta, \varphi)$.
     % $\pi/2$''.
   }
 \end{figure}
+After this painful derivation, you would at least want to know how they look. 
+Well, the figure \ref{kugel:fig:spherical-harmonics} serves precisely this 
+purpose. 
 
-\kugeltodo{Describe how they look like with fig.
-\ref{kugel:fig:spherical-harmonics}}
-
+The triangular style we used to represent them is quite evident. This arises 
+naturally from the restriction we imposed on the indices $m,n$. Furthermore, 
+because $Y^m_n$ are complex functions and we only have three dimensions 
+available (visually), we decided to use the real part 
+to show them, i.e. $\Re\left\{Y^m_n\right\}$.
 \subsection{Orthogonality of $P_n$, $P^m_n$ and $Y^m_n$}
 \label{kugel:sec:construction:orthogonality}
 
@@ -492,7 +497,7 @@ will be our starting point.
   By dividing by the constant in front of the integral we have our first result.
   Now we need to show that when $n = {n'}$ the integral equals $2 / (2n + 1)$.
   In order to achieve this, we will use what has now become our secret weapon: 
-  integration by parts. We can start by rewriting the integral in Lemma \label{kugel:thm:legendre-poly-ortho} for the case $n=n'$.
+  integration by parts. We can start by rewriting the integral in the Lemma \label{kugel:thm:legendre-poly-ortho} for the case $n=n'$.
   According to Rodrigues formula, we have
   \begin{equation*}
     \int_{-1}^1 P_n(z)^2 dz = \left( \frac{1}{2^n n!} \right)^2 \int_{-1}^1 \frac{d^n}{dz^n} (z^2-1)^n \frac{d^n}{dz^n} (z^2-1)^n dz.
@@ -502,10 +507,11 @@ will be our starting point.
     \int_{-1}^1 \frac{d^n}{dz^n} (z^2-1)^n \frac{d^n}{dz^n} (z^2-1)^n dz &= 
     \left[
       \frac{d^n}{dz^n} (z^2-1)^n \frac{d^{n-1}}{dz^{n-1}} (z^2-1)^n
-    \right] \Bigg|_{-1}^1 - \int_{-1}^1 \frac{d^{n+1}}{dz^{n+1}} (z^2-1)^n \frac{d^{n-1}}{dz^{n-1}} (z^2-1)^n dz \\
+    \right] \Bigg|_{-1}^1 \\
+    &- \int_{-1}^1 \frac{d^{n+1}}{dz^{n+1}} (z^2-1)^n \frac{d^{n-1}}{dz^{n-1}} (z^2-1)^n dz \\
     &= - \int_{-1}^1 \frac{d^{n+1}}{dz^{n+1}} (z^2-1)^n \frac{d^{n-1}}{dz^{n-1}} (z^2-1)^n dz =: I_n.
   \end{align*}
-  The reason why the first boundary-term vanish is that we are dealing with a polynomial that has $n$ zeros at both boundary points. 
+  The reason why the first boundary-term vanishes is that we are dealing with a polynomial that has $n$ zeros at both boundary points. 
   By differentiating the latter $n-1$ times we will let these survive, making the whole term equal to zero. If we proceed with this process,
   the following equation can be inductively (and easily) derived
   \begin{equation*}
@@ -606,7 +612,7 @@ product:
   \end{align}
 \end{theorem}
 \begin{proof}
-  We will begin by doing a bit of algebraic maipulaiton\footnote{
+  We will begin by doing a bit of algebraic manipulation \footnote{
     Essentially, what we just did was to turn
     \eqref{kugel:eq:spherical-harmonics-inner-prod} in this form:
     \(
@@ -658,9 +664,8 @@ ourselves to use the more abstract Sturm Liouville theory discussed in section
 \ref{chapter:sturmliouville} the proofs can become ridiculously short. Let's do
 for example lemma \ref{kugel:thm:associated-legendre-ortho}.
 
-\begin{proof}[
-    Shorter proof of lemma \ref{kugel:thm:associated-legendre-ortho}
-  ]
+\begin{proof}[Shorter proof of lemma 
+  \ref{kugel:thm:associated-legendre-ortho}]
   The associated Legendre polynomials, of which we would like to prove an
   orthogonality relation, are the solution to the associated Legendre equation,
   which we can write as $LZ(z) = 0$, where
@@ -686,9 +691,8 @@ But that was still rather informative and had a bit of explanation, which is
 terrible. Real snobs, such as Wikipedia contributors, some authors and
 regrettably sometimes even ourselves, would write instead:
 
-\begin{proof}[
-    Infuriatingly short proof of lemma \ref{kugel:thm:associated-legendre-ortho}
-  ]
+\begin{proof}[Infuriatingly short proof of lemma
+  \ref{kugel:thm:associated-legendre-ortho}]
   The associated Legendre polynomials are solutions of the associated Legendre
   equation which is a Sturm-Liouville problem and are thus orthogonal to each
   other. The factor in front Kronecker delta is left as an exercise to the
@@ -770,7 +774,7 @@ definition \ref{kugel:def:spherical-harmonics-orthonormal}.
 The idea of this subsection is to introduce first some recursive relations
 regarding the associated Legendre functions, defined in equation
 \eqref{kugel:def:ferrers-functions}. Subsequently we will extend them, in order
-to derive recurrence formulas for the case of Spherical Harmonic functions as
+to derive recurrence formulas for the case of spherical harmonic functions as
 well.
 
 \subsubsection{Associated Legendre Functions}
@@ -823,7 +827,7 @@ computational cost lower by a factor of six \cite{davari_new_2013}.
     \frac{dP_{n+1}}{dz} - \frac{dP_{n-1}}{dz} = (2n+1)P_n.
   \end{equation}
   The latter will not be derived, because it suffices to use the definition of
-  the Legendre Polynomials $P_n(z)$ to check it.  We can now differentiate $m-1$
+  the Legendre polynomials $P_n(z)$ to check it.  We can now differentiate $m-1$
   times the just presented equation \eqref{kugel:eq:rec_2}, that so that is
   becomes
   \begin{equation}
@@ -1037,8 +1041,8 @@ of the inner product on the spherical surface of definition
     \sin \vartheta \, d\varphi \, d\vartheta.
 \end{equation*}
 To be a bit technical we can say that the set of spherical harmonic functions,
-together with the inner product just showed, form a Hilbert Space. This function
-space is defined over the space of ``well-behaved'' \footnote{The definitions of
+together with the inner product just showed, form a Hilbert space. This function
+space is defined over the space of ``well-behaved''\footnote{The definition of
 ``well-behaved'' is pretty ambiguous even for mathematicians, basically, it
 depends on the context. We can cheat by saying: functions for which the theory
 we are considering (Fourier theorem) is valid.} functions.  We can say that the
@@ -1108,10 +1112,10 @@ mentioned before, the following theorem is true. The connection to theorem
   For a function $f: S^2 \to \mathbb{C}$ and such that $f \in L^2$
   \begin{equation*}
     \lim_{N \to \infty}
-    \left\|
+    \biggl\|
       f(\vartheta,\varphi)
       - \sum_{n=0}^N\sum_{m=-n}^n c_{m,n} Y^m_n(\vartheta,\varphi)
-    \right\|_2 = 0,
+    \biggr\|_2 = 0,
     \qquad\text{where}\qquad
     c_{m,n} = \langle f, Y^m_n \rangle.
   \end{equation*}
