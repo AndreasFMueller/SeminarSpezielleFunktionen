@@ -12,3 +12,199 @@ Die im ersten Teil dargelegten mathematischen Methoden und
 grundlegenden Modelle werden dabei verfeinert, verallgemeinert
 und auch numerisch überprüft.
 
+Die Lambert-$W$-Funktion ermöglicht, Exponentialgleichungen der
+Form $xe^x=b$ zu lösen.
+{\em David Hugentobler}
+\index{David Hugentobler}%
+\index{Hugentobler, David}%
+und
+{\em Yanik Kuster}
+\index{Yanik Kuster}%
+\index{Kuster, Yanik}%
+zeigen in Kapitel~\ref{chapter:lambertw}, wie genau so eine Kombination
+auch in der Lösung der Differentialgleichung für eine Verfolgungskurve
+entsteht.
+Die Lambert-$W$-Funktion ermöglicht daher, die Lösung ``in geschlossener
+From'' hinzuschreiben.
+
+Die Bessel-Funktionen sind über über den Koordinatenwechsel zu
+Polarkoordinaten mit der Fourier-Transformation verbunden.
+Es ist daher nicht so überraschend, dass sie auch in einem 
+fundamentalen Problem der Elektrotechnik auftauchen.
+Frequenzmodulation, im analogen Radio und anderen Anwendungen
+von grosser praktischer Bedeutung.
+Die Modulationsart ist jedoch nicht linear, selbst bei der Modulation
+mit einem harmonischen Signal treten viele weitere Frequenz im 
+Frequenzspektrum des modulierten Signals auf.
+{\em Joshua Bär}
+\index{Joshua Bär}%
+\index{Bär, Joshua}%
+berechnet in seiner Arbeit (Kapitel~\ref{chapter:fm}) die Amplituden
+dieser Frequenzen als Werte der Bessel-Funktionen.
+
+Spezielle Funktionen treten oft bei der Lösung von
+partiellen Differentialgleichungen mit der Separationsmethode auf.
+{\em Alain Keller} 
+\index{Alain Keller}%
+\index{Keller, Alain}%
+und
+{\em Thierry Schwaller}
+\index{Thierry Schwaller}%
+\index{Schwaller, Thierry}%
+führen die Separationsmethode für die Helmholzgleichung in parabolischen
+Koordinaten in Kapitel~\ref{chapter:parzyl}
+durch, gehen dann aber noch einen Schritt weiter und 
+stellen die parabolischen Zylinderfunktionen,
+die Webersche und die Whittakersche Differentialgleichung und die
+Whittaker-Funktionen vor.
+
+Die Fresnel-Integrale treten einerseits in der Optik auf, sie können aber
+auch eine Klothoide parametrisieren.
+Kapitel~\ref{chapter:fresnel} zeigt diesen Zusammenhang und verbindet
+ihn auch mit einer alltäglichen Beobachtung beim Schälen eines Apfels.
+
+Als weiteres partielles Differentialgleichungsproblem
+untersuchen 
+{\em Andrea Mozzini Vellen}
+\index{Andrea Mozzini Vellen}%
+\index{Mozzini Vellen, Andrea}%
+und
+{\em Tim Tönz}
+\index{Tim Tönz}%
+\index{Tönz, Tim}%
+in Kapitel~\ref{chapter:kreismembran}
+die Wellengleichung in der Ebene in Polarkoordinaten.
+Sie stellen die Separationsmethode der Transformationsmethode
+gegenüber und kommen damit auf die Hankel-Transformation zu sprechen.
+Ausserdem illustrieren Sie ihre Arbeit mit interessanten numerischen
+Simulationen.
+
+Das Sturm-Liouville-Problem ist eine Familie von Randwertproblemen
+gewöhnlicher Differentialgleichungen, die zum Beispiel bei der
+Separation von partiellen Differentialgleichungen oft auftritt.
+{\em Réda Haddouche}
+\index{Réda Haddouche}%
+\index{Haddouche, Réda}%
+und
+{\em Erik Löffler}
+\index{Erik Löffler}%
+\index{Löffler, Erik}%
+spielen dieses Szenario in Kapitel~\ref{chapter:sturmliouville} an
+naheliegenden Beispielen durch und rechnen so im Detail nach, wie bei
+solchen Problemen immer orthogonale Funktionenfamilien bezüglich eines
+aus der Problemstellung ablesbaren Skalarproduktes entstehen.
+
+Orthogonale Polynome bilden die Basis für das ausserordentlich
+genaue numerische Integrationsverfahren der Gauss-Quadratur.
+{\em Patrik Müller}
+\index{Patrik Müller}%
+\index{Müller, Patrick}%
+wendet den Fall der Laguerre-Gauss-Quadratur auf die Integraldefinition
+der Gamma-Funktion an und erhält ein Verfahren, welches Werte hoher
+Genauigkeit mit sehr wenigen Auswertungen des Integranden liefern kann.
+
+Die Riemannsche Zeta-Funktion $\zeta(s)$ hat auf Youtube Kultstatus
+erworden wegen der daraus ableitbaren Aussage, die Summe aller natürlichen
+Zahlen sei $-\frac1{12}$.
+{\em Raphael Unterer}
+\index{Raphael Unterer}%
+\index{Unterer, Raphael}%
+geht in Kapitel~\ref{chapter:zeta} genau dieser Aussage nach und zeigt,
+wie man durch Konstruktion der analytischen Fortsetzung auf diesen
+``verrückten'' Wert kommen kann.
+
+Spezielle Funktionen werden in Computer-Lösungen genau dann nützlich,
+wenn man effiziente Algorithmen zu deren Berechnung hat.
+Für die Funktion $\mathstrut_0F_1$ enthält die GNU Scientific Library
+\index{GSL}%
+\index{GNU Scientific Library}%
+zwar eine Implementation, die aber für gewisse Argumentwerte 
+auf Linux oder MacOS eine Exception wirft.
+{\em Fabian Dünki} 
+\index{Fabian Dünki}%
+\index{Dünki, Fabian}%
+schlägt in Kapitel~\ref{chapter:0f1} verschiedene alternative
+Implementationen vor, stösst aber auch auf interessante numerische Probleme.
+
+Wie in Kapitel~\ref{buch:chapter:geometrie} angedeutet, gehören die
+trigonometrischen Funktionen zu den ältesten speziellen Funktionen.
+Sie wurden schon im Altertum zur Berechnung von Dreiecken auf der
+Kugeloberfläche verwendet.
+{\em Enez Erdem}
+\index{Enez Erdem}%
+\index{Erdem, Enez}%
+und 
+{\em Marc Kühne}
+\index{Marc Kühne}%
+\index{Kühne, Marc}%
+lösen in Kapitel~\ref{chapter:nav} die Aufgabe, aus Beobachtungen
+mit einem Sextanten die eigene Position auf der Erde zu bestimmen.
+
+Die Tangens-Hyperbolicus-Funktion ist von grosser Bedeutung bei
+der Auswertung von neuronalen Netzwerken.
+Dabei kommt es vor allem auf Geschwindkeit an, weniger auf die
+Genauigkeit.
+{\em Marc Benz}
+\index{Marc Benz}%
+\index{Benz, Marc}%
+stellt in Kapitel~\ref{chapter:transfer} eine geeignete
+Berechnungsmethode vor.
+
+Elliptische Funktionen ermöglichen, gewisse nichtlineare
+Differentialgleichungen zu lösen.
+Umgekehrt kann man fragen, welche Arten von nichtlinearen
+Differentialgleichungen einer Lösung mit speziellen Funktionen
+zugänglich sind.
+{\em Samuel Niederer} geht der Frage in Kapitel~\ref{chapter:kra} 
+\index{Samuel Niederer}%
+\index{Niederer, Samuel}%
+nach, wo er die Riccati-Differentialgleichung als nichtlineare
+Differentialgleichung mit einiger Bedeutung in den Anwendungen
+unter die Lupe nimmt.
+
+Die Fourier-Theorie besagt, dass sich jede periodische Funktion in eine
+Fourier-Reihe entwickeln lässt.
+Eine solche Aussage gilt auch für Funktionen auf der Kugeloberfläche: 
+jede Funktion auf der Kugeloberfläche lässt sich in eine Reihe
+entwickeln, deren Summanden sogenannte Kugelfunktionen sind.
+Die Theorie der Kugelfunktionen ist einer der Höhepunkte der Theorie
+der speziellen Funktionen: die Kugelfunktionen sind eine orthogonale
+Funktionenfamilie, die sich aus orthogonalen Polynomen, den sogenannten
+Legendre-Polynomen und assoziierten Legendre-Polynome und den
+klassischen Exponentialfunktionen aufbauen lassen.
+{\em Manuel Cattaneo}
+\index{Manuel Cattaneo}%
+\index{Cattaneo, Manuel}%
+und
+{\em Naoki Pross}
+\index{Naoki Pross}%
+\index{Pross, Naoki}%
+zeigen in Kapitel~\ref{chapter:kugel} mit viel Details und
+Anwendungsbeispielen, wie diese besondere Theorie fast alle im ersten
+Teil des Buches entwickelten Ideen illustrieren kann.
+
+{\em Nicolas Toble}
+\index{Nicolas Tobler}%
+\index{Tobler, Nicolas}%
+beantwortet in Kapitel~\ref{chapter:ellfilter} die Frage,
+warum alle die bekannten Filter-Designs, die Elektroingenieure in
+ihrer Ausbildung kennenlernen, nach irgendwelchen speziellen Funktionen
+benannt sind.
+Er findet heraus, dass dies damit zusammenhängt, dass die Filter
+durch eine Optimalitätseigenschaft im Durchlass- oder im Sperrbereich
+definiert sind, die die jeweiligen speziellen Funktionen erfüllen.
+Als Verallgemeinerung des Tschebyscheff-Filters zeigt er dann, wie
+mit elliptischen Funktionen ein Filter konstruiert werden kann,
+welches sowohl im Durchlassbereich wie auch im Sperrbereich eine 
+Optimalitätsbedingung erfüllen.
+Solche elliptischen Filter stehen dem Ingenieur als fertige integrierte
+Schaltungen für seine Problemlösungen zur Verfügung.
+Die Analyse zeigt, wie das Verständnis elliptischer Integrale 
+im komplexen zu den Optimalitätsbedingungen für elliptische
+Filter führt.
+
+Im Kapitel~\ref{chapter:dreieck} schliesslich wird gezeigt,
+wie sich aus den eigenschaften der hermiteschen Polynome
+ein Kriterium dafür entwickeln lässt, ob eine Funktion der Form
+$P(t)e^{-t^2}$ mit einem Polynom $P(t)$ in geschlossener Form
+integriert werden kann.
