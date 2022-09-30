@@ -248,7 +248,7 @@ Zahl läuft:}
 \label{fm:eq:ungerade}
 \end{align}
 
-\subsubsection{Summe Zusammenführen}
+\subsubsection{Summe zusammenführen}
 Beide Teile \eqref{fm:eq:gerade} für die geraden Terme 
 \begin{align*}
 c(t)
@@ -275,91 +275,142 @@ x_c(t)
 \end{align*}
 Somit ist \eqref{fm:eq:proof} bewiesen.
 
-\subsection{Bessel und Frequenzspektrum}
-Unser FM-signal Fourientransformiert \eqref{fm:FM:fourie} wird zusammengestzt aus den einzelen Reihenteilen mit der gewichtung der Besselfunktion.
-
-
-Nochmals zur erinnerung sah unser Träger Signal anfangs so aus:
-\(x_c(t) = A_c \cdot \cos(\omega_c(t)+\varphi)\), dabei modulierten wir den parameter \( \varphi = \beta\sin(\omega_mt) \).
-Davon sahen wir das sich ursprünglich unser Signal\(m_{FM}(t) = \cos(\omega_m t)\) war. 
-Wie das Beat zusammenhängt sieht man im Abschnitt ( ref). 
-Wird es weiter transformiert zur Summe, so erhält man ein
+\subsection{Bessel-Funktionen und Frequenzspektrum}
+Die Fouriertransformierte des FM-Signals
+setzt sich nach Satz~\ref{fm:satz:spektrum} aus einzelnen
+Termen zusammen, die mit Werten von Bessel-Funktionen
+gewichtet sind.
+Um die Verbindung zur Berechnung des Spektrums im Falle
+der Amplitudenmodulation herzustellen, schreiben wir
+das modulierte Signal
+%Nochmals zur erinnerung sah unser Träger Signal anfangs so aus:
+%\(x_c(t) = A_c \cdot \cos(\omega_c(t)+\varphi)\), dabei modulierten
+%wir den parameter \( \varphi = \beta\sin(\omega_mt) \).
+%Davon sahen wir das sich ursprünglich unser Signal
+%\(m_{FM}(t) = \cos(\omega_m t)\) war. 
+%Wie das Beat zusammenhängt sieht man im Abschnitt ( ref). 
 \[
-    x_{FM} = 
-    \sum_{k= -\infty}^\infty J_{n}(\beta) \cos((\omega_c+ n\omega_m)t).
+x_{\text{FM}}(t)
+= 
+\sum_{k= -\infty}^\infty J_{n}(\beta) \cos((\omega_c+ n\omega_m)t).
 \]
-Diese Summe nun Fourier Transformiert ergibt
+wieder in komplexer Form als
+%Diese Summe nun Fourier Transformiert ergibt
 \[
-    x_{FM} = 
-    \sum_{k= -\infty}^\infty J_{n}(\beta) \cdot \frac{1}{2} \biggl(  e^{j(\omega_c+ n\omega_m)t}\;+\; e^{-j(\omega_c+ n\omega_m)t}\biggr).
+x_{\text{FM}}(t)
+= 
+\sum_{k= -\infty}^\infty
+J_{n}(\beta) \cdot \frac{1}{2}
+\left(e^{j(\omega_c+ n\omega_m)t}\;+\; e^{-j(\omega_c+ n\omega_m)t}\right).
 \]
-Dies ergibt wiederum zwei dirac impulse im Frequenzbereich, aber pro Summand mit der Gewichtung der Besselfunktion indices und deren \(\beta\). 
-Gegeneüber \textit{AM} hat sich \textit{FM} zu einer Summe mit gewichtungen der Besselfunktion verändert.
-Überall wo die Besselfunktion gegn 0 tendiert können wir diese Summand vernachlässigen.
-Um dies zu sehn plotten wir einmal \(J_{n}(\beta)\):
+Im Frequenzbereich entsteht also wieder bezüglich $0$ symmetrisch
+angeordnete Dirac-Impulse bei den Kreisfrequenzen $\pm(\omega_c+n\omega_m)$
+mit dem Gewicht $J_n(\beta)$.
+Die Abbildung~\ref{fig:bessel} zeigt die Funktionswerte der
+Besselfunktionen $J_n$ in Abhängigkeit von $\beta$.
+%Gegenüber AM hat sich bei FM das Spektrum zu einer Summe mit
+%Gewichtungen durch Werte der Bessel-Funktionen verändert.
 \begin{figure}
-	\centering
-	\includegraphics{papers/fm/images/bessel.pdf}
-	%\input{papers/fm/Python animation/bessel.pgf}
-	\caption{Bessle Funktion \(J_{n}(\beta)\)}
-	\label{fig:bessel}
+\centering
+\includegraphics{papers/fm/images/bessel.pdf}
+\caption{Bessel-Funktion \(J_{n}(\beta)\)}
+\label{fig:bessel}
 \end{figure}
-Hier sieht man gut das für kleine \( \beta \lessgtr \) nur die ersten Summanden \( n\) zuständig sind.
-So kann man mit dem \(\beta\) gut bestimmen bis wo die Summe berchnet werden soll. 
 
-Für Besselfunktionen mit negativer Ordnung \(-n\) gilt folgende Beziehung im Vergleich zu den Besselfunktionen mit positiver Ordnung \(n\):
+\subsubsection{Kleine Werte von $\beta$}
+Die Bessel-Funktionen $J_n$ haben für $n>0$ eine Nullstelle.
+Für kleine Werte von $\beta$ sind daher auch die Werte $J_n(\beta)$ 
+klein.
+Der dominierende Term im Frequenzspektrum ist $J_0(\beta)$, der nur den Träger
+wiedergibt.
+Da die Nullstelle bei $0$ mit zunehmendem $n$ immer höhere Ordnung hat,
+werden die Werte $J_n(\beta)$ mit $\beta^n$ gegen  0 gehen, es
+sind also nur wenige Terme nötig, um das Spektrum mit ausreichender
+Genauigkeit wiederzugeben.
+
+%Hier sieht man gut das für kleine \( \beta \lessgtr \) nur die
+%ersten Summanden \( n\) zuständig sind.
+%%
+%So kann man mit dem \(\beta\) gut bestimmen bis wo die Summe berchnet
+%werden soll. 
+
+\subsubsection{Symmetrie}
+Für Bessel-Funktionen mit negativer Ordnung \(-n\) gilt die
+Beziehung
 \[
-    J_{-n} (\beta) = (-1) n \cdot J_n (\beta) = J_n (-\beta)
+    J_{-n} (\beta) = (-1)^n \cdot J_n (\beta) = J_n (-\beta).
     \label{fm:eq:besselid:gerad:ungerade}
 \]
-Zur Illustration wurde in Abbildung \ref{fig:bessel} auch ein Abschnitt von \(J_n (-\beta)\) dargestellt.
-Man erkennt daraus, dass für gerade Ordnungen \(n\) die Besselfunktion erster Art eine gerade Funktion ist 
-(d.h. \(J_n (-\beta) = J_n (\beta))\) und damit \(J_{-n} (\beta) = J_n (\beta)\) gilt.
-Für ungerade Ordnungen n ist die Besselfunktion erster Art eine ugnerade Funktion 
-(d.h. \(J_n (-\beta) = -J_n (\beta)\)), womit gleichzeitig \(J_{-n} (\beta) = -J_n (\beta)\) gilt.
+Zur Illustration wurde in Abbildung \ref{fig:bessel} auch ein Abschnitt
+von \(J_n (-\beta)\) dargestellt.
+Man erkennt daraus, dass für gerade Ordnungen \(n\) die Bessel-Funktion
+erster Art eine gerade Funktion ist 
+(d.h. \(J_n (-\beta) = J_n (\beta))\) und damit
+\(J_{-n} (\beta) = J_n (\beta)\) gilt.
+Für ungerade Ordnungen n ist die Bessel-Funktion erster Art eine
+ugnerade Funktion 
+(d.h. \(J_n (-\beta) = -J_n (\beta)\)), womit gleichzeitig
+\(J_{-n} (\beta) = -J_n (\beta)\) gilt.
 
-Für ein Beispiel nehmen wir  \(\beta = 1 [rad]\,\,\omega_m = 2 \pi \cdot 20 [Hz] \,\, \omega_c =  2 \pi \cdot 100 [Hz] \)
-Dann sieht unser \(x_{FM}\) i Frequenzbereich wie in Abb. \ref{fig:fm:bessel_fm} aus, durch die Besselkoeffizente bei \(\beta = 1\) kann man die Peaks im Frequenzbereich bestimmen.
-(Hier wurden sie noch mit einem Faktor \(\pi\) skaliert.)
+\subsubsection{Beispiel}
+Für ein Beispiel nehmen wir
+\(\beta = 1 [\text{rad}]\), \(\omega_m = 2 \pi \cdot 20 [\text{Hz}]\),
+\(\omega_c =  2 \pi \cdot 100 [\text{Hz}] \).
+Dann sieht \(x_{FM}(t)\) im Frequenzbereich wie in
+Abbildung~\ref{fig:fm:bessel_fm} aus, durch die Bessel-Koeffizenten bei
+\(\beta = 1\) kann man die Peaks im Frequenzbereich bestimmen.
+Hier wurden sie noch mit einem Faktor \(\pi\) skaliert.
 \begin{figure}
-	\centering
-	\includegraphics{papers/fm/images/normal.pdf}
-	%\input{papers/fm/Python animation/normal.pgf}
-	\caption{Beispiel eines FM Übertragenen Signal}
-	\label{fig:fm:bessel_fm}
+\centering
+\includegraphics{papers/fm/images/normal.pdf}
+\caption{Beispiel eines FM Übertragenen Signal}
+\label{fig:fm:bessel_fm}
 \end{figure}
-Nun verändern wir die drei Parameter \(\beta \,\omega_c \,\omega_m \) und sehen was sich verändern wird
+Nun verändern wir die drei Parameter \(\beta \,\omega_c \,\omega_m \)
+und sehen was sich verändern wird.
 
-\subsubsection{$\bm{\beta}$}
-Da \(\beta\) in keiner abhängigkeit zo den anderen parameter steht, und jegliglich die anzahl der nötigen Summanden bestimmt.
-So wird es auch diese Anzahl bestimmen dies bei der Abb. \ref{fig:fm:beta_fm} ersichtlich ist.
+\subsubsection{Veränderung von $\bm{\beta}$}
+Da \(\beta\) in keiner Abhängigkeit von den anderen Parametern steht,
+und jegliglich die Anzahl der nötigen Summanden bestimmt.
+So wird es auch diese Anzahl bestimmen dies bei der
+Abbildung~\ref{fig:fm:beta_fm} ersichtlich ist.
 \begin{figure}[h]
 	\centering
 	\includegraphics{papers/fm/images/beta2.pdf}
-	%\input{papers/fm/Python animation/beta_2.pgf}
 	\caption{Veränderung durch \(\beta\)}
 	\label{fig:fm:beta_fm}
 \end{figure}
 
-\subsubsection{$\bm{\omega_c}$}
-Dieser ist unser Trägerfrequenz auf die unser Signal aufmoduliert wurde, diese bestimmt die Frequenz in welchem sich das signal befindet. 
-Ändern wir es von \( 100 [Hz] \) auf \(150 [Hz]\) so sieht man in Abb. \ref{fig:fm:fc_150} wie es sich verschiebt.
+\subsubsection{Veränderung von $\bm{\omega_c}$}
+Dies ist die Trägerfrequenz, auf die unser Signal aufmoduliert wurde.
+Sie bestimmt die Frequenz bei welcher das Signal gefunden werden kann. 
+Ändern wir es von \( 100\,[\text{Hz}] \) auf \(150\,[\text{Hz}]\),
+dann zeigt
+Abbildung~\ref{fig:fm:fc_150}, wie sich das Spektrum verschiebt.
 \begin{figure}[h]
 	\centering
 	\includegraphics{papers/fm/images/fc150.pdf}
-	%\input{papers/fm/Python animation/fc_150.pgf}
 	\caption{Veränderung durch \(\omega_c\)}
 	\label{fig:fm:fc_150}
 \end{figure}
 
-\subsubsection{$\bm{\omega_m}$}
-Dieser parametr hat unsere bandbreite auf welchem unser Moduliertes Signal \(x_{AM}\) befindet bestimmt, auch im FM wird es wieder die Bandbreite bestimmen,
-was wir bei der Abb. \ref{fig:fm:fm_10} sehen. 
-In dieser Abbildung wurde die Modulation von \(20 [Hz]\) auf \( 10[Hz]\) verkleinert, und somit auch gestaucht. 
+\subsubsection{Veränderung von $\bm{\omega_m}$}
+Bei Amplitudenmodulation bestimmt dieser Parameter
+die Bandbreite um das Trägersignal, innerhalb
+der das modulierte Signal \(x_{AM}\) gefunden werden kann.
+Auch bei Frequenzmodulation ist er ein Mass für die Bandbreite,
+allerdings bestimmt die Grösse von $\beta$, wieviele Vielfache
+der Frequenz $\omega_m$ berücksichtigt werden müssen, um das
+Signal ausreichend genau wiederzugeben.
+Ein kleineres $\omega_m$ bewirkt, dass Frequenzen im Spektrum näher
+bei der Trägerfrequenz liegen, aber ansonsten die gleichen
+Gewichte $J_n(\beta)$ haben, die nur von $\beta$ abhängen.
+Dies ist in Abbildung~\ref{fig:fm:fm_10} dargestellt.. 
+In dieser Abbildung wurde die Modulation von \(20 [\text{Hz}]\) auf
+\( 10[\text{Hz}]\) verkleinert, und somit auch gestaucht. 
 \begin{figure}[h]
 	\centering
 	\includegraphics{papers/fm/images/fm10.pdf}
-	%\input{papers/fm/Python animation/fm_10.pgf}
 	\caption{Veränderung durch \(\omega_m\)}
 	\label{fig:fm:fm_10}
 \end{figure}
