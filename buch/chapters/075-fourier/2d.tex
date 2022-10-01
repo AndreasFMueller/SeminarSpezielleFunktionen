@@ -6,14 +6,108 @@
 \section{Zweidimensionale Fourier-Transformation
 \label{buch:fourier:section:2d}}
 \rhead{Zweidimensionale Fourier-Transformation}
+Die Schwingung einer rechteckigen Membran, wie sie im
+Abschnitt~\ref{buch:pde:section:rechteck} berechnet wird,
+verlangt nach Funktionen, die von zwei Variablen abhängen.
+Das Separationsverfahren hat gezeigt, dass dazu Produkte
+von trigonometrischen Funktionen verwendet werden müssen.
+Analog zur eindimensionalen Fourier-Theorie ergibt sich
+ein Darstellung beleibiger zweifach periodischer Funktionen.
+Auch die Theorie der Fourier-Transformation kann auf
+den Definnitionsbereich $\mathbb{R}^2$ ausgedehnt werden.
+Hier werden nur die wichtigsten Resultate zusammengestellt,
+die für die Herleitungen von
+Abschnitt~\ref{buch:fourier:section:fourier-und-bessel}
+benöigt werden.
 
-\subsection{Fourier-Transformation und partielle Differentialgleichungen}
+%
+% Zweidimensionale Fourier-Reihe
+%
+\subsection{Zweidimensionale Fourier-Reihen}
+Seien $f(x,y)$ und $g(x,y)$ in beiden Variablen $x$ und $y$
+$2\pi$-periodische Funktionen.
+Mit dem Skalarprodukt
+\[
+\langle f,g\rangle
+=
+\frac{1}{(2\pi)^2}
+\int_{-\pi}^\pi
+\int_{-\pi}^\pi
+\overline{f(x,y)} g(x,y)
+\,dx
+\,dy
+\]
+kann man aus der orthogonalen Funktionenfamilie
+\[
+e_{kl}(x,y)
+=
+e^{i(kx + ly)}
+\]
+für ganzzahlige $k$ und $l$ eine Reihenentwicklung
+\[
+f(x,y)
+=
+\sum_{k=-\infty}^\infty
+\sum_{l=-\infty}^\infty
+a_{kl}
+e_{kl}(x,y)
+\qquad\text{mit}\qquad
+a_{kl}
+=
+\langle e_{kl},f\rangle.
+\]
+Unter geeigneten Voraussetzungen an die Funktion $f$ kann sichergestellt
+werden, dass die Reihe konvergiert.
 
-\subsection{Fourier-Transformation in kartesischen Koordinaten}
-
-\subsection{Basisfunktionen in Polarkoordinaten}
-
-
+%
+% Zweidimensionale Fourier-Transformation
+%
+\subsection{Zweidimensionale Fourier-Transformation}
+Für Funktionen $f,g\colon \mathbb{R}^2 \to \mathbb{C}$, kann das komplexe
+Skalarprodukt
+\[
+\langle f,g\rangle
+=
+\int_{-\infty}^\infty
+\int_{-\infty}^\infty
+\overline{f(x,y)} g(x,y)
+\,dx\,dy
+\]
+definiert werden.
+Mit den Funktionen
+\[
+e_{k,l}(x,y)
+=
+e^{i(kx+ly)}
+\]
+kann man jetzt die Fourier-Transformation
+\[
+\hat{f}(k,l)
+=
+\mathscr{F}f(k,l)
+=
+\frac{1}{2\pi}
+\int_{-\infty}^\infty
+\int_{-\infty}^\infty
+f(x,y) e^{i(kx+ly)}
+\,dx\,dy
+\]
+mit der Umkehrung
+\[
+f(x,y)
+=
+\frac{1}{2\pi}
+\int_{-\infty}^\infty
+\int_{-\infty}^\infty
+\mathscr{F}f(k,l) e^{-i(kx+ly)}
+\,dk\,dl
+\]
+Ausserdem gilt die Parseval-Identität
+\[
+\langle f,g\rangle
+=
+\langle \mathscr{F}f,\mathscr{F}g\rangle.
+\]
 
 
 

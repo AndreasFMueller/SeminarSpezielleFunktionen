@@ -1,0 +1,298 @@
+%
+% 1d.tex
+%
+% (c) 2022 Prof Dr Andreas Müller
+%
+\section{Fourier-Transformation
+\label{buch:fourier:section:fourier}}
+\rhead{Fourier-Transformation}
+Im Kapitel~\ref{buch:chapter:orthogonalitaet}
+wurde gezeigt, wie orthogonale Funktionenfamilien ermöglichen,
+beliebige Funktionen auf besonders einfache Art und Weise
+als Linearkombinationen oder Reihen von Funktionen der Familie
+darzustellen.
+
+%
+% Fourier-Reihen
+%
+\subsection{Fourier-Reihen}
+Das berühmteste solche Beispiel ist die Fourier-Reihe, die
+Joseph Fourier im Rahmen seiner Studien zur Wärmeleitungsgleichung
+entdeckt hat.
+Sie besagt, dass unter geeigneten Regularitätsvoraussetzungen
+jede $2\pi$-periodische Funktion $f(x)$ als konvergente Reihe von
+trigonometrischen Funktionen in der Form
+\begin{equation}
+f(x)
+=
+\frac{a_0}2
++
+\sum_{k=1}^\infty (a_k \cos kx + b_k \sin kx)
+\label{buch:fourier:eqn:fourierreihe}
+\end{equation}
+geschrieben werden kann.
+Die Koeffizienten $a_k$ und $b_k$ können mit Hilfe von Integralen
+\[
+\begin{aligned}
+a_k
+&=
+\frac{1}{\pi}
+\int_{-\pi}^\pi f(x)\, \cos kx\,dx
+&&\text{für $k\ge 0$}
+\\
+b_k
+&=
+\frac{1}{\pi}
+\int_{-\pi}^\pi f(x)\, \sin kx\,dx
+&&\text{für $k\ge 1$}
+\end{aligned}
+\]
+berechnet werden.
+
+%
+% Komplexes Skalarprodukt
+%
+\subsubsection{Komplexes Skalarprodukt}
+Die Reihe~\eqref{buch:fourier:eqn:fourierreihe} hat zwar den Vorteil,
+nur reellwertige Funktionen zu verwenden.
+Die trigonometrischen Funktionen lassen sich aber mit Hilfe der
+eulerschen Formel mittels
+\[
+\cos x = \frac{e^{ix}+e^{-ix}}{2}
+\qquad
+\sin x = \frac{e^{ix}-e^{-ix}}{2i}
+\]
+als Linearkombinationen von Exponentialfunktionen ausdrücken.
+Wendet man diese Transformation auf
+die Fourier-Reihe~\eqref{buch:fourier:eqn:fourierreihe}
+an, erhält man eine symmetrischere, komplexe Darstellung.
+Dazu ist zunächst die Definition eines Skalarproduktes für komplexe
+Funktionen nötig.
+
+\begin{definition}
+\label{buch:fourier:def:cskalar}
+Die bilineare Funktion
+\[
+\langle f,g\rangle
+=
+\frac{1}{2\pi}
+\int_{-\pi}^\pi \overline{f(x)}g(x)\,dx
+\]
+ist {\em sesquilinear}, d.~h. sie ist
+\begin{enumerate}
+\item
+linear im zweiten und konjugiert linear im ersten Argument:
+\begin{align*}
+\langle\lambda_1f_1+\lambda_2f_2,g\rangle
+&=
+\overline{\lambda_1}\langle f_1,g\rangle
++
+\overline{\lambda_2}\langle f_2,g\rangle
+&
+\langle f,\mu_1g_1+\mu_2g_2\rangle
+&=
+\mu_1
+\langle f,g_1\rangle
++
+\mu_2
+\langle f,g_2\rangle,
+\end{align*}
+für $\lambda_i,\mu_i\in\mathbb{C}$.
+\item
+Konjugiert-symmetrisch:
+$\langle f,g\rangle=\overline{\langle g,f\rangle}$.
+\item
+Positiv definit: Falls $f\ne 0$ folgt
+$\langle f,f\rangle > 0$.
+\end{enumerate}
+Man nennt
+$\langle\;\,,\;\rangle$
+ein {\em Skalarprodukt} für komplexe Funktionen.
+Es liefert eine
+{\em Norm}
+\[
+\|f\|^2
+=
+\langle f,f\rangle
+=
+\int_{-\pi}^{\pi} |f(x)|^2\,dx.
+\]
+\end{definition}
+
+%
+% Komlexe Fourier-Reihe
+%
+\subsubsection{Komplexe Fourier-Reihe}
+Bezüglich des Skalarprodukts
+der Definition~\ref{buch:fourier:def:cskalar}
+sind die Funktionen
+\[
+e_k
+:
+\mathbb{R} \to \mathbb{C}
+\colon
+x\mapsto e_k(x)=e^{ikx}
+\]
+eine orthonormierte Familie.
+Die komplexe Fourier-Theorie besagt dann,
+dass eine beliebige komplexe $2\pi$-periodische Funktion $f(x)$ 
+in der Form einer bezüglich der Norm $\|\,\cdot\,\|$ konvergenten Reihe
+\begin{equation}
+f(x)
+=
+\sum_{k=-\infty}^\infty c_ke^{ikx}
+\label{buch:fourier:eqn:cfourierreihe}
+\end{equation}
+mit den Koeffizienten
+\[
+c_k
+=
+\frac{1}{2\pi}
+\int_{-\pi}^\pi
+f(x) e^{-ikx}\,dx.
+\]
+
+\subsubsection{Parseval-Identität}
+Aus der geometrischen Motivation lässt sich auch auch die
+Parseval-Identität ableiten.
+Sie besagt, dass Skalarprodukt und Norm zweier Funktionen
+$f(x)$ und $g(x)$ auch aus den Fourier-Koeffizienten
+berechnet werden können.
+Sind $d_k$ die Fourier-Koeffizienten der Funktion $g(x)$, dann gilt
+\begin{align*}
+\langle f,g\rangle
+&=
+\int_{-\pi}^\pi \overline{f(x)} g(x)\,dx
+=
+\sum_{k=-\infty}^\infty \overline{c_k}d_k,
+\\
+\|f\|^2
+&=
+\int_{-\pi}^\pi |f(x)|^2\,dx
+=
+\sum_{k=-\infty}^{\infty} |c_k|^2.
+\end{align*}
+Die rechten Seiten können als Skalarprodukt und Norm der Folgen
+der Fourier-Koeffizienten interpretiert werden.
+Die Formeln besagen dann, dass der Übergang zu den Fourier-Koeffizienten
+das Skalarprodukt erhält.
+Man kann die Formeln auch als die Fourier-Version des Satzes
+von Pythagoras sehen.
+
+%
+% Das Fourier-Integral
+%
+\subsection{Fourier-Integral und Fourier-Transformation}
+Gibt man die Einschränkung auf $2\pi$-periodische Funktionen
+auf, gibt es keine abzählbare Familie von Basisfunktionen, mit denen
+man eine beliebige Funktion als Summe darstellen können.
+Die im folgenden zusammengefasste Fourier-Transformation zeigt
+aber, dass eine Darstellung als Integral möglich ist.
+
+\subsubsection{Fourier-Integral}
+Die Fourier-Transformierte
+\begin{equation}
+\hat{f}(k)
+=
+(\mathscr{F}f)(k)
+=
+\frac{1}{\sqrt{2\pi}}
+\int_{-\infty}^\infty f(x)e^{-ikx}\,dx
+\label{buch:fourier:eqn:fouriertrafo}
+\end{equation}
+verallgemeinert die Berechnung der Fourier-Koeffizienten
+auf beliebige Funktionen $f\colon\mathbb{R}\to\mathbb{R}$.
+Wegen des unendlich langen Integrationsintervals sind zusätzliche
+Einschränkungen nötig, damit das Integral überhaupt definiert ist.
+Es genügt zu verlangen, dass
+\[
+\int_{-\infty}^\infty |f(x)|\,dx < \infty
+\]
+ist.
+Die Funktionen mit dieser Eigenschaft bilden den Funktionenraum
+$L^1(\mathbb{R})$.
+Man beachte, dass die Funktionen
+\(
+e_k(x) = e^{ikx}
+\)
+nicht in $L^1(\mathbb{R})$ sind, die Betrachtungsweise auf dem
+Intervall $[-\pi,\pi]$ lässt sich daher nicht auf den Fall des
+Definitionsbereichs $\mathbb{R}$ übertragen.
+
+Die allgemeine Theorie zeigt, dass die
+Transformation~\eqref{buch:fourier:eqn:fouriertrafo}
+durch das Integral
+\[
+f(x)
+=
+\frac{1}{\sqrt{2\pi}}
+\int_{-\infty}^\infty (\mathscr{F}f)(k)e^{ikx}\,dk.
+\]
+umgekehrt wird.
+Dies funktioniert wieder nur, wenn auch $\mathscr{F}f$ eine Funktion
+in $L^1(\mathbb{R})$ ist.
+
+%
+% Skalarprodukt
+%
+\subsubsection{Skalarprodukt}
+Auch die Fourier-Transformation kann im Rahmen eines Funktionenraums
+mit einem Skalarprodukt beschrieben werden.
+Das Skalarprodukt in diesem Fall ist
+\[
+\langle f,g\rangle
+=
+\int_{-\infty}^\infty \overline{f(x)} g(x)\,dx.
+\]
+Das Skalarprodukt ist wieder nur für eine eingeschränkte Menge von
+Funktionen definiert, nämlich für Funktionen aus dem Funktionenraum
+\[
+L^2(\mathbb{R})
+=
+\left\{
+f\colon\mathbb{R}\to\mathbb{R}
+\,\left|\,
+\int_{-\infty}^\infty |f(x)|^2\,dx < \infty
+\right.
+\right\}.
+\]
+In der Praxis hat man oft mit Funktionen zu tun, die nur in einem
+beschränkten Intervall von $0$ verschieden sind und zudem stetig.
+Solche Funktionen sind immer in $L^2(\mathbb{R})\cap L^1(\mathbb{R})$.
+
+%
+% Parseval-Identität
+%
+\subsubsection{Parseval-Identität}
+Wie im Falle der Fourier-Reihe, ändert die Fourier-Transformation
+die Länge des Vektors nicht.
+Für die Fourier-Transformation lautet die Parseval-Identität
+\begin{align*}
+\langle f,g\rangle
+&=
+\int_{-\infty}^\infty
+\overline{f(x)} g(x)\,dx
+=
+\int_{-\infty}^\infty
+\overline{ \mathscr{F}f(k) }
+\mathscr{F}g(k)\,dk
+=
+\langle \mathscr{F}f,\mathscr{F}g\rangle
+=
+\langle\hat{f},\hat{g}\rangle
+\\
+\|f\|^2
+&=
+\int_{-\infty}^\infty
+|f(x)|^2\,dx
+=
+\int_{-\infty}^\infty
+|\mathscr{F}f(k)|^2\,dk
+=
+\|\mathscr{F}f\|^2
+=
+\|\hat{f}\|^2,
+\end{align*}
+für Funktionen, für die alles definiert ist.
+Die Fourier-Transformation erhält also das Skalarprodukt,
+sie ist eine unitäre Abbildung.
