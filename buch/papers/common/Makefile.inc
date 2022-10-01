@@ -100,6 +100,80 @@ BLXFILES = buch.bbl \
 	buch17-blx.bbl \
 	buch18-blx.bbl \
 
+SeminarSpezielleFunktionen1-blx.bbl:	SeminarSpezielleFunktionen1-blx.aux
+	bibtex SeminarSpezielleFunktionen1-blx
+
+SeminarSpezielleFunktionen2-blx.bbl:	SeminarSpezielleFunktionen2-blx.aux
+	bibtex SeminarSpezielleFunktionen2-blx
+
+SeminarSpezielleFunktionen3-blx.bbl:	SeminarSpezielleFunktionen3-blx.aux
+	bibtex SeminarSpezielleFunktionen3-blx
+
+SeminarSpezielleFunktionen4-blx.bbl:	SeminarSpezielleFunktionen4-blx.aux
+	bibtex SeminarSpezielleFunktionen4-blx
+
+SeminarSpezielleFunktionen5-blx.bbl:	SeminarSpezielleFunktionen5-blx.aux
+	bibtex SeminarSpezielleFunktionen5-blx
+
+SeminarSpezielleFunktionen6-blx.bbl:	SeminarSpezielleFunktionen6-blx.aux
+	bibtex SeminarSpezielleFunktionen6-blx
+
+SeminarSpezielleFunktionen7-blx.bbl:	SeminarSpezielleFunktionen7-blx.aux
+	bibtex SeminarSpezielleFunktionen7-blx
+
+SeminarSpezielleFunktionen8-blx.bbl:	SeminarSpezielleFunktionen8-blx.aux
+	bibtex SeminarSpezielleFunktionen8-blx
+
+SeminarSpezielleFunktionen9-blx.bbl:	SeminarSpezielleFunktionen9-blx.aux
+	bibtex SeminarSpezielleFunktionen9-blx
+
+SeminarSpezielleFunktionen10-blx.bbl:	SeminarSpezielleFunktionen10-blx.aux
+	bibtex SeminarSpezielleFunktionen10-blx
+
+SeminarSpezielleFunktionen11-blx.bbl:	SeminarSpezielleFunktionen11-blx.aux
+	bibtex SeminarSpezielleFunktionen11-blx
+
+SeminarSpezielleFunktionen12-blx.bbl:	SeminarSpezielleFunktionen12-blx.aux
+	bibtex SeminarSpezielleFunktionen12-blx
+
+SeminarSpezielleFunktionen13-blx.bbl:	SeminarSpezielleFunktionen13-blx.aux
+	bibtex SeminarSpezielleFunktionen13-blx
+
+SeminarSpezielleFunktionen14-blx.bbl:	SeminarSpezielleFunktionen14-blx.aux
+	bibtex SeminarSpezielleFunktionen14-blx
+
+SeminarSpezielleFunktionen15-blx.bbl:	SeminarSpezielleFunktionen15-blx.aux
+	bibtex SeminarSpezielleFunktionen15-blx
+
+SeminarSpezielleFunktionen16-blx.bbl:	SeminarSpezielleFunktionen16-blx.aux
+	bibtex SeminarSpezielleFunktionen16-blx
+
+SeminarSpezielleFunktionen17-blx.bbl:	SeminarSpezielleFunktionen17-blx.aux
+	bibtex SeminarSpezielleFunktionen17-blx
+
+SeminarSpezielleFunktionen18-blx.bbl:	SeminarSpezielleFunktionen18-blx.aux
+	bibtex SeminarSpezielleFunktionen18-blx
+
+SBLXFILES = SeminarSpezielleFunktionen.bbl \
+	SeminarSpezielleFunktionen1-blx.bbl \
+	SeminarSpezielleFunktionen2-blx.bbl \
+	SeminarSpezielleFunktionen3-blx.bbl \
+	SeminarSpezielleFunktionen4-blx.bbl \
+	SeminarSpezielleFunktionen5-blx.bbl \
+	SeminarSpezielleFunktionen6-blx.bbl \
+	SeminarSpezielleFunktionen7-blx.bbl \
+	SeminarSpezielleFunktionen8-blx.bbl \
+	SeminarSpezielleFunktionen9-blx.bbl \
+	SeminarSpezielleFunktionen10-blx.bbl \
+	SeminarSpezielleFunktionen11-blx.bbl \
+	SeminarSpezielleFunktionen12-blx.bbl \
+	SeminarSpezielleFunktionen13-blx.bbl \
+	SeminarSpezielleFunktionen14-blx.bbl \
+	SeminarSpezielleFunktionen15-blx.bbl \
+	SeminarSpezielleFunktionen16-blx.bbl \
+	SeminarSpezielleFunktionen17-blx.bbl \
+	SeminarSpezielleFunktionen18-blx.bbl \
+
 PAPER_DIRECTORIES = \
 	000template \
 	lambertw \

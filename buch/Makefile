@@ -38,7 +38,7 @@ separate:	buch.aux buch.pdf
 # Version mit Buchdeckeln für Release/Website
 #
 SeminarSpezielleFunktionen.pdf:	SeminarSpezielleFunktionen.tex $(TEXFILES) \
-	SeminarSpezielleFunktionen.ind $(BLXFILES)
+	SeminarSpezielleFunktionen.ind $(SBLXFILES)
 	$(pdflatex) SeminarSpezielleFunktionen.tex
 	$(bibtex) SeminarSpezielleFunktionen
 
