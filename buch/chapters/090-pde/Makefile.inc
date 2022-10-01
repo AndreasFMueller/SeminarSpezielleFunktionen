@@ -10,5 +10,6 @@ CHAPTERFILES += 							\
 	chapters/090-pde/rechteck.tex					\
 	chapters/090-pde/kreis.tex					\
 	chapters/090-pde/kugel.tex					\
+	chapters/090-pde/geometrie.tex					\
 	chapters/090-pde/uebungsaufgaben/901.tex			\
 	chapters/090-pde/chapter.tex
