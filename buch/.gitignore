@@ -9,11 +9,15 @@
 *.out
 *.rpt
 buch*.pdf
+SeminarSpezielleFunktionen.pdf
+test*.pdf
+errata.pdf
 *.run.xml
 *.toc
 .build/
 *.synctex.gz
 *.DS_Store
-
-
 *.synctex(busy)
+fl.m
+pearsondgl.maxima
+separata

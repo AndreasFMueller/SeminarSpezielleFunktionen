@@ -1,0 +1,14 @@
+/*
+ * continued fraction for tan
+ *
+ * (c) 2022 Prof Dr Andreas Müller, OST Ostschweizer Fachhochschule
+ */
+
+Q(k,z) := matrix([0,-z^2],[1,2*k+1]);
+
+Q0: matrix([0,z],[1,1]);
+
+Q1: expand(Q0.Q(1,z));
+Q2: expand(Q1.Q(2,z));
+Q3: expand(Q2.Q(3,z));
+Q4: expand(Q3.Q(4,z));
