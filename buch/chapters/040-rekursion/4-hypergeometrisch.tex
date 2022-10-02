@@ -45,8 +45,11 @@ Eigenschaft charakterisiert sind.
 In Abschnitt~\ref{buch:rekursion:hypergeometrisch:binomialkoeffizienten}
 wird klar, dass Folgen, deren Terme aus Fakultäten und Binomialkoeffizienten
 immer hypergeometrisch sind.
+\index{Binomialkoeffizient}%
 Die Untersuchung der geometrischen Reihe in
 Abschnitt~\ref{buch:rekursion:hypergeometrisch:geometrisch}
+\index{geometrische Reihe}%
+\index{Reihe, geometrische}%
 motiviert die Namensgebung.
 Abschnitt~\ref{buch:rekursion:hypergeometrisch:reihen}
 definiert den Begriff der hypergeometrischen Reihe und zeigt, 
@@ -88,6 +91,7 @@ der Folge $c_k=(a+bk)!$ ist der ein Polynom vom Grad $b$.
 \end{align*}
 Das Pochhammer-Symbol hat $b$ Faktoren, es ist ein Polynom vom Grad $b$.
 \end{proof}
+\index{Pochhammer-Symbol}%
 
 \begin{satz}
 \index{Satz!Quotienten von Binomialkoeffizienten}%
@@ -186,6 +190,8 @@ Terme den gleichen Quotienten
 q
 \]
 haben.
+\index{geometrische Reihe}%
+\index{Reihe, geometrische}%
 Die Berechnung der Summe in 
 \eqref{buch:rekursion:hypergeometrisch:eqn:qsumme}
 beruht darauf, dass die Multiplikation mit $q$ einen ``anderen''
@@ -228,6 +234,7 @@ mit Polynomen $p(k)$ und $q(k)$ ist.
 Die geometrische Reihe ist natürlich eine hypergeometrische Reihe,
 wobei $p(k)/q(k)=1$ ist.
 Etwas interessanter ist die Exponentialfunktion, die durch die Taylor-Reihe
+\index{Taylor-Reihe}%
 \[
 e^x = \sum_{k=0}^\infty \frac{x^k}{k!}
 \]
@@ -434,6 +441,7 @@ Definition~\ref{buch:rekursion:hypergeometrisch:def}
 offensichtlichen Regeln:
 
 \begin{satz}[Permutationsregel]
+\index{Permutationsregel}%
 \index{Satz!Permutationsregel für hypergeometrische Funktionen}%
 \label{buch:rekursion:hypergeometrisch:satz:permuationsregel}
 Sei $\pi$ eine beliebige Permutation der Zahlen $1,\dots,p$ und $\sigma$ eine
@@ -457,6 +465,7 @@ a_{\pi(1)},\dots,a_{\pi(p)}\\b_{\sigma(1)},\dots,b_{\sigma(q)}
 \end{satz}
 
 \begin{satz}[Kürzungsformel]
+\index{Kürzungsregel}%
 \index{Satz!Kürzungsformel für hypergeometrische Funktionen}%
 \label{buch:rekursion:hypergeometrisch:satz:kuerzungsregel}
 Stimmt einer der Koeffizienten $a_k$ mit einem der Koeffizienten $b_i$
@@ -515,6 +524,7 @@ a\cdot\mathstrut_1F_0(1,x).
 % Die Exponentialfunktion
 %
 \subsubsection{Exponentialfunktion}
+\index{Exponentialfunktion}%
 Die Exponentialfunktion ist die Reihe
 \[
 e^x = \sum_{k=0}^\infty \frac{x^k}{k!}.
@@ -529,6 +539,7 @@ e^x = \mathstrut_0F_0(x).
 % Wurzelfunktionen
 %
 \subsubsection{Wurzelfunktionen}
+\index{Wurzelfunktion}%
 Die Wurzelfunktion $x\mapsto \sqrt{x}$ hat keine Taylor-Entwicklung
 in $x=0$, aber die Funktion $x\mapsto\sqrt{1+x}$ hat die Taylor-Reihe
 \[
@@ -622,6 +633,8 @@ Die Wurzelfunktion ist daher die hypergeometrische Funktion
 \mathstrut_1F_0(-{\textstyle\frac12};\mp x).
 \]
 Mit der Newtonschen Binomialreihe, die in 
+\index{Binomialreihe}%
+\index{Newtonsche Reihe}%
 Abschnitt~\ref{buch:differentialgleichungen:subsection:newtonschereihe}
 hergleitet wird,
 kann man ganz analog jede beliebige Wurzelfunktion
@@ -645,6 +658,7 @@ Satz~\ref{buch:differentialgleichungen:satz:newtonschereihe}
 % Logarithmusfunktion
 %
 \subsubsection{Logarithmusfunktion}
+\index{Logarithmusfunktion}%
 Für $x\in (-1,1)$ konvergiert die Taylor-Reihe
 \[
 \log(1+x)
@@ -934,7 +948,8 @@ Abbildung~\ref{buch:rekursion:hypergeometrisch:0f1} dargestellt sind,
 machen dieses Verhalten plausibel.
 Es wird sich später zeigen, dass $\mathstrut_0F_1$ auch mit den Bessel-
 und den Airy-Funktionen verwandt sind.
-
+Kapitel~\ref{chapter:0f1} zeigt Möglichkeiten der Berechnung der
+Funktion $\mathstrut_0F_1$.
 
 %
 % Ableitung und Stammfunktion
@@ -947,6 +962,7 @@ Funktion lässt sich immer durch hypergeometrische Reihen ausdrücken.
 % Ableitung
 %
 \subsubsection{Ableitung}
+\index{Ableitung!hypergeometrischer Funktionen}%
 Wir gehen aus von der Funktion
 \begin{equation}
 f(x)
@@ -1026,6 +1042,7 @@ x\biggr).
 \end{align*}
 
 \begin{beispiel}
+\index{Kosinus-Funktion}%
 Die Kosinus-Funktion
 \[
 \cos x
@@ -1097,6 +1114,7 @@ Funktion $\mathstrut_0F_1$ überein, es ist also wie erwartet}
 % Stammfunktion
 %
 \subsubsection{Stammfunktion}
+\index{Stammfunktion!hypergeometrischer Funktionen}%
 Eine Stammfunktion kann man auf die gleiche Art und Weise wie
 die Ableitung finden.
 Termweises Integrieren der Funktion
@@ -1214,7 +1232,9 @@ trigonometrischen Funktion $\sin x$ und $\cos x$ für beliebige
 reelle Argumente auftreten.
 Da diese Funktionen beschränkt sind, muss für grosse Absolutwerte
 des Argumentes Auslöschung auftreten.
+\index{Auslöschung}%
 In diesem Fall können die Periodizität und goniometrische
+\index{Periodizität}%
 Identitäten verwendet werden, um die Berechnungsaufgabe in eine zu
 transformieren, die mit hoher Genauigkeit ausgeführt werden kann.
 
@@ -1224,6 +1244,8 @@ ebenfalls hilfreich sein können.
 Die Darstellung dieser Transformationen würde den Rahmen dieses
 Buches sprengen.
 Eine speziell interessante Technik, der Gausssche Kettenbruch,
+\index{Gaussscher Kettenbruch}%
+\index{Kettenbruch!Gaussscher}%
 erlaubt Darstellungen einer Funktion als Kettenbruch zu finden, die
 oft sehr gute numerische Eigenschaften haben.
 Kapitel~\ref{chapter:0f1} untersucht einige dieser Möglichkeiten.

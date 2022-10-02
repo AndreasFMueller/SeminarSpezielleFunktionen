@@ -1,5 +1,5 @@
 %
-% beispiele.tex
+% 1-beispiele.tex
 %
 % (c) 2021 Prof Dr Andreas Müller, OST Ostschweizer Fachhochschule
 %
@@ -8,15 +8,24 @@
 \rhead{Beispiele}
 Viele der bisher betrachteten speziellen Funktionen können 
 durch gewöhnliche Differentialgleichungen charakterisiert werden,
+\index{Differentialgleichung}%
 als deren Lösungen sie auftreten.
 
+%
+% Potenzen und Wurzeln
+%
 \subsection{Potenzen und Wurzeln
 \label{buch:differentialgleichungen:subsection:potenzen-und-wurzeln}}
 Die Potenzfunktionen und die zugehörigen Wurzeln als die ältesten
 speziellen Funktionen bieten bereits eine erste kleine Schwierigkeit.
+\index{Potenzfunktion}%
+\index{Wurzelfunktion}%
 Die Differentialgleichung, die man aus einem naiven Ansatz ableitet,
 ist singulär.
 
+%
+% Differentialgleichung in (0,\infty)
+%
 \subsubsection{Differentialgleichung in $(0,\infty)$}
 Die Ableitung einer Potenzfunktion $x\mapsto y(x)=x^\alpha$ ist
 \[
@@ -52,6 +61,7 @@ y = Dx^\alpha,\quad D=\exp C.
 
 Die Differentialgleichung~\eqref{buch:differentialgleichungen:eqn:wurzeldgl}
 hat aber eine schwerwiegenden Mangel.
+\index{Differentialgleichung}%
 Ihre explizite Form lautet
 \begin{equation}
 y' = \frac{\alpha}{x}\cdot y.
@@ -63,6 +73,9 @@ Man kann daher den Wert der Potenzfunktion im Nullpunkt gar nicht aus der
 Differentialgleichung erhalten, es ist dazu mindestens noch ein Grenzübergang
 $x\to 0+$ nötig.
 
+%
+% Differentialgleichung in der Nähe von x=1
+%
 \subsubsection{Differentialgleichung in der Nähe von $x=1$}
 Um dem Problem des singulären Koeffizienten der
 Differentialgleichung~\eqref{buch:differentialgleichungen:eqn:wurzelsing}
@@ -103,9 +116,12 @@ Form~\eqref{buch:differentialgleichungen:eqn:wurzeldgl1}
 wird sich später bei dem Versuch zeigen, die Fuktion $y(t)$
 direkt als Potenzreihenlösung der Differentialgleichung zu finden.
 
-
+%
+% Exponentialfunktion und ihre Varianten
+%
 \subsection{Exponentialfunktion und ihre Varianten
 \label{buch:differentialgleichungen:subsection:exponentialfunktion}}
+\index{Exponentialfunktion}%
 In Kapitel~\ref{buch:chapter:exponential} wurde die Exponentialfunktion
 auf algebraische Weise definiert, die Berechnung wurde ermöglicht
 mit Hilfe von Grenzwerten und Potenzreihen.
@@ -113,7 +129,11 @@ Dabei blieb die Ableitung der Exponentialfunktion aussen vor.
 Die Exponentialfunktion lässt sich aber natürlich auch über
 Differentialgleichungen charakterisieren.
 
+%
+% Die Ableitung der Exponentialfunktion
+%
 \subsubsection{Die Ableitung der Exponentialfunktion}
+\index{Ableitung!der Exponentialfunktion}%
 Aus der Potenzreihendarstellung
 \[
 \exp(x)
@@ -139,9 +159,13 @@ folgt sofort, dass die Ableitung
 wobei $l=k-1$ gesetzt wurde.
 Die Exponentialfunktion ist also ihre eigene Ableitung.
 
+%
+% Lineare Differentialgleichung mit konstanten Koeffizienten
+%
 \subsubsection{Lineare Differentialgleichung mit konstanten Koeffizienten}
 Mit der Exponentialfunktion lassen sich beliebige homogene lineare
 Differentialgleichungen mit konstanten Koeffizienten lösen.
+\index{Differentialgleichung!linear mit konstanten Koeffizienten}%
 Sei die Differentialgleichung
 \[
 y^{(n)} + a_{n-1}y^{(n-1)} + \dots + a_2y'' + a_1y' + a_0y = 0
@@ -168,6 +192,7 @@ e^{\lambda x}
 \]
 Da $e^{\lambda x}\ne 0$ ist, kann $y(x)$ nur dann eine Lösung sein, wenn
 $\lambda$ eine Nullstelle des {\em charakteristischen Polynoms}
+\index{charakteristisches Polynome}%
 \[
 p(\lambda)
 =
@@ -185,7 +210,11 @@ a_0
 \]
 ist.
 
-\subsubsection{Ableitungen der trigonometrische Funktionen}
+%
+% Ableitunhen der trigonometrischen Funktionen
+%
+\subsubsection{Ableitungen der trigonometrischen Funktionen}
+\index{Ableitung!trigonometrische Funktion}%
 Die Drehmatrix 
 \[
 D_{\omega t}
@@ -196,8 +225,10 @@ D_{\omega t}
 \end{pmatrix}
 \]
 bschreibt eine Drehung der Ebene mit der Winkelgeschwindigkeit 
+\index{Winkelgeschwindigkeit}
 $\omega$.
 Der Punkt $(r,0)$ beschreibt unter dieser Drehung eine Kreisbahn
+\index{Kreisbahn}%
 parametrisiert durch 
 \[
 t \mapsto \gamma(t)=(r\cos\omega t,r\sin\omega t).
@@ -265,11 +296,16 @@ Dies bedeutet, dass die Ableitungen der trigonometrischen Funktionen
 \label{buch:differentialgleichungen:trigo:ableitungen}
 \end{equation}
 
+%
+% Differentialgleichung für trigonometrische Funktionen
+%
 \subsubsection{Differentialgleichung für trigonometrische Funktionen}
+\index{Differentialgleichung!trigonometrische Funktion}%
 Aus den Ableitungen~\eqref{buch:differentialgleichungen:trigo:ableitungen}
 folgt, dass die trigonometrischen Funktionen $\sin t $ und $\cos t$
 Lösungen der Differentialgleichung $y''=-y$ sind.
 Das zugehörige charakteristische Polynom ist 
+\index{charakteristisches Polynom}%
 \[
 \lambda^2+1=0
 \qquad\Rightarrow\qquad
@@ -287,6 +323,7 @@ $e^{\pm it}$ ausdrücken lassen.
 
 Die Kosinus-Funktion zeichnet sich dadurch aus, dass $\cos 0=1$ und
 $\cos' 0=0$ ist.
+\index{Kosinus-Funktion}
 Gesucht ist also eine Lösung der Linearkombination der Lösungen
 $y_{\pm}$ der Differentialgleichung mit diesen Anfangswerten.
 Zunächst halten wir fest, dass $y_{\pm}(0)=e^{\pm i\cdot 0}=1$.
@@ -334,6 +371,7 @@ B=&\textstyle\frac12
 \]
 
 Andererseits hat die Sinus-Funktion die Anfangswerte $\sin 0=0$ und
+\index{Sinus-Funktion}%
 $\sin' 0=1$, dies führt auf das Gleichungssystem
 \[
 \begin{linsys}{2}
@@ -362,9 +400,13 @@ B=&\textstyle{-\frac1{2i}}
 \sin t = \frac{e^{it}-e^{-it}}{2i}.
 \]
 
+%
+% Potenzreihen für sin(t) und cos(t)
+%
 \subsubsection{Potenzreihen für $\sin t$ und $\cos t$}
 Aus der Potenzreihe der Exponentialfunktion kann man jetzt auch
 Potenzreihen für $\sin t$ und $\cos t$ ableiten.
+\index{Potenzreihe!Exponentialfunktion}
 Zunächst ist
 \begin{align*}
 y_+(t)
@@ -395,8 +437,12 @@ t-\frac{t^3}{3!} + \frac{t^5}{5!} - \frac{t^7}{t!} + \dots
 \sum_{k=0}^\infty (-1)^k \frac{t^{2k+1}}{(2k+1)!}.
 \end{align*}
 
+%
+% Hyperbolische Funktionen
+%
 \subsubsection{Hyperbolische Funktionen}
 Die Ableitungen der hyperbolischen Funktionen sind
+\index{hyperbolische Funktion}%
 \begin{equation}
 \left.
 \begin{aligned}
@@ -417,11 +463,13 @@ Man beachte die Ähnlichkeit zu den entsprechenden Formeln
 für die trigonometrischen Funktionen.
 Die hyperbolischen Funktionen sind also linear unabhängige Lösungen
 der Differentialgleichung zweiter Ordnung
+\index{Differentialgleichung!hyperbolische Funktion}%
 \begin{equation}
 y'' -y = 0.
 \label{buch:differentialgleichungen:trigo:hyperdgl}
 \end{equation}
 Das charakteristische Polynom von
+\index{charakteristisches Polynom}%
 \eqref{buch:differentialgleichungen:trigo:hyperdgl}
 ist
 \[
@@ -434,6 +482,7 @@ müssen also Linearkombinationen von $y_{\pm}(x)=e^{\pm x}$ sein.
 Wir schreiben $y(x)=Ay_+(x)+By_-(x)$.
 
 Die Anfangsbedingungen 
+\index{Anfangsbedingung}%
 \[
 \begin{pmatrix}
  y(0)\\
