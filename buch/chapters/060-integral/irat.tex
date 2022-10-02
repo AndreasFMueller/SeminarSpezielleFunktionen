@@ -111,7 +111,7 @@ Setzt man alle vorher schon gefundenen Teile der Stammfunktion zusammen,
 kann man sehen, dass die Stammfunktion die Form
 \begin{equation}
 F(x) = v_0(x) + \sum_{i=1}^m c_i \log v_i(x)
-\label{buch:integral:irat:eqn:liouvillstammfunktion}
+\label{buch:integral:irat:eqn:liouvillestammfunktion}
 \end{equation}
 haben muss.
 Dabei ist $v_0(x)\in\mathscr{K}(x)$ und besteht aus der Stammfunktion
@@ -119,22 +119,32 @@ des polynomiellen Teils und den Stammfunktionen der Terme der Partialbruchzerleg
 Die logarithmischen Terme bestehen aus den Konstanten $c_i=A_{i1}$ 
 und den Logarithmusfunktionen $v_i(x)=x-\beta_i\in\mathscr{K}(x)$.
 Die Funktion $f(x)$ muss daher die Form
-\[
+\begin{equation}
 f(x)
 =
 v_0'(x)
 +
 \sum_{i=1}^m c_i\frac{v'_i(x)}{v_i(x)}
-\]
+\label{buch:integral:irat:eqn:liouvillefunktion}
+\end{equation}
 gehabt haben.
-Die Form~\eqref{buch:integral:irat:eqn:liouvillstammfunktion}
+Die Form~\eqref{buch:integral:irat:eqn:liouvillestammfunktion}
 der Stammfunktion ist nicht eine Spezialität der rationalen Funktionen.
 Sie wird auch bei grösseren Funktionenkörpern immer wieder auftreten
-und ist als Satz von Liouville bekannt.
+und ist als Satz von Liouville (Satz~\ref{buch:integral:risch:satz:liouville})
+bekannt.
 
 %
 % Minimale algebraische Erweiterung
 %
 \subsubsection{Minimale algebraische Erweiterung}
-XXX Rothstein-Trager
+Damit die Partialbruchzerlegung durchgeführt werden kann, muss
+eine geeignete Körpererweiterung konstruiert werden, in der alle
+benötigten algebraischen Elemente zu finden sind.
+Dafür liefert die Methode von Rothstein-Trager eine Lösung.
+Die dafür nötigen algebraischen Werkzeuge stehen uns jedoch
+an dieser Stelle nicht zur Verfügung, weshalb wir auf eine
+Darstellung verzichten.
+
+
 

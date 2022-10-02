@@ -16,4 +16,5 @@ CHAPTERFILES += 							\
 	chapters/060-integral/risch.tex					\
 	chapters/060-integral/logexp.tex				\
 	chapters/060-integral/elementar.tex				\
+	chapters/060-integral/liouville.tex				\
 	chapters/060-integral/chapter.tex

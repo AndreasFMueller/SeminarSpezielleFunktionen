@@ -1,5 +1,5 @@
 %
-% tschebyscheff.tex
+% 3-tschebyscheff.tex
 %
 % (c) 2021 Prof Dr Andreas Müller
 %
@@ -12,8 +12,12 @@ Sie ermöglichen, Interpolationspolynome mit besonders guten
 Fehlereigenschaften zu finden, haben aber auch andere Anwendungen
 zum Beispiel beim Design von Filtern in der Elektronik.
 
+%
+% Motivation: Interpolation
+%
 \subsection{Motivation: Interpolation}
-Nach dem Satz von Weierstrass~\ref{buch:potenzen:satz:weierstrass}
+Nach dem Satz von Weierstrass
+(Satz~\ref{buch:potenzen:satz:weierstrass})
 lässt sich jede stetige Funktion auf einem kompakten Intervall durch
 ein Polynom approximieren.
 Interpolation kann zur Konstruktion solcher approximierender Polynome
@@ -21,7 +25,10 @@ verwendet werden, wie die folgenden Abschnitte zeigen sollen.
 Die Optimierung des Approximationsfehlers führt auf die Spezifikation
 einer interessanten Familie von Polynomen.
 
-\subsubsection{Lagrange-Interplationspolynome}
+%
+% Lagrange-Interpolationspolynom
+%
+\subsubsection{Lagrange-Interplationspolynom}
 Eine mögliche Lösung des Problems, solche approximierenden Polynome
 der Funktion $f(x)$
 zu finden, besteht darin, ein Polynom $p(x)$ zu konstruieren, welches
@@ -30,7 +37,7 @@ unabhängigen Variablen mit $f$ übereinstimmt, also
 \[
 p(x_i) = f(x_i), \quad i=0,\dots,n.
 \]
-Die Konstruktion eines solchen Polynoms geht aus vom Polynome
+Die Konstruktion eines solchen Polynoms geht aus vom Polynom
 \[
 l(x) = (x-x_0)(x-x_1)\cdots(x-x_n),
 \]
@@ -47,7 +54,7 @@ l_j(x)
 \]
 konstruieren, wobei $\widehat{(x-x_j)}$ bedeutet, dass dieser Faktor
 weggelassen werden soll.
-Das Polynome $l_j(x)$ hat die Werte
+Das Polynom $l_j(x)$ hat die Werte
 \begin{align}
 l_j(x_k)
 &=
@@ -88,6 +95,9 @@ p(x_k)
 f(x_k).
 \]
 
+%
+% Fehler des Interpolationspolynoms
+%
 \subsubsection{Fehler des Interpolationspolynoms}
 Der Approximationsfehler des Interpolationspolynoms kann mit der Formel
 \[
@@ -102,7 +112,11 @@ die Sütztstellen so zu wählen, dass $l(x)$ kleine Funktionswerte hat.
 Stützstellen in gleichen Abständen erweisen sich dafür als ungeeignet,
 da $l(x)$ nahe $x_0$ und $x_n$ sehr stark oszilliert.
 
-\subsection{Definition der Tschebyscheff-Polynome \label{sub:definiton_der_tschebyscheff-Polynome}}
+%
+% Definition Tschbeyscheff-Polynome
+%
+\subsection{Definition der Tschebyscheff-Polynome
+\label{sub:definiton_der_tschebyscheff-Polynome}}
 \begin{figure}
 \centering
 \includegraphics[width=\textwidth]{chapters/010-potenzen/images/lissajous.pdf}
@@ -158,16 +172,22 @@ Lösungen einer speziellen Differentialgleichung sind und
 bezüglich eines in Kapitel~\ref{buch:chapter:orthogonalitaet}
 definierten Skalarproduktes von Funktionen orthonormiert sind.
 
+%
+% Rekursionsbeziehungen
+%
 \subsection{Rekursionsbeziehungen
 \label{buch:potenzen:tschebyscheff:rekursionsbeziehungen}}
 Es ist etwas mühsam, einen Ausdruck von $T_n(x)$ direkt aus
 trigonometrischen Identitäten herzuleiten.
 In diesem Abschnitt soll daher eine Rekursionsbeziehung
 hergeleitet werden.
-Später in Abschnitt~\ref{buch:orthogonal:subsection:rekursionsrelation}
+Später in Abschnitt~\ref{buch:orthogonal:section:drei-term-rekursion}
 wird gezeigt, dass solche Rekursionsbeziehungen eine Begleiterscheinung
 orthogonaler Polynome sind.
 
+%
+% Drei-Term-Rekursion für die Tschebyscheff-Polynome
+%
 \subsubsection{Drei-Term-Rekursion für die Tschebyscheff-Polynome}
 Mit der Abkürzung $y=\arccos(x)$ oder $x=\cos(y)$ bekommt man aus
 der Definition~\label{buch:potenzen:def:tschebyscheff}
@@ -237,10 +257,34 @@ T_8(x)
 128x^8-256x^6+160x^4-32x^2+1
 \end{aligned}
 \end{equation}
-Die Rekursionsformel
-\eqref{buch:potenzen:tschebyscheff:eqn:rekursion}
+Die Rekursionsformel~\eqref{buch:potenzen:tschebyscheff:eqn:rekursion}
 kann auch dazu verwendet werden, Werte der Tschebyscheff-Polynome
-sehr effizient zu berechnen.
+zu berechnen, wie in Übungsaufgabe~\ref{104} gezeigt wird.
+Für $|x|>\frac12$ wird bei jeder Anwendung der Rekursion mit dem
+Faktor $|2x|>1$ multipliziert.
+Eventuell vorhandene Rundungsfehler werden natürlich ebenfalls
+multipliziert und es besteht die Gefahr, dass diese exponentiell
+schnell anwachsen.
+Die Rechnung in Übungsaufgabe~\ref{104} zeigt aber, dass die
+Resultate stabil auch für $n \approx 10^5$.
+
+%
+% Drei-Term-Rekursion für die Ableitung
+%
+\subsubsection{Drei-Term-Rekursion für die Ableitung}
+Durch Ableitung der 
+Rekursionsformel~\eqref{buch:potenzen:tschebyscheff:eqn:rekursion}
+ist
+\[
+T_{n+1}'(x)
+=
+2T_{n}(x) + 2xT_n'(x) - T_{n-1}'(x).
+\]
+Die Anfangswerte sind $T_0'(x)=0$ und $T_1'(x)=1$.
+Zusammen mit der
+Rekursionsformel~\eqref{buch:potenzen:tschebyscheff:eqn:rekursion}
+kann man also auch die Ableitungen effizient berechnen, zum Beispiel
+für die Anwendung im Newton-Algorithmus.
 
 %
 % Multiplikationsformel

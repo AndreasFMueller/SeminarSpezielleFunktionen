@@ -1,0 +1,37 @@
+Verwenden Sie die Drei-Term-Rekursionsformel für die Tschebyscheff-Polynome
+um die Werte von $T_{n}(x)$ für $n\in\{1,10,100,1000,10000,100000\}$ und
+$x\in\{0.1,0.4,0.8\}$
+zu berechnen.
+
+\begin{loesung}
+Die Berechnung mit Octave ergibt die folgenden Werte:
+\begin{center}
+\begin{tabular}{|>{$}r<{$}|>{$}r<{$}>{$}r<{$}>{$}r<{$}|}
+\hline
+\log_{10} n & x = 0.1 & x = 0.4 & x = 0.8%
+\raisebox{4pt}{\strut}%
+\\[3pt]
+\hline
+% i = 1
+0 &   0.10000000000000 &   0.40000000000000 &   0.80000000000000%
+\raisebox{3pt}{\strut}%
+\\
+% i = 10
+1 &  -0.53889274880000 &   0.56234629120000 &   0.98849658880000%
+\\
+% i = 100
+2 &  -0.8298462974576\underline{0} &  -0.95203412147527 &   0.05251435228716 \\
+% i = 1000
+3 &   0.9346425767315\underline{9} &  -0.99949469114799 &  -0.8651308138801\underline{0} \\
+% i = 10000
+4 &  -0.880516841418\underline{36} &   0.9498890606495\underline{3} &   0.515390222380\underline{48} \\
+% i = 100000
+5 &   0.2241393381\underline{3107} &  -0.999294607588\underline{34} &  -0.64592968107\underline{104} \\[3pt]
+\hline
+\end{tabular}
+\end{center}
+Unzuverlässige Stellen sind unterstrichen.
+Man kann erkennen dass auch für $x=0.8$, wo in jedem Rekursionsschritt
+mit $2x=1.6$ multipliziert wird, die Fehler doch nicht übermässig 
+anwächst.
+\end{loesung}
