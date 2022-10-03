@@ -76,6 +76,9 @@ verwenden dazu den Ansatz
 \[
 y(x) = a_0+a_1x+a_2x^2+ \dots = \sum_{k=0}^\infty a_kx^k.
 \]
+Einsetzen von $y(x)$ und den Ableitungen in die
+Legendre-Differentialgleichung~\eqref{buch:integral:eqn:legendre-differentialgleichung}
+ergibt die Bedingungen
 \begin{align*}
 (1-x^2) \sum_{k=2}^\infty k(k-1)a_kx^{k-2}
 -2x\sum_{k=0}^\infty ka_kx^{k-1}
@@ -92,41 +95,48 @@ n(n+1)\sum_{k=0}^\infty  a_kx^k
 +
 n(n+1)\sum_{k=0}^\infty  a_kx^k
 &=
-0
+0,
 \end{align*}
-Die Koeffizienten zur Potenz $k$ sind daher
+aus denen die Koeffizienten $a_k$ bestimmt werden können.
+Die Koeffizienten zur Potenz $k$ sind 
 \begin{align}
 k&=0:
 &
+&&
 0&=
 2a_2+n(n+1)a_0
 \notag
 \\
 &&
+&\Rightarrow&
 a_2&=-\frac{n(n+1)}{2}a_0
 \notag
 \\
 k&=1:
 &
+&&
 0&=
 6a_3-2a_1+n(n+1)a_1
 \notag
 \\
 &&
+&\Rightarrow&
 a_3&= \frac{2-n(n+1)}{6}a_1
 \notag
 \\
 k&>1:
 &
+&&
 0&=
 (k+2)(k+1)a_{k+2} -k(k-1)a_k -2ka_k +n(n+1) a_k
 \notag
 \\
 &&
+&\Rightarrow&
 a_{k+2}
 &=
 \frac{ k(k+1)-n(n+1) }{(k+2)(k+1)}
-a_k
+a_k.
 \label{buch:integral:legendre-dgl:eqn:akrek}
 \end{align}
 Wenn $a_1=0$ und $a_0\ne 1$ ist, dann ist die Funktion $y(x)$ gerade,
