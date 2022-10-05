@@ -228,7 +228,9 @@ aufspannen.
 Zur Vereinfachung der Formeln schreiben wir $v^0=v/|v|$ für einen
 Einheitsvektor mit der Richtung $v$.
 Die Vektoren $\tilde{b}_i$ können mit Hilfe der Formeln
-\begin{align*}
+\begin{equation}
+\left.
+\begin{aligned}
 \tilde{b}_1
 &=
 (b_1)^0
@@ -265,7 +267,10 @@ b_n
 -
 \langle \tilde{b}_{n-1},b_n\rangle \tilde{b}_{n-1}
 \bigr)^0
-\end{align*}
+\end{aligned}
+\right\}
+\label{buch:orthogonal:eqn:orthonormalisierung}
+\end{equation}
 iterativ berechnet werden.
 Dieses Verfahren lässt sich auch auf Funktionenräume anwenden.
 
@@ -336,7 +341,8 @@ für alle $n$ und $m$.
 
 Um so eine Funktionenfamilie zu bekommen, beginnt man mit irgend
 einer Familie von linear unabhängigen Funktionen und wendet den
-Orthonormalisierungsprozess darauf an.
+Orthonormalisierungsprozess~\eqref{buch:orthogonal:eqn:orthonormalisierung}
+darauf an.
 
 Die Normierung auf Norm $1$ ist nicht immer erwünscht oder nötig. 
 Die Variante~\eqref{buch:orthogonal:eqn:orthogonalisierung}

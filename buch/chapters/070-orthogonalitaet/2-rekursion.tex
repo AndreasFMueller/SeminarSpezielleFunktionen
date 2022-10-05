@@ -34,8 +34,9 @@ $xp_n(x)$ geben, die man nach $p_{n+1}(x)$ auflösen kann, um eine lineare
 Darstellung von $p_{n+1}(x)$ durch die $p_k(x)$ und $p_n(x)$ zu
 bekommen.
 A priori muss man damit rechnen, dass sehr viele Summanden nötig sind.
-Der folgende Satz besagt, dass $p_n(x)$ eine Rekursionsbeziehung mit
-nur drei Termen erfüllt.
+Der folgende Satz besagt, dass dies nicht so ist.
+Überraschenderweise erfüllen die Polynome $p_n(x)$ eine Rekursionsbeziehung
+mit nur drei Termen, wie der folgende Satz besagt.
 
 \begin{satz}
 \index{Satz!Drei-Term-Rekursion}%
@@ -68,6 +69,7 @@ $p_0(x)$ mit nur $O(n)$ Operationen ermitteln lassen.
 % Multiplikationsoperator
 %
 \subsubsection{Multiplikationsoperator mit $x$}
+\index{Multiplikationsoperator}%
 Man kann die Relation \eqref{buch:orthogonal:eqn:rekursion}
 auch nach dem Produkt $xp_n(x)$ auflösen, dann wird sie
 \begin{equation}
@@ -84,8 +86,6 @@ Die Multiplikation mit $x$ ist eine lineare Abbildung im Raum der Funktionen,
 die wir weiter unten auch $M_x$ abkürzen.
 Die Relation~\eqref{buch:orthogonal:eqn:multixrelation} besagt, dass diese
 Abbildung in der Basis der Polynome $p_k$ tridiagonale Form hat.
-Ein Beispiel dafür ist im nächsten Abschnitt in
-\eqref{buch:orthogonal:eqn:Mx}
 
 %
 % Drei-Term-Rekursion für die Tschebyscheff-Polynome
@@ -97,14 +97,20 @@ Abschnitt~\ref{buch:potenzen:tschebyscheff:rekursionsbeziehungen}
 hergeleitet.
 In der Form~\eqref{buch:orthogonal:eqn:rekursion} geschrieben lautet
 sie
-\[
-T_{n+1}(x) = 2x\,T_n(x)-T_{n-1}(x),
-\]
-also
-$A_n=2$, $B_n=0$ und $C_n=1$.
+\begin{equation}
+T_{n+1}(x) = 2x\,T_n(x)-T_{n-1}(x)
+\qquad\Rightarrow\qquad
+xT_n(x) = \frac12 T_{n-1}(x) + \frac12 T_{n+1}(x).
+\label{buch:orthogonal:eqn:Tschebrel}
+\end{equation}
+In der Form
+\eqref{buch:orthogonal:eqn:rekursion}
+müssen die Koeffizienten
+$A_n=2$, $B_n=0$ und $C_n=1$ gewählt werden.
 Die Matrixdarstellung des Multiplikationsoperators $M_x$ in der
 Basis der Tschebyscheff-Polynome hat wegen
-\eqref{buch:orthogonal:eqn:multixrelation} die Form
+\eqref{buch:orthogonal:eqn:Tschebrel}
+die Form
 \begin{equation}
 M_x
 =
@@ -131,12 +137,16 @@ Für jede beliebige Funktion $f$ mit $\|f\|_w^2<\infty$ ist
 \[
 \langle fp_k,p_j\rangle_w
 =
+\int \bigl(f(x)p_k(x)\bigr)\,p_j(x)\,w(x)\,dx
+=
+\int p_k(x)\,\bigl(f(x)p_j(x)\bigr)\,w(x)\,dx
+=
 \langle p_k,fp_j\rangle_w.
 \]
 Für $f(x)=x$ kann man weiter verwenden, dass $xp_k(x)$ ein Polynom
 vom Grad $k+1$ ist.
 Die Gleichheit $\langle xp_k,p_j\rangle_w=\langle p_k,xp_j\rangle_w$
-ermöglicht also, den Faktor $x$ dorthin zu schieben, wo es nützlicher ist.
+ermöglicht also, den Faktor $x$ dorthin zu schieben, wo er nützlicher ist.
 
 \begin{proof}[Beweis des Satzes]
 Multipliziert man die rechte Seite von
@@ -213,10 +223,10 @@ A_n\langle xp_n,p_{n-1} \rangle_w
 0
 &=
 A_n\langle p_n,xp_{n-1} \rangle_w
--C_n\|p_{n-1}\|_w^2
+-C_n\|p_{n-1}\|_w^2.
 \label{buch:orthogonal:eqn:rekbeweis2}
 \end{align}
-Indem man $xp_n$ als
+Indem man $xp_{n-1}$ als
 \[
 xp_{n-1}(x)
 =
@@ -240,7 +250,7 @@ p_n,
 =
 \frac{k_{n-1}}{k_n}h_n
 +
-\sum_{k=0}^{n-1} d_k\underbrace{\langle p_n,p_k\rangle_w}_{\displaystyle=0}
+\sum_{k=0}^{n-1} d_k\underbrace{\langle p_n,p_k\rangle_w}_{\displaystyle=0}.
 \end{align*}
 Eingesetzt in~\eqref{buch:orthogonal:eqn:rekbeweis2} erhält man
 \[
@@ -251,5 +261,6 @@ C_n
 A_n\frac{k_{n-1}}{k_n}\frac{h_n}{h_{n-1}},
 \]
 damit ist auch die zweite Beziehung von
-\eqref{buch:orthogonal:eqn:koeffizientenrelation}.
+\eqref{buch:orthogonal:eqn:koeffizientenrelation}
+bewiesen.
 \end{proof}
