@@ -11,8 +11,16 @@ gut durch Polynome approximieren lassen.
 Wenn man also sicherstellt, dass ein Verfahren für Polynome
 sehr gut funktioniert, darf man auch davon ausgehen, dass es für
 andere Funktionen nicht allzu schlecht sein wird.
+Wie gut das funktioniert zeigt einerseits das Beispiel in
+Abschnitt~\ref{buch:orthogonal:subsection:fehler} wie
+auch die Analyse der Anwendung auf die Integraldarstellung
+der Gamma-Funktion in Kapitel~\ref{chapter:laguerre}.
 
-\subsection{Interpolationspolynome}
+%
+% Interpolationspolynom
+%
+\subsection{Interpolationspolynome
+\label{buch:orthogonal:subsection:interpolationspolynome}}
 Zu einer stetigen Funktion $f(x)$ auf dem Intervall $[-1,1]$ 
 ist ein Polynome vom Grad $n$ gesucht, welches in den Punkten
 $x_0<x_1<\dots<x_n$ die Funktionswerte $f(x_i)$ annimmt.
@@ -60,6 +68,9 @@ f(x_j)
 \]
 hat, das Polynome $p(x)$ ist also das gesuchte Interpolationspolynom.
 
+%
+% Integrationsverfahren auf der Basis von Integration
+%
 \subsection{Integrationsverfahren auf der Basis von Interpolation}
 Das Integral einer stetigen Funktion $f(x)$ auf dem Intervall $[-1,1]$
 kann mit Hilfe des Interpolationspolynoms approximiert werden.
@@ -75,7 +86,7 @@ für die Integrale
 Ein Interpolationspolynom mit kleinem Fehler liefert also auch
 eine gute Approximation für das Integral.
 
-Da das Interpolationspolynome durch die Funktionswerte $f(x_i)$
+Da das Interpolationspolynom durch die Funktionswerte $f(x_i)$
 bestimmt ist, muss auch das Integral allein aus diesen Funktionswerten
 berechnet werden können.
 Tatsächlich ist
@@ -98,7 +109,11 @@ gewichtete Summe
 \]
 approximiert.
 
-\subsection{Integrationsverfahren, die für Polynome exakt sind}
+%
+% Integrationsverfahren, die für Polynome exakt sind
+%
+\subsection{Integrationsverfahren, die für Polynome exakt sind
+\label{buch:orthogonal:subsection:exakt}}
 Ein Polynom vom Grad $2n$ hat $2n+1$ Koeffizienten.
 Um das Polynom durch ein Interpolationspolynom exakt wiederzugeben,
 braucht man $2n+1$ Stützstellen.
@@ -169,9 +184,9 @@ mit Hilfe der zweiten Gleichung geschehen kann:
 \[
 \frac23 = A_0x_0^2 + A_1x_1^2 = 2x_0^2
 \quad\Rightarrow\quad
-x_0 = \frac{1}{\sqrt{3}}, x_1 = -\frac{1}{\sqrt{3}}
+x_0 = \frac{1}{\sqrt{3}}, x_1 = -\frac{1}{\sqrt{3}}.
 \]
-Damit ist das Problem gelöst: das Integral eines Polynoms vom Grad 3
+Das Problem ist nun gelöst: das Integral eines Polynoms vom Grad 3
 im Interval $[-1,1]$ ist exakt gegeben durch
 \[
 \int_{-1}^1 p(x)\,dx
@@ -183,10 +198,10 @@ p\biggl(\frac{1}{\sqrt{3}}\biggr).
 Das Integral kann also durch nur zwei Auswertungen des Polynoms
 exakt bestimmt werden.
 
-Im Laufe der Lösung des Gleichungssystems wurden die Gewichte $A_i$
-mit bestimmt.
-Es ist aber auch möglich, die Gewichte zu bestimmen, wenn man die
-Stützstellen kennt.
+Im Laufe der Lösung des Gleichungssystems wurden auch die Gewichte $A_i$
+bestimmt.
+Es ist aber auch möglich, die Gewichte direkt aus den Stützstellen
+zu bestimmen.
 Nach \eqref{buch:integral:gaussquadratur:eqn:Aidef}
 sind sie die $A_i$ gegeben als Integrale der Polynome
 $l_i(x)$, die im vorliegenden Fall linear sind:
@@ -205,7 +220,7 @@ l_1(x)
 =
 \frac{x+\frac1{\sqrt{3}}}{\frac{2}{\sqrt{3}}}
 =
-\frac12(1+\sqrt{3}x)
+\frac12(1+\sqrt{3}x).
 \end{align*}
 Diese haben die Integrale
 \[
@@ -220,22 +235,35 @@ Dies stimmt mit $A_0=A_1=1$ überein.
 \label{buch:integral:beispiel:gaussquadraturn1}
 \end{beispiel}
 
-Das eben vorgestellt Verfahren kann natürlich auf beliebiges $n$
+Das eben vorgestellte Verfahren kann natürlich auf beliebiges $n$
 verallgemeinert werden.
 Allerdings ist die Rechnung zur Bestimmung der Stützstellen und
 Gewichte sehr mühsam.
 
+%
+% Stützstellen und Orthogonalpolynome
+%
 \subsection{Stützstellen und Orthogonalpolynome}
+Die Wahl der Stützstellen entscheidet über den Erfolg des 
+Integrationsverfahrens.
+Sie müssen so gewählt werden dass das Verfahren auf Polynomen
+kleinen Grades exakt ist.
 Sei $R_n=\{p(X)\in\mathbb{R}[X] \mid \deg p\le n\}$ der Vektorraum
 der Polynome vom Grad $n$.
+Die ad-hoc Methode zur Bestimmung der Stützstellen im
+Abschnitt~\ref{buch:orthogonal:subsection:exakt} ist zwar 
+Verallgemeinerungsfähig, gibt aber wenige Hinweise auf eventuel
+einfachere Methoden zur Bestimmung der Stützstellen.
+Die im folgenden Satz formulierte Lösung von Gauss ist
+daher eine kleine Überraschung.
 
-\begin{satz}
+\begin{satz}[Gauss]
 \index{Satz!Gaussquadratur}%
 \label{buch:integral:satz:gaussquadratur}
 Sei $p$ ein Polynom vom Grad $n$, welches auf allen Polynomen in $R_{n-1}$
-orthogonal sind.
+orthogonal ist.
 Seien ausserdem $x_0<x_1<\dots<x_n$ Stützstellen im Intervall $[-1,1]$ 
-und $A_i\in\mathbb{R}$ Gewichte derart dass
+und $A_i\in\mathbb{R}$ Gewichte derart, dass
 \[
 \int_{-1}^1 f(x)\,dx =
 \sum_{i=0}^n A_if(x_i)
@@ -269,7 +297,7 @@ werden können, muss auch
 \]
 für jedes beliebige Polynom $q\in R_{n-1}$ gelten.
 Da man für $q$ die Interpolationspolynome $l_j(x)$ verwenden
-kann, den Grad $n-1$ haben, folgt
+kann, die den Grad $n-1$ haben, folgt
 \[
 0
 =
@@ -298,10 +326,14 @@ $2n-1$ exakt ist.
 Das Legendre-Polynom $P_2(x) = \frac12(3x^2-1)$ hat die
 Nullstellen $x=\pm1/\sqrt{3}$, dies sind genau die im Beispiel
 auf Seite~\pageref{buch:integral:beispiel:gaussquadraturn1} befundenen
-Sützstellen.
+Stützstellen.
 \end{beispiel}
 
-\subsection{Fehler der Gauss-Quadratur}
+%
+% Fehler der Gauss-Quadratur
+%
+\subsection{Fehler der Gauss-Quadratur
+\label{buch:orthogonal:subsection:fehler}}
 Das Gausssche Quadraturverfahren mit $n$ Stützstellen berechnet
 Integrale von Polynomen bis zum Grad $2n-1$ exakt.
 Für eine beliebige Funktion kann man die folgende Fehlerabschätzung
@@ -336,27 +368,35 @@ Wert des Integrals konvergieren.
 \begin{table}
 \def\u#1{\underline{#1}}
 \centering
-\begin{tabular}{|>{$}c<{$}|>{$}r<{$}|>{$}r<{$}|}
+\(\displaystyle
+\int_{-\frac12}^{\frac12} \sqrt{1-x^2}\,dx
+=
+\)
+\begin{tabular}{|>{$}r<{$}|>{$}r<{$}|>{$}r<{$}|r|}
 \hline
-           n & \text{Gauss-Quadratur} & \text{Trapezregel} \\
+\text{Grad $n$}
+             & \text{Gauss-Quadratur} & \text{Trapezregel} & Stützstellen%
+\raisebox{3pt}{\strut}\strut\\[2pt]
 \hline
-\phantom{0}2 & 0.\u{95}74271077563381 & 0.\u{95}63709682242596 \\
-\phantom{0}4 & 0.\u{95661}28333449730 & 0.\u{956}5513401768598 \\
-\phantom{0}6 & 0.\u{9566114}812034364 & 0.\u{956}5847489712136 \\
-\phantom{0}8 & 0.\u{956611477}5028123 & 0.\u{956}5964425360520 \\
-          10 & 0.\u{9566114774905}637 & 0.\u{9566}018550715587 \\
-          12 & 0.\u{956611477490518}7 & 0.\u{9566}047952369826 \\
-          14 & 0.\u{95661147749051}72 & 0.\u{9566}065680717177 \\
-          16 & 0.\u{956611477490518}7 & 0.\u{9566}077187127541 \\
-          18 & 0.\u{956611477490518}3 & 0.\u{9566}085075898731 \\
-          20 & 0.\u{956611477490518}4 & 0.\u{9566}090718697414 \\
+           2 & 0.\u{95}74271077563381 & 0.\u{95}63709682242596 &  20%
+\raisebox{2pt}{\strut}\\
+           4 & 0.\u{95661}28333449730 & 0.\u{956}5513401768598 &  40 \\
+           6 & 0.\u{9566114}812034364 & 0.\u{956}5847489712136 &  60 \\
+           8 & 0.\u{956611477}5028123 & 0.\u{956}5964425360520 &  80 \\
+          10 & 0.\u{9566114774905}637 & 0.\u{9566}018550715587 & 100 \\
+          12 & 0.\u{956611477490518}7 & 0.\u{9566}047952369826 & 120 \\
+          14 & 0.\u{95661147749051}72 & 0.\u{9566}065680717177 & 140 \\
+          16 & 0.\u{956611477490518}7 & 0.\u{9566}077187127541 & 160 \\
+          18 & 0.\u{956611477490518}3 & 0.\u{9566}085075898731 & 180 \\
+          20 & 0.\u{956611477490518}4 & 0.\u{9566}090718697414 & 200 \\[2pt]
 \hline
-      \infty & 0.9566114774905183 & 0.9566114774905183 \\
+      \infty & 0.9566114774905183 & 0.9566114774905183 & 
+\raisebox{2pt}{\strut}\strut\\[2pt]
 \hline
 \end{tabular}
 \caption{Integral von $\sqrt{1-x^2}$ zwischen $-\frac12$ und $\frac12$ 
-berechnet mit Gauss-Quadratur und der Trapezregel, aber mit zehnmal
-so vielen Stützstellen.
+berechnet mit Gauss-Quadratur und der Trapezregel, aber mit
+zehnmal so vielen Stützstellen.
 Bereits mit 12 Stützstellen erreicht die Gauss-Quadratur
 Maschinengenauigkeit, die Trapezregel liefert auch mit 200 Stützstellen
 nicht mehr als 4 korrekte Nachkommastellen.
@@ -412,22 +452,30 @@ nicht mehr als 4 korrekte Nachkommastellen.
 \begin{table}
 \def\u#1{\underline{#1}}
 \centering
-\begin{tabular}{|>{$}c<{$}|>{$}r<{$}|>{$}r<{$}|}
+\(\displaystyle
+\int_{-0.999}^{0.999} \sqrt{1-x^2}\,dx
+=
+\)
+\begin{tabular}{|>{$}r<{$}|>{$}r<{$}|>{$}r<{$}|r|}
 \hline
-           n & \text{Gauss-Quadratur} & \text{Trapezregel} \\
+\text{Grad $n$}
+             & \text{Gauss-Quadratur} & \text{Trapezregel} & Stützstellen%
+\raisebox{3pt}{\strut}\strut\\[2pt]
 \hline
-\phantom{0}2 & 1.\u{}6321752373234928 & 1.\u{5}561048774629949 \\
-\phantom{0}4 & 1.\u{57}98691557134743 & 1.\u{5}660124134617943 \\
-\phantom{0}6 & 1.\u{57}35853681692993 & 1.\u{5}683353001877542 \\
-\phantom{0}8 & 1.\u{57}19413565928206 & 1.\u{5}692627503425400 \\
-          10 & 1.\u{57}13388119633434 & 1.\u{5}697323578543481 \\
-          12 & 1.\u{57}10710489948883 & 1.\u{570}0051217458713 \\
-          14 & 1.\u{570}9362135398341 & 1.\u{570}1784766276063 \\
-          16 & 1.\u{570}8621102742815 & 1.\u{570}2959121005231 \\
-          18 & 1.\u{570}8186779483588 & 1.\u{570}3793521168343 \\
-          20 & 1.\u{5707}919411931615 & 1.\u{570}4408749735932 \\
+           2 & 1.\u{}6321752373234928 & 1.\u{5}561048774629949 &  20%
+\raisebox{2pt}{\strut}\\
+           4 & 1.\u{57}98691557134743 & 1.\u{5}660124134617943 &  40 \\
+           6 & 1.\u{57}35853681692993 & 1.\u{5}683353001877542 &  60 \\
+           8 & 1.\u{57}19413565928206 & 1.\u{5}692627503425400 &  80 \\
+          10 & 1.\u{57}13388119633434 & 1.\u{5}697323578543481 & 100 \\
+          12 & 1.\u{57}10710489948883 & 1.\u{570}0051217458713 & 120 \\
+          14 & 1.\u{570}9362135398341 & 1.\u{570}1784766276063 & 140 \\
+          16 & 1.\u{570}8621102742815 & 1.\u{570}2959121005231 & 160 \\
+          18 & 1.\u{570}8186779483588 & 1.\u{570}3793521168343 & 180 \\
+          20 & 1.\u{5707}919411931615 & 1.\u{570}4408749735932 & 200 \\[2pt]
 \hline
-      \infty & 1.5707367072605671 & 1.5707367072605671 \\
+      \infty & 1.5707367072605671 & 1.5707367072605671 &
+\raisebox{2pt}{\strut}\strut\\[2pt]
 \hline
 \end{tabular}
 \caption{Integral von $\sqrt{1-x^2}$ zwischen $-0.999$ und $0.999$ 
@@ -436,7 +484,7 @@ so vielen Stützstellen.
 Wegen der divergierenden Steigung des Integranden bei $\pm 1$ tun
 sich beide Verfahren sehr schwer. 
 Trotzdem erreich die Gauss-Quadrator 4 korrekte Nachkommastellen
-mit 20 Stütztstellen, während die Trapezregel auch mit 200 Stützstellen
+mit 20 Stützstellen, während die Trapezregel auch mit 200 Stützstellen
 nur 3 korrekte Nachkommastellen findet.
 \label{buch:integral:gaussquadratur:table0.999}}
 \end{table}
@@ -464,7 +512,8 @@ das Integral
 mit Gauss-Quadratur einerseits und dem Trapezverfahren
 andererseits.
 Da Gauss-Quadratur mit sehr viel weniger Sützstellen auskommt,
-berechnen wir die Trapeznäherung mit zehnmal so vielen Stützstelln.
+berechnen wir für einen faireren Vergleich die Trapeznäherung
+willkürlich mit zehnmal so vielen Stützstellen.
 In den Tabellen~\ref{buch:integral:gaussquadratur:table0.5}
 und
 \ref{buch:integral:gaussquadratur:table0.999}
@@ -478,7 +527,7 @@ Das Trapezverfahren dagegen erreicht auch mit 200 Stützstellen nur
 
 An den Stellen $x=\pm 1$ divergiert die Ableitung des Integranden
 des Integrals \eqref{buch:integral:gaussquadratur:bspintegral}.
-Da grösste und kleinste Stützstelle der Gauss-Quadratur immer
+Da die grösste und kleinste Stützstelle der Gauss-Quadratur immer
 deutlich vom Rand des Intervalls entfernt ist, kann das Verfahren
 diese ``schwierigen'' Stellen nicht erkennen.
 Tabelle~\ref{buch:integral:gaussquadratur:table0.999} zeigt, wie
@@ -508,7 +557,7 @@ gewählt werden soll, dass das Verhalten der Steigung an
 den Intervallenden gut wiedergibt.
 Dies ist mit einer Jacobischen Gewichtsfunktion immer möglich.
 Statt der Nullstellen der Legendre-Polynome sind dann die
-Nullstellen der Jacobi-Polynome  und die Funktionswete von $g(x)$
+Nullstellen der Jacobi-Polynome  und die Funktionswerte von $g(x)$
 an diesen Stellen zu verwenden,  die Gewichte sind
 die Integrale von $l_i(x) P^{(\alpha,\beta)}(x)$.
 
@@ -560,7 +609,10 @@ Als Stützstellen müssen dazu die Nullstellen der Laguerre-Polynome
 verwendet werden.
 Als Gewichte $w_i$ sind die Integrale der $l_i(x)e^{-x}$
 zu verwenden.
-
+Das resultierende Gauss-Laguerre-Integrationsverfahren wird im 
+Kapitel~\ref{chapter:laguerre} auf die
+Integraldarstellung~\eqref{buch:rekursion:eqn:gammaintegral}
+der Gamma-Funktion angewendet.
 
 
 

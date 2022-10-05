@@ -24,6 +24,9 @@ Funktionalgleichung~\eqref{buch:rekursion:eqn:gammadef}
 \index{Funktionalgleichung der Gamma-Funktion}%
 erfüllt und damit die Fakultät auf beliebige Argumente ausdehnt?
 
+%
+% Definition als Grenzwert
+%
 \subsection{Definition als Grenzwert}
 Die Fakultät $n!$ ist ein Produkt von $n$ Faktoren, es ist daher
 natürlich zu versuchen, auch $x!$ als ein Produkt zu schreiben.
@@ -39,6 +42,9 @@ werden.
 Dieser ist jedoch für die numerische Berechnung absolut ungeeignet,
 so dass er später in ein unendliches Produkt umgeformt werden muss.
 
+%
+% Fakultät als Bruch
+%
 \subsubsection{Fakultät als Bruch}
 Euler hat das Problem, die Fakultät auf beliebige reelle oder komplexe
 Zahlen auszudehnen, wie folgt angepackt.
@@ -525,7 +531,7 @@ Euler hat die folgende Integraldefinition der Gamma-Funktion gegeben.
 \begin{definition}
 \label{buch:rekursion:def:gamma}
 Die Gamma-Funktion ist die Funktion 
-\[
+\begin{equation}
 \Gamma
 \colon
 \{z\in\mathbb{C} \mid \operatorname{Re}z>0\}
@@ -534,7 +540,8 @@ Die Gamma-Funktion ist die Funktion
 z
 \mapsto
 \Gamma(z) = \int_0^\infty t^{z-1}e^{-t}\,dt
-\]
+\label{buch:rekursion:eqn:gammaintegral}
+\end{equation}
 \index{Gamma-Funktion!Integraldefinition}%
 \index{Integraldefinition der Gamma-Funktion}%
 \end{definition}

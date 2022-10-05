@@ -35,10 +35,14 @@ welches viele interessante Anwendungen ermöglicht.
 Eine orthonormierte Basis macht es zum Beispiel besonders leicht,
 eine Zerlegung eines Vektors in dieser Basis zu finden.
 In diesem Abschnitt soll zunächst an die Eigenschaften erinnert
-werden, die zu einem nützlichen 
+werden, die das Skalarprdoukt $\langle\;\,,\;\rangle$ zu einem nützlichen 
+Werkzeug machen.
 
+%
+% Eigenschaften eines Skalarproduktes
+%
 \subsubsection{Eigenschaften eines Skalarproduktes}
-Das Skalarprodukt erlaubt auch, die Länge eines Vektors $v$
+Das Skalarprodukt erlaubt, die Länge eines Vektors $v$
 als $|v| = \sqrt{\langle v,v\rangle}$ zu definieren.
 Dies funktioniert natürlich nur, wenn die Wurzel auch immer
 definiert ist, d.~h.~das Skalarprodukt eines Vektors mit sich
@@ -58,9 +62,11 @@ V\times V
 (u,v) \mapsto \langle u,v\rangle.
 \]
 heisst {\em positiv definit}, wenn für alle Vektoren $v \in V$ mit
+\index{positiv definit}%
 $v\ne 0 \Rightarrow \langle v,v\rangle > 0$ 
 Die {\em Norm} eines Vektors $v$ ist
 $|v|=\sqrt{\langle v,v\rangle}$.
+\index{Norm}%
 \end{definition}
 
 Damit man mit dem Skalarprodukt sinnvoll rechnen kann, ist ausserdem
@@ -68,7 +74,18 @@ erforderlich, dass es eine einfache Beziehung zwischen
 $\langle x,y\rangle$ und $\langle y,x\rangle$ gibt.
 
 \begin{definition}
+Eine Bilinearform $\langle\;\,,\;\rangle$ heisst {\em symmetrisch}, wenn
+\index{symmetrisch!Bilinearform}%
+für zwei beliebige Vektoren $u,v\in V$
+\[
+\langle u,v\rangle = \langle v,u\rangle
+\]
+gilt.
+\end{definition}
+
+\begin{definition}
 Ein {\em Skalarprodukt} auf einem reellen Vektorraum $V$ ist eine
+\index{Skalarprodukt}%
 positiv definite, symmetrische bilineare Abbildung
 \[
 \langle\;\,,\;\rangle
@@ -87,8 +104,8 @@ sie führt auf die Komponentendarstellung
 \[
 \langle u,v\rangle = u^tv = \sum_{k=1}^n u_iv_i.
 \]
-Weitere Skalarprodukte ergeben ergeben sich mit jeder symmetrischen,
-positiv definiten Matrix $G$ und der Definition
+Weitere (verallgemeinerte) Skalarprodukte ergeben ergeben sich mit
+jeder symmetrischen, positiv definiten Matrix $G$ und der Definition
 $\langle u,v\rangle_G=u^tGv$.
 Ein einfacher Spezialfall tritt auf, wenn $G$ eine Diagonalmatrix
 $\operatorname{diag}(w_1,\dots,w_n)$
@@ -104,12 +121,16 @@ u^t\operatorname{diag}(w_1,\dots,w_n)v
 und nennen $\langle \;\,,\;\rangle_w$ das {\em gewichtete Skalarprodukt}
 mit {\em Gewichten $w_i$}.
 
+%
+% Skalarprodukte auf Funktionenräumen
+%
 \subsubsection{Skalarprodukte auf Funktionenräumen}
-Das Integral ermöglicht jetzt, ein Skalarprodukt auf dem reellen
+Stetige Funktionen auf einem Intervall sind integrierbar.
+Dies ermöglicht, ein Skalarprodukt auf dem reellen
 Vektorraum der stetigen Funktionen auf einem Intervall zu definieren.
 
-\begin{definition}
-\label{buch:orthogonal:def:skalarprodukt}
+\begin{satz}
+\label{buch:orthogonal:satz:skalarprodukt}
 Sei $V$ der reelle Vektorraum $C([a,b])$ der reellwertigen, stetigen
 Funktion auf dem Intervall $[a,b]$.
 Dann ist 
@@ -121,10 +142,11 @@ C([a,b]) \times C([a,b]) \to \mathbb{R}
 (f,g) \mapsto \langle f,g\rangle = \int_a^b f(x)g(x)\,dx.
 \]
 ein Skalarprodukt.
-\end{definition}
+\end{satz}
 
-Die Definition ist offensichtlich symmetrisch in $f$ und $g$ und
-aus den Eigenschaften des Integrals ist klar, dass das Produkt
+\begin{proof}[Beweis]
+Die Definition ist offensichtlich symmetrisch in $f$ und $g$.
+Aus den Eigenschaften des Integrals ist klar, dass das Produkt
 bilinear ist:
 \begin{align*}
 \langle \lambda_1 f_1+\lambda_2f_2,g\rangle
@@ -161,15 +183,18 @@ Somit ist das Integral
 \]
 was beweist, dass $\langle\;,\;\rangle$ positiv definit und damit
 ein Skalarprodukt ist.
+\end{proof}
 
-Die Definition kann noch etwas verallgemeinert werden, indem 
+Die Definition des Skalarproduktes in
+Satz~\ref{buch:orthogonal:satz:skalarprodukt}
+kann noch etwas verallgemeinert werden, indem 
 die Funktionswerte nicht überall auf dem Definitionsbereich 
 gleich gewichtet werden. 
 
 \begin{definition}
 \label{buch:orthogonal:def:skalarproduktw}
 Sei $w\colon [a,b]\to \mathbb{R}^+$ eine positive, stetige Funktion,
-dann ist
+dann heisst
 \[
 \langle\;\,,\;\rangle_w
 \colon
@@ -178,22 +203,29 @@ C([a,b]) \times C([a,b]) \to \mathbb{R}
 (f,g) \mapsto \langle f,g\rangle_w = \int_a^b f(x)g(x)\,w(x)\,dx.
 \]
 das {\em gewichtete Skalarprodukt} mit {\em Gewichtsfunktion $w(x)$}.
+\index{<,>@$\langle\;\,,\;\rangle}%
+\index{Gewichtsfunktion}
 \end{definition}
 
+%
+% Gram-Schmidt-Orthonormalisierung
+%
 \subsection{Gram-Schmidt-Orthonormalisierung}
 In einem reellen Vektorraum $V$ mit Skalarprodukt $\langle\;\,,\;\rangle$
-kann aus einer beleibigen Basis $b_1,\dots,b_n$ mit Hilfe des 
+kann aus einer beliebigen Basis $b_1,\dots,b_n$ mit Hilfe des 
 Gram-Schmidtschen Orthogonalisierungsverfahrens immer eine
 orthonormierte Basis $\tilde{b}_1,\dots,\tilde{b}_n$ Basis
 gewonnen werden.
-Es stellt sicher, dass für alle $k\le n$ gilt
+Das Verfahren stellt sicher, dass für alle $k\le n$ gilt,
+dass die Vektoren $b_i$ und $\tilde{b}_i$ die gleichen Unterräume
 \[
 \langle b_1,\dots,b_k\rangle
 =
-\langle \tilde{b}_1,\dots,\tilde{b}_k\rangle.
+\langle \tilde{b}_1,\dots,\tilde{b}_k\rangle
 \]
-Zur Vereinfachung der Formeln schreiben wir $v^0=v/|v|$ für einen zu
-$v$ parallelen Einheitsvektor.
+aufspannen.
+Zur Vereinfachung der Formeln schreiben wir $v^0=v/|v|$ für einen
+Einheitsvektor mit der Richtung $v$.
 Die Vektoren $\tilde{b}_i$ können mit Hilfe der Formeln
 \begin{align*}
 \tilde{b}_1
@@ -276,7 +308,7 @@ b_n
 -
 \frac{\langle b_n,\tilde{b}_{n-1}\rangle}{\langle \tilde{b}_{n-1},\tilde{b}_{n-1}\rangle}\tilde{b}_{n-1}.
 \end{align*}
-berücksichtigen dies.
+tragen dem Rechnung.
 
 %
 % Legendre-Polynome
@@ -286,7 +318,7 @@ berücksichtigen dies.
 Der Gram-Schmidtsche Orthogonalisierungsprozess kann für jedes beliebige
 Skalarprodukt aus der Folge $1$, $x$, $x^2,\dots$ der Monome ein
 Folge von orthogonalisierten Polynomen machen.
-In diesem Abschnitt rechnen wir den Fall konstanter Gewichtsfunktione
+In diesem Abschnitt rechnen wir den Fall der konstanten Gewichtsfunktion
 $w(x)=1$ durch, er führt auf die sogenannten {\em Legendre-Polynome}.
 
 Da wir auf die Normierung verzichten, brauchen wir ein anderes
@@ -302,13 +334,15 @@ fest, dass $P_n(1)=1$ sein soll.
 Das Skalarprodukt berechnet ein Integral eines Produktes von zwei
 Polynomen über das symmetrische Interval $[-1,1]$.
 Ist die eine gerade und die andere ungerade, dann ist das
-Produkt eine ungerade Funktion und das Skalarprodukt verschwindet.
-Sind beide Funktionen gerade oder ungerade, dann ist das Produkt
-gerade und das Skalarprodukt ist im Allgmeinen von $0$ verschieden.
-Dies zeigt, dass es tatsächlich etwas zu Orthogonalisieren gibt.
+Produkt eine ungerade Funktion und das Skalarprodukt verschwindet,
+die Funktionen sind bereits orthogonal.
+Haben die Funktionen die gleiche Parität, 
+sind sie also beide gerade oder beide ungerade, dann ist das Produkt
+gerade und das Skalarprodukt ist im Allgemeinen von $0$ verschieden.
+Dies zeigt, dass es doch noch etwas zu Orthogonalisieren gibt.
 
 Die ersten beiden Funktionen sind das konstante Polynom $1$ und
-das Polynome $x$.
+das Polynom $x$.
 Nach obiger Beobachtung ist das Skalarprodukt $\langle 1,x\rangle=0$,
 also ist $P_1(x)=x$.
 Die Graphen der entstehenden Polynome sind in
@@ -349,7 +383,8 @@ x^n
 \]
 Die Skalarprodukte
 $\langle P_{n-1},x^n\rangle$,
-$\langle P_{n-3},x^n\rangle$, $\dots$ verschwinden alle, so dass
+$\langle P_{n-3},x^n\rangle$, $\dots$ verschwinden alle wegen
+unterschiedlicher Parität, so dass
 $P_n(x)$ eine Linearkombination der Funktionen $x^n$, $P_{n-2}(x)$,
 $P_{n-4}(x)$ ist, die die gleiche Parität wie $x^n$ haben.
 Also hat auch $P_n(x)$ die gleiche Parität, was das Lemma beweist.
@@ -359,7 +394,10 @@ Also hat auch $P_n(x)$ die gleiche Parität, was das Lemma beweist.
 % Orthogonalisierung nach Gram-Schmidt
 %
 \subsubsection{Orthogonalisierung mit Gram-Schmidt}
-Die Ortogonalisierung von $x^2$ liefert daher
+Nach Lemma~\ref{buch:orthogonal:lemma:symmetrie} müssen
+bei jedem Orthogonalisierungsschritt jeweils nur Polynome der
+gleichen Parität berücksichtigt werden.
+Die Orthogonalisierung von $x^2$ liefert daher
 \[
 p(x) = x^2
 -
@@ -367,10 +405,10 @@ p(x) = x^2
 =
 x^2 - \frac{\int_{-1}^1x^2\,dx}{\int_{-1}^11\,dx}
 =
-x^2 - \frac{\frac{2}{3}}{2}=x^2-\frac13
+x^2 - \frac{\frac{2}{3}}{2}=x^2-\frac13.
 \]
 Dieses Polynom erfüllt die Standardisierungsbedingung noch 
-nicht den $p(1)=\frac23$.
+nicht, denn $p(1)=\frac23\ne 1$.
 Daraus leiten wir ab, dass
 \[
 P_2(x) = \frac12(3x^2-1)
@@ -519,7 +557,8 @@ orthogonale Polynome vom Grad $n$, die den Wert $P_n(1)=1$ haben.
 \end{table}
 
 Die so konstruierten Polynome heissen die {\em Legendre-Polynome}.
-Durch weitere Durchführung des Verfahrens liefert die Polynome in
+\index{Legendre-Polynome}%
+Die Fortführung des Verfahrens liefert die Polynome in
 Tabelle~\ref{buch:integral:table:legendre-polynome}.
 Die Graphen sind in Abbildung~\ref{buch:integral:orthogonal:legendregraphen}
 dargestellt.
@@ -538,7 +577,7 @@ $w(x)=1$, es führt auf die Legendre-Polynome.
 Die Wahl einer anderen Gewichtsfunktion ändert natürlich
 das Resultat der Orthogonalisierung.
 Nullstellen und Pole der Gewichtsfunktion ändern die Menge der
-Funktionen, für die das Skalarprodukt definiert.
+Funktionen, für die das Skalarprodukt definiert ist.
 Diesem Zusammenhang soll im ersten Unterabschnitt nachgegangen werden.
 Danach sollen verschiedene für die Praxis relevante Gewichtsfunktionen
 vorgestellt werden.
@@ -626,7 +665,8 @@ $\langle\,\;,\;\rangle_w$ zugänglich sind
 (Abbildung~\ref{buch:orthogonalitaet:fig:gewicht}).
 Ist die Ordnung $\alpha$ des Poles grösser als $1$, dann müssen die Funktionen
 eine Nullstelle mindestens vom Grad $\frac12(a+1)$ haben.
-Nullstellen der Gewichtsfunktion erweitern die Klasse der Funktionen.
+Andererseits erweitern
+Nullstellen der Gewichtsfunktion die Klasse der Funktionen.
 Ist die Ordnung der Nullstelle $\alpha$, dann dürfen die Funktionen einen
 Pol der Ordnung kleiner als $\frac12(\alpha+1)$ haben.
 
@@ -642,8 +682,11 @@ f\colon(a,b) \to \mathbb{R}
 \;\bigg|\;
 \int_a^b |f(x)|^2 w(x)\,dx
 <\infty
-\biggr\}.
+\biggr\}
+=
+L^2([a,b],w).
 \]
+\index{L2abw@$L^2([a,b],w)$}%
 Die Funktionen $f\in H_w$ haben folgende Eigenschaften
 \begin{enumerate}
 \item
