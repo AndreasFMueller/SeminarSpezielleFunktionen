@@ -8,9 +8,12 @@
 \rhead{Das Sturm-Liouville-Problem}
 Sowohl bei den Bessel-Funktionen wie bei den Legendre-Polynomen
 \index{Bessel-Funktion}%
+\index{Legendre-Polynome}%
 konnte die Orthogonalität der Funktionen dadurch gezeigt werden,
 dass sie als Eigenfunktionen eines bezüglich eines geeigneten
 Skalarproduktes selbstadjungierten Operators erkannt wurden.
+Das Kapitel~\ref{chapter:sturmliouville} erarbeitet weitere
+Beispiele des dieses Phänomens etwas mehr im Detail.
 
 %
 % Differentialgleichungen
@@ -19,7 +22,7 @@ Skalarproduktes selbstadjungierten Operators erkannt wurden.
 Das klassische Sturm-Liouville-Problem ist das folgende Eigenwertproblem.
 Gesucht sind Lösungen der Differentialgleichung
 \begin{equation}
-((p(x)y'(x))' + q(x)y(x) = \lambda w(x) y(x)
+\left((p(x)y'(x)\right)' + q(x)y(x) = \lambda w(x) y(x)
 \label{buch:integrale:eqn:sturm-liouville}
 \end{equation}
 auf dem Intervall $(a,b)$, die zusätzlich die Randbedingungen
@@ -92,9 +95,9 @@ v^tMu+u^tMv + 2tv^tMv
 &=
 v^tMu+u^tMv
 =
-2v^tMu
+2v^tMu.
 \end{align*}
-Dies wenden wir jetzt auf den Quotenten $\lambda(v+tu)$ an.
+Dies wenden wir jetzt auf den Quotienten $\lambda(v+tu)$ an.
 \begin{align*}
 \frac{d}{dt}f(v+tu)\bigg|_{t=0}
 &=
@@ -116,7 +119,7 @@ Av - \frac{v^tAv}{v^tBv} Bv
 u^t(
 Av - \lambda Bv
 )
-}{v^tBv}
+}{v^tBv}.
 \end{align*}
 Da $v$ ein Maximum von $\lambda(v)$ ist, verschwindet diese Ableitung
 für alle Vektoren $u$, somit gilt
@@ -142,9 +145,9 @@ berechnen wir das Skalarprodukt auf zwei Arten
 \[
 \renewcommand{\arraycolsep}{2pt}
 \begin{array}{rcccrl}
- u^tAv &=&u^t\lambda Bv &=& \lambda\phantom{\mathstrut-\mu)} u^tBv
+ u^tAv &=&u^t\lambda Bv &=& \lambda\phantom{\mathstrut-\mu)} u^tBv\phantom{.}
 	&\multirow{2}{*}{\hspace{3pt}$\bigg\}\mathstrut-\mathstrut$}\\
-=v^tAu &=&v^t\mu Bu     &=&  \mu\phantom{)}u^tBv         &\\
+=v^tAu &=&v^t\mu Bu     &=&  \mu\phantom{)}u^tBv\phantom{.}         &\\
 \hline
      0 & &              &=& (\lambda - \mu)u^tBv.        &
 \end{array}
@@ -190,7 +193,8 @@ Skalarproduktes $\langle\,\;,\;\rangle_B$.
 % Der Operator L_0 und die Randbedingung
 %
 \subsection{Der Operator $L_0$ und die Randbedingung}
-Die Differentialgleichung kann auch in Operatorform geschrieben werden.
+Die Differentialgleichung~\eqref{buch:integrale:eqn:sturm-liouville}
+kann auch in Operatorform geschrieben werden.
 Dazu schreiben wir
 \[
 L_0 
@@ -330,7 +334,7 @@ Als Skalarprodukt muss also das Integral
 \]
 mit der Gewichtsfunktion $w(x)$ verwendet werden.
 Damit dies ein vernünftiges Skalarprodukt ist, muss $w(x)>0$ im
-Innerend es Intervalls sein.
+Inneren des Intervalls sein.
 
 %
 % Der Vektorraum H
@@ -366,6 +370,9 @@ f\in L^2([a,b],w)\;\bigg|\;
 \int_a^b |f(x)|^2q(x)w(x)\,dx<\infty
 \biggr\}.
 \]
+($L^2([a,b],w)$ ist in 
+Lemma~\ref{buch:orthogonal:lemma:gewichtsfunktion}
+definiert worden.)
 
 %
 % Der Sturm-Liouville-Differentialoperator
@@ -457,6 +464,8 @@ y(x) &= A\cos nx
 \egroup
 verwenden.
 Die Orthogonalität der Sinus- und Kosinus-Funktionen folgt jetzt
+\index{Sinus-Funktion}%
+\index{Kosinus-Funktion}%
 ganz ohne weitere Rechnung.
 
 An dieser Lösung ist nicht ganz befriedigend, dass die trigonometrischen
@@ -481,12 +490,8 @@ ebenfalls erfüllt, $L_0$ ist in diesem Raum selbstadjungiert.
 %
 \subsubsection{Bessel-Funktionen $J_n(x)$}
 Der Bessel-Operator \eqref{buch:differentialgleichungen:bessel-operator}
-kann wie folgt in die Form eines Sturm-Liouville-Operators gebracht 
-werden.
-Zunächst rechnet man
+\index{Bessel-Operator}%
 \[
-B
-=
 x^2\frac{d^2}{dx^2} + x\frac{d}{dx} + x^2
 =
 x\biggl(
@@ -519,7 +524,7 @@ Am rechten Rand für $x\to\infty$ kann man
 verlangen, was der Wahl $k_\infty=1$ und $h_\infty=0$ entspricht.
 Damit ist die Bessel-Differentialgleichung erkannt als ein
 Sturm-Liouville-Problem für $\lambda=n^2$.
-Es folgt damit sofort, dass die Besselfunktionen orthogonale
+Es folgt damit sofort, dass die Bessel-Funktionen orthogonale
 Funktionen bezüglich des Skalarproduktes mit der Gewichtsfunktion
 $w(x)=1/x$ sind.
 
@@ -589,7 +594,7 @@ der Differentialgleichung
 x^2y'' + xy' + (s^2 x^2  - n^2) y = 0
 \label{buch:orthogonal:sturm:eqn:bessellambda}
 \end{equation}
-ist.
+sind.
 
 Die Differentialgleichung
 \eqref{buch:orthogonal:sturm:eqn:bessellambda}
@@ -668,7 +673,7 @@ Die Laguerre-Polynome sind orthogonal bezüglich des Skalarprodukts
 mit der Laguerre-Gewichtsfunktion $w(x)=e^{-x}$ und erfüllen die
 Laguerre-Differentialgleichung
 \eqref{buch:differentialgleichungen:eqn:laguerre-dgl}.
-mit $p(x)=-xe^{-x}$ wird 
+Mit $p(x)=-xe^{-x}$ wird 
 \[
 \frac{1}{w(x)}
 \biggl(
@@ -680,7 +685,7 @@ e^x \biggl(xe^{-x}\frac{d^2}{dx^2} + (1-x)e^{-x}\frac{d}{dx}\biggr),
 \]
 dies sind die abgeleiteten Terme in der Laguerre-Differentialgleichung.
 Der Definitionsbereich ist $(0,\infty)$.
-Als Randbedingung am linken kann man $y(0)=1$ verwenden, welche
+Als Randbedingung am linken Rand kann man $y(0)=1$ verwenden, welche
 auch die Laguerre-Polynome ergeben hat.
 Am rechten Rand ist die Bedingung
 \[
@@ -714,38 +719,41 @@ Tschebyscheff-Differentialgleichung~\eqref{buch:potenzen:tschebyscheff:dgl}
 (1-x^2)y'' -xy' = n^2y
 \]
 auf dem Intervall $(-1,1)$.
-Auch dieses Problem kann als Sturm-Liouville-Problem formuliert
-werden mit
-\begin{align*}
-w(x) &= \frac{1}{\sqrt{1-x^2}} \\
-p(x) &= \sqrt{1-x^2} \\
-q(x) &= 0
-\end{align*}
-Das zugehörige Sturm-Liouville-Eigenwertproblem ist
-\[
-\frac{d}{dx}\sqrt{1-x^2}\frac{d}{dx} y(x)
-=
-\lambda \frac{1}{\sqrt{1-x^2}} y(x).
-\]
-Führt man die Ableitungen auf der linken Seite aus, entsteht die
-Gleichung
-\begin{align*}
-\sqrt{1-x^2} y''(x) -\frac{x}{\sqrt{1-x^2}}y'(x)
-&=  \lambda \frac{1}{\sqrt{1-x^2}} y(x)
-\intertext{Multiplikation mit $\sqrt{1-x^2}$ ergibt}
-(1-x^2)
-y''(x) 
--
-xy'(x)
-&=
-\lambda y(x).
-\end{align*}
-Es folgt, dass die Tschebyscheff-Polynome orthogonal sind 
-\index{Tschebyscheff-Polynom}%
-bezüglich des Skalarproduktes
-\[
-\langle f,g\rangle = \int_{-1}^1 f(x)g(x)\frac{dx}{\sqrt{1-x^2}}.
-\]
+In Kapitel~\ref{chapter:sturmliouville} werden Sie als Lösung
+eines Sturm-Liouville-Problems konstruiert.
+
+%Auch dieses Problem kann als Sturm-Liouville-Problem formuliert
+%werden mit
+%\begin{align*}
+%w(x) &= \frac{1}{\sqrt{1-x^2}} \\
+%p(x) &= \sqrt{1-x^2} \\
+%q(x) &= 0
+%\end{align*}
+%Das zugehörige Sturm-Liouville-Eigenwertproblem ist
+%\[
+%\frac{d}{dx}\sqrt{1-x^2}\frac{d}{dx} y(x)
+%=
+%\lambda \frac{1}{\sqrt{1-x^2}} y(x).
+%\]
+%Führt man die Ableitungen auf der linken Seite aus, entsteht die
+%Gleichung
+%\begin{align*}
+%\sqrt{1-x^2} y''(x) -\frac{x}{\sqrt{1-x^2}}y'(x)
+%&=  \lambda \frac{1}{\sqrt{1-x^2}} y(x)
+%\intertext{Multiplikation mit $\sqrt{1-x^2}$ ergibt}
+%(1-x^2)
+%y''(x) 
+%-
+%xy'(x)
+%&=
+%\lambda y(x).
+%\end{align*}
+%Es folgt, dass die Tschebyscheff-Polynome orthogonal sind 
+%\index{Tschebyscheff-Polynom}%
+%bezüglich des Skalarproduktes
+%\[
+%\langle f,g\rangle = \int_{-1}^1 f(x)g(x)\frac{dx}{\sqrt{1-x^2}}.
+%\]
 
 %
 % Jacobi-Polynome
@@ -837,19 +845,22 @@ lässt sich in die Form eines Sturm-Liouville-Operators
 \index{Eulersche hypergeometrische Differentialgleichung!als Sturm-Liouville-Gleichung}%
 bringen.
 Dazu setzt man
-\begin{align*}
+\begin{align}
 p(z)
 &=
 z^c(z-1)^{a+b+1-c}
+\notag
 \\
 q(z)
 &=
 -abz^{c-1}(z-1)^{a+b-c}
+\notag
 \\
 w(z)
 &=
 z^{c-1}(z-1)^{a+b-c}.
-\end{align*}
+\label{buch:orthogonal:sturm:eqn:w}
+\end{align}
 Setzt man dies in den Sturm-Liouville-Operator ein, erhält man
 \begin{equation}
 L
@@ -858,7 +869,7 @@ L
 =
 -p(z)\frac{d^2}{dz^2}
 -p'(z)\frac{d}{dz}
-+q(z)
++q(z).
 \label{buch:orthgonalitaet:eqn:hypersturm}
 \end{equation}
 Wir brauchen also
@@ -925,28 +936,63 @@ z(1-z)
 \biggr).
 \end{align*}
 Die Klammer auf der rechten Seite ist tatsächlich die linke Seite der
-eulerschen hypergeometrischen Differentialgleichung.
+eulerschen hypergeometrischen Differentialgleichung und
+die Funktion $\mathstrut_2F_1(a,b;c;z)$ ist eine Eigenfunktion
+von $L$ zum Eigenwert $0$.
 
-Die hypergeometrische Funktion $\mathstrut_2F_1(a,b;c;z)$ ist ein
-Eigenvektor des Operators $L$ zum Eigenwert $\lambda$.
-Sei jetzt $w(z)$ eine Eigenfunktion zum Eigenwert $\lambda\ne 0$,
+Sei jetzt $y(z)$ eine Eigenfunktion von $L$ zum Eigenwert $\lambda\ne 0$,
 also
-\[
-z(1-z)w''(z) + (c-(a+b+1)z)w'(z) - ab w(z) = \lambda w(z).
-\]
-Kann man $a$ und $b$ so in $a_1$ und $b_1$ ändern, dass $a+b=a_1+b_1$
-gleich bleiben aber das Produkt den Wert $a_1b_1=ab-\lambda$?
-$a_1$ und $b_1$ sind die Lösungen der quadratischen Gleichung
-\[
-x^2 - (a+b)x + ab-\lambda = 0.
-\]
-Alle Eigenfunktionen des Operators $L$ sind also hypergeometrische
-Funktion $\mathstrut_2F_1$.
+\begin{equation}
+z(1-z)y''(z) + (c-(a+b+1)z)y'(z) - ab y(z) = \lambda y(z).
+\label{buch:orthogonal:hypergeometrisch:eqn:gl}
+\end{equation}
+Die Funktionen $y(z)$ und $\mathstrut_2F_1(a,b;c;z)$ sind bezüglich
+des Skalarproduktes mit der Gewichtsfunktion $w(z)$
+von~\eqref{buch:orthogonal:sturm:eqn:w} orthogonal.
 
-Da die Gewichtsfunktion $w(z)$ bei der Ersetzung $a\to a_1$ und $b\to b_1$
-sich nicht ändert ($w(z)$ hängt nur von der Summe $a+b$ ab, welche sich
-nicht ändert), sind die beide beiden Eigenfunktionen bezüglich
-des Skalarproduktes mit der Gewichtsfunktion $w(z)$ orthogonal.
+Kann man die Eigenfunktion $y(z)$  zum Eigenwert $\lambda$ als
+hypergeometrische Funktion $\mathstrut_2F_1$ schreiben?
+Dies ist möglich, wenn man den Term $\lambda y(z)$ auf der rechten
+Seite von \eqref{buch:orthogonal:hypergeometrisch:eqn:gl}
+in den Term $aby(z)$ auf der linken Seite absorbieren kann.
+Da im Operator $L$ nur von der Summe $a+b$ und das Produkt
+$ab$ vorkommt,
+muss man $a$ und $b$ so in $a_1$ und $b_1$ ändern, dass die Summe
+$a+b=a_1+b_1$ gleich bleibt, aber das Produkt den Wert $a_1b_1=ab+\lambda$
+bekommt.
+Nach dem Vietaschen Wurzelsatz müssen
+\index{Vieta}%
+\index{Wurzelsatz von Vieta}%
+$a_1$ und $b_1$ die beiden Lösungen der quadratischen Gleichung
+\[
+x^2 - (a+b)x + ab+\lambda = 0
+\]
+sein.
+Die Eigenfunktion $y(x)$ ist also eine Lösung der eulerschen
+hypergeometrischen Differentialgleichung mit den Koeffizienten
+$a_1$ und $b_1$, oder
+\[
+y(x) = \mathstrut_2F_1(a_1,b_1;c;z)
+\]
+bei geeigneter Normierung.
+
+Die Gewichtsfunktion $w(z)$ ändert sich
+gemäss~\eqref{buch:orthogonal:sturm:eqn:w} bei der Ersetzung $a\to a_1$
+und $b\to b_1$ nicht, weil $w(z)$ nur von der Summe 
+$a+b$ abhängt.
+Insbesondere sind alle Funktionen $\mathstrut_2F_1(a_1,b_1;c;z)$
+mit $a+b=a_1+b_1$ Eigenfunktionen des $L$-Operators zum Eigenwert
+$\lambda=a_1b_1-ab$
+und damit orthogonal bezüglich des Skalarproduktes
+mit der Gewichtsfunktion $w(z)=z^{c-1}(z-1)^{a+b-c}$:
+\[
+\langle
+\mathstrut_2F_1(a,b;c;z),
+\mathstrut_2F_1(a_1,b_1;c;z)
+\rangle
+=
+0.
+\]
 
 
 

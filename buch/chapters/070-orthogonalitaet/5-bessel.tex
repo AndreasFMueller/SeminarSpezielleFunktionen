@@ -1,20 +1,23 @@
 %
-% Besselfunktionen also orthogonale Funktionenfamilie
+% Bessel-Funktionen also orthogonale Funktionenfamilie
 %
 \section{Bessel-Funktionen als orthogonale Funktionenfamilie
 \label{buch:orthogonalitaet:section:bessel}}
 \rhead{Bessel-Funktionen}
-Auch die Besselfunktionen sind eine orthogonale Funktionenfamilie.
-Sie sind Funktionen differenzierbaren Funktionen $f(r)$ für $r>0$
-mit $f'(r)=0$ und für $r\to\infty$ nimmt $f(r)$ so schnell ab, dass
-auch $rf(r)$ noch gegen $0$ strebt.
+Auch die Bessel-Funktionen sind eine orthogonale Funktionenfamilie.
+Sie sind differenzierbaren Funktionen $f(r)$, die definiert
+sind für $r>0$, mit $f'(r)=0$ und derart, dass für $r\to\infty$ $f(r)$
+so schnell abnimmt, dass auch $rf(r)$ noch gegen $0$ strebt.
 Das Skalarprodukt ist
 \[
 \langle f,g\rangle
 =
-\int_0^\infty r f(r) g(r)\,dr,
+\langle f,g\rangle_r
+=
+\int_0^\infty f(r) g(r)\,r\,dr,
 \]
-als Operator verwenden wir
+ein verallgemeinertes Skalarprodukt mit Gewichtsfunktion $w(r)=r$.
+Als Operator verwenden wir
 \[
 A = \frac{d^2}{dr^2} + \frac{1}{r}\frac{d}{dr} + s(r),
 \]
@@ -63,7 +66,7 @@ Somit ergibt sich
 \end{align}
 Vertauscht man die Rollen von $f$ und $g$, erhält man das Gleiche, da im
 letzten Ausdruck~\eqref{buch:integrale:orthogonal:besselsa} die Funktionen
-$f$ und $g$ symmetrische auftreten.
+$f$ und $g$ symmetrisch auftreten.
 Damit ist gezeigt, dass der Operator $A$ selbstadjungiert ist.
 Es folgt nun, dass Eigenvektoren des Operators $A$ automatisch
 orthogonal sind.
@@ -84,9 +87,9 @@ r^2f''(r) +rf'(r)+ (-\lambda r^2+s(r)r^2)f(r) &= 0
 sind.
 
 Durch die Wahl $s(r)=1$ wird der Operator $A$ zum Bessel-Operator
-$B$ definiert in
+$B$, definiert in
 \eqref{buch:differentialgleichungen:bessel-operator}.
 Die Lösungen der Besselschen Differentialgleichung zu verschiedenen Werten
 des Parameters müssen also orthogonal sein, insbesondere sind die
-Besselfunktion $J_\nu(r)$ und $J_\mu(r)$ orthogonal wenn $\mu\ne\nu$ ist.
+Bessel-Funktion $J_\nu(r)$ und $J_\mu(r)$ orthogonal wenn $\mu\ne\nu$ ist.
 
