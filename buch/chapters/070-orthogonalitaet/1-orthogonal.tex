@@ -203,7 +203,7 @@ C([a,b]) \times C([a,b]) \to \mathbb{R}
 (f,g) \mapsto \langle f,g\rangle_w = \int_a^b f(x)g(x)\,w(x)\,dx.
 \]
 das {\em gewichtete Skalarprodukt} mit {\em Gewichtsfunktion $w(x)$}.
-\index{<,>@$\langle\;\,,\;\rangle}%
+\index{<,>@$\langle\;\,,\;\rangle$}%
 \index{Gewichtsfunktion}
 \end{definition}
 
@@ -211,6 +211,7 @@ das {\em gewichtete Skalarprodukt} mit {\em Gewichtsfunktion $w(x)$}.
 % Gram-Schmidt-Orthonormalisierung
 %
 \subsection{Gram-Schmidt-Orthonormalisierung}
+\index{Gram-Schmidt-Orthonormalisierung}%
 In einem reellen Vektorraum $V$ mit Skalarprodukt $\langle\;\,,\;\rangle$
 kann aus einer beliebigen Basis $b_1,\dots,b_n$ mit Hilfe des 
 Gram-Schmidtschen Orthogonalisierungsverfahrens immer eine
@@ -275,7 +276,9 @@ verzichtet werden, bei der Orthogonalisierung muss aber berücksichtigt
 werden, dass die Vektoren $\tilde{b}_i$ jetzt nicht mehr Einheitslänge
 haben.
 Die Formeln
-\begin{align*}
+\begin{equation}
+\left.
+\begin{aligned}
 \tilde{b}_0
 &=
 b_0
@@ -307,8 +310,55 @@ b_n
 \dots
 -
 \frac{\langle b_n,\tilde{b}_{n-1}\rangle}{\langle \tilde{b}_{n-1},\tilde{b}_{n-1}\rangle}\tilde{b}_{n-1}.
-\end{align*}
+\end{aligned}
+\right\}
+\label{buch:orthogonal:eqn:orthogonalisierung}
+\end{equation}
 tragen dem Rechnung.
+
+%
+% Orthogonale und orthonormierte Funktionenfamilien
+%
+\subsubsection{Orthogonale und orthonormierte Funktionenfamilien}
+In einem Funktionenraum kann man mit dem
+Gram-Schmidt-Orthonormalisierungsprozess eine 
+orthonormierte Funktionenfamilie im Sinne der folgenden Definition
+finden.
+
+\begin{definition}
+Eine Folge $f_n(x)$ von Funktionen heisst {\em orthonormiert}, wenn 
+\index{orthonormiert}%
+\[
+\langle f_n,f_m\rangle = \delta_{nm}
+\]
+für alle $n$ und $m$.
+\end{definition}
+
+Um so eine Funktionenfamilie zu bekommen, beginnt man mit irgend
+einer Familie von linear unabhängigen Funktionen und wendet den
+Orthonormalisierungsprozess darauf an.
+
+Die Normierung auf Norm $1$ ist nicht immer erwünscht oder nötig. 
+Die Variante~\eqref{buch:orthogonal:eqn:orthogonalisierung}
+des Prozesses liefert dann eine Familie von Funktion, die nur
+paarweise orthogonal sind.
+Wir nennen eine solche Familie orthogonal, wie die folgenden Definition
+diesen Begriff beschreibt.
+
+\begin{definition}
+\label{buch:orthogonal:def:orthogonal}
+Eine Folge von Funktionen $f_n(x)$ heisst {\em orthogonal} bezüglich des
+\index{orthogonal}%
+Skalarproduktes $\langle\,\;,\;\rangle_w$, wenn
+\[
+\langle f_n,f_m\rangle_w = h_n \delta_{nm}
+\]
+für alle $n$, $m$.
+\end{definition}
+
+Man beachte, dass die Konstanten $h_n$ zusätzlich bestimmt werden müssen.
+Durch Division von $f_n$ durch $\sqrt{h_n}$ erhält man eine
+orthonormierte Funktionenfamilie.
 
 %
 % Legendre-Polynome
@@ -326,11 +376,14 @@ Kriterium, welches die Polynome eindeutig festlegen kann.
 Wir bezeichnen das Polynom vom Grad $n$, das bei diesem Prozess
 entsteht, mit $P_n(x)$ und legen willkürlich aber traditionskonform
 fest, dass $P_n(1)=1$ sein soll.
+Die Polynome $P_n(x)$ bilden also nur eine orthogonale Funktionenfamilie
+(Definition~\ref{buch:orthogonal:def:orthogonal}).
 
 %
 % Symmetrie-Eigenschaften
 %
 \subsubsection{Symmetrieeigenschaften}
+\index{Symmetrie}%
 Das Skalarprodukt berechnet ein Integral eines Produktes von zwei
 Polynomen über das symmetrische Interval $[-1,1]$.
 Ist die eine gerade und die andere ungerade, dann ist das
@@ -721,12 +774,14 @@ w^{(\alpha,\beta)}
 x\mapsto w^{(\alpha,\beta)}(x) = (1-x)^\alpha(1+x)^\beta
 \]
 mit $\alpha,\beta\in\mathbb{R}$.
-Das Skalarprodukt zugehörige Skalarprodukt wird auch als
+\index{walphabeta@$w^{(\alpha,\beta)}$}%
+Das Skalarprodukt zugehörige Skalarprodukt wird auch mit
 \[
 \langle\,\;,\;\rangle_{w^{(\alpha,\beta)}}
 =
 \langle\,\;,\;\rangle_{(\alpha,\beta)}
 \]
+\index{<,>alphabeta@$\langle \;\,,\;\rangle_{\alpha,\beta}$}%
 bezeichnet und die zugehörige Norm mit
 \[
 \|f\|_{(\alpha,\beta)}
@@ -748,6 +803,7 @@ und mit
 P_n^{(\alpha,\beta)}(1) = \binom{n+\alpha}n
 \]
 normiert sind.
+\index{Palphabeta@$P^{(\alpha,\beta)}_n$}
 \end{definition}
 
 In Abbildung~\ref{buch:orthogonal:fig:jacobi-parameter}
@@ -775,6 +831,15 @@ $\frac12(1-\alpha)$ haben.
 
 \begin{figure}
 \centering
+\includegraphics{chapters/070-orthogonalitaet/images/lintrans.pdf}
+\caption{Variablentransformation vom Intervall $[0,1]$ auf das
+Intervall $[-1,1]$ zwecks Vergleich der Beta-Verteilung, die auf $[0,1]$
+definiert ist, mit den Jacobi-Polynomen, die auf $[-1,1]$ definiert
+sind.
+\label{buch:orthogonal:fig:lintrans}}
+\end{figure}
+\begin{figure}
+\centering
 \includegraphics[width=\textwidth]{chapters/070-orthogonalitaet/images/jacobi.pdf}
 \caption{Jacobi-Polynome vom Grad $1$ bis $14$ für verschiedene Werte
 der Parameter $\alpha$ und $\beta$.
@@ -785,13 +850,17 @@ rechten Rand haben.
 \label{buch:orthogonal:fig:jacobi-parameter}}
 \end{figure}
 
+%
+% Jacobi-Gewichtsfunktion und Beta-Verteilung
+%
 \subsubsection{Jacobi-Gewichtsfunktion und Beta-Verteilung
 \label{buch:orthogonal:subsection:beta-verteilung}}
 Die Jacobi-Gewichtsfunktion entsteht aus der Wahrscheinlichkeitsdichte
 der Beta-Verteilung, die in
 Abschnitt~\ref{buch:rekursion:subsection:beta-verteilung}
-eingeführt wurde mit Hilfe der Variablen-Transformation $x = 2t-1$
-oder $t=(x+1)/2$.
+eingeführt wurde, mit Hilfe der linearen Variablentransformation $x = 2t-1$
+oder $t=(x+1)/2$ (Abbildung~\ref{buch:orthogonal:fig:lintrans}).
+\index{Beta-Verteilung}%
 Das Integral mit der Jacobi-Gewichtsfunktion $w^{(\alpha,\beta)}(x)$
 kann damit umgeformt werden in
 \begin{align*}
@@ -864,6 +933,7 @@ Jacobi-Gewichtsfunktion.
 % Hermite-Gewichtsfunktion
 %
 \subsubsection{Hermite-Gewichtsfunktion}
+\index{ex2@$e^{-\frac{x^2}2}$}%
 Die Gewichtsfunktion
 \[
 w_{\text{Hermite}}(x)
@@ -875,9 +945,9 @@ e^{-\frac{x^2}{2}}
 heisst die {\em Hermite-Gewichtsfunktion}.
 \index{Hermite-Gewichtsfunktion}%
 Sie hat keine Nullstellen und geht für $x\to\pm\infty$ so schnell
-gegen $0$, dass für alle Polynome 
+gegen $0$, dass für alle Polynome $p(x)$
 \[
-\int_{-\infty}^\infty |f(x)|^2 e^{-\frac{x^2}{2}}\,dx<\infty
+\int_{-\infty}^\infty |p(x)|^2 e^{-\frac{x^2}{2}}\,dx<\infty
 \]
 ist.
 Als Definitionsintervall kann daher die ganze reelle Achse
@@ -899,6 +969,7 @@ w_{\text{Laguerre}}(x)
 =
 e^{-x}
 \]
+\index{e-x@$e^{-x}$}%
 auf ganz $\mathbb{R}$ definiert, und sie geht für $x\to\infty$ wieder
 sehr rasch gegen $0$.
 Für $x\to-\infty$ hingegen wächst sie so schnell an, dass für alle Polynome

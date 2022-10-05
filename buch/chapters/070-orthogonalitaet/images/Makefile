@@ -4,7 +4,13 @@
 #
 # (c) 2021 Prof Dr Andreas Müller, OST Ostschweizer Fachhochschule
 #
-all:	legendre.pdf orthogonal.pdf weight.pdf jacobi.pdf laguerre.pdf
+all:									\
+	legendre.pdf							\
+	orthogonal.pdf							\
+	weight.pdf							\
+	jacobi.pdf							\
+	laguerre.pdf							\
+	lintrans.pdf
 
 legendrepaths.tex:	legendre.m
 	octave legendre.m
@@ -35,3 +41,6 @@ jacobipaths.tex:	jacobi Makefile
 	./jacobi --a=-2 --b=0 --prefix=aminustwo >> jacobipaths.tex
 jacobi.pdf:	jacobi.tex jacobipaths.tex
 	pdflatex jacobi.tex
+
+lintrans.pdf:	lintrans.tex
+	pdflatex lintrans.tex

@@ -21,15 +21,9 @@ P_0(x) &= 1.
 Mit so einer Rekursionsbeziehung ist es sehr einfach, die Funktionswerte
 für alle $P_n(x)$ zu berechnen.
 
-\begin{definition}
-Eine Folge von Polynomen $p_n(x)$ heisst orthogonal bezüglich des
-Skalarproduktes $\langle\,\;,\;\rangle_w$, wenn 
-\[
-\langle p_n,p_m\rangle_w = h_n \delta_{nm}
-\]
-für alle $n$, $m$.
-\end{definition}
-
+%
+% Allgemeine Drei-Term-Rekursion für orthogonale Polynome
+%
 \subsubsection{Allgemeine Drei-Term-Rekursion für orthogonale Polynome}
 Die Multiplikation mit $x$ macht aus einem Polynom vom Grad $n$ ein
 Polynom vom Grad $n+1$.
@@ -70,6 +64,9 @@ Die Rekursionsbeziehung~\eqref{buch:orthogonal:eqn:rekursion} bedeutet,
 dass sich die Werte $p_n(x)$ für alle $n$ ausgehend von $p_1(x)$ und
 $p_0(x)$ mit nur $O(n)$ Operationen ermitteln lassen.
 
+%
+% Multiplikationsoperator
+%
 \subsubsection{Multiplikationsoperator mit $x$}
 Man kann die Relation \eqref{buch:orthogonal:eqn:rekursion}
 auch nach dem Produkt $xp_n(x)$ auflösen, dann wird sie
@@ -90,6 +87,9 @@ Abbildung in der Basis der Polynome $p_k$ tridiagonale Form hat.
 Ein Beispiel dafür ist im nächsten Abschnitt in
 \eqref{buch:orthogonal:eqn:Mx}
 
+%
+% Drei-Term-Rekursion für die Tschebyscheff-Polynome
+%
 \subsubsection{Drei-Term-Rekursion für die Tschebyscheff-Polynome}
 Eine Relation der Form~\eqref{buch:orthogonal:eqn:multixrelation}
 wurde bereits in 
@@ -119,6 +119,9 @@ M_x
 \label{buch:orthogonal:eqn:Mx}
 \end{equation}
 
+%
+% Beweis von Satz
+%
 \subsubsection{Beweis von Satz~\ref{buch:orthogonal:satz:drei-term-rekursion}}
 Die Relation~\eqref{buch:orthogonal:eqn:multixrelation} zeigt auch,
 dass der Beweis die Koeffizienten $\langle xp_k,p_j\rangle_w$

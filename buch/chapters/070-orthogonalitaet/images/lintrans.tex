@@ -1,0 +1,57 @@
+%
+% lintrans.tex -- template for standalon tikz images
+%
+% (c) 2021 Prof Dr Andreas Müller, OST Ostschweizer Fachhochschule
+%
+\documentclass[tikz]{standalone}
+\usepackage{amsmath}
+\usepackage{times}
+\usepackage{txfonts}
+\usepackage{pgfplots}
+\usepackage{csvsimple}
+\usetikzlibrary{arrows,intersections,math,calc}
+\begin{document}
+\def\skala{1}
+\begin{tikzpicture}[>=latex,thick,scale=\skala]
+
+\coordinate (Al) at (0,2);
+\coordinate (Ar) at (4,2);
+\coordinate (Bl) at (-4,-2);
+\coordinate (Br) at (4,-2);
+
+\fill[color=blue!20] (Al) -- (Bl) -- (Br) -- (Ar) --cycle;
+
+\draw[->] ($(Al)+(-0.1,0)$) -- ($(Ar)+(0.4,0)$) coordinate[label={$t$}];;
+\draw ($(Al)+(0,-0.1)$) -- ($(Al)+(0,0.1)$);
+\draw ($(Ar)+(0,-0.1)$) -- ($(Ar)+(0,0.1)$);
+\node at (Al) [above] {$0\mathstrut$};
+\node at (Ar) [above] {$1\mathstrut$};
+
+
+\draw[->] ($(Bl)+(-0.1,0)$) -- ($(Br)+(0.4,0)$) coordinate[label={$x$}];
+\draw ($(Bl)+(0,-0.1)$) -- ($(Bl)+(0,0.1)$);
+\draw ($(Br)+(0,-0.1)$) -- ($(Br)+(0,0.1)$);
+\node at (Bl) [below] {$-1\mathstrut$};
+\node at (Br) [below] {$1\mathstrut$};
+\node at ($0.5*(Br)+0.5*(Bl)$) [below] {$0\mathstrut$};
+\fill ($0.5*(Br)+0.5*(Bl)$) circle[radius=0.05];
+
+\coordinate (S1) at (2,1.4);
+\coordinate (S2) at (0,-1.4);
+\coordinate (O) at (0.4,0);
+\coordinate (S0) at (1,0);
+
+\draw[->,color=blue,line width=5pt]
+	($(S1)-(O)$)
+	--
+	($(S2)-(O)$);
+\node at ($(S0)-(O)$) [above left] {$\displaystyle t\mapsto x = 2t-1$};
+\draw[<-,color=blue,line width=5pt]
+	($(S1)+(O)$)
+	--
+	($(S2)+(O)$);
+\node at ($(S0)+(O)$) [below right] {$\displaystyle x\mapsto t = \frac{x+1}2$};
+
+\end{tikzpicture}
+\end{document}
+
