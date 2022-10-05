@@ -10,7 +10,7 @@ Die Drei-Term-Rekursionsformel ermöglicht Werte orthogonaler Polynome
 effizient zu berechnen.
 Die Rekursionsformel erhöht den Grad eines Polynoms, indem mit $x$ 
 multipliziert wird.
-mit der Ableitung kann man den Grad aber auch senken, man könnte daher
+Mit der Ableitung kann man den Grad aber auch senken, man könnte daher
 auch nach einer Rekursionsformel fragen, die bei einem Polynom hohen
 Grades beginnt und mit Hilfe von Ableitungen zu geringeren Graden
 absteigt.
@@ -21,7 +21,7 @@ gefunden hat.
 
 In diesem Abschnitt sei $p_n(x)$ eine bezüglich des Skalarproduktes
 $\langle\,\;,\;\rangle_w$ auf dem Intervall $[a,b]$ orthogonale Familie
-von Polynomen mit genaum dem Grad $\deg p_n=n$.
+von Polynomen mit genau dem Grad $\deg p_n=n$.
 Die Skalarprodukte sollen 
 \[
 \langle p_n,p_m\rangle_w = h_n\delta_{nm}
@@ -34,7 +34,7 @@ sein.
 \subsection{Pearsonsche Differentialgleichung}
 Die {\em Pearsonsche Differentialgleichung} ist die Differentialgleichung
 \begin{equation}
-B(x) y' - A(x) y = 0,
+B(x) w' - A(x) w = 0,
 \label{buch:orthogonal:eqn:pearson}
 \end{equation}
 \index{Differentialgleichung!Pearsonsche}%
@@ -45,13 +45,13 @@ Die Gleichung~\eqref{buch:orthogonal:eqn:pearson}
 kann gelöst werden, wenn $y$ und $B(x)$ keine Nullstellen  haben.
 Dann kann man die Gleichung umstellen in
 \[
-\frac{y'}{y}
+\frac{w'}{w}
 =
-(\log y)'
+(\log w)'
 =
 \frac{A(x)}{B(x)}
 \qquad\Rightarrow\qquad
-y
+w
 =
 \exp\biggl(
 \int\frac{A(x)}{B(x)}
@@ -77,11 +77,12 @@ zweiten Grades nicht möglich ist.
 % Rekursionsformel
 %
 \subsection{Rekursionsformel}
-Multiplikation mit $B(x)$ wird den Grad eines Polynomes typischerweise 
+Multiplikation mit $B(x)$ wird den Grad eines Polynomes 
 um $2$ erhöhen, die Ableitung wird ihn wieder um $1$ reduzieren.
 Etwas formeller kann man dies wie folgt formulieren:
 
 \begin{satz}
+\label{buch:orthogonal:rodrigues:satz:rekursion}
 \index{Satz!Rodrigues-Rekursionsformel}%
 Für alle $n\ge 0$ ist
 \begin{equation}
@@ -96,24 +97,35 @@ ein Polynom vom Grad höchstens $n$.
 
 \begin{proof}[Beweis]
 Wenn $r_0(x)$ irgend eine differenzierbare Funktion ist, dann ist
-\begin{align*}
+\begin{align}
 \frac{d^n}{dx^n}
 r_0(x) B(x)^n w(x)
 &=
 \frac{d^{n-1}}{dx^{n-1}}\frac{d}{dx} r_0(x) B(x)^n w(x)
+\notag
 \\
 &=
 \frac{d^{n-1}}{dx^{n-1}}
-\bigl(r_0'(x)B(x)+ nr_0(x)B'(x)B(x)^{n-1}w(x) + r_0(x)B(x)^n w'(x) \bigr)
+\left(
+\bigl(r_0'(x)B(x)+ nr_0(x)B'(x) \bigr) B(x)^{n-1}w(x) + r_0(x)B(x)^n w'(x)
+\right)
+\notag
 \\
 &=
 \frac{d^{n-1}}{dx^{n-1}}
-(\underbrace{r_0'(x)B(x)+nr_0(x)B'(x)+r_0(x)A(x)}_{\displaystyle = r_1(x)})
+\bigl(
+\underbrace{r_0'(x)B(x)+nr_0(x)B'(x)+r_0(x)A(x)}_{\displaystyle = r_1(x)}
+\bigr)
 B(x)^{n-1} w(x)
+\label{buch:orthogonal:rodrigues:eqn:pearson}
 \\
 &=
 \frac{d^{n-1}}{dx^{n-1}} r_1(x)B^{n-1}(x) w(x).
-\end{align*}
+\end{align}
+Im Schritt
+\eqref{buch:orthogonal:rodrigues:eqn:pearson}
+wurde die Tatsache benutzt, dass $w(x)$ die Pearson-Differentialgleichung
+erfüllt.
 Iterativ lässt sich eine Folge von
 Funktionen $r_k(x)$ definieren, für die Rekursionsformel
 \begin{equation}
@@ -170,8 +182,11 @@ Es gibt Konstanten $c_n$ derart, dass
 p_n(x)
 =
 \frac{c_n}{w(x)} \frac{d^n}{dx^n} \bigl(B(x)^n w(x)\bigr) 
+=
+c_n q_n(x)
 \]
-gilt.
+gilt mit den Polynomen $q_n(x)$ von
+Satz~\ref{buch:orthogonal:rodrigues:satz:rekursion}.
 \end{satz}
 
 \begin{proof}[Beweis]
@@ -195,9 +210,21 @@ x^k w(x)\,dx
 -
 \int_a^b \frac{d^{n-1}}{dx^{n-1}}\bigl(B(x)^n w(x)\bigr)kx^{k-1}\,dx
 \end{align*}
-Durch $n$-fache Iteration wird das Integral auf $0$ reduziert.
-Es bleiben nur die eckigen Klammern stehen, doch wenn man die Produktregel
-auswertet, bleibt immer mindestens ein Produkt $B(x)w(x)$ stehen,
+Durch $k+1$-fache Iteration wird das Integral schliesslich auf
+\[
+\int_a^b
+\frac{d^{n-k-1}}{dx^{n-k-1}}
+\bigl(B(x)^nw(x)\bigr)
+k(k-1)\dots2\cdot1\cdot 0\,dx
+=
+0
+\]
+reduziert.
+Es bleiben nur die eckigen Klammern stehen.
+
+Wenn man die Produktregel für die Ableitung
+von $B(x)^nw(x)$ auswertet, bleibt immer mindestens ein Produkt
+$B(x)w(x)$ stehen,
 nach den Voraussetzungen an den Grenzwert dieses Produktes an den
 Intervallenden verschwinden diese Terme alle.
 Damit sind die $q_n(x)$ Polynome, die $w$-orthogonal sind auf allen
@@ -209,11 +236,11 @@ Soeben wurde gezeigt, dass $q_n(x)$ orthogonal auf diesen Monomen
 ist, also auch auf $q_k(x)$ mit $k<n$.
 Damit ist gezeigt, dass Polynome $q_n(x)$ eine orthogonale Familie
 von Polynomen bilden.
-Durch Normierung müssen sich daraus die Polynome $p_n(x)$ ergeben.
+Durch geeignete Wahl der Konstanten $c_n$ entstehen die Polynome $p_n(x)$.
 \end{proof}
 
 \subsection{Differentialgleichung}
-Man kann auch zeigen (siehe z.~B.~\cite{buch:pearsondgl},
+Man kann auch zeigen (siehe z.~B.~\cite{buch:pearsondgl}),
 dass die orthogonalen Polynome, die die
 Rodrigues-Formel liefert, einer Differentialgleichung zweiter 
 Ordnung genügen, deren möglicherweise nicht konstante Koeffizienten
@@ -264,7 +291,7 @@ die Gewichtsfunktion
 \[
 w(x) = e^{-x^2}.
 \]
-Für jedes beliebige Polynome $B(x)$, auch für höheren Grad als $2$, ist
+Für jedes beliebige Polynom $B(x)$, auch für höheren Grad als $2$, ist
 \[
 \lim_{x\to-\infty} B(x) w(x)
 =
@@ -299,8 +326,8 @@ A(x) = -2x
 \qquad\text{und}\qquad
 B(x) = 1.
 \]
-Die Gradbedingung ist also immer erfüllt und es folgt die Rodrigues-Formel
-für die Hermite-Polynome
+Die Gradbedingung ist also immer erfüllt.
+So folgt die Rodrigues-Formel
 \index{Hermite-Polynom}%
 \index{Polynome!Hermite}%
 \begin{equation}
@@ -310,11 +337,12 @@ c_n
 e^{x^2}\frac{d^n}{dx^n} e^{-x^2}
 =
 (-1)^n
-e^{x^2}\frac{d^n}{dx^n} e^{-x^2}.
+e^{x^2}\frac{d^n}{dx^n} e^{-x^2}
 \label{buch:orthogonal:eqn:hermite-rodrigues}
 \end{equation}
+für die Hermite-Polynome.
 
-Die Hermite-Polynome können mit der Rodrigues-Formel berechnet werden,
+Die Hermite-Polynome können also mit einer Rodrigues-Formel berechnet werden,
 aber die Form~\eqref{buch:orthogonal:eqn:hermite-rodrigues} ist dazu
 nicht gut geeignet.
 Zur Vereinfachung dient die Berechnung 
@@ -383,9 +411,9 @@ hat die Ableitung
 \[
 w'(x)
 =
-\beta(1-x)^\alpha(1+x)^{\beta-1}-\alpha(1-x)^{\alpha-1}(1+x)^\beta
+\beta(1-x)^\alpha(1+x)^{\beta-1}-\alpha(1-x)^{\alpha-1}(1+x)^\beta.
 \]
-und für die linke Seite der Pearsonschen Differentialgleichung findet man
+Für die linke Seite der Pearsonschen Differentialgleichung findet man
 \[
 \frac{w'(x)}{w(x)}
 =
@@ -401,9 +429,13 @@ und für die linke Seite der Pearsonschen Differentialgleichung findet man
 \]
 Die Polynome
 \[
-A(x) = \beta-\alpha-(\alpha+\beta)x
+A(x)
+=
+\beta-\alpha-(\alpha+\beta)x
 \qquad\text{und}\qquad
-B(x) = 1-x^2
+B(x)
+=
+1-x^2
 \]
 erfüllen die Gradvoraussetzungen für eine Lösung der Pearsonschen
 Differentialgleichung, die Anlass zu einer Rodrigues-Formel gibt.
@@ -412,7 +444,11 @@ erster Ordnung bei $\pm1$, also ist
 \[
 \lim_{x\to \pm1\mp} B(x)w(x) = 0
 \]
-genau dann, wenn $\alpha>-1$ und $\beta>-1$ gilt.
+genau dann, wenn $\alpha>-1$ und $\beta>-1$ gilt\footnote{%
+Das Zeichen $x\to\pm1\mp$ bedeutet, dass die Grenze $-1$ von rechts,
+also $x\to-1+$, erreicht wird, die Grenze $1$ aber von links, also
+$x\to 1-$.
+}.
 Für $\alpha>-1$ und $\beta>-1$ gibt es daher auch für die Jacobi-Polynome
 eine Rodriguez-Formel der Art
 \[
@@ -561,8 +597,8 @@ e^{-x} n!
 \biggr).
 \end{align*}
 Die übliche Normierung für die Laguerre-Polynome ist $L_n(0)=1$,
-die übereinstimmt mit dem Wert der hypergeometrischen Funktion 
-an der Stelle $0$.
+die mit dem Wert der hypergeometrischen Funktion an der Stelle $0$
+übereinstimmt.
 Wir fassen die Resultate im folgenden Satz zusammen.
 
 \begin{satz}
