@@ -9,12 +9,12 @@
 In Abschnitt~\ref{buch:funktionentheorie:section:holomorph} hat sich
 bereits gezeigt, dass komplexe Differenzierbarkeit einer komplexen
 Funktion weit mehr Einschränkungen auferlegt als reelle Differenzierbarkeit.
-Sowohl der Real- wie auch der Imaginärteil müssenharmonische Funktionen
+Sowohl der Real- wie auch der Imaginärteil müssen harmonische Funktionen
 sein.
 In diesem Abschnitt wird die Cauchy-In\-te\-gral\-formel etabliert, die 
 sogar zeigt, dass eine komplex differenzierbare Funktion bereits durch 
 die Werte auf dem Rand eines einfach zusammenhängenden Gebietes
-gegeben ist, beliebig oft differenzierbar ist und ausserdem immer
+gegeben ist, beliebig oft differenzierbar und ausserdem immer
 analytisch ist.
 
 %
@@ -33,7 +33,7 @@ f(x)=f(x_0)+\int_{x_0}^xf'(\xi)\,d\xi.
 Bei einer reellen Funktion gibt es nur eine Richtung, entlang der man
 integrieren könnte.
 
-Auch in der komplexen Ebene erwarten wir eine Formel
+Auch in der komplexen Ebene erwarten wir eine Formel der Form
 \[
 f(z) = f(z_0) + \int_{z_0}^z f'(\zeta)\,d\zeta.
 \]
@@ -72,39 +72,51 @@ eine stetige komplexe Funktion, dann heisst
 \int_{\gamma} f(z)\,dz = \int_a^bf(\gamma(t)) \gamma'(t)\,dt
 \]
 das {\em Wegintegral} von $f(z)$ entlang der Kurve $\gamma$.
-\index{Wegintegral}
+\index{Wegintegral}%
 \end{definition}
 
 \begin{beispiel}
 Man berechne das Wegintegral der Funktion $f(z)=z^n$ entlang des
 Weges
-$\gamma(t)=1+t+it^2$
-für $t\in[0,1]$.
+$\gamma_\alpha(t)=1+t+it^\alpha$
+für $t\in[0,1]$ und für $\alpha>1$.
+die verschiedenen Wege $\gamma_\alpha$ führen alle vom Punkt $(0,0)$ 
+zum Punkt $(1,1)$.
 
 Die Definition besagt
 \begin{align*}
-\int_\gamma f(z)\,dz
+\int_\gamma_\alpha f(z)\,dz
 &=
-\int_0^1 f(\gamma(t))\gamma'(t)\,dt
+\int_0^1 f(\gamma_\alpha(t))\gamma_\alpha'(t)\,dt
 =
-\int_0^1 \gamma(t)^n \gamma'(t)\,dt
+\int_0^1 \gamma_\alpha(t)^n \gamma_\alpha'(t)\,dt
 =
-\int_0^1 \frac{d}{dt}\frac{\gamma(t)^{n+1}}{n+1}\,dt
+\int_0^1 \frac{d}{dt}\frac{\gamma_\alpha(t)^{n+1}}{n+1}\,dt
 \\
 &=
-\biggl[\frac{\gamma(t)^{n+1}}{n+1}\biggr]_0^1
+\biggl[\frac{\gamma_\alpha(t)^{n+1}}{n+1}\biggr]_0^1
 =
 \frac{(2+i)^{n+1}}{n+1}-\frac{1^{n+1}}{n+1}
 =
 \frac{(2+i)^{n+1}-1}{n+1}.
 \end{align*}
-Man stellt in diesem Beispiel auch fest, dass das Integral offenbar
-unabhängig ist von der Wahl des Weges, es kommt einzig auf die
-beiden Endpunkte an:
+Man stellt in diesem Beispiel auch fest, dass das Integral allein
+durch die Werte der Funktion $z^{n+1}/(n+1)$ in den Endpunkten
+ausgedrückt werden kann:
 \[
-\int_\gamma z^n \,dz = \frac1{n+1}\bigl(\gamma(1)^{n+1}-\gamma(0)^{n+1}\bigr).
+\int_\gamma_\alpha z^n \,dz
+=
+\frac1{n+1}\bigl(\gamma(1)^{n+1}-\gamma(0)^{n+1}\bigr).
 \]
+Der Parameter $\alpha$ hat keinen Einfluss auf das Resultat.
+Das Integral ist unabhängig von der Wahl des Weges innerhalb der
+Wege $\gamma_\alpha$.
 \end{beispiel}
+
+Das Beispiel zeigt, dass viele Wege zum gleichen Integral führen.
+Wir werden später zeigen, dass für holomorphe Funktionen alle
+Wegen zwischen zwei Punkten zum gleichen Integral führen, sofern
+sie ineinander deformiert werden können.
 
 \begin{beispiel}
 Wir berechnen als Beispiel das Wegintegral der Funktion $f(z)=1/z$ entlang
@@ -282,7 +294,7 @@ daraus lesen wir ab, dass der Konvergenzradius mindestens $\varrho$
 ist.
 Grösser kann er allerdings auch nicht sein, da für $|z|\ge \varrho$
 das Integral nicht mehr definiert sein muss.
-Nimmt man nämlich einen Punkt von $g([a,b])$ für $z$ wird der Integrand
+Nimmt man nämlich einen Punkt von $g([a,b])$ für $z$, wird der Integrand
 unendlich gross.
 \end{proof}
 
@@ -310,6 +322,9 @@ c_k=\frac1{2\pi i}\oint_\gamma\frac{g(x)}{(x-z_0)^{k+1}}\,dx
 \]
 für das Wegintegral.
 
+%
+% Laurent-Reihen
+%
 \subsubsection{Laurent-Reihen}
 \label{sssec:LaurentReihen}
 \begin{figure}
@@ -326,8 +341,7 @@ der Kurve $\gamma$ vom Ursprung.
 Dies war notwendig, weil in~\eqref{komplex:georeihe} die geometrische Reihe
 nur konvergiert, wenn der Quotient $<1$ ist.
 Wenn die Funktion $f(z)$ jedoch eine Singularität im Punkt $z_0$ hat, dann
-kann es nicht möglich sein, die Funktion mit einer Potenzreihe zu
-beschreiben.
+es es unmöglich, die Funktion mit einer Potenzreihe zu beschreiben.
 
 Wir verwenden daher den speziellen Pfad in Abbildung~\ref{komplex:laurentpfad}.
 Er führt in einem grossen Kreis $\gamma_1$ um den Punkt $z_0$ herum,
@@ -384,7 +398,7 @@ f_2(z)
 =\sum_{k=1}^\infty \frac{d_k}{(z-z_0)^k}.
 \end{align*}
 Zusammen mit der vom Integral entlang $\gamma_1$ herrührenden Reihe finden
-wir den Satz
+wir den folgenden Satz.
 \begin{satz}
 \label{komplex:laurentreihe}
 Ist $g(z)$ eine entlang der Kurve $\gamma$ wie in
@@ -394,16 +408,17 @@ f(z)=\frac1{2\pi i}\oint_{\gamma} \frac{f(x)}{x-z}\,dx
 =
 \sum_{k=0}^{\infty} c_k(z-z_0)^k-\sum_{k=1}^\infty \frac{d_k}{(z-z_0)^k},
 \]
-wobei die Koeffizienten $c_k$ und $d_k$ gegeben sind durch
+wobei die Koeffizienten $c_k$ und $d_k$ durch
 \[
 \begin{aligned}
 c_k&=\frac1{2\pi i}\oint_{\gamma_1} \frac{g(x)}{x-z_0}\,dx
 &&
 \text{und}
 &
-d_k&=\frac1{2\pi i}\oint_{\gamma_2} g(x)x^{k-1}\,dx.
+d_k&=\frac1{2\pi i}\oint_{\gamma_2} g(x)x^{k-1}\,dx
 \end{aligned}
 \]
+gegeben sind.
 \end{satz}
 
 \begin{definition}
@@ -596,6 +611,9 @@ Dabei haben wir auf der dritten Zeile den Satz von Green angewendet,
 und auf der letzten Zeile die Cauchy-Riemann-Differentialgleichungen.
 \end{proof}
 
+%
+% Die Cauchy-Integralformel
+%
 \subsection{Die Cauchy-Integralformel}
 \index{Cauchy-Integralformel}%
 Sei jetzt $f(z)$ eine komplex differenzierbare Funktion.
@@ -619,7 +637,7 @@ Die Rechnung ergibt
 &=
 \int_0^{2\pi} \frac{f(a+re^{it})}{re^{it}}ire^{it}\,dt
 =
-i\int_0^{2\pi} f(a+re^{it})\,dt
+i\int_0^{2\pi} f(a+re^{it})\,dt.
 \end{align*}
 Da $f(z)$ komplex differenzierbar ist, können wir $f(z)$ approximieren
 durch $f(z)=f(a)+f'(a)(z-a)+o(z-a)$, also
@@ -656,6 +674,9 @@ im Inneren eines Gebietes durch die Werte auf dem Rand bereits vollständig
 bestimmt.
 \end{satz}
 
+%
+% Ableitung der Cauchy-Formel
+%
 \subsubsection{Ableitungen und Cauchy-Formel}
 Sei $f(z)$ eine komplex differenzierbare Funktion, als Definitionsgebiet
 nehmen wir der Einfachheit halber einen Kreis vom Radius $r$ um den Nullpunkt,
@@ -690,6 +711,9 @@ Es folgt
 Eine komplex differenzierbare Funktion ist beliebig oft differenzierbar.
 \end{satz}
 
+%
+% Komplex differenzierbare Funktionen sind analytisch
+%
 \subsubsection{Komplex differenzierbare Funktionen sind analytisch}
 Wir haben früher gesehen, dass Wegintegrale auf analytische Funktionen
 führen.
@@ -731,6 +755,7 @@ und zum folgenden analogen Resultat gelangen:
 Eine komplex differenzierbare Funktion $f(z)$, die in einer Kreisscheibe
 vom Radius $r$ um den Punkt $z_0$ mit Ausnahme des Punktes $z_0$
 definiert ist, kann in eine konvergente Laurent-Reihe
+\index{Laurent-Reihe}%
 \[
 f(z)=\sum_{k=-\infty}^{\infty} c_k(z-z_0)^k
 \]

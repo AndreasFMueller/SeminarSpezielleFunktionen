@@ -26,13 +26,13 @@ werden kann.
 % Differentialgleichungen mit Singularitäten
 %
 \subsubsection{Differentialgleichungen mit Singularitäten}
-Mit der Besselschen
+Die Besselsche
 Differentialgleichung~\eqref{buch:differentialgleichungen:eqn:bessel}
-ist es nicht möglich, die zweite Ableitung $y''(0)$ an der Stelle $x=0$
+kann an der Stelle $x=0$ nicht nach $y''$ aufgelöst werden.
+Es ist also mit der Differentialgleichung allein
+nicht möglich, die zweite Ableitung $y''(0)$ an der Stelle $x=0$
 zu bestimmen.
-Die Differentialgleichung kann an der Stelle $x=0$ nicht nach $y''$
-aufgelöst werden.
-Wenn man die Differentialgleichung in ein Differntialgleichungssystem
+Wenn man die Differentialgleichung in ein Differentialgleichungssystem
 \[
 \frac{d}{dx}
 \begin{pmatrix}
@@ -73,18 +73,18 @@ D_{a_p}
 =
 z^p\frac{d^p}{dz^p} + \text{Ableitungen niedrigerer Ordnung}.
 \]
-Dies zeigt, dass für $p>0$ oder $q>0$ ein Faktor $x$ bei der
+Dies zeigt, dass für $p>0$ oder $q>0$ ein Faktor $z$ bei der
 Ableitung höchster Ordnung unvermeidlich ist, die Differentialgleichung
 kann also wieder nicht nach dieser Ableitung aufgelöst werden und
 erfüllt die Voraussetzungen der Existenz- und Eindeutigkeitssätze
-in einer Umgebung von $x=0$ wieder nicht.
+in einer Umgebung von $z=0$ wieder nicht.
 
 Die Besselsche Differentialgleichung
-hat auch nicht die Form $y''+p(x)xy'+q(x)=0$, die der Theorie der 
+hat die Form $x^2y''+p(x)xy'+q(x)=0$, die der Theorie der 
 Indexgleichung zugrunde lag.
 \index{Besselsche Differentialgleichung}%
 \index{Differentialgleichung!Besselsche}%
-Daher kann es auch keine Garantie geben, dass die Methode der
+Trotzdem gabe es keine Garantie geben, dass die Methode der
 verallgemeinerten Potenzreihen zwei linear unabhängige Lösungen
 liefern kann.
 Tatsächlich wurde für ganzzahlige $n$ wegen $J_n(x) = (-1)^n J_{-n}(x)$
@@ -288,12 +288,13 @@ zweiter Ordnung $n=2$.
 % Fall A diagonalisierbar
 %
 \subsubsection{Fall $A$ diagonalisierbar: verallgemeinerte Potenzreihen}
-In diesem Fall kann man die Lösungsfunktionen $w_1$ und $w_2$ so
-wählen, dass die Matrix
+Wenn die Matrix $A$ diagonalisierbar ist,
+kann man die Lösungsfunktionen $w_1$ und $w_2$ so
+wählen, dass die Matrix $A$ die Form
 \[
 A=\begin{pmatrix}\lambda_1&0\\0&\lambda_2\end{pmatrix}
 \]
-diagonal wird mit Eigenwerten $\lambda_j$, $j=1,2$.
+erhält mit Eigenwerten $\lambda_j$, $j=1,2$.
 Dies bedeutet, dass $\sk w_j = \lambda_j w_j$.
 Wir schreiben
 \[
@@ -301,8 +302,8 @@ Wir schreiben
 \]
 Der Logarithmus ist nicht eindeutig, er ist nur bis auf ein Vielfaches
 von $2\pi i$ bestimmt.
-Folglich aus auch $\varrho_j$ nicht eindeutig bestimmt, eine
-andere Wahl des Logarithmus ändert $\varrho_j$ aber um eine ganze Zahl.
+Folglich ist auch $\varrho_j$ nicht eindeutig bestimmt, eine
+andere Wahl des Logarithmus ändert $\varrho_j$, aber um eine ganze Zahl.
 
 Die Funktion $z^{\varrho_j}$ wird unter der Wirkung von $\sk$ zu
 \[
@@ -581,7 +582,7 @@ $J_\alpha(x)$ und $J_{-\alpha}(x)$ und damit automatisch auch Lösungen
 der Besselschen Differentialgleichung.
 Dies gilt auch für den Grenzwert im Falle ganzahliger Ordnung $\alpha$.
 Da $J_{\alpha}(x)$ durch eine Reihenentwicklung definiert ist, kann man
-diese Termweise nach $\alpha$ ableiten und damit auch eine 
+diese termweise nach $\alpha$ ableiten und damit auch eine 
 Reihendarstellung von $Y_n(x)$ finden.
 Nach einiger Rechnung findet man:
 \begin{align*}

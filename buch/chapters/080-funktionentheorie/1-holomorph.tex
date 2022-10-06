@@ -16,7 +16,7 @@ Ein {\em Gebiet} ist eine offene Teilmenge $\Omega\subset \mathbb C$.
 \index{offen}%
 \index{Umgebung}%
 \[
-U=\{z\in\mathbb Z\,|\,|z-z_0|<\varepsilon\}
+U=\{z\in\mathbb Z\;|\;|z-z_0|<\varepsilon\}
 \]
 ebenfalls in $\Omega$ enthalten ist, also $U\subset \Omega$ für genügen
 kleines $\varepsilon$.
@@ -32,10 +32,11 @@ Schreibt man
 $\operatorname{Re}f(x+iy)=u(x,y)$
 und
 $\operatorname{In}f(x+iy)=v(x,y)$,
-dann ist die komplexe Funktion vollständig durch reelle Funktionen
+dann ist die komplexe Funktion vollständig durch die zwei reelle Funktionen
+$u(x,y)$ und $v(x,y)$
 beschrieben.
-Und natürlich wissen wir auch, was unter den Ableitungen der Funktionen
-$u(x,y)$ und $v(x,y)$ zu verstehen ist.
+Natürlich wissen wir auch, was unter den Ableitungen der Funktionen
+$u(x,y)$ und $v(x,y)$ nach $x$ und $y$ zu verstehen ist.
 Der Funktion $f(z)$ entspricht eine Abbildung $\mathbb R^2\to\mathbb R^2$
 \index{Abbildung}%
 \[
@@ -72,8 +73,8 @@ Grenzwertes
 \[
 f'(x_0)=\lim_{x\to x_0}\frac{f(x)-f(x_0)}{x-x_0}
 \]
-definiert, oder als diejenige Zahl $f'(x_0)\in\mathbb R$ mit der Eigenschaft,
-dass
+definiert oder gleichbedeutend als diejenige Zahl $f'(x_0)\in\mathbb R$
+mit der Eigenschaft, dass
 \begin{equation}
 f(x)=f(x_0)+f'(x_0)(x-x_0) + o(x-x_0)
 \label{komplex:abldef}
@@ -84,11 +85,13 @@ für komplexe Argument sinnvoll, wir definieren daher
 
 \begin{definition}
 \label{buch:funktionentheorie:definition:differenzierbar}
-Die komplexe Funktion $f(z)$ heisst im Punkt $z_0$ komplex differenzierbar
+Die komplexe Funktion $f(z)$ heisst im Punkt $z_0$
+{\em komplex differenzierbar} oder {\em holomorph}
 und hat die komplexe Ableitung $f'(z_0)\in\mathbb C$, wenn
 \index{komplex differenzierbar}%
 \index{komplexe Ableitung}%
 \index{Ableitung!komplexe}%
+\index{holomorph}%
 \begin{equation}
 f(z)=f(z_0) + f'(z_0)(z-z_0) +o(z-z_0)
 \label{komplex:defkomplabl}
@@ -126,15 +129,15 @@ $a\in\mathbb C$ geben, so dass
 \bar z-\bar z_0=a(z-z_0)+o(z-z_0)
 \]
 gilt.
-wählen wir $z=z_0+x$ bzw.~$z=z_0+iy$, dann erhalten wir
+Wählen wir $z=z_0+x$ bzw.~$z=z_0+iy$, dann erhalten wir
 \[
 \begin{aligned}
 z-z_0&=x:&
 \bar z-\bar z_0&=x
 &&\Rightarrow&
-\bar z-\bar z_0&=1\cdot x
+\bar z-\bar z_0&=\phantom{-}1\cdot x
 &&\Rightarrow&
-a&=1
+a&=\phantom{-}1
 \\
 z-z_0&=iy:&
 \bar z-\bar z_0&=-iy
@@ -148,14 +151,13 @@ Es ist also nicht möglich, eine einzige Zahl $a$ zu finden, die als
 die Ableitung der Funktion $z\mapsto \bar z$ betrachtet werden könnte.
 \end{beispiel}
 
-Das letzte Beispiel zeigt, dass
-selbst Funktionen, deren Real- und Imaginärteil beliebig oft stetig
-differenzierbare Funktionen sind, nicht komplex differenzierbar
-sein müssen.
+Das letzte Beispiel zeigt, dass sogar Funktionen, deren Real- und
+Imaginärteil beliebig oft stetig differenzierbare Funktionen sind,
+nicht komplex differenzierbar sein müssen.
 Komplexe Differenzierbarkeit ist eine wesentlich stärkere Bedingung
-an eine Funktion, komplex differenzierbare Funktionen bilden eine
-echte Teilmenge aller Funktionen, deren Real- und Imaginärteil
-differenzierbar ist.
+an eine Funktion.
+Komplex differenzierbare Funktionen bilden eine echte Teilmenge
+aller Funktionen, deren Real- und Imaginärteil differenzierbar ist.
 
 %
 % Cauchy-Riemann-Differentialgleichungen
@@ -203,6 +205,7 @@ erfüllen die Cauchy-Riemannschen Differentialgleichungen
 \frac{\partial u}{\partial x}
 &=
 \frac{\partial v}{\partial y},
+&&\qquad
 &
 \frac{\partial u}{\partial y}
 &=
@@ -220,15 +223,15 @@ $x$ und $y$ ab, erhält man
 \frac{\partial^2 u}{\partial x^2}
 &=
 \frac{\partial^2 v}{\partial x\,\partial y},
-&
+&&&
 \frac{\partial^2 u}{\partial x\,\partial y}
 &=
 -\frac{\partial^2 v}{\partial x^2},
-&
+&&&
 \frac{\partial^2 u}{\partial y\,\partial x}
 &=
 \frac{\partial^2 v}{\partial y^2},
-&
+&&&
 \frac{\partial^2 u}{\partial y^2}
 &=
 -\frac{\partial^2 v}{\partial y\,\partial x}.
@@ -330,12 +333,12 @@ Es gilt
 \end{aligned}
 \label{komplex:crbeispiel}
 \end{equation}
-Aus der ersten Gleichung erhält man durch Integrieren nach $x$
+Aus der ersten Gleichung erhält man durch Integrieren nach $x$, wobei
+$y$ als Konstante betrachtet wird, die Funktion
 \[
-v(x,y)=-3x^2y + C(y),
+v(x,y)=-3x^2y + C(y).
 \]
-die Integrations-``Konstante'' ist eine Funktion, die aber nur von $y$
-abhängen darf.
+Die Integrations-``Konstante'' kann dabei nur von $y$ abhängen.
 Die zweite Cauchy-Riemann-Gleichung verwendet die Ableitung von $v$ nach $y$,
 sie ist
 \[
@@ -359,10 +362,10 @@ Wir haben die Funktion $f(z)$ bis auf eine Konstanten $ik$
 aus ihrem Realteil rekonstruiert.
 \end{beispiel}
 Die Cauchy-Riemann-Differentialgleichungen besagen auch, dass man nur
-die Ableitungen nach $x$ zu berechnen braucht, um die Ableitung $f'(x)$
-zu bestimmen.
-Die Rechenregeln für die Ableitung lassen sich daher direkt auf
-komplexe Funktionen übertragen:
+die Ableitungen nach $x$ oder nach $y$ zu berechnen braucht,
+um die Ableitung $f'(z)$ zu bestimmen, nicht beide.
+Die Rechenregeln für die Ableitung lassen sich daher direkt von
+reellen Funktionen auf komplexe Funktionen übertragen:
 \begin{align*}
 \frac{d}{dz}z^n
 &=
@@ -378,7 +381,7 @@ f'(g(z)) g'(z)
 \\
 \frac{d}{dz}\bigl(f(z)g(z)\bigr)
 &=
-f'(z)g(z)+f(z)g'(z)
+f'(z)g(z)+f(z)g'(z).
 \end{align*}
 Die Ableitungsformeln ändern also nicht, die formalen Ableitungsregeln
 für holomorphe Funktionen sind die gleichen wie für reelle Funktionen.

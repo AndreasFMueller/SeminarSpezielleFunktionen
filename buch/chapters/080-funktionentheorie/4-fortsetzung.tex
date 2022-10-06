@@ -8,16 +8,20 @@
 \rhead{Analytische Fortsetzung}
 
 Wir haben schon gesehen, dass eine reelle Funktion, die in einem
-Punkte eine konvergente
+Punkt eine konvergente
 Potenzreihe besitzt, auf natürliche Weise auch als komplexe Funktion
 betrachtet werden kann, indem man komplexe Argumente in der Potenzreihe
 zulässt.
-Die neue komplexe Funktion ist ein einem Kreis um den Punkt
-konvergent.
+Die neue komplexe Funktion hat eine Potenzreihe, die in einem Kreis um
+den Punkt konvergent ist.
 Mit Hilfe der Potenzreihe kann man also immer eine Funktion auf ein
 Kreisgebiet ausdehen.
 Dieser Abschnitt untersucht die Frage, ob man diese Idee auch auf
 noch grössere Gebiete ausdehnen kann.
+
+%
+% Analytische Fortsetzung mit Potenzreihen
+%
 \subsection{Analytische Fortsetzung mit Potenzreihen}
 \begin{figure}
 \centering
@@ -81,7 +85,7 @@ finden, die mit der Potenzreihe in den Nachbarpunkten übereinstimmt, und
 so die Definition der Funktion entlang dieser Kurve auf ein grösseres
 Gebiet ausweiten, wie in Abbildung~\ref{komplex:fortsetzung} dargestellt.
 Man nennt dies die {\em analytische Fortsetzung} der Funktion $f(z)$
-entlange der Kurve $\gamma$.
+entlang der Kurve $\gamma$.
 \index{analytische Fortsetzung}
 \index{Fortsetzung, analytische}
 
@@ -89,13 +93,13 @@ entlange der Kurve $\gamma$.
 Wir haben bereits gesehen, dass sich die Funktion $f(z)=1/z$ in jedem
 Punkt $z_0$ der komplexen Ebene in die Potenzreihe~\eqref{komplex:1durchreihe}
 entwickeln lässt.
-Diese Reihe lässt sich integrieren
+Diese Reihe lässt sich integrieren und liefert die Stammfunktion
 \[
 F(z,z_0)
 =
-\sum_{k=0}^\infty\frac{(-1)^k}{(k+1)z_0^{k+1}}z^{k+1},
+\sum_{k=0}^\infty\frac{(-1)^k}{(k+1)z_0^{k+1}}z^{k+1}.
 \]
-diese Reihe ist ebenfalls auf einem Kreis vom Radius $|z_0|$ um den
+Die Reihe ist in einem Kreis vom Radius $|z_0|$ um den
 Punkt $z_0$ konvergent.
 Wir vermuten natürlich, dass dies eine Darstellung des natürlichen
 Logarithmus einer komplexen Zahl ist.
@@ -132,7 +136,7 @@ handelt, können wir die Reihen auch numerisch ausrechnen, und so die
 Differenzen bestimmen:
 \begin{align*}
 &\text{Startpunkt $z_0=1$:}& C(1)&=0             &       &       \\
-&\text{entlang $\gamma_+$:}& C(i)&= i\frac{\pi}2 & C(-1) &=  i\pi\\
+&\text{entlang $\gamma_+$:}& C(i)&=\phantom{-}i\frac{\pi}2 & C(-1) &=\phantom{-}i\pi\\
 &\text{entlang $\gamma_-$:}&C(-i)&=-i\frac{\pi}2 & C(-1) &= -i\pi
 \end{align*}
 Wir stellen fest, dass die analytische Fortsetzung der Logarthmusfunktion
@@ -167,15 +171,18 @@ sie unterscheiden sich um $2\pi i$:
 \end{beispiel}
 
 Das Beispiel zeigt, dass es im Allgmeinen eine auf der ganzen komplexen
-Ebene definierte komplexe Entsprechung einer reellen Funktion nicht
-zu geben braucht.
-Dieses Phänomen tritt zum Beispiel auch bei der Wurzelfunktion $f(z)=\sqrt{z}$
-auf.
-Diese Funktion ist im Punkt $z=0$ nicht differenzierbar, man muss diesen
+Ebene definierte komplexe Entsprechung einer reellen Funktion nicht gibt.
+Dieses Phänomen tritt zum Beispiel auch bei der Wurzelfunktion
+$f(z)=\sqrt{z}$ auf.
+Die Wurzelfunktion ist im Punkt $z=0$ nicht differenzierbar, man muss diesen
 Punkt also aus dem Definitionsbereich ausschliessen.
-Führt man man analog zum Beispiel eine analytische Fortsetzung durch,
+Führt man analog zum Beispiel eine analytische Fortsetzung durch,
 findet man, dass sich die Werte von $f(z)$ für die beiden Wege $\gamma_+$
 und $\gamma_-$ durch das Vorzeichen unterscheiden.
+
+%
+% Analytische Fortsetzung mit Differentialgleichungen
+%
 \subsection{Analytische Fortsetzung mit Differentialgleichungen
 \label{komplex:analytische-fortsetzung-dgl}}
 In Abschnitt~\ref{subsection:wegintegrale} wurde gezeigt, wie Wegintegrale
@@ -183,6 +190,9 @@ Stammfunktionen komplexer Funktionen liefern können.
 Im vorangegangenen Abschnitt wurde untersucht, wie eine komplex differenzierbare
 Funktion mit Hilfe von analytischer Fortsetzung entlang einer Kurve
 ausgedehnt werden kann.
+In diesem Abschnitt nutzen wir aus, dass die Funktion
+eine Differentialgleichung erfüllt, zum Beispiel $F'(z)=\frac{1}{z}$
+für die Logarithmus-Funktion oder $F'(z)=f(z)$ allgemein.
 
 Sei $f(z)$ eine komplex differenzierbare Funktion.
 In jedem beliebigen Punkt des Definitionsbereichs können wir $f(z)$
@@ -193,10 +203,11 @@ Durch analytische Fortsetzung entlang einer Kurve $\gamma$ können
 wir eine komplex differenzierbare Funktion $f(z)$ finden, die in einer
 Umgebung der Kurve $F'(z)=f(z)$ erfüllt.
 
-Sei andererseits $\gamma\colon[a,b]\to\mathbb C$ eine Kurve in $\mathbb C$.
-Dann können wir die Werte der Stammfunktion im Punkt $\gamma(b)$ durch
+Sei andererseits $\gamma\colon[a,b]\to\mathbb C$ eine Kurve in $\mathbb C$
+mit Endpunkt $z$.
+Dann können wir die Werte der Stammfunktion im Punkt $z=\gamma(b)$ durch
 \[
-F(\gamma(b)) = F(\gamma(a))+\int_\gamma f(z)\,dz
+F(z) = F(\gamma(b)) = F(\gamma(a))+\int_\gamma f(z)\,dz
 \]
 berechnen.
 

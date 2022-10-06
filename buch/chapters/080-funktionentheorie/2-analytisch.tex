@@ -7,7 +7,14 @@
 \label{buch:funktionentheorie:section:analytisch}}
 \rhead{Analytische Funktionen}
 Holomorphe Funktionen zeichnen sich dadurch aus, dass sie auch immer
-eine konvergente Reihenentwicklung haben, sie sind also analytisch.
+eine konvergente Reihenentwicklung haben, sie sind also analytisch,
+(Definition \ref{buch:polynome:def:analytisch}).
+\index{analytisch}%
+Diese Eigenschaft ist nicht selbstverständlich, sie kann erst
+weiter unten in Abschnitt~\ref{buch:funktionentheorie:section:cauchy}
+bewiesen werden.
+Es folgt eine Zusammenstellung wichtiger Eigenschaften analytischer
+Funktionen einer komplexen Variablen.
 
 %
 % Definition
@@ -90,7 +97,8 @@ ist daher immer
 \lim_{x\to 0}  F(x) =0.
 \]
 Damit ist gezeigt, dass alle Ableitungen $f^{(n)}(0)=0$ sind.
-Die Taylorreihe von $f(x)$ ist daher die Nullfunktion.
+Die Taylor-Reihe von $f(x)$ ist daher die Nullfunktion.
+\index{Nullfunktion}
 \end{beispiel}
 
 %Die Klasse der Funktionen, die sich durch ihre Taylor-Reihe darstellen
@@ -122,12 +130,14 @@ analytischen Funktion genau gleich definieren.
 \begin{definition}
 Eine in einer offenen Teilmenge $U\subset \mathbb{C}$ definierte Funktion
 $f\colon U\to\mathbb{C}$ heisst {\em analytisch im Punkt $z_0\in U$}, wenn
+\index{analytisch in z0@analytisch in $z_0$}%
 es eine in einer Umgebung von $z_0$ konvergente Potenzreihe
 \[
 \sum_{k=0}^\infty a_k(z-z_0)^k = f(z)
 \]
 gibt.
 Sie heisst {\em analytisch}, wenn sie analytisch ist in jedem Punkt von $U$.
+\index{analytisch}%
 \end{definition}
 
 Die Verwendung einer offenen Teilmenge $U\subset\mathbb{C}$ ist wesentlich,
@@ -172,6 +182,7 @@ dann gilt auch
 \begin{definition}
 \label{buch:funktionentheorie:definition:konvergenzradius}
 \index{Konvergenzradius}%
+\index{Konvergenzkreis}%
 Der in Satz~\ref{buch:funktionentheorie:satz:konvergenzradius}
 Radius $\varrho$ des Konvergenzkreises heisst {\em Konvergenzradius}.
 \end{definition}

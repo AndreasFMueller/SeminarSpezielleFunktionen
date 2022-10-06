@@ -61,29 +61,43 @@ I
 \label{buch:funktionentheorie:eqn:gammapfadintegral}
 \end{equation}
 zu berechnen.
-Darin hat die Funktion im Zähler des Integranden $f(z)=z^{x-1}$ 
+Darin hat die Funktion $f(z)=z^{x-1}$ im Zähler des Integranden
 nur ausserhalb der negativen reellen Achse einen wohldefinierten Wert.
 In Polarkoordinaten $z=re^{i\varphi}$ verwenden wir
 den Hauptwert $z^{x-1}=r^{x-1}e^{i(x-1)\varphi}$.
 Aus dem Cauchy-Integralsatz lesen wir den Wert
 \[
-I = 2\pi i
+I
+=
+2\pi i f(1)
+=
+2\pi i
 \]
 ab.
 
-Das Integral \eqref{buch:funktionentheorie:eqn:gammapfadintegral}
-kann zerlegt werden in die Integrale
+Andererseits kann das Integral~\eqref{buch:funktionentheorie:eqn:gammapfadintegral}
+zerlegt werden in die Integrale
 \begin{align*}
 I
 &=
+\int_{\gamma_R} \dots 
++
+\int_{\gamma_+} \dots
++
+\int_{\gamma_\varepsilon}\dots
++
+\int_{\gamma_-} \dots
+=
 I_R+I_++I_\varepsilon+I_-,
 \end{align*}
-wobei $I_R$ das Integral über den äusseren Kreis vom Radius $R$ ist,
+wobei $I_R$ das Integral über den äusseren Kreis $\gamma_R$ vom Radius $R$
+ist,
 $I_\varepsilon$ das Integral im Gegenuhrzeigersinn über den inneren Kreis
-vom Radius $\varepsilon$.
+$\gamma_\varepsilon$
+vom Radius $\varepsilon$ (Abbildung~\ref{buch:funktionentheorie:fig:gammapfad}).
 Die Terme $I_{\pm}$ sind die Integrale entlang der negativen
-reellen Achse, wobei das Pluszeichen für den oberen $-R$ nach
-$-\varepsilon$ gelten soll.
+reellen Achse, wobei das Pluszeichen für das obere Segment $\gamma_+$,
+welches von $-R$ nach $-\varepsilon$ verläuft, gelten soll.
 
 Für die beiden Integrale $I_R$ und $I_\varepsilon$ wird die Parametrisierung
 $\varphi\mapsto z(\varphi) = re^{i\varphi}$ mit $dz=ire^{i\varphi}\,d\varphi$
@@ -102,7 +116,6 @@ i\int_{-\pi}^\pi
 Die beiden Teile $I_R$ und $I_\varepsilon$ können wie folgt noch
 weiter vereinfacht werden:
 \begin{align*}
-\\
 I_R
 &=
 iR^{x-1}
@@ -121,10 +134,10 @@ i
 \end{align*}
 wobei das negative Zeichen bei $I_\varepsilon$ daher rührt, dass der
 kleine Kreis im Uhrzeigersinn durchlaufen wird.
-Für grosse Werte von $R$ ist das erste Integral beschränkt, aber wegen
-$x-1<0$ konvergiert der Vorfaktor $R^{x-1}$ gegen 0 für $R\to\infty$.
-Ähnlich ist das zweite Integral für kleine $\varepsilon$ beschränkt, aber
-$\varepsilon^x$ konvergiert gegen $0$ für  $\varepsilon\to 0$.
+Für grosse Werte von $R$ ist das erste Integral $I_R$ beschränkt, aber wegen
+$x-1<0$ konvergiert der Vorfaktor $R^{x-1}$ für $R\to\infty$ gegen 0.
+Ähnlich ist das zweite Integral $I_\varepsilon$ für kleine $\varepsilon$
+beschränkt, aber $\varepsilon^x$ konvergiert gegen $0$ für  $\varepsilon\to 0$.
 Wir können daher
 \begin{align*}
 \lim_{R\to\infty}

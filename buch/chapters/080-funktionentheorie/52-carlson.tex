@@ -7,9 +7,12 @@
 \label{buch:funktionentheorie:subsection:satz-von-carlson}}
 In Abschnitt~\ref{buch:rekursion:section:gamma} wurde gezeigt,
 wie die Gamma-Funktion $\Gamma(x)$ konstruiert werden kann, die
-in ganzzahligen Argumenten mit der Fakultät zusammenfällt.
+in ganzzahligen Argumenten mit der Fakultät übereinstimmt.
 Es wurde auch gezeigt, dass $\Gamma(x)+\sin(\pi x)$ eine
 weitere Funktion mit dieser Eigenschaft ist.
+Wieviele weitere Lösungen für das Problem, die Fakultätsfunktion
+auf komplexe Argumente auszudehnen, kann es noch geben?
+
 Die Integraldefinition der
 Gamma-Funktion~\ref{buch:rekursion:def:gamma} zeigt, dass
 die Gamma-Funktion holomorph ist.
@@ -19,7 +22,7 @@ unterscheiden müssen.
 
 \begin{satz}[Carlson]
 \label{buch:funktionentheorie:satz:carlson}
-Ist $f(z)$ eine holomorphe Funktion, die für $\operatorname{R}z\ge 0$
+Ist $f(z)$ eine holomorphe Funktion, die für $\operatorname{Re}z\ge 0$
 beschränkt ist und an den Stellen $z=1,2,3,\dots$ verschwindet.
 Dann ist $f(z)=0$.
 \end{satz}
@@ -81,8 +84,9 @@ Das Integral über den Halbkreis kann durch
 \frac{M\pi R}{(R-n)^n}
 \end{align*}
 abgeschätzt werden.
-Die rechte Seite geht für $n>1$ gegen $0$ wenn $R\to\infty$ geht.
-Das Integral über den Kreisbogen $C_1$ trägt also nichts bei zum
+Die rechte Seite geht für $n>1$ gegen $0$, wenn $R\to\infty$ geht.
+Das Integral über den Kreisbogen $C_1$ trägt also im Grenzfall
+$R\to\infty$ nichts bei zum
 Integral~\eqref{buch:funktionentheorie:proof:eqn:gna}
 
 Es bleibt das Integral über die imaginäre Achse, es ist
@@ -121,46 +125,49 @@ Insgesamt bekommen wir so die Abschätzung}
 \frac{M}{2 n!}.
 \label{buch:funktionentheorie:carlson:eqn:integral}
 \end{align}
+
 Um eine Abschätzung für $f(a)$ zu erhalten, muss man jetzt noch den Nenner
 von \eqref{buch:funktionentheorie:proof:eqn:gna} abschätzen.
-Da $a$ nicht ganzzahlig ist, ist die nächstkleiner Ganzzahl $[a]\ne a$.
+Da $a$ nicht ganzzahlig ist, ist die nächstkleinere Ganzzahl
+$\lfloor a\rfloor\ne a$.
 Das Produkt im Nenner von \eqref{buch:funktionentheorie:proof:eqn:gna}
 kann daher aufgespaltet werden in die Faktoren $(a-k)$ mit $k<a$ und
 die Faktoren  mit $k>a$.
 Den Betrag der Faktoren mit $k<a$ kann man vergrössern, indem man $a$
-durch $[a]+1$ ersetzt, man erhält
+durch $\lfloor a\rfloor+1$ ersetzt, man erhält
 \begin{align*}
 |
-(a-1)(a-2)\cdots(a-[a])
+(a-1)(a-2)\cdots(a-\lfloor a\rfloor)
 |
 &\le
-([a]+1-1)([a]+1-2)\cdots([a]+1-[a])=[a]!.
-\intertext{Die nachfolgenden Faktoren kann man vergrössern, indem man $a$ durch $[a]$ ersetzt, was}
-|(a-([a]+1))(a-([a]+2))\cdots(a-n)|
+(\lfloor a\rfloor+1-1)(\lfloor a\rfloor+1-2)\cdots(\lfloor a\rfloor+1-\lfloor a\rfloor)=\lfloor a\rfloor!.
+\intertext{Die nachfolgenden Faktoren kann man vergrössern, indem man $a$ durch $\lfloor a\rfloor$ ersetzt, was}
+|(a-(\lfloor a\rfloor+1))(a-(\lfloor a\rfloor+2))\cdots(a-n)|
 &\le
-|([a]-([a]+1))([a]-([a]+2))\cdots([a]-n)|
+|(\lfloor a\rfloor-(\lfloor a\rfloor+1))(\lfloor a\rfloor-(\lfloor a\rfloor+2))\cdots(\lfloor a\rfloor-n)|
 \\
 &=
-1\cdot 2 \cdot\ldots\cdot |n-[a]|
+1\cdot 2 \cdot\ldots\cdot |n-\lfloor a\rfloor|
 =
-(n-[a])!.
+(n-\lfloor a\rfloor)!.
 \end{align*}
 ergibt.
+
 Aus \eqref{buch:funktionentheorie:proof:eqn:gna} und der Abschätzung
 \eqref{buch:funktionentheorie:carlson:eqn:integral}
-für $|g_n(a)$
+für $|g_n(a)|$
 erhält man jetzt
 \[
 |f(a)|
 =
 |(a-1)(a-2)\cdots(a-n)|\cdot|g_n(a)|
 \le 
-\frac{[a]!\,(n-[a])!}{n!}
+\frac{\lfloor a\rfloor!\,(n-\lfloor a\rfloor)!}{n!}
 \frac{M}{2}
 =
-\frac{M}{2} \binom{n}{[a]}^{-1}.
+\frac{M}{2} \binom{n}{\lfloor a\rfloor}^{-1}.
 \]
-Für $n>[a]$ ist der Binomialkoeffizient auch $>n$ und somit
+Für $n>\lfloor a\rfloor$ ist der Binomialkoeffizient auch $>n$ und somit
 \[
 |f(a)|\le \frac{M}{2n}
 \to 0
@@ -168,6 +175,6 @@ Für $n>[a]$ ist der Binomialkoeffizient auch $>n$ und somit
 \]
 Damit ist gezeigt, dass $f(a)=0$ ist für alle reellen $a>1$.
 A fortiori verschwinden auch alle Ableitungen von $f$ und damit
-damit auch die zugehörige Potenzreihe, also $f(z)=0$.
+auch die zugehörige Potenzreihe, also $f(z)=0$.
 \end{proof}
 
