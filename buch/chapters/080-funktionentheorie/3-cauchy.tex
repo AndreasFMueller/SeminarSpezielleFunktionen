@@ -75,17 +75,25 @@ das {\em Wegintegral} von $f(z)$ entlang der Kurve $\gamma$.
 \index{Wegintegral}%
 \end{definition}
 
+\begin{figure}
+\centering
+\includegraphics{chapters/080-funktionentheorie/images/kurven.pdf}
+\caption{Wege für die beiden Beispiele zur Definition des Wegintegrals
+\label{buch:komplex:fig:wege}}
+\end{figure}
+
 \begin{beispiel}
 Man berechne das Wegintegral der Funktion $f(z)=z^n$ entlang des
 Weges
 $\gamma_\alpha(t)=1+t+it^\alpha$
-für $t\in[0,1]$ und für $\alpha>1$.
-die verschiedenen Wege $\gamma_\alpha$ führen alle vom Punkt $(0,0)$ 
-zum Punkt $(1,1)$.
+für $t\in[0,1]$ und für $\alpha>0$
+(Abbildung~\ref{buch:komplex:fig:wege} links).
+Die verschiedenen Wege $\gamma_\alpha$ führen alle vom Punkt $1$ 
+zum Punkt $2+i$.
 
 Die Definition besagt
 \begin{align*}
-\int_\gamma_\alpha f(z)\,dz
+\int_{\gamma_\alpha} f(z)\,dz
 &=
 \int_0^1 f(\gamma_\alpha(t))\gamma_\alpha'(t)\,dt
 =
@@ -104,7 +112,7 @@ Man stellt in diesem Beispiel auch fest, dass das Integral allein
 durch die Werte der Funktion $z^{n+1}/(n+1)$ in den Endpunkten
 ausgedrückt werden kann:
 \[
-\int_\gamma_\alpha z^n \,dz
+\int_{\gamma_\alpha} z^n \,dz
 =
 \frac1{n+1}\bigl(\gamma(1)^{n+1}-\gamma(0)^{n+1}\bigr).
 \]
@@ -129,6 +137,7 @@ Es gibt zwei verschiedene solche Halbkreise:
 \gamma_-(t)&=e^{-it},&t&\in[0,\pi]
 \end{aligned}
 \end{equation*}
+(Abbildung~\ref{buch:komplex:fig:wege} rechts).
 Wir finden für die Wegintegrale
 \begin{align*}
 \int_{\gamma_+}\frac1z\,dz
@@ -139,7 +148,7 @@ Wir finden für die Wegintegrale
 &=
 -\int_0^\pi \frac1{e^{-it}}ie^{-it}\,dt=-i\int_0^\pi\,dt=-i\pi.
 \end{align*}
-Das Wegintegral zwischen $1$ und $-1$ hängt also mindestens für diese
+Das Wegintegral zwischen $1$ und $-1$ hängt also mindestens für die
 spezielle Funktion $f(z)=1/z$ von der Wahl des Weges ab.
 \end{beispiel}
 

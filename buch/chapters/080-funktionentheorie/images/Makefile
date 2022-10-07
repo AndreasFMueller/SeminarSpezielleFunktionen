@@ -5,7 +5,7 @@
 #
 all:	nonanalytic.pdf integralanalytisch.pdf laurent.pdf \
 	fortsetzreziprok.pdf forts.pdf logforts.pdf gammapfad.pdf \
-	carlsonpath.pdf
+	carlsonpath.pdf kurven.pdf
 
 nonanalytic.pdf:	nonanalytic.tex
 	pdflatex nonanalytic.tex
@@ -31,3 +31,5 @@ gammapfad.pdf:	gammapfad.tex
 carlsonpath.pdf:	carlsonpath.tex
 	pdflatex carlsonpath.tex
 
+kurven.pdf:	kurven.tex
+	pdflatex kurven.tex

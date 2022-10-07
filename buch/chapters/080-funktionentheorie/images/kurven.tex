@@ -1,0 +1,57 @@
+%
+% kurven.tex -- template for standalon tikz images
+%
+% (c) 2021 Prof Dr Andreas Müller, OST Ostschweizer Fachhochschule
+%
+\documentclass[tikz]{standalone}
+\usepackage{amsmath}
+\usepackage{times}
+\usepackage{txfonts}
+\usepackage{pgfplots}
+\usepackage{csvsimple}
+\usetikzlibrary{arrows,intersections,math}
+\begin{document}
+\def\skala{1}
+\begin{tikzpicture}[>=latex,thick,scale=\skala]
+
+\begin{scope}
+\draw[->] (-0.6,0) -- (5.4,0) coordinate[label={$\operatorname{Re}z$}];
+\draw[->] (0,-0.6) -- (0,5.4) coordinate[label={right:$\operatorname{Im}z$}];
+
+\foreach \a in {0.1,0.25,0.3333,0.5,1,2,3,4,10}{
+	\draw[color=red,line width=1.0pt]
+		plot[domain=0:10,samples={100*max(\a,1/\a)}]
+			({5*exp(-\x)},{5*exp(-\a*\x)}) -- (0,0);
+}
+\node at (2.7,2.45) [above left] {$\gamma_0(t)$};
+\node at (2.7,1.20) [above left] {$\gamma_1(t)$};
+\node at (4.2,1) [right] {$\gamma_{10}(t)$};
+\node at (1.2,4.1) [above left] {$\gamma_{\frac1{10}}(t)$};
+\fill[color=red] (0,0) circle[radius=0.08];
+\fill[color=white] (0,0) circle[radius=0.05];
+\fill[color=red] (5,5) circle[radius=0.08];
+\fill[color=white] (5,5) circle[radius=0.05];
+\node at (0,0) [below left] {$1$};
+\node at (5,5) [above] {$2+i$};
+\end{scope}
+
+\begin{scope}[xshift=9.5cm,yshift=2.3cm]
+\draw[->] (-2.8,0) -- (3.0,0) coordinate[label={$\operatorname{Re}z$}];
+\draw[->] (0,-2.8) -- (0,3.0) coordinate[label={right:$\operatorname{Im}z$}];
+\draw[->,color=red,line width=1.0pt] (0:2.2) arc (0:180:2.2);
+\draw[<-,color=red,line width=1.0pt] (180:2.2) arc (180:360:2.2);
+\fill[color=red] (2.2,0) circle[radius=0.08];
+\fill[color=white] (2.2,0) circle[radius=0.05];
+\fill[color=red] (-2.2,0) circle[radius=0.08];
+\fill[color=white] (-2.2,0) circle[radius=0.05];
+\node at (45:2.2) [above right] {$\gamma_+(t)$};
+\node at (-45:2.2) [below right] {$\gamma_-(t)$};
+\node at (2.2,0) [above left] {$1$};
+\node at (0,2.2) [above left] {$i$};
+\node at (-2.2,0) [above left] {$-1$};
+\node at (0,-2.2) [below left] {$-i$};
+\end{scope}
+
+\end{tikzpicture}
+\end{document}
+

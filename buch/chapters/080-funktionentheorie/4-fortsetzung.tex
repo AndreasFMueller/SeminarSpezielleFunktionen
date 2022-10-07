@@ -206,10 +206,15 @@ Umgebung der Kurve $F'(z)=f(z)$ erfüllt.
 Sei andererseits $\gamma\colon[a,b]\to\mathbb C$ eine Kurve in $\mathbb C$
 mit Endpunkt $z$.
 Dann können wir die Werte der Stammfunktion im Punkt $z=\gamma(b)$ durch
-\[
-F(z) = F(\gamma(b)) = F(\gamma(a))+\int_\gamma f(z)\,dz
-\]
+\begin{equation}
+F(z) = F(\gamma(b)) = F(\gamma(a))+\int_\gamma f(\zeta)\,d\zeta
+\label{buch:komplex:eqn:fortsetzungint}
+\end{equation}
 berechnen.
+Solange die Wege für verschiedene Endpunkte ineinander deformierbar sind,
+ist $F(z)$ unabhängig vom gewählten weg und 
+\eqref{buch:komplex:eqn:fortsetzungint}
+liefert die analytische Fortsetzung entlang des Pfades $\gamma$.
 
 \begin{beispiel}
 \begin{figure}
