@@ -14,7 +14,8 @@ Verfügung, nicht zuletzt das Potenzreihenverfahren, welches in
 Kapitel~\ref{buch:chapter:differential} beschrieben wurde.
 Das Ziel dieses Abschnitts ist eine Methode vorzustellen, mit
 der partielle Differentialgleichungen auf gewöhnliche
-Differentialgleichungen zurückgeführt werden können.
+Differentialgleichungen zurückgeführt werden können,
+die dann mit einer der genannten Methoden gelöst werden können.
 
 %
 % Ansatz
@@ -22,7 +23,7 @@ Differentialgleichungen zurückgeführt werden können.
 \subsection{Separationsansatz}
 Die Separationsmethode ist motiviert durch die Beobachtung, dass in
 vielen partiellen Differentialgleichungen die Ableitungen nach
-verschiedenen Variablen sich in verschiedenen Termen befinden und
+einzelnen Variablen sich in verschiedenen Termen befinden und
 sich daher algebraisch trennen lassen.
 Für eine beliebige Funktion bringt das nicht viel, aber für
 Funktionen mit einer speziellen Form kann man daraus eine Vereinfachung
@@ -43,7 +44,8 @@ Es entsteht also eine Gleichung der Form
 F(x) = G(y).
 \label{buch:pde:ansatz:eqn:F=G}
 \end{equation}
-Wie so etwas gehen gehen kann wird weiter unten untersucht.
+Wie so etwas gehen gehen kann wird weiter unten untersucht und
+mit Beispielen illustriert.
 
 Betrachtet hält man in der Gleichung~\eqref{buch:pde:ansatz:eqn:F=G}
 die Variable $x$ fest, steht links eine fest Zahl, schreiben wir 
@@ -189,7 +191,7 @@ Als Beispiel dieser Schwierigkeit betrachten wir die Differentialgleichung
 +
 \frac{\partial^2 u}{\partial y^2}
 =
-a u
+\mu u
 \]
 auf dem Gebiet
 $\Omega = [0,a]\times [0,b] = \{(x,y)\in\mathbb{R}^2\mid 0<x<a\wedge 0<y<b\}$
@@ -229,16 +231,28 @@ umzuwandeln.
 \subsection{Eigenwertproblem
 \label{buch:pde:subsection:eigenwertproblem}}
 Viele partielle Differentialgleichungen der mathematischen Physik
-sind zeitabhängig, aber das räumliche Gebiet, in dem sie 
-definiert sind, ist nicht von der Zeit abhängig.
-Dies 
+sind zeitabhängig, aber das räumliche Gebiet $G\subset\mathbb{R}^n$,
+in dem sie definiert sind, ist nicht von der Zeit abhängig.
+Dies bedeutet, dass das Gebiet $\Omega$, auf dem die partielle
+Differentialgleichung formuliert werden muss, von der Form
+\(
+\Omega
+=
+\mathbb{R}^+
+\times 
+G
+\)
+ist.
 
+%
+% Wellengleichung
+%
 \subsubsection{Wellengleichung}
-Die Schwingung einer ebenen Membran, die in ein emGebiet
+Die Schwingung einer ebenen Membran, die im Gebiet
 $G\subset\mathbb{R}^n$ eingespannt ist, wird durch die
 Wellengleichung
 \begin{equation}
-\frac{1}{c^2} \frac{\partial^2 u}{\partial t^2} = \Delta u,
+\frac{1}{c^2} \frac{\partial^2 u}{\partial t^2} = \Delta u
 \label{buch:pde:separation:wellengleichung}
 \end{equation}
 beschrieben.
@@ -253,10 +267,11 @@ Dies bedeutet, dass $u(t,x)=0$ für alle Zeiten $t>0$ und für
 Randpunkte $x\in\partial G$ von $G$ ist.
 \item
 Bedingungen, die Auslenkung und Geschwindigkeit der Membran zur
-Zeit $t=0$ beschreiben, typischerweise ind er Form
+Zeit $t=0$ beschreiben, typischerweise in der Form
 \begin{align*}
-u(0,x) = f(x),
-\frac{\partial u}{\partial t}(0,x) = g(x)
+u(0,x) &= f(x),
+\\
+\frac{\partial u}{\partial t}(0,x) &= g(x)
 \end{align*}
 wobei $f(x)$ und $g(x)$ Funktionen auf dem Gebiet $G$ sind.
 \end{itemize}
@@ -292,46 +307,45 @@ reduziert, die gewöhnliche Differentialgleichung
 T''(t) = \lambda T(t)
 \]
 und die partielle Differentialgleichung
-\[
+\begin{equation}
 \Delta U(x) = \lambda U(x)
-\]
+\label{buch:pde:eqn:eigenwertproblem}
+\end{equation}
 niedrigerer Dimension zu lösen.
+Die Differentialgleichung~\eqref{buch:pde:eqn:eigenwertproblem}
+für $U$ hat die Form eines Eigenwertproblems.
 
+%
+% Allgemeine Situation
+%
 \subsubsection{Allgemeine Situation}
-Das Definitionsgebiet der partiellen Differentialgleichung ist 
-also von der Form $\mathbb{R}^+\times G$, wobei $G\subset\mathbb{R}^n$
+Im allgemeinen Fall ist das Definitionsgebiet der partiellen
+Differentialgleichung von der Form $\mathbb{R}^+\times G$,
+wobei $G\subset\mathbb{R}^n$
 ein räumliches Gebiet ist und $\mathbb{R}^+$ die Zeitachse.
 Auch die Randbedingungen zerfallen in zwei Arten:
 \begin{itemize}
 \item
 Bedingungen über die Lösungsfunktion zur Zeit $t=0$ im inneren des
-räumliche Gebietes $G$, zum Beispiel
-die Anfangsauslenkung und/oder Anfangsgeschwindigkeit einer schwingenden
-Saite oder Membran.
+räumliche Gebietes $G$.
 \item
 Bedingungen über die Lösungsfunktion auf dem Rand $\partial G$ von
-$G$ für alle Zeiten $t>0$, zum Beispiel die Bedingung, dass die
-Membran fest eingespannt ist.
+$G$ für alle Zeiten $t>0$.
 \end{itemize}
-Oft zerfällt auch der Differentialoperator in Zeitableitungen
-und einen zeitunabhängigen Teil der nur Ableitungen nach den
-Ortsvariablen enthält.
-Die Wellengleichung
+Ausserdem zerfalle die Differentialgleichung in einen Zeit-Teil und den
+räumlichen Teil, man kann sie schreiben als
 \[
-\frac{1}{c^2}
 \frac{\partial^2}{\partial t^2} u
 =
-\Delta u
-\qquad\Leftrightarrow\qquad
-\biggl(
-\frac{1}{c^2}\frac{\partial^2}{\partial t^2} - \Delta
-\biggr) u = 0
+Lu
 \]
-enthält Ableitungen nach der Zeit, die nicht von Ortskoordinaten
-abhängig sind.
-Der Laplace-Operator $\Delta$ ist nicht von der Zeitabhängig und das
-Gebiet $G$ hängt ebenfalls nicht von der Zeit ab.
+mit einem Differentialoperator $L$, der nur Ableitungen der
+Ortskoordinaten enthält.
+Die Voraussetzungen für die Separation sind also gegeben.
 
+%
+% Separation der Zeit
+%
 \subsubsection{Separation der Zeit}
 Unter den gegeben Voraussetzungen ist es naheliegend, die Lösungsfunktion
 $u(t,x)$ als Produkt
@@ -341,41 +355,40 @@ u(t,x) = T(t) \cdot U(x),\qquad t\in\mathbb{R}^+, x\in G
 anzusetezen.
 Die Wellengleichung wird dann
 \[
-\frac{1}{c^2}
 T''(t)\cdot U(x)
 =
-T(t)\cdot\Delta U(x)
+T(t)\cdot L U(x)
 \]
 und nach Separation
 \[
-\frac{1}{c^2} \frac{T''(t)}{T(t)}
+\frac{T''(t)}{T(t)}
 =
-\frac{\Delta U(x)}{U(x)}.
+\frac{L U(x)}{U(x)}.
 \]
 Es gibt also eine gemeinsame Konstante.
-Da wir Schwingungslösungen erwarten, für die $T''(t) = -\omega^2 T(t)$
+Wenn wir Schwingungslösungen erwarten, für die $T''(t) = -\omega^2 T(t)$
 ist, schreiben wir die gemeinsame Konstante als $-\lambda^2$, was
 später die Formeln vereinfachen wird.
 Die separierten Differentialgleichungen werden jetzt
 \begin{align*}
-\frac{1}{c^2}
 \frac{T''(t)}{T(t)}
 &=
 -\lambda^2
 &&\Rightarrow&
-T''(t)-c^2\lambda T(t)&=0
+T''(t)-\lambda T(t)&=0
 &&\Rightarrow&
-T''(t) &= A \cos(c\sqrt\lambda t) + B \sin(c \lambda t)
+T''(t) &= A \cos(\sqrt\lambda t) + B \sin( \lambda t)
 \\
 &&&&&&&&
        &= C \cos(c \lambda t+\delta)
 \\
-\frac{\Delta U(x)}{U(x)}&=-\lambda^2
+\frac{L U(x)}{U(x)}&=-\lambda^2
 &&\Rightarrow&
-\Delta U &= -\lambda^2 U
+L U &= -\lambda^2 U.
 \end{align*}
 Die letzte Gleichung für die Funktion $U(x)$ hat die Form
-eines Eigenwertproblems mit dem Eigenwert $-\lambda^2$.
+eines Eigenwertproblems für den Operator $L$ mit dem
+Eigenwert $-\lambda^2$.
 
 \begin{definition}
 Eine Eigenfunktion eines Operators $L$ zum Eigenwert $\lambda$
@@ -385,9 +398,7 @@ ist eine Funktion $U$ derart, dass $LU=\lambda U$.
 Die Separation ermöglich also, das ursprüngliche Problem aufzuspalten
 in ein Eigenwertproblem für eine nur ortsabhängige Funktion $U(x)$
 und eine Schwingungsgleichung für $T(t)$.
-Die Schwingungsfrequenz $c \lambda $ hängt direkt mit dem
+Die Schwingungsfrequenz $\lambda $ hängt direkt mit dem
 Eigenwert zusammen.
-Die Funktion $U(x)$ beschreibt die Form der Membran, die Amplitude
-in jedem Punkt, der Faktor $T(t)$ beschreibt die Schwingung.
 
 

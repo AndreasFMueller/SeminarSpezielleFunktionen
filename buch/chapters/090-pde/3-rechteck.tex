@@ -11,6 +11,9 @@ Abschnitt~\ref{buch:pde:subsection:eigenwertproblem}
 aus der Wellengleichung abgeleiteten Eigenwertproblems
 mit Hilfe von Separation betrachten wir ein rechteckiges Gebiet.
 
+%
+% Differentialgleichung und Randbedingungen
+%
 \subsection{Differentialgleichung und Randbedingungen}
 Wir betrachten das Gebiet
 \[
@@ -55,7 +58,9 @@ Wir verwenden also im folgenden
 \Delta = \frac{\partial^2}{\partial x^2} + \frac{\partial^2}{\partial y^2}.
 \]
 
-
+%
+% Separation
+%
 \subsection{Separation}
 Wir setzen die Lösung als Produkt von Funktionen, die nur von einer
 der Variablen abhängen, nämlich
@@ -81,10 +86,9 @@ So erhalten wir die beiden Differentialgleichungen
 \begin{aligned}
 X''(x) &= -\mu^2 X(x)&&x\in (0,a)
 \\
-Y''(y) &= (-\lambda^2-\mu^2) Y(y)&& y\in(0,b)
+Y''(y) &= (-\lambda^2-\mu^2) Y(y)&& y\in(0,b).
 \end{aligned}
 \]
-
 Die Funktionen $X(x)$ und $Y(y)$ müssen homogene Randbedingungen
 erfüllen, also
 \[
@@ -95,10 +99,13 @@ X(a) &= 0
 \qquad\text{und}\qquad
 \begin{aligned}
 Y(0) &= 0\\
-Y(b) &= 0
+Y(b) &= 0.
 \end{aligned}
 \]
 
+%
+% Lösung der Differentialgleichung
+%
 \subsection{Lösung der Differentialgleichungen}
 Die allgemeine Lösung der Differentialgleichung $X''(x) = -\mu^2 X(x)$
 ist eine Funktion der Form
@@ -116,11 +123,11 @@ X(a) = B\sin\mu a.
 \]
 Da $B$ nicht auch verschwinden kann, muss $\sin\mu a=0$ sein.
 Die Nullstellen der Sinus-Funktion sind alle ganzzahligen Vielfachen
-\[
-\mu a = k\pi,\qquad k\in\mathbb{Z}
-\Rightarrow
-\mu = \frac{k\pi}{a}\qquad k\in\mathbb{Z}.
-\]
+\begin{align*}
+\mu a &= k\pi,\quad k\in\mathbb{Z}
+&&\Rightarrow&
+\mu &= \frac{k\pi}{a},\quad k\in\mathbb{Z}.
+\end{align*}
 Die negativen $k$ geben die gleichen Lösungsfunktionen wie die positiven
 $k$, man kann sich daher auf die positiven $k$ beschränken.
 Die Lösungen sind daher
@@ -159,7 +166,14 @@ Die Funktion $U_{kl}(x,y)$ verschwindet daher auf allen Geraden
 parallel zur $y$-Achse an $x$-Koordinaten, die Vielfache von $a/k$ sind
 und auf allen Geraden parallel zur $x$-Achse an $y$-Koordinaten, die
 Vielfache von $b/l$ sind.
+Diese Geraden heissen Knotenlinien und sind in
+Abbildung~\ref{buch:pde:rechteck:fig:knoten} als schwarze
+Linien zwischen den roten und blauen Teilen des Gebietes
+dargestellt.
 
+%
+% Eigenfrequenzen
+%
 \subsection{Eigenfrequenzen}
 \begin{figure}
 \centering
@@ -183,7 +197,7 @@ Durch Einsetzen lassen sich jetzt auch die Eigenwerte bestimmen:
 -\frac{k^2\pi^2}{a^2} \sin\frac{k\pi}{a}x\cdot \sin\frac{k\pi}{b}y
 -\frac{l^2\pi^2}{b^2} \sin\frac{k\pi}{a}x\cdot \sin\frac{k\pi}{b}y
 =
--\biggl(\frac{k^2\pi^2}{a^2}+\frac{l^2\pi^2}{b^2}\biggr) U_{kl}(x,y)
+-\biggl(\frac{k^2\pi^2}{a^2}+\frac{l^2\pi^2}{b^2}\biggr) U_{kl}(x,y).
 \end{align*}
 Die Eigenfrequenzen einer rechtecking schwingenden Membran sind also
 \[

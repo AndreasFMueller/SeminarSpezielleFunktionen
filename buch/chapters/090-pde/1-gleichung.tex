@@ -10,8 +10,8 @@ Gewöhnliche Differentialgleichungen sind immer auf einem
 Intervall als Definitionsgebiet definiert.
 Partielle Differentialgleichungen sind Gleichungen, die verschiedene
 partielle Ableitungen einer Funktion mehrerer Variablen involvieren,
-das Definitionsgebiet ist daher immer eine höherdimensionale Teilmenge 
-von $\mathbb{R}^n$.
+das Definitionsgebiet ist daher immer eine offene Teilmenge 
+eines höherdimensionalen Raumes $\mathbb{R}^n$.
 Sowohl das Gebiet wie auch dessen Rand können wesentlich komplexer sein.
 Eine sorgfältige Definition ist unabdingbar, um Widersprüchen vorzubeugen.
 
@@ -117,8 +117,9 @@ aller Bewegungen des Raumes.
 \subsubsection{Wellengleichung}
 Da die physikalischen Gesetze invariant sein müssen unter solchen
 Bewegungen, ist zu erwarten, dass der Laplace-Operator in partiellen
-Differentialgleichungen 
-Als Beispiel betrachten wir die Ausbreitung einer Welle, welche sich
+Differentialgleichungen der Physik sehr oft auftreten wird.
+Als Beispiel dieses Phänomens betrachten wir die Ausbreitung einer Welle,
+welche sich
 in einem Medium mit der Geschwindigkeit $c$ ausbreitet.
 Ist $u(x,t)$ die Auslenkung der Welle im Punkt $x\in\mathbb{R}^n$
 zur Zeit $t\in\mathbb{R}$, dann erfüllt die Funktion $u(x,t)$
@@ -130,14 +131,11 @@ die partielle Differentialgleichung
 \Delta u.
 \label{buch:pde:eqn:waveequation}
 \end{equation}
-In dieser Gleichung treten nicht nur die partiellen Ableitungen
-nach den Ortskoordinaten auf, die der Laplace-Operator miteinander
-verknüpft.
 Die Funktion $u(x,t)$ ist definiert auf einem Gebiet in 
 $\mathbb{R}^{n}\times\mathbb{R}=\mathbb{R}^{n+1}$ mit den Koordinaten
 $(x_1,\dots,x_n,t)$.
-Der Gleichung~\eqref{buch:pde:eqn:waveequation} ist daher eigentlich
-die Gleichung
+Verschieben wir alle Ableitungen auf die linke Seite, können wir
+die Gleichung~\eqref{buch:pde:eqn:waveequation} auch als
 \[
 \square u = 0
 \qquad\text{mit}\quad
@@ -155,7 +153,7 @@ die Gleichung
 -\dots- 
 \frac{\partial^2}{\partial x_n^2}
 \]
-wird.
+schreiben.
 Der Operator $\square$ heisst auch d'Alembert-Operator.
 \index{dAlembertoperator@d'Alembert-Operator}%
 
@@ -177,18 +175,19 @@ Eine Funktion $u\colon \overline{\Omega} \to\mathbb{R}$ erfüllt eine
 {\em Dirichlet-Randbedingung}, wenn
 \index{Dirichlet-Randbedingung}%
 \index{Randbedingung!Dirichlet-}%
-\(
-u(x) = f(x)
-\)
-für $x\in F$.
+\begin{align*}
+u(x) &= f(x)
+\qquad
+\text{für $x\in F$.}
+\intertext{%
 Sie erfüllt eine {\em Neumann-Randbedingung}, wenn
 \index{Neumann-Randbedingung}%
 \index{Randbedingung!Neumann-}%
-\[
+}
 \frac{\partial u}{\partial n}
-=
+&=
 f(x)\qquad\text{für $x\in F$}.
-\]
+\end{align*}
 Dabei ist
 \[
 \frac{\partial u}{\partial n}
@@ -216,4 +215,12 @@ die die gleiche Information beinhaltet wie Anforderungen an die
 tangentialen Ableitungen.
 Dirichlet- und Neumann-Randbedingungen sind daher die einzigen
 sinnvollen linearen Randbedingungen.
+
+\subsubsection{Lösung einer partiellen Differentialgleichung}
+Eine Funktion $u\colon \overline{\Omega}\to\mathbb{R}$ ist
+eine Lösung der Differentialgleichung, wenn sowohl die
+Differentialgleichung in $\Omega$ erfüllt ist, als auch die
+Randbedingungen auf dem Teil des Randes
+$\partial \Omega=\overline{\Omega}\setminus \Omega$,
+auf dem Randbedingungen vorgegeben wurden.
 

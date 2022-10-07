@@ -1,5 +1,5 @@
 %
-% geometrie.tex
+% 4-geometrie.tex
 %
 % (c) 2022 Prof Dr Andreas Müller
 %
@@ -18,25 +18,32 @@ durchgeführt.
 
 Um eine der für die Physik zentralen partiellen Differentialgleichungen
 wie
-\begin{align*}
-\varrho
-&=
-\Delta u
-&
-\frac{\partial u}{\partial t}
-&=
-\Delta u
-&
-\frac{\partial^2}{\partial t^2}
-&=
-\Delta u
-\\
-&\llap{\hspace{-1cm}\text{Helmholtz-Gleichung}}
-&
-&\llap{\hspace{-1cm}\text{Wärmeleitungsgleichung}}
-&
-&\llap{\hspace{-1cm}\text{Wellengleichung}}
-\end{align*}
+\begin{center}
+\begin{tikzpicture}[>=latex]
+\def\l{0.9}
+\begin{scope}[xshift=-4.5cm]
+\node at (0,\l) {\(\displaystyle
+\varrho = \Delta u
+\mathstrut \)};
+\node at (0,0) {Helmholtz-Gleichung\strut};
+\end{scope}
+
+\begin{scope}
+\node at (0,\l) {\(\displaystyle
+\frac{\partial u}{\partial t} = \Delta u
+\mathstrut \)};
+\node at (0,0) {Wärmeleitungsgleichung\strut};
+\end{scope}
+
+\begin{scope}[xshift=4.5cm]
+\node at (0,\l) {\(\displaystyle
+\frac{\partial^2}{\partial t^2} = \Delta u
+\mathstrut \)};
+\node at (0,0) {Wellengleichung\strut};
+\end{scope}
+
+\end{tikzpicture}
+\end{center}
 lösen zu können, muss auch der Laplace-Operator $\Delta$ in diesen
 Koordinaten ausgedrückt werden.
 Es ist zwar oft mühsam, eine solche Darstellung zu finden, aber
@@ -50,12 +57,12 @@ Und Kapitel~\ref{chapter:kugel} zeigt, wie dies auf einer Kugeloberfläche
 in Kugelkoordinaten funktioniert.
 Zusammen mit den Laguerre-Polynomen, die in Kapitel~\ref{chapter:laguerre}
 eingeführt werden, entsteht eine Menge von Eigenfunktionen des
-Laplace-Operators in Kugelfunktionen.
+Laplace-Operators in Kugelkoordinaten.
 Mit Kugelfunktionen wurden viele bedeutende Probleme gelöst.
 Mit eines der wichtigsten dürfte die Lösung der Schrödingergleichung
 für das Wasserstoff-Atom sein, welches zu einer Erklärung der
 Gesetze von Balmer über die Wellenlängen der Wasserstoff-Spektrallinien
-geführt.
+geführt hat.
 
 Diese Beispiele illustrieren auch, dass die Randbedingungen einen
 ganz entscheidenden Einfluss auf die Lösungen einer partiellen
