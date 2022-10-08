@@ -842,10 +842,12 @@ Auch die Eulersche hypergeometrische Differentialgleichung
 \index{Eulersche hypergeometrische Differentialgleichung}%
 \index{Differentialgleichung!Eulersche hypergeometrische}%
 lässt sich in die Form eines Sturm-Liouville-Operators
+auf dem Intervall $[0,1]$
 \index{Eulersche hypergeometrische Differentialgleichung!als Sturm-Liouville-Gleichung}%
 bringen.
 Dazu setzt man
-\begin{align}
+\begin{equation}
+\begin{aligned}
 p(z)
 &=
 z^c(z-1)^{a+b+1-c}
@@ -859,9 +861,15 @@ q(z)
 w(z)
 &=
 z^{c-1}(z-1)^{a+b-c}.
+\end{aligned}
 \label{buch:orthogonal:sturm:eqn:w}
-\end{align}
-Setzt man dies in den Sturm-Liouville-Operator ein, erhält man
+\end{equation}
+Für $c>0$ und $a+b+1-c>0$ ist $p(z)=0$ an den Intervallenden,
+alle beschränkten Lösungsfunktionen erfüllen also automatisch die
+Randbedingungen~\eqref{buch:integrale:sturm:randbedingung}
+mit $k_0=k_1=0$ und $h_0=h_1=1$.
+Setzt man die Funktionen~\eqref{buch:orthogonal:sturm:eqn:w}
+in den Sturm-Liouville-Operator ein, erhält man
 \begin{equation}
 L
 =
