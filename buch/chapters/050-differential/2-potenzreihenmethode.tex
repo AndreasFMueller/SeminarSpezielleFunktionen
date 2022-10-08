@@ -6,7 +6,7 @@
 \section{Potenzreihenmethode
 \label{buch:differentialgleichungen:section:potenzreihenmethode}}
 \rhead{Potenzreihenmethode}
-Die Potenzreihenmethode versucht die Lösung einer gewöhnlichen
+Die Potenzreihenmethode versucht, die Lösung einer gewöhnlichen
 Differentialgleichung als Potenzreihe um die Anfangsbedingung zu
 entwickeln.
 \index{Potenzreihenmethode}%
@@ -26,7 +26,7 @@ b_0(x)y(x)
 f(x)
 \label{buch:differentialgleichungen:eqn:potenzreihendgl}
 \end{equation}
-mit der Randbedingung $y(0)=y_0$ aus.
+mit den Anfangsbedingung $y(0)=y_0, y'(0)=y_1,\dots,y^{(n-1)}(0)=y_{n-1}$ aus.
 Schon im einfachsten Fall einer homogenen Differentialgleichung erster
 Ordnung ergibt sich die Beziehung
 \[
@@ -69,7 +69,7 @@ mit analytischen Funktion $\varphi_j$ hat eine in einer Umgebung von
 $t=0$ eindeutige analytische Lösung.
 \end{satz}
 
-Im folgenden werden wir daher weitere einschränkende Annahmen über
+Im Folgenden werden wir daher weitere einschränkende Annahmen über
 die Koeffizienten $b_k(x)$ machen.
 
 %
@@ -78,8 +78,8 @@ die Koeffizienten $b_k(x)$ machen.
 \subsection{Potenzreihenansatz und Koeffizientenvergleich}
 In Abschnitt~\ref{buch:differentialgleichungen:section:beispiele}
 wurde von einer grossen Zahl interessanter Funktionen gezeigt, dass
-sie einerseits eine Lösungen einer Differentialgleichung sind, 
-andererseits aber auch eine Potenzreihendarstellung sind.
+sie einerseits Lösungen einer Differentialgleichung sind, 
+andererseits aber auch eine Potenzreihendarstellung haben.
 Der Satz von Cauchy-Kowalevskaja hat gezeigt, dass dies das zu
 erwartende Resultat ist.
 
@@ -129,7 +129,7 @@ Koeffizienten $a_k$.
 Die Koeffizienten $a_0$ bis $a_{n-1}$ werden gegeben durch die
 Anfangswerte der Funktion und der ersten $n-1$ Ableitungen, die
 ebenfalls nötig sind, um die Lösungsfunktion eindeutig festzulegen.
-Durch Lösen des linearen Gleichungssystems können jetzt die Koeffizienten
+Durch Lösen des linearen Gleichungssystems können jetzt alle Koeffizienten
 und damit die Lösung bestimmt werden.
 
 Setzt man zum Beispiel voraus, dass $b_n(0)\ne 0$ ist, dann ist der
@@ -219,7 +219,7 @@ a_1
 &=
 \alpha a_0 + \alpha a_1t + \alpha a_2t^2 + \alpha a_3t^3 + \dots
 \end{align*}
-Der Koeffizientenvergleich ergbiet die Gleichungen
+Der Koeffizientenvergleich ergibt die Gleichungen
 \begin{align}
 a_1&=\alpha a_0
 \notag
@@ -236,10 +236,12 @@ a_1+2a_2 &= \alpha a_1 &&\Rightarrow& 2a_2 &= (\alpha-1) a_1
 4a_4+5a_5 &= \alpha a_4&&\Rightarrow& 5a_5 &= (\alpha-4) a_4
 \notag
 \\
-&\vdots
+&\hspace*{2mm}\vdots
+&&&&\hspace*{2mm}\vdots
 \notag
 \\
-&&&& \llap{$(k+1)a_{k+1}$} &= (\alpha-k) a_k
+ka_k+(k+1)a_{k+1}&=\alpha a_k
+&&\Rightarrow& (k+1)a_{k+1} &= (\alpha-k) a_k
 &&\Rightarrow&
 a_{k+1} = \frac{\alpha-k}{k+1}a_k.
 \label{buch:differentialgleichungen:eqn:newtonreiherekursion}
@@ -431,7 +433,11 @@ Für Differentialgleichungen der Art
 ist also ein anderer Ansatz nötig.
 Ursache für das Versagen des Potenzreihenansatzes ist, dass die
 Koeffizienten der Differentialgleichung bei $x=0$ eine
-Singularität haben.
+Singularität haben, wie man erkennen kann, wenn man die
+Differentialgleichung nach $y''$ auflöst:
+\[
+y'' = -\frac{p(x)}{x}y' - \frac{q(x)}{x^2}y.
+\]
 Ist ist daher damit zu rechnen, dass auch die Lösung $y(x)$ an dieser
 Stelle singuläres Verhalten zeigen wird.
 Die Terme einer Potenzreihe um den Punkt $x=0$ sind nicht singulär,
@@ -462,7 +468,7 @@ Wir verwenden also eine verallgemeinerte Potenzreihe der Form
 \eqref{buch:differentialgleichungen:eqn:verallpotenzreihe}
 als Lösungsansatz für die
 Differentialgleichung~\eqref{buch:differentialgleichungen:eqn:dglverallg}.
-Wir berechnen die Ableitungen von $y(x)$ und um sie in der
+Wir berechnen die Ableitungen von $y(x)$. Um sie in der
 Differentialgleichung einzusetzen, versehen wir sie auch gleich mit den
 benötigten Potenzen von $x$.
 So erhalten wir

@@ -13,6 +13,9 @@ Die Auflösung eines optischen Systems wird durch die Beugung limitiert,
 die Helligkeitskverteilung des Bildes einer Punktquelle ist
 zylindersymmetrisch und kann mit Hilfe von Lösungen der Besselschen
 Differentialgleichung beschrieben werden.
+Das Kapitel~\ref{chapter:kreismembran} zeigt, wie die Bessel-Funktionen
+bei der Lösung der Wellengleichung für eine kreisförmige Membran
+auftreten.
 Die Besselsche Differentialgleichung hat im Allgemeinen keine Lösung,
 die sich durch bekannte Funktionen ausdrücken lassen, es ist also
 nötig, eine neue Familie von speziellen Funktionen zu definieren,
@@ -32,7 +35,8 @@ x^2\frac{d^2y}{dx^2} + x\frac{dy}{dx} + (x^2-\alpha^2)y = 0
 \index{Besselsche Differentialgleichung}%
 zweiter Ordnung
 für eine auf dem Interval $[0,\infty)$ definierte Funktion $y(x)$.
-Der Parameter $\alpha$ ist eine beliebige komplexe Zahl $\alpha\in \mathbb{C}$,
+Der Parameter $\alpha$ ist eine beliebige reelle oder sogar komplexe
+Zahl $\alpha\in \mathbb{C}$,
 die Lösungsfunktionen hängen daher von $\alpha$ ab.
 
 %
@@ -105,7 +109,7 @@ Falls nur eine solche Lösung gefunden werden kann, wird sie der grösseren
 der beiden Zahlen $\alpha$ und $-\alpha$ zugeordnet
 (oder $0$, falls $\alpha=-\alpha=0$).
 Eine weitere Lösung kann mit Hilfe analytischer Fortsetzung gefunden werden,
-wie später gezeigt wird.
+wie später in Kapitel~\ref{buch:chapter:funktionentheorie} gezeigt wird.
 
 Für nicht reelles $\alpha$ kann $\varrho_1-\varrho_2=2\alpha$ keine 
 Ganzzahl sein, es ist also garantiert, dass zwei linear unabhängig
@@ -134,7 +138,7 @@ ist.
 %
 \subsection{Bessel-Funktionen erster Art
 \label{buch:differentialgleichungen:subsection:bessel1steart}}
-Für $\alpha \ge 0$ gibt es immer mindestens eine Lösung der Besselgleichung
+Für $\alpha \ge 0$ gibt es immer mindestens eine Lösung der Bessel-Gleichung
 als verallgemeinerte Potenzreihe mit $\varrho=\alpha$.
 Die Funktion $q(x)=x^2-\alpha^2$ ist ein Polynom, die einzigen
 von $0$ verschiedenen Koeffizienten sind $q_0=-\alpha^2$
@@ -350,7 +354,8 @@ ein Vorzeichen.
 
 Als lineare Differentialgleichung zweiter Ordnung erwarten wir noch
 eine zweite, linear unabhängige Lösung.
-Diese kann jedoch nicht allein mit der Potenzreihenmethode,
+Diese kann jedoch nicht allein mit der Potenzreihenmethode
+bestimmt werden,
 dazu sind die Methoden der Funktionentheorie nötig.
 Im Abschnitt~\ref{buch:funktionentheorie:subsection:dglsing}
 wird gezeigt, wie dies möglich ist und auf
@@ -410,7 +415,7 @@ z^{-k}
 z^{-k}
 \frac{1}{\Gamma(m+1)}
 \biggl(\frac{x}{2}\biggr)^{m}
-z^{n+k}
+z^{n+k}.
 \notag
 \intertext{Auch in dieser Summe fallen wieder die Terme mit $m<0$
 wegen $\Gamma(m+1)=\infty$ weg.
@@ -462,6 +467,20 @@ Die beiden Exponentialreihen sind
 \exp\biggl(\frac{x}2\cdot\biggl(z-\frac1z\biggr)\biggr).
 \notag
 \end{align}
+Wir fassen das Resultat im folgenden Satz zusammen.
+
+\begin{satz}[Erzeugende Funktion der Bessel-Funktionen]
+Die erzeugende Funktion der Besselfunktionen ist
+\[
+\sum_{k=-\infty}^\infty
+J_k(x)
+=
+\exp\biggl(
+\frac{x}2\cdot\biggl(1-\frac1z\biggr)
+\biggr)
+\]
+\end{satz}
+\index{erzeugende Funktion}%
 
 %
 % Additionstheorem

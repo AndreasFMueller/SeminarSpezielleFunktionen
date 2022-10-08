@@ -6,10 +6,10 @@
 \section{Hypergeometrische Differentialgleichung
 \label{buch:differentialgleichungen:section:hypergeometrisch}}
 \rhead{Hypergeometrische Differentialgleichung}
-Die hypergeometrische Funktion $\mathstrut_2F1(a,b;c;x)$ wurde in
+Die hypergeometrische Funktion $\mathstrut_2F_1(a,b;c;x)$ wurde in
 Abschnitt~\ref{buch:rekursion:section:hypergeometrische-funktion}
 als Potenzreihe mit sehr speziellen Koeffizienten, die sich aus
-Pochhammer-Symbolen.
+Pochhammer-Symbolen zusammensetzen, konstruiert.
 Es stellt sich aber heraus, dass man sie auch als Lösung einer
 gewöhnlichen Differentialgleichung bekommen kann, die bereits
 Euler studiert hat.
@@ -22,7 +22,7 @@ Lösung der {\em Eulerschen hypergeometrischen Differentialgleichung}
 immer auf eine lineare Differentialgleichung mit konstanten Koeffizienten
 reduzieren lässt)
 \begin{equation}
-x(1-x) \frac{d^2y}{dx^2} + (c-(a+b+1)x)\frac{dy}{dx} - ab y = 0
+x(1-x) \frac{d^2y}{dx^2} + (c-(a+b+1)x)\frac{dy}{dx} - ab y = 0.
 \label{buch:differentialgleichungen:hypergeo:eulerdgl}
 \end{equation}
 Wir prüfen dies nach, indem wir die Definition der hypergeometrischen
@@ -353,7 +353,8 @@ Koeffizienten als}
 \end{align}
 finden.
 Setzt man $a_0=1$, ist die zweite Lösung ist also wieder eine
-hypergeometrische Funktion.%, nämlich
+hypergeometrische Funktion.
+%, nämlich
 %\[
 %y_2(x)
 %=
@@ -373,9 +374,11 @@ Wir fassen die Resultate dieses Abschnitts im folgenden Satz zusammen.
 \begin{satz}
 \index{Satz!Lösung der eulerschen hypergeometrischen Differentialgleichung}%
 Die eulersche hypergeometrische Differentialgleichung
+\index{eulersche hypergeometrische Differentialgleichung}%
+\index{Differentialgleichung!eulersche hypergeometrische}%
 \begin{equation}
 x(1-x)\frac{d^2y}{dx^2}
-+(c-(a+b+1)x)\frac{dy}{dx}
++\bigl(c-(a+b+1)x\bigr)\frac{dy}{dx}
 -ab y
 =
 0
@@ -583,7 +586,7 @@ b_1-1,\dots,b_m-1
 \subsubsection{Die Differentialgleichung}
 Aus den Operatoren $D_{a_i}$ und $D_{b_j-1}$ kann jetzt eine
 Differentialgleichung für die Funktion $w(z)$ konstruieren.
-Durch Anwendung von aller Operatoren $D_{b_i-1}$ werden die
+Durch Anwendung aller Operatoren $D_{b_i-1}$ werden die
 $b$-Parameter dekrementiert und die Faktoren $(b_i-1)$ kommen hinzu.
 Leitet man dies ab, werden alle Parameter inkrementiert:
 \begin{align*}
@@ -623,6 +626,8 @@ w=\frac{d}{dz}w
 \]
 stehen bleibt.
 Dies ist natürlich die Differentialgleichung der Exponentialfunktion.
+\index{Differentialgleichung!Exponentialfunktion}%
+\index{Exponentialfunktion}%
 \end{beispiel}
 
 %
@@ -655,6 +660,8 @@ f(x)
 =
 \sqrt{1+x} = \mathstrut_1F_0(-{\textstyle\frac12};-x).
 \]
+\index{Wurzelfunktion}%
+\index{1+xw@$\sqrt{1+x}$}%
 Zunächst erfüllt die hypergeometrische Funktion
 $w(z)=\mathstrut_1F_0(-\frac12;z)$ die Differentialgleichung
 \[
@@ -718,6 +725,7 @@ führt.
 
 \begin{beispiel}
 Die Kosinus-Funktion kann durch die hypergeometrische Funktion
+\index{Kosinus-Funktion}
 $\mathstrut_0F_1$ ausgedrückt werden.
 Wir schreiben 
 \[
@@ -876,7 +884,7 @@ z^\varrho(2\varrho+b-z)v'
 +
 (\varrho-a)z^\varrho v
 &=
-0
+0.
 \end{align*}
 Die letzte Gleichung wird wieder zu einer Differentialgleichung
 der Form~\eqref{buch:differentialgleichungen:1f1}, wenn der erste
@@ -905,7 +913,7 @@ a+b-1\\
 Falls $2-b$ keine negative ganze Zahl ist, ist die hypergeometrische
 Funktion wohldefiniert.
 
-Wir fassen diese Resultat zusammen:
+Wir fassen diese Resultat wie folgt zusammen.
 \begin{satz}
 \index{Satz!1f1@Differentialgleichung von $\mathstrut_1F_1$}%
 \label{buch:differentialgleichungen:satz:1f1-dgl-loesungen}
@@ -942,7 +950,7 @@ Für $b=1$ ist $w_2(z)=w_1(z)$.
 %
 \subsubsection{Die Differentialgleichung für $\mathstrut_2F_1$}
 Für die hypergeometrische Funktion $\mathstrut_2F_1(a,b;c;z)$
-ist die Difrentialgleichung von der Form
+ist die Differentialgleichung von der Form
 \[
 \biggl(z\frac{d}{dz} + a\biggr)
 \biggl(z\frac{d}{dz} + b\biggr)w
@@ -990,7 +998,8 @@ z(1-z)w''
 ab
 w
 \end{align*}
-Dies ist die früher definierte hypergeometrische Differentialgleichung.
+Dies ist die früher definierte eulersche hypergeometrische
+Differentialgleichung.
 
 %
 % Gerade und ungerade Funktionen
@@ -1023,6 +1032,7 @@ $\cosh x$, und eine ungerade Lösung, $\sinh x$.
 
 \subsubsection{Symmetrien der eulerschen hypergeometrischen
 Differentialgleichung}
+\index{Symmetrie}%
 Hat die hypergeometrische Differentialgleichung gerade und
 ungerade Lösungen?
 Wenn es eine gerade Lösung $y(x)$ gibt, dann sollte die Substitution
@@ -1104,11 +1114,12 @@ Ordnung tun.
 \subsubsection{Differentialgleichungen für $g(x)=w(sx^2)$ für $w=\mathstrut_2F_1$}
 Die Ableitungen von $g$ sind
 \[
-\begin{linsys}{3}
-  g(x)&=&w(sx^2)& &           & &                \\
- g'(x)&=&       & &2sxw'(sx^2)& &                \\
-g''(x)&=&       & & 2sw'(sx^2)&+&4s^2x^2w''(sx^2)\\
-\end{linsys}
+\renewcommand\arraycolsep{2pt}
+\begin{array}{rcrcrcr}
+  g(x)&=&w(sx^2)& &           & &                 \\
+ g'(x)&=&       & &2sxw'(sx^2)& &                 \\
+g''(x)&=&       & & 2sw'(sx^2)&+&4s^2x^2w''(sx^2).\\
+\end{array}
 \]
 Dies sind lineare Gleichungssysteme für die Ableitungen
 von $w$, die wir nach $w'$ und $w''$ auflösen können.
@@ -1136,17 +1147,18 @@ w''(sx^2)
 \qquad\Rightarrow\qquad
 A_g^{-1}
 =
+\renewcommand{\arraystretch}{1.2}
 \begin{pmatrix}
 1&            0       &               0  \\
-0&  \frac{1}{2sx}     &               0  \\
-0& -\frac{1}{4s^2x^3} & \frac{1}{4s^2x^2}
+0&\displaystyle  \frac{1}{2sx}     &               0  \\
+0&\displaystyle -\frac{1}{4s^2x^3} &\displaystyle \frac{1}{4s^2x^2}
 \end{pmatrix}
 \end{equation*}
 Damit lassen sich jetzt die Ableitungen von $w$ ausdrücken:
 \begin{align*}
   w(sx^2) &= g(x) \\
  w'(sx^2) &= \frac{1}{2sx} g'(x) \\
-w''(sx^2) &= \frac{1}{4s^2x^3}g'(x) + \frac{4}{4s^2x^2} g''(x) 
+w''(sx^2) &= \frac{1}{4s^2x^3}g'(x) + \frac{4}{4s^2x^2} g''(x).
 \end{align*}
 Durch Einsetzen dieser Ausdrücke in die eulersche hypergeometrische
 Differentialgleichung~\eqref{buch:differentialgleichungen:eqn:eulerhyper}
@@ -1195,7 +1207,8 @@ $\varrho=0$ und $\nu=2$ als Leitlinie dienen.
 Wie vorhin beginnen wir damit, die Ableitungen von $f(x)$ zu
 berechnen:
 \[
-\begin{linsys}{4}
+\renewcommand\arraycolsep{2pt}
+\begin{array}{rcrcrcr}
 f(x)   &=& x^\varrho w(sx^\nu)
        & &
        & &
@@ -1206,11 +1219,11 @@ f'(x)  &=& \varrho x^{\varrho-1}   w(sx^\nu)
 \\
 f''(x) &=& (\varrho-1)\varrho x^{\varrho-2}      w(sx^\nu)
        &+& \nu(2\varrho+\nu-1)sx^{\varrho+\nu-2} w'(sx^\nu)
-       &+& \nu^2 s^2 x^{\varrho+2\nu-2}          w''(sx^\nu)
-\end{linsys}
+       &+& \nu^2 s^2 x^{\varrho+2\nu-2}          w''(sx^\nu).
+\end{array}
 \]
 Dies ist ein lineares Gleichungssystem, welches in Matrixform
-geschrieben werden kann als
+als
 \[
 \begin{pmatrix}
 f(x)\\
@@ -1259,8 +1272,9 @@ x^\varrho
 w(sx^\nu)\\
 w'(sx^\nu)\\
 w''(sx^\nu)
-\end{pmatrix}.
+\end{pmatrix}
 \]
+geschrieben werden kann.
 Die Inverse der Matrix $A_f$ ist
 \[
 A_f^{-1}
@@ -1315,14 +1329,15 @@ A_f^{-1}
 \displaystyle\frac{\varrho^2+\nu\varrho}{\nu^2s^2}x^{-2\nu}
 	&\displaystyle -\frac{2\varrho+\nu-1}{\nu^2s^2} x^{-2\nu+1}
 		&\displaystyle \frac{1}{\nu^2s^2} x^{-2\nu+2}
-\end{pmatrix}
+\end{pmatrix}.
 \] 
 Damit kann man jetzt die Funktion $w(sx^\nu)$ und die Ableitungen
 $w'(sx^\nu)$ und $w''(sx^\nu)$ durch $f$ und die Ableitungen davon
 ausdrücken als
 \begin{equation}
 \renewcommand{\arraystretch}{2.3}
-\begin{linsys}{4}
+\renewcommand\arraycolsep{2pt}
+\begin{array}{rcrcrcr}
 w(sx^\nu)
 	&=& \displaystyle \frac{1}{x^\varrho} f(x)
 	& & 
@@ -1330,14 +1345,14 @@ w(sx^\nu)
 \\
 w'(sx^\nu)
 	&=& \displaystyle -\frac{\varrho}{\nu s} x^{-\varrho-\nu} f(x)
-	&+& \displaystyle \frac{1}{\nu s}x^{-\varrho-\nu+1}
+	&+& \displaystyle \frac{1}{\nu s}x^{-\varrho-\nu+1} f'(x)
 	& &
 \\
 w''(sx^\nu)
-	&=& \displaystyle \frac{\varrho^2+\nu\varrho}{\nu^2 s^2}x^{-\varrho-2\nu}
-	&-& \displaystyle \frac{2\varrho+\nu-1}{\nu^2s^2} x^{-\varrho-2\nu+1}
-	&+& \displaystyle \frac{1}{\nu^2 s^2} x^{-\varrho-2\nu+2}.
-\end{linsys}
+	&=& \displaystyle \frac{\varrho^2+\nu\varrho}{\nu^2 s^2}x^{-\varrho-2\nu} f(x)
+	&-& \displaystyle \frac{2\varrho+\nu-1}{\nu^2s^2} x^{-\varrho-2\nu+1} f'(x)
+	&+& \displaystyle \frac{1}{\nu^2 s^2} x^{-\varrho-2\nu+2} f''(x).
+\end{array}
 \label{buch:differentialgleichungen:hypergeometrisch:wsubst}
 \end{equation}
 Einsetzen in die Differentialgleichung der hypergeometrischen Funktion
@@ -1441,7 +1456,8 @@ x
 =
 0.
 \]
-Die Arkus-Sinus-Funktion ist also tatsächlich eine Lösung der
+Die Arkus-Sinus-Funktion ist also eine Lösung der
+\index{Arkus-Sinus-Funktion}%
 Differentialgleichung
 \eqref{buch:differentialgleichungen:hypergeometrisch:beispiel:arcsindgl}.
 \end{beispiel}
@@ -1480,6 +1496,8 @@ Differentialgleichung wiedergewonnen werden kann.
 
 \begin{beispiel}
 Die hyperbolische Funktion
+\index{hyperbolische Funktion}%
+\index{Funktion!hyperbolisch}%
 \[
 \sinh x
 =
@@ -1509,9 +1527,9 @@ x^2f''
 \biggl(-2^2\frac14x^2 + 1^2 - \frac12 \cdot 2 \cdot 1\biggr) f
 =
 x^2f''
--x^2f
+-x^2f.
 \]
-Daraus ergib sich die bekannte Differentialgleichung
+Daraus ergibt sich die bekannte Differentialgleichung
 $y''-y=0$
 der hyperbolischen Funktionen.
 \end{beispiel}
@@ -1595,7 +1613,7 @@ als Lösungen.
 Die Differentialgleichung von $\mathstrut_0F_1$ sollte sich in diesem
 Fall also auf die Airy-Dif\-fe\-ren\-tial\-glei\-chung reduzieren lassen.
 
-Bei der Substition der Parameter in die Differentialgleichung
+Bei der Substitution der Parameter in die Differentialgleichung
 \eqref{buch:differentialgleichungen:0F1:dgl} beachten wird, dass
 die beiden möglichen Werte für $b$ auf $b-1=\pm\frac13$
 führen, mit dem positiven Zeichen für den zweiten Fall, in dem $\varrho=1$
@@ -1727,8 +1745,8 @@ werden.
 
 \subsubsection{Tschebyscheff-Polynome als hypergeometrische Funktionen}
 Aus der Umformung der eulerschen hypergeometrischen Differentialgleichung
-in die Tschebyscheff-Differntialgleichung kann man jetzt ablesen, dass
-eine Lösung der Tschebyscheff-Differentialgleichung auch mit der
+in die Tschebyscheff-Differentialgleichung kann man jetzt ablesen, dass
+eine Lösung der Tschebyscheff-Differential\-glei\-chung auch mit der
 hypergeometrischen Funktion $\mathstrut_2F_1$ geschrieben werden kann,
 nämlich
 \[
@@ -1748,7 +1766,7 @@ y(1) &= 1 \\
 y'(1)&= n^2,
 \end{aligned}
 \]
-den gleichen Werten, die auch das Tschbescheff-Polynome $T_n(x)$ annimmt.
+den gleichen Werten, die auch das Tschebyscheff-Polynome $T_n(x)$ annimmt.
 Es folgt daher
 \begin{equation}
 T_n(x)

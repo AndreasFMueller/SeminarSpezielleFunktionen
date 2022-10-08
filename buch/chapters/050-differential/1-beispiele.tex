@@ -50,7 +50,7 @@ die Integrale
 \[
 \int \frac{dy}{y} = \alpha \int \frac{dx}{x} + C.
 \]
-Die Durchführunge der Integration liefert 
+Die Durchführung der Integration liefert 
 \[
 \log |y| = \alpha \log|x| + C.
 \]
@@ -113,7 +113,7 @@ y=D(1+t)^\alpha
 wie vorhin.
 Der Vorteil der
 Form~\eqref{buch:differentialgleichungen:eqn:wurzeldgl1}
-wird sich später bei dem Versuch zeigen, die Fuktion $y(t)$
+wird sich später bei dem Versuch zeigen, die Funktion $y(t)$
 direkt als Potenzreihenlösung der Differentialgleichung zu finden.
 
 %
@@ -154,8 +154,9 @@ folgt sofort, dass die Ableitung
 =
 \sum_{l=0}^\infty \frac{x^l}{l!}
 =
-\exp(x),
+\exp(x)
 \]
+ist,
 wobei $l=k-1$ gesetzt wurde.
 Die Exponentialfunktion ist also ihre eigene Ableitung.
 
@@ -224,7 +225,7 @@ D_{\omega t}
 \sin\omega t& \cos\omega t
 \end{pmatrix}
 \]
-bschreibt eine Drehung der Ebene mit der Winkelgeschwindigkeit 
+beschreibt eine Drehung der Ebene mit der Winkelgeschwindigkeit 
 \index{Winkelgeschwindigkeit}
 $\omega$.
 Der Punkt $(r,0)$ beschreibt unter dieser Drehung eine Kreisbahn
@@ -283,7 +284,7 @@ r
 \left\{
 \begin{aligned}
 \frac{d}{dt} \cos\omega t &= -\omega \sin\omega t\\
-\frac{d}{dt} \sin\omega t &= \phantom{-} \omega \cos\omega t
+\frac{d}{dt} \sin\omega t &= \phantom{-} \omega \cos\omega t.
 \end{aligned}
 \right.
 \]
@@ -295,6 +296,7 @@ Dies bedeutet, dass die Ableitungen der trigonometrischen Funktionen
 \end{aligned}
 \label{buch:differentialgleichungen:trigo:ableitungen}
 \end{equation}
+sind.
 
 %
 % Differentialgleichung für trigonometrische Funktionen
@@ -324,7 +326,7 @@ $e^{\pm it}$ ausdrücken lassen.
 Die Kosinus-Funktion zeichnet sich dadurch aus, dass $\cos 0=1$ und
 $\cos' 0=0$ ist.
 \index{Kosinus-Funktion}
-Gesucht ist also eine Lösung der Linearkombination der Lösungen
+Gesucht ist also eine Linearkombination der Lösungen
 $y_{\pm}$ der Differentialgleichung mit diesen Anfangswerten.
 Zunächst halten wir fest, dass $y_{\pm}(0)=e^{\pm i\cdot 0}=1$.
 Für die Ableitungen von $y^{\pm it}$ gilt
@@ -345,27 +347,34 @@ Ay'_+(0)+By'_-(0)&=Ai-Bi.
 Damit die Linearkombination $\cos t=Ay_+(t)+By_-(t)$ ist, müssen
 $A$ und $B$ Lösungen des Gleichungssystems
 \[
-\begin{linsys}{2}
+\renewcommand\arraycolsep{2pt}
+\begin{array}{rcrcr}
  A&+& B&=&1\\
 iA&-&iB&=&0
-\end{linsys}
+\end{array}
 \qquad\Rightarrow\qquad
-\begin{linsys}{2}
+\begin{array}{rcrcr}
  A&+& B&=&1\\
  A&-& B&=&0
-\end{linsys}
+\end{array}
 \]
 Die Summe und Differenz der beiden Gleichungen führt auf
 \[
+\left.
 \begin{aligned}
 2A&=1\\
 2B&=1
 \end{aligned}
+\;
+\right\}
 \qquad\Rightarrow\qquad
+\left.
 \begin{aligned}
 A=&\textstyle\frac12\\
 B=&\textstyle\frac12
 \end{aligned}
+\;
+\right\}
 \qquad\Rightarrow\qquad
 \cos t = \frac{e^{it}+e^{-it}}{2}.
 \]
@@ -374,28 +383,35 @@ Andererseits hat die Sinus-Funktion die Anfangswerte $\sin 0=0$ und
 \index{Sinus-Funktion}%
 $\sin' 0=1$, dies führt auf das Gleichungssystem
 \[
-\begin{linsys}{2}
+\renewcommand\arraycolsep{2pt}
+\left.
+\begin{array}{rcrcr}
  A&+& B&=&0\\
 iA&-&iB&=&1
-\end{linsys}
+\end{array}
+\;\right\}
 \qquad\Rightarrow\qquad
-\begin{linsys}{2}
+\begin{array}{rcrcr}
  A&+& B&=&0\\
  A&-& B&=&\frac{1}i
-\end{linsys}
+\end{array}
 \]
-Diesemal führen
+Diesmal führen
 Summe und Differenz der beiden Gleichungen auf
 \[
+\left.
 \begin{aligned}
 2A&=\frac{1}i\\
 2B&=-\frac{1}i
 \end{aligned}
+\;\right\}
 \qquad\Rightarrow\qquad
+\left.
 \begin{aligned}
-A=&\textstyle\phantom{-}\frac1{2i}\\
-B=&\textstyle{-\frac1{2i}}
+A=&\phantom{-}\frac1{2i}\\
+B=&{-\frac1{2i}}
 \end{aligned}
+\;\right\}
 \qquad\Rightarrow\qquad
 \sin t = \frac{e^{it}-e^{-it}}{2i}.
 \]
@@ -417,7 +433,7 @@ y_+(t)
 y_+(t)
 &=
 1 - it - \frac{t^2}{2!} + \frac{it^3}{3!} + \frac{t^4}{4!} - \frac{it^5}{5!}
-- \frac{t^6}{6!} + \frac{it^7}{7!} + \dots
+- \frac{t^6}{6!} + \frac{it^7}{7!} + \dots.
 \intertext{Die trigonometrischen Funktionen können daraus linear kombiniert
 werden, zum Beispiel ist die Kosinus-Funktion}
 \cos t
@@ -449,6 +465,7 @@ Die Ableitungen der hyperbolischen Funktionen sind
 \frac{d}{dt} \sinh t & = \cosh t \\
 \frac{d}{dt} \cosh t & = \sinh t\\
 \end{aligned}
+\;
 \right\}
 \qquad\Rightarrow\qquad
 \left\{\quad
@@ -462,12 +479,14 @@ Man beachte die Ähnlichkeit zu den entsprechenden Formeln
 \eqref{buch:differentialgleichungen:trigo:ableitungen}
 für die trigonometrischen Funktionen.
 Die hyperbolischen Funktionen sind also linear unabhängige Lösungen
-der Differentialgleichung zweiter Ordnung
+der Differentialgleichung
 \index{Differentialgleichung!hyperbolische Funktion}%
 \begin{equation}
 y'' -y = 0.
 \label{buch:differentialgleichungen:trigo:hyperdgl}
 \end{equation}
+zweiter Ordnung, die wieder linear und mit konstanten
+Koeffizienten sind.
 Das charakteristische Polynom von
 \index{charakteristisches Polynom}%
 \eqref{buch:differentialgleichungen:trigo:hyperdgl}
@@ -505,8 +524,7 @@ A\\B
 A\\B
 \end{pmatrix}
 \]
-kann mit Hilfe der inversen Matrix aufgelöst werden.
-
+kann mit Hilfe der inversen Matrix aufgelöst werden:
 \[
 \begin{pmatrix}
 A\\B
@@ -516,6 +534,10 @@ A\\B
   1     &    1    \\
   1     &   -1
 \end{pmatrix}^{-1}
+\begin{pmatrix}
+ y(0)\\
+y'(0)
+\end{pmatrix}
 =
 \frac12
 \begin{pmatrix*}[r]
