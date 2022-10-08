@@ -6,7 +6,7 @@
 \subsection{Integranden der Form $R(x,\sqrt{ax^2+bx+c})$
 \label{buch:integral:subsection:rxy}}
 Für rationale Funktionen lässt sich immer eine Stammfunktion in einem
-Erweiterungskörper angeben, der durch hinzufügen einzelner logarithmischer
+Erweiterungskörper angeben, der durch Hinzufügen einzelner logarithmischer
 Funktionen entsteht.
 Die dabei verwendeten Techniken lassen sich verallgemeinern.
 Zur Illustration und Motivation des später beschriebenen Risch-Algorithmus
@@ -82,7 +82,7 @@ Die Rechnung ergibt
 \frac{q_0p_1-q_1p_0}{q_0^2-q_1^2(ax^2+bx+c)} y.
 \end{align*}
 Die Quotienten enthalten $y$ nicht mehr, sind also in $\mathbb{Q}(x)$.
-In der späteren Rechnung stellt sich heraus, dass es praktischer ist,
+In der späteren Rechnung wird sich herausstellen, dass es praktischer ist,
 das $y$ im Nenner zu haben, was man durch erweitern mit $y$ wieder
 unter Ausnützung von $y^2=ax^2+bx+c$ erreichen kann.
 Die zu integrierende Funktion  kann also in der Form
@@ -97,7 +97,7 @@ $W_1,W_2\in\mathbb{Q}(x)$.
 Eine Stammfunktion von $W_1$ kann mit der Methode von
 Abschnitt~\ref{buch:integral:subsection:rationalefunktionen}
 gefunden werden.
-Im Folgenden kümmern wir uns daher nur noch um $W_1$.
+Im Folgenden kümmern wir uns daher nur noch um $W_2/y$.
 
 %
 % Polynomdivision
@@ -252,10 +252,10 @@ So ergeben sich die Gleichungen
 & &
 &+&
 \psi_{0\phantom{-m}}\frac{b}2
-&+&A
+&+&A.
 \end{array}
 \end{equation}
-In jeder Gleichung kommen hächstens drei der Koeffizienten von $\psi$ vor.
+In jeder Gleichung kommen höchstens drei der Koeffizienten von $\psi$ vor.
 Fasst man sie zusammen und stellt die Terme etwas um,
 erhält man die einfacheren Gleichungen
 \begin{equation}
@@ -320,7 +320,7 @@ von $\psi$ auf, der rot hervorgehoben ist.
 Wieder wegen $a\ne 0$ kann die Gleichung immer nach dieser Variablen
 aufgelöst werden.
 Die Gleichungen zeigen daher, dass die Koeffizienten des Polynoms $\psi$
-in absteigender Folge und die Konstanten $A$ eindeutig bestimmt werden.
+in absteigender Folge und die Konstante $A$ eindeutig bestimmt werden.
 \end{proof}
 
 Mit diesem Satz ist das Integral über den Teil $\varphi/y$ auf den
@@ -440,6 +440,9 @@ eine Konstante $A$ derart, dass
 ist.
 Damit ist das Integral von $R(x,y)$ vollständig bestimmt.
 
+%
+% Beobachtungen
+%
 \subsubsection{Beobachtungen}
 Die eben dargestellte Berechnung des Integrals von $R(x,y)$ zeigt einige
 Gemeinsamkeiten mit der entsprechenden Rechnung für rationale
@@ -452,8 +455,7 @@ Satz~\ref{buch:integral:sqint:satz:polyy}
 zusammengefasste Schritt eine wesentliche zusätzliche Vereinfachung,
 die keine Entsprechung bei rationalen Integranden hat.
 
-Die gefunden Form der Stammfunktion hat jedoch die allgemeine
-Form
+Die gefunde Stammfunktion hat die allgemeine Form
 \begin{equation}
 \int R(x,y)
 =

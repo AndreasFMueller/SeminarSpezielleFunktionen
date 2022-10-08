@@ -7,17 +7,17 @@
 \label{buch:integral:risch:subsection:liouville}}
 Der erste Schritt in Richtung auf einen Algorithmus zur Lösung des
 Integrationsproblems ist ein Kriterium dafür, ob eine Stammfunktion
-existiert.
+einer Funktion $f\in\mathscr{K}$ existiert.
 Der folgende Satz liefert ein solches Kriterium.
 
 \begin{satz}[Prinzip von Liouville]
 \label{buch:integral:risch:satz:liouville}
 \index{Prinzip von Liouville}%
-Sei $\mathcal{K}$ ein Differentialkörper mit dem Konstantenkörper $C$.
-Weiter sei $\mathcal{G}$ eine Differentialkörpererweiterung von $\mathcal{K}$
-mit demselben Konstantenkörper.
-Wenn es für $f\in\mathcal{K}$ ein $F\in\mathcal{G}$ mit $F'=f$ gibt,
-dann existieren Elemente $v_0,\dots,v_m\in\mathcal{K}$ und
+Sei $\mathscr{K}$ ein Differentialkörper mit dem Konstantenkörper $C$.
+Weiter sei $\mathscr{G}$ eine Differentialkörpererweiterung von $\mathscr{K}$
+mit dem selben Konstantenkörper.
+Wenn es für $f\in\mathscr{K}$ ein $F\in\mathscr{G}$ mit $F'=f$ gibt,
+dann existieren Elemente $v_0,\dots,v_m\in\mathscr{K}$ und
 Konstanten $c_0,\dots,c_m\in C$ derart, dass
 \[
 f = v_0' + \sum_{i=1}^m c_i\frac{v_i'}{v_i}
@@ -30,7 +30,7 @@ v_0 + \sum_{i=1}^m c_i \log v_i.
 \]
 \end{satz}
 
-Der Satz besagt, Stammfunktionen immer von der Form sind, wie sie in
+Der Satz besagt, dass Stammfunktionen immer von der Form sind, wie sie in
 Abschnitt~\ref{buch:integral:subsection:logexp} beschrieben worden sind.
 Die Form des Integranden und der Stammfunktion ist genau die, 
 welche wir im Beispiel der rationalen Funktionen in
@@ -58,10 +58,10 @@ erweitert werden soll.
 Ein rationale Funktion in $\vartheta$ wird zuänchst mit Hilfe der
 Polynomdivision in einen polynomiellen und einen rationalen
 Teil zerlegt.
-Die Summanden des polnomiellen Teils können jetzt direkt mit
+Die Summanden des polynomiellen Teils können jetzt direkt mit
 dem Prinzip von Liouville untersucht werden.
-der rationale Teil wird mit der Partialbruchzerlegung ein
-einfache rationale Funktionen zerlegt werden.
+Der rationale Teil wird mit der Partialbruchzerlegung in
+einfache rationale Funktionen zerlegt.
 Im Nenner der Partialbrüche kommen Potenzen von Polynomen in $\vartheta$
 vor. 
 Im Falle von $R(x,y)$ war es möglich, diese auf einige wenige spezielle

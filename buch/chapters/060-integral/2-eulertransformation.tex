@@ -24,7 +24,7 @@ f(x)
 =
 \int_0^1 t^{b-1} (1-t)^{c-b-1} (1-xt)^{-a}\,dt
 \]
-kann im allgemeinen nicht in geschlossener Form evaluiert werden.
+kann im Allgemeinen nicht in geschlossener Form evaluiert werden.
 Es wäre daher naheliegend, es als neues spezielle Funktion zu definieren.
 Die folgende Rechnung soll aber zeigen, dass es sich durch die bereits
 bekannte hypergeometrische Fujnktion $\mathstrut_2F_1$ ausdrücken
@@ -47,7 +47,7 @@ f(x)
 \int_0^1 t^{b-1} (1-t)^{c-b-1} t^k\,dt
 =
 \sum_{k=0}^\infty \frac{(a)_k}{k!} x^k
-\int_0^1 t^{k+b-1} (1-t)^{c-b-1} t^k\,dt.
+\int_0^1 t^{k+b-1} (1-t)^{c-b-1}\,dt.
 \]
 Das Integral ist die Beta-Funktion $B(k+b,c-b)$ und kann daher mit Hilfe
 der Gamma-Funktion geschrieben werden.
@@ -85,7 +85,8 @@ f(x)
 \frac{\Gamma(b)\Gamma(c-b)}{\Gamma(c)}
 \sum_{k=0}^\infty\frac{(a)_k(b)_k}{(c)_k} x^k
 =
-\frac{\Gamma(b)\Gamma(c-b)}{\Gamma(c)}\,\mathstrut_2F_1(a,b;c;x)
+\frac{\Gamma(b)\Gamma(c-b)}{\Gamma(c)}\,
+\mathstrut_2F_1\biggl(\begin{matrix}a,b\\c\end{matrix};x\biggr)
 \end{align*}
 vereinfacht werden kann.
 Damit ist das Integral bestimmt. 
@@ -109,6 +110,9 @@ t^{b-1}(1-t)^{c-b-1}(1-zt)^{-a}
 dargestellt werden.
 \end{satz}
 
+%
+% Alternative Parametrisierungen
+%
 \subsubsection{Alternative Parametrisierungen}
 Die Substitution $t=\sin^2 s$ ermöglicht eine alternative Parametrisierung
 der Integraldarstellung der hypergeometrischen Funktion.
@@ -152,7 +156,7 @@ s^{b-1}
 (s+1)^{c-a}
 }
 (1+s-zs)^{-a}
-\,dt
+\,dt.
 \end{align*}
 
 %
@@ -200,17 +204,21 @@ Der letzte Faktor $(1-xt)^{-a}$ kann mit der Binomialreihe
 \biggr)
 \end{align*}
 als hypergeometrische Funktion geschrieben werden.
-Die Integraldarstellung von $\mathstrut_2F_1$ kann daher auch als
-\[
+Die Integraldarstellung von $\mathstrut_2F_1$ kann daher auch 
+in die Form
+\begin{equation}
 \mathstrut_2F_1\biggl(\begin{matrix}a,b\\c\end{matrix};z\biggr)
 =
 \frac{\Gamma(c)}{\Gamma(b)\Gamma(c-b)}
 \int_0^1 t^{b-1}(1-t)^{c-b-1}
 \,
 \mathstrut_0F_1(;a;zt)\,dt
-\]
-Eine gewisse Ähnlichkeit zur Laplace-Transformation ist dieser
-Formel nicht abzusprechen.
+\label{buch:integral:eqn:trafovorstufe}
+\end{equation}
+umgeformt werden.
+
+Eine gewisse Ähnlichkeit zur Laplace-Transformation ist der
+Formel~\eqref{buch:integral:eqn:trafovorstufe} nicht abzusprechen.
 Die Funktion \( t^{b-1}(1-t)^{c-b-1} \) wird statt mit der
 Exponentialfunktion $e^{xt} = \mathstrut_0F_0(xt)$ mit der
 hypergeometrischen Funktion $\mathstrut_0F_1(;a;xt)$ multipliziert und
@@ -221,7 +229,7 @@ Integrand $\mathstrut_pF_q$ enthält, ausdrücken lässt.
 
 \begin{satz}
 \index{Satz!Euler-Transformationformel}%
-Es gilt die sogennannte Euler-Transformationsformel
+Es gilt die sogennannte {\em Euler-Transformationsformel}
 \index{Euler-Transformation}%
 \[
 \mathstrut_{p+1}F_{q+1}\biggl(

@@ -22,7 +22,7 @@ Abschnitt definiert werden soll.
 \subsubsection{Derivation}
 Für die praktische Berechnung der Ableitung einer Funktion verwendet
 man in erster Linie die bekannten Rechenregeln.
-Dazu gehören für zwei Funktionen $f$ und $g$
+Dazu gehören für zwei Funktionen $f$ und $g$ die Regeln:
 \begin{itemize}
 \item Linearität: $(\alpha f+\beta g)' = \alpha f' + \beta g'$ für
 Konstanten $\alpha$, $\beta$.
@@ -91,18 +91,18 @@ solche Konstanten zu erkennen.
 
 \begin{satz}
 Sei $\mathscr{F}$ ein Körper und $D$ eine Derivation in $\mathscr{F}$.
-Dann ist die Menge $C=\{a\in\mathscr{F}\;|\;Da=0\}$ ein Körper.
+Dann ist die Menge $\mathscr{C}=\{a\in\mathscr{F}\;|\;Da=0\}$ ein Körper.
 \end{satz}
 
 \begin{proof}[Beweis]
-Es muss gezeigt werden, dass Summe und Produkt von Element von $C$ 
-wieder in $C$ liegen.
-Wenn $Da=Db=0$, dann ist $D(a+b)=Da+Db=0$, also ist $a+b\in C$.
+Es muss gezeigt werden, dass Summe und Produkt von Element von $\mathscr{C}$ 
+wieder in $\mathscr{C}$ liegen.
+Wenn $Da=Db=0$, dann ist $D(a+b)=Da+Db=0$, also ist $a+b\in \mathscr{C}$.
 Für das Produkt gilt $D(ab)=(Da)b+a(Db)=0b+a0=0$, also ist auch
-$ab\in C$.
+$ab\in \mathscr{C}$.
 \end{proof}
 
-Die Menge $C$ heisst der {\em Konstantenkörper} von $\mathscr{F}$.
+Die Menge $\mathscr{C}$ heisst der {\em Konstantenkörper} von $\mathscr{F}$.
 \index{Konstantenkörper}%
 
 %
@@ -214,10 +214,11 @@ x \log'(x) = 1.
 \]
 \index{Exponentialfunktion}%
 \index{Logarithmus}%
+
 In der algebraischen Beschreibung eines Funktionenkörpers gibt es
 das Konzept des Wertes einer Funktion an einer bestimmten Stelle nicht.
 Somit können keine Anfangsbedingungen vorgegeben werden.
-Da die Gleichung für $\exp$ linear sind, sind Vielfache einer Lösung wieder
+Da die Gleichung für $\exp$ linear ist, sind Vielfache einer Lösung wieder
 Lösungen,
 insbesondere ist mit $\exp(x)$ auch $a\exp(x)$ eine Lösung.
 Die Gleichung für $\log$ ist nicht linear, aber es ist

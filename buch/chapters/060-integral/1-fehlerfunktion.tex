@@ -30,12 +30,15 @@ e^{-\frac{(t-\mu)^2}{2\sigma^2}}
 \label{buch:integrale:eqn:normalverteilung}
 \end{equation}
 gegeben.
-Die Erfahrung zeigt, dass es nicht möglich ist, das
+Die Erfahrung zeigt, dass es sehr schwer ist, das
 Integral~\eqref{buch:integrale:eqn:normalverteilung}
 in geschlossener Form auszuwerten.
+Die in Abschnitt~\ref{buch:integral:risch:subsection:liouville}
+dargestellte Theorie von Liouville kann die Unmöglichkeit dieses
+Unterfangens sogar beweisen.
 Die Funktion $F_X(x)$ ist offenbar eine in Anwendungen nützliche und
 häufig gebrauchte Funktion, die es verdient, in eine Standardbibliothek
-von Funktion aufgenommen zu werden.
+von Funktionen aufgenommen zu werden.
 Dabei soll auch berücksichtigt werden, dass die neu zu definierende
 spezielle Funktion möglichst auch für andere Anwendungen verwendet
 werden kann, wie zum Beispiel die Berechnung gewisser Laplace-Transformierter.
@@ -53,6 +56,9 @@ In diesem Abschnitt sollen sie eliminiert werden mit dem Ziel, ein
 neues, einfacheres Integral zu definieren, aus dem sich 
 \ref{buch:integrale:eqn:normalverteilung} leicht berechnen lässt.
 
+%
+% Elimination der Parameter
+%
 \subsubsection{Elimination der Parameter $\mu$ und $\sigma$}
 Aus der Wahrscheinlichkeitstheorie ist bekannt, dass zu einer
 Zufallsvariablen $X$ mit Erwartungswert $E(X)=\mu$ und Varianz
@@ -108,19 +114,22 @@ e^{-\frac{z^2}2}\,\sigma dz
 \end{align*}
 Das Integral auf der rechten Seite enthält die Parameter $\mu$ und
 $\sigma$ nur noch in der Integrationsgrenze.
-Es kann durch die Wahrscheinlichkeitsverteilungsfunktion der
-Standardnormalverteilung
+Es kann durch die Wahrscheinlichkeitsverteilungsfunktion
 \begin{equation}
 \Phi(x) = \frac{1}{\sqrt{2\pi}} \int_{-\infty}^x e^{-\frac{z^2}2}\,dz
 \label{buch:integrale:eqn:standardnormalverteilung}
 \end{equation}
-ausgedrückt werden, es ist
+der Standardnormalverteilung als
 \[
-F_X(x) = \Phi\biggl(\frac{x-\mu}{\sigma}\biggr).
+F_X(x) = \Phi\biggl(\frac{x-\mu}{\sigma}\biggr)
 \]
-Die Funktion $\Phi(x)$ ist daher in guter Kandidate für eine neue spezielle
-Funktion.
+ausgedrückt werden.
+Die Funktion $\Phi(x)$ ist daher ein noch besserer Kandidat für eine
+neue spezielle Funktion.
 
+%
+% Die Funktion erf(x)
+%
 \subsubsection{Die Funktion $\operatorname{erf}(x)$}
 Die Funktion \eqref{buch:integrale:eqn:standardnormalverteilung} hat
 einige Nachteile, die sich als Barriere für die numerische 
@@ -129,7 +138,7 @@ Berechnung der Funktionswerte herausstellen könnte.
 Zunächst ist $\Phi(x)$ als ein uneigentliches Integral definiert.
 Eine direkte numerische Integration muss daher über ein sehr grosses
 Interval erstreckt werden, um die Genauigkeit garantieren zu können.
-Jedoch ist bekannt, dass $\Phi(0)=\frac12$, denn
+Jedoch ist bekannt, dass $\Phi(0)=\frac12$ ist, denn
 \[
 \Phi(0)
 =
@@ -149,8 +158,8 @@ Man kann daher schreiben
 Das Integral auf der rechten Seite ist ein gewöhnliches Integral und ist
 damit viel einfacher zu berechnen.
 
-Am Integral in~\eqref{buch:integrale:eqn:Phireduziert} ist aber noch etwas
-unerfreulich, dass der Exponent komplizierter ist als nötig.
+Am Integral in~\eqref{buch:integrale:eqn:Phireduziert} ist aber immer
+noch etwas unerfreulich, dass der Exponent komplizierter ist als nötig.
 Mit Hilfe der Variablentransformation $u = z/\sqrt{2}$ erhalten wir
 aus dem Integral in~\eqref{buch:integrale:eqn:Phireduziert}
 \begin{align*}
@@ -169,7 +178,7 @@ Damit sind wir bei einer Funktion angekommen, die sich gut als spezielle
 Funktion eignet.
 
 \begin{definition}
-Die Fehlerfunktion $\operatorname{erf}(x)$ ist die Funktion
+Die {\em Fehlerfunktion} $\operatorname{erf}(x)$ ist die Funktion
 \index{Fehlerfunktion}%
 \index{erf(x)@$\operatorname{erf}(x)$}%
 \[
@@ -220,6 +229,9 @@ x\mapsto
 \frac{2}{\sqrt{\pi}}\int_x^\infty e^{-u^2}\,du.
 \]
 Die {\em verallgemeinerte Fehlerfunktion} ist definiert als
+\index{verallgemeinerte Fehlerfunktion}%
+\index{Fehlerfunktion!verallgemeinerte}%
+\index{erf(a,b)@$\operatorname{erf}(a,b)$}%
 \[
 \operatorname{erf}(a,b)
 =
@@ -242,7 +254,7 @@ als
 \]
 ausdrücken.
 Die Verteilungsfunktion einer normalverteilten Zufallsvariable mit
-Erwartungswert $\mu$ und Varianz $\sigma^2$ kann ebenfalls mit
+Erwartungswert $\mu$ und Varianz $\sigma^2$ kann entsprechend mit
 \[
 F_X(x)
 =
@@ -255,6 +267,9 @@ Die Fehlerfunktion ist also eine ``gute'' spezielle Funktion, die
 die Berechnung von Wahrscheinlichkeitswerten von normalverteilten
 Zufallsvariablen vereinfacht.
 
+%
+% Fehlerfunktion als hypergeometrische Funktion
+%
 \subsubsection{Fehlerfunktion als hypergeometrische Funktion}
 Die Fehlerfunktion ist eine Stammfunktion von
 \[
@@ -266,14 +281,15 @@ e^{-x^2}
 1 - \frac{x^2}{1!} + \frac{x^4}{2!} - \frac{x^6}{3!} + \frac{x^8}{4!}-\dots
 \biggr).
 \]
-Durch gliedweises Integrieren erhaält man
-\begin{align*}
+Durch gliedweises Integrieren erhält man
+\begin{align}
 \operatorname{erf}(x)
 &=
 \frac{2}{\sqrt{\pi}}
 \biggl(
 x - \frac{x^3}{1!\cdot 3} + \frac{x^5}{2!\cdot 5} - \frac{x^7}{3!\cdot 7} + \frac{x^9}{4!\cdot 9}-\dots
-\biggr)
+\biggr).
+\notag
 \intertext{Ein gemeinsamer Faktor $x$ kann ausgeklammert werden.
 Die alternierenden Vorzeichen und die in Zweierschritten ansteigenden
 Potenzen bedeuten, dass der Klammerausdruck als Reihe}
@@ -295,6 +311,7 @@ Potenzen bedeuten, dass der Klammerausdruck als Reihe}
 +
 \dots
 \biggr)
+\notag
 \intertext{in $-x^2$ geschrieben werden kann.
 Der Koeffzient $1/(2k+1)$ muss jetzt noch mit Pochhammer-Symbolen 
 geschrieben werden.
@@ -318,6 +335,7 @@ So erhält man die Darstellung
 \sum_{k=0}^\infty
 \frac{1}{2} \cdot\frac{1}{k+\frac12}
 \frac{(-x^2)^k}{k!}
+\notag
 \\
 &=
 \frac{2x}{\sqrt{\pi}}
@@ -335,6 +353,7 @@ So erhält man die Darstellung
 \cdot\ldots\cdot(k-\frac12)\cdot(k+\frac12)
 }
 \frac{(-x^2)^k}{k!}
+\notag
 \\
 &=
 \frac{2x}{\sqrt{\pi}}
@@ -353,6 +372,7 @@ So erhält man die Darstellung
 \cdot\ldots\cdot(k-\frac12)\cdot(k+\frac12)
 }
 \frac{(-x^2)^k}{k!}
+\notag
 \\
 &=
 \frac{2x}{\sqrt{\pi}}
@@ -363,7 +383,8 @@ So erhält man die Darstellung
 \mathstrut_1F_1\biggl(
 \begin{matrix}\frac12\\\frac32\end{matrix}; -x^2
 \biggr)
-\end{align*}
+\label{buch:integral:fehlerfunktion:eqn:alshypergeom}
+\end{align}
 der Fehlerfunktion als hypergeometrische Funktion.
 
 %
@@ -514,7 +535,7 @@ dy = \biggl(1\mp \frac{b}{x^2}\biggr)\,dx.
 Dies kann für die Berechnung von $I(b)$ verwendet werden.
 Zunächst folgt aus \eqref{buch:integrale:eqn:fehlerintegrale},
 dass jede konvexe Kombination der beiden Integrale mit Koeffizienten,
-die sich zu $1$ summieren, wieder $I(b)$ erbibt.
+die sich zu $1$ summieren, wieder $I(b)$ ergibt.
 Wählen wir die Koeffizienten 
 \[
 \frac12\biggl(1\mp\frac{b}{x^2}\biggr),
@@ -545,7 +566,8 @@ I(b)
 \]
 die aus zwei Integralen besteht, die einfacher berechnet werden können.
 
-Im Integral $I_-(b)$ können wir die Substition \eqref{buch:integrale:eqn:dy}
+Im Integral $I_-(b)$ können wir die Substitution \eqref{buch:integrale:eqn:dy}
+ausführen
 und erhalten
 \begin{align*}
 I_-(b)
@@ -693,46 +715,49 @@ Für grosse Werte von $x$ entstehen aber sehr grosse Zwischenterme in der
 Reihe, was zu Auslöschung und damit zu Genauigkeitsverlust führt.
 
 \subsubsection{Hypergeometrische Funktion}
-Die Taylor-Reihe~\eqref{buch:integrale:eqn:erfreihe} der Fehlerfunktion
-kann auch mit Hilfe hypergeometrischer Funktionen geschrieben werden.
-Da nur ungerade Potenzen vorkommen, klammern wir zunächst einen gemeinsamen
-Faktor $x$ aus:
-\[
-\operatorname{erf}(x)
-=
-\frac{2x}{\sqrt{\pi}}
-\sum_{k=0}^\infty
-\frac{1}{2k+1}
-\frac{(-x^2)^k}{k!}.
-\]
-Der Bruch $1/(2k+1)$  muss jetzt noch mit Hilfe von Pochhammer-Symbolen
-geschrieben werden.
-Dazu beachten wir, dass
-\begin{align*}
-\frac{1}{2k+1} 
-&=
-\frac12
-\frac{1}{\frac32+k-1}
-\\
-&=
-\frac12
-\frac{
-\frac32(\frac32+1)(\frac32+2)\dots(\frac32+k-2)\phantom{(\frac32+k-1)}
-}{
-\frac32(\frac32+1)(\frac32+2)\dots(\frac32+k-2)(\frac32+k-1)
-}
-\\
-&=
-\frac{
-\frac12(\frac12+1)(\frac12+2)(\frac12+3)\dots(\frac12+k-1)
-}{
-\frac32(\frac32+1)(\frac32+2)\dots(\frac32+k-2)(\frac32+k-1)
-}
-\\
-&=
-\frac{(\frac12)_k}{(\frac32)_k}.
-\end{align*}
-Somit ist die Fehlerfunktion als hypergeometrische Funktion
+Die in \eqref{buch:integral:risch:subsection:liouville}
+gefundene Darstellung
+
+%Die Taylor-Reihe~\eqref{buch:integrale:eqn:erfreihe} der Fehlerfunktion
+%kann auch mit Hilfe hypergeometrischer Funktionen geschrieben werden.
+%Da nur ungerade Potenzen vorkommen, klammern wir zunächst einen gemeinsamen
+%Faktor $x$ aus:
+%\[
+%\operatorname{erf}(x)
+%=
+%\frac{2x}{\sqrt{\pi}}
+%\sum_{k=0}^\infty
+%\frac{1}{2k+1}
+%\frac{(-x^2)^k}{k!}.
+%\]
+%Der Bruch $1/(2k+1)$  muss jetzt noch mit Hilfe von Pochhammer-Symbolen
+%geschrieben werden.
+%Dazu beachten wir, dass
+%\begin{align*}
+%\frac{1}{2k+1} 
+%&=
+%\frac12
+%\frac{1}{\frac32+k-1}
+%\\
+%&=
+%\frac12
+%\frac{
+%\frac32(\frac32+1)(\frac32+2)\dots(\frac32+k-2)\phantom{(\frac32+k-1)}
+%}{
+%\frac32(\frac32+1)(\frac32+2)\dots(\frac32+k-2)(\frac32+k-1)
+%}
+%\\
+%&=
+%\frac{
+%\frac12(\frac12+1)(\frac12+2)(\frac12+3)\dots(\frac12+k-1)
+%}{
+%\frac32(\frac32+1)(\frac32+2)\dots(\frac32+k-2)(\frac32+k-1)
+%}
+%\\
+%&=
+%\frac{(\frac12)_k}{(\frac32)_k}.
+%\end{align*}
+%Somit ist die Fehlerfunktion als hypergeometrische Funktion
 \[
 \operatorname{erf}(x)
 =
@@ -740,10 +765,14 @@ Somit ist die Fehlerfunktion als hypergeometrische Funktion
 \frac{(\frac12)_k}{(\frac32)_k}\frac{(-x^2)^k}{k!}
 =
 \frac{2x}{\sqrt{\pi}}\,
-\mathstrut_1F_1({\textstyle\frac12};{\textstyle\frac32};-x^2).
+\mathstrut_1F_1\biggl(\begin{matrix}{\textstyle\frac12}\\{\textstyle\frac32}\end{matrix};-x^2\biggr).
 \]
-gegeben.
+als hypergeometrische Reihe erlaubt, $\operatorname{erfc}(x)$
+direkt zu berechnen.
 
+%
+% Kettenbruchentwicklung
+%
 \subsubsection{Kettenbruchentwicklung}
 Besonders für grosse $x$ interessiert man sich mehr für
 $\operatorname{erfc}(x)$ als für $\operatorname{erf}(x)$.
@@ -767,6 +796,13 @@ finden, die in \cite[p.~175]{buch:pade} dargestellt wird.
 Für grosse $z$ liefert dieser Kettenbruch besonders schnell konvergierende
 Näherungsbrüche für $\operatorname{erfc}(z)$.
 
+Das Kapitel~\ref{chapter:0f1} enthält weiter Informationen zu
+den Zusammenhängen zwischen hypergeometrischen Funktionen und
+Kettenbrüchen.
+
+%
+% Interpolation
+%
 \subsubsection{Interpolation}
 Die GNU Scientific Library \cite{buch:library:gsl} verwendet eine Reihe von
 Tschebyscheff-Approximationspolynomen, die für die Intervalle, in denen

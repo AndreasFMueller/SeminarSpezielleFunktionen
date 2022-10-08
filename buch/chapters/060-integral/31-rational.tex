@@ -14,6 +14,9 @@ der unabhängigen Variablen aufbauen kann.
 Doch welche weiteren Operationen sollen zugelassen werden und was lässt
 sich über die entstehende Funktionenmenge aussagen?
 
+%
+% Körper
+%
 \subsubsection{Körper}
 Die kleinste Zahlenmenge, in der alle arithmetischen Operationen soweit
 sinnvoll durchgeführt werden können, ist die Menge $\mathbb{Q}$ der
@@ -66,7 +69,7 @@ gibt es das Element $a^{-1}$ mit der Eigenschaft $a\cdot a^{-1}=1$.
 \end{enumerate}
 \end{tabular}
 \end{center}
-\vspace{-22pt}
+%\vspace{-22pt}
 Ausserdem gilt das Distributivgesetz: für alle $a,b,c\in K$ gilt
 $a\cdot(b+c)=a\cdot b + a\cdot c$.
 \index{Disitributivgesetz}%
@@ -173,7 +176,7 @@ dass die arithmetischen Operationen nicht aus dieser Funktionenmenge
 herausführen.
 Dazu muss man nur verstehen, dass die Operation des gleichnamig Machens 
 zweier Brüche auch für Nenner funktioniert, die Polynome sind, und die
-Summe wzeier Brüche von Polynomen wieder in einen Bruch von Polynomen
+Summe zweier Brüche von Polynomen wieder in einen Bruch von Polynomen
 umwandelt.
 
 %
@@ -191,8 +194,8 @@ Der Einfachheit der Analyse in $\mathbb{R}$ oder $\mathbb{C}$ steht
 die Schwierigkeit gegenüber, beliebige Elemente von $\mathbb{R}$ in
 einem Computer exakt darzustellen.
 Für Brüche in $\mathbb{Q}$ gibt es eine solche Darstellung durch
-Paare von Ganzzahlen, wie sie die GNU Multiprecision Arithmetic Library
-\cite{buch:gmp} realisiert.
+Paare von Ganzzahlen, wie sie zum Beispiel die GNU Multiprecision
+Arithmetic Library \cite{buch:gmp} realisiert.
 Irrationale Zahlen dagegen können nur exakt gehandhabt werden, wenn
 man im wesentlichen symbolisch mit ihnen rechnet. 
 Die Grundlage dafür wird in
