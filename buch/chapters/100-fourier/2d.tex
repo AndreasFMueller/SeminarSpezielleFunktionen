@@ -18,7 +18,7 @@ den Definnitionsbereich $\mathbb{R}^2$ ausgedehnt werden.
 Hier werden nur die wichtigsten Resultate zusammengestellt,
 die für die Herleitungen von
 Abschnitt~\ref{buch:fourier:section:fourier-und-bessel}
-benöigt werden.
+benötigt werden.
 
 %
 % Zweidimensionale Fourier-Reihe
@@ -63,7 +63,7 @@ werden, dass die Reihe konvergiert.
 % Zweidimensionale Fourier-Transformation
 %
 \subsection{Zweidimensionale Fourier-Transformation}
-Für Funktionen $f,g\colon \mathbb{R}^2 \to \mathbb{C}$, kann das komplexe
+Für Funktionen $f,g\colon \mathbb{R}^2 \to \mathbb{C}$ kann das komplexe
 Skalarprodukt
 \[
 \langle f,g\rangle
@@ -73,15 +73,29 @@ Skalarprodukt
 \overline{f(x,y)} g(x,y)
 \,dx\,dy
 \]
-definiert werden.
-Mit den Funktionen
+definiert werden, sie quadratintegrierbar sind, also in
 \[
-e_{k,l}(x,y)
+L^2(\mathbb{R}^2)
+=
+\left\{
+h\colon \mathbb{R}^2\to \mathbb{C}
+\;\left|\;
+\int_{-\infty}^\infty |h(x,y)|^2\,dx\,dy
+\right.
+\right\}
+\]
+\index{L2R2@$L^2(\mathbb{R}^2)$}%
+liegen.
+
+Mit den Funktionen
+\(
+e_{kl}(x,y)
 =
 e^{i(kx+ly)}
-\]
+\),
+die aber selbst nicht in $L^2(\mathbb{R}^2)$ sind,
 kann man jetzt die Fourier-Transformation
-\[
+\begin{equation}
 \hat{f}(k,l)
 =
 \mathscr{F}f(k,l)
@@ -91,7 +105,8 @@ kann man jetzt die Fourier-Transformation
 \int_{-\infty}^\infty
 f(x,y) e^{i(kx+ly)}
 \,dx\,dy
-\]
+\label{buch:fourier:eqn:2dtransform}
+\end{equation}
 mit der Umkehrung
 \[
 f(x,y)
@@ -102,12 +117,18 @@ f(x,y)
 \mathscr{F}f(k,l) e^{-i(kx+ly)}
 \,dk\,dl
 \]
+konstruieren.
 Ausserdem gilt die Parseval-Identität
-\[
+\index{Parseval-Identität}%
+\begin{align*}
 \langle f,g\rangle
-=
-\langle \mathscr{F}f,\mathscr{F}g\rangle.
-\]
+&=
+\langle \mathscr{F}f,\mathscr{F}g\rangle
+\\
+\|f\|
+&=
+\|\mathscr{F}f\|.
+\end{align*}
 
 
 

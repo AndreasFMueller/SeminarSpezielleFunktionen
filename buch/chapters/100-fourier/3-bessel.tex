@@ -9,7 +9,8 @@
 
 Sei $f\colon \mathbb{R}^2\to\mathbb{C}$ eine auf $\mathbb{R}$ definierte
 Funktion.
-Die Fourier-Transformation von $f$ ist das Integral
+Die Fourier-Transformation von $f$ ist nach
+\eqref{buch:fourier:eqn:2dtransform} das Integral
 \begin{equation}
 (\mathscr{F}f)(u,v)
 =
@@ -22,18 +23,19 @@ f(x,y) e^{i(xu+yv)}
 \,dx\,dy.
 \label{buch:fourier:eqn:2dfourier}
 \end{equation}
-Die Funktionen $e_{u,v}\colon (x,y)\mapsto e^{i(xu+yv)}$
+Die Funktionen $e_{uv}\colon (x,y)\mapsto e^{i(xu+yv)}$
 sind die Eigenfunktionen des Laplace-Operators in kartesischen Koordinaten,
+\index{Laplace-Operator}%
 sie erfüllen
 \[
-\Delta e_{u,v} = (u^2+v^2) \Delta e_{u,v}.
+\Delta e_{uv} = (u^2+v^2) \Delta e_{uv}.
 \]
 Die Fourier-Integrale sind die Skalarprodukte
 \[
 (\mathscr{F}f)(u,v)
 =
 \langle
-e_{u,v},
+e_{uv},
 f
 \rangle,
 \]
@@ -51,10 +53,11 @@ definiert ist.
 Jede Funktion in der Ebene kann auch in Polarkoordinaten ausgedrückt werden.
 Die kartesischen Koordinaten können mittels
 \begin{align*}
-x&=r\cos\varphi
+x&=r\cos\varphi \\
 y&=r\sin\varphi
 \end{align*}
 durch die Polarkoordinaten $(r,\varphi)$ ausgedrückt werden.
+\index{Polarkoordinaten}%
 Wir schreiben
 \[
 \tilde{f}(r,\varphi)
@@ -76,25 +79,30 @@ r\,dr\,d\varphi.
 \]
 Auch die Fouriertransformation kann jetzt durch Berechnung eines
 doppelten Integrals in Polarkoordinaten ermittelt werden.
-Ziel dieses Abschnitts ist zu zeigen, dass auch diese Berechnung auf
+Ziel dieses Abschnitts ist zu zeigen, dass diese Berechnung auf
 Bessel-Funktionen führt.
-Im Gegenzug werden sich neue Eigenschaften und Darstellungen derselben
-ergeben.
+Umgekehrt werden sich neue Eigenschaften und Darstellungen der
+Bessel-Funktionen ergeben.
 
-
+%
+% Berechnung der Fourier-Transformierten in Polarkoordinaten
+%
 \subsection{Berechnung der Fourier-Transformation in Polarkoordinaten}
 Die Fourier-Transformation $(\mathscr{F}f)(u,v)$ ist eine Funktion
-$\mathbb{R}^2\to\mathbb{C}$, die vom Wellenvektor $(u,v)$ abhängt.
+$\mathbb{R}^2\to\mathbb{C}$, die vom Wellenzahlvektor $(u,v)$ abhängt.
+\index{Wellenzahlvektor}%
 Auch dieser Vektor kann in Polarkoordinaten ausgedrückt werden.
-Für die Polarkoordinaten in der Wellenvektor-Ebene soll die Bezeichnung
+Für die Polarkoordinaten in der Wellenzahlvektor-Ebene soll die Bezeichnung
 $(R,\vartheta)$ verwendet werden, was auf die Transformationsgleichungen
 \begin{align*}
 u&=R\cos\vartheta\\
 v&=R\sin\vartheta
 \end{align*}
 führt.
+
 Im Exponenten der Exponentialfunktion
 des Fourier-Integrals~\eqref{buch:fourier:eqn:2dfourier}
+\index{Fourier-Integral}%
 steht der Ausdruck
 \[
 xu+yv
@@ -138,7 +146,7 @@ komplexe Fourier-Reihe
 \label{buch:fourier:eqn:fourierkoef}
 \end{equation}
 schreiben, die Funktionen $\hat{f}_n(r)$ sind die komplexen
-Fourier-Koeffizienten.
+Fourier-Koeffizienten (siehe auch \eqref{buch:fourier:def:ckoef}).
 Setzt man \eqref{buch:fourier:eqn:fourierkoef} in die Fourier-Transformation
 \eqref{buch:fourier:eqn:fouriertrafopolar} ein, erhält man
 \begin{align*}
@@ -160,9 +168,10 @@ in\varphi+irR\cos(\varphi-\vartheta)
 =
 i(n(\varphi-\vartheta)+rR\cos(\varphi-\vartheta))
 +
-in\vartheta,
+in\vartheta
 \]
-oder im Integral als
+geschrieben werden.
+Damit erhält das Integral die Form
 \[
 \tilde{F}(R,\vartheta)
 =
@@ -175,10 +184,10 @@ e^{in(\varphi-\vartheta)+irR\cos(\varphi-\vartheta)}
 e^{in\vartheta}
 \,d\varphi
 \,
-r\,dr
+r\,dr.
 \]
-geschrieben werden.
-Der zweite Exonentialfaktor hängt nicht von $\varphi$ ab und kann daher
+Der zweite Exponentialfaktor $e^{in\vartheta}$
+hängt nicht von $\varphi$ ab und kann daher
 aus dem Integral herausgezogen werden.
 Der erste Exponentialfaktor hängt nur von $\varphi-\vartheta$ ab.
 Da die Exponentialfunktion $2\pi$-periodisch ist, hat die Verschiebung
@@ -200,7 +209,7 @@ e^{in\varphi+irR\cos\varphi}
 \,
 r\,dr.
 \]
-Die Beziehung zu den Besselfunktionen können wir daraus herstellen,
+Eine Beziehung zu den Bessel-Funktionen können wir daraus herstellen,
 indem wir zunächst $\xi = rR$ abkürzen und dann das innere Integral
 \begin{equation}
 F_n(\xi)
@@ -217,7 +226,8 @@ e^{in\varphi}e^{i\xi\cos\varphi}
 \label{buch:fourier:eqn:Fncosphi}
 \end{equation}
 auswerten.
-Exponentialfunktion als Potenzreihe entwickeln:
+Um die zweite Exponentialfunktion $e^{i\xi\cos\varphi}$ los zu werden,
+entwickeln wir sie als Potenzreihe:
 \[
 F_n(\xi)
 =
@@ -242,6 +252,9 @@ e^{in\varphi}
 Das Integral auf der rechten Seite ist im Wesentlichen ein
 Fourier-Koeffizient der Funktion $\varphi\mapsto \cos^k\varphi$.
 
+%
+% Berechnung der Fourier-Koeffizienten
+%
 \subsubsection{Berechnung der Fourier-Koeffizienten von $\cos^k\varphi$}
 Indem man die Kosinus-Funktion als die Linearkombination
 \[
@@ -249,8 +262,9 @@ Indem man die Kosinus-Funktion als die Linearkombination
 =
 \frac{e^{i\varphi}+e^{-i\varphi}}2
 \]
-von Exponentialfunktionen ausdrückt, kann man auch die $k$-te Potenz 
+von Exponentialfunktionen schreibt, kann man auch die $k$-te Potenz 
 mit Hilfe des binomischen Satzes als
+\index{binomischer Satz}%
 \[
 \cos^k\varphi
 =
@@ -265,7 +279,8 @@ e^{im\varphi}e^{i(m-k)\varphi}
 e^{i(2m-k)\varphi}
 \]
 ausdrücken.
-Der Fourier-Koeffizient von $\cos^k\varphi$ ist daher das Integral
+Der $n$-te Fourier-Koeffizient $c_{n,k}$ von $\cos^k\varphi$ ist daher
+das Integral
 \begin{align*}
 c_{n,k}
 &=
@@ -306,7 +321,7 @@ e^{i(2m-k+n)\varphi}
 \frac{e^{i(2m-k+n)\varphi}}{2m-k+n}
 \biggr]_0^{2\pi}
 =
-0
+0,
 \]
 weil die Exponentialfunktion $2\pi$-periodisch ist.
 Nur für $k=2m+n$ ergibt sich ein nicht verschwindender
@@ -315,7 +330,7 @@ Eine Summe über $k\in\mathbb{N}$ kann daher auch als Summe über
 $m\in\mathbb{N}$ interpretiert werden, in der $k$ durch die Formel
 $k=2m+n$ gegeben wird.
 Mit dieser Konvention wird
-\[
+\begin{equation}
 c_{n,k}
 =
 c_{n,2m+n}
@@ -327,14 +342,16 @@ c_{n,2m+n}
 %\,d\varphi
 =
 \frac{1}{2^{2m+n}}
-\binom{2m+n}{m}
-\]
-schreiben lässt.
+\binom{2m+n}{m}.
+\label{buch:fourier:eqn:cnk}
+\end{equation}
 
+%
+% Berechnung von F_n(\xi)
+%
 \subsubsection{Berechnung von $F_n(\xi)$}
-Die Reihe für $F_n(\xi)$ lässt sich weiter vereinfachen.
-Wir verwenden wieder die Tatsache, dass sich nur für $n=-2m-k$
-ein Beitrag ergibt.
+Die Reihe für $F_n(\xi)$ lässt sich nun unter Verwendung
+von \eqref{buch:fourier:eqn:cnk} weiter vereinfachen.
 Dies bedeutet, dass $k=2m+n$ sein muss, die Summe kann damit als
 Summe über $m$ statt über $k$ geschrieben werden.
 Somit ist
@@ -371,9 +388,12 @@ i^n
 =
 i^n J_n(\xi).
 \end{align*}
-Die Funktionen $F_n(\xi)$ sind daher bis auf einen Phasenfaktor der
+Die Funktionen $F_n(\xi)$ haben daher bis auf einen Phasenfaktor den
 Wert $J_n(\xi)$ einer Bessel-Funktion.
 
+%
+% Berechnung der Fourier-Transformation mi Bessel-Funktionen
+%
 \subsubsection{Berechnung der Fourier-Transformation mit Bessel-Funktionen}
 Mit allen oben zusammengestellten Notationen kann die Fourier-Transformation
 jetzt in Polarkoordinaten als
@@ -397,9 +417,18 @@ $\tilde{f}(r,\varphi)$ mit einer Funktion der Form
 e^{in\varphi}
 J_n(rR).
 \]
-Letzeres sind die in Abschnitt~\ref{buch:fourier:section:2d}
+Letzere sind die in Abschnitt~\ref{buch:fourier:section:2d}
 versprochenen Basisfunktionen.
 
+Die Bessel-Funktion taucht also auf als die radiale Funktion,
+mit der die Fourier-Transformation berechnet werden kann.
+Für sich allein genommen kann sie aber ebenfalls eine Integraltransformation
+definieren, die sogenannte Hankel-Transformation, die in
+Kapitel~\ref{chapter:kreismembran} beschrieben wird.
+
+%
+% Fourier-Reihe von e^{i\xi\cos\varphi}
+%
 \subsubsection{Fourier-Reihe von $e^{i\xi\cos\varphi}$}
 Die Funktionen $F_n(\xi)$ sind wegen
 \[
@@ -550,14 +579,14 @@ e^{in(\frac{\pi}2-\tau) + i\xi\cos(\frac{\pi}2-\tau)}
 \frac{1}{2\pi}
 \int^{\frac{\pi}2}_{-\frac{3\pi}2}
 i^n
-e^{-in\tau + i\xi\sin\tau)}
+e^{-in\tau + i\xi\sin\tau}
 \,d\tau.
 \intertext{Da der Integrand $2\pi$-periodisch ist, kann das
 Integrationsintervall auf $[-\pi,\pi]$ verschoben werden, was}
 &=
 \frac{1}{2\pi}
 \int_{-\pi}^{\pi}
-e^{-in\tau + i\xi\sin\tau)}
+e^{-in\tau + i\xi\sin\tau}
 \,d\tau.
 \intertext{ergibt.
 Das Integral kann in zwei Integrale}
@@ -571,7 +600,7 @@ e^{-in\tau + i\xi\sin\tau}
 \int_0^\pi
 e^{in\tau - i\xi\sin\tau}
 \,d\tau
-\intertext{aufgeteilt werden,
+\intertext{aufgeteilt werden, die sich mit der eulerschen Formel zu
 }
 &=
 \frac{1}{\pi}
@@ -597,8 +626,9 @@ e^{-i(-n\tau + \xi\sin\tau)}
 \frac{1}{\pi}
 \int_0^\pi
 \cos(n\tau - \xi\sin\tau)
-\,d\tau.
+\,d\tau
 \end{align*}
+vereinfachen lassen.
 Damit haben wir den folgenden Satz bewiesen:
 
 \begin{satz}[Integraldarstelltung der Bessel-Funktionen]
@@ -616,6 +646,8 @@ J_n(\xi)
 \end{equation}
 \end{satz}
 
-
+Mit der Integraldarstellung der Bessel-Funktion lässt sich das
+Frequenzspektrum eines frequenzmodulierten Signals verstehen, wie
+dies in Kapitel~\ref{chapter:fm} ausgeführt wird.
 
 

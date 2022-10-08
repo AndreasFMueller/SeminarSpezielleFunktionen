@@ -50,28 +50,146 @@ b_k
 berechnet werden.
 
 %
+% Skalarprodukt-Interpretation
+%
+\subsubsection{Geometrische Motivation}
+In Kapitel~\ref{buch:chapter:orthogonalitaet} wurde die Bedeutung
+eines Skalarproduktes von Funktionen und orthogonaler Funktionenfamilien
+untersucht.
+Die Funktionen
+\[
+\begin{aligned}
+x&\mapsto c_0(x)=1&&&\\
+x&\mapsto c_k(x)=\cos kx&&\qquad&k> 0\\
+x&\mapsto s_k(x)=\sin kx&&\qquad&k> 0
+\end{aligned}
+\]
+für Argumente $x\in[-\pi,\pi]$
+bilden eine orthogonale Funktionenfamilie mit dem Skalarprodukt
+\[
+\langle f,g\rangle
+=
+\frac{1}{\pi}
+\int_{-\pi}^\pi f(x)g(x)\,dx,
+\]
+wie wir kurz nachrechnen wollen.
+Ein Integral von $\cos kx$ oder $\sin kx$ über das Intervall $[-\pi,\pi]$
+verschwindet immer, daher sind
+$\langle c_0,c_k\rangle=\langle c_0,s_k\rangle=0$
+für $k>0$.
+Es sind also nur noch die Skalarprodukte von Funktionen mit $k>0$ zu 
+berechnen, was mit den trigonometrischen Identitäten
+\begin{align*}
+\cos u\cos v &=\frac12(\cos(u-v)+\cos(u+v))
+\\
+\sin u\cos v &=\frac12(\sin(u+v)+\sin(u-v))
+\\
+\sin u\sin v &=\frac12(\cos(u-v)-\cos(u+v))
+\end{align*}
+geschehen kann.
+Wir finden für $k>0$ und $l>0$
+\begin{align*}
+\langle c_k,c_l\rangle
+&=
+\frac1\pi\int_{-\pi}^\pi
+\cos kx\,\cos lx
+\,dx
+\\
+&=
+\frac1{2\pi}\int_{-\pi}^\pi
+\cos((k-l)x) + \cos((k+l)x)
+\,dx
+=
+\smash{
+\begin{cases}
+\displaystyle \frac1{2\pi}\int_{-\pi}^\pi 1 + \cos((k+l)x)\,dx = 1&\quad k=l\\
+0&\quad\text{sonst}
+\end{cases}
+}
+\\
+\langle s_k,c_l\rangle
+&=
+\frac1\pi\int_{-\pi}^\pi
+\sin kx\,\cos lx
+\,dx
+\\
+&=
+\frac1{2\pi}\int_{-\pi}^\pi
+\sin((k+l)x)+\sin((k-l)x)
+\,dx
+=0
+\\
+\langle s_k,s_l\rangle
+&=
+\frac1\pi\int_{-\pi}^\pi
+\sin kx\,\sin lx
+\,dx
+\\
+&=
+\frac1{2\pi}\int_{-\pi}^\pi
+\cos((k-l)x)-\cos((k+l)x)
+\,dx
+=
+\smash{
+\begin{cases}
+\displaystyle \frac1{2\pi}\int_{-\pi}^\pi 1 - \cos((k+l)x)\,dx = 1&\quad k=l\\
+0&\quad\text{sonst}
+\end{cases}
+}
+\end{align*}
+oder
+\begin{align*}
+\langle c_k,c_l\rangle &= \delta_{kl} &
+\langle s_k,c_l\rangle &= 0           &
+\langle s_k,s_l\rangle &= \delta_{kl}
+\end{align*}
+für alle $k>0$ und $l>0$.
+Die Funktionen $c_k$ und $s_k$ sind für $k>0$ und $l>0$ sogar 
+orthonormiert.
+
+Die Funktion $c_0$ ist orthogonal auf allen anderen Funktionen,
+aber sie ist bezüglich des Skalarproduktes nicht normiert, denn
+es gilt
+\[
+\langle c_0,c_0\rangle
+=
+\frac{1}{\pi}
+\int_{-\pi}^\pi
+\,dx
+=
+2.
+\]
+Daher stammt auch der Nenner $2$ im ersten Term der
+Reihenentwicklung~\eqref{buch:fourier:eqn:fourierreihe}.
+
+%
 % Komplexes Skalarprodukt
 %
 \subsubsection{Komplexes Skalarprodukt}
 Die Reihe~\eqref{buch:fourier:eqn:fourierreihe} hat zwar den Vorteil,
 nur reellwertige Funktionen zu verwenden.
 Die trigonometrischen Funktionen lassen sich aber mit Hilfe der
-eulerschen Formel mittels
+eulerschen Formel als Linearkombinationen
 \[
 \cos x = \frac{e^{ix}+e^{-ix}}{2}
 \qquad
+\text{und}
+\qquad
 \sin x = \frac{e^{ix}-e^{-ix}}{2i}
 \]
-als Linearkombinationen von Exponentialfunktionen ausdrücken.
+von Exponentialfunktionen ausdrücken.
 Wendet man diese Transformation auf
 die Fourier-Reihe~\eqref{buch:fourier:eqn:fourierreihe}
 an, erhält man eine symmetrischere, komplexe Darstellung.
-Dazu ist zunächst die Definition eines Skalarproduktes für komplexe
+
+Damit man diese komplexe Darstellung auch geometrisch verstehen
+kann, ist zunächst die Definition eines Skalarproduktes für komplexe
 Funktionen nötig.
 
 \begin{definition}
 \label{buch:fourier:def:cskalar}
 Die bilineare Funktion
+\index{bilinear}%
 \[
 \langle f,g\rangle
 =
@@ -79,9 +197,11 @@ Die bilineare Funktion
 \int_{-\pi}^\pi \overline{f(x)}g(x)\,dx
 \]
 ist {\em sesquilinear}, d.~h. sie ist
+\index{sesquilinear}%
 \begin{enumerate}
 \item
 linear im zweiten und konjugiert linear im ersten Argument:
+\index{konjugiert linear}%
 \begin{align*}
 \langle\lambda_1f_1+\lambda_2f_2,g\rangle
 &=
@@ -99,24 +219,30 @@ linear im zweiten und konjugiert linear im ersten Argument:
 \end{align*}
 für $\lambda_i,\mu_i\in\mathbb{C}$.
 \item
-Konjugiert-symmetrisch:
+Konjugiert symmetrisch:
+\index{konjugiert symmetrisch}%
 $\langle f,g\rangle=\overline{\langle g,f\rangle}$.
 \item
 Positiv definit: Falls $f\ne 0$ folgt
+\index{positiv definit}%
 $\langle f,f\rangle > 0$.
 \end{enumerate}
 Man nennt
 $\langle\;\,,\;\rangle$
-ein {\em Skalarprodukt} für komplexe Funktionen.
+ein {\em (komplexes) Skalarprodukt} für komplexe Funktionen.
+\index{Skalarprodukt, komplex}%
+\index{komplexes Skalarprodukt}%
 Es liefert eine
 {\em Norm}
-\[
+\index{Norm}%
+\begin{equation}
 \|f\|^2
 =
 \langle f,f\rangle
 =
 \int_{-\pi}^{\pi} |f(x)|^2\,dx.
-\]
+\label{buch:fourier:def:norm}
+\end{equation}
 \end{definition}
 
 %
@@ -133,28 +259,34 @@ e_k
 \colon
 x\mapsto e_k(x)=e^{ikx}
 \]
+\index{ek@$e_k(x)$}%
 eine orthonormierte Familie.
 Die komplexe Fourier-Theorie besagt dann,
 dass eine beliebige komplexe $2\pi$-periodische Funktion $f(x)$ 
-in der Form einer bezüglich der Norm $\|\,\cdot\,\|$ konvergenten Reihe
+in der Form einer bezüglich der Norm \eqref{buch:fourier:def:norm}
+konvergenten Reihe
 \begin{equation}
 f(x)
 =
 \sum_{k=-\infty}^\infty c_ke^{ikx}
 \label{buch:fourier:eqn:cfourierreihe}
 \end{equation}
-mit den Koeffizienten
-\[
+mit den {\em komplexen Fourier-Koeffizienten}
+\begin{equation}
 c_k
 =
 \frac{1}{2\pi}
 \int_{-\pi}^\pi
 f(x) e^{-ikx}\,dx.
-\]
+\label{buch:fourier:def:ckoef}
+\end{equation}
+\index{Fourier-Koeffizient, komplex}%
+\index{komplexe Fourier-Koeffizienten}%
 
 \subsubsection{Parseval-Identität}
 Aus der geometrischen Motivation lässt sich auch auch die
 Parseval-Identität ableiten.
+\index{Parseval-Identität}%
 Sie besagt, dass Skalarprodukt und Norm zweier Funktionen
 $f(x)$ und $g(x)$ auch aus den Fourier-Koeffizienten
 berechnet werden können.
@@ -178,14 +310,16 @@ Die Formeln besagen dann, dass der Übergang zu den Fourier-Koeffizienten
 das Skalarprodukt erhält.
 Man kann die Formeln auch als die Fourier-Version des Satzes
 von Pythagoras sehen.
+\index{Satz!von Pythagoras}%
+\index{Pythagoras, Satz von}%
 
 %
 % Das Fourier-Integral
 %
 \subsection{Fourier-Integral und Fourier-Transformation}
 Gibt man die Einschränkung auf $2\pi$-periodische Funktionen
-auf, gibt es keine abzählbare Familie von Basisfunktionen, mit denen
-man eine beliebige Funktion als Summe darstellen können.
+auf, gibt es keine abzählbare Familie von Basisfunktionen mehr,
+mit denen man eine beliebige Funktion als Summe darstellen können.
 Die im folgenden zusammengefasste Fourier-Transformation zeigt
 aber, dass eine Darstellung als Integral möglich ist.
 
@@ -215,8 +349,10 @@ Man beachte, dass die Funktionen
 \(
 e_k(x) = e^{ikx}
 \)
-nicht in $L^1(\mathbb{R})$ sind, die Betrachtungsweise auf dem
-Intervall $[-\pi,\pi]$ lässt sich daher nicht auf den Fall des
+nicht in $L^1(\mathbb{R})$ sind, die Betrachtungsweise, die auf dem
+\index{L1R@$L^1(\mathbb{R})$}%
+Intervall $[-\pi,\pi]$ erfolgreich war,
+lässt sich daher nicht auf den Fall des
 Definitionsbereichs $\mathbb{R}$ übertragen.
 
 Die allgemeine Theorie zeigt, dass die
@@ -239,6 +375,7 @@ in $L^1(\mathbb{R})$ ist.
 Auch die Fourier-Transformation kann im Rahmen eines Funktionenraums
 mit einem Skalarprodukt beschrieben werden.
 Das Skalarprodukt in diesem Fall ist
+\index{Skalarprodukt}%
 \[
 \langle f,g\rangle
 =
@@ -256,6 +393,7 @@ f\colon\mathbb{R}\to\mathbb{R}
 \right.
 \right\}.
 \]
+\index{L2R@$L^2(\mathbb{R})$}%
 In der Praxis hat man oft mit Funktionen zu tun, die nur in einem
 beschränkten Intervall von $0$ verschieden sind und zudem stetig.
 Solche Funktionen sind immer in $L^2(\mathbb{R})\cap L^1(\mathbb{R})$.
@@ -264,6 +402,7 @@ Solche Funktionen sind immer in $L^2(\mathbb{R})\cap L^1(\mathbb{R})$.
 % Parseval-Identität
 %
 \subsubsection{Parseval-Identität}
+\index{Parseval-Identität}%
 Wie im Falle der Fourier-Reihe, ändert die Fourier-Transformation
 die Länge des Vektors nicht.
 Für die Fourier-Transformation lautet die Parseval-Identität
