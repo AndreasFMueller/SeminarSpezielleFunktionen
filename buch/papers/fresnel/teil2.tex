@@ -116,14 +116,12 @@ eine Klothoide.
 Apfel (vgl.~Abbildung~\ref{fresnel:figure:schale})
 \label{fresnel:figure:apfel}}
 \end{figure}
-Schält man einen Streifen konstanter Breite beginnend parallel zum Äquator
-von einer Kugel ab und breitet ihn in die Ebene aus, entsteht eine
-Approximation einer Klothoide.
+Der Youtube-Kanal Numberphile hat im Video \cite{fresnel:schale} behauptet,
+dass sich die Klothoide durch ``Abschälen'' eines Streifens konstanter
+Breite von einer Kugel approximieren lasse.
 Abbildung~\ref{fresnel:figure:schale} zeigt blau den abgeschälten Streifen,
 Abbildung~\ref{fresnel:figure:apfel} zeigt das Resultat dieses Versuches
-an einem Apfel, das Youtube-Video \cite{fresnel:schale} des
-Numberphile-Kanals illustriert das Problem anhand eines aufblasbaren
-Globus.
+an einem Apfel.
 
 Der Krümmungsradius des blauen Streifens, der die Kugel im Punkt $P$ bei 
 geographischer Breite $\vartheta$ berührt, hat die Länge der Tangente, die
@@ -137,7 +135,7 @@ proportional zur Breite.
 Windet sich die Kurve in Abbildung~\ref{fresnel:figure:schale} $n$
 mal um die vertikale Achse, bevor sie den Nordpol erreicht, dann gilt
 $\vartheta = t/n$ und die Kurve kann mit der Funktion
-\[
+\begin{equation}
 \gamma(t)
 =
 \begin{pmatrix}
@@ -145,13 +143,33 @@ $\vartheta = t/n$ und die Kurve kann mit der Funktion
 \sin(t) \cos(t/n) \\
 \sin(t/n)
 \end{pmatrix}
-\]
+\label{fresnel:eqn:kurvenparametrisierung}
+\end{equation}
 parametrisiert werden.
 Die Bogenlänge kann man damit leider nicht als elementare Funktion
 ausdrücken, es tritt ein unvollstäniges elliptisches Integral auf.
 Mindestens zu Beginn ist jedoch die Bogenlänge ungefähr proportional
 zur geographischen Breite $\vartheta$, so wie die Länge.
-Dies macht die Approximation mindestens plausibel.
+
+Wenn Krümmung und Bogenlänge proportional sind, dann müsste der
+Krümmungszuwachs und der Krümmungszuwachs ebenfalls proportional
+sein.
+Aus der Parametrisierung \eqref{fresnel:eqn:kurvenparametrisierung}
+bekommt man den Längen- und den Krümmungszuwachs
+\begin{align*}
+|\dot{\gamma}(t)|
+&=
+\sqrt{
+\frac{1}{n^2}+\cos\frac{t}{n}
+}
+&&\text{bzw.}&
+\dot{\kappa}(t)
+&=
+\frac{1}{n\cos^2\frac{t}{n}},
+\end{align*}
+die für grosse $t$ in keiner Weise vergleichbar sind, der
+Krümmungszuwachs ist sogar divergent.
+Die Näherung ist also bestenfalls für kleine $t$ plausibel.
 
 %Der Tangentialvektor
 %\[

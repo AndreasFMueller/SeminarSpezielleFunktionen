@@ -1,0 +1,34 @@
+%
+% tikztemplate.tex -- template for standalon tikz images
+%
+% (c) 2021 Prof Dr Andreas Müller, OST Ostschweizer Fachhochschule
+%
+\documentclass[tikz]{standalone}
+\usepackage{amsmath}
+\usepackage{times}
+\usepackage{txfonts}
+\usepackage{pgfplots}
+\usepackage{csvsimple}
+\usetikzlibrary{arrows,intersections,math}
+\begin{document}
+\def\skala{1}
+\begin{tikzpicture}[>=latex,thick,scale=\skala]
+
+\def\n{3}
+
+\draw[color=red,line width=1pt] 
+	plot[domain=0:{\n*90},samples={\n*20}]
+		({(\x/\n)*(10/90)},{sqrt(1/(\n*\n)+cos(\x/\n)*cos(\x/\n))});
+\begin{scope}
+\clip (0,0) rectangle (10,7);
+\draw[color=blue,line width=1pt]
+	plot[domain=0:{\n*87},samples={\n*20}]
+		({(\x/\n)*(10/90)},{1/(\n*cos(\x/\n)*cos(\x/\n))});
+\end{scope}
+
+\draw[->] (-0.1,0) -- (10.3,0) coordinate[label={$\frac{t}{n}$}];
+\draw[->] (0,-0.1) -- (0,7.3) coordinate[label={Zuwachs}];
+
+\end{tikzpicture}
+\end{document}
+
