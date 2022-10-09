@@ -286,7 +286,7 @@ x^\alpha
 \Gamma(\alpha+1) 2^{\alpha}
 \biggl(\frac{x}{2}\biggr)^\alpha
 \sum_{k=0}^\infty
-\frac{(-1)^k}{k!\,\Gamma(\alpha+k+1)} \biggl(\frac{x}{2}\biggr)^{2k}
+\frac{(-1)^k}{k!\,\Gamma(\alpha+k+1)} \biggl(\frac{x}{2}\biggr)^{2k}.
 \label{buch:differentialgleichungen:bessel:normierungsgleichung}
 \end{align}
 Nur gerade der Faktor $2^\alpha\Gamma(\alpha+1)$ ist von $k$ und $x$ 
@@ -473,11 +473,11 @@ Wir fassen das Resultat im folgenden Satz zusammen.
 Die erzeugende Funktion der Besselfunktionen ist
 \[
 \sum_{k=-\infty}^\infty
-J_k(x)
+J_k(x)\, z^k
 =
 \exp\biggl(
 \frac{x}2\cdot\biggl(1-\frac1z\biggr)
-\biggr)
+\biggr).
 \]
 \end{satz}
 \index{erzeugende Funktion}%
@@ -611,7 +611,7 @@ Es ist
 =
 \frac{1}{2^k}\bigl(1\cdot 3 \cdot\ldots\cdot (2(k-1)+1)\bigr)
 =
-\frac{(2k-1)!}{2^{2k-1}\cdot (k-1)!}
+\frac{(2k-1)!}{2^{2k-1}\cdot (k-1)!}.
 \end{align*}
 Damit können jetzt die Reihenentwicklungen der Lösung wie folgt
 umgeformt werden

@@ -189,13 +189,13 @@ Wir setzen daher für die Lösung die Potenzreihe an
 \[
 y(t)
 =
-a_0 + a_1t + a_2t^2 + a_3t^3 + \dots + a_kt^k + \dots
+a_0 + a_1t + a_2t^2 + a_3t^3 + \dots + a_kt^k + \cdots.
 \]
 Die Ableitung ist
 \[
 \dot{y}(t)
 =
-a_1 + 2a_2t + 3a_3t^2 + \dots  + ka_kt^{k-1} + \dots
+a_1 + 2a_2t + 3a_3t^2 + \dots  + ka_kt^{k-1} + \cdots .
 \]
 Einsetzen in die 
 Differentialgleichung~\eqref{buch:differentialgleichungen:eqn:wurzeldgl1}
@@ -217,7 +217,7 @@ a_1
 +(3a_3+4a_4)t^3
 +\dots
 &=
-\alpha a_0 + \alpha a_1t + \alpha a_2t^2 + \alpha a_3t^3 + \dots
+\alpha a_0 + \alpha a_1t + \alpha a_2t^2 + \alpha a_3t^3 + \cdots.
 \end{align*}
 Der Koeffizientenvergleich ergibt die Gleichungen
 \begin{align}
@@ -324,9 +324,9 @@ Funktion $\mathstrut_1F_0$ schreiben lassen.
 Das Produkt im Zähler von $a_k$ hat $k$ Faktoren, indem wir jeden Faktor
 mit $-1$ multiplizieren, erhalten wir
 \begin{align*}
-\alpha(\alpha-1)(\alpha-2)\dots(\alpha-k+1)
+\alpha(\alpha-1)(\alpha-2)\cdots(\alpha-k+1)
 &=
-(-\alpha)(-\alpha+1)(-\alpha+2)\dots(-\alpha+k-1) (-1)^k
+(-\alpha)(-\alpha+1)(-\alpha+2)\cdots(-\alpha+k-1) (-1)^k
 \\
 &=
 (-\alpha)_k (-1)^k.
@@ -350,7 +350,7 @@ Die Newtonsche Reihe für $(1-t)^\alpha$ ist der Wert
 =
 \sum_{k=0}^\infty (-\alpha)_k \frac{t^k}{k!}
 =
-\mathstrut_1F_0(-\alpha;t)
+\mathstrut_1F_0\biggl(\begin{matrix}-\alpha\\\text{---}\end{matrix};t\biggr)
 \]
 der hypergeometrischen Funktion $\mathstrut_1F_0$.
 \end{satz}
@@ -513,7 +513,7 @@ Ausgeschrieben geben die einzelnen Terme
 +
 (\varrho+3)(\varrho+2)a_3x^{\varrho+3}
 +
-\dots
+\cdots
 \\
 &+
 \varrho p_0 a_0 x^{\varrho}
@@ -522,7 +522,7 @@ Ausgeschrieben geben die einzelnen Terme
 +
 \bigl((\varrho +2)a_2p_0 + (\varrho+1)a_1p_1 + \varrho a_0 p_2\bigr) x^{\varrho+2}
 +
-\dots
+\cdots
 \label{buch:differentialgleichungen:eqn:dglverallg}
 \\
 &+
@@ -534,7 +534,7 @@ q_0a_0x^{\varrho}
 +
 (q_0a_3+q_1a_2+q_2a_1+q_3a_0) x^{\varrho+3}
 +
-\dots
+\cdots.
 \end{align*}
 Fasst man die Terme mit gleichem Exponenten zusammen, findet man
 \begin{align*}
@@ -570,7 +570,7 @@ q_0)a_2
 +q_1a_1+q_2a_0
 \bigr)x^{\varrho+2}
 \\
-&+\dots
+&+\cdots.
 \end{align*}
 Der Koeffizientenvergleich ergibt dann
 \[
@@ -613,7 +613,7 @@ x^{\varrho+n}
 \biggl(\sum_{l=0}^n q_{n-l} a_{l}\biggr)
 x^{\varrho+n}
 &=
-0
+0.
 \end{align*}
 Jetzt kann der Koeffizientenvergleich durchgeführt werden.
 Der Koeffizient von $x^{\varrho+n}$ ist
