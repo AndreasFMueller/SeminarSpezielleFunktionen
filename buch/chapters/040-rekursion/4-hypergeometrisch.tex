@@ -517,7 +517,7 @@ a\sum_{k=0}^\infty
 \frac{(1)_k}{1}
 \frac{x^k}{k!}
 =
-a\cdot\mathstrut_1F_0(1,x).
+a\cdot\mathstrut_1F_0\biggl(\begin{matrix}1\\\text{---}\end{matrix};x\biggr).
 \]
 
 %
@@ -630,7 +630,9 @@ Die Wurzelfunktion ist daher die hypergeometrische Funktion
 \sum_{k=0}^\infty
 \biggl(-\frac12\biggr)_k \frac{(\pm x)^k}{k!}
 =
-\mathstrut_1F_0(-{\textstyle\frac12};\mp x).
+\mathstrut_1F_0\biggl(
+\begin{matrix}-\frac12\\\text{---}\end{matrix};\mp x
+\biggr).
 \]
 Mit der Newtonschen Binomialreihe, die in 
 \index{Binomialreihe}%
