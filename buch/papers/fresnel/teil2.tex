@@ -125,9 +125,18 @@ an einem Apfel, das Youtube-Video \cite{fresnel:schale} des
 Numberphile-Kanals illustriert das Problem anhand eines aufblasbaren
 Globus.
 
+Der Krümmungsradius des blauen Streifens, der die Kugel im Punkt $P$ bei 
+geographischer Breite $\vartheta$ berührt, hat die Länge der Tangente, die
+die Kugel im Punkt $P$ berührt und im Punkt $Q$ durch die Achse der
+Kugel geht (Abbildung~\ref{fresnel:figure:schale}).
+Da die Krümmung das Reziproke des Krümmungsradius ist, ist die
+Krümmung proportional zu $\tan\vartheta$.
+Für kleine geographische Breiten ist die Krümmung damit ungefähr
+proportional zur Breite.
+
 Windet sich die Kurve in Abbildung~\ref{fresnel:figure:schale} $n$
-mal um die vertikale Achse, bevor sie den Nordpol erreicht, dann kann
-die Kurve mit der Funktion
+mal um die vertikale Achse, bevor sie den Nordpol erreicht, dann gilt
+$\vartheta = t/n$ und die Kurve kann mit der Funktion
 \[
 \gamma(t)
 =
@@ -138,41 +147,41 @@ die Kurve mit der Funktion
 \end{pmatrix}
 \]
 parametrisiert werden.
-Der Tangentialvektor
-\[
-\dot{\gamma}(t)
-=
-\begin{pmatrix}
--\sin(t)\cos(t/n) - \cos(t)\sin(t/n)/n \\
-\cos(t)\cos(t/n) - \sin(t)\sin(t/n)/n \\
-\cos(t/n)/n
-\end{pmatrix}
-\]
-hat die Länge
-\[
-| \dot{\gamma}(t) |^2
-=
-\frac{1}{n^2}
-+
-\cos^2\frac{t}{n}.
-\]
-Die Ableitung der Bogenlänge ist daher
-\[
-\dot{s}(t)
-=
-\sqrt{
-\frac{1}{n^2}
-+
-\cos^2\frac{t}{n}
-}.
-\]
+Die Bogenlänge kann man damit leider nicht als elementare Funktion
+ausdrücken, es tritt ein unvollstäniges elliptisches Integral auf.
+Mindestens zu Beginn ist jedoch die Bogenlänge ungefähr proportional
+zur geographischen Breite $\vartheta$, so wie die Länge.
+Dies macht die Approximation mindestens plausibel.
 
+%Der Tangentialvektor
+%\[
+%\dot{\gamma}(t)
+%=
+%\begin{pmatrix}
+%-\sin(t)\cos(t/n) - \cos(t)\sin(t/n)/n \\
+%\cos(t)\cos(t/n) - \sin(t)\sin(t/n)/n \\
+%\cos(t/n)/n
+%\end{pmatrix}
+%\]
+%hat die Länge
+%\[
+%| \dot{\gamma}(t) |^2
+%=
+%\frac{1}{n^2}
+%+
+%\cos^2\frac{t}{n}.
+%\]
+%Die Ableitung der Bogenlänge ist daher
+%\[
+%\dot{s}(t)
+%=
+%\sqrt{
+%\frac{1}{n^2}
+%+
+%\cos^2\frac{t}{n}
+%}.
+%\]
 
-Der Krümmungsradius des blauen Streifens, der die Kugel im Punkt $P$ bei 
-geographischer $\vartheta$ berührt, hat die Länge der Tangente, die
-die Kugel im Punkt $P$ berührt und im Punkt $Q$ durch die Achse der
-Kugel geht (Abbildung~\ref{fresnel:figure:schale}).
-Die Krümmung in Abhängigkeit von $\vartheta$ ist daher $\tan\vartheta$.
 
 
 
