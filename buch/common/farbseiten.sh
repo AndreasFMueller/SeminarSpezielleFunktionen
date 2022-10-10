@@ -143,6 +143,7 @@ END {
 # Kapitel 19 zeta
 454
 456
+457
 462
 # Kapitel 20 0f1
 465
@@ -168,6 +169,7 @@ END {
 496
 497
 498
+500
 # Kapitel 23 kra
 507
 509
