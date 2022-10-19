@@ -123,20 +123,9 @@
 %
 % Kopfzeilen
 %
-\def\kopfrechts#1{\rhead{\theshortsection. #1}}
+\def\kopfrechts#1{
+\edef\theshortsection{\arabic{section}}
+\rhead{\theshortsection. #1}}
 \def\kopflinks#1{\lhead{\thechapter. #1}
 \rhead{}}
-%
-% Anwendungsabschnitte
-%
-\newcommand{\theshortsection}{\arabic{section}}
-\def\anwendungen{%
-\setcounter{section}{0}
-\renewcommand{\thesection}{\thechapter.\Alph{section}}
-\renewcommand{\theshortsection}{\Alph{section}}
-}
-\def\endanwendungen{%
-\renewcommand{\thesection}{\thechapter.\arabic{section}}
-\renewcommand{\theshortsection}{\arabic{section}}
-}
 
