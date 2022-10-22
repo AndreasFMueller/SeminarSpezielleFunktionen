@@ -37,9 +37,11 @@ $u(x,y)$ und $v(x,y)$
 beschrieben.
 Natürlich wissen wir auch, was unter den Ableitungen der Funktionen
 $u(x,y)$ und $v(x,y)$ nach $x$ und $y$ zu verstehen ist.
-Der Funktion $f(z)$ entspricht eine Abbildung $\mathbb R^2\to\mathbb R^2$
+Der Funktion $f(z)$ entspricht eine Abbildung
 \index{Abbildung}%
 \[
+\mathbb{R}^2\to\mathbb{R}^2
+:
 (x,y)\mapsto\begin{pmatrix}u(x,y)\\v(x,y)\end{pmatrix}.
 \]
 Die Ableitung einer solchen Funktion im Punkt $(x_0,y_0)$
@@ -58,8 +60,9 @@ v(x+\Delta x, y +\Delta y)
 \frac{\partial v}{\partial x}&\frac{\partial v}{\partial y}
 \end{pmatrix}
 \begin{pmatrix} \Delta x\\\Delta y \end{pmatrix}
-+o(\Delta x, \Delta y).
++o(\Delta x, \Delta y)
 \]
+berechnet.
 In dieser Sicht einer komplexen Funktion gibt es keine einzelne Zahl, die
 die Funktion einer Ableitung übernehmen könnte, die Ableitung
 ist eine $2\times 2$-Matrix.
@@ -73,7 +76,8 @@ Grenzwertes
 \[
 f'(x_0)=\lim_{x\to x_0}\frac{f(x)-f(x_0)}{x-x_0}
 \]
-definiert oder gleichbedeutend als diejenige Zahl $f'(x_0)\in\mathbb R$
+definiert.
+Gleichbedeutend ist die Definition als diejenige Zahl $f'(x_0)\in\mathbb R$
 mit der Eigenschaft, dass
 \begin{equation}
 f(x)=f(x_0)+f'(x_0)(x-x_0) + o(x-x_0)
@@ -81,7 +85,7 @@ f(x)=f(x_0)+f'(x_0)(x-x_0) + o(x-x_0)
 \end{equation}
 gilt.
 Der Term $x-x_0$ und die Gleichung \eqref{komplex:abldef} sind aber auch
-für komplexe Argument sinnvoll, wir definieren daher
+für komplexe Argument sinnvoll.
 
 \begin{definition}
 \label{buch:funktionentheorie:definition:differenzierbar}

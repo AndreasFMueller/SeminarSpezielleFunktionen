@@ -28,45 +28,47 @@ Ein solches Polynom $p(x)$ hat $n+1$ Koeffizienten, die aus dem
 linearen Gleichungssystem der $n+1$ Gleichungen $p(x_i)=f(x_i)$ 
 ermittelt werden können.
 
-Das Interpolationspolynom $p(x)$ lässt sich aber auch direkt 
-angeben.
-Dazu konstruiert man zuerst die Polynome
-\[
-l_i(x)
-=
-\frac{
-(x-x_0)(x-x_1)\cdots\widehat{(x-x_i)}\cdots (x-x_n)
-}{
-(x_i-x_0)(x_i-x_1)\cdots\widehat{(x_i-x_i)}\cdots (x_i-x_n)
-}
-\]
-vom Grad $n$, wobei der Hut bedeutet, dass diese Faktoren
-im Produkt wegzulassen sind.
-Die Polynome $l_i(x)$ haben die Eigenschaft
-\[
-l_i(x_j) = \delta_{ij}
-=
-\begin{cases}
-1&\qquad i=j\\
-0&\qquad\text{sonst}.
-\end{cases}
-\]
-Die Linearkombination
+Das Interpolationspolynom $p(x)$ lässt sich
+nach Abschnitt~\ref{buch:polynome:section:tschebyscheff}
+als
+%Dazu konstruiert man zuerst die Polynome
+%\[
+%l_i(x)
+%=
+%\frac{
+%(x-x_0)(x-x_1)\cdots\widehat{(x-x_i)}\cdots (x-x_n)
+%}{
+%(x_i-x_0)(x_i-x_1)\cdots\widehat{(x_i-x_i)}\cdots (x_i-x_n)
+%}
+%\]
+%vom Grad $n$, wobei der Hut bedeutet, dass diese Faktoren
+%im Produkt wegzulassen sind.
+%Die Polynome $l_i(x)$ haben die Eigenschaft
+%\[
+%l_i(x_j) = \delta_{ij}
+%=
+%\begin{cases}
+%1&\qquad i=j\\
+%0&\qquad\text{sonst}.
+%\end{cases}
+%\]
+%Die Linearkombination
 \[
 p(x) = \sum_{i=0}^n f(x_i)l_i(x)
 \]
-ist dann ein Polynom vom Grad $n$, welches am den Stellen $x_j$
-die Werte
-\[
-p(x_j) 
-=
-\sum_{i=0}^n f(x_i)l_i(x_j)
-=
-\sum_{i=0}^n f(x_i)\delta_{ij}
-=
-f(x_j)
-\]
-hat, das Polynome $p(x)$ ist also das gesuchte Interpolationspolynom.
+%ist dann ein Polynom vom Grad $n$, welches am den Stellen $x_j$
+%die Werte
+%\[
+%p(x_j) 
+%=
+%\sum_{i=0}^n f(x_i)l_i(x_j)
+%=
+%\sum_{i=0}^n f(x_i)\delta_{ij}
+%=
+%f(x_j)
+%\]
+%hat, das Polynome $p(x)$ ist also das gesuchte Interpolationspolynom.
+direkt angeben.
 
 %
 % Integrationsverfahren auf der Basis von Integration
@@ -77,7 +79,7 @@ kann mit Hilfe des Interpolationspolynoms approximiert werden.
 Wenn $|f(x)-p(x)|<\varepsilon$ ist im Intervall $[-1,1]$, dann gilt
 für die Integrale
 \[
-\biggl|\int_{-1}^1 f(x)\,dx -\int_{-1}^1p(x)\,dx\biggr|
+\biggl|\int_{-1}^1 f(x)\,dx -\int_{-1}^1p(x)\,dx\,\biggr|
 \le
 \int_{-1}^1 |f(x)-p(x)|\,dx
 \le
@@ -130,10 +132,11 @@ Polynoms vom Grad höchstens $2n$ an geeignet gewählten Stützstellen das
 Integral exakt zu bestimmen.
 
 \begin{beispiel}
+\label{buch:integral:beispiel:gaussquadraturn1}
 Wir versuchen dies für quadratische Polynome durchzuführen, also 
 für $n=1$.
-Gesucht sind also zwei Werte $x_i$, $i=0,1$ und Gewichte $A_i$, $i=0,1$
-derart, dass für jedes quadratische Polynome $p(x)=a_2x^2+a_1x+a_0$ 
+Gesucht sind zwei Werte $x_i$, $i=0,1$, und Gewichte $A_i$, $i=0,1$,
+derart, dass für jedes quadratische Polynom $p(x)=a_2x^2+a_1x+a_0$ 
 das Integral durch
 \[
 \int_{-1}^1 p(x)\,dx
@@ -187,14 +190,15 @@ mit Hilfe der zweiten Gleichung geschehen kann:
 x_0 = \frac{1}{\sqrt{3}}, x_1 = -\frac{1}{\sqrt{3}}.
 \]
 Das Problem ist nun gelöst: das Integral eines Polynoms vom Grad 3
-im Interval $[-1,1]$ ist exakt gegeben durch
+im Interval $[-1,1]$ ist exakt durch
 \[
 \int_{-1}^1 p(x)\,dx
 =
 p\biggl(-\frac{1}{\sqrt{3}}\biggr)
 +
-p\biggl(\frac{1}{\sqrt{3}}\biggr).
+p\biggl(\frac{1}{\sqrt{3}}\biggr)
 \]
+gegeben.
 Das Integral kann also durch nur zwei Auswertungen des Polynoms
 exakt bestimmt werden.
 
@@ -203,7 +207,7 @@ bestimmt.
 Es ist aber auch möglich, die Gewichte direkt aus den Stützstellen
 zu bestimmen.
 Nach \eqref{buch:integral:gaussquadratur:eqn:Aidef}
-sind sie die $A_i$ gegeben als Integrale der Polynome
+sind die $A_i$ gegeben als Integrale der Polynome
 $l_i(x)$, die im vorliegenden Fall linear sind:
 \begin{align*}
 l_0(x)
@@ -232,7 +236,6 @@ Diese haben die Integrale
 \]
 da das Polynom $x$ verschwindendes Integral hat.
 Dies stimmt mit $A_0=A_1=1$ überein.
-\label{buch:integral:beispiel:gaussquadraturn1}
 \end{beispiel}
 
 Das eben vorgestellte Verfahren kann natürlich auf beliebiges $n$
@@ -252,7 +255,7 @@ Sei $R_n=\{p(X)\in\mathbb{R}[X] \mid \deg p\le n\}$ der Vektorraum
 der Polynome vom Grad $n$.
 Die ad-hoc Methode zur Bestimmung der Stützstellen im
 Abschnitt~\ref{buch:orthogonal:subsection:exakt} ist zwar 
-Verallgemeinerungsfähig, gibt aber wenige Hinweise auf eventuel
+verallgemeinerungsfähig, gibt aber wenige Hinweise auf eventuell
 einfachere Methoden zur Bestimmung der Stützstellen.
 Die im folgenden Satz formulierte Lösung von Gauss ist
 daher eine kleine Überraschung.
@@ -324,8 +327,9 @@ $2n-1$ exakt ist.
 
 \begin{beispiel}
 Das Legendre-Polynom $P_2(x) = \frac12(3x^2-1)$ hat die
-Nullstellen $x=\pm1/\sqrt{3}$, dies sind genau die im Beispiel
-auf Seite~\pageref{buch:integral:beispiel:gaussquadraturn1} befundenen
+Nullstellen $x=\pm1/\!\sqrt{3}$, dies sind genau die im
+Beispiel~\ref{buch:integral:beispiel:gaussquadraturn1} 
+auf Seite~\pageref{buch:integral:beispiel:gaussquadraturn1} gefundenen
 Stützstellen.
 \end{beispiel}
 
@@ -344,7 +348,7 @@ angeben \cite[theorem 7.3.4, p.~497]{buch:numal}.
 Seien $x_i$ die Stützstellen und $A_i$ die Gewichte einer
 Gaussschen Quadraturformel mit $n+1$ Stützstellen und sei $f$
 eine auf dem Interval $[-1,1]$ $2n+2$-mal stetig differenzierbare
-Funktion, dann ist der $E$ Fehler des Integrals
+Funktion, dann ist der Fehler $E$ des Integrals
 \[
 \int_{-1}^1 f(x)\,dx = \sum_{i=0}^n A_i f(x_i) + E
 \]
@@ -542,8 +546,8 @@ Intervall.
 Die Beispiele haben aber auch gezeigt, dass Stellen, wo die
 Ableitung des Integranden divergiert, die Genauigkeit stark
 beeinträchtigen können.
-Ausserdem ist das Verfahren nicht anwendbar auf uneigentliche
-Integrale.
+Ausserdem ist das Verfahren nicht auf uneigentliche
+Integrale anwendbar.
 
 \subsubsection{Umgang mit Singularitäten}
 Die Lösung des Problems mit Stellen mit divergenter Ableitung

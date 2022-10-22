@@ -37,12 +37,13 @@ bekommen.
 A priori muss man damit rechnen, dass sehr viele Summanden nötig sind.
 Der folgende Satz besagt, dass dies nicht so ist.
 Überraschenderweise erfüllen die Polynome $p_n(x)$ eine Rekursionsbeziehung
-mit nur drei Termen, wie der folgende Satz besagt.
+mit nur drei Termen.
 
 \begin{satz}
 \index{Satz!Drei-Term-Rekursion}%
 \label{buch:orthogonal:satz:drei-term-rekursion}
-Eine Folge bezüglich $\langle\,\;,\;\rangle_w$ orthogonaler Polynome $p_n$ 
+Eine Folge bezüglich des Skalarprodukts $\langle\,\;,\;\rangle_w$
+orthogonaler Polynome $p_n$ 
 mit dem Grade $\deg p_n = n$ erfüllt eine Rekursionsbeziehung der Form
 \begin{equation}
 p_{n+1}(x)
@@ -63,7 +64,7 @@ C_{n+1} = \frac{A_{n+1}}{A_n}\frac{h_{n+1}}{h_n}.
 \end{satz}
 
 Die Rekursionsbeziehung~\eqref{buch:orthogonal:eqn:rekursion} bedeutet,
-dass sich die Werte $p_n(x)$ für alle $n$ ausgehend von $p_1(x)$ und
+dass sich die Werte $p_n(x)$ ausgehend von $p_1(x)$ und
 $p_0(x)$ mit nur $O(n)$ Operationen ermitteln lassen.
 
 %
@@ -168,7 +169,7 @@ d.~h.~$k_{n+1}-A_nk_n=0$, woraus die erste Beziehung in
 Die Polynome $p_k$ sind durch Orthogonalisierung der Monome
 $1$, $x$,\dots $x^{k}$ entstanden.
 Dies bedeutet, dass $\langle p_n,x^k\rangle_w=0$ für alle $k<n$
-gilt und daher auch $\langle p_n,Q\rangle_w=0$ für jedes Polynome
+gilt und daher auch $\langle p_n,Q\rangle_w=0$ für jedes Polynom
 $Q(x)$ vom Grad $<n$.
 
 Das Polynom $b(x)$ ist vom Grad $\le n$, es lässt sich also als
@@ -178,7 +179,7 @@ b(x) = \sum_{k=0}^n b_k p_k(x)
 \]
 der $p_k$ mit $k\le n$ schreiben.
 Die Koeffizienten $b_j$ kann man erhalten, indem man 
-\eqref{buch:orthogonal:rekbeweis} Skalar mit $p_j$ multipliziert.
+\eqref{buch:orthogonal:rekbeweis} skalar mit $p_j$ multipliziert.
 Dabei erhält man
 \[
 h_jb_j
@@ -191,12 +192,13 @@ A_n\langle xp_n,p_j\rangle_w.
 \]
 Für $j\le n$ verschwindet der erste Term nach der Definition einer
 Folge von orthogonalen Polynomen.
-Den zweiten Term kann man umformen in
+Den zweiten Term kann man in
 \[
 \langle xp_n,p_j\rangle_w
 =
-\langle p_n,xp_j\rangle_w.
+\langle p_n,xp_j\rangle_w
 \]
+umformen.
 Darin ist $xp_j$ ein Polynom vom Grad $j+1$.
 Für $n>j+1$ folgt, dass der zweite Term verschwindet.
 Somit sind alle $b_j=0$ mit $j<n-1$, nur der Term $j=n-1$

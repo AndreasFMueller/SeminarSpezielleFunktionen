@@ -10,7 +10,7 @@ Legendre hat einen ganz anderen Zugang zu den nach ihm benannten
 Polynomen gefunden.
 Er hat sie als die Lösungen einer speziellen Differentialgleichungen
 gefunden.
-In diesem Abschnitt sollen diese Funktionen mit der Potenzreihen-Methode
+In diesem Abschnitt sollen diese Funktionen mit der Potenzreihenmethode
 wiedergefunden werden.
 Dabei stellt sich heraus, dass diese Polynome auch Eigenfunktionen eines
 selbstadjungierten Differentialgoperators sind.
@@ -154,12 +154,12 @@ In diesem Fall müssen die Koeffizienten $a_k$ ab einem
 gewissen Index verschwinden.
 Dies tritt nach \eqref{buch:integral:legendre-dgl:eqn:akrek} genau
 dann auf, wenn der Zähler für ein $k$ verschwindet.
-Folglich gibt es genau dann Polynomlösungen der Differentialgleichungen,
+Folglich gibt es genau dann Polynomlösungen der Differentialgleichung,
 wenn $n$ eine natürlich Zahl ist.
 Ausserdem ist die Lösung ein Polynom $\bar{P}_n(x)$ vom Grad $n$.
 Das Polynom soll wieder so normiert sein, dass $\bar{P}_n(1)=1$ ist.
 
-Die Lösungen der Differentialgleichungen können jetzt explizit
+Die Lösungen der Differentialgleichung können jetzt explizit
 berechnet werden.
 Zunächst ist $\bar{P}_0(x)=1$ und $\bar{P}_1(x)=x$.
 Für $n=2$ setzen wir zunächst $a_0=1$ und $a_1=0$ und erhalten
@@ -386,8 +386,10 @@ y(x)
 &=
 -x\biggl(x+\frac13x^3 + \frac15x^5 + \frac17x^7 + \frac19x^9+\dots\biggr)
 =
--x\operatorname{artanh}x.
+-x\operatorname{artanh}x
 \end{align*}
+errechnen lässt.
+
 Die {\em Legendre-Funktionen zweiter Art} $Q_n(x)$  werden allerdings
 so definiert, dass gewisse Rekursionsformeln für die Legendre-Polynome,
 die wir hier nicht hergeleitet haben, auch für die $Q_n(x)$ gelten.
@@ -436,7 +438,7 @@ Dies ist die {\em Laguerre-Differentialgleichung}.
 \index{Laguerre-Differentialgleichung}%
 \index{Differentialgleichung!Laguerre}%
 Die Laguerre-Polynome sind also Lösungen der Laguerre-Differentialgleichung,
-wenn der Parameter $n$ nicht-negativ ganzzahlig ist.
+wenn der Parameter $n$ nicht negativ ganzzahlig ist.
 
 Die allgemeine Laguerre-Differentialgleichung lässt beliebige reelle
 Werte für den Koeffizienten von $w$ zu, sie lautet
@@ -445,7 +447,9 @@ zw''+(1-z)w'+\lambda w=0.
 \]
 Die Anfangsbedingungen für die hypergeometrische Funktion als Lösung 
 \begin{align*}
-L_n(0)  &= \mathstrut_1F_1\biggl(\begin{matrix}-\lambda\\1\end{matrix}; 0\biggr) = 1\\
+L_n(0)
+&=
+\mathstrut_1F_1\biggl(\begin{matrix}-\lambda\\1\end{matrix}; 0\biggr) = 1
 \\
 L'_n(0) &=
 \frac{d}{dx}
@@ -456,7 +460,7 @@ L'_n(0) &=
 Der Satz
 \ref{buch:differentialgleichungen:satz:1f1-dgl-loesungen}
 schlägt eine zweite Lösung vor, im vorliegenden Fall mit $b=1$
-ist die zweite Lösung jedoch identisch zu ersten, es muss daher
+ist die zweite Lösung jedoch identisch zur ersten, es muss daher
 ein anderer Weg zu einer zweiten Lösung gesucht werden.
 
 %XXX TODO: zweite Lösung der Differentialgleichung.

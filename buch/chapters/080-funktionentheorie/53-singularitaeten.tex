@@ -92,8 +92,8 @@ nur eine Lösung statt der erwarteten zwei linear unabhängigen
 Lösungen gefunden.
 
 Sind die Koeffizienten einer linearen Differentialgleichungen wie
-in den genannten Beispielen singulär bei $x=0$, kann man auch nicht
-erwarten, dass die Lösungen singulär sind.
+in den genannten Beispielen bei $x=0$ singulär, kann man auch nicht
+erwarten, dass die Lösungen nicht singulär sind.
 Dies war schliesslich die Motivation, einen Lösungsansatz mit einer
 verallgemeinerten Potenzreihe zu versuchen.
 Mit den Funktion $x^\varrho$ lässt sich bereits eine recht grosse
@@ -203,6 +203,10 @@ z^n
 \sk z^\varrho
 &=
 e^{2\pi i\varrho} z^\varrho
+\\
+\sk \log(z)
+&=
+\log(z) + 2\pi i
 \end{aligned}
 \]
 schreiben.
@@ -396,33 +400,47 @@ Für den Quotienten $w_1/w_2$ findet man jetzt das Bild
 \frac{w_1}{w_2} + \frac{1}{\lambda}
 \label{buch:funktionentheorie:singularitaeten:sklog}
 \end{equation}
-Das Verhalten von $w_1$ unter $\sk$ in
-\eqref{buch:funktionentheorie:singularitaeten:sklog}
-ist dasselbe wie bei $\log(z)/\lambda$, denn
+Die Funktion $\log(z)$ ändert unter $\sk$ um den Summanden
+$2\pi i$, somit ist
 \[
-\sk \frac{\log(z)}{\lambda}
+\sk\biggl(
+\frac{1}{2\pi i\lambda}
+\log(z)
+\biggr)
 =
-\frac{\log(z)}{\lambda} + 1.
+\frac{1}{2\pi i\lambda}
+\log(z)
++
+\frac{1}{2\pi i\lambda}
+2\pi i
+=
+\frac{1}{2\pi i\lambda}
+\log(z)
++
+\frac{1}{\lambda}
 \]
-Die Differenz $w_1-\log(z)/\lambda$ wird bei der analytischen
+Das Verhalten von $w_1/w_2$ unter $\sk$ in
+\eqref{buch:funktionentheorie:singularitaeten:sklog}
+ist also dasselbe wie bei $2\pi i\log(z)/\lambda$.
+Die Differenz $w_1-\log(z)/{2\pi i\lambda}$ wird bei der analytischen
 Fortsetzung zu
 \[
 \sk\biggl(
-\frac{w_1}{w_2}-\frac{\log(z)}{\lambda}
+\frac{w_1}{w_2}-\frac{\log(z)}{2\pi i\lambda}
 \biggr)
 =
-\sk \frac{w_1}{w_2} - \sk\frac{\log(z)}{\lambda}
+\sk \frac{w_1}{w_2} - \sk\frac{\log(z)}{2\pi i\lambda}
 =
 \frac{w_1}{w_2} + \frac{1}{\lambda}
 -
-\frac{\log(z)}{\lambda}
+\frac{\log(z)}{2\pi i\lambda}
 -\frac{1}{\lambda}
 =
-\frac{w_1}{w_2}-\frac{\log(z)}{\lambda}.
+\frac{w_1}{w_2}-\frac{\log(z)}{2\pi i\lambda}.
 \]
 Die Differenz ist daher wieder als Laurent-Reihe
 \[
-\frac{w_1}{w_2}-\frac{\log(z)}{\lambda}
+\frac{w_1}{w_2}-\frac{\log(z)}{2\pi i\lambda}
 =
 \sum_{k=-\infty}^\infty b_kz^k
 \]
@@ -430,7 +448,7 @@ darstellbar, was nach $w_1$ aufgelöst
 \[
 w_1(z)
 =
-\frac{1}{\lambda} \log(z) w_2(z)
+\frac{1}{2\pi i\lambda} \log(z) w_2(z)
 +
 w_2(z) \sum_{k=-\infty}^\infty b_kz^k
 \]
@@ -522,7 +540,7 @@ x^2z(x)
 +
 xz'(x)
 +
-x^2z''(x)
+x^2z''(x).
 \end{align*}
 Damit $y(x)$ eine Eigenfunktion zum Eigenwert $n^2$ wird, muss 
 dies mit $n^2y(x)$ übereinstimmen, also

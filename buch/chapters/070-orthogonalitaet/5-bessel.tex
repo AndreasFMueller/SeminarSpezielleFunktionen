@@ -6,8 +6,10 @@
 \section{Bessel-Funktionen als orthogonale Funktionenfamilie
 \label{buch:orthogonalitaet:section:bessel}}
 %\kopfrechts{Bessel-Funktionen}
-Auch die Bessel-Funktionen sind eine orthogonale Funktionenfamilie.
-Sie sind differenzierbaren Funktionen $f(r)$, die definiert
+Auch die Bessel-Funktionen sind eine orthogonale Funktionenfamilie
+bezüglich eines Skalarproduktes, welches in diesem Abschnitt
+gefunden werden soll.
+Sie sind differenzierbare Funktionen $f(r)$, die definiert
 sind für $r>0$, mit $f'(r)=0$ und derart, dass für $r\to\infty$ $f(r)$
 so schnell abnimmt, dass auch $rf(r)$ noch gegen $0$ strebt.
 Das Skalarprodukt ist
@@ -84,15 +86,15 @@ Af&=\lambda f
 f''(r) +\frac1rf'(r) + s(r)f(r) &= \lambda f(r)
 \\
 &\Rightarrow\qquad&
-r^2f''(r) +rf'(r)+ (-\lambda r^2+s(r)r^2)f(r) &= 0
+r^2f''(r) +rf'(r)+ (-\lambda r^2+s(r)r^2)f(r) &= 0.
 \end{aligned}
 \]
-sind.
 
 Durch die Wahl $s(r)=1$ wird der Operator $A$ zum Bessel-Operator
 $B$, definiert in
 \eqref{buch:differentialgleichungen:bessel-operator}.
 Die Lösungen der Besselschen Differentialgleichung zu verschiedenen Werten
-des Parameters müssen also orthogonal sein, insbesondere sind die
+des Parameters müssen also orthogonal bezüglic $\langle\,\;,\;\rangle_r$
+sein, insbesondere sind die
 Bessel-Funktion $J_\nu(r)$ und $J_\mu(r)$ orthogonal wenn $\mu\ne\nu$ ist.
 

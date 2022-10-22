@@ -52,7 +52,8 @@ Das gewohnte Eigenwertproblem verwendet die Matrix $B=E$.
 \index{Eigenvektor, verallgemeinerter}%
 \label{buch:orthogonal:sturm:verallgemeinerter-eigenvektor}
 Seien $A$ und $B$ $n\times n$-Matrizen.
-$v$ heisst {\em verallgemeinerter Eigenvektor} zum Eigenwert $\lambda$,
+Der Vektor $v$ heisst {\em verallgemeinerter Eigenvektor}
+zum Eigenwert $\lambda$,
 wenn
 \[
 Av = \lambda Bv.
@@ -70,7 +71,7 @@ Ist $v$ ein Vektor, der die Grösse
 \[
 f(v)=\frac{v^tAv}{v^tBv}
 \]
-maximiert, ist ein verallgemeinerter Eigenvektor für die Matrizen $A$
+maximiert, dann ist er ein verallgemeinerter Eigenvektor für die Matrizen $A$
 und $B$.
 \end{satz}
 
@@ -99,7 +100,7 @@ v^tMu+u^tMv
 =
 2v^tMu.
 \end{align*}
-Dies wenden wir jetzt auf den Quotienten $\lambda(v+tu)$ an.
+Dies wenden wir jetzt auf den Quotienten $\lambda(v+tu)$ an und erhalten
 \begin{align*}
 \frac{d}{dt}f(v+tu)\bigg|_{t=0}
 &=
@@ -273,7 +274,7 @@ p(a)f'(a)&p(a)g'(a)
 \end{matrix}\right|.
 \notag
 \end{align}
-Um zu erreichen, dass der Operator selbstadjunigert wird, muss 
+Um zu erreichen, dass der Operator selbstadjungiert wird, muss 
 sichergestellt werden, dass entweder $p$ oder die Determinanten
 an den Intervallenden verschwinden.
 Dies passiert genau dann, wenn die Vektoren 
@@ -341,7 +342,8 @@ Inneren des Intervalls sein.
 %
 % Der Vektorraum H
 %
-\subsection{Der Vektorraum $H$}
+\subsection{Der Vektorraum $H$
+\label{buch:orthogonalitaet:subsection:H}}
 Damit können wir jetzt die Eigenschaften der in Frage kommenden
 Funktionen zusammenstellen.
 Zunächst müssen sie auf dem Intervall $[a,b]$ definiert sein und
@@ -353,6 +355,9 @@ muss existieren.
 Wir bezeichnen den Vektorraum der Funktionen, deren Quadrat mit
 der Gewichtsfunktion $w(x)$ integrierbar sind, mit
 $L^2([a,b],w)$.
+($L^2([a,b],w)$ ist in 
+Lemma~\ref{buch:orthogonal:lemma:gewichtsfunktion}
+definiert worden.)
 
 Damit auch $\langle qf,f\rangle_w$ und $\langle L_0f,f\rangle_w$
 wohldefiniert sind, müssen zusätzlich die Integrale
@@ -372,16 +377,13 @@ f\in L^2([a,b],w)\;\bigg|\;
 \int_a^b |f(x)|^2q(x)w(x)\,dx<\infty
 \biggr\}.
 \]
-($L^2([a,b],w)$ ist in 
-Lemma~\ref{buch:orthogonal:lemma:gewichtsfunktion}
-definiert worden.)
 
 %
 % Der Sturm-Liouville-Differentialoperator
 %
 \subsection{Der Sturm-Liouville-Differentialoperator}
 Das verallgemeinerte Eigenwertproblem für $A$ und $B$ ist ein
-gewöhnliches Eigenwertproblem für die Operator $\tilde{A}=B^{-1}A$
+gewöhnliches Eigenwertproblem für den Operator $\tilde{A}=B^{-1}A$
 bezüglich des modifizierten Skalarproduktes.
 Das Sturm-Liouville-Problem ist also ein Eigenwertproblem im
 Vektorraum $H$ mit dem Skalarprodukt $\langle\,\;,\;\rangle_w$.
@@ -399,7 +401,8 @@ dass
 Ly = \lambda y,
 \]
 $\lambda$ ist der zu $y(x)$ gehörige Eigenwert.
-Der Operator ist definiert auf Funktionen des im vorangegangenen Abschnitt
+Der Operator ist definiert auf Funktionen des im
+Abschnitt~\ref{buch:orthogonalitaet:subsection:H}
 definierten Vektorraumes $H$.
 Führt man die Differentiation aus, bekommt der Operator die Form
 \begin{equation}
