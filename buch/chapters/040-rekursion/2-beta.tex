@@ -98,7 +98,7 @@ B(x,y+1)
  \frac{y}x B(x+1,y).
 \label{buch:rekursion:gamma:betarek2}
 \end{align}
-Durch Gleichsetzen
+Durch Gleichsetzen von
 \eqref{buch:rekursion:gamma:betarek1}
 und
 \eqref{buch:rekursion:gamma:betarek2}
@@ -178,7 +178,7 @@ B(x,y)
 \frac{n!\,n^{y-1}}{(y)_n}
 \int_0^1 n^{x} t^{x-1}(1-t)^{y+n-1}\,dt.
 \notag
-\intertext{Mit der Substition $s/n=t$ wird das Integral zu einem Integral
+\intertext{Mit der Substitution $s/n=t$ wird das Integral zu einem Integral
 über das Interval $[0,n]$}
 &=
 \frac{(x+y)_n}{n!\, n^{x+y-1}}
@@ -212,9 +212,10 @@ s^{x-1}
 &\to \frac{\Gamma(y)}{\Gamma(x+y)} \int_0^\infty s^{x-1}e^{-s}\,ds.
 \label{buch:rekursion:gamma:betagamma}
 \end{align}
-Das Integral im letzten Ausdruck ist die Integraldarstellung für 
-die Gamma-Funktion von Definition~\ref{buch:rekursion:def:gamma},
-die bis anhin noch nicht gerechtfertigt wurde.
+Das Integral im letzten Ausdruck ist die bislang unbewiesene
+Integraldarstellung für 
+die Gamma-Funktion von Definition~\ref{buch:rekursion:def:gamma}.
+%die bis anhin noch nicht gerechtfertigt wurde.
 
 In~\eqref{buch:rekursion:gamma:betax1} ist gezeigt worden, dass
 $B(x,1)=1/x$.
@@ -299,12 +300,13 @@ Für $x=\frac12$ wird der Ausdruck besonders einfach:
 =
 \int_0^1 \frac{1}{\sqrt{t(1-t)\mathstrut}}\,dt.
 \]
-Mit der Substition $t=\sin^2 s$ wird daraus
+Mit der Substitution $t=\sin^2 s$ wird daraus
 \[
 \int_0^{\frac{\pi}2}
 \frac{1}{
 \sqrt{\sin^2s(1-\sin^2s)}
 }
+\cdot
 2\sin s\cos s
 \,ds
 =
@@ -345,30 +347,34 @@ der Gamma-Funktion interpretiert.
 \subsubsection{Alternative Parametrisierungen}
 Die Substitution $t=\sin^2 s$ hat im vorangegangenen Abschnitt
 ermöglicht, $\Gamma(\frac12)$ zu ermitteln.
-Die Substition erlaubt aber auch, das Beta-Integral in eine alternative
+Die Substitution erlaubt aber auch, das Beta-Integral in eine alternative
 Form zu bringen.
 Aus der Definition~\ref{buch:rekursion:gamma:def:beta-funktion}
 wird damit
-\begin{align*}
+\begin{align}
 B(x,y)
 &=
 \int_0^1 t^{x-1} (1-t)^{y-1}\,dt
+\notag
 \\
 &=
 2
 \int_0^{\frac{\pi}2} \sin^{2(x-1)} s\cdot (1-\sin^2 s)^{y-1}
 \cdot \sin s\cos s\,ds
+\notag
 \\
 &=
 2
 \int_0^{\frac{\pi}2} \sin^{2x-1}s \cos^{2y-1} s\,ds.
+\label{buch:rekursion:beta:trigo}
 \intertext{Unter Verwendung der Formel~\eqref{buch:rekursion:gamma:betagamma},
 die die Beta-Funktion durch Gamma-Funktionen auszudrücken erlaubt, findet
 man die Formel}
 \int_0^{\frac{\pi}2} \sin^{2x-1}s \cos^{2y-1} s\,ds
 &=
 \frac{\Gamma(x)\Gamma(y)}{2\Gamma(x+y)}
-\end{align*}
+\notag
+\end{align}
 für ein bestimmtes Integral von Potenzen von Sinus- und Kosinus-Funktionen.
 
 Die alternative Substitution $t = s/(s+1)$ verwandelt das Beta-Integral
@@ -435,7 +441,8 @@ B(x,y)
 % Verdoppelungsformel von Legendre
 %
 \subsubsection{Die Verdoppelungsformel von Legendre}
-Die trigonometrische Substitution kann dazu verwendet werden, die
+Die trigonometrische Substitution \eqref{buch:rekursion:beta:trigo}
+kann dazu verwendet werden, die
 Legendresche Verdoppelungsformel für die Gamma-Funktion herzuleiten.
 
 \begin{satz}[Legendre]

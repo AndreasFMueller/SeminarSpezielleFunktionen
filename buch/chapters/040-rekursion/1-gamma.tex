@@ -22,7 +22,8 @@ Kann man eine reelle oder komplexe Funktion finden, die die
 Funktionalgleichung~\eqref{buch:rekursion:eqn:gammadef}
 \index{Gamma-Funktion!Funktionalgleichung}%
 \index{Funktionalgleichung der Gamma-Funktion}%
-erfüllt und damit die Fakultät auf beliebige Argumente ausdehnt?
+erfüllt und damit die Fakultät auf beliebige reelle oder komplexe
+Argumente $x\in\mathbb{R}$ oder $x\in\mathbb{C}$ ausdehnt?
 
 %
 % Definition als Grenzwert
@@ -35,7 +36,7 @@ Anzahl von Faktoren zu machen, denn wenn $x$ grösser wird, muss auch
 die Zahl der Faktoren grösser werden.
 Mit jedem zusätzlichen Faktor ist ein Sprung der Werte zu erwarten.
 Wir erwarten daher entweder ein unendliches Produkt oder einen
-Ausdreck, bei dem die ``Anzahl'' $x$ der Faktoren im Exponenten
+Ausdruck, bei dem die ``Anzahl'' $x$ der Faktoren im Exponenten
 steht.
 In diesem Abschnitt soll zunächst eine solcher Ausdruck gefunden
 werden.
@@ -108,7 +109,7 @@ x! = \frac{n! (n+1)_x}{(x+1)_n}.
 \label{buch:rekursion:gamma:eqn:produkt2}
 \end{equation}
 Leider ist dieser Ausdruck ebenfalls nicht auf beliebige $x$
-verallgemeinerungsfähig, denn $(n)_x$ ist nur natürliche $x$ definiert.
+verallgemeinerungsfähig, denn $(n)_x$ ist nur für natürliche $x$ definiert.
 Der Faktor $(n+1)_x$ enthält $x$ Faktoren beginnend bei $n$.
 Für grosses $n$ sind diese Faktoren nahe beeinander, man sollte also
 $(n+1)_x$ durch $n^x$ approximieren können.
@@ -146,11 +147,11 @@ Tatsächlich gilt
 1,
 \]
 da  $(n+x)/n=1+x/n\to 1$ für grosses $n$.
-Dies würde die folgende Definition rechtfertigen.
+Dies rechtfertigt die folgende Definition.
 
 \begin{definition}
 \label{buch:rekursion:gamma:def:definition}
-Die Gamma-Funktion $\Gamma(x)$ einer Zahl
+Die {\em Gamma-Funktion} $\Gamma(x)$ einer Zahl
 $x\in\mathbb{C}\setminus\{0,-1,-2,-3,\dots\}$ ist der Grenzwert
 \[
 \Gamma(x) = \lim_{n\to\infty} \frac{n!\,n^{x-1}}{(x)_n}.
@@ -294,7 +295,7 @@ wächst logarithmisch mit $n$.
 \label{buch:rekursion:gamma:produktberechnung}}
 \end{table}
 Die Grenzwertdefinition~\ref{buch:rekursion:gamma:def:definition}
-ist zwar zweifellos richtig, kann aber nicht für die numerische 
+ist zwar zweifellos vernünftig, kann aber nicht für die numerische 
 Berechnung der Gamma-Funktion verwendet werden.
 Die Existenz des Grenzwertes verwendet, dass $x\ll n$ sein muss,
 damit $(n+x)/n$ gegenüber $1$ vernachlässigt werden kann.
@@ -445,6 +446,7 @@ e^{-x\log n}
 \\
 &=
 x
+\lim_{n\to\infty}
 \prod_{k=1}^{n-1}
 \biggl(1+\frac{x}{k}\biggr)
 e^{-\frac{x}{k}}
@@ -452,7 +454,7 @@ e^{\frac{x}{k}}
 e^{-x\log n}
 \\
 &=
-x
+x\,
 \biggl(
 \lim_{n\to\infty}
 \prod_{k=1}^{n-1}
@@ -463,7 +465,7 @@ e^{-\frac{x}{k}}
 \biggl(
 \lim_{n\to\infty}
 e^{x\bigl(\sum_{k=1}^{n-1}\frac{1}{k} - \log n\bigr)}
-\biggr)
+\biggr).
 \end{align*}
 Der Klammerausdruck im Exponent des letzten Faktors auf der rechten Seite
 konvergiert nach Definition der Euler-Mascheronischen Konstanten gegen
@@ -550,8 +552,8 @@ Man beachte, dass das Integral für $x=0$ nicht definiert ist, eine
 Potenzreihenentwicklung um einen Punkt $x_0$ auf der positiven reellen
 Achse kann also höchstens den Konvergenzradius $\varrho=|x_0|$ haben.
 
-Die Definition~\ref{buch:rekursion:def:gamma} wird erst später in
-\eqref{buch:rekursion:gamma:integralbeweis} auf
+Die Begründung für Definition~\ref{buch:rekursion:def:gamma} wird erst
+später in \eqref{buch:rekursion:gamma:integralbeweis} auf
 Seite~\pageref{buch:rekursion:gamma:integralbeweis} gegeben.
 Im Folgenden wird zunächst verifiziert, dass die Integraldarstellung
 die richtigen Werte für natürliche Argumente hat, es wird aber auch
@@ -564,9 +566,9 @@ Integralformel mit der früher definierten Gamma-Funktion übereinstimmt.
 \subsubsection{Funktionalgleichung für die Integraldefinition}
 Tatsächlich ist es einfach nachzuprüfen, dass die Funktionalgleichung
 der Gamma-Funktion auch für die Definition~\ref{buch:rekursion:def:gamma}
-Korrekt ist. 
+korrekt ist. 
 Dazu ist zunächgst nachzurechnen, dass mindestens ein Wert der neuen 
-Definition übereinstimmt mit der alten Definnition, zum Beispiel der
+Definition mit der alten Definnition übereinstimmt, zum Beispiel der
 Wert
 \[
 \Gamma(1)
@@ -627,7 +629,7 @@ Die Integraldarstellung kann dazu verwendet werden, $\Gamma(\frac12)$
 zu berechnen.
 \index{Gamma-Funktion!WertGamma12@Wert von $\Gamma(\frac12)$}%
 \index{G(1/2)@$\Gamma(\frac12)$}%
-Dazu verwendet man die Substition $t=s^2$ in der Integraldefinition
+Dazu verwendet man die Substitution $t=s^2$ in der Integraldefinition
 der Gamma-Funktion und berechnen
 \begin{align}
 \Gamma({\textstyle\frac12})
@@ -644,16 +646,18 @@ der Gamma-Funktion und berechnen
 \label{buch:rekursion:gamma:wert12}
 \end{align}
 Der Integrand im letzten Integral ist die Wahrscheinlichkeitsdichte
-einer Normalverteilung, deren Integral wohlbekannt ist.
+einer Normalverteilung, deren Integral wohlbekannt ist, es wird
+in Abschnitt~\ref{buch:integrale:section:fehlerfunktion} behandelt.
 
 %
 % Alternative Lösungen
 %
 \subsubsection{Alternative Lösungen der
 Funktionalgleichung~\ref{buch:rekursion:eqn:gammadef}}
-Die Funktion $\Gamma(z)$ ist nicht die einzige Funktion, die natürlichen
-Zahlen die Werte $\Gamma(n+1) = n!$ der Fakultät annimmt.
-Indem man eine beliebige Funktion $f(z)$ addiert, die auf alle
+Die Funktion $\Gamma(z)$ ist nicht die einzige Funktion, die für
+die natürlichen Zahlen als Argumente die Werte $\Gamma(n+1) = n!$
+der Fakultät annimmt.
+Indem man eine beliebige Funktion $f(z)$ addiert, die auf allen
 natürlichen Zahlen verschwindet, also $f(n)=0$ für $n\in\mathbb{N}$,
 erhält man eine weitere Funktion, die auf natürlichen Zahlen
 die Werte der Fakultät annimmt.
@@ -668,8 +672,8 @@ Zahlen.
 In Abbildung~\ref{buch:rekursion:fig:gamma} ist die Gamma-Funktion
 in rot geplotet, die Funktion~\eqref{buch:rekursion:eqn:gammaalternative}
 in grün.
-Die Punkte $(n,(n-1)!)$ sind in blau bezeichnet, sie sind beiden Graphen
-gemeinsam.
+Die Punkte $(n,(n-1)!)$ mit $n\in\mathbb{N}$ sind in blau gezeichnet,
+sie sind beiden Graphen gemeinsam.
 
 In Abschnitt~\ref{buch:funktionentheorie:subsection:satz-von-carlson}
 wir mit Mitteln der komplexen Funktionentheorie gezeigt, dass eine
@@ -701,7 +705,7 @@ Dann ist $ f(z) = \Gamma(z) $.
 %
 \subsubsection{Laplace-Transformierte der Potenzfunktion}
 Die Integraldarstellung der Gamma-Funktion erlaubt jetzt auch, die
-Laplace-Transformation der Potenzfunktion zu berechnen.
+Laplace-Transformierte der Potenzfunktion zu berechnen.
 \index{Laplace-Transformierte der Potenzfunktion}%
 
 \begin{satz}
@@ -752,25 +756,25 @@ Der Wert für $z=1$ ist
 =
 1.
 \end{align*}
-Für die Rekursionsformel kann mit Hilfe von partieller Integration
-bekommen:
-\begin{align*}
-\Gamma(z+1)
-&=
-\int_0^\infty t^{z+1-1}e^{-t}\,dt
-=
-\biggl[-t^{z}e^{-t}\biggr]_0^\infty
-+
-\int_0^\infty z t^{z-1}e^{-t}\,dt
-\\
-&=
-z
-\int_0^\infty
-t^{z-1}e^{-t}\,dt
-=
-z \Gamma(z).
-\end{align*}
-
+%Für die Rekursionsformel kann mit Hilfe von partieller Integration
+%bekommen:
+%\begin{align*}
+%\Gamma(z+1)
+%&=
+%\int_0^\infty t^{z+1-1}e^{-t}\,dt
+%=
+%\biggl[-t^{z}e^{-t}\biggr]_0^\infty
+%+
+%\int_0^\infty z t^{z-1}e^{-t}\,dt
+%\\
+%&=
+%z
+%\int_0^\infty
+%t^{z-1}e^{-t}\,dt
+%=
+%z \Gamma(z).
+%\end{align*}
+%
 Für $0<z<\varepsilon$ für eine $\varepsilon >0$ folgt aus der 
 Funktionalgleichung
 \[
@@ -829,7 +833,7 @@ kann $\Gamma(z+n)$ mit der Integralformel berechnet werden.
 
 Die Gamma-Funktion hat keine Nullstellen, aber in der Nähe von $z=-n$
 hat der Nenner eine Nullstelle erster Ordnung.
-Somit hat $\Gamma(z)$ Pole erster Ordnung bei den negativen
+Somit hat $\Gamma(z)$ Pole erster Ordnung bei allen negativen
 ganzen Zahlen und bei $0$, wie sie in
 Abbildung~\ref{buch:rekursion:fig:gamma} gezeigt werden.
 

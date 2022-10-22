@@ -6,7 +6,7 @@
 \subsection{Ordnungsstatistik und Beta-Funktion
 \label{buch:rekursion:ordnung:section:ordnungsstatistik}}
 In diesem Abschnitt ist $X$ eine Zufallsvariable mit der Verteilungsfunktion
-$F_X(x)$, und $X_i$, $1\le i\le n$ sei ein Stichprobe von unabhängigen
+$F_X(x)$ und $X_i$, $1\le i\le n$, sei ein Stichprobe von unabhängigen
 Zufallsvariablen, die wie $X$ verteilt sind.
 Ziel ist, die Verteilungsfunktion und die Wahrscheinlichkeitsdichte
 des grössten, zweitgrössten, $k$-t-grössten Wertes in der Stichprobe
@@ -47,7 +47,7 @@ x&\qquad 0\le x\le 1
 1&\qquad 1<x.
 \end{cases}
 \]
-In diesem Fall ist Verteilung des Maximums
+In diesem Fall ist die Verteilung des Maximums
 \[
 F_{\operatorname{max}(X_1,\dots,X_n)}(x)
 =
@@ -74,7 +74,7 @@ kann man zum Beispiel den Erwartungswert
 E(\operatorname{max}(X_1,\dots,X_n))
 =
 \int_{-\infty}^\infty 
-x
+x\,
 \varphi_{\operatorname{X_1,\dots,X_n}}(x)
 \,dx
 =
@@ -107,7 +107,7 @@ P(x > X_1\wedge \dots \wedge x > X_n)
 &=
 1-(1-F_X(x))^n,
 \end{align*}
-Im Speziellen für im Intervall $[0,1]$ gleichverteilte $X_i$ ist die
+Im Speziellen ist für im Intervall $[0,1]$ gleichverteilte $X_i$ die
 Verteilungsfunktion des Minimums
 \[
 F_{\operatorname{min}(X_1,\dots,X_n)}(x)
@@ -118,7 +118,7 @@ F_{\operatorname{min}(X_1,\dots,X_n)}(x)
 1        &\qquad 1 < x
 \end{cases}
 \]
-mit Wahrscheinlichkeitsdichte
+und die Wahrscheinlichkeitsdichte dist
 \[
 \varphi_{\operatorname{min}(X_1,\dots,X_n)}
 =
@@ -127,14 +127,14 @@ F_{\operatorname{min}(X_1,\dots,X_n)}
 =
 \begin{cases}
 n(1-x)^{n-1}&\qquad 0\le x\le 1\\
-0           &\qquad \text{sonst}
+0           &\qquad \text{sonst.}
 \end{cases}
 \]
-und Erwartungswert
+Der Erwartungswert
 \begin{align*}
 E(\operatorname{min}(X_1,\dots,X_n)
 &=
-\int_{-\infty}^\infty x\varphi_{\operatorname{min}(X_1,\dots,X_n)}(x)\,dx
+\int_{-\infty}^\infty x\,\varphi_{\operatorname{min}(X_1,\dots,X_n)}(x)\,dx
 =
 \int_0^1 x\cdot n(1-x)^{n-1}\,dx
 \\
@@ -149,7 +149,9 @@ E(\operatorname{min}(X_1,\dots,X_n)
 =
 \frac{1}{n+1}.
 \end{align*}
-Es ergibt sich daraus als natürlich Verallgemeinerung die Frage nach
+Aus der Frage nach der Verteilung von Maximum und Minimum einer
+Stichprobe 
+ergibt sich als natürliche Verallgemeinerung die Frage nach
 der Verteilung des zweitegrössten oder zweitkleinsten Wertes unter den
 Werten $X_i$.
 
@@ -175,8 +177,8 @@ X_{n:n} &= \operatorname{max}(X_1,\dots,X_n).
 \end{align*}
 
 Um den Wert der Verteilungsfunktion von $X_{k:n}$ zu berechnen, müssen wir 
-die Wahrscheinlichkeit bestimmen, dass $k$ der $n$ Werte $X_i$ $x$ nicht
-übersteigen.
+die Wahrscheinlichkeit bestimmen, dass $k$ der $n$ Werte $X_i$
+die Schranke $x$ nicht übersteigen.
 Der $k$-te Wert $X_{k:n}$ übersteigt genau dann $x$ nicht, wenn
 mindestens $k$ der Zufallswerte $X_i$ $x$ nicht übersteigen, also
 \[
@@ -260,9 +262,9 @@ i\binom{n}{i}
 (n-i+1)\binom{n}{i-1}
 \right)
 F_X(x)^{i-1}(1-F_X(x))^{n-i}
-\biggr)
+\biggr).
 \end{align*}
-Mit den wohlbekannten Identitäten für die Binomialkoeffizienten
+Mit den wohlbekannten Identitäten
 \begin{align*}
 i\binom{n}{i} 
 -
@@ -275,12 +277,12 @@ n
 =
 0
 \end{align*}
-folgt jetzt
+für die Binomialkoeffizienten folgt jetzt
 \begin{align*}
 \varphi_{X_{k:n}}(x)
 &=
 \varphi_X(x)k\binom{n}{k} F_X(x)^{k-1}(1-F_X(x))^{n-k}.
-\intertext{Im Speziellen für gleichverteilte Zufallsvariablen $X_i$ ist
+\intertext{Im Speziellen ist für gleichverteilte Zufallsvariablen $X_i$
 }
 \varphi_{X_{k:n}}(x)
 &=
@@ -291,8 +293,9 @@ Dies ist die Wahrscheinlichkeitsdichte einer Betaverteilung
 \beta(k,n-k+1)(x)
 =
 \frac{1}{B(k,n-k+1)}
-x^{k-1}(1-x)^{n-k}.
+x^{k-1}(1-x)^{n-k}
 \]
+(siehe den nächsten Abschnitt~\ref{buch:rekursion:subsection:beta-verteilung}).
 Tatsächlich ist die Normierungskonstante 
 \begin{align}
 \frac{1}{B(k,n-k+1)}
@@ -310,9 +313,11 @@ k\frac{n!}{k!(n-k)!}
 =
 \frac{n!}{(k-1)!(n-k)!},
 \]
-in Übereinstimmung mit~\eqref{buch:rekursion:ordnung:betaverteilung:normierung1}.
+in Übereinstimmung
+mit~\eqref{buch:rekursion:ordnung:betaverteilung:normierung1}.
 Die Verteilungsfunktion und die Wahrscheinlichkeitsdichte der
-Ordnungsstatistik sind in Abbildung~\ref{buch:rekursion:ordnung:fig:order} dargestellt.
+Ordnungsstatistik sind in Abbildung~\ref{buch:rekursion:ordnung:fig:order}
+dargestellt.
 
 \begin{figure}
 \centering
@@ -346,8 +351,9 @@ als Punkt mit der gleichen Farbe dargestellt.
 \end{figure}
 
 \begin{definition}
+\label{buch:rekursion:beta:def}
 Die Beta-Verteilung ist die Verteilung mit der Wahrscheinlichkeitsdichte
-\[
+\begin{equation}
 \beta_{a,b}(x)
 =
 \begin{cases}
@@ -356,16 +362,21 @@ Die Beta-Verteilung ist die Verteilung mit der Wahrscheinlichkeitsdichte
 x^{a-1}(1-x)^{b-1}&\qquad 0\le x \le 1\\
 0&\qquad\text{sonst.}
 \end{cases}
-\]
+\label{buch:rekursion:beta:eqn:def}
+\end{equation}
 \end{definition}
 
 Die Beta-Funktion ist also die Normierungskonstante der Beta-Verteilung.
 Die wichtigsten Kennzahlen der Beta-Verteilung wie Erwartungswert und
 Varianz lassen sich alle ebenfalls als Werte der Beta-Funktion ausdrücken.
 
+%
+% Erwartungswert
+%
 \subsubsection{Erwartungswert}
-Mit der Wahrscheinlichkeitsdichte kann man jetzt auch den Erwartungswerte
-der $k$-ten Ordnungsstatistik bestimmen.
+Aus der Wahrscheinlichkeitsdichte \eqref{buch:rekursion:beta:eqn:def}
+kann man jetzt auch den Erwartungswerte der $k$-ten Ordnungsstatistik
+bestimmen.
 Die Rechnung ergibt:
 \begin{align*}
 E(X_{k:n})
@@ -379,7 +390,7 @@ x^{k}(1-x)^{n-k}\,dx.
 \intertext{Dies ist das Beta-Integral}
 &=
 k\binom{n}{k}
-B(k+1,n-k+1)
+B(k+1,n-k+1),
 \intertext{welches man durch Gamma-Funktionen bzw.~durch Fakultäten wie in}
 &=
 k\frac{n!}{k!(n-k)!}
@@ -414,8 +425,10 @@ Durch Einsetzen von $a=k+1$ und $b=n-k+1$ lassen sich die für die
 Ordnungsstatistik berechneten Werte wiederfinden.
 
 \subsubsection{Varianz}
-Auch die Varianz lässt sich einfach berechnen, dazu muss zunächst
-der Erwartungswert von $X_{k:n}^2$ bestimmt werden.
+Auch die Varianz einer Ordnungsstatistik lässt sich
+einfach berechnen.
+Dazu muss zunächst der Erwartungswert von $X_{k:n}^2$
+bestimmt werden.
 Er ist
 \begin{align*}
 E(X_{k:n}^2)
@@ -452,12 +465,13 @@ E(X_{k:n}^2) - E(X_{k:n})^2
 \frac{k(n-k+1)}{(n+1)^2(n+2)}.
 \label{buch:rekursion:ordnung:eqn:ordnungsstatistik:varianz}
 \end{align}
-In Abbildung~\ref{buch:rekursion:ordnung:fig:order} ist die Varianz der
+In Abbildung~\ref{buch:rekursion:ordnung:fig:order} ist die Wurzel 
+aus der Varianz der
 Ordnungsstatistik $X_{k:n}$ für $k=7$ und $n=10$ als oranges
 Rechteck dargestellt.
 
-Auch die Varianz kann ganz allgemein für die Beta-Verteilung
-bestimmt werden.
+Die Varianz kann auch ganz allgemein für eine beliebige Beta-verteilte
+Zufallsvariable bestimmt werden.
 Dazu berechnen wir zunächst
 \begin{align*}
 E(X^2)
@@ -478,7 +492,8 @@ E(X^2)-E(X)^2
 \]
 
 Die Formel~\eqref{buch:rekursion:ordnung:eqn:ordnungsstatistik:varianz}
-besagt auch, dass die Varianz der proportional ist zu $k((n+1)-k)$.
+besagt auch, dass die Varianz der $k$-ten Ordnungsstatistik proportional
+ist zu $k((n+1)-k)$.
 Dieser Ausdruck ist am grössten für $k=(n+1)/2$, die Varianz ist
 also grösser für die ``mittleren'' Ordnungstatistiken als für die
 extremen $X_{1:n}=\operatorname{min}(X_1,\dots,X_n)$ und

@@ -5,7 +5,7 @@
 %
 \section{Hypergeometrische Funktionen
 \label{buch:rekursion:section:hypergeometrische-funktion}}
-\kopfrechts{Hypergeometrische Funktionen}
+%\kopfrechts{Hypergeometrische Funktionen}
 Kann man eine Formel für die Lösung $S_n$ der lineare Differenzengleichung
 \[
 n^3S_{n}
@@ -29,6 +29,8 @@ aussehen und vor allem die besondere Eigenschaft haben, dass die
 Quotienten aufeinanderfolgender Terme rationale Funktionen von $k$
 sind.
 
+\kopfrechts{Hypergeometrische Funktionen}
+
 \begin{definition}
 Ein Folge heisst {\em hypergeometrisch}, wenn der Quotient aufeinanderfolgender
 \index{hypergeometrische Folge}%
@@ -36,15 +38,15 @@ Ein Folge heisst {\em hypergeometrisch}, wenn der Quotient aufeinanderfolgender
 Terme eine rationale Funktion des Folgenindex ist.
 \end{definition}
 
-Die Terme der Reihenentwicklungen aller bisher behandelten speziellen
-Funktionen waren hypergeometrisch.
+Die Koeffizienten der Potenzreihenentwicklungen aller bisher behandelten
+speziellen Funktionen waren hypergeometrisch.
 Im aktuellen Abschnitt soll daher die Klasse der sogenannten
 hypergeometrischen Funktionen untersucht werden, die durch diese
 Eigenschaft charakterisiert sind.
 
 In Abschnitt~\ref{buch:rekursion:hypergeometrisch:binomialkoeffizienten}
-wird klar, dass Folgen, deren Terme aus Fakultäten und Binomialkoeffizienten
-immer hypergeometrisch sind.
+wird klar werden, dass Folgen, deren Terme aus Fakultäten und
+Binomialkoeffizienten immer hypergeometrisch sind.
 \index{Binomialkoeffizient}%
 Die Untersuchung der geometrischen Reihe in
 Abschnitt~\ref{buch:rekursion:hypergeometrisch:geometrisch}
@@ -195,7 +197,7 @@ haben.
 Die Berechnung der Summe in 
 \eqref{buch:rekursion:hypergeometrisch:eqn:qsumme}
 beruht darauf, dass die Multiplikation mit $q$ einen ``anderen''
-Teil der Summe ergibt, der sich in der Differenze weghebt.
+Teil der Summe ergibt, der sich in der Differenz weghebt.
 
 %
 % Hypergeometrische Reihen
@@ -271,9 +273,9 @@ hypergeometrisch, weil der Quotient aufeinanderfolgender Koeffizienten
 =
 \frac{(-1)^{k+1}}{(2k+2)!}\cdot \frac{(2k)!}{(-1)^k}
 =
--\frac{1}{(2k+2)(2k+1)},
+-\frac{1}{(2k+2)(2k+1)}
 \]
-eine rationale Funktion mit Zählergrad $0$ und Nennergrad $2$.
+eine rationale Funktion mit Zählergrad $0$ und Nennergrad $2$ ist.
 Es gibt also eine hypergeometrische Reihe $f(z)$ derart, dass
 $\cos x = f(x^2)$ ist.
 
@@ -283,7 +285,7 @@ $\cos x = f(x^2)$ ist.
 \subsubsection{Die hypergeometrischen Funktionen $\mathstrut_pF_q$}
 Die Definition~\ref{buch:rekursion:hypergeometrisch:def:allg}
 einer hypergeometrischen Funktion wie auch die Verschiedenartigkeit
-der Beispiele kännen den Eindruck vermitteln, dass die diese Klasse
+der Beispiele können den Eindruck vermitteln, dass diese Klasse
 von Funktionen unübersichtlich gross sein könnte.
 Dem ist jedoch nicht so.
 In diesem Abschnitt soll gezeigt werden, dass alle hypergeometrischen
@@ -293,13 +295,13 @@ Funktionen $\mathstrut_pF_q$ ausgedrückt werden.
 Die hypergeometrischen Funktionen können also vollständig parametrisiert
 werden.
 
-Zu diesem Zweick sie
+Zu diesem Zweck sei
 \[
 f(x)
 =
 \sum_{k=0}^\infty a_kx^k
 \]
-eine hypergeometrische Funktion und
+eine hypergeometrische Funktion und es
 seien $p(k)$ und $q(k)$ zwei Polynome derart, dass
 \[
 \frac{a_{k+1}}{a_k} = \frac{p(k)}{q(k)}.
@@ -332,8 +334,8 @@ Alle Koeffizienten haben also den Faktor $a_0=f(0)$ gemeinsam.
 Die Produkte von Quotienten $p(k)/q(k)$ sollen jetzt weiter
 vereinfacht werden.
 Sei $n$ der Grad von $p(k)$ und $m$ der Grad von $q(k)$.
-Dazu nehmen wir an, dass $a_i$, $i=1,\dots,n$ die Nullstellen von $p(k)$ sind
-und $b_j$, $j=1,\dots,m$ die Nullstellen von $q(k)$, dass man also
+Dazu nehmen wir an, dass $a_i$, $i=1,\dots,n$, die Nullstellen von $p(k)$ sind
+und $b_j$, $j=1,\dots,m$, die Nullstellen von $q(k)$, dass man also
 die Polynome als
 \begin{align*}
 p(k) &= s(k-a_1)(k-a_2)\cdots(k-a_n)
@@ -362,7 +364,7 @@ s^{k}
 \]
 Die Koeffizienten können daher als Quotienten von Pochhammer-Symbolen
 geschrieben werden.
-Für Polynome $p(k)$ und $q(k)$ höheren Grades sind die Koeffizienten
+Für Polynome $p(k)$ und $q(k)$ beliebigen Grades sind die Koeffizienten
 von der Form
 \[
 a_k
@@ -469,7 +471,7 @@ a_{\pi(1)},\dots,a_{\pi(p)}\\b_{\sigma(1)},\dots,b_{\sigma(q)}
 \index{Satz!Kürzungsformel für hypergeometrische Funktionen}%
 \label{buch:rekursion:hypergeometrisch:satz:kuerzungsregel}
 Stimmt einer der Koeffizienten $a_k$ mit einem der Koeffizienten $b_i$
-überein, dann können sie weggelassen werden:
+überein, dann können beide weggelassen werden:
 \begin{equation}
 \mathstrut_{p+1}F_{q+1}\biggl(
 \begin{matrix}
@@ -679,7 +681,7 @@ x\cdot
 \biggr).
 \]
 Um dies in die Form einer hypergeometrischen Funktion zu bringen,
-muss zunächst wieder der Nenner $k!$ hergestellt werden.
+muss zunächst wieder der Nenner $k!$ hergestellt werden:
 \begin{align*}
 \log(1+x)
 &=
@@ -723,8 +725,9 @@ x\cdot\biggl(
 \biggr)
 =
 x\cdot
-\mathstrut_2F_1\biggl(\begin{matrix}1,1\\2\end{matrix};-x\biggr).
+\mathstrut_2F_1\biggl(\begin{matrix}1,1\\2\end{matrix};-x\biggr)
 \]
+wird.
 
 %
 % Trigonometrische Funktionen
@@ -848,8 +851,8 @@ durch eine hypergeometrische Funktion ausdrücken.
 %
 \subsubsection{Hyperbolische Funktionen}
 \index{hyperbolische Funktionen!als hypergeometrische Funktionen}%
-Die für die Sinus-Funktion angewendete Methode lässt sich auch
-auf die Funktion 
+Die für die Sinus-Funktion angewendete Methode führt auch für
+die Funktion 
 \begin{align*}
 \sinh x
 &=
@@ -861,7 +864,7 @@ x
 \,
 \biggl(
 1+\frac{x^2}{3!} + \frac{x^4}{5!}+\frac{x^6}{7!}+\dots
-\biggr)
+\biggr).
 \intertext{Die Reihe in der Klammer lässt sich mit der Funktion
 $f$ von \eqref{buch:rekursion:hyperbolisch:eqn:hilfsfunktionf}
 schreiben als}
@@ -912,7 +915,7 @@ Die Tschebyscheff-Polynome sind nicht die einzigen Familien von Polynomen,
 die sich durch $\mathstrut_pF_q$ ausdrücken lassen.
 Für die zahlreichen Familien von orthogonalen Polynomen, die in
 Kapitel~\ref{buch:chapter:orthogonalitaet} untersucht werden,
-trifft dies auch zu.
+trifft dies ebenfalls zu.
 Ein Funktion
 \[
 \mathstrut_pF_q
@@ -1003,7 +1006,7 @@ f'(x)
 \frac{x^k}{k!}.
 \]
 Der Koeffizient besteht zwar aus lauter Pochhammer-Symbolen, aber sie
-haben jeweils zu einen Faktor zuviel.
+haben jeweils einen Faktor zuviel.
 Indem man den jeweils ersten Faktor ausklammert, kann man die
 Terme wieder in die Form einer hypergeometrischen Reihe bringen.
 \begin{align*}
