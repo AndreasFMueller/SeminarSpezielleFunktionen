@@ -103,10 +103,10 @@ gelöst werden, es ist
 +
 C
 \qquad\Rightarrow\qquad
-\log|y| = \alpha \log|1+t| + C
+\log|y| = \alpha \log|1+t| + C.
 \label{buch:differentialgleichungen:eqn:wurzeldgl1loesung}
 \end{equation}
-und daraus die Potenzfunktion
+Daraus ergibt sich die Potenzfunktion
 \[
 y=D(1+t)^\alpha
 \]
@@ -228,13 +228,14 @@ D_{\omega t}
 beschreibt eine Drehung der Ebene mit der Winkelgeschwindigkeit 
 \index{Winkelgeschwindigkeit}
 $\omega$.
-Der Punkt $(r,0)$ beschreibt unter dieser Drehung eine Kreisbahn
-\index{Kreisbahn}%
-parametrisiert durch 
+Der Punkt $(r,0)$ beschreibt unter dieser Drehung eine
+durch 
 \[
-t \mapsto \gamma(t)=(r\cos\omega t,r\sin\omega t).
+t \mapsto \gamma(t)=(r\cos\omega t,r\sin\omega t)
 \]
-Der Geschwindigkeitsvektor zur Zeit $t$ ist natürlich
+parametrisierte Kreisbahn.
+\index{Kreisbahn}%
+Der Geschwindigkeitsvektor zur Zeit $t=0$ ist natürlich
 \[
 \vec{v}(0)
 =
@@ -516,10 +517,10 @@ y'_+(0) & y'_-(0)
 A\\B
 \end{pmatrix}
 =
-\begin{pmatrix}
+\begin{pmatrix*}[r]
   1     &    1    \\
   1     &   -1
-\end{pmatrix}
+\end{pmatrix*}
 \begin{pmatrix}
 A\\B
 \end{pmatrix}
@@ -530,10 +531,10 @@ kann mit Hilfe der inversen Matrix aufgelöst werden:
 A\\B
 \end{pmatrix}
 =
-\begin{pmatrix}
+\begin{pmatrix*}[r]
   1     &    1    \\
   1     &   -1
-\end{pmatrix}^{-1}
+\end{pmatrix*}^{-1}
 \begin{pmatrix}
  y(0)\\
 y'(0)

@@ -25,7 +25,7 @@ f(x)
 \int_0^1 t^{b-1} (1-t)^{c-b-1} (1-xt)^{-a}\,dt
 \]
 kann im Allgemeinen nicht in geschlossener Form evaluiert werden.
-Es wäre daher naheliegend, es als neues spezielle Funktion zu definieren.
+Es wäre daher naheliegend, es als neue spezielle Funktion zu definieren.
 Die folgende Rechnung soll aber zeigen, dass es sich durch die bereits
 bekannte hypergeometrische Fujnktion $\mathstrut_2F_1$ ausdrücken
 lässt.
@@ -123,7 +123,7 @@ an, erhalten wir wegen $dt = 2\cos s\sin s\,ds$
 &=
 \frac{\Gamma(c)}{\Gamma(b)\Gamma(c-b)}
 \int_0^{\frac{\pi}2}
-\sin^{2(b-1)}(s)\,
+\sin^{2(b-1)}s\,
 (1-\sin^2s)^{c-b-1} (1-z\sin^2 s)^{-a}
 \,\cos s\sin s
 \,ds
@@ -131,7 +131,7 @@ an, erhalten wir wegen $dt = 2\cos s\sin s\,ds$
 &=
 \frac{\Gamma(c)}{\Gamma(b)\Gamma(c-b)}
 \int_0^{\frac{\pi}2}
-\sin^{2b-1}(s)\,\cos^{2c-2b-1}(s)\, (1-z\sin^2 s)^{-a}
+\sin^{2b-1}s\,\cos^{2c-2b-1}(s)\, (1-z\sin^2 s)^{-a}
 \,ds.
 \end{align*}
 
@@ -169,7 +169,10 @@ $\mathstrut_2F_1$ als ein Integral des Integranden
 t^{b-1}(1-t)^{c-b-1} (1-xt)^{-a}
 \]
 ausdrücken lässt.
-Der letzte Faktor $(1-xt)^{-a}$ kann mit der Binomialreihe
+Der letzte Faktor $(1-xt)^{-a}$ kann mit der
+Newtonschen Reihe
+(Satz \ref{buch:differentialgleichungen:satz:newtonschereihe})
+%Binomialreihe
 \begin{align*}
 (1+x)^\alpha
 &=
@@ -182,18 +185,18 @@ Der letzte Faktor $(1-xt)^{-a}$ kann mit der Binomialreihe
 \frac{\alpha(\alpha-1)(\alpha-2)}{3!}x^3
 +
 \cdots
-\\
-&=
-1
-+
-\frac{-\alpha}{1}(-x)
-+
-\frac{-\alpha(-\alpha+1)}{2!} (-x)^2
-+
-\frac{-\alpha(-\alpha+1)(-\alpha+2)}{3!} (-x)^3
-+
-\cdots
-\\
+%\\
+%&=
+%1
+%+
+%\frac{-\alpha}{1}(-x)
+%+
+%\frac{-\alpha(-\alpha+1)}{2!} (-x)^2
+%+
+%\frac{-\alpha(-\alpha+1)(-\alpha+2)}{3!} (-x)^3
+%+
+%\cdots
+%\\
 &=
 \sum_{k=0}^\infty \frac{(-\alpha)_k}{k!} (-x)^k
 =
@@ -324,7 +327,7 @@ b_1,\dots,b_{q+1}
 \\
 &\quad\times
 \int_0^{\frac{\pi}2}
-\sin^{2a_{p+1}-2}(s)\, \cos^{2b_{q+1}-2a_{p+1}-2}(s)
+\sin^{2a_{p+1}-2}s\, \cos^{2b_{q+1}-2a_{p+1}-2}s
 \,
 \mathstrut_pF_q\biggl(
 \begin{matrix}
@@ -340,7 +343,7 @@ b_1,\dots,b_q
 \\
 &\quad\times
 \int_0^{\frac{\pi}2}
-\sin^{2a_{p+1}-1}(s)\, \cos^{2b_{q+1}-2a_{p+1}-1}(s)
+\sin^{2a_{p+1}-1}s\, \cos^{2b_{q+1}-2a_{p+1}-1}s
 \,
 \mathstrut_pF_q\biggl(
 \begin{matrix}

@@ -49,12 +49,12 @@ kann.
 % Vereinfachung des Integrals durch Standardisierung
 %
 \subsection{Standardisierung}
-Die Formel~\ref{buch:integrale:eqn:normalverteilung} enthält die zwei 
+Die Formel~\eqref{buch:integrale:eqn:normalverteilung} enthält die zwei 
 Parameter $\mu$ und $\sigma$, sie ist daher als Basis für eine neue
 spezielle Funktion nicht geeignet.
-In diesem Abschnitt sollen sie eliminiert werden mit dem Ziel, ein
+In diesem Abschnitt sollen sie mit dem Ziel eliminiert werden, ein
 neues, einfacheres Integral zu definieren, aus dem sich 
-\ref{buch:integrale:eqn:normalverteilung} leicht berechnen lässt.
+\eqref{buch:integrale:eqn:normalverteilung} leicht berechnen lässt.
 
 %
 % Elimination der Parameter
@@ -91,13 +91,14 @@ E\biggl(\frac{X-\mu}{\sigma}\biggr)
 1,
 \end{align*}
 wie versprochen.
-Dies bedeutet, dass sich das Integral~\ref{buch:integrale:eqn:normalverteilung}
+Dies bedeutet, dass sich das
+Integral~\eqref{buch:integrale:eqn:normalverteilung}
 durch ein Integral ausdrücken lassen muss, in der die Parameter $\mu$
 und $\sigma$ nicht mehr vorkommen.
 
 Die Standardisierungsformel~\eqref{buch:integrale:eqn:standardisierung}
 deutet auch bereits an, wie man das
-Integral~\ref{buch:integrale:eqn:normalverteilung} vereinfachen kann.
+Integral~\eqref{buch:integrale:eqn:normalverteilung} vereinfachen kann.
 Dazu führen wir die Substitution $z=(t-\mu)/\sigma$ aus und erhalten
 \begin{align*}
 f(x)
@@ -124,8 +125,9 @@ der Standardnormalverteilung als
 F_X(x) = \Phi\biggl(\frac{x-\mu}{\sigma}\biggr)
 \]
 ausgedrückt werden.
-Die Funktion $\Phi(x)$ ist daher ein noch besserer Kandidat für eine
-neue spezielle Funktion.
+Die Funktion $\Phi(x)$ ist daher ein besserer Kandidat für eine
+neue spezielle Funktion als die Funktion $F_X(x)$
+von~\eqref{buch:integrale:eqn:normalverteilung}.
 
 %
 % Die Funktion erf(x)
@@ -313,7 +315,7 @@ Potenzen bedeuten, dass der Klammerausdruck als Reihe}
 \biggr)
 \notag
 \intertext{in $-x^2$ geschrieben werden kann.
-Der Koeffzient $1/(2k+1)$ muss jetzt noch mit Pochhammer-Symbolen 
+Der Koeffizient $1/(2k+1)$ muss jetzt noch mit Poch\-ham\-mer-Symbolen 
 geschrieben werden.
 Dazu wird er zunächst als $\frac12\cdot 1/(k+\frac12)$ geschrieben,
 weil der Nenner dann in Einerschritten anwächst, wie dies für
@@ -482,7 +484,7 @@ e^{-x^2-\frac{sa^2}{4x^2}}
 \int_0^\infty e^{-\left(x^2+\frac{sa^2}{4x^2}\right)}\,dx.
 \label{buch:integrale:eqn:laplaceerf}
 \end{align}
-Der Grenzwert im ersten Term ist $1$, nach Definition der Fehlerfunktion. 
+Der Grenzwert im ersten Term ist $1$ gemäss Definition der Fehlerfunktion. 
 Schreiben wir $b=a\sqrt{s}/2$, dann wird das Integral im zweiten Term
 \begin{equation}
 I(b)
@@ -767,7 +769,7 @@ gefundene Darstellung
 \frac{2x}{\sqrt{\pi}}\,
 \mathstrut_1F_1\biggl(\begin{matrix}{\textstyle\frac12}\\{\textstyle\frac32}\end{matrix};-x^2\biggr).
 \]
-als hypergeometrische Reihe erlaubt, $\operatorname{erfc}(x)$
+als hypergeometrische Reihe erlaubt, $\operatorname{erf}(x)$
 direkt zu berechnen.
 
 %

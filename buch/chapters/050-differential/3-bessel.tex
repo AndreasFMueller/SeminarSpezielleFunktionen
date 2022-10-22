@@ -117,14 +117,14 @@ Lösungen der Form
 \begin{equation}
 y_1(x) = x^\alpha\sum_{k=0}^\infty a_kx^k
 \qquad\text{und}\qquad
-y_2(x) = x^{-\alpha}\sum_{k=0}^\infty b_kx^k.
+y_2(x) = x^{-\alpha}\sum_{k=0}^\infty b_kx^k
 \label{buch:differentialgleichungen:eqn:besselloesungen}
 \end{equation}
 existieren.
 
-Für reelles $\alpha\in\mathbb{R}$ gibt es zwei Lösungen der
-Form~\eqref{buch:differentialgleichungen:eqn:besselloesungen}
-genau dann, wenn $\varrho_1-\varrho_2$ keine Ganzzahl ist.
+Für reelles $\alpha\in\mathbb{R}$ gibt es genau dann zwei Lösungen der
+Form~\eqref{buch:differentialgleichungen:eqn:besselloesungen},
+wenn $\varrho_1-\varrho_2$ keine Ganzzahl ist.
 Nur eine Lösung kann man finden, wenn 
 \[
 \alpha-(-\alpha)=2\alpha \in \mathbb{Z}
@@ -224,7 +224,7 @@ x^\varrho \sum_{k=0}^\infty
 =
 x^\varrho
 \cdot
-\mathstrut_0F_1\biggl(;\varrho+1;-\frac{x^2}{4}\biggr)
+\mathstrut_0F_1\biggl(;\varrho+1;-\frac{x^2}{4}\biggr).
 \end{align*}
 Wir finden also zwei Lösungsfunktionen
 \begin{align}
@@ -253,7 +253,8 @@ x^{-\alpha}
 \label{buch:differentialgleichunge:bessel:eqn:zweite}
 \end{align}
 Man beachte, dass die zweite Lösung für ganzzahliges $\alpha>0$ nicht
-definiert ist.
+definiert ist, weil das Pochhammer-Symbol $(-\alpha+1)_k$ im Nenner für 
+$k=\alpha$ verschwindet.
 Man kann auch direkt nachrechnen, dass diese Funktionen Lösungen
 der Besselschen Differentialgleichung sind.
 
@@ -328,7 +329,9 @@ y_2(x).
 % Ganzzahlige Ordnung
 %
 \subsubsection{Bessel-Funktionen ganzzahliger Ordnung}
-Man beachte, dass diese Definition für beliebige ganzzahlige 
+Man beachte, dass die Definition
+\ref{buch:differentialgleichungen:bessel:definition}
+für beliebige ganzzahlige 
 $\alpha$ funktioniert.
 Ist $\alpha=-n<0$, $n\in\mathbb{N}$, dann hat der Nenner Pole 
 an den Stellen $k=0,1,\dots,n-1$.
@@ -574,9 +577,9 @@ J_p(x)
 %
 \subsubsection{Der Fall $\alpha=n+\frac12$, $n\in\mathbb{N}$}
 Obwohl $2\alpha$ eine Ganzzahl ist, sind die beiden Lösungen
-\label{buch:differentialgleichunge:bessel:erste}
+\eqref{buch:differentialgleichunge:bessel:erste}
 und
-\label{buch:differentialgleichunge:bessel:zweite}
+\eqref{buch:differentialgleichunge:bessel:zweite}
 linear unabhängig.
 
 Man kann zeigen, dass sich die Lösungsfunktionen in diesem Fall
@@ -614,7 +617,7 @@ Es ist
 \frac{(2k-1)!}{2^{2k-1}\cdot (k-1)!}.
 \end{align*}
 Damit können jetzt die Reihenentwicklungen der Lösung wie folgt
-umgeformt werden
+umgeformt werden:
 \begin{align*}
 y_1(x)
 &=

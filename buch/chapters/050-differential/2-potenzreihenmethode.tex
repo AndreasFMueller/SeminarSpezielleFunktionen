@@ -71,15 +71,16 @@ mit analytischen Funktion $\varphi_j$ hat eine in einer Umgebung von
 $t=0$ eindeutige analytische Lösung.
 \end{satz}
 
-Im Folgenden werden wir daher weitere einschränkende Annahmen über
-die Koeffizienten $b_k(x)$ machen.
+Im Folgenden werden wir einschränkende Annahmen über
+die Koeffizienten $b_k(x)$ machen, sie werden aber immer
+analytische Funktionen sein.
 
 %
 % Potenzreihenansatz und Koeffizientenvergleich
 %
 \subsection{Potenzreihenansatz und Koeffizientenvergleich}
 In Abschnitt~\ref{buch:differentialgleichungen:section:beispiele}
-wurde von einer grossen Zahl interessanter Funktionen gezeigt, dass
+wurde von einer beachtlichen Zahl interessanter Funktionen gezeigt, dass
 sie einerseits Lösungen einer Differentialgleichung sind, 
 andererseits aber auch eine Potenzreihendarstellung haben.
 Der Satz von Cauchy-Kowalevskaja hat gezeigt, dass dies das zu
@@ -131,7 +132,7 @@ Koeffizienten $a_k$.
 Die Koeffizienten $a_0$ bis $a_{n-1}$ werden gegeben durch die
 Anfangswerte der Funktion und der ersten $n-1$ Ableitungen, die
 ebenfalls nötig sind, um die Lösungsfunktion eindeutig festzulegen.
-Durch Lösen des linearen Gleichungssystems können jetzt alle Koeffizienten
+Durch Lösen eines linearen Gleichungssystems können jetzt alle Koeffizienten
 und damit die Lösung bestimmt werden.
 
 Setzt man zum Beispiel voraus, dass $b_n(0)\ne 0$ ist, dann ist der
@@ -423,7 +424,8 @@ erfüllt sein muss.
 Die erste Gleichung ist eine quadratische Gleichung in $k$, es gibt also
 höchstens zwei Koeffizienten, für die die erste Gleichung erfüllt sein
 kann, für die also auch die Koeffizienten $a_k\ne 0$ sein können.
-Sind die Lösungen nicht ganzzahlig, dann müssen alle Koeffizienten 
+Sind die Lösungen der quadratischen Gleichung nicht ganzzahlig,
+dann müssen alle Koeffizienten 
 $a_k=0$ sein, die einzige Potenzreihe ist die triviale Funktion $y(x)=0$.
 
 %
@@ -443,11 +445,13 @@ y'' = -\frac{p(x)}{x}y' - \frac{q(x)}{x^2}y.
 Ist ist daher damit zu rechnen, dass auch die Lösung $y(x)$ an dieser
 Stelle singuläres Verhalten zeigen wird.
 Die Terme einer Potenzreihe um den Punkt $x=0$ sind nicht singulär,
-können eine solche Singularität also nicht wiedergeben.
+die Potenzreihe kann eine solche Singularität also nicht wiedergeben.
 Der neue Ansatz sollte ähnlich einfach sein, aber auch gewisse ``einfache''
 Singularitäten darstellen können.
 Die Potenzfunktionen $x^\varrho$ mit $\varrho<1$ erfüllen beide
 Anforderungen.
+In der folgenden Definition erlauben wir $\varrho \ge 1$, verlangen
+aber, dass die Potenzreihe einen nicht verschwindenden konstanten Term hat.
 
 \begin{definition}
 \label{buch:differentialgleichungen:def:verallpotenzreihe}
@@ -724,7 +728,7 @@ dargestellt werden.
 
 \item
 Fall 3: $\varrho_1-\varrho_2$ ist eine positive ganze Zahl.
-In diesem Fall ist im Allgemeinen nur eine Lösung in Form einer
+Auch in diesem Fall ist im Allgemeinen nur eine Lösung in Form einer
 verallgemeinerten Potenzreihe möglich.
 Auch hier müssen Techniken der Funktionentheorie aus
 Kapitel~\ref{buch:chapter:funktionentheorie}

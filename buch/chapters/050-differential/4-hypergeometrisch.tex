@@ -127,7 +127,7 @@ Summe hinzu, dies ergibt
 (a+1)(b+1)\frac{ab}{c}
 =0.
 \end{align*}
-Durch Koeffizientenvergleich erhalten wir für $k\ge 2$ 
+Für $k\ge 2$ erhalten wir durch Koeffizientenvergleich
 \begin{align*}
 0
 &=
@@ -352,7 +352,7 @@ Koeffizienten als}
 \label{buch:differentialgleichungen:hypergeo:verallgkoef}
 \end{align}
 finden.
-Setzt man $a_0=1$, ist die zweite Lösung ist also wieder eine
+Setzt man $a_0=1$, ist die zweite Lösung also wieder eine
 hypergeometrische Funktion.
 %, nämlich
 %\[
@@ -1061,8 +1061,11 @@ y(x) &= \frac{1}{-c+1}x^{-c+1}.
 Dies zeigt, dass die hypergeometrische Differentialgleichung im
 allgemeinen keine geraden oder ungeraden Lösungen hat.
 
+%
+% Zusammengesetzte Funktionen
+%
 \subsubsection{Zusammengesetzte Funktionen}
-Die gerade oder ungeraden Funktionen, die in früheren Beispielen
+Die geraden oder ungeraden Funktionen, die in früheren Beispielen
 als hypergeometrische Funktionen dargestellt wurden, konnten also
 nicht Lösungen der hypergeometrische Differentialgleichung sein.
 Die Potenzreihenentwicklung einer geraden Funktion enthält nur
@@ -1123,8 +1126,8 @@ g''(x)&=&       & & 2sw'(sx^2)&+&4s^2x^2w''(sx^2).\\
 \]
 Dies sind lineare Gleichungssysteme für die Ableitungen
 von $w$, die wir nach $w'$ und $w''$ auflösen können.
-Dies wird einfacher, wenn wir das Gleichungssysteme in
-Matrixschreibweise darstellen mit der Matrix
+Dies wird einfacher, wenn wir das Gleichungssysteme
+mit der Matrix
 \begin{equation*}
 \begin{pmatrix}
   g(x)\\
@@ -1144,7 +1147,7 @@ w(sx^2)\\
 w'(sx^2)\\
 w''(sx^2)
 \end{pmatrix}
-\qquad\Rightarrow\qquad
+\qquad\text{mit der Inversen}\qquad
 A_g^{-1}
 =
 \renewcommand{\arraystretch}{2.0}
@@ -1152,13 +1155,14 @@ A_g^{-1}
 1&            0       &               0  \\
 0&\displaystyle  \frac{1}{2sx}     &               0  \\
 0&\displaystyle -\frac{1}{4s^2x^3} &\displaystyle \frac{1}{4s^2x^2}
-\end{pmatrix}.
+\end{pmatrix}
 \end{equation*}
+in Matrixschreibweise darstellen.
 Damit lassen sich jetzt die Ableitungen von $w$ ausdrücken:
 \begin{align*}
   w(sx^2) &= g(x) \\
  w'(sx^2) &= \frac{1}{2sx} g'(x) \\
-w''(sx^2) &= \frac{1}{4s^2x^3}g'(x) + \frac{1}{4s^2x^2} g''(x).
+w''(sx^2) &= -\frac{1}{4s^2x^3}g'(x) + \frac{1}{4s^2x^2} g''(x).
 \end{align*}
 Durch Einsetzen dieser Ausdrücke in die eulersche hypergeometrische
 Differentialgleichung~\eqref{buch:differentialgleichungen:eqn:eulerhyper}
@@ -1333,7 +1337,7 @@ A_f^{-1}
 \] 
 Damit kann man jetzt die Funktion $w(sx^\nu)$ und die Ableitungen
 $w'(sx^\nu)$ und $w''(sx^\nu)$ durch $f$ und die Ableitungen davon
-ausdrücken als
+als
 \begin{equation}
 \renewcommand{\arraystretch}{2.3}
 \renewcommand\arraycolsep{2pt}
@@ -1351,10 +1355,11 @@ w'(sx^\nu)
 w''(sx^\nu)
 	&=& \displaystyle \frac{\varrho^2+\nu\varrho}{\nu^2 s^2}x^{-\varrho-2\nu} f(x)
 	&-& \displaystyle \frac{2\varrho+\nu-1}{\nu^2s^2} x^{-\varrho-2\nu+1} f'(x)
-	&+& \displaystyle \frac{1}{\nu^2 s^2} x^{-\varrho-2\nu+2} f''(x).
+	&+& \displaystyle \frac{1}{\nu^2 s^2} x^{-\varrho-2\nu+2} f''(x)
 \end{array}
 \label{buch:differentialgleichungen:hypergeometrisch:wsubst}
 \end{equation}
+ausdrücken.
 Einsetzen in die Differentialgleichung der hypergeometrischen Funktion
 $\mathstrut_2F_1$ liefert die Differentialgleichung
 \begin{equation}
@@ -1442,7 +1447,7 @@ Tatsächlich ist
 \qquad\text{und}\qquad
 \frac{d^2}{dx^2} \arcsin x
 =
-\frac{x}{(1-x^2)^{\frac32}},
+\frac{x}{(1-x^2)^{\frac32}}
 \]
 und nach Einsetzen in die Differentialgleichung
 \[
@@ -1492,7 +1497,7 @@ x^2f''
 Die nächsten zwei Abschnitte sollen zeigen, wie sich daraus für die
 Bessel-Funktionen wie auch die Airy-Funktionen, die sich durch
 $\mathstrut_0F_1$ ausdrücken, die Besselsche und die Airysche
-Differentialgleichung wiedergewonnen werden kann.
+Differentialgleichung wiedergewonnen werden können.
 
 \begin{beispiel}
 Die hyperbolische Funktion
@@ -1645,6 +1650,9 @@ x^3y
 \end{align*}
 Dies ist wie erwartet die Airy-Differentialgleichung.
 
+%
+% Differentialgleichung der Tschebyscheff-Polynome
+%
 \subsection{Differentialgleichung der Tschebyscheff-Polynome}
 Die Tschebyscheff-Polynome erster Art haben die Darstellung
 \[
@@ -1670,15 +1678,20 @@ die Tschebyscheff-Polynome sind also Lösungen der Differentialgleichung
 (1-x^2)y'' -xy' +n^2 y=0,
 \label{buch:differential:tschebyscheff:Tdgl}
 \end{equation}
-sie heisst die {\em Tschbeyscheff-Differentialgleichung}.
+sie heisst die {\em Tschebyscheff-Differentialgleichung}.
 
+%
+% Tschebyscheff-Differentialgleichung und hypergeometrische
+% Differentialgleichung
+%
 \subsubsection{Tschebyscheff-Differentialgleichung und hypergeometrische
 Differentialgleichung}
 Die hypergeometrische Differentialgleichung hat eine ähnliche Struktur
 wie die Tschebyscheff-Differentialgleichung
 \eqref{buch:differential:tschebyscheff:Tdgl}.
-Der Koeffizient der zweiten Ableitung hat jedoch die Nullstellen
-$\pm 1$ bei der Tschebyscheff-Differentialgleichung, während es bei
+Der Koeffizient der zweiten Ableitung
+in der Tschebyscheff-Dif\-fe\-ren\-tial\-glei\-chung
+hat jedoch die Nullstellen $\pm 1$, während es in
 der hypergeometrischen Differentialgleichung die Nullstellen
 $0$ und $1$ sind.
 Wir verwenden daher die Substitution $z = \frac12(1-x)$ und 
@@ -1766,7 +1779,7 @@ y(1) &= 1 \\
 y'(1)&= n^2,
 \end{aligned}
 \]
-den gleichen Werten, die auch das Tschebyscheff-Polynome $T_n(x)$ annimmt.
+den gleichen Werten, die auch das Tschebyscheff-Polynom $T_n(x)$ annimmt.
 Es folgt daher
 \begin{equation}
 T_n(x)
