@@ -47,7 +47,7 @@ F(x) = G(y).
 Wie so etwas gehen gehen kann wird weiter unten untersucht und
 mit Beispielen illustriert.
 
-Betrachtet hält man in der Gleichung~\eqref{buch:pde:ansatz:eqn:F=G}
+Hält man in der Gleichung~\eqref{buch:pde:ansatz:eqn:F=G}
 die Variable $x$ fest, steht links eine fest Zahl, schreiben wir 
 sie $\lambda$.
 Die Gleichung wird also zu
@@ -209,7 +209,7 @@ Das bedeutet aber, dass $X(0) = -Y(y)$, $Y$ müsste also konstant
 sein.
 
 Ein Produktansatz löst das Problem.
-Wir verwenden stattdessen einen Produktansatz
+Wir verwenden den Ansatz
 $u(x,y) = X(x)\cdot Y(y)$, wobei die Funktionen $X(x)$ und $Y(y)$
 nicht konstant sein sollen.
 Die Randbedingungen sind
@@ -262,7 +262,7 @@ Die Randbedingungen zerfallen in zwei Teile:
 \begin{itemize}
 \item
 Bedingungen, die wiedergeben, dass die Membran in einen 
-Rahmen eingespannt und damit unbeweglich ist.
+Rahmen eingespannt und damit am Rand unbeweglich ist.
 Dies bedeutet, dass $u(t,x)=0$ für alle Zeiten $t>0$ und für 
 Randpunkte $x\in\partial G$ von $G$ ist.
 \item
@@ -271,7 +271,7 @@ Zeit $t=0$ beschreiben, typischerweise in der Form
 \begin{align*}
 u(0,x) &= f(x),
 \\
-\frac{\partial u}{\partial t}(0,x) &= g(x)
+\frac{\partial u}{\partial t}(0,x) &= g(x),
 \end{align*}
 wobei $f(x)$ und $g(x)$ Funktionen auf dem Gebiet $G$ sind.
 \end{itemize}
@@ -326,7 +326,7 @@ ein räumliches Gebiet ist und $\mathbb{R}^+$ die Zeitachse.
 Auch die Randbedingungen zerfallen in zwei Arten:
 \begin{itemize}
 \item
-Bedingungen über die Lösungsfunktion zur Zeit $t=0$ im inneren des
+Bedingungen über die Lösungsfunktion zur Zeit $t=0$ im Inneren des
 räumliche Gebietes $G$.
 \item
 Bedingungen über die Lösungsfunktion auf dem Rand $\partial G$ von
@@ -375,9 +375,9 @@ Die separierten Differentialgleichungen werden jetzt
 &=
 -\lambda^2
 &&\Rightarrow&
-T''(t)-\lambda T(t)&=0
+T''(t)-\lambda^2 T(t)&=0
 &&\Rightarrow&
-T''(t) &= A \cos(\sqrt\lambda t) + B \sin( \lambda t)
+T''(t) &= A \cos(\lambda t) + B \sin( \lambda t)
 \\
 &&&&&&&&
        &= C \cos(c \lambda t+\delta)
