@@ -38,11 +38,11 @@ unabhängigen Variablen mit $f$ übereinstimmt, also
 \[
 p(x_i) = f(x_i), \quad i=0,\dots,n.
 \]
-Die Konstruktion eines solchen Polynoms geht aus vom Polynom
+Die Konstruktion eines solchen Polynoms vom Polynom
 \[
-l(x) = (x-x_0)(x-x_1)\cdots(x-x_n),
+l(x) = (x-x_0)(x-x_1)\cdots(x-x_n)
 \]
-welches an allen Stützstellen verschwindet.
+geht aus, welches an allen Stützstellen verschwindet.
 Daraus lässt sich für jede Stützstelle ein Polynom
 \[
 l_j(x)
@@ -100,7 +100,7 @@ f(x_k).
 % Fehler des Interpolationspolynoms
 %
 \subsubsection{Fehler des Interpolationspolynoms}
-Der Approximationsfehler des Interpolationspolynoms kann mit der Formel
+Der Approximationsfehler des Interpolationspolynoms ist
 \[
 f(x)-p(x)
 =
@@ -132,11 +132,12 @@ da $l(x)$ nahe $x_0$ und $x_n$ sehr stark oszilliert.
 \end{figure}
 Die Aufgabe, geeignete Stützstellen für das Interpolationsproblem zu finden,
 die den Fehler minimieren, ist als gleichbedeutend damit, ein Polynom
-zu finden, dessen Betrag beschränkt ist.
+zu finden, dessen Betrag auf dem Intervall $[-1,1]$ unter Kontrolle ist,
+zum Beispiel weil alle Extrema gleichen Betrag haben.
 Eine Lissajous-Figur wie die in
 Abbildung~\ref{buch:potenzen:interpolation:lissajous} erfüllt
-diese Bedinung.
-Sofern sie sich als Polynom ausdrücken lässt, könnte ihre Nullstellen
+diese Bedingung.
+Sofern sie sich als Polynom ausdrücken lässt, könnten ihre Nullstellen
 das Interpolationsproblem optimal lösen.
 
 In der Lissajous-Figur in
@@ -354,14 +355,9 @@ Damit ist auch \eqref{buch:potenzen:tschebyscheff:mult2} bewiesen.
 % Differentialgleichung
 %
 \subsubsection{Tschebyscheff-Differentialgleichung}
-Die Ableitungen der Tschebyscheff-Polynome sind
+Die Ableitungen der Tschebyscheff-Polynome $T_n(x) = \cos (ny(x))$
+sind
 \begin{align*}
-T_n(x)
-&=
-\cos (ny(x))
-&&
-&&
-\\
 \frac{d}{dx} T_n(x)
 &=
 \frac{d}{dx} \cos(ny(x))
@@ -373,6 +369,7 @@ n\sin(ny(x)) \cdot \frac{dy}{dx}
 &=
 -\frac{1}{\sqrt{1-x^2}}
 \\
+\text{und}\qquad
 \frac{d^2}{dx^2} T_n(x)
 &=
 -n^2\cos(ny(x)) \biggl(\frac{dy}{dx}\biggr)^2 + n\sin(ny(x)) \frac{d^2y}{dx^2}
@@ -406,7 +403,7 @@ Wir setzen daher an
 -\frac{nx\alpha(x)}{(1-x^2)^{\frac32}}
 -\frac{n\beta(x)}{\sqrt{1-x^2}}
 \biggr)
-\sin(ny(x))
+\sin(ny(x)).
 \end{align*}
 Die grossen Klammern müssen verschwinden, was nur möglich ist, wenn zu
 gegebenem $\alpha(x)$ die anderen beiden Koeffizienten
@@ -416,7 +413,7 @@ gegebenem $\alpha(x)$ die anderen beiden Koeffizienten
 \end{align*}
 sind.
 Die Koeffizienten werden besonders einfach, wenn man $\alpha(x)=1-x^2$ wählt.
-Die Tschebyscheff-Polynome sind Lösungen der Differentialgleichung
+Die Tschebyscheff-Polynome sind also Lösungen der Differentialgleichung
 \begin{equation}
 (1-x^2) T_n''(x) -x T_n'(x) +n^2 T_n(x) = 0.
 \label{buch:potenzen:tschebyscheff:dgl}

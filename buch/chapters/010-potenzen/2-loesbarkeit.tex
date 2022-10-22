@@ -56,15 +56,15 @@ für Nullstellen $\alpha_k\in\mathbb{C}$.
 Der Fundamentalsatz macht keine Aussage darüber, wie die Nullstellen
 eines Polynoms gefunden werden können.
 Selbst für besonders einfache Gleichungen der Form
-\[
+\(
 x^n = c
-\qquad
-\text{oder Polynome der Form}
-\qquad
+\)
+oder gleichbedeutend die Bestimmung der Nullstellen von Polynomen der Form
+\(
 p(x) = x^n -c
-\]
-gibt es keine direkte, nur auf den arithmetischen
-Operationen basierende Methode, eine Nullstelle oder Faktorisierung
+\)
+gibt es für $n>1$ im Allgemeinen keine direkte, nur auf den arithmetischen
+Grundoperationen basierende Methode, eine Lösung oder Faktorisierung
 in endlich vielen Schritten zu finden.
 Dies rechtfertigt, für diese einfachen Fälle eine neue, spezielle
 Funktion zu definieren, die mindestens für reelle Koeffizienten 
@@ -107,28 +107,19 @@ Für $n=2$ wird die Wurzel als
 geschrieben.
 \end{definition}
 
-Mit der Wurzelfunktion ist es jetzt möglich, auch kompliziertere
+Mit Hilfe der Wurzelfunktion ist es jetzt möglich, auch kompliziertere
 Gleichungen zu lösen:
 \begin{enumerate}
-\item
-Für negative Argument $y<0$ müssen Quadratwurzeln als
-$\sqrt{y\mathstrut}=i\sqrt{-y\mathstrut}$ definiert werden.
-\item
-Mindestens der Betrag der Wurzel einer komplexen Zahl lässt
-sich jetzt sofort mittels $|\root{n}\of{c\mathstrut}|=\root{n}\of{|c|\mathstrut}$
-berechnen.
-Für das Argument sind jedoch die in
-Abschnitt~\label{buch:geometrie:section:trigonometrisch} definierten
-trigonometrischen Funktionen notwendig.
 \item
 Die quadratische Gleichung 
 \[
 ax^2+bx+c=0
 \]
 hat die Nullstellen
-\[
+\begin{equation}
 x_{1,2} = \frac{-b\pm\sqrt{b^2-4ac\mathstrut}}{2a}.
-\]
+\label{buch:potenzen:eqn:quadrgl}
+\end{equation}
 \item
 Für kubische Gleichungen hat Cardano eine Lösung gefunden, die
 Nur Wurzelausdrücke und arithmetische Operationen verwendet.
@@ -148,6 +139,18 @@ hinausgeht.
 Für die Lösung einer Gleichung vierten Grades hat Ferrari eine
 Formel angegeben, die mit Wurzelausdrücken und arithmetischen
 Operationen auskommt.
+\item
+Für negative Argument $y<0$ müssen Quadratwurzeln als
+$\sqrt{y\mathstrut}=i\sqrt{-y\mathstrut}$ definiert werden.
+Damit wird auch für $b^2-4ac<0$ sinnvoll.
+\eqref{buch:potenzen:eqn:quadrgl}
+\item
+Mindestens der Betrag der Wurzel einer komplexen Zahl lässt
+sich nun auch mittels $|\root{n}\of{c\mathstrut}|=\root{n}\of{|c|\mathstrut}$
+berechnen.
+Für das Argument sind jedoch die in
+Abschnitt~\label{buch:geometrie:section:trigonometrisch} definierten
+trigonometrischen Funktionen notwendig.
 \end{enumerate}
 
 Allerdings ist damit auch bereits ausgeschöpft, was die
@@ -180,8 +183,8 @@ Nicht rationale Zahlen können nur exakt verarbeitet werden, wenn
 Sie sich algebraisch in endlich vielen Schritten charakterisieren
 lassen.
 Dies ist zum Beispiel für rationale Zahlen $\mathbb{Q}$ möglich.
-Gewisse irrationale Zahlen kann man charakterisieren durch 
-die Eigenschaft, Nullstelle eines Polynoms $p(x)\in\mathbb{Q}[x]$
+Gewisse irrationale Zahlen kann man durch die Eigenschaft charakterisieren,
+Nullstelle eines Polynoms $p(x)\in\mathbb{Q}[x]$
 mit rationalen Koeffizienten zu sein.
 
 \begin{definition}
@@ -189,14 +192,14 @@ Eine Zahl $\alpha$ heisst {\em algebraisch} über $\mathbb{Q}$,
 wenn es ein Polynom
 \index{algebraische Zahl}%
 $p(x)\in \mathbb{Q}[x]$ gibt, welches $\alpha$ als Nullstelle hat.
-Eine Zahl heisst transzendent über $\mathbb{Q}$, wenn sie nicht algebraisch ist
-über $\mathbb{Q}$.
+Eine Zahl heisst transzendent über $\mathbb{Q}$, wenn sie nicht algebraisch
+über $\mathbb{Q}$ ist.
 \end{definition}
 
 Die Zahlen $i=\sqrt{-1}$ und $\sqrt{n\mathstrut}$ für $n\in\mathbb{N}$
 sind also algebraisch über $\mathbb{Z}$.
-Es ist gezeigt worden, dass $\pi$ und $e$ nicht nur irrational
-sind, sondern sogar transzendent.
+Euler und Lambert konnten zeigen, dass $e$ und $\pi$ irrational sind,
+Hermite bzw.~Lindemann konnten sogar zeigen, dass sie transzendent sind.
 
 Eine Polynomgleichung $p(\alpha)=0$ mit $p(x)\in\mathbb{Q}[x]$
 hat eine Rechenregel für $\alpha$ zur Folge.
@@ -217,6 +220,6 @@ bilden.
 Sie bilden einen endlichdimensionalen Vektorraum über $\mathbb{Q}$.
 Rechnen mit algebraischen Zahlen ist also in einem CAS exakt möglich,
 wie das in Abschnitt~\ref{buch:integrale:section:dkoerper}
-für die Berechnung von Stammfunktionen illustriert wird.
+für die Berechnung von Stammfunktionen illustriert werden wird.
 
 

@@ -51,3 +51,10 @@ kegelschnitte.png:	kegelschnitte.pov
 kegelschnitte.jpg:	kegelschnitte.png Makefile
 	convert -extract 1520x1080+200+0 kegelschnitte.png \
 		-density 300 -units PixelsPerInch kegelschnitte.jpg
+
+jakobsstab.jpg:	jakobsstab.png Makefile
+	convert -extract 540x560+260+150 jakobsstab.png \
+		-density 300 -units PixelsPerInch jakobsstab.jpg
+jakobsstab-use.jpg:	jakobsstab-use.webp Makefile
+	convert -extract 725x710+35+35 jakobsstab-use.webp \
+		-density 300 -units PixelsPerInch jakobsstab-use.jpg

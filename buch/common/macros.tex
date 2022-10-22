@@ -88,7 +88,8 @@
 \RenewEnviron{diskussion}{\relax}
 }
 \newenvironment{beispiel}{%
-\begin{proof}[Beispiel]%
+\refstepcounter{satz}
+\begin{proof}[Beispiel \arabic{chapter}.\arabic{satz}]%
 \renewcommand{\qedsymbol}{$\bigcirc$}
 }{\end{proof}}
 

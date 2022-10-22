@@ -12,6 +12,9 @@ Die Erfahrung zeigt, dass es nicht immer einfach ist, ein Integral in
 geschlossener Form zu berechnen.
 Solche Integrale können auf sinnvolle neue spezielle Funktionen führen.
 
+%
+% Berechnung des Flächeninhalts in kartesischen Koordinaten
+%
 \subsection{Berechnung des Flächeninhaltes in kartesischen Koordinaten}
 Wir betrachten in diesem Abschnitt nur die Berechnung des
 Flächeninhaltes von Teilgebieten der Ebene $\mathbb{R}^2$
@@ -92,7 +95,7 @@ $\gamma(b)$ und von der Strecke von $\gamma(b)$ zurück zum Nullpunkt
 berandet wird.
 
 \begin{beispiel}
-Der Flächeninhalt eines Kreissektors mit Öffnungswinkel $\alpha$ ist
+Der Flächeninhalt eines Kreissektors mit Öffnungswinkel $\alpha$
 kann mit Hilfe der Parametrisierung
 \[
 \gamma
@@ -119,6 +122,9 @@ F
 wie erwartet.
 \end{beispiel}
 
+%
+% FLächeninhalt in Polarkoordinaten
+%
 \subsubsection{Flächeninhalt in Polarkoordinaten}
 Ist die Kurve in Polarkoordinaten durch die Funktion
 $\varphi\mapsto r(\varphi)$ gegeben, dann kann man $\varphi$ als
@@ -156,6 +162,9 @@ F(\alpha,\beta)=\int_\alpha^\beta \frac{r(\varphi)^2}{2}\,d\varphi
 \]
 berechnet werden.
 
+%
+% Flächeninhalt von Ellipsen und Hyperbeln
+%
 \subsection{Flächeninhalt von Ellipsen und Hyperbeln}
 Ellipsen und Hyperbeln sind besonders einfach zu parametrisieren und
 damit ist auch die Fläche, die von Ellipsen oder Hyperbeln berandet
@@ -163,6 +172,9 @@ wird, besonders einfach zu berechnen.
 Der Flächeninhalt eines Ellipsensektors hat eine besondere Bedeutung
 für die Formulierung der Keplerschen Gesetze der Planetenbewegung.
 
+%
+% Ellipse
+%
 \subsubsection{Ellipse}
 Für die Ellipse mit der Gleichung
 \[
@@ -176,7 +188,8 @@ kann man mit der Parametrisierung
 t \mapsto \begin{pmatrix}a\cos t\\ b\sin t\end{pmatrix}
 \]
 beschreiben.
-Einen Sektor zwischen den Winkeln $\alpha$ und $\beta$
+Der Sektor zwischen den Winkeln $\alpha$ und $\beta$
+hat den Flächeninhalt
 \begin{align*}
 F
 &=
@@ -188,11 +201,14 @@ ab
 =ab(\beta-\alpha).
 \end{align*}
 Dieses Resultat ist auch rein geometrisch leicht nachzuvollziehen:
-Der Sektor entsteht dadurch, dass man ein Kreissektor mit Radius $a$
+Der Sektor entsteht dadurch, dass ein Kreissektor mit Radius $a$
 entlang der $y$-Achse um den Faktor $b/a$ gestaucht wird.
 Aus dem Flächeninhalt $a^2(\beta-\alpha)$ des Kreissektors wird dann
 der Flächeninhalt $a^2(\beta-\alpha)\cdot \frac{b}{a}=ab(\beta-\alpha)$.
 
+%
+% Hyperbel
+%
 \subsubsection{Hyperbel}
 \begin{figure}
 \centering
@@ -233,9 +249,13 @@ Das Argument $t$ der hyperbolischen Funktionen ist also der Flächeninhalt
 des von der Hyperbel krummlinig berandeten Dreiecks.
 Daher heissen die Umkehrfunktionen der hyperbolischen Funktionen
 $\operatorname{arsinh}y$ und $\operatorname{arcosh}y$, Abkürzung
-für {\em area cuius sinus hyperbolicus $y$ est}, Fläche, deren zugehöriger
+für lateinisch {\em area cuius sinus hyperbolicus $y$ est},
+Fläche, deren zugehöriger
 Wert des Sinus hyperbolicus $y$ ist.
 
+%
+% Fokalgleichung in Polarkoordinaten
+%
 \subsubsection{Fokalgleichung in Polarkoordinaten}
 \begin{figure}
 \centering
@@ -250,11 +270,11 @@ der Ebene liegen.
 \label{buch:geometrie:fig:polargleichung}}
 \end{figure}
 Das zweite Keplersche Gesetz über Planetenbahnen besagt, dass sich ein
-Planet auf seiner elliptischen Bahn um die Sonne so bewegt, dass
+Planet so auf seiner elliptischen Bahn um die Sonne bewegt, dass
 sein Radiusvektor in gleichen Zeiten gleiche Flächen überstreicht.
 Die bisher verwendete Parametrisierung hat den Mittelpunkt der Ellipse
-im Nullpunkt, nach dem ersten Keplerschen Gesetz ist aber müssen
-wir eine Parametrisierung verwenden so, dass der Brennpunkt im
+im Nullpunkt, nach dem ersten Keplerschen Gesetz ist aber 
+eine Parametrisierung vorteilhaft, bei der der Brennpunkt im
 Ursprung liegt.
 In Polarkoordinaten ist
 \begin{equation}

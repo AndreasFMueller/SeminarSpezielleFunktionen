@@ -13,10 +13,16 @@ Weise bestimmen oder mit Integralen, die leicht auflösbar sind.
 Bereits bei der Bogenlänge entlang einer Ellipse sieht die Lage
 jedoch ganz anders aus.
 
+%
+% Berechnung der Bogenlänge
+%
 \subsection{Berechnung der Bogenlänge}
 In diesem Abschnitt sollen ein paar Methoden zusammgengestellt werden,
 mit denen die Länge einer Kurve berechnet werden kann.
 
+%
+% Länge einer parametrisierten Kurve
+%
 \subsubsection{Länge einer parametrisierten Kurve}
 Beispiele wie die Kochsche Schneeflockenkurve, deren Länge schwer
 zu definieren ist, zeigen, dass der Begriff einer Kurve für die Zwecke
@@ -40,7 +46,7 @@ $\gamma \colon I \to \mathbb{R}^n$.
 Länge der Kurve.
 \label{buch:geometrie:fig:zylinder}}
 \end{figure}
-Die Abbildung~\ref{buch:geometrie:fig:zylinder} zeigt 
+Wie Abbildung~\ref{buch:geometrie:fig:zylinder} zeigt, beschreibt
 \begin{equation}
 \gamma
 \colon
@@ -49,7 +55,7 @@ Die Abbildung~\ref{buch:geometrie:fig:zylinder} zeigt
 t\mapsto\begin{pmatrix}r\cos t\\ r\sin t\\ th/2\pi\end{pmatrix}
 \label{buch:geometrie:eqn:helix}
 \end{equation}
-beschreibt eine Schraubenlinie oder Helix.
+eine Schraubenlinie oder Helix.
 \index{Schraubenlinie}%
 \index{Helix}%
 Die Abbildung ist ganz offensichtlich differenzierbar und hat die
@@ -140,6 +146,9 @@ was mit dem elementaren Resultat~\eqref{buch:geometrie:eqn:helixlaenge}
 übereinstimmt.
 \end{beispiel}
 
+%
+% Länge eines Graphen
+%
 \subsubsection{Länge eines Graphen}
 Der Graph einer auf dem Intervall $I=[a,b]$ definierte Funktion
 $y=f(x)$ kann als Parametrisierung einer Kurve
@@ -152,7 +161,7 @@ x \mapsto \begin{pmatrix}x\\f(x)\end{pmatrix}
 \]
 betrachtet werden.
 Nach Definition~\ref{buch:geometrie:def:kurvenlaenge}
-ist Länge dieser Kurven zwischen den Punkten $(a,f(a))$ und $(x,f(x))$
+ist Länge dieser Kurve zwischen den Punkten $(a,f(a))$ und $(x,f(x))$
 durch das Integral
 \[
 l(x)
@@ -183,6 +192,9 @@ l(x)
 Die Stammfunktion wurde mit einem Computeralgebraprogramm gefunden.
 \end{beispiel}
 
+%
+% Kurvenlänge in Polarkoordinaten
+%
 \subsubsection{Kurvenlänge in Polarkoordinaten}
 Eine Kurve kann in Polarkoordinaten in der Ebene durch eine Funktion
 $r=r(\varphi)$ beschrieben werden.
@@ -194,8 +206,8 @@ r(\varphi)\sin\varphi
 \end{pmatrix}
 \]
 durch den Polarwinkel $\varphi$.
-Die Kurvenlänge kann gemäss 
-Definition~\label{buch:geometrie:def:kurvenlaenge} braucht
+Die Kurvenlänge braucht gemäss 
+Definition~\label{buch:geometrie:def:kurvenlaenge}
 die Ableitung der Parametrisierung, also die Funktion
 \[
 \dot{\gamma}(\varphi)
@@ -300,9 +312,12 @@ Tatsächlich ist die Ableitung davon
 =
 -\frac{1}{\sqrt{1-x^2}},
 \]
-was mit der Integralformel~\ref{buch:geometrie:eqn:kreislaenge} 
+was mit der Integralformel~\eqref{buch:geometrie:eqn:kreislaenge} 
 übereinstimmt.
 
+%
+% Kegelschnitte
+%
 \subsection{Kegelschnitte
 \label{buch:geometrie:subsection:kegelschnitte}}
 Kegelschnitte sind die Schnittkurven eines geraden Kreiskegels
@@ -312,6 +327,9 @@ Ebene.
 Im Gegensatz zum Kreis lässt sich aber die Kurvenlänge nicht mehr
 in geschlossener Form berechnen.
 
+%
+% Koordinatengleichung
+%
 \subsubsection{Koordinatengleichung}
 Aus der in Abbildung~\ref{buch:geometrie:laenge:fig:kegelschnitte}
 dargestellten Geometrie kann man die folgende Charakterisierung von
@@ -321,9 +339,9 @@ Ellipsen und Hyperbeln ableiten.
 \label{buch:geometrie:def:kegelschnitte}
 Gegeben sind die Punkte $F_1$ und $F_2$ in der Ebene, sie heissen
 die {\em Brennpunkte}.
-Die Punkte in der Ebene, deren Abstandssumme von zwei festen Punkten $F_1$
+Die Punkte in der Ebene, deren Abstandssumme von den Punkten $F_1$
 und $F_2$ konstant ist, bilden eine {\em Ellipse}.
-Die Punkte in der Ebene, deren Abstandsdifferenz von zwei festen Punkten
+Die Punkte in der Ebene, deren Abstandsdifferenz von den Punkten
 $F_1$ und $F_2$ konstant ist, bilden eine {\em Hyperbel}.
 \end{definition}
 
@@ -369,7 +387,7 @@ Brennpunkten ist
 &\qquad\text{Ellipse}
 \\
 (e+a)-(e-a) = 2a
-&\qquad\text{Hyperbel}
+&\qquad\text{Hyperbel.}
 \end{cases}
 \]
 In Abbildung~\ref{buch:geometrie:hyperbel:fig:2d} ist diese Situation
@@ -381,7 +399,7 @@ b^2
 =
 \begin{cases}
 a^2-e^2&\qquad\text{Ellipse} \\
-e^2-a^2&\qquad\text{Hyperbel}
+e^2-a^2&\qquad\text{Hyperbel.}
 \end{cases}
 \]
 Die Zahlen $a$ und $b$ heissen die {\em grosse} bzw.~{\em kleine Halbachse}
@@ -459,9 +477,11 @@ Nach Division durch $\mp a^2b^2$ bleibt
 \frac{x^2}{a^2} \pm \frac{y^2}{b^2} = 1,
 \label{buch:geometrie:hyperbel:gleichung}
 \end{equation}
-die Koordinatengleichunggleichung einer Ellipse bwz.~Hyperbel.
+die Koordinatengleichunggleichung einer Ellipse bzw.~Hyperbel.
 
-
+%
+% Hyperbeln
+%
 \subsubsection{Hyperbeln}
 Die Hyperbeln können auch als Graphen einer Funktion von $x$ gefunden werden.
 Dazu wird die Gleichung~\eqref{buch:geometrie:hyperbel:gleichung}
@@ -492,6 +512,9 @@ Ein besonders einfacher Spezialfall ist $a=b=1$, genannt eine
 \index{Hyperbel, gleichseitig}%
 In diesem Fall ist $x^2-y^2=1$ und $e^2=2$.
 
+%
+% Länge eines gleichseitigen Hyperbelbogens
+%
 \subsubsection{Länge eines gleichseitigen Hyperbelbogens}
 Die Funktion $f(x)=\sqrt{1+x^2}$ beschreibt eine gleichseitige
 Hyperbel, die gegenüber der Situation in
@@ -510,10 +533,13 @@ l(x)
 \]
 Dieses Integral ist nicht in geschlossener Form lösbar.
 Natürlich können auch andere Parametrisierungen für die Hyperbel
-verwendet werden, die entstehenden Integrals, dies ändert jedoch
+verwendet werden, dies ändert jedoch
 nichts an der Schwierigkeit, einen Ausdruck für den Wert des
-Integrals anzugeben.
+entstehenden Integrals anzugeben.
 
+%
+% Parametrisierung mit hyperbolischen Funktionen
+%
 \subsubsection{Parametrisierung mit hyperbolischen Funktionen}
 Etwas allgemeiner wird eine Hyperbel durch die Gleichung
 \begin{equation}
@@ -574,6 +600,9 @@ und dem Brennpunkt $F$ gleichen Abstand haben.
 \label{buch:geometrie:fig:parabel}}
 \end{figure}
 
+%
+% Ellipsen
+%
 \subsubsection{Ellipsen}
 Sei $(x,y)$ ein Punkt, der die
 Ellipsengleichung~\eqref{buch:geometrie:hyperbel:gleichung} erfüllt.
@@ -635,6 +664,9 @@ dass der Umfang einer Ellipse $4aE(\varepsilon)$ ist,
 wobei $\varepsilon=e/a$ und $e^2=a^2-b^2$ (siehe auch
 Abbildung~\ref{buch:elliptisch:fig:ellipsenumfang}).
 
+%
+% Parabeln
+%
 \subsubsection{Parabeln}
 Aus der Geometrie der Kegelschnitte
 (Abbildung~\ref{buch:geometrie:def:kegelschnitte})
@@ -677,6 +709,9 @@ Eine Parabel ist also der Graph einer quadratischen Funktion.
 Parabeln haben erhebliche praktische Bedeutung, weil sie parallel zur
 Achse einfallende Strahlen im Brennpunkt $F$ fokusieren.
 
+%
+% Bogenlänge einer Parabel
+%
 \subsubsection{Bogenlänge einer Parabel}
 Die Länge eines Parabelbogens zwischen $x_1$ und $x_2$ ist
 \begin{align*}
@@ -706,8 +741,8 @@ f
 \frac{x}{4f}\sqrt{4f^2+x^2}
 \biggr]_{x_1}^{x_2}.
 \]
-Während also Ellipsen- und Hyperbelbogen nicht in geschlossener
-Form berechnet werden können, ist dies für Parabelbögen sehr wohl
+Während also die Länge eines Ellipsen- und Hyperbelbogens nicht in geschlossener
+Form berechnet werden kann, ist dies für Parabelbögen sehr wohl
 möglich.
 
 

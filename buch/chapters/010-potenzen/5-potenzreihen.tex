@@ -37,7 +37,7 @@ f(z)
 mit Koeffizienten $a_k\in \mathbb{R}$ oder $a_k\in\mathbb{C}$.
 \end{definition}
 
-Die Berechnung einer Potenzreihe ist möglich, wenn die Terme höheren
+Der Begriff der Summe einer Potenzreihe ist sinnvoll, wenn die Terme höheren
 Grades an Bedeutung verlieren.
 
 \begin{definition}
@@ -55,12 +55,14 @@ Sie heisst absolut konvergent, wenn die Reihe
 konvergiert.
 \end{definition}
 
-Die Koeffizienten $a_k$ dürfen also nicht schnell anwachsen
-werden, denn normalerweise wird bei Polynomen das Verhalten von den
+Die Koeffizienten $a_k$ dürfen also nicht schnell anwachsen,
+denn normalerweise wird bei Polynomen das Verhalten von den
 Termen höheren Grades dominiert.
-Die Tschebyscheff-Polynome waren ja so konstruiert worden, dass
-es nicht zu unzweckmässig starken Oszillationen im Intervall $(-1,1)$
-kommt.
+Sind die $a_k$ gross, muss entsprechend der Betrag $|z-z_0|^k$ klein
+sein, damit die Reihe immer noch konvergiert.
+%Die Tschebyscheff-Polynome waren ja so konstruiert worden, dass
+%es nicht zu unzweckmässig starken Oszillationen im Intervall $(-1,1)$
+%kommt.
 
 %
 % Geometrische Reihe
@@ -69,13 +71,14 @@ kommt.
 \label{buch:potenzen:potenzreihen:section:geometrische}}
 Die wohl einfachste Potenzreihe ist die Reihe mit Koeffizienten
 $a_k=a$ für alle $k$, also
-\[
+\begin{equation}
 f(z)
 =
 \sum_{k=0}^\infty az^k
 =
 a+az+az^2+az^3+az^4+\dots
-\]
+\label{buch:potenzen:potenzreihen:eqn:geom}
+\end{equation}
 Sie ist charakterisiert durch die Eigenschaft, dass aufeinanderfolgende
 Reiheglieder den konstanten Quotienten $z$ haben.
 Diese Idee wird
@@ -84,7 +87,8 @@ auf Quotienten verallgemeinert, die rationale Funktionen sind.
 Sie heissen hypergeometrische Funktionen.
 \index{hypergeometrische Funktion}%
 
-Sie ist konvergent für $|z|<1$ und divergent für $|z|\ge 1$.
+Die Reihe~\eqref{buch:potenzen:potenzreihen:eqn:geom}
+ist konvergent für $|z|<1$ und divergent für $|z|\ge 1$.
 Sie heisst die {\em geometrische Reihe}.
 Sie wird gerne als ``Vergleichsreihe'' eingesetzt um die
 Konvergenz oder Divergenz anderer Reihen nachzuweisen.
@@ -134,7 +138,7 @@ Dies ist der Inhalt des folgenden, wohlbekannten Majorantenkriteriums.
 Seien $a_k$ und $b_k$ die Glieder zweier unendlicher Reihen.
 Es sei zudem $b_k\ge 0$ für alle $k$ und die Reihe
 $\sum_{k=0}^\infty b_k$ sei konvergent.
-Wenn $|a_k|\ge b_k$ ist für fast alle $k$, dann ist die Reihe
+Wenn $|a_k|\le b_k$ ist für fast alle $k$, dann ist die Reihe
 \(
 \sum_{k=}^\infty a_k
 \)
@@ -209,15 +213,15 @@ Das Kriterium \eqref{buch:polynome:eqn:wurzel-kriterium} bedeutet,
 dass es zu einem gegebenen $\varepsilon > 0$ ein $N$ gibt derart,
 dass $\root{n}\of{|a_k|} < C+\varepsilon$ für $n>N$.  
 Wählt man $\varepsilon = (1-C)/2$ wird $q=C+\varepsilon=(1+C)/2<1$,
-das Reststück der Reihe ab Index $N$ ist daher wieder majorisiert
-durch eine konvergente geometrische Reihe.
+ist das Reststück der Reihe ab Index $N$ wieder
+durch eine konvergente geometrische Reihe majorisiert.
 \end{proof}
 
 %
 % Konvergenzradius
 %
 \subsubsection{Konvergenzradius}
-Das Quotienten- und das Wurzel-Kriterium ist auf beliebige Reihen
+Das Quotienten- und das Wurzelkriterium ist auf beliebige Reihen
 anwendbar, es berücksichtigt nicht, dass in einer Potenzreihe
 die Faktoren $(z-z_0)^k$ für kleine $|z-z_0|$ das Kleiner werden
 der Reihenglieder und damit die Konvergenz begünstigen.
@@ -388,7 +392,7 @@ Reihe für $f(z)$.
 \subsubsection{Berührung $k$-ten Grades}
 Man sagt, die Graphen zweier Funktionen $f(z)$ und $g(z)$ berühren
 sich im Punkt $z=z_0$ vom Grade $k$, wenn Funktionswerte und
-Ableitungen bis zum Grad $k$ beider Funktionen in $z_0$ übereinstimmen.
+Ableitungen bis zur Ordnung $k$ beider Funktionen in $z_0$ übereinstimmen.
 Die Ableitungen der Potenzfunktion $(z-z_0)^n$ sind nacheinander
 \begin{align*}
 \frac{d}{dz}(z-z_0)^n&= n(z-z_0)^{n-1},
@@ -434,7 +438,7 @@ von hohem Grad berührt.
 \label{buch:polynome:definition:taylor-reihe}
 \index{Taylor-Polynom}%
 Sie $f(z)$ eine beliebig oft stetig differenzierbare Funktion.
-Das {\em Taylor-Polynome} vom Grad $n$ von $f(z)$ an der Stelle
+Das {\em Taylor-Polynom} vom Grad $n$ von $f(z)$ an der Stelle
 $z_0$ ist die Summe
 \begin{equation}
 \mathscr{T}_{z_0}^nf (z)
@@ -459,10 +463,11 @@ Die {\em Taylor-Reihe} der Funktion $f(z)$ ist die Reihe
 %
 \subsubsection{Analytische Funktionen}
 Das Taylor-Polynom $\mathscr{T}_{z_0}^nf(z)$ hat an der Stelle $z_0$
-die gleichen Funktionswerte und Ableitungen wie die Funktion $f(z)$,
-dies bedeutet aber nicht, dass die Taylorreihe gegen die Funktion 
+die gleichen Funktionswerte und Ableitungen wie die Funktion $f(z)$.
+Dies bedeutet aber nicht, dass die Taylorreihe gegen die Funktion 
 konvergiert.
-Das Beispiel auf
+Das Beispiel~\ref{buch:funktionentheorie:beispiel:nichtanalytisch}
+auf
 Seite~\pageref{buch:funktionentheorie:beispiel:nichtanalytisch}
 zeigt, dass dies nicht immer zutrifft.
 Von besonderem Interesse sind die Funktionen, die sich durch eine
@@ -477,7 +482,7 @@ konvergente Potenzreihe darstellen lässt.
 
 Die Klasse der analytischen Funktionen umfasst also nicht alle 
 differenzierbaren Funktionen.
-Da aber Potenzreihen Gleidweise differenziert und integriert werden
+Da aber Potenzreihen gliedweise differenziert und integriert werden
 dürfen, können die meisten Konstruktionen der Analysis bis hin zur
 Lösung partieller Differentialgleichungen innerhalb der analytischen
 Funktionen durchgeführt werden.

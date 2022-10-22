@@ -27,7 +27,7 @@ Anschliessend müssen dann $(n-1)^2$ einstellige Multiplikationen
 gefolgt von einstelligen Additionen mit Übertrag ausgeführt werden,
 um die Summe zu bilden.
 Der Aufwand für eine Multiplikation wächst also quadratisch mit
-der Genauigkeit, während der Aufwand für die addition nur linear
+der Genauigkeit, während der Aufwand für die Addition nur linear
 anwächst.
 
 Eine gebräuchlich Methode war die Verwendung der trigonometrischen
@@ -61,12 +61,12 @@ und einer
 Halbierungsoperationen, die sich ähnlich effizient wie Additionen
 durchführen lässt.
 Der Aufwand dieser Art der Durchführung der Multplikation ist also
-gleich gross wie $4$ Additionen und $4$ Tabellenkonsultationen.
+gleich gross wie vier Additionen und vier Tabellenkonsultationen.
 
 \begin{beispiel}
 In Abschnitt~\ref{buch:trigo:subsection:tabelle} ist beschrieben, wie
 schon im Altertum Tabellen für Sinus-Werte aufgestellt werden konnten.
-Mit der Tabelle~\ref{buch:trigo:table:sinus} kann man zum Beispiel die
+Mit der Tabelle~\ref{buch:trigo:table:sinus} kann zum Beispiel die
 folgende Multiplikation durchführen.
 Gesucht ist das Produkt der Zahlen $x=0.51503807$ und $y=0.80901169$.
 Die Berechnung läuft wie folgt ab:
@@ -109,8 +109,9 @@ Es funktioniert nur für Zahlen zwischen $0$ und $1$.
 Für Zahlen ausserhalb dieses Intervalls ist es die Aufgabe des
 Anwenders, eine Skalierung vorzunehmen und sie später bei der Angabe
 des Resultates wieder einfliessen zu lassen.
-Das Quadrat von $2$ kann berechnet werden als
-\(2^2 = 100 \cdot 0.2\cdot 0.2\), was mit dem Winkel
+Das Quadrat von $2$ kann als
+\(2^2 = 100 \cdot 0.2\cdot 0.2\)
+berechnet werden, was mit dem Winkel
 $\alpha=\beta=11.537^\circ$ möglich ist. 
 Das Resultat der Multiplikation nach obigem Verfahren ist dann 
 \[
@@ -141,7 +142,7 @@ Es kann vorkommen, dass die Winkel $90^\circ-\alpha+\beta$
 und $90^\circ-\alpha-\beta$ nicht im Intervall zwischen $0$ und $90^\circ$
 liegen.
 In diesem Fall ist eine zusätzliche Reduktion des Winkels nötig.
-Falls der Winkel negativ ist, muss in den folgenden Schritt zusätzlich
+Falls der Winkel negativ ist, muss in den folgenden Schritten zusätzlich
 das Vorzeichen berücksichtigt werden.
 \end{enumerate}
 
@@ -189,7 +190,7 @@ eine Tabelle aller Werte
 =
 10^8 \biggl(\biggl(1+\frac{1}{10000}\biggr)^{10000}\biggr)^{n\cdot10^{-4}}
 \]
-für $n=0$ bis $n=23027$.
+für $n=0$ bis $n=23027$ veröffentlicht.
 Die Abbildung~\ref{buch:exponential:log:fig:buergi1}
 zeigt, einen Ausschnitt aus der ersten Seite von Bürgis Tabelle.
 Die mit 10 multiplizierten Exponenten $n$ sind durchwegs als
@@ -208,12 +209,13 @@ Die zugehörigen roten Zahlen wurden dann addiert und mit Hilfe der
 Tabelle wieder die schwarzen Zahlen ermittelt.
 
 \begin{beispiel}
-Die erste Seite \ref{buch:exponential:log:fig:buergi2} der Bürgischen
+Die in Abbildung~\ref{buch:exponential:log:fig:buergi2}
+gezeigte erste Seite der Bürgischen
 Tabelle umfasst natürlich nur einen sehr kleine Teil des ganzen Werkes,
 trotzdem kann man daran den Gang der Rechnung illustrieren.
 Um die beiden schwarzen Zahlen $x=1.0023$ und $y=1.0017$ miteinander
 zu multiplizieren, sucht man die zugehörigen roten Zahlen in
-der Tabelle
+der Tabelle und addiert sie:
 \[
 \renewcommand{\arraycolsep}{2pt}
 \begin{array}{rclcr}
@@ -257,15 +259,15 @@ den Faktor $10^3$ höhere Genauigkeit angewendet, hätte er auch $10^3$
 mal mehr und somit über 23 Millionen Multiplikationen durchführen
 müssen, im Laufe derer sich viel zu grosse Rundungsfehler akkumuliert
 hätten.
-Napier hat daher das gesamte Intervall in mehrer grössere Intervall
+Napier hat daher das gesamte Intervall in mehrer grössere Intervalle
 unterteilt, indem er mit statt nur den Faktor $a=1-10^{-7}=0.9999999$
 auch noch geometrische Folgen mit den Faktoren $b=1-10^{-5}=0.99999$ und
 $c=1-5\cdot10^{-4}=0.9995$ verwendet hat.
 Mit 4604 Gliedern der Folge $c^k$ konnte er tatsächlich das ganze
 Intervall zwischen $0.1$ und $1$ geometrisch unterteilen.
 Innerhalb jedes Teilintervalls kann dann eine Unterteilung mit
-50 Gliedern der Folge $b^k$ aufteilen.
-Und schliesslich liefern 100 Gleider der Folge $a^k$ eine geometrische
+50 Gliedern der Folge $b^k$ gefunden werden.
+Und schliesslich liefern 100 Glieder der Folge $a^k$ eine geometrische
 Unterteilung in jedes dieser Intervalle.
 Auf diese Art kann erreicht werden, dass jeder Wert mit höchstens 4755
 Multiplikationen und damit ohne Kompromittierung der Genauigkeit durch
@@ -289,8 +291,8 @@ Unterschied der Exponenten ist.
 Dies macht die Verwendung einer Logarithmentabelle sehr viel
 intuitiver.
 
-Briggs hat ausserdem die numersiche Berechnung der Logarithmen 
-weiterentwickelt und innerhalb von 7 Jahren 30000 Logarithmen mit
+Briggs hat ausserdem die numerische Berechnung der Logarithmen 
+weiterentwickelt und innerhalb von sieben Jahren 30000 Logarithmen mit
 einer Genauigkeit von 14 Stellen berechnet.
 Die Methoden von Bürgi und Napier gingen davon aus, das Intervall,
 in dem die Logarithmen bestimmt werden sollen, durch Konstruktion

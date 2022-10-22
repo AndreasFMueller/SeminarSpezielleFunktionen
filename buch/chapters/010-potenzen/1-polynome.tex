@@ -11,7 +11,7 @@ Operationen konstruieren lassen, sind die Polynome.
 
 \begin{definition}
 \index{Polynom}%
-Ein {\em Polynome} vom Grad $n$ ist die Funktion
+Ein {\em Polynom} vom Grad $n$ ist die Funktion
 \[
 p(x) = a_nx^n + a_{n-1}x^{n-1} + \dots + a_2x^2 + a_1x + a_0,
 \]
@@ -45,7 +45,7 @@ Familien von Polynomen konstruiert werden, die sich durch eine
 Orthogonalitätseigenschaft auszeichnen.
 Diese Polynome lassen sich typischerweise auch als Lösungen von
 Differentialgleichungen finden.
-Ausserdem werden hypergeometrische Funktionen
+Ausserdem werden die hypergeometrischen Funktionen
 \[
 \mathstrut_pF_q\biggl(
 \begin{matrix}a_1,\dots,a_p\\b_1,\dots,b_q\end{matrix};z
@@ -100,7 +100,7 @@ Dies äussert sich zum Beispiel auch im Prinzip des
 Koeffizientenvergleichs von
 Satz~\ref{buch:polynome:satz:koeffizientenvergleich}.
 Im Gegensatz zu beliebigen Funktionen kann man daher Aussagen
-über Polynomen immer mit endlich Algorithmen entscheiden.
+über Polynome immer mit endlich Algorithmen entscheiden.
 Die nächsten Abschnitte sollen diese algebraischen Eigenschaften
 zusammenfassen.
 
@@ -111,15 +111,15 @@ zusammenfassen.
 Der schriftliche Divisionsalgorithmus für Zahlen funktioniert 
 auch für die Division von Polynomen.
 \index{Polynome!Divisionsalgorithmus}%
-Zu zwei beliebigen Polynomen $p(x)$ und $q(x)$ lassen sich also
-immer zwei Polynome $a(x)$ und $r(x)$ finden derart, dass
-$p(x) = a(x) q(x) + r(x)$.
-Das Polynom $a(x)$ heisst der {\em Quotient}, $r(x)$ der {\em Rest}
+Zu zwei beliebigen Polynomen $a(x)$ und $b(x)$ lassen sich also
+immer zwei Polynome $q(x)$ und $r(x)$ finden derart, dass
+$a(x) = b(x) q(x) + r(x)$.
+Das Polynom $q(x)$ heisst der {\em Quotient}, $r(x)$ der {\em Rest}
 der Division.
-Das Polynom $p(x)$ heisst {\em teilbar} durch $q(x)$, geschrieben
+Das Polynom $a(x)$ heisst {\em teilbar} durch $b(x)$, geschrieben
 \index{teilbar}%
 \index{Polynome!teilbar}%
-$q(x)\mid p(x)$, wenn $r(x)=0$ ist.
+$b(x)\mid a(x)$, wenn $r(x)=0$ ist.
 
 %
 % Grösster gemeinsamer Teiler
@@ -190,7 +190,7 @@ Dann ist $g(x)=r_{m-1}(x)$ ein grösster gemeinsamer Teiler.
 \index{erweiterter euklidischer Algorithmus}%
 \index{euklidischer Algorithmus!erweitert}%
 Die Konstruktion der Folgen $a_n(x)$ und $b_n(x)$ kann in Matrixform
-kompakter geschrieben werden als
+kompakter als
 \[
 \begin{pmatrix}
 a_k(x)\\
@@ -209,8 +209,9 @@ r_{k-1}(x)
 \begin{pmatrix}
 a_{k-1}(x)\\
 b_{k-1}(x)
-\end{pmatrix}.
+\end{pmatrix}
 \]
+geschrieben werden.
 Kürzen wir die $2\times 2$-Matrix als
 \[
 Q_k(x) = \begin{pmatrix} 0&1\\1&-q_k(x)\end{pmatrix}
@@ -246,7 +247,7 @@ S_{-1}(x)
 =
 \begin{pmatrix} 1 & 0 \\ 0 & 1 \end{pmatrix}.
 \]
-Ausgeschrieben bedeutet dies Matrixrekursionsformel
+Ausgeschrieben bedeutet diese Matrixrekursionsformel
 \[
 S_{k-1}(x)
 =
@@ -296,7 +297,7 @@ g(x) = c_{k-1}(x) a(x) + d_{k-1}(x) b(x)
 0 = c_k(x) a(x) + d_k(x) b(x).
 \]
 Dieser Algorithmus heisst der erweiterte euklidische Algorithmus.
-Wir fassen die Resultate zusammen im folgenden Satz.
+Wir fassen die Resultate im folgenden Satz zusammen.
 
 \begin{satz}
 Zu zwei Polynomen $a(x),b(x) \in K[x]$ gibt es Polynome
@@ -317,7 +318,7 @@ gilt.
 % wird später gebraucht um bei der Definition der hypergeometrischen Reihe
 % die Zaehler- und Nenner-Polynome als Pochhammer-Symbole zu entwickeln
 Ist $\alpha$ eine Nullstelle des Polynoms $a(x)$, also $a(\alpha)=0$.
-Der Divisionsalgorithmus mit für die Polynome $a(x)$ und $b(x)=x-\alpha$
+Der Divisionsalgorithmus für die Polynome $a(x)$ und $b(x)=x-\alpha$
 liefert zwei Polynome $q(x)$ für den Quotienten und $r(x)$ für den Rest
 mit den Eigenschaften
 \[
@@ -348,7 +349,7 @@ Daraus folgt auch, dass ein Polynom $a(x)$ vom Grad $n=\deg a(x)$ höchstens
 $n$ verschiedene Nullstellen haben kann.
 
 Sind $\alpha_1,\dots,\alpha_k$ alle Nullstellen von $a(x)$, dann lässt
-sich $a(x)$ zerlegen in Faktoren
+sich $a(x)$ in Faktoren
 \[
 a(x)
 =
@@ -356,13 +357,14 @@ a(x)
 (x-\alpha_2)^{m_2}
 \cdots
 (x-\alpha_k)^{m_k}
-b(x).
+b(x)
 \]
+zerlegen.
 Das Polynom $b(x)\in K[x]$ hat keine Nullstellen in $K$.
 
 Wenn zwei Polynome $a(x)$ und $b(x)$ eine gemeinsame Nullstelle $\alpha$
 haben, dann ist $(x-\alpha)$ ein Teiler beider Polynome und somit auch
-ein Teiler eines grössten gemeinsamer Teiler.
+ein Teiler eines grössten gemeinsamer Teilers.
 Insbesondere sind die Nullstellen des grössten gemeinsamen Teilers
 gemeinsame Nullstellen von $a(x)$ und $b(x)$.
 
@@ -395,7 +397,7 @@ p_n
 \]
 sein.
 Ist $y\in K$ verschieden von den Nullstellen $x_i$, dann ist 
-in $y-x_i\ne 0$ für alle $i$.
+$y-x_i\ne 0$ für alle $i$.
 Für das Produkt gilt dann
 \[
 0
@@ -423,12 +425,16 @@ sie die gleichen Koeffizienten haben.
 Man beachte, dass dieses Prinzip nur funktioniert, wenn es genügend
 viele verschiedene Elemente in $K$ gibt.
 Für die endlichen Körper $\mathbb{F}_p$ gilt dies nicht, denn es gilt
+der kleine Satz von Fermat:
+\index{kleiner Satz von Fermat}%
+\index{Satz!von Fermat, kleiner}%
 \[
 a(x)
 =
 x^p-x\equiv 0\mod p
 \]
-für jede Zahl $x\in\mathbb{F}_p$, das Polynom $a(x)$ mit Grad $p$
+für jede Zahl $x\in\mathbb{F}_p$.
+Das Polynom $a(x)$ mit Grad $p$
 hat also genau $p$ Nullstellen, es gibt aber keine weitere Nullstelle,
 mit der man wie oben schliessen könnte, dass $a(x)$ das Nullpolynom ist.
 

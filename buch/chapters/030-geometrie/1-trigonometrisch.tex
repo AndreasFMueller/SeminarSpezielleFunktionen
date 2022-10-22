@@ -1,5 +1,5 @@
 %
-% 4-trigonometrisch.tex
+% 1-trigonometrisch.tex
 %
 % (c) 2021 Prof Dr Andreas Müller, OST Ostschweizer Fachhochschule
 %
@@ -22,9 +22,21 @@ die trigonometrischen Funktionen.
 % Definition der trigonometrischen Funktionen
 %
 \subsection{Definition der trigonometrischen Funktionen}
-% XXX Abbildung Jakobsstab
+% Abbildung Jakobsstab
+\begin{figure}
+\centering
+\begin{tikzpicture}[>=latex]
+\node at (0,0)
+{\includegraphics[width=6cm]{chapters/030-geometrie/images/jakobsstab.jpg}};
+\node at (7,0)
+{\includegraphics[width=6cm]{chapters/030-geometrie/images/jakobsstab-use.jpg}};
+\end{tikzpicture}
+\caption{Jakobsstab und seine Verwendung zur Messung von Winkeln zwischen
+Sichtlinien
+\label{buch:geometrie:trigonometrisch:fig:jakobsstab}}
+\end{figure}
 Eines der ältesten Messgeräte für Winkel ist der Jakobsstab,
-dargestellt in Abbildung~\ref{}.
+dargestellt in Abbildung~\ref{buch:geometrie:trigonometrisch:fig:jakobsstab}.
 Der Querstab kann entlang des Stabs verschoben werden.
 Die beiden Punkte, deren Zwischenwinkel bestimmt werden soll,
 werden so anvisiert, dass sie sich auf den Enden des Querstabs 
@@ -79,7 +91,7 @@ Aus der Abbildung~\ref{buch:geometrie:trigo:chorddef} ergibt sich
 Die Verwendung der Chord-Funktion war bis ins 19.~Jahrhundert in der
 Landvermessung üblich.
 Neben der Chord-Funktion waren auch noch andere heute weitgehend
-vergessen Funktionen im Einsatz wie zum Beispiel der Sinus versus
+vergessene Funktionen im Einsatz wie zum Beispiel der Sinus versus
 \[
 \operatorname{vers}\alpha=1-\cos\alpha
 =
@@ -94,7 +106,7 @@ oder der Semiversus
 \sin^2\frac{\alpha}2,
 \]
 der besonders nützlich bei der Berechnung der Entfernung
-zweier in geographischer Länge und Breite gegebener Punkte
+zweier durch ihre geographische Länge und Breite gegebener Punkte
 auf der Erdoberfläche ist und daher in der Navigation lange
 üblich war.
 
@@ -103,7 +115,9 @@ universell einsetzbar sein als auch gut und effizient
 berechnet werden können.
 Aus dieser Forderung haben sich die Funktion $\sin\alpha$,
 $\cos\alpha$ und $\tan\alpha$ als die nützlichsten herausgestellt.
-Mit ihnen lassen sich a
+Mit ihnen lassen sich alle für die Berechnung von ebenen Dreiecken
+nötigen Funktionen mit minimalem Aufwand und hoher Genauigkeit
+berechnen.
 
 %
 % Rechtwinklige Dreiecke
@@ -147,7 +161,11 @@ die wie folgt definiert sind:
 (siehe auch Abbildung~\ref{buch:geometrie:trigo:fig:definition}).
 \end{definition}
 
-Aus der Definition und dem Satz von Pythagoras kann eine grosse Zahl
+Aus der Definition folgt zunächst
+\[
+\tan \alpha = \frac{\sin\alpha}{\cos\alpha}.
+\]
+Zusammen mit dem Satz von Pythagoras kann jetzt eine grosse Zahl
 von Beziehungen zwischen den trigonometrischen Funktionen abgeleitet
 werden.
 Zum Beispiel folgt sofort
@@ -171,7 +189,7 @@ und umgekehrt:
 \qquad\text{und}\qquad
 \cos\alpha
 =
-\sqrt{1-{\sin\mathstrut\!}^2\,\alpha\mathstrut}
+\sqrt{1-{\sin\mathstrut\!}^2\,\alpha\mathstrut}.
 \]
 Da sich alle Funktionen durch $\cos\alpha$ und $\sin\alpha$ ausdrücken
 lassen, können alle auch nur durch eine ausgedrückt werden.
@@ -240,7 +258,7 @@ Tabelle~\ref{buch:geometrie:tab:trigo} zusammengestellt ist.
 \end{tabular}
 \caption{Darstellung aller trigonometrischen Funktionen durch jede beliebige
 andere Funktion.
-Für Winkel ausserhalb des 1.~Quadranten müssen die Vorzeichen der
+Für Winkel ausserhalb des ersten Quadranten müssen die Vorzeichen der
 Quadratwurzeln so gewählt werden, dass die Funktion das richtige
 Vorzeichen erhält.
 \label{buch:geometrie:tab:trigo}}
@@ -286,7 +304,7 @@ Ein Punkt im zweiten Quadranten hat zum Beispiel eine negative
 $x$-Koordinate.
 Die trigonometrischen Funktionen können nun analog zu
 Definition~\ref{buch:geometrie:def:trigo} aber unter Verwendung
-der Koordinaten $x$ und $y$.
+der Koordinaten $x$ und $y$ definiert werden.
 
 Auch das Argument $\alpha$ der trigonometrischen Funktionen kann
 jetzt auf natürlichere Art und Weise definiert werden.
@@ -310,7 +328,7 @@ $x$-Achse und der Richtung durch den Punkt $P$ sind
 Die Beziehungen der Tabelle~\ref{buch:geometrie:tab:trigo}
 zwischen den trigonometrischen Funktionen bleibt auch für 
 diese erweiterten Funktionen gültig, wenn das Vorzeichen der
-Quadratwurzel falls vorhanden geeignet gewählt wird.
+möglicherweise auftretenden Quadratwurzel geeignet gewählt wird.
 
 %
 % Drehungen in der Ebene
@@ -326,6 +344,9 @@ Daraus werden sich später Ableitungseigenschaften und
 Potenzreihendarstellungen der trigonometrischen Funktionen ableiten
 lassen.
 
+%
+% Drehmatrizen und Additionstheoreme
+%
 \subsubsection{Drehmatrizen und Additionstheoreme}
 Eine Drehung der Ebenen $\mathbb{R}^2$ um den Winkel $\alpha$ bildet
 die Standardbasisvektoren auf die Vektoren
@@ -389,9 +410,9 @@ D_{\alpha}D_{\beta}
 	& -\cos\alpha\sin\beta -\sin\alpha\cos\beta\\\
 \cos\alpha\sin\beta+\sin\alpha\cos\beta
 	& \cos\alpha\cos\beta-\sin\alpha\sin\beta
-\end{pmatrix}
+\end{pmatrix}.
 \end{align*}
-Aus dem Vergleich der beiden Matrizen liest man die Additionstheoreme.
+Aus dem Vergleich der beiden Matrizen liest man die Additionstheoreme ab.
 
 \begin{satz}
 \index{Satz!Drehmatrizen}%
@@ -403,18 +424,18 @@ Für $\alpha,\beta\in\mathbb{R}$ gilt
 \\
 \cos(\alpha\pm\beta)
 &=
-\cos\alpha\cos\beta\pm\sin\alpha\sin\beta
+\cos\alpha\cos\beta\pm\sin\alpha\sin\beta.
 \end{align*}
 \end{satz}
 
-Ein besonders einfacher Spezialfalls ist $\alpha=\beta$, es ergben sich die
+Ein besonders einfacher Spezialfall ist $\alpha=\beta$, es ergben sich die
 Doppelwinkelformeln
 \begin{align*}
 \cos2\alpha &= \cos^2\alpha-\sin^2\alpha
 \\
 \sin2\alpha &= 2\cos\alpha\sin\alpha.
 \end{align*}
-In der Formel für $\cos2\alpha$ kann die rechte Seite durch nur
+In der Formel für $\cos2\alpha$ kann man die rechte Seite durch nur
 eine Winkelfunktion ausdrücken:
 \begin{align*}
 \cos2\alpha &= \cos^2\alpha - (1-\cos^2\alpha) = 2\cos^2\alpha -1
@@ -434,6 +455,9 @@ Seite auflösen, so erhält man die Halbwinkelformeln
 \end{align*}
 Der letzte Ausdruck ist auch bekannt als der Semiversus.
 
+%
+% Funktionen für mehrfache Winkel
+%
 \subsubsection{Funktionen für mehrfache Winkel}
 Die Additionstheoreme können dazu verwendet werden, Formeln für
 die Werte der trigonometrischen Funktionen mehrfacher Winkel zu
@@ -447,18 +471,18 @@ als
 \[
 D_{\alpha}
 =
-E
+I
 \cos\alpha
 +
 J
 \sin\alpha
 \]
-schreiben.
+schreibt.
 Die Potenzen von $J$ sind
 \[
-J^2 = -E,\quad
+J^2 = -I,\quad
 J^3 = -J \quad\text{und}\quad
-J^4 = E.
+J^4 = I.
 \]
 Daraus ergibt sich
 \begin{align*}
@@ -466,12 +490,13 @@ D_{n\alpha}
 =
 (D_{\alpha})^n
 &=
-(E\cos\alpha+J\sin\alpha)^n
+(I\cos\alpha+J\sin\alpha)^n
 \\
 &=
 \sum_{k=0}^n \binom{n}{k}\cos^{n-k}\alpha\sin^{k}\alpha J^k
 \\
 &=
+I
 \sum_{l=0}^{\lfloor\frac{n}2\rfloor}
 (-1)^l
 \binom{n}{2l}\cos^{n-2l}\alpha \sin^{2l}\alpha 
@@ -493,7 +518,7 @@ Formeln für die Funktionen des $n$-fachen Winkels:}
 -
 \sum_{l=0}^{\lfloor\frac{n}2\rfloor}
 (-1)^l
-\binom{n}{2l+1}\cos^{n-2l-1}\alpha \sin^{2l+1}\alpha 
+\binom{n}{2l+1}\cos^{n-2l-1}\alpha \sin^{2l+1}\alpha .
 \end{align*}
 Für kleine Werte von $n$ sind die Formeln einigermassen übersichtlich,
 zum Beispiel für $n=3$:
@@ -528,6 +553,9 @@ zu gegebenen Werten von $\cos 3\alpha$ und $\sin 3 \alpha$
 die Werte von $\cos\alpha$ und $\sin\alpha$ durch rein
 algebraische Operationen bestimmen.
 
+%
+% Eine Tabelle der Werte der trigonometrischen Funktionen
+%
 \subsection{Eine Tabelle der Werte der trigonometrischen Funktionen
 aufstellen
 \label{buch:trigo:subsection:tabelle}}
@@ -537,8 +565,8 @@ Sie hatte eine Auflösung von $1^\circ$.
 Wie kann man eine solche Tabelle mit den Mitteln der damaligen Zeit,
 also insbesondere ganz ohne Dezimalbrüche, zusammenstellen?
 
-Aus speziellen Dreiecken kann man die einige wenige bekannte Winkel
-finden und die zugehörigen Werte der trigonemetrischen Funktionen
+Aus speziellen Dreiecken kann man einige wenige bekannte Winkel
+konstruieren und die zugehörigen Werte der trigonemetrischen Funktionen
 bestimmen.
 In einem rechtwinklig gleichschenkligen Dreieck liest man
 \[
@@ -586,6 +614,7 @@ Zentriwinkel $72^\circ$ hat, damit kann man die Werte
 =
 \frac{-1+\sqrt{5}}{4}
 \intertext{%
+bekommen.
 Mit den Halbwinkelformeln kann man dies nochmals teilen, bis man
 die Winkel}
 \sin 18^\circ &=
@@ -612,7 +641,7 @@ die Winkel}
 }
 }
 \end{align*}
-ausgwertet hat.
+ausgewertet hat.
 
 \begin{table}
 \centering
@@ -638,8 +667,8 @@ ausgwertet hat.
 45^\circ & &                   &          & &                  &0.70710678&0.70710678\\
 \hline
 \end{tabular}
-\caption{Tabelle der Werte der trigonometrischen für Winkel, die ganzzahlige
-Vielfache von $3^\circ$ sind.
+\caption{Tabelle der Werte der trigonometrischen Funktionen $\sin\alpha$
+und $\cos\alpha$ für Winkel, die ganzzahlige Vielfache von $3^\circ$ sind.
 Für die Winkel in der Spalte $90^\circ-\alpha$ sind die Sinus- und
 Kosinus-Werte zu vertauschen.
 \label{buch:geometrie:trigo:tabelle}}
@@ -695,9 +724,8 @@ mit den Additionstheoremen die folgenden Werte:
 0.998629534754574.
 \end{align*}
 
-
 Wie man es auch dreht und wendet, es scheint keine rein geometrische
-Möglichkeit zu geben, einen die Werte der Sinus- und Kosinus-Funktion
+Möglichkeit zu geben, die Werte der Sinus- und Kosinus-Funktion
 von $1^\circ$ zu bestimmen, mit denen man die bisher erhaltene Tabelle
 auf diese Auflösung verfeinern könnte.
 Da man aber bereits die Werte für $\sin3^\circ$ und $\cos3^\circ$ 
@@ -799,7 +827,7 @@ bekommt man
 &=
 \biggl(
 \sum_{j=0}^\infty \frac{\alpha^{2j}}{(2j)!}(-1)^j
-\biggr)E
+\biggr)I
 +
 \biggl(
 \sum_{j=0}^\infty \frac{\alpha^{2j+1}}{(2j+1)!}(-1)^j
@@ -813,7 +841,7 @@ somit folgt
 \\
 \sin\alpha
 &=
-\sum_{j=0}^\infty (-1)^j\frac{\alpha^{2j+1}}{(2j+1)!}
+\sum_{j=0}^\infty (-1)^j\frac{\alpha^{2j+1}}{(2j+1)!}.
 \end{align*}
 
 

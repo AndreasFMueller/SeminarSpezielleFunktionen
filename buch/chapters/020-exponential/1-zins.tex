@@ -26,7 +26,7 @@ Es stellt sich damit die Frage, ob es eine bevorzugte Basis gibt.
 % Zins und eulerscher Grenzwert
 %
 \subsection{Zins und Eulerscher Grenzwert}
-Wir ein Kapital $K_0$ mit dem Jahreszinssatz $x=100\%$ verzinst,
+Wir ein Kapital $K_0$ mit dem Jahreszinssatz $x$ verzinst,
 wächst es jedes Jahr um den Faktor $1+x$ an.
 Teilt man die Zinsperiode in kleiner Intervall, zum Beispiel Monate
 oder Tage, und passt auch den Zins entsprechend an, dann wächste
@@ -45,7 +45,7 @@ Diese Beobachtung hat Jacob Bernoulli 1683 dazu geführt, den Grenzwert
 \[
 \lim_{n\to\infty} \biggl(1+\frac1n\biggr)^n
 \]
-zu studieren, die später mit $e$ bezeichnet wurde.
+zu studieren, der später mit $e$ bezeichnet wurde.
 Später hat Euler gezeigt, dass 
 \begin{equation}
 \lim_{n\to\infty}\biggl(1+\frac{x}{n}\biggr)^n
@@ -83,7 +83,8 @@ So bekommt man
 \biggl(+\frac{p}{qn}\biggr)^{nq}
 =
 \lim_{m\to\infty}
-\biggl(1+\frac{p}{m})
+\biggl(
+1+\frac{p}{m}
 \biggr)^m
 =
 e^p.
@@ -100,12 +101,12 @@ Formel~\eqref{buch:exponential:zins:eulerex} gilt.
 % Approximation durch Jost Bürgi
 %
 \subsubsection{Approximation durch Jost Bürgi}
-Jost Bürgi, Uhrmacher und Mathematiker aus Lichtensteig,
-war einer der Erfinder der Logartihmen, für die er allerdings
+Jost Bürgi, Uhrmacher und Mathematiker aus Lichtensteig, Kanton St.~Gallen,
+war einer der Erfinder der Logarithmen, für die er allerdings
 noch keinen Namen hatte.
 Er berechnete eine Tabelle aller Werte von
 \[
-10^8\cdot(1+10^{-4})^n.
+10^8\cdot(1+10^{-4})^n,\qquad 0\le n\le 23027.
 \]
 Schreibt man
 \[
@@ -118,12 +119,11 @@ dann erkennt man, dass Bürgi die Potenzen der Approximation
 \biggl(1+\frac{1}{1000}\biggr)^{1000}
 =
 2.7181459
-\approx
-2.7182818
 \]
-von $e$ berechnet hat.
+von $e \approx 2.7182818$ berechnet hat.
 Die Wahl dieser Basis hat keine Auswirkungen auf die Genauigkeit
-der Anwendung seiner Tabellen, da jede andere Basis genauso.
+der Anwendung seiner Tabellen, da jede andere Basis genauso
+geeignet ist.
 
 %
 % Störungen des Eulerschen Grenzwertes
@@ -164,10 +164,11 @@ Da
 1+\frac{x+\varepsilon}{n}
 \biggr)^n
 \]
+ist,
 folgt
 \[
 e^{x-\varepsilon}
-\ge
+\le
 \lim_{n\to\infty}
 \biggl(
 1+\frac{x+x_n}{n}
@@ -175,7 +176,7 @@ e^{x-\varepsilon}
 \le
 e^{x+\varepsilon}.
 \]
-Da dies für alle $\varepsilon$ gilt, und die Funktion $x\mapsto e^x$
+Da dies für alle $\varepsilon$ gilt und die Funktion $x\mapsto e^x$
 stetig ist, folgt
 \[
 \lim_{n\to\infty} \biggl(1+\frac{x+x_n}{n}\biggr)^n
@@ -234,6 +235,9 @@ Damit ist die Funktionalgleichung bewiesen.
 %
 \subsection{Potenzreihe}
 Die übliche Definition der Exponentialfunktion verwendet eine Potenzreihe.
+Zur Unterscheidung schreiben wir in diesem Abschnitt $\exp(x)$ für
+die Exponentialreihe, bis wir gezeigt haben, dass sie mit der Potenz
+$e^x$ übereinstimmt.
 
 \begin{definition}
 \label{buch:exponential:zins:exppotenzreihe}
@@ -251,7 +255,7 @@ definiert eine Funktion $\exp\colon \mathbb{C}\to\mathbb{C}$.
 %
 \subsubsection{Funktionalgleichung}
 Auch für die Potenzreihendefinition lässt sich die Funktionalgleichung
-direkt zu verifizieren.
+direkt verifizieren.
 Das Produkt von $\exp(x)$ und $\exp(y)$ ist
 \begin{align*}
 \exp(x)\cdot\exp(y)
@@ -318,7 +322,7 @@ e=\biggl(1+\frac1n\biggr)^n
 \to
 \sum_{k=0}^\infty \frac{1}{k!}
 =
-\exp(1)
+\exp(1).
 \end{align*}
 Damit ist gezeigt, dass $e=\exp(1)$ und damit auch $e^x=\exp(x)$ ist.
 

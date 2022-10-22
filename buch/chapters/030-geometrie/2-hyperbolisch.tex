@@ -1,5 +1,5 @@
 %
-% 5-hyperbolisch.tex
+% 2-hyperbolisch.tex
 %
 % (c) 2021 Prof Dr Andreas Müller, OST Ostschweizer Fachhochschule
 %
@@ -80,6 +80,9 @@ a_{10}&a_{11}
 \]
 die das Minkowski-Skalarprodukt nicht ändern.
 
+%
+% Gleichungen für A
+%
 \subsubsection{Gleichungen für $A$}
 Erhaltung des Skalarproduktes bedeutet, dass 
 \[
@@ -114,7 +117,7 @@ Daraus ergeben sich die folgenden Gleichungen für die Koeffizienten
 der Matrix $A$
 \begin{align*}
 -1 &= -a_{00}^2+a_{01}^2          & 0 &= -a_{00}a_{10} +a_{01}a_{11} \\
- 0 &= -a_{00}a_{10} +a_{01}a_{11} & 1 &= -a_{10}^2+a_{11}^2
+ 0 &= -a_{00}a_{10} +a_{01}a_{11} & 1 &= -a_{10}^2+a_{11}^2.
 \end{align*}
 Die beiden Gleichungen in der linken unteren und der rechten oberen Ecke
 sind identisch.
@@ -125,15 +128,18 @@ $|a_{11}| \ge 1$ sein muss.
 Insbesondere kann man die anderen beiden Gleichungen durch die 
 $a_{00}a_{11}$ teilen und erhält
 \begin{equation}
-\frac{a_{10}}{a_{11}} = \frac{a_{01}}{a_{00}}
+\frac{a_{10}}{a_{11}} = \frac{a_{01}}{a_{00}}.
 \label{buch:geometrie:hyperbolisch:eqn:aaaa}
 \end{equation}
 
+%
+% Orientierungstreue Abbildungen
+%
 \subsubsection{Orientierungstreue Abbildungen}
 Wir verlangen jetzt zusätzlich, dass $\det A= a_{00}a_{11}-a_{01}{a_{10}} = 1$
 ist.
-Löst man \eqref{buch:geometrie:hyperbolisch:eqn:aaaa} nach $a_{10}$ aus
-und setzt in die Determinante ein, erhält man
+Löst man \eqref{buch:geometrie:hyperbolisch:eqn:aaaa} nach $a_{10}$ auf
+und setzt den erhaltenen Ausdruck in die Determinante ein, erhält man
 \[
 1
 =
@@ -159,6 +165,9 @@ Die Gleichungen reduzieren sich jetzt auf
 \end{equation}
 die anderen Gleichungen sind automatisch erfüllt.
 
+%
+% Erhaltung der Zeitrichtung
+%
 \subsubsection{Erhaltung der Zeitrichtung}
 In der speziellen Relativitätstheorie spielt das Minkowski-Skalarprodukt
 eine besondere Rolle.
@@ -171,6 +180,9 @@ Koordinatentransformationen, die Invariante erhalten.
 Für Transformationen, die zusätzlich die Zeitrichtung erhalten sollen,
 muss $a_{00}=a_{11}=c>0$ verlangt werden.
 
+%
+% Parametrisierung mit t=s/c
+%
 \subsubsection{Parametrisierung mit $t=s/c$}
 Unter der Annahme $c>0$ lässt sich die Matrix vollständig
 durch den Parameter $t=s/c$ beschreiben.
@@ -216,6 +228,9 @@ $D_{\alpha+\beta}=D_\alpha D_\beta$.
 Die Parametrisierung der Matrizen $H_t$ mit $t=s/c$ erfüllt diese
 Bedingung nicht.
 
+%
+% Additionstheoreme
+%
 \subsubsection{Additionstheoreme}
 Die Additionsregeln für $t$, $s$ und $c$ ergeben sich, indem die
 Matrizen $H_{t_1}$ und $H_{t_2}$ ausmultipliziert werden:
@@ -239,7 +254,7 @@ s_1c_2+c_1s_2 & s_1s_2 + c_1c_2
 =
 H_t.
 \end{align*}
-Für die Parameter der Matrix $H_t$ folgt damit
+Für die Einträge der Matrix $H_t$ folgt damit
 \[
 \left.
 \begin{aligned}
@@ -260,6 +275,9 @@ t
 Auch diese Formel ist aus der Theorie der hyperbolischen Funktionen
 als das Additionstheorem für den hyperbolischen Tangens bekannt.
 
+%
+% Matrixexponentialform
+%
 \subsubsection{Matrixexponentialform}
 Die Reihenentwicklung der trigonometrischen Funktionen in
 Abschnitt~\ref{buch:geometrie:trigo:matrixexp} hat gezeigt,
@@ -282,14 +300,14 @@ damit lässt sich $H_t$ als
 \[
 H_t
 =
-c E + s K
+c I + s K
 =
-\frac{1}{\sqrt{1+t^2}} E + \frac{t}{\sqrt{1+t^2}} K
+\frac{1}{\sqrt{1+t^2}} I + \frac{t}{\sqrt{1+t^2}} K
 \]
 schreiben.
 Die Matrix $K$ hat die Potenzen
 \[
-E
+I
 =
 K^2 =  K^4 = \dots = K^{2j}
 \qquad\text{und}\qquad
@@ -308,7 +326,7 @@ Die Exponentialreihe von $\tau K$ ist
 \biggl(
 \sum_{k=0}^\infty \frac{\tau^{2j}}{(2j)!}
 \biggr)
-E
+I
 +
 \biggl(
 \sum_{k=0}^\infty \frac{\tau^{2j+1}}{(2j+1)!}
@@ -340,7 +358,7 @@ Die Funktionen
 \begin{aligned}
 \sinh(\tau)&=\frac{e^\tau-e^{-\tau}}2
 &&\text{und}&
-\cosh(\tau)&=\frac{e^\tau+e^{-\tau}}2.
+\cosh(\tau)&=\frac{e^\tau+e^{-\tau}}2
 \end{aligned}
 \]
 heissen der {\em hyperbolische Sinus} und der {\em hyperbolische Kosinus}.
@@ -372,6 +390,9 @@ H_{\tau}
 parametrisieren.
 \end{satz}
 
+%
+% Elementare Eigenschaften
+%
 \subsubsection{Elementare Eigenschaften}
 Es ist nachzuprüfen, dass $\cosh^2 \tau-\sinh^2\tau=1$ ist.
 Das kann man ebenfalls direkt nachrechnen:
@@ -406,6 +427,9 @@ tatsächlich eine Parametrisierung der Matrizen
 \]
 die das Minkowski-Skalarprodukt invariant lassen.
 
+%
+% Additionstheoreme
+%
 \subsubsection{Additionstheoreme}
 Für die Definition~\ref{buch:geometrie:hyperbolisch:def} kann man die
 Additionstheoreme auch direkt verifizieren.
