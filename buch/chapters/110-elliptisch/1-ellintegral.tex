@@ -13,6 +13,9 @@ Form ausdrücken liess.
 Um solche Integrale in den Griff zu bekommen, ist es nötig, sie als
 neue spezielle Funktionen zu definieren.
 
+%
+% Definition
+%
 \subsection{Definition
 \label{buch:elliptisch:subsection:definition}}
 Ein {\em elliptisches Integral} ist ein Integral der Form
@@ -26,10 +29,11 @@ wobei $R(x,y)$ eine rationale Funktion von zwei Variablen ist und
 $p(x)$ ein Polynom dritten oder vierten Grades.
 Hätte $p(x)$ ein mehrfache Nullstelle $x_0$, müsste es durch $(x-x_0)^2$
 teilbar sein, man könnte also einen Faktor $(x-x_0)$ aus der
-Wurzel im Integraneden von \eqref{buch:elliptisch:def:allgemein}
+Wurzel im Integranden von \eqref{buch:elliptisch:def:allgemein}
 ausklammern und damit das Integral in eine Form bringen, wo $p(x)$
 höchstens zweiten Grades ist.
-Solche Integrale lassen sich meistens mit trigonometrischen Substitutionen
+Solche Integrale lassen sich mit der Methode von
+Abschnitt~\ref{buch:integral:subsection:rxy}
 berechnen.
 Wir verlangen daher, dass $p(x)$ keine mehrfachen Nullstellen hat.
 
@@ -63,8 +67,8 @@ Die Zahl $k$ heisst {\em Modul} des elliptischen Integrals.
 
 Wie gesagt lassen sich für diese unbestimmten Integrale keine 
 geschlossenen Formen finden.
-Es bleibt uns daher nichts anderes übrig, als die Integralgrenzen
-festzulegen und damit eine Stammfunktion auszuwählen.
+Neue spezielle Funktionen ergeben sich, wenn wir die Integralgrenzen
+per Konvention festlegen und damit eine Stammfunktion auswählen.
 
 %
 % Elliptisches Integral
@@ -75,6 +79,9 @@ In diesem Abschnitt legen wir beide Integrationsgrenzen fest und
 untersuchen die entstehenenden Funktionen von den Parametern
 $k$ und $n$.
 
+%
+% Definition der vollständigen elliptischen Integrale
+%
 \subsubsection{Definition der vollständigen elliptischen Integrale}
 Da der Nenner in allen drei elliptischen Integralen eine Nullstelle
 bei $\pm1$ hat, kann das Integral nur von $0$ bis $1$ erstreckt werden.
@@ -113,16 +120,19 @@ Das Integral $\Pi(n,0)$ ist etwas komplizierter.
 Für $k\to 1$ ist $E(k)=1$, die Integrale $K(1)$ und $\Pi(n,1)$
 sind dagegen divergent.
 
+%
+% Jacobi- und Legendre-Normalform
+%
 \subsubsection{Jacobi- und Legendre-Normalform}
 Die Integrationsvariable $t$ der vollständigen elliptischen Integrale
 kann durch die Substitution $t=\sin\varphi$ durch die Variable
 $\varphi$ und das Integral über das Intervall $[0,1]$ durch ein
 Integral über das Intervall $[0,\frac{\pi}2]$ ersetzt werden.
-Mit
+Unter Verwendung von
 \[
 \frac{dt}{d\varphi} = \cos\varphi = \sqrt{1-\sin^2\varphi}
 \]
-können die Funktionen $K(k)$, $E(k)$ und $\Pi(n,k)$ auch als
+werden die Funktionen $K(k)$, $E(k)$ und $\Pi(n,k)$ in die Form
 \begin{align*}
 K(k)
 &=
@@ -163,6 +173,7 @@ d\varphi
 }
 .
 \end{align*}
+gebracht.
 Diese Form wird auch die {\em Legendre-Normalform} der vollständigen 
 \index{Legendre-Normalform}%
 elliptischen Integrale genannt, während die Form von
@@ -170,11 +181,14 @@ Definition~\ref{buch:elliptisch:def:vollstintegrale123}
 die {\em Jacobi-Normalform} heisst.
 \index{Jacobi-Normalform}%
 
+%
+% Vollständige elliptische Integrale als hypergeometrische Funktionen
+%
 \subsubsection{Vollständige elliptische Integrale als hypergeometrische
 Funktionen}
 %XXX Als hypergeometrische Funktionen \url{https://www.youtube.com/watch?v=j0t1yWrvKmE} \\
 Das vollständige elliptische Integral $K(k)$ kann mit Hilfe der 
-Binomialreihe umgeformt werden in eine hypergeometrische Reihe.
+Binomialreihe in eine hypergeometrische Reihe umgeformt werden.
 Da im Integral nur $k^2$ auftaucht, wird sich $K(k)$ als
 hypergeometrische Funktion von $k^2$ ausdrücken lassen.
 
@@ -189,7 +203,7 @@ K(k)
 \frac{\pi}2
 \cdot
 \mathstrut_2F_1\biggl(
-\begin{matrix}\frac12,\frac12\\1\end{matrix};1;k^2
+\begin{matrix}\frac12,\frac12\\1\end{matrix};k^2
 \biggr)
 \]
 ausdrücken.
@@ -215,7 +229,7 @@ K(k)
 Reihe vereinfacht werden zu}
 &=
 \sum_{n=0}^\infty
-(-1)^n k^2\binom{-\frac12}{n}
+(-1)^n k^{2n}\,\binom{-\frac12}{n}
 \int_0^{\frac{\pi}2}
 \sin^{2n}\vartheta
 \,d\vartheta.
@@ -276,12 +290,15 @@ Mit partieller Integration kann man
 (m-1)
 \int
 (1-\sin^2\vartheta)
-\sin^{m-2}\vartheta\,d\vartheta.
+\sin^{m-2}\vartheta\,d\vartheta
 \end{align*}
+finden.
 Wegen $\sin 0=0$ und
 $\cos\frac{\pi}2=0$ verschwindet der erste Term im bestimmten Integral
 und der zweite wird
-\begin{align*}
+\[
+\begin{aligned}
+&&
 \int_0^{\frac{\pi}2}
 \sin^{m} \vartheta
 \,d\vartheta
@@ -294,6 +311,7 @@ und der zweite wird
 \int_0^{\frac{\pi}2}
 \sin^m \vartheta\,d\vartheta
 \\
+&\Rightarrow\qquad&
 m
 \int_0^{\frac{\pi}2}
 \sin^{m} \vartheta\,d\vartheta
@@ -302,13 +320,15 @@ m
 \int_0^{\frac{\pi}2}
 \sin^{m-2} \vartheta\,d\vartheta
 \\
+&\Rightarrow\qquad&
 \int_0^{\frac{\pi}2}
 \sin^{m} \vartheta\,d\vartheta
 &=
 \frac{m-1}{m}
 \int_0^{\frac{\pi}2}
 \sin^{m-2} \vartheta\,d\vartheta.
-\end{align*}
+\end{aligned}
+\]
 Mit dieser Rekursionsformel kann jetzt das Integral berechnet werden.
 Es folgt
 \begin{align*}
@@ -371,7 +391,7 @@ eingezeichnet.
 \label{buch:elliptisch:fig:ellipsenumfang}}
 \end{figure}
 Wir zeigen, wie sich die Berechnung des Umfangs $U$ einer Ellipse
-mit Halbachsen $a$ und $b$, $a\le b$, auf ein volltändiges elliptisches
+mit Halbachsen $a$ und $b$, $a\le b$, auf ein vollständiges elliptisches
 Integral zurückführen lässt.
 Der Fall $a>b$ kann behandelt werden, indem die $x$- und $y$-Koordinaten
 vertauscht werden.
@@ -402,19 +422,19 @@ Bei einem Kreis ist $a=b$ und der zweite Term unter der Wurzel fällt weg,
 der Umfang wird $4b\frac{\pi}2=2\pi b$.
 Die Differenz $e^2=b^2-a^2$ ist die {\em lineare Exzentrizität} der Ellipse,
 \index{lineare Exzentrizität}%
-der Quotient $e/b$ wird die {\em numerische Exzentrizität} der Ellipse
-genannt.
-Insbesondere ist $k = \varepsilon$.
+der Quotient $\varepsilon=e/b$ wird die {\em numerische Exzentrizität}
+der Ellipse genannt.
+In der Umfangsformel ist $k = \varepsilon$.
 
-Das Integral~\eqref{buch:elliptisch:eqn:umfangellipse} erhält jetzt die
-Form
+Das Integral~\eqref{buch:elliptisch:eqn:umfangellipse} erhält mit
+diesen Bezeichungen die Form
 \[
 U
 =
 4b\int_0^{\frac{\pi}2} \sqrt{1-k^2\sin^2t}\,dt
 \]
 und ist damit als elliptisches Integral zweiter Art erkannt.
-Für den Umfang der Ellipse finden wir damit die Formel
+Für den Umfang der Ellipse finden wir somit die Formel
 \[
 U
 =
@@ -424,8 +444,8 @@ U
 \]
 Das vollständige elliptische Integral zweiter Art $E(\varepsilon)$
 liefert also genau den Umfang eines Viertels der Ellipse mit
-numerischer Exzentrizität $\varepsilon$ und kleiner Halbachse $1$.
-Für den extremen Wert $\varepsilon=0$ entsteht der Umfang einer Ellipse,
+numerischer Exzentrizität $\varepsilon$ und grosser Halbachse $1$.
+Für den extremen Wert $\varepsilon=0$ entsteht der Umfang eines Kreises,
 also $E(0)=\frac{\pi}2$.
 Für $\varepsilon=1$ ist $a=0$, es entsteht eine Strecke mit Länge $E(1)=1$.
 
@@ -480,7 +500,7 @@ Aufgaben~\ref{buch:elliptisch:aufgabe:2}--\ref{buch:elliptisch:aufgabe:4}).
 Sie kann auch verwendet werden, um die Werte der Jacobischen elliptischen
 Funktionen für komplexe Argument zu berechnen.
 Eine weiter Anwendung ist die Berechnung einer grossen Zahl von 
-Stellen der Kreiszahl $\pi$, siehe Aufgaben~\ref{buch:elliptisch:aufgabe:5}.
+Stellen der Kreiszahl $\pi$, siehe Aufgabe~\ref{buch:elliptisch:aufgabe:5}.
 
 %
 % Das arithmetisch-geometrische Mittel
@@ -537,7 +557,7 @@ a_{n+1}-b_n
 \le
 \frac{a-b}{2^{n+1}}.
 \]
-Dies zeigt jedoch nur, dass die Konvergenz mindestens ein
+Dies zeigt jedoch nur, dass die Konvergenzgeschwindigkeit mindestens ein
 Bit in jeder Iteration ist.
 Aus
 \[
@@ -610,7 +630,7 @@ nach $t_1$ ableiten, was
 (1-\sin^2t)\biggl(\frac{dt}{dt_1}\biggr)^2
 \]
 ergibt.
-Die Ableitung von $t$ nach $t_1$ kann auch aus
+Die Ableitung von $t$ nach $t_1$ kann man auch aus
 \eqref{buch:elliptisch:agm:dtdt1}
 ableiten, es ist
 \[
@@ -631,7 +651,7 @@ Man muss also nachprüfen, dass
 Dazu muss man zunächst $a_1=(a+b)/2$, $b_1=\!\sqrt{ab}$ setzen.
 Ausserdem muss man $\cos^2 t$ durch $1-\sin^2t$ ersetzen und
 $\sin t$ durch \eqref{buch:elliptisch:agm:subst}.
-Auch $\cos^2 t_1$ muss man durch $1-\sin^2t_1$ ersetzt werden.
+Auch $\cos^2 t_1$ muss durch $1-\sin^2t_1$ ersetzt werden.
 Dann kann man nach einer langwierigen Rechnung, die sich am leichtesten
 mit einem Computer-Algebra-System ausführen lässt finden, dass
 \eqref{buch:elliptisch:agm:deq}
@@ -755,7 +775,7 @@ n& a_n & b_n & \pi/2a_n \mathstrut\text{\vrule height12pt depth6pt width0pt}\\
 $a=1$ und $b=\sqrt{2}/2$ zeigt die sehr rasche Konvergenz.
 \label{buch:elliptisch:agm:numerisch}}
 \end{table}
-In diesem Abschnitt soll als Zahlenbeispiel $E(k)$ für $k=\sqrt{2}/2$
+In diesem Abschnitt soll als Zahlenbeispiel $K(k)$ für $k=\sqrt{2}/2$
 berechnet werden.
 In diesem speziellen Fall ist $k'=k$.
 Tabelle~\ref{buch:elliptisch:agm:numerisch} zeigt die sehr rasche
@@ -810,7 +830,7 @@ E(x,k)
 die erste Formel ist jeweils die Jacobi-Form, die zweite die Legrendre-Form
 \index{Jacobi-Form}%
 \index{Legendre-Form}%
-mit dem Parameter $\varphi$, gegeben durch
+mit dem Parameter $\vartheta$, gegeben durch
 $\sin \vartheta=x$.
 Wie bei den vollständigen elliptischen Integralen ist auch hier in manchen
 Referenzen die Parameterkonvention mit dem Parameter $m=k^2$ üblich.
@@ -838,8 +858,8 @@ $F(x,0)=E(x,0)$.
 Wegen $k<1$ sind alle drei Integranden als reelle Funktionen nicht
 mehr definiert, wenn $|x|>1$ ist.
 Die Abbildung~\ref{buch:elliptisch:fig:unvollstaendigeintegrale}
-zeigt Graphen der unvollständigen elliptischen Integrale für verschiedene
-Werte des Parameters.
+zeigt Graphen der unvollständigen elliptischen Integrale erster
+und zweiter Art für verschiedene Werte des Parameters.
 
 %
 % Symmetrieeigenschaften
@@ -877,11 +897,11 @@ Zum Beispiel nimmt das unvollständige elliptische Integral erster Art
 $F(k,x)$ nur Werte zwischen $0$ und $K(k)$ an.
 Wenn komplexe Werte zulässig sind, kann man das Integral auch über die 
 Singularitäten bei $\pm 1$ und $\pm 1/k$ hinweg ausführen, erhält
-dabe aber möglicherweise komplexe Werte, weil die Radikanden in den
+dabei aber möglicherweise komplexe Werte, weil die Radikanden in den
 Integralen negativ werden.
 Die Schwierigkeit dabei ist, dass die Quadratwurzel nicht eindeutig ist.
-Welcher Wert der im Zusammenhang richtige ist, hängt davon ab, wie wir
-dorthin kommen.
+Welcher Wert der im Zusammenhang richtige ist, hängt davon ab, auf
+welchem Weg in der komplexen Ebene wir dorthin kommen.
 
 Die reelle Achse teilt den Definitionsbereich der unvollständigen
 elliptischen Integrale in die obere und die untere Halbebene.
@@ -890,7 +910,7 @@ für Argumente in der oberen bzw.~untere Halbebene.
 Indem wir die Werte der elliptischen Integrale für reelle Argumente
 berechnen, können wir daher den Rand des Wertebereichs ermitteln.
 
-Im folgenden diskutieren wir nur das elliptische Integral erster Art,
+Im Folgenden diskutieren wir nur das elliptische Integral erster Art,
 die anderen können in der gleichen Art behandelt werden.
 Für Argumentwerte $x$ im Interval $[0,1]$ ist $F(k,x)\in\mathbb{R}$.
 An der Stelle $x=1$ wechselt der Faktor $(1-t^2)$ im Nenner das
@@ -918,7 +938,7 @@ Die ``richtige'' Wahl der Wurzel von
 \[
 1-z^2 = 1-x^2-2i\varepsilon x + \varepsilon^2
 \]
-erfüllt zwei Bedingungen.
+erfüllt zwei Bedingungen:
 \begin{enumerate}
 \item
 Für nicht zu grosse Werte von $x$ muss der Wert in der oberen
@@ -926,7 +946,7 @@ Halbebene liegen.
 Für solche Werte von $x$ ist der Realteil $1-x^2+\varepsilon^2>0$ und
 der Imaginärteil $-2\varepsilon x<0$.
 Für die Wurzel muss man also das Argument von $1-z^2$ als Winkel zwischen
-$3\pi2$ und $2\pi$ wählen und für die Wurzel durch zwei teilen.
+$3\frac{\pi}{2}$ und $2\pi$ wählen und für die Wurzel durch zwei teilen.
 \item
 Der Realteil von $1-z^2$ wechsel das Vorzeichen, wenn
 $x=\sqrt{1+\varepsilon^2}$, der Imaginärteil bleibt dabei negativ.
@@ -967,16 +987,17 @@ ausgewertet werden.
 Im vorangegangen Abschnitt wurde gezeigt, dass der Wertebereicht des
 unvollständigen elliptischen Integrals der ersten Art als komplexe
 Funktion ein Rechteck ist.
-Die obere Halbebene wird auf Rechteck der Breite $2K(k)$ abgebildet,
+Die obere Halbebene wird auf ein Rechteck der Breite $2K(k)$ abgebildet,
 für die Höhe des Rechtecks muss das
 Integral~\eqref{buch:elliptisch:eqn:hoeheintegral} ausgewertet werden.
 Das Integral läuft von $t=1$ bis $t=1/k$, wir möchten daraus ein
 elliptisches Integral machen, dessen Integrationsinterval bei $0$
 beginnt.
 Dazu verwenden wir die Variablentransformation
-\[
+\begin{equation}
 t = \frac{1}{\sqrt{1-k'^2y^2}},
-\]
+\label{buch:elliptisch:ellintegral:eqn:tk}
+\end{eqution}
 die für $y=0$ den Wert $1$ ergibt, für $y=1$ aber $1/\sqrt{1-k'^2}$.
 Damit das richtige Integrationsintervall entsteht, muss $k'$ so gewählt
 werden, dass $1-k'^2=k^2$ ist.
@@ -993,7 +1014,7 @@ Mit der Ableitung
 =
 \frac{k'^2 y}{(1-k'^2y^2)^{\frac32}}
 \]
-der Substitution
+der Substitution~\eqref{buch:elliptisch:ellintegral:eqn:tk}
 wird das Integral~\eqref{buch:elliptisch:eqn:hoeheintegral} mit der
 oberen Grenze $x$ zu einem Integral mit oberer Grenze
 \[
@@ -1069,8 +1090,8 @@ in das blaue.
 %
 % Reelle Argument > 1/k
 %
-\subsubsection{Reelle Argument $> 1/k$}
-Für Argument $x> 1/k$ sind beide Faktoren im Integranden des 
+\subsubsection{Reelle Argumente $> 1/k$}
+Für Argumente $x> 1/k$ sind beide Faktoren im Integranden des 
 unvollständigen elliptischen Integrals negativ, das Integral kann
 daher wieder als gewöhnliches reelles Integral berechnet werden,
 es sollte sich daher auch auf das unvollständige elliptische Integral
@@ -1081,21 +1102,23 @@ Da wir bereits wissen, dass
 \lim_{x\to\infty} F(x,k) = iK(k'),
 \]
 können wir $F(x,k)$ auch als
-\[
+\begin{equation}
 F(x,k)
 =
 iK(k')
 -
 \int_x^\infty \frac{dt}{\sqrt{(1-t^2)(1-k^2t^2)}}
-\]
+\label{buch:elliptisch:ellintegral:eqn:FiK}
+\end{equation}
 berechnen.
-Dazu werden wir die Variablentransformation
+Dazu wenden wir die Variablentransformation
 \[
 y=\frac{1}{kt}\quad\Leftrightarrow\quad t=\frac{1}{ky}
 \qquad\text{mit}\qquad
 \frac{dt}{dy} = -\frac{1}{ky^2}
 \]
-auf das Integral an und erhalten
+auf das Integral~\eqref{buch:elliptisch:ellintegral:eqn:FiK}
+an und erhalten
 \begin{align*}
 \int_x^\infty \frac{dt}{\sqrt{(1-t^2)(1-k^2t^2)}}
 &=
@@ -1170,7 +1193,7 @@ a_{n+1} &= \frac{a_n+b_n}2,  &\qquad a_0 &= a
 \\
 b_{n+1} &= \sqrt{a_nb_n},    & b_0 &= b
 \\
-x_{n+1} &= \frac{a_n-\sqrt{a_n^2-(a_n^2-b_n^2)x_n^2}}{(a_n-b_n)x_n}, & x_0 &= x
+x_{n+1} &= \frac{a_n-\sqrt{a_n^2-(a_n^2-b_n^2)x_n^2}}{(a_n-b_n)x_n}, & x_0 &= x.
 \end{aligned}
 \quad
 \right\}
@@ -1197,7 +1220,7 @@ $a_n$, was zu Auslöschung und damit ungenauen Resultaten führt.
 
 Eine Möglichkeit, das Problem zu entschärfen, ist, die Rekursionsformel
 nach $\varepsilon = a-b$ zu entwickeln.
-Mit $a+b=2a+\varepsilon$ kann man $b$ aus der Formel elimineren und erhält
+Mit $a+b=2a+\varepsilon$ kann man $b$ aus der Formel eliminieren und erhält
 mit Hilfe der binomischen Reihe
 \begin{align*}
 x_1
