@@ -150,9 +150,10 @@ durch die ursprüngliche Funktion ausdrücken lassen, darf man erwarten,
 dass alle elliptischen Funktionen einer ähnlichen Differentialgleichung
 genügen.
 Um dies besser einzufangen, schreiben wir $\operatorname{pq}(u,k)$,
-wenn wir eine beliebige abgeleitete Jacobische elliptische Funktion.
+wenn wir eine beliebige abgeleitete Jacobische elliptische Funktion
+meinen.
 Für 
-$\operatorname{pq}=\operatorname{sn}$
+$\operatorname{pq}=\operatorname{sn}$,
 $\operatorname{pq}=\operatorname{cn}$
 und
 $\operatorname{pq}=\operatorname{dn}$
@@ -165,7 +166,7 @@ der Form
 \alpha \operatorname{pq}(u,k)^4 + \beta \operatorname{pq}(u,k)^2 + \gamma
 \label{buch:elliptisch:eqn:1storderdglell}
 \end{equation}
-erfüllt,
+ist,
 wobei wir mit $\operatorname{pq}'(u,k)$ die Ableitung von
 $\operatorname{pq}(u,k)$ nach dem ersten Argument meinen.
 Die Koeffizienten $\alpha$, $\beta$ und $\gamma$ hängen von $k$ ab,
@@ -214,7 +215,7 @@ und setzt in die Differentialgleichung ein:
 \frac{
 \operatorname{qp}'(u,k)
 }{
-\operatorname{qp}(u,k)
+\operatorname{qp}(u,k)^2
 }
 \biggr)^2
 &=
@@ -406,7 +407,7 @@ n & a_n                & b_n                  & x_n              &
 mit Hilfe des arithmetisch-geo\-me\-tri\-schen Mittels.
 In der ersten Phase des Algorithmus (rot) wird die Folge der arithmetischen
 \index{Algorithmus!arithmetisch-geometrisches Mittel}%
-und geometrischen Mittel berechnet, in der zweiten Phase werden die
+und geometrischen Mittel berechnet, in der zweiten Phase die
 Approximationen von $x_0=\operatorname{sn}(u,k)$.
 Bei $n=5$ erreicht die Iteration des arithmetisch-geometrischen Mittels
 Maschinengenauigkeit, was sich auch darin äussert, dass sich $x_5$ und
@@ -594,7 +595,7 @@ a^2B\operatorname{zn}(bt,k)^2
 \label{buch:elliptisch:eqn:dglx}
 \end{equation}
 Andererseits wissen wir, dass $\operatorname{zn}(u,k)$ einer
-Differentilgleichung der Form~\eqref{buch:elliptisch:eqn:1storderdglell}
+Differentialgleichung der Form~\eqref{buch:elliptisch:eqn:1storderdglell}
 erfüllt.
 Wenn wir \eqref{buch:elliptisch:eqn:dglx} durch $a^2b^2$ teilen, können wir
 die rechte Seite von \eqref{buch:elliptisch:eqn:dglx} mit der rechten
@@ -658,13 +659,13 @@ Gleichung, die Lösungsfunktion $\operatorname{sn}(u,k)$ verlangt.
 
 \begin{beispiel}
 Wir nehmen an, dass die Vorzeichen von $A$, $B$ und $C$ gemäss
-Tabelle~\ref{buch:elliptische:tabelle:loesungsfunktionen} verlangen,
+Tabelle~\ref{buch:elliptisch:tabelle:loesungsfunktionen} verlangen,
 dass die Funktion $\operatorname{sn}(u,k)$ für die Lösung verwendet
 werden muss.
 Die Tabelle sagt dann auch, dass 
 $\alpha=k^2$, $\beta=1$ und $\gamma=1$ gewählt werden müssen.
 Aus dem Koeffizientenvergleich~\eqref{buch:elliptisch:eqn:koeffvergl}
-folgt dann der Reihe nach
+folgt der Reihe nach
 \begin{align*}
 b&=\pm \sqrt{B}
 \\
@@ -690,7 +691,7 @@ erhalten kann, nämlich
 
 Da alle Parameter im 
 Lösungsansatz~\eqref{buch:elliptisch:eqn:loesungsansatz} bereits
-festgelegt sind stellt sich die Frage, woher man einen weiteren
+festgelegt sind, stellt sich die Frage, woher man einen weiteren
 Parameter nehmen kann, mit dem Anfangsbedingungen erfüllen kann.
 Die Differentialgleichung~\eqref{buch:elliptisch:eqn:anhdgl} ist
 autonom, die Koeffizienten der rechten Seite der Differentialgleichung

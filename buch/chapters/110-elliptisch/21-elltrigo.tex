@@ -36,82 +36,87 @@ sehr zielorientierten Einführung
 % Geometrie einer Ellipse
 %
 \subsubsection{Geometrie einer Ellipse}
-Eine {\em Ellipse} ist die Menge der Punkte der Ebene, für die die Summe
-\index{Ellipse}%
-der Entfernungen von zwei festen Punkten $F_1$ und $F_2$,
-den {\em Brennpunkten}, konstant ist.
-\index{Brennpunkt}%
-In Abbildung~\ref{buch:elliptisch:fig:ellipse} eine Ellipse
+%Eine {\em Ellipse} ist die Menge der Punkte der Ebene, für die die Summe
+%\index{Ellipse}%
+%der Entfernungen von zwei festen Punkten $F_1$ und $F_2$,
+%den {\em Brennpunkten}, konstant ist.
+%\index{Brennpunkt}%
+Wir verwenden die Bezeichnungen zur Geometrie einer Ellipse aus
+Abschnitt~\ref{buch:geometrie:subsection:kegelschnitte}.
+In Abbildung~\ref{buch:elliptisch:fig:ellipse} ist eine Ellipse
 mit Brennpunkten in $F_1=(-e,0)$ und $F_2=(e,0)$ dargestellt,
 die durch die Punkte $(\pm a,0)$ und $(0,\pm b)$ auf den Achsen geht.
-Der Punkt $(a,0)$ hat die Entfernungen $a+e$ und $a-e$ von den beiden
-Brennpunkten, also die Entfernungssumme $a+e+a-e=2a$.
-Jeder andere Punkt auf der Ellipse muss ebenfalls diese Entfernungssumme
-haben, insbesondere auch der Punkt $(0,b)$.
-Seine Entfernung zu jedem Brennpunkt muss aus Symmetriegründen gleich gross,
-also $a$ sein.
-Aus dem Satz von Pythagoras liest man daher ab, dass
-\[
-b^2+e^2=a^2
-\qquad\Rightarrow\qquad
-e^2 = a^2-b^2
-\]
-sein muss.
-Die Strecke $e$ heisst auch {\em (lineare) Exzentrizität} der Ellipse.
-Das Verhältnis $\varepsilon= e/a$  heisst die {\em numerische Exzentrizität}
-der Ellipse.
+$e$ ist die lineare Exzentrizität mit $e^2=a^2-b^2$,
+$\varepsilon=e/a$ die numerische Exzentrizität.
 
-%
-% Die Ellipsengleichung
-%
-\subsubsection{Ellipsengleichung}
-Der Punkt $P=(x,y)$ auf der Ellipse hat die Entfernungen
-\begin{equation}
-\begin{aligned}
-\overline{PF_1}^2
-&=
-y^2 + (x+e)^2
-\\
-\overline{PF_2}^2
-&=
-y^2 + (x-e)^2
-\end{aligned}
-\label{buch:elliptisch:eqn:wurzelausdruecke}
-\end{equation}
-von den Brennpunkten, für die 
-\begin{equation}
-\overline{PF_1}+\overline{PF_2}
-=
-2a
-\label{buch:elliptisch:eqn:pf1pf2a}
-\end{equation}
-gelten muss.
-Man kann nachrechnen, dass ein Punkt $P$, der die Gleichung
-\[
-\frac{x^2}{a^2} + \frac{y^2}{b^2}=1
-\]
-erfüllt, auch die Eigenschaft~\eqref{buch:elliptisch:eqn:pf1pf2a}
-erfüllt.
-Zur Vereinfachung setzen wir $l_1=\overline{PF_1}$ und $l_2=\overline{PF_2}$.
-$l_1$ und $l_2$ sind Wurzeln aus der rechten Seite von
-\eqref{buch:elliptisch:eqn:wurzelausdruecke}.
-Das Quadrat von $l_1+l_2$ ist
-\[
-l_1^2 + 2l_1l_2 + l_2^2 = 4a^2.
-\]
-Um die Wurzeln ganz zu eliminieren, bringt man das Produkt $l_1l_2$ alleine
-auf die rechte Seite und quadriert.
-Man muss also verifizieren, dass
-\[
-(l_1^2 + l_2^2 -4a^2)^2 = 4l_1^2l_2^2.
-\]
-In den entstehenden Ausdrücken muss man ausserdem $e=\sqrt{a^2-b^2}$ und
-\[
-y=b\sqrt{1-\frac{x^2}{a^2}}
-\]
-substituieren.
-Diese Rechnung führt man am einfachsten mit Hilfe eines
-Computeralgebraprogramms durch, welches obige Behauptung bestätigt.
+%Der Punkt $(a,0)$ hat die Entfernungen $a+e$ und $a-e$ von den beiden
+%Brennpunkten, also die Entfernungssumme $a+e+a-e=2a$.
+%Jeder andere Punkt auf der Ellipse muss ebenfalls diese Entfernungssumme
+%haben, insbesondere auch der Punkt $(0,b)$.
+%Seine Entfernung zu jedem Brennpunkt muss aus Symmetriegründen gleich gross,
+%also $a$ sein.
+%Aus dem Satz von Pythagoras liest man daher ab, dass
+%\[
+%b^2+e^2=a^2
+%\qquad\Rightarrow\qquad
+%e^2 = a^2-b^2
+%\]
+%sein muss.
+%Die Strecke $e$ heisst auch {\em (lineare) Exzentrizität} der Ellipse.
+%Das Verhältnis $\varepsilon= e/a$  heisst die {\em numerische Exzentrizität}
+%der Ellipse.
+
+%%
+%% Die Ellipsengleichung
+%%
+%\subsubsection{Ellipsengleichung}
+%Der Punkt $P=(x,y)$ auf der Ellipse hat die Entfernungen
+%\begin{equation}
+%\begin{aligned}
+%\overline{PF_1}^2
+%&=
+%y^2 + (x+e)^2
+%\\
+%\overline{PF_2}^2
+%&=
+%y^2 + (x-e)^2
+%\end{aligned}
+%\label{buch:elliptisch:eqn:wurzelausdruecke}
+%\end{equation}
+%von den Brennpunkten, für die 
+%\begin{equation}
+%\overline{PF_1}+\overline{PF_2}
+%=
+%2a
+%\label{buch:elliptisch:eqn:pf1pf2a}
+%\end{equation}
+%gelten muss.
+%Man kann nachrechnen, dass ein Punkt $P$, der die Gleichung
+%\[
+%\frac{x^2}{a^2} + \frac{y^2}{b^2}=1
+%\]
+%erfüllt, auch die Eigenschaft~\eqref{buch:elliptisch:eqn:pf1pf2a}
+%erfüllt.
+%Zur Vereinfachung setzen wir $l_1=\overline{PF_1}$ und $l_2=\overline{PF_2}$.
+%$l_1$ und $l_2$ sind Wurzeln aus der rechten Seite von
+%\eqref{buch:elliptisch:eqn:wurzelausdruecke}.
+%Das Quadrat von $l_1+l_2$ ist
+%\[
+%l_1^2 + 2l_1l_2 + l_2^2 = 4a^2.
+%\]
+%Um die Wurzeln ganz zu eliminieren, bringt man das Produkt $l_1l_2$ alleine
+%auf die rechte Seite und quadriert.
+%Man muss also verifizieren, dass
+%\[
+%(l_1^2 + l_2^2 -4a^2)^2 = 4l_1^2l_2^2.
+%\]
+%In den entstehenden Ausdrücken muss man ausserdem $e=\sqrt{a^2-b^2}$ und
+%\[
+%y=b\sqrt{1-\frac{x^2}{a^2}}
+%\]
+%substituieren.
+%Diese Rechnung führt man am einfachsten mit Hilfe eines
+%Computeralgebraprogramms durch, welches obige Behauptung bestätigt.
 
 %
 % Normierung
@@ -144,8 +149,9 @@ k
 =
 \frac{\sqrt{a^2-b^2}}{a}
 =
-\frac{\sqrt{a^2-1}}{a},
+\frac{\sqrt{a^2-1}}{a}
 \]
+bezeichnet,
 die Zahl $k$ heisst auch der {\em Modulus}.
 Man kann $a$ auch durch $k$ ausdrücken, durch Quadrieren und Umstellen
 findet man
@@ -156,7 +162,6 @@ k^2a^2 = a^2-1
 \quad\Rightarrow\quad
 a=\frac{1}{\sqrt{k^2-1}}.
 \]
-
 Die Gleichung der ``Einheitsellipse'' zu diesem Modulus ist
 \[
 \frac{x^2}{a^2}+y^2=1
@@ -176,7 +181,7 @@ an einer Ellipse mit Halbachsen $a$ und $1$.
 \end{figure}
 \subsubsection{Definition der Jacobischen elliptischen Funktionen}
 Die elliptischen Funktionen für einen Punkt $P$ auf der Ellipse mit Modulus $k$
-können jetzt als Verhältnisse der Koordinaten des Punktes definieren.
+können wir jetzt als Verhältnisse der Koordinaten des Punktes definieren.
 Es stellt sich aber die Frage, was man als Argument verwenden soll.
 Es soll so etwas wie den Winkel $\varphi$ zwischen der $x$-Achse und dem
 Radiusvektor zum Punkt $P$
@@ -269,8 +274,9 @@ a^2\operatorname{cn}(u,k)^2
 +1-\operatorname{cn}(u,k)^2
 =
 (a^2-1)\operatorname{cn}(u,k)^2
-+1.
++1
 \]
+führt.
 Nach Division durch $a^2$ ergibt sich
 \begin{align*}
 \operatorname{dn}(u,k)^2
@@ -307,7 +313,7 @@ zusammen.
 So wie es möglich ist, $\sin\alpha$ durch $\cos\alpha$ auszudrücken,
 ist es mit
 \eqref{buch:elliptisch:eqn:jacobi-relationen}
-jetzt auch möglich jede grundlegende elliptische Funktion durch
+jetzt auch möglich, jede grundlegende Jacobische elliptische Funktion durch
 jede anderen auszudrücken.
 Die Resultate sind in der Tabelle~\ref{buch:elliptisch:fig:jacobi-relationen}
 zusammengestellt.
@@ -357,16 +363,18 @@ Beziehungen
 \frac{d}{d\varphi}  \sin\varphi = \cos\varphi
 \]
 erfüllen.
-So einfach können die Beziehungen natürlich nicht sein, sonst würde sich
+So einfach können die Beziehungen für die Jacobischen elliptischen
+Funktionen  natürlich nicht sein, sonst würde sich
 durch Integration ja wieder nur die trigonometrischen Funktionen ergeben.
 Durch geschickte Wahl des Arguments $u$ kann man aber erreichen, dass
-sie ähnlich nützliche Beziehungen zwischen den Ableitungen ergeben.
+sich ähnlich nützliche Beziehungen zwischen den Ableitungen ergeben.
 
 Gesucht ist jetzt also eine Wahl für das Argument $u$ zum Beispiel in
 Abhängigkeit von $\varphi$, dass sich einfache und nützliche
 Ableitungsformeln ergeben.
-Wir setzen daher $u(\varphi)$ voraus und beachten, dass $x$ und $y$
-ebenfalls von $\varphi$ abhängen, es ist
+Wir setzen daher voraus, dass $u$ als Funktion $u(\varphi)$ invertierbar
+ist und wenn nötig auch als $\varphi(u)$ geschrieben werden kann.
+Die Koordinaten $x$ und $y$ hängen ebenfalls von $\varphi$ ab, es ist
 $y=\sin\varphi$ und $x=a\cos\varphi$.
 Die Ableitungen von $x$ und $y$ nach $\varphi$ sind
 \begin{align*}
@@ -794,7 +802,7 @@ ermöglichen, jede Funktion $\operatorname{zn}(u,k)$ durch jede
 andere auszudrücken.
 Die schiere Anzahl solcher Beziehungen macht es unmöglich, sie 
 übersichtlich in einer Tabelle zusammenzustellen, daher soll hier
-nur an einem Beispiel das Vorgehen gezeigt werden:
+nur an einem Beispiel das Vorgehen gezeigt werden.
 
 \begin{beispiel}
 Die Funktion $\operatorname{sc}(u,k)$ soll durch $\operatorname{cd}(u,k)$
@@ -872,7 +880,7 @@ k^2\operatorname{cd}^2(u,k)
 =
 \frac{1-\operatorname{cd}^2(u,k)}{1-k^2\operatorname{cd}^2(u,k)}.
 \]
-Einsetzen in~\eqref{buch:elliptisch:eqn:allgausdruecken} gibt
+Einsetzen in~\eqref{buch:elliptisch:eqn:allgausdruecken} ergibt schliesslich
 \begin{align*}
 \operatorname{sc}(u,k)
 &=
