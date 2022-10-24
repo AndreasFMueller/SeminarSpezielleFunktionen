@@ -172,7 +172,6 @@ SBLXFILES = SeminarSpezielleFunktionen.bbl \
 	SeminarSpezielleFunktionen15-blx.bbl \
 	SeminarSpezielleFunktionen16-blx.bbl \
 	SeminarSpezielleFunktionen17-blx.bbl \
-	SeminarSpezielleFunktionen18-blx.bbl \
 
 PAPER_DIRECTORIES = \
 	000template \
