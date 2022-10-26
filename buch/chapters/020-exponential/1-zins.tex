@@ -1,0 +1,325 @@
+%
+% zins.tex
+%
+% (c) 2021 Prof Dr Andreas Müller, OST Ostscheizer Fachhochschule
+%
+\section{Exponentialfunktion 
+\label{buch:exponential:section:grenzwert}}
+\rhead{Exponentialfunktion als Grenzwert}
+Mit Hilfe von Potenzen und Wurzeln lassen sich die Potenzen $a^x$
+für beliebige rationale Zahlen $x=p/q\in\mathbb{Q}$ als
+\[
+a^x = a^{\frac{p}{q}} = \root{q}\of{a^p}
+\]
+definieren.
+Da $x\mapsto a^x$ stetig ist, ergibt sich daraus auch eine
+stetige Funktion
+$a^{\bullet}\colon \mathbb{R}\to\mathbb{R}:x\mapsto a^x$.
+Dies ist aber als Basis für eine neue spezielle Funktion nicht
+wirklich geeignet, da ausser $x$ auch die Basis variert werden kann.
+Die arithmetischen Eigenschaften der Potenzfunktion erlauben aber,
+jede der Funktionen $a^x$ auf jede andere $b^x$ zurückzuführen.
+Ist $b=a^t$, dann dann ist $b^x = a^{tx}$.
+Es stellt sich damit die Frage, ob es eine bevorzugte Basis gibt.
+
+%
+% Zins und eulerscher Grenzwert
+%
+\subsection{Zins und Eulerscher Grenzwert}
+Wir ein Kapital $K_0$ mit dem Jahreszinssatz $x=100\%$ verzinst,
+wächst es jedes Jahr um den Faktor $1+x$ an.
+Teilt man die Zinsperiode in kleiner Intervall, zum Beispiel Monate
+oder Tage, und passt auch den Zins entsprechend an, dann wächste
+das Kapitel in einem Jahr auf
+\[
+K = \biggl(1+\frac{x}{12}\biggr)^{12}
+\qquad\text{und}\qquad
+K = \biggl(1+\frac{x}{365}\biggr)^{365}
+\]
+an.
+Für eine Unterteilung in $n$ Zinsperioden ist der Faktor also
+\[
+\biggl(1+\frac{x}{n}\biggr)^n.
+\]
+Diese Beobachtung hat Jacob Bernoulli 1683 dazu geführt, den Grenzwert
+\[
+\lim_{n\to\infty} \biggl(1+\frac1n\biggr)^n
+\]
+zu studieren, die später mit $e$ bezeichnet wurde.
+Später hat Euler gezeigt, dass 
+\begin{equation}
+\lim_{n\to\infty}\biggl(1+\frac{x}{n}\biggr)^n
+=
+e^x
+\label{buch:exponential:zins:eulerex}
+\end{equation}
+gilt.
+
+Tatsächlich gilt für ganzzahlige $x$, dass auch die Teilfolge
+mit $n=xm$ konvergiert, dass also
+\begin{align*}
+\lim_{n\to\infty}
+\biggl(1+\frac{x}{n}\biggr)^n
+&=
+\lim_{m\to\infty}
+\biggl(1+\frac{x}{xm}\biggr)^{xm}
+=
+\lim_{m\to\infty}\biggl(1+\frac{1}{m}\biggr)^{xm}
+\intertext{sein muss.
+Da die Funktion $a\mapsto a^x$ stetig ist, folgt weiter}
+&=\biggl(\lim_{m\to\infty}\biggl(1+\frac1m\biggr)^m\biggr)^x.
+\end{align*}
+Ähnlich kann man für einen Bruch $x=p/q$ vorgehen.
+Dazu berechnet man die $q$-te Potenz, wobei man wieder verwenden kann,
+dass, die Funktion $a\mapsto a^q$ stetig ist.
+So bekommt man
+\begin{align*}
+\biggl(
+\lim_{n\to\infty}
+\biggl(1+\frac{x}{n}\biggr)^n
+\biggr)^q
+&=
+\lim_{n\to\infty}
+\biggl(+\frac{p}{qn}\biggr)^{nq}
+=
+\lim_{m\to\infty}
+\biggl(1+\frac{p}{m})
+\biggr)^m
+=
+e^p.
+\end{align*}
+Zieht man jetzt die $q$-te Wurzel, bekommt man
+\[
+\lim_{n\to\infty}\biggl(1+\frac{x}{n}\biggr)^n = e^{\frac{p}{q}}.
+\]
+Da auch die Potenzfunktion $x\mapsto a^x$ stetig ist, folgt schliesslich,
+dass für beliebige reelle $x\in\mathbb{R}$ die
+Formel~\eqref{buch:exponential:zins:eulerex} gilt.
+
+%
+% Approximation durch Jost Bürgi
+%
+\subsubsection{Approximation durch Jost Bürgi}
+Jost Bürgi, Uhrmacher und Mathematiker aus Lichtensteig,
+war einer der Erfinder der Logartihmen, für die er allerdings
+noch keinen Namen hatte.
+Er berechnete eine Tabelle aller Werte von
+\[
+10^8\cdot(1+10^{-4})^n.
+\]
+Schreibt man
+\[
+(1+10^{-4})^n
+=
+\biggl(1+\frac{1}{10000}\biggr)^{1000\cdot n\cdot10^{-4}},
+\]
+dann erkennt man, dass Bürgi die Potenzen der Approximation
+\[
+\biggl(1+\frac{1}{1000}\biggr)^{1000}
+=
+2.7181459
+\approx
+2.7182818
+\]
+von $e$ berechnet hat.
+Die Wahl dieser Basis hat keine Auswirkungen auf die Genauigkeit
+der Anwendung seiner Tabellen, da jede andere Basis genauso.
+
+%
+% Störungen des Eulerschen Grenzwertes
+%
+\subsubsection{Störungen des Eulerschen Grenzwertes}
+Der Grenzwert~\eqref{buch:exponential:zins:eulerex}
+bleibt unverändert, wenn man den Term $x$ um einen zusätzlichen
+Summanden $x_n$ modifiziert, der schnell genug gegen $0$ geht.
+
+\begin{lemma}
+\label{buch:exponential:zins:perturbedeulerlimit}
+Sei $x_n$ eine Folge $x_n\in\mathbb{R}$, die gegen $0$ konvergiert.
+Dann gilt
+\[
+\lim_{n\to\infty}\biggl(1+\frac{x+x_n}{n}\biggr)^n
+=
+\lim_{n\to\infty}\biggl(1+\frac{x}{n}\biggr)^n
+=
+e^x.
+\]
+\end{lemma}
+
+\begin{proof}[Beweis]
+Für $\varepsilon>0$ gibt es ein $N$ derart, dass
+\( |x_n| < \varepsilon \)
+für alle $n>N$.
+Da 
+\[
+\biggl(
+1+\frac{x-\varepsilon}{n}
+\biggr)^n
+<
+\biggl(
+1+\frac{x+x_n}{n}
+\biggr)^n
+<
+\biggl(
+1+\frac{x+\varepsilon}{n}
+\biggr)^n
+\]
+folgt
+\[
+e^{x-\varepsilon}
+\ge
+\lim_{n\to\infty}
+\biggl(
+1+\frac{x+x_n}{n}
+\biggr)^n
+\le
+e^{x+\varepsilon}.
+\]
+Da dies für alle $\varepsilon$ gilt, und die Funktion $x\mapsto e^x$
+stetig ist, folgt
+\[
+\lim_{n\to\infty} \biggl(1+\frac{x+x_n}{n}\biggr)^n
+=
+e^x,
+\]
+die Behauptung des Lemmas.
+\end{proof}
+
+%
+% Funktionalgleichung
+%
+\subsubsection{Funktionalgleichung}
+Die Definition der Exponentialfunktion als Potenz $e^x$
+hat automatisch zur Folge,
+dass für beliebige reelle Zahlen
+die Funktionalgleichung
+\[
+e^x\cdot e^y
+=
+e^{x+y}
+\]
+gilt.
+Dies kann jedoch auch direkt aus dem
+Grenzwert~\eqref{buch:exponential:zins:eulerex}
+abgeleitet werden.
+Dazu rechnet man
+\begin{align*}
+\lim_{n\to\infty}\biggl(1+\frac{x}{n}\biggr)^n
+\cdot
+\lim_{m\to\infty}\biggl(1+\frac{x}{m}\biggr)^m
+&=
+\lim_{n\to\infty}
+\biggl(
+\biggl(1+\frac{x}{n}\biggr)
+\biggl(1+\frac{y}{n}\biggr)
+\biggr)^n
+\\
+&=
+\lim_{n\to\infty}
+\biggl( 1+\frac{x+y}{n}+\frac{xy}{n^2} \biggr)^n
+\\
+&=
+\lim_{n\to\infty}
+\biggl( 1+\frac{x+y+xy/n}{n}\biggr)^n.
+\intertext{Der Term $x_n=xy/n$ konvergiert gegen $0$, daher ist nach dem
+Lemma~\ref{buch:exponential:zins:perturbedeulerlimit}
+}
+&=
+e^{x+y}.
+\end{align*}
+Damit ist die Funktionalgleichung bewiesen.
+
+%
+% Potenzreihe
+%
+\subsection{Potenzreihe}
+Die übliche Definition der Exponentialfunktion verwendet eine Potenzreihe.
+
+\begin{definition}
+\label{buch:exponential:zins:exppotenzreihe}
+Die Potenzreihe
+\[
+\exp(x)
+=
+\sum_{k=0}^\infty \frac{x^k}{k!}
+\]
+definiert eine Funktion $\exp\colon \mathbb{C}\to\mathbb{C}$.
+\end{definition}
+
+%
+% Funktionalgleichung
+%
+\subsubsection{Funktionalgleichung}
+Auch für die Potenzreihendefinition lässt sich die Funktionalgleichung
+direkt zu verifizieren.
+Das Produkt von $\exp(x)$ und $\exp(y)$ ist
+\begin{align*}
+\exp(x)\cdot\exp(y)
+&=
+\sum_{k=0}^\infty \frac{x^k}{k!} 
+\cdot
+\sum_{l=0}^\infty \frac{y^l}{l!} .
+\intertext{Fasst man die Terme vom Grad $n$ zusammen, erhält man}
+&=
+\sum_{n=0}^\infty
+\sum_{k=0}^n
+\frac{1}{k!(n-k)!}
+x^ky^{n-k}.
+\intertext{Durch Erweitern mit $n!$ wird daraus}
+&=
+\sum_{n=0}^\infty
+\frac{1}{n!}
+\sum_{k=0}^n
+\frac{n!}{k!(n-k)!}
+x^ky^{n-k}.
+\intertext{Der Quotient von Fakultäten ist der Binomialkoeffizient, so
+dass die Summe mit dem Binomialsatz vereinfacht werden kann:}
+&=
+\sum_{n=0}^\infty
+\frac{1}{n!}
+\sum_{k=0}^n
+\binom{n}{k}
+x^ky^{n-k}
+=
+\sum_{n=0}^\infty
+\frac{1}{n!}
+(x+y)^n
+=
+\exp(x+y),
+\end{align*}
+damit ist die Funktionalgleichung nachgewiesen und es wird klar, dass
+$\exp(x)$ eine Funktion der Form $a^x$ ist.
+
+%
+% exp(x) und e^x
+%
+\subsubsection{$\exp(x)$ und $e^x$}
+Die Tatsache, dass $\exp(x)$ die Funktionalgleichung erfüllt, reicht
+nicht aus um zu zeigen, dass $\exp(x)$ und $e^x$ dasselbe sind,
+da jede beliebige Funktion $a^x$ diese Eigenschaft hat.
+Wir können nur schliessen, dass $\exp(x)=\exp(1)^x$.
+Wenn wir zeigen wollen, dass $\exp(x)$ und $e^x$ dasselbe sind, dann
+müssen wir zeigen, dass $e=\exp(1)$ gilt.
+Dazu formen wir den Eulerschen Grenzwert wie folgt um:
+\begin{align*}
+e=\biggl(1+\frac1n\biggr)^n
+&=
+\sum_{k=0}^n \binom{n}{k} \frac{1}{n^{n-k}}
+=
+\sum_{k=0}^n \frac{1}{k!} \frac{n(n-1)\cdots(n-k+1)}{n^{n-k}}
+\\
+&=
+\sum_{k=0}^n \frac{1}{k!}
+\underbrace{\frac{n}{n}}_{\displaystyle \downarrow\atop\displaystyle 1}
+\cdot
+\underbrace{\frac{n-1}{n}}_{\displaystyle\downarrow\atop\displaystyle 1}
+\cdots
+\underbrace{\frac{n-k+1}{n}}_{\displaystyle\downarrow\atop\displaystyle 1}
+\to
+\sum_{k=0}^\infty \frac{1}{k!}
+=
+\exp(1)
+\end{align*}
+Damit ist gezeigt, dass $e=\exp(1)$ und damit auch $e^x=\exp(x)$ ist.
+
+

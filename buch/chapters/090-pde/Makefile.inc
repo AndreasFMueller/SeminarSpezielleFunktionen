@@ -5,10 +5,9 @@
 #
 
 CHAPTERFILES += 							\
-	chapters/090-pde/gleichung.tex					\
-	chapters/090-pde/separation.tex					\
-	chapters/090-pde/rechteck.tex					\
-	chapters/090-pde/kreis.tex					\
-	chapters/090-pde/kugel.tex					\
+	chapters/090-pde/1-gleichung.tex				\
+	chapters/090-pde/2-separation.tex				\
+	chapters/090-pde/3-rechteck.tex					\
+	chapters/090-pde/4-geometrie.tex				\
 	chapters/090-pde/uebungsaufgaben/901.tex			\
 	chapters/090-pde/chapter.tex

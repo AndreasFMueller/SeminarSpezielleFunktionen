@@ -5,13 +5,13 @@
 #
 
 CHAPTERFILES += 							\
-	chapters/040-rekursion/gamma.tex				\
-	chapters/040-rekursion/bohrmollerup.tex				\
-	chapters/040-rekursion/integral.tex				\
-	chapters/040-rekursion/beta.tex					\
-	chapters/040-rekursion/betaverteilung.tex			\
-	chapters/040-rekursion/linear.tex				\
-	chapters/040-rekursion/hypergeometrisch.tex			\
+	chapters/040-rekursion/1-gamma.tex				\
+	chapters/040-rekursion/11-bohrmollerup.tex			\
+	chapters/040-rekursion/12-integral.tex				\
+	chapters/040-rekursion/2-beta.tex				\
+	chapters/040-rekursion/21-betaverteilung.tex			\
+	chapters/040-rekursion/3-linear.tex				\
+	chapters/040-rekursion/4-hypergeometrisch.tex			\
 	chapters/040-rekursion/uebungsaufgaben/401.tex			\
 	chapters/040-rekursion/uebungsaufgaben/402.tex			\
 	chapters/040-rekursion/uebungsaufgaben/403.tex			\

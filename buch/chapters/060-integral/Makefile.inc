@@ -5,15 +5,17 @@
 #
 
 CHAPTERFILES += 							\
-	chapters/060-integral/fehlerfunktion.tex			\
-	chapters/060-integral/eulertransformation.tex			\
-	chapters/060-integral/differentialkoerper.tex			\
-	chapters/060-integral/rational.tex				\
-	chapters/060-integral/erweiterungen.tex				\
-	chapters/060-integral/diffke.tex				\
-	chapters/060-integral/irat.tex					\
-	chapters/060-integral/sqratrat.tex				\
-	chapters/060-integral/risch.tex					\
-	chapters/060-integral/logexp.tex				\
-	chapters/060-integral/elementar.tex				\
+	chapters/060-integral/1-fehlerfunktion.tex			\
+	chapters/060-integral/2-eulertransformation.tex			\
+	chapters/060-integral/3-differentialkoerper.tex			\
+	chapters/060-integral/31-rational.tex				\
+	chapters/060-integral/32-erweiterungen.tex			\
+	chapters/060-integral/33-diffke.tex				\
+	chapters/060-integral/34-iproblem.tex				\
+	chapters/060-integral/35-irat.tex				\
+	chapters/060-integral/36-sqratrat.tex				\
+	chapters/060-integral/4-risch.tex				\
+	chapters/060-integral/41-logexp.tex				\
+	chapters/060-integral/42-elementar.tex				\
+	chapters/060-integral/43-liouville.tex				\
 	chapters/060-integral/chapter.tex

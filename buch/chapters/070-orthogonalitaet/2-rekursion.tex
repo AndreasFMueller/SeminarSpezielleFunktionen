@@ -1,0 +1,266 @@
+%
+% rekursion.tex -- drei term rekursion für orthogonale Polynome
+%
+% (c) 2022 Prof Dr Andreas Müller, OST Ostschweizer Fachhochschule
+%
+\section{Drei-Term-Rekursion für orthogonale Polynome
+\label{buch:orthogonal:section:drei-term-rekursion}}
+Die Berechnung der Legendre-Polynome mit Hilfe des Gram-Schmidt-Verfahrens
+ist wenig hilfreich, wenn es darum geht, Werte der Polynome zu berechnen.
+Glücklicherweise erfüllen orthogonale Polynome automatisch eine 
+Rekursionsbeziehung mit nur drei Termen.
+Zum Beispiel kann man zeigen, dass für die Legendre-Polynome die
+Relation
+\begin{align*}
+nP_n(x) &= (2n-1)xP_{n-1}(x) - (n-1)P_{n-2}(x),\;\forall n\ge 2,
+\\
+P_1(x) &= x,
+\\
+P_0(x) &= 1.
+\end{align*}
+Mit so einer Rekursionsbeziehung ist es sehr einfach, die Funktionswerte
+für alle $P_n(x)$ zu berechnen.
+
+%
+% Allgemeine Drei-Term-Rekursion für orthogonale Polynome
+%
+\subsubsection{Allgemeine Drei-Term-Rekursion für orthogonale Polynome}
+Die Multiplikation mit $x$ macht aus einem Polynom vom Grad $n$ ein
+Polynom vom Grad $n+1$.
+Das Polynom $xp_n(x)$ lässt sich daher als Linearkombination der
+Polynome $p_k(x)$ mit $k\le n+1$ schreiben.
+Es muss also eine lineare Beziehung zwischen den Polynomen $p_k(x)$ und
+$xp_n(x)$ geben, die man nach $p_{n+1}(x)$ auflösen kann, um eine lineare
+Darstellung von $p_{n+1}(x)$ durch die $p_k(x)$ und $p_n(x)$ zu
+bekommen.
+A priori muss man damit rechnen, dass sehr viele Summanden nötig sind.
+Der folgende Satz besagt, dass dies nicht so ist.
+Überraschenderweise erfüllen die Polynome $p_n(x)$ eine Rekursionsbeziehung
+mit nur drei Termen, wie der folgende Satz besagt.
+
+\begin{satz}
+\index{Satz!Drei-Term-Rekursion}%
+\label{buch:orthogonal:satz:drei-term-rekursion}
+Eine Folge bezüglich $\langle\,\;,\;\rangle_w$ orthogonaler Polynome $p_n$ 
+mit dem Grade $\deg p_n = n$ erfüllt eine Rekursionsbeziehung der Form
+\begin{equation}
+p_{n+1}(x)
+=
+(A_nx+B_n)p_n(x) - C_np_{n-1}(x)
+\label{buch:orthogonal:eqn:rekursion}
+\end{equation}
+für $n\ge 0$, wobei $p_{-1}(x)=0$ gesetzt wird.
+Die Zahlen $A_n$, $B_n$ und $C_n$ sind reell und es ist
+$A_{n-1}A_nC_n\ge 0$ für $n>0$. 
+Wenn $k_n>0$ der Leitkoeffizient von $p_n(x)$ ist, dann gilt
+\begin{equation}
+A_n=\frac{k_{n+1}}{k_n},
+\qquad
+C_{n+1} = \frac{A_{n+1}}{A_n}\frac{h_{n+1}}{h_n}.
+\label{buch:orthogonal:eqn:koeffizientenrelation}
+\end{equation}
+\end{satz}
+
+Die Rekursionsbeziehung~\eqref{buch:orthogonal:eqn:rekursion} bedeutet,
+dass sich die Werte $p_n(x)$ für alle $n$ ausgehend von $p_1(x)$ und
+$p_0(x)$ mit nur $O(n)$ Operationen ermitteln lassen.
+
+%
+% Multiplikationsoperator
+%
+\subsubsection{Multiplikationsoperator mit $x$}
+\index{Multiplikationsoperator}%
+Man kann die Relation \eqref{buch:orthogonal:eqn:rekursion}
+auch nach dem Produkt $xp_n(x)$ auflösen, dann wird sie
+\begin{equation}
+xp_n(x)
+=
+\frac{1}{A_n}p_{n+1}(x)
+-
+\frac{B_n}{A_n}p_n(x)
++
+\frac{C_n}{A_n}p_{n-1}(x).
+\label{buch:orthogonal:eqn:multixrelation}
+\end{equation}
+Die Multiplikation mit $x$ ist eine lineare Abbildung im Raum der Funktionen,
+die wir weiter unten auch $M_x$ abkürzen.
+Die Relation~\eqref{buch:orthogonal:eqn:multixrelation} besagt, dass diese
+Abbildung in der Basis der Polynome $p_k$ tridiagonale Form hat.
+
+%
+% Drei-Term-Rekursion für die Tschebyscheff-Polynome
+%
+\subsubsection{Drei-Term-Rekursion für die Tschebyscheff-Polynome}
+Eine Relation der Form~\eqref{buch:orthogonal:eqn:multixrelation}
+wurde bereits in 
+Abschnitt~\ref{buch:potenzen:tschebyscheff:rekursionsbeziehungen}
+hergeleitet.
+In der Form~\eqref{buch:orthogonal:eqn:rekursion} geschrieben lautet
+sie
+\begin{equation}
+T_{n+1}(x) = 2x\,T_n(x)-T_{n-1}(x)
+\qquad\Rightarrow\qquad
+xT_n(x) = \frac12 T_{n-1}(x) + \frac12 T_{n+1}(x).
+\label{buch:orthogonal:eqn:Tschebrel}
+\end{equation}
+In der Form
+\eqref{buch:orthogonal:eqn:rekursion}
+müssen die Koeffizienten
+$A_n=2$, $B_n=0$ und $C_n=1$ gewählt werden.
+Die Matrixdarstellung des Multiplikationsoperators $M_x$ in der
+Basis der Tschebyscheff-Polynome hat wegen
+\eqref{buch:orthogonal:eqn:Tschebrel}
+die Form
+\begin{equation}
+M_x
+=
+\begin{pmatrix}
+      0&\frac12&      0&      0&      0&\dots  \\
+\frac12&      0&\frac12&      0&      0&\dots  \\
+      0&\frac12&      0&\frac12&      0&\dots  \\
+      0&      0&\frac12&      0&\frac12&\dots  \\
+      0&      0&      0&\frac12&      0&\dots  \\
+ \vdots& \vdots& \vdots& \vdots& \vdots&\ddots 
+\end{pmatrix}.
+\label{buch:orthogonal:eqn:Mx}
+\end{equation}
+
+%
+% Beweis von Satz
+%
+\subsubsection{Beweis von Satz~\ref{buch:orthogonal:satz:drei-term-rekursion}}
+Die Relation~\eqref{buch:orthogonal:eqn:multixrelation} zeigt auch,
+dass der Beweis die Koeffizienten $\langle xp_k,p_j\rangle_w$
+berechnen muss.
+Dabei wird wiederholt der folgende Trick verwendet.
+Für jede beliebige Funktion $f$ mit $\|f\|_w^2<\infty$ ist
+\[
+\langle fp_k,p_j\rangle_w
+=
+\int_a^b \bigl(f(x)p_k(x)\bigr)\,p_j(x)\,w(x)\,dx
+=
+\int_a^b p_k(x)\,\bigl(f(x)p_j(x)\bigr)\,w(x)\,dx
+=
+\langle p_k,fp_j\rangle_w.
+\]
+Für $f(x)=x$ kann man weiter verwenden, dass $xp_k(x)$ ein Polynom
+vom Grad $k+1$ ist.
+Die Gleichheit $\langle xp_k,p_j\rangle_w=\langle p_k,xp_j\rangle_w$
+ermöglicht also, den Faktor $x$ dorthin zu schieben, wo er nützlicher ist.
+
+\begin{proof}[Beweis des Satzes]
+Multipliziert man die rechte Seite von
+\eqref{buch:orthogonal:eqn:rekursion} aus, dann ist der einzige Term
+vom Grad $n+1$ der Term $A_nxp_n(x)$.
+Der Koeffizient $A_n$ ist also dadurch festgelegt, dass
+\begin{equation}
+b(x)
+=
+p_{n+1}(x) - A_nxp_n(x)
+\label{buch:orthogonal:rekbeweis}
+\end{equation}
+Grad $\le n$ hat.
+Dazu müssen sich die Terme vom Grad $n+1$ in den Polynomen wegheben,
+d.~h.~$k_{n+1}-A_nk_n=0$, woraus die erste Beziehung in
+\eqref{buch:orthogonal:eqn:koeffizientenrelation} folgt.
+
+Die Polynome $p_k$ sind durch Orthogonalisierung der Monome
+$1$, $x$,\dots $x^{k}$ entstanden.
+Dies bedeutet, dass $\langle p_n,x^k\rangle_w=0$ für alle $k<n$
+gilt und daher auch $\langle p_n,Q\rangle_w=0$ für jedes Polynome
+$Q(x)$ vom Grad $<n$.
+
+Das Polynom $b(x)$ ist vom Grad $\le n$, es lässt sich also als
+Linearkombination
+\[
+b(x) = \sum_{k=0}^n b_k p_k(x)
+\]
+der $p_k$ mit $k\le n$ schreiben.
+Die Koeffizienten $b_j$ kann man erhalten, indem man 
+\eqref{buch:orthogonal:rekbeweis} Skalar mit $p_j$ multipliziert.
+Dabei erhält man
+\[
+h_jb_j
+=
+\langle b,p_j\rangle_w
+=
+\langle p_{n+1},p_j\rangle_w
+-
+A_n\langle xp_n,p_j\rangle_w.
+\]
+Für $j\le n$ verschwindet der erste Term nach der Definition einer
+Folge von orthogonalen Polynomen.
+Den zweiten Term kann man umformen in
+\[
+\langle xp_n,p_j\rangle_w
+=
+\langle p_n,xp_j\rangle_w.
+\]
+Darin ist $xp_j$ ein Polynom vom Grad $j+1$.
+Für $n>j+1$ folgt, dass der zweite Term verschwindet.
+Somit sind alle $b_j=0$ mit $j<n-1$, nur der Term $j=n-1$
+bleibt bestehen.
+Mit $B_n=b_n$ und $C_n=b_{n-1}$ bekommt man die somit die
+Rekursionsbeziehung~\eqref{buch:orthogonal:eqn:rekursion}.
+
+Indem man das Skalarprodukt von~\eqref{buch:orthogonal:eqn:rekursion}
+mit $p_{n-1}$ bildet, findet man
+\begin{align}
+\underbrace{\langle
+p_{n+1},p_{n-1}
+\rangle_w}_{\displaystyle=0}
+&=
+\langle (A_nx+B_n)p_n+C_np_{n-1},p_{n-1} \rangle_w
+\notag
+\\
+0
+&=
+A_n\langle xp_n,p_{n-1} \rangle_w
++B_n\underbrace{\langle p_n,b_{n-1}\rangle_w}_{\displaystyle=0}
+-C_n\|p_{n-1}\|_w^2
+\notag
+\\
+0
+&=
+A_n\langle p_n,xp_{n-1} \rangle_w
+-C_n\|p_{n-1}\|_w^2.
+\label{buch:orthogonal:eqn:rekbeweis2}
+\end{align}
+Indem man $xp_{n-1}$ als
+\[
+xp_{n-1}(x)
+=
+\frac{k_{n-1}}{k_n} p_n(x)
++
+\sum_{k=0}^{n-1} d_kp_k(x)
+\]
+schreibt, bekommt man
+\begin{align*}
+\langle
+p_n,
+xp_{n-1}
+\rangle_w
+&=
+\biggl\langle
+p_n,
+\frac{k_{n-1}}{k_n} p_n
++
+\sum_{k=0}^{n-1} d_kp_k
+\biggr\rangle_w
+=
+\frac{k_{n-1}}{k_n}h_n
++
+\sum_{k=0}^{n-1} d_k\underbrace{\langle p_n,p_k\rangle_w}_{\displaystyle=0}.
+\end{align*}
+Eingesetzt in~\eqref{buch:orthogonal:eqn:rekbeweis2} erhält man
+\[
+A_n\frac{k_{n-1}}{k_n}h_n = C_n h_{n-1}
+\qquad\Rightarrow\qquad
+C_n
+=
+A_n\frac{k_{n-1}}{k_n}\frac{h_n}{h_{n-1}},
+\]
+damit ist auch die zweite Beziehung von
+\eqref{buch:orthogonal:eqn:koeffizientenrelation}
+bewiesen.
+\end{proof}

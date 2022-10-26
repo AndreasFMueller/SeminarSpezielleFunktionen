@@ -87,23 +87,31 @@ public:
  * color on a suitable gradient.
  */
 class color : public vector {
+	double	_u;
 public:
+	double	u() const { return _u; }
 	static double	utop;
 	static double	ubottom;
 	static double	green;
 public:
-	color(double u) {
-		u = (u - ubottom) / (utop - ubottom);
-		if (u > 1) {
-			u = 1;
+	color(double u) : _u(u) {
+		double	U = (u - ubottom) / (utop - ubottom);
+		if (U > 1) {
+			U = 1;
 		}
-		if (u < 0) {
-			u = 0;
+		if (U < 0) {
+			U = 0;
 		}
-		u = pow(u,2);
-		(*this)[0] = u;
-		(*this)[1] = green * u * (1 - u);
-		(*this)[2] = 1-u;
+#if 0
+		U = pow(U,2);
+#endif
+		(*this)[0] = U;
+#if 0
+		(*this)[1] = green * U * (1 - U);
+#else
+		(*this)[1] = 0.5;
+#endif
+		(*this)[2] = 1 - U;
 		double	l = l0norm();
 		for (int i = 0; i < 3; i++) {
 			(*this)[i] /= l;
@@ -219,7 +227,7 @@ private:
 	void	triangle(const vector& v0, const vector& v1, const vector& v2) {
 		fprintf(outfile, "    mesh {\n");
 		vector	c = (v0 + v1 + v2) * (1./3.);
-		vector	color = farbe(c.normalize());
+		color	Color = farbe(c.normalize());
 		vector	V0 = v0 * (1 + F(v0));
 		vector	V1 = v1 * (1 + F(v1));
 		vector	V2 = v2 * (1 + F(v2));
@@ -231,8 +239,8 @@ private:
 		fprintf(outfile, "\t    <%.6f,%.6f,%.6f>\n",
 			V2[0], V2[2], V2[1]);
 		fprintf(outfile, "\t}\n");
-		fprintf(outfile, "\tpigment { color rgb<%.4f,%.4f,%.4f> }\n",
-			color[0], color[1], color[2]);
+		fprintf(outfile, "\tpigment { color rgb<%.4f,%.4f,%.4f> } // %.4f\n",
+			Color[0], Color[1], Color[2], Color.u());
 		fprintf(outfile, "\tfinish { metallic specular 0.5 }\n");
 		fprintf(outfile, "    }\n");
 	}

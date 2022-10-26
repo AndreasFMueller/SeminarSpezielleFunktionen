@@ -29,7 +29,7 @@ Das modulierte Signal hat eine umhüllende Kurve, die unserem
 ursprünglichen Nachrichtensignal \(m(t)\) entspricht
 (Abbildung~\ref{fig:modulierend}).
 
-Um das Frequenzspektrum des modulierten Signals zu verstehen
+Um das Frequenzspektrum des modulierten Signals zu verstehen,
 beachten wir, dass das Trägersignal nur zwei komplexe Schwingungen
 besitzt. 
 Mit der eulerschen Formel
@@ -45,7 +45,7 @@ e^{jt}
 \label{fm:eq:AM:euler}
 \end{equation}
 kann man dank
-\begin{align*}
+\begin{align}
 e^{j\omega_c t} \cos(\omega_m t)
 &=
 e^{j\omega_c t}\frac12(e^{j\omega_m t} + e^{-j\omega_m t})
@@ -56,33 +56,49 @@ e^{j(\omega_c+\omega_m) t}
 +
 \frac12
 e^{j(\omega_c-\omega_m) t}
-\end{align*}
+\label{fm:eq:am}
+\end{align}
 einsehen, dass das modulierte Signal für jeden Frequenzanteil
 mit Frequenz $\omega_m$ im modulierenden Signal
 die zwei Frequenzen $\omega_c-\omega_m$ und
 $\omega_c+\omega_m$ im modulierten Signal enthält.
 
 \subsection{Frequenzspektrum}
-Das Frequenzspektrum ist eine Darstellung von einem Signal im Frequenzbereich, das heisst man erkennt welche Frequenzen in einem Signal vorhanden sind.
+Das Frequenzspektrum ist eine Darstellung eines Signals im
+Frequenzbereich, das heisst man erkennt welche Frequenzen in einem
+Signal vorhanden sind.
+%Das Frequenzspektrum zeigt uns, wo welche Frequenzen sich befinden.
+Dafür müssen wir die Fourier-Transformierte von \(x_{\text{AM}}(t)\)
+berechnen.
+Die Formel~\eqref{fm:eq:am} zeigt aber, dass dies der Aufwand
+der Fourier-Transformation gar nicht nötig ist, da die Zerlegung
+in einzelne Frequenzen bereits bekannt ist.
+Das Frequenzspektrum besteht aus Dirac-Impulsen bei der Trägerkreisfrequenz
+$\omega_c$ und symmetrisch rechts und links davon angeordneten
+Dirac-Impulsen bei den Frequenzen $\omega_c\pm \omega_m$
+wie in Abbildung~\ref{fig:AM_frequency} dargestellt.
 
-Das Frequenzspektrum zeigt uns wo welche Frequenzen sich befinden, dies ist gerade wichtig fürs Frequenzmultiplexen.
-Frequenzmultiplexen braucht man um mehrere Nachrichten verteilt zu übertragen.
-Dafür müsse wir \(x_{AM}(t)\) Fourietransformieren da es nur zwei Summanden, wie \eqref{fm:eq:AM:euler} mit \(e^{\pm j\omega_ct}\)gezeigt, 
-verschiebt sich das Signal \(m(t)\) um die träger Frequenz \(\omega_ct\).
-Ist zudem \(m(t) = \sin(\omega_m t)\) so vereinfacht sich die Darstellung auf Dirac Impulse die jeweils rechts und links vom Träger signal sind.
-In Abb \ref{fig:AM_frequency} sieht man den \textcolor{blue}{Träger $x_c$} und das modulierte Signal dann ohne Träger in schwarz.
-(Wobei die quadrierte Magnitude $X_c$ mit dem Faktor $\pi$ skaliert wurde.)
+%Summanden, wie \eqref{fm:eq:AM:euler} mit \(e^{\pm j\omega_ct}\) gezeigt, 
+%verschiebt sich das Signal \(m(t)\) um die träger Frequenz \(\omega_ct\).
+%Ist zudem \(m(t) = \sin(\omega_m t)\) so vereinfacht sich die Darstellung
+%auf Dirac Impulse die jeweils rechts und links vom Träger signal sind.
+%In Abb \ref{fig:AM_frequency} sieht man den \textcolor{blue}{Träger $x_c$}
+%und das modulierte Signal dann ohne Träger in schwarz.
+%(Wobei die quadrierte Magnitude $X_c$ mit dem Faktor $\pi$ skaliert wurde.)
+
 \begin{figure}
-	\centering
-	\includegraphics{papers/fm/images/amfrequency.pdf}
-	%\input{papers/fm/Python animation/AM_frequency.pgf}
-	\caption{Amplitudenmodulation im Frequenzspektrum}
-	\label{fig:AM_frequency}
+\centering
+\includegraphics{papers/fm/images/amfrequency.pdf}
+%\input{papers/fm/Python animation/AM_frequency.pgf}
+\caption{Amplitudenmodulation im Frequenzspektrum}
+\label{fig:AM_frequency}
 \end{figure}
-Fürs Frequenzmultiplexen wird dann das Signal \(m(t)\) in die verschiedenen Frequenzen unterteilt um mehr Nachrichten zu übertragen.
-Doch aufs Frequenzmultiplexen und weitere formen wie SSB und DSB möchte ich nicht weiter eingehen.
-Diese können gerne im Nat Skript nachgelesen werden.\cite{fm:NAT}
 
-Das sich unser Signal \(m(t)\)  so mit dem Träger Signal verhält findet es man wieder gut beim empfangen, mit Hilfe der Bandbreite weiss man was alles dazugehört.
-Bei der Frequenzmodulation ist dies einwenig anders, dies sieht man auch in der Abb. \ref{fig:fm:FM}.
-Da in der Frequenzmodulation das Nachrichtensignal \(m(t)\) die Frequenzändert und somit auch im Frequenzbereich nicht mehr einfach bestimmbar ist.
+%Das sich unser Signal \(m(t)\)  so mit dem Träger Signal verhält findet
+%man es wieder gut beim empfangen, mit Hilfe der Bandbreite weiss man was
+%alles dazugehört.
+%Bei der Frequenzmodulation ist dies einwenig anders, dies sieht man auch
+%in der Abbildung~\ref{fig:fm:FM}.
+%Da in der Frequenzmodulation das Nachrichtensignal \(m(t)\) die
+%Frequenz ändert und somit auch im Frequenzbereich nicht mehr einfach
+%bestimmbar ist.

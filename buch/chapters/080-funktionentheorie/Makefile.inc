@@ -5,14 +5,14 @@
 #
 
 CHAPTERFILES += 							\
-	chapters/080-funktionentheorie/holomorph.tex			\
-	chapters/080-funktionentheorie/analytisch.tex			\
-	chapters/080-funktionentheorie/cauchy.tex			\
-	chapters/080-funktionentheorie/fortsetzung.tex			\
-	chapters/080-funktionentheorie/anwendungen.tex			\
-	chapters/080-funktionentheorie/gammareflektion.tex		\
-	chapters/080-funktionentheorie/carlson.tex			\
-	chapters/080-funktionentheorie/singularitaeten.tex		\
+	chapters/080-funktionentheorie/1-holomorph.tex			\
+	chapters/080-funktionentheorie/2-analytisch.tex			\
+	chapters/080-funktionentheorie/3-cauchy.tex			\
+	chapters/080-funktionentheorie/4-fortsetzung.tex		\
+	chapters/080-funktionentheorie/5-anwendungen.tex		\
+	chapters/080-funktionentheorie/51-gammareflektion.tex		\
+	chapters/080-funktionentheorie/52-carlson.tex			\
+	chapters/080-funktionentheorie/53-singularitaeten.tex		\
 	chapters/080-funktionentheorie/uebungsaufgaben/1.tex		\
 	chapters/080-funktionentheorie/uebungsaufgaben/2.tex		\
 	chapters/080-funktionentheorie/chapter.tex

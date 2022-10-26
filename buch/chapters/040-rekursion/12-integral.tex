@@ -1,0 +1,116 @@
+%
+% 12-integral.tex
+%
+% (c) 2022 Prof Dr Andreas Müller, OST Ostschweizer Hochschule
+%
+\subsection{Integraldarstellung und der Satz von Bohr-Mollerup
+\label{buch:subsection:integral-eindeutig}}
+Die Integralformel
+\[
+f(x)
+=
+\int_0^\infty t^{x-1}e^{-t}\,dt
+\]
+für die Gamma-Funktion erfüllt die Funktionalgleichung der Gamma-Funktion.
+Aus dem Satz von Bohr-Mollerup~\ref{buch:satz:bohr-mollerup} folgt,
+dass $f(x)=\Gamma(x)$, wenn gezeigt werden kann, dass $\log f(x)$
+konvex ist.
+Dies soll im Folgenden gezeigt werden.
+
+%
+% Logarithmische Ableitung
+%
+\subsubsection{Logarithmische Ableitung}
+\index{logarithmische Ableitung}%
+Die Ableitungen der Funktion $\log f(x)$ sind die erste und
+zweite logarithmische
+\index{logarithmische Ableitung!zweite}%
+Ableitung
+\begin{align}
+\frac{d}{dx}\log f(x)
+&=
+\frac{f'(x)}{f(x)}
+\notag
+\\
+\frac{d^2}{dx^2} \log f(x)
+&=
+\frac{f''(x)f(x)-f'(x)^2}{f(x)^2}.
+\label{buch:rekursion:eqn:zweiteablteitung}
+\end{align}
+Durch Ableiten unter dem Integralzeichen können die Ableitungen
+von $f$ als
+\begin{align*}
+f'(x)
+&=
+\int_0^\infty \log(t)\, t^{x-1} e^{-t}\,dt
+\\
+f''(x)
+&=
+\int_0^\infty \log(t)^2\, t^{x-1} e^{-t}\,dt
+\end{align*}
+bestimmt werden.
+Um nachzuweisen, dass $\log f(x)$ konvex ist, muss nur gezeigt werden,
+dass die zweite logarithmische Ableitung von $f(x)$ positiv ist, was
+gemäss~\eqref{buch:rekursion:eqn:zweiteablteitung} mit
+\begin{equation}
+f''(x)f(x)-f'(x)^2
+=
+\int_0^\infty \log(t)^2\, t^{x-1}e^{-t}\,dt
+\int_0^\infty t^{x-1}e^{-t}\,dt
+-
+\biggl(
+\int_0^\infty \log(t)\, t^{x-1}e^{-t}\,dt
+\biggr)^2
+\ge 0
+\label{buch:rekursion:gamma-integral:ungleichung}
+\end{equation}
+gleichbedeutend ist.
+
+%
+% Skalarprodukt
+%
+\subsubsection{Skalarprodukt}
+Die Integral in~\eqref{buch:rekursion:gamma-integral:ungleichung}
+können als Werte eines Skalarproduktes von Funktionen auf $\mathbb{R}^+$
+\index{Skalarprodukt}%
+gelesen werden.
+Dazu definieren wir
+\begin{align}
+\langle u,v\rangle
+&=
+\int_0^\infty u(t)v(t)\,t^{x-1}e^{-t}\,dt
+\label{buch:rekursion:gamma-integral:eqn:skalarprodukt}
+\\
+\|u\|^2
+&=
+\int_0^\infty u(t)^2 \,t^{x-1}e^{-t}\,dt,
+\notag
+\end{align}
+für alle Funktionen $u$ und $v$, für die die Integrale definiert sind.
+
+%
+% Cauchy-Schwarz-Ungleichung
+%
+\subsubsection{Cauchy-Schwarz-Ungleichung}
+Die Cauchy-Schwarz-Ungleichung für das
+Skalarprodukt~\eqref{buch:rekursion:gamma-integral:eqn:skalarprodukt}
+\index{Cauchy-Schwarz-Ungleichung}
+für die Funktion $u(t)=1$ und $v(t)=\log(t)$
+lautet
+\[
+|\langle u,v\rangle|^2
+=
+\biggl|
+\int_0^1 \log(t)\,t^{x-1}e^{-t}\,dt
+\biggr|^2
+\le
+\|u\|^2\cdot \|v\|^2
+=
+\int_0^\infty 1\cdot t^{x-1}e^{-t}\,dt
+\int_0^\infty \log(t)^2\cdot t^{x-1}e^{-t}\,dt.
+\]
+Daraus folgt aber durch Umstellen unmittelbar die
+Ungleichung~\eqref{buch:rekursion:gamma-integral:ungleichung}.
+Damit ist gezeigt, dass $\log f(t)$ konvex ist und nach
+dem Satz~\ref{buch:satz:bohr-mollerup} folgt nun, dass $f(x)=\Gamma(x)$.
+

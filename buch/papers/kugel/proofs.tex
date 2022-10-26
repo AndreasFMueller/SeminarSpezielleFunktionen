@@ -1,5 +1,6 @@
 % vim:ts=2 sw=2 et spell tw=80:
 \section{Long Proofs}
+\rhead{Long Proofs}
 
 Here, we will give the long and tedious proofs we skipped earlier.
 
@@ -171,7 +172,7 @@ Here, we will give the long and tedious proofs we skipped earlier.
       = \sum_{k=0}^{\lfloor n/2 \rfloor} a_{n-2k}z^{n-2k}.
   \end{equation*}
   Therefore, we need to find how to compute $a_{n - 2k}$ starting from $a_n$.
-  The game is like before to find a pattern, so
+  The game is the same as before, we need to find a pattern in the coefficient calculation. We can then calculate a couple of them to see if some structure emerges
   \begin{align*}
     a_{n-2} &= -\frac{n(n-1)}{2(2n-1)}a_n, &
     a_{n-4} &= -\frac{(n-2)(n-3)}{4(2n-3)}a_{n-2}
@@ -181,41 +182,44 @@ Here, we will give the long and tedious proofs we skipped earlier.
         -\frac{n(n-1)}{2(2n-1)}
       \right) a_n,
   \end{align*}
-  and in general 
+  and as desired, in general, we can write
   \begin{equation*}
     a_{n-2k} = (-1)^k \frac{
-      n(n-1)(n-2)(n-3) \cdots (n-2k+1)
+      n(n-1)(n-2)(n-3) \hdots (n-2k+1)
     }{
-      2 \cdot 4 \cdots 2k(2n-1)(2n-3) \cdots (2n-2k+1)
+      2 \cdot 4 \cdot \hdots \cdot 2k(2n-1)(2n-3) \hdots (2n-2k+1)
     } a_n.
   \end{equation*}
-  To clean up this expression, we use
+  To make this expression more compact, we can start by considering the numerator, rewriting it as
   \begin{equation*}
     n(n-1)(n-2)(n-3) \hdots (n-2k+1)
-    = \frac{n!}{(n-2k)!}
+    = \frac{n!}{(n-2k)!}.
   \end{equation*}
-  in the part of the denominator
+  As for the left part of the denominator, on the other hand, we have
+  \begin{equation*}
+    2 \cdot 4 \cdot \hdots \cdot 2k = 2^k \cdot 1 \cdot 2 \cdot 3 \cdot \hdots \cdot k = 2^k k! 
+  \end{equation*}
+  whereas for the remaining part:
   \begin{align*}
-    (2n-1) & (2n-3) \cdots (2n-2k+1) = \frac{
-        2n(2n-1)(2n-2)(2n-3) \cdots (2n-2k+1)
+    (2n-1) & (2n-3) \hdots (2n-2k+1) = \frac{
+        2n(2n-1)(2n-2)(2n-3) \hdots (2n-2k+1)
       }{
-        2n(2n-2)(2n-4)(2n-6) \cdots (2n-2k+2)
+        2n(2n-2)(2n-4)(2n-6) \hdots (2n-2k+2)
       }
       \\
       &= \frac{
         \frac{(2n)!}{(2n-2k)!}
       }{
-        2^k n(n-1)(n-2)(n-3) \cdots (n-k+1)
+        2^k n(n-1)(n-2)(n-3) \hdots (n-k+1)
       }
       = \frac{
         \frac{(2n)!}{(2n-2k)!}
       }{
         2^k \frac{n!}{(n-k)!}
       }
-      = \frac{(n-k)!(2n)!}{n!(2n-2k)!2^k},
+      = \frac{(n-k)!(2n)!}{n!(2n-2k)!2^k}.
   \end{align*}
-  and then since $2 \cdot 4 \cdots 2k = 2^r 1\cdot2 \cdots r = 2^r r!$, we
-  obtain
+  Putting all these compact forms together, one can write $Z(x)$ as
   \begin{equation*}
     Z(x) = \sum_{k=0}^{\lfloor n / 2\rfloor}
       \underbrace{
@@ -231,7 +235,7 @@ Here, we will give the long and tedious proofs we skipped earlier.
     P_n(z) := \sum_{k=0}^{\lfloor n/2 \rfloor}
       (-1)^k \frac{(2n-2k)!}{2^n k! (n-k)!(n-2k)!} z^{n-2k} 
   \end{equation}
-  emerges.
+  elegantly emerges.
 \end{proof}
 
 \subsection{Associated Legendre Equation}

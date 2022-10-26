@@ -1,0 +1,73 @@
+%
+% liouville.tex
+%
+% (c) 2022 Prof Dr Andreas Müller, OST Ostschweizer Fachhochschule
+%
+\subsection{Das Prinzip von Liouville
+\label{buch:integral:risch:subsection:liouville}}
+Der erste Schritt in Richtung auf einen Algorithmus zur Lösung des
+Integrationsproblems ist ein Kriterium dafür, ob eine Stammfunktion
+existiert.
+Der folgende Satz liefert ein solches Kriterium.
+
+\begin{satz}[Prinzip von Liouville]
+\label{buch:integral:risch:satz:liouville}
+\index{Prinzip von Liouville}%
+Sei $\mathcal{K}$ ein Differentialkörper mit dem Konstantenkörper $C$.
+Weiter sei $\mathcal{G}$ eine Differentialkörpererweiterung von $\mathcal{K}$
+mit demselben Konstantenkörper.
+Wenn es für $f\in\mathcal{K}$ ein $F\in\mathcal{G}$ mit $F'=f$ gibt,
+dann existieren Elemente $v_0,\dots,v_m\in\mathcal{K}$ und
+Konstanten $c_0,\dots,c_m\in C$ derart, dass
+\[
+f = v_0' + \sum_{i=1}^m c_i\frac{v_i'}{v_i}
+\qquad\text{bzw.}\qquad
+F
+=
+\int f
+=
+v_0 + \sum_{i=1}^m c_i \log v_i.
+\]
+\end{satz}
+
+Der Satz besagt, Stammfunktionen immer von der Form sind, wie sie in
+Abschnitt~\ref{buch:integral:subsection:logexp} beschrieben worden sind.
+Die Form des Integranden und der Stammfunktion ist genau die, 
+welche wir im Beispiel der rationalen Funktionen in
+\eqref{buch:integral:irat:eqn:liouvillefunktion}
+und
+\eqref{buch:integral:irat:eqn:liouvillestammfunktion}
+bereits kennengelernt haben.
+Auch das Beispiel $R(x,y)$ von Abschnitt~\ref{buch:integral:subsection:rxy}
+hat in der Stammfunktion \eqref{buch:inetgral:sqrat:eqn:liouville}
+auf diese Form geführt.
+Noch wichtiger ist aber, dass es eine Aussage über die Form des
+Integranden macht.
+Um zu entscheiden, ob ein Integrand eine elementare Stammfunktion
+hat, muss man also  ``nur'' noch das algebraische Problem lösen,
+ob der Integrand $f$ in die Form von
+Satz~\ref{buch:integral:risch:satz:liouville}
+gebracht werden kann.
+
+Diese Aufgabe ist alles andere als einfach, aber die früher diskutierten
+Spezialfälle rationaler Funktionen und $R(x,y)$
+(siehe Abschnitt~\ref{buch:integral:subsection:rxy}) können ein paar
+Hinweise über das Vorgehen geben, mit dem man eine zusätzliche
+Funktion $\vartheta$ behandeln kann, mit der der Differentialkörper
+erweitert werden soll.
+Ein rationale Funktion in $\vartheta$ wird zuänchst mit Hilfe der
+Polynomdivision in einen polynomiellen und einen rationalen
+Teil zerlegt.
+Die Summanden des polnomiellen Teils können jetzt direkt mit
+dem Prinzip von Liouville untersucht werden.
+der rationale Teil wird mit der Partialbruchzerlegung ein
+einfache rationale Funktionen zerlegt werden.
+Im Nenner der Partialbrüche kommen Potenzen von Polynomen in $\vartheta$
+vor. 
+Im Falle von $R(x,y)$ war es möglich, diese auf einige wenige spezielle
+Fälle von Nennern zu reduzieren.
+Etwas Ähnliches ist auch im allgemeinen Fall unter Zuhilfenahme
+des euklidischen Algorithmus für den Nenner und seine Ableitung möglich.
+Damit kann erreicht werden, dass der Nenner quadratfrei ist.
+Ein Satz von Rothstein-Trager ermöglicht dann, die Stammfunktion zu finden.
+

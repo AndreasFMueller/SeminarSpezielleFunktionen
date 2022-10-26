@@ -5,13 +5,12 @@
 #
 
 CHAPTERFILES += 							\
-	chapters/070-orthogonalitaet/orthogonal.tex			\
-	chapters/070-orthogonalitaet/rekursion.tex			\
-	chapters/070-orthogonalitaet/rodrigues.tex			\
-	chapters/070-orthogonalitaet/legendredgl.tex			\
-	chapters/070-orthogonalitaet/bessel.tex				\
-	chapters/070-orthogonalitaet/jacobi.tex				\
-	chapters/070-orthogonalitaet/sturm.tex				\
-	chapters/070-orthogonalitaet/gaussquadratur.tex			\
+	chapters/070-orthogonalitaet/1-orthogonal.tex			\
+	chapters/070-orthogonalitaet/2-rekursion.tex			\
+	chapters/070-orthogonalitaet/3-rodrigues.tex			\
+	chapters/070-orthogonalitaet/4-legendredgl.tex			\
+	chapters/070-orthogonalitaet/5-bessel.tex			\
+	chapters/070-orthogonalitaet/6-sturm.tex			\
+	chapters/070-orthogonalitaet/7-gaussquadratur.tex		\
 	chapters/070-orthogonalitaet/uebungsaufgaben/701.tex		\
 	chapters/070-orthogonalitaet/chapter.tex
